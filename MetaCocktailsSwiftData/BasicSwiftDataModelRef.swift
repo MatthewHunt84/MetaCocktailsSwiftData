@@ -19,7 +19,7 @@ class Cocktail: Identifiable {
     //var image: CocktailImage
     var background: BackgroundColor
     
-    //    let glasswareType: Glassware
+    let glasswareType: Glassware
     let garnish: Garnish
     //
     let spec: [CocktailIngredient]
@@ -33,9 +33,10 @@ class Cocktail: Identifiable {
     //    let textures = [SearchTags.Texture]()
     //     let profiles = [SearchTags.Profile]()
     
-    init(name: String, background: BackgroundColor, garnish: Garnish, spec: [CocktailIngredient], flavor: SearchTags.Flavor) {
+    init(name: String, background: BackgroundColor, glasswareType: Glassware, garnish: Garnish, spec: [CocktailIngredient], flavor: SearchTags.Flavor) {
         self.name = name
         self.background = background
+        self.glasswareType = glasswareType
         self.garnish = garnish
         self.spec = spec
         self.flavor = flavor
@@ -123,9 +124,9 @@ enum MeasurementUnit: String, Codable {
 @Model
 class Garnish {
     let name: String
-    let imageAsset: Image
+    let imageAsset: GarnishWrong
     
-    init(name: String, imageAsset: Image) {
+    init(name: String, imageAsset: GarnishWrong) {
         self.name = name
         self.imageAsset = imageAsset
     }
@@ -163,6 +164,12 @@ enum GarnishWrong: Codable {
         }
     }
 }
+
+//struct GarnishImage: View, Codable {
+//
+//    var tempVar = String()
+//   
+//}
 
 
 struct SearchTags: Codable {
