@@ -9,7 +9,7 @@ import SwiftUI
 
 var ramosGinFizz = Cocktail(name: "Ramos Gin Fizz",
                             imageName: "ramosNoBackground",
-                            background: .brandPrimaryPurple,
+                            //background: .brandPrimaryPurple,
                             glasswareType: .collins,
                             garnish: GarnishCatalog.orangePeel.asset,
                             spec: ramosGinFizzSpec,

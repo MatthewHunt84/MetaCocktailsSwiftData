@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Profile: String, Codable {
+enum Profile: String, Codable, CaseIterable {
     case tart           = "Tart"
     case sweet          = "Sweet"
     case bitter         = "Bitter"

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Style: String, Codable {
+enum Style: String, Codable, CaseIterable {
     case manhattan      = "manhattan"
     case shaken         = "Shaken"
     case stirred        = "Stirred"

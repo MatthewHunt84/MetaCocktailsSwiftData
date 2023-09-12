@@ -10,7 +10,7 @@ import SwiftUI
 
 var daiquiri = Cocktail(name: "Daiquiri",
                         imageName: "daiquiri-1",
-                        background: .brandPrimaryRed,
+                        //background: .brandPrimaryRed,
                         glasswareType: .coupe,
                         garnish: GarnishCatalog.limeWheel.asset,
                         spec: daiquiriSpec,

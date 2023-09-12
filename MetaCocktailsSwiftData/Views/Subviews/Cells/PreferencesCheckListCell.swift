@@ -34,10 +34,10 @@ struct PreferencesCheckListCell: View {
     }
 }
 
-
-struct PreferencesCheckListCell_Previews: PreviewProvider {
-    static var previews: some View {
-        PreferencesCheckListCell(ingredient: MockData.$mockIngredient, isShowingPreferences: true)
-
-    }
-}
+//
+//struct PreferencesCheckListCell_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PreferencesCheckListCell(ingredient: MockData.$mockIngredient, isShowingPreferences: true)
+//
+//    }
+//}

@@ -14,7 +14,7 @@ class Cocktail {
     @Attribute(.unique)
     var name: String
     var imageName: String
-    var background: Color
+    //var background: Color//gotta fix
     var glasswareType: Glassware
     var garnish: Garnish
     var author: String?
@@ -23,10 +23,10 @@ class Cocktail {
     var buildOrder: Build?
     var tags: Tags
     
-    init(name: String, imageName: String, background: Color, glasswareType: Glassware, garnish: Garnish, author: String? = nil, spec: [CocktailIngredient], buildOrder: Build? = nil, tags: Tags) {
+    init(name: String, imageName: String, glasswareType: Glassware, garnish: Garnish, author: String? = nil, spec: [CocktailIngredient], buildOrder: Build? = nil, tags: Tags) {
         self.name = name
         self.imageName = imageName
-        self.background = background
+        //self.background = background
         self.glasswareType = glasswareType
         self.garnish = garnish
         self.author = author
