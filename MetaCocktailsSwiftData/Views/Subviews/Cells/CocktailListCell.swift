@@ -15,7 +15,7 @@ struct CocktailListCell: View {
 
         HStack {
             Image(cocktail.imageName) 
-            Text(cocktail.name)
+            Text(cocktail.cocktailName)
                 .font(.title)
                 .fontDesign(.serif)
             

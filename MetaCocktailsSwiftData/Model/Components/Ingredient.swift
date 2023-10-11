@@ -10,13 +10,14 @@ import SwiftData
 
 @Model
 class CocktailIngredient {
-    @Attribute(.unique)
-    let name: Ingredient
+
+    let id = UUID()
+    let ingredientName: Ingredient
     let value: Double
     let unit: MeasurementUnit
     
     init(name: Ingredient, value: Double, unit: MeasurementUnit = .fluidOunces) {
-        self.name = name
+        self.ingredientName = name
         self.value = value
         self.unit = unit
     }

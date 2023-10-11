@@ -19,7 +19,7 @@ struct ListView: View {
         
         SearchBarView(searchText: $viewModel.searchText)
             .navigationTitle(navigationTitle)
-            .onChange(of: viewModel.searchText) { _ in // we could pass newValue here, but since its synced with the viewModel's searchText we can just use that in the match function
+            .onChange(of: viewModel.searchText) {// we could pass newValue here, but since its synced with the viewModel's searchText we can just use that in the match function
                 viewModel.matchAllTheThings()
             }
         List {
