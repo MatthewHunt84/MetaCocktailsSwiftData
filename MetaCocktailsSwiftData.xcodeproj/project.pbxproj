@@ -35,7 +35,7 @@
 		1AC386CA2AAABED10064F52A /* CocktailListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC386A42AAABED00064F52A /* CocktailListViewModel.swift */; };
 		1AC386CD2AAABED10064F52A /* SearchCriteriaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC386A92AAABED00064F52A /* SearchCriteriaView.swift */; };
 		1AC386CE2AAABED10064F52A /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC386AA2AAABED00064F52A /* SearchBarView.swift */; };
-		F41045072AD4FD42000CA913 /* CocktailImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41045062AD4FD42000CA913 /* CocktailImage.swift */; };
+		F41045072AD4FD42000CA913 /* CocktailImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41045062AD4FD42000CA913 /* CocktailImageView.swift */; };
 		F44A28F72AC26A6A0083C04D /* TagLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44A28F62AC26A6A0083C04D /* TagLayout.swift */; };
 		F4C6A8E42AAFF6AC00BB0AD0 /* Flavors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6A8E32AAFF6AC00BB0AD0 /* Flavors.swift */; };
 		F4C6A8E62AAFFC2F00BB0AD0 /* Textures.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6A8E52AAFFC2F00BB0AD0 /* Textures.swift */; };
@@ -81,7 +81,7 @@
 		1AC386A42AAABED00064F52A /* CocktailListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocktailListViewModel.swift; sourceTree = "<group>"; };
 		1AC386A92AAABED00064F52A /* SearchCriteriaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCriteriaView.swift; sourceTree = "<group>"; };
 		1AC386AA2AAABED00064F52A /* SearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
-		F41045062AD4FD42000CA913 /* CocktailImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImage.swift; sourceTree = "<group>"; };
+		F41045062AD4FD42000CA913 /* CocktailImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImageView.swift; sourceTree = "<group>"; };
 		F44A28F62AC26A6A0083C04D /* TagLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLayout.swift; sourceTree = "<group>"; };
 		F4C6A8E32AAFF6AC00BB0AD0 /* Flavors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flavors.swift; sourceTree = "<group>"; };
 		F4C6A8E52AAFFC2F00BB0AD0 /* Textures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Textures.swift; sourceTree = "<group>"; };
@@ -279,6 +279,14 @@
 			path = Layouts;
 			sourceTree = "<group>";
 		};
+		F46A73162AD71A770065AE0E /* CocktailImages */ = {
+			isa = PBXGroup;
+			children = (
+				F41045062AD4FD42000CA913 /* CocktailImageView.swift */,
+			);
+			path = CocktailImages;
+			sourceTree = "<group>";
+		};
 		F4C6A8E12AAFF66B00BB0AD0 /* SearchTags */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,6 +312,7 @@
 		F4C6A8EF2AB0000800BB0AD0 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				F46A73162AD71A770065AE0E /* CocktailImages */,
 				1AC3867A2AAABED00064F52A /* Buttons */,
 				1AC386762AAABED00064F52A /* Cells */,
 			);
@@ -332,7 +341,6 @@
 			children = (
 				F44A28F52AC26A590083C04D /* Layouts */,
 				F4DBE4C42AB8831C009A0C09 /* AnimatedSearchView.swift */,
-				F41045062AD4FD42000CA913 /* CocktailImage.swift */,
 			);
 			path = AnimatedViews;
 			sourceTree = "<group>";
@@ -448,7 +456,7 @@
 			files = (
 				F4C6A8E82AAFFC6B00BB0AD0 /* Styles.swift in Sources */,
 				F4C6A8F52AB0042400BB0AD0 /* Cocktail.swift in Sources */,
-				F41045072AD4FD42000CA913 /* CocktailImage.swift in Sources */,
+				F41045072AD4FD42000CA913 /* CocktailImageView.swift in Sources */,
 				1AC386B42AAABED10064F52A /* Extensions.swift in Sources */,
 				1AC386C92AAABED10064F52A /* CocktailListView.swift in Sources */,
 				F4C6A8F32AB003C200BB0AD0 /* Localization.swift in Sources */,
