@@ -32,9 +32,20 @@ class Garnish {
 
 enum GarnishCatalog: Codable {
     case orangePeel
+    case lemonPeel
+    case orangeOrLemon
     case limeWheel
     case cucumberSlices
     case skeweredBlackberryAndSage
+    case lemonWheel
+    case candiedGinger
+    case noGarnish
+    case halfOrangeWheel
+    case mintBouquet
+    case maraschinoCherry
+    case pineappleFrond
+    case pineappleWedge
+    
     
     var asset: Garnish {
         switch self {
@@ -46,6 +57,26 @@ enum GarnishCatalog: Codable {
             Garnish(name:"Cucumber Slices", image: Image(systemName: "circle.fill"))
         case .skeweredBlackberryAndSage:
             Garnish(name:"Skewered blackberry and sage leaf", image: Image(systemName: "circle.fill"))
+        case .lemonWheel:
+            Garnish(name: "Lemon Wheel", image: Image(systemName: "circle.fill"))
+        case .candiedGinger:
+            Garnish(name: "Candied Ginger", image: Image(systemName: "circle.fill"))
+        case .noGarnish:
+            Garnish(name: "No Garnish", image: Image(systemName: "circle.fill"))
+        case .halfOrangeWheel:
+            Garnish(name: "Half Orange Wheel", image: Image(systemName: "circle.fill"))
+        case .mintBouquet:
+            Garnish(name: "Mint Bouquet", image: Image(systemName: "circle.fill"))
+        case .orangeOrLemon:
+            Garnish(name: "Twist of Orange or Lemon.", image: Image(systemName: "circle.fill"))
+        case .maraschinoCherry:
+            Garnish(name: "Maraschino Cherry", image: Image(systemName: "circle.fill"))
+        case .lemonPeel:
+            Garnish(name: "Lemon Peel", image: Image(systemName: "circle.fill"))
+        case .pineappleFrond:
+            Garnish(name: "Pineapple Frond(s)", image: Image(systemName: "circle.fill"))
+        case .pineappleWedge:
+            Garnish(name: "Pineapple Wedge", image: Image(systemName: "circle.fill"))
         }
     }
 }

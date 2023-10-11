@@ -11,5 +11,5 @@ struct Tags: Codable {
     var flavors: [Flavor]
     var textures: [Texture]
     var styles: [Style]
-    var spirits: [Spirit]
+    var baseComponents: [Ingredient]
 }

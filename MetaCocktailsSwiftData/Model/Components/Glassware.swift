@@ -11,4 +11,8 @@ enum Glassware: String, Codable {
     case coupe          = "Coupe"
     case collins        = "Collins"
     case doubleOld      = "Double Old Fashioned"
+    case wineGlass      = "Large Wine Glass"
+    case martini        = "Martini"
+    case flute          = "Flute"
+    case smallHighball  = "Small Chilled Highball"
 }

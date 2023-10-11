@@ -8,7 +8,16 @@
 import Foundation
 
 enum Texture: String, Codable {
-    case creamy     = "creamy"
-    case light      = "light"
+    
+    case creamy        = "creamy"
+    case light         = "light"
+    case thin          = "Thin"
+    case effervescent  = "Effervescent"
+    case velvety       = "Velvety"
+    case rich          = "Rich"
+    case grainy        = "Grainy"
+    
+    
+    
 }
 
