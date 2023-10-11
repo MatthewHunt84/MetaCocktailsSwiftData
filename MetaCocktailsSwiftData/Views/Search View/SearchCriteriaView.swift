@@ -11,7 +11,7 @@ struct SearchCriteriaView: View {
 
     @EnvironmentObject var viewModel: SearchCriteriaViewModel
     @Binding var isShowingIngredientsList: Bool
-    @State var selectedList: PreferenceType = .spirits
+    @State var selectedList: PreferenceType = .all
     @State var isShowingPreferences: Bool
     @State var selectedLikesOrDislikes: LikesOrDislikes = .likes
     
