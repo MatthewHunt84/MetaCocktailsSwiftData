@@ -12,13 +12,13 @@ struct RecipeIngredientsView: View {
     let recipeSpacing: CGFloat = 2
     var body: some View {
 
-        Text(cocktail.name)
+        Text(cocktail.cocktailName)
             .font(.title2)
 
         Text("GW: \(cocktail.glasswareType.rawValue)")
 
         ForEach(cocktail.spec) { ingredient in
-            Text("\(ingredient.value, specifier: "%.2f") oz. \(ingredient.name.rawValue)")
+            Text("\(ingredient.value, specifier: "%.2f") oz. \(ingredient.ingredientName.rawValue)")
                 .padding(recipeSpacing)
         }
 

@@ -9,7 +9,9 @@ import Foundation
 
 struct Tags: Codable {
     var flavors: [Flavor]
+    var profiles: [Profile]
     var textures: [Texture]
     var styles: [Style]
     var baseComponents: [Ingredient]
+
 }

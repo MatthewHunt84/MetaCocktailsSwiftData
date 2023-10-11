@@ -14,8 +14,8 @@ struct CocktailListCell: View {
     var body: some View {
 
         HStack {
-            cocktail.image // new type we created that handles all the formatting
-            Text(cocktail.name)
+            Image(cocktail.imageName) 
+            Text(cocktail.cocktailName)
                 .font(.title)
                 .fontDesign(.serif)
             

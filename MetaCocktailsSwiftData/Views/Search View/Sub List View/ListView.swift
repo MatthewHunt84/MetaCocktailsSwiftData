@@ -1,8 +1,8 @@
 //
 //  ListView.swift
-//  MetaCocktails
+//  MetaCocktailsSwiftData
 //
-//  Created by James on 8/28/23.
+//  Created by Matt Hunt on 10/10/23.
 //
 
 import SwiftUI
@@ -10,7 +10,7 @@ import SwiftUI
 struct ListView: View {
     @EnvironmentObject var viewModel: SearchCriteriaViewModel
     
-   // var preferenceType: PreferenceType
+    
     @Binding var selectedList: PreferenceType
     var navigationTitle: String
     @Binding var isShowingLikes: Bool
@@ -19,14 +19,14 @@ struct ListView: View {
         
         SearchBarView(searchText: $viewModel.searchText)
             .navigationTitle(navigationTitle)
-            .onChange(of: viewModel.searchText) { _ in // we could pass newValue here, but since its synced with the viewModel's searchText we can just use that in the match function
+            .onChange(of: viewModel.searchText) {// we could pass newValue here, but since its synced with the viewModel's searchText we can just use that in the match function
                 viewModel.matchAllTheThings()
             }
         List {
             if isShowingLikes {
                 ForEach($viewModel.cocktailComponents) { ingredient in
                     
-                    if ingredient.isUnwanted.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && ingredient.preferenceType.wrappedValue == selectedList {
+                    if ingredient.isUnwanted.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) {
                         
                         PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
                         
@@ -35,7 +35,7 @@ struct ListView: View {
                 
             } else {
                 ForEach($viewModel.cocktailComponents) { ingredient in
-                    if ingredient.isPreferred.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && ingredient.preferenceType.wrappedValue == selectedList  {
+                    if ingredient.isPreferred.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) {
                         PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
                             .tint(.red)
                     }

@@ -16,7 +16,7 @@ struct MetaCocktailsSwiftDataApp: App {
         WindowGroup {
             TabBarView()
                 .environmentObject(criteria)
-                .modelContainer(for: Cocktail.self)
         }
+        .modelContainer(for: Cocktail.self)
     }
 }

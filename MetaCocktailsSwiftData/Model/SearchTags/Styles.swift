@@ -7,13 +7,13 @@
 
 import Foundation
 
+
 enum Style: String, Codable {
     
     case stirred       = "Stirred"
     case shaken        = "Shaken"
     case built         = "Built"
-    
-    
+   
     case sour          = "sour"
     case manhattan     = "manhattan"
     case spritz        = "Spritz"

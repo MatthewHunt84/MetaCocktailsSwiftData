@@ -11,12 +11,9 @@ struct SearchCriteriaView: View {
 
     @EnvironmentObject var viewModel: SearchCriteriaViewModel
     @Binding var isShowingIngredientsList: Bool
-    @State var selectedList: PreferenceType = .spirits
+    @State var selectedList: PreferenceType = .all
     @State var isShowingPreferences: Bool
     @State var selectedLikesOrDislikes: LikesOrDislikes = .likes
-    
-    
-   
     
     
     var body: some View {
@@ -32,6 +29,7 @@ struct SearchCriteriaView: View {
                 .pickerStyle(.segmented)
                 .foregroundColor(Color.red)
                 .padding()
+                
                 Picker("Pick Out Likes Or Dislikes", selection: $selectedLikesOrDislikes) {
                     ForEach(LikesOrDislikes.allCases, id: \.self) {
                         
@@ -39,10 +37,10 @@ struct SearchCriteriaView: View {
                     }
                 }
                 .pickerStyle(.segmented)
-                .onChange(of: selectedLikesOrDislikes, perform: { newValue in
+                .onChange(of: selectedLikesOrDislikes) {
                     isShowingPreferences.toggle()
                     
-                })
+                }
                 .foregroundColor(Color.red)
                 .padding()
                 ChosenListView(isShowingLikes: $isShowingPreferences, selectedType: $selectedList)
@@ -60,6 +58,7 @@ struct SearchCriteriaView: View {
 
 enum PreferenceType: String, CaseIterable {
     
+    case all      = "All"
     case spirits  = "Spirits"
     case profiles = "Profiles"
     case flavors  = "Flavors"
@@ -78,7 +77,7 @@ struct ChosenListView: View {
     @Binding var selectedType: PreferenceType
     
     var body: some View {
-        
+                
         switch selectedType {
         case .spirits:
             ListView(selectedList: $selectedType, navigationTitle: "Spirit Preferences", isShowingLikes: $isShowingLikes)
@@ -88,6 +87,8 @@ struct ChosenListView: View {
             ListView(selectedList: $selectedType, navigationTitle: "Flavor Preferences", isShowingLikes: $isShowingLikes)
         case .style:
             ListView(selectedList: $selectedType, navigationTitle: "Style Preferences", isShowingLikes: $isShowingLikes)
+        default:
+            ListView(selectedList: $selectedType, navigationTitle: "All Selections", isShowingLikes: $isShowingLikes)
         }
     }
 }
