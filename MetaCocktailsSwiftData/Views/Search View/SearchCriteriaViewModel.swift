@@ -1,8 +1,8 @@
 //
-//  SearchCriteria.swift
-//  MetaCocktails
+//  SearchCriteriaViewModel2.swift
+//  MetaCocktailsSwiftData
 //
-//  Created by James on 8/12/23.
+//  Created by Matt Hunt on 10/10/23.
 //
 
 import SwiftUI
@@ -10,51 +10,9 @@ import SwiftUI
 final class SearchCriteriaViewModel: ObservableObject {
 
     @Published var searchText: String = ""
-    @Published var cocktailComponents  =  //CocktailComponent.createComponentArray()
-
-                                            [CocktailComponent(name: CocktailComponentEnum.agedRum.rawValue, isSpirit: true),
-                                           CocktailComponent(name: CocktailComponentEnum.shaken.rawValue, isStyle: true),
-                                           CocktailComponent(name: CocktailComponentEnum.stirred.rawValue, isStyle: true),
-                                           CocktailComponent(name: CocktailComponentEnum.almond.rawValue, isFlavor: true),
-                                           CocktailComponent(name: CocktailComponentEnum.aromatic.rawValue, isProfile: true),
-                                           CocktailComponent(name: CocktailComponentEnum.bitter.rawValue, isProfile: true),
-                                           CocktailComponent(name: CocktailComponentEnum.blackStrapRum.rawValue, isSpirit: true),
-                                           CocktailComponent(name: CocktailComponentEnum.bubbly.rawValue, isProfile: true),
-                                           CocktailComponent(name: CocktailComponentEnum.citrusy.rawValue, isProfile: true),
-                                           CocktailComponent(name: CocktailComponentEnum.cream.rawValue, isFlavor: true),
-                                           CocktailComponent(name: CocktailComponentEnum.cucumber.rawValue, isFlavor: true),
-                                           CocktailComponent(name: CocktailComponentEnum.eggWhites.rawValue, isFlavor: true),
-                                           CocktailComponent(name: CocktailComponentEnum.fizz.rawValue, isStyle: true),
-                                           CocktailComponent(name: CocktailComponentEnum.floral.rawValue, isProfile: true),
-                                           CocktailComponent(name: CocktailComponentEnum.fruity.rawValue, isProfile: true),
-                                           CocktailComponent(name: CocktailComponentEnum.gin.rawValue, isSpirit: true),
-                                           CocktailComponent(name: CocktailComponentEnum.ginger.rawValue, isFlavor: true),
-                                           CocktailComponent(name: CocktailComponentEnum.honey.rawValue, isFlavor: true),
-                                           CocktailComponent(name: CocktailComponentEnum.lastWord.rawValue, isStyle: true),
-                                           CocktailComponent(name: CocktailComponentEnum.lemon.rawValue, isFlavor: true),
-                                           CocktailComponent(name: CocktailComponentEnum.lime.rawValue, isFlavor: true),
-                                           CocktailComponent(name: CocktailComponentEnum.martini.rawValue, isStyle: true),
-                                           CocktailComponent(name: CocktailComponentEnum.negroni.rawValue, isStyle: true),
-                                           CocktailComponent(name: CocktailComponentEnum.oldFashioned.rawValue, isStyle: true),
-                                           CocktailComponent(name: CocktailComponentEnum.orange.rawValue, isFlavor: true),
-                                           CocktailComponent(name: CocktailComponentEnum.passionfruit.rawValue, isFlavor: true),
-                                           CocktailComponent(name: CocktailComponentEnum.rum.rawValue, isSpirit: true),
-                                           CocktailComponent(name: CocktailComponentEnum.silky.rawValue, isProfile: true),
-                                           CocktailComponent(name: CocktailComponentEnum.sour.rawValue, isStyle: true),
-                                           CocktailComponent(name: CocktailComponentEnum.spicy.rawValue, isProfile: true),
-                                           CocktailComponent(name: CocktailComponentEnum.sweet.rawValue, isProfile: true),
-                                           CocktailComponent(name: CocktailComponentEnum.tart.rawValue, isProfile: true),
-                                           CocktailComponent(name: CocktailComponentEnum.vodka.rawValue, isSpirit: true),
-                                           CocktailComponent(name: CocktailComponentEnum.whiteRum.rawValue, isSpirit: true)]
-
-    func printComponents() {
-        for cocktailComponent in cocktailComponents {
-            print(cocktailComponent.preferenceType.rawValue)
-        }
-    }
+    @Published var cocktailComponents = Tags.createComponentArray()
     
     func matchAllTheThings() {
-        printComponents()
         // if searchText is empty, show everything again
         if searchText == "" {
             for cocktail in cocktailComponents {
@@ -75,10 +33,6 @@ final class SearchCriteriaViewModel: ObservableObject {
         }
         self.objectWillChange.send()
     }
-    
-    
-
-    
  
     func selectedPreferredIngredients() -> [CocktailComponent] {
         self.cocktailComponents.filter({ $0.isPreferred})
@@ -99,7 +53,7 @@ final class SearchCriteriaViewModel: ObservableObject {
 
 class CocktailComponent: Identifiable, ObservableObject {
     
-    // This is missing texture, and is just an outdated design we need to refactor.
+    // I don't love this, but it will work for now..
     
     @Published var matchesCurrentSearch: Bool
     var id = UUID()
@@ -129,7 +83,7 @@ class CocktailComponent: Identifiable, ObservableObject {
             preferenceType = .spirits
         } else {
             preferenceType = .profiles
-        }     
+        }
     }
     
     init(for flavor: Flavor) {
@@ -159,72 +113,6 @@ class CocktailComponent: Identifiable, ObservableObject {
         self.preferenceType = .style
         self.matchesCurrentSearch = true
     }
-    
-    static func createComponentArray() ->  [CocktailComponent] {
-        var array = [CocktailComponent]()
-        for flavor in Flavor.allCases {
-            array.append(CocktailComponent(for: flavor))
-        }
-        for spirit in Spirit.allCases {
-            array.append(CocktailComponent(for: spirit))
-        }
-        for profile in Profile.allCases {
-            array.append(CocktailComponent(for: profile))
-        }
-        for style in Style.allCases {
-            array.append(CocktailComponent(for: style))
-        }
-        return array
-    }
 }
-
-enum CocktailComponentEnum: String {
-    
-    /// Ingredients
-    case lemon          = "Lemon"
-    case lime           = "Lime"
-    case cream          = "Heavy Cream"
-    case orange         = "Orange"
-    case eggWhites      = "Egg Whites"
-    case ginger         = "Ginger"
-    case honey          = "Honey"
-    case passionfruit   = "Passionfruit"
-    case cucumber       = "Cucumber"
-    case almond         = "Almond"
-    
-    /// SPIRITS
-    case gin            = "Gin"
-    case whiteRum       = "White Rum"
-    case agedRum        = "Aged Rum"
-    case blackStrapRum  = "Black Strap Rum"
-    case rum            = "Rum"
-    case vodka          = "Vodka"
-    case ryeWhiskey     = "Rye Whiskey"
-    
-    /// PROFILES
-    case tart           = "Tart"
-    case sweet          = "Sweet"
-    case bitter         = "Bitter"
-    case spicy          = "Spicy"
-    case citrusy        = "Citrusy"
-    case aromatic       = "Aromatic"
-    case floral         = "Floral"
-    case fruity         = "Fruity"
-    case creamy         = "Creamy"
-    case bubbly         = "Bubbly"
-    case silky          = "Silky (Egg whites)"
-    
-    /// STYLES
-    case shaken         = "Shaken"
-    case stirred        = "Stirred"
-    case martini        = "Martini Variation"
-    case oldFashioned   = "Old Fashioned Variation"
-    case negroni        = "Negroni Variation"
-    case sour           = "Like a sour"
-    case fizz           = "Like a fizz"
-    case lastWord       = "Last Word Variation"
-}
-
-
 
 
