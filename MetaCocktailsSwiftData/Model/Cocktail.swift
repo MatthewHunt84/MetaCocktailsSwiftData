@@ -10,9 +10,9 @@ import SwiftUI
 
 @Model
 class Cocktail {
-    
-    @Attribute(.unique)
-    var name: String
+
+    var id = UUID()
+    var cocktailName: String
     var imageName: String
     //var background: Color//gotta fix
     var glasswareType: Glassware
@@ -24,7 +24,7 @@ class Cocktail {
     var tags: Tags
     
     init(name: String, imageName: String, glasswareType: Glassware, garnish: Garnish, author: String? = nil, spec: [CocktailIngredient], buildOrder: Build? = nil, tags: Tags) {
-        self.name = name
+        self.cocktailName = name
         self.imageName = imageName
         //self.background = background
         self.glasswareType = glasswareType

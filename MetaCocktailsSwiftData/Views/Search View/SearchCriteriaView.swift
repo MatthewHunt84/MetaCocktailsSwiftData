@@ -37,10 +37,10 @@ struct SearchCriteriaView: View {
                     }
                 }
                 .pickerStyle(.segmented)
-                .onChange(of: selectedLikesOrDislikes, perform: { newValue in
+                .onChange(of: selectedLikesOrDislikes) {
                     isShowingPreferences.toggle()
                     
-                })
+                }
                 .foregroundColor(Color.red)
                 .padding()
                 ChosenListView(isShowingLikes: $isShowingPreferences, selectedType: $selectedList)
