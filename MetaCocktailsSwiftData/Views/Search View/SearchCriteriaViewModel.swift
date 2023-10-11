@@ -10,9 +10,9 @@ import SwiftUI
 final class SearchCriteriaViewModel: ObservableObject {
 
     @Published var searchText: String = ""
-   // @Published var brandPrimaryColors = [Color.brandPrimaryYellow, Color.brandPrimaryOrange, Color.brandPrimaryRed, Color.brandPrimaryPurple, Color.brandPrimaryBlue]
+    @Published var cocktailComponents  =  //CocktailComponent.createComponentArray()
 
-    @Published var cocktailComponents  =  [CocktailComponent(name: CocktailComponentEnum.agedRum.rawValue, isSpirit: true),
+                                            [CocktailComponent(name: CocktailComponentEnum.agedRum.rawValue, isSpirit: true),
                                            CocktailComponent(name: CocktailComponentEnum.shaken.rawValue, isStyle: true),
                                            CocktailComponent(name: CocktailComponentEnum.stirred.rawValue, isStyle: true),
                                            CocktailComponent(name: CocktailComponentEnum.almond.rawValue, isFlavor: true),
@@ -52,6 +52,7 @@ final class SearchCriteriaViewModel: ObservableObject {
             print(cocktailComponent.preferenceType.rawValue)
         }
     }
+    
     func matchAllTheThings() {
         printComponents()
         // if searchText is empty, show everything again
@@ -97,6 +98,20 @@ final class SearchCriteriaViewModel: ObservableObject {
 }
 
 class CocktailComponent: Identifiable, ObservableObject {
+    
+    // This is missing texture, and is just an outdated design we need to refactor.
+    
+    @Published var matchesCurrentSearch: Bool
+    var id = UUID()
+    var name: String
+    var isPreferred: Bool = false
+    var isUnwanted: Bool = false
+    var isSpirit: Bool = false
+    var isFlavor: Bool = false
+    var isProfile: Bool = false
+    var isStyle: Bool = false
+    var preferenceType: PreferenceType
+ 
 
     init(name: String, isFlavor: Bool = false, isProfile: Bool = false, isStyle: Bool = false, isSpirit: Bool = false, matchesCurrentSearch: Bool = true) {
         self.name = name
@@ -116,18 +131,51 @@ class CocktailComponent: Identifiable, ObservableObject {
             preferenceType = .profiles
         }     
     }
-
-    @Published var matchesCurrentSearch: Bool
-    var id = UUID()
-    var name: String
-    var isPreferred: Bool = false
-    var isUnwanted: Bool = false
-    var isSpirit: Bool
-    var isFlavor: Bool
-    var isProfile: Bool
-    var isStyle: Bool
-    var preferenceType: PreferenceType
- 
+    
+    init(for flavor: Flavor) {
+        self.name = flavor.rawValue
+        self.isFlavor = true
+        self.preferenceType = .flavors
+        self.matchesCurrentSearch = true
+    }
+    
+    init(for spirit: Spirit) {
+        self.name = spirit.rawValue
+        self.isSpirit = true
+        self.preferenceType = .spirits
+        self.matchesCurrentSearch = true
+    }
+    
+    init(for profile: Profile) {
+        self.name = profile.rawValue
+        self.isProfile = true
+        self.preferenceType = .profiles
+        self.matchesCurrentSearch = true
+    }
+    
+    init(for style: Style) {
+        self.name = style.rawValue
+        self.isStyle = true
+        self.preferenceType = .style
+        self.matchesCurrentSearch = true
+    }
+    
+    static func createComponentArray() ->  [CocktailComponent] {
+        var array = [CocktailComponent]()
+        for flavor in Flavor.allCases {
+            array.append(CocktailComponent(for: flavor))
+        }
+        for spirit in Spirit.allCases {
+            array.append(CocktailComponent(for: spirit))
+        }
+        for profile in Profile.allCases {
+            array.append(CocktailComponent(for: profile))
+        }
+        for style in Style.allCases {
+            array.append(CocktailComponent(for: style))
+        }
+        return array
+    }
 }
 
 enum CocktailComponentEnum: String {
@@ -177,61 +225,6 @@ enum CocktailComponentEnum: String {
     case lastWord       = "Last Word Variation"
 }
 
-//struct SearchTags {
-//    
-//    enum Flavor: String {
-//        
-//        case lemon          = "Lemon"
-//        case lime           = "Lime"
-//        case cream          = "Heavy Cream"
-//        case orange         = "Orange"
-//        case eggWhites      = "Egg Whites"
-//        case ginger         = "Ginger"
-//        case honey          = "Honey"
-//        case passionfruit   = "Passionfruit"
-//        case cucumber       = "Cucumber"
-//        case almond         = "Almond"
-//        
-//    }
-//
-//    enum Texture: String {
-//        
-//        case creamy = "Creamy"
-//    }
-//
-//    enum Style: String {
-//        
-//        case shaken         = "Shaken"
-//        case stirred        = "Stirred"
-//        case martini        = "Martini Variation"
-//        case oldFashioned   = "Old Fashioned Variation"
-//        case negroni        = "Negroni Variation"
-//        case sour           = "Like a sour"
-//        case fizz           = "Like a fizz"
-//        case lastWord       = "Last Word Variation"
-//        
-//    }
-//
-//    enum Profile: String {
-//        
-//        case tart           = "Tart"
-//        case sweet          = "Sweet"
-//        case bitter         = "Bitter"
-//        case spicy          = "Spicy"
-//        case citrusy        = "Citrusy"
-//        case aromatic       = "Aromatic"
-//        case floral         = "Floral"
-//        case fruity         = "Fruity"
-//        case creamy         = "Creamy"
-//        case bubbly         = "Bubbly"
-//        case silky          = "Silky (Egg whites)"
-//        
-//    }
-//
-//    
-//    
-//}
-//
 
 
 

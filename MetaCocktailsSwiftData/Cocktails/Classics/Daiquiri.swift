@@ -10,7 +10,7 @@ import SwiftUI
 
 var daiquiri = Cocktail(name: "Daiquiri",
                         imageName: "daiquiri-1",
-                        background: .brandPrimaryRed,
+                        //background: .brandPrimaryRed,
                         glasswareType: .coupe,
                         garnish: GarnishCatalog.limeWheel.asset,
                         spec: daiquiriSpec,
@@ -20,9 +20,10 @@ var daiquiriSpec: [CocktailIngredient] = [CocktailIngredient(name: .whiteRum, va
                                                      CocktailIngredient(name: .lime, value: 0.75),
                                                      CocktailIngredient(name: .simple, value: 0.75)]
 
-var tags = Tags(flavors: [Flavor.lime],
-                textures: [Texture.light],
-                styles: [Style.sour],
-                spirits: [Spirit.rum])
+var tags = Tags(flavors: [.lime],
+                profiles: [.citrusy],
+                textures: [.light],
+                styles: [.sour],
+                spirits: [.rum])
 
 

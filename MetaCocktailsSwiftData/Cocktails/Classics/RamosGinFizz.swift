@@ -9,13 +9,17 @@ import SwiftUI
 
 var ramosGinFizz = Cocktail(name: "Ramos Gin Fizz",
                             imageName: "ramosNoBackground",
-                            background: .brandPrimaryPurple,
+                            //background: .brandPrimaryPurple,
                             glasswareType: .collins,
                             garnish: GarnishCatalog.orangePeel.asset,
                             spec: ramosGinFizzSpec,
                             tags: ramosTags)
 
-var ramosTags = Tags(flavors: [.cream, .lemon, .lime], textures: [.creamy], styles: [.sour], spirits: [.gin])
+var ramosTags = Tags(flavors: [.cream, .lemon, .lime], 
+                     profiles: [.floral, .citrusy],
+                     textures: [.creamy],
+                     styles: [.sour],
+                     spirits: [.gin])
 
 let ramosGinFizzSpec: [CocktailIngredient] = [CocktailIngredient(name: .gin, value: 2.0),
                                                      CocktailIngredient(name: .lime, value: 0.5),

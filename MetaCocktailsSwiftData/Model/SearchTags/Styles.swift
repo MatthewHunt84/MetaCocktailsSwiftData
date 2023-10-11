@@ -7,8 +7,15 @@
 
 import Foundation
 
-enum Style: String, Codable {
-    case sour          = "sour"
-    case manhattan     = "manhattan"
+enum Style: String, Codable, CaseIterable {
+    case manhattan      = "manhattan"
+    case shaken         = "Shaken"
+    case stirred        = "Stirred"
+    case martini        = "Martini Variation"
+    case oldFashioned   = "Old Fashioned Variation"
+    case negroni        = "Negroni Variation"
+    case sour           = "Like a sour"
+    case fizz           = "Like a fizz"
+    case lastWord       = "Last Word Variation"
 
 }

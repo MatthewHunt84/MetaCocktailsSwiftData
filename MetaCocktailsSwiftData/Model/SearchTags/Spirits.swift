@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Spirit: String, Codable {
+enum Spirit: String, Codable, CaseIterable {
     case gin            = "Gin"
     case whiteRum       = "White Rum"
     case agedRum        = "Aged Rum"

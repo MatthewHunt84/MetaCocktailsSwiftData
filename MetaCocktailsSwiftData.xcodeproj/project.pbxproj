@@ -45,6 +45,7 @@
 		F4C6A8EC2AAFFE5700BB0AD0 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6A8EB2AAFFE5700BB0AD0 /* Tags.swift */; };
 		F4C6A8F32AB003C200BB0AD0 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6A8F22AB003C200BB0AD0 /* Localization.swift */; };
 		F4C6A8F52AB0042400BB0AD0 /* Cocktail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6A8F42AB0042400BB0AD0 /* Cocktail.swift */; };
+		F4C6A8F72AB0145800BB0AD0 /* Profiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6A8F62AB0145800BB0AD0 /* Profiles.swift */; };
 		F4FBF1232AAABBB900BBF7CF /* MetaCocktailsSwiftDataApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FBF1222AAABBB900BBF7CF /* MetaCocktailsSwiftDataApp.swift */; };
 		F4FBF12C2AAABBBB00BBF7CF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4FBF12B2AAABBBB00BBF7CF /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -88,6 +89,7 @@
 		F4C6A8EB2AAFFE5700BB0AD0 /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
 		F4C6A8F22AB003C200BB0AD0 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		F4C6A8F42AB0042400BB0AD0 /* Cocktail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cocktail.swift; sourceTree = "<group>"; };
+		F4C6A8F62AB0145800BB0AD0 /* Profiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profiles.swift; sourceTree = "<group>"; };
 		F4FBF11F2AAABBB900BBF7CF /* MetaCocktailsSwiftData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetaCocktailsSwiftData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FBF1222AAABBB900BBF7CF /* MetaCocktailsSwiftDataApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaCocktailsSwiftDataApp.swift; sourceTree = "<group>"; };
 		F4FBF12B2AAABBBB00BBF7CF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 			children = (
 				F4C6A8EB2AAFFE5700BB0AD0 /* Tags.swift */,
 				F4C6A8E32AAFF6AC00BB0AD0 /* Flavors.swift */,
+				F4C6A8F62AB0145800BB0AD0 /* Profiles.swift */,
 				F4C6A8E52AAFFC2F00BB0AD0 /* Textures.swift */,
 				F4C6A8E72AAFFC6B00BB0AD0 /* Styles.swift */,
 				F4C6A8E92AAFFCBF00BB0AD0 /* Spirits.swift */,
@@ -433,6 +436,7 @@
 				1AC386BB2AAABED10064F52A /* Glassware.swift in Sources */,
 				1AC386BE2AAABED10064F52A /* Garnish.swift in Sources */,
 				1AC386C52AAABED10064F52A /* RecipeIngredientsView.swift in Sources */,
+				F4C6A8F72AB0145800BB0AD0 /* Profiles.swift in Sources */,
 				1AC386CE2AAABED10064F52A /* SearchBarView.swift in Sources */,
 				1AC386B72AAABED10064F52A /* RamosGinFizz.swift in Sources */,
 				1AC386BC2AAABED10064F52A /* Ingredient.swift in Sources */,
