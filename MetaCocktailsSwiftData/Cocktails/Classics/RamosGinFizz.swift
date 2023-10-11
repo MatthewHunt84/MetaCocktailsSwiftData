@@ -18,7 +18,7 @@ var ramosGinFizz = Cocktail(name: "Ramos Gin Fizz",
                             buildOrder: ramosGinFizzBuild,
                             tags: ramosTags)
 
-var ramosTags = Tags(flavors: [.cream, .lemon, .lime], textures: [.creamy], styles: [.sour], baseComponents: [.gin])
+var ramosTags = Tags(flavors: [.cream, .lemon, .lime], textures: [.creamy], styles: [.sour, .shaken], baseComponents: [.gin])
 
 let ramosGinFizzSpec: [CocktailIngredient] = [CocktailIngredient(name: .gin, value: 2.0),
                                                      CocktailIngredient(name: .lime, value: 0.5),

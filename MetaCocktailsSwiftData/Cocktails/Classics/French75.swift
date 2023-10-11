@@ -22,4 +22,4 @@ var french75Spec  = [CocktailIngredient(name: .lemon, value: 0.75, unit: .fluidO
 
 var french75Build  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the Champagne, into a tin and shake with ice"), Instruction(step: 2, method: "strain over cracked ice and top with Champagne"), Instruction(step: 3, method: "Give a gentle stir")])
 
-var french75Tags   = Tags(flavors: [.lemon], textures: [.effervescent, .light], styles: [.collins], baseComponents: [.gin])
+var french75Tags   = Tags(flavors: [.lemon], textures: [.effervescent, .light], styles: [.collins, .shaken, .built], baseComponents: [.gin])

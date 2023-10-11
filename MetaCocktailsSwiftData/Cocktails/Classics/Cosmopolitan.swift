@@ -13,7 +13,7 @@ var cosmopolitan  = Cocktail(name: "Cosmopolitan",
                              background: Color.brandPrimaryOrange,
                              glasswareType: .martini,
                              garnish: [GarnishCatalog.orangePeel.asset],
-                             ice: .citrusVodka,
+                             ice: nil,
                              author: "Cheryl Cook (Not Actually Dale DeGroff, but we still love Dale!)",
                              spec: cosmoSpec,
                              buildOrder: nil,
@@ -23,4 +23,4 @@ var cosmoSpec  = [CocktailIngredient(name: .citrusVodka, value: 1.5, unit: .flui
 
 
 
-var cosmoTags  = Tags(flavors: [.orange, .cranberry, .lime, .lemon ], textures: [.light], styles: [.sour], baseComponents: [.citrusVodka])
+var cosmoTags  = Tags(flavors: [.orange, .cranberry, .lime, .lemon ], textures: [.light], styles: [.sour, .shaken], baseComponents: [.citrusVodka])

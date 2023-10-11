@@ -23,7 +23,7 @@ var daiquiriSpec: [CocktailIngredient] = [CocktailIngredient(name: .whiteRum, va
 
 var tags = Tags(flavors: [.lime],
                 textures: [.light],
-                styles: [.sour],
+                styles: [.sour, .shaken],
                 baseComponents: [.rum])
 
 

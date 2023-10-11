@@ -21,4 +21,4 @@ var elPresidente  = Cocktail(name: "El Presidente",
 
 var elPresidenteSpec  = [CocktailIngredient(name: .whiteRum, value: 1.5, unit: .fluidOunces), CocktailIngredient(name: .blancVermouth, value: 1.5, unit: .fluidOunces), CocktailIngredient(name: .orangeCuracao , value: 1, unit: .barspoon), CocktailIngredient(name: .granadine, value: 0.5, unit: .barspoon)]
 
-var elPresidenteTags  = Tags(flavors: [.orange, .pomegranate], textures: [.rich], styles: [.martini], baseComponents: [.whiteRum, .blancVermouth])
+var elPresidenteTags  = Tags(flavors: [.orange, .pomegranate], textures: [.rich], styles: [.martini, .stirred], baseComponents: [.whiteRum, .blancVermouth])

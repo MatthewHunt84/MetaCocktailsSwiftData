@@ -31,5 +31,5 @@ var aperolSpritzBuild = Build(instructions: [Instruction(step: 1, method: "Add a
 
 var aperolSpritzTags = Tags(flavors: [.grapefruit, .rhubarb, .orange],
                             textures: [.effervescent],
-                            styles: [.spritz],
+                            styles: [.spritz, .built],
                             baseComponents: [.aperol])

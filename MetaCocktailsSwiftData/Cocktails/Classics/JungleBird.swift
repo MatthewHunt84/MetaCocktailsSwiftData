@@ -22,5 +22,5 @@ var jungleBirdSpec  =  [CocktailIngredient(name: .agedJamaicanRum, value: 1.5, u
 
 var jungleBirdTags = Tags(flavors: [.pineapple, .lime, .fruity, .bitter],
                           textures: [.light],
-                          styles: [.tiki],
+                          styles: [.tiki, .shaken, .sour],
                           baseComponents: [.agedJamaicanRum])

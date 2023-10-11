@@ -27,5 +27,5 @@ var queensParkBuild = Build(instructions: [Instruction(step: 1, method: "Add min
 
 var queensParkTags = Tags(flavors: [.lime, .mint, .bakingSpices],
                           textures: [.light],
-                          styles: [.swizzle],
+                          styles: [.swizzle, .built],
                           baseComponents: [.demeraraRum])

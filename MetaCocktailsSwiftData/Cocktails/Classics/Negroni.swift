@@ -20,4 +20,4 @@ var negroni  =  Cocktail(name: "Negroni",
 
 var negroniSpec = [CocktailIngredient(name: Ingredient.gin, value: 1, unit: .fluidOunces), CocktailIngredient(name: Ingredient.sweetVermouth, value: 1, unit: .fluidOunces), CocktailIngredient(name: Ingredient.campari, value: 1, unit: .fluidOunces)]
 
-var negroniTags = Tags(flavors: [.orange, .bitter, .bakingSpices], textures: [.rich], styles: [.negroni], baseComponents: [.gin])
+var negroniTags = Tags(flavors: [.orange, .bitter, .bakingSpices], textures: [.rich], styles: [.negroni, .stirred], baseComponents: [.gin])

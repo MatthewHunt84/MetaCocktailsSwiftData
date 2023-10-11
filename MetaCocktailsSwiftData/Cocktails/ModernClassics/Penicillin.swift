@@ -30,5 +30,5 @@ var penicillinBuild = Build(instructions: [Instruction(step: 1, method: "Mix all
 
 var penicillinTags = Tags(flavors: [.lemon, .honey, .ginger, .smokey, .peat],
                           textures: [.light],
-                          styles: [.sour],
+                          styles: [.sour, .shaken],
                           baseComponents: [.blendedScotch])

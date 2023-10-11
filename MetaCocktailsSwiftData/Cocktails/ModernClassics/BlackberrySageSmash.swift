@@ -33,5 +33,5 @@ var blackberrySageSmashBuild =  Build(instructions: [Instruction(step: 1, method
 
 var blackberrySageSmashTags = Tags(flavors: [.lemon, .blackberry, .sage],
                                    textures: [.light],
-                                   styles: [.sour],
+                                   styles: [.sour, .shaken],
                                    baseComponents: [.ryeWhiskey])
