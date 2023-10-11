@@ -16,9 +16,6 @@ struct SearchCriteriaView: View {
     @State var selectedLikesOrDislikes: LikesOrDislikes = .likes
     
     
-   
-    
-    
     var body: some View {
         
         NavigationView {
@@ -32,6 +29,7 @@ struct SearchCriteriaView: View {
                 .pickerStyle(.segmented)
                 .foregroundColor(Color.red)
                 .padding()
+                
                 Picker("Pick Out Likes Or Dislikes", selection: $selectedLikesOrDislikes) {
                     ForEach(LikesOrDislikes.allCases, id: \.self) {
                         
@@ -60,6 +58,7 @@ struct SearchCriteriaView: View {
 
 enum PreferenceType: String, CaseIterable {
     
+    case all      = "All"
     case spirits  = "Spirits"
     case profiles = "Profiles"
     case flavors  = "Flavors"
@@ -78,7 +77,7 @@ struct ChosenListView: View {
     @Binding var selectedType: PreferenceType
     
     var body: some View {
-        
+                
         switch selectedType {
         case .spirits:
             ListView(selectedList: $selectedType, navigationTitle: "Spirit Preferences", isShowingLikes: $isShowingLikes)
@@ -88,6 +87,8 @@ struct ChosenListView: View {
             ListView(selectedList: $selectedType, navigationTitle: "Flavor Preferences", isShowingLikes: $isShowingLikes)
         case .style:
             ListView(selectedList: $selectedType, navigationTitle: "Style Preferences", isShowingLikes: $isShowingLikes)
+        default:
+            ListView(selectedList: $selectedType, navigationTitle: "All Selections", isShowingLikes: $isShowingLikes)
         }
     }
 }
