@@ -24,8 +24,8 @@ class Cocktail {
     var tags: Tags
     
 
-    init(name: String, imageName: Image, glasswareType: Glassware, garnish: [Garnish?], ice: Ingredient? = nil, author: String? = nil, spec: [CocktailIngredient], buildOrder: Build? = nil, tags: Tags) {
-        self.name = name
+    init(name: String, imageName: String, glasswareType: Glassware, garnish: [Garnish?], ice: Ingredient? = nil, author: String? = nil, spec: [CocktailIngredient], buildOrder: Build? = nil, tags: Tags) {
+        self.cocktailName = name
         self.imageName = imageName
         self.glasswareType = glasswareType
         self.garnish = garnish

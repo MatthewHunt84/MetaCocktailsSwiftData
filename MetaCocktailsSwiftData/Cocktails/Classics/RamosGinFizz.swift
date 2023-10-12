@@ -9,7 +9,6 @@ import SwiftUI
 
 var ramosGinFizz = Cocktail(name: "Ramos Gin Fizz",
                             imageName: "ramosNoBackground",
-                            //background: .brandPrimaryPurple,
                             glasswareType: .collins,
                             garnish: [GarnishCatalog.orangePeel.asset], 
                             ice: Ingredient.koldDraft,
@@ -23,16 +22,17 @@ var ramosTags = Tags(flavors: [.cream, .lemon, .lime],
                      profiles: [.floral, .citrusy],
                      textures: [.creamy],
                      styles: [.sour],
-                     spirits: [.gin])
+                     baseComponents: [.gin])
 
-let ramosGinFizzSpec: [CocktailIngredient] = [CocktailIngredient(name: .gin, value: 2.0),
-                                                     CocktailIngredient(name: .lime, value: 0.5),
-                                                     CocktailIngredient(name: .lemon, value: 0.5),
-                                                     CocktailIngredient(name: .simple, value: 1.0),
-                                                     CocktailIngredient(name: .cream, value: 1.0),
-                                                     CocktailIngredient(name: .eggWhites, value: 1.25),
-                                                     CocktailIngredient(name: .sodaWater, value: 2.0),
-                                                     CocktailIngredient(name: .orangeFlowerWater, value: 1, unit: .dash)]
+var ramosGinFizzSpec: [CocktailIngredient] = [CocktailIngredient(name: .lime, value: 0.5, unit: .fluidOunces),
+                                              CocktailIngredient(name: .lemon, value: 0.5, unit: .fluidOunces),
+                                              CocktailIngredient(name: .simple, value: 1.0, unit: .fluidOunces),
+                                              CocktailIngredient(name: .cream, value: 1.0, unit: .fluidOunces),
+                                              CocktailIngredient(name: .eggWhites, value: 1.25, unit: .fluidOunces),
+                                              CocktailIngredient(name: .gin, value: 2.0, unit: .fluidOunces),
+                                              CocktailIngredient(name: .sodaWater, value: 2.0, unit: .fluidOunces),
+                                              CocktailIngredient(name: .orangeFlowerWater, value: 1, unit: .dash)]
+                                              
 
 
 var ramosGinFizzBuild: Build = Build(instructions: [Instruction(step: 1, method: "Chill your 14oz. collins glass ahead of time"),

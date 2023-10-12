@@ -9,8 +9,7 @@ import SwiftUI
 
 
 var cosmopolitan  = Cocktail(name: "Cosmopolitan",
-                             imageName: Image(.emptyCocktail),
-                             background: Color.brandPrimaryOrange,
+                             imageName: "empty-Cocktail",
                              glasswareType: .martini,
                              garnish: [GarnishCatalog.orangePeel.asset],
                              ice: nil,
@@ -19,8 +18,14 @@ var cosmopolitan  = Cocktail(name: "Cosmopolitan",
                              buildOrder: nil,
                              tags: cosmoTags)
 
-var cosmoSpec  = [CocktailIngredient(name: .citrusVodka, value: 1.5, unit: .fluidOunces), CocktailIngredient(name: .cointreau, value: 0.75, unit: .fluidOunces), CocktailIngredient(name: .cranberryJuice, value: 1, unit: .fluidOunces), CocktailIngredient(name: .lime, value: 0.25, unit: .fluidOunces)]
+var cosmoSpec  = [CocktailIngredient(name: .lime, value: 0.25, unit: .fluidOunces), 
+                  CocktailIngredient(name: .cranberryJuice, value: 1, unit: .fluidOunces),
+                  CocktailIngredient(name: .cointreau, value: 0.75, unit: .fluidOunces),
+                  CocktailIngredient(name: .citrusVodka, value: 1.5, unit: .fluidOunces)]
+                  
 
-
-
-var cosmoTags  = Tags(flavors: [.orange, .cranberry, .lime, .lemon ], textures: [.light], styles: [.sour, .shaken], baseComponents: [.citrusVodka])
+var cosmoTags  = Tags(flavors: [.orange, .cranberry, .lime, .lemon ], 
+                      profiles: [.fruity, .citrusy],
+                      textures: [.light],
+                      styles: [.sour, .shaken],
+                      baseComponents: [.citrusVodka])

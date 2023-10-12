@@ -9,8 +9,7 @@ import SwiftUI
 
 
 var trinidadSour = Cocktail(name: "Trinidad Sour",
-                            imageName: Image(.emptyCocktail),
-                            background: Color.brandPrimaryBlue,
+                            imageName: "empty-Cocktail",
                             glasswareType: .coupe,
                             garnish: [GarnishCatalog.noGarnish.asset],
                             author: "Giuseppe Gonzalas",
@@ -18,13 +17,15 @@ var trinidadSour = Cocktail(name: "Trinidad Sour",
                             buildOrder: nil,
                             tags: trinidadSourTags)
 
-var trinidadSourSpec = [CocktailIngredient(name: .ryeWhiskey, value: 0.5, unit: .fluidOunces),
-                        CocktailIngredient(name: .lemon, value: 0.75, unit: .fluidOunces),
+var trinidadSourSpec = [CocktailIngredient(name: .lemon, value: 0.75, unit: .fluidOunces),
                         CocktailIngredient(name: .orgeat, value: 1, unit: .fluidOunces),
+                        CocktailIngredient(name: .ryeWhiskey, value: 0.5, unit: .fluidOunces),
                         CocktailIngredient(name: .angosturaBitters, value: 1.5, unit: .fluidOunces)]
+                        
 
 
-var trinidadSourTags = Tags(flavors: [.almond, .bakingSpices, .lemon, .whiskey],
+var trinidadSourTags = Tags(flavors: [.almond, .lemon, .whiskey],
+                            profiles: [.aromatic, .bitter, .bakingSpices],
                             textures: [.velvety],
                             styles: [.sour, .shaken],
                             baseComponents: [.ryeWhiskey])

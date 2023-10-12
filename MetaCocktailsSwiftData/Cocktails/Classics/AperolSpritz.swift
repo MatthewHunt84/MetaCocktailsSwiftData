@@ -9,8 +9,7 @@ import SwiftUI
 
 
 var aperolSpritz = Cocktail(name: "Aperol Spritz",
-                            imageName: Image(.emptyCocktail),
-                            background: Color.brandPrimaryOrange,
+                            imageName: "empty-Cocktail",
                             glasswareType: Glassware.wineGlass,
                             garnish: [GarnishCatalog.orangePeel.asset],
                             ice: Ingredient.koldDraft,
@@ -29,7 +28,8 @@ var aperolSpritzBuild = Build(instructions: [Instruction(step: 1, method: "Add a
                                              Instruction(step: 3, method: "Give a gentle stir and garnish with an extra long orange peel")])
 
 
-var aperolSpritzTags = Tags(flavors: [.grapefruit, .rhubarb, .orange],
+var aperolSpritzTags = Tags(flavors: [.grapefruit, .rhubarb, .orange], 
+                            profiles: [.bitter, .citrusy, .sweet, .fruity],
                             textures: [.effervescent],
                             styles: [.spritz, .built],
                             baseComponents: [.aperol])

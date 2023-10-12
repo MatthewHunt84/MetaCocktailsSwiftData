@@ -315,6 +315,14 @@
 			path = "Sub List View";
 			sourceTree = "<group>";
 		};
+		1AFDB79B2AD75C8A000A3812 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				1AC386AB2AAABED00064F52A /* FlavorProfileSearchView.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		F44A28F52AC26A590083C04D /* Layouts */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,6 +402,7 @@
 			children = (
 				F4FBF1212AAABBB900BBF7CF /* MetaCocktailsSwiftData */,
 				F4FBF1202AAABBB900BBF7CF /* Products */,
+				1AFDB79B2AD75C8A000A3812 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -498,7 +507,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AC386CB2AAABED10064F52A /* ListView.swift in Sources */,
 				1A969DA32AD60960001235FF /* JungleBird.swift in Sources */,
 				F4C6A8E82AAFFC6B00BB0AD0 /* Styles.swift in Sources */,
 				1A969D952AD3320E001235FF /* Bamboo.swift in Sources */,
@@ -532,7 +540,6 @@
 				F4FBF1232AAABBB900BBF7CF /* MetaCocktailsSwiftDataApp.swift in Sources */,
 				1AC386B82AAABED10064F52A /* Daiquiri.swift in Sources */,
 				1AC386C32AAABED10064F52A /* BuildOrderView.swift in Sources */,
-				1AC386CC2AAABED10064F52A /* SearchCriteriaViewModel.swift in Sources */,
 				1AFC166F2AD0B53F00817603 /* Negroni.swift in Sources */,
 				1AFC166D2ACFBA8E00817603 /* QueensParkSwizzle.swift in Sources */,
 				1AC386CF2AAABED10064F52A /* FlavorProfileSearchView.swift in Sources */,

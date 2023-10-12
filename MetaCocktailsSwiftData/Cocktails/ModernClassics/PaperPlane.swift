@@ -8,8 +8,7 @@
 import SwiftUI
 
 var paperPlane = Cocktail(name: "Paper Plane",
-                          imageName: Image(.emptyCocktail),
-                          background: Color.brandPrimaryRed,
+                          imageName: "empty-Cocktail",
                           glasswareType: Glassware.coupe,
                           garnish: [GarnishCatalog.noGarnish.asset],
                           author: "Sasha Petraske, Sam Ross",
@@ -22,7 +21,8 @@ var paperPlaneSpec = [CocktailIngredient(name: .bourbon , value: 0.75, unit: .fl
                       CocktailIngredient(name: .aperol, value: 0.75, unit: .fluidOunces),
                       CocktailIngredient(name: .lemon, value: 0.75, unit: .fluidOunces)]
 
-var paperPlaneTags =  Tags(flavors: [.lemon, .orange, .rhubarb, .grapefruit, .whiskey, .bakingSpices],
+var paperPlaneTags =  Tags(flavors: [.lemon, .orange, .rhubarb, .grapefruit, .whiskey, .bakingSpices], 
+                           profiles: [.aromatic, .fruity, .tart],
                            textures: [.light],
                            styles: [.sour, .shaken],
                            baseComponents: [.bourbon])

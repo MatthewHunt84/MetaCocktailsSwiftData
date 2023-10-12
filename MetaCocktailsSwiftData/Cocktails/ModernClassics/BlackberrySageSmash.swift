@@ -12,7 +12,7 @@ import UIKit
 var blackberrySageSmash = Cocktail(name: "Blackberry Sage Smash",
                                    imageName: "BBSSNoBackground",
                                    glasswareType: .doubleOld,
-                                   garnish: GarnishCatalog.skeweredBlackberryAndSage.asset,
+                                   garnish: [GarnishCatalog.skeweredBlackberryAndSage.asset],
                                    author: "Sean Kenyon",
                                    spec: blackberrySageSmashSpec,
                                    buildOrder: blackberrySageSmashBuild,
@@ -31,7 +31,8 @@ let blackberrySageSmashBuild =  Build(instructions: [Instruction(step: 1, method
                                                      Instruction(step: 3, method: "Double strain over crushed ice."),
                                                      Instruction(step: 4, method: "Garnish with blackberry and sage.")])
 
-var blackberrySageSmashTags = Tags(flavors: [.lemon, .blackberry, .sage],
+var blackberrySageSmashTags = Tags(flavors: [.lemon, .blackberry, .sage], 
+                                   profiles: [.citrusy, .fruity, .herbal],
                                    textures: [.light],
                                    styles: [.sour, .shaken],
                                    baseComponents: [.ryeWhiskey])

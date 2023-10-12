@@ -8,8 +8,7 @@
 import SwiftUI
 
 var negroni  =  Cocktail(name: "Negroni",
-                         imageName: Image(.emptyCocktail),
-                         background: Color.brandPrimaryRed,
+                         imageName: "empty-Cocktail",
                          glasswareType: Glassware.doubleOld,
                          garnish: [GarnishCatalog.orangePeel.asset], 
                          ice: Ingredient.bigRock,
@@ -18,6 +17,12 @@ var negroni  =  Cocktail(name: "Negroni",
                          buildOrder: nil,
                          tags: negroniTags)
 
-var negroniSpec = [CocktailIngredient(name: Ingredient.gin, value: 1, unit: .fluidOunces), CocktailIngredient(name: Ingredient.sweetVermouth, value: 1, unit: .fluidOunces), CocktailIngredient(name: Ingredient.campari, value: 1, unit: .fluidOunces)]
+var negroniSpec = [CocktailIngredient(name: Ingredient.gin, value: 1, unit: .fluidOunces), 
+                   CocktailIngredient(name: Ingredient.sweetVermouth, value: 1, unit: .fluidOunces),
+                   CocktailIngredient(name: Ingredient.campari, value: 1, unit: .fluidOunces)]
 
-var negroniTags = Tags(flavors: [.orange, .bitter, .bakingSpices], textures: [.rich], styles: [.negroni, .stirred], baseComponents: [.gin])
+var negroniTags = Tags(flavors: [.orange, .bakingSpices], 
+                       profiles: [.bitter, .sweet, .floral],
+                       textures: [.rich],
+                       styles: [.negroni, .stirred],
+                       baseComponents: [.gin])
