@@ -18,13 +18,13 @@ struct RecipeIngredientsView: View {
         Text("GW: \(cocktail.glasswareType.rawValue)")
         
         ForEach(cocktail.spec) { ingredient in
-            Text("\(ingredient.value, specifier: "%.2f") oz. \(ingredient.ingredient.name)")
+            Text("\(ingredient.value, specifier: "%.2f") oz. \(ingredient.ingredient.rawValue)")
                 .padding(recipeSpacing)
         }
         
         if let garnishes = cocktail.garnish {
-            ForEach(garnishes) { garnish in
-                Text("G: \(garnish.name)")
+            ForEach(garnishes, id: \.self) { garnish in
+                Text("G: \(garnish.rawValue)")
             }
         }
     }

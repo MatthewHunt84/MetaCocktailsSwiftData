@@ -4,11 +4,8 @@
 //
 //  Created by Matthew Hunt on 8/30/23.
 //
-
-import Foundation
+import SwiftUI
 import SwiftData
-
-
 
 @Model
 class CocktailIngredient {
@@ -33,26 +30,6 @@ class CocktailIngredient {
         }
     }
 }
-
-//@Model
-//class IngredientWithTags {
-//    var name: String
-//    var flavors: [Flavor]
-//    var bases: [Bases]?
-//    
-//    init(name: String, flavors: [Flavor], bases: [Bases]? = nil) {
-//        self.name = name
-//        self.flavors = flavors
-//        self.bases = bases
-//    }
-//}
-
-//let aperolIngredient = IngredientWithTags(name: "Aperol", flavors: [.bitter], bases: [.aperol])
-//
-//enum IngredientWithTagsEnum: IngredientWithTags {
-//    case aperol = aperol
-//}
-
 
 enum Ingredient: String, Codable {
     // NA

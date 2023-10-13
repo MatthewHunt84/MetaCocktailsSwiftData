@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-var ramosGinFizz = Cocktail(cocktailName: "Ramos Gin Fizz", imageAsset: nil, glasswareType: .collins, garnish: [GarnishCatalog.orangePeel.asset], ice: .koldDraft, author: "Henry C. Ramos", spec: ramosGinFizzSpec, buildOrder: ramosGinFizzBuild, tags: ramosTags)
+var ramosGinFizz = Cocktail(cocktailName: "Ramos Gin Fizz", imageAsset: nil, glasswareType: .collins, garnish: [.orangePeel], ice: .koldDraft, author: "Henry C. Ramos", spec: ramosGinFizzSpec, buildOrder: ramosGinFizzBuild, tags: ramosTags)
 
 var ramosTags = Tags(flavors: [.cream, .lemon, .lime], 
                      profiles: [.floral, .citrusy],

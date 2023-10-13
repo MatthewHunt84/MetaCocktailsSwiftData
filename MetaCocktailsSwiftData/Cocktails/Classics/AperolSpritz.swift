@@ -9,7 +9,7 @@ import SwiftUI
 
 var aperolSpritz = Cocktail(cocktailName: "Aperol Spritz",
                             glasswareType: .wineGlass,
-                            garnish: [GarnishCatalog.orangePeel.asset],
+                            garnish: [.orangePeel],
                             ice: .koldDraft,
                             author: nil,
                             spec: aperolSpritzSpec,
