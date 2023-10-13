@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 //
-//@Model
+@Model
 class CocktailImage {
     
     var backgroundColor: Color.Resolved

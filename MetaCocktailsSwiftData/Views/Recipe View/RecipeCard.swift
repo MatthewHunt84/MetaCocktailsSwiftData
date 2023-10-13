@@ -69,7 +69,7 @@ struct RecipeCard: View {
 
 struct RecipeCard_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeCard(cocktail: ramosGinFizz, isShowingRecipeCard: .constant(true))
+        RecipeCard(cocktail: aperolSpritz, isShowingRecipeCard: .constant(true))
     }
 }
 

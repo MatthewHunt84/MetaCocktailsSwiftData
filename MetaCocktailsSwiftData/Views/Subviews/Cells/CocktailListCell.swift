@@ -14,7 +14,6 @@ struct CocktailListCell: View {
     var body: some View {
 
         HStack {
-            Image(cocktail.imageName) 
             Text(cocktail.cocktailName)
                 .font(.title)
                 .fontDesign(.serif)
@@ -25,6 +24,6 @@ struct CocktailListCell: View {
 
 struct CocktailListCell_Previews: PreviewProvider {
     static var previews: some View {
-        CocktailListCell(cocktail: daiquiri, backgroundColor: .brandPrimaryRed)
+        CocktailListCell(cocktail: aperolSpritz, backgroundColor: .brandPrimaryRed)
     }
 }

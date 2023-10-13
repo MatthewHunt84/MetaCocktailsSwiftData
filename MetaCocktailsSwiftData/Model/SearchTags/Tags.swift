@@ -12,15 +12,15 @@ struct Tags: Codable {
     var profiles: [Profile]
     var textures: [Texture]
     var styles: [Style]
-    var spirits: [Spirit]
+    var bases: [Bases]
     
     static func createComponentArray() ->  [CocktailComponent] {
         var array = [CocktailComponent]()
         for flavor in Flavor.allCases {
             array.append(CocktailComponent(for: flavor))
         }
-        for spirit in Spirit.allCases {
-            array.append(CocktailComponent(for: spirit))
+        for base in Bases.allCases {
+            array.append(CocktailComponent(for: base))
         }
         for profile in Profile.allCases {
             array.append(CocktailComponent(for: profile))

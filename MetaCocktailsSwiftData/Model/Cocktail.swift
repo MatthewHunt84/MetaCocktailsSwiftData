@@ -13,22 +13,22 @@ class Cocktail {
 
     var id = UUID()
     var cocktailName: String
-    var imageName: String
-    //var background: Color//gotta fix
+    var imageAsset: CocktailImage?
     var glasswareType: Glassware
-    var garnish: Garnish
+    var garnish: [Garnish]?
+    var ice: Ice?
     var author: String?
-    
     var spec: [CocktailIngredient]
     var buildOrder: Build?
     var tags: Tags
     
-    init(name: String, imageName: String, glasswareType: Glassware, garnish: Garnish, author: String? = nil, spec: [CocktailIngredient], buildOrder: Build? = nil, tags: Tags) {
-        self.cocktailName = name
-        self.imageName = imageName
-        //self.background = background
+    init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [Garnish]? = nil, ice: Ice? = nil, author: String? = nil, spec: [CocktailIngredient], buildOrder: Build? = nil, tags: Tags) {
+        self.id = id
+        self.cocktailName = cocktailName
+        self.imageAsset = imageAsset
         self.glasswareType = glasswareType
         self.garnish = garnish
+        self.ice = ice
         self.author = author
         self.spec = spec
         self.buildOrder = buildOrder
