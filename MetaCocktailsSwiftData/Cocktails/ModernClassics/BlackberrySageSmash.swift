@@ -11,9 +11,9 @@ var blackberrySageSmash = Cocktail(cocktailName: "Blackberry Sage Smash", imageA
 
 let blackberrySageSmashTags = Tags(flavors: [.lemon], profiles: [.fruity], textures: [.light], styles: [.sour], bases: [.ryeWhiskey])
 
-let blackberrySageSmashSpec: [CocktailIngredient] = [CocktailIngredient(ingredient: .ryeWhiskey, value: 2, unit: .fluidOunces),
-                                                     CocktailIngredient(ingredient: .lemon, value: 0.75, unit: .fluidOunces),
-                                                     CocktailIngredient(ingredient: .simple, value: 0.75, unit: .fluidOunces),
+let blackberrySageSmashSpec: [CocktailIngredient] = [CocktailIngredient(ingredient: .ryeWhiskey, value: 2),
+                                                     CocktailIngredient(ingredient: .lemon, value: 0.75),
+                                                     CocktailIngredient(ingredient: .simple, value: 0.75),
                                                      CocktailIngredient(ingredient: .blackBerry, value: 4, unit: .berries),
                                                      CocktailIngredient(ingredient: .sage, value: 4, unit: .leaves)]
 

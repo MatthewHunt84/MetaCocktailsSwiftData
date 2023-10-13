@@ -15,13 +15,13 @@ var ramosTags = Tags(flavors: [.cream, .lemon, .lime],
                      styles: [.sour],
                      bases: [.gin])
 
-let ramosGinFizzSpec: [CocktailIngredient]         = [CocktailIngredient(ingredient: .gin, value: 2.0, unit: .fluidOunces),
-                                                     CocktailIngredient(ingredient: .lime, value: 0.5, unit: .fluidOunces),
-                                                     CocktailIngredient(ingredient: .lemon, value: 0.5, unit: .fluidOunces),
-                                                     CocktailIngredient(ingredient: .simple, value: 1.0, unit: .fluidOunces),
-                                                     CocktailIngredient(ingredient: .cream, value: 1.0, unit: .fluidOunces),
-                                                     CocktailIngredient(ingredient: .eggWhites, value: 1.25, unit: .fluidOunces),
-                                                     CocktailIngredient(ingredient: .sodaWater, value: 2.0, unit: .fluidOunces),
+let ramosGinFizzSpec: [CocktailIngredient]         = [CocktailIngredient(ingredient: .gin, value: 2.0),
+                                                     CocktailIngredient(ingredient: .lime, value: 0.5),
+                                                     CocktailIngredient(ingredient: .lemon, value: 0.5),
+                                                     CocktailIngredient(ingredient: .simple, value: 1.0),
+                                                     CocktailIngredient(ingredient: .cream, value: 1.0),
+                                                     CocktailIngredient(ingredient: .eggWhites, value: 1.25),
+                                                     CocktailIngredient(ingredient: .sodaWater, value: 2.0),
                                                      CocktailIngredient(ingredient: .orangeFlowerWater, value: 1, unit: .dash)]
 
 

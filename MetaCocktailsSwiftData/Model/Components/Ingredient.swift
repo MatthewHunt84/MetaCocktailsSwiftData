@@ -4,8 +4,11 @@
 //
 //  Created by Matthew Hunt on 8/30/23.
 //
-import SwiftUI
+
+import Foundation
 import SwiftData
+
+
 
 @Model
 class CocktailIngredient {
@@ -15,7 +18,7 @@ class CocktailIngredient {
     let value: Double
     let unit: MeasurementUnit
     
-    init(ingredient: Ingredient, value: Double, unit: MeasurementUnit) {
+    init(ingredient: Ingredient, value: Double, unit: MeasurementUnit = .fluidOunces) {
         self.ingredient = ingredient
         self.value = value
         self.unit = unit
@@ -30,6 +33,7 @@ class CocktailIngredient {
         }
     }
 }
+
 
 enum Ingredient: String, Codable {
     // NA
