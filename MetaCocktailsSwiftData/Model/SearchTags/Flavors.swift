@@ -39,5 +39,6 @@ enum Flavor: String, Codable, CaseIterable {
     case floral         = "Floral"
     case fruity         = "Fruity"
     case dry            = "Dry"
+    case sour           = "Sour"
 }
 

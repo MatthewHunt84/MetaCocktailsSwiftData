@@ -8,6 +8,8 @@
 import Foundation
 import SwiftData
 
+
+
 @Model
 class CocktailIngredient {
 
@@ -32,8 +34,27 @@ class CocktailIngredient {
     }
 }
 
+//@Model
+//class IngredientWithTags {
+//    var name: String
+//    var flavors: [Flavor]
+//    var bases: [Bases]?
+//    
+//    init(name: String, flavors: [Flavor], bases: [Bases]? = nil) {
+//        self.name = name
+//        self.flavors = flavors
+//        self.bases = bases
+//    }
+//}
+
+//let aperolIngredient = IngredientWithTags(name: "Aperol", flavors: [.bitter], bases: [.aperol])
+//
+//enum IngredientWithTagsEnum: IngredientWithTags {
+//    case aperol = aperol
+//}
+
+
 enum Ingredient: String, Codable {
-    
     // NA
 
     case lemon             = "Lemon Juice"
@@ -106,10 +127,113 @@ enum Ingredient: String, Codable {
     case orangeBitters     = "Orange Bitters"
     case angosturaBitters  = "Angostura Bitters"
 
-
-    
-    mutating func someFunctionThatAppendsSearchIngredientStuffIntoTags(for: inout Tags) {
-       // This function will take a Tags object, and automatically add to it based on the ingredients
+    var tags: Tags {
+        switch self {
+        case .lemon:
+            Tags(flavors: [.sour, .lemon, .citrusy, .tart])
+        default:
+            Tags()
+//        case .lime:
+//            <#code#>
+//        case .cream:
+//            <#code#>
+//        case .simple:
+//            <#code#>
+//        case .granulatedSugar:
+//            <#code#>
+//        case .orangeFlowerWater:
+//            <#code#>
+//        case .sodaWater:
+//            <#code#>
+//        case .eggWhites:
+//            <#code#>
+//        case .gingerSyrup:
+//            <#code#>
+//        case .honeySyrup:
+//            <#code#>
+//        case .richDem:
+//            <#code#>
+//        case .passionfruitSyrup:
+//            <#code#>
+//        case .cucumberSyrup:
+//            <#code#>
+//        case .orgeat:
+//            <#code#>
+//        case .cranberryJuice:
+//            <#code#>
+//        case .granadine:
+//            <#code#>
+//        case .pineappleJuice:
+//            <#code#>
+//        case .blackBerry:
+//            <#code#>
+//        case .sage:
+//            <#code#>
+//        case .mint:
+//            <#code#>
+//        case .gin:
+//            <#code#>
+//        case .whiteRum:
+//            <#code#>
+//        case .agedRum:
+//            <#code#>
+//        case .blackStrapRum:
+//            <#code#>
+//        case .agedJamaicanRum:
+//            <#code#>
+//        case .rum:
+//            <#code#>
+//        case .vodka:
+//            <#code#>
+//        case .citrusVodka:
+//            <#code#>
+//        case .ryeWhiskey:
+//            <#code#>
+//        case .peatedScotch:
+//            <#code#>
+//        case .blendedScotch:
+//            <#code#>
+//        case .bourbon:
+//            <#code#>
+//        case .demeraraRum:
+//            <#code#>
+//        case .cachaca:
+//            <#code#>
+//        case .VSOPCognac:
+//            <#code#>
+//        case .orangeCuracao:
+//            <#code#>
+//        case .cointreau:
+//            <#code#>
+//        case .aperol:
+//            <#code#>
+//        case .amaroNonino:
+//            <#code#>
+//        case .campari:
+//            <#code#>
+//        case .prosecco:
+//            <#code#>
+//        case .champagne:
+//            <#code#>
+//        case .sweetVermouth:
+//            <#code#>
+//        case .blancVermouth:
+//            <#code#>
+//        case .dryVermouth:
+//            <#code#>
+//        case .puntEMes:
+//            <#code#>
+//        case .cocchiAmericano:
+//            <#code#>
+//        case .amontillado:
+//            <#code#>
+//        case .sparklingWater:
+//            <#code#>
+//        case .orangeBitters:
+//            <#code#>
+//        case .angosturaBitters:
+//            <#code#>
+        }
     }
 }
 

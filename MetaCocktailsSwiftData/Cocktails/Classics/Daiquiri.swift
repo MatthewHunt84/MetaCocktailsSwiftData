@@ -5,25 +5,16 @@
 //  Created by Matt Hunt on 9/1/23.
 //
 
-//import Foundation
-//import SwiftUI
-//
-//var daiquiri = Cocktail(name: "Daiquiri",
-//                        imageName: "daiquiri-1",
-//                        //background: .brandPrimaryRed,
-//                        glasswareType: .coupe,
-//                        garnish: GarnishCatalog.limeWheel.asset,
-//                        spec: daiquiriSpec,
-//                        tags: tags)
-//
-//var daiquiriSpec: [CocktailIngredient] = [CocktailIngredient(name: .whiteRum, value: 2.0),
-//                                                     CocktailIngredient(name: .lime, value: 0.75),
-//                                                     CocktailIngredient(name: .simple, value: 0.75)]
-//
-//var tags = Tags(flavors: [.lime],
-//                profiles: [.citrusy],
-//                textures: [.light],
-//                styles: [.sour],
-//                spirits: [.rum])
-//
+import Foundation
 
+let daiquiri = Cocktail(cocktailName: "Daiquiri", glasswareType: .coupe, garnish: [GarnishCatalog.limeWheel.asset], spec: daiquiriSpec, tags: daiquiriTags)
+
+var daiquiriSpec: [CocktailIngredient] = [CocktailIngredient(ingredient: .whiteRum, value: 2.0, unit: .fluidOunces),
+                                          CocktailIngredient(ingredient: .lime, value: 0.75, unit: .fluidOunces),
+                                          CocktailIngredient(ingredient: .simple, value: 0.75, unit: .fluidOunces)]
+
+var daiquiriTags = Tags(flavors: [.lime],
+                profiles: [.citrusy],
+                textures: [.light],
+                styles: [.sour],
+                bases: [.rum])

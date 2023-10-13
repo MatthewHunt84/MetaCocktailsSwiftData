@@ -8,11 +8,11 @@
 import Foundation
 
 struct Tags: Codable {
-    var flavors: [Flavor]
-    var profiles: [Profile]
-    var textures: [Texture]
-    var styles: [Style]
-    var bases: [Bases]
+    var flavors: [Flavor]?
+    var profiles: [Profile]?
+    var textures: [Texture]?
+    var styles: [Style]?
+    var bases: [Bases]?
     
     static func createComponentArray() ->  [CocktailComponent] {
         var array = [CocktailComponent]()
