@@ -112,10 +112,9 @@ enum Ingredient: String, Codable {
         switch self {
         case .lemon:
             Tags(flavors: [.sour, .lemon, .citrusy, .tart])
-        default:
-            Tags()
-//        case .lime:
-//            <#code#>
+        
+        case .lime:
+            Tags(flavors: [.sour, .lime, .citrusy, .tart])
 //        case .cream:
 //            <#code#>
 //        case .simple:
@@ -214,6 +213,8 @@ enum Ingredient: String, Codable {
 //            <#code#>
 //        case .angosturaBitters:
 //            <#code#>
+        default:
+            Tags()
         }
     }
 }
