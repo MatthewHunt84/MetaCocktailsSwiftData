@@ -15,14 +15,14 @@ var ramosTags = Tags(flavors: [.cream, .lemon, .lime],
                      styles: [.sour],
                      bases: [.gin])
 
-let ramosGinFizzSpec: [CocktailIngredient]         = [CocktailIngredient(ingredient: .gin, value: 2.0),
-                                                     CocktailIngredient(ingredient: .lime, value: 0.5),
-                                                     CocktailIngredient(ingredient: .lemon, value: 0.5),
-                                                     CocktailIngredient(ingredient: .simple, value: 1.0),
-                                                     CocktailIngredient(ingredient: .cream, value: 1.0),
-                                                     CocktailIngredient(ingredient: .eggWhites, value: 1.25),
-                                                     CocktailIngredient(ingredient: .sodaWater, value: 2.0),
-                                                     CocktailIngredient(ingredient: .orangeFlowerWater, value: 1, unit: .dash)]
+let ramosGinFizzSpec: [CocktailIngredient]         = [CocktailIngredient(.gin, value: 2.0),
+                                                     CocktailIngredient(.lime, value: 0.5),
+                                                     CocktailIngredient(.lemon, value: 0.5),
+                                                     CocktailIngredient(.simple, value: 1.0),
+                                                     CocktailIngredient(.cream, value: 1.0),
+                                                     CocktailIngredient(.eggWhites, value: 1.25),
+                                                     CocktailIngredient(.sodaWater, value: 2.0),
+                                                     CocktailIngredient(.orangeFlowerWater, value: 1, unit: .dash)]
 
 
 var ramosGinFizzBuild: Build = Build(instructions: [Instruction(step: 1, method: "Chill your 14oz. collins glass ahead of time"),

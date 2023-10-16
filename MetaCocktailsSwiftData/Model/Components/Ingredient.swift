@@ -18,7 +18,7 @@ class CocktailIngredient {
     let value: Double
     let unit: MeasurementUnit
     
-    init(ingredient: Ingredient, value: Double, unit: MeasurementUnit = .fluidOunces) {
+    init(_ ingredient: Ingredient, value: Double, unit: MeasurementUnit = .fluidOunces) {
         self.ingredient = ingredient
         self.value = value
         self.unit = unit

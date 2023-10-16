@@ -18,9 +18,9 @@ var aperolSpritz = Cocktail(cocktailName: "Aperol Spritz",
                             tags: aperolSpritzTags)
 
 
-var aperolSpritzSpec = [CocktailIngredient(ingredient: .aperol, value: 2),
-                        CocktailIngredient(ingredient: .prosecco, value: 3),
-                        CocktailIngredient(ingredient: .sparklingWater, value: 1)]
+var aperolSpritzSpec = [CocktailIngredient(.aperol, value: 2),
+                        CocktailIngredient(.prosecco, value: 3),
+                        CocktailIngredient(.sparklingWater, value: 1)]
 
 
 var aperolSpritzBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients to the wine glass"),
