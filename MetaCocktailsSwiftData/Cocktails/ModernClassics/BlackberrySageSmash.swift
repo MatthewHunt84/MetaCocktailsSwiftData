@@ -7,7 +7,7 @@
 
 import Foundation
 
-var blackberrySageSmash = Cocktail(cocktailName: "Blackberry Sage Smash", imageAsset: nil, glasswareType: .doubleOld, garnish: [.skeweredBlackberryAndSage], ice: .koldDraft, author: "Sean Kenyon", spec: blackberrySageSmashSpec, buildOrder: blackberrySageSmashBuild, tags: blackberrySageSmashTags)
+var blackberrySageSmash = Cocktail(cocktailName: "Blackberry Sage Smash", imageAsset: nil, glasswareType: .doubleOld, garnish: [.skeweredBlackberryAndSage], ice: .koldDraft, author: "Sean Kenyon", method: .shake, spec: blackberrySageSmashSpec, buildOrder: blackberrySageSmashBuild, tags: blackberrySageSmashTags)
 
 let blackberrySageSmashTags = Tags(flavors: [.lemon], profiles: [.fruity], textures: [.light], styles: [.sour], bases: [.ryeWhiskey])
 

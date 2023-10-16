@@ -18,11 +18,12 @@ class Cocktail {
     var garnish: [Garnish]?
     var ice: Ice?
     var author: String?
+    var method: Method
     var spec: [CocktailIngredient]
     var buildOrder: Build?
     var tags: Tags
     
-    init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [Garnish]? = nil, ice: Ice? = nil, author: String? = nil, spec: [CocktailIngredient], buildOrder: Build? = nil, tags: Tags) {
+    init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [Garnish]? = nil, ice: Ice? = nil, author: String? = nil, method: Method, spec: [CocktailIngredient], buildOrder: Build? = nil, tags: Tags) {
         self.id = id
         self.cocktailName = cocktailName
         self.imageAsset = imageAsset
@@ -30,6 +31,7 @@ class Cocktail {
         self.garnish = garnish
         self.ice = ice
         self.author = author
+        self.method = method
         self.spec = spec
         self.buildOrder = buildOrder
         self.tags = tags

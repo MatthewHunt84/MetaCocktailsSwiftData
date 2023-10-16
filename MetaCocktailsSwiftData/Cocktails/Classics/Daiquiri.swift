@@ -7,7 +7,7 @@
 
 import Foundation
 
-let daiquiri = Cocktail(cocktailName: "Daiquiri", glasswareType: .coupe, garnish: [.limeWheel], spec: daiquiriSpec, tags: daiquiriTags)
+let daiquiri = Cocktail(cocktailName: "Daiquiri", glasswareType: .coupe, garnish: [.limeWheel], method: .shake, spec: daiquiriSpec, tags: daiquiriTags)
 
 var daiquiriSpec: [CocktailIngredient] = [CocktailIngredient(ingredient: .whiteRum, value: 2.0),
                                           CocktailIngredient(ingredient: .lime, value: 0.75),

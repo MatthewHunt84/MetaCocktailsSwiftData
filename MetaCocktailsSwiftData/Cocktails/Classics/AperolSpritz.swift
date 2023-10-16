@@ -12,6 +12,7 @@ var aperolSpritz = Cocktail(cocktailName: "Aperol Spritz",
                             garnish: [.orangePeel],
                             ice: .koldDraft,
                             author: nil,
+                            method: .buildThenStir,
                             spec: aperolSpritzSpec,
                             buildOrder:
                             aperolSpritzBuild,
