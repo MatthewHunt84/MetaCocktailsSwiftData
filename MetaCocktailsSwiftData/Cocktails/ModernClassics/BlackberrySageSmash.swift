@@ -11,11 +11,11 @@ var blackberrySageSmash = Cocktail(cocktailName: "Blackberry Sage Smash", imageA
 
 let blackberrySageSmashTags = Tags(flavors: [.lemon], profiles: [.fruity], textures: [.light], styles: [.sour], bases: [.ryeWhiskey])
 
-let blackberrySageSmashSpec: [CocktailIngredient] = [CocktailIngredient(ingredient: .ryeWhiskey, value: 2),
-                                                     CocktailIngredient(ingredient: .lemon, value: 0.75),
-                                                     CocktailIngredient(ingredient: .simple, value: 0.75),
-                                                     CocktailIngredient(ingredient: .blackBerry, value: 4, unit: .berries),
-                                                     CocktailIngredient(ingredient: .sage, value: 4, unit: .leaves)]
+let blackberrySageSmashSpec: [CocktailIngredient] = [CocktailIngredient(.ryeWhiskey, value: 2),
+                                                     CocktailIngredient(.lemon, value: 0.75),
+                                                     CocktailIngredient(.simple, value: 0.75),
+                                                     CocktailIngredient(.blackBerry, value: 4, unit: .berries),
+                                                     CocktailIngredient(.sage, value: 4, unit: .leaves)]
 
 let blackberrySageSmashBuild =  Build(instructions: [Instruction(step: 1, method: "In a tin, muddle 4 blackberries and a small pinch of sage."),
                                                      Instruction(step: 2, method: "Add your ingredients and shake with ice."),
