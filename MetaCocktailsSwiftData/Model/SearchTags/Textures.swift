@@ -17,5 +17,6 @@ enum Texture: String, Codable, CaseIterable {
     case velvety         = "Velvety"
     case rich            = "Rich"
     case grainy          = "Grainy"
+    
 }
 

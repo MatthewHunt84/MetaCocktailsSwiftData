@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-var Bamboo = Cocktail(cocktailName: "Bamboo",
+var bamboo = Cocktail(cocktailName: "Bamboo",
                       imageAsset: nil,
                       glasswareType: Glassware.coupe,
                       garnish: [.orangeOrLemon],
@@ -18,11 +18,11 @@ var Bamboo = Cocktail(cocktailName: "Bamboo",
                       tags: bambooTags)
 
 
-var bambooSpec = [CocktailIngredient(ingredient: .amontillado, value: 1.5, unit: .fluidOunces), 
-                  CocktailIngredient(ingredient: .dryVermouth, value: 1.5, unit: .fluidOunces),
-                  CocktailIngredient(ingredient: .orangeBitters, value: 2, unit: .dash)]
+var bambooSpec = [CocktailIngredient(.amontillado, value: 1.5, unit: .fluidOunces),
+                  CocktailIngredient(.dryVermouth, value: 1.5, unit: .fluidOunces),
+                  CocktailIngredient(.orangeBitters, value: 2, unit: .dash)]
 
-var bambooTags = Tags(flavors: [.dry],
+var bambooTags = Tags(flavors: [.lemon],
                       profiles: [.aromatic, .floral, .fruity],
                       textures: [.thin, .light],
                       styles: [.martini, .stirred],
