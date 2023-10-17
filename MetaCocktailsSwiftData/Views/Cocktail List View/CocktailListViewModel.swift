@@ -11,7 +11,7 @@ final class CocktailListViewModel: ObservableObject {
 
     static let shared = CocktailListViewModel()
     
-    @Published var cocktails: [Cocktail] = [aperolSpritz]
+    @Published var cocktails: [Cocktail] = [aperolSpritz, daiquiri, ramosGinFizz, Bamboo, blackberrySageSmash]
     @Published var isShowingRecipeCard = false
     @Published var selectedCocktail: Cocktail?
     @Published var isShowingBuildOrderButton = false
