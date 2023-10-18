@@ -103,6 +103,7 @@ enum Ingredient: String, Codable {
 
     //Water
     case sparklingWater    = "Chilled Sparkling Water"
+    
 
     //Bitters
     case orangeBitters     = "Orange Bitters"
@@ -111,24 +112,23 @@ enum Ingredient: String, Codable {
     var tags: Tags {
         switch self {
         case .lemon:
-            Tags(flavors: [.sour, .lemon, .citrusy, .tart])
-        
+            Tags(flavors: [.lemon], profiles: [.tart, .sour, .citrusy])
         case .lime:
-            Tags(flavors: [.sour, .lime, .citrusy, .tart])
-//        case .cream:
-//            <#code#>
-//        case .simple:
-//            <#code#>
-//        case .granulatedSugar:
-//            <#code#>
-//        case .orangeFlowerWater:
-//            <#code#>
-//        case .sodaWater:
-//            <#code#>
-//        case .eggWhites:
-//            <#code#>
-//        case .gingerSyrup:
-//            <#code#>
+            Tags(flavors: [.lime,], profiles: [.tart, .sour, .citrusy])
+        case .cream:
+            Tags(flavors: [.cream], profiles: [.creamy], textures: [.rich])
+        case .simple:
+            Tags()
+        case .granulatedSugar:
+            Tags(textures: [.grainy])
+        case .orangeFlowerWater:
+            Tags(flavors: [.orange, .whiteFlower], profiles: [.floral])
+        case .sodaWater:
+            Tags()
+        case .eggWhites:
+            Tags(textures: [.silky, .light])
+        case .gingerSyrup:
+            Tags(flavors: [.ginger], profiles: [.spicy, .sharp])
 //        case .honeySyrup:
 //            <#code#>
 //        case .richDem:
