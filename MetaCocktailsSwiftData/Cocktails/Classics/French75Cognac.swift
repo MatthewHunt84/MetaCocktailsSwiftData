@@ -16,10 +16,10 @@ var french75Cognac  = Cocktail(cocktailName: "French 75 (Arnaud's French 75 Vers
                          buildOrder: french75CognacBuild,
                          tags: french75CognacTags)
 
-var french75CognacSpec  = [CocktailIngredient( .lemon, value: 0.25, unit: .fluidOunces),
-                           CocktailIngredient( .simple, value: 0.25, unit: .fluidOunces),
-                           CocktailIngredient( .VSOPCognac, value: 1.25, unit: .fluidOunces),
-                           CocktailIngredient(.champagne , value: 2.5, unit: .fluidOunces)]
+var french75CognacSpec  = [CocktailIngredient( .lemon, value: 0.25),
+                           CocktailIngredient( .simple, value: 0.25),
+                           CocktailIngredient( .VSOPCognac, value: 1.25),
+                           CocktailIngredient(.champagne , value: 2.5)]
 
 var french75CognacBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the Champagne, into a tin and shake with ice"), 
                                                 Instruction(step: 2, method: "strain into the flute and top with Champagne"),

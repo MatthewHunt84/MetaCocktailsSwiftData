@@ -17,8 +17,8 @@ var elPresidente  = Cocktail(cocktailName: "El Presidente",
                              buildOrder: nil,
                              tags: elPresidenteTags)
 
-var elPresidenteSpec  = [CocktailIngredient(.whiteRum, value: 1.5, unit: .fluidOunces),
-                         CocktailIngredient(.blancVermouth, value: 1.5, unit: .fluidOunces),
+var elPresidenteSpec  = [CocktailIngredient(.whiteRum, value: 1.5),
+                         CocktailIngredient(.blancVermouth, value: 1.5),
                          CocktailIngredient(.orangeCuracao , value: 1, unit: .barspoon),
                          CocktailIngredient(.granadine, value: 0.5, unit: .barspoon)]
 

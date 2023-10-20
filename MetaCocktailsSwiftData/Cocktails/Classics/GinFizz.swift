@@ -16,10 +16,10 @@ var ginFizz  = Cocktail(cocktailName: "Gin Fizz",
                          buildOrder: ginFizzBuild,
                          tags: ginFizzTags)
 
-var ginFizzSpec  = [CocktailIngredient( .lemon, value: 0.75, unit: .fluidOunces),
-                    CocktailIngredient( .simple, value: 0.75, unit: .fluidOunces),
-                    CocktailIngredient( .gin, value: 1.5, unit: .fluidOunces),
-                    CocktailIngredient(.sparklingWater , value: 2, unit: .fluidOunces)]
+var ginFizzSpec  = [CocktailIngredient( .lemon, value: 0.75),
+                    CocktailIngredient( .simple, value: 0.75),
+                    CocktailIngredient( .gin, value: 1.5),
+                    CocktailIngredient(.sparklingWater , value: 2)]
 
 var ginFizzBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the sparkling water, into a tin and shake with ice"), 
                                          Instruction(step: 2, method: "strain into a small chilled highball glass and top with sparkling water"),

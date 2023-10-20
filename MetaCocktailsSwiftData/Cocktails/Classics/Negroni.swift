@@ -16,9 +16,9 @@ var negroni  =  Cocktail(cocktailName: "Negroni",
                          buildOrder: nil,
                          tags: negroniTags)
 
-var negroniSpec = [CocktailIngredient(.gin, value: 1, unit: .fluidOunces),
-                   CocktailIngredient(.sweetVermouth, value: 1, unit: .fluidOunces),
-                   CocktailIngredient(.campari, value: 1, unit: .fluidOunces)]
+var negroniSpec = [CocktailIngredient(.gin, value: 1),
+                   CocktailIngredient(.sweetVermouth, value: 1),
+                   CocktailIngredient(.campari, value: 1)]
 
 var negroniTags = Tags(flavors: [.orange, .bakingSpices], 
                        profiles: [.bitter, .sweet, .floral],

@@ -16,11 +16,11 @@ var jungleBird = Cocktail(cocktailName: "JungleBird",
                           buildOrder: nil,
                           tags: jungleBirdTags)
 
-var jungleBirdSpec  =  [CocktailIngredient( .lime, value: 0.5, unit: .fluidOunces),
-                        CocktailIngredient( .pineappleJuice, value: 2, unit: .fluidOunces),
-                        CocktailIngredient( .simple, value: 0.5, unit: .fluidOunces),
-                        CocktailIngredient( .campari, value: 0.75, unit: .fluidOunces),
-                        CocktailIngredient( .agedJamaicanRum, value: 1.5, unit: .fluidOunces)]
+var jungleBirdSpec  =  [CocktailIngredient( .lime, value: 0.5),
+                        CocktailIngredient( .pineappleJuice, value: 2),
+                        CocktailIngredient( .simple, value: 0.5),
+                        CocktailIngredient( .campari, value: 0.75),
+                        CocktailIngredient( .agedJamaicanRum, value: 1.5)]
                         
                         
                         

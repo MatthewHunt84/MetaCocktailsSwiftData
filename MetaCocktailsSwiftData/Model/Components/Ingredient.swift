@@ -129,92 +129,90 @@ enum Ingredient: String, Codable {
             Tags(textures: [.silky, .light])
         case .gingerSyrup:
             Tags(flavors: [.ginger], profiles: [.spicy, .sharp])
-//        case .honeySyrup:
-//            <#code#>
-//        case .richDem:
-//            <#code#>
-//        case .passionfruitSyrup:
-//            <#code#>
-//        case .cucumberSyrup:
-//            <#code#>
-//        case .orgeat:
-//            <#code#>
-//        case .cranberryJuice:
-//            <#code#>
-//        case .granadine:
-//            <#code#>
-//        case .pineappleJuice:
-//            <#code#>
-//        case .blackBerry:
-//            <#code#>
-//        case .sage:
-//            <#code#>
-//        case .mint:
-//            <#code#>
-//        case .gin:
-//            <#code#>
-//        case .whiteRum:
-//            <#code#>
-//        case .agedRum:
-//            <#code#>
-//        case .blackStrapRum:
-//            <#code#>
-//        case .agedJamaicanRum:
-//            <#code#>
-//        case .rum:
-//            <#code#>
-//        case .vodka:
-//            <#code#>
-//        case .citrusVodka:
-//            <#code#>
-//        case .ryeWhiskey:
-//            <#code#>
-//        case .peatedScotch:
-//            <#code#>
-//        case .blendedScotch:
-//            <#code#>
-//        case .bourbon:
-//            <#code#>
-//        case .demeraraRum:
-//            <#code#>
-//        case .cachaca:
-//            <#code#>
-//        case .VSOPCognac:
-//            <#code#>
-//        case .orangeCuracao:
-//            <#code#>
-//        case .cointreau:
-//            <#code#>
-//        case .aperol:
-//            <#code#>
-//        case .amaroNonino:
-//            <#code#>
-//        case .campari:
-//            <#code#>
-//        case .prosecco:
-//            <#code#>
-//        case .champagne:
-//            <#code#>
-//        case .sweetVermouth:
-//            <#code#>
-//        case .blancVermouth:
-//            <#code#>
-//        case .dryVermouth:
-//            <#code#>
-//        case .puntEMes:
-//            <#code#>
-//        case .cocchiAmericano:
-//            <#code#>
-//        case .amontillado:
-//            <#code#>
-//        case .sparklingWater:
-//            <#code#>
-//        case .orangeBitters:
-//            <#code#>
-//        case .angosturaBitters:
-//            <#code#>
-        default:
+        case .honeySyrup:
+            Tags(flavors: [.honey])
+        case .richDem:
             Tags()
+        case .passionfruitSyrup:
+            Tags(flavors: [.passionfruit])
+        case .cucumberSyrup:
+            Tags(flavors: [.cucumber])
+        case .orgeat:
+            Tags(flavors: [.almond, .orange])
+        case .cranberryJuice:
+            Tags(flavors: [.cranberry])
+        case .granadine:
+            Tags(flavors: [.pomegranate])
+        case .pineappleJuice:
+            Tags(flavors: [.pineapple], profiles: [.fruity])
+        case .blackBerry:
+            Tags(flavors: [.blackberry], profiles: [.fruity])
+        case .sage:
+            Tags(flavors: [.sage], profiles: [.herbal, .aromatic])
+        case .mint:
+            Tags(flavors: [.mint], profiles: [.herbal, .aromatic])
+        case .gin:
+            Tags(flavors: [.juniper, .citrusPeel], profiles: [.floral, .aromatic])
+        case .whiteRum:
+            Tags()
+        case .agedRum:
+            Tags(flavors: [.vanilla])
+        case .blackStrapRum:
+            Tags(flavors: [.vanilla, .molasses])
+        case .agedJamaicanRum:
+            Tags(flavors: [.hogo, .vanilla, .funkyRum])
+        case .rum:
+            Tags()
+        case .vodka:
+            Tags()
+        case .citrusVodka:
+            Tags(flavors: [.citrusPeel], profiles: [.citrusy])
+        case .ryeWhiskey:
+            Tags(flavors: [.rye, .vanilla, .bakingSpices, .whiskey])
+        case .peatedScotch:
+            Tags(flavors: [.peat, .vanilla, .maltedBarley, .whiskey], profiles: [.smokey])
+        case .blendedScotch:
+            Tags(flavors: [.maltedBarley, .vanilla, .whiskey])
+        case .bourbon:
+            Tags(flavors: [.vanilla, .bakingSpices, .whiskey])
+        case .demeraraRum:
+            Tags(flavors: [.vanilla, .bakingSpices])
+        case .cachaca:
+            Tags(flavors: [.funkyRum, .hogo])
+        case .VSOPCognac:
+            Tags(flavors: [.vanilla], profiles: [.fruity])
+        case .orangeCuracao:
+            Tags(flavors: [.orange], profiles: [.medicinal])
+        case .cointreau:
+            Tags(flavors: [.orange, .whiteFlower])
+        case .aperol:
+            Tags(flavors: [.rhubarb, .orange, .grapefruit], profiles: [.bitter, .sweet])
+        case .amaroNonino:
+            Tags(profiles: [.herbal, .bitter, .sweet])
+        case .campari:
+            Tags(profiles: [.bitter, .sweet])
+        case .prosecco:
+            Tags(profiles: [.dry], textures: [.effervescent, .bubbly])
+        case .champagne:
+            Tags(profiles: [.dry, .sweet], textures: [.effervescent, .bubbly])
+        case .sweetVermouth:
+            Tags(profiles: [.bitter, .sweet, .herbal, .botanical])
+        case .blancVermouth:
+            Tags(profiles: [.sweet, .fruity])
+        case .dryVermouth:
+            Tags(profiles: [.dry, .fruity, .aromatic])
+        case .puntEMes:
+            Tags(profiles: [.bitter, .sweet, .herbal, .botanical])
+        case .cocchiAmericano:
+            Tags(profiles: [.dry, .fruity, .bitter, .sweet])
+        case .amontillado:
+            Tags(profiles: [.dry, .bright ], textures: [.thin])
+        case .sparklingWater:
+            Tags(textures: [.effervescent])
+        case .orangeBitters:
+            Tags(flavors: [.orange], profiles: [.bitter])
+        case .angosturaBitters:
+            Tags(flavors: [.bakingSpices], profiles: [.dry, .bitter, .aromatic])
         }
     }
 }

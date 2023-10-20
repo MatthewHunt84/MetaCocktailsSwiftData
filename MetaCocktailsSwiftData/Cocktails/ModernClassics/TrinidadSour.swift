@@ -16,10 +16,10 @@ var trinidadSour = Cocktail(cocktailName: "Trinidad Sour",
                             buildOrder: nil,
                             tags: trinidadSourTags)
 
-var trinidadSourSpec = [CocktailIngredient( .lemon, value: 0.75, unit: .fluidOunces),
-                        CocktailIngredient( .orgeat, value: 1, unit: .fluidOunces),
-                        CocktailIngredient( .ryeWhiskey, value: 0.5, unit: .fluidOunces),
-                        CocktailIngredient( .angosturaBitters, value: 1.5, unit: .fluidOunces)]
+var trinidadSourSpec = [CocktailIngredient( .lemon, value: 0.75),
+                        CocktailIngredient( .orgeat, value: 1),
+                        CocktailIngredient( .ryeWhiskey, value: 0.5),
+                        CocktailIngredient( .angosturaBitters, value: 1.5)]
                         
 
 

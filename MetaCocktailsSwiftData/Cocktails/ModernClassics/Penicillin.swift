@@ -17,10 +17,10 @@ var penicillin = Cocktail(cocktailName: "Penicillin",
                           tags: penicillinTags)
 
 var penicillinSpec = [CocktailIngredient( .lemon, value: 0.75, unit: .fluidOunces),
-                                            CocktailIngredient( .honeySyrup, value: 0.375, unit: .fluidOunces),
-                                            CocktailIngredient( .gingerSyrup, value: 0.375, unit: .fluidOunces),
-                                            CocktailIngredient(.blendedScotch, value: 1.5, unit: .fluidOunces),
-                                            CocktailIngredient( .peatedScotch, value: 0.25, unit: .fluidOunces)]
+                                            CocktailIngredient( .honeySyrup, value: 0.375),
+                                            CocktailIngredient( .gingerSyrup, value: 0.375),
+                                            CocktailIngredient(.blendedScotch, value: 1.5),
+                                            CocktailIngredient( .peatedScotch, value: 0.25)]
 
 var penicillinBuild = Build(instructions: [Instruction(step: 1, method: "Mix all ingredients, except the Isla Scotch, together in a tin and shake with ice."), 
                                            Instruction(step: 2, method: "Strain over ice."),
