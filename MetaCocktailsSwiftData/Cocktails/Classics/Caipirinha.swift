@@ -19,7 +19,7 @@ var caipirinha   = Cocktail(cocktailName: "Caipirinha",
 
 var caipirinhaSpec = [CocktailIngredient(.lime, value: 2, unit: .limeQuarters),
                       CocktailIngredient(.granulatedSugar , value: 1.5, unit: .teaspoons),
-                      CocktailIngredient(.cachaca, value: 2, unit: .fluidOunces)]
+                      CocktailIngredient(.cachaca, value: 2)]
                       
                       
 

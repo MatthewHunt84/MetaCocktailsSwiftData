@@ -22,4 +22,9 @@ enum Profile: String, Codable, CaseIterable {
     case sour           = "Sour"
     case creamy         = "Creamy"
     case sharp          = "Sharp"
+    case herbal         = "Herbal"
+    case medicinal      = "Medicinal"
+    case botanical      = "Botanical"
+    case nutty          = "Nutty"
+    case bright         = "Bright"
 }
