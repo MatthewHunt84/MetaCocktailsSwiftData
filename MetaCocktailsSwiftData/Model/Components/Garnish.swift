@@ -14,6 +14,7 @@ enum Garnish: String, Codable {
     case orangePeel                = "Orange Peel"
     case lemonPeel                 = "Lemon Peel"
     case lemonExpression           = "Lemon Expression (then discard)"
+    case grapefruitPeel            = "Grapefruit Peel"
     case grapefruitExpression      = "Grapefruit Expression (then discard)"
     case orangeOrLemon             = "Twist of Orange or Lemon"
     case limeWheel                 = "Lime Wheel"

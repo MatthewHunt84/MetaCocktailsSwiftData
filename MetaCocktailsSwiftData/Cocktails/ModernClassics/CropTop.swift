@@ -21,6 +21,7 @@ var cropTopSpec  = [CocktailIngredient(.lemon, value: 0.75),
                      CocktailIngredient(.giffardPamplemousse, value: 0.75)]
 
 
-var cropTopTags = Tags(textures: [.light],
-                        styles: [.sour],
-                        bases: [.ginLondonDry])
+var cropTopTags = Tags(profiles: [.refreshing, .floral, .herbal],
+                       textures: [.light],
+                       styles: [.sour],
+                       bases: [.gin])

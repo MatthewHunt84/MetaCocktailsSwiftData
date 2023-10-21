@@ -74,7 +74,7 @@ enum Ingredient: String, Codable {
     
     // SPIRITS
     
-    
+    case armagnac             = "Armagnac"
     case bourbon              = "Bourbon"
     case cachaca              = "Cachaca"
     case gin                  = "Gin"
@@ -115,6 +115,7 @@ enum Ingredient: String, Codable {
     case amaroMontenegro      = "Amaro Montenegro"
     case amaroNonino          = "Amaro Nonino"
     case campari              = "Campari"
+    case suze                 = "Suze"
    
     //WINE
     case champagne            = "Chilled Champagne"
@@ -280,6 +281,10 @@ enum Ingredient: String, Codable {
             Tags(flavors: [.tequila, .vanilla])
         case .raspberries:
             Tags(flavors: [.raspberry])
+        case .armagnac:
+            Tags(flavors: [.vanilla], profiles: [.fruity])
+        case .suze:
+            Tags(profiles: [.bitter, .herbal, .floral])
         }
     }
 }

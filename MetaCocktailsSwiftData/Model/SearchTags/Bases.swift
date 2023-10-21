@@ -9,6 +9,7 @@ import Foundation
 
 enum Bases: String, Codable, CaseIterable {
     //Spirits
+    case armagnac             = "Armagnac"
     case bourbon              = "Bourbon"
     case cachaca              = "Cachaca"
     case gin                  = "Gin"
