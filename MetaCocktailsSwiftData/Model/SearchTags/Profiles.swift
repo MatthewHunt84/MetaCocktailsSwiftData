@@ -27,4 +27,5 @@ enum Profile: String, Codable, CaseIterable {
     case botanical      = "Botanical"
     case nutty          = "Nutty"
     case bright         = "Bright"
+    case spiritForward  = "Spirit Forward"
 }

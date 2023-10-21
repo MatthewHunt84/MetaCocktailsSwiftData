@@ -18,7 +18,7 @@ var french75Cognac  = Cocktail(cocktailName: "French 75 (Arnaud's French 75 Vers
 
 var french75CognacSpec  = [CocktailIngredient( .lemon, value: 0.25),
                            CocktailIngredient( .simple, value: 0.25),
-                           CocktailIngredient( .VSOPCognac, value: 1.25),
+                           CocktailIngredient( .cognacVSOP, value: 1.25),
                            CocktailIngredient(.champagne , value: 2.5)]
 
 var french75CognacBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the Champagne, into a tin and shake with ice"), 
@@ -29,4 +29,4 @@ var french75CognacTags   = Tags(flavors: [.lemon],
                                 profiles: [.citrusy, .fruity],
                                 textures: [.effervescent, .light],
                                 styles: [.fizz, .shaken],
-                                bases: [.VSOPCognac])
+                                bases: [.cognacVSOP])

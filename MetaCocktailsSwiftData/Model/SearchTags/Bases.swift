@@ -9,37 +9,47 @@ import Foundation
 
 enum Bases: String, Codable, CaseIterable {
     //Spirits
-    case gin               = "Gin"
-    case whiteRum          = "White Rum"
-    case agedRum           = "Aged Rum"
-    case blackStrapRum     = "Black Strap Rum"
-    case agedJamaicanRum   = "Aged Jamaican Rum"
-    case rum               = "Rum"
-    case vodka             = "Vodka"
-    case ryeWhiskey        = "Rye Whiskey"
-    case citrusVodka       = "Citrus Vodka"
-    case peatedScotch      = "Peated Scotch (From Isla)"
-    case blendedScotch     = "Blended Scotch"
-    case bourbon           = "Bourbon"
-    case demeraraRum       = "Demerara Rum"
-    case cachaca           = "Cachaca"
-    case VSOPCognac        = "VSOP Cognac"
-    
-    
+    case bourbon              = "Bourbon"
+    case cachaca              = "Cachaca"
+    case gin                  = "Gin"
+    case ginLondonDry         = "Gin (London Dry)"
+    case irishWhiskey         = "Irish Whiskey"
+    case mezcalSmokey         = "Smokey Mezcal"
+    case mezcalNotSmokey      = "Mazcal (Not Smokey)"
+    case rum                  = "Rum"
+    case rumAged              = "Rum (Aged)"
+    case rumBlackStrap        = "Rum (Black Strap)"
+    case rumDemerara          = "Rum (Demerara)"
+    case rumJamaicanAged      = "Rum (Jamaican, Aged)"
+    case rumWhite             = "Rum (White)"
+    case ryeWhiskey           = "Rye Whiskey"
+    case straightRyeOrBourbon = "Straight Rye or Bourbon (100 proof)"
+    case scotchBlended        = "Scotch (Blended)"
+    case scotchIsla           = "Scotch (Peated, From Isla)"
+    case tequilaAnejo         = "Tequila Anejo"
+    case tequilaBlanco        = "Tequila Blanco"
+    case tequilaReposado      = "Tequila Reposado"
+    case vodka                = "Vodka"
+    case vodkaCitrus          = "Vodka(Citrus Infused"
+    case cognacVSOP           = "Cognac (VSOP)"
+       
+       
     // AMARI
-    case aperol            = "Aperol"
-    case amaroNonino       = "Amaro Nonino"
-    case campari           = "Campari"
-    
+    case aperol               = "Aperol"
+    case amaroMontenegro      = "Amaro Montenegro"
+    case amaroNonino          = "Amaro Nonino"
+    case campari              = "Campari"
+       
     //WINE
-    case prosecco          = "Chilled Prosecco"
-    case champagne         = "Chilled Champagne"
+    case champagne            = "Chilled Champagne"
+    case prosecco             = "Chilled Prosecco"
     
+       
     //Fortified Wine
-    case sweetVermouth     = "Sweet Vermouth"
-    case blancVermouth     = "Blanc Vermouth"
-    case dryVermouth       = "French Dry Vermouth"
-    case puntEMes          = "Punt E Mes"
-    case cocchiAmericano   = "Cocchi Americano"
-    case amontillado       = "Amontillado Sherry"
+    case amontillado          = "Amontillado Sherry"
+    case blancVermouth        = "Blanc Vermouth"
+    case cocchiAmericano      = "Cocchi Americano"
+    case dryVermouth          = "French Dry Vermouth"
+    case puntEMes             = "Punt E Mes"
+    case sweetVermouth        = "Sweet Vermouth"
 }

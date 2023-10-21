@@ -20,11 +20,11 @@ var cosmopolitan  = Cocktail(cocktailName: "Cosmopolitan",
 var cosmoSpec  = [CocktailIngredient(.lime, value: 0.25),
                   CocktailIngredient(.cranberryJuice, value: 1),
                   CocktailIngredient(.cointreau, value: 0.75),
-                  CocktailIngredient(.citrusVodka, value: 1.5)]
+                  CocktailIngredient(.vodkaCitrus, value: 1.5)]
                   
 
 var cosmoTags  = Tags(flavors: [.orange, .cranberry, .lime, .lemon ], 
                       profiles: [.fruity, .citrusy],
                       textures: [.light],
                       styles: [.sour, .shaken],
-                      bases: [.citrusVodka])
+                      bases: [.vodkaCitrus])
