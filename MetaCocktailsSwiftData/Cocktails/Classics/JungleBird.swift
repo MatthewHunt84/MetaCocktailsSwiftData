@@ -20,7 +20,7 @@ var jungleBirdSpec  =  [CocktailIngredient( .lime, value: 0.5),
                         CocktailIngredient( .pineappleJuice, value: 2),
                         CocktailIngredient( .simple, value: 0.5),
                         CocktailIngredient( .campari, value: 0.75),
-                        CocktailIngredient( .agedJamaicanRum, value: 1.5)]
+                        CocktailIngredient( .rumJamaicanAged, value: 1.5)]
                         
                         
                         
@@ -30,4 +30,4 @@ var jungleBirdTags = Tags(flavors: [.pineapple, .lime],
                           profiles: [.aromatic, .bitter, .citrusy, .fruity],
                           textures: [.light],
                           styles: [.tiki, .shaken, .sour],
-                          bases: [.agedJamaicanRum])
+                          bases: [.rumJamaicanAged])

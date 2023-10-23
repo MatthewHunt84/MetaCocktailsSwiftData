@@ -21,7 +21,7 @@ var queensParkSwizzle = Cocktail(cocktailName: "Queens Park Swizzle",
 var queensParkSpec = [CocktailIngredient(.mint, value: 10, unit: .leaves),
                       CocktailIngredient(.lime, value: 0.75),
                       CocktailIngredient(.richDem, value: 0.5),
-                      CocktailIngredient(.demeraraRum, value: 2),
+                      CocktailIngredient(.rumDemerara, value: 2),
                       CocktailIngredient(.angosturaBitters, value: 5, unit: .dashes) ]
 
 
@@ -34,4 +34,4 @@ var queensParkTags = Tags(flavors: [.lime, .mint, .bakingSpices],
                           profiles: [.aromatic],
                           textures: [.light],
                           styles: [.swizzle, .built],
-                          bases: [.demeraraRum])
+                          bases: [.rumDemerara])

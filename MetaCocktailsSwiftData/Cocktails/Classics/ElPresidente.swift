@@ -17,13 +17,13 @@ var elPresidente  = Cocktail(cocktailName: "El Presidente",
                              buildOrder: nil,
                              tags: elPresidenteTags)
 
-var elPresidenteSpec  = [CocktailIngredient(.whiteRum, value: 1.5),
+var elPresidenteSpec  = [CocktailIngredient(.rumWhite, value: 1.5),
                          CocktailIngredient(.blancVermouth, value: 1.5),
                          CocktailIngredient(.orangeCuracao , value: 1, unit: .barspoon),
-                         CocktailIngredient(.granadine, value: 0.5, unit: .barspoon)]
+                         CocktailIngredient(.grenadine, value: 0.5, unit: .barspoon)]
 
 var elPresidenteTags  = Tags(flavors: [.orange, .pomegranate],
                              profiles: [.aromatic, .fruity],
                              textures: [.rich],
                              styles: [.martini, .stirred],
-                             bases: [.whiteRum, .blancVermouth])
+                             bases: [.rumWhite, .blancVermouth])

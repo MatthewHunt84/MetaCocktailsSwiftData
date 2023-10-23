@@ -37,77 +37,109 @@ class CocktailIngredient {
 
 enum Ingredient: String, Codable {
     // NA
-
-    case lemon             = "Lemon Juice"
-    case lime              = "Lime Juice"
-    case cream             = "Heavy Cream"
-    case simple            = "Simple Syrup (1:1)"
-    case granulatedSugar   = "Granulated Sugar"
-    case orangeFlowerWater = "Orange Flower Water"
-    case sodaWater         = "Soda Water"
-    case eggWhites         = "Egg Whites"
-    case gingerSyrup       = "Ginger Syrup"
-    case honeySyrup        = "Honey Syrup"
-    case richDem           = "Rich Demerara Syrup (2:1)"
-    case passionfruitSyrup = "Passionfruit Syrup"
-    case cucumberSyrup     = "Cucumber Syrup"
-    case orgeat            = "Orgeat"
-    case cranberryJuice    = "Cranberry Juice"
-    case granadine         = "Grenadine (Pomegranate Syrup, Not Roses Grenadine)"
-    case pineappleJuice    = "Fresh Pineapple Juice"
+    case agaveSyrup           = "Agave Syrup"
+    case cranberryJuice       = "Cranberry Juice"
+    case cream                = "Heavy Cream"
+    case cucumberSyrup        = "Cucumber Syrup"
+    case eggWhites            = "Egg Whites"
+    case gingerSyrup          = "Ginger Syrup"
+    case granulatedSugar      = "Granulated Sugar"
+    case grenadine            = "Grenadine (Pomegranate Syrup, Not Roses Grenadine)"
+    case honeySyrup           = "Honey Syrup"
+    case lemon                = "Lemon Juice"
+    case lime                 = "Lime Juice"
     
+    case simple               = "Simple Syrup (1:1)"
+    
+    case orangeFlowerWater    = "Orange Flower Water"
+    case sodaWater            = "Soda Water"
+    
+    
+    
+    case richDem              = "Rich Demerara Syrup (2:1)"
+    case passionfruitSyrup    = "Passionfruit Syrup"
+    
+    case orgeat               = "Orgeat"
+    
+    
+    case pineappleJuice       = "Fresh Pineapple Juice"
+       
     // FRUIT
-    case blackBerry        = "Blackberry"
-    case sage              = "Sage"
-    
+    case blackBerry           = "Blackberries"
+    case raspberries          = "Raspberries"
+       
     //Herbs
-    case mint              = "Mint Leaves"
-
-    // SPIRITS
-    case gin               = "Gin"
-    case whiteRum          = "White Rum"
-    case agedRum           = "Aged Rum"
-    case blackStrapRum     = "Black Strap Rum"
-    case agedJamaicanRum   = "Aged Jamaican Rum"
-    case rum               = "Rum"
-    case vodka             = "Vodka"
-    case citrusVodka       = "Citrus Vodka"
-    case ryeWhiskey        = "Rye Whiskey"
-    case peatedScotch      = "Peated Scotch (From Isla)"
-    case blendedScotch     = "Blended Scotch"
-    case bourbon           = "Bourbon"
-    case demeraraRum       = "Demerara Rum"
-    case cachaca           = "Cachaca"
-    case VSOPCognac        = "VSOP Cognac"
-
-    // LIQEURS
-    case orangeCuracao     = "Orange Curacao"
-    case cointreau         = "Cointreau"
-
-    // AMARI
-    case aperol            = "Aperol"
-    case amaroNonino       = "Amaro Nonino"
-    case campari           = "Campari"
-
-    //WINE
-    case prosecco          = "Chilled Prosecco"
-    case champagne         = "Chilled Champagne"
-
-    //Fortified Wine
-    case sweetVermouth     = "Sweet Vermouth"
-    case blancVermouth     = "Blanc Vermouth"
-    case dryVermouth       = "French Dry Vermouth"
-    case puntEMes          = "Punt E Mes"
-    case cocchiAmericano   = "Cocchi Americano"
-    case amontillado       = "Amontillado Sherry"
-
-    //Water
-    case sparklingWater    = "Chilled Sparkling Water"
+    case mint                 = "Mint Leaves"
+    case sage                 = "Sage"
     
-
+    // SPIRITS
+    
+    case armagnac             = "Armagnac"
+    case bourbon              = "Bourbon"
+    case cachaca              = "Cachaca"
+    case gin                  = "Gin"
+    case ginLondonDry         = "Gin (London Dry)"
+    case irishWhiskey         = "Irish Whiskey"
+    case mezcalSmokey         = "Smokey Mezcal"
+    case mezcalNotSmokey      = "Mazcal (Not Smokey)"
+    case rum                  = "Rum"
+    case rumAged              = "Rum (Aged)"
+    case rumBlackStrap        = "Rum (Black Strap)"
+    case rumDemerara          = "Rum (Demerara)"
+    case rumJamaicanAged      = "Rum (Jamaican, Aged)"
+    case rumWhite             = "Rum (White)"
+    case ryeWhiskey           = "Rye Whiskey"
+    case straightRyeOrBourbon = "Straight Rye or Bourbon (100 proof)"
+    case scotchBlended        = "Scotch (Blended)"
+    case scotchIsla           = "Scotch (Peated, From Isla)"
+    case tequilaAnejo         = "Tequila Anejo"
+    case tequilaBlanco        = "Tequila Blanco"
+    case tequilaReposado      = "Tequila Reposado"
+    case vodka                = "Vodka"
+    case vodkaCitrus          = "Vodka(Citrus Infused"
+    case cognacVSOP           = "Cognac (VSOP)"
+    
+   
+    // LIQEURS
+    case cointreau            = "Cointreau"
+    case cremeDeCacao         = "Creme de Cacao"
+    case giffardPamplemousse  = "Giffard Creme de Pamplemousse"
+    case greenChartreuse      = "Green Chartreuse"
+    case maraschinoLiqueur    = "Maraschino Liqueur"
+    case orangeCuracao        = "Orange Curacao"
+    case yellowChartreuse     = "Yellow Chartreuse"
+    
+   
+    // AMARI
+    case aperol               = "Aperol"
+    case amaroMontenegro      = "Amaro Montenegro"
+    case amaroNonino          = "Amaro Nonino"
+    case campari              = "Campari"
+    case suze                 = "Suze"
+   
+    //WINE
+    case champagne            = "Chilled Champagne"
+    case prosecco             = "Chilled Prosecco"
+    
+   
+    //Fortified Wine
+    case amontillado          = "Amontillado Sherry"
+    case blancVermouth        = "Blanc Vermouth"
+    case cocchiAmericano      = "Cocchi Americano"
+    case dryVermouth          = "French Dry Vermouth"
+    case lilletBlanc          = "Lillet Blanc"
+    case puntEMes             = "Punt E Mes"
+    case rougeVermouth        = "Fruit Forward Rouge Vermouth"
+    case sweetVermouth        = "Sweet Vermouth"
+    
+   
+    //Water
+    case sparklingWater       = "Chilled Sparkling Water"
+       
+   
     //Bitters
-    case orangeBitters     = "Orange Bitters"
-    case angosturaBitters  = "Angostura Bitters"
+    case orangeBitters        = "Orange Bitters"
+    case angosturaBitters     = "Angostura Bitters"
 
     var tags: Tags {
         switch self {
@@ -141,7 +173,7 @@ enum Ingredient: String, Codable {
             Tags(flavors: [.almond, .orange])
         case .cranberryJuice:
             Tags(flavors: [.cranberry])
-        case .granadine:
+        case .grenadine:
             Tags(flavors: [.pomegranate])
         case .pineappleJuice:
             Tags(flavors: [.pineapple], profiles: [.fruity])
@@ -153,33 +185,33 @@ enum Ingredient: String, Codable {
             Tags(flavors: [.mint], profiles: [.herbal, .aromatic])
         case .gin:
             Tags(flavors: [.juniper, .citrusPeel], profiles: [.floral, .aromatic])
-        case .whiteRum:
+        case .rumWhite:
             Tags()
-        case .agedRum:
+        case .rumAged:
             Tags(flavors: [.vanilla])
-        case .blackStrapRum:
+        case .rumBlackStrap:
             Tags(flavors: [.vanilla, .molasses])
-        case .agedJamaicanRum:
+        case .rumJamaicanAged:
             Tags(flavors: [.hogo, .vanilla, .funkyRum])
         case .rum:
             Tags()
         case .vodka:
             Tags()
-        case .citrusVodka:
+        case .vodkaCitrus:
             Tags(flavors: [.citrusPeel], profiles: [.citrusy])
         case .ryeWhiskey:
             Tags(flavors: [.rye, .vanilla, .bakingSpices, .whiskey])
-        case .peatedScotch:
+        case .scotchIsla:
             Tags(flavors: [.peat, .vanilla, .maltedBarley, .whiskey], profiles: [.smokey])
-        case .blendedScotch:
+        case .scotchBlended:
             Tags(flavors: [.maltedBarley, .vanilla, .whiskey])
         case .bourbon:
             Tags(flavors: [.vanilla, .bakingSpices, .whiskey])
-        case .demeraraRum:
+        case .rumDemerara:
             Tags(flavors: [.vanilla, .bakingSpices])
         case .cachaca:
             Tags(flavors: [.funkyRum, .hogo])
-        case .VSOPCognac:
+        case .cognacVSOP:
             Tags(flavors: [.vanilla], profiles: [.fruity])
         case .orangeCuracao:
             Tags(flavors: [.orange], profiles: [.medicinal])
@@ -213,6 +245,46 @@ enum Ingredient: String, Codable {
             Tags(flavors: [.orange], profiles: [.bitter])
         case .angosturaBitters:
             Tags(flavors: [.bakingSpices], profiles: [.dry, .bitter, .aromatic])
+        case .ginLondonDry:
+            Tags(flavors: [.juniper, .citrusPeel], profiles: [.floral, .aromatic, .dry])
+        case .greenChartreuse:
+            Tags(flavors: [.anise, .angelica], profiles: [.sweet, .herbal])
+        case .yellowChartreuse:
+            Tags(flavors: [.anise, .angelica], profiles: [.sweet, .herbal])
+        case .maraschinoLiqueur:
+            Tags(flavors: [.cherry], profiles: [.sweet])
+        case .straightRyeOrBourbon:
+            Tags(flavors: [.vanilla, .bakingSpices, .whiskey])
+        case .rougeVermouth:
+            Tags(profiles: [.sweet, .fruity])
+        case .irishWhiskey:
+            Tags(flavors: [.vanilla, .bakingSpices, .whiskey])
+        case .mezcalSmokey:
+            Tags(flavors: [.agave], profiles: [.smokey])
+        case .mezcalNotSmokey:
+            Tags(flavors: [.agave])
+        case .amaroMontenegro:
+            Tags(profiles: [.herbal, .bitter, .sweet, .floral])
+        case .giffardPamplemousse:
+            Tags(flavors: [.grapefruit])
+        case .lilletBlanc:
+            Tags(profiles: [.fruity, .floral])
+        case .cremeDeCacao:
+            Tags(flavors: [.chocolate])
+        case .agaveSyrup:
+            Tags(flavors: [.agave], profiles: [.sweet])
+        case .tequilaAnejo:
+            Tags(flavors: [.tequila, .vanilla, .bakingSpices])
+        case .tequilaBlanco:
+            Tags(flavors: [.tequila])
+        case .tequilaReposado:
+            Tags(flavors: [.tequila, .vanilla])
+        case .raspberries:
+            Tags(flavors: [.raspberry])
+        case .armagnac:
+            Tags(flavors: [.vanilla], profiles: [.fruity])
+        case .suze:
+            Tags(profiles: [.bitter, .herbal, .floral])
         }
     }
 }

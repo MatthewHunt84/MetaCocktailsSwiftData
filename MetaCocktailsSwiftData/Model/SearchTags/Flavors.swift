@@ -38,6 +38,13 @@ enum Flavor: String, Codable, CaseIterable {
     case coriander      = "Coriander"
     case rye            = "Rye"
     case maltedBarley   = "Malted Barley"
+    case anise          = "Anise"
+    case angelica       = "Angelica"
+    case cherry         = "Cherry"
+    case agave          = "Agave"
+    case chocolate      = "Chocolate"
+    case tequila        = "tequila"
+    case raspberry      = "Raspberry"
     
 
 }
