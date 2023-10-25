@@ -30,5 +30,8 @@ enum Garnish: String, Codable {
     case pineappleFronds           = "Pineapple Fronds"
     case pineappleWedge            = "Pineapple Wedge"
     case orchid                    = "Orchid"
+    case raspberry                 = "Raspberry"
+    case rosePedals                = "Skewered Rose Pedals"
+    case nutmeg                    = "Grated Nutmeg"
     
 }

@@ -12,7 +12,7 @@ var ramosGinFizz = Cocktail(cocktailName: "Ramos Gin Fizz", imageAsset: nil, gla
 var ramosTags = Tags(flavors: [.cream, .lemon, .lime], 
                      profiles: [.floral, .citrusy],
                      textures: [.creamy],
-                     styles: [.sour],
+                     styles: [.sour, .shaken],
                      bases: [.gin])
 
 let ramosGinFizzSpec: [CocktailIngredient]         = [CocktailIngredient(.gin, value: 2.0),
