@@ -35,11 +35,11 @@ final class SearchCriteriaViewModel: ObservableObject {
     }
  
     func selectedPreferredIngredients() -> [CocktailComponent] {
-        self.cocktailComponents.filter({ $0.isPreferred})
+        self.cocktailComponents.filter({ $0.isPreferred })
     }
 
     func selectedUnwantedIngredients() -> [CocktailComponent] {
-        self.cocktailComponents.filter({ $0.isUnwanted})
+        self.cocktailComponents.filter({ $0.isUnwanted })
     }
 
     func add(_ ingredient: CocktailComponent){
@@ -74,7 +74,7 @@ class CocktailComponent: Identifiable, ObservableObject {
         self.isStyle = isStyle
         self.isProfile = isProfile
         self.matchesCurrentSearch = matchesCurrentSearch
-        
+       
         if isFlavor {
             preferenceType = .flavors
         } else if isStyle {

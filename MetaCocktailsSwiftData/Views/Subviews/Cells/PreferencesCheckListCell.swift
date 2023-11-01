@@ -20,6 +20,7 @@ struct PreferencesCheckListCell: View {
                 
                 Toggle(isOn: $ingredient.isPreferred) {
                     Text(ingredient.name)
+                    
                 }
                 .padding(.horizontal, 20)
 
