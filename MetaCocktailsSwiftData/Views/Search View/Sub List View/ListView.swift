@@ -22,6 +22,26 @@ struct ListView: View {
             .onChange(of: viewModel.searchText) {// we could pass newValue here, but since its synced with the viewModel's searchText we can just use that in the match function
                 viewModel.matchAllTheThings()
             }
+        Button(action: {
+            var preferredArray = viewModel.selectedPreferredIngredients()
+            var unwantedArray  = viewModel.selectedUnwantedIngredients()
+            for preferred in preferredArray {
+                print("Preferred ingredient: \(preferred.name)")
+            }
+            for unwanted in unwantedArray {
+                print("Unwanted ingredient: \(unwanted.name)")
+            }}) {
+            VStack{
+
+                Text("Print Preferences")
+                    .fontDesign(.serif)
+            }
+            .padding(10)
+            .background(Color(UIColor.systemBackground))
+            .clipShape(RoundedRectangle(cornerRadius: 140))
+            .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
+            .foregroundColor(Color(UIColor.systemCyan))
+        }
         List {
             if isShowingLikes {
                 ForEach($viewModel.cocktailComponents) { ingredient in
@@ -29,7 +49,7 @@ struct ListView: View {
                     if ingredient.isUnwanted.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) {
                         
                         PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
-                        
+                      
                     }
                 }
                 
@@ -40,6 +60,7 @@ struct ListView: View {
                             .tint(.red)
                     }
                 }
+                
             }
         }
         

@@ -23,5 +23,5 @@ var cropTopSpec  = [CocktailIngredient(.lemon, value: 0.75),
 
 var cropTopTags = Tags(profiles: [.refreshing, .floral, .herbal],
                        textures: [.light],
-                       styles: [.sour],
+                       styles: [.sour, .shaken],
                        bases: [.gin])

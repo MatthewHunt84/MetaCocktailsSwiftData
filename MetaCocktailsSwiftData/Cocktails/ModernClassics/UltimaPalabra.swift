@@ -20,5 +20,5 @@ var ultimaPalabraSpec  = [CocktailIngredient(.lime, value: 0.75),
 
 
 var ultimaPalabraTags = Tags(textures: [.light],
-                        styles: [.sour],
+                             styles: [.sour, .shaken],
                         bases: [.mezcalSmokey])

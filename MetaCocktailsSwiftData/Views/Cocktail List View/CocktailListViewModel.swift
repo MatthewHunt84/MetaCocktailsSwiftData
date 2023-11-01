@@ -11,7 +11,7 @@ final class CocktailListViewModel: ObservableObject {
 
     static let shared = CocktailListViewModel()
     
-    @Published var cocktails: [Cocktail] = [aperolSpritz, bamboo, blackberrySageSmash, caipirinha, cosmopolitan, daiquiri, elPresidente, french75, french75Cognac, ginFizz, jungleBird, lastWord, maiTai, negroni, paperPlane, penicillin, queensParkSwizzle, ramosGinFizz, trinidadSour]
+    @Published var cocktails: [Cocktail] = [aperolSpritz, bamboo, beckyWithTheGoodHair, blackberrySageSmash, boulevardier, caipirinha, cloverClub, cominUpRoses, cosmopolitan, cropTop, daiquiri, divisionBell, elPresidente, emerald, finalWard, french75, french75Cognac, ginFizz, jungleBird, lastWord, manhattan, maiTai, margarita, margaritaTommys, martini, mintJulep, mojito, negroni, paloma, piscoSour, paperPlane, penicillin, queensParkSwizzle, ramosGinFizz, robRoy, sazerac, trinidadSour, twentiethCenturyCocktail, ultimaPalabra, whiskeySour, whiteNegroni]
     @Published var isShowingRecipeCard = false
     @Published var selectedCocktail: Cocktail?
     @Published var isShowingBuildOrderButton = false

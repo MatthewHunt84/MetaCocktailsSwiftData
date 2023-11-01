@@ -10,6 +10,7 @@ import Foundation
 enum Style: String, Codable, CaseIterable {
     case sour          = "sour"
     case manhattan     = "manhattan"
+    case oldFashioned  = "Old Fashioned"
     case spritz        = "Spritz"
     case swizzle       = "Swizzle"
     case negroni       = "Negroni"
@@ -18,6 +19,7 @@ enum Style: String, Codable, CaseIterable {
     case collins       = "Collins"
     case tiki          = "Tiki"
     case julep         = "Julep"
+    case flip          = "Flip"
     
     
     case built         = "Built"

@@ -16,6 +16,8 @@ struct SearchCriteriaView: View {
     @State var selectedLikesOrDislikes: LikesOrDislikes = .likes
     
     
+    
+    
     var body: some View {
         
         NavigationView {
@@ -28,7 +30,7 @@ struct SearchCriteriaView: View {
                 }
                 .pickerStyle(.segmented)
                 .foregroundColor(Color.red)
-                .padding()
+//                .padding()
                 
                 Picker("Pick Out Likes Or Dislikes", selection: $selectedLikesOrDislikes) {
                     ForEach(LikesOrDislikes.allCases, id: \.self) {
@@ -42,7 +44,8 @@ struct SearchCriteriaView: View {
                     
                 }
                 .foregroundColor(Color.red)
-                .padding()
+//                .padding()
+                
                 ChosenListView(isShowingLikes: $isShowingPreferences, selectedType: $selectedList)
    
             }

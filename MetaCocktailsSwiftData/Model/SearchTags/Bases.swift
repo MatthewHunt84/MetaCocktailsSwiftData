@@ -9,6 +9,7 @@ import Foundation
 
 enum Bases: String, Codable, CaseIterable {
     //Spirits
+    case absinthe             = "Absinthe"
     case armagnac             = "Armagnac"
     case bourbon              = "Bourbon"
     case cachaca              = "Cachaca"
@@ -17,6 +18,7 @@ enum Bases: String, Codable, CaseIterable {
     case irishWhiskey         = "Irish Whiskey"
     case mezcalSmokey         = "Smokey Mezcal"
     case mezcalNotSmokey      = "Mazcal (Not Smokey)"
+    case pisco                = "Pisco"
     case rum                  = "Rum"
     case rumAged              = "Rum (Aged)"
     case rumBlackStrap        = "Rum (Black Strap)"
@@ -31,7 +33,7 @@ enum Bases: String, Codable, CaseIterable {
     case tequilaBlanco        = "Tequila Blanco"
     case tequilaReposado      = "Tequila Reposado"
     case vodka                = "Vodka"
-    case vodkaCitrus          = "Vodka(Citrus Infused"
+    case vodkaCitrus          = "Vodka(Citrus Infused)"
     case cognacVSOP           = "Cognac (VSOP)"
        
        

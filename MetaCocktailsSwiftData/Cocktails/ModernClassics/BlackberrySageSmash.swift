@@ -19,7 +19,7 @@ var blackberrySageSmash = Cocktail(cocktailName: "Blackberry Sage Smash",
 let blackberrySageSmashTags = Tags(flavors: [.lemon], 
                                    profiles: [.fruity],
                                    textures: [.light],
-                                   styles: [.sour],
+                                   styles: [.sour, .shaken],
                                    bases: [.ryeWhiskey])
 
 let blackberrySageSmashSpec: [CocktailIngredient] = [CocktailIngredient(.ryeWhiskey, value: 2),

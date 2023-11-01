@@ -18,7 +18,7 @@ var mojito = Cocktail(cocktailName: "Mojito",
 
 let mojitoTags = Tags(profiles: [.herbal, .refreshing],
                       textures: [.light, .effervescent],
-                      styles: [.sour],
+                      styles: [.sour, .shaken, .built],
                       bases: [.rumWhite])
 
 let mojitoSpec: [CocktailIngredient] = [CocktailIngredient(.mint, value: 8, unit: .leaves),

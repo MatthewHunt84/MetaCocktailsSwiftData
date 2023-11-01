@@ -41,29 +41,24 @@ enum Ingredient: String, Codable {
     case cranberryJuice       = "Cranberry Juice"
     case cream                = "Heavy Cream"
     case cucumberSyrup        = "Cucumber Syrup"
+    case demSyrupOneToOne     = "Demerara Syrup 1:1"
     case eggWhites            = "Egg Whites"
     case gingerSyrup          = "Ginger Syrup"
     case granulatedSugar      = "Granulated Sugar"
     case grenadine            = "Grenadine (Pomegranate Syrup, Not Roses Grenadine)"
     case honeySyrup           = "Honey Syrup"
-    case lemon                = "Lemon Juice"
-    case lime                 = "Lime Juice"
-    
-    case simple               = "Simple Syrup (1:1)"
-    
+    case lemon                = "Fresh Squeezed Lemon Juice"
+    case lime                 = "Fresh Squeezed Lime Juice"
     case orangeFlowerWater    = "Orange Flower Water"
-    case sodaWater            = "Soda Water"
-    
-    
-    
-    case richDem              = "Rich Demerara Syrup (2:1)"
-    case passionfruitSyrup    = "Passionfruit Syrup"
-    
     case orgeat               = "Orgeat"
-    
-    
+    case passionfruitSyrup    = "Passionfruit Syrup"
     case pineappleJuice       = "Fresh Pineapple Juice"
-       
+    case raspberrySyrup       = "RaspberrySyrup"
+    case richDem              = "Rich Demerara Syrup (2:1)"
+    case simple               = "Simple Syrup (1:1)"
+    case sodaWater            = "Soda Water"
+    case egg                  = "1 Egg"
+    
     // FRUIT
     case blackBerry           = "Blackberries"
     case raspberries          = "Raspberries"
@@ -73,15 +68,17 @@ enum Ingredient: String, Codable {
     case sage                 = "Sage"
     
     // SPIRITS
-    
+    case absinthe             = "Absinthe"
     case armagnac             = "Armagnac"
     case bourbon              = "Bourbon"
+    case bourbon120Proof      = "120 proof Bourbon"
     case cachaca              = "Cachaca"
     case gin                  = "Gin"
     case ginLondonDry         = "Gin (London Dry)"
     case irishWhiskey         = "Irish Whiskey"
     case mezcalSmokey         = "Smokey Mezcal"
     case mezcalNotSmokey      = "Mazcal (Not Smokey)"
+    case pisco                = "Pisco"
     case rum                  = "Rum"
     case rumAged              = "Rum (Aged)"
     case rumBlackStrap        = "Rum (Black Strap)"
@@ -114,7 +111,10 @@ enum Ingredient: String, Codable {
     case aperol               = "Aperol"
     case amaroMontenegro      = "Amaro Montenegro"
     case amaroNonino          = "Amaro Nonino"
+    case becherovka           = "Becherovka"
     case campari              = "Campari"
+    case fernetBranca         = "Fernet Branca"
+    case fernetBrancaMenta    = "Fernet Branca Menta"
     case suze                 = "Suze"
    
     //WINE
@@ -133,13 +133,19 @@ enum Ingredient: String, Codable {
     case sweetVermouth        = "Sweet Vermouth"
     
    
-    //Water
+    //Carbonated
     case sparklingWater       = "Chilled Sparkling Water"
+    case grapefruitSoda       = "Cold Grapefruit Soda"
        
    
     //Bitters
     case orangeBitters        = "Orange Bitters"
     case angosturaBitters     = "Angostura Bitters"
+    case peychauds            = "Peychaud's Bitters"
+    
+    //Seasonings
+    case salt                 = "Salt"
+    case nutmeg               = "Nutmeg"
 
     var tags: Tags {
         switch self {
@@ -285,6 +291,32 @@ enum Ingredient: String, Codable {
             Tags(flavors: [.vanilla], profiles: [.fruity])
         case .suze:
             Tags(profiles: [.bitter, .herbal, .floral])
+        case .salt:
+            Tags()
+        case .grapefruitSoda:
+            Tags(flavors: [.grapefruit], profiles: [.fruity], textures: [.effervescent])
+        case .pisco:
+            Tags(profiles: [.fruity])
+        case .raspberrySyrup:
+            Tags(flavors: [.raspberry])
+        case .demSyrupOneToOne:
+            Tags()
+        case .bourbon120Proof:
+            Tags(flavors: [.whiskey])
+        case .becherovka:
+            Tags(flavors: [.cinnamon], profiles: [.herbal, .bitter])
+        case .fernetBranca:
+            Tags(flavors: [.anise], profiles: [.herbal, .bitter])
+        case .fernetBrancaMenta:
+            Tags(flavors: [.mint, .anise], profiles: [.herbal, .bitter])
+        case .nutmeg:
+            Tags(flavors: [.nutmeg])
+        case .egg:
+            Tags()
+        case .absinthe:
+            Tags(flavors: [.anise], profiles: [.herbal])
+        case .peychauds:
+            Tags()
         }
     }
 }
@@ -304,4 +336,7 @@ enum MeasurementUnit: String, Codable {
     case leaves         = "leaves"
     case ml             = "ml"
     case barspoon       = "Barspoon"
+    case pinch          = "Pinch"
+    case whole          = "Whole (except the shell)"
+    case sprays         = "Sprays in the glass (glass rinse)"
 }
