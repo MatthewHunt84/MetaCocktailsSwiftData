@@ -8,6 +8,9 @@
 import Foundation
 
 enum Style: String, Codable, CaseIterable {
+    case stirred       = "Stirred"
+    case shaken        = "Shaken"
+    case built         = "Built"
     case sour          = "sour"
     case manhattan     = "manhattan"
     case oldFashioned  = "Old Fashioned"
@@ -22,8 +25,7 @@ enum Style: String, Codable, CaseIterable {
     case flip          = "Flip"
     
     
-    case built         = "Built"
-    case stirred       = "Stirred"
-    case shaken        = "Shaken"
+    
+    
 
 }

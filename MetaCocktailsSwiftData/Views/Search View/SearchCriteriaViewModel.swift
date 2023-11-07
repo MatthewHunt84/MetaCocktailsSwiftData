@@ -93,7 +93,7 @@ class CocktailComponent: Identifiable, ObservableObject {
         self.matchesCurrentSearch = true
     }
     
-    init(for spirit: Bases) {
+    init(for spirit: Booze) {
         self.name = spirit.rawValue
         self.isSpirit = true
         self.preferenceType = .spirits

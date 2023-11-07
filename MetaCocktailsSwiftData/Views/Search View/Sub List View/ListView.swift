@@ -23,14 +23,20 @@ struct ListView: View {
                 viewModel.matchAllTheThings()
             }
         Button(action: {
-            var preferredArray = viewModel.selectedPreferredIngredients()
-            var unwantedArray  = viewModel.selectedUnwantedIngredients()
-            for preferred in preferredArray {
+            
+            for preferred in viewModel.selectedPreferredIngredients() {
                 print("Preferred ingredient: \(preferred.name)")
             }
-            for unwanted in unwantedArray {
+            for unwanted in viewModel.selectedUnwantedIngredients() {
                 print("Unwanted ingredient: \(unwanted.name)")
-            }}) {
+  
+            }
+            for tagsSet in CocktailListViewModel().cocktails {
+                print("Tags for \(tagsSet.cocktailName) = \(tagsSet.getTagSet())")
+            }
+            
+            
+        }) {
             VStack{
 
                 Text("Print Preferences")

@@ -10,7 +10,8 @@ import SwiftUI
 
 @Model
 class Cocktail {
-
+    
+    
     var id = UUID()
     var cocktailName: String
     var imageAsset: CocktailImage?
@@ -33,5 +34,48 @@ class Cocktail {
         self.spec = spec
         self.buildOrder = buildOrder
         self.tags = tags
+    }
+    
+    func getTagSet() -> Set<String>  {
+        
+        var tags: Set<String> = []
+        
+        guard let flavorsTags = self.tags.flavors else {
+            return ["Default"]
+        }
+        
+        for flavors in flavorsTags {
+          tags.insert(flavors.rawValue)
+        }
+        
+        guard let boozeTags = self.tags.bases else {
+            return ["Default"]
+        }
+        
+        for booze in boozeTags {
+            tags.insert(booze.rawValue)
+        }
+        
+        guard let profileTags = self.tags.profiles else {
+            return ["Default"]
+        }
+        for profiles in profileTags {
+            tags.insert(profiles.rawValue)
+        }
+        
+        guard let styleTags = self.tags.profiles else {
+            return ["Default"]
+        }
+        for styles in styleTags {
+            tags.insert(styles.rawValue)
+        }
+        guard let textureTags = self.tags.profiles else {
+            return ["Default"]
+        }
+        for textures in textureTags {
+            tags.insert(textures.rawValue)
+        }
+        
+        return tags
     }
 }
