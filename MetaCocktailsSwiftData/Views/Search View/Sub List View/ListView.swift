@@ -31,10 +31,7 @@ struct ListView: View {
                 print("Unwanted ingredient: \(unwanted.name)")
   
             }
-            for tagsSet in CocktailListViewModel().cocktails {
-                print("Tags for \(tagsSet.cocktailName) = \(tagsSet.getTagSet())")
-            }
-            
+   
             
         }) {
             VStack{

@@ -28,7 +28,11 @@ struct CocktailListView: View {
                             .fontDesign(.serif)
                             .padding()
                         Spacer()
-                        Button(action: {isShowingIngredientsList = true} ) {
+                        Button(action: {
+                           
+                            print("\(viewModel.cocktails[0].getTagSet())")
+      
+                            isShowingIngredientsList = true} ) {
                             VStack{
 
                                 Text("Refine Search")

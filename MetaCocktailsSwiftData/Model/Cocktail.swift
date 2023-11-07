@@ -36,46 +36,26 @@ class Cocktail {
         self.tags = tags
     }
     
-    func getTagSet() -> Set<String>  {
+    func getTagSet() -> Tags  {
+        // Start an object to append to from the cocktail tags
+        let cocktailTags = self.tags
         
-        var tags: Set<String> = []
         
-        guard let flavorsTags = self.tags.flavors else {
-            return ["Default"]
-        }
+//        1.  loop over each ingredient
+    
+        print(self.garnish ?? "opps")
+        print(self.glasswareType)
         
-        for flavors in flavorsTags {
-          tags.insert(flavors.rawValue)
-        }
-        
-        guard let boozeTags = self.tags.bases else {
-            return ["Default"]
-        }
-        
-        for booze in boozeTags {
-            tags.insert(booze.rawValue)
-        }
-        
-        guard let profileTags = self.tags.profiles else {
-            return ["Default"]
-        }
-        for profiles in profileTags {
-            tags.insert(profiles.rawValue)
-        }
-        
-        guard let styleTags = self.tags.profiles else {
-            return ["Default"]
-        }
-        for styles in styleTags {
-            tags.insert(styles.rawValue)
-        }
-        guard let textureTags = self.tags.profiles else {
-            return ["Default"]
-        }
-        for textures in textureTags {
-            tags.insert(textures.rawValue)
-        }
-        
-        return tags
+        print(self.spec)
+        //2. for each ingredient, create an object from the tags variable connected to each ingredient
+        //3. for each tags object, check if each array isn't nil, then append to cocktailTags
+        // if let tags.flavors {
+        //4. append flavors to the cocktail tags object
+
+        //5. convert each array into a set
+
+       //6. return a tags object with a collection of tags from each ingredient combined with the tags from the cocktail
+
+        return cocktailTags
     }
 }
