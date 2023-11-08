@@ -24,19 +24,112 @@ struct ListView: View {
             }
         Button(action: {
             
-            for preferred in viewModel.selectedPreferredIngredients() {
-                print("Preferred ingredient: \(preferred.name)")
+            //create cocktailComponent arrays for unwanted and preferred components
+            //loop over the preferences and add them to the arrays
+            let preferredArray = viewModel.selectedPreferredIngredients().map({ $0.name })
+            let unwantedArray = viewModel.selectedUnwantedIngredients().map({ $0.name })
+            var matchedCocktails: [Cocktail] = []
+           
+           
+            //loop over the preferred array and compare each preferred component to the components in each array of tags for each cocktail. if there's a match, add the cocktail to the Matched Cocktails array
+            for preferred in preferredArray {
+                for cocktail in CocktailListViewModel().cocktails {
+                    
+                    if cocktail.tags.bases != nil {
+                        for base in cocktail.tags.bases! {
+                            if base.rawValue ==  preferred {
+                                matchedCocktails.append(cocktail)
+                               
+                            }
+                        }
+                    }
+                    if cocktail.tags.flavors != nil {
+                        for flavor in cocktail.tags.flavors! {
+                            if flavor.rawValue == preferred {
+                                matchedCocktails.append(cocktail)
+                            }
+                        }
+                    }
+                    if cocktail.tags.profiles != nil {
+                        for profile in cocktail.tags.profiles! {
+                            if profile.rawValue == preferred {
+                                matchedCocktails.append(cocktail)
+                            }
+                        }
+                    }
+                    if cocktail.tags.styles != nil {
+                        for style in cocktail.tags.styles! {
+                            if style.rawValue == preferred {
+                                matchedCocktails.append(cocktail)
+                            }
+                        }
+                    }
+                    if cocktail.tags.textures != nil {
+                        for texture in cocktail.tags.textures! {
+                            if texture.rawValue == preferred {
+                                matchedCocktails.append(cocktail)
+                            }
+                        }
+                    }
+                }
             }
-            for unwanted in viewModel.selectedUnwantedIngredients() {
-                print("Unwanted ingredient: \(unwanted.name)")
-  
+            var matchedSet = Set(matchedCocktails)
+           
+            
+            // then loop over the unwanted components and compare each one to the cocktails in the matched cocktails array. If there's a match, take it out of the array
+            
+            for unwanted in unwantedArray {
+                for cocktail in matchedSet {
+                    if cocktail.tags.bases != nil {
+                        for base in cocktail.tags.bases! {
+                            if base.rawValue ==  unwanted {
+                                matchedSet.remove(cocktail)
+                               
+                            }
+                        }
+                    }
+                    if cocktail.tags.flavors != nil {
+                        for flavor in cocktail.tags.flavors! {
+                            if flavor.rawValue == unwanted {
+                                matchedSet.remove(cocktail)
+                            }
+                        }
+                    }
+                    if cocktail.tags.profiles != nil {
+                        for profile in cocktail.tags.profiles! {
+                            if profile.rawValue == unwanted {
+                                matchedSet.remove(cocktail)
+                            }
+                        }
+                    }
+                    if cocktail.tags.styles != nil {
+                        for style in cocktail.tags.styles! {
+                            if style.rawValue == unwanted {
+                                matchedSet.remove(cocktail)
+                               
+                            }
+                        }
+                    }
+                    if cocktail.tags.textures != nil {
+                        for texture in cocktail.tags.textures! {
+                            if texture.rawValue == unwanted {
+                                matchedSet.remove(cocktail)
+                            }
+                        }
+                    }
+                    
+                }
+                
             }
-   
+            for matchedSet in matchedSet {
+                print(matchedSet.cocktailName)
+            }
+
             
         }) {
             VStack{
 
-                Text("Print Preferences")
+                Text("Print Cocktails")
                     .fontDesign(.serif)
             }
             .padding(10)

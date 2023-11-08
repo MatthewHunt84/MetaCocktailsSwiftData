@@ -30,7 +30,7 @@ struct CocktailListView: View {
                         Spacer()
                         Button(action: {
                            
-                            print("\(viewModel.cocktails[0].getTagSet())")
+//                            print("\(viewModel.cocktails[0].getTagSet())")
       
                             isShowingIngredientsList = true} ) {
                             VStack{

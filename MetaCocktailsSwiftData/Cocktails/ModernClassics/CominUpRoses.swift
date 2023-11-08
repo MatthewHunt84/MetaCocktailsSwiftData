@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-var cominUpRoses = Cocktail(cocktailName: "Last Word",
+var cominUpRoses = Cocktail(cocktailName: "Comin' Up Roses",
                             glasswareType: .stemmedGlassware,
                             garnish: [.rosePedals],
                             ice: nil,

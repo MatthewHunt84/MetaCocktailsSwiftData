@@ -10,7 +10,7 @@ import Foundation
 enum Flavor: String, Codable, CaseIterable {
     case lemon          = "Lemon"
     case lime           = "Lime"
-    case cream          = "Heavy Cream"
+    case lactic         = "Lactic Acid"
     case cinnamon       = "Cinnamon"
     case orange         = "Orange"
     case ginger         = "Ginger"

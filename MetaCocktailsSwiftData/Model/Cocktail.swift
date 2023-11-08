@@ -43,10 +43,10 @@ class Cocktail {
         
 //        1.  loop over each ingredient
     
-        print(self.garnish ?? "opps")
-        print(self.glasswareType)
+//        print(self.garnish ?? "opps")
+//        print(self.glasswareType)
         
-        print(self.spec)
+        
         //2. for each ingredient, create an object from the tags variable connected to each ingredient
         //3. for each tags object, check if each array isn't nil, then append to cocktailTags
         // if let tags.flavors {
