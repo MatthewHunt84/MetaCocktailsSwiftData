@@ -8,8 +8,8 @@
 import Foundation
 import SwiftData
 
-class CocktailIngredient: Codable, Identifiable {
-
+struct CocktailIngredient: Codable, Hashable {
+    
     let ingredient: Ingredient
     let value: Double
     let unit: MeasurementUnit
