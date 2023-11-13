@@ -8,12 +8,8 @@
 import Foundation
 import SwiftData
 
+class CocktailIngredient: Codable, Identifiable {
 
-
-@Model
-class CocktailIngredient {
-
-    let id = UUID()
     let ingredient: Ingredient
     let value: Double
     let unit: MeasurementUnit
@@ -35,7 +31,7 @@ class CocktailIngredient {
 }
 
 
-enum Ingredient: String, Codable {
+enum Ingredient: String, Codable, CaseIterable {
     // NA
     case agaveSyrup           = "Agave Syrup"
     case cranberryJuice       = "Cranberry Juice"

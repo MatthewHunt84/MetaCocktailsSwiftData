@@ -13,6 +13,8 @@ final class SearchCriteriaViewModel: ObservableObject {
     @Published var cocktailComponents = Tags.createComponentArray()
     
     func matchAllTheThings() {
+        
+        print("--- \(daiquiri.spec.first?.ingredient.rawValue)")
         // if searchText is empty, show everything again
         if searchText == "" {
             for cocktail in cocktailComponents {
