@@ -8,12 +8,8 @@
 import Foundation
 import SwiftData
 
+struct CocktailIngredient: Codable, Hashable {
 
-
-@Model
-class CocktailIngredient {
-
-    let id = UUID()
     let ingredient: Ingredient
     let value: Double
     let unit: MeasurementUnit
