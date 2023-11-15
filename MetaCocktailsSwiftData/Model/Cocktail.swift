@@ -10,7 +10,8 @@ import SwiftUI
 
 @Model
 class Cocktail {
-
+    
+    
     var id = UUID()
     var cocktailName: String
     var imageAsset: CocktailImage?
@@ -33,5 +34,28 @@ class Cocktail {
         self.spec = spec
         self.buildOrder = buildOrder
         self.tags = tags
+    }
+    
+    func getTagSet() -> Tags  {
+        // Start an object to append to from the cocktail tags
+        let cocktailTags = self.tags
+        
+        
+//        1.  loop over each ingredient
+    
+//        print(self.garnish ?? "opps")
+//        print(self.glasswareType)
+        
+        
+        //2. for each ingredient, create an object from the tags variable connected to each ingredient
+        //3. for each tags object, check if each array isn't nil, then append to cocktailTags
+        // if let tags.flavors {
+        //4. append flavors to the cocktail tags object
+
+        //5. convert each array into a set
+
+       //6. return a tags object with a collection of tags from each ingredient combined with the tags from the cocktail
+
+        return cocktailTags
     }
 }

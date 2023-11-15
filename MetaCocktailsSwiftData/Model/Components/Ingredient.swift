@@ -150,7 +150,7 @@ enum Ingredient: String, Codable {
         case .lime:
             Tags(flavors: [.lime,], profiles: [.tart, .sour, .citrusy])
         case .cream:
-            Tags(flavors: [.cream], profiles: [.creamy], textures: [.rich])
+            Tags(flavors: [.lactic], profiles: [.creamy], textures: [.rich])
         case .simple:
             Tags()
         case .granulatedSugar:

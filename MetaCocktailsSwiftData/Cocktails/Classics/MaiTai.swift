@@ -24,3 +24,4 @@ var maiTaiSpec    = [CocktailIngredient(.lime, value: 1),
 var maiTaiTags     = Tags(textures: [.light],
                           styles: [.sour, .shaken],
                           bases: [.rumAged])
+

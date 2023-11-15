@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Bases: String, Codable, CaseIterable {
+enum Booze: String, Codable, CaseIterable {
     //Spirits
     case absinthe             = "Absinthe"
     case armagnac             = "Armagnac"
@@ -35,13 +35,26 @@ enum Bases: String, Codable, CaseIterable {
     case vodka                = "Vodka"
     case vodkaCitrus          = "Vodka(Citrus Infused)"
     case cognacVSOP           = "Cognac (VSOP)"
+    
+    // LIQEURS
+    case cointreau            = "Cointreau"
+    case cremeDeCacao         = "Creme de Cacao"
+    case giffardPamplemousse  = "Giffard Creme de Pamplemousse"
+    case greenChartreuse      = "Green Chartreuse"
+    case maraschinoLiqueur    = "Maraschino Liqueur"
+    case orangeCuracao        = "Orange Curacao"
+    case yellowChartreuse     = "Yellow Chartreuse"
        
        
     // AMARI
     case aperol               = "Aperol"
     case amaroMontenegro      = "Amaro Montenegro"
     case amaroNonino          = "Amaro Nonino"
+    case becherovka           = "Becherovka"
     case campari              = "Campari"
+    case fernetBranca         = "Fernet Branca"
+    case fernetBrancaMenta    = "Fernet Branca Menta"
+    case suze                 = "Suze"
        
     //WINE
     case champagne            = "Chilled Champagne"
@@ -53,6 +66,14 @@ enum Bases: String, Codable, CaseIterable {
     case blancVermouth        = "Blanc Vermouth"
     case cocchiAmericano      = "Cocchi Americano"
     case dryVermouth          = "French Dry Vermouth"
+    case lilletBlanc          = "Lillet Blanc"
     case puntEMes             = "Punt E Mes"
+    case rougeVermouth        = "Fruit Forward Rouge Vermouth"
     case sweetVermouth        = "Sweet Vermouth"
+    
+    
+    //bitters
+    case orangeBitters        = "Orange Bitters"
+    case angosturaBitters     = "Angostura Bitters"
+    case peychauds            = "Peychaud's Bitters"
 }
