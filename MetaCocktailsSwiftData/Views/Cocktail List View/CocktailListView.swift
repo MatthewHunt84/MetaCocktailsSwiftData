@@ -28,7 +28,17 @@ struct CocktailListView: View {
                             .fontDesign(.serif)
                             .padding()
                         Spacer()
-                        Button(action: {isShowingIngredientsList = true} ) {
+                        Button(action: {
+                            
+                            
+                            print(viewModel.cocktails[6].CompileTags().bases)
+                            print(viewModel.cocktails[6].CompileTags().flavors)
+                            print(viewModel.cocktails[6].CompileTags().textures)
+                            print(viewModel.cocktails[6].CompileTags().profiles)
+                            print(viewModel.cocktails[6].CompileTags().styles)
+                            
+                            
+                            isShowingIngredientsList = true} ) {
                             VStack{
 
                                 Text("Refine Search")

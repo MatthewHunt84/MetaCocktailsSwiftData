@@ -17,7 +17,7 @@ struct RecipeIngredientsView: View {
         
         Text("GW: \(cocktail.glasswareType.rawValue)")
         
-        ForEach(cocktail.spec) { ingredient in
+        ForEach(cocktail.spec, id: \.self) { ingredient in
             Text("\(ingredient.value, specifier: "%.2f") oz. \(ingredient.ingredient.rawValue)")
                 .padding(recipeSpacing)
         }

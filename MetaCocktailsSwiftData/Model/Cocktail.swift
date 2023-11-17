@@ -34,4 +34,60 @@ class Cocktail {
         self.buildOrder = buildOrder
         self.tags = tags
     }
+    
+    func CompileTags() -> Tags {
+        
+        var compileTags = self.tags
+        
+        for ingredient in self.spec {
+            if ingredient.ingredient.tags.bases != nil {
+                for base in ingredient.ingredient.tags.bases! {
+                    if compileTags.bases?.append(base) == nil {
+                        compileTags.bases = [base]
+                    }
+                }
+                compileTags.bases = Array(Set(compileTags.bases!))
+            }
+            
+            if ingredient.ingredient.tags.flavors != nil {
+                for flavor in ingredient.ingredient.tags.flavors! {
+                  
+                    if compileTags.flavors?.append(flavor) == nil {
+                        compileTags.flavors = [flavor]
+                    }
+                }
+                compileTags.flavors = Array(Set(compileTags.flavors!))
+            }
+            if ingredient.ingredient.tags.profiles != nil {
+                for profile in ingredient.ingredient.tags.profiles! {
+                    if compileTags.profiles?.append(profile) == nil {
+                        compileTags.profiles = [profile]
+                    }
+                }
+                compileTags.profiles = Array(Set(compileTags.profiles!))
+            }
+            if ingredient.ingredient.tags.styles != nil {
+                for style in ingredient.ingredient.tags.styles! {
+                    if compileTags.styles?.append(style) == nil {
+                        compileTags.styles = [style]
+                    }
+                }
+                compileTags.styles = Array(Set(compileTags.styles!))
+            }
+            if ingredient.ingredient.tags.textures != nil {
+                for texture in ingredient.ingredient.tags.textures! {
+                    if compileTags.textures?.append(texture) == nil {
+                        compileTags.textures = [texture]
+                    }
+                }
+                compileTags.textures = Array(Set(compileTags.textures!))
+            }
+            
+            
+        }
+        
+
+        return compileTags
+    }
+    
 }

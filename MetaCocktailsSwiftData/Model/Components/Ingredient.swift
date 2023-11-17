@@ -10,10 +10,10 @@ import SwiftData
 
 
 
-@Model
-class CocktailIngredient {
 
-    let id = UUID()
+struct CocktailIngredient: Codable, Hashable {
+
+    
     let ingredient: Ingredient
     let value: Double
     let unit: MeasurementUnit

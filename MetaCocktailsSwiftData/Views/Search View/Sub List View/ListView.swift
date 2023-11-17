@@ -23,8 +23,10 @@ struct ListView: View {
                 viewModel.matchAllTheThings()
             }
         Button(action: {
-            var preferredArray = viewModel.selectedPreferredIngredients()
-            var unwantedArray  = viewModel.selectedUnwantedIngredients()
+            
+            
+            let preferredArray = viewModel.selectedPreferredIngredients()
+            let unwantedArray  = viewModel.selectedUnwantedIngredients()
             for preferred in preferredArray {
                 print("Preferred ingredient: \(preferred.name)")
             }

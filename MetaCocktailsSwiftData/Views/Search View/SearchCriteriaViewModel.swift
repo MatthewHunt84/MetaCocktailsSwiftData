@@ -14,6 +14,7 @@ final class SearchCriteriaViewModel: ObservableObject {
     
     func matchAllTheThings() {
         // if searchText is empty, show everything again
+        print("--- This should print and not crash \(daiquiri.spec.first?.ingredient.rawValue)")
         if searchText == "" {
             for cocktail in cocktailComponents {
                 cocktail.matchesCurrentSearch = true
