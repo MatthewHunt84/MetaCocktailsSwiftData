@@ -36,26 +36,60 @@ class Cocktail {
         self.tags = tags
     }
     
-    func getTagSet() -> Tags  {
-        // Start an object to append to from the cocktail tags
-        let cocktailTags = self.tags
-        
-        
-//        1.  loop over each ingredient
-    
-//        print(self.garnish ?? "opps")
-//        print(self.glasswareType)
-        
-        
-        //2. for each ingredient, create an object from the tags variable connected to each ingredient
-        //3. for each tags object, check if each array isn't nil, then append to cocktailTags
-        // if let tags.flavors {
-        //4. append flavors to the cocktail tags object
 
-        //5. convert each array into a set
+    func CompileTags() -> Tags {
+        
+        var compileTags = self.tags
+        
+        for ingredient in self.spec {
+            if ingredient.ingredient.tags.bases != nil {
+                for base in ingredient.ingredient.tags.bases! {
+                    if compileTags.bases?.append(base) == nil {
+                        compileTags.bases = [base]
+                    }
+                }
+                compileTags.bases = Array(Set(compileTags.bases!))
+            }
+            
+            if ingredient.ingredient.tags.flavors != nil {
+                for flavor in ingredient.ingredient.tags.flavors! {
+                  
+                    if compileTags.flavors?.append(flavor) == nil {
+                        compileTags.flavors = [flavor]
+                    }
+                }
+                compileTags.flavors = Array(Set(compileTags.flavors!))
+            }
+            if ingredient.ingredient.tags.profiles != nil {
+                for profile in ingredient.ingredient.tags.profiles! {
+                    if compileTags.profiles?.append(profile) == nil {
+                        compileTags.profiles = [profile]
+                    }
+                }
+                compileTags.profiles = Array(Set(compileTags.profiles!))
+            }
+            if ingredient.ingredient.tags.styles != nil {
+                for style in ingredient.ingredient.tags.styles! {
+                    if compileTags.styles?.append(style) == nil {
+                        compileTags.styles = [style]
+                    }
+                }
+                compileTags.styles = Array(Set(compileTags.styles!))
+            }
+            if ingredient.ingredient.tags.textures != nil {
+                for texture in ingredient.ingredient.tags.textures! {
+                    if compileTags.textures?.append(texture) == nil {
+                        compileTags.textures = [texture]
+                    }
+                }
+                compileTags.textures = Array(Set(compileTags.textures!))
+            }
+            
+            
+        }
+        
 
-       //6. return a tags object with a collection of tags from each ingredient combined with the tags from the cocktail
-
-        return cocktailTags
+        return compileTags
     }
+
 }
