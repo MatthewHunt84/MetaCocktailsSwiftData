@@ -81,7 +81,7 @@ struct TagView: View {
 
         if let profiles = tags.profiles {
             for profile in profiles {
-                profileString += " \(profile.rawValue)"
+                profileString += " \(profile.rawValue),"
             }
             profileString.removeLast()
             print(profileString)
