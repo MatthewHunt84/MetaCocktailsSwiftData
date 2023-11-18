@@ -28,6 +28,6 @@ var cloverClubBuild = Build(instructions: [Instruction(step: 1, method: "Add all
                                           Instruction(step: 4, method: "Garnish with a raspberry.")])
 
 
-var cloverClubTags = Tags(textures: [.light, .velvety],
+var cloverClubTags = Tags(textures: [.light, .silky],
                           styles: [.sour, .shaken],
                         bases: [.gin])

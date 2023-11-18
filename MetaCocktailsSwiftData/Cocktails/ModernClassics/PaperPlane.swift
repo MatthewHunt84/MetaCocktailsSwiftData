@@ -20,8 +20,8 @@ var paperPlaneSpec = [CocktailIngredient(.bourbon , value: 0.75),
                       CocktailIngredient(.aperol, value: 0.75),
                       CocktailIngredient(.lemon, value: 0.75)]
 
-var paperPlaneTags =  Tags(flavors: [.lemon, .orange, .rhubarb, .grapefruit, .whiskey, .bakingSpices], 
-                           profiles: [.aromatic, .fruity, .tart],
+var paperPlaneTags =  Tags(flavors: [.lemon, .orange, .rhubarb, .grapefruit, .bakingSpices], 
+                           profiles: [.citrusy, .tart],
                            textures: [.light],
                            styles: [.sour, .shaken],
                            bases: [.bourbon])

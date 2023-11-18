@@ -58,7 +58,6 @@ struct CocktailListView: View {
                     List(viewModel.cocktails) { cocktail in
                         
                         CocktailListCell(cocktail: cocktail, backgroundColor: .red)
-                        
                             .onTapGesture {
                                 viewModel.selectedCocktail = cocktail
                                 viewModel.isShowingRecipeCard = true

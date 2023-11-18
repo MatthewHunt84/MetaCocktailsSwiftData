@@ -146,23 +146,23 @@ enum Ingredient: String, Codable {
     var tags: Tags {
         switch self {
         case .lemon:
-            Tags(flavors: [.lemon], profiles: [.tart, .sour, .citrusy])
+            Tags(flavors: [.lemon], profiles: [.citrusy])
         case .lime:
-            Tags(flavors: [.lime,], profiles: [.tart, .sour, .citrusy])
+            Tags(flavors: [.lime,], profiles: [.citrusy])
         case .cream:
-            Tags(flavors: [.lactic], profiles: [.creamy], textures: [.rich])
+            Tags(flavors: [.cream], profiles: [.creamy], textures: [.rich])
         case .simple:
             Tags()
         case .granulatedSugar:
-            Tags(textures: [.grainy])
+            Tags(textures: [.unrefined])
         case .orangeFlowerWater:
-            Tags(flavors: [.orange, .whiteFlower], profiles: [.floral])
+            Tags(flavors: [.whiteFlower], profiles: [.floral])
         case .sodaWater:
             Tags()
         case .eggWhites:
             Tags(textures: [.silky, .light])
         case .gingerSyrup:
-            Tags(flavors: [.ginger], profiles: [.spicy, .sharp])
+            Tags(flavors: [.ginger])
         case .honeySyrup:
             Tags(flavors: [.honey])
         case .richDem:
@@ -172,7 +172,7 @@ enum Ingredient: String, Codable {
         case .cucumberSyrup:
             Tags(flavors: [.cucumber])
         case .orgeat:
-            Tags(flavors: [.almond, .orange])
+            Tags(flavors: [.almond])
         case .cranberryJuice:
             Tags(flavors: [.cranberry])
         case .grenadine:
@@ -186,15 +186,15 @@ enum Ingredient: String, Codable {
         case .mint:
             Tags(flavors: [.mint], profiles: [.herbal, .aromatic])
         case .gin:
-            Tags(flavors: [.juniper, .citrusPeel], profiles: [.floral, .aromatic])
+            Tags(flavors: [.juniper])
         case .rumWhite:
             Tags()
         case .rumAged:
-            Tags(flavors: [.vanilla])
+            Tags()
         case .rumBlackStrap:
-            Tags(flavors: [.vanilla, .molasses])
+            Tags(flavors: [.molasses])
         case .rumJamaicanAged:
-            Tags(flavors: [.hogo, .vanilla, .funkyRum])
+            Tags(flavors: [.funky])
         case .rum:
             Tags()
         case .vodka:
@@ -202,117 +202,117 @@ enum Ingredient: String, Codable {
         case .vodkaCitrus:
             Tags(flavors: [.citrusPeel], profiles: [.citrusy])
         case .ryeWhiskey:
-            Tags(flavors: [.rye, .vanilla, .bakingSpices, .whiskey])
+            Tags()
         case .scotchIsla:
-            Tags(flavors: [.peat, .vanilla, .maltedBarley, .whiskey], profiles: [.smokey])
+            Tags(flavors: [.peat], profiles: [.smokey])
         case .scotchBlended:
-            Tags(flavors: [.maltedBarley, .vanilla, .whiskey])
+            Tags()
         case .bourbon:
-            Tags(flavors: [.vanilla, .bakingSpices, .whiskey])
+            Tags()
         case .rumDemerara:
-            Tags(flavors: [.vanilla, .bakingSpices])
+            Tags()
         case .cachaca:
-            Tags(flavors: [.funkyRum, .hogo])
+            Tags(flavors: [.funky])
         case .cognacVSOP:
-            Tags(flavors: [.vanilla], profiles: [.fruity])
+            Tags()
         case .orangeCuracao:
-            Tags(flavors: [.orange], profiles: [.medicinal])
+            Tags(flavors: [.orange])
         case .cointreau:
             Tags(flavors: [.orange, .whiteFlower])
         case .aperol:
-            Tags(flavors: [.rhubarb, .orange, .grapefruit], profiles: [.bitter, .sweet])
+            Tags(flavors: [.rhubarb, .orange, .grapefruit], profiles: [.bittersweet])
         case .amaroNonino:
-            Tags(profiles: [.herbal, .bitter, .sweet])
+            Tags(profiles: [.herbal, .bittersweet])
         case .campari:
-            Tags(profiles: [.bitter, .sweet])
+            Tags(profiles: [.bitter])
         case .prosecco:
-            Tags(profiles: [.dry], textures: [.effervescent, .bubbly])
+            Tags(textures: [.effervescent])
         case .champagne:
-            Tags(profiles: [.dry, .sweet], textures: [.effervescent, .bubbly])
+            Tags(textures: [.effervescent])
         case .sweetVermouth:
-            Tags(profiles: [.bitter, .sweet, .herbal, .botanical])
+            Tags(profiles: [.bittersweet, .botanical]) // change to bitterSweet
         case .blancVermouth:
-            Tags(profiles: [.sweet, .fruity])
+            Tags()
         case .dryVermouth:
-            Tags(profiles: [.dry, .fruity, .aromatic])
+            Tags(profiles: [.dry])
         case .puntEMes:
-            Tags(profiles: [.bitter, .sweet, .herbal, .botanical])
+            Tags(profiles: [.bittersweet, .herbal])
         case .cocchiAmericano:
-            Tags(profiles: [.dry, .fruity, .bitter, .sweet])
+            Tags(profiles: [.dry, .fruity, .bittersweet])
         case .amontillado:
             Tags(profiles: [.dry, .bright ], textures: [.thin])
         case .sparklingWater:
             Tags(textures: [.effervescent])
         case .orangeBitters:
-            Tags(flavors: [.orange], profiles: [.bitter])
+            Tags(flavors: [.orange])
         case .angosturaBitters:
-            Tags(flavors: [.bakingSpices], profiles: [.dry, .bitter, .aromatic])
+            Tags(flavors: [.bakingSpices])
         case .ginLondonDry:
-            Tags(flavors: [.juniper, .citrusPeel], profiles: [.floral, .aromatic, .dry])
+            Tags(flavors: [.juniper])
         case .greenChartreuse:
-            Tags(flavors: [.anise, .angelica], profiles: [.sweet, .herbal])
+            Tags(flavors: [.anise, .angelica], profiles: [.herbal])
         case .yellowChartreuse:
-            Tags(flavors: [.anise, .angelica], profiles: [.sweet, .herbal])
+            Tags(flavors: [.anise, .angelica], profiles: [.herbal])
         case .maraschinoLiqueur:
-            Tags(flavors: [.cherry], profiles: [.sweet])
+            Tags(flavors: [.cherry])
         case .straightRyeOrBourbon:
-            Tags(flavors: [.vanilla, .bakingSpices, .whiskey])
+            Tags()
         case .rougeVermouth:
-            Tags(profiles: [.sweet, .fruity])
+            Tags()
         case .irishWhiskey:
-            Tags(flavors: [.vanilla, .bakingSpices, .whiskey])
+            Tags()
         case .mezcalSmokey:
-            Tags(flavors: [.agave], profiles: [.smokey])
+            Tags(profiles: [.smokey])
         case .mezcalNotSmokey:
-            Tags(flavors: [.agave])
+            Tags()
         case .amaroMontenegro:
-            Tags(profiles: [.herbal, .bitter, .sweet, .floral])
+            Tags(flavors: [.rosewater], profiles: [.herbal, .bittersweet, .floral])
         case .giffardPamplemousse:
             Tags(flavors: [.grapefruit])
         case .lilletBlanc:
-            Tags(profiles: [.fruity, .floral])
+            Tags()
         case .cremeDeCacao:
             Tags(flavors: [.chocolate])
         case .agaveSyrup:
-            Tags(flavors: [.agave], profiles: [.sweet])
+            Tags(flavors: [.agave])
         case .tequilaAnejo:
-            Tags(flavors: [.tequila, .vanilla, .bakingSpices])
+            Tags()
         case .tequilaBlanco:
-            Tags(flavors: [.tequila])
+            Tags()
         case .tequilaReposado:
-            Tags(flavors: [.tequila, .vanilla])
+            Tags()
         case .raspberries:
             Tags(flavors: [.raspberry])
         case .armagnac:
-            Tags(flavors: [.vanilla], profiles: [.fruity])
+            Tags()
         case .suze:
-            Tags(profiles: [.bitter, .herbal, .floral])
+            Tags(profiles: [.herbal, .floral])
         case .salt:
             Tags()
         case .grapefruitSoda:
             Tags(flavors: [.grapefruit], profiles: [.fruity], textures: [.effervescent])
         case .pisco:
-            Tags(profiles: [.fruity])
+            Tags()
         case .raspberrySyrup:
             Tags(flavors: [.raspberry])
         case .demSyrupOneToOne:
             Tags()
         case .bourbon120Proof:
-            Tags(flavors: [.whiskey])
+            Tags()
         case .becherovka:
-            Tags(flavors: [.cinnamon], profiles: [.herbal, .bitter])
+            Tags(flavors: [.cinnamon, .clove], profiles: [.bittersweet])
         case .fernetBranca:
-            Tags(flavors: [.anise], profiles: [.herbal, .bitter])
+            Tags(flavors: [.anise, .menthol], profiles: [.herbal])
         case .fernetBrancaMenta:
-            Tags(flavors: [.mint, .anise], profiles: [.herbal, .bitter])
+            Tags(flavors: [.mint, .anise, .menthol], profiles: [.herbal])
         case .nutmeg:
             Tags(flavors: [.nutmeg])
         case .egg:
             Tags()
         case .absinthe:
-            Tags(flavors: [.anise], profiles: [.herbal])
+            Tags(flavors: [.anise])
         case .peychauds:
-            Tags()
+            Tags(flavors: [.tarragon])
         }
     }
 }

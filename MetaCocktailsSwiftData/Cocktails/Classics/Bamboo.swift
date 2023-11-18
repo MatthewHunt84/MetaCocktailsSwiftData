@@ -23,7 +23,7 @@ var bambooSpec = [CocktailIngredient(.amontillado, value: 1.5),
                   CocktailIngredient(.orangeBitters, value: 2, unit: .dash)]
 
 var bambooTags = Tags(flavors: [.lemon],
-                      profiles: [.aromatic, .floral, .fruity],
+                      profiles: nil,
                       textures: [.thin, .light],
                       styles: [.martini, .stirred],
                       bases: [.dryVermouth, .amontillado])

@@ -11,6 +11,7 @@ enum Profile: String, Codable, CaseIterable {
     case tart           = "Tart"
     case sweet          = "Sweet"
     case bitter         = "Bitter"
+    case bittersweet    = "Bittersweet"
     case spicy          = "Spicy"
     case citrusy        = "Citrusy"
     case aromatic       = "Aromatic"
@@ -27,7 +28,8 @@ enum Profile: String, Codable, CaseIterable {
     case botanical      = "Botanical"
     case nutty          = "Nutty"
     case bright         = "Bright"
-    case spiritForward  = "Spirit Forward"
+    //TODO: lets add spiritForward on a per cocktail basis!
+    case spiritForward  = "Spirit Forward" // lets add these on a per cocktail basis.
     case refreshing     = "Refreshing"
     
     
