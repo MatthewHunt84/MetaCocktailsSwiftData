@@ -31,11 +31,8 @@ struct CocktailListView: View {
                         Button(action: {
                            
 //                            print("\(viewModel.cocktails[0].getTagSet())")
-                            print(viewModel.cocktails[6].CompileTags().bases)
-                            print(viewModel.cocktails[6].CompileTags().flavors)
-                            print(viewModel.cocktails[6].CompileTags().textures)
-                            print(viewModel.cocktails[6].CompileTags().profiles)
-                            print(viewModel.cocktails[6].CompileTags().styles)
+                            print(viewModel.cocktails[6].CompileTags())
+                           
       
                             isShowingIngredientsList = true} ) {
                             VStack{
