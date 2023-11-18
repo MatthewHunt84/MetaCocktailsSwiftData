@@ -1,8 +1,8 @@
 //
-//  Spirits.swift
+//  Booze.swift
 //  MetaCocktailsSwiftData
 //
-//  Created by Matt Hunt on 9/11/23.
+//  Created by James on 11/17/23.
 //
 
 import Foundation
