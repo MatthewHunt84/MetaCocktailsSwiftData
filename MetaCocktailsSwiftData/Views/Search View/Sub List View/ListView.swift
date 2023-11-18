@@ -35,37 +35,37 @@ struct ListView: View {
             for preferred in preferredArray {
                 for cocktail in CocktailListViewModel().cocktails {
                     
-                    if cocktail.tags.bases != nil {
-                        for base in cocktail.tags.bases! {
+                    if let bases = cocktail.CompileTags().bases {
+                        for base in bases {
                             if base.rawValue ==  preferred {
                                 matchedCocktails.append(cocktail)
                                
                             }
                         }
                     }
-                    if cocktail.tags.flavors != nil {
-                        for flavor in cocktail.tags.flavors! {
+                    if let flavors = cocktail.CompileTags().flavors {
+                        for flavor in flavors {
                             if flavor.rawValue == preferred {
                                 matchedCocktails.append(cocktail)
                             }
                         }
                     }
-                    if cocktail.tags.profiles != nil {
-                        for profile in cocktail.tags.profiles! {
+                    if let profiles = cocktail.CompileTags().profiles {
+                        for profile in profiles {
                             if profile.rawValue == preferred {
                                 matchedCocktails.append(cocktail)
                             }
                         }
                     }
-                    if cocktail.tags.styles != nil {
-                        for style in cocktail.tags.styles! {
+                    if let styles = cocktail.CompileTags().styles {
+                        for style in styles {
                             if style.rawValue == preferred {
                                 matchedCocktails.append(cocktail)
                             }
                         }
                     }
-                    if cocktail.tags.textures != nil {
-                        for texture in cocktail.tags.textures! {
+                    if let textures = cocktail.CompileTags().textures {
+                        for texture in textures {
                             if texture.rawValue == preferred {
                                 matchedCocktails.append(cocktail)
                             }
