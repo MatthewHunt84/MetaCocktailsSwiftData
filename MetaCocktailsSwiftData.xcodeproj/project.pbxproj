@@ -77,7 +77,6 @@
 		F4C6A8E42AAFF6AC00BB0AD0 /* Flavors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6A8E32AAFF6AC00BB0AD0 /* Flavors.swift */; };
 		F4C6A8E62AAFFC2F00BB0AD0 /* Textures.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6A8E52AAFFC2F00BB0AD0 /* Textures.swift */; };
 		F4C6A8E82AAFFC6B00BB0AD0 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6A8E72AAFFC6B00BB0AD0 /* Styles.swift */; };
-		F4C6A8EA2AAFFCBF00BB0AD0 /* Bases.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6A8E92AAFFCBF00BB0AD0 /* Bases.swift */; };
 		F4C6A8EC2AAFFE5700BB0AD0 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6A8EB2AAFFE5700BB0AD0 /* Tags.swift */; };
 		F4C6A8F32AB003C200BB0AD0 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6A8F22AB003C200BB0AD0 /* Localization.swift */; };
 		F4C6A8F52AB0042400BB0AD0 /* Cocktail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6A8F42AB0042400BB0AD0 /* Cocktail.swift */; };
@@ -162,7 +161,6 @@
 		F4C6A8E32AAFF6AC00BB0AD0 /* Flavors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flavors.swift; sourceTree = "<group>"; };
 		F4C6A8E52AAFFC2F00BB0AD0 /* Textures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Textures.swift; sourceTree = "<group>"; };
 		F4C6A8E72AAFFC6B00BB0AD0 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
-		F4C6A8E92AAFFCBF00BB0AD0 /* Bases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bases.swift; sourceTree = "<group>"; };
 		F4C6A8EB2AAFFE5700BB0AD0 /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
 		F4C6A8F22AB003C200BB0AD0 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		F4C6A8F42AB0042400BB0AD0 /* Cocktail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cocktail.swift; sourceTree = "<group>"; };
@@ -412,7 +410,6 @@
 				F4C6A8F62AB0145800BB0AD0 /* Profiles.swift */,
 				F4C6A8E52AAFFC2F00BB0AD0 /* Textures.swift */,
 				F4C6A8E72AAFFC6B00BB0AD0 /* Styles.swift */,
-				F4C6A8E92AAFFCBF00BB0AD0 /* Bases.swift */,
 			);
 			path = SearchTags;
 			sourceTree = "<group>";
@@ -594,7 +591,6 @@
 				F4DBE4C52AB8831C009A0C09 /* AnimatedSearchView.swift in Sources */,
 				1AC386CA2AAABED10064F52A /* CocktailListViewModel.swift in Sources */,
 				F4C74C812AD8CC3300EA3334 /* AperolSpritz.swift in Sources */,
-				F4C6A8EA2AAFFCBF00BB0AD0 /* Bases.swift in Sources */,
 				1AC386BB2AAABED10064F52A /* Glassware.swift in Sources */,
 				1AC386BE2AAABED10064F52A /* Garnish.swift in Sources */,
 				1AC386C52AAABED10064F52A /* RecipeIngredientsView.swift in Sources */,
