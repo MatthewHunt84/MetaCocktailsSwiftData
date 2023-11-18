@@ -36,11 +36,10 @@ class Cocktail {
         self.tags = tags
     }
     
-
     func CompileTags() -> Tags {
         
         var compileTags = self.tags
-        
+
         for ingredient in self.spec {
             if ingredient.ingredient.tags.bases != nil {
                 for base in ingredient.ingredient.tags.bases! {
