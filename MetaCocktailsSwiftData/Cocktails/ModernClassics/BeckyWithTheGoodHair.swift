@@ -28,6 +28,6 @@ var beckyWithTheGoodHairBuild = Build(instructions: [Instruction(step: 1, method
                                           Instruction(step: 4, method: "Grate some nutmeg over the top.")])
 
 
-var beckyWithTheGoodHairTags = Tags(textures: [.rich, .velvety], 
+var beckyWithTheGoodHairTags = Tags(textures: [.rich, .silky], 
                                     styles: [.flip, .shaken],
                                     bases: [.cognacVSOP])

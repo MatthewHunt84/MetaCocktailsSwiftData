@@ -40,6 +40,7 @@ struct TagView: View {
     var flavorsString = ""
     var texturesString = ""
     var profileString = ""
+    var styleString = ""
     
     init(for cocktail: Cocktail) {
         
@@ -86,7 +87,17 @@ struct TagView: View {
             profileString.removeLast()
             print(profileString)
         } else {
-            texturesString = "NO TEXTURES"
+            profileString = "NO PROFILES"
+        }
+        
+        if let styles = tags.styles {
+            for style in styles {
+                styleString += " \(style.rawValue),"
+            }
+            styleString.removeLast()
+            print(styleString)
+        } else {
+            texturesString = "NO STYLE"
         }
     }
     
@@ -114,6 +125,12 @@ struct TagView: View {
                 Text("PROFILES:")
                 Text(profileString)
                     .foregroundStyle(.cyan)
+                    .fontWeight(.light)
+            }
+            HStack(spacing: 10) {
+                Text("STYLES:")
+                Text(styleString)
+                    .foregroundStyle(.brandPrimaryOrange)
                     .fontWeight(.light)
             }
         }

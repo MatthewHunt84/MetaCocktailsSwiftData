@@ -17,7 +17,6 @@ struct CocktailListCell: View {
             Text(cocktail.cocktailName)
                 .font(.title)
                 .fontDesign(.serif)
-            
         }
     }
 }

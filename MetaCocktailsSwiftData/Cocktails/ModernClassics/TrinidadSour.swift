@@ -23,8 +23,8 @@ var trinidadSourSpec = [CocktailIngredient( .lemon, value: 0.75),
                         
 
 
-var trinidadSourTags = Tags(flavors: [.almond, .lemon, .whiskey],
+var trinidadSourTags = Tags(flavors: [.almond, .lemon],
                             profiles: [.aromatic, .bitter, .bakingSpices],
-                            textures: [.velvety],
+                            textures: [.silky],
                             styles: [.sour, .shaken],
                             bases: [.ryeWhiskey])

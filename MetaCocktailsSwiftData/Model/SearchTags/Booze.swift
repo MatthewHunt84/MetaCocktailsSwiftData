@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Booze: String, Codable, CaseIterable {
+enum Booze: String, Codable, CaseIterable { // maybe a struct? Problem is connecting whiskies etc  in search function
     //Spirits
     case absinthe             = "Absinthe"
     case armagnac             = "Armagnac"

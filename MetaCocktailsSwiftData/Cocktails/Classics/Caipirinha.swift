@@ -29,7 +29,7 @@ var caipirnhaBuild = Build(instructions: [Instruction(step: 1, method: "Cut half
                                           Instruction(step: 4, method: "Pour all of the contents of the tin into your double old fashioned glass and serve with a straw.")])
 
 var caipirnhaTags  = Tags(flavors: [.lime],
-                          profiles: [.sweet, .citrusy, .fruity],
-                          textures: [.light, .grainy],
+                          profiles: [.sweet, .citrusy],
+                          textures: [.light, .unrefined],
                           styles: [.sour, .shaken],
                           bases: [.cachaca])

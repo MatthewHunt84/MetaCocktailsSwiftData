@@ -28,6 +28,6 @@ var whiskeySourBuild = Build(instructions: [Instruction(step: 1, method: "Add al
                                           Instruction(step: 4, method: "Wait about 30 seconds after you stain out the cocktail to make the design over the top. It helps for the egg whites to settle for a bit to give you a better and more even canvas to work with.")])
 
 
-var whiskeySourTags = Tags(textures: [.light, .velvety],
+var whiskeySourTags = Tags(textures: [.light, .silky],
                            styles: [.sour, .shaken],
                            bases: [.straightRyeOrBourbon, .bourbon, .ryeWhiskey])
