@@ -24,4 +24,4 @@ var boulevardierTags = Tags(flavors: [.orange, .bakingSpices],
                        profiles: [.bittersweet],
                        textures: [.rich],
                        styles: [.negroni, .stirred],
-                       bases: [.straightRyeOrBourbon])
+                            bases: [.straightRyeOrBourbon, .ryeWhiskey, .bourbon, .sweetVermouth, .campari])

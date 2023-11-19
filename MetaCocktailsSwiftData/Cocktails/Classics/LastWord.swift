@@ -23,4 +23,4 @@ var lastWordSpec  = [CocktailIngredient(.lime, value: 0.75),
 
 var lastWordTags = Tags(textures: [.light],
                         styles: [.sour, .shaken],
-                        bases: [.ginLondonDry])
+                        bases: [.ginLondonDry, .maraschinoLiqueur, .greenChartreuse])

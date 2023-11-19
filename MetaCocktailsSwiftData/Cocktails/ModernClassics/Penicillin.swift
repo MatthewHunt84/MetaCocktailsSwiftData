@@ -31,4 +31,4 @@ var penicillinTags = Tags(flavors: [.lemon, .honey, .ginger, .peat],
                           profiles: [.citrusy, .smokey],
                           textures: [.light],
                           styles: [.sour, .shaken],
-                          bases: [.scotchBlended])
+                          bases: [.scotchBlended, .scotchIsla])

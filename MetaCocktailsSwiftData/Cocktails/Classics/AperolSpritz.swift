@@ -32,4 +32,4 @@ var aperolSpritzTags = Tags(flavors: [.orange, .rhubarb, .grapefruit],
                             profiles: [.bitter],
                             textures: [.effervescent],
                             styles: [.spritz, .built],
-                            bases: [.aperol])
+                            bases: [.aperol, .prosecco])

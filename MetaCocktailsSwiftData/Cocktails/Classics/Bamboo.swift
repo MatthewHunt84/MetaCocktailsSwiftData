@@ -26,5 +26,5 @@ var bambooTags = Tags(flavors: [.lemon],
                       profiles: nil,
                       textures: [.thin, .light],
                       styles: [.martini, .stirred],
-                      bases: [.dryVermouth, .amontillado])
+                      bases: [.dryVermouth, .amontillado, .orangeBitters])
 

@@ -24,4 +24,4 @@ var paperPlaneTags =  Tags(flavors: [.lemon, .orange, .rhubarb, .grapefruit, .ba
                            profiles: [.citrusy, .tart],
                            textures: [.light],
                            styles: [.sour, .shaken],
-                           bases: [.bourbon])
+                           bases: [.bourbon, .aperol, .amaroNonino])

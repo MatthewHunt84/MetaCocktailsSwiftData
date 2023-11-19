@@ -30,4 +30,4 @@ var beckyWithTheGoodHairBuild = Build(instructions: [Instruction(step: 1, method
 
 var beckyWithTheGoodHairTags = Tags(textures: [.rich, .silky], 
                                     styles: [.flip, .shaken],
-                                    bases: [.cognacVSOP])
+                                    bases: [.cognacVSOP, .cremeDeCacao, .fernetBrancaMenta, .becherovka])

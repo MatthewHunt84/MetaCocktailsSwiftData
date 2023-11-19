@@ -25,4 +25,4 @@ var manhattanSpec     =  [CocktailIngredient(.angosturaBitters, value: 2, unit: 
 var manhattanTags     = Tags(profiles: [.spiritForward],
                              textures: [.rich],
                              styles: [.manhattan, .stirred],
-                             bases: [.ryeWhiskey, .bourbon, .straightRyeOrBourbon])
+                             bases: [.ryeWhiskey, .bourbon, .straightRyeOrBourbon, .sweetVermouth, .angosturaBitters])

@@ -26,4 +26,4 @@ var elPresidenteTags  = Tags(flavors: [.orange, .pomegranate],
                              profiles: [.aromatic, .fruity],
                              textures: [.rich],
                              styles: [.martini, .stirred],
-                             bases: [.rumWhite, .blancVermouth])
+                             bases: [.rumWhite, .blancVermouth, .orangeCuracao])

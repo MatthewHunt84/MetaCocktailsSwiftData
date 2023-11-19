@@ -24,4 +24,4 @@ var negroniTags = Tags(flavors: [.orange],
                        profiles: [.bittersweet],
                        textures: [.rich],
                        styles: [.negroni, .stirred],
-                       bases: [.gin])
+                       bases: [.gin, .sweetVermouth, .campari])
