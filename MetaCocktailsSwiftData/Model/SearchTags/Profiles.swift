@@ -32,7 +32,4 @@ enum Profile: String, Codable, CaseIterable {
     case spiritForward  = "Spirit Forward" // lets add these on a per cocktail basis.
     case refreshing     = "Refreshing"
     
-    
-    
-    case test           = "This is for testing"
 }

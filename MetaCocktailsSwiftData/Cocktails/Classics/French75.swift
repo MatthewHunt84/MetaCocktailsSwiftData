@@ -28,5 +28,5 @@ var french75Build  = Build(instructions: [Instruction(step: 1, method: "Add all 
 var french75Tags   = Tags(flavors: [.lemon], 
                           profiles: [.citrusy, .floral],
                           textures: [.effervescent, .light],
-                          styles: [.collins, .shaken, .built],
+                          styles: [.collins, .shaken, .built, .fizz],
                           bases: [.gin, .champagne])

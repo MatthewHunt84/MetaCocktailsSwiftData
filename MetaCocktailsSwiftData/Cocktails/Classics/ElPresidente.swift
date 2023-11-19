@@ -23,7 +23,7 @@ var elPresidenteSpec  = [CocktailIngredient(.rumWhite, value: 1.5),
                          CocktailIngredient(.grenadine, value: 0.5, unit: .barspoon)]
 
 var elPresidenteTags  = Tags(flavors: [.orange, .pomegranate],
-                             profiles: [.aromatic, .fruity],
+                             profiles: [.aromatic, .fruity, .spiritForward],
                              textures: [.rich],
                              styles: [.martini, .stirred],
                              bases: [.rumWhite, .blancVermouth, .orangeCuracao])
