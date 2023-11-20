@@ -27,4 +27,4 @@ var cosmoTags  = Tags(flavors: [.orange, .cranberry, .lime, .lemon ],
                       profiles: [.fruity, .citrusy],
                       textures: [.light],
                       styles: [.sour, .shaken],
-                      bases: [.vodkaCitrus])
+                      bases: [.vodkaCitrus, .vodka, .cointreau])

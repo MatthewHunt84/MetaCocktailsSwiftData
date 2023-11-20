@@ -22,4 +22,4 @@ var finalWardSpec  = [CocktailIngredient(.lemon, value: 0.75),
 
 var finalWardTags = Tags(textures: [.light],
                          styles: [.sour, .shaken],
-                        bases: [.ryeWhiskey])
+                         bases: [.ryeWhiskey, .greenChartreuse, .maraschinoLiqueur])

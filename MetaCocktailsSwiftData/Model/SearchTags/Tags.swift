@@ -25,6 +25,9 @@ struct Tags: Codable {
         for profile in Profile.allCases {
             array.append(CocktailComponent(for: profile))
         }
+        for texture in Texture.allCases {
+            array.append(CocktailComponent(for: texture))
+        }
         for style in Style.allCases {
             array.append(CocktailComponent(for: style))
         }

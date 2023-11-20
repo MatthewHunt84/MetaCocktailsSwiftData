@@ -17,4 +17,4 @@ var daiquiriTags = Tags(flavors: [.lime],
                 profiles: [.citrusy],
                 textures: [.light],
                         styles: [.sour, .shaken],
-                bases: [.rum])
+                        bases: [.rum, .rumAged, .rumWhite, .rumDemerara, .rumJamaicanAged])

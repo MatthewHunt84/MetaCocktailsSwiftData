@@ -65,6 +65,7 @@ enum PreferenceType: String, CaseIterable {
     case spirits  = "Spirits"
     case profiles = "Profiles"
     case flavors  = "Flavors"
+    case textures = "Textures"
     case style    = "Style"
 }
 
@@ -88,6 +89,8 @@ struct ChosenListView: View {
             ListView(selectedList: $selectedType, navigationTitle: "Profile Preferences", isShowingLikes: $isShowingLikes)
         case .flavors:
             ListView(selectedList: $selectedType, navigationTitle: "Flavor Preferences", isShowingLikes: $isShowingLikes)
+        case .textures:
+            ListView(selectedList: $selectedType, navigationTitle: "Texture Preferences", isShowingLikes: $isShowingLikes)
         case .style:
             ListView(selectedList: $selectedType, navigationTitle: "Style Preferences", isShowingLikes: $isShowingLikes)
         default:

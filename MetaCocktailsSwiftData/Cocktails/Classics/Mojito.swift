@@ -19,7 +19,7 @@ var mojito = Cocktail(cocktailName: "Mojito",
 let mojitoTags = Tags(profiles: [.herbal, .refreshing],
                       textures: [.light, .effervescent],
                       styles: [.sour, .shaken, .built],
-                      bases: [.rumWhite])
+                      bases: [.rumWhite, .rumAged, .rumDemerara, .rumJamaicanAged])
 
 let mojitoSpec: [CocktailIngredient] = [CocktailIngredient(.mint, value: 8, unit: .leaves),
                                         CocktailIngredient(.lime, value: 0.75),

@@ -66,15 +66,17 @@ class CocktailComponent: Identifiable, ObservableObject {
     var isFlavor: Bool = false
     var isProfile: Bool = false
     var isStyle: Bool = false
+    var isTexture: Bool = false
     var preferenceType: PreferenceType
  
 
-    init(name: String, isFlavor: Bool = false, isProfile: Bool = false, isStyle: Bool = false, isSpirit: Bool = false, matchesCurrentSearch: Bool = true) {
+    init(name: String, isFlavor: Bool = false, isProfile: Bool = false, isStyle: Bool = false, isSpirit: Bool = false, isTexture: Bool = false, matchesCurrentSearch: Bool = true) {
         self.name = name
         self.isSpirit = isSpirit
         self.isFlavor = isFlavor
         self.isStyle = isStyle
         self.isProfile = isProfile
+        self.isTexture = isTexture
         self.matchesCurrentSearch = matchesCurrentSearch
        
         if isFlavor {
@@ -83,8 +85,10 @@ class CocktailComponent: Identifiable, ObservableObject {
             preferenceType = .style
         } else if isSpirit {
             preferenceType = .spirits
-        } else {
+        } else if isProfile {
             preferenceType = .profiles
+        } else {
+            preferenceType = .textures
         }
     }
     
@@ -113,6 +117,12 @@ class CocktailComponent: Identifiable, ObservableObject {
         self.name = style.rawValue
         self.isStyle = true
         self.preferenceType = .style
+        self.matchesCurrentSearch = true
+    }
+    init(for texture: Texture) {
+        self.name = texture.rawValue
+        self.isTexture = true
+        self.preferenceType = .textures
         self.matchesCurrentSearch = true
     }
 }

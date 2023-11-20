@@ -29,4 +29,4 @@ var french75CognacTags   = Tags(flavors: [.lemon],
                                 profiles: [.citrusy],
                                 textures: [.effervescent, .light],
                                 styles: [.fizz, .shaken, .built],
-                                bases: [.cognacVSOP])
+                                bases: [.cognacVSOP, .champagne])
