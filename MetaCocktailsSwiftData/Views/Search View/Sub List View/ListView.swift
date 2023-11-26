@@ -26,74 +26,187 @@ struct ListView: View {
             
             //create cocktailComponent arrays for unwanted and preferred components
             //loop over the preferences and add them to the arrays
-            let preferredArray = viewModel.selectedPreferredIngredients().map({ $0.name })
-            let unwantedArray = viewModel.selectedUnwantedIngredients().map({ $0.name })
-            var matchedCocktails: [Cocktail] = []
+            let preferredArray = viewModel.selectedPreferredIngredients()
+            let unwantedArray = viewModel.selectedUnwantedIngredients()
+            var totalMatchedCocktails: [Cocktail] = []
+            var matchedBasesCocktails: [Cocktail] = []
+            var matchedStylesAndBasesCocktails: [Cocktail] = []
+            var matchedTexturesBasesAndStylesCoctkails: [Cocktail] = []
+            var matchedProfilesTexturesBasesAndStylesCocktails: [Cocktail] = []
+            var flavorCount = viewModel.selectedPreferredIngredients().filter({ $0.isFlavor }).count
             var matchedCount = 0
-        
-            //loop over the preferred array and compare each preferred component to the components in each array of tags for each cocktail. if there's a match, add the cocktail to the Matched Cocktails array
-            
-                for cocktail in CocktailListViewModel().cocktails {
-                    if let bases = cocktail.CompileTags().bases {
-                        for base in bases {
-                            for preferred in preferredArray {
-                                if base.rawValue.lowercased() == preferred.lowercased() {
-                                    matchedCount += 1
-                                }
-                            }
-                        }
-                    }
-                    if let styles = cocktail.CompileTags().styles {
-                        for cocktailStyle in styles {
-                            for preferred in preferredArray {
-                                if cocktailStyle.rawValue.lowercased() == preferred.lowercased() {
-                                    matchedCount += 1
-                                }
-                            }
-                        }
-                    }
-                    if let flavors = cocktail.CompileTags().flavors {
-                        for flavor in flavors {
-                            for preferred in preferredArray {
-                                if flavor.rawValue.lowercased() == preferred.lowercased() {
-                                    matchedCount += 1
-                                }
-                            }
-                        }
-                    }
-                    if let profiles = cocktail.CompileTags().profiles {
-                        for profile in profiles {
-                            for preferred in preferredArray {
-                                if profile.rawValue.lowercased() == preferred.lowercased() {
-                                    matchedCount += 1
-                                }
-                            }
-                        }
-                    }
-                
-                    if let textures = cocktail.CompileTags().textures {
-                        for texture in textures {
-                            for preferred in preferredArray {
-                                if texture.rawValue.lowercased() == preferred.lowercased() {
-                                    matchedCount += 1
-                                }
-                            }
-                        }
-                    }
-                    if matchedCount >= preferredArray.count {
-                        matchedCocktails.append(cocktail)
-
-                    }
-                    matchedCount = 0
+            var preferredBases: [CocktailComponent] = preferredArray.filter({ $0.isSpirit })
+            if preferredBases.isEmpty {
+                for booze in Booze.allCases {
+                    preferredBases.append(CocktailComponent(for: booze))
                 }
-            var matchedSet = Set(matchedCocktails)
+            }
+
+            var preferredStyles = preferredArray.filter({ $0.isStyle })
+            if preferredStyles.isEmpty {
+                for style in Style.allCases {
+                    preferredStyles.append(CocktailComponent(for: style))
+                }
+            }
+            var preferredProfiles = preferredArray.filter({ $0.isProfile })
+            if preferredProfiles.isEmpty {
+                for profile in Profile.allCases {
+                    preferredProfiles.append(CocktailComponent(for: profile))
+                }
+            }
+            var preferredTextures = preferredArray.filter({ $0.isTexture })
+            if preferredTextures.isEmpty {
+                for texture in Texture.allCases {
+                    preferredTextures.append(CocktailComponent(for: texture))
+                }
+            }
+            var preferredFlavors = preferredArray.filter({ $0.isFlavor })
+            if preferredFlavors.isEmpty {
+                for flavor in Flavor.allCases {
+                    preferredFlavors.append(CocktailComponent(for: flavor))
+                }
+            }
+            
+            
+            for cocktail in CocktailListViewModel().cocktails {
+                if let bases = cocktail.CompileTags().bases {
+                    for base in bases {
+                        for preferred in preferredBases {
+                            if base.rawValue.lowercased() == preferred.name.lowercased() {
+                                matchedBasesCocktails.append(cocktail)
+                            }
+                        }
+                        
+                    }
+                }
+            }
+           
+            for matchedBases in matchedBasesCocktails {
+                if let styles = matchedBases.CompileTags().styles {
+                    for style in styles {
+                        for preferred in preferredStyles {
+                            if style.rawValue.lowercased() == preferred.name.lowercased() {
+                                matchedStylesAndBasesCocktails.append(matchedBases)
+                            }
+                        }
+                    }
+                }
+            }
+            for matchedBasesAndStyles in matchedStylesAndBasesCocktails {
+                if let textures = matchedBasesAndStyles.CompileTags().textures {
+                    for texture in textures {
+                        for preferredTexture in preferredTextures {
+                            if texture.rawValue.lowercased() == preferredTexture.name.lowercased() {
+                                matchedTexturesBasesAndStylesCoctkails.append(matchedBasesAndStyles)
+                            }
+                        }
+                    }
+                }
+            }
+            for matched in matchedTexturesBasesAndStylesCoctkails {
+                if let profiles = matched.CompileTags().profiles {
+                    for profile in profiles {
+                        for preferredProfile in preferredProfiles {
+                            if profile.rawValue.lowercased() == preferredProfile.name.lowercased() {
+                                matchedProfilesTexturesBasesAndStylesCocktails.append(matched)
+                            }
+                        }
+                    }
+                }
+            }
+            let matchedPTBSCSet = Set(matchedProfilesTexturesBasesAndStylesCocktails)
+            
+            for matched in matchedPTBSCSet {
+                matchedCount = 0
+                if let flavors = matched.CompileTags().flavors {
+                    for flavor in flavors {
+                        
+                        for preferredFlavor in preferredFlavors {
+                            if flavor.rawValue.lowercased() == preferredFlavor.name.lowercased() {
+                                print("flavor is \(flavor.rawValue). Preferred flavor is \(preferredFlavor.name)")
+                                matchedCount += 1
+                                print("matchedCount is \(matchedCount). Flavor Count is \(flavorCount)")
+                            }
+                            
+                        }
+                        
+                    }
+                    
+                }
+                if matchedCount == flavorCount {
+                    
+                    totalMatchedCocktails.append(matched)
+                    matchedCount = 0
+                   
+                }
+            }
+            for matched in totalMatchedCocktails {
+                print(matched.cocktailName)
+            }
+            
+            
+            
+//                for cocktail in CocktailListViewModel().cocktails {
+//                    if let bases = cocktail.CompileTags().bases {
+//                        for base in bases {
+//                            for preferred in preferredArray {
+//                                if base.rawValue.lowercased() == preferred.lowercased() {
+//                                    matchedCount += 1
+//                                }
+//                            }
+//                        }
+//                    }
+//                    if let styles = cocktail.CompileTags().styles {
+//                        for cocktailStyle in styles {
+//                            for preferred in preferredArray {
+//                                if cocktailStyle.rawValue.lowercased() == preferred.lowercased() {
+//                                    matchedCount += 1
+//                                }
+//                            }
+//                        }
+//                    }
+//                    if let flavors = cocktail.CompileTags().flavors {
+//                        for flavor in flavors {
+//                            for preferred in preferredArray {
+//                                if flavor.rawValue.lowercased() == preferred.lowercased() {
+//                                    matchedCount += 1
+//                                }
+//                            }
+//                        }
+//                    }
+//                    if let profiles = cocktail.CompileTags().profiles {
+//                        for profile in profiles {
+//                            for preferred in preferredArray {
+//                                if profile.rawValue.lowercased() == preferred.lowercased() {
+//                                    matchedCount += 1
+//                                }
+//                            }
+//                        }
+//                    }
+//                
+//                    if let textures = cocktail.CompileTags().textures {
+//                        for texture in textures {
+//                            for preferred in preferredArray {
+//                                if texture.rawValue.lowercased() == preferred.lowercased() {
+//                                    matchedCount += 1
+//                                }
+//                            }
+//                        }
+//                    }
+//                    if matchedCount >= preferredArray.count {
+//                        matchedCocktails.append(cocktail)
+//
+//                    }
+//                    matchedCount = 0
+//                }
+            var matchedSet = Set(totalMatchedCocktails)
             // then loop over the unwanted components and compare each one to the cocktails in the matched cocktails array. If there's a match, take it out of the array
             
                 for cocktail in matchedSet {
                     if let bases = cocktail.CompileTags().bases {
                         for base in bases {
                             for unwanted in unwantedArray {
-                                if base.rawValue.lowercased() == unwanted.lowercased() {
+                                if base.rawValue.lowercased() == unwanted.name.lowercased() {
                                     matchedSet.remove(cocktail)
                                 }
                             }
@@ -102,7 +215,7 @@ struct ListView: View {
                     if let styles = cocktail.CompileTags().styles {
                         for style in styles {
                             for unwanted in unwantedArray {
-                                if style.rawValue.lowercased() == unwanted.lowercased() {
+                                if style.rawValue.lowercased() == unwanted.name.lowercased() {
                                     matchedSet.remove(cocktail)
                                 }
                             }
@@ -111,7 +224,7 @@ struct ListView: View {
                     if let flavors = cocktail.CompileTags().flavors {
                         for flavor in flavors {
                             for unwanted in unwantedArray {
-                                if flavor.rawValue.lowercased() == unwanted.lowercased() {
+                                if flavor.rawValue.lowercased() == unwanted.name.lowercased() {
                                     matchedSet.remove(cocktail)
                                 }
                             }
@@ -120,7 +233,7 @@ struct ListView: View {
                     if let profiles = cocktail.CompileTags().profiles {
                         for profile in profiles {
                             for unwanted in unwantedArray {
-                                if profile.rawValue.lowercased() == unwanted.lowercased() {
+                                if profile.rawValue.lowercased() == unwanted.name.lowercased() {
                                     matchedSet.remove(cocktail)
                                 }
                             }
@@ -129,7 +242,7 @@ struct ListView: View {
                     if let textures = cocktail.CompileTags().textures {
                         for texture in textures {
                             for unwanted in unwantedArray {
-                                if texture.rawValue.lowercased() == unwanted.lowercased() {
+                                if texture.rawValue.lowercased() == unwanted.name.lowercased() {
                                     matchedSet.remove(cocktail)
                                 }
                             }
@@ -138,10 +251,10 @@ struct ListView: View {
                 
                 
             }
-            print("Here are all of the matched cocktails:")
-            for matched in matchedSet {
-                print(matched.cocktailName)
-            }
+//            print("Here are all of the matched cocktails:")
+//            for matched in matchedSet {
+//                print(matched.cocktailName)
+//            }
             
         }) {
             VStack{
