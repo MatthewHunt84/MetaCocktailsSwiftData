@@ -123,9 +123,9 @@ struct ListView: View {
                         
                         for preferredFlavor in preferredFlavors {
                             if flavor.rawValue.lowercased() == preferredFlavor.name.lowercased() {
-                                print("flavor is \(flavor.rawValue). Preferred flavor is \(preferredFlavor.name)")
+                             
                                 matchedCount += 1
-                                print("matchedCount is \(matchedCount). Flavor Count is \(flavorCount)")
+                              
                             }
                             
                         }
@@ -140,9 +140,7 @@ struct ListView: View {
                    
                 }
             }
-            for matched in totalMatchedCocktails {
-                print(matched.cocktailName)
-            }
+         
             
             
             
@@ -251,10 +249,10 @@ struct ListView: View {
                 
                 
             }
-//            print("Here are all of the matched cocktails:")
-//            for matched in matchedSet {
-//                print(matched.cocktailName)
-//            }
+            print("Here are all of the matched cocktails:")
+            for matched in matchedSet {
+                print(matched.cocktailName)
+            }
             
         }) {
             VStack{
