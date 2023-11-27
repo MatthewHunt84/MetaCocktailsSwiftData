@@ -88,11 +88,11 @@ final class SearchCriteriaViewModel: ObservableObject {
             }
         }
         var preferredFlavors = preferredArray.filter({ $0.isFlavor })
-//        if preferredFlavors.isEmpty {
-//            for flavor in Flavor.allCases {
-//                preferredFlavors.append(CocktailComponent(for: flavor))
-//            }
-//        }
+        if preferredFlavors.isEmpty {
+            for flavor in Flavor.allCases {
+                preferredFlavors.append(CocktailComponent(for: flavor))
+            }
+        }
         
         
         for cocktail in CocktailListViewModel().cocktails {

@@ -14,26 +14,26 @@ struct SearchResultsView: View {
     //viewModel new stuff
     var matched: Int = 5
     var searched: Int = 5
+//    var searchTags: Tags
     
     var body: some View {
         VStack {
-            
             Text("Search Tags Go Here")
                 .frame(width: .infinity, height: 100)
             
             List {
-                Section(header: SearchedCocktailTitleHeader(searched: 7, matched: 7)) {
+                Section(header: SearchedCocktailTitleHeader(searched: 5, matched: 5)) {
                     SearchedCocktailCell()
                     SearchedCocktailCell()
                 }
                 
                 
-                Section(header: SearchedCocktailTitleHeader(searched: 7, matched: 6)) {
+                Section(header: SearchedCocktailTitleHeader(searched: 5, matched: 4)) {
                     SearchedCocktailCell()
 
                 }
                 
-                Section(header: SearchedCocktailTitleHeader(searched: 7, matched: 5)) {
+                Section(header: SearchedCocktailTitleHeader(searched: 5, matched: 3)) {
                     SearchedCocktailCell()
 
                 }
@@ -50,7 +50,6 @@ struct SearchedCocktailTitleHeader: View {
     
     var body: some View {
         HStack {
-            
             
             ForEach(0..<matched) { match in
                 Image(systemName: "circle.fill")
@@ -83,7 +82,7 @@ struct SearchedCocktailCell: View {
         .onTapGesture {
             isExpanded.toggle()
         }
-        .animation(.bouncy(duration: 0.5))
+        .animation(.easeInOut(duration: 0.5))
     }
 }
 

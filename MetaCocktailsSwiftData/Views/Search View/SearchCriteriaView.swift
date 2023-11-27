@@ -51,11 +51,6 @@ struct SearchCriteriaView: View {
             }
             
         }
-        .overlay(Button {
-            isShowingIngredientsList = false
-        }label: {
-            XDismissButton()
-        }, alignment: .topTrailing)
     }
 }
 
