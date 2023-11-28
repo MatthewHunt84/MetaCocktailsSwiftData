@@ -316,7 +316,7 @@ enum Ingredient: String, Codable {
         case .peychauds:
             Tags(flavors: [.tarragon])
         case .velvetFalernum:
-            Tags(flavors: [.clove])
+            Tags(flavors: [.clove, .almond])
         }
     }
 }
