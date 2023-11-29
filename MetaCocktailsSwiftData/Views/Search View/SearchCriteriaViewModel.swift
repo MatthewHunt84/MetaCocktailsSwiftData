@@ -15,10 +15,9 @@ final class SearchCriteriaViewModel: ObservableObject {
     func matchAllTheThings() {
         // if searchText is empty, show everything again
         
-        
         if searchText == "" {
-            for cocktail in cocktailComponents {
-                cocktail.matchesCurrentSearch = true
+            for component in cocktailComponents {
+                component.matchesCurrentSearch = true
             }
              // this forces an update when the search bar is empty, instead of waiting for the user to hit return
             self.objectWillChange.send()
@@ -26,11 +25,11 @@ final class SearchCriteriaViewModel: ObservableObject {
         }
 
         // if searchText has text, match it and set the viewModel properties accordingly
-        for cocktail in cocktailComponents {
-            if cocktail.name.contains(searchText) {
-                cocktail.matchesCurrentSearch = true
+        for component in cocktailComponents {
+            if component.name.lowercased().contains(searchText.lowercased()) {
+                component.matchesCurrentSearch = true
             } else {
-                cocktail.matchesCurrentSearch = false
+                component.matchesCurrentSearch = false
             }
         }
         self.objectWillChange.send()
