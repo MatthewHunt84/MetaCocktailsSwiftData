@@ -54,8 +54,10 @@ final class SearchCriteriaViewModel: ObservableObject {
     
     func getFilteredCocktails() {
         let preferredArray = selectedPreferredIngredients()
+        let preferedCount = selectedPreferredIngredients().count
         let unwantedArray = selectedUnwantedIngredients()
         var totalMatchedCocktails: [Cocktail] = []
+        var perfectMatchCocktails: [Cocktail] = []
         var matchedBasesCocktails: [Cocktail] = []
         var matchedStylesAndBasesCocktails: [Cocktail] = []
         var matchedTexturesBasesAndStylesCoctkails: [Cocktail] = []
@@ -87,8 +89,10 @@ final class SearchCriteriaViewModel: ObservableObject {
                 preferredTextures.append(CocktailComponent(for: texture))
             }
         }
-        var preferredFlavors = preferredArray.filter({ $0.isFlavor })
+        let preferredFlavors = preferredArray.filter({ $0.isFlavor })
+       
 //        if preferredFlavors.isEmpty {
+    
 //            for flavor in Flavor.allCases {
 //                preferredFlavors.append(CocktailComponent(for: flavor))
 //            }
@@ -154,23 +158,30 @@ final class SearchCriteriaViewModel: ObservableObject {
                     }
                 }
             }
-            if matchedCount == flavorCount {
+            if matchedCount > flavorCount  {
                 totalMatchedCocktails.append(matched)
                 matchedCount = 0
             }
         }
-        var matchedSet = Set(totalMatchedCocktails)
-        
-        if matchedSet.isEmpty {
-            matchedSet = Set(matchedProfilesTexturesBasesAndStylesCocktails)
+        if flavorCount == 0 {
+            totalMatchedCocktails = matchedProfilesTexturesBasesAndStylesCocktails
         }
         
+        var matchedSet = Set(totalMatchedCocktails)
+        
             for cocktail in matchedSet {
+                //print("TOP: The cocktail is \(cocktail.cocktailName). Matched count is \(matchedCount). prefered count is \(preferedCount)")
                 if let bases = cocktail.CompileTags().bases {
                     for base in bases {
                         for unwanted in unwantedArray {
                             if base.rawValue.lowercased() == unwanted.name.lowercased() {
                                 matchedSet.remove(cocktail)
+                                matchedCount -= 1
+                            }
+                        }
+                        for preferred in preferredArray {
+                            if base.rawValue.lowercased() == preferred.name.lowercased() {
+                                matchedCount += 1
                             }
                         }
                     }
@@ -180,8 +191,15 @@ final class SearchCriteriaViewModel: ObservableObject {
                         for unwanted in unwantedArray {
                             if style.rawValue.lowercased() == unwanted.name.lowercased() {
                                 matchedSet.remove(cocktail)
+                                matchedCount -= 1
                             }
                         }
+                        for preferred in preferredArray {
+                            if style.rawValue.lowercased() == preferred.name.lowercased() {
+                                matchedCount += 1
+                            }
+                        }
+
                     }
                 }
                 if let flavors = cocktail.CompileTags().flavors {
@@ -189,8 +207,15 @@ final class SearchCriteriaViewModel: ObservableObject {
                         for unwanted in unwantedArray {
                             if flavor.rawValue.lowercased() == unwanted.name.lowercased() {
                                 matchedSet.remove(cocktail)
+                                matchedCount -= 1
                             }
                         }
+                        for preferred in preferredArray {
+                            if flavor.rawValue.lowercased() == preferred.name.lowercased() {
+                                matchedCount += 1
+                            }
+                        }
+
                     }
                 }
                 if let profiles = cocktail.CompileTags().profiles {
@@ -198,8 +223,15 @@ final class SearchCriteriaViewModel: ObservableObject {
                         for unwanted in unwantedArray {
                             if profile.rawValue.lowercased() == unwanted.name.lowercased() {
                                 matchedSet.remove(cocktail)
+                                matchedCount -= 1
                             }
                         }
+                        for preferred in preferredArray {
+                            if profile.rawValue.lowercased() == preferred.name.lowercased() {
+                                matchedCount += 1
+                            }
+                        }
+
                     }
                 }
                 if let textures = cocktail.CompileTags().textures {
@@ -207,11 +239,29 @@ final class SearchCriteriaViewModel: ObservableObject {
                         for unwanted in unwantedArray {
                             if texture.rawValue.lowercased() == unwanted.name.lowercased() {
                                 matchedSet.remove(cocktail)
+                                matchedCount -= 1
                             }
                         }
+                        for preferred in preferredArray {
+                            if texture.rawValue.lowercased() == preferred.name.lowercased() {
+                                matchedCount += 1
+                            }
+                        }
+
                     }
                 }
+                //print("BOTTOM: The cocktail is \(cocktail.cocktailName). Matched count is \(matchedCount). prefered count is \(preferedCount)")
+                if matchedCount == preferedCount {
+                    perfectMatchCocktails.append(cocktail)
+                  
+                }
+                matchedCount = 0
         }
+        print("Thses are the cocktails that matched 100% of your preferences:")
+        for perfect in perfectMatchCocktails {
+            print(perfect.cocktailName)
+        }
+        
         print("Here are all of the matched cocktails:")
         for matched in matchedSet {
             print(matched.cocktailName)
