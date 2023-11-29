@@ -16,7 +16,6 @@ struct SearchCriteriaView: View {
     @State var selectedLikesOrDislikes: LikesOrDislikes = .likes
     
     var body: some View {
-        
         NavigationStack {
             
             VStack {
@@ -40,7 +39,7 @@ struct SearchCriteriaView: View {
                     isShowingPreferences.toggle()
                     
                 }
-                .foregroundColor(Color.red)
+                .foregroundColor(Color.blue)
                 
                 NavigationLink {
                     SearchResultsView(viewModel: viewModel)
@@ -53,7 +52,12 @@ struct SearchCriteriaView: View {
                         .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
                         .foregroundColor(.white)
                 }
-                
+                Button {
+                    viewModel.getFilteredCocktails()
+                } label: {
+                    Text("Show Preferred Cocktails")
+                }
+
                 ListView(selectedList: $selectedList, navigationTitle: selectedList.getTitle(), isShowingLikes: $isShowingPreferences)
                 
                 SearchBarView(searchText: $viewModel.searchText)

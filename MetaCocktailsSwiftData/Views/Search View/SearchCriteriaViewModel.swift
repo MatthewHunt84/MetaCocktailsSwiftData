@@ -157,7 +157,7 @@ final class SearchCriteriaViewModel: ObservableObject {
                     }
                 }
             }
-            if matchedCount > flavorCount  {
+            if matchedCount == flavorCount  {
                 totalMatchedCocktails.append(matched)
                 matchedCount = 0
             }
