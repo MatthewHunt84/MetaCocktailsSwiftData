@@ -12,8 +12,8 @@ struct TabBarView: View {
 
         TabView {
 
-//            FlavorProfileSearchView()
-//                .tabItem { Label("Search", systemImage: "magnifyingglass.circle.fill") }
+            SearchCriteriaView(isShowingIngredientsList: .constant(true), isShowingPreferences: true, selectedLikesOrDislikes: .likes)
+                .tabItem { Label("Search", systemImage: "magnifyingglass.circle.fill") }
 
            CocktailListView()
                 .tabItem { Label("A-Z", systemImage: "list.bullet") }

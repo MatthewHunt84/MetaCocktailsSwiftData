@@ -18,7 +18,7 @@ struct CocktailListView: View {
     var body: some View {
         ZStack {
             
-            NavigationView {
+//            NavigationView {
                 
                 VStack{
                     HStack {
@@ -29,32 +29,32 @@ struct CocktailListView: View {
                             .padding()
                         Spacer()
                         Button(action: {
-                           
-//                            print("\(viewModel.cocktails[0].getTagSet())")
+                            
+                            //                            print("\(viewModel.cocktails[0].getTagSet())")
                             print(viewModel.cocktails[6].CompileTags())
-                           
-      
+                            
+                            
                             isShowingIngredientsList = true} ) {
-                            VStack{
-
-                                Text("Refine Search")
-                                    .fontDesign(.serif)
+                                VStack{
+                                    
+                                    Text("Refine Search")
+                                        .fontDesign(.serif)
+                                }
+                                .padding(10)
+                                .background(Color(UIColor.systemBackground))
+                                .clipShape(RoundedRectangle(cornerRadius: 140))
+                                .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
+                                .foregroundColor(Color(UIColor.systemCyan))
                             }
-                            .padding(10)
-                            .background(Color(UIColor.systemBackground))
-                            .clipShape(RoundedRectangle(cornerRadius: 140))
-                            .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
-                            .foregroundColor(Color(UIColor.systemCyan))
-                        }
-                        .padding(20)
+                            .padding(20)
                         
-                        .sheet(isPresented: $isShowingIngredientsList) {
-                            SearchCriteriaView(isShowingIngredientsList: $isShowingIngredientsList, isShowingPreferences: true, selectedLikesOrDislikes: .likes)
-                        }
-                    
-                       
+                            .sheet(isPresented: $isShowingIngredientsList) {
+                                SearchCriteriaView(isShowingIngredientsList: $isShowingIngredientsList, isShowingPreferences: true, selectedLikesOrDislikes: .likes)
+                            }
+                        
+                        
                     }
-
+                    
                     List(viewModel.cocktails) { cocktail in
                         
                         CocktailListCell(cocktail: cocktail, backgroundColor: .red)
@@ -68,22 +68,22 @@ struct CocktailListView: View {
                     .listStyle(.plain)
                     .disabled(viewModel.isShowingRecipeCard)
                     Button(action: {
-                                    for i in 0..<criteria.cocktailComponents.count {
-                                        criteria.cocktailComponents[i].isPreferred = false
-                                        criteria.cocktailComponents[i].isUnwanted = false
-                                    }
-                                }) {
-                                    Text("Clear Search")
-                                        .fontDesign(.serif)
-                                }
-                                .padding(10)
-                                .background(Color(UIColor.systemBackground))
-                                .clipShape(RoundedRectangle(cornerRadius: 140))
-                                .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
-                                .foregroundColor(Color(UIColor.systemCyan))
-                                
+                        for i in 0..<criteria.cocktailComponents.count {
+                            criteria.cocktailComponents[i].isPreferred = false
+                            criteria.cocktailComponents[i].isUnwanted = false
+                        }
+                    }) {
+                        Text("Clear Search")
+                            .fontDesign(.serif)
+                    }
+                    .padding(10)
+                    .background(Color(UIColor.systemBackground))
+                    .clipShape(RoundedRectangle(cornerRadius: 140))
+                    .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
+                    .foregroundColor(Color(UIColor.systemCyan))
+                    
                 }
-                }
+//            }
                 
             .blur(radius: viewModel.isShowingRecipeCard ? 20 : 0)
             VStack {
