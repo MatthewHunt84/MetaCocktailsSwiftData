@@ -17,7 +17,7 @@ enum Booze: String, Codable, CaseIterable { // maybe a struct? Problem is connec
     case ginLondonDry         = "Gin (London Dry)"
     case irishWhiskey         = "Irish Whiskey"
     case mezcalSmokey         = "Smokey Mezcal"
-    case mezcalNotSmokey      = "Mazcal (Not Smokey)"
+    case mezcalNotSmokey      = "Mezcal (Not Smokey)"
     case pisco                = "Pisco"
     case rum                  = "Rum"
     case rumAged              = "Rum (Aged)"
@@ -43,6 +43,7 @@ enum Booze: String, Codable, CaseIterable { // maybe a struct? Problem is connec
     case greenChartreuse      = "Green Chartreuse"
     case maraschinoLiqueur    = "Maraschino Liqueur"
     case orangeCuracao        = "Orange Curacao"
+    case velvetFalernum       = "Velvet Falernum"
     case yellowChartreuse     = "Yellow Chartreuse"
        
        

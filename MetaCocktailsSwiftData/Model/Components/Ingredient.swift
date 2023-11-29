@@ -100,7 +100,9 @@ enum Ingredient: String, Codable {
     case greenChartreuse      = "Green Chartreuse"
     case maraschinoLiqueur    = "Maraschino Liqueur"
     case orangeCuracao        = "Orange Curacao"
+    case velvetFalernum       = "Velvet Falernum"
     case yellowChartreuse     = "Yellow Chartreuse"
+    
     
    
     // AMARI
@@ -313,6 +315,8 @@ enum Ingredient: String, Codable {
             Tags(flavors: [.anise])
         case .peychauds:
             Tags(flavors: [.tarragon])
+        case .velvetFalernum:
+            Tags(flavors: [.clove, .almond])
         }
     }
 }
