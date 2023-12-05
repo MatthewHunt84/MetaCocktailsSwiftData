@@ -53,13 +53,13 @@ final class SearchCriteriaViewModel: ObservableObject {
     
     func getFilteredCocktails() {
         let preferredArray = selectedPreferredIngredients()
-        let preferedCount = selectedPreferredIngredients().count
+        let preferredCount = selectedPreferredIngredients().count
         let unwantedArray = selectedUnwantedIngredients()
         var totalMatchedCocktails: [Cocktail] = []
         var perfectMatchCocktails: [Cocktail] = []
         var matchedBasesCocktails: [Cocktail] = []
         var matchedStylesAndBasesCocktails: [Cocktail] = []
-        var matchedTexturesBasesAndStylesCoctkails: [Cocktail] = []
+        var matchedTexturesBasesAndStylesCocktails: [Cocktail] = []
         var matchedProfilesTexturesBasesAndStylesCocktails: [Cocktail] = []
         let flavorCount = selectedPreferredIngredients().filter({ $0.isFlavor }).count
         var matchedCount = 0
@@ -127,13 +127,13 @@ final class SearchCriteriaViewModel: ObservableObject {
                 for texture in textures {
                     for preferredTexture in preferredTextures {
                         if texture.rawValue.lowercased() == preferredTexture.name.lowercased() {
-                            matchedTexturesBasesAndStylesCoctkails.append(matchedBasesAndStyles)
+                            matchedTexturesBasesAndStylesCocktails.append(matchedBasesAndStyles)
                         }
                     }
                 }
             }
         }
-        for matched in matchedTexturesBasesAndStylesCoctkails {
+        for matched in matchedTexturesBasesAndStylesCocktails {
             if let profiles = matched.CompileTags().profiles {
                 for profile in profiles {
                     for preferredProfile in preferredProfiles {
@@ -250,13 +250,13 @@ final class SearchCriteriaViewModel: ObservableObject {
                     }
                 }
                 //print("BOTTOM: The cocktail is \(cocktail.cocktailName). Matched count is \(matchedCount). prefered count is \(preferedCount)")
-                if matchedCount == preferedCount {
+                if matchedCount == preferredCount {
                     perfectMatchCocktails.append(cocktail)
                   
                 }
                 matchedCount = 0
         }
-        print("Thses are the cocktails that matched 100% of your preferences:")
+        print("Thees are the cocktails that matched 100% of your preferences:")
         for perfect in perfectMatchCocktails {
             print(perfect.cocktailName)
         }
