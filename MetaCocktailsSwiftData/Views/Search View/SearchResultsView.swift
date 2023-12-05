@@ -10,6 +10,7 @@ import SwiftUI
 struct SearchResultsView: View {
     
     var viewModel: SearchCriteriaViewModel
+
     
     //    ALL THESE PROPERTIES CAN LIVE IN THE VIEWMODEL EVENTUALLY, BUT THEY'RE HERE FOR NOW.
     
@@ -25,6 +26,7 @@ struct SearchResultsView: View {
 
     
     var body: some View {
+        
         VStack(alignment: .leading) {
             
             Text("Your Selections (tap to remove)")
