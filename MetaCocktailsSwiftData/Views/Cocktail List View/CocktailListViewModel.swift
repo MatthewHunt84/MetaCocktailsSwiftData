@@ -15,4 +15,8 @@ final class CocktailListViewModel: ObservableObject {
     @Published var isShowingRecipeCard = false
     @Published var selectedCocktail: Cocktail?
     @Published var isShowingBuildOrderButton = false
+    
+    @Published var sampleCocktails: [Cocktail] = [penicillin, boulevardier, cominUpRoses, cosmopolitan]
+    @Published var secondarySampleCocktails: [Cocktail] = [cloverClub, lastWord, caipirinha]
+    @Published var thirdondarySampleCocktails: [Cocktail] = [whiteNegroni]
 }

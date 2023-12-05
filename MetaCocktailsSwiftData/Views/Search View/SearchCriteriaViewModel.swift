@@ -12,6 +12,8 @@ final class SearchCriteriaViewModel: ObservableObject {
     @Published var searchText: String = ""
     @Published var cocktailComponents = Tags.createComponentArray()
     
+    var selectedTagExamples: [String] = ["lemon", "ginger", "chocolate"]
+    
     func matchAllTheThings() {
         // if searchText is empty, show everything again
         

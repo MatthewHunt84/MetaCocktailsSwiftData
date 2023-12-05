@@ -10,7 +10,9 @@ import SwiftUI
 struct SearchResultsView: View {
     
     var viewModel: SearchCriteriaViewModel
-
+  
+    //var searchedCocktails: [Cocktail]
+    
     
     //    ALL THESE PROPERTIES CAN LIVE IN THE VIEWMODEL EVENTUALLY, BUT THEY'RE HERE FOR NOW.
     
@@ -21,10 +23,11 @@ struct SearchResultsView: View {
     //    @State private var  unwantedTags = Tags(flavors: [.almond])
         
 
+    // create this as an array ion the viewmodel and access it from the view model. Also do the same thing but for cocktails.
     
-    @State private var selectedTagExamples: [String] = ["lemon", "ginger", "chocolate"] // placeholders for example.
+ // @State private var selectedTagExamples: [String] = ["lemon", "ginger", "chocolate"] // placeholders for example.
 
-    
+    //let sampleCocktails = CocktailListViewModel().sampleCocktails
     var body: some View {
         
         VStack(alignment: .leading) {
@@ -38,14 +41,16 @@ struct SearchResultsView: View {
             
             ScrollView(.horizontal) {
                 HStack(spacing: 12) {
-                    ForEach(selectedTagExamples, id: \.self) { tag in
+                    ForEach(viewModel.selectedTagExamples, id: \.self) { tag in
                         TagView(tag, .green, "xmark")
 //                            .matchedGeometryEffect(id: tag, in: animation)
                         // removing from selected list on tap
                             .onTapGesture {
-                                withAnimation(.snappy) {
-                                    selectedTagExamples.removeAll(where: { $0 == tag })
+                                withAnimation(.bouncy) {
+                                    viewModel.selectedTagExamples.removeAll(where: {$0 == tag})
+                                       
                                 }
+                                
                             }
                     }
                 }
@@ -58,21 +63,41 @@ struct SearchResultsView: View {
             
             List {
                 Section(header: SearchedCocktailTitleHeader(searched: 5, matched: 5)) {
-                    SearchedCocktailCell()
-                    SearchedCocktailCell()
+                    
+                    ForEach(CocktailListViewModel().sampleCocktails, id: \.self) { sampleCocktail in
+                        NavigationLink {
+                            SearchViewRecipeCard(cocktail: sampleCocktail)
+                        } label: {
+                           Text(sampleCocktail.cocktailName)
+                        }
+                    }
+                    
+                    
                 }
                 
                 
                 Section(header: SearchedCocktailTitleHeader(searched: 5, matched: 4)) {
-                    SearchedCocktailCell()
-
+                    ForEach(CocktailListViewModel().secondarySampleCocktails, id: \.self) { sampleCocktail in
+                        NavigationLink {
+                            SearchViewRecipeCard(cocktail: sampleCocktail)
+                        } label: {
+                           Text(sampleCocktail.cocktailName)
+                        }
+                    }
                 }
                 
                 Section(header: SearchedCocktailTitleHeader(searched: 5, matched: 3)) {
-                    SearchedCocktailCell()
+                    ForEach(CocktailListViewModel().thirdondarySampleCocktails, id: \.self) { sampleCocktail in
+                        NavigationLink {
+                            SearchViewRecipeCard(cocktail: sampleCocktail)
+                        } label: {
+                           Text(sampleCocktail.cocktailName)
+                        }
+                    }
 
                 }
             }
+            
             .listStyle(.grouped)
         }
         .navigationBarTitleDisplayMode(.inline)

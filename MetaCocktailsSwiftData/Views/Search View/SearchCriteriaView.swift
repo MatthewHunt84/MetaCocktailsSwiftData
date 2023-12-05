@@ -14,6 +14,7 @@ struct SearchCriteriaView: View {
     @State var selectedList: PreferenceType = .all
     @State var isShowingPreferences: Bool
     @State var selectedLikesOrDislikes: LikesOrDislikes = .likes
+   
     
     var body: some View {
         NavigationStack {
@@ -57,6 +58,7 @@ struct SearchCriteriaView: View {
                 } label: {
                     Text("Show Preferred Cocktails")
                 }
+               
 
                 ListView(selectedList: $selectedList, navigationTitle: selectedList.getTitle(), isShowingLikes: $isShowingPreferences)
                 
