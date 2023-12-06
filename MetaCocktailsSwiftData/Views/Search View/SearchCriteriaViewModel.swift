@@ -11,6 +11,13 @@ final class SearchCriteriaViewModel: ObservableObject {
     
     @Published var searchText: String = ""
     @Published var cocktailComponents = Tags.createComponentArray()
+    @Published var matchedCocktails = [MatchedCocktail]()
+    @Published var preferredCount = 0
+    @Published var sections = [ResultViewSectionData]()
+    @Published var isLoading = true
+    @Published var preferredIngredients = [CocktailComponent]()
+    @Published var unwantedIngredients = [CocktailComponent]()
+    
     
     func matchAllTheThings() {
         // if searchText is empty, show everything again
@@ -37,6 +44,7 @@ final class SearchCriteriaViewModel: ObservableObject {
     
     func selectedPreferredIngredients() -> [CocktailComponent] {
         self.cocktailComponents.filter({ $0.isPreferred })
+
     }
     
     func selectedUnwantedIngredients() -> [CocktailComponent] {
@@ -51,9 +59,22 @@ final class SearchCriteriaViewModel: ObservableObject {
         cocktailComponents.remove(atOffsets: offsets)
     }
     
+    func resetSearchCriteria() {
+        preferredCount = 0
+        matchedCocktails.removeAll()
+        sections.removeAll()
+    }
+    
+    // getFilteredCocktails() works, but could be optimized greatly
     func getFilteredCocktails() {
+        isLoading = true
+        resetSearchCriteria()
+        
+        preferredIngredients = selectedPreferredIngredients()
+        unwantedIngredients = selectedUnwantedIngredients()
+        
         let preferredArray = selectedPreferredIngredients()
-        let preferredCount = selectedPreferredIngredients().count
+        preferredCount = selectedPreferredIngredients().count
         
         let unwantedArray = selectedUnwantedIngredients()
         
@@ -174,7 +195,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         // We instantiate a var called matchedCount as zero
         matchedCount = 0
         
-        // We then make a set which is pointless because we can't have any duplicates. We've only been creating subsets this whole time.
+        // We then make a set but we can't have any duplicates. We've only been creating subsets this whole time so this step can be removed.
         let matchedPTBSCSet = Set(matchedProfilesTexturesBasesAndStylesCocktails)
         
         // Then for every cocktail in the smallest Russian doll, rip out all the flavors. If any of those match against what we have in the preferredFlavors array, up the matchedCount by 1
@@ -203,12 +224,9 @@ final class SearchCriteriaViewModel: ObservableObject {
             totalMatchedCocktails = matchedProfilesTexturesBasesAndStylesCocktails
         }
         
-        // make another pointless set
+        // again, set here is unnecassary
         
         var matchedSet = Set(totalMatchedCocktails)
-        
-        // create a new array of matchedCocktails
-        var matchedCocktails = [MatchedCocktail]()
         
         // take each cocktail from the new final array that also matches flavors, and rip out the bases..
         // if the base is in the unwanted array, remove it from the final array and update the matchedcount.
@@ -301,6 +319,8 @@ final class SearchCriteriaViewModel: ObservableObject {
                 }
             }
             
+            
+            
             // If the matchedCount is above the threshold (more than half of the preferredCount) we'll store it in an array with its matchedCount data (see MatchedCocktail struct)
             if matchedCount >= (preferredCount / 2) {
                 matchedCocktails.append(MatchedCocktail(cocktail: cocktail, count: preferredCount, matchedCount: matchedCount))
@@ -309,31 +329,8 @@ final class SearchCriteriaViewModel: ObservableObject {
             // reset matchedCount for the next loop.
             matchedCount = 0
         }
-        
-        // TEST PRINT
-        //        for cocktail in matchedCocktails {
-        //            cocktail.testPrint()
-        //        }
-        
-        createListView(for: matchedCocktails, preferredCount: preferredCount)
-    }
-    
-    func createListView(for cocktailArray: [MatchedCocktail], preferredCount: Int) { //}-> any View {
-        // Fist up, make sure we have cocktails in the array
-        guard !cocktailArray.isEmpty else {
-            print("--- ERROR: NO COCKTAILS IN ARRAY")
-            return //Text("This will be the no cocktails found view")
-        }
-        
-        // then, make sure our totalMatches is consistent
-        guard cocktailArray.first?.count == preferredCount else {
-            print("--- ERROR: cocktail array total preferred count of \(cocktailArray.first?.count ?? 0) does not match expected count of \(preferredCount)")
-            return //Text("This will be the no cocktails found view")
-        }
-        
-        // then organize the data into buckets.
-        // first lets make an array for the different sections to be appended to:
-        var sections = [ResultViewSectionData]()
+        // All the loops are done, and the matchedCocktails array should now be filled with data.
+        // because viewBuilder is being a little bitch, we're going to do one more thing here
         
         for i in 0...Int(preferredCount / 2) {
             
@@ -342,20 +339,57 @@ final class SearchCriteriaViewModel: ObservableObject {
             
             // then yank all the cocktails that match and chuck them in an array
             var bucketOfCocktails = [Cocktail]()
-            for matchedCocktail in cocktailArray where matchedCocktail.matchedCount == numberOfMatches {
+            for matchedCocktail in matchedCocktails where matchedCocktail.matchedCount == numberOfMatches {
                 bucketOfCocktails.append(matchedCocktail.cocktail)
             }
             
             // then pass that bucket of cocktails into a ResultViewSectionData struct, which is just a simple struct that also has the total count and matched count info. This struct has all the data we'll need to pass to the List Section header so it can say "Matched 3 of 4" or whatever at the top and the pass the in the appropriate cocktail array
-            sections.append(ResultViewSectionData(count: preferredCount,
-                                                  matched: preferredCount - i,
-                                                  cocktails: bucketOfCocktails))
+            if !bucketOfCocktails.isEmpty {
+                sections.append(ResultViewSectionData(count: preferredCount,
+                                                      matched: preferredCount - i,
+                                                      cocktails: bucketOfCocktails))
+            }
             
         }
+        isLoading = false
+    }
+}
+
+struct CocktailResultList: View {
+    
+    @ObservedObject var viewModel: SearchCriteriaViewModel
+    var body: some View {
         
-        // Finally, we'll call createResultViewList() which will take the sections and return a fully fledged List View (or a "couldn't find anything" view).
-        
-        //return Text("Stop yelling at me")
+        if viewModel.isLoading {
+            Text("I'm trying my best...")
+            Spacer()
+        } else {
+            ZStack {
+                
+                // Fist up, make sure we have cocktails in the array
+                if !viewModel.matchedCocktails.isEmpty {
+                    //                print("--- ERROR: NO COCKTAILS IN ARRAY")
+                    Text("This will be the no cocktails found view")
+                }
+                
+                // then, make sure our totalMatches is consistent
+                if (viewModel.matchedCocktails.first?.count == viewModel.preferredCount) {
+                    //                print("--- ERROR: cocktail array total preferred count of \(viewModel.matchedCocktails.first?.count ?? 0) does not match expected count of \(viewModel.preferredCount)")
+                    Text("This will be the no cocktails found view")
+                }
+                
+                List {
+                    ForEach(viewModel.sections, id: \.self.id) { result in
+                        Section(header: SearchedCocktailTitleHeader(searched: result.count, matched: result.matched)) {
+                            ForEach(result.cocktails, id: \.self.id) { cocktail in
+                                SearchedCocktailCell(cocktail: cocktail)
+                            }
+                        }
+                    }
+                }
+                .listStyle(.grouped)
+            }
+        }
     }
 }
 
@@ -370,16 +404,22 @@ struct MatchedCocktail {
 }
 
 struct ResultViewSectionData {
+    let id = UUID()
     let count: Int
     let matched: Int
     let cocktails: [Cocktail]
-    
-    func createListSection() {
-        // or we have another function called 'buildList' which takes these sections and makes a list or a 'no results' view
-    }
 }
 
-class CocktailComponent: Identifiable, ObservableObject {
+class CocktailComponent: Identifiable, ObservableObject, Hashable {
+    
+    static func == (lhs: CocktailComponent, rhs: CocktailComponent) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        return hasher.combine(id)
+    }
+    
     
     // I don't love this, but it will work for now..
     
