@@ -9,21 +9,7 @@ import SwiftUI
 
 struct SearchResultsView: View {
     
-    var viewModel: SearchCriteriaViewModel
-
-    
-    //    ALL THESE PROPERTIES CAN LIVE IN THE VIEWMODEL EVENTUALLY, BUT THEY'RE HERE FOR NOW.
-    
-    var matched: Int = 5
-    var searched: Int = 5
-    
-    //    @State private var preferredTags = Tags(flavors: [.lemon, .ginger, .chocolate])
-    //    @State private var  unwantedTags = Tags(flavors: [.almond])
-        
-
-    
-    @State private var selectedTagExamples: [String] = ["lemon", "ginger", "chocolate"] // placeholders for example.
-
+    @ObservedObject var viewModel: SearchCriteriaViewModel
     
     var body: some View {
         
@@ -38,13 +24,14 @@ struct SearchResultsView: View {
             
             ScrollView(.horizontal) {
                 HStack(spacing: 12) {
-                    ForEach(selectedTagExamples, id: \.self) { tag in
-                        TagView(tag, .green, "xmark")
+                    ForEach(viewModel.preferredIngredients, id: \.self) { selectedIngredient in
+                        TagView(selectedIngredient.name, .green, "xmark")
 //                            .matchedGeometryEffect(id: tag, in: animation)
                         // removing from selected list on tap
                             .onTapGesture {
                                 withAnimation(.snappy) {
-                                    selectedTagExamples.removeAll(where: { $0 == tag })
+                                    viewModel.preferredIngredients.removeAll(where: { $0 == selectedIngredient })
+                                    // we still need to flip the .preferred to false but I'll get to that ..
                                 }
                             }
                     }
@@ -56,24 +43,7 @@ struct SearchResultsView: View {
             .scrollClipDisabled(true)
             .scrollIndicators(.hidden)
             
-            List {
-                Section(header: SearchedCocktailTitleHeader(searched: 5, matched: 5)) {
-                    SearchedCocktailCell()
-                    SearchedCocktailCell()
-                }
-                
-                
-                Section(header: SearchedCocktailTitleHeader(searched: 5, matched: 4)) {
-                    SearchedCocktailCell()
-
-                }
-                
-                Section(header: SearchedCocktailTitleHeader(searched: 5, matched: 3)) {
-                    SearchedCocktailCell()
-
-                }
-            }
-            .listStyle(.grouped)
+            CocktailResultList(viewModel: viewModel)
         }
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -129,17 +99,12 @@ struct SearchedCocktailTitleHeader: View {
 
 struct SearchedCocktailCell: View {
     
-//    @State var isExpanded = false
+    var cocktail: Cocktail
     
     var body: some View {
         VStack {
-            Text("Cocktail name")
+            Text("\(cocktail.cocktailName)")
         }
-//        .frame(height: isExpanded ? 100 : 20)
-//        .onTapGesture {
-//            isExpanded.toggle()
-//        }
-//        .animation(.easeInOut(duration: 0.5))
     }
 }
 

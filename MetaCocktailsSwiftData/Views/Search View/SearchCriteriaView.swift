@@ -43,6 +43,9 @@ struct SearchCriteriaView: View {
                 
                 NavigationLink {
                     SearchResultsView(viewModel: viewModel)
+                        .onAppear {
+                            viewModel.getFilteredCocktails()
+                        }
                 } label: {
                     Text("SEARCH!")
                         .fontWeight(.bold)
@@ -51,11 +54,6 @@ struct SearchCriteriaView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 140))
                         .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
                         .foregroundColor(.white)
-                }
-                Button {
-                    viewModel.getFilteredCocktails()
-                } label: {
-                    Text("Show Preferred Cocktails")
                 }
 
                 ListView(selectedList: $selectedList, navigationTitle: selectedList.getTitle(), isShowingLikes: $isShowingPreferences)
