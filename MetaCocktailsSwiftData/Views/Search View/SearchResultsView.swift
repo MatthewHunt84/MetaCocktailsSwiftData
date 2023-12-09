@@ -17,13 +17,15 @@ struct SearchResultsView: View {
             
             if viewModel.preferredCount > 0 {
                 Text("Your Selections (tap to remove)")
+                    .font(.footnote)
                     .foregroundStyle(.gray)
                     .padding(.leading, 20)
                     .padding(.top, 25)
             }
-
+            
             if !viewModel.cocktailComponents.filter({ $0.isPreferred }).isEmpty {
                 ScrollView(.horizontal) {
+                    
                     HStack(spacing: 12) {
                         ForEach(viewModel.cocktailComponents.filter({ $0.isPreferred }), id: \.self.id) { selectedIngredient in
                             TagView(selectedIngredient.name, .green, "xmark")
@@ -36,7 +38,6 @@ struct SearchResultsView: View {
                     }
                     .padding(.horizontal, 15)
                     .frame(height: 35)
-                    
                 }
                 .scrollClipDisabled(true)
                 .scrollIndicators(.hidden)
@@ -44,15 +45,13 @@ struct SearchResultsView: View {
             
             if !viewModel.cocktailComponents.filter({ $0.isUnwanted }).isEmpty {
                 ScrollView(.horizontal) {
+                    
                     HStack(spacing: 12) {
                         ForEach(viewModel.cocktailComponents.filter({ $0.isUnwanted }), id: \.self) { selectedIngredient in
                             TagView(selectedIngredient.name, .red, "xmark")
                                 .onTapGesture {
                                     withAnimation(.snappy) {
                                         viewModel.removeUnwanted(for: selectedIngredient)
-                                        for cocktail in viewModel.matchedCocktails {
-                                            cocktail.testPrint()
-                                        }
                                     }
                                 }
                         }

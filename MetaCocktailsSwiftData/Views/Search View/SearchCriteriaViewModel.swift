@@ -72,13 +72,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         preferredCount -= 1
         let cocktailComponent = cocktailComponents.filter ({ $0.id == component.id })
         cocktailComponent.first?.isPreferred = false
-//        if preferredCount > 1 {
             getFilteredCocktails()
-//        }
-         if preferredCount == 0
-        {
-             print("--- WE HAVE NO PREFERRED COCKTAILS, SHOW NO RESULTS VIEW")
-         }
 
     }
     
@@ -100,10 +94,6 @@ final class SearchCriteriaViewModel: ObservableObject {
         
         let unwantedArray = selectedUnwantedIngredients()
         
-        print("--- preferredArray = \(preferredArray)")
-        print("--- unwantedArray = \(unwantedArray)")
-        print("--- number of sections = \(sections.count)")
-        
         var totalMatchedCocktails: [Cocktail] = []
         var allCocktailsThatMatchBySpirit: [Cocktail] = []
         var matchedStylesAndBasesCocktails: [Cocktail] = []
@@ -113,9 +103,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         let flavorCount = selectedPreferredIngredients().filter({ $0.isFlavor }).count
         
         var matchedCount = 0
-        
-        // fuuuuuuu
-        
+
         // Make an array of selected bases called PREFERREDBASES. If no bases are selected, include all.
         
         var preferredBases: [CocktailComponent] = preferredArray.filter({ $0.isSpirit })
@@ -219,7 +207,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         
         
         // We instantiate a var called matchedCount as zero
-        matchedCount = 0
+        
         
         let matchedPTBSCSet = Set(matchedProfilesTexturesBasesAndStylesCocktails)
         
@@ -227,20 +215,21 @@ final class SearchCriteriaViewModel: ObservableObject {
         
         for matched in matchedPTBSCSet {
             
+            var internalMatchedCounter = 0
+
             if let flavors = matched.CompileTags().flavors {
                 for flavor in flavors {
                     for preferredFlavor in preferredFlavors {
                         if flavor.rawValue.lowercased() == preferredFlavor.name.lowercased() {
-                            matchedCount += 1
+                            internalMatchedCounter += 1
                         }
                     }
                 }
             }
             
             // If a cocktail from the shortlist matches EVERY flavor from the preferredFlavor array add that cocktail to the totalMatchedCocktail array.
-            if matchedCount == flavorCount  {
+            if internalMatchedCounter == flavorCount  {
                 totalMatchedCocktails.append(matched)
-                matchedCount = 0
             }
         }
         
@@ -251,9 +240,11 @@ final class SearchCriteriaViewModel: ObservableObject {
         
         var matchedSet = Set(totalMatchedCocktails)
         
+        
         // take each cocktail from the new final array that also matches flavors, and rip out the bases..
         // if the base is in the unwanted array, remove it from the final array and update the matchedcount.
         for cocktail in matchedSet {
+            
             if let bases = cocktail.CompileTags().bases {
                 for base in bases {
                     for unwanted in unwantedArray {
@@ -341,27 +332,26 @@ final class SearchCriteriaViewModel: ObservableObject {
                     
                 }
             }
-            
-            
-            
+
             // If the matchedCount is above the threshold (more than half of the preferredCount) we'll store it in an array with its matchedCount data (see MatchedCocktail struct)
             if matchedCount >= (preferredCount / 2) {
                 matchedCocktails.append(MatchedCocktail(cocktail: cocktail, count: preferredCount, matchedCount: matchedCount))
             }
-            
+
             // reset matchedCount for the next loop.
             matchedCount = 0
         }
         // All the loops are done, and the matchedCocktails array should now be filled with data.
-        // because viewBuilder is being a little bitch, we're going to do one more thing here
         
+        // create sections for the Listview using the matchedCocktails array data we just gathered.
         for i in 0...Int(preferredCount / 2) {
-            
+
             let numberOfMatches = (preferredCount - i)
             // numberOfMatches will give us a the right section name. For example if preferredCount = 4 then numberOfMatches will be: (4-0 = 4 on the first loop, 4 - 1 = 3 on the second loop, 4 - 2 = 2 on the next loop, and then we stop because our cutoff is preferredCount / 2. Note that if preferredcount is an odd number, Int(count / 2) will round down which is why we're starting the loop at 0 instead of 1)
             
             // then yank all the cocktails that match and chuck them in an array
             var bucketOfCocktails = [Cocktail]()
+            
             for matchedCocktail in matchedCocktails where matchedCocktail.matchedCount == numberOfMatches {
                 bucketOfCocktails.append(matchedCocktail.cocktail)
             }
@@ -372,7 +362,6 @@ final class SearchCriteriaViewModel: ObservableObject {
                                                       matched: preferredCount - i,
                                                       cocktails: bucketOfCocktails))
             }
-            
         }
         isLoading = false
     }
@@ -387,6 +376,7 @@ struct CocktailResultList: View {
             
             if viewModel.isLoading {
                 ZStack(alignment: .center) {
+                    
                     Color.red
                     
                     Text("Couldn't load in time")
@@ -409,13 +399,13 @@ struct CocktailResultList: View {
                 } else  {
                     
                     ZStack(alignment: .center) {
+                        
                         Color.teal
                         
-                        Text("There's nothing here boss")
+                        Text("Add more preferences to continue")
                     }
                 }
             }
-            
             Spacer()
         }
     }
@@ -425,10 +415,6 @@ struct MatchedCocktail: Equatable {
     let cocktail: Cocktail
     let count: Int
     let matchedCount: Int
-    
-    func testPrint() {
-        print("*** \(cocktail.cocktailName) has tags: \(cocktail.CompileTags())")
-    }
 }
 
 struct ResultViewSectionData {
