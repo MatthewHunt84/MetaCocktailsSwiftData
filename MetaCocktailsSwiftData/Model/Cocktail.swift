@@ -52,7 +52,7 @@ class Cocktail {
             
             if let flavors = ingredient.ingredient.tags.flavors {
                 for flavor in flavors {
-                  
+                    
                     if compileTags.flavors?.append(flavor) == nil {
                         compileTags.flavors = [flavor]
                     }
@@ -86,7 +86,6 @@ class Cocktail {
             
             
         }
-        
 
         return compileTags
     }
