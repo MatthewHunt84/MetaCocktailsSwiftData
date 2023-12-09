@@ -15,11 +15,12 @@ struct SearchResultsView: View {
         
         VStack(alignment: .leading) {
             
-            Text("Your Selections (tap to remove)")
-//                .font(.title3)
-                .foregroundStyle(.gray)
-                .padding(.leading, 20)
-                .padding(.top, 25)
+            if viewModel.preferredCount > 0 {
+                Text("Your Selections (tap to remove)")
+                    .foregroundStyle(.gray)
+                    .padding(.leading, 20)
+                    .padding(.top, 25)
+            }
 
             if !viewModel.cocktailComponents.filter({ $0.isPreferred }).isEmpty {
                 ScrollView(.horizontal) {
@@ -41,24 +42,27 @@ struct SearchResultsView: View {
                 .scrollIndicators(.hidden)
             }
             
-//            if !viewModel.cocktailComponents.filter({ $0.isUnwanted }).isEmpty {
-//                ScrollView(.horizontal) {
-//                    HStack(spacing: 12) {
-//                        ForEach(viewModel.cocktailComponents.filter({ $0.isUnwanted }), id: \.self) { selectedIngredient in
-//                            TagView(selectedIngredient.name, .red, "xmark")
-//                                .onTapGesture {
-//                                    withAnimation(.snappy) {
-//                                        viewModel.removePreference(for: selectedIngredient)
-//                                    }
-//                                }
-//                        }
-//                    }
-//                    .padding(.horizontal, 15)
-//                    .frame(height: 35)
-//                }
-//                .scrollClipDisabled(true)
-//                .scrollIndicators(.hidden)
-//            }
+            if !viewModel.cocktailComponents.filter({ $0.isUnwanted }).isEmpty {
+                ScrollView(.horizontal) {
+                    HStack(spacing: 12) {
+                        ForEach(viewModel.cocktailComponents.filter({ $0.isUnwanted }), id: \.self) { selectedIngredient in
+                            TagView(selectedIngredient.name, .red, "xmark")
+                                .onTapGesture {
+                                    withAnimation(.snappy) {
+                                        viewModel.removeUnwanted(for: selectedIngredient)
+                                        for cocktail in viewModel.matchedCocktails {
+                                            cocktail.testPrint()
+                                        }
+                                    }
+                                }
+                        }
+                    }
+                    .padding(.horizontal, 15)
+                    .frame(height: 35)
+                }
+                .scrollClipDisabled(true)
+                .scrollIndicators(.hidden)
+            }
             
             CocktailResultList(viewModel: viewModel)
         }

@@ -72,10 +72,13 @@ final class SearchCriteriaViewModel: ObservableObject {
         preferredCount -= 1
         let cocktailComponent = cocktailComponents.filter ({ $0.id == component.id })
         cocktailComponent.first?.isPreferred = false
-        print("--- new count: \(preferredCount)")
-        if preferredCount > 1 {
+//        if preferredCount > 1 {
             getFilteredCocktails()
-        }
+//        }
+         if preferredCount == 0
+        {
+             print("--- WE HAVE NO PREFERRED COCKTAILS, SHOW NO RESULTS VIEW")
+         }
 
     }
     
@@ -96,6 +99,10 @@ final class SearchCriteriaViewModel: ObservableObject {
         preferredCount = selectedPreferredIngredients().count
         
         let unwantedArray = selectedUnwantedIngredients()
+        
+        print("--- preferredArray = \(preferredArray)")
+        print("--- unwantedArray = \(unwantedArray)")
+        print("--- number of sections = \(sections.count)")
         
         var totalMatchedCocktails: [Cocktail] = []
         var allCocktailsThatMatchBySpirit: [Cocktail] = []
@@ -376,46 +383,51 @@ struct CocktailResultList: View {
     @ObservedObject var viewModel: SearchCriteriaViewModel
     var body: some View {
         
-        if viewModel.isLoading {
-            Text("I'm trying my best...")
-            Spacer()
-        } else {
-            ZStack {
-                
-                // Fist up, make sure we have cocktails in the array
-                if !viewModel.matchedCocktails.isEmpty {
-                    //                print("--- ERROR: NO COCKTAILS IN ARRAY")
-                    Text("This will be the no cocktails found view")
+        VStack {
+            
+            if viewModel.isLoading {
+                ZStack(alignment: .center) {
+                    Color.red
+                    
+                    Text("Couldn't load in time")
                 }
-                
-                // then, make sure our totalMatches is consistent
-                if (viewModel.matchedCocktails.first?.count == viewModel.preferredCount) {
-                    //                print("--- ERROR: cocktail array total preferred count of \(viewModel.matchedCocktails.first?.count ?? 0) does not match expected count of \(viewModel.preferredCount)")
-                    Text("This will be the no cocktails found view")
-                }
-                
-                List {
-                    ForEach(viewModel.sections, id: \.self.id) { result in
-                        Section(header: SearchedCocktailTitleHeader(searched: result.count, matched: result.matched)) {
-                            ForEach(result.cocktails, id: \.self.id) { cocktail in
-                                SearchedCocktailCell(cocktail: cocktail)
+            } else {
+                if viewModel.preferredCount > 0 {
+                    List {
+                        ForEach(viewModel.sections, id: \.self.id) { result in
+                            
+                            Section(header: SearchedCocktailTitleHeader(searched: result.count, matched: result.matched)) {
+                                
+                                ForEach(result.cocktails, id: \.self.id) { cocktail in
+                                    
+                                    SearchedCocktailCell(cocktail: cocktail)
+                                }
                             }
                         }
                     }
+                    .listStyle(.grouped)
+                } else  {
+                    
+                    ZStack(alignment: .center) {
+                        Color.teal
+                        
+                        Text("There's nothing here boss")
+                    }
                 }
-                .listStyle(.grouped)
             }
+            
+            Spacer()
         }
     }
 }
 
-struct MatchedCocktail {
+struct MatchedCocktail: Equatable {
     let cocktail: Cocktail
     let count: Int
     let matchedCount: Int
     
     func testPrint() {
-        print("--- \(cocktail.cocktailName) matches \(matchedCount) of \(count) criteria")
+        print("*** \(cocktail.cocktailName) has tags: \(cocktail.CompileTags())")
     }
 }
 
