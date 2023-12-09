@@ -9,15 +9,16 @@ import SwiftUI
 
 final class SearchCriteriaViewModel: ObservableObject {
     
+    init() {
+        self.cocktailComponents = Tags.createComponentArray()
+    }
+    
     @Published var searchText: String = ""
-    @Published var cocktailComponents = Tags.createComponentArray()
+    @Published var cocktailComponents: [CocktailComponent]
     @Published var matchedCocktails = [MatchedCocktail]()
     @Published var preferredCount = 0
     @Published var sections = [ResultViewSectionData]()
     @Published var isLoading = true
-    @Published var preferredIngredients = [CocktailComponent]()
-    @Published var unwantedIngredients = [CocktailComponent]()
-    
     
     func matchAllTheThings() {
         // if searchText is empty, show everything again
@@ -65,13 +66,31 @@ final class SearchCriteriaViewModel: ObservableObject {
         sections.removeAll()
     }
     
+    func removePreference(for component: CocktailComponent) {
+        // When we click a green bubble to remove a preferred tag, we change the data and the UI updates.
+
+        preferredCount -= 1
+        let cocktailComponent = cocktailComponents.filter ({ $0.id == component.id })
+        cocktailComponent.first?.isPreferred = false
+        print("--- new count: \(preferredCount)")
+        if preferredCount > 1 {
+            getFilteredCocktails()
+        }
+
+    }
+    
+    func removeUnwanted(for component: CocktailComponent) {
+        // When we click a red bubble to remove an unwanted tag, we change the data and the UI updates.
+        let cocktailComponent = cocktailComponents.filter ({ $0.id == component.id })
+        cocktailComponent.first?.isUnwanted = false
+        
+        getFilteredCocktails()
+    }
+    
     // getFilteredCocktails() works, but could be optimized greatly
     func getFilteredCocktails() {
         isLoading = true
         resetSearchCriteria()
-        
-        preferredIngredients = selectedPreferredIngredients()
-        unwantedIngredients = selectedUnwantedIngredients()
         
         let preferredArray = selectedPreferredIngredients()
         preferredCount = selectedPreferredIngredients().count
@@ -195,7 +214,6 @@ final class SearchCriteriaViewModel: ObservableObject {
         // We instantiate a var called matchedCount as zero
         matchedCount = 0
         
-        // We then make a set but we can't have any duplicates. We've only been creating subsets this whole time so this step can be removed.
         let matchedPTBSCSet = Set(matchedProfilesTexturesBasesAndStylesCocktails)
         
         // Then for every cocktail in the smallest Russian doll, rip out all the flavors. If any of those match against what we have in the preferredFlavors array, up the matchedCount by 1
@@ -223,8 +241,6 @@ final class SearchCriteriaViewModel: ObservableObject {
         if flavorCount == 0 {
             totalMatchedCocktails = matchedProfilesTexturesBasesAndStylesCocktails
         }
-        
-        // again, set here is unnecassary
         
         var matchedSet = Set(totalMatchedCocktails)
         
@@ -426,8 +442,8 @@ class CocktailComponent: Identifiable, ObservableObject, Hashable {
     @Published var matchesCurrentSearch: Bool
     var id = UUID()
     var name: String
-    var isPreferred: Bool = false
-    var isUnwanted: Bool = false
+    @Published var isPreferred: Bool = false
+    @Published var isUnwanted: Bool = false
     var isSpirit: Bool = false
     var isFlavor: Bool = false
     var isProfile: Bool = false

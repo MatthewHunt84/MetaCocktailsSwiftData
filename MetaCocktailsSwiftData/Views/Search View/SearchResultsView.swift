@@ -21,27 +21,44 @@ struct SearchResultsView: View {
                 .padding(.leading, 20)
                 .padding(.top, 25)
 
-            
-            ScrollView(.horizontal) {
-                HStack(spacing: 12) {
-                    ForEach(viewModel.preferredIngredients, id: \.self) { selectedIngredient in
-                        TagView(selectedIngredient.name, .green, "xmark")
-//                            .matchedGeometryEffect(id: tag, in: animation)
-                        // removing from selected list on tap
-                            .onTapGesture {
-                                withAnimation(.snappy) {
-                                    viewModel.preferredIngredients.removeAll(where: { $0 == selectedIngredient })
-                                    // we still need to flip the .preferred to false but I'll get to that ..
+            if !viewModel.cocktailComponents.filter({ $0.isPreferred }).isEmpty {
+                ScrollView(.horizontal) {
+                    HStack(spacing: 12) {
+                        ForEach(viewModel.cocktailComponents.filter({ $0.isPreferred }), id: \.self.id) { selectedIngredient in
+                            TagView(selectedIngredient.name, .green, "xmark")
+                                .onTapGesture {
+                                    withAnimation(.snappy) {
+                                        viewModel.removePreference(for: selectedIngredient)
+                                    }
                                 }
-                            }
+                        }
                     }
+                    .padding(.horizontal, 15)
+                    .frame(height: 35)
+                    
                 }
-                .padding(.horizontal, 15)
-                .frame(height: 35)
-
+                .scrollClipDisabled(true)
+                .scrollIndicators(.hidden)
             }
-            .scrollClipDisabled(true)
-            .scrollIndicators(.hidden)
+            
+//            if !viewModel.cocktailComponents.filter({ $0.isUnwanted }).isEmpty {
+//                ScrollView(.horizontal) {
+//                    HStack(spacing: 12) {
+//                        ForEach(viewModel.cocktailComponents.filter({ $0.isUnwanted }), id: \.self) { selectedIngredient in
+//                            TagView(selectedIngredient.name, .red, "xmark")
+//                                .onTapGesture {
+//                                    withAnimation(.snappy) {
+//                                        viewModel.removePreference(for: selectedIngredient)
+//                                    }
+//                                }
+//                        }
+//                    }
+//                    .padding(.horizontal, 15)
+//                    .frame(height: 35)
+//                }
+//                .scrollClipDisabled(true)
+//                .scrollIndicators(.hidden)
+//            }
             
             CocktailResultList(viewModel: viewModel)
         }
