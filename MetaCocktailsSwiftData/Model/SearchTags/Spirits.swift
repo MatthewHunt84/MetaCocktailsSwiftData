@@ -7,7 +7,14 @@
 
 import Foundation
 
-struct Spirits {
+enum SpiritCategory {
+    case agave, brandy, gin, other, rum, vodka, whiskies
+}
+
+struct Spirit {
+    
+    var name: String
+    var type: SpiritCategory
 
     enum Agave: String, Codable, CaseIterable {
 
@@ -61,5 +68,17 @@ struct Spirits {
         case scotchIsla           = "Scotch (Peated, From Isla)"
     }
 
+    static func makeAll() -> [Spirit] {
+        
+        var arrayOfSpirits = [Spirit]()
+        
+        for agave in Agave.allCases {
+            arrayOfSpirits.append(Spirit(name: agave.rawValue, type: SpiritCategory.agave))
+        }
+        
+        // etc ... 
+        
+        return arrayOfSpirits
+    }
 
 }

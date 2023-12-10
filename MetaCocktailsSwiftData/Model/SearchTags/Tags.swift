@@ -31,6 +31,9 @@ struct Tags: Codable {
         for style in Style.allCases {
             array.append(CocktailComponent(for: style))
         }
+//        for spirit in Spirit.makeAll() {
+//            array.append(CocktailComponent(for: spirit))
+//        }
         return array
     }
 }

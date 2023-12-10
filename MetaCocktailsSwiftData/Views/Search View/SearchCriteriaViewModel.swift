@@ -8,13 +8,10 @@
 import SwiftUI
 
 final class SearchCriteriaViewModel: ObservableObject {
-    
-    init() {
-        self.cocktailComponents = Tags.createComponentArray().sorted(by: { $0.name < $1.name })
-    }
+
     
     @Published var searchText: String = ""
-    @Published var cocktailComponents: [CocktailComponent]
+    @Published var cocktailComponents = Tags.createComponentArray().sorted(by: { $0.name < $1.name })
     @Published var matchedCocktails = [MatchedCocktail]()
     @Published var preferredCount = 0
     @Published var sections = [ResultViewSectionData]()
@@ -453,6 +450,7 @@ class CocktailComponent: Identifiable, ObservableObject, Hashable {
     var isStyle: Bool = false
     var isTexture: Bool = false
     var preferenceType: PreferenceType
+    var spiritCategory: SpiritCategory?
  
 
     init(name: String, isFlavor: Bool = false, isProfile: Bool = false, isStyle: Bool = false, isSpirit: Bool = false, isTexture: Bool = false, matchesCurrentSearch: Bool = true) {
@@ -509,6 +507,15 @@ class CocktailComponent: Identifiable, ObservableObject, Hashable {
         self.isTexture = true
         self.preferenceType = .textures
         self.matchesCurrentSearch = true
+    }
+    
+    init(for spirit: Spirit, category: SpiritCategory) {
+        self.name = spirit.name
+        self.isSpirit = true
+        self.preferenceType = .spirits
+        self.matchesCurrentSearch = true
+        
+        self.spiritCategory = category
     }
 }
 

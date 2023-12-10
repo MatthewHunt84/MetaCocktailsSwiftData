@@ -19,34 +19,36 @@ struct ListView: View {
         
         NavigationStack {
             
-            List {
-                if isShowingLikes {
-                    ForEach($viewModel.cocktailComponents) { ingredient in
+            if selectedList != .spirits {
+                
+                List {
+                    if isShowingLikes {
+                        ForEach($viewModel.cocktailComponents) { ingredient in
+                            
+                            if ingredient.isUnwanted.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) {
+                                
+                                PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
+                                
+                            }
+                        }
                         
-                        if ingredient.isUnwanted.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) {
-                            
-                            PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
-                            
+                    } else {
+                        ForEach($viewModel.cocktailComponents) { ingredient in
+                            if ingredient.isPreferred.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) {
+                                PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
+                                    .tint(.red)
+                            }
                         }
+                        
                     }
-                    
-                } else {
-                    ForEach($viewModel.cocktailComponents) { ingredient in
-                        if ingredient.isPreferred.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) {
-                            PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
-                                .tint(.red)
-                        }
-                    }
-                    
                 }
+                .listStyle(.plain)
+                
+            } else {
+                Text("I love cookies")
             }
-            .listStyle(.plain)
-            
             Spacer()
         }
-//        .overlay {
-//            SearchResultsView(viewModel: viewModel)
-//        }
     }
 }
 
