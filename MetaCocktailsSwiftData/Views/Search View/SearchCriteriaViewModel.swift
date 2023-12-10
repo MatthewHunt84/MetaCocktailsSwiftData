@@ -10,7 +10,7 @@ import SwiftUI
 final class SearchCriteriaViewModel: ObservableObject {
     
     init() {
-        self.cocktailComponents = Tags.createComponentArray()
+        self.cocktailComponents = Tags.createComponentArray().sorted(by: { $0.name < $1.name })
     }
     
     @Published var searchText: String = ""
