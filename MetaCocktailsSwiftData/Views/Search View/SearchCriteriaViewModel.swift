@@ -390,7 +390,12 @@ struct CocktailResultList: View {
                                 
                                 ForEach(result.cocktails, id: \.self.id) { cocktail in
                                     
-                                    SearchedCocktailCell(cocktail: cocktail)
+                                    NavigationLink {
+                                        RecipeIngredientsView(cocktail: cocktail)
+                                    } label: {
+                                        Text(cocktail.cocktailName)
+                                    }
+
                                 }
                             }
                         }
