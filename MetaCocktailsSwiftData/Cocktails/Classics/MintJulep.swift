@@ -20,7 +20,9 @@ var mintJulep = Cocktail(cocktailName: "Mint Julep",
 let mintJulepTags = Tags(profiles: [.herbal, .sweet],
                          textures: [.light],
                          styles: [.julep, .built],
-                         bases: [.ryeWhiskey, .bourbon, .cognacVSOP, .armagnac])
+                         brandy: [.cognacVSOP, .armagnac],
+                         whiskies: [.ryeWhiskey, .bourbon, .straightRyeOrBourbon])
+                       
 
 let mintJulepSpec: [CocktailIngredient] = [CocktailIngredient(.mint, value: 10, unit: .leaves),
                                            CocktailIngredient(.simple, value: 1),

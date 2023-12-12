@@ -23,4 +23,8 @@ var whiteNegroniSpec = [CocktailIngredient(.gin, value: 1),
 var whiteNegroniTags = Tags(profiles: [.bittersweet, .floral],
                        textures: [.rich],
                        styles: [.negroni, .stirred],
-                            bases: [.gin, .suze, .lilletBlanc])
+                            amari: [.suze],
+                            fortifiedWine: [.lilletBlanc],
+                            gin: [.gin, .ginLondonDry])
+                            
+                  

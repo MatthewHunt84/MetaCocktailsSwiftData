@@ -45,9 +45,38 @@ struct ListView: View {
                 .listStyle(.plain)
                 
             } else {
-                Text("I love cookies")
+                List {
+                    
+                
+                        if isShowingLikes {
+                            ForEach($viewModel.spiritsCategories, id: \.self) { spirit in
+                                Section {
+                                    ForEach($viewModel.cocktailComponents) { ingredient in
+                                        if ingredient.isUnwanted.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) && ingredient.spiritCategory.wrappedValue?.rawValue ?? "oops"  == spirit.wrappedValue {
+                                            PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
+                                        }
+                                    }
+                                } header: {
+                                    Text(spirit.wrappedValue)
+                                }
+                                
+                            }
+                         
+
+                        } else {
+                            ForEach($viewModel.cocktailComponents) { ingredient in
+                                if ingredient.isPreferred.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) {
+                                    PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
+                                        .tint(.red)
+                                }
+                            }
+                            
+                        }
+
+                }
+                .listStyle(.plain)
+                Spacer()
             }
-            Spacer()
         }
     }
 }

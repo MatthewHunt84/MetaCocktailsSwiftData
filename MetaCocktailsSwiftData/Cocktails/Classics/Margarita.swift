@@ -23,4 +23,6 @@ var margaritaSpec = [CocktailIngredient( .lime, value: 1),
 var margaritaTags = Tags( profiles: [.citrusy, .tart],
                           textures: [.light],
                           styles: [.sour, .shaken],
-                          bases: [.tequilaBlanco, .tequilaAnejo, .tequilaReposado, .cointreau])
+                          agave: [.tequilaBlanco, .tequilaAnejo, .tequilaReposado],
+                          liqueur: [.cointreau])
+                        

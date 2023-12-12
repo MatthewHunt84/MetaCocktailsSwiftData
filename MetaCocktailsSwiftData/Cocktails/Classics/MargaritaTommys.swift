@@ -23,4 +23,4 @@ var margaritaTommysSpec = [CocktailIngredient( .lime, value: 1),
 var margaritaTommysTags = Tags( profiles: [.citrusy, .tart],
                           textures: [.light],
                           styles: [.sour, .shaken],
-                          bases: [.tequilaBlanco])
+                          agave: [.tequilaBlanco])

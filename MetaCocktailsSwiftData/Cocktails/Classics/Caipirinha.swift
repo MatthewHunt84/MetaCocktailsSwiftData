@@ -32,4 +32,5 @@ var caipirnhaTags  = Tags(flavors: [.lime],
                           profiles: [.sweet, .citrusy],
                           textures: [.light, .unrefined],
                           styles: [.sour, .shaken],
-                          bases: [.cachaca])
+                          rum: [.cachaca])
+                         

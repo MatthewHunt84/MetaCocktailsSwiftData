@@ -32,4 +32,8 @@ var sazeracBuild = Build(instructions: [Instruction(step: 1, method: "Add all in
 var sazeracTags = Tags(profiles: [.spiritForward],
                        textures: [.rich],
                        styles: [.oldFashioned, .stirred],
-                       bases: [.cognacVSOP, .ryeWhiskey, .peychauds, .absinthe])
+                       bitters: [.peychauds],
+                       brandy: [.cognacVSOP],
+                       other: [.absinthe],
+                       whiskies: [.ryeWhiskey])
+                     

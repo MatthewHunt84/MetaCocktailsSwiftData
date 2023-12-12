@@ -30,4 +30,6 @@ var cloverClubBuild = Build(instructions: [Instruction(step: 1, method: "Add all
 
 var cloverClubTags = Tags(textures: [.light, .silky],
                           styles: [.sour, .shaken],
-                          bases: [.gin, .dryVermouth])
+                          fortifiedWine: [.dryVermouth],
+                          gin: [.gin])
+                   

@@ -30,4 +30,5 @@ var ginFizzTags   = Tags(flavors: [.lemon],
                          profiles: [.citrusy],
                          textures: [.effervescent, .light],
                          styles: [.fizz, .shaken],
-                         bases: [.gin])
+                         gin: [.gin])
+                      

@@ -27,4 +27,5 @@ var trinidadSourTags = Tags(flavors: [.almond, .lemon],
                             profiles: [.aromatic, .bitter, .bakingSpices],
                             textures: [.silky],
                             styles: [.sour, .shaken],
-                            bases: [.ryeWhiskey, .angosturaBitters])
+                            bitters: [.angosturaBitters],
+                            whiskies: [.ryeWhiskey])

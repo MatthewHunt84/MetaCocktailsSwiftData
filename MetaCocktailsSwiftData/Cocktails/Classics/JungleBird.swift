@@ -30,4 +30,6 @@ var jungleBirdTags = Tags(flavors: [.pineapple, .lime],
                           profiles: [.aromatic, .bitter, .citrusy, .fruity],
                           textures: [.light],
                           styles: [.tiki, .shaken, .sour],
-                          bases: [.rumJamaicanAged, .campari])
+                          amari: [.campari],
+                          rum: [.rumJamaicanAged])
+            

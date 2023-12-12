@@ -24,4 +24,5 @@ var cominUpRosesSpec  = [CocktailIngredient(.lemon, value: 0.5),
 
 var cominUpRosesTags = Tags(textures: [.light],
                             styles: [.sour, .shaken],
-                            bases: [.bourbon, .amaroMontenegro])
+                            amari: [.amaroMontenegro],
+                            whiskies: [.bourbon])

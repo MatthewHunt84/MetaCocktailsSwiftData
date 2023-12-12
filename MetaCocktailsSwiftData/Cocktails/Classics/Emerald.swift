@@ -25,4 +25,7 @@ var emeraldSpec     =  [CocktailIngredient(.angosturaBitters, value: 2, unit: .d
 var emeraldTags     = Tags(profiles: [.spiritForward],
                              textures: [.rich],
                            styles: [.manhattan, .stirred],
-                           bases: [.irishWhiskey, .sweetVermouth, .rougeVermouth, .angosturaBitters])
+                           bitters: [.angosturaBitters],
+                           fortifiedWine: [.sweetVermouth, .rougeVermouth],
+                           whiskies: [.irishWhiskey])
+                          
