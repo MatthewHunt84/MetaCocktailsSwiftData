@@ -15,6 +15,7 @@ struct ListView: View {
     var navigationTitle: String
     @Binding var isShowingLikes: Bool
     
+    
     var body: some View {
         
         NavigationStack {
@@ -65,18 +66,25 @@ struct ListView: View {
                          
 
                         } else {
-                            ForEach($viewModel.cocktailComponents) { ingredient in
-                                if ingredient.isPreferred.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) {
-                                    PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
-                                        .tint(.red)
+                            ForEach($viewModel.spiritsCategories, id: \.self) { spirit in
+                               Section {
+                                    ForEach($viewModel.cocktailComponents) { ingredient in
+                                        if ingredient.isPreferred.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) && ingredient.spiritCategory.wrappedValue?.rawValue ?? "oops"  == spirit.wrappedValue {
+                                            PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
+                                                .tint(.red)
+                                        }
+                                    }
+                                } header: {
+                                    Text(spirit.wrappedValue)
                                 }
+                                .headerProminence(.increased)
+                                
+                                
                             }
-                            
                         }
-
                 }
                 .listStyle(.plain)
-                Spacer()
+                
             }
         }
     }
