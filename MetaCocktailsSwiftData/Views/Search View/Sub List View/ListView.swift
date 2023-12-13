@@ -59,6 +59,7 @@ struct ListView: View {
                                 } header: {
                                     Text(spirit.wrappedValue)
                                 }
+                                .headerProminence(.increased)
                                 
                             }
                          

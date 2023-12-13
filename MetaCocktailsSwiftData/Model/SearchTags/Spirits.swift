@@ -162,7 +162,6 @@ struct Spirit {
         }
         for vodka in Vodka.allCases {
             arrayOfSpirits.append(Spirit(name: vodka.rawValue, type: SpiritCategory.vodka))
-            print("\(vodka.rawValue) is being added to Vodka")
         }
         for whiskey in Whiskies.allCases {
             arrayOfSpirits.append(Spirit(name: whiskey.rawValue, type: SpiritCategory.whiskies))
