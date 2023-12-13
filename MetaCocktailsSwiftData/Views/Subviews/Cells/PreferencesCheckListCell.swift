@@ -23,6 +23,7 @@ struct PreferencesCheckListCell: View {
                     
                 }
                 .padding(.horizontal, 20)
+               
 
             } else {
                 
@@ -32,6 +33,7 @@ struct PreferencesCheckListCell: View {
                 .padding(.horizontal, 20)
             }
         }
+
     }
 }
 

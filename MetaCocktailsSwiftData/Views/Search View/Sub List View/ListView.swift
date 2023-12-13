@@ -51,33 +51,45 @@ struct ListView: View {
                 
                         if isShowingLikes {
                             ForEach($viewModel.spiritsCategories, id: \.self) { spirit in
-                                Section {
-                                    ForEach($viewModel.cocktailComponents) { ingredient in
-                                        if ingredient.isUnwanted.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) && ingredient.spiritCategory.wrappedValue?.rawValue ?? "oops"  == spirit.wrappedValue {
-                                            PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
+                                
+                                DisclosureGroup {
+                                    
+                                    
+                                        ForEach($viewModel.cocktailComponents) { ingredient in
+                                            if ingredient.isUnwanted.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) && ingredient.spiritCategory.wrappedValue?.rawValue ?? "oops"  == spirit.wrappedValue {
+                                                PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
+                                            }
                                         }
-                                    }
-                                } header: {
+                                    
+                                    
+                                } label: {
                                     Text(spirit.wrappedValue)
+                                        .font(.headline)
+                                        .padding(.leading, 13)
+                                        
                                 }
-                                .headerProminence(.increased)
+                              
                                 
                             }
                          
 
                         } else {
                             ForEach($viewModel.spiritsCategories, id: \.self) { spirit in
-                               Section {
+                               DisclosureGroup {
                                     ForEach($viewModel.cocktailComponents) { ingredient in
                                         if ingredient.isPreferred.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) && ingredient.spiritCategory.wrappedValue?.rawValue ?? "oops"  == spirit.wrappedValue {
                                             PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
                                                 .tint(.red)
                                         }
                                     }
-                                } header: {
+                                } label: {
                                     Text(spirit.wrappedValue)
+                                        .font(.headline)
+                                        .padding(.leading, 13)
+                                        
                                 }
-                                .headerProminence(.increased)
+                              
+                                
                                 
                                 
                             }
@@ -85,14 +97,16 @@ struct ListView: View {
                 }
                 .listStyle(.plain)
                 
+                
             }
+               
         }
     }
 }
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        ListView(selectedList: .constant(.flavors), navigationTitle: "Beans", isShowingLikes: .constant(true))
+        ListView(selectedList: .constant(.spirits), navigationTitle: "Beans", isShowingLikes: .constant(true))
             .environmentObject(SearchCriteriaViewModel())
 
     }
