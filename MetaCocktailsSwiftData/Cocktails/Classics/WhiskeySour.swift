@@ -30,4 +30,4 @@ var whiskeySourBuild = Build(instructions: [Instruction(step: 1, method: "Add al
 
 var whiskeySourTags = Tags(textures: [.light, .silky],
                            styles: [.sour, .shaken],
-                           bases: [.straightRyeOrBourbon, .bourbon, .ryeWhiskey])
+                           whiskies: [.straightRyeOrBourbon, .bourbon, .ryeWhiskey])

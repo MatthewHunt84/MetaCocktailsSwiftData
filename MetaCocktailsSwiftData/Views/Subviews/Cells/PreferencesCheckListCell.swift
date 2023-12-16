@@ -22,7 +22,11 @@ struct PreferencesCheckListCell: View {
                     Text(ingredient.name)
                     
                 }
+                
                 .padding(.horizontal, 20)
+                .listItemTint(Color(.brandPrimaryBlue))
+                
+               
 
             } else {
                 
@@ -32,6 +36,7 @@ struct PreferencesCheckListCell: View {
                 .padding(.horizontal, 20)
             }
         }
+
     }
 }
 

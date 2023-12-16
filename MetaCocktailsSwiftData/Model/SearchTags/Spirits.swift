@@ -7,7 +7,31 @@
 
 import Foundation
 
-struct Spirits {
+enum SpiritCategoryName: String, Codable, CaseIterable {
+    
+    case agave         = "Agave"
+    case brandy        = "Brandy"
+    case gin           = "Gin"
+    case other         = "Other"
+    case rum           = "Rum"
+    case vodka         = "Vodka"
+    case whiskies      = "Whiskies"
+    case liqueur       = "Liqueur"
+    case fortifiedWine = "Fortified Wine"
+    case wine          = "Wine"
+    case bitters       = "Bitters"
+    case amari         = "Amari"
+}
+//struct SpiritCategory {
+//    var name: SpiritCategoryName
+//    var isExpanded: Bool
+//}
+
+
+struct Spirit {
+
+    var name: String
+    var type: SpiritCategoryName
 
     enum Agave: String, Codable, CaseIterable {
 
@@ -60,6 +84,111 @@ struct Spirits {
         case scotchBlended        = "Scotch (Blended)"
         case scotchIsla           = "Scotch (Peated, From Isla)"
     }
+    enum Liqueur: String, Codable, CaseIterable {
 
+        case cointreau            = "Cointreau"
+        case cremeDeCacao         = "Creme de Cacao"
+        case giffardPamplemousse  = "Giffard Creme de Pamplemousse"
+        case greenChartreuse      = "Green Chartreuse"
+        case maraschinoLiqueur    = "Maraschino Liqueur"
+        case orangeCuracao        = "Orange Curacao"
+        case velvetFalernum       = "Velvet Falernum"
+        case yellowChartreuse     = "Yellow Chartreuse"
+
+    }
+    enum FortifiedWine: String, Codable, CaseIterable {
+
+        case amontillado          = "Amontillado Sherry"
+        case blancVermouth        = "Blanc Vermouth"
+        case cocchiAmericano      = "Cocchi Americano"
+        case dryVermouth          = "French Dry Vermouth"
+        case lilletBlanc          = "Lillet Blanc"
+        case puntEMes             = "Punt E Mes"
+        case rougeVermouth        = "Fruit Forward Rouge Vermouth"
+        case sweetVermouth        = "Sweet Vermouth"
+    }
+    
+    enum Wine: String, Codable, CaseIterable {
+
+        case champagne            = "Chilled Champagne"
+        case prosecco             = "Chilled Prosecco"
+
+    }
+    enum Bitters: String, Codable, CaseIterable {
+
+        case orangeBitters        = "Orange Bitters"
+        case angosturaBitters     = "Angostura Bitters"
+        case peychauds            = "Peychaud's Bitters"
+    }
+
+    enum Amari: String, Codable, CaseIterable {
+
+        case aperol               = "Aperol"
+        case amaroMontenegro      = "Amaro Montenegro"
+        case amaroNonino          = "Amaro Nonino"
+        case becherovka           = "Becherovka"
+        case campari              = "Campari"
+        case fernetBranca         = "Fernet Branca"
+        case fernetBrancaMenta    = "Fernet Branca Menta"
+        case suze                 = "Suze"
+
+    }
+    static func createSpiritCategoryArray() -> [String] {
+        var spiritCategoryArray = [String]()
+        
+        for spirits in SpiritCategoryName.allCases {
+            spiritCategoryArray.append(spirits.rawValue)
+        }
+        return spiritCategoryArray
+    }
+
+
+    static func makeAll() -> [Spirit] {
+        
+        var arrayOfSpirits = [Spirit]()
+        
+        for agave in Agave.allCases {
+            arrayOfSpirits.append(Spirit(name: agave.rawValue, type: SpiritCategoryName.agave))
+        }
+        for amaro in Amari.allCases {
+            arrayOfSpirits.append(Spirit(name: amaro.rawValue, type: SpiritCategoryName.amari))
+        }
+        for brandy in Brandy.allCases {
+            arrayOfSpirits.append(Spirit(name: brandy.rawValue, type: SpiritCategoryName.brandy))
+        }
+        for gin in Gin.allCases {
+            arrayOfSpirits.append(Spirit(name: gin.rawValue, type: SpiritCategoryName.gin))
+        }
+        for other in Other.allCases {
+            arrayOfSpirits.append(Spirit(name: other.rawValue, type: SpiritCategoryName.other))
+        }
+        for rum in Rum.allCases {
+            arrayOfSpirits.append(Spirit(name: rum.rawValue, type: SpiritCategoryName.rum))
+        }
+        for vodka in Vodka.allCases {
+            arrayOfSpirits.append(Spirit(name: vodka.rawValue, type: SpiritCategoryName.vodka))
+        }
+        for whiskey in Whiskies.allCases {
+            arrayOfSpirits.append(Spirit(name: whiskey.rawValue, type: SpiritCategoryName.whiskies))
+        }
+        for liqueur in Liqueur.allCases {
+            arrayOfSpirits.append(Spirit(name: liqueur.rawValue, type: SpiritCategoryName.liqueur))
+        }
+        for fortifiedWine in FortifiedWine.allCases {
+            arrayOfSpirits.append(Spirit(name: fortifiedWine.rawValue, type: SpiritCategoryName.fortifiedWine))
+        }
+        for wine in Wine.allCases {
+            arrayOfSpirits.append(Spirit(name: wine.rawValue, type: SpiritCategoryName.wine))
+        }
+        for bitter in Bitters.allCases {
+            arrayOfSpirits.append(Spirit(name: bitter.rawValue, type: SpiritCategoryName.bitters))
+        }
+        
+ 
+        
+        return arrayOfSpirits
+    }
+    
+    
 
 }

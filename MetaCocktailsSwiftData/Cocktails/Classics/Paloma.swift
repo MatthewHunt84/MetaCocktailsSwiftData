@@ -23,4 +23,4 @@ var palomaSpec  = [CocktailIngredient(.tequilaBlanco, value: 2),
 var palomaTags  =  Tags(profiles: [.fruity],
                         textures: [.light, .effervescent],
                         styles: [.built, .sour],
-                        bases: [.tequilaBlanco])
+                        agave: [.tequilaBlanco])

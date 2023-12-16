@@ -29,4 +29,6 @@ var french75Tags   = Tags(flavors: [.lemon],
                           profiles: [.citrusy, .floral],
                           textures: [.effervescent, .light],
                           styles: [.collins, .shaken, .built, .fizz],
-                          bases: [.gin, .champagne])
+                          gin: [.gin],
+                          wine: [.champagne])
+                          

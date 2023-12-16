@@ -15,44 +15,90 @@ struct ListView: View {
     var navigationTitle: String
     @Binding var isShowingLikes: Bool
     
+    
     var body: some View {
         
         NavigationStack {
             
-            List {
-                if isShowingLikes {
-                    ForEach($viewModel.cocktailComponents) { ingredient in
+            if selectedList != .spirits {
+                
+                List {
+                    if isShowingLikes {
+                        ForEach($viewModel.cocktailComponents) { ingredient in
+                            
+                            if ingredient.isUnwanted.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) {
+                                
+                                PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
+                                
+                            }
+                        }
                         
-                        if ingredient.isUnwanted.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) {
-                            
-                            PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
+                    } else {
+                        ForEach($viewModel.cocktailComponents) { ingredient in
+                            if ingredient.isPreferred.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) {
+                                PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
+                                    .tint(.red)
+                            }
+                        }
+                        
+                    }
+                }
+                .listStyle(.plain)
+                
+            } else {
+                List {
+                        if isShowingLikes {
+                            ForEach($viewModel.spiritsCategories, id: \.self) { spirit in
+                                Section {
+                                    DisclosureGroup {
+                                            ForEach($viewModel.cocktailComponents) { ingredient in
+                                                if ingredient.isUnwanted.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) && ingredient.spiritCategory.wrappedValue?.rawValue ?? "oops"  == spirit.wrappedValue {
+                                                    PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
+                                                    
+                                                }
+                                            }
+                                    } label: {
+                                        Text(spirit.wrappedValue)
+                                            .font(.headline)
+                                            .padding(.leading, 5)
+                                            
+                                    }
+                                    .tint(Color(.green))
+                                }
+                            }
+                        } else {
+                            ForEach($viewModel.spiritsCategories, id: \.self) { spirit in
+                                Section {
+                                    DisclosureGroup {
+                                        ForEach($viewModel.cocktailComponents) { ingredient in
+                                            if ingredient.isPreferred.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) && ingredient.spiritCategory.wrappedValue?.rawValue ?? "oops"  == spirit.wrappedValue {
+                                                PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
+                                                    
+                                            }
+                                        }
+                                    } label: {
+                                        Text(spirit.wrappedValue)
+                                            .font(.headline)
+                                            .padding(.leading, 5)
+                                    }
+                                    .tint(Color(.red))
+                                }
+                            }
                             
                         }
-                    }
-                    
-                } else {
-                    ForEach($viewModel.cocktailComponents) { ingredient in
-                        if ingredient.isPreferred.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) {
-                            PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
-                                .tint(.red)
-                        }
-                    }
                     
                 }
+                .listStyle(.plain)
+                
+                
             }
-            .listStyle(.plain)
-            
-            Spacer()
         }
-//        .overlay {
-//            SearchResultsView(viewModel: viewModel)
-//        }
     }
 }
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        ListView(selectedList: .constant(.flavors), navigationTitle: "Beans", isShowingLikes: .constant(true))
+        ListView(selectedList: .constant(.spirits), navigationTitle: "Beans", isShowingLikes: .constant(true))
             .environmentObject(SearchCriteriaViewModel())
 
     }

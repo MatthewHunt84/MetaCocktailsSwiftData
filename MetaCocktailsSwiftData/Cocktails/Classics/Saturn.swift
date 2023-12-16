@@ -26,10 +26,12 @@ var saturnSpec  =  [CocktailIngredient( .lemon, value: 0.75),
                         
                         
 
-var saturnTags = Tags(
-    profiles: [.citrusy, .fruity, .tropical, .sweet],
-                          textures: [.light],
-                          styles: [.tiki, .shaken, .sour],
-    bases: [.gin, .ginLondonDry, .velvetFalernum])
+
+var saturnTags = Tags( profiles: [.citrusy, .fruity, .tropical, .sweet],
+                       textures: [.light],
+                       styles: [.tiki, .shaken, .sour],
+                       gin: [.gin, .ginLondonDry],
+                       liqueur: [.velvetFalernum])
+    
 
 var saturnBuildOrder = Build(instructions: [Instruction(step: 1, method: "Just a note about the recipe: This is not the origional, all the componants are the same but this is the spec that we've found works the best. Feel free to make it your own or follow the exact recipe in the book 'Beachbum Berry Remix'.")])

@@ -13,7 +13,7 @@ var ramosTags = Tags(flavors: [.cream, .lemon, .lime],
                      profiles: [.floral, .citrusy, .creamy],
                      textures: [.creamy],
                      styles: [.sour, .shaken],
-                     bases: [.gin])
+                     gin: [.gin])
 
 let ramosGinFizzSpec: [CocktailIngredient]         = [CocktailIngredient(.gin, value: 2.0),
                                                      CocktailIngredient(.lime, value: 0.5),

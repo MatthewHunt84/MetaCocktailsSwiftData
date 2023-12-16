@@ -48,7 +48,7 @@ struct TagView: View {
         
         let tags = cocktail.CompileTags()
 
-        if let bases = tags.bases {
+        if let bases = tags.agave  {
             for base in bases {
                 baseString += " \(base.rawValue),"
             }

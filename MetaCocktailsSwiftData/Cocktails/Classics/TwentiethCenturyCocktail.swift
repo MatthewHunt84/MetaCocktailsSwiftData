@@ -23,4 +23,7 @@ var twentiethCenturyCocktailSpec  = [CocktailIngredient(.lemon, value: 0.75),
 
 var twentiethCenturyCocktailTags = Tags(textures: [.light],
                                         styles: [.sour, .shaken],
-                                        bases: [.ginLondonDry, .gin, .cremeDeCacao, .lilletBlanc])
+                                        fortifiedWine: [.lilletBlanc],
+                                        gin: [.ginLondonDry, .gin],
+                                        liqueur: [.cremeDeCacao])
+                                        

@@ -34,4 +34,4 @@ var queensParkTags = Tags(flavors: [.lime, .mint, .bakingSpices],
                           profiles: [.aromatic],
                           textures: [.light],
                           styles: [.swizzle, .built],
-                          bases: [.rumDemerara])
+                          rum: [.rumDemerara])

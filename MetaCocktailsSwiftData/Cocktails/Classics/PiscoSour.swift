@@ -29,4 +29,5 @@ var piscoSourBuild = Build(instructions: [Instruction(step: 1, method: "Add all 
 
 var piscoSourTags = Tags(textures: [.light, .silky],
                          styles: [.sour, .shaken],
-                         bases: [.pisco, .angosturaBitters])
+                         bitters: [.angosturaBitters],
+                         brandy: [.pisco])

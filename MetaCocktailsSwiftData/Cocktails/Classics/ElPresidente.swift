@@ -26,4 +26,7 @@ var elPresidenteTags  = Tags(flavors: [.orange, .pomegranate],
                              profiles: [.aromatic, .fruity, .spiritForward],
                              textures: [.rich],
                              styles: [.martini, .stirred],
-                             bases: [.rumWhite, .blancVermouth, .orangeCuracao])
+                             fortifiedWine: [.blancVermouth],
+                             liqueur: [.orangeCuracao],
+                             rum: [.rumWhite])
+                             
