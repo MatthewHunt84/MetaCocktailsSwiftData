@@ -22,7 +22,10 @@ struct PreferencesCheckListCell: View {
                     Text(ingredient.name)
                     
                 }
+                
                 .padding(.horizontal, 20)
+                .listItemTint(Color(.brandPrimaryBlue))
+                
                
 
             } else {

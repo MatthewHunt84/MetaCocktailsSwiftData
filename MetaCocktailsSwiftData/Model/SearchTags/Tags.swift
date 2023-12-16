@@ -43,40 +43,40 @@ struct Tags: Codable {
             array.append(CocktailComponent(for: style))
         }
         for liqueur in Spirit.Liqueur.allCases {
-            array.append(CocktailComponent(for: liqueur, category: SpiritCategory.liqueur))
+            array.append(CocktailComponent(for: liqueur, category: SpiritCategoryName.liqueur))
         }
         for agave in Spirit.Agave.allCases {
-            array.append(CocktailComponent(for: agave, category: SpiritCategory.agave))
+            array.append(CocktailComponent(for: agave, category: SpiritCategoryName.agave))
         }
         for amari in Spirit.Amari.allCases {
-            array.append(CocktailComponent(for: amari, category: SpiritCategory.amari))
+            array.append(CocktailComponent(for: amari, category: SpiritCategoryName.amari))
         }
         for bitters in Spirit.Bitters.allCases {
-            array.append(CocktailComponent(for: bitters, category: SpiritCategory.bitters))
+            array.append(CocktailComponent(for: bitters, category: SpiritCategoryName.bitters))
         }
         for brandy in Spirit.Brandy.allCases {
-            array.append(CocktailComponent(for: brandy, category: SpiritCategory.brandy))
+            array.append(CocktailComponent(for: brandy, category: SpiritCategoryName.brandy))
         }
         for fortifiedWine in Spirit.FortifiedWine.allCases {
-            array.append(CocktailComponent(for: fortifiedWine, category: SpiritCategory.fortifiedWine))
+            array.append(CocktailComponent(for: fortifiedWine, category: SpiritCategoryName.fortifiedWine))
         }
         for gin in Spirit.Gin.allCases {
-            array.append(CocktailComponent(for: gin, category: SpiritCategory.gin))
+            array.append(CocktailComponent(for: gin, category: SpiritCategoryName.gin))
         }
         for vodka in Spirit.Vodka.allCases {
-            array.append(CocktailComponent(for: vodka, category: SpiritCategory.vodka))
+            array.append(CocktailComponent(for: vodka, category: SpiritCategoryName.vodka))
         }
         for rum in Spirit.Rum.allCases {
-            array.append(CocktailComponent(for: rum, category: SpiritCategory.rum))
+            array.append(CocktailComponent(for: rum, category: SpiritCategoryName.rum))
         }
         for other in Spirit.Other.allCases {
-            array.append(CocktailComponent(for: other, category: SpiritCategory.other))
+            array.append(CocktailComponent(for: other, category: SpiritCategoryName.other))
         }
         for whiskies in Spirit.Whiskies.allCases {
-            array.append(CocktailComponent(for: whiskies, category: SpiritCategory.whiskies))
+            array.append(CocktailComponent(for: whiskies, category: SpiritCategoryName.whiskies))
         }
         for wine in Spirit.Wine.allCases {
-            array.append(CocktailComponent(for: wine, category: SpiritCategory.wine))
+            array.append(CocktailComponent(for: wine, category: SpiritCategoryName.wine))
         }
         return array
     }

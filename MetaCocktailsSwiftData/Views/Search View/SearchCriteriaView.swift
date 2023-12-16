@@ -23,24 +23,26 @@ struct SearchCriteriaView: View {
                 Picker("Choose a preferences list", selection: $selectedList){
                     ForEach(PreferenceType.allCases, id: \.self) {
                         Text($0.rawValue)
+                        
                     }
                 }
                 .pickerStyle(.segmented)
-                .foregroundColor(Color.red)
+                
                 
                 Picker("Pick Out Likes Or Dislikes", selection: $selectedLikesOrDislikes) {
                     ForEach(LikesOrDislikes.allCases, id: \.self) {
-                        
                         Text($0.rawValue)
                     }
                 }
                 .pickerStyle(.segmented)
+                
                 .onChange(of: selectedLikesOrDislikes) {
                     isShowingPreferences.toggle()
+                        
                     
                 }
                 .foregroundColor(Color.blue)
-                
+               
                 NavigationLink {
                     SearchResultsView(viewModel: viewModel)
                         .onAppear {

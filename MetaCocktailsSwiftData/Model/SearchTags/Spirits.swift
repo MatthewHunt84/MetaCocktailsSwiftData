@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SpiritCategory: String, Codable, CaseIterable {
+enum SpiritCategoryName: String, Codable, CaseIterable {
     
     case agave         = "Agave"
     case brandy        = "Brandy"
@@ -22,11 +22,16 @@ enum SpiritCategory: String, Codable, CaseIterable {
     case bitters       = "Bitters"
     case amari         = "Amari"
 }
+//struct SpiritCategory {
+//    var name: SpiritCategoryName
+//    var isExpanded: Bool
+//}
+
 
 struct Spirit {
 
     var name: String
-    var type: SpiritCategory
+    var type: SpiritCategoryName
 
     enum Agave: String, Codable, CaseIterable {
 
@@ -131,7 +136,7 @@ struct Spirit {
     static func createSpiritCategoryArray() -> [String] {
         var spiritCategoryArray = [String]()
         
-        for spirits in SpiritCategory.allCases {
+        for spirits in SpiritCategoryName.allCases {
             spiritCategoryArray.append(spirits.rawValue)
         }
         return spiritCategoryArray
@@ -143,40 +148,40 @@ struct Spirit {
         var arrayOfSpirits = [Spirit]()
         
         for agave in Agave.allCases {
-            arrayOfSpirits.append(Spirit(name: agave.rawValue, type: SpiritCategory.agave))
+            arrayOfSpirits.append(Spirit(name: agave.rawValue, type: SpiritCategoryName.agave))
         }
         for amaro in Amari.allCases {
-            arrayOfSpirits.append(Spirit(name: amaro.rawValue, type: SpiritCategory.amari))
+            arrayOfSpirits.append(Spirit(name: amaro.rawValue, type: SpiritCategoryName.amari))
         }
         for brandy in Brandy.allCases {
-            arrayOfSpirits.append(Spirit(name: brandy.rawValue, type: SpiritCategory.brandy))
+            arrayOfSpirits.append(Spirit(name: brandy.rawValue, type: SpiritCategoryName.brandy))
         }
         for gin in Gin.allCases {
-            arrayOfSpirits.append(Spirit(name: gin.rawValue, type: SpiritCategory.gin))
+            arrayOfSpirits.append(Spirit(name: gin.rawValue, type: SpiritCategoryName.gin))
         }
         for other in Other.allCases {
-            arrayOfSpirits.append(Spirit(name: other.rawValue, type: SpiritCategory.other))
+            arrayOfSpirits.append(Spirit(name: other.rawValue, type: SpiritCategoryName.other))
         }
         for rum in Rum.allCases {
-            arrayOfSpirits.append(Spirit(name: rum.rawValue, type: SpiritCategory.rum))
+            arrayOfSpirits.append(Spirit(name: rum.rawValue, type: SpiritCategoryName.rum))
         }
         for vodka in Vodka.allCases {
-            arrayOfSpirits.append(Spirit(name: vodka.rawValue, type: SpiritCategory.vodka))
+            arrayOfSpirits.append(Spirit(name: vodka.rawValue, type: SpiritCategoryName.vodka))
         }
         for whiskey in Whiskies.allCases {
-            arrayOfSpirits.append(Spirit(name: whiskey.rawValue, type: SpiritCategory.whiskies))
+            arrayOfSpirits.append(Spirit(name: whiskey.rawValue, type: SpiritCategoryName.whiskies))
         }
         for liqueur in Liqueur.allCases {
-            arrayOfSpirits.append(Spirit(name: liqueur.rawValue, type: SpiritCategory.liqueur))
+            arrayOfSpirits.append(Spirit(name: liqueur.rawValue, type: SpiritCategoryName.liqueur))
         }
         for fortifiedWine in FortifiedWine.allCases {
-            arrayOfSpirits.append(Spirit(name: fortifiedWine.rawValue, type: SpiritCategory.fortifiedWine))
+            arrayOfSpirits.append(Spirit(name: fortifiedWine.rawValue, type: SpiritCategoryName.fortifiedWine))
         }
         for wine in Wine.allCases {
-            arrayOfSpirits.append(Spirit(name: wine.rawValue, type: SpiritCategory.wine))
+            arrayOfSpirits.append(Spirit(name: wine.rawValue, type: SpiritCategoryName.wine))
         }
         for bitter in Bitters.allCases {
-            arrayOfSpirits.append(Spirit(name: bitter.rawValue, type: SpiritCategory.bitters))
+            arrayOfSpirits.append(Spirit(name: bitter.rawValue, type: SpiritCategoryName.bitters))
         }
         
  

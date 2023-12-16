@@ -47,59 +47,51 @@ struct ListView: View {
                 
             } else {
                 List {
-                    
-                
                         if isShowingLikes {
                             ForEach($viewModel.spiritsCategories, id: \.self) { spirit in
-                                
-                                DisclosureGroup {
-                                    
-                                    
-                                        ForEach($viewModel.cocktailComponents) { ingredient in
-                                            if ingredient.isUnwanted.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) && ingredient.spiritCategory.wrappedValue?.rawValue ?? "oops"  == spirit.wrappedValue {
-                                                PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
+                                Section {
+                                    DisclosureGroup {
+                                            ForEach($viewModel.cocktailComponents) { ingredient in
+                                                if ingredient.isUnwanted.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) && ingredient.spiritCategory.wrappedValue?.rawValue ?? "oops"  == spirit.wrappedValue {
+                                                    PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
+                                                    
+                                                }
                                             }
-                                        }
-                                    
-                                    
-                                } label: {
-                                    Text(spirit.wrappedValue)
-                                        .font(.headline)
-                                        .padding(.leading, 13)
-                                        
+                                    } label: {
+                                        Text(spirit.wrappedValue)
+                                            .font(.headline)
+                                            .padding(.leading, 5)
+                                            
+                                    }
+                                    .tint(Color(.green))
                                 }
-                              
-                                
                             }
-                         
-
                         } else {
                             ForEach($viewModel.spiritsCategories, id: \.self) { spirit in
-                               DisclosureGroup {
-                                    ForEach($viewModel.cocktailComponents) { ingredient in
-                                        if ingredient.isPreferred.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) && ingredient.spiritCategory.wrappedValue?.rawValue ?? "oops"  == spirit.wrappedValue {
-                                            PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
-                                                .tint(.red)
+                                Section {
+                                    DisclosureGroup {
+                                        ForEach($viewModel.cocktailComponents) { ingredient in
+                                            if ingredient.isPreferred.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) && ingredient.spiritCategory.wrappedValue?.rawValue ?? "oops"  == spirit.wrappedValue {
+                                                PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
+                                                    
+                                            }
                                         }
+                                    } label: {
+                                        Text(spirit.wrappedValue)
+                                            .font(.headline)
+                                            .padding(.leading, 5)
                                     }
-                                } label: {
-                                    Text(spirit.wrappedValue)
-                                        .font(.headline)
-                                        .padding(.leading, 13)
-                                        
+                                    .tint(Color(.red))
                                 }
-                              
-                                
-                                
-                                
                             }
+                            
                         }
+                    
                 }
                 .listStyle(.plain)
                 
                 
             }
-               
         }
     }
 }
