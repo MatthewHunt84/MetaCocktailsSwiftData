@@ -14,57 +14,64 @@ struct SearchCriteriaView: View {
     @State var selectedList: PreferenceType = .all
     @State var isShowingPreferences: Bool
     @State var selectedLikesOrDislikes: LikesOrDislikes = .likes
+
     
     var body: some View {
         NavigationStack {
             
             VStack {
-                
                 Picker("Choose a preferences list", selection: $selectedList){
                     ForEach(PreferenceType.allCases, id: \.self) {
                         Text($0.rawValue)
-                        
                     }
                 }
                 .pickerStyle(.segmented)
-                
-                
                 Picker("Pick Out Likes Or Dislikes", selection: $selectedLikesOrDislikes) {
                     ForEach(LikesOrDislikes.allCases, id: \.self) {
                         Text($0.rawValue)
                     }
                 }
                 .pickerStyle(.segmented)
-                
                 .onChange(of: selectedLikesOrDislikes) {
                     isShowingPreferences.toggle()
-                        
-                    
                 }
                 .foregroundColor(Color.blue)
-               
-                NavigationLink {
-                    SearchResultsView(viewModel: viewModel)
-                        .onAppear {
-                            viewModel.getFilteredCocktails()
+                HStack {
+                    NavigationLink {
+                        SearchResultsView(viewModel: viewModel)
+                            .onAppear {
+                                viewModel.getFilteredCocktails()
+                            }
+                    } label: {
+                        Text("SEARCH!")
+                            .fontWeight(.bold)
+                            .padding(EdgeInsets(top: 10, leading: 50, bottom: 10, trailing: 50))
+                            .background(viewModel.selectedPreferredIngredients().count == 0 ? Color(UIColor.systemGray) : Color.brandPrimaryOrange)
+                            .clipShape(RoundedRectangle(cornerRadius: 140))
+                            .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
+                            .foregroundColor(.white)
+                    }
+                    Button(action: {
+                        for i in 0..<viewModel.cocktailComponents.count {
+                            viewModel.cocktailComponents[i].isPreferred = false
+                            viewModel.cocktailComponents[i].isUnwanted = false
                         }
-                } label: {
-                    Text("SEARCH!")
-                        .fontWeight(.bold)
-                        .padding(EdgeInsets(top: 10, leading: 50, bottom: 10, trailing: 50))
-                        .background(viewModel.selectedPreferredIngredients().count == 0 ? Color(UIColor.systemGray) : Color.brandPrimaryOrange)
-                        .clipShape(RoundedRectangle(cornerRadius: 140))
-                        .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
-                        .foregroundColor(.white)
+                    }) {
+                        Text("Clear Search")
+                          
+                    }
+                    .padding(10)
+                    .background(Color(UIColor.systemBackground))
+                    .clipShape(RoundedRectangle(cornerRadius: 140))
+                    .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
+                    .foregroundColor(Color(UIColor.systemCyan))
                 }
-
                 ListView(selectedList: $selectedList, navigationTitle: selectedList.getTitle(), isShowingLikes: $isShowingPreferences)
                 
                 SearchBarView(searchText: $viewModel.searchText)
                     .onChange(of: viewModel.searchText) {
                         viewModel.matchAllTheThings()
                     }
-                
             }
             .navigationTitle(selectedList.getTitle())
             .navigationBarTitleDisplayMode(.large)

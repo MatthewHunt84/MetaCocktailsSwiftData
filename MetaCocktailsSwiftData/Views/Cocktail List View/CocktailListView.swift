@@ -13,93 +13,79 @@ struct CocktailListView: View {
     @State var isShowingIngredientsList = false
     @State private var colorNumber = 0
     @Environment(\.modelContext) private var modelContext
+    private var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W", "X","Y", "Z"]
     
-
+    
     var body: some View {
-        ZStack {
-            
-//            NavigationView {
-                
+        NavigationStack{
+            ZStack {
                 VStack{
                     HStack {
                         Text("Cocktails")
                             .fontWeight(.bold)
                             .font(.largeTitle)
-                            .fontDesign(.serif)
                             .padding()
                         Spacer()
-                        Button(action: {
-                            
-                            //                            print("\(viewModel.cocktails[0].getTagSet())")
-                            print(viewModel.cocktails[6].CompileTags())
-                            
-                            
-                            isShowingIngredientsList = true} ) {
-                                VStack{
-                                    
-                                    Text("Refine Search")
-                                        .fontDesign(.serif)
+                    }
+                    ScrollView {
+                        ScrollViewReader { value in
+                            HStack{
+                                List{
+                                    ForEach(alphabet, id: \.self) { letter in
+                                        Section {
+                                            ForEach(viewModel.cocktails.filter { $0.cocktailName.hasPrefix(letter) }, id: \.self) { cocktail in
+                                                NavigationLink {
+                                                    RecipeIngredientsView(cocktail: cocktail)
+                                                } label: {
+                                                    Text(cocktail.cocktailName)
+                                                }
+                                            }
+                                        } header: {
+                                            Text("\(letter)")
+                                                .fontWeight(.bold)
+                                                .font(.title)
+                                        }.id(letter)
+                                    }
                                 }
-                                .padding(10)
-                                .background(Color(UIColor.systemBackground))
-                                .clipShape(RoundedRectangle(cornerRadius: 140))
-                                .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
-                                .foregroundColor(Color(UIColor.systemCyan))
+                                .listStyle(.plain)
+                                HStack{
+                                    VStack {
+                                        ForEach(0..<alphabet.count, id: \.self) { i in
+                                            Button(action: {
+                                                withAnimation {
+                                                    value.scrollTo(alphabet[i])
+                                                }
+                                            }, label: {
+                                                Text("\(alphabet[i])")
+                                                    .font(.headline)
+                                                    .frame(width: 35, height: 16)
+                                            })
+                                            .foregroundStyle(Color(.black))
+                                            .buttonStyle(ScaleButtonStyle())
+                                        }
+                                    }
+                                }
                             }
-                            .padding(20)
-                        
-                            .sheet(isPresented: $isShowingIngredientsList) {
-                                SearchCriteriaView(isShowingIngredientsList: $isShowingIngredientsList, isShowingPreferences: true, selectedLikesOrDislikes: .likes)
-                            }
-                        
-                        
-                    }
-                    
-                    List(viewModel.cocktails) { cocktail in
-                        
-                        CocktailListCell(cocktail: cocktail, backgroundColor: .red)
-                            .onTapGesture {
-                                viewModel.selectedCocktail = cocktail
-                                viewModel.isShowingRecipeCard = true
-                                print("tab was tapped")
-                            }
-                    }
-                    
-                    .listStyle(.plain)
-                    .disabled(viewModel.isShowingRecipeCard)
-                    Button(action: {
-                        for i in 0..<criteria.cocktailComponents.count {
-                            criteria.cocktailComponents[i].isPreferred = false
-                            criteria.cocktailComponents[i].isUnwanted = false
                         }
-                    }) {
-                        Text("Clear Search")
-                            .fontDesign(.serif)
                     }
-                    .padding(10)
-                    .background(Color(UIColor.systemBackground))
-                    .clipShape(RoundedRectangle(cornerRadius: 140))
-                    .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
-                    .foregroundColor(Color(UIColor.systemCyan))
-                    
                 }
-//            }
-                
-            .blur(radius: viewModel.isShowingRecipeCard ? 20 : 0)
-            VStack {
-                
-                
-            }
-            if viewModel.isShowingRecipeCard {
-                RecipeCard(cocktail: viewModel.selectedCocktail!, isShowingRecipeCard: $viewModel.isShowingRecipeCard)
             }
         }
     }
+    
 }
 
 struct CocktailListView_Previews: PreviewProvider {
     static var previews: some View {
         CocktailListView()
             .environmentObject(SearchCriteriaViewModel())
+    }
+}
+struct ScaleButtonStyle : ButtonStyle {
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label.scaleEffect(configuration.isPressed ? 2.5 : 1)
+            .shadow(radius: 30)
+        
     }
 }

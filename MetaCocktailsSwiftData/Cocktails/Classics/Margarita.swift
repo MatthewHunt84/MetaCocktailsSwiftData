@@ -16,7 +16,7 @@ var margarita = Cocktail(cocktailName: "Margarita",
 
 var margaritaSpec = [CocktailIngredient( .lime, value: 1),
                      CocktailIngredient( .cointreau, value: 1),
-                     CocktailIngredient( .tequilaBlanco, value: 0.375),]
+                     CocktailIngredient( .tequilaBlanco, value: 2)]
 
 
 
