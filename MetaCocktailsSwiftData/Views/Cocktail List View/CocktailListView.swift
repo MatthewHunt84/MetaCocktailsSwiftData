@@ -68,6 +68,7 @@ struct CocktailListView: View {
                             }
                         }
                     }
+                    .scrollDisabled(true)
                 }
             }
         }
