@@ -17,6 +17,7 @@ final class SearchCriteriaViewModel: ObservableObject {
     @Published var sections = [ResultViewSectionData]()
     @Published var isLoading = true
     @Published var spiritsCategories = Spirit.createSpiritCategoryArray().sorted(by: { $0.lowercased() < $1.lowercased() })
+    
    
 //
 //    

@@ -14,25 +14,16 @@ struct ListView: View {
     @Binding var selectedList: PreferenceType
     var navigationTitle: String
     @Binding var isShowingLikes: Bool
-    
-    
     var body: some View {
-        
         NavigationStack {
-            
             if selectedList != .spirits {
-                
                 List {
                     if isShowingLikes {
                         ForEach($viewModel.cocktailComponents) { ingredient in
-                            
                             if ingredient.isUnwanted.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) {
-                                
                                 PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
-                                
                             }
                         }
-                        
                     } else {
                         ForEach($viewModel.cocktailComponents) { ingredient in
                             if ingredient.isPreferred.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) {
@@ -40,11 +31,9 @@ struct ListView: View {
                                     .tint(.red)
                             }
                         }
-                        
                     }
                 }
                 .listStyle(.plain)
-                
             } else {
                 List {
                         if isShowingLikes {
@@ -54,14 +43,12 @@ struct ListView: View {
                                             ForEach($viewModel.cocktailComponents) { ingredient in
                                                 if ingredient.isUnwanted.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) && ingredient.spiritCategory.wrappedValue?.rawValue ?? "oops"  == spirit.wrappedValue {
                                                     PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
-                                                    
                                                 }
                                             }
                                     } label: {
                                         Text(spirit.wrappedValue)
                                             .font(.headline)
                                             .padding(.leading, 5)
-                                            
                                     }
                                     .tint(Color(.green))
                                 }

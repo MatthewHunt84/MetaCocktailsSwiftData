@@ -15,10 +15,12 @@ struct CocktailListCell: View {
 
         HStack {
             Text(cocktail.cocktailName)
-                .font(.title)
-                .fontDesign(.serif)
+                .font(.headline)
+            Spacer()
         }
+        Spacer()
     }
+    
 }
 
 struct CocktailListCell_Previews: PreviewProvider {
