@@ -7,23 +7,8 @@
 
 import Foundation
 
-enum SpiritCategoryName: String, Codable, CaseIterable {
-    
-    case agave         = "Agave"
-    case brandy        = "Brandy"
-    case gin           = "Gin"
-    case other         = "Other"
-    case rum           = "Rum"
-    case vodka         = "Vodka"
-    case whiskies      = "Whiskies"
-    case liqueur       = "Liqueur"
-    case fortifiedWine = "Fortified Wine"
-    case wine          = "Wine"
-    case bitters       = "Bitters"
-    case amari         = "Amari"
-}
 
-struct Spirit {
+struct Spirit { // delete me
 
     var name: String
     var type: SpiritCategoryName
@@ -128,13 +113,4 @@ struct Spirit {
         case suze                 = "Suze"
 
     }
-    static func createSpiritCategoryArray() -> [String] {
-        var spiritCategoryArray = [String]()
-        
-        for spirits in SpiritCategoryName.allCases {
-            spiritCategoryArray.append(spirits.rawValue)
-        }
-        return spiritCategoryArray
-    }
-
 }

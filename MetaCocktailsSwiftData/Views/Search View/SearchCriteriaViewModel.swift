@@ -904,6 +904,14 @@ class CocktailComponent: Identifiable, ObservableObject, Hashable {
         self.matchesCurrentSearch = true
         self.spiritCategory = category
     }
+    
+    init(for booze: Booze) {
+        self.name = booze.name
+        self.isSpirit = true
+        self.preferenceType = .spirits
+        self.matchesCurrentSearch = true
+        self.spiritCategory = booze.type
+    }
    
 }
 
