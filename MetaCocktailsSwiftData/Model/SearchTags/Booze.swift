@@ -7,12 +7,12 @@
 
 import Foundation
 
-protocol BoozeCategory {
-    var type: SpiritCategoryName { get }
+protocol BoozeCategoryProtocol {
+    var type: boozeCategory { get }
     var expressions: [String] { get }
 }
 
-enum SpiritCategoryName: String, Codable, CaseIterable { // <- rename to boozeCategory
+enum boozeCategory: String, Codable, CaseIterable {
     
     case agave         = "Agave"
     case brandy        = "Brandy"
@@ -29,46 +29,18 @@ enum SpiritCategoryName: String, Codable, CaseIterable { // <- rename to boozeCa
 }
 
 
-struct fakeViewModel { // these go in the viewModel
+
+struct Booze: Codable { // was Spirit
     
-    func generateAllBooze() -> [Booze] {
-
-        let boozeCategoryArray: [BoozeCategory] = [Agave(), Brandy(), Gin(), Other(), Rum(), Vodka(), Whiskies(), Liqueur(), FortifiedWine(), Wine(), Bitters(), Amari()]
-        var boozeArray: [Booze] =  [Booze]()
-        
-        for category in boozeCategoryArray {
-            for expression in category.expressions {
-                let boozeObject = Booze(name: expression, type: category.type)
-                boozeArray.append(boozeObject)
-            }
-        }
-        
-        return boozeArray
-        
-    }
-    
-    func generateCocktailComponents(for arrayOfBooze: [Booze])  -> [CocktailComponent] {
-        var arrayOfComponents: [CocktailComponent] = [CocktailComponent]()
-        for booze in arrayOfBooze {
-            arrayOfComponents.append(CocktailComponent(for: booze))
-        }
-
-        return arrayOfComponents
-    }
-}
-
-
-struct Booze { // was Spirit
-    
-    var name: String
-    var type: SpiritCategoryName // <- rename to boozeCategory
+    var expressionName: String
+    var umbrellaCategory: boozeCategory 
 
 }
 
 
 
-struct Agave: BoozeCategory {
-    var type: SpiritCategoryName = .agave
+struct Agave: BoozeCategoryProtocol {
+    var type: boozeCategory = .agave
     
     var expressions: [String] = {
         var arrayOfExpressions = [String]()
@@ -79,8 +51,8 @@ struct Agave: BoozeCategory {
     }()
 }
 
-struct Brandy: BoozeCategory {
-    var type: SpiritCategoryName = .brandy
+struct Brandy: BoozeCategoryProtocol {
+    var type: boozeCategory = .brandy
     
     var expressions: [String] = {
         var arrayOfExpressions = [String]()
@@ -91,8 +63,8 @@ struct Brandy: BoozeCategory {
     }()
 }
 
-struct Gin: BoozeCategory {
-    var type: SpiritCategoryName = .gin
+struct Gin: BoozeCategoryProtocol {
+    var type: boozeCategory = .gin
     
     var expressions: [String] = {
         var arrayOfExpressions = [String]()
@@ -103,8 +75,8 @@ struct Gin: BoozeCategory {
     }()
 }
 
-struct Other: BoozeCategory {
-    var type: SpiritCategoryName = .other
+struct Other: BoozeCategoryProtocol {
+    var type: boozeCategory = .other
     
     var expressions: [String] = {
         var arrayOfExpressions = [String]()
@@ -115,8 +87,8 @@ struct Other: BoozeCategory {
     }()
 }
 
-struct Rum: BoozeCategory {
-    var type: SpiritCategoryName = .rum
+struct Rum: BoozeCategoryProtocol {
+    var type: boozeCategory = .rum
     
     var expressions: [String] = {
         var arrayOfExpressions = [String]()
@@ -127,8 +99,8 @@ struct Rum: BoozeCategory {
     }()
 }
 
-struct Vodka: BoozeCategory {
-    var type: SpiritCategoryName = .vodka
+struct Vodka: BoozeCategoryProtocol {
+    var type: boozeCategory = .vodka
     
     var expressions: [String] = {
         var arrayOfExpressions = [String]()
@@ -139,8 +111,8 @@ struct Vodka: BoozeCategory {
     }()
 }
 
-struct Whiskies: BoozeCategory {
-    var type: SpiritCategoryName = .whiskies
+struct Whiskies: BoozeCategoryProtocol {
+    var type: boozeCategory = .whiskies
     
     var expressions: [String] = {
         var arrayOfExpressions = [String]()
@@ -151,8 +123,8 @@ struct Whiskies: BoozeCategory {
     }()
 }
 
-struct Liqueur: BoozeCategory {
-    var type: SpiritCategoryName = .liqueur
+struct Liqueur: BoozeCategoryProtocol {
+    var type: boozeCategory = .liqueur
     
     var expressions: [String] = {
         var arrayOfExpressions = [String]()
@@ -163,8 +135,8 @@ struct Liqueur: BoozeCategory {
     }()
 }
 
-struct FortifiedWine: BoozeCategory {
-    var type: SpiritCategoryName = .fortifiedWine
+struct FortifiedWine: BoozeCategoryProtocol {
+    var type: boozeCategory = .fortifiedWine
     
     var expressions: [String] = {
         var arrayOfExpressions = [String]()
@@ -175,8 +147,8 @@ struct FortifiedWine: BoozeCategory {
     }()
 }
 
-struct Wine: BoozeCategory {
-    var type: SpiritCategoryName = .wine
+struct Wine: BoozeCategoryProtocol {
+    var type: boozeCategory = .wine
     
     var expressions: [String] = {
         var arrayOfExpressions = [String]()
@@ -187,8 +159,8 @@ struct Wine: BoozeCategory {
     }()
 }
 
-struct Bitters: BoozeCategory {
-    var type: SpiritCategoryName = .bitters
+struct Bitters: BoozeCategoryProtocol {
+    var type: boozeCategory = .bitters
     
     var expressions: [String] = {
         var arrayOfExpressions = [String]()
@@ -199,8 +171,8 @@ struct Bitters: BoozeCategory {
     }()
 }
 
-struct Amari: BoozeCategory {
-    var type: SpiritCategoryName = .amari
+struct Amari: BoozeCategoryProtocol {
+    var type: boozeCategory = .amari
     
     var expressions: [String] = {
         var arrayOfExpressions = [String]()

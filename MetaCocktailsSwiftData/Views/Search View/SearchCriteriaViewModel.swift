@@ -7,20 +7,38 @@
 
 import SwiftUI
 
+
 final class SearchCriteriaViewModel: ObservableObject {
 
     
     @Published var searchText: String = ""
-    @Published var cocktailComponents = Tags.createComponentArray().sorted(by: { $0.name < $1.name })
+    @Published var cocktailComponents = createComponentArray().sorted(by: { $0.name < $1.name })
     @Published var matchedCocktails = [MatchedCocktail]()
     @Published var preferredCount = 0
     @Published var sections = [ResultViewSectionData]()
     @Published var isLoading = true
-    @Published var spiritsCategories = Spirit.createSpiritCategoryArray().sorted(by: { $0.lowercased() < $1.lowercased() })
+    @Published var spiritsCategories = [Agave().type.rawValue, Brandy().type.rawValue, Gin().type.rawValue, Other().type.rawValue, Rum().type.rawValue, Vodka().type.rawValue, Whiskies().type.rawValue, Liqueur().type.rawValue, FortifiedWine().type.rawValue, Wine().type.rawValue, Bitters().type.rawValue, Amari().type.rawValue]
     
-   
-//
-//    
+    
+    static func generateBoozeCocktailComponents()  -> [CocktailComponent] {
+        
+        let boozeCategoryArray: [BoozeCategoryProtocol] = [Agave(), Brandy(), Gin(), Other(), Rum(), Vodka(), Whiskies(), Liqueur(), FortifiedWine(), Wine(), Bitters(), Amari()]
+        var boozeArray: [Booze] =  [Booze]()
+        var arrayOfComponents: [CocktailComponent] = [CocktailComponent]()
+        
+        for category in boozeCategoryArray {
+            for expression in category.expressions {
+                let boozeObject = Booze(expressionName: expression, umbrellaCategory: category.type)
+                boozeArray.append(boozeObject)
+            }
+        }
+        for booze in boozeArray {
+            arrayOfComponents.append(CocktailComponent(for: booze))
+        }
+        
+        return arrayOfComponents
+    }
+
     func matchAllTheThings() {
         // if searchText is empty, show everything again
         
@@ -84,6 +102,31 @@ final class SearchCriteriaViewModel: ObservableObject {
         
         getFilteredCocktails()
     }
+    static func createComponentArray() ->  [CocktailComponent] {
+        
+        var array = [CocktailComponent]()
+        let convertedArray: [CocktailComponent] = generateBoozeCocktailComponents()
+        
+        
+        for flavor in Flavor.allCases {
+            array.append(CocktailComponent(for: flavor))
+        }
+
+        for profile in Profile.allCases {
+            array.append(CocktailComponent(for: profile))
+        }
+        for texture in Texture.allCases {
+            array.append(CocktailComponent(for: texture))
+        }
+        for style in Style.allCases {
+            array.append(CocktailComponent(for: style))
+        }
+        for component in convertedArray {
+            array.append(component)
+        }
+
+        return array
+    }
     
     // getFilteredCocktails() works, but could be optimized greatly
     func getFilteredCocktails() {
@@ -109,43 +152,8 @@ final class SearchCriteriaViewModel: ObservableObject {
         
         var preferredBases: [CocktailComponent] = preferredArray.filter({ $0.isSpirit })
         if preferredBases.isEmpty {
-            for spirit in Spirit.Liqueur.allCases {
-                preferredBases.append(CocktailComponent(for: spirit, category: SpiritCategoryName.liqueur))
-            }
-            for spirit in Spirit.Agave.allCases {
-                preferredBases.append(CocktailComponent(for: spirit, category: .agave))
-            }
-            for spirit in Spirit.Amari.allCases {
-                preferredBases.append(CocktailComponent(for: spirit, category: .amari))
-            }
-            for spirit in Spirit.Brandy.allCases {
-                preferredBases.append(CocktailComponent(for: spirit, category: .brandy))
-            }
-            for spirit in Spirit.Bitters.allCases {
-                preferredBases.append(CocktailComponent(for: spirit, category: .bitters))
-            }
-            for spirit in Spirit.FortifiedWine.allCases {
-                preferredBases.append(CocktailComponent(for: spirit, category: .fortifiedWine))
-            }
-            for spirit in Spirit.Gin.allCases {
-                preferredBases.append(CocktailComponent(for: spirit, category: .gin))
-            }
-            for spirit in Spirit.Other.allCases {
-                preferredBases.append(CocktailComponent(for: spirit, category: .other))
-            }
-            for spirit in Spirit.Vodka.allCases {
-                preferredBases.append(CocktailComponent(for: spirit, category: .vodka))
-            }
-            for spirit in Spirit.Whiskies.allCases {
-                preferredBases.append(CocktailComponent(for: spirit, category: .whiskies))
-            }
-            for spirit in Spirit.Wine.allCases {
-                preferredBases.append(CocktailComponent(for: spirit, category: .wine))
-            }
-            for spirit in Spirit.Rum.allCases {
-                preferredBases.append(CocktailComponent(for: spirit, category: .rum))
-            }
-            
+            let convertedArray: [CocktailComponent] = SearchCriteriaViewModel.generateBoozeCocktailComponents()
+            preferredBases.append(contentsOf: convertedArray)
         }
         // Make an array of selected styles called PREFERREDSTYLES. If no styles are selected, include all.
         
@@ -155,6 +163,7 @@ final class SearchCriteriaViewModel: ObservableObject {
                 preferredStyles.append(CocktailComponent(for: style))
             }
         }
+        
         
         // Make an array of selected profiles called PREFERREDPROFILES. If no profiles are selected, include all.
         
@@ -761,7 +770,7 @@ class CocktailComponent: Identifiable, ObservableObject, Hashable {
     var isStyle: Bool = false
     var isTexture: Bool = false
     var preferenceType: PreferenceType
-    var spiritCategory: SpiritCategoryName?
+    var spiritCategory: boozeCategory?
  
 
     init(name: String, isFlavor: Bool = false, isProfile: Bool = false, isStyle: Bool = false, isSpirit: Bool = false, isTexture: Bool = false, matchesCurrentSearch: Bool = true) {
@@ -792,14 +801,7 @@ class CocktailComponent: Identifiable, ObservableObject, Hashable {
         self.preferenceType = .flavors
         self.matchesCurrentSearch = true
     }
-//    
-//    init(for spirit: Booze) {
-//        self.name = spirit.rawValue
-//        self.isSpirit = true
-//        self.preferenceType = .spirits
-//        self.matchesCurrentSearch = true
-//    }
-    
+
     init(for profile: Profile) {
         self.name = profile.rawValue
         self.isProfile = true
@@ -819,98 +821,12 @@ class CocktailComponent: Identifiable, ObservableObject, Hashable {
         self.preferenceType = .textures
         self.matchesCurrentSearch = true
     }
-    
-    init(for agave: Spirit.Agave, category: SpiritCategoryName) {
-        self.name = agave.rawValue
-        self.isSpirit = true
-        self.preferenceType = .spirits
-        self.matchesCurrentSearch = true
-        self.spiritCategory = category
-    }
-    init(for brandy: Spirit.Brandy, category: SpiritCategoryName) {
-        self.name = brandy.rawValue
-        self.isSpirit = true
-        self.preferenceType = .spirits
-        self.matchesCurrentSearch = true
-        self.spiritCategory = category
-    }
-    init(for amari: Spirit.Amari, category: SpiritCategoryName) {
-        self.name = amari.rawValue
-        self.isSpirit = true
-        self.preferenceType = .spirits
-        self.matchesCurrentSearch = true
-        self.spiritCategory = category
-    }
-    init(for gin: Spirit.Gin, category: SpiritCategoryName) {
-        self.name = gin.rawValue
-        self.isSpirit = true
-        self.preferenceType = .spirits
-        self.matchesCurrentSearch = true
-        self.spiritCategory = category
-    }
-    init(for other: Spirit.Other, category: SpiritCategoryName) {
-        self.name = other.rawValue
-        self.isSpirit = true
-        self.preferenceType = .spirits
-        self.matchesCurrentSearch = true
-        self.spiritCategory = category
-    }
-    init(for rum: Spirit.Rum, category: SpiritCategoryName) {
-        self.name = rum.rawValue
-        self.isSpirit = true
-        self.preferenceType = .spirits
-        self.matchesCurrentSearch = true
-        self.spiritCategory = category
-    }
-    init(for vodka: Spirit.Vodka, category: SpiritCategoryName) {
-        self.name = vodka.rawValue
-        self.isSpirit = true
-        self.preferenceType = .spirits
-        self.matchesCurrentSearch = true
-        self.spiritCategory = category
-    }
-    init(for whiskies: Spirit.Whiskies, category: SpiritCategoryName) {
-        self.name = whiskies.rawValue
-        self.isSpirit = true
-        self.preferenceType = .spirits
-        self.matchesCurrentSearch = true
-        self.spiritCategory = category
-    }
-    init(for liqueur: Spirit.Liqueur, category: SpiritCategoryName) {
-        self.name = liqueur.rawValue
-        self.isSpirit = true
-        self.preferenceType = .spirits
-        self.matchesCurrentSearch = true
-        self.spiritCategory = category
-    }
-    init(for fortifiedWine: Spirit.FortifiedWine, category: SpiritCategoryName) {
-        self.name = fortifiedWine.rawValue
-        self.isSpirit = true
-        self.preferenceType = .spirits
-        self.matchesCurrentSearch = true
-        self.spiritCategory = category
-    }
-    init(for wine: Spirit.Wine, category: SpiritCategoryName) {
-        self.name = wine.rawValue
-        self.isSpirit = true
-        self.preferenceType = .spirits
-        self.matchesCurrentSearch = true
-        self.spiritCategory = category
-    }
-    init(for bitters: Spirit.Bitters, category: SpiritCategoryName) {
-        self.name = bitters.rawValue
-        self.isSpirit = true
-        self.preferenceType = .spirits
-        self.matchesCurrentSearch = true
-        self.spiritCategory = category
-    }
-    
     init(for booze: Booze) {
-        self.name = booze.name
+        self.name = booze.expressionName
         self.isSpirit = true
         self.preferenceType = .spirits
         self.matchesCurrentSearch = true
-        self.spiritCategory = booze.type
+        self.spiritCategory = booze.umbrellaCategory
     }
    
 }
