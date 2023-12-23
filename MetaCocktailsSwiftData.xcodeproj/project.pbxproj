@@ -72,6 +72,7 @@
 		1AFDB7DE2AE37207000A3812 /* Boulevardier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFDB7DD2AE37207000A3812 /* Boulevardier.swift */; };
 		1AFDB7E02AE37417000A3812 /* WhiteNegroni.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFDB7DF2AE37417000A3812 /* WhiteNegroni.swift */; };
 		4D09E65F2B146B9500D38C35 /* Saturn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D09E65E2B146B9500D38C35 /* Saturn.swift */; };
+		4DB1C0912B3660DB00943C69 /* NonAlcoholicProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB1C0902B3660DB00943C69 /* NonAlcoholicProtocol.swift */; };
 		F41045072AD4FD42000CA913 /* CocktailImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41045062AD4FD42000CA913 /* CocktailImageView.swift */; };
 		F44A28F72AC26A6A0083C04D /* TagLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44A28F62AC26A6A0083C04D /* TagLayout.swift */; };
 		F4B0ABF32B13FB2A00336D05 /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0ABF22B13FB2A00336D05 /* SearchResultsView.swift */; };
@@ -158,6 +159,7 @@
 		1AFDB7DD2AE37207000A3812 /* Boulevardier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boulevardier.swift; sourceTree = "<group>"; };
 		1AFDB7DF2AE37417000A3812 /* WhiteNegroni.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteNegroni.swift; sourceTree = "<group>"; };
 		4D09E65E2B146B9500D38C35 /* Saturn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saturn.swift; sourceTree = "<group>"; };
+		4DB1C0902B3660DB00943C69 /* NonAlcoholicProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonAlcoholicProtocol.swift; sourceTree = "<group>"; };
 		F41045062AD4FD42000CA913 /* CocktailImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImageView.swift; sourceTree = "<group>"; };
 		F44A28F62AC26A6A0083C04D /* TagLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLayout.swift; sourceTree = "<group>"; };
 		F4B0ABF22B13FB2A00336D05 /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				1AC386902AAABED00064F52A /* Build.swift */,
 				1AC386912AAABED00064F52A /* Garnish.swift */,
 				F4C74C822AD8CC9600EA3334 /* Ice.swift */,
+				4DB1C0902B3660DB00943C69 /* NonAlcoholicProtocol.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -620,6 +623,7 @@
 				F4FBF1232AAABBB900BBF7CF /* MetaCocktailsSwiftDataApp.swift in Sources */,
 				1AC386B82AAABED10064F52A /* Daiquiri.swift in Sources */,
 				1AD87A252AE8ADB000859028 /* WhiskeySour.swift in Sources */,
+				4DB1C0912B3660DB00943C69 /* NonAlcoholicProtocol.swift in Sources */,
 				1AC386C32AAABED10064F52A /* BuildOrderView.swift in Sources */,
 				1AFDB7CC2AE33D13000A3812 /* CropTop.swift in Sources */,
 				1AD87A292AE8C22900859028 /* CominUpRoses.swift in Sources */,

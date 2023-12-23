@@ -17,18 +17,24 @@ final class SearchCriteriaViewModel: ObservableObject {
     @Published var preferredCount = 0
     @Published var sections = [ResultViewSectionData]()
     @Published var isLoading = true
-    @Published var spiritsCategories = [Agave().type.rawValue, Brandy().type.rawValue, Gin().type.rawValue, Other().type.rawValue, Rum().type.rawValue, Vodka().type.rawValue, Whiskies().type.rawValue, Liqueur().type.rawValue, FortifiedWine().type.rawValue, Wine().type.rawValue, Bitters().type.rawValue, Amari().type.rawValue]
+    @Published var boozeCategories = { var array: [BoozeCategory] = [BoozeCategory]()
+        for booze in BoozeCategory.allCases {
+            array.append(booze)
+        }
+        return array
+    }()
+        
     
     
     static func generateBoozeCocktailComponents()  -> [CocktailComponent] {
         
-        let boozeCategoryArray: [BoozeCategoryProtocol] = [Agave(), Brandy(), Gin(), Other(), Rum(), Vodka(), Whiskies(), Liqueur(), FortifiedWine(), Wine(), Bitters(), Amari()]
+        let boozeCategoryArray: [BoozeProtocol] = [Agave(), Brandy(), Gin(), OtherBooze(), Rum(), Vodka(), Whiskies(), Liqueur(), FortifiedWine(), Wine(), Bitters(), Amari()]
         var boozeArray: [Booze] =  [Booze]()
         var arrayOfComponents: [CocktailComponent] = [CocktailComponent]()
         
         for category in boozeCategoryArray {
             for expression in category.expressions {
-                let boozeObject = Booze(expressionName: expression, umbrellaCategory: category.type)
+                let boozeObject = Booze(name: expression, boozeCategory: category.type, isBooze: true)
                 boozeArray.append(boozeObject)
             }
         }
@@ -192,125 +198,125 @@ final class SearchCriteriaViewModel: ObservableObject {
         // For every cocktail we got, rip out the bases from each one, and if one of those bases matches one from the PREFERREDBASES array, create a NEW array called MATCHEDBASESCOCKTAILS and throw 'em in.
         // A better way to do this would be to filter the CocktailListViewModel().cocktails.CompileTags().bases by those contained in PREFERREDBASES - but that's a TBD.
         for cocktail in CocktailListViewModel().cocktails {
-            if let agave = cocktail.CompileTags().agave {
-                for agave in agave {
-                    for preferred in preferredBases {
-                        if agave.rawValue.lowercased() == preferred.name.lowercased() && cocktail != allCocktailsThatMatchBySpirit.last {
-                            allCocktailsThatMatchBySpirit.append(cocktail)
-                        }
-                    }
-                    
-                }
-            }
-            if let brandies = cocktail.CompileTags().brandy {
-                for brandy in brandies {
-                    for preferred in preferredBases {
-                        if brandy.rawValue.lowercased() == preferred.name.lowercased() && cocktail != allCocktailsThatMatchBySpirit.last {
-                            allCocktailsThatMatchBySpirit.append(cocktail)
-                        }
-                    }
-                }
-            }
-            if let amari = cocktail.CompileTags().amari {
-                for amaro in amari {
-                    for preferred in preferredBases {
-                        if amaro.rawValue.lowercased() == preferred.name.lowercased() && cocktail != allCocktailsThatMatchBySpirit.last {
-                            allCocktailsThatMatchBySpirit.append(cocktail)
-                        }
-                    }
-                    
-                }
-            }
-            if let bitters = cocktail.CompileTags().bitters{
-                for bitter in bitters {
-                    for preferred in preferredBases {
-                        if bitter.rawValue.lowercased() == preferred.name.lowercased() && cocktail != allCocktailsThatMatchBySpirit.last {
-                            allCocktailsThatMatchBySpirit.append(cocktail)
-                        }
-                    }
-                    
-                }
-            }
-            if let fortifiedWines = cocktail.CompileTags().fortifiedWine {
-                for fortifiedWine in fortifiedWines {
-                    for preferred in preferredBases {
-                        if fortifiedWine.rawValue.lowercased() == preferred.name.lowercased() && cocktail != allCocktailsThatMatchBySpirit.last {
-                            allCocktailsThatMatchBySpirit.append(cocktail)
-                        }
-                    }
-                    
-                }
-            }
-            if let gins = cocktail.CompileTags().gin {
-                for gin in gins {
-                    for preferred in preferredBases {
-                        if gin.rawValue.lowercased() == preferred.name.lowercased() && cocktail != allCocktailsThatMatchBySpirit.last {
-                            allCocktailsThatMatchBySpirit.append(cocktail)
-                        }
-                    }
-                    
-                }
-            }
-            if let liqueurs = cocktail.CompileTags().liqueur {
-                for liqueur in liqueurs {
-                    for preferred in preferredBases {
-                        if liqueur.rawValue.lowercased() == preferred.name.lowercased() && cocktail != allCocktailsThatMatchBySpirit.last {
-                            allCocktailsThatMatchBySpirit.append(cocktail)
-                        }
-                    }
-                    
-                }
-            }
-            if let others = cocktail.CompileTags().other {
-                for other in others {
-                    for preferred in preferredBases {
-                        if other.rawValue.lowercased() == preferred.name.lowercased() && cocktail != allCocktailsThatMatchBySpirit.last {
-                            allCocktailsThatMatchBySpirit.append(cocktail)
-                        }
-                    }
-                    
-                }
-            }
-            if let rums = cocktail.CompileTags().rum {
-                for rum in rums {
-                    for preferred in preferredBases {
-                        if rum.rawValue.lowercased() == preferred.name.lowercased() && cocktail != allCocktailsThatMatchBySpirit.last {
-                            allCocktailsThatMatchBySpirit.append(cocktail)
-                        }
-                    }
-                    
-                }
-            }
-            if let vodkas = cocktail.CompileTags().vodka {
-                for vodka in vodkas {
-                    for preferred in preferredBases {
-                        if vodka.rawValue.lowercased() == preferred.name.lowercased() && cocktail != allCocktailsThatMatchBySpirit.last {
-                            allCocktailsThatMatchBySpirit.append(cocktail)
-                        }
-                    }
-                    
-                }
-            }
-            if let whiskies = cocktail.CompileTags().whiskies {
-                for whisky in whiskies {
-                    for preferred in preferredBases {
-                        if whisky.rawValue.lowercased() == preferred.name.lowercased() && cocktail != allCocktailsThatMatchBySpirit.last {
-                            allCocktailsThatMatchBySpirit.append(cocktail)
-                        }
-                    }
-                    
-                }
-            }
-            if let wines = cocktail.CompileTags().wine {
-                for wine in wines {
-                    for preferred in preferredBases {
-                        if wine.rawValue.lowercased() == preferred.name.lowercased() && cocktail != allCocktailsThatMatchBySpirit.last {
-                            allCocktailsThatMatchBySpirit.append(cocktail)
-                        }
-                    }
-                    
-                }
-            }
+//            if let agave = cocktail.CompileTags().agave {
+//                for agave in agave {
+//                    for preferred in preferredBases {
+//                        if agave.rawValue.lowercased() == preferred.name.lowercased() && cocktail != allCocktailsThatMatchBySpirit.last {
+//                            allCocktailsThatMatchBySpirit.append(cocktail)
+//                        }
+//                    }
+//                    
+//                }
+//            }
+//            if let brandies = cocktail.CompileTags().brandy {
+//                for brandy in brandies {
+//                    for preferred in preferredBases {
+//                        if brandy.rawValue.lowercased() == preferred.name.lowercased() && cocktail != allCocktailsThatMatchBySpirit.last {
+//                            allCocktailsThatMatchBySpirit.append(cocktail)
+//                        }
+//                    }
+//                }
+//            }
+//            if let amari = cocktail.CompileTags().amari {
+//                for amaro in amari {
+//                    for preferred in preferredBases {
+//                        if amaro.rawValue.lowercased() == preferred.name.lowercased() && cocktail != allCocktailsThatMatchBySpirit.last {
+//                            allCocktailsThatMatchBySpirit.append(cocktail)
+//                        }
+//                    }
+//                    
+//                }
+//            }
+//            if let bitters = cocktail.CompileTags().bitters{
+//                for bitter in bitters {
+//                    for preferred in preferredBases {
+//                        if bitter.rawValue.lowercased() == preferred.name.lowercased() && cocktail != allCocktailsThatMatchBySpirit.last {
+//                            allCocktailsThatMatchBySpirit.append(cocktail)
+//                        }
+//                    }
+//                    
+//                }
+//            }
+//            if let fortifiedWines = cocktail.CompileTags().fortifiedWine {
+//                for fortifiedWine in fortifiedWines {
+//                    for preferred in preferredBases {
+//                        if fortifiedWine.rawValue.lowercased() == preferred.name.lowercased() && cocktail != allCocktailsThatMatchBySpirit.last {
+//                            allCocktailsThatMatchBySpirit.append(cocktail)
+//                        }
+//                    }
+//                    
+//                }
+//            }
+//            if let gins = cocktail.CompileTags().gin {
+//                for gin in gins {
+//                    for preferred in preferredBases {
+//                        if gin.rawValue.lowercased() == preferred.name.lowercased() && cocktail != allCocktailsThatMatchBySpirit.last {
+//                            allCocktailsThatMatchBySpirit.append(cocktail)
+//                        }
+//                    }
+//                    
+//                }
+//            }
+//            if let liqueurs = cocktail.CompileTags().liqueur {
+//                for liqueur in liqueurs {
+//                    for preferred in preferredBases {
+//                        if liqueur.rawValue.lowercased() == preferred.name.lowercased() && cocktail != allCocktailsThatMatchBySpirit.last {
+//                            allCocktailsThatMatchBySpirit.append(cocktail)
+//                        }
+//                    }
+//                    
+//                }
+//            }
+//            if let others = cocktail.CompileTags().other {
+//                for other in others {
+//                    for preferred in preferredBases {
+//                        if other.rawValue.lowercased() == preferred.name.lowercased() && cocktail != allCocktailsThatMatchBySpirit.last {
+//                            allCocktailsThatMatchBySpirit.append(cocktail)
+//                        }
+//                    }
+//                    
+//                }
+//            }
+//            if let rums = cocktail.CompileTags().rum {
+//                for rum in rums {
+//                    for preferred in preferredBases {
+//                        if rum.rawValue.lowercased() == preferred.name.lowercased() && cocktail != allCocktailsThatMatchBySpirit.last {
+//                            allCocktailsThatMatchBySpirit.append(cocktail)
+//                        }
+//                    }
+//                    
+//                }
+//            }
+//            if let vodkas = cocktail.CompileTags().vodka {
+//                for vodka in vodkas {
+//                    for preferred in preferredBases {
+//                        if vodka.rawValue.lowercased() == preferred.name.lowercased() && cocktail != allCocktailsThatMatchBySpirit.last {
+//                            allCocktailsThatMatchBySpirit.append(cocktail)
+//                        }
+//                    }
+//                    
+//                }
+//            }
+//            if let whiskies = cocktail.CompileTags().whiskies {
+//                for whisky in whiskies {
+//                    for preferred in preferredBases {
+//                        if whisky.rawValue.lowercased() == preferred.name.lowercased() && cocktail != allCocktailsThatMatchBySpirit.last {
+//                            allCocktailsThatMatchBySpirit.append(cocktail)
+//                        }
+//                    }
+//                    
+//                }
+//            }
+//            if let wines = cocktail.CompileTags().wine {
+//                for wine in wines {
+//                    for preferred in preferredBases {
+//                        if wine.rawValue.lowercased() == preferred.name.lowercased() && cocktail != allCocktailsThatMatchBySpirit.last {
+//                            allCocktailsThatMatchBySpirit.append(cocktail)
+//                        }
+//                    }
+//                    
+//                }
+//            }
         }
 //        for i in allCocktailsThatMatchBySpirit {
 //            print(i.cocktailName)
@@ -397,186 +403,186 @@ final class SearchCriteriaViewModel: ObservableObject {
         // if the base is in the unwanted array, remove it from the final array and update the matchedcount.
         for cocktail in matchedSet {
             
-            if let agave = cocktail.CompileTags().agave {
-                for agave in agave {
-                    for unwanted in unwantedArray {
-                        if agave.rawValue.lowercased() == unwanted.name.lowercased() {
-                            matchedSet.remove(cocktail)
-                            matchedCount -= 1
-                        }
-                    }
-                    for preferred in preferredArray {
-                        if agave.rawValue.lowercased() == preferred.name.lowercased() {
-                            matchedCount += 1
-                        }
-                    }
-                }
-            }
-            if let amari = cocktail.CompileTags().amari {
-                for amaro in amari {
-                    for unwanted in unwantedArray {
-                        if amaro.rawValue.lowercased() == unwanted.name.lowercased() {
-                            matchedSet.remove(cocktail)
-                            matchedCount -= 1
-                        }
-                    }
-                    for preferred in preferredArray {
-                        if amaro.rawValue.lowercased() == preferred.name.lowercased() {
-                            matchedCount += 1
-                        }
-                    }
-                }
-            }
-            if let bitters = cocktail.CompileTags().bitters {
-                for bitter in bitters {
-                    for unwanted in unwantedArray {
-                        if bitter.rawValue.lowercased() == unwanted.name.lowercased() {
-                            matchedSet.remove(cocktail)
-                            matchedCount -= 1
-                        }
-                    }
-                    for preferred in preferredArray {
-                        if bitter.rawValue.lowercased() == preferred.name.lowercased() {
-                            matchedCount += 1
-                        }
-                    }
-                }
-            }
-            if let brandies = cocktail.CompileTags().brandy {
-                for brandy in brandies {
-                    for unwanted in unwantedArray {
-                        if brandy.rawValue.lowercased() == unwanted.name.lowercased() {
-                            matchedSet.remove(cocktail)
-                            matchedCount -= 1
-                        }
-                    }
-                    for preferred in preferredArray {
-                        if brandy.rawValue.lowercased() == preferred.name.lowercased() {
-                            matchedCount += 1
-                        }
-                    }
-                }
-            }
-            if let fortifiedWines = cocktail.CompileTags().fortifiedWine {
-                for fortifiedWine in fortifiedWines {
-                    for unwanted in unwantedArray {
-                        if fortifiedWine.rawValue.lowercased() == unwanted.name.lowercased() {
-                            matchedSet.remove(cocktail)
-                            matchedCount -= 1
-                        }
-                    }
-                    for preferred in preferredArray {
-                        if fortifiedWine.rawValue.lowercased() == preferred.name.lowercased() {
-                            matchedCount += 1
-                        }
-                    }
-                }
-            }
-            if let gins = cocktail.CompileTags().gin {
-                for gin in gins {
-                    for unwanted in unwantedArray {
-                        if gin.rawValue.lowercased() == unwanted.name.lowercased() {
-                            matchedSet.remove(cocktail)
-                            matchedCount -= 1
-                        }
-                    }
-                    for preferred in preferredArray {
-                        if gin.rawValue.lowercased() == preferred.name.lowercased() {
-                            matchedCount += 1
-                        }
-                    }
-                }
-            }
-            if let liqueurs = cocktail.CompileTags().liqueur {
-                for liqueur in liqueurs {
-                    for unwanted in unwantedArray {
-                        if liqueur.rawValue.lowercased() == unwanted.name.lowercased() {
-                            matchedSet.remove(cocktail)
-                            matchedCount -= 1
-                        }
-                    }
-                    for preferred in preferredArray {
-                        if liqueur.rawValue.lowercased() == preferred.name.lowercased() {
-                            matchedCount += 1
-                        }
-                    }
-                }
-            }
-            if let others = cocktail.CompileTags().other {
-                for other in others {
-                    for unwanted in unwantedArray {
-                        if other.rawValue.lowercased() == unwanted.name.lowercased() {
-                            matchedSet.remove(cocktail)
-                            matchedCount -= 1
-                        }
-                    }
-                    for preferred in preferredArray {
-                        if other.rawValue.lowercased() == preferred.name.lowercased() {
-                            matchedCount += 1
-                        }
-                    }
-                }
-            }
-            if let rums = cocktail.CompileTags().rum {
-                for rum in rums {
-                    for unwanted in unwantedArray {
-                        if rum.rawValue.lowercased() == unwanted.name.lowercased() {
-                            matchedSet.remove(cocktail)
-                            matchedCount -= 1
-                        }
-                    }
-                    for preferred in preferredArray {
-                        if rum.rawValue.lowercased() == preferred.name.lowercased() {
-                            matchedCount += 1
-                        }
-                    }
-                }
-            }
-            if let vodkas = cocktail.CompileTags().vodka {
-                for vodka in vodkas {
-                    for unwanted in unwantedArray {
-                        if vodka.rawValue.lowercased() == unwanted.name.lowercased() {
-                            matchedSet.remove(cocktail)
-                            matchedCount -= 1
-                        }
-                    }
-                    for preferred in preferredArray {
-                        if vodka.rawValue.lowercased() == preferred.name.lowercased() {
-                            matchedCount += 1
-                        }
-                    }
-                }
-            }
-            if let whiskies = cocktail.CompileTags().whiskies {
-                for whisky in whiskies {
-                    for unwanted in unwantedArray {
-                        if whisky.rawValue.lowercased() == unwanted.name.lowercased() {
-                            matchedSet.remove(cocktail)
-                            matchedCount -= 1
-                        }
-                    }
-                    for preferred in preferredArray {
-                        if whisky.rawValue.lowercased() == preferred.name.lowercased() {
-                            matchedCount += 1
-                        }
-                    }
-                }
-            }
-            if let wines = cocktail.CompileTags().wine {
-                for wine in wines {
-                    for unwanted in unwantedArray {
-                        if wine.rawValue.lowercased() == unwanted.name.lowercased() {
-                            matchedSet.remove(cocktail)
-                            matchedCount -= 1
-                        }
-                    }
-                    for preferred in preferredArray {
-                        if wine.rawValue.lowercased() == preferred.name.lowercased() {
-                            matchedCount += 1
-                        }
-                    }
-                }
-            }
+//            if let agave = cocktail.CompileTags().agave {
+//                for agave in agave {
+//                    for unwanted in unwantedArray {
+//                        if agave.rawValue.lowercased() == unwanted.name.lowercased() {
+//                            matchedSet.remove(cocktail)
+//                            matchedCount -= 1
+//                        }
+//                    }
+//                    for preferred in preferredArray {
+//                        if agave.rawValue.lowercased() == preferred.name.lowercased() {
+//                            matchedCount += 1
+//                        }
+//                    }
+//                }
+//            }
+//            if let amari = cocktail.CompileTags().amari {
+//                for amaro in amari {
+//                    for unwanted in unwantedArray {
+//                        if amaro.rawValue.lowercased() == unwanted.name.lowercased() {
+//                            matchedSet.remove(cocktail)
+//                            matchedCount -= 1
+//                        }
+//                    }
+//                    for preferred in preferredArray {
+//                        if amaro.rawValue.lowercased() == preferred.name.lowercased() {
+//                            matchedCount += 1
+//                        }
+//                    }
+//                }
+//            }
+//            if let bitters = cocktail.CompileTags().bitters {
+//                for bitter in bitters {
+//                    for unwanted in unwantedArray {
+//                        if bitter.rawValue.lowercased() == unwanted.name.lowercased() {
+//                            matchedSet.remove(cocktail)
+//                            matchedCount -= 1
+//                        }
+//                    }
+//                    for preferred in preferredArray {
+//                        if bitter.rawValue.lowercased() == preferred.name.lowercased() {
+//                            matchedCount += 1
+//                        }
+//                    }
+//                }
+//            }
+//            if let brandies = cocktail.CompileTags().brandy {
+//                for brandy in brandies {
+//                    for unwanted in unwantedArray {
+//                        if brandy.rawValue.lowercased() == unwanted.name.lowercased() {
+//                            matchedSet.remove(cocktail)
+//                            matchedCount -= 1
+//                        }
+//                    }
+//                    for preferred in preferredArray {
+//                        if brandy.rawValue.lowercased() == preferred.name.lowercased() {
+//                            matchedCount += 1
+//                        }
+//                    }
+//                }
+//            }
+//            if let fortifiedWines = cocktail.CompileTags().fortifiedWine {
+//                for fortifiedWine in fortifiedWines {
+//                    for unwanted in unwantedArray {
+//                        if fortifiedWine.rawValue.lowercased() == unwanted.name.lowercased() {
+//                            matchedSet.remove(cocktail)
+//                            matchedCount -= 1
+//                        }
+//                    }
+//                    for preferred in preferredArray {
+//                        if fortifiedWine.rawValue.lowercased() == preferred.name.lowercased() {
+//                            matchedCount += 1
+//                        }
+//                    }
+//                }
+//            }
+//            if let gins = cocktail.CompileTags().gin {
+//                for gin in gins {
+//                    for unwanted in unwantedArray {
+//                        if gin.rawValue.lowercased() == unwanted.name.lowercased() {
+//                            matchedSet.remove(cocktail)
+//                            matchedCount -= 1
+//                        }
+//                    }
+//                    for preferred in preferredArray {
+//                        if gin.rawValue.lowercased() == preferred.name.lowercased() {
+//                            matchedCount += 1
+//                        }
+//                    }
+//                }
+//            }
+//            if let liqueurs = cocktail.CompileTags().liqueur {
+//                for liqueur in liqueurs {
+//                    for unwanted in unwantedArray {
+//                        if liqueur.rawValue.lowercased() == unwanted.name.lowercased() {
+//                            matchedSet.remove(cocktail)
+//                            matchedCount -= 1
+//                        }
+//                    }
+//                    for preferred in preferredArray {
+//                        if liqueur.rawValue.lowercased() == preferred.name.lowercased() {
+//                            matchedCount += 1
+//                        }
+//                    }
+//                }
+//            }
+//            if let others = cocktail.CompileTags().other {
+//                for other in others {
+//                    for unwanted in unwantedArray {
+//                        if other.rawValue.lowercased() == unwanted.name.lowercased() {
+//                            matchedSet.remove(cocktail)
+//                            matchedCount -= 1
+//                        }
+//                    }
+//                    for preferred in preferredArray {
+//                        if other.rawValue.lowercased() == preferred.name.lowercased() {
+//                            matchedCount += 1
+//                        }
+//                    }
+//                }
+//            }
+//            if let rums = cocktail.CompileTags().rum {
+//                for rum in rums {
+//                    for unwanted in unwantedArray {
+//                        if rum.rawValue.lowercased() == unwanted.name.lowercased() {
+//                            matchedSet.remove(cocktail)
+//                            matchedCount -= 1
+//                        }
+//                    }
+//                    for preferred in preferredArray {
+//                        if rum.rawValue.lowercased() == preferred.name.lowercased() {
+//                            matchedCount += 1
+//                        }
+//                    }
+//                }
+//            }
+//            if let vodkas = cocktail.CompileTags().vodka {
+//                for vodka in vodkas {
+//                    for unwanted in unwantedArray {
+//                        if vodka.rawValue.lowercased() == unwanted.name.lowercased() {
+//                            matchedSet.remove(cocktail)
+//                            matchedCount -= 1
+//                        }
+//                    }
+//                    for preferred in preferredArray {
+//                        if vodka.rawValue.lowercased() == preferred.name.lowercased() {
+//                            matchedCount += 1
+//                        }
+//                    }
+//                }
+//            }
+//            if let whiskies = cocktail.CompileTags().whiskies {
+//                for whisky in whiskies {
+//                    for unwanted in unwantedArray {
+//                        if whisky.rawValue.lowercased() == unwanted.name.lowercased() {
+//                            matchedSet.remove(cocktail)
+//                            matchedCount -= 1
+//                        }
+//                    }
+//                    for preferred in preferredArray {
+//                        if whisky.rawValue.lowercased() == preferred.name.lowercased() {
+//                            matchedCount += 1
+//                        }
+//                    }
+//                }
+//            }
+//            if let wines = cocktail.CompileTags().wine {
+//                for wine in wines {
+//                    for unwanted in unwantedArray {
+//                        if wine.rawValue.lowercased() == unwanted.name.lowercased() {
+//                            matchedSet.remove(cocktail)
+//                            matchedCount -= 1
+//                        }
+//                    }
+//                    for preferred in preferredArray {
+//                        if wine.rawValue.lowercased() == preferred.name.lowercased() {
+//                            matchedCount += 1
+//                        }
+//                    }
+//                }
+//            }
             
             // rip out and remove unwanted styles
             if let styles = cocktail.CompileTags().styles {
@@ -770,7 +776,7 @@ class CocktailComponent: Identifiable, ObservableObject, Hashable {
     var isStyle: Bool = false
     var isTexture: Bool = false
     var preferenceType: PreferenceType
-    var spiritCategory: boozeCategory?
+    var spiritCategory: BoozeCategory?
  
 
     init(name: String, isFlavor: Bool = false, isProfile: Bool = false, isStyle: Bool = false, isSpirit: Bool = false, isTexture: Bool = false, matchesCurrentSearch: Bool = true) {
@@ -822,11 +828,11 @@ class CocktailComponent: Identifiable, ObservableObject, Hashable {
         self.matchesCurrentSearch = true
     }
     init(for booze: Booze) {
-        self.name = booze.expressionName
+        self.name = booze.name
         self.isSpirit = true
         self.preferenceType = .spirits
         self.matchesCurrentSearch = true
-        self.spiritCategory = booze.umbrellaCategory
+        self.spiritCategory = booze.boozeCategory
     }
    
 }
