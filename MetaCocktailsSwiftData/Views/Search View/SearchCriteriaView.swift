@@ -41,6 +41,7 @@ struct SearchCriteriaView: View {
                         SearchResultsView(viewModel: viewModel)
                             .onAppear {
                                 viewModel.getFilteredCocktails()
+                                print("--- Does this work?  \(NonAlcoholicEnum.Juices.pineappleJuice.tags)")
                             }
                     } label: {
                         Text("SEARCH!")
@@ -51,6 +52,7 @@ struct SearchCriteriaView: View {
                             .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
                             .foregroundColor(.white)
                     }
+                    
                     Button(action: {
                         for i in 0..<viewModel.cocktailComponents.count {
                             viewModel.cocktailComponents[i].isPreferred = false

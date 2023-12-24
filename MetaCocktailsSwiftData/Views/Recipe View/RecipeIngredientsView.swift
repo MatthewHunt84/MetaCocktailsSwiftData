@@ -19,8 +19,7 @@ struct RecipeIngredientsView: View {
         Text("GW: \(cocktail.glasswareType.rawValue)")
         
         ForEach(cocktail.spec, id: \.self) { ingredient in
-            Text("We need to fix ingredient uses....")
-//            Text("\(ingredient.value, specifier: "%.2f") oz. \(ingredient.ingredient.rawValue)")
+            Text("\(ingredient.value, specifier: "%.2f") oz. \(ingredient.ingredient.name)")
                 .padding(recipeSpacing)
         }
         
@@ -49,94 +48,14 @@ struct TagView: View {
         
         let tags = cocktail.CompileTags()
         
-        
-//
-//        if let agaveBases = tags.agave  {
-//            for base in agaveBases {
-//                baseString += " \(base.rawValue),"
-//            }
-//            
-//            print(baseString)
-//        }
-//        if let amariBases = tags.amari  {
-//            for base in amariBases {
-//                baseString += " \(base.rawValue),"
-//            }
-//           
-//            print(baseString)
-//        }
-//        if let brandyBases = tags.brandy  {
-//            for base in brandyBases {
-//                baseString += " \(base.rawValue),"
-//            }
-//            
-//            print(baseString)
-//        }
-//        if let fortBases = tags.fortifiedWine  {
-//            for base in fortBases {
-//                baseString += " \(base.rawValue),"
-//            }
-//            
-//            print(baseString)
-//        }
-//        if let ginBases = tags.gin  {
-//            for base in ginBases {
-//                baseString += " \(base.rawValue),"
-//            }
-//            
-//            print(baseString)
-//        }
-//        if let liqueurBases = tags.liqueur  {
-//            for base in liqueurBases {
-//                baseString += " \(base.rawValue),"
-//            }
-//            
-//            print(baseString)
-//        }
-//        if let bittersBases = tags.bitters  {
-//            for base in bittersBases {
-//                baseString += " \(base.rawValue),"
-//            }
-//           
-//            print(baseString)
-//        }
-//        if let otherBases = tags.other {
-//            for base in otherBases {
-//                baseString += " \(base.rawValue),"
-//            }
-//            
-//            print(baseString)
-//        }
-//        if let rumBases = tags.rum  {
-//            for base in rumBases {
-//                baseString += " \(base.rawValue),"
-//            }
-//            
-//            print(baseString)
-//        }
-//        if let vodkaBases = tags.vodka  {
-//            for base in vodkaBases {
-//                baseString += " \(base.rawValue),"
-//            }
-//            
-//            print(baseString)
-//        }
-//        if let wineBases = tags.wine  {
-//            for base in wineBases {
-//                baseString += " \(base.rawValue),"
-//            }
-//           
-//            print(baseString)
-//        }
-//        if let whiskeyBases = tags.whiskies  {
-//            for base in whiskeyBases {
-//                baseString += " \(base.rawValue),"
-//            }
-//          
-//            print(baseString)
-//        }
-        
-        baseString.removeLast()
+        if let boozeBottles = tags.booze {
+            for booze in boozeBottles {
+                baseString +=  " \(booze.name),"
+            }
+            baseString.removeLast()
+        } else {
+            baseString = "NO BOOZE"
+        }
 
 
         if let flavors = tags.flavors {

@@ -18,20 +18,14 @@ protocol NonAlcoholicProtocol {
     var expressions: [String] { get }
 }
 
-
-var agaveSyrup = NonAlcoholic(name: "AgaveSyrup", nonalcoholicCategory: .syrups, isBooze: false)
-
-
 enum NonalcoholicCategory: String, Codable {
     case syrups     = "Syrups"
     case juices     = "Juices"
     case herbs      = "Herbs"
     case fruit      = "Fresh Fruit"
-    case sodas      = "Sodas"
     case seasoning  = "Seasoning"
     case soda       = "Soda"
     case other      = "Other"
-
 }
 
 struct Syrups: NonAlcoholicProtocol {
@@ -107,9 +101,7 @@ struct OtherNA: NonAlcoholicProtocol {
 }
 
 
-
 struct NonAlcoholicEnum {
-    
     
     enum Syrups: String, Codable, CaseIterable {
         case agaveSyrup           = "Agave Syrup"
@@ -123,6 +115,33 @@ struct NonAlcoholicEnum {
         case richDem              = "Rich Demerara Syrup (2:1)"
         case simple               = "Simple Syrup (1:1)"
         case raspberrySyrup       = "RaspberrySyrup"
+        
+        var tags: Tags {
+            switch self {
+            case .agaveSyrup:
+                Tags(flavors: [.agave])
+            case .cucumberSyrup:
+                Tags(flavors: [.cucumber])
+            case .demSyrupOneToOne:
+                Tags()
+            case .gingerSyrup:
+                Tags(flavors: [.ginger])
+            case .grenadine:
+                Tags(flavors: [.pomegranate])
+            case .honeySyrup:
+                Tags(flavors: [.honey])
+            case .orgeat:
+                Tags(flavors: [.almond])
+            case .passionfruitSyrup:
+                Tags(flavors: [.passionfruit])
+            case .richDem:
+                Tags()
+            case .simple:
+                Tags()
+            case .raspberrySyrup:
+                Tags(flavors: [.raspberry])
+            }
+        }
     }
     
     enum Juices: String, Codable, CaseIterable {
@@ -131,104 +150,99 @@ struct NonAlcoholicEnum {
         case lime                 = "Fresh Squeezed Lime Juice"
         case pineappleJuice       = "Fresh Pineapple Juice"
         
+        var tags: Tags {
+            switch self {
+            case .cranberryJuice:
+                Tags(flavors: [.cranberry])
+            case .lemon:
+                Tags(flavors: [.lemon], profiles: [.citrusy])
+            case .lime:
+                Tags(flavors: [.lime,], profiles: [.citrusy])
+            case .pineappleJuice:
+                Tags(flavors: [.pineapple], profiles: [.fruity])
+            }
+        }
     }
     
     enum Herbs: String, Codable, CaseIterable  {
         case mint                 = "Mint Leaves"
         case sage                 = "Sage"
+        
+        var tags: Tags {
+            switch self {
+            case .mint:
+                Tags(flavors: [.mint], profiles: [.herbal, .aromatic])
+            case .sage:
+                Tags(flavors: [.sage], profiles: [.herbal, .aromatic])
+            }
+        }
     }
     
     enum Fruit: String, Codable, CaseIterable {
         case blackBerry           = "Blackberries"
         case raspberries          = "Raspberries"
+        
+        var tags: Tags {
+            switch self {
+            case .blackBerry:
+                Tags(flavors: [.blackberry], profiles: [.fruity])
+            case .raspberries:
+                Tags(flavors: [.raspberry], profiles: [.fruity])
+            }
+        }
     }
     
     enum Seasonings: String, Codable, CaseIterable {
-        case salt                 = "Salt"
         case nutmeg               = "Nutmeg"
+        case salt                 = "Salt"
+        
+        var tags: Tags {
+            switch self {
+            case .nutmeg:
+                Tags(flavors: [.nutmeg])
+            case .salt:
+                Tags()
+            }
+        }
     }
     
     enum Soda: String, Codable, CaseIterable {
-        case sparklingWater       = "Chilled Sparkling Water"
         case grapefruitSoda       = "Cold Grapefruit Soda"
         case sodaWater            = "Soda Water"
+        case sparklingWater       = "Chilled Sparkling Water"
+        
+        var tags: Tags {
+            switch self {
+            case .grapefruitSoda:
+                Tags(flavors: [.grapefruit], profiles: [.fruity], textures: [.effervescent])
+            case .sodaWater:
+                Tags(textures: [.effervescent])
+            case .sparklingWater:
+                Tags(textures: [.effervescent])
+            }
+        }
     }
     
     enum OtherNA: String, Codable, CaseIterable {
         case cream                = "Heavy Cream"
         case eggWhites            = "Egg Whites"
+        case egg                  = "1 Egg"
         case granulatedSugar      = "Granulated Sugar"
         case orangeFlowerWater    = "Orange Flower Water"
-        case egg                  = "1 Egg"
+        
+        var tags: Tags {
+            switch self {
+            case .cream:
+                Tags(flavors: [.cream], profiles: [.creamy], textures: [.rich, .creamy])
+            case .eggWhites:
+                Tags(textures: [.silky, .light])
+            case .egg:
+                Tags()
+            case .granulatedSugar:
+                Tags(textures: [.unrefined])
+            case .orangeFlowerWater:
+                Tags(flavors: [.whiteFlower], profiles: [.floral])
+            }
+        }
     }
-
 }
-
-//enum Ingredient: String, Codable {
-//    // NA
-
-//
-//
-//    var tags: Tags {
-//        switch self {
-//        case .lemon:
-//            Tags(flavors: [.lemon], profiles: [.citrusy])
-//        case .lime:
-//            Tags(flavors: [.lime,], profiles: [.citrusy])
-//        case .cream:
-//            Tags(flavors: [.cream], profiles: [.creamy], textures: [.rich, .creamy])
-//        case .simple:
-//            Tags()
-//        case .granulatedSugar:
-//            Tags(textures: [.unrefined])
-//        case .orangeFlowerWater:
-//            Tags(flavors: [.whiteFlower], profiles: [.floral])
-//        case .sodaWater:
-//            Tags()
-//        case .eggWhites:
-//            Tags(textures: [.silky, .light])
-//        case .gingerSyrup:
-//            Tags(flavors: [.ginger])
-//        case .honeySyrup:
-//            Tags(flavors: [.honey])
-//        case .richDem:
-//            Tags()
-//        case .passionfruitSyrup:
-//            Tags(flavors: [.passionfruit])
-//        case .cucumberSyrup:
-//            Tags(flavors: [.cucumber])
-//        case .orgeat:
-//            Tags(flavors: [.almond])
-//        case .cranberryJuice:
-//            Tags(flavors: [.cranberry])
-//        case .grenadine:
-//            Tags(flavors: [.pomegranate])
-//        case .pineappleJuice:
-//            Tags(flavors: [.pineapple], profiles: [.fruity])
-//        case .blackBerry:
-//            Tags(flavors: [.blackberry], profiles: [.fruity])
-//        case .sage:
-//            Tags(flavors: [.sage], profiles: [.herbal, .aromatic])
-//        case .mint:
-//            Tags(flavors: [.mint], profiles: [.herbal, .aromatic])
-//        case .sparklingWater:
-//            Tags(textures: [.effervescent])
-//        case .agaveSyrup:
-//            Tags(flavors: [.agave])
-//        case .raspberries:
-//            Tags(flavors: [.raspberry])
-//        case .salt:
-//            Tags()
-//        case .grapefruitSoda:
-//            Tags(flavors: [.grapefruit], profiles: [.fruity], textures: [.effervescent])
-//        case .raspberrySyrup:
-//            Tags(flavors: [.raspberry])
-//        case .demSyrupOneToOne:
-//            Tags()
-//        case .nutmeg:
-//            Tags(flavors: [.nutmeg])
-//        case .egg:
-//            Tags()
-//        }
-//    }
-//}
