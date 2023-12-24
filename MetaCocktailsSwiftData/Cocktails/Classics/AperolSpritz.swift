@@ -19,7 +19,7 @@ var aperolSpritz = Cocktail(cocktailName: "Aperol Spritz",
 
 var aperolSpritzSpec = [CocktailIngredient(ingredient: Booze(name: "Aperol", boozeCategory: .amari, isBooze: true), value: 2),
                         CocktailIngredient(ingredient: Booze(name: "Prosecco", boozeCategory: .wine, isBooze: true), value: 3),
-                        CocktailIngredient(ingredient: NonAlcoholic(name: "Sparkling water", nonalcoholicCategory: .soda, isBooze: false), value: 1)]
+                        CocktailIngredient(ingredient: NonAlcoholic(name: "Sparkling water", nonalcoholicCategory: .soda, isBooze: false, nonAlcEnum: NonAlcoholicEnum.Juices.pineappleJuice), value: 1)]
 
 
 

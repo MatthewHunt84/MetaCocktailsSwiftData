@@ -16,7 +16,6 @@ protocol Ingredient: Codable {
 class CocktailIngredient: Codable, Hashable {
 
     let ingredient: any Ingredient
-//    let ingredient: Booze // swiftData doesn't like reading a type that is only defined as a protocol without arduous Codable conformance methods.
     let value: Double
     let unit: MeasurementUnit
     
@@ -25,12 +24,6 @@ class CocktailIngredient: Codable, Hashable {
         self.value = value
         self.unit = unit
     }
-    
-//    init(_ ingredient: Booze, value: Double, unit: MeasurementUnit = .fluidOunces) {
-//        self.ingredient = ingredient
-//        self.value = value
-//        self.unit = unit
-//    }
     
     func localizedVolumetricString(location: Location) -> String {
         switch location {

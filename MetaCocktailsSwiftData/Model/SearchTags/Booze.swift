@@ -34,13 +34,6 @@ enum BoozeCategory: String, Codable, CaseIterable {
     case amari         = "Amari"
 }
 
-
-var cognacVSOP = Booze(name: "CognacVSOP", boozeCategory: .brandy, isBooze: true)
-
-
-
-
-
 struct Agave: BoozeProtocol {
     var type: BoozeCategory = .agave
     

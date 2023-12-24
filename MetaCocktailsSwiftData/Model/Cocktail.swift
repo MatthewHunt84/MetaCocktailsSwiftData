@@ -40,8 +40,25 @@ class Cocktail {
         
         var compileTags = self.tags
 
-//        for ingredient in self.spec {
-//           
+        for ingredient in self.spec {
+            
+            if !ingredient.ingredient.isBooze {
+                let nonAlc = ingredient.ingredient as! NonAlcoholic
+                
+                let nonAlcFlavors = nonAlc.nonAlcEnum.tags
+                
+                let thing = nonAlcFlavors.flavors?.first
+                
+                compileTags.flavors?.append(thing!)
+            }
+            
+            //what am I trying to do?
+            // For non alcs, I'm trying to grab the nonAlc.category, and then cross reference that with the name to find out what that is... not the best right.
+            
+            // A better way would be if nonAlc just had a more specific category type that I could pull the name (raw value) and tags from!!
+            
+            // So lets try that....
+//
 //            if let flavors = ingredient.ingredient.tags.flavors {
 //                for flavor in flavors {
 //                    
@@ -75,11 +92,8 @@ class Cocktail {
 //                }
 //                compileTags.textures = Array(Set(compileTags.textures!))
 //            }
-//            
-//            
 //        }
 
         return compileTags
     }
-
 }
