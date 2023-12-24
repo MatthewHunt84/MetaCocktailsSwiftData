@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct Booze: Codable, Ingredient {
+struct Booze: Codable {
     var name: String
     var boozeCategory: BoozeCategory
     var isBooze: Bool
@@ -35,7 +35,7 @@ enum BoozeCategory: String, Codable, CaseIterable {
 }
 
 
-var cognacVSOP: Ingredient = Booze(name: "CognacVSOP", boozeCategory: .brandy, isBooze: true)
+var cognacVSOP = Booze(name: "CognacVSOP", boozeCategory: .brandy, isBooze: true)
 
 
 

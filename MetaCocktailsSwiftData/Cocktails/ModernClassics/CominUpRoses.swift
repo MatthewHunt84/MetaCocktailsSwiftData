@@ -1,28 +1,28 @@
+////
+////  CominUpRoses.swift
+////  MetaCocktailsSwiftData
+////
+////  Created by James on 10/24/23.
+////
 //
-//  CominUpRoses.swift
-//  MetaCocktailsSwiftData
+//import SwiftUI
 //
-//  Created by James on 10/24/23.
+//var cominUpRoses = Cocktail(cocktailName: "Comin' Up Roses",
+//                            glasswareType: .stemmedGlassware,
+//                            garnish: [.rosePedals],
+//                            ice: nil,
+//                            author: "James Menkal(2021ish)",
+//                            spec: cominUpRosesSpec,
+//                            buildOrder: nil,
+//                            tags: cominUpRosesTags)
 //
-
-import SwiftUI
-
-var cominUpRoses = Cocktail(cocktailName: "Comin' Up Roses",
-                            glasswareType: .stemmedGlassware,
-                            garnish: [.rosePedals],
-                            ice: nil,
-                            author: "James Menkal(2021ish)",
-                            spec: cominUpRosesSpec,
-                            buildOrder: nil,
-                            tags: cominUpRosesTags)
-
-var cominUpRosesSpec  = [CocktailIngredient(.lemon, value: 0.5),
-                     CocktailIngredient(.demSyrupOneToOne, value: 0.5),
-                         CocktailIngredient(.amaroMontenegro, value: 1.5),
-                     CocktailIngredient(.bourbon120Proof, value: 0.75)]
-
-
-var cominUpRosesTags = Tags(textures: [.light],
-                            styles: [.sour, .shaken],
-                            amari: [.amaroMontenegro],
-                            whiskies: [.bourbon])
+//var cominUpRosesSpec  = [CocktailIngredient(.lemon, value: 0.5),
+//                     CocktailIngredient(.demSyrupOneToOne, value: 0.5),
+//                         CocktailIngredient(.amaroMontenegro, value: 1.5),
+//                     CocktailIngredient(.bourbon120Proof, value: 0.75)]
+//
+//
+//var cominUpRosesTags = Tags(textures: [.light],
+//                            styles: [.sour, .shaken],
+//                            amari: [.amaroMontenegro],
+//                            whiskies: [.bourbon])

@@ -1,30 +1,30 @@
+////
+////  Boulevardier.swift
+////  MetaCocktailsSwiftData
+////
+////  Created by James on 10/20/23.
+////
 //
-//  Boulevardier.swift
-//  MetaCocktailsSwiftData
+//import SwiftUI
 //
-//  Created by James on 10/20/23.
+//var boulevardier  =  Cocktail(cocktailName: "Boulevardier",
+//                         glasswareType: Glassware.doubleOld,
+//                         garnish: [.orangePeel],
+//                         ice: .bigRock,
+//                         author: "Erskine Gwynne (1920s)",
+//                         spec: boulevardierSpec,
+//                         buildOrder: nil,
+//                         tags: boulevardierTags)
 //
-
-import SwiftUI
-
-var boulevardier  =  Cocktail(cocktailName: "Boulevardier",
-                         glasswareType: Glassware.doubleOld,
-                         garnish: [.orangePeel],
-                         ice: .bigRock,
-                         author: "Erskine Gwynne (1920s)",
-                         spec: boulevardierSpec,
-                         buildOrder: nil,
-                         tags: boulevardierTags)
-
-var boulevardierSpec = [CocktailIngredient(.straightRyeOrBourbon, value: 1),
-                   CocktailIngredient(.sweetVermouth, value: 1),
-                   CocktailIngredient(.campari, value: 1)]
-
-var boulevardierTags = Tags(flavors: [.orange, .bakingSpices],
-                            profiles: [.bittersweet, .spiritForward],
-                            textures: [.rich],
-                            styles: [.negroni, .stirred],
-                            amari: [.campari],
-                            fortifiedWine: [.sweetVermouth],
-                            whiskies: [.straightRyeOrBourbon, .ryeWhiskey, .bourbon])
-
+//var boulevardierSpec = [CocktailIngredient(.straightRyeOrBourbon, value: 1),
+//                   CocktailIngredient(.sweetVermouth, value: 1),
+//                   CocktailIngredient(.campari, value: 1)]
+//
+//var boulevardierTags = Tags(flavors: [.orange, .bakingSpices],
+//                            profiles: [.bittersweet, .spiritForward],
+//                            textures: [.rich],
+//                            styles: [.negroni, .stirred],
+//                            amari: [.campari],
+//                            fortifiedWine: [.sweetVermouth],
+//                            whiskies: [.straightRyeOrBourbon, .ryeWhiskey, .bourbon])
+//

@@ -17,10 +17,10 @@ var aperolSpritz = Cocktail(cocktailName: "Aperol Spritz",
                             aperolSpritzBuild,
                             tags: aperolSpritzTags)
 
-
-var aperolSpritzSpec = [CocktailIngredient(.aperol, value: 2),
-                        CocktailIngredient(.prosecco, value: 3),
-                        CocktailIngredient(.sparklingWater, value: 1)]
+var aperolSpritzSpec = [CocktailIngredient(Booze(name: "aperol", boozeCategory: .amari, isBooze: true), value: 2.0)]
+//var aperolSpritzSpec = [CocktailIngredient(.aperol, value: 2),
+//                        CocktailIngredient(.prosecco, value: 3),
+//                        CocktailIngredient(.sparklingWater, value: 1)]
 
 
 var aperolSpritzBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients to the wine glass"),
@@ -32,6 +32,7 @@ var aperolSpritzTags = Tags(flavors: [.orange, .rhubarb, .grapefruit],
                             profiles: [.bitter],
                             textures: [.effervescent],
                             styles: [.spritz, .built],
-                            amari: [.aperol],
-                            wine: [.prosecco])
+                            booze: [Booze(name: "aperol", boozeCategory: .amari, isBooze: true)])
+//                            amari: [.aperol],
+//                            wine: [.prosecco])
                         

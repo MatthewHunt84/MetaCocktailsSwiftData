@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>top-level-items</key>
+	<array>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>823</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>822</string>
+					<key>Timestamp</key>
+					<string>724543236.147634</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>MetaCocktailsSwiftData/Views/Search View/SearchCriteriaViewModel.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>    }
+</string>
+				<key>leading</key>
+				<string>        self.preferenceType = .style
+        self.matchesCurrentSearch = true
+</string>
+				<key>trailing</key>
+				<string>    init(for texture: Texture) {
+        self.name = texture.rawValue
+        self.isTexture = true
+</string>
+			</dict>
+			<key>title</key>
+			<string>Too many Cocktail Component Inits</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>25</string>
+					<key>EndingLineNumber</key>
+					<string>110</string>
+					<key>StartingColumnNumber</key>
+					<string>11</string>
+					<key>StartingLineNumber</key>
+					<string>110</string>
+					<key>Timestamp</key>
+					<string>724541005.5812449</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>MetaCocktailsSwiftData/Views/Search View/SearchCriteriaViewModel.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>func createCom</string>
+				<key>leading</key>
+				<string>        getFilteredCocktails()
+    }
+    static </string>
+				<key>trailing</key>
+				<string>ponentArray() -&gt;  [CocktailComponent] {
+        
+        var array = [CocktailComponent]()
+</string>
+			</dict>
+			<key>title</key>
+			<string>Leads to too many loops</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+	</array>
+</dict>
+</plist>

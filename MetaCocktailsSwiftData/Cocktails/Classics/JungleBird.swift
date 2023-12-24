@@ -1,35 +1,35 @@
+////
+////  JungleBird.swift
+////  MetaCocktailsSwiftData
+////
+////  Created by James on 10/10/23.
+////
 //
-//  JungleBird.swift
-//  MetaCocktailsSwiftData
+//import SwiftUI
 //
-//  Created by James on 10/10/23.
+//var jungleBird = Cocktail(cocktailName: "JungleBird",
+//                          glasswareType: .doubleOld,
+//                          garnish: [.pineappleFrond, .pineappleWedge],
+//                          ice: .bigRock,
+//                          author: "Aviary Bar at the Kuala Lumpur Hilton (1970's)",
+//                          spec: jungleBirdSpec,
+//                          buildOrder: nil,
+//                          tags: jungleBirdTags)
 //
-
-import SwiftUI
-
-var jungleBird = Cocktail(cocktailName: "JungleBird",
-                          glasswareType: .doubleOld,
-                          garnish: [.pineappleFrond, .pineappleWedge],
-                          ice: .bigRock,
-                          author: "Aviary Bar at the Kuala Lumpur Hilton (1970's)",
-                          spec: jungleBirdSpec,
-                          buildOrder: nil,
-                          tags: jungleBirdTags)
-
-var jungleBirdSpec  =  [CocktailIngredient( .lime, value: 0.5),
-                        CocktailIngredient( .pineappleJuice, value: 2),
-                        CocktailIngredient( .simple, value: 0.5),
-                        CocktailIngredient( .campari, value: 0.75),
-                        CocktailIngredient( .rumJamaicanAged, value: 1.5)]
-                        
-                        
-                        
-                        
-
-var jungleBirdTags = Tags(flavors: [.pineapple, .lime],
-                          profiles: [.aromatic, .bitter, .citrusy, .fruity],
-                          textures: [.light],
-                          styles: [.tiki, .shaken, .sour],
-                          amari: [.campari],
-                          rum: [.rumJamaicanAged])
-            
+//var jungleBirdSpec  =  [CocktailIngredient( .lime, value: 0.5),
+//                        CocktailIngredient( .pineappleJuice, value: 2),
+//                        CocktailIngredient( .simple, value: 0.5),
+//                        CocktailIngredient( .campari, value: 0.75),
+//                        CocktailIngredient( .rumJamaicanAged, value: 1.5)]
+//                        
+//                        
+//                        
+//                        
+//
+//var jungleBirdTags = Tags(flavors: [.pineapple, .lime],
+//                          profiles: [.aromatic, .bitter, .citrusy, .fruity],
+//                          textures: [.light],
+//                          styles: [.tiki, .shaken, .sour],
+//                          amari: [.campari],
+//                          rum: [.rumJamaicanAged])
+//            

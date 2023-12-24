@@ -40,44 +40,44 @@ class Cocktail {
         
         var compileTags = self.tags
 
-        for ingredient in self.spec {
-           
-            if let flavors = ingredient.ingredient.tags.flavors {
-                for flavor in flavors {
-                    
-                    if compileTags.flavors?.append(flavor) == nil {
-                        compileTags.flavors = [flavor]
-                    }
-                }
-                compileTags.flavors = Array(Set(compileTags.flavors!))
-            }
-            if let profiles = ingredient.ingredient.tags.profiles {
-                for profile in profiles {
-                    if compileTags.profiles?.append(profile) == nil {
-                        compileTags.profiles = [profile]
-                    }
-                }
-                compileTags.profiles = Array(Set(compileTags.profiles!))
-            }
-            if let styles =  ingredient.ingredient.tags.styles {
-                for style in styles {
-                    if compileTags.styles?.append(style) == nil {
-                        compileTags.styles = [style]
-                    }
-                }
-                compileTags.styles = Array(Set(compileTags.styles!))
-            }
-            if let textures = ingredient.ingredient.tags.textures {
-                for texture in textures {
-                    if compileTags.textures?.append(texture) == nil {
-                        compileTags.textures = [texture]
-                    }
-                }
-                compileTags.textures = Array(Set(compileTags.textures!))
-            }
-            
-            
-        }
+//        for ingredient in self.spec {
+//           
+//            if let flavors = ingredient.ingredient.tags.flavors {
+//                for flavor in flavors {
+//                    
+//                    if compileTags.flavors?.append(flavor) == nil {
+//                        compileTags.flavors = [flavor]
+//                    }
+//                }
+//                compileTags.flavors = Array(Set(compileTags.flavors!))
+//            }
+//            if let profiles = ingredient.ingredient.tags.profiles {
+//                for profile in profiles {
+//                    if compileTags.profiles?.append(profile) == nil {
+//                        compileTags.profiles = [profile]
+//                    }
+//                }
+//                compileTags.profiles = Array(Set(compileTags.profiles!))
+//            }
+//            if let styles =  ingredient.ingredient.tags.styles {
+//                for style in styles {
+//                    if compileTags.styles?.append(style) == nil {
+//                        compileTags.styles = [style]
+//                    }
+//                }
+//                compileTags.styles = Array(Set(compileTags.styles!))
+//            }
+//            if let textures = ingredient.ingredient.tags.textures {
+//                for texture in textures {
+//                    if compileTags.textures?.append(texture) == nil {
+//                        compileTags.textures = [texture]
+//                    }
+//                }
+//                compileTags.textures = Array(Set(compileTags.textures!))
+//            }
+//            
+//            
+//        }
 
         return compileTags
     }

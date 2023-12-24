@@ -1,27 +1,27 @@
+////
+////  UltimaPalabra.swift
+////  MetaCocktailsSwiftData
+////
+////  Created by James on 10/20/23.
+////
 //
-//  UltimaPalabra.swift
-//  MetaCocktailsSwiftData
+//import SwiftUI
 //
-//  Created by James on 10/20/23.
+//var ultimaPalabra = Cocktail(cocktailName: "Ultima Palabra",
+//                        glasswareType: .stemmedGlassware,
+//                        ice: nil,
+//                        spec: ultimaPalabraSpec,
+//                        tags: ultimaPalabraTags)
 //
-
-import SwiftUI
-
-var ultimaPalabra = Cocktail(cocktailName: "Ultima Palabra",
-                        glasswareType: .stemmedGlassware,
-                        ice: nil,
-                        spec: ultimaPalabraSpec,
-                        tags: ultimaPalabraTags)
-
-var ultimaPalabraSpec  = [CocktailIngredient(.lime, value: 0.75),
-                     CocktailIngredient(.mezcalSmokey, value: 0.75),
-                     CocktailIngredient(.maraschinoLiqueur, value: 0.75),
-                     CocktailIngredient(.greenChartreuse, value: 0.75)]
-
-
-var ultimaPalabraTags = Tags(textures: [.light],
-                             styles: [.sour, .shaken],
-                             agave: [.mezcalSmokey],
-                             liqueur: [.maraschinoLiqueur, .greenChartreuse],
-                             whiskies: [.ryeWhiskey])
-                            
+//var ultimaPalabraSpec  = [CocktailIngredient(.lime, value: 0.75),
+//                     CocktailIngredient(.mezcalSmokey, value: 0.75),
+//                     CocktailIngredient(.maraschinoLiqueur, value: 0.75),
+//                     CocktailIngredient(.greenChartreuse, value: 0.75)]
+//
+//
+//var ultimaPalabraTags = Tags(textures: [.light],
+//                             styles: [.sour, .shaken],
+//                             agave: [.mezcalSmokey],
+//                             liqueur: [.maraschinoLiqueur, .greenChartreuse],
+//                             whiskies: [.ryeWhiskey])
+//                            
