@@ -13,36 +13,23 @@ protocol Ingredient: Codable {
     var name: String { get }
 }
 
-struct CocktailIngredient: Decodable, Hashable, Identifiable {
-    var id = UUID()
-    
-    static func == (lhs: CocktailIngredient, rhs: CocktailIngredient) -> Bool {
-        lhs.ingredient.name > rhs.ingredient.name
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(ingredient.name)
-    }
+class CocktailIngredient: Codable, Hashable {
 
-    let ingredient: Booze // swiftData doesn't like reading a type that is only defined as a protocol without arduous Codable conformance methods.
+    let ingredient: any Ingredient
+//    let ingredient: Booze // swiftData doesn't like reading a type that is only defined as a protocol without arduous Codable conformance methods.
     let value: Double
     let unit: MeasurementUnit
     
-    init(_ ingredient: Booze, value: Double, unit: MeasurementUnit = .fluidOunces) {
+    init(ingredient: Ingredient, value: Double, unit: MeasurementUnit) {
         self.ingredient = ingredient
         self.value = value
         self.unit = unit
     }
     
-    init(from decoder: Decoder) throws {
-        self.ingredient = Booze(name: "aaa", boozeCategory: .agave, isBooze: true)
-        self.value = 1.0
-        self.unit = .barspoon
-    }
-    
-//    func encode(to encoder: Encoder) throws {
-//        var container = encoder.container(keyedBy: CodingKeys.self)
-//        try container.encode(ingredient, forKey: .ingredient)
+//    init(_ ingredient: Booze, value: Double, unit: MeasurementUnit = .fluidOunces) {
+//        self.ingredient = ingredient
+//        self.value = value
+//        self.unit = unit
 //    }
     
     func localizedVolumetricString(location: Location) -> String {
@@ -52,6 +39,51 @@ struct CocktailIngredient: Decodable, Hashable, Identifiable {
         case .world:
             return "\(self.value * 29.5735) mls"
         }
+    }
+    
+    // Decodable conformance
+    
+    private enum CodingKeys: CodingKey {
+        case value
+        case unit
+        case ingredient
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+
+        value = try values.decode(Double.self, forKey: .value)
+        unit = try values.decode(MeasurementUnit.self, forKey: .unit)
+        
+        do {
+            let boozeObject  = try values.decode(Booze.self, forKey: .ingredient)
+            ingredient = boozeObject
+        }
+        catch {
+            let nonAlcoholicObject = try values.decode(NonAlcoholic.self, forKey: .ingredient)
+            ingredient = nonAlcoholicObject
+        }
+    }
+    
+    // Encodable conformance
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        try container.encode(value, forKey: .value)
+        try container.encode(unit, forKey: .unit)
+        try container.encode(ingredient, forKey: .ingredient)
+
+    }
+    
+    // Hashable and Equatable conformance
+    
+    static func == (lhs: CocktailIngredient, rhs: CocktailIngredient) -> Bool {
+        lhs.ingredient.name > rhs.ingredient.name
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(ingredient.name)
     }
 }
 

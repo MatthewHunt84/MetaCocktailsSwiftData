@@ -17,7 +17,7 @@ var aperolSpritz = Cocktail(cocktailName: "Aperol Spritz",
                             aperolSpritzBuild,
                             tags: aperolSpritzTags)
 
-var aperolSpritzSpec = [CocktailIngredient(Booze(name: "aperol", boozeCategory: .amari, isBooze: true), value: 2.0)]
+var aperolSpritzSpec = [CocktailIngredient(ingredient: Booze(name: "Aperol", boozeCategory: .amari, isBooze: true), value: 2.0, unit: .fluidOunces)]
 //var aperolSpritzSpec = [CocktailIngredient(.aperol, value: 2),
 //                        CocktailIngredient(.prosecco, value: 3),
 //                        CocktailIngredient(.sparklingWater, value: 1)]
@@ -31,8 +31,7 @@ var aperolSpritzBuild = Build(instructions: [Instruction(step: 1, method: "Add a
 var aperolSpritzTags = Tags(flavors: [.orange, .rhubarb, .grapefruit],
                             profiles: [.bitter],
                             textures: [.effervescent],
-                            styles: [.spritz, .built],
-                            booze: [Booze(name: "aperol", boozeCategory: .amari, isBooze: true)])
-//                            amari: [.aperol],
-//                            wine: [.prosecco])
+                            styles: [.spritz, .built])
+
+// No need to add booze, since the makeTags function in the viewmodel will handle that for us.
                         

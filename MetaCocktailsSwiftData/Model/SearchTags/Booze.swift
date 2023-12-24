@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct Booze: Codable {
+struct Booze: Codable, Ingredient {
     var name: String
     var boozeCategory: BoozeCategory
     var isBooze: Bool
