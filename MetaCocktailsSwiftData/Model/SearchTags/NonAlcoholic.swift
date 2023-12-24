@@ -7,6 +7,23 @@
 
 import Foundation
 
+// 1. Okay we're here. We want to make NonAlcEnum conform to codable, then use it for booze as well so Ingredients can just have a nonAlcEnum property we can use when passing to Cocktails as all the info we need:
+
+let example = CocktailIngredient(ingredient: NonAlcoholic(name: "Sparkling water", nonalcoholicCategory: .soda, isBooze: false, nonAlcEnum: NonAlcoholicEnum.Juices.pineappleJuice), value: 1)
+
+// from that nonAlcEnum property we can get the name (raw value) and type, and tags from the .tags variable. It's pretty neat.
+
+// But before you embark on that conversion, lets check out if there's a better way to take two tags objects and merge them together.
+// In Cocktail right now we have a CompileTags() functions where we
+// make an initial tags array
+// then loop through each category (flavors, profiles, booze, etc) and append tags if they exist from each individual ingredient
+// it would be SO COOL if we could just merge them together in a single line.
+
+//maybe that's a dictionary? Maybe it can't be done. But worth looking into. A dictionary has a merge function, I think we would just create multiple instances of the same types but that would be okay.
+// So Dictionary1 = [flavors: .pineappleSyrup, textures: .creamy] + Dictionary2 = [flavors: .lime, booze: .lightRum]
+// But this won't work because there can only be one key....
+
+
 struct NonAlcoholic: Ingredient, Codable {
     var name: String
     var nonalcoholicCategory: NonalcoholicCategory

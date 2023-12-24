@@ -38,19 +38,28 @@ class Cocktail {
     
     func CompileTags() -> Tags {
         
-        var compileTags = self.tags
+        
+        var cocktailTags = self.tags
+        var combinedTags = Tags()
 
         for ingredient in self.spec {
             
             if !ingredient.ingredient.isBooze {
                 let nonAlc = ingredient.ingredient as! NonAlcoholic
                 
-                let nonAlcFlavors = nonAlc.nonAlcEnum.tags
+                if let flavorsFromTags = nonAlc.nonAlcEnum.tags.flavors {
+                    combinedTags.flavors! += flavorsFromTags
+                    
+                    // the optionals are a decision here. Tags without optionals would make this function much easier, but would make them harder to use elsewhere...
+                }
+
                 
-                let thing = nonAlcFlavors.flavors?.first
+//                compileTags.flavors += nonAlc.nonAlcEnum.tags.flavors // Coolies!!!
                 
-                compileTags.flavors?.append(thing!)
+
             }
+            
+            
             
             //what am I trying to do?
             // For non alcs, I'm trying to grab the nonAlc.category, and then cross reference that with the name to find out what that is... not the best right.
