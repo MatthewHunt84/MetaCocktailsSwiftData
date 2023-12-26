@@ -41,7 +41,7 @@ struct SearchCriteriaView: View {
                         SearchResultsView(viewModel: viewModel)
                             .onAppear {
                                 viewModel.getFilteredCocktails()
-                                print("--- Does this work?  \(NonAlcoholicEnum.Juices.pineappleJuice.tags)")
+                                print("--- Does this work?  \(Juice.pineappleJuice.tags)")
                             }
                     } label: {
                         Text("SEARCH!")
