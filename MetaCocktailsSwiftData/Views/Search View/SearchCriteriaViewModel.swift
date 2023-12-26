@@ -20,29 +20,8 @@ final class SearchCriteriaViewModel: ObservableObject {
     @Published var boozeCategories = ["Agave", "Brandy", "Gin", "OtherAlcohol", "Rum", "Vodka"]
     
     static func generateBoozeCocktailComponents()  -> [CocktailComponent] {
-        
-        
-        
+        IngredientType.getBoozeComponents()
     }
-    
-    
-    
-    //        let boozeCategoryArray: [BoozeProtocol] = [Agave(), Brandy(), Gin(), OtherBooze(), Rum(), Vodka(), Whiskies(), Liqueur(), FortifiedWine(), Wine(), Bitters(), Amari()]
-    //        var boozeArray: [Booze] =  [Booze]()
-    //        var arrayOfComponents: [CocktailComponent] = [CocktailComponent]()
-    //
-    //        for category in boozeCategoryArray {
-    //            for expression in category.expressions {
-    //                let boozeObject = Booze(name: expression, boozeCategory: category.type, isBooze: true)
-    //                boozeArray.append(boozeObject)
-    //            }
-    //        }
-    //        for booze in boozeArray {
-    //            arrayOfComponents.append(CocktailComponent(for: booze))
-    //        }
-    //
-    //        return arrayOfComponents
-    
     
     func matchAllTheThings() {
         // if searchText is empty, show everything again
@@ -325,7 +304,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         // matchedStylesAndBasesCocktails is therefor a subset of matchedBasesCocktails, that could be filtered
         
         for cocktailWithMatchedSpirit in allCocktailsThatMatchBySpirit {
-            if let styles = cocktailWithMatchedSpirit.CompileTags().styles {
+            if let styles = cocktailWithMatchedSpirit.compileTags().styles {
                 for style in styles {
                     for preferred in preferredStyles {
                         if style.rawValue.lowercased() == preferred.name.lowercased() && cocktailWithMatchedSpirit != matchedStylesAndBasesCocktails.last {
@@ -339,7 +318,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         // Take this smaller subset of cocktails, rip out the textures, and if any of them match selected textures make a NEW ARRAY of just those.
         
         for matchedBasesAndStyles in matchedStylesAndBasesCocktails {
-            if let textures = matchedBasesAndStyles.CompileTags().textures {
+            if let textures = matchedBasesAndStyles.compileTags().textures {
                 for texture in textures {
                     for preferredTexture in preferredTextures {
                         if texture.rawValue.lowercased() == preferredTexture.name.lowercased() && matchedBasesAndStyles != matchedTexturesBasesAndStylesCocktails.last {
@@ -352,7 +331,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         
         // Finally, rip out the profiles and create a new array containing any that match.
         for matched in matchedTexturesBasesAndStylesCocktails {
-            if let profiles = matched.CompileTags().profiles {
+            if let profiles = matched.compileTags().profiles {
                 for profile in profiles {
                     for preferredProfile in preferredProfiles {
                         if profile.rawValue.lowercased() == preferredProfile.name.lowercased() && matched != matchedProfilesTexturesBasesAndStylesCocktails.last {
@@ -374,7 +353,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         for matched in matchedProfilesTexturesBasesAndStylesCocktails {
             var internalMatchedCounter = 0
             
-            if let flavors = matched.CompileTags().flavors {
+            if let flavors = matched.compileTags().flavors {
                 for flavor in flavors {
                     for preferredFlavor in preferredFlavors {
                         if flavor.rawValue.lowercased() == preferredFlavor.name.lowercased() {
@@ -584,7 +563,7 @@ final class SearchCriteriaViewModel: ObservableObject {
             //            }
             
             // rip out and remove unwanted styles
-            if let styles = cocktail.CompileTags().styles {
+            if let styles = cocktail.compileTags().styles {
                 for style in styles {
                     for unwanted in unwantedArray {
                         if style.rawValue.lowercased() == unwanted.name.lowercased() {
@@ -602,7 +581,7 @@ final class SearchCriteriaViewModel: ObservableObject {
             }
             
             // rip out and remove unwanted flavors
-            if let flavors = cocktail.CompileTags().flavors {
+            if let flavors = cocktail.compileTags().flavors {
                 for flavor in flavors {
                     for unwanted in unwantedArray {
                         if flavor.rawValue.lowercased() == unwanted.name.lowercased() {
@@ -620,7 +599,7 @@ final class SearchCriteriaViewModel: ObservableObject {
             }
             
             // rip out and remove unwanted profiles
-            if let profiles = cocktail.CompileTags().profiles {
+            if let profiles = cocktail.compileTags().profiles {
                 for profile in profiles {
                     for unwanted in unwantedArray {
                         if profile.rawValue.lowercased() == unwanted.name.lowercased() {
@@ -638,7 +617,7 @@ final class SearchCriteriaViewModel: ObservableObject {
             }
             
             // rip out and remove unwanted textures
-            if let textures = cocktail.CompileTags().textures {
+            if let textures = cocktail.compileTags().textures {
                 for texture in textures {
                     for unwanted in unwantedArray {
                         if texture.rawValue.lowercased() == unwanted.name.lowercased() {
@@ -768,7 +747,7 @@ struct CocktailResultList: View {
         var isStyle: Bool = false
         var isTexture: Bool = false
         var preferenceType: PreferenceType
-        var spiritCategory: IngredientType
+        var spiritCategory: IngredientType?
         
         
         init(name: String, isFlavor: Bool = false, isProfile: Bool = false, isStyle: Bool = false, isSpirit: Bool = false, isTexture: Bool = false, matchesCurrentSearch: Bool = true) {
@@ -820,6 +799,7 @@ struct CocktailResultList: View {
             self.preferenceType = .textures
             self.matchesCurrentSearch = true
         }
+        
         init(for booze: Booze) {
             self.name = booze.ingredientType.name
             self.isSpirit = true

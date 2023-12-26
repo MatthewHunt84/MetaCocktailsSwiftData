@@ -12,13 +12,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>815</string>
+					<string>794</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>814</string>
+					<string>793</string>
 					<key>Timestamp</key>
-					<string>725307852.601451</string>
+					<string>725311323.15222</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -59,13 +59,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>110</string>
+					<string>89</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>109</string>
+					<string>88</string>
 					<key>Timestamp</key>
-					<string>725307739.642665</string>
+					<string>725311206.7888809</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -81,12 +81,12 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>static func createComponentArray() -&gt;  [CocktailComponent] {
+				<string>    static func createComponentArray() -&gt;  [CocktailComponent] {
 </string>
 				<key>leading</key>
 				<string>        getFilteredCocktails()
     }
-    </string>
+</string>
 				<key>trailing</key>
 				<string>        
         var array = [CocktailComponent]()

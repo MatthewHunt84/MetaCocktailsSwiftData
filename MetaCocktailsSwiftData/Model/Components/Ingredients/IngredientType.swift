@@ -8,6 +8,7 @@
 import Foundation
 
 enum IngredientType: Codable {
+    
     case syrups(Syrup)
     case juices(Juice)
     case herbs(Herb)
@@ -28,6 +29,28 @@ enum IngredientType: Codable {
     case wines(Wine)
     case bitters(Bitters)
     case amari(Amaro)
+    
+    static func getBoozeComponents() -> [CocktailComponent] {
+        
+        var CocktailComponentArrayForBooze = [CocktailComponent]()
+        
+        CocktailComponentArrayForBooze.append(contentsOf: Agave.allCases.map { CocktailComponent(name: $0.rawValue, isSpirit: true) })
+        CocktailComponentArrayForBooze.append(contentsOf: Brandy.allCases.map { CocktailComponent(name: $0.rawValue, isSpirit: true) })
+        CocktailComponentArrayForBooze.append(contentsOf: Gin.allCases.map { CocktailComponent(name: $0.rawValue, isSpirit: true) })
+        CocktailComponentArrayForBooze.append(contentsOf: OtherAlcohol.allCases.map { CocktailComponent(name: $0.rawValue, isSpirit: true) })
+        CocktailComponentArrayForBooze.append(contentsOf: Rum.allCases.map { CocktailComponent(name: $0.rawValue, isSpirit: true) })
+        CocktailComponentArrayForBooze.append(contentsOf: Vodka.allCases.map { CocktailComponent(name: $0.rawValue, isSpirit: true) })
+        CocktailComponentArrayForBooze.append(contentsOf: Whiskey.allCases.map { CocktailComponent(name: $0.rawValue, isSpirit: true) })
+        CocktailComponentArrayForBooze.append(contentsOf: Liqueur.allCases.map { CocktailComponent(name: $0.rawValue, isSpirit: true) })
+        CocktailComponentArrayForBooze.append(contentsOf: FortifiedWine.allCases.map { CocktailComponent(name: $0.rawValue, isSpirit: true) })
+        CocktailComponentArrayForBooze.append(contentsOf: Wine.allCases.map { CocktailComponent(name: $0.rawValue, isSpirit: true) })
+        CocktailComponentArrayForBooze.append(contentsOf: Bitters.allCases.map { CocktailComponent(name: $0.rawValue, isSpirit: true) })
+        CocktailComponentArrayForBooze.append(contentsOf: Amaro.allCases.map { CocktailComponent(name: $0.rawValue, isSpirit: true) })
+
+        return CocktailComponentArrayForBooze
+    }
+    
+
     
     var tags: Tags {
         switch self {

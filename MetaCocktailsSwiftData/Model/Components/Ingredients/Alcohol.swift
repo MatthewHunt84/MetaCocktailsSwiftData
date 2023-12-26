@@ -15,6 +15,7 @@ struct Booze: Codable {
         self.ingredientType = ingredientType
         self.name = ingredientType.name
     }
+}
 
 enum Agave: String, Codable, CaseIterable {
     case mezcalSmokey         = "Mezcal (Smokey)"

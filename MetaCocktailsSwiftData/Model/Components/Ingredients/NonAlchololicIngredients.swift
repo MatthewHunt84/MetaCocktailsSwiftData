@@ -27,7 +27,7 @@ enum Juice: String, Codable, CaseIterable {
     }
 }
 
-enum Syrup: String, Codable { // TEST: No caseIterable
+enum Syrup: String, Codable, CaseIterable { // TEST: No caseIterable
     
     case agaveSyrup           = "Agave Syrup"
     case cucumberSyrup        = "Cucumber Syrup"
