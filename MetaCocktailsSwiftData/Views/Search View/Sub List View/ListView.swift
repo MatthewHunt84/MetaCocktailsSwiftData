@@ -41,12 +41,15 @@ struct ListView: View {
                                 Section {
                                     DisclosureGroup {
                                             ForEach($viewModel.cocktailComponents) { ingredient in
-                                                if ingredient.isUnwanted.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) && ingredient.spiritCategory.wrappedValue?.rawValue ?? "oops"  == spirit.wrappedValue.rawValue {
+                                                if ingredient.isUnwanted.wrappedValue == false && 
+                                                    ingredient.matchesCurrentSearch.wrappedValue &&
+                                                    (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) &&
+                                                    spirit.wrappedValue == ingredient.name.wrappedValue {
                                                     PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
                                                 }
                                             }
                                     } label: {
-                                        Text(spirit.wrappedValue.rawValue)
+                                        Text(spirit.wrappedValue)
                                             .font(.headline)
                                             .padding(.leading, 5)
                                     }
@@ -58,13 +61,16 @@ struct ListView: View {
                                 Section {
                                     DisclosureGroup {
                                         ForEach($viewModel.cocktailComponents) { ingredient in
-                                            if ingredient.isPreferred.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) && ingredient.spiritCategory.wrappedValue?.rawValue ?? "oops"  == spirit.wrappedValue.rawValue {
+                                            if ingredient.isPreferred.wrappedValue == false && 
+                                                ingredient.matchesCurrentSearch.wrappedValue &&
+                                                (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) &&
+                                                spirit.wrappedValue == ingredient.name.wrappedValue {
                                                 PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
                                                     
                                             }
                                         }
                                     } label: {
-                                        Text(spirit.wrappedValue.rawValue)
+                                        Text(spirit.wrappedValue)
                                             .font(.headline)
                                             .padding(.leading, 5)
                                     }
