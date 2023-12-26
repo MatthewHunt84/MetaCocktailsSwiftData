@@ -34,18 +34,18 @@ enum IngredientType: Codable {
         
         var CocktailComponentArrayForBooze = [CocktailComponent]()
         
-        CocktailComponentArrayForBooze.append(contentsOf: Agave.allCases.map { CocktailComponent(name: $0.rawValue, isSpirit: true) })
-        CocktailComponentArrayForBooze.append(contentsOf: Brandy.allCases.map { CocktailComponent(name: $0.rawValue, isSpirit: true) })
-        CocktailComponentArrayForBooze.append(contentsOf: Gin.allCases.map { CocktailComponent(name: $0.rawValue, isSpirit: true) })
-        CocktailComponentArrayForBooze.append(contentsOf: OtherAlcohol.allCases.map { CocktailComponent(name: $0.rawValue, isSpirit: true) })
-        CocktailComponentArrayForBooze.append(contentsOf: Rum.allCases.map { CocktailComponent(name: $0.rawValue, isSpirit: true) })
-        CocktailComponentArrayForBooze.append(contentsOf: Vodka.allCases.map { CocktailComponent(name: $0.rawValue, isSpirit: true) })
-        CocktailComponentArrayForBooze.append(contentsOf: Whiskey.allCases.map { CocktailComponent(name: $0.rawValue, isSpirit: true) })
-        CocktailComponentArrayForBooze.append(contentsOf: Liqueur.allCases.map { CocktailComponent(name: $0.rawValue, isSpirit: true) })
-        CocktailComponentArrayForBooze.append(contentsOf: FortifiedWine.allCases.map { CocktailComponent(name: $0.rawValue, isSpirit: true) })
-        CocktailComponentArrayForBooze.append(contentsOf: Wine.allCases.map { CocktailComponent(name: $0.rawValue, isSpirit: true) })
-        CocktailComponentArrayForBooze.append(contentsOf: Bitters.allCases.map { CocktailComponent(name: $0.rawValue, isSpirit: true) })
-        CocktailComponentArrayForBooze.append(contentsOf: Amaro.allCases.map { CocktailComponent(name: $0.rawValue, isSpirit: true) })
+        CocktailComponentArrayForBooze.append(contentsOf: Agave.allCases.map { $0.cockTailComponent })
+        CocktailComponentArrayForBooze.append(contentsOf: Brandy.allCases.map { $0.cockTailComponent })
+        CocktailComponentArrayForBooze.append(contentsOf: Gin.allCases.map { $0.cockTailComponent })
+        CocktailComponentArrayForBooze.append(contentsOf: OtherAlcohol.allCases.map { $0.cockTailComponent })
+        CocktailComponentArrayForBooze.append(contentsOf: Rum.allCases.map { $0.cockTailComponent })
+        CocktailComponentArrayForBooze.append(contentsOf: Vodka.allCases.map { $0.cockTailComponent })
+        CocktailComponentArrayForBooze.append(contentsOf: Whiskey.allCases.map { $0.cockTailComponent })
+        CocktailComponentArrayForBooze.append(contentsOf: Liqueur.allCases.map { $0.cockTailComponent })
+        CocktailComponentArrayForBooze.append(contentsOf: FortifiedWine.allCases.map { $0.cockTailComponent })
+        CocktailComponentArrayForBooze.append(contentsOf: Wine.allCases.map { $0.cockTailComponent })
+        CocktailComponentArrayForBooze.append(contentsOf: Bitters.allCases.map { $0.cockTailComponent })
+        CocktailComponentArrayForBooze.append(contentsOf: Amaro.allCases.map { $0.cockTailComponent })
 
         return CocktailComponentArrayForBooze
     }
@@ -138,6 +138,37 @@ enum IngredientType: Codable {
             return amaro.rawValue
         }
     }
+    
+    var category: String {
+        switch self {
+        case .agaves:
+            return "Agave"
+        case .brandies:
+            return "Brandy"
+        case .gins:
+            return "Gin"
+        case .otherAlcohol:
+            return "Other"
+        case .rums:
+            return "Rum"
+        case .vodkas:
+            return "Vodka"
+        case .whiskies:
+            return "Whiskies"
+        case .liqueurs:
+            return "Liqueur"
+        case .fortifiedWines:
+            return "Fortified Wine"
+        case .wines:
+            return "Wine"
+        case .bitters:
+            return "Bitters"
+        case .amari:
+            return "Amari"
+        default:
+            return "I'm not booze"
+        }
+    }
 }
 
 enum MeasurementUnit: String, Codable {
@@ -157,4 +188,20 @@ enum MeasurementUnit: String, Codable {
     case pinch          = "Pinch"
     case whole          = "Whole (except the shell)"
     case sprays         = "Sprays in the glass (glass rinse)"
+}
+
+enum BoozeCategory: String, Codable, CaseIterable {
+    
+    case agave         = "Agave"
+    case brandy        = "Brandy"
+    case gin           = "Gin"
+    case other         = "Other"
+    case rum           = "Rum"
+    case vodka         = "Vodka"
+    case whiskies      = "Whiskies"
+    case liqueur       = "Liqueur"
+    case fortifiedWine = "Fortified Wine"
+    case wine          = "Wine"
+    case bitters       = "Bitters"
+    case amari         = "Amari"
 }

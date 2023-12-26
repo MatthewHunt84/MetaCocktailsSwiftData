@@ -27,6 +27,10 @@ enum Agave: String, Codable, CaseIterable {
     var tags: Tags {
         return Tags(booze: [Booze(.agaves(self))])
     }
+    
+    var cockTailComponent: CocktailComponent {
+        return CocktailComponent(for: Booze(.agaves(self)))
+    }
 }
 
 
@@ -38,6 +42,10 @@ enum Brandy: String, Codable, CaseIterable {
     var tags: Tags {
         return Tags(booze: [Booze(.brandies(self))])
     }
+    
+    var cockTailComponent: CocktailComponent {
+        return CocktailComponent(for: Booze(.brandies(self)))
+    }
 }
 
 enum Gin: String, Codable, CaseIterable {
@@ -47,6 +55,10 @@ enum Gin: String, Codable, CaseIterable {
     var tags: Tags {
         return Tags(booze: [Booze(.gins(self))])
     }
+    
+    var cockTailComponent: CocktailComponent {
+        return CocktailComponent(for: Booze(.gins(self)))
+    }
 }
 
 // Other can be Aquavit, Malort, Absinthe etc.
@@ -55,6 +67,10 @@ enum OtherAlcohol: String, Codable, CaseIterable {
     
     var tags: Tags {
         return Tags(booze: [Booze(.otherAlcohol(self))])
+    }
+    
+    var cockTailComponent: CocktailComponent {
+        return CocktailComponent(for: Booze(.otherAlcohol(self)))
     }
 }
 
@@ -70,6 +86,10 @@ enum Rum: String, Codable, CaseIterable {
     var tags: Tags {
         return Tags(booze: [Booze(.rums(self))])
     }
+    
+    var cockTailComponent: CocktailComponent {
+        return CocktailComponent(for: Booze(.rums(self)))
+    }
 }
 
 enum Vodka: String, Codable, CaseIterable {
@@ -79,6 +99,10 @@ enum Vodka: String, Codable, CaseIterable {
     
     var tags: Tags {
         return Tags(booze: [Booze(.vodkas(self))])
+    }
+    
+    var cockTailComponent: CocktailComponent {
+        return CocktailComponent(for: Booze(.vodkas(self)))
     }
 }
 
@@ -93,6 +117,10 @@ enum Whiskey: String, Codable, CaseIterable {
     var tags: Tags {
         return Tags(booze: [Booze(.whiskies(self))])
     }
+    
+    var cockTailComponent: CocktailComponent {
+        return CocktailComponent(for: Booze(.whiskies(self)))
+    }
 }
 enum Liqueur: String, Codable, CaseIterable {
     case cointreau            = "Cointreau"
@@ -106,6 +134,10 @@ enum Liqueur: String, Codable, CaseIterable {
     
     var tags: Tags {
         return Tags(booze: [Booze(.liqueurs(self))])
+    }
+    
+    var cockTailComponent: CocktailComponent {
+        return CocktailComponent(for: Booze(.liqueurs(self)))
     }
 
 }
@@ -122,6 +154,10 @@ enum FortifiedWine: String, Codable, CaseIterable {
     var tags: Tags {
         return Tags(booze: [Booze(.fortifiedWines(self))])
     }
+    
+    var cockTailComponent: CocktailComponent {
+        return CocktailComponent(for: Booze(.fortifiedWines(self)))
+    }
 }
 
 enum Wine: String, Codable, CaseIterable {
@@ -130,6 +166,10 @@ enum Wine: String, Codable, CaseIterable {
     
     var tags: Tags {
         return Tags(booze: [Booze(.wines(self))])
+    }
+    
+    var cockTailComponent: CocktailComponent {
+        return CocktailComponent(for: Booze(.wines(self)))
     }
 
 }
@@ -140,6 +180,10 @@ enum Bitters: String, Codable, CaseIterable {
     
     var tags: Tags {
         return Tags(booze: [Booze(.bitters(self))])
+    }
+    
+    var cockTailComponent: CocktailComponent {
+        return CocktailComponent(for: Booze(.bitters(self)))
     }
 }
 
@@ -155,5 +199,9 @@ enum Amaro: String, Codable, CaseIterable {
     
     var tags: Tags {
         return Tags(booze: [Booze(.amari(self))])
+    }
+    
+    var cockTailComponent: CocktailComponent {
+        return CocktailComponent(for: Booze(.amari(self)))
     }
 }

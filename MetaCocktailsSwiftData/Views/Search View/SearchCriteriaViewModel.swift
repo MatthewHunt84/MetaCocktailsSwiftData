@@ -10,17 +10,21 @@ import SwiftUI
 
 final class SearchCriteriaViewModel: ObservableObject {
     
-    
     @Published var searchText: String = ""
     @Published var cocktailComponents = createComponentArray().sorted(by: { $0.name < $1.name })
     @Published var matchedCocktails = [MatchedCocktail]()
     @Published var preferredCount = 0
     @Published var sections = [ResultViewSectionData]()
     @Published var isLoading = true
-    @Published var boozeCategories = ["Agave", "Brandy", "Gin", "OtherAlcohol", "Rum", "Vodka"]
+    @Published var boozeCategories = { var array: [BoozeCategory] = [BoozeCategory]()
+        for booze in BoozeCategory.allCases {
+            array.append(booze)
+        }
+        return array
+    }()
     
     static func generateBoozeCocktailComponents()  -> [CocktailComponent] {
-        IngredientType.getBoozeComponents()
+        return IngredientType.getBoozeComponents()
     }
     
     func matchAllTheThings() {
@@ -91,7 +95,6 @@ final class SearchCriteriaViewModel: ObservableObject {
         var array = [CocktailComponent]()
         let convertedArray: [CocktailComponent] = generateBoozeCocktailComponents()
         
-        
         for flavor in Flavor.allCases {
             array.append(CocktailComponent(for: flavor))
         }
@@ -108,7 +111,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         for component in convertedArray {
             array.append(component)
         }
-        
+
         return array
     }
     
@@ -176,16 +179,16 @@ final class SearchCriteriaViewModel: ObservableObject {
         // For every cocktail we got, rip out the bases from each one, and if one of those bases matches one from the PREFERREDBASES array, create a NEW array called MATCHEDBASESCOCKTAILS and throw 'em in.
         // A better way to do this would be to filter the CocktailListViewModel().cocktails.CompileTags().bases by those contained in PREFERREDBASES - but that's a TBD.
         for cocktail in CocktailListViewModel().cocktails {
-            //            if let agave = cocktail.CompileTags().agave {
-            //                for agave in agave {
-            //                    for preferred in preferredBases {
-            //                        if agave.rawValue.lowercased() == preferred.name.lowercased() && cocktail != allCocktailsThatMatchBySpirit.last {
-            //                            allCocktailsThatMatchBySpirit.append(cocktail)
-            //                        }
-            //                    }
-            //
-            //                }
-            //            }
+            if let boozeTypes = cocktail.compileTags().booze {
+                for booze in boozeTypes {
+                    for preferred in preferredBases {
+                        if booze.name == preferred.name.lowercased() && cocktail != allCocktailsThatMatchBySpirit.last {
+                            allCocktailsThatMatchBySpirit.append(cocktail)
+                        }
+                    }
+                    
+                }
+            }
             //            if let brandies = cocktail.CompileTags().brandy {
             //                for brandy in brandies {
             //                    for preferred in preferredBases {
@@ -717,105 +720,107 @@ struct CocktailResultList: View {
         }
     }
 }
+
+
+struct MatchedCocktail: Equatable {
+    let cocktail: Cocktail
+    let count: Int
+    let matchedCount: Int
+}
+
+struct ResultViewSectionData {
+    let id = UUID()
+    let count: Int
+    let matched: Int
+    let cocktails: [Cocktail]
+}
+
+class CocktailComponent: Identifiable, ObservableObject, Hashable {
+    
+    // I don't love this, but it will work for now..
+    
+    @Published var matchesCurrentSearch: Bool
+    var id = UUID()
+    var name: String
+    @Published var isPreferred: Bool = false
+    @Published var isUnwanted: Bool = false
+    var isSpirit: Bool = false
+    var isFlavor: Bool = false
+    var isProfile: Bool = false
+    var isStyle: Bool = false
+    var isTexture: Bool = false
+    var preferenceType: PreferenceType
+    var spiritCategory: IngredientType?
+    var spiritCategoryName: String = ""
     
     
-    struct MatchedCocktail: Equatable {
-        let cocktail: Cocktail
-        let count: Int
-        let matchedCount: Int
+    init(name: String, isFlavor: Bool = false, isProfile: Bool = false, isStyle: Bool = false, isSpirit: Bool = false, isTexture: Bool = false, matchesCurrentSearch: Bool = true) {
+        self.name = name
+        self.isSpirit = isSpirit
+        self.isFlavor = isFlavor
+        self.isStyle = isStyle
+        self.isProfile = isProfile
+        self.isTexture = isTexture
+        self.matchesCurrentSearch = matchesCurrentSearch
+        
+        if isFlavor {
+            preferenceType = .flavors
+        } else if isStyle {
+            preferenceType = .style
+        } else if isSpirit {
+            preferenceType = .spirits
+        } else if isProfile {
+            preferenceType = .profiles
+        } else {
+            preferenceType = .textures
+        }
     }
     
-    struct ResultViewSectionData {
-        let id = UUID()
-        let count: Int
-        let matched: Int
-        let cocktails: [Cocktail]
+    init(for flavor: Flavor) {
+        self.name = flavor.rawValue
+        self.isFlavor = true
+        self.preferenceType = .flavors
+        self.matchesCurrentSearch = true
     }
     
-    class CocktailComponent: Identifiable, ObservableObject, Hashable {
-        
-        // I don't love this, but it will work for now..
-        
-        @Published var matchesCurrentSearch: Bool
-        var id = UUID()
-        var name: String
-        @Published var isPreferred: Bool = false
-        @Published var isUnwanted: Bool = false
-        var isSpirit: Bool = false
-        var isFlavor: Bool = false
-        var isProfile: Bool = false
-        var isStyle: Bool = false
-        var isTexture: Bool = false
-        var preferenceType: PreferenceType
-        var spiritCategory: IngredientType?
-        
-        
-        init(name: String, isFlavor: Bool = false, isProfile: Bool = false, isStyle: Bool = false, isSpirit: Bool = false, isTexture: Bool = false, matchesCurrentSearch: Bool = true) {
-            self.name = name
-            self.isSpirit = isSpirit
-            self.isFlavor = isFlavor
-            self.isStyle = isStyle
-            self.isProfile = isProfile
-            self.isTexture = isTexture
-            self.matchesCurrentSearch = matchesCurrentSearch
-            
-            if isFlavor {
-                preferenceType = .flavors
-            } else if isStyle {
-                preferenceType = .style
-            } else if isSpirit {
-                preferenceType = .spirits
-            } else if isProfile {
-                preferenceType = .profiles
-            } else {
-                preferenceType = .textures
-            }
-        }
-        
-        init(for flavor: Flavor) {
-            self.name = flavor.rawValue
-            self.isFlavor = true
-            self.preferenceType = .flavors
-            self.matchesCurrentSearch = true
-        }
-        
-        init(for profile: Profile) {
-            self.name = profile.rawValue
-            self.isProfile = true
-            self.preferenceType = .profiles
-            self.matchesCurrentSearch = true
-        }
-        
-        init(for style: Style) {
-            self.name = style.rawValue
-            self.isStyle = true
-            self.preferenceType = .style
-            self.matchesCurrentSearch = true
-        }
-        
-        init(for texture: Texture) {
-            self.name = texture.rawValue
-            self.isTexture = true
-            self.preferenceType = .textures
-            self.matchesCurrentSearch = true
-        }
-        
-        init(for booze: Booze) {
-            self.name = booze.ingredientType.name
-            self.isSpirit = true
-            self.preferenceType = .spirits
-            self.matchesCurrentSearch = true
-            self.spiritCategory = booze.ingredientType
-        }
-        
-        static func == (lhs: CocktailComponent, rhs: CocktailComponent) -> Bool {
-            return lhs.id == rhs.id
-        }
-        
-        public func hash(into hasher: inout Hasher) {
-            return hasher.combine(id)
-        }
-        
+    init(for profile: Profile) {
+        self.name = profile.rawValue
+        self.isProfile = true
+        self.preferenceType = .profiles
+        self.matchesCurrentSearch = true
     }
     
+    init(for style: Style) {
+        self.name = style.rawValue
+        self.isStyle = true
+        self.preferenceType = .style
+        self.matchesCurrentSearch = true
+    }
     
+    init(for texture: Texture) {
+        self.name = texture.rawValue
+        self.isTexture = true
+        self.preferenceType = .textures
+        self.matchesCurrentSearch = true
+    }
+    
+    init(for booze: Booze) {
+        self.name = booze.ingredientType.name
+        self.isSpirit = true
+        self.preferenceType = .spirits
+        self.matchesCurrentSearch = true
+        self.spiritCategory = booze.ingredientType
+        self.spiritCategoryName = booze.ingredientType.category
+    }
+    
+    static func == (lhs: CocktailComponent, rhs: CocktailComponent) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        return hasher.combine(id)
+    }
+    
+}
+
+

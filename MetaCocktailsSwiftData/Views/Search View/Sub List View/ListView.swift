@@ -44,12 +44,14 @@ struct ListView: View {
                                                 if ingredient.isUnwanted.wrappedValue == false && 
                                                     ingredient.matchesCurrentSearch.wrappedValue &&
                                                     (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) &&
-                                                    spirit.wrappedValue == ingredient.name.wrappedValue {
+                                                    spirit.wrappedValue.rawValue == ingredient.spiritCategoryName.wrappedValue
+                                                   
+                                                {
                                                     PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
                                                 }
                                             }
                                     } label: {
-                                        Text(spirit.wrappedValue)
+                                        Text(spirit.wrappedValue.rawValue)
                                             .font(.headline)
                                             .padding(.leading, 5)
                                     }
@@ -64,13 +66,13 @@ struct ListView: View {
                                             if ingredient.isPreferred.wrappedValue == false && 
                                                 ingredient.matchesCurrentSearch.wrappedValue &&
                                                 (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) &&
-                                                spirit.wrappedValue == ingredient.name.wrappedValue {
+                                                spirit.wrappedValue.rawValue == ingredient.name.wrappedValue {
                                                 PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
                                                     
                                             }
                                         }
                                     } label: {
-                                        Text(spirit.wrappedValue)
+                                        Text(spirit.wrappedValue.rawValue)
                                             .font(.headline)
                                             .padding(.leading, 5)
                                     }

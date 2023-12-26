@@ -12,13 +12,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>794</string>
+					<string>798</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>793</string>
+					<string>797</string>
 					<key>Timestamp</key>
-					<string>725311323.15222</string>
+					<string>725322256.335394</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -34,16 +34,16 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>        }
+				<string>    }
 </string>
 				<key>leading</key>
-				<string>            self.preferenceType = .style
-            self.matchesCurrentSearch = true
+				<string>        self.preferenceType = .style
+        self.matchesCurrentSearch = true
 </string>
 				<key>trailing</key>
-				<string>        
-        init(for texture: Texture) {
-            self.name = texture.rawValue
+				<string>    
+    init(for texture: Texture) {
+        self.name = texture.rawValue
 </string>
 			</dict>
 			<key>title</key>
@@ -59,13 +59,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>89</string>
+					<string>93</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>88</string>
+					<string>92</string>
 					<key>Timestamp</key>
-					<string>725311206.7888809</string>
+					<string>725321980.914888</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>

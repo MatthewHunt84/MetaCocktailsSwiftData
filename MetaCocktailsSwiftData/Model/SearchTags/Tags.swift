@@ -16,13 +16,6 @@ struct Tags: Codable {
     var booze: [Booze]?
     
     mutating func merge(with tags: Tags) {
-        var flavors = self.flavors ?? [Flavor]()
-        var profiles = self.profiles ?? [Profile]()
-        var booze = self.booze ?? [Booze]()
-        var textures = self.textures ?? [Texture]()
-        var styles = self.styles ?? [Style]()
-        
-        //self.whatever should be able to stay nil
         
         if let newFlavors = tags.flavors {
             if self.flavors == nil {
@@ -63,7 +56,6 @@ struct Tags: Codable {
                 }
             }
         }
-        
     }
 }
 
