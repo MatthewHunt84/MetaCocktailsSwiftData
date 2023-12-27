@@ -38,7 +38,8 @@ class Cocktail {
             // when we initialize each cocktail we immediately make a stored property of it's combined cocktail + ingredient tags
             var newCompiledTags = Tags()
             for cocktailIngredient in spec {
-                newCompiledTags.merge(with: cocktailIngredient.ingredient.tags)
+                let currentCocktailIngredientMergedTags = tags.merge(with: cocktailIngredient.ingredient.tags)
+                newCompiledTags = newCompiledTags.merge(with: currentCocktailIngredientMergedTags)
             }
             return newCompiledTags
         }()

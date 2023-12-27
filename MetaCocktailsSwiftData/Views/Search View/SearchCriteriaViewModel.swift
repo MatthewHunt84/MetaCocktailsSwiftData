@@ -118,8 +118,6 @@ final class SearchCriteriaViewModel: ObservableObject {
     // getFilteredCocktails() works, but could be optimized greatly
     func getFilteredCocktails() {
         
-        // compileTags is called 20 times lol
-        
         isLoading = true
         resetSearchCriteria()
         
@@ -153,7 +151,6 @@ final class SearchCriteriaViewModel: ObservableObject {
                 preferredStyles.append(CocktailComponent(for: style))
             }
         }
-        
         
         // Make an array of selected profiles called PREFERREDPROFILES. If no profiles are selected, include all.
         
@@ -195,7 +192,6 @@ final class SearchCriteriaViewModel: ObservableObject {
         }
                 for i in allCocktailsThatMatchBySpirit {
                     print(i.cocktailName)
-                    print("--- MATCHED: \(i.cocktailName)!!!!!!")
                 }
         
         // Take our new matchedBasesCocktails array, and rip out all the styles. Filter out the styles that match our PREFERREDSTYLESARRAY, and then add those to a new array called matchedStylesAndBasesCocktails.
@@ -296,172 +292,6 @@ final class SearchCriteriaViewModel: ObservableObject {
                             }
                         }
             
-            //            if let amari = cocktail.CompileTags().amari {
-            //                for amaro in amari {
-            //                    for unwanted in unwantedArray {
-            //                        if amaro.rawValue.lowercased() == unwanted.name.lowercased() {
-            //                            matchedSet.remove(cocktail)
-            //                            matchedCount -= 1
-            //                        }
-            //                    }
-            //                    for preferred in preferredArray {
-            //                        if amaro.rawValue.lowercased() == preferred.name.lowercased() {
-            //                            matchedCount += 1
-            //                        }
-            //                    }
-            //                }
-            //            }
-            //            if let bitters = cocktail.CompileTags().bitters {
-            //                for bitter in bitters {
-            //                    for unwanted in unwantedArray {
-            //                        if bitter.rawValue.lowercased() == unwanted.name.lowercased() {
-            //                            matchedSet.remove(cocktail)
-            //                            matchedCount -= 1
-            //                        }
-            //                    }
-            //                    for preferred in preferredArray {
-            //                        if bitter.rawValue.lowercased() == preferred.name.lowercased() {
-            //                            matchedCount += 1
-            //                        }
-            //                    }
-            //                }
-            //            }
-            //            if let brandies = cocktail.CompileTags().brandy {
-            //                for brandy in brandies {
-            //                    for unwanted in unwantedArray {
-            //                        if brandy.rawValue.lowercased() == unwanted.name.lowercased() {
-            //                            matchedSet.remove(cocktail)
-            //                            matchedCount -= 1
-            //                        }
-            //                    }
-            //                    for preferred in preferredArray {
-            //                        if brandy.rawValue.lowercased() == preferred.name.lowercased() {
-            //                            matchedCount += 1
-            //                        }
-            //                    }
-            //                }
-            //            }
-            //            if let fortifiedWines = cocktail.CompileTags().fortifiedWine {
-            //                for fortifiedWine in fortifiedWines {
-            //                    for unwanted in unwantedArray {
-            //                        if fortifiedWine.rawValue.lowercased() == unwanted.name.lowercased() {
-            //                            matchedSet.remove(cocktail)
-            //                            matchedCount -= 1
-            //                        }
-            //                    }
-            //                    for preferred in preferredArray {
-            //                        if fortifiedWine.rawValue.lowercased() == preferred.name.lowercased() {
-            //                            matchedCount += 1
-            //                        }
-            //                    }
-            //                }
-            //            }
-            //            if let gins = cocktail.CompileTags().gin {
-            //                for gin in gins {
-            //                    for unwanted in unwantedArray {
-            //                        if gin.rawValue.lowercased() == unwanted.name.lowercased() {
-            //                            matchedSet.remove(cocktail)
-            //                            matchedCount -= 1
-            //                        }
-            //                    }
-            //                    for preferred in preferredArray {
-            //                        if gin.rawValue.lowercased() == preferred.name.lowercased() {
-            //                            matchedCount += 1
-            //                        }
-            //                    }
-            //                }
-            //            }
-            //            if let liqueurs = cocktail.CompileTags().liqueur {
-            //                for liqueur in liqueurs {
-            //                    for unwanted in unwantedArray {
-            //                        if liqueur.rawValue.lowercased() == unwanted.name.lowercased() {
-            //                            matchedSet.remove(cocktail)
-            //                            matchedCount -= 1
-            //                        }
-            //                    }
-            //                    for preferred in preferredArray {
-            //                        if liqueur.rawValue.lowercased() == preferred.name.lowercased() {
-            //                            matchedCount += 1
-            //                        }
-            //                    }
-            //                }
-            //            }
-            //            if let others = cocktail.CompileTags().other {
-            //                for other in others {
-            //                    for unwanted in unwantedArray {
-            //                        if other.rawValue.lowercased() == unwanted.name.lowercased() {
-            //                            matchedSet.remove(cocktail)
-            //                            matchedCount -= 1
-            //                        }
-            //                    }
-            //                    for preferred in preferredArray {
-            //                        if other.rawValue.lowercased() == preferred.name.lowercased() {
-            //                            matchedCount += 1
-            //                        }
-            //                    }
-            //                }
-            //            }
-            //            if let rums = cocktail.CompileTags().rum {
-            //                for rum in rums {
-            //                    for unwanted in unwantedArray {
-            //                        if rum.rawValue.lowercased() == unwanted.name.lowercased() {
-            //                            matchedSet.remove(cocktail)
-            //                            matchedCount -= 1
-            //                        }
-            //                    }
-            //                    for preferred in preferredArray {
-            //                        if rum.rawValue.lowercased() == preferred.name.lowercased() {
-            //                            matchedCount += 1
-            //                        }
-            //                    }
-            //                }
-            //            }
-            //            if let vodkas = cocktail.CompileTags().vodka {
-            //                for vodka in vodkas {
-            //                    for unwanted in unwantedArray {
-            //                        if vodka.rawValue.lowercased() == unwanted.name.lowercased() {
-            //                            matchedSet.remove(cocktail)
-            //                            matchedCount -= 1
-            //                        }
-            //                    }
-            //                    for preferred in preferredArray {
-            //                        if vodka.rawValue.lowercased() == preferred.name.lowercased() {
-            //                            matchedCount += 1
-            //                        }
-            //                    }
-            //                }
-            //            }
-            //            if let whiskies = cocktail.CompileTags().whiskies {
-            //                for whisky in whiskies {
-            //                    for unwanted in unwantedArray {
-            //                        if whisky.rawValue.lowercased() == unwanted.name.lowercased() {
-            //                            matchedSet.remove(cocktail)
-            //                            matchedCount -= 1
-            //                        }
-            //                    }
-            //                    for preferred in preferredArray {
-            //                        if whisky.rawValue.lowercased() == preferred.name.lowercased() {
-            //                            matchedCount += 1
-            //                        }
-            //                    }
-            //                }
-            //            }
-            //            if let wines = cocktail.CompileTags().wine {
-            //                for wine in wines {
-            //                    for unwanted in unwantedArray {
-            //                        if wine.rawValue.lowercased() == unwanted.name.lowercased() {
-            //                            matchedSet.remove(cocktail)
-            //                            matchedCount -= 1
-            //                        }
-            //                    }
-            //                    for preferred in preferredArray {
-            //                        if wine.rawValue.lowercased() == preferred.name.lowercased() {
-            //                            matchedCount += 1
-            //                        }
-            //                    }
-            //                }
-            //            }
-            
             // rip out and remove unwanted styles
             if let styles = cocktail.compiledTags.styles {
                 for style in styles {
@@ -537,7 +367,6 @@ final class SearchCriteriaViewModel: ObservableObject {
             }
 
             // If the matchedCount is above the threshold (more than half of the preferredCount) we'll store it in an array with its matchedCount data (see MatchedCocktail struct)
-            print("----------- MATCHEDCOUNT = \(matchedCount)")
             if matchedCount >= (preferredCount / 2) {
                 matchedCocktails.append(MatchedCocktail(cocktail: cocktail, count: preferredCount, matchedCount: matchedCount))
             }
@@ -556,15 +385,8 @@ final class SearchCriteriaViewModel: ObservableObject {
             
             // then yank all the cocktails that match and chuck them in an array
             var bucketOfCocktails = [Cocktail]()
-            
-            print("--- number of matches = \(numberOfMatches)")
-            print("--- matchedCocktails = \(matchedCocktails)")
-            
-            for cocktail in matchedCocktails {
-                print("--- \(cocktail.cocktail.cocktailName) has matched count \(cocktail.matchedCount) adn \(cocktail.count)")
-            }
+
             for matchedCocktail in matchedCocktails where matchedCocktail.matchedCount == numberOfMatches {
-                print("--- adding to bucket = \(matchedCocktail)")
                 bucketOfCocktails.append(matchedCocktail.cocktail)
             }
             
@@ -601,10 +423,6 @@ struct CocktailResultList: View {
             } else {
                 if viewModel.preferredCount > 0 {
                     
-                    ForEach(viewModel.sections, id: \.self.id) { result in
-                        Text(" matched count = \(result.matched)")
-                        Text(" matched count = \(result.matched)")
-                    }
                     List {
                         ForEach(viewModel.sections, id: \.self.id) { result in
                             
