@@ -40,8 +40,7 @@ struct SearchCriteriaView: View {
                     NavigationLink {
                         SearchResultsView(viewModel: viewModel)
                             .onAppear {
-                                viewModel.getFilteredCocktails() // called here
-                            }
+                                viewModel.getFilteredCocktails()
                     } label: {
                         Text("SEARCH!")
                             .fontWeight(.bold)
