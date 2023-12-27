@@ -46,7 +46,7 @@ struct TagView: View {
         
         self.cocktail = cocktail
         
-        let tags = cocktail.compileTags()
+        let tags = cocktail.compiledTags
         
         if let boozeBottles = tags.booze {
             for booze in boozeBottles {

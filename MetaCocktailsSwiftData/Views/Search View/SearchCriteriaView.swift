@@ -40,8 +40,7 @@ struct SearchCriteriaView: View {
                     NavigationLink {
                         SearchResultsView(viewModel: viewModel)
                             .onAppear {
-                                viewModel.getFilteredCocktails()
-                                print("--- Does this work?  \(Juice.pineappleJuice.tags)")
+                                viewModel.getFilteredCocktails() // called here
                             }
                     } label: {
                         Text("SEARCH!")

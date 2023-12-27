@@ -7,13 +7,22 @@
 
 import Foundation
 
-struct Booze: Codable {
+struct Booze: Codable, Hashable, Equatable {
+    
     var ingredientType: IngredientType
     var name: String
     
     init(_ ingredientType: IngredientType) {
         self.ingredientType = ingredientType
         self.name = ingredientType.name
+    }
+    
+    static func == (lhs: Booze, rhs: Booze) -> Bool {
+        lhs.name == rhs.name
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
     }
 }
 

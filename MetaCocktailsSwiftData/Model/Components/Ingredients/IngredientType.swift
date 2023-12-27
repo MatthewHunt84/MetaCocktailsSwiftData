@@ -46,11 +46,9 @@ enum IngredientType: Codable {
         CocktailComponentArrayForBooze.append(contentsOf: Wine.allCases.map { $0.cockTailComponent })
         CocktailComponentArrayForBooze.append(contentsOf: Bitters.allCases.map { $0.cockTailComponent })
         CocktailComponentArrayForBooze.append(contentsOf: Amaro.allCases.map { $0.cockTailComponent })
-
+        
         return CocktailComponentArrayForBooze
     }
-    
-
     
     var tags: Tags {
         switch self {

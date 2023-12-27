@@ -17,6 +17,10 @@ struct Tags: Codable {
     
     mutating func merge(with tags: Tags) {
         
+        print("*** self.tags = \(self.booze)")
+        
+        print("*** new tags = \(tags.booze)")
+        
         if let newFlavors = tags.flavors {
             if self.flavors == nil {
                 self.flavors = tags.flavors
@@ -56,6 +60,39 @@ struct Tags: Codable {
                 }
             }
         }
+        
+        // remove duplicates:
+        
+        if let flavorsArrayThatMightHaveDuplicates = flavors {
+            self.flavors = Array<Flavor>(Set(flavorsArrayThatMightHaveDuplicates))
+            }
+        
+        if let boozeArrayThatMightHaveDuplicates = booze {
+            self.booze = Array<Booze>(Set(boozeArrayThatMightHaveDuplicates))
+            }
+        
+        if let profilesArrayThatMightHaveDuplicates = profiles {
+            self.profiles = Array<Profile>(Set(profilesArrayThatMightHaveDuplicates))
+            }
+        
+        if let texturesArrayThatMightHaveDuplicates = textures {
+            self.textures = Array<Texture>(Set(texturesArrayThatMightHaveDuplicates))
+            }
+        
+        
+        if let stylesArrayThatMightHaveDuplicates = styles {
+            self.styles = Array<Style>(Set(stylesArrayThatMightHaveDuplicates))
+            }
+        
+        
+        
+        
+        print("*** fininsh == \(self.booze)")
+        print("*** fininsh == \(self.booze?.count)")
+        print("**********************************************")
+        print("**********************************************")
+        print("**********************************************")
+        print("**********************************************")
     }
 }
 
