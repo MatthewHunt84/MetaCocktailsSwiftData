@@ -122,6 +122,7 @@ enum Whiskey: String, Codable, CaseIterable {
     case straightRyeOrBourbon = "Straight Rye or Bourbon (100 proof)"
     case scotchBlended        = "Scotch (Blended)"
     case scotchIsla           = "Scotch (Peated, From Isla)"
+    case bourbon120           = "Bourbon (120 proof)"
     
     var tags: Tags {
         return Tags(booze: [Booze(.whiskies(self))])
