@@ -15,7 +15,7 @@ class CocktailIngredient: Codable, Hashable {
     let value: Double
     let unit: MeasurementUnit
     
-    init(ingredient: IngredientType, value: Double, unit: MeasurementUnit = .fluidOunces) {
+    init(_ ingredient: IngredientType, value: Double, unit: MeasurementUnit = .fluidOunces) {
         self.ingredient = ingredient
         self.value = value
         self.unit = unit

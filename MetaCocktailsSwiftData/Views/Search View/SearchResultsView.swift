@@ -98,13 +98,13 @@ struct SearchedCocktailTitleHeader: View {
     var body: some View {
         HStack {
             
-            ForEach(0..<matched) { match in
+            ForEach(0..<matched, id: \.self) { match in
                 Image(systemName: "circle.fill")
                     .foregroundStyle(Color.green)
             }
             
             if matched - searched < 0 {
-                ForEach(0..<(searched - matched)) { nonMatch in
+                ForEach(0..<(searched - matched), id: \.self) { nonMatch in
                     Image(systemName: "circle.fill")
                     
                 }
