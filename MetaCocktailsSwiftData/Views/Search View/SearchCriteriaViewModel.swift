@@ -23,9 +23,9 @@ final class SearchCriteriaViewModel: ObservableObject {
         return array
     }()
     
-    static func generateBoozeCocktailComponents()  -> [CocktailComponent] {
+    static var generatedBoozeCocktailComponents: [CocktailComponent] = {
         return IngredientType.getBoozeComponents()
-    }
+    }()
     
     func matchAllTheThings() {
         // if searchText is empty, show everything again
@@ -93,7 +93,7 @@ final class SearchCriteriaViewModel: ObservableObject {
     static func createComponentArray() ->  [CocktailComponent] {
         
         var array = [CocktailComponent]()
-        let convertedArray: [CocktailComponent] = generateBoozeCocktailComponents()
+        let convertedArray: [CocktailComponent] = SearchCriteriaViewModel.generatedBoozeCocktailComponents
         
         for flavor in Flavor.allCases {
             array.append(CocktailComponent(for: flavor))
@@ -140,7 +140,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         
         var preferredBases: [CocktailComponent] = preferredArray.filter({ $0.isSpirit })
         if preferredBases.isEmpty {
-            let convertedArray: [CocktailComponent] = SearchCriteriaViewModel.generateBoozeCocktailComponents()
+            let convertedArray: [CocktailComponent] = SearchCriteriaViewModel.generatedBoozeCocktailComponents
             preferredBases.append(contentsOf: convertedArray)
         }
         // Make an array of selected styles called PREFERREDSTYLES. If no styles are selected, include all.

@@ -90,7 +90,7 @@
 				<key>trailing</key>
 				<string>        
         var array = [CocktailComponent]()
-        let convertedArray: [CocktailComponent] = generateBoozeCocktailComponents()
+        let convertedArray: [CocktailComponent] = SearchCriteriaViewModel.generatedBoozeCocktailComponents
 </string>
 			</dict>
 			<key>title</key>

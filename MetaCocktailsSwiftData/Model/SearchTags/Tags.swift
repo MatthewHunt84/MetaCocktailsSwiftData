@@ -30,10 +30,10 @@ struct Tags: Codable {
     }
     
     func combine<T: Hashable>(_ arrays: Array<T>?...) -> Array<T> {
-        return Array<T>(arrays.compactMap{$0}.compactMap{Set($0)}.reduce(Set<T>()){$0.union($1)})
+        return Array<T>(arrays.compactMap{$0}
+                              .compactMap{Set($0)}
+                              .reduce(Set<T>()){$0.union($1)})
     }
-        
-
 }
 
 
