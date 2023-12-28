@@ -1,10 +1,10 @@
+////
+////  Bamboo.swift
+////  MetaCocktailsSwiftData
+////
+////  Created by James on 10/8/23.
+////
 //
-//  Bamboo.swift
-//  MetaCocktailsSwiftData
-//
-//  Created by James on 10/8/23.
-//
-
 import SwiftUI
 
 var bamboo = Cocktail(cocktailName: "Bamboo",
@@ -17,16 +17,13 @@ var bamboo = Cocktail(cocktailName: "Bamboo",
                       buildOrder: nil,
                       tags: bambooTags)
 
-
-var bambooSpec = [CocktailIngredient(.amontillado, value: 1.5),
-                  CocktailIngredient(.dryVermouth, value: 1.5),
-                  CocktailIngredient(.orangeBitters, value: 2, unit: .dash)]
+var bambooSpec = [CocktailIngredient(.fortifiedWines(.amontillado), value: 1.5),
+                  CocktailIngredient(.fortifiedWines(.dryVermouth), value: 1.5),
+                  CocktailIngredient(.bitters(.orangeBitters), value: 2, unit: .dash)]
 
 var bambooTags = Tags(flavors: [.lemon],
                       profiles: nil,
                       textures: [.thin, .light],
-                      styles: [.martini, .stirred],
-                      bitters: [.orangeBitters],
-                      fortifiedWine: [.dryVermouth,.amontillado])
+                      styles: [.martini, .stirred])
                    
 

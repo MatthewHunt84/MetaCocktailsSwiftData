@@ -1,9 +1,9 @@
-//
-//  CropTop.swift
-//  MetaCocktailsSwiftData
-//
-//  Created by James on 10/20/23.
-//
+////
+////  CropTop.swift
+////  MetaCocktailsSwiftData
+////
+////  Created by James on 10/20/23.
+////
 
 import SwiftUI
 
@@ -15,16 +15,13 @@ var cropTop = Cocktail(cocktailName: "Crop Top",
                             spec: cropTopSpec,
                             tags: cropTopTags)
 
-var cropTopSpec  = [CocktailIngredient(.lemon, value: 0.75),
-                     CocktailIngredient(.ginLondonDry, value: 0.75),
-                     CocktailIngredient(.amaroMontenegro, value: 0.75),
-                     CocktailIngredient(.giffardPamplemousse, value: 0.75)]
+var cropTopSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
+                    CocktailIngredient(.gins(.ginLondonDry), value: 0.75),
+                    CocktailIngredient(.amari(.amaroMontenegro), value: 0.75),
+                    CocktailIngredient(.liqueurs(.giffardPamplemousse), value: 0.75)]
 
 
 var cropTopTags = Tags(profiles: [.refreshing, .floral, .herbal],
                        textures: [.light],
-                       styles: [.sour, .shaken],
-                       amari: [.amaroMontenegro],
-                       gin: [.gin, .ginLondonDry],
-                       liqueur: [.giffardPamplemousse])
+                       styles: [.sour, .shaken])
                        

@@ -1,9 +1,9 @@
-//
-//  GinFizz.swift
-//  MetaCocktailsSwiftData
-//
-//  Created by James on 10/10/23.
-//
+////
+////  GinFizz.swift
+////  MetaCocktailsSwiftData
+////
+////  Created by James on 10/10/23.
+////
 
 import SwiftUI
 
@@ -16,10 +16,10 @@ var ginFizz  = Cocktail(cocktailName: "Gin Fizz",
                          buildOrder: ginFizzBuild,
                          tags: ginFizzTags)
 
-var ginFizzSpec  = [CocktailIngredient( .lemon, value: 0.75),
-                    CocktailIngredient( .simple, value: 0.75),
-                    CocktailIngredient( .gin, value: 1.5),
-                    CocktailIngredient(.sparklingWater , value: 2)]
+var ginFizzSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
+                    CocktailIngredient(.syrups(.simple), value: 0.75),
+                    CocktailIngredient(.gins(.gin), value: 1.5),
+                    CocktailIngredient(.soda(.sparklingWater), value: 2)]
 
 var ginFizzBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the sparkling water, into a tin and shake with ice"), 
                                          Instruction(step: 2, method: "strain into a small chilled highball glass and top with sparkling water"),
@@ -29,6 +29,5 @@ var ginFizzBuild  = Build(instructions: [Instruction(step: 1, method: "Add all i
 var ginFizzTags   = Tags(flavors: [.lemon],
                          profiles: [.citrusy],
                          textures: [.effervescent, .light],
-                         styles: [.fizz, .shaken],
-                         gin: [.gin])
+                         styles: [.fizz, .shaken])
                       

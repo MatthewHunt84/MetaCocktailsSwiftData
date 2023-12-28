@@ -19,7 +19,7 @@ struct RecipeIngredientsView: View {
         Text("GW: \(cocktail.glasswareType.rawValue)")
         
         ForEach(cocktail.spec, id: \.self) { ingredient in
-            Text("\(ingredient.value, specifier: "%.2f") oz. \(ingredient.ingredient.rawValue)")
+            Text("\(ingredient.value, specifier: "%.2f") oz. \(ingredient.ingredient.name)")
                 .padding(recipeSpacing)
         }
         
@@ -46,14 +46,13 @@ struct TagView: View {
         
         self.cocktail = cocktail
         
-        let tags = cocktail.CompileTags()
-
-        if let bases = tags.agave  {
-            for base in bases {
-                baseString += " \(base.rawValue),"
+        let tags = cocktail.compiledTags
+        
+        if let boozeBottles = tags.booze {
+            for booze in boozeBottles {
+                baseString +=  " \(booze.name),"
             }
             baseString.removeLast()
-            print(baseString)
         } else {
             baseString = "NO BOOZE"
         }

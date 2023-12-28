@@ -1,9 +1,9 @@
 //
-//  MintJulep.swift
-//  MetaCocktailsSwiftData
-//
-//  Created by James on 10/20/23.
-//
+////  MintJulep.swift
+////  MetaCocktailsSwiftData
+////
+////  Created by James on 10/20/23.
+////
 
 import SwiftUI
 
@@ -17,16 +17,13 @@ var mintJulep = Cocktail(cocktailName: "Mint Julep",
                          buildOrder: mintJulepBuild,
                          tags: mintJulepTags)
 
+let mintJulepSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 10, unit: .leaves),
+                                           CocktailIngredient(.syrups(.simple), value: 1),
+                                           CocktailIngredient(.whiskies(.bourbon), value: 2.25)]
+
 let mintJulepTags = Tags(profiles: [.herbal, .sweet],
                          textures: [.light],
-                         styles: [.julep, .built],
-                         brandy: [.cognacVSOP, .armagnac],
-                         whiskies: [.ryeWhiskey, .bourbon, .straightRyeOrBourbon])
-                       
-
-let mintJulepSpec: [CocktailIngredient] = [CocktailIngredient(.mint, value: 10, unit: .leaves),
-                                           CocktailIngredient(.simple, value: 1),
-                                           CocktailIngredient(.bourbon, value: 2.25)]
+                         styles: [.julep, .built])
 
 let mintJulepBuild =  Build(instructions: [Instruction(step: 1, method: "In Highball or Julep cup, gently muddle 8-10 mint leaves along with the simple syrup. Don't break the leaves apart here. You only want to release the oils. If you break apart the leaves, you get a more bitter taste because of the chlorophyll."),
                                                      Instruction(step: 2, method: "Add crushed or pebble ice and then add the spirit of choice. Cognac or Armagnac was common during it's conception but American whiskey has become more popular in recent years."),

@@ -1,9 +1,9 @@
-//
-//  French75.swift
-//  MetaCocktailsSwiftData
-//
-//  Created by James on 10/10/23.
-//
+////
+////  French75.swift
+////  MetaCocktailsSwiftData
+////
+////  Created by James on 10/10/23.
+////
 
 import SwiftUI
 
@@ -16,10 +16,10 @@ var french75  = Cocktail(cocktailName: "French 75",
                          buildOrder: french75Build,
                          tags: french75Tags)
 
-var french75Spec  = [CocktailIngredient( .lemon, value: 0.75),
-                     CocktailIngredient( .simple, value: 0.75),
-                     CocktailIngredient( .gin, value: 1.5),
-                     CocktailIngredient(.champagne , value: 4)]
+var french75Spec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
+                     CocktailIngredient(.syrups(.simple), value: 0.75),
+                     CocktailIngredient(.gins(.gin), value: 1.5),
+                     CocktailIngredient(.wines(.champagne) , value: 4)]
 
 var french75Build  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the Champagne, into a tin and shake with ice"), 
                                           Instruction(step: 2, method: "strain over cracked ice and top with Champagne"),
@@ -28,7 +28,5 @@ var french75Build  = Build(instructions: [Instruction(step: 1, method: "Add all 
 var french75Tags   = Tags(flavors: [.lemon], 
                           profiles: [.citrusy, .floral],
                           textures: [.effervescent, .light],
-                          styles: [.collins, .shaken, .built, .fizz],
-                          gin: [.gin],
-                          wine: [.champagne])
+                          styles: [.collins, .shaken, .built, .fizz])
                           

@@ -1,9 +1,9 @@
-//
-//  DivisionBell.swift
-//  MetaCocktailsSwiftData
-//
-//  Created by James on 10/20/23.
-//
+////
+////  DivisionBell.swift
+////  MetaCocktailsSwiftData
+////
+////  Created by James on 10/20/23.
+////
 
 import SwiftUI
 
@@ -15,15 +15,11 @@ var divisionBell = Cocktail(cocktailName: "Division Bell",
                             spec: divisionBellSpec,
                             tags: divisionBellTags)
 
-var divisionBellSpec  = [CocktailIngredient(.lime, value: 0.75),
-                     CocktailIngredient(.mezcalSmokey, value: 1),
-                     CocktailIngredient(.maraschinoLiqueur, value: 0.5),
-                     CocktailIngredient(.aperol, value: 0.75)]
-
+var divisionBellSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
+                         CocktailIngredient(.agaves(.mezcalSmokey), value: 1),
+                         CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.5),
+                         CocktailIngredient(.amari(.aperol), value: 0.75)]
 
 var divisionBellTags = Tags(textures: [.light],
-                            styles: [.sour, .shaken],
-                            agave: [.mezcalSmokey],
-                            amari: [.aperol],
-                            liqueur: [.maraschinoLiqueur])
+                            styles: [.sour, .shaken])
                            

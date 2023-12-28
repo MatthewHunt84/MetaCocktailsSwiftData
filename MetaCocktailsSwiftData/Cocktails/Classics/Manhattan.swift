@@ -1,9 +1,9 @@
-//
-//  Manhattan.swift
-//  MetaCocktailsSwiftData
-//
-//  Created by James on 10/20/23.
-//
+////
+////  Manhattan.swift
+////  MetaCocktailsSwiftData
+////
+////  Created by James on 10/20/23.
+////
 
 import SwiftUI
 
@@ -16,16 +16,11 @@ var manhattan = Cocktail(cocktailName: "Manhattan",
                          spec: manhattanSpec,
                          tags: manhattanTags)
 
-
-var manhattanSpec     =  [CocktailIngredient(.angosturaBitters, value: 2, unit: .dash),
-                          CocktailIngredient(.sweetVermouth, value: 1),
-                          CocktailIngredient(.straightRyeOrBourbon, value: 2)]
-
+var manhattanSpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dash),
+                          CocktailIngredient(.fortifiedWines(.sweetVermouth), value: 1),
+                          CocktailIngredient(.whiskies(.straightRyeOrBourbon), value: 2)]
 
 var manhattanTags     = Tags(profiles: [.spiritForward],
                              textures: [.rich],
-                             styles: [.manhattan, .stirred],
-                             bitters: [.angosturaBitters],
-                             fortifiedWine: [.sweetVermouth],
-                             whiskies: [.ryeWhiskey, .bourbon, .straightRyeOrBourbon])
+                             styles: [.manhattan, .stirred])
                         

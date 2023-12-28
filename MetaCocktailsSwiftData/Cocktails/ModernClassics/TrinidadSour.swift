@@ -1,9 +1,9 @@
-//
-//  TrinidadSour.swift
-//  MetaCocktailsSwiftData
-//
-//  Created by James on 9/26/23.
-//
+////
+////  TrinidadSour.swift
+////  MetaCocktailsSwiftData
+////
+////  Created by James on 9/26/23.
+////
 
 import SwiftUI
 
@@ -16,16 +16,12 @@ var trinidadSour = Cocktail(cocktailName: "Trinidad Sour",
                             buildOrder: nil,
                             tags: trinidadSourTags)
 
-var trinidadSourSpec = [CocktailIngredient( .lemon, value: 0.75),
-                        CocktailIngredient( .orgeat, value: 1),
-                        CocktailIngredient( .ryeWhiskey, value: 0.5),
-                        CocktailIngredient( .angosturaBitters, value: 1.5)]
+var trinidadSourSpec = [CocktailIngredient(.juices(.lemon), value: 0.75),
+                        CocktailIngredient(.syrups(.orgeat), value: 1),
+                        CocktailIngredient(.whiskies(.ryeWhiskey), value: 0.5),
+                        CocktailIngredient(.bitters(.angosturaBitters), value: 1.5)]
                         
-
-
 var trinidadSourTags = Tags(flavors: [.almond, .lemon],
                             profiles: [.aromatic, .bitter, .bakingSpices],
                             textures: [.silky],
-                            styles: [.sour, .shaken],
-                            bitters: [.angosturaBitters],
-                            whiskies: [.ryeWhiskey])
+                            styles: [.sour, .shaken])

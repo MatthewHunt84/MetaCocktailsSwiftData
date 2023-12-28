@@ -23,8 +23,8 @@ struct CocktailListCell: View {
     
 }
 
-struct CocktailListCell_Previews: PreviewProvider {
-    static var previews: some View {
-        CocktailListCell(cocktail: aperolSpritz, backgroundColor: .brandPrimaryRed)
-    }
-}
+//struct CocktailListCell_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CocktailListCell(cocktail: aperolSpritz, backgroundColor: .brandPrimaryRed)
+//    }
+//}

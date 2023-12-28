@@ -1,9 +1,9 @@
-//
-//  Caipirinha.swift
-//  MetaCocktailsSwiftData
-//
-//  Created by James on 10/8/23.
-//
+////
+////  Caipirinha.swift
+////  MetaCocktailsSwiftData
+////
+////  Created by James on 10/8/23.
+////
 
 import SwiftUI
 
@@ -17,9 +17,9 @@ var caipirinha   = Cocktail(cocktailName: "Caipirinha",
                             tags: caipirnhaTags)
 
 
-var caipirinhaSpec = [CocktailIngredient(.lime, value: 2, unit: .limeQuarters),
-                      CocktailIngredient(.granulatedSugar , value: 1.5, unit: .teaspoons),
-                      CocktailIngredient(.cachaca, value: 2)]
+var caipirinhaSpec = [CocktailIngredient(.juices(.lime), value: 2, unit: .limeQuarters),
+                      CocktailIngredient(.otherNonAlc(.granulatedSugar), value: 1.5, unit: .teaspoons),
+                      CocktailIngredient(.rums(.cachaca), value: 2)]
                       
                       
 
@@ -31,6 +31,5 @@ var caipirnhaBuild = Build(instructions: [Instruction(step: 1, method: "Cut half
 var caipirnhaTags  = Tags(flavors: [.lime],
                           profiles: [.sweet, .citrusy],
                           textures: [.light, .unrefined],
-                          styles: [.sour, .shaken],
-                          rum: [.cachaca])
+                          styles: [.sour, .shaken])
                          

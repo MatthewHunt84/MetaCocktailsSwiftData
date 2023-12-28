@@ -1,9 +1,9 @@
-//
-//  RobRoy.swift
-//  MetaCocktailsSwiftData
-//
-//  Created by James on 10/20/23.
-//
+////
+////  RobRoy.swift
+////  MetaCocktailsSwiftData
+////
+////  Created by James on 10/20/23.
+////
 import SwiftUI
 
 
@@ -15,16 +15,10 @@ var robRoy = Cocktail(cocktailName: "Rob Roy",
                          spec: robRoySpec,
                          tags: robRoyTags)
 
-
-var robRoySpec     =  [CocktailIngredient(.angosturaBitters, value: 2, unit: .dash),
-                          CocktailIngredient(.rougeVermouth, value: 1),
-                          CocktailIngredient(.scotchBlended, value: 2)]
-
+var robRoySpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dash),
+                       CocktailIngredient(.fortifiedWines(.rougeVermouth), value: 1),
+                       CocktailIngredient(.whiskies(.scotchBlended), value: 2)]
 
 var robRoyTags     = Tags(profiles: [.spiritForward],
-                             textures: [.rich],
-                          styles: [.manhattan, .stirred],
-                          bitters: [.angosturaBitters],
-                          fortifiedWine: [.sweetVermouth, .rougeVermouth],
-                          whiskies: [.scotchBlended])
-                         
+                          textures: [.rich],
+                          styles: [.manhattan, .stirred])
