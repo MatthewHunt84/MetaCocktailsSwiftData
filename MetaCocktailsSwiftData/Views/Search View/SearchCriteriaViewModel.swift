@@ -55,8 +55,8 @@ final class SearchCriteriaViewModel: ObservableObject {
         
     }
     
-    func selectedUnwantedIngredients() -> [String] {
-        self.cocktailComponents.filter({ $0.isUnwanted }).map({$0.name})
+    func selectedUnwantedIngredients() -> [CocktailComponent] {
+        self.cocktailComponents.filter({ $0.isUnwanted })
     }
     
     func add(_ ingredient: CocktailComponent){
@@ -119,7 +119,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         
         isLoading = true
         resetSearchCriteria()
-        let preferredArray = selectedPreferredIngredients()
+        var preferredArray = selectedPreferredIngredients()
         preferredCount = selectedPreferredIngredients().count
         let unwantedArray = selectedUnwantedIngredients()
         var startingCocktails: [Cocktail] = []
@@ -127,39 +127,58 @@ final class SearchCriteriaViewModel: ObservableObject {
         var matchedCount = 0
         
         // Make an array of selected bases called PREFERREDBASES. If no bases are selected, include all.
-        var preferredBases = preferredArray.filter({ $0.isSpirit }).map({$0.name})
-        if preferredBases.isEmpty {
-            preferredBases = SearchCriteriaViewModel.generatedBoozeCocktailComponents.map({$0.name})
+//        var preferredBases = preferredArray.filter({ $0.isSpirit }).map({$0.name})
+//        if preferredBases.isEmpty {
+//            preferredBases = SearchCriteriaViewModel.generatedBoozeCocktailComponents.map({$0.name})
+//        }
+        if !preferredArray.contains(where: { $0.isSpirit }) {
+            preferredArray += SearchCriteriaViewModel.generatedBoozeCocktailComponents
         }
+        if !preferredArray.contains(where: { $0.isStyle }) {
+            preferredArray += Style.allCases.map({CocktailComponent(for: $0 )})
+        }
+        if !preferredArray.contains(where: { $0.isProfile }) {
+            preferredArray += Profile.allCases.map({CocktailComponent(for: $0 )})
+        }
+        if !preferredArray.contains(where: { $0.isTexture }) {
+            preferredArray += Texture.allCases.map({CocktailComponent(for: $0 )})
+        }
+        if !preferredArray.contains(where: { $0.isStyle }) {
+            preferredArray += Style.allCases.map({CocktailComponent(for: $0 )})
+        }
+        
+        
         // Make an array of selected styles called PREFERREDSTYLES. If no styles are selected, include all.
         //convert the data to strings to make them easier to work with
-        var preferredStyles = preferredArray.filter({ $0.isStyle }).map({$0.name})
-        if preferredStyles.isEmpty {
-            preferredStyles = Style.allCases.map({$0.rawValue})
-        }
+//        var preferredStyles = preferredArray.filter({ $0.isStyle }).map({$0.name})
+//        if preferredStyles.isEmpty {
+//            preferredStyles = Style.allCases.map({$0.rawValue})
+//        }
         // Make an array of selected profiles called PREFERREDPROFILES. If no profiles are selected, include all.
-        var preferredProfiles = preferredArray.filter({ $0.isProfile }).map({$0.name})
-        if preferredProfiles.isEmpty {
-            preferredProfiles = Profile.allCases.map({$0.rawValue})
-        }
+//        var preferredProfiles = preferredArray.filter({ $0.isProfile }).map({$0.name})
+//        if preferredProfiles.isEmpty {
+//            preferredProfiles = Profile.allCases.map({$0.rawValue})
+//        }
         // Make an array of selected textures called PREFERREDTEXTURES. If no textures are selected, include all.
-        var preferredTextures = preferredArray.filter({ $0.isTexture }).map({$0.name})
-        if preferredTextures.isEmpty {
-            preferredTextures = Texture.allCases.map({$0.rawValue})
-        }
+//        var preferredTextures = preferredArray.filter({ $0.isTexture }).map({$0.name})
+//        if preferredTextures.isEmpty {
+//            preferredTextures = Texture.allCases.map({$0.rawValue})
+//        }
         
         //make an array of selected flavors called PREFERREDFLAVORS.
-        let preferredFlavors = preferredArray.filter({ $0.isFlavor }).map({$0.name})
-        
+//        let preferredFlavors = preferredArray.filter({ $0.isFlavor }).map({$0.name})
+//        
         
         // So we now have five arrays of preferred cocktail components by type.
         // For every cocktail we got, rip out the bases from each one, and if one of those bases matches one from the PREFERREDBASES array, create a NEW array called MATCHEDBASESCOCKTAILS and throw 'em in.
         
+      
+        
         for cocktail in CocktailListViewModel().cocktails {
             if let boozeTypes = cocktail.compiledTags.booze { // called first here, which is to be expected
                 for booze in boozeTypes {
-                    for preferred in preferredBases {
-                        if booze.name == preferred && cocktail != startingCocktails.last {
+                    for preferred in preferredArray {
+                        if booze.name == preferred.name && cocktail != startingCocktails.last {
                             startingCocktails.append(cocktail)
                         }
                     }
@@ -175,30 +194,31 @@ final class SearchCriteriaViewModel: ObservableObject {
         for cocktail in  startingCocktailSet {
             //Remove any cocktails that don't have matching styles.
             if let styleTypes = cocktail.compiledTags.styles {
-                let stringTags = styleTypes.map({$0.rawValue})
-                if !preferredStyles.contains(where: stringTags.contains) {
-                    startingCocktailSet.remove(cocktail)
-                }
+                
+//                let stringTags = styleTypes.map({$0.rawValue})
+//                if !preferredArray.contains(where: stringTags.contains) {
+//                    startingCocktailSet.remove(cocktail)
+//                }
             }
             //Remove any cocktails that don't have matching profiles.
             if let profileTypes = cocktail.compiledTags.profiles {
                 let stringTags = profileTypes.map({$0.rawValue})
-                if !preferredProfiles.contains(where: stringTags.contains) {
-                    startingCocktailSet.remove(cocktail)
-                }
+//                if !preferredProfiles.contains(where: stringTags.contains) {
+//                    startingCocktailSet.remove(cocktail)
+//                }
             }
             //Remove any cocktails that don't have matching textures.
             if let textureTypes = cocktail.compiledTags.textures {
                 let stringTags = textureTypes.map({$0.rawValue})
-                if !preferredTextures.contains(where: stringTags.contains) {
-                    startingCocktailSet.remove(cocktail)
-                }
+//                if !preferredTextures.contains(where: stringTags.contains) {
+//                    startingCocktailSet.remove(cocktail)
+//                }
             }
             var internalMatchedCounter = 0
             if let flavors = cocktail.compiledTags.flavors {
                 for flavor in flavors {
-                    for preferredFlavor in preferredFlavors {
-                        if flavor.rawValue == preferredFlavor {
+                    for preferredFlavor in preferredArray {
+                        if flavor.rawValue == preferredFlavor.name {
                             internalMatchedCounter += 1
                         }
                     }
@@ -209,6 +229,9 @@ final class SearchCriteriaViewModel: ObservableObject {
                 startingCocktailSet.insert(cocktail)
             }
         }
+        for c in startingCocktails {
+            print(c.cocktailName)
+        }
        
         // We instantiate a var called matchedCount as zero
         // Then for every cocktail in the smallest Russian doll, rip out all the flavors. If any of those match against what we have in the preferredFlavors array, up the matchedCount by 1
@@ -218,7 +241,7 @@ final class SearchCriteriaViewModel: ObservableObject {
             if let boozeTypes = cocktail.compiledTags.booze {
                 for booze in boozeTypes {
                     for unwanted in unwantedArray {
-                        if booze.name == unwanted {
+                        if booze.name == unwanted.name {
                             startingCocktailSet.remove(cocktail)
                             matchedCount -= 1
                         }
@@ -234,7 +257,7 @@ final class SearchCriteriaViewModel: ObservableObject {
             if let styles = cocktail.compiledTags.styles {
                 for style in styles {
                     for unwanted in unwantedArray {
-                        if style.rawValue == unwanted {
+                        if style.rawValue == unwanted.name {
                             startingCocktailSet.remove(cocktail)
                             matchedCount -= 1
                         }
@@ -250,7 +273,7 @@ final class SearchCriteriaViewModel: ObservableObject {
             if let flavors = cocktail.compiledTags.flavors {
                 for flavor in flavors {
                     for unwanted in unwantedArray {
-                        if flavor.rawValue == unwanted {
+                        if flavor.rawValue == unwanted.name {
                             startingCocktailSet.remove(cocktail)
                             matchedCount -= 1
                         }
@@ -267,7 +290,7 @@ final class SearchCriteriaViewModel: ObservableObject {
             if let profiles = cocktail.compiledTags.profiles {
                 for profile in profiles {
                     for unwanted in unwantedArray {
-                        if profile.rawValue == unwanted {
+                        if profile.rawValue == unwanted.name{
                             startingCocktailSet.remove(cocktail)
                             matchedCount -= 1
                         }
@@ -283,7 +306,7 @@ final class SearchCriteriaViewModel: ObservableObject {
             if let textures = cocktail.compiledTags.textures {
                 for texture in textures {
                     for unwanted in unwantedArray {
-                        if texture.rawValue == unwanted {
+                        if texture.rawValue == unwanted.name {
                             startingCocktailSet.remove(cocktail)
                             matchedCount -= 1
                         }
