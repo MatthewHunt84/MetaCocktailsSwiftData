@@ -21,7 +21,7 @@ var negroniSpec = [CocktailIngredient(.gins(.gin), value: 1),
                    CocktailIngredient(.amari(.campari), value: 1)]
 
 var negroniTags = Tags(flavors: [.orange],
-                       profiles: [.bittersweet, .spiritForward],
+                       profiles: [.bittersweet, .spiritForward, .bitter],
                        textures: [.rich],
                        styles: [.negroni, .stirred])
                        

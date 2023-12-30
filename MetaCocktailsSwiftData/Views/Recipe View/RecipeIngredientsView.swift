@@ -62,7 +62,7 @@ struct TagView: View {
             for flavor in flavors {
                 flavorsString += " \(flavor.rawValue),"
             }
-            flavorsString.removeLast()
+            //flavorsString.removeLast()
             print(flavorsString)
         } else {
             flavorsString = "NO FLAVORS"

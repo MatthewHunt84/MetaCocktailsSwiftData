@@ -23,6 +23,7 @@ class Cocktail {
     var tags: Tags
     var compiledTags: Tags
     
+    
     init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [Garnish]? = nil, ice: Ice? = nil, author: String? = nil, spec: [CocktailIngredient], buildOrder: Build? = nil, tags: Tags) {
         self.id = id
         self.cocktailName = cocktailName
@@ -43,12 +44,7 @@ class Cocktail {
             }
             return newCompiledTags
         }()
+  
     }
     
-//    func compileTags() -> Tags {
-//        for cocktailIngredient in self.spec {
-//            self.tags.merge(with: cocktailIngredient.ingredient.tags)
-//        }
-//        return self.tags
-//    }
 }
