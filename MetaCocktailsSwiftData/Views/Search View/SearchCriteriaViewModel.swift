@@ -116,22 +116,20 @@ final class SearchCriteriaViewModel: ObservableObject {
     }
     func getFilteredCocktails2() {
         
-        // create an array of selectedPreferredIngredients that are of type CocktailComponent
-        // create an array of UnwantedIngredients that are of type CocktailComponent
-        // create an empty array of type MatchedCocktail that will hold matched cocktails
-        // create a preference count that is the total number of preferences
+//         create an array of selectedPreferredIngredients that are of type CocktailComponent
+//         create an array of UnwantedIngredients that are of type CocktailComponent
+//         create an empty array of type MatchedCocktail that will hold matched cocktails
+        // create an empty array of type cocktail called STARTINGCOCKTAILS that will hold our initial cocktails minus the cocktails with any unwanted ingredients
+//         create a preference count that is the total number of preferences
+//
+        //first, loop over every cocktail in CocktailListViewModel().cocktails and add any cocktails that don't match any unwanted preferences to the STARTINGCOCKTAILS array.
+//         Then, loop over every cocktail in STARTINGCOCKTAILSARRAY and pull out the cocktails that match with each ingredient in the preferredIngredients array
+//         Say the preferences are gin, raspberries, shaken, effervescent, citrusy. We should start the loop by checking the first cocktail against each ingredient.
+//         it would check first to see if it matched with gin. If it does, then that individual cocktail gets a match score of 1. Then it would check to see if it had raspberries. if it did, then it would increase the cocktails match score to two. Then it would check shaken, etc. only adding points to the cocktail if it matched.
         
-        // loop over every cocktail in CocktailListViewModel().cocktails and pull out the cocktails that match with each ingredient in the preferredIngredients array
-        // Say the preferences are gin, raspberries, shaken, effervescent, citrusy. We should start the loop by checking the first cocktail against each ingredient.
-        // it would check first to see if it matched with gin. If it does, then that individual cocktail gets a match score of 1. Then it would check to see if it had raspberries. if it did, then it would increase the cocktails match score to two. Then it would check shaken, etc. only adding points to the cocktail if it matched.
-        //if the cocktail gets a score of >= 50% of the preference count, then we add it to the Matched cocktails array where it would retain its score for presentation on the results view because all of the cocktails int eh matchedCocktail array are already of type MatchedCocktail. We basically want to only work with this array.
-        
-        // after we've checked all of the cocktails and added all of the cocktails that got a score of 50% or higher, we would check each one of those cocktails against the unwanted preferences array.
-        //For each match of an unwanted component we take one point away from the cocktails score.
-        //we keep going over this process until we go over all of the unwanted
-        // we then remove any cocktails that got a score below 50%
-        
-        // Finally, we then return an array of matching cocktails as an array of ResultSectionViewData objects
+//        if the cocktail gets a score of >= 50% of the preference count, then we add it to the Matched cocktails array where it would retain its score for presentation on the results view because all of the cocktails int eh matchedCocktail array are already of type MatchedCocktail. We basically want to only work with this array.
+//        
+//         Finally, we then return an array of matching cocktails as an array of ResultSectionViewData objects
     }
     
      
