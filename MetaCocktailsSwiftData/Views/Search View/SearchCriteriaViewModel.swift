@@ -115,21 +115,31 @@ final class SearchCriteriaViewModel: ObservableObject {
         return array
     }
     func getFilteredCocktails2() {
+        // start loading bool at true so that we can add a loading animation when the data gets larger
+        // MARK: isLoading = true
+        // reset search criteria
+        // MARK: resetSearchCriteria()
+        //         create an array of selectedPreferredIngredients that are of type CocktailComponent
+        // MARK: let preferredArray = selectedPreferredIngredients()
+        //         create an array of UnwantedIngredients that are of type CocktailComponent
+        // MARK: let unwantedArray = selectedUnwantedIngredients()
+        //         create a preference count that is the total number of preferences
+        // MARK: preferredCount = selectedPreferredIngredients().count
+        // create an array, called matchedCocktails, of resultViewSectionData objects by going over the preferredCount and creating an object for each number that is above %50 of the preferred count.
+        // MARK: finalMatchedCocktails: [ResultViewSectionData] = {   loop over the number of preferredCount / 2 and create empty ResultViewSectionData objects   }
+        // say the preferred count is 5. make one object for 5 matches, one object for 4 matches and one object for 3 matches. No more objects will be made for 2 or 1 because those are less than a 50% match. This means we have the possibility for 3 total sections in the returned ResultViewSectionData.
         
-//         create an array of selectedPreferredIngredients that are of type CocktailComponent
-//         create an array of UnwantedIngredients that are of type CocktailComponent
-//         create an empty array of type MatchedCocktail that will hold matched cocktails
-        // create an empty array of type cocktail called STARTINGCOCKTAILS that will hold our initial cocktails minus the cocktails with any unwanted ingredients
-//         create a preference count that is the total number of preferences
-//
-        //first, loop over every cocktail in CocktailListViewModel().cocktails and add any cocktails that don't match any unwanted preferences to the STARTINGCOCKTAILS array.
-//         Then, loop over every cocktail in STARTINGCOCKTAILSARRAY and pull out the cocktails that match with each ingredient in the preferredIngredients array
-//         Say the preferences are gin, raspberries, shaken, effervescent, citrusy. We should start the loop by checking the first cocktail against each ingredient.
-//         it would check first to see if it matched with gin. If it does, then that individual cocktail gets a match score of 1. Then it would check to see if it had raspberries. if it did, then it would increase the cocktails match score to two. Then it would check shaken, etc. only adding points to the cocktail if it matched.
+        //first, loop over every cocktail in CocktailListViewModel().cocktails and add any cocktails that don't match any unwanted preferences to create the STARTINGCOCKTAILS array.
+        // MARK: let startingCocktails: [Cocktail] =  CocktailListViewModel().cocktails.filter { filter out any cocktails that don't have any unwanted ingredients and add them to the starting cocktails array. }
+        //         Then, loop over every cocktail in STARTINGCOCKTAILSARRAY and pull out the cocktails that match with each ingredient in the preferredArray, keeping track of the matched count, and add them to the appropriate object in the array of finalMatchedCocktails. As in the example above, there are three options for matches: 5,4 and 3.
+        // MARK:  for cocktail in startingCocktails { for ingredient in preferredArray { for ingredients in cocktail { if an ingredient is matched, 1 point is added to the internal matched count. Points are added up until they've gone over every ingredient in preferredArray. if the matched count is 3, the cocktail gets added to finalMatchedCocktails[0].cocktails. If the match is 4, the cocktail gets added to finalMatchedCocktails[1].cocktails etc.
+        //
+        //         Finally, we then return an array of matching cocktails as an array of ResultSectionViewData objects, checking to make sure the sections aren't empty.
+        //  MARK: for sections in finalMatchedCocktails { if !bucketOfCocktails.isEmpty { sections.append(ResultViewSectionData(count: preferredCount, matched: preferredCount - i,  cocktails: bucketOfCocktails)) }
+        //
         
-//        if the cocktail gets a score of >= 50% of the preference count, then we add it to the Matched cocktails array where it would retain its score for presentation on the results view because all of the cocktails int eh matchedCocktail array are already of type MatchedCocktail. We basically want to only work with this array.
-//        
-//         Finally, we then return an array of matching cocktails as an array of ResultSectionViewData objects
+        //
+        //
     }
     
      
@@ -380,11 +390,8 @@ final class SearchCriteriaViewModel: ObservableObject {
         
         // create sections for the Listview using the matchedCocktails array data we just gathered.
         for i in 0...Int(preferredCount / 2) {
-            
-            
-            
             let numberOfMatches = (preferredCount - i)
-            // numberOfMatches will give us a the right section name. For example if preferredCount = 4 then numberOfMatches will be: (4-0 = 4 on the first loop, 4 - 1 = 3 on the second loop, 4 - 2 = 2 on the next loop, and then we stop because our cutoff is preferredCount / 2. Note that if preferredcount is an odd number, Int(count / 2) will round down which is why we're starting the loop at 0 instead of 1)
+            // numberOfMatches will give us a the right section name. For example if preferredCount = 4 then numberOfMatches will be: (4-0 = 4 on the first loop, 4 - 1 = 3 on the second loop, 4 - 2 = 2 on the next loop, and then we stop because our cutoff is preferredCount / 2. Note that if preferredCount is an odd number, Int(count / 2) will round down which is why we're starting the loop at 0 instead of 1)
             
             // then yank all the cocktails that match and chuck them in an array
             var bucketOfCocktails = [Cocktail]()
