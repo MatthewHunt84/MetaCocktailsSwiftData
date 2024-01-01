@@ -126,8 +126,8 @@ final class SearchCriteriaViewModel: ObservableObject {
         //         create a preference count that is the total number of preferences
         // MARK: preferredCount = selectedPreferredIngredients().count
         // create an array, called matchedCocktails, of resultViewSectionData objects by going over the preferredCount and creating an object for each number that is above %50 of the preferred count.
-        // MARK: finalMatchedCocktails: [ResultViewSectionData] = {   loop over the number of preferredCount / 2 and create empty ResultViewSectionData objects   }
-        // say the preferred count is 5. make one object for 5 matches, one object for 4 matches and one object for 3 matches. No more objects will be made for 2 or 1 because those are less than a 50% match. This means we have the possibility for 3 total sections in the returned ResultViewSectionData.
+        // MARK: finalMatchedCocktails: [ResultViewSectionData] = {   loop over the number of preferredCount / 2 and create ResultViewSectionData objects with count and matched numbers filled in but empty cocktail arrays.   }
+        // say the preferred count is 5. make one object for 5 matches with the count being 5 and the matched being 5 but and empty cocktail array, one object for 4 matches with the count being 5 and the matched being 4 but and empty coctkail array. Finally, an object for 3 matches with the count being 5 but the matched being 3. No more objects will be made for 2 or 1 because those are less than a 50% match. This means we have the possibility for 3 total sections in the returned ResultViewSectionData.
         
         //first, loop over every cocktail in CocktailListViewModel().cocktails and add any cocktails that don't match any unwanted preferences to create the STARTINGCOCKTAILS array.
         // MARK: let startingCocktails: [Cocktail] =  CocktailListViewModel().cocktails.filter { filter out any cocktails that don't have any unwanted ingredients and add them to the starting cocktails array. }
