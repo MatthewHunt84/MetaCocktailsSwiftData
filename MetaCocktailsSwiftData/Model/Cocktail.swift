@@ -22,6 +22,7 @@ class Cocktail {
     var buildOrder: Build?
     var tags: Tags
     var compiledTags: Tags
+  
     
     
     init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [Garnish]? = nil, ice: Ice? = nil, author: String? = nil, spec: [CocktailIngredient], buildOrder: Build? = nil, tags: Tags) {
@@ -44,7 +45,7 @@ class Cocktail {
             }
             return newCompiledTags
         }()
-  
+        
     }
     
 }

@@ -46,7 +46,6 @@ enum Flavor: String, Codable, CaseIterable {
     case menthol        = "Menthol"
     case rosewater      = "Rose water"
     case tarragon       = "Tarragon"
-    
-    case test           = "Test"
+   
 }
 

@@ -43,6 +43,7 @@ struct SearchCriteriaView: View {
                         SearchResultsView(viewModel: viewModel)
                         
                             .onAppear {
+
                                 viewModel.getFilteredCocktails()
                             }
                     } label: {
