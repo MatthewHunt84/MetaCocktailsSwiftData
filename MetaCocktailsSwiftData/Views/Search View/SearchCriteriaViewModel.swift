@@ -124,6 +124,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         })
                                
     }
+    // this converts all the tags into one strings array so we can easily compare them to the unwanted.name or the preferred.name. It's used in both. 
     func convertTagsToStrings(tags: Tags) -> [String] {
         var strings: [String] = [String]()
         if let flavors = tags.flavors {
@@ -141,13 +142,18 @@ final class SearchCriteriaViewModel: ObservableObject {
         return strings
     }
     func getFilteredCocktails() {
-        
+        //set loading to true
         isLoading = true
+        // reset search criteria for the cocktail results list view.
         resetSearchCriteria()
+        //create an array of selected preferred ingredients
         let preferredArray = selectedPreferredIngredients()
+        //create an array of selected unwanted ingredients
         let unwantedArray = selectedUnwantedIngredients()
+        // set a count to the number of preferred ingredients
         preferredCount = selectedPreferredIngredients().count
         //loop over the number of preferredCount / 2 and create ResultViewSectionData objects with count and matched numbers filled in but empty cocktail arrays.
+        // say the preferred count is 5. make one object for 5 matches with the count being 5 and the matched being 5 but and empty cocktail array, one object for 4 matches with the count being 5 and the matched being 4 but and empty cocktail array. Finally, an object for 3 matches with the count being 5 but the matched being 3. No more objects will be made for 2 or 1 because those are less than a 50% match. This means we have the possibility for 3 total sections in the returned ResultViewSectionData.
         let finalMatchContainers: [ResultViewSectionData] = {
             var dataShells = [ResultViewSectionData]()
             for i in 0...Int(preferredCount / 2) {
@@ -156,9 +162,9 @@ final class SearchCriteriaViewModel: ObservableObject {
             }
             return dataShells
         }()
-        // say the preferred count is 5. make one object for 5 matches with the count being 5 and the matched being 5 but and empty cocktail array, one object for 4 matches with the count being 5 and the matched being 4 but and empty cocktail array. Finally, an object for 3 matches with the count being 5 but the matched being 3. No more objects will be made for 2 or 1 because those are less than a 50% match. This means we have the possibility for 3 total sections in the returned ResultViewSectionData.
         
         //first, loop over every cocktail in CocktailListViewModel().cocktails and add any cocktails that don't match any unwanted preferences to create the STARTINGCOCKTAILS array.
+        // first check agains the cocktail spec. Then turn all the tags into an array of strings to check if each unwanted component is contained in the array. If it is, don't add it to the array of cocktails. 
         let startingCocktails = filterUnwantedCocktails(cocktailComponentArray: unwantedArray, cocktails: CocktailListViewModel().cocktails)
         //         Then, loop over every cocktail in STARTINGCOCKTAILSARRAY and pull out the cocktails that match with > 50% of the ingredients in the preferredArray. Keeping track of the matched count, add them to the appropriate object in the array of finalMatchedCocktails. 
         for cocktail in startingCocktails {
