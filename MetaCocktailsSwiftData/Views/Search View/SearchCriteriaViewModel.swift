@@ -98,7 +98,6 @@ final class SearchCriteriaViewModel: ObservableObject {
         for flavor in Flavor.allCases {
             array.append(CocktailComponent(for: flavor))
         }
-        
         for profile in Profile.allCases {
             array.append(CocktailComponent(for: profile))
         }
@@ -111,14 +110,13 @@ final class SearchCriteriaViewModel: ObservableObject {
         for component in convertedArray {
             array.append(component)
         }
-        
         return array
     }
     func filterUnwantedCocktails(_ cocktailComponentArray: [CocktailComponent], cocktails: [Cocktail]) -> [Cocktail] {
        return cocktails.filter({ cocktail in
             for unwanted in cocktailComponentArray {
                 for spec in cocktail.spec {
-                    if  unwanted.isEqualTo(spec){ return false }
+                    if unwanted.isEqualTo(spec){ return false }
                 }
                 if convertTagsToStrings(cocktail.compiledTags).contains(unwanted.name) { return false }
             }
@@ -142,11 +140,8 @@ final class SearchCriteriaViewModel: ObservableObject {
         }
         return strings
     }
-//    func assignMatchedCocktails(compare cocktails: [Cocktail],to components: [CocktailComponent]) -> [ResultViewSectionData] {
-//        
-//    }
     func getFilteredCocktails() {
-   
+        
         isLoading = true
         resetSearchCriteria()
         let preferredArray = selectedPreferredIngredients()
@@ -154,26 +149,26 @@ final class SearchCriteriaViewModel: ObservableObject {
         preferredCount = selectedPreferredIngredients().count
         //loop over the number of preferredCount / 2 and create ResultViewSectionData objects with count and matched numbers filled in but empty cocktail arrays.
         let finalMatchContainers: [ResultViewSectionData] = {
-           var dataShells = [ResultViewSectionData]()
+            var dataShells = [ResultViewSectionData]()
             for i in 0...Int(preferredCount / 2) {
                 let numberOfMatches = (preferredCount - i)
                 dataShells.append(ResultViewSectionData(count: preferredCount, matched: numberOfMatches, cocktails: []))
             }
             return dataShells
-            }()
+        }()
         // say the preferred count is 5. make one object for 5 matches with the count being 5 and the matched being 5 but and empty cocktail array, one object for 4 matches with the count being 5 and the matched being 4 but and empty cocktail array. Finally, an object for 3 matches with the count being 5 but the matched being 3. No more objects will be made for 2 or 1 because those are less than a 50% match. This means we have the possibility for 3 total sections in the returned ResultViewSectionData.
         
         //first, loop over every cocktail in CocktailListViewModel().cocktails and add any cocktails that don't match any unwanted preferences to create the STARTINGCOCKTAILS array.
         let startingCocktails = filterUnwantedCocktails(unwantedArray, cocktails: CocktailListViewModel().cocktails)
-        //         Then, loop over every cocktail in STARTINGCOCKTAILSARRAY and pull out the cocktails that match with > 50% of the ingredients in the preferredArray. Keeping track of the matched count, add them to the appropriate object in the array of finalMatchedCocktails. As in the example above, there are three options for matches: 5,4 and 3.
+        //         Then, loop over every cocktail in STARTINGCOCKTAILSARRAY and pull out the cocktails that match with > 50% of the ingredients in the preferredArray. Keeping track of the matched count, add them to the appropriate object in the array of finalMatchedCocktails. 
         for cocktail in startingCocktails {
             var matchCounter = 0
             for preferred in preferredArray {
                 for booze in cocktail.spec {
                     if booze.ingredient.name == preferred.name {
-                            matchCounter += 1
-                        }
+                        matchCounter += 1
                     }
+                }
                 if convertTagsToStrings(cocktail.compiledTags).contains(preferred.name){
                     matchCounter += 1
                 }
@@ -184,7 +179,7 @@ final class SearchCriteriaViewModel: ObservableObject {
                 }
             }
         }
-        //         Finally, we then return an array of matching cocktails as an array of ResultSectionViewData objects, checking to make sure the sections aren't empty.
+        // Finally, we then return an array of matching cocktails as an array of ResultSectionViewData objects, checking to make sure the sections aren't empty.
         for container in finalMatchContainers {
             if !container.cocktails.isEmpty {
                 sections.append(container)
