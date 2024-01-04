@@ -83,7 +83,7 @@ struct TagView: View {
             for profile in profiles {
                 profileString += " \(profile.rawValue),"
             }
-            profileString.removeLast()
+            //profileString.removeLast()
             print(profileString)
         } else {
             profileString = "NO PROFILES"

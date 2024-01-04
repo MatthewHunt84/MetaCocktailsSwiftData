@@ -12,7 +12,6 @@ final class SearchCriteriaViewModel: ObservableObject {
     
     @Published var searchText: String = ""
     @Published var cocktailComponents = createComponentArray().sorted(by: { $0.name < $1.name })
-    @Published var finalMatchedCocktails = [MatchedCocktail]()
     @Published var preferredCount = 0
     @Published var sections = [ResultViewSectionData]()
     @Published var isLoading = true
@@ -69,7 +68,6 @@ final class SearchCriteriaViewModel: ObservableObject {
     
     func resetSearchCriteria() {
         preferredCount = 0
-        finalMatchedCocktails.removeAll()
         sections.removeAll()
     }
     
