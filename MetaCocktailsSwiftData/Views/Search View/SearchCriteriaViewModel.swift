@@ -112,19 +112,18 @@ final class SearchCriteriaViewModel: ObservableObject {
         }
         return array
     }
+
     func filterUnwantedCocktails(cocktailComponentArray: [CocktailComponent], cocktails: [Cocktail]) -> [Cocktail] {
-       return cocktails.filter({ cocktail in
-            for unwanted in cocktailComponentArray {
-                for spec in cocktail.spec {
-                    if unwanted.isEqualTo(spec){ return false }
+        cocktails.filter { cocktail in
+            cocktail.spec.filter { cocktailIngredient in
+                cocktailComponentArray.allSatisfy { unwantedComponent in
+                    return unwantedComponent.name != cocktailIngredient.ingredient.name && !convertTagsToStrings(tags: cocktail.compiledTags).contains(unwantedComponent.name)
                 }
-                if convertTagsToStrings(tags: cocktail.compiledTags).contains(unwanted.name) { return false }
-            }
-            return true
-        })
-                               
+            }.count == cocktail.spec.count
+        }
     }
-    // this converts all the tags into one strings array so we can easily compare them to the unwanted.name or the preferred.name. It's used in both. 
+    
+    // this converts all the tags into one strings array so we can easily compare them to the unwanted.name or the preferred.name. It's used in both.
     func convertTagsToStrings(tags: Tags) -> [String] {
         var strings: [String] = [String]()
         if let flavors = tags.flavors {
@@ -151,7 +150,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         //create an array of selected unwanted ingredients
         let unwantedArray = selectedUnwantedIngredients()
         // set a count to the number of preferred ingredients
-        preferredCount = selectedPreferredIngredients().count
+        preferredCount = preferredArray.count
         //loop over the number of preferredCount / 2 and create ResultViewSectionData objects with count and matched numbers filled in but empty cocktail arrays.
         // say the preferred count is 5. make one object for 5 matches with the count being 5 and the matched being 5 but and empty cocktail array, one object for 4 matches with the count being 5 and the matched being 4 but and empty cocktail array. Finally, an object for 3 matches with the count being 5 but the matched being 3. No more objects will be made for 2 or 1 because those are less than a 50% match. This means we have the possibility for 3 total sections in the returned ResultViewSectionData.
         let finalMatchContainers: [ResultViewSectionData] = {

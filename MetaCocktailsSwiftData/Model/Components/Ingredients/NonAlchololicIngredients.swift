@@ -141,9 +141,9 @@ enum OtherNA: String, Codable, CaseIterable {
         case .cream:
             Tags(flavors: [.cream], profiles: [.creamy], textures: [.rich, .creamy])
         case .eggWhites:
-            Tags(textures: [.silky, .light])
+            Tags(flavors: [.eggWhite], textures: [.silky, .light])
         case .egg:
-            Tags()
+            Tags(flavors: [.eggWhole])
         case .granulatedSugar:
             Tags(textures: [.unrefined])
         case .orangeFlowerWater:
