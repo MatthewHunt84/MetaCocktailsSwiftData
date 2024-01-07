@@ -161,7 +161,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         // say the preferred count is 5. make one object for 5 matches with the count being 5 and the matched being 5 but and empty cocktail array, one object for 4 matches with the count being 5 and the matched being 4 but and empty cocktail array. Finally, an object for 3 matches with the count being 5 but the matched being 3. No more objects will be made for 2 or 1 because those are less than a 50% match. This means we have the possibility for 3 total sections in the returned ResultViewSectionData.
         var finalMatchContainers: [ResultViewSectionData] = {
             var dataShells = [ResultViewSectionData]()
-            let preferredCount = selectedPreferredIngredients().count
+            preferredCount = selectedPreferredIngredients().count
             for i in 0...Int(preferredCount / 2) {
                 let numberOfMatches = (preferredCount - i)
                 dataShells.append(ResultViewSectionData(count: preferredCount, matched: numberOfMatches, cocktails: []))
