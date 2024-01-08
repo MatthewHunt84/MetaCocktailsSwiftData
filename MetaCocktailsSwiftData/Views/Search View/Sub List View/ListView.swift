@@ -38,8 +38,6 @@ struct ListView: View {
                 if isShowingLikes {
                     Button {
                         viewModel.enableMultipleSpiritSelection.toggle()
-                        print(viewModel.enableMultipleSpiritSelection)
-                        
                     } label: {
                         if viewModel.enableMultipleSpiritSelection == true {
                             Label("Search Multiple Base Spirits is Active", systemImage: "circle.fill")
@@ -48,9 +46,7 @@ struct ListView: View {
                             Label("Search Multiple Base Spirits is Inactive", systemImage: "circle.fill")
                                 .tint(.red)
                         }
-                    }
-                    
-                    
+                    }  
                 }
                 List {
                         if isShowingLikes {

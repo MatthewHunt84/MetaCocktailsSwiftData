@@ -172,7 +172,6 @@ final class SearchCriteriaViewModel: ObservableObject {
                 } else {
                     if resultViewSectionData.matched == selectedPreferredIngredients().reduce(0, { countMatchesForMultipleSpirits($0, for: $1, in: cocktail)}) {
                         resultViewSectionData.cocktails.append(cocktail)
-                        print(resultViewSectionData.count)
                     }
                 }
             }
