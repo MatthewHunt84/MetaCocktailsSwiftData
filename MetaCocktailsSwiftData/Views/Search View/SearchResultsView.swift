@@ -63,7 +63,7 @@ struct SearchResultsView: View {
                 .scrollIndicators(.hidden)
             }
             
-            CocktailResultList(viewModel: viewModel)
+          CocktailResultList(viewModel: viewModel)
         }
         .navigationBarTitleDisplayMode(.inline)
     }

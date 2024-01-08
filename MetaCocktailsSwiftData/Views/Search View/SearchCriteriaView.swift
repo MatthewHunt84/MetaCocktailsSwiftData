@@ -14,7 +14,7 @@ struct SearchCriteriaView: View {
     @State var selectedList: PreferenceType = .all
     @State var isShowingPreferences: Bool
     @State var selectedLikesOrDislikes: LikesOrDislikes = .likes
-
+    
     
     var body: some View {
         NavigationStack {
@@ -38,8 +38,12 @@ struct SearchCriteriaView: View {
                 .foregroundColor(Color.blue)
                 HStack {
                     NavigationLink {
+                        
+                        
                         SearchResultsView(viewModel: viewModel)
+                        
                             .onAppear {
+
                                 viewModel.getFilteredCocktails()
                             }
                     } label: {

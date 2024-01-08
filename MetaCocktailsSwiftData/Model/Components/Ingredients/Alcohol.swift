@@ -35,11 +35,13 @@ enum Agave: String, Codable, CaseIterable {
     
     var tags: Tags {
         return Tags(booze: [Booze(.agaves(self))])
+      
     }
     
     var cockTailComponent: CocktailComponent {
         return CocktailComponent(for: Booze(.agaves(self)))
     }
+    
 }
 
 
@@ -143,7 +145,24 @@ enum Liqueur: String, Codable, CaseIterable {
     case yellowChartreuse     = "Yellow Chartreuse"
     
     var tags: Tags {
-        return Tags(booze: [Booze(.liqueurs(self))])
+        switch self {
+        case .cointreau:
+            Tags(flavors: [.orange, .whiteFlower])
+        case .cremeDeCacao:
+            Tags(flavors: [.chocolate])
+        case .giffardPamplemousse:
+            Tags(flavors: [.grapefruit])
+        case .greenChartreuse:
+            Tags(flavors: [.angelica], profiles: [.herbal])
+        case .maraschinoLiqueur:
+            Tags(flavors: [.cherry])
+        case .orangeCuracao:
+            Tags(flavors: [.orange])
+        case .velvetFalernum:
+            Tags(flavors: [.clove, .almond])
+        case .yellowChartreuse:
+            Tags(flavors: [.angelica], profiles: [.herbal])
+        }
     }
     
     var cockTailComponent: CocktailComponent {

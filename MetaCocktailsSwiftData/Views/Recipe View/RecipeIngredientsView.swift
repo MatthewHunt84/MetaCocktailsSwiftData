@@ -18,7 +18,7 @@ struct RecipeIngredientsView: View {
         
         Text("GW: \(cocktail.glasswareType.rawValue)")
         
-        ForEach(cocktail.spec, id: \.self) { ingredient in
+        ForEach(cocktail.spec, id: \.id) { ingredient in
             Text("\(ingredient.value, specifier: "%.2f") oz. \(ingredient.ingredient.name)")
                 .padding(recipeSpacing)
         }
@@ -62,7 +62,7 @@ struct TagView: View {
             for flavor in flavors {
                 flavorsString += " \(flavor.rawValue),"
             }
-            flavorsString.removeLast()
+            //flavorsString.removeLast()
             print(flavorsString)
         } else {
             flavorsString = "NO FLAVORS"
@@ -83,7 +83,7 @@ struct TagView: View {
             for profile in profiles {
                 profileString += " \(profile.rawValue),"
             }
-            profileString.removeLast()
+            //profileString.removeLast()
             print(profileString)
         } else {
             profileString = "NO PROFILES"

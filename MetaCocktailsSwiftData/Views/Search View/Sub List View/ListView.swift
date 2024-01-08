@@ -66,7 +66,7 @@ struct ListView: View {
                                             if ingredient.isPreferred.wrappedValue == false && 
                                                 ingredient.matchesCurrentSearch.wrappedValue &&
                                                 (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) &&
-                                                spirit.wrappedValue.rawValue == ingredient.name.wrappedValue {
+                                                spirit.wrappedValue.rawValue == ingredient.spiritCategoryName.wrappedValue {
                                                 PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
                                                     
                                             }
