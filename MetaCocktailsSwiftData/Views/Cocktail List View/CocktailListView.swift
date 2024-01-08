@@ -6,13 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct CocktailListView: View {
     @EnvironmentObject var criteria: SearchCriteriaViewModel
-    @StateObject var viewModel = CocktailListViewModel()
+    @StateObject var viewModel = CocktailListViewModel.shared
     @State var isShowingIngredientsList = false
     @State private var colorNumber = 0
     @Environment(\.modelContext) private var modelContext
+    @Query(sort: \Cocktail.cocktailName) var swiftDataCocktails: [Cocktail]
     private var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     
     
@@ -20,24 +22,20 @@ struct CocktailListView: View {
         NavigationStack{
             ZStack {
                 VStack{
-                    HStack {
-                        Text("Cocktails")
-                            .fontWeight(.bold)
-                            .font(.largeTitle)
-                            .padding()
-                        Spacer()
-                    }
                     ScrollView {
                         ScrollViewReader { value in
                             HStack{
                                 List{
                                     ForEach(alphabet, id: \.self) { letter in
                                         Section {
-                                            ForEach(viewModel.cocktails.filter { $0.cocktailName.hasPrefix(letter) }, id: \.self) { cocktail in
-                                                NavigationLink {
-                                                    RecipeIngredientsView(cocktail: cocktail)
-                                                } label: {
-                                                    Text(cocktail.cocktailName)
+                                            ForEach(swiftDataCocktails) { cocktail in
+                                                if cocktail.cocktailName.hasPrefix(letter) {
+                                                    //ForEach(swiftDataCocktails { $0.cocktailName.hasPrefix(letter) }, id: \.self) { cocktail in
+                                                    NavigationLink {
+                                                        RecipeIngredientsView(cocktail: cocktail)
+                                                    } label: {
+                                                        Text(cocktail.cocktailName)
+                                                    }
                                                 }
                                             }
                                         } header: {
@@ -71,9 +69,18 @@ struct CocktailListView: View {
                     .scrollDisabled(true)
                 }
             }
+            .navigationBarTitle("Cocktails", displayMode: .large)
+            .toolbar {
+                Button("add Cocktails", action: addCocktails)
+            }
         }
     }
     
+    func addCocktails() {
+        for cocktail in viewModel.cocktails {
+            modelContext.insert(cocktail)
+        }
+    }
 }
 
 struct CocktailListView_Previews: PreviewProvider {

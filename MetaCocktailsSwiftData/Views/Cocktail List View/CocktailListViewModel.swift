@@ -8,7 +8,6 @@
 import SwiftUI
 
 final class CocktailListViewModel: ObservableObject {
-    @Environment(\.modelContext) var modelContext
 
     static let shared = CocktailListViewModel()
     
@@ -16,9 +15,5 @@ final class CocktailListViewModel: ObservableObject {
     @Published var isShowingRecipeCard = false
     @Published var selectedCocktail: Cocktail?
     @Published var isShowingBuildOrderButton = false
-    
-    // TODO: Ready for swiftData
-    func addCocktailsToSwiftData() {
-        modelContext.insert(aperolSpritz)
-    }
+
 }

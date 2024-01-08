@@ -12,7 +12,7 @@ import SwiftUI
 class Cocktail {
     
     var id = UUID()
-    var cocktailName: String
+    @Attribute(.unique) var cocktailName: String
     var imageAsset: CocktailImage?
     var glasswareType: Glassware
     var garnish: [Garnish]?

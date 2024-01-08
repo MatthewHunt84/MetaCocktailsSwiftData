@@ -154,11 +154,11 @@ final class SearchCriteriaViewModel: ObservableObject {
         resetSearchCriteria()
 
         /** First, loop over every cocktail and add any cocktails that don't match any unwanted preferences to create the StartingCocktails array. */
-        let startingCocktails = filterUnwantedCocktails(cocktailComponentArray: selectedUnwantedIngredients(), cocktails: CocktailListViewModel().cocktails)
+        let startingCocktails = filterUnwantedCocktails(cocktailComponentArray: selectedUnwantedIngredients(), cocktails: CocktailListViewModel.shared.cocktails)
         
         /**loop over the number of preferredCount / 2 and create ResultViewSectionData objects with count and matched numbers filled in but empty cocktail arrays.
         Let's say the preferred count is 5. make one object for 5 matches with the count being 5 and the matched being 5 but and empty cocktail array, one object for 4 matches with the count being 5 and the matched being 4 but and empty cocktail array. Finally, an object for 3 matches with the count being 5 but the matched being 3. No more objects will be made for 2 or 1 because those are less than a 50% match. This means we have the possibility for 3 total sections in the returned ResultViewSectionData. */
-        var finalMatchContainers: [ResultViewSectionData] = {
+        let finalMatchContainers: [ResultViewSectionData] = {
             var dataShells = [ResultViewSectionData]()
             preferredCount = selectedPreferredIngredients().count
             for i in 0...Int(preferredCount / 2) {
