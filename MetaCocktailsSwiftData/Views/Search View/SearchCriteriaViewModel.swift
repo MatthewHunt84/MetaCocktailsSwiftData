@@ -153,12 +153,11 @@ final class SearchCriteriaViewModel: ObservableObject {
         isLoading = true
         resetSearchCriteria()
 
-        
-        //first, loop over every cocktail in CocktailListViewModel().cocktails and add any cocktails that don't match any unwanted preferences to create the STARTINGCOCKTAILS array.
-        // first check against the cocktail spec. Then turn all the tags into an array of strings to check if each unwanted component is contained in the array. If it is, don't add it to the array of cocktails.
+        /** First, loop over every cocktail and add any cocktails that don't match any unwanted preferences to create the StartingCocktails array. */
         let startingCocktails = filterUnwantedCocktails(cocktailComponentArray: selectedUnwantedIngredients(), cocktails: CocktailListViewModel().cocktails)
-        //loop over the number of preferredCount / 2 and create ResultViewSectionData objects with count and matched numbers filled in but empty cocktail arrays.
-        // say the preferred count is 5. make one object for 5 matches with the count being 5 and the matched being 5 but and empty cocktail array, one object for 4 matches with the count being 5 and the matched being 4 but and empty cocktail array. Finally, an object for 3 matches with the count being 5 but the matched being 3. No more objects will be made for 2 or 1 because those are less than a 50% match. This means we have the possibility for 3 total sections in the returned ResultViewSectionData.
+        
+        /**loop over the number of preferredCount / 2 and create ResultViewSectionData objects with count and matched numbers filled in but empty cocktail arrays.
+        Let's say the preferred count is 5. make one object for 5 matches with the count being 5 and the matched being 5 but and empty cocktail array, one object for 4 matches with the count being 5 and the matched being 4 but and empty cocktail array. Finally, an object for 3 matches with the count being 5 but the matched being 3. No more objects will be made for 2 or 1 because those are less than a 50% match. This means we have the possibility for 3 total sections in the returned ResultViewSectionData. */
         var finalMatchContainers: [ResultViewSectionData] = {
             var dataShells = [ResultViewSectionData]()
             preferredCount = selectedPreferredIngredients().count
@@ -168,27 +167,27 @@ final class SearchCriteriaViewModel: ObservableObject {
             }
             return dataShells
         }()
-        //Then, loop over every cocktail in STARTINGCOCKTAILSARRAY and pull out the cocktails that match with > 50% of the ingredients in the preferredArray. Keeping track of the matched count, add them to the appropriate object in the array of finalMatchedCocktails.
         
+        /**Then, loop over every cocktail in the startingCocktailsArray and pull out the cocktails that match with > 50% of the ingredients in the preferredArray. Keeping track of the matched count, add them to the appropriate object in the array of finalMatchedCocktails. */
         for cocktail in startingCocktails {
-
-            // We want to TRANSFORM finalMatchContainers to include cocktails that match preferred components. JOB FOR MAP
-            // Then we want to match cocktails to sections by calculations the number of components that match.
             
+            /** We use let _ = ... to loop over finalMatchContainers to append cocktails that match preferred components to the right section without creating a new array in the process */
             let _ = finalMatchContainers.map { resultViewSectionData in
+                
+            /** Then we want to match cocktails to sections by calculating the number of components that match the preferred array. */
                 if resultViewSectionData.matched == selectedPreferredIngredients().reduce(0, { countMatches($0, for: $1, in: cocktail)}) {
                     resultViewSectionData.cocktails.append(cocktail)
                 }
             }
         }
         
-        // Finally, we then return an array of matching cocktails as an array of ResultSectionViewData objects, checking to make sure the sections aren't empty.
+        /** Finally, we then return an array of matching cocktails as an array of ResultSectionViewData objects, checking to make sure the sections aren't empty. */
         sections.append(contentsOf: finalMatchContainers.filter({ !$0.cocktails.isEmpty}))
-        
-        //alternatively using compactMap to do the same thing:
-//        sections = finalMatchContainers.compactMap { resultSectionData in
-//            return resultSectionData.cocktails.isEmpty ? nil : resultSectionData
-//        }
+         
+        /** (alternatively we do the same thing with compactMap and just cast the non-matches as optionals and compactMap will remove them for us)
+                i.e.
+            sections = finalMatchContainers.compactMap { resultSectionData in
+            return resultSectionData.cocktails.isEmpty ? nil : resultSectionData } */
 
         isLoading = false
     }
