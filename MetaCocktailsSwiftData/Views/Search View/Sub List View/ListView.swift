@@ -9,12 +9,12 @@ import SwiftUI
 
 struct ListView: View {
     @EnvironmentObject var viewModel: SearchCriteriaViewModel
-    
-    
     @Binding var selectedList: PreferenceType
     var navigationTitle: String
     @Binding var isShowingLikes: Bool
     var body: some View {
+        
+
         NavigationStack {
             if selectedList != .spirits {
                 List {
@@ -35,6 +35,23 @@ struct ListView: View {
                 }
                 .listStyle(.plain)
             } else {
+                if isShowingLikes {
+                    Button {
+                        viewModel.enableMultipleSpiritSelection.toggle()
+                        print(viewModel.enableMultipleSpiritSelection)
+                        
+                    } label: {
+                        if viewModel.enableMultipleSpiritSelection == true {
+                            Label("Search Multiple Base Spirits is Active", systemImage: "circle.fill")
+                                .tint(.green)
+                        } else {
+                            Label("Search Multiple Base Spirits is Inactive", systemImage: "circle.fill")
+                                .tint(.red)
+                        }
+                    }
+                    
+                    
+                }
                 List {
                         if isShowingLikes {
                             ForEach($viewModel.boozeCategories, id: \.self) { spirit in

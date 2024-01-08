@@ -70,7 +70,11 @@ struct SearchCriteriaView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 140))
                     .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
                     .foregroundColor(Color(UIColor.systemCyan))
+                   
+                    
+
                 }
+                
                 ListView(selectedList: $selectedList, navigationTitle: selectedList.getTitle(), isShowingLikes: $isShowingPreferences)
                 
                 SearchBarView(searchText: $viewModel.searchText)
