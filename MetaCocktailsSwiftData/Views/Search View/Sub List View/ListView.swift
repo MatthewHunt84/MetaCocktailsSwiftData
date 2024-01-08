@@ -40,10 +40,10 @@ struct ListView: View {
                         viewModel.enableMultipleSpiritSelection.toggle()
                     } label: {
                         if viewModel.enableMultipleSpiritSelection == true {
-                            Label("Search Multiple Base Spirits is Active", systemImage: "circle.fill")
+                            Label("Enabled results for separate bases", systemImage: "circle.fill")
                                 .tint(.green)
                         } else {
-                            Label("Search Multiple Base Spirits is Inactive", systemImage: "circle.fill")
+                            Label("Disabled results for separate bases", systemImage: "circle")
                                 .tint(.red)
                         }
                     }  
