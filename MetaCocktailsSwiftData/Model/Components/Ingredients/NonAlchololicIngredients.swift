@@ -99,7 +99,7 @@ enum Syrup: String, Codable, CaseIterable {
     }
 }
 
-enum Herb: String, Codable, CaseIterable {
+enum Herbs: String, Codable, CaseIterable {
     case mint                 = "Mint Leaves"
     case sage                 = "Sage"
     

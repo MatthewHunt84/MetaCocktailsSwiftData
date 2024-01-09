@@ -16,20 +16,9 @@ final class SearchCriteriaViewModel: ObservableObject {
     @Published var sections = [ResultViewSectionData]()
     @Published var enableMultipleSpiritSelection: Bool = false
     @Published var isLoading = true
-    @Published var boozeCategories = { var array: [BoozeCategory] = [BoozeCategory]()
-        for booze in BoozeCategory.allCases {
-            array.append(booze)
-        }
-        return array
-    }()
-    @Published var nACategories: [NACategory] = { var array: [NACategory] = [NACategory]()
-        for nA in NACategory.allCases {
-            array.append(nA)
-        }
-        return array
-        
-        
-    }()
+    @Published var boozeCategories = {Array(Set(generatedBoozeCocktailComponents.map({$0.spiritCategoryName}))).sorted()}()
+    @Published var nACategories = {Array(Set(generatedNACocktailComponents.map({$0.nACategoryName}))).sorted()}()
+   
     
     static var generatedBoozeCocktailComponents: [CocktailComponent] = {
         return IngredientType.getBoozeComponents()

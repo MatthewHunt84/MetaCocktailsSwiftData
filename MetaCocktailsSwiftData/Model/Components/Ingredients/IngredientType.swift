@@ -11,7 +11,7 @@ enum IngredientType: Codable {
     
     case syrups(Syrup)
     case juices(Juice)
-    case herbs(Herb)
+    case herbs(Herbs)
     case fruit(Fruit)
     case seasoning(Seasoning)
     case soda(Soda)
@@ -35,7 +35,7 @@ enum IngredientType: Codable {
         
         cocktailComponentArrayForNA.append(contentsOf: Syrup.allCases.map({ $0.nAComponent}))
         cocktailComponentArrayForNA.append(contentsOf: Juice.allCases.map({ $0.nAComponent}))
-        cocktailComponentArrayForNA.append(contentsOf: Herb.allCases.map({ $0.nAComponent}))
+        cocktailComponentArrayForNA.append(contentsOf: Herbs.allCases.map({ $0.nAComponent}))
         cocktailComponentArrayForNA.append(contentsOf: Fruit.allCases.map({ $0.nAComponent}))
         cocktailComponentArrayForNA.append(contentsOf: Seasoning.allCases.map({ $0.nAComponent}))
         cocktailComponentArrayForNA.append(contentsOf: Soda.allCases.map({ $0.nAComponent}))
@@ -214,30 +214,4 @@ enum MeasurementUnit: String, Codable {
     case pinch          = "Pinch"
     case whole          = "Whole (except the shell)"
     case sprays         = "Sprays in the glass (glass rinse)"
-}
-
-enum BoozeCategory: String, Codable, CaseIterable {
-    
-    case agave         = "Agave"
-    case brandy        = "Brandy"
-    case gin           = "Gin"
-    case other         = "Other Alcohol"
-    case rum           = "Rum"
-    case vodka         = "Vodka"
-    case whiskies      = "Whiskies"
-    case liqueur       = "Liqueurs"
-    case fortifiedWine = "Fortified Wine"
-    case wine          = "Wine"
-    case bitters       = "Bitters"
-    case amari         = "Amari"
-}
-
-enum NACategory: String, Codable, CaseIterable {
-    case syrups       = "Syrups"
-    case juices       = "Juice"
-    case herbs        = "Herbs"
-    case fruit        = "Fruit"
-    case seasoning    = "Seasoning"
-    case soda         = "Sodas"
-    case otherNonAlc  = "Other N/A"
 }

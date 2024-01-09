@@ -61,14 +61,14 @@ struct ListView: View {
                                                 if ingredient.isUnwanted.wrappedValue == false && 
                                                     ingredient.matchesCurrentSearch.wrappedValue &&
                                                     ingredient.preferenceType.wrappedValue == selectedList &&
-                                                    spirit.wrappedValue.rawValue == ingredient.spiritCategoryName.wrappedValue
+                                                    spirit.wrappedValue == ingredient.spiritCategoryName.wrappedValue
                                                    
                                                 {
                                                     PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
                                                 }
                                             }
                                     } label: {
-                                        Text(spirit.wrappedValue.rawValue)
+                                        Text(spirit.wrappedValue)
                                             .font(.headline)
                                             .padding(.leading, 5)
                                     }
@@ -83,13 +83,13 @@ struct ListView: View {
                                             if ingredient.isPreferred.wrappedValue == false && 
                                                 ingredient.matchesCurrentSearch.wrappedValue &&
                                                 ingredient.preferenceType.wrappedValue == selectedList &&
-                                                spirit.wrappedValue.rawValue == ingredient.spiritCategoryName.wrappedValue {
+                                                spirit.wrappedValue == ingredient.spiritCategoryName.wrappedValue {
                                                 PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
                                                     
                                             }
                                         }
                                     } label: {
-                                        Text(spirit.wrappedValue.rawValue)
+                                        Text(spirit.wrappedValue)
                                             .font(.headline)
                                             .padding(.leading, 5)
                                     }
@@ -114,14 +114,14 @@ struct ListView: View {
                                         if ingredient.isUnwanted.wrappedValue == false &&
                                             ingredient.matchesCurrentSearch.wrappedValue &&
                                             ingredient.preferenceType.wrappedValue == selectedList &&
-                                            nA.wrappedValue.rawValue == ingredient.nACategoryName.wrappedValue
+                                            nA.wrappedValue == ingredient.nACategoryName.wrappedValue
                                             
                                         {
                                             PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
                                         }
                                     }
                                 } label: {
-                                    Text(nA.wrappedValue.rawValue)
+                                    Text(nA.wrappedValue)
                                         .font(.headline)
                                         .padding(.leading, 5)
                                 }
@@ -136,13 +136,13 @@ struct ListView: View {
                                         if ingredient.isPreferred.wrappedValue == false &&
                                             ingredient.matchesCurrentSearch.wrappedValue &&
                                             ingredient.preferenceType.wrappedValue == selectedList &&
-                                            nA.wrappedValue.rawValue == ingredient.nACategoryName.wrappedValue {
+                                            nA.wrappedValue == ingredient.nACategoryName.wrappedValue {
                                             PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
                                             
                                         }
                                     }
                                 } label: {
-                                    Text(nA.wrappedValue.rawValue)
+                                    Text(nA.wrappedValue)
                                         .font(.headline)
                                         .padding(.leading, 5)
                                 }
