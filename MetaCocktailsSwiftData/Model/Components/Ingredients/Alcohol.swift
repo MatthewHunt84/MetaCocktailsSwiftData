@@ -75,6 +75,8 @@ enum Gin: String, Codable, CaseIterable {
 // Other can be Aquavit, Malort, Absinthe etc.
 enum OtherAlcohol: String, Codable, CaseIterable {
     case absinthe             = "Absinthe"
+   
+    
     
     var tags: Tags {
         return Tags(booze: [Booze(.otherAlcohol(self))])
@@ -153,7 +155,7 @@ enum Liqueur: String, Codable, CaseIterable {
         case .giffardPamplemousse:
             Tags(flavors: [.grapefruit])
         case .greenChartreuse:
-            Tags(flavors: [.angelica], profiles: [.herbal])
+            Tags(flavors: [.angelica], profiles: [.herbal, .botanical])
         case .maraschinoLiqueur:
             Tags(flavors: [.cherry])
         case .orangeCuracao:
@@ -161,7 +163,7 @@ enum Liqueur: String, Codable, CaseIterable {
         case .velvetFalernum:
             Tags(flavors: [.clove, .almond])
         case .yellowChartreuse:
-            Tags(flavors: [.angelica], profiles: [.herbal])
+            Tags(flavors: [.angelica], profiles: [.herbal, .botanical])
         }
     }
     
@@ -227,7 +229,24 @@ enum Amaro: String, Codable, CaseIterable {
     case suze                 = "Suze"
     
     var tags: Tags {
-        return Tags(booze: [Booze(.amari(self))])
+        switch self {
+        case .aperol:
+            Tags(flavors: [.grapefruit, .rhubarb])
+        case .amaroMontenegro:
+            Tags(profiles: [.floral, .herbal])
+        case .amaroNonino:
+            Tags(profiles: [.herbal])
+        case .becherovka:
+            Tags(flavors: [.clove, .cinnamon])
+        case .campari:
+            Tags(profiles: [.bitter, .bittersweet])
+        case .fernetBranca:
+            Tags(flavors: [.anise], profiles: [.herbal, .medicinal, .botanical])
+        case .fernetBrancaMenta:
+            Tags(flavors: [.anise, .menthol, .mint], profiles: [.herbal, .medicinal, .botanical])
+        case .suze:
+            Tags(profiles: [.herbal, .botanical])
+        }
     }
     
     var cockTailComponent: CocktailComponent {

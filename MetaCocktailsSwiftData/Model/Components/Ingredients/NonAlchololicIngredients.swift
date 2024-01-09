@@ -7,11 +7,35 @@
 
 import Foundation
 
+
+struct NAIngredients: Codable, Hashable, Equatable {
+
+    var ingredientType: IngredientType
+    var name: String
+
+    init(_ ingredientType: IngredientType) {
+        self.ingredientType = ingredientType
+        self.name = ingredientType.name
+    }
+    
+    static func == (lhs: NAIngredients, rhs: NAIngredients) -> Bool {
+        lhs.name == rhs.name
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+    }
+    
+}
 enum Juice: String, Codable, CaseIterable {
     case cranberryJuice       = "Cranberry Juice"
     case lemon                = "Fresh Squeezed Lemon Juice"
     case lime                 = "Fresh Squeezed Lime Juice"
     case pineappleJuice       = "Fresh Pineapple Juice"
+    
+    var nAComponent: CocktailComponent {
+        return CocktailComponent(for: NAIngredients(.juices(self)))
+    }
     
     var tags: Tags {
         switch self {
@@ -40,6 +64,11 @@ enum Syrup: String, Codable, CaseIterable {
     case richDem              = "Rich Demerara Syrup (2:1)"
     case simple               = "Simple Syrup (1:1)"
     case raspberrySyrup       = "RaspberrySyrup"
+    
+    var nAComponent: CocktailComponent {
+        return CocktailComponent(for: NAIngredients(.syrups(self)))
+    }
+   
     
     
     var tags: Tags {
@@ -74,6 +103,9 @@ enum Herb: String, Codable, CaseIterable {
     case mint                 = "Mint Leaves"
     case sage                 = "Sage"
     
+    var nAComponent: CocktailComponent {
+        return CocktailComponent(for: NAIngredients(.herbs(self)))
+    }
     var tags: Tags {
         switch self {
         case .mint:
@@ -88,6 +120,9 @@ enum Fruit: String, Codable, CaseIterable {
     case blackBerry           = "Blackberries"
     case raspberries          = "Raspberries"
     
+    var nAComponent: CocktailComponent {
+        return CocktailComponent(for: NAIngredients(.fruit(self)))
+    }
     var tags: Tags {
         switch self {
         case .blackBerry:
@@ -102,6 +137,9 @@ enum Seasoning: String, Codable, CaseIterable {
     case nutmeg               = "Nutmeg"
     case salt                 = "Salt"
     
+    var nAComponent: CocktailComponent {
+        return CocktailComponent(for: NAIngredients(.seasoning(self)))
+    }
     var tags: Tags {
         switch self {
         case .nutmeg:
@@ -116,6 +154,10 @@ enum Soda: String, Codable, CaseIterable {
     case grapefruitSoda       = "Cold Grapefruit Soda"
     case sodaWater            = "Soda Water"
     case sparklingWater       = "Chilled Sparkling Water"
+    
+    var nAComponent: CocktailComponent {
+        return CocktailComponent(for: NAIngredients(.soda(self)))
+    }
     
     var tags: Tags {
         switch self {
@@ -132,14 +174,18 @@ enum Soda: String, Codable, CaseIterable {
 enum OtherNA: String, Codable, CaseIterable {
     case cream                = "Heavy Cream"
     case eggWhites            = "Egg Whites"
-    case egg                  = "1 Egg"
+    case egg                  = "1 Whole Egg"
     case granulatedSugar      = "Granulated Sugar"
     case orangeFlowerWater    = "Orange Flower Water"
+    
+    var nAComponent: CocktailComponent {
+        return CocktailComponent(for: NAIngredients(.otherNonAlc(self)))
+    }
     
     var tags: Tags {
         switch self {
         case .cream:
-            Tags(flavors: [.cream], profiles: [.creamy], textures: [.rich, .creamy])
+            Tags(profiles: [.creamy], textures: [.rich, .creamy])
         case .eggWhites:
             Tags(flavors: [.eggWhite], textures: [.silky, .light])
         case .egg:
