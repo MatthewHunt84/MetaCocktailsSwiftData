@@ -75,6 +75,8 @@ enum Gin: String, Codable, CaseIterable {
 // Other can be Aquavit, Malort, Absinthe etc.
 enum OtherAlcohol: String, Codable, CaseIterable {
     case absinthe             = "Absinthe"
+   
+    
     
     var tags: Tags {
         return Tags(booze: [Booze(.otherAlcohol(self))])

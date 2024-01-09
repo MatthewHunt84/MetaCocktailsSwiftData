@@ -16,7 +16,7 @@ struct ListView: View {
         
 
         NavigationStack {
-            if selectedList != .spirits {
+            if selectedList != .spirits && selectedList != .na {
                 List {
                     if isShowingLikes {
                         ForEach($viewModel.cocktailComponents) { ingredient in
@@ -34,7 +34,7 @@ struct ListView: View {
                     }
                 }
                 .listStyle(.plain)
-            } else {
+            } else if selectedList == .spirits {
                 if isShowingLikes {
                     Button {
                         viewModel.enableMultipleSpiritSelection.toggle()
@@ -60,7 +60,7 @@ struct ListView: View {
                                             ForEach($viewModel.cocktailComponents) { ingredient in
                                                 if ingredient.isUnwanted.wrappedValue == false && 
                                                     ingredient.matchesCurrentSearch.wrappedValue &&
-                                                    (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) &&
+                                                    ingredient.preferenceType.wrappedValue == selectedList &&
                                                     spirit.wrappedValue.rawValue == ingredient.spiritCategoryName.wrappedValue
                                                    
                                                 {
@@ -82,7 +82,7 @@ struct ListView: View {
                                         ForEach($viewModel.cocktailComponents) { ingredient in
                                             if ingredient.isPreferred.wrappedValue == false && 
                                                 ingredient.matchesCurrentSearch.wrappedValue &&
-                                                (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) &&
+                                                ingredient.preferenceType.wrappedValue == selectedList &&
                                                 spirit.wrappedValue.rawValue == ingredient.spiritCategoryName.wrappedValue {
                                                 PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
                                                     
@@ -103,6 +103,57 @@ struct ListView: View {
                 .listStyle(.plain)
                 
                 
+            } else if selectedList == .na {
+                
+                List {
+                    if isShowingLikes {
+                        ForEach($viewModel.nACategories, id: \.self) { nA in
+                            Section {
+                                DisclosureGroup {
+                                    ForEach($viewModel.cocktailComponents) { ingredient in
+                                        if ingredient.isUnwanted.wrappedValue == false &&
+                                            ingredient.matchesCurrentSearch.wrappedValue &&
+                                            ingredient.preferenceType.wrappedValue == selectedList &&
+                                            nA.wrappedValue.rawValue == ingredient.nACategoryName.wrappedValue
+                                            
+                                        {
+                                            PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
+                                        }
+                                    }
+                                } label: {
+                                    Text(nA.wrappedValue.rawValue)
+                                        .font(.headline)
+                                        .padding(.leading, 5)
+                                }
+                                .tint(Color(.green))
+                            }
+                        }
+                    } else  {
+                        ForEach($viewModel.nACategories, id: \.self) { nA in
+                            Section {
+                                DisclosureGroup {
+                                    ForEach($viewModel.cocktailComponents) { ingredient in
+                                        if ingredient.isPreferred.wrappedValue == false &&
+                                            ingredient.matchesCurrentSearch.wrappedValue &&
+                                            ingredient.preferenceType.wrappedValue == selectedList &&
+                                            nA.wrappedValue.rawValue == ingredient.nACategoryName.wrappedValue {
+                                            PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
+                                            
+                                        }
+                                    }
+                                } label: {
+                                    Text(nA.wrappedValue.rawValue)
+                                        .font(.headline)
+                                        .padding(.leading, 5)
+                                }
+                                .tint(Color(.red))
+                            }
+                        }
+                        
+                    }
+                    
+                }
+                .listStyle(.plain)
             }
         }
     }

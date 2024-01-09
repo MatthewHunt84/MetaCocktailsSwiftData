@@ -22,9 +22,20 @@ final class SearchCriteriaViewModel: ObservableObject {
         }
         return array
     }()
+    @Published var nACategories: [NACategory] = { var array: [NACategory] = [NACategory]()
+        for nA in NACategory.allCases {
+            array.append(nA)
+        }
+        return array
+        
+        
+    }()
     
     static var generatedBoozeCocktailComponents: [CocktailComponent] = {
         return IngredientType.getBoozeComponents()
+    }()
+    static var generatedNACocktailComponents: [CocktailComponent] = {
+        return IngredientType.getNAComponents()
     }()
     
     func matchAllTheThings() {
@@ -82,7 +93,8 @@ final class SearchCriteriaViewModel: ObservableObject {
     static func createComponentArray() ->  [CocktailComponent] {
         
         var array = [CocktailComponent]()
-        let convertedArray: [CocktailComponent] = SearchCriteriaViewModel.generatedBoozeCocktailComponents
+        let convertedBoozeArray: [CocktailComponent] = SearchCriteriaViewModel.generatedBoozeCocktailComponents
+        let convertedNAArray: [CocktailComponent] = SearchCriteriaViewModel.generatedNACocktailComponents
         
         for flavor in Flavor.allCases {
             array.append(CocktailComponent(for: flavor))
@@ -96,9 +108,13 @@ final class SearchCriteriaViewModel: ObservableObject {
         for style in Style.allCases {
             array.append(CocktailComponent(for: style))
         }
-        for component in convertedArray {
+        for component in convertedBoozeArray {
             array.append(component)
         }
+        for component in convertedNAArray {
+            array.append(component)
+        }
+        
         return array
     }
 

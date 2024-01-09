@@ -14,8 +14,8 @@ struct SearchCriteriaView: View {
     @State var selectedList: PreferenceType = .all
     @State var isShowingPreferences: Bool
     @State var selectedLikesOrDislikes: LikesOrDislikes = .likes
-    
-    
+    @State var selection: PreferenceType = .all
+
     var body: some View {
         NavigationStack {
             
@@ -36,6 +36,7 @@ struct SearchCriteriaView: View {
                     isShowingPreferences.toggle()
                 }
                 .foregroundColor(Color.blue)
+                
                 HStack {
                     NavigationLink {
                         
@@ -48,8 +49,8 @@ struct SearchCriteriaView: View {
                             }
                     } label: {
                         Text("SEARCH!")
-                            .fontWeight(.bold)
-                            .padding(EdgeInsets(top: 10, leading: 50, bottom: 10, trailing: 50))
+                            .font(.footnote).bold()
+                            .padding(EdgeInsets(top: 10, leading: 30, bottom: 10, trailing: 30))
                             .background(viewModel.selectedPreferredIngredients().count == 0 ? Color(UIColor.systemGray) : Color.brandPrimaryOrange)
                             .clipShape(RoundedRectangle(cornerRadius: 140))
                             .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
@@ -66,6 +67,7 @@ struct SearchCriteriaView: View {
                           
                     }
                     .padding(10)
+                    .font(.footnote).bold()
                     .background(Color(UIColor.systemBackground))
                     .clipShape(RoundedRectangle(cornerRadius: 140))
                     .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
@@ -91,10 +93,11 @@ struct SearchCriteriaView: View {
 enum PreferenceType: String, CaseIterable {
     
     case all      = "All"
-    case spirits  = "Spirits"
-    case profiles = "Profiles"
-    case flavors  = "Flavors"
-    case textures = "Textures"
+    case spirits  = "Spirit"
+    case na       = "N/A"
+    case profiles = "Profile"
+    case flavors  = "Flavor"
+    case textures = "Texture"
     case style    = "Style"
     
     func getTitle() -> String {
@@ -111,6 +114,8 @@ enum PreferenceType: String, CaseIterable {
             "Texture Preferences"
         case .style:
             "Style Preferences"
+        case .na:
+            "N/A Ingredients"
         }
     }
 }
@@ -120,6 +125,7 @@ enum LikesOrDislikes: String, CaseIterable {
     case likes = "Likes"
     case dislikes = "Dislikes"
 }
+
 
 struct IngredientLikesChecklist_Previews: PreviewProvider {
     static var previews: some View {

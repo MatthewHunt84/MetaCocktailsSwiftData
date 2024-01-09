@@ -18,7 +18,7 @@ let ramosGinFizzSpec: [CocktailIngredient] = [CocktailIngredient(.gins(.gin), va
                                               CocktailIngredient(.soda(.sodaWater), value: 2.0),
                                               CocktailIngredient(.otherNonAlc(.orangeFlowerWater), value: 1, unit: .dash)]
 
-var ramosTags = Tags(flavors: [.cream, .lemon, .lime],
+var ramosTags = Tags(flavors: [.lemon, .lime],
                      profiles: [.floral, .citrusy, .creamy],
                      textures: [.creamy],
                      styles: [.sour, .shaken])
