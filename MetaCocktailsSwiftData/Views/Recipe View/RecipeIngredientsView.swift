@@ -52,6 +52,7 @@ struct TagView: View {
             for booze in boozeBottles {
                 baseString +=  " \(booze.name),"
             }
+            print(baseString)
             baseString.removeLast()
         } else {
             baseString = "NO BOOZE"

@@ -20,7 +20,7 @@ var cloverClubSpec  = [CocktailIngredient(.juices(.lemon), value: 0.5),
                        CocktailIngredient(.syrups(.raspberrySyrup), value: 0.5),
                        CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
                        CocktailIngredient(.fortifiedWines(.dryVermouth), value: 0.5),
-                       CocktailIngredient(.gins(.gin), value: 1.5)]
+                       CocktailIngredient(.gins(.ginAny), value: 1.5)]
 
 var cloverClubBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients into a tin a dry shake to emulsify. If you don't feel like making a raspberry syrup (we recommend Julie Reiner's version in her book: Craft Cocktail Party) then just muddle a few ripe raspberries in the tin before adding your ingredients to dry shake, then substitute simple syrup for raspberry syrup."),
                                           Instruction(step: 2, method: "Add a few Kold Draft cubes and shake until cold. Do not over dilute"),

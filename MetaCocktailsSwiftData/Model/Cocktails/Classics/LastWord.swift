@@ -21,5 +21,6 @@ var lastWordSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
                      CocktailIngredient(.liqueurs(.greenChartreuse), value: 0.75)]
 
 var lastWordTags = Tags(textures: [.light],
-                        styles: [.sour, .shaken])
+                        styles: [.sour, .shaken],
+                        booze: [Booze(.gins(.ginAny))])
                     

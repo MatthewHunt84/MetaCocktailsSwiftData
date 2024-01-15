@@ -27,7 +27,6 @@ enum Flavor: String, Codable, CaseIterable {
     case cranberry      = "Cranberry"
     case pomegranate    = "Pomegranate"
     case pineapple      = "Pineapple"
-    case funky          = "Funky"
     case whiteFlower    = "White Flower"
     case juniper        = "Juniper"
     case citrusPeel     = "Citrus Peel"

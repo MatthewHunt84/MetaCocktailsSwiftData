@@ -21,5 +21,6 @@ var divisionBellSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
                          CocktailIngredient(.amari(.aperol), value: 0.75)]
 
 var divisionBellTags = Tags(textures: [.light],
-                            styles: [.sour, .shaken])
+                            styles: [.sour, .shaken], 
+                            booze: [Booze(.agaves(.mezcalAny))])
                            

@@ -34,6 +34,12 @@ struct ListView: View {
                     }
                 }
                 .listStyle(.plain)
+                if selectedList == .all || selectedList == .flavors {
+                    SearchBarView(searchText: $viewModel.searchText)
+                        .onChange(of: viewModel.searchText) {
+                            viewModel.matchAllTheThings()
+                        }
+                }
             } else if selectedList == .spirits {
                 List {
                         if isShowingLikes {

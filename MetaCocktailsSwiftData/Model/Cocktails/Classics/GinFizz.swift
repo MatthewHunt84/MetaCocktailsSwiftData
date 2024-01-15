@@ -18,7 +18,7 @@ var ginFizz  = Cocktail(cocktailName: "Gin Fizz",
 
 var ginFizzSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                     CocktailIngredient(.syrups(.simple), value: 0.75),
-                    CocktailIngredient(.gins(.gin), value: 1.5),
+                    CocktailIngredient(.gins(.ginAny), value: 1.5),
                     CocktailIngredient(.soda(.sparklingWater), value: 2)]
 
 var ginFizzBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the sparkling water, into a tin and shake with ice"), 

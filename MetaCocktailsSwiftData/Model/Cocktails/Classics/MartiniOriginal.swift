@@ -17,7 +17,7 @@ var martini   = Cocktail(cocktailName: "Martini",
 
 var martiniSpec     =  [CocktailIngredient(.bitters(.orangeBitters), value: 2, unit: .dash),
                         CocktailIngredient(.fortifiedWines(.dryVermouth), value: 1.5),
-                        CocktailIngredient(.gins(.gin), value: 1.5, unit: .dash)]
+                        CocktailIngredient(.gins(.ginAny), value: 1.5, unit: .dash)]
 
 var martiniTags     = Tags(profiles: [.spiritForward],
                              textures: [.rich],

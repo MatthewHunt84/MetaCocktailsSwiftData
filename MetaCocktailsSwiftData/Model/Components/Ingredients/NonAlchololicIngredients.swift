@@ -40,13 +40,13 @@ enum Juice: String, Codable, CaseIterable {
     var tags: Tags {
         switch self {
         case .cranberryJuice:
-            Tags(flavors: [.cranberry])
+            Tags(flavors: [.cranberry], nA: [NAIngredients(.juices(self))])
         case .lemon:
-            Tags(flavors: [.lemon], profiles: [.citrusy])
+            Tags(flavors: [.lemon], profiles: [.citrusy], nA: [NAIngredients(.juices(self))])
         case .lime:
-            Tags(flavors: [.lime,], profiles: [.citrusy])
+            Tags(flavors: [.lime,], profiles: [.citrusy], nA: [NAIngredients(.juices(self))])
         case .pineappleJuice:
-            Tags(flavors: [.pineapple], profiles: [.fruity])
+            Tags(flavors: [.pineapple], profiles: [.fruity], nA: [NAIngredients(.juices(self))])
         }
     }
 }
@@ -74,27 +74,27 @@ enum Syrup: String, Codable, CaseIterable {
     var tags: Tags {
         switch self {
         case .agaveSyrup:
-            Tags(flavors: [.agave])
+            Tags(flavors: [.agave], nA: [NAIngredients(.syrups(self))])
         case .cucumberSyrup:
-            Tags(flavors: [.cucumber])
+            Tags(flavors: [.cucumber], nA: [NAIngredients(.syrups(self))])
         case .demSyrupOneToOne:
             Tags()
         case .gingerSyrup:
-            Tags(flavors: [.ginger])
+            Tags(flavors: [.ginger], nA: [NAIngredients(.syrups(self))])
         case .grenadine:
-            Tags(flavors: [.pomegranate])
+            Tags(flavors: [.pomegranate], nA: [NAIngredients(.syrups(self))])
         case .honeySyrup:
-            Tags(flavors: [.honey])
+            Tags(flavors: [.honey], nA: [NAIngredients(.syrups(self))])
         case .orgeat:
-            Tags(flavors: [.almond])
+            Tags(flavors: [.almond], nA: [NAIngredients(.syrups(self))])
         case .passionfruitSyrup:
-            Tags(flavors: [.passionfruit])
+            Tags(flavors: [.passionfruit], nA: [NAIngredients(.syrups(self))])
         case .richDem:
-            Tags()
+            Tags(nA: [NAIngredients(.syrups(self))])
         case .simple:
-            Tags()
+            Tags(nA: [NAIngredients(.syrups(self))])
         case .raspberrySyrup:
-            Tags(flavors: [.raspberry])
+            Tags(flavors: [.raspberry], nA: [NAIngredients(.syrups(self))])
         }
     }
 }
@@ -109,9 +109,9 @@ enum Herbs: String, Codable, CaseIterable {
     var tags: Tags {
         switch self {
         case .mint:
-            Tags(flavors: [.mint], profiles: [.herbal, .aromatic])
+            Tags(flavors: [.mint], profiles: [.herbal, .aromatic], nA: [NAIngredients(.herbs(self))])
         case .sage:
-            Tags(flavors: [.sage], profiles: [.herbal, .aromatic])
+            Tags(flavors: [.sage], profiles: [.herbal, .aromatic], nA: [NAIngredients(.herbs(self))])
         }
     }
 }
@@ -126,9 +126,9 @@ enum Fruit: String, Codable, CaseIterable {
     var tags: Tags {
         switch self {
         case .blackBerry:
-            Tags(flavors: [.blackberry], profiles: [.fruity])
+            Tags(flavors: [.blackberry], profiles: [.fruity], nA: [NAIngredients(.fruit(self))])
         case .raspberries:
-            Tags(flavors: [.raspberry], profiles: [.fruity])
+            Tags(flavors: [.raspberry], profiles: [.fruity], nA: [NAIngredients(.fruit(self))])
         }
     }
 }
@@ -143,9 +143,9 @@ enum Seasoning: String, Codable, CaseIterable {
     var tags: Tags {
         switch self {
         case .nutmeg:
-            Tags(flavors: [.nutmeg])
+            Tags(flavors: [.nutmeg], nA: [NAIngredients(.seasoning(self))])
         case .salt:
-            Tags()
+            Tags(nA: [NAIngredients(.seasoning(self))])
         }
     }
 }
@@ -162,11 +162,11 @@ enum Soda: String, Codable, CaseIterable {
     var tags: Tags {
         switch self {
         case .grapefruitSoda:
-            Tags(flavors: [.grapefruit], profiles: [.fruity], textures: [.effervescent])
+            Tags(flavors: [.grapefruit], profiles: [.fruity], textures: [.effervescent], nA: [NAIngredients(.soda(self))])
         case .sodaWater:
-            Tags(textures: [.effervescent])
+            Tags(textures: [.effervescent], nA: [NAIngredients(.soda(self))])
         case .sparklingWater:
-            Tags(textures: [.effervescent])
+            Tags(textures: [.effervescent], nA: [NAIngredients(.soda(self))])
         }
     }
 }
@@ -186,17 +186,17 @@ enum OtherNA: String, Codable, CaseIterable {
     var tags: Tags {
         switch self {
         case .cream:
-            Tags(profiles: [.creamy], textures: [.rich, .creamy])
+            Tags(profiles: [.creamy], textures: [.rich, .creamy], nA: [NAIngredients(.otherNonAlc(self))])
         case .eggWhites:
-            Tags(textures: [.silky, .light])
+            Tags(textures: [.silky, .light], nA: [NAIngredients(.otherNonAlc(self))])
         case .eggWhole:
-            Tags(textures: [.rich, .silky])
+            Tags(textures: [.rich, .silky], nA: [NAIngredients(.otherNonAlc(self))])
         case .granulatedSugar:
-            Tags(textures: [.unrefined])
+            Tags(textures: [.unrefined], nA: [NAIngredients(.otherNonAlc(self))])
         case .orangeFlowerWater:
-            Tags(flavors: [.whiteFlower], profiles: [.floral])
+            Tags(flavors: [.whiteFlower], profiles: [.floral], nA: [NAIngredients(.otherNonAlc(self))])
         case .eggYolk:
-            Tags(textures: [.rich])
+            Tags(textures: [.rich], nA: [NAIngredients(.otherNonAlc(self))])
         }
     }
 }

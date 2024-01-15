@@ -68,6 +68,7 @@ struct BasicSearchView: View {
                         for i in 0..<viewModel.cocktailComponents.count {
                             viewModel.cocktailComponents[i].isPreferred = false
                             viewModel.cocktailComponents[i].isUnwanted = false
+                            viewModel.enableMultipleSpiritSelection = false
                         }
                     }) {
                         Text("Clear Search")

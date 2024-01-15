@@ -36,17 +36,10 @@ struct SearchCriteriaView: View {
                     isShowingPreferences.toggle()
                 }
                 .foregroundColor(Color.blue)
-                
+                ListView(selectedList: $selectedList, navigationTitle: selectedList.getTitle(), isShowingLikes: $isShowingPreferences)
                 HStack {
                     NavigationLink {
-                        
-                        
                         SearchResultsView(viewModel: viewModel)
-                        
-                            .onAppear {
-
-                                viewModel.getFilteredCocktails()
-                            }
                     } label: {
                         Text("SEARCH!")
                             .font(.footnote).bold()
@@ -56,11 +49,11 @@ struct SearchCriteriaView: View {
                             .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
                             .foregroundColor(.white)
                     }
-                    
                     Button(action: {
                         for i in 0..<viewModel.cocktailComponents.count {
                             viewModel.cocktailComponents[i].isPreferred = false
                             viewModel.cocktailComponents[i].isUnwanted = false
+                            viewModel.enableMultipleSpiritSelection = false
                         }
                     }) {
                         Text("Clear Search")
@@ -77,12 +70,9 @@ struct SearchCriteriaView: View {
 
                 }
                 
-                ListView(selectedList: $selectedList, navigationTitle: selectedList.getTitle(), isShowingLikes: $isShowingPreferences)
                 
-                SearchBarView(searchText: $viewModel.searchText)
-                    .onChange(of: viewModel.searchText) {
-                        viewModel.matchAllTheThings()
-                    }
+                
+                
             }
             .navigationTitle(selectedList.getTitle())
             .navigationBarTitleDisplayMode(.large)
