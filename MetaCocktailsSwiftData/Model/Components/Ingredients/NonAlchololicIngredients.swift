@@ -101,7 +101,7 @@ enum Syrup: String, Codable, CaseIterable {
 
 enum Herbs: String, Codable, CaseIterable {
     case mint                 = "Mint Leaves"
-    case sage                 = "Sage"
+    case sage                 = "Sage Leaves"
     
     var nAComponent: CocktailComponent {
         return CocktailComponent(for: NAIngredients(.herbs(self)))
@@ -134,7 +134,7 @@ enum Fruit: String, Codable, CaseIterable {
 }
 
 enum Seasoning: String, Codable, CaseIterable {
-    case nutmeg               = "Nutmeg"
+    case nutmeg               = "Nutmeg (Spice)"
     case salt                 = "Salt"
     
     var nAComponent: CocktailComponent {
@@ -188,15 +188,15 @@ enum OtherNA: String, Codable, CaseIterable {
         case .cream:
             Tags(profiles: [.creamy], textures: [.rich, .creamy])
         case .eggWhites:
-            Tags(flavors: [.eggWhite], textures: [.silky, .light])
+            Tags(textures: [.silky, .light])
         case .eggWhole:
-            Tags(flavors: [.eggWhole])
+            Tags(textures: [.rich, .silky])
         case .granulatedSugar:
             Tags(textures: [.unrefined])
         case .orangeFlowerWater:
             Tags(flavors: [.whiteFlower], profiles: [.floral])
         case .eggYolk:
-            Tags(flavors: [.eggWhole], textures: [.rich])
+            Tags(textures: [.rich])
         }
     }
 }
