@@ -20,18 +20,59 @@ struct CocktailResultList: View {
                 }
             } else {
                 if viewModel.preferredCount > 0 {
+                    
+                    
                     List {
-                        ForEach(viewModel.sections, id: \.self.id) { result in
-                            Section(header: SearchedCocktailTitleHeader(searched: result.count, matched: result.matched)) {
-                                ForEach(result.cocktails, id: \.self.id) { cocktail in
-                                    NavigationLink {
-                                        RecipeIngredientsView(cocktail: cocktail)
-                                    } label: {
-                                        Text(cocktail.cocktailName)
+                        Button {
+                            viewModel.enableMultipleSpiritSelection.toggle()
+                            viewModel.getFilteredCocktails()
+                            
+                        } label: {
+                            if viewModel.enableMultipleSpiritSelection == true {
+                                Label("Results for separate base spirits is enabled.", systemImage: "circle.fill")
+                                    .tint(.green)
+                                    .font(.footnote).bold()
+                                
+                                
+                            } else {
+                                Label("Results for separate base spirits is disabled.", systemImage: "circle")
+                                    .tint(.red)
+                                    .font(.footnote).bold()
+                                
+                            }
+                            
+                            
+                        }
+                        if viewModel.enableMultipleSpiritSelection == false {
+                            ForEach(viewModel.sections, id: \.self.id) { result in
+                                Section(header: SearchedCocktailTitleHeader(searched: result.count, matched: result.matched)) {
+                                    ForEach(result.cocktails, id: \.self.id) { cocktail in
+                                        NavigationLink {
+                                            RecipeIngredientsView(cocktail: cocktail)
+                                        } label: {
+                                            HStack {
+                                                Text(cocktail.cocktailName)
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                            ForEach(viewModel.sections, id: \.self.id) { result in
+                                Section(header: SearchedCocktailTitleHeaderForMultipleSpirits(searched: result.count, matched: result.matched, baseSpirit: result.baseSpirit)) {
+                                    ForEach(result.cocktails, id: \.self.id) { cocktail in
+                                        NavigationLink {
+                                            RecipeIngredientsView(cocktail: cocktail)
+                                        } label: {
+                                            HStack {
+                                                Text(cocktail.cocktailName)
+                                            }
+                                        }
                                     }
                                 }
                             }
                         }
+                        
                     }
                     .listStyle(.grouped)
                 } else  {

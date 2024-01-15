@@ -35,23 +35,6 @@ struct ListView: View {
                 }
                 .listStyle(.plain)
             } else if selectedList == .spirits {
-                if isShowingLikes {
-                    Button {
-                        viewModel.enableMultipleSpiritSelection.toggle()
-                    } label: {
-                        if viewModel.enableMultipleSpiritSelection == true {
-                            Label("Results for separate base spirits enabled", systemImage: "circle.fill")
-                                .tint(.green)
-                                .font(.footnote).bold()
-                                
-                        } else {
-                            Label("Results for separate base spirits disabled", systemImage: "circle")
-                                .tint(.red)
-                                .font(.footnote).bold()
-                               
-                        }
-                    }  
-                }
                 List {
                         if isShowingLikes {
                             ForEach($viewModel.boozeCategories, id: \.self) { spirit in

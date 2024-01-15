@@ -17,11 +17,29 @@ struct CocktailListCell: View {
             Text(cocktail.cocktailName)
                 .font(.headline)
             Spacer()
+        } 
+        Spacer()
+    }
+    
+}
+struct IngredientListCell: View {
+    let cocktail: Cocktail
+    let backgroundColor: Color
+    
+    var body: some View {
+
+        HStack {
+            Text(cocktail.cocktailName)
+                .font(.headline)
+            Spacer()
         }
         Spacer()
     }
     
 }
+
+
+
 
 //struct CocktailListCell_Previews: PreviewProvider {
 //    static var previews: some View {

@@ -12,6 +12,7 @@ final class SearchCriteriaViewModel: ObservableObject {
     
     @Published var searchText: String = ""
     @Published var cocktailComponents = createComponentArray().sorted(by: { $0.name < $1.name })
+    @Published var basicCocktailComponents = createBasicComponentArray().sorted(by: { $0.name < $1.name })
     @Published var preferredCount = 0
     @Published var sections = [ResultViewSectionData]()
     @Published var enableMultipleSpiritSelection: Bool = false
@@ -41,7 +42,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         
         // if searchText has text, match it and set the viewModel properties accordingly
         for component in cocktailComponents {
-            if component.name.lowercased().contains(searchText.lowercased()) {
+            if component.name.localizedCaseInsensitiveContains(searchText) {
                 component.matchesCurrentSearch = true
             } else {
                 component.matchesCurrentSearch = false
@@ -106,6 +107,19 @@ final class SearchCriteriaViewModel: ObservableObject {
         
         return array
     }
+    static func createBasicComponentArray() -> [CocktailComponent] {
+        var array = [CocktailComponent]()
+        let convertedBoozeArray: [CocktailComponent] = SearchCriteriaViewModel.generatedBoozeCocktailComponents
+        let convertedNAArray: [CocktailComponent] = SearchCriteriaViewModel.generatedNACocktailComponents
+        for component in convertedBoozeArray {
+            array.append(component)
+        }
+        for component in convertedNAArray {
+            array.append(component)
+        }
+        
+        return array
+    }
 
     private func filterUnwantedCocktails(cocktailComponentArray: [CocktailComponent], cocktails: [Cocktail]) -> [Cocktail] {
          cocktails.filter { cocktail in
@@ -152,15 +166,24 @@ final class SearchCriteriaViewModel: ObservableObject {
         let finalMatchContainers: [ResultViewSectionData] = {
             var dataShells = [ResultViewSectionData]()
             if enableMultipleSpiritSelection == true {
+                /** If we're searching for separate base spirits, we need to add more shells. One for each base spirit searched in each match number about 50%. We also need to use a modified preferredCount that counts all spirits as a total of one. */
                 preferredCount = modifiedPreferredCount()
+                for i in 0...Int(preferredCount / 2) {
+                    let numberOfMatches = (preferredCount - i)
+                    for spirit in returnPreferredBaseSpirits() {
+                        dataShells.append(ResultViewSectionData(count: preferredCount, matched: numberOfMatches, baseSpirit: spirit, cocktails: []))
+                    }
+                }
+                return dataShells
             } else {
+                /**Otherwise search normal, allowing individual base spirits to add to the total search count.**/
                 preferredCount = selectedPreferredIngredients().count
+                for i in 0...Int(preferredCount / 2) {
+                    let numberOfMatches = (preferredCount - i)
+                    dataShells.append(ResultViewSectionData(count: preferredCount, matched: numberOfMatches, baseSpirit: "N/A", cocktails: []))
+                }
+                return dataShells
             }
-            for i in 0...Int(preferredCount / 2) {
-                let numberOfMatches = (preferredCount - i)
-                dataShells.append(ResultViewSectionData(count: preferredCount, matched: numberOfMatches, cocktails: []))
-            }
-            return dataShells
         }()
         
         /**Then, loop over every cocktail in the startingCocktailsArray and pull out the cocktails that match with > 50% of the ingredients in the preferredArray. Keeping track of the matched count, add them to the appropriate object in the array of finalMatchedCocktails. */
@@ -176,7 +199,10 @@ final class SearchCriteriaViewModel: ObservableObject {
                     }
                 } else {
                     if resultViewSectionData.matched == selectedPreferredIngredients().reduce(0, { countMatchesForMultipleSpirits($0, for: $1, in: cocktail)}) {
-                        resultViewSectionData.cocktails.append(cocktail)
+                        if resultViewSectionData.baseSpirit == returnMatchedBase(cocktail, matchedComponents: selectedPreferredIngredients()) && resultViewSectionData.cocktails.last != cocktail {
+                            resultViewSectionData.cocktails.append(cocktail)
+                        }
+                        
                     }
                 }
             }
@@ -260,6 +286,30 @@ final class SearchCriteriaViewModel: ObservableObject {
             stringArray.append(whiskey.rawValue)
         }
         return stringArray
+    }
+    func returnMatchedBase(_ cocktail: Cocktail, matchedComponents: [CocktailComponent]) -> String {
+        var matchedString = ""
+
+        for booze in cocktail.spec {
+            for matched in matchedComponents {
+                if matched.name == booze.ingredient.name && matched.isSpirit == true && convertOnlyBaseSpiritsIntoStrings().contains(matched.name) {
+                    matchedString = matched.name
+                }
+            }
+        }
+
+        return matchedString
+    }
+    
+    func returnPreferredBaseSpirits() -> [String] {
+        var baseArray: [String] = [String]()
+        
+        for component in selectedPreferredIngredients() {
+            if convertOnlyBaseSpiritsIntoStrings().contains(component.name) {
+                baseArray.append(component.name)
+            }
+        }
+        return baseArray
     }
 
 }

@@ -53,7 +53,7 @@ struct CocktailListView: View {
                                         ForEach(0..<alphabet.count, id: \.self) { i in
                                             Button(action: {
                                                 withAnimation {
-                                                    value.scrollTo(alphabet[i])
+                                                    value.scrollTo(alphabet[i], anchor: .top)
                                                 }
                                             }, label: {
                                                 Text("\(alphabet[i])")

@@ -39,6 +39,7 @@ struct SearchResultsView: View {
                     .padding(.horizontal, 15)
                     .frame(height: 35)
                 }
+                .mask(LinearGradient(stops: [.init(color: .clear, location: 0), .init(color: .white, location: 0.05), .init(color: .white, location: 0.95), .init(color: .clear, location: 1)], startPoint: .leading, endPoint: .trailing))
                 .scrollClipDisabled(true)
                 .scrollIndicators(.hidden)
             }
@@ -62,10 +63,11 @@ struct SearchResultsView: View {
                 .scrollClipDisabled(true)
                 .scrollIndicators(.hidden)
             }
-            
+           
           CocktailResultList(viewModel: viewModel)
         }
         .navigationBarTitleDisplayMode(.inline)
+        
     }
     
     @ViewBuilder func TagView(_ tag: String, _ color: Color, _ icon: String) -> some View {
@@ -95,6 +97,7 @@ struct SearchedCocktailTitleHeader: View {
     var searched: Int
     var matched: Int
     
+    
     var body: some View {
         HStack {
             
@@ -116,6 +119,36 @@ struct SearchedCocktailTitleHeader: View {
         }
     }
 }
+struct SearchedCocktailTitleHeaderForMultipleSpirits: View {
+    
+    var searched: Int
+    var matched: Int
+    var baseSpirit: String
+    
+    
+    var body: some View {
+        HStack {
+            Text(baseSpirit)
+                .font(.headline).bold()
+            ForEach(0..<matched, id: \.self) { match in
+                Image(systemName: "circle.fill")
+                    .foregroundStyle(Color.green)
+            }
+            
+            if matched - searched < 0 {
+                ForEach(0..<(searched - matched), id: \.self) { nonMatch in
+                    Image(systemName: "circle.fill")
+                    
+                }
+            }
+            
+            Spacer()
+            
+            Text("^[\(matched)/\(searched) matches](inflect: true)")
+        }
+    }
+}
+
 
 struct SearchedCocktailCell: View {
     

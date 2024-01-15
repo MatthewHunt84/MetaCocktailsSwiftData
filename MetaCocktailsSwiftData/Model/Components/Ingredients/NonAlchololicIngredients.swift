@@ -29,9 +29,9 @@ struct NAIngredients: Codable, Hashable, Equatable {
 }
 enum Juice: String, Codable, CaseIterable {
     case cranberryJuice       = "Cranberry Juice"
-    case lemon                = "Fresh Squeezed Lemon Juice"
-    case lime                 = "Fresh Squeezed Lime Juice"
-    case pineappleJuice       = "Fresh Pineapple Juice"
+    case lemon                = "Lemon Juice (Fresh Squeezed) "
+    case lime                 = "Lime Juice (Fresh Squeezed)"
+    case pineappleJuice       = "Pineapple Juice (Fresh)"
     
     var nAComponent: CocktailComponent {
         return CocktailComponent(for: NAIngredients(.juices(self)))
@@ -63,7 +63,7 @@ enum Syrup: String, Codable, CaseIterable {
     case passionfruitSyrup    = "Passionfruit Syrup"
     case richDem              = "Rich Demerara Syrup (2:1)"
     case simple               = "Simple Syrup (1:1)"
-    case raspberrySyrup       = "RaspberrySyrup"
+    case raspberrySyrup       = "Raspberry Syrup"
     
     var nAComponent: CocktailComponent {
         return CocktailComponent(for: NAIngredients(.syrups(self)))
@@ -151,9 +151,9 @@ enum Seasoning: String, Codable, CaseIterable {
 }
 
 enum Soda: String, Codable, CaseIterable {
-    case grapefruitSoda       = "Cold Grapefruit Soda"
+    case grapefruitSoda       = "Grapefruit Soda"
     case sodaWater            = "Soda Water"
-    case sparklingWater       = "Chilled Sparkling Water"
+    case sparklingWater       = "Sparkling Water"
     
     var nAComponent: CocktailComponent {
         return CocktailComponent(for: NAIngredients(.soda(self)))
@@ -174,7 +174,8 @@ enum Soda: String, Codable, CaseIterable {
 enum OtherNA: String, Codable, CaseIterable {
     case cream                = "Heavy Cream"
     case eggWhites            = "Egg Whites"
-    case egg                  = "1 Whole Egg"
+    case eggWhole             = "Egg (Whole)"
+    case eggYolk              = "Egg Yolk"
     case granulatedSugar      = "Granulated Sugar"
     case orangeFlowerWater    = "Orange Flower Water"
     
@@ -188,12 +189,14 @@ enum OtherNA: String, Codable, CaseIterable {
             Tags(profiles: [.creamy], textures: [.rich, .creamy])
         case .eggWhites:
             Tags(flavors: [.eggWhite], textures: [.silky, .light])
-        case .egg:
+        case .eggWhole:
             Tags(flavors: [.eggWhole])
         case .granulatedSugar:
             Tags(textures: [.unrefined])
         case .orangeFlowerWater:
             Tags(flavors: [.whiteFlower], profiles: [.floral])
+        case .eggYolk:
+            Tags(flavors: [.eggWhole], textures: [.rich])
         }
     }
 }

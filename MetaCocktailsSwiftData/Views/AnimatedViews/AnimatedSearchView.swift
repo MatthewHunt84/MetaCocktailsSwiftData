@@ -46,6 +46,7 @@ struct AnimatedSearchView: View {
                 .frame(height: 35)
                 .padding(.vertical, 15)
             }
+            
             .scrollClipDisabled(true)
             .scrollIndicators(.hidden)
             .overlay(content: {
@@ -55,9 +56,12 @@ struct AnimatedSearchView: View {
                         .foregroundStyle(.gray)
                 }
             })
+            
             .background(.black)
             
+            
         }
+        
         .preferredColorScheme(.dark)
         .zIndex(1)
         
@@ -79,6 +83,7 @@ struct AnimatedSearchView: View {
         .scrollIndicators(.hidden)
         .background(.white.opacity(0.1))
         .zIndex(0)
+       
         
         ZStack {
             Button(action: {}, label: {

@@ -1,14 +1,13 @@
 //
-//  IngredientLikesChecklist.swift
-//  MetaCocktails
+//  AdvancedFiltersView.swift
+//  MetaCocktailsSwiftData
 //
-//  Created by James on 8/10/23.
+//  Created by James Menkal on 1/11/24.
 //
 
 import SwiftUI
 
-struct SearchCriteriaView: View {
-
+struct AdvancedFiltersView: View {
     @EnvironmentObject var viewModel: SearchCriteriaViewModel
     @Binding var isShowingIngredientsList: Bool
     @State var selectedList: PreferenceType = .all
@@ -90,50 +89,6 @@ struct SearchCriteriaView: View {
     }
 }
 
-enum PreferenceType: String, CaseIterable {
-    
-    case all      = "All"
-    case spirits  = "Spirit"
-    case na       = "N/A"
-    case profiles = "Profile"
-    case flavors  = "Flavor"
-    case textures = "Texture"
-    case style    = "Style"
-    
-    func getTitle() -> String {
-        switch self {
-        case .all:
-            "Advanced Search"
-        case .spirits:
-            "Spirit Preferences"
-        case .profiles:
-            "Profile Preferences"
-        case .flavors:
-            "Flavor Preferences"
-        case .textures:
-            "Texture Preferences"
-        case .style:
-            "Style Preferences"
-        case .na:
-            "N/A Ingredients"
-        }
-    }
+#Preview {
+    AdvancedFiltersView(isShowingIngredientsList: .constant(true), isShowingPreferences: true)
 }
-
-enum LikesOrDislikes: String, CaseIterable {
-    
-    case likes = "Likes"
-    case dislikes = "Dislikes"
-}
-
-
-struct IngredientLikesChecklist_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchCriteriaView(isShowingIngredientsList: .constant(true), isShowingPreferences: true, selectedLikesOrDislikes: .likes)
-            .environmentObject(SearchCriteriaViewModel())
-    }
-}
-
-
-
-

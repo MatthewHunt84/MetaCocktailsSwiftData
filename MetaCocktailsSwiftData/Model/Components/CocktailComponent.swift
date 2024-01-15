@@ -7,8 +7,11 @@
 
 import SwiftUI
 
+
 class CocktailComponent: Identifiable, ObservableObject, Hashable{
-    
+    static func == (lhs: CocktailComponent , rhs: CocktailComponent) -> Bool {
+        return lhs.name == rhs.name
+    }
     // I don't love this, but it will work for now..
     
     @Published var matchesCurrentSearch: Bool
@@ -100,9 +103,7 @@ class CocktailComponent: Identifiable, ObservableObject, Hashable{
         self.nACategoryName = nA.ingredientType.category
     }
     
-    static func == (lhs: CocktailComponent, rhs: CocktailComponent) -> Bool {
-        return lhs.id == rhs.id
-    }
+    
     
     public func hash(into hasher: inout Hasher) {
         return hasher.combine(id)

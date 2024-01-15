@@ -176,10 +176,10 @@ enum FortifiedWine: String, Codable, CaseIterable {
     case amontillado          = "Amontillado Sherry"
     case blancVermouth        = "Blanc Vermouth"
     case cocchiAmericano      = "Cocchi Americano"
-    case dryVermouth          = "French Dry Vermouth"
+    case dryVermouth          = "Dry Vermouth (French)"
     case lilletBlanc          = "Lillet Blanc"
     case puntEMes             = "Punt E Mes"
-    case rougeVermouth        = "Fruit Forward Rouge Vermouth"
+    case rougeVermouth        = "Rouge Vermouth (Fruit Forward)"
     case sweetVermouth        = "Sweet Vermouth"
     
     var tags: Tags {
@@ -192,8 +192,8 @@ enum FortifiedWine: String, Codable, CaseIterable {
 }
 
 enum Wine: String, Codable, CaseIterable {
-    case champagne            = "Chilled Champagne"
-    case prosecco             = "Chilled Prosecco"
+    case champagne            = "Champagne (Chilled)"
+    case prosecco             = "Prosecco (Chilled)"
     
     var tags: Tags {
         return Tags(booze: [Booze(.wines(self))])
@@ -220,8 +220,8 @@ enum Bitters: String, Codable, CaseIterable {
 
 enum Amaro: String, Codable, CaseIterable {
     case aperol               = "Aperol"
-    case amaroMontenegro      = "Amaro Montenegro"
-    case amaroNonino          = "Amaro Nonino"
+    case amaroMontenegro      = "Montenegro (Amaro)"
+    case amaroNonino          = "Nonino (Amaro)"
     case becherovka           = "Becherovka"
     case campari              = "Campari"
     case fernetBranca         = "Fernet Branca"
