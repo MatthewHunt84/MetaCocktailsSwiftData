@@ -248,14 +248,28 @@ final class SearchCriteriaViewModel: ObservableObject {
                 }
             }
         }
-        if convertOnlyTagsToStrings(tags: cocktail.compiledTags, cocktail: cocktail).contains(preferredComponent.name){
+        if convertAllTagsOmittingBaseSpirits(tags: cocktail.compiledTags, cocktail: cocktail).contains(preferredComponent.name){
             matches += 1
         }
         return matches
     }
-    private func convertOnlyTagsToStrings(tags: Tags, cocktail: Cocktail) -> [String] {
+    private func convertAllTagsOmittingBaseSpirits(tags: Tags, cocktail: Cocktail) -> [String] {
         var strings: [String] = [String]()
-        
+        for bitters in Bitters.allCases {
+            strings.append(bitters.rawValue)
+        }
+        for fortifiedWine in FortifiedWine.allCases {
+            strings.append(fortifiedWine.rawValue)
+        }
+        for liqueur in Liqueur.allCases {
+            strings.append(liqueur.rawValue)
+        }
+        for wine in Wine.allCases {
+            strings.append(wine.rawValue)
+        }
+        for amaro in Amaro.allCases {
+            strings.append(amaro.rawValue)
+        }
         if let nA = tags.nA {
             strings.append(contentsOf: nA.map({$0.name}))
         }

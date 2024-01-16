@@ -257,8 +257,8 @@
 			children = (
 				F4C6A8F42AB0042400BB0AD0 /* Cocktail.swift */,
 				1AC3868D2AAABED00064F52A /* Components */,
-				F4C6A8ED2AAFFF2800BB0AD0 /* Cocktails */,
 				F4C6A8E12AAFF66B00BB0AD0 /* SearchTags */,
+				F4C6A8ED2AAFFF2800BB0AD0 /* Cocktails */,
 				F4C6A8F12AB003B000BB0AD0 /* Environment */,
 			);
 			path = Model;
