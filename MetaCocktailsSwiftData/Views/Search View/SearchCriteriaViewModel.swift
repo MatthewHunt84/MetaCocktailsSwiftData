@@ -15,7 +15,7 @@ final class SearchCriteriaViewModel: ObservableObject {
     @Published var basicCocktailComponents = createBasicComponentArray().sorted(by: { $0.name < $1.name })
     @Published var preferredCount = 0
     @Published var sections = [ResultViewSectionData]()
-    @Published var enableMultipleSpiritSelection: Bool = false
+    @Published var enableMultipleSpiritSelection = false
     @Published var isLoading = true
     @Published var multipleBaseSpiritsSelected: Bool = false
     @Published var boozeCategories = {Array(Set(generatedBoozeCocktailComponents.map({$0.spiritCategoryName}))).sorted()}()

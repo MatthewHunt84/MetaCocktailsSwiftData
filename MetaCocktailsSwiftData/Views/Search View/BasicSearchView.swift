@@ -47,7 +47,7 @@ struct BasicSearchView: View {
                     .font(.footnote).bold()
                 }
                 
-                BasicListView(navigationTitle: "Choose Cocktail Ingredients", isShowingLikes: $isShowingPreferences)
+                BasicListView(isShowingLikes: $isShowingPreferences)
                 HStack {
                     NavigationLink {
                         SearchResultsView(viewModel: viewModel)
