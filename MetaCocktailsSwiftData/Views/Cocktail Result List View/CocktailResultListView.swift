@@ -55,7 +55,10 @@ struct CocktailResultList: View {
                             
                         }
                         .listStyle(.grouped)
-                        ResultsConfigurationMenu(viewModel: viewModel)
+                        if viewModel.multipleBaseSpiritsSelected {
+                            ResultsConfigurationMenu(viewModel: viewModel)
+                        }
+                        
                     }
                 } else  {
                     ZStack(alignment: .center) {

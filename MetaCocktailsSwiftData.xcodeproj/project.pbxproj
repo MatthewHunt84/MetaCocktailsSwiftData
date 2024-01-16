@@ -213,7 +213,6 @@
 			children = (
 				1AC386782AAABED00064F52A /* PreferencesCheckListCell.swift */,
 				1AC386792AAABED00064F52A /* PrepListCell.swift */,
-				4D1F15472B564DB600FC3B85 /* ResultsConfigurationMenu.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -398,7 +397,7 @@
 		1AC386A52AAABED00064F52A /* Search View */ = {
 			isa = PBXGroup;
 			children = (
-				1AC386A62AAABED00064F52A /* Sub List View */,
+				1AC386A62AAABED00064F52A /* Sub List Views */,
 				F4F7429F2AD643A500161A93 /* SearchCriteriaViewModel.swift */,
 				1AC386A92AAABED00064F52A /* SearchCriteriaView.swift */,
 				4D1F146B2B50B24F00FC3B85 /* BasicSearchView.swift */,
@@ -409,13 +408,13 @@
 			path = "Search View";
 			sourceTree = "<group>";
 		};
-		1AC386A62AAABED00064F52A /* Sub List View */ = {
+		1AC386A62AAABED00064F52A /* Sub List Views */ = {
 			isa = PBXGroup;
 			children = (
 				F4F7429D2AD6419100161A93 /* ListView.swift */,
 				4D1F14712B50B64500FC3B85 /* BasicListView.swift */,
 			);
-			path = "Sub List View";
+			path = "Sub List Views";
 			sourceTree = "<group>";
 		};
 		4DB1C08F2B2E484A00943C69 /* Prep Descriptions */ = {
@@ -431,6 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				4DB1C0BB2B46D63300943C69 /* CocktailResultListView.swift */,
+				4D1F15472B564DB600FC3B85 /* ResultsConfigurationMenu.swift */,
 				4DB1C0BD2B46D74B00943C69 /* ResultViewSectionData.swift */,
 			);
 			path = "Cocktail Result List View";

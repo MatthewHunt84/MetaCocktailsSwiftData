@@ -13,7 +13,9 @@ struct BasicSearchView: View {
     @State var selectedList: PreferenceType = .all
     @State var isShowingPreferences: Bool
     @State var selectedLikesOrDislikes: LikesOrDislikes = .likes
+    @State var selectedFlavorsOrIngredients: FlavorsOrIngredient = .flavors
     @State var selection: PreferenceType = .all
+    @State var isShowingFlavors: Bool 
  
  
     
@@ -21,6 +23,17 @@ struct BasicSearchView: View {
         
         NavigationStack {
             VStack{
+                
+                Picker("Choose Your Weapon.", selection: $selectedFlavorsOrIngredients) {
+                    ForEach(FlavorsOrIngredient.allCases, id: \.self) {
+                        Text($0.rawValue)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .onChange(of: selectedFlavorsOrIngredients) {
+                    isShowingFlavors.toggle()
+                }
+                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 80))
                 HStack {
                     Picker("Pick Out Likes Or Dislikes", selection: $selectedLikesOrDislikes) {
                         ForEach(LikesOrDislikes.allCases, id: \.self) {
@@ -47,7 +60,7 @@ struct BasicSearchView: View {
                     .font(.footnote).bold()
                 }
                 
-                BasicListView(isShowingLikes: $isShowingPreferences)
+                BasicListView(isShowingLikes: $isShowingPreferences, isShowingFlavors: $isShowingFlavors)
                 HStack {
                     NavigationLink {
                         SearchResultsView(viewModel: viewModel)
@@ -90,6 +103,12 @@ struct BasicSearchView: View {
 }
 
 #Preview {
-    BasicSearchView(isShowingIngredientsList: .constant(true), isShowingPreferences: true, selectedLikesOrDislikes: .likes)
+    BasicSearchView(isShowingIngredientsList: .constant(true), isShowingPreferences: true, selectedLikesOrDislikes: .likes, isShowingFlavors: true)
         .environmentObject(SearchCriteriaViewModel())
+}
+
+enum FlavorsOrIngredient: String, CaseIterable {
+    
+    case flavors = "Search Flavors"
+    case dislikes = "Search Ingredients"
 }

@@ -12,12 +12,12 @@ struct ResultsConfigurationMenu: View {
     @State private var showingAlert = false
     var body: some View {
      
-        Menu("Configure Results") {
-            Button("All of your preferences apply to a single cocktail.", action: {
+        Menu("Sort Results") {
+            Button("By number of matches: Apply to a single cocktail.", action: {
                 viewModel.enableMultipleSpiritSelection = false
                 viewModel.getFilteredCocktails()
             })
-            Button("Separate your results based on the spirit type.", action: {
+            Button("By Spirit: Separate your results based on the spirit.", action: {
                 viewModel.enableMultipleSpiritSelection = true
                 viewModel.getFilteredCocktails()
                 if viewModel.multipleBaseSpiritsSelected == false {
