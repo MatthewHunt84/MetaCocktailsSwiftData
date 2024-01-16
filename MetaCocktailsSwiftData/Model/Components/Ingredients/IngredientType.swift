@@ -11,7 +11,7 @@ enum IngredientType: Codable {
     
     case syrups(Syrup)
     case juices(Juice)
-    case herbs(Herb)
+    case herbs(Herbs)
     case fruit(Fruit)
     case seasoning(Seasoning)
     case soda(Soda)
@@ -29,6 +29,21 @@ enum IngredientType: Codable {
     case wines(Wine)
     case bitters(Bitters)
     case amari(Amaro)
+    
+    static func getNAComponents() -> [CocktailComponent] {
+        var cocktailComponentArrayForNA = [CocktailComponent]()
+        
+        cocktailComponentArrayForNA.append(contentsOf: Syrup.allCases.map({ $0.nAComponent}))
+        cocktailComponentArrayForNA.append(contentsOf: Juice.allCases.map({ $0.nAComponent}))
+        cocktailComponentArrayForNA.append(contentsOf: Herbs.allCases.map({ $0.nAComponent}))
+        cocktailComponentArrayForNA.append(contentsOf: Fruit.allCases.map({ $0.nAComponent}))
+        cocktailComponentArrayForNA.append(contentsOf: Seasoning.allCases.map({ $0.nAComponent}))
+        cocktailComponentArrayForNA.append(contentsOf: Soda.allCases.map({ $0.nAComponent}))
+        cocktailComponentArrayForNA.append(contentsOf: OtherNA.allCases.map({ $0.nAComponent}))
+        
+        
+        return cocktailComponentArrayForNA
+    }
     
     static func getBoozeComponents() -> [CocktailComponent] {
         
@@ -137,8 +152,23 @@ enum IngredientType: Codable {
         }
     }
     
+    
     var category: String {
         switch self {
+        case .syrups:
+            return "Syrups"
+        case .juices:
+            return "Juice"
+        case .herbs:
+            return "Herbs"
+        case .fruit:
+            return "Fruit"
+        case .seasoning:
+            return "Seasoning"
+        case .soda:
+            return "Sodas"
+        case .otherNonAlc:
+            return "Other N/A"
         case .agaves:
             return "Agave"
         case .brandies:
@@ -146,7 +176,7 @@ enum IngredientType: Codable {
         case .gins:
             return "Gin"
         case .otherAlcohol:
-            return "Other"
+            return "Other Alcohol"
         case .rums:
             return "Rum"
         case .vodkas:
@@ -154,7 +184,7 @@ enum IngredientType: Codable {
         case .whiskies:
             return "Whiskies"
         case .liqueurs:
-            return "Liqueur"
+            return "Liqueurs"
         case .fortifiedWines:
             return "Fortified Wine"
         case .wines:
@@ -163,8 +193,6 @@ enum IngredientType: Codable {
             return "Bitters"
         case .amari:
             return "Amari"
-        default:
-            return "I'm not booze"
         }
     }
 }
@@ -186,20 +214,4 @@ enum MeasurementUnit: String, Codable {
     case pinch          = "Pinch"
     case whole          = "Whole (except the shell)"
     case sprays         = "Sprays in the glass (glass rinse)"
-}
-
-enum BoozeCategory: String, Codable, CaseIterable {
-    
-    case agave         = "Agave"
-    case brandy        = "Brandy"
-    case gin           = "Gin"
-    case other         = "Other"
-    case rum           = "Rum"
-    case vodka         = "Vodka"
-    case whiskies      = "Whiskies"
-    case liqueur       = "Liqueur"
-    case fortifiedWine = "Fortified Wine"
-    case wine          = "Wine"
-    case bitters       = "Bitters"
-    case amari         = "Amari"
 }

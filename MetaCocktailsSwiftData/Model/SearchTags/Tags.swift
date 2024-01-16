@@ -14,6 +14,7 @@ struct Tags: Codable {
     var textures: [Texture]?
     var styles: [Style]?
     var booze: [Booze]?
+    var nA: [NAIngredients]?
     
     func merge(with newTags: Tags) -> Tags {
         
@@ -24,6 +25,7 @@ struct Tags: Codable {
         mergedTags.textures = combine(newTags.textures, self.textures)
         mergedTags.styles = combine(newTags.styles, self.styles)
         mergedTags.booze = combine(newTags.booze, self.booze)
+        mergedTags.nA = combine(newTags.nA, self.nA)
         
         return mergedTags
         

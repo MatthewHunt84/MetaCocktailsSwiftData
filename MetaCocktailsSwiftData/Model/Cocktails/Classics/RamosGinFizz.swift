@@ -9,7 +9,7 @@ import SwiftUI
 
 var ramosGinFizz = Cocktail(cocktailName: "Ramos Gin Fizz", imageAsset: nil, glasswareType: .collins, garnish: [.orangePeel], ice: .koldDraft, author: "Henry C. Ramos", spec: ramosGinFizzSpec, buildOrder: ramosGinFizzBuild, tags: ramosTags)
 
-let ramosGinFizzSpec: [CocktailIngredient] = [CocktailIngredient(.gins(.gin), value: 2.0),
+let ramosGinFizzSpec: [CocktailIngredient] = [CocktailIngredient(.gins(.ginAny), value: 2.0),
                                               CocktailIngredient(.juices(.lime), value: 0.5),
                                               CocktailIngredient(.juices(.lemon), value: 0.5),
                                               CocktailIngredient(.syrups(.simple), value: 1.0),
@@ -18,7 +18,7 @@ let ramosGinFizzSpec: [CocktailIngredient] = [CocktailIngredient(.gins(.gin), va
                                               CocktailIngredient(.soda(.sodaWater), value: 2.0),
                                               CocktailIngredient(.otherNonAlc(.orangeFlowerWater), value: 1, unit: .dash)]
 
-var ramosTags = Tags(flavors: [.cream, .lemon, .lime],
+var ramosTags = Tags(flavors: [.lemon, .lime],
                      profiles: [.floral, .citrusy, .creamy],
                      textures: [.creamy],
                      styles: [.sour, .shaken])

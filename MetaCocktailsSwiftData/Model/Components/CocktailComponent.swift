@@ -7,8 +7,11 @@
 
 import SwiftUI
 
+
 class CocktailComponent: Identifiable, ObservableObject, Hashable{
-    
+    static func == (lhs: CocktailComponent , rhs: CocktailComponent) -> Bool {
+        return lhs.name == rhs.name
+    }
     // I don't love this, but it will work for now..
     
     @Published var matchesCurrentSearch: Bool
@@ -17,18 +20,22 @@ class CocktailComponent: Identifiable, ObservableObject, Hashable{
     @Published var isPreferred: Bool = false
     @Published var isUnwanted: Bool = false
     var isSpirit: Bool = false
+    var isNA: Bool = false
     var isFlavor: Bool = false
     var isProfile: Bool = false
     var isStyle: Bool = false
     var isTexture: Bool = false
     var preferenceType: PreferenceType
     var spiritCategory: IngredientType?
+    var nACategory: IngredientType?
+    var nACategoryName: String = ""
     var spiritCategoryName: String = ""
     
     
-    init(name: String, isFlavor: Bool = false, isProfile: Bool = false, isStyle: Bool = false, isSpirit: Bool = false, isTexture: Bool = false, matchesCurrentSearch: Bool = true) {
+    init(name: String, isFlavor: Bool = false, isProfile: Bool = false, isStyle: Bool = false, isSpirit: Bool = false, isNA: Bool = false, isTexture: Bool = false, matchesCurrentSearch: Bool = true) {
         self.name = name
         self.isSpirit = isSpirit
+        self.isNA = isNA
         self.isFlavor = isFlavor
         self.isStyle = isStyle
         self.isProfile = isProfile
@@ -43,10 +50,13 @@ class CocktailComponent: Identifiable, ObservableObject, Hashable{
             preferenceType = .spirits
         } else if isProfile {
             preferenceType = .profiles
-        } else {
+        } else if isTexture {
             preferenceType = .textures
+        } else {
+            preferenceType = .na
         }
     }
+  
     
     init(for flavor: Flavor) {
         self.name = flavor.rawValue
@@ -84,10 +94,16 @@ class CocktailComponent: Identifiable, ObservableObject, Hashable{
         self.spiritCategory = booze.ingredientType
         self.spiritCategoryName = booze.ingredientType.category
     }
-    
-    static func == (lhs: CocktailComponent, rhs: CocktailComponent) -> Bool {
-        return lhs.id == rhs.id
+    init(for nA: NAIngredients) {
+        self.name = nA.ingredientType.name
+        self.isSpirit = false
+        self.preferenceType = .na
+        self.matchesCurrentSearch = true
+        self.nACategory = nA.ingredientType
+        self.nACategoryName = nA.ingredientType.category
     }
+    
+    
     
     public func hash(into hasher: inout Hasher) {
         return hasher.combine(id)

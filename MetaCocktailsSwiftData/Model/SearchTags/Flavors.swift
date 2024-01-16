@@ -10,7 +10,6 @@ import Foundation
 enum Flavor: String, Codable, CaseIterable {
     case lemon          = "Lemon"
     case lime           = "Lime"
-    case cream          = "Cream"
     case cinnamon       = "Cinnamon"
     case orange         = "Orange"
     case ginger         = "Ginger"
@@ -19,7 +18,7 @@ enum Flavor: String, Codable, CaseIterable {
     case cucumber       = "Cucumber"
     case almond         = "Almond"
     case blackberry     = "Blackberry"
-    case sage           = "Sage"
+    case sage           = "Sage (Flavor)"
     case peat           = "Peat"
     case grapefruit     = "Grapefruit"
     case rhubarb        = "Rhubarb"
@@ -28,7 +27,6 @@ enum Flavor: String, Codable, CaseIterable {
     case cranberry      = "Cranberry"
     case pomegranate    = "Pomegranate"
     case pineapple      = "Pineapple"
-    case funky          = "Funky"
     case whiteFlower    = "White Flower"
     case juniper        = "Juniper"
     case citrusPeel     = "Citrus Peel"
@@ -41,13 +39,12 @@ enum Flavor: String, Codable, CaseIterable {
     case agave          = "Agave"
     case chocolate      = "Chocolate"
     case raspberry      = "Raspberry"
-    case nutmeg         = "Nutmeg"
+    case nutmeg         = "Nutmeg (Flavor)"
     case clove          = "Clove"
     case menthol        = "Menthol"
     case rosewater      = "Rose water"
     case tarragon       = "Tarragon"
-    case eggWhite            = "Egg white"
-    case eggWhole       = "Egg (whole)"
+  
    
 }
 

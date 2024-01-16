@@ -8,7 +8,7 @@
 import Foundation
 
 enum Texture: String, Codable, CaseIterable {
-    case creamy          = "Creamy"
+    case creamy          = "Creamy (Texture)"
     case light           = "Light"
     case silky           = "Silky"
     case thin            = "Thin"

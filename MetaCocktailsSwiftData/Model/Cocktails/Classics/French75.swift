@@ -18,7 +18,7 @@ var french75  = Cocktail(cocktailName: "French 75",
 
 var french75Spec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                      CocktailIngredient(.syrups(.simple), value: 0.75),
-                     CocktailIngredient(.gins(.gin), value: 1.5),
+                     CocktailIngredient(.gins(.ginAny), value: 1.5),
                      CocktailIngredient(.wines(.champagne) , value: 4)]
 
 var french75Build  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the Champagne, into a tin and shake with ice"), 

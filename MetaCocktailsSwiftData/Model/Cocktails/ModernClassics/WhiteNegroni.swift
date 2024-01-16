@@ -16,7 +16,7 @@ var whiteNegroni  =  Cocktail(cocktailName: "White Negroni",
                          buildOrder: nil,
                          tags: whiteNegroniTags)
 
-var whiteNegroniSpec = [CocktailIngredient(.gins(.gin), value: 1),
+var whiteNegroniSpec = [CocktailIngredient(.gins(.ginAny), value: 1),
                         CocktailIngredient(.fortifiedWines(.lilletBlanc), value: 1),
                         CocktailIngredient(.amari(.suze), value: 1)]
 
