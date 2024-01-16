@@ -30,7 +30,7 @@ let sunnySideTags = Tags(profiles: [.herbal, .refreshing],
                       textures: [.light],
                       styles: [.sour, .shaken])
 
-let sunnySideBuild =  Build(instructions: [Instruction(step: 1, method: "Use Kold draft of Hoshizake cubes and the mint will the muddled while you're shaking."),
+let sunnySideBuild =  Build(instructions: [Instruction(step: 1, method: "Use Kold draft or Hoshizake cubes and the mint will the muddled while you're shaking."),
                                            Instruction(step: 2, method: "Double strain the shaken cocktail over a big rock."),
                                            Instruction(step: 3, method: "Garnish with a mint bouquet.")])
 
