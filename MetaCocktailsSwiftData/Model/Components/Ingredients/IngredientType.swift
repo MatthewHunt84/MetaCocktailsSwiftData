@@ -214,4 +214,5 @@ enum MeasurementUnit: String, Codable {
     case pinch          = "Pinch"
     case whole          = "Whole (except the shell)"
     case sprays         = "Sprays in the glass (glass rinse)"
+    case rim            = "Around the rim of the glass"
 }

@@ -118,7 +118,7 @@ enum Herbs: String, Codable, CaseIterable {
 
 enum Fruit: String, Codable, CaseIterable {
     case blackBerry           = "Blackberries"
-    case raspberries          = "Raspberries"
+    //case raspberries          = "Raspberries"
     
     var nAComponent: CocktailComponent {
         return CocktailComponent(for: NAIngredients(.fruit(self)))
@@ -127,8 +127,8 @@ enum Fruit: String, Codable, CaseIterable {
         switch self {
         case .blackBerry:
             Tags(flavors: [.blackberry], profiles: [.fruity], nA: [NAIngredients(.fruit(self))])
-        case .raspberries:
-            Tags(flavors: [.raspberry], profiles: [.fruity], nA: [NAIngredients(.fruit(self))])
+//        case .raspberries:
+//            Tags(flavors: [.raspberry], profiles: [.fruity], nA: [NAIngredients(.fruit(self))])
         }
     }
 }
@@ -175,7 +175,7 @@ enum OtherNA: String, Codable, CaseIterable {
     case cream                = "Heavy Cream"
     case eggWhites            = "Egg Whites"
     case eggWhole             = "Egg (Whole)"
-    case eggYolk              = "Egg Yolk"
+    //case eggYolk              = "Egg Yolk"
     case granulatedSugar      = "Granulated Sugar"
     case orangeFlowerWater    = "Orange Flower Water"
     
@@ -188,15 +188,15 @@ enum OtherNA: String, Codable, CaseIterable {
         case .cream:
             Tags(profiles: [.creamy], textures: [.rich, .creamy], nA: [NAIngredients(.otherNonAlc(self))])
         case .eggWhites:
-            Tags(textures: [.silky, .light], nA: [NAIngredients(.otherNonAlc(self))])
+            Tags(flavors: [.egg], textures: [.silky, .light], nA: [NAIngredients(.otherNonAlc(self))])
         case .eggWhole:
-            Tags(textures: [.rich, .silky], nA: [NAIngredients(.otherNonAlc(self))])
+            Tags(flavors: [.egg], textures: [.rich, .silky], nA: [NAIngredients(.otherNonAlc(self))])
         case .granulatedSugar:
             Tags(textures: [.unrefined], nA: [NAIngredients(.otherNonAlc(self))])
         case .orangeFlowerWater:
             Tags(flavors: [.whiteFlower], profiles: [.floral], nA: [NAIngredients(.otherNonAlc(self))])
-        case .eggYolk:
-            Tags(textures: [.rich], nA: [NAIngredients(.otherNonAlc(self))])
+//        case .eggYolk:
+//            Tags(textures: [.rich], nA: [NAIngredients(.otherNonAlc(self))])
         }
     }
 }

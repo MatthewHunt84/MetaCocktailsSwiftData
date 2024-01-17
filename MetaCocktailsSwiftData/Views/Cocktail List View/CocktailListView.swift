@@ -71,6 +71,8 @@ struct CocktailListView: View {
                     .scrollDisabled(true)
                 }
             }
+            .containerRelativeFrame(.vertical, count: 1, spacing: 0)
+            
         }
     }
     

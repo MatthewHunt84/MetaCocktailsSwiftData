@@ -8,68 +8,30 @@
 import SwiftUI
 
 struct PreferencesCheckListCell: View {
-
-    @State var toggleOn = false
     @Binding var ingredient: CocktailComponent
     var isShowingPreferences:  Bool
     
     var body: some View {
         HStack {
-            
             if self.isShowingPreferences == true {
                 
                 Toggle(isOn: $ingredient.isPreferred) {
                     Text(ingredient.name)
                     
                 }
-                
                 .padding(.horizontal, 20)
                 .listItemTint(Color(.brandPrimaryBlue))
                 
-               
-
             } else {
                 
                 Toggle(isOn: $ingredient.isUnwanted) {
-                    Text(ingredient.name)
-                }
-                .padding(.horizontal, 20)
-            }
-        }
-
-    }
-}
-struct BasicPreferencesCheckListCell: View {
-    @State var toggleOn = false
-    @Binding var ingredient: CocktailComponent
-    var isShowingPreferences:  Bool
-    
-    var body: some View {
-        HStack {
-            
-            if self.isShowingPreferences == true {
-                
-                Toggle(isOn: $ingredient.isPreferred) {
                     Text(ingredient.name)
                     
                 }
-                
-                .padding(.horizontal, 20)
-                .listItemTint(Color(.brandPrimaryBlue))
-                
-               
-
-            } else {
-                
-                Toggle(isOn: $ingredient.isUnwanted) {
-                    Text(ingredient.name)
-                }
                 .padding(.horizontal, 20)
             }
         }
-
     }
-
 }
 
 

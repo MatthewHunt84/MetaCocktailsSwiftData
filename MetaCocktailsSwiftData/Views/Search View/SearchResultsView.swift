@@ -67,6 +67,9 @@ struct SearchResultsView: View {
           CocktailResultList(viewModel: viewModel)
         }
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear() {
+            viewModel.getFilteredCocktails()
+        }
         
     }
     

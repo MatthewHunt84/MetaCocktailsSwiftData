@@ -16,9 +16,8 @@ struct whiteButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
         .padding(10)
-        .font(.footnote).bold()
         .background(Color(UIColor.systemBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 140))
+        .clipShape(RoundedRectangle(cornerRadius: 40))
         .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
         .foregroundColor(Color(UIColor.systemCyan))
         

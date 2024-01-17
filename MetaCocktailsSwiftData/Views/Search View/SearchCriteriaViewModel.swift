@@ -12,10 +12,9 @@ final class SearchCriteriaViewModel: ObservableObject {
     
     @Published var searchText: String = ""
     @Published var cocktailComponents = createComponentArray().sorted(by: { $0.name < $1.name })
-    @Published var basicCocktailComponents = createBasicComponentArray().sorted(by: { $0.name < $1.name })
     @Published var preferredCount = 0
     @Published var sections = [ResultViewSectionData]()
-    @Published var enableMultipleSpiritSelection: Bool = false
+    @Published var enableMultipleSpiritSelection = false
     @Published var isLoading = true
     @Published var multipleBaseSpiritsSelected: Bool = false
     @Published var boozeCategories = {Array(Set(generatedBoozeCocktailComponents.map({$0.spiritCategoryName}))).sorted()}()
@@ -52,7 +51,8 @@ final class SearchCriteriaViewModel: ObservableObject {
         self.objectWillChange.send()
     }
     func selectedPreferredIngredients() -> [CocktailComponent] {
-        self.cocktailComponents.filter({ $0.isPreferred })
+        
+       return self.cocktailComponents.filter({ $0.isPreferred })
     }
     func selectedUnwantedIngredients() -> [CocktailComponent] {
         self.cocktailComponents.filter({ $0.isUnwanted })
@@ -108,24 +108,10 @@ final class SearchCriteriaViewModel: ObservableObject {
         
         return array
     }
-    static func createBasicComponentArray() -> [CocktailComponent] {
-        var array = [CocktailComponent]()
-        let convertedBoozeArray: [CocktailComponent] = SearchCriteriaViewModel.generatedBoozeCocktailComponents
-        let convertedNAArray: [CocktailComponent] = SearchCriteriaViewModel.generatedNACocktailComponents
-        for component in convertedBoozeArray {
-            array.append(component)
-        }
-        for component in convertedNAArray {
-            array.append(component)
-        }
-        
-        return array
-    }
-
     private func filterUnwantedCocktails(cocktailComponentArray: [CocktailComponent], cocktails: [Cocktail]) -> [Cocktail] {
          cocktails.filter { cocktail in
              cocktailComponentArray.allSatisfy { unwantedComponent in
-                !convertTagsAndSpecToStrings(tags: cocktail.compiledTags, cocktail: cocktail).contains(unwantedComponent.name)
+                !convertTagsAndSpecToStrings(for: cocktail).contains(unwantedComponent.name)
             }
         }
     }
@@ -133,34 +119,43 @@ final class SearchCriteriaViewModel: ObservableObject {
     private func countMatches(_ currentCount: Int, for preferredComponent: CocktailComponent, in cocktail: Cocktail) -> Int {
         // compare preferredComponent against current cocktail of loop, then return number of matches.
         var matches = currentCount
-        if convertTagsAndSpecToStrings(tags: cocktail.compiledTags, cocktail: cocktail).contains(preferredComponent.name){
+        if convertTagsAndSpecToStrings(for: cocktail).contains(preferredComponent.name){
             matches += 1
         }
         return matches
     }
-    func convertTagsAndSpecToStrings(tags: Tags, cocktail: Cocktail) -> [String] {
+    func convertTagsAndSpecToStrings(for cocktail: Cocktail) -> [String] {
         var strings: [String] = [String]()
-        strings.append(contentsOf: cocktail.spec.map({ $0.ingredient.name}))
-        if let booze = tags.booze {
+        strings.append(contentsOf: cocktail.spec.map({$0.ingredient.name}))
+        if let booze = cocktail.compiledTags.booze {
             strings.append(contentsOf: booze.map({$0.name}))
         }
-        if let flavors = tags.flavors {
+        if let flavors = cocktail.compiledTags.flavors {
             strings.append(contentsOf: flavors.map({$0.rawValue}))
         }
-        if let styles = tags.styles {
+        if let styles = cocktail.compiledTags.styles {
             strings.append(contentsOf: styles.map({$0.rawValue}))
         }
-        if let textures = tags.textures {
+        if let textures = cocktail.compiledTags.textures {
             strings.append(contentsOf: textures.map({$0.rawValue}))
         }
-        if let profiles = tags.profiles {
+        if let profiles = cocktail.compiledTags.profiles {
             strings.append(contentsOf: profiles.map({$0.rawValue}))
+        }
+        if let nA = cocktail.compiledTags.nA {
+            strings.append(contentsOf: nA.map({$0.name}))
         }
         return Array(Set(strings))
     }
     func getFilteredCocktails() {
         isLoading = true
         resetSearchCriteria()
+        if returnPreferredBaseSpirits().count > 1 {
+            multipleBaseSpiritsSelected = true
+        } else {
+            multipleBaseSpiritsSelected = false
+        }
+       
 
         /** First, loop over every cocktail and add any cocktails that don't match any unwanted preferences to create the StartingCocktails array. */
         let startingCocktails = filterUnwantedCocktails(cocktailComponentArray: selectedUnwantedIngredients(), cocktails: CocktailListViewModel().cocktails)
@@ -189,7 +184,6 @@ final class SearchCriteriaViewModel: ObservableObject {
                 return dataShells
             }
         }()
-        
         /**Then, loop over every cocktail in the startingCocktailsArray and pull out the cocktails that match with > 50% of the ingredients in the preferredArray. Keeping track of the matched count, add them to the appropriate object in the array of finalMatchedCocktails. */
         for cocktail in startingCocktails {
             
@@ -202,11 +196,8 @@ final class SearchCriteriaViewModel: ObservableObject {
                         resultViewSectionData.cocktails.append(cocktail)
                     }
                 } else {
-                    if resultViewSectionData.matched == selectedPreferredIngredients().reduce(0, { countMatchesForMultipleSpirits($0, for: $1, in: cocktail)}) {
-                        if resultViewSectionData.baseSpirit == returnMatchedBase(cocktail, matchedComponents: selectedPreferredIngredients()) && resultViewSectionData.cocktails.last != cocktail {
+                    if resultViewSectionData.matched == countMatchesForMultipleSpirits(for: cocktail) && resultViewSectionData.baseSpirit == returnMatchedBase(cocktail) && resultViewSectionData.cocktails.last != cocktail {
                             resultViewSectionData.cocktails.append(cocktail)
-                        }
-                        
                     }
                 }
             }
@@ -225,50 +216,49 @@ final class SearchCriteriaViewModel: ObservableObject {
     private func modifiedPreferredCount() -> Int {
         // compare preferredComponent against current cocktail of loop, then return number of matches.
         var baseMatches = 0
-        multipleBaseSpiritsSelected = false 
+
         let preferredStrings = selectedPreferredIngredients().map({ $0.name })
         for base in convertOnlyBaseSpiritsIntoStrings() {
             if preferredStrings.contains(base) {
                 baseMatches += 1
-                multipleBaseSpiritsSelected = true
             }
         }
         let modifiedCount = selectedPreferredIngredients().count - baseMatches + 1
         return modifiedCount
     }
-    private func countMatchesForMultipleSpirits(_ currentCount: Int, for preferredComponent: CocktailComponent, in cocktail: Cocktail) -> Int {
+    private func countMatchesForMultipleSpirits(for cocktail: Cocktail) -> Int {
         // compare preferredComponent against current cocktail of loop, then return number of matches.
-        var matches = currentCount
+        var matches = 0
+        var justBases = [String]()
         var alreadyMatchedSpec = 0
         if let booze = cocktail.compiledTags.booze {
-            for spec in booze {
-                if spec.name == preferredComponent.name && alreadyMatchedSpec == 0 {
+            for booz in booze {
+                if !convertOnlyBaseSpiritsIntoStrings().contains(booz.name) {
+                    justBases.append(booz.name)
+                }
+            }
+        }
+        for component in selectedPreferredIngredients() {
+            for spec in justBases {
+                if spec == component.name && alreadyMatchedSpec == 0 {
                     matches += 1
                     alreadyMatchedSpec += 1
                 }
             }
-        }
-        if convertAllTagsOmittingBaseSpirits(tags: cocktail.compiledTags, cocktail: cocktail).contains(preferredComponent.name){
-            matches += 1
+            if convertAllTagsOmittingBaseSpirits(tags: cocktail.compiledTags, cocktail: cocktail).contains(component.name){
+                    matches += 1
+                }
         }
         return matches
     }
     private func convertAllTagsOmittingBaseSpirits(tags: Tags, cocktail: Cocktail) -> [String] {
         var strings: [String] = [String]()
-        for bitters in Bitters.allCases {
-            strings.append(bitters.rawValue)
-        }
-        for fortifiedWine in FortifiedWine.allCases {
-            strings.append(fortifiedWine.rawValue)
-        }
-        for liqueur in Liqueur.allCases {
-            strings.append(liqueur.rawValue)
-        }
-        for wine in Wine.allCases {
-            strings.append(wine.rawValue)
-        }
-        for amaro in Amaro.allCases {
-            strings.append(amaro.rawValue)
+        if let boozeComponents = tags.booze {
+            for booze in boozeComponents {
+                if !convertOnlyBaseSpiritsIntoStrings().contains(booze.name) {
+                    strings.append(booze.name)
+                }
+            }
         }
         if let nA = tags.nA {
             strings.append(contentsOf: nA.map({$0.name}))
@@ -285,7 +275,11 @@ final class SearchCriteriaViewModel: ObservableObject {
         if let profiles = tags.profiles {
             strings.append(contentsOf: profiles.map({$0.rawValue}))
         }
-        return strings
+        for g in strings{
+            print(g)
+        }
+        return Array(Set(strings))
+        
     }
     private func convertOnlyBaseSpiritsIntoStrings() -> [String] {
         var stringArray: [String] = [String]()
@@ -312,18 +306,17 @@ final class SearchCriteriaViewModel: ObservableObject {
         }
         return stringArray
     }
-    func returnMatchedBase(_ cocktail: Cocktail, matchedComponents: [CocktailComponent]) -> String {
+    func returnMatchedBase(_ cocktail: Cocktail) -> String {
         var matchedString = ""
         if let boozeComponents = cocktail.compiledTags.booze {
             for booze in boozeComponents {
-                for matched in matchedComponents {
-                    if matched.name == booze.name && matched.isSpirit == true && convertOnlyBaseSpiritsIntoStrings().contains(matched.name) {
+                for matched in selectedPreferredIngredients() {
+                    if matched.name == booze.name && convertOnlyBaseSpiritsIntoStrings().contains(matched.name) {
                         matchedString = matched.name
                     }
                 }
             }
         }
-
         return matchedString
     }
     

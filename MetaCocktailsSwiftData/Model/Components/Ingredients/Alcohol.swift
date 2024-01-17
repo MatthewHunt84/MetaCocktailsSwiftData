@@ -219,21 +219,21 @@ enum Liqueur: String, Codable, CaseIterable {
     var tags: Tags {
         switch self {
         case .cointreau:
-            Tags(flavors: [.orange, .whiteFlower])
+            Tags(flavors: [.orange, .whiteFlower], booze: [Booze(.liqueurs(self))])
         case .cremeDeCacao:
-            Tags(flavors: [.chocolate])
+            Tags(flavors: [.chocolate], booze: [Booze(.liqueurs(self))])
         case .giffardPamplemousse:
-            Tags(flavors: [.grapefruit])
+            Tags(flavors: [.grapefruit], booze: [Booze(.liqueurs(self))])
         case .greenChartreuse:
-            Tags(flavors: [.angelica], profiles: [.herbal, .botanical])
+            Tags(flavors: [.angelica], profiles: [.herbal, .botanical], booze: [Booze(.liqueurs(self))])
         case .maraschinoLiqueur:
-            Tags(flavors: [.cherry])
+            Tags(flavors: [.cherry], booze: [Booze(.liqueurs(self))])
         case .orangeCuracao:
-            Tags(flavors: [.orange])
+            Tags(flavors: [.orange], booze: [Booze(.liqueurs(self))])
         case .velvetFalernum:
-            Tags(flavors: [.clove, .almond])
+            Tags(flavors: [.clove, .almond], booze: [Booze(.liqueurs(self))])
         case .yellowChartreuse:
-            Tags(flavors: [.angelica], profiles: [.herbal, .botanical])
+            Tags(flavors: [.angelica], profiles: [.herbal, .botanical], booze: [Booze(.liqueurs(self))])
         }
     }
     
@@ -302,21 +302,21 @@ enum Amaro: String, Codable, CaseIterable {
     var tags: Tags {
         switch self {
         case .aperol:
-            Tags(flavors: [.grapefruit, .rhubarb], booze: [Booze(.amari(.amaroAny))])
+            Tags(flavors: [.grapefruit, .rhubarb], booze: [Booze(.amari(.amaroAny)), Booze(.amari(self))])
         case .amaroMontenegro:
-            Tags(profiles: [.floral, .herbal], booze: [Booze(.amari(.amaroAny))])
+            Tags(profiles: [.floral, .herbal], booze: [Booze(.amari(.amaroAny)), Booze(.amari(self))])
         case .amaroNonino:
-            Tags(profiles: [.herbal], booze: [Booze(.amari(.amaroAny))])
+            Tags(profiles: [.herbal], booze: [Booze(.amari(.amaroAny)), Booze(.amari(self))])
         case .becherovka:
-            Tags(flavors: [.clove, .cinnamon], booze: [Booze(.amari(.amaroAny))])
+            Tags(flavors: [.clove, .cinnamon], booze: [Booze(.amari(.amaroAny)), Booze(.amari(self))])
         case .campari:
-            Tags(profiles: [.bitter, .bittersweet], booze: [Booze(.amari(.amaroAny))])
+            Tags(profiles: [.bitter, .bittersweet], booze: [Booze(.amari(.amaroAny)), Booze(.amari(self))])
         case .fernetBranca:
-            Tags(flavors: [.anise], profiles: [.herbal, .medicinal, .botanical], booze: [Booze(.amari(.amaroAny))])
+            Tags(flavors: [.anise], profiles: [.herbal, .medicinal, .botanical], booze: [Booze(.amari(.amaroAny)), Booze(.amari(self))])
         case .fernetBrancaMenta:
-            Tags(flavors: [.anise, .menthol, .mint], profiles: [.herbal, .medicinal, .botanical], booze: [Booze(.amari(.amaroAny))])
+            Tags(flavors: [.anise, .menthol, .mint], profiles: [.herbal, .medicinal, .botanical], booze: [Booze(.amari(.amaroAny)), Booze(.amari(self))])
         case .suze:
-            Tags(profiles: [.herbal, .botanical], booze: [Booze(.amari(.amaroAny))])
+            Tags(profiles: [.herbal, .botanical], booze: [Booze(.amari(.amaroAny)), Booze(.amari(self))])
         case .amaroAny:
             Tags(booze: [Booze(.amari(.amaroAny))])
         }

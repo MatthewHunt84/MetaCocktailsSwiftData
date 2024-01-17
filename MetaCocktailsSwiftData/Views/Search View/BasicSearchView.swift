@@ -9,14 +9,11 @@ import SwiftUI
 
 struct BasicSearchView: View {
     @EnvironmentObject var viewModel: SearchCriteriaViewModel
-    @Binding var isShowingIngredientsList: Bool
-    @State var selectedList: PreferenceType = .all
     @State var isShowingPreferences: Bool
     @State var selectedLikesOrDislikes: LikesOrDislikes = .likes
-    @State var selection: PreferenceType = .all
+    @State var selectedFlavorsOrIngredients: FlavorsOrIngredient = .flavors
+    @State var isShowingFlavors: Bool 
  
- 
-    
     var body: some View {
         
         NavigationStack {
@@ -47,13 +44,11 @@ struct BasicSearchView: View {
                     .font(.footnote).bold()
                 }
                 
-                BasicListView(navigationTitle: "Choose Cocktail Ingredients", isShowingLikes: $isShowingPreferences)
+                BasicListView(isShowingLikes: $isShowingPreferences, isShowingFlavors: $isShowingFlavors)
+                    
                 HStack {
                     NavigationLink {
                         SearchResultsView(viewModel: viewModel)
-                            .onAppear {
-                                viewModel.getFilteredCocktails()
-                            }
                     } label: {
                         Text("SEARCH!")
                             .font(.footnote).bold()
@@ -74,13 +69,19 @@ struct BasicSearchView: View {
                         Text("Clear Search")
                           
                     }
-                    .padding(10)
+                    
                     .font(.footnote).bold()
-                    .background(Color(UIColor.systemBackground))
-                    .clipShape(RoundedRectangle(cornerRadius: 140))
-                    .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
-                    .foregroundColor(Color(UIColor.systemCyan))
-
+                    .buttonStyle(whiteButton())
+                    Menu("Search Type") {
+                        Button("Search by flavor.", action: {
+                            isShowingFlavors = true
+                        })
+                        Button("Search by ingredient.", action: {
+                           isShowingFlavors = false
+                        })
+                    }
+                    .font(.footnote).bold()
+                    .buttonStyle(whiteButton())
                 }
             }
             .navigationTitle("Select Ingredients")
@@ -90,6 +91,12 @@ struct BasicSearchView: View {
 }
 
 #Preview {
-    BasicSearchView(isShowingIngredientsList: .constant(true), isShowingPreferences: true, selectedLikesOrDislikes: .likes)
+    BasicSearchView(isShowingPreferences: true, selectedLikesOrDislikes: .likes, isShowingFlavors: true)
         .environmentObject(SearchCriteriaViewModel())
+}
+
+enum FlavorsOrIngredient: String, CaseIterable {
+    
+    case flavors = "Search Flavors"
+    case dislikes = "Search Ingredients"
 }
