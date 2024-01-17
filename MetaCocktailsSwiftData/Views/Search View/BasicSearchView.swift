@@ -9,12 +9,9 @@ import SwiftUI
 
 struct BasicSearchView: View {
     @EnvironmentObject var viewModel: SearchCriteriaViewModel
-    @Binding var isShowingIngredientsList: Bool
-    @State var selectedList: PreferenceType = .all
     @State var isShowingPreferences: Bool
     @State var selectedLikesOrDislikes: LikesOrDislikes = .likes
     @State var selectedFlavorsOrIngredients: FlavorsOrIngredient = .flavors
-    @State var selection: PreferenceType = .all
     @State var isShowingFlavors: Bool 
  
  
@@ -64,9 +61,6 @@ struct BasicSearchView: View {
                 HStack {
                     NavigationLink {
                         SearchResultsView(viewModel: viewModel)
-                            .onAppear {
-                                viewModel.getFilteredCocktails()
-                            }
                     } label: {
                         Text("SEARCH!")
                             .font(.footnote).bold()
@@ -103,7 +97,7 @@ struct BasicSearchView: View {
 }
 
 #Preview {
-    BasicSearchView(isShowingIngredientsList: .constant(true), isShowingPreferences: true, selectedLikesOrDislikes: .likes, isShowingFlavors: true)
+    BasicSearchView(isShowingPreferences: true, selectedLikesOrDislikes: .likes, isShowingFlavors: true)
         .environmentObject(SearchCriteriaViewModel())
 }
 

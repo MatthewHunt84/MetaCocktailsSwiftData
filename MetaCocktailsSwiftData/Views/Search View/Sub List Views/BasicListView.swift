@@ -25,7 +25,7 @@ struct BasicListView: View {
                                 ForEach(alphabet, id: \.self) { letter in
                                     Section {
                                         if isShowingFlavors {
-                                            ForEach( $viewModel.basicCocktailComponentsForFlavorsView.filter({$0.name.wrappedValue.hasPrefix(letter)}), id: \.self.id) { component in
+                                            ForEach( $viewModel.cocktailComponentsForBasicFlavorsSearch.filter({$0.name.wrappedValue.hasPrefix(letter)}), id: \.self.id) { component in
                                                 if isShowingLikes  {
                                                     if component.isUnwanted.wrappedValue == false && component.matchesCurrentSearch.wrappedValue {
                                                         PreferencesCheckListCell(ingredient: component, isShowingPreferences: isShowingLikes)
@@ -39,7 +39,7 @@ struct BasicListView: View {
                                                 }
                                             }
                                         } else {
-                                            ForEach( $viewModel.basicCocktailComponentsForIngredientsView.filter({$0.name.wrappedValue.hasPrefix(letter)}), id: \.self.id) { ingredient in
+                                            ForEach( $viewModel.cocktailComponentsForBasicIngredientsSearch.filter({$0.name.wrappedValue.hasPrefix(letter)}), id: \.self.id) { ingredient in
                                                 if isShowingLikes  {
                                                     if ingredient.isUnwanted.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue {
                                                         PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)

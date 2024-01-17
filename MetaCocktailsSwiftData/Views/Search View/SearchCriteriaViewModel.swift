@@ -12,8 +12,8 @@ final class SearchCriteriaViewModel: ObservableObject {
     
     @Published var searchText: String = ""
     @Published var cocktailComponents = createComponentArray().sorted(by: { $0.name < $1.name })
-    @Published var basicCocktailComponentsForIngredientsView = createBasicComponentArrayForIngredients().sorted(by: { $0.name < $1.name })
-    @Published var basicCocktailComponentsForFlavorsView = createBasicComponentArrayForFlavors().sorted(by: { $0.name < $1.name })
+    @Published var cocktailComponentsForBasicIngredientsSearch = createBasicComponentArrayForIngredients().sorted(by: { $0.name < $1.name })
+    @Published var cocktailComponentsForBasicFlavorsSearch = createBasicComponentArrayForFlavors().sorted(by: { $0.name < $1.name })
     @Published var preferredCount = 0
     @Published var sections = [ResultViewSectionData]()
     @Published var enableMultipleSpiritSelection = false
@@ -131,6 +131,10 @@ final class SearchCriteriaViewModel: ObservableObject {
         for flavor in Flavor.allCases {
             array.append(CocktailComponent(for: flavor))
         }
+        
+//        for c in array {
+//            print("\(c.name), \(c.isFlavor)")
+//        }
         return array
     }
 
@@ -149,11 +153,12 @@ final class SearchCriteriaViewModel: ObservableObject {
             
             matches += 1
         }
-        print("Returning a match count of \(matches) for \(cocktail.cocktailName)")
+        //print("Returning a match count of \(matches) for \(cocktail.cocktailName)")
         return matches
     }
     func convertTagsAndSpecToStrings(for cocktail: Cocktail) -> [String] {
         var strings: [String] = [String]()
+        strings.append(contentsOf: cocktail.spec.map({$0.ingredient.name}))
         if let booze = cocktail.compiledTags.booze {
             strings.append(contentsOf: booze.map({$0.name}))
         }
@@ -168,6 +173,9 @@ final class SearchCriteriaViewModel: ObservableObject {
         }
         if let profiles = cocktail.compiledTags.profiles {
             strings.append(contentsOf: profiles.map({$0.rawValue}))
+        }
+        if let nA = cocktail.compiledTags.nA {
+            strings.append(contentsOf: nA.map({$0.name}))
         }
         return Array(Set(strings))
     }
@@ -277,33 +285,38 @@ final class SearchCriteriaViewModel: ObservableObject {
                     matches += 1
                 }
         }
+        //print("Returning a match count of \(matches) for \(cocktail.cocktailName)")
         return matches
     }
     private func convertAllTagsOmittingBaseSpirits(tags: Tags, cocktail: Cocktail) -> [String] {
         var strings: [String] = [String]()
-        if let boozeComponents = cocktail.compiledTags.booze {
+        if let boozeComponents = tags.booze {
             for booze in boozeComponents {
                 if !convertOnlyBaseSpiritsIntoStrings().contains(booze.name) {
                     strings.append(booze.name)
                 }
             }
         }
-        if let nA = cocktail.compiledTags.nA {
+        if let nA = tags.nA {
             strings.append(contentsOf: nA.map({$0.name}))
         }
-        if let flavors = cocktail.compiledTags.flavors {
+        if let flavors = tags.flavors {
             strings.append(contentsOf: flavors.map({$0.rawValue}))
         }
-        if let styles = cocktail.compiledTags.styles {
+        if let styles = tags.styles {
             strings.append(contentsOf: styles.map({$0.rawValue}))
         }
-        if let textures = cocktail.compiledTags.textures {
+        if let textures = tags.textures {
             strings.append(contentsOf: textures.map({$0.rawValue}))
         }
-        if let profiles = cocktail.compiledTags.profiles {
+        if let profiles = tags.profiles {
             strings.append(contentsOf: profiles.map({$0.rawValue}))
         }
-        return strings
+        //print("The cocktail \(cocktail.cocktailName) has the following tags:")
+        for g in strings{
+            print(g)
+        }
+        return Array(Set(strings))
         
     }
     private func convertOnlyBaseSpiritsIntoStrings() -> [String] {

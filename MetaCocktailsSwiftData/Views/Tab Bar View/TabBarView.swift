@@ -13,7 +13,7 @@ struct TabBarView: View {
         TabView {
 
 //            SearchCriteriaView(isShowingIngredientsList: .constant(true), isShowingPreferences: true, selectedLikesOrDislikes: .likes)
-            BasicSearchView(isShowingIngredientsList: .constant(true), isShowingPreferences: true, isShowingFlavors: true)
+            BasicSearchView(isShowingPreferences: true, isShowingFlavors: true)
                 .tabItem { Label("Search", systemImage: "magnifyingglass.circle.fill") }
 
             CocktailListView()

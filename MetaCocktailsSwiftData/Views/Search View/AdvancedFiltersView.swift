@@ -38,14 +38,7 @@ struct AdvancedFiltersView: View {
                 
                 HStack {
                     NavigationLink {
-                        
-                        
                         SearchResultsView(viewModel: viewModel)
-                        
-                            .onAppear {
-
-                                viewModel.getFilteredCocktails()
-                            }
                     } label: {
                         Text("SEARCH!")
                             .font(.footnote).bold()
