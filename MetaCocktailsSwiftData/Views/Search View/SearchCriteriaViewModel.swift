@@ -154,7 +154,6 @@ final class SearchCriteriaViewModel: ObservableObject {
     }
     func convertTagsAndSpecToStrings(for cocktail: Cocktail) -> [String] {
         var strings: [String] = [String]()
-        strings.append(contentsOf: cocktail.spec.map({ $0.ingredient.name}))
         if let booze = cocktail.compiledTags.booze {
             strings.append(contentsOf: booze.map({$0.name}))
         }
