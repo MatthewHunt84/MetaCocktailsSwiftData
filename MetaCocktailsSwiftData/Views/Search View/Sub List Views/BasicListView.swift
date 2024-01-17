@@ -16,7 +16,7 @@ struct BasicListView: View {
     var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     
     var body: some View {
-        ZStack{
+        
             VStack{
                 ScrollView {
                     ScrollViewReader { value in
@@ -63,26 +63,27 @@ struct BasicListView: View {
                             }
                             .listStyle(.plain)
                             
-                            HStack{
-                                VStack {
-                                    ForEach(0..<alphabet.count, id: \.self) { i in
-                                        Button(action: {
-                                            withAnimation {
-                                                value.scrollTo(alphabet[i], anchor: .top)
-                                            }
-                                            
-                                        }, label: {
-                                            Text("\(alphabet[i])")
-                                                .font(.subheadline).bold()
-                                                .frame(width: 35, height: 12)
-                                        })
-                                        .foregroundStyle(Color(.black))
-                                        .buttonStyle(ScaleButtonStyle())
+                            
+                            VStack {
+                                ForEach(0..<alphabet.count, id: \.self) { i in
+                                    Button(action: {
+                                        withAnimation {
+                                            value.scrollTo(alphabet[i], anchor: .top)
+                                        }
                                         
-                                        
-                                    }
+                                    }, label: {
+                                        Text("\(alphabet[i])")
+                                            .font(.subheadline).bold()
+                                            //.frame(width: 35, height: 10)
+                                    })
+                                    .foregroundStyle(Color(.black))
+                                    .buttonStyle(ScaleButtonStyle())
+                                    
+                                    
                                 }
                             }
+                            .containerRelativeFrame(.vertical, count: 1, spacing: 0)
+                            
                             
                         }
                     }
@@ -90,7 +91,7 @@ struct BasicListView: View {
                 .scrollDisabled(true)
                 
             }
-        }
+       
     }
 }
 

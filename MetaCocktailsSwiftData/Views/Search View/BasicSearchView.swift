@@ -45,6 +45,7 @@ struct BasicSearchView: View {
                 }
                 
                 BasicListView(isShowingLikes: $isShowingPreferences, isShowingFlavors: $isShowingFlavors)
+                    
                 HStack {
                     NavigationLink {
                         SearchResultsView(viewModel: viewModel)
@@ -72,10 +73,10 @@ struct BasicSearchView: View {
                     .font(.footnote).bold()
                     .buttonStyle(whiteButton())
                     Menu("Search Type") {
-                        Button("Search with flavors.", action: {
+                        Button("Search by flavor.", action: {
                             isShowingFlavors = true
                         })
-                        Button("Search with ingredients.", action: {
+                        Button("Search by ingredient.", action: {
                            isShowingFlavors = false
                         })
                     }
