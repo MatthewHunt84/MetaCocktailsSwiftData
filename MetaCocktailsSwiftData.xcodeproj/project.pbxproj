@@ -72,10 +72,10 @@
 		1AFDB7E02AE37417000A3812 /* WhiteNegroni.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFDB7DF2AE37417000A3812 /* WhiteNegroni.swift */; };
 		4D09E65F2B146B9500D38C35 /* Saturn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D09E65E2B146B9500D38C35 /* Saturn.swift */; };
 		4D1F146C2B50B24F00FC3B85 /* BasicSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1F146B2B50B24F00FC3B85 /* BasicSearchView.swift */; };
-		4D1F146E2B50B27C00FC3B85 /* AdvancedFiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1F146D2B50B27C00FC3B85 /* AdvancedFiltersView.swift */; };
 		4D1F14722B50B64500FC3B85 /* BasicListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1F14712B50B64500FC3B85 /* BasicListView.swift */; };
 		4D1F15462B55B76F00FC3B85 /* SunnySide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1F15452B55B76F00FC3B85 /* SunnySide.swift */; };
 		4D1F15482B564DB600FC3B85 /* ResultsConfigurationMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1F15472B564DB600FC3B85 /* ResultsConfigurationMenu.swift */; };
+		4D4D9EE02B5868C2004E7EA5 /* Gimlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4D9EDF2B5868C2004E7EA5 /* Gimlet.swift */; };
 		4DB1C0B92B46D4E600943C69 /* CocktailComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB1C0B82B46D4E600943C69 /* CocktailComponent.swift */; };
 		4DB1C0BC2B46D63300943C69 /* CocktailResultListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB1C0BB2B46D63300943C69 /* CocktailResultListView.swift */; };
 		4DB1C0BE2B46D74B00943C69 /* ResultViewSectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB1C0BD2B46D74B00943C69 /* ResultViewSectionData.swift */; };
@@ -167,10 +167,10 @@
 		1AFDB7DF2AE37417000A3812 /* WhiteNegroni.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteNegroni.swift; sourceTree = "<group>"; };
 		4D09E65E2B146B9500D38C35 /* Saturn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saturn.swift; sourceTree = "<group>"; };
 		4D1F146B2B50B24F00FC3B85 /* BasicSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicSearchView.swift; sourceTree = "<group>"; };
-		4D1F146D2B50B27C00FC3B85 /* AdvancedFiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedFiltersView.swift; sourceTree = "<group>"; };
 		4D1F14712B50B64500FC3B85 /* BasicListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicListView.swift; sourceTree = "<group>"; };
 		4D1F15452B55B76F00FC3B85 /* SunnySide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnySide.swift; sourceTree = "<group>"; };
 		4D1F15472B564DB600FC3B85 /* ResultsConfigurationMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsConfigurationMenu.swift; sourceTree = "<group>"; };
+		4D4D9EDF2B5868C2004E7EA5 /* Gimlet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gimlet.swift; sourceTree = "<group>"; };
 		4DB1C0B82B46D4E600943C69 /* CocktailComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailComponent.swift; sourceTree = "<group>"; };
 		4DB1C0BB2B46D63300943C69 /* CocktailResultListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailResultListView.swift; sourceTree = "<group>"; };
 		4DB1C0BD2B46D74B00943C69 /* ResultViewSectionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewSectionData.swift; sourceTree = "<group>"; };
@@ -277,6 +277,7 @@
 				1AFDB7C32AE3305F000A3812 /* Emerald.swift */,
 				1AFDB7A92ADF20B5000A3812 /* French75.swift */,
 				1AFDB7AB2ADF22AD000A3812 /* French75Cognac.swift */,
+				4D4D9EDF2B5868C2004E7EA5 /* Gimlet.swift */,
 				1AFDB7AD2ADF24A9000A3812 /* GinFizz.swift */,
 				1AFDB7AF2ADF2513000A3812 /* JungleBird.swift */,
 				1AFDB7BB2AE2FF69000A3812 /* LastWord.swift */,
@@ -401,7 +402,6 @@
 				F4F7429F2AD643A500161A93 /* SearchCriteriaViewModel.swift */,
 				1AC386A92AAABED00064F52A /* SearchCriteriaView.swift */,
 				4D1F146B2B50B24F00FC3B85 /* BasicSearchView.swift */,
-				4D1F146D2B50B27C00FC3B85 /* AdvancedFiltersView.swift */,
 				1AC386AA2AAABED00064F52A /* SearchBarView.swift */,
 				F4B0ABF22B13FB2A00336D05 /* SearchResultsView.swift */,
 			);
@@ -702,10 +702,10 @@
 				1AC386C22AAABED10064F52A /* TabBarView.swift in Sources */,
 				1AD87A272AE8B65800859028 /* CloverClub.swift in Sources */,
 				F4F742A02AD643A500161A93 /* SearchCriteriaViewModel.swift in Sources */,
+				4D4D9EE02B5868C2004E7EA5 /* Gimlet.swift in Sources */,
 				1AC386B52AAABED10064F52A /* StandardButtonStyle.swift in Sources */,
 				1AC386AF2AAABED10064F52A /* XDismissButton.swift in Sources */,
 				1AFDB7DA2AE35ECA000A3812 /* MintJulep.swift in Sources */,
-				4D1F146E2B50B27C00FC3B85 /* AdvancedFiltersView.swift in Sources */,
 				1AC386B92AAABED10064F52A /* PrepRecipeDescriptions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

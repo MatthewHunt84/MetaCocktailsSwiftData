@@ -25,29 +25,29 @@ struct BasicListView: View {
                                 ForEach(alphabet, id: \.self) { letter in
                                     Section {
                                         if isShowingFlavors {
-                                            ForEach( $viewModel.cocktailComponentsForBasicFlavorsSearch.filter({$0.name.wrappedValue.hasPrefix(letter)}), id: \.self.id) { component in
+                                            ForEach( $viewModel.cocktailComponents.filter({$0.name.wrappedValue.hasPrefix(letter)}), id: \.self.id) { component in
                                                 if isShowingLikes  {
-                                                    if component.isUnwanted.wrappedValue == false && component.matchesCurrentSearch.wrappedValue {
+                                                    if component.isUnwanted.wrappedValue == false && component.matchesCurrentSearch.wrappedValue && (component.isFlavor.wrappedValue || component.isSpirit.wrappedValue)  {
                                                         PreferencesCheckListCell(ingredient: component, isShowingPreferences: isShowingLikes)
                                                         
                                                     }
                                                 } else {
-                                                    if component.isPreferred.wrappedValue == false && component.matchesCurrentSearch.wrappedValue  {
+                                                    if component.isPreferred.wrappedValue == false && component.matchesCurrentSearch.wrappedValue && (component.isFlavor.wrappedValue || component.isSpirit.wrappedValue)  {
                                                         PreferencesCheckListCell(ingredient: component, isShowingPreferences: isShowingLikes)
                                                             .tint(.red)
                                                     }
                                                 }
                                             }
                                         } else {
-                                            ForEach( $viewModel.cocktailComponentsForBasicIngredientsSearch.filter({$0.name.wrappedValue.hasPrefix(letter)}), id: \.self.id) { ingredient in
+                                            ForEach( $viewModel.cocktailComponents.filter({$0.name.wrappedValue.hasPrefix(letter)}), id: \.self.id) { component in
                                                 if isShowingLikes  {
-                                                    if ingredient.isUnwanted.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue {
-                                                        PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
+                                                    if component.isUnwanted.wrappedValue == false && component.matchesCurrentSearch.wrappedValue && (component.isNA.wrappedValue || component.isSpirit.wrappedValue) {
+                                                        PreferencesCheckListCell(ingredient: component, isShowingPreferences: isShowingLikes)
                                                         
                                                     }
                                                 } else {
-                                                    if ingredient.isPreferred.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue  {
-                                                        PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
+                                                    if component.isPreferred.wrappedValue == false && component.matchesCurrentSearch.wrappedValue && (component.isNA.wrappedValue || component.isSpirit.wrappedValue) {
+                                                        PreferencesCheckListCell(ingredient: component, isShowingPreferences: isShowingLikes)
                                                             .tint(.red)
                                                     }
                                                 }

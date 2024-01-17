@@ -12,8 +12,6 @@ final class SearchCriteriaViewModel: ObservableObject {
     
     @Published var searchText: String = ""
     @Published var cocktailComponents = createComponentArray().sorted(by: { $0.name < $1.name })
-    @Published var cocktailComponentsForBasicIngredientsSearch = createBasicComponentArrayForIngredients().sorted(by: { $0.name < $1.name })
-    @Published var cocktailComponentsForBasicFlavorsSearch = createBasicComponentArrayForFlavors().sorted(by: { $0.name < $1.name })
     @Published var preferredCount = 0
     @Published var sections = [ResultViewSectionData]()
     @Published var enableMultipleSpiritSelection = false
@@ -53,6 +51,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         self.objectWillChange.send()
     }
     func selectedPreferredIngredients() -> [CocktailComponent] {
+        
        return self.cocktailComponents.filter({ $0.isPreferred })
     }
     func selectedUnwantedIngredients() -> [CocktailComponent] {
@@ -109,35 +108,6 @@ final class SearchCriteriaViewModel: ObservableObject {
         
         return array
     }
-    static func createBasicComponentArrayForIngredients() -> [CocktailComponent] {
-        var array = [CocktailComponent]()
-        let convertedBoozeArray: [CocktailComponent] = SearchCriteriaViewModel.generatedBoozeCocktailComponents
-        let convertedNAArray: [CocktailComponent] = SearchCriteriaViewModel.generatedNACocktailComponents
-        for component in convertedBoozeArray {
-            array.append(component)
-        }
-        for component in convertedNAArray {
-            array.append(component)
-        }
-        
-        return array
-    }
-    static func createBasicComponentArrayForFlavors() -> [CocktailComponent] {
-        var array = [CocktailComponent]()
-        let convertedBoozeArray: [CocktailComponent] = SearchCriteriaViewModel.generatedBoozeCocktailComponents
-        for component in convertedBoozeArray {
-            array.append(component)
-        }
-        for flavor in Flavor.allCases {
-            array.append(CocktailComponent(for: flavor))
-        }
-        
-//        for c in array {
-//            print("\(c.name), \(c.isFlavor)")
-//        }
-        return array
-    }
-
     private func filterUnwantedCocktails(cocktailComponentArray: [CocktailComponent], cocktails: [Cocktail]) -> [Cocktail] {
          cocktails.filter { cocktail in
              cocktailComponentArray.allSatisfy { unwantedComponent in
@@ -150,10 +120,8 @@ final class SearchCriteriaViewModel: ObservableObject {
         // compare preferredComponent against current cocktail of loop, then return number of matches.
         var matches = currentCount
         if convertTagsAndSpecToStrings(for: cocktail).contains(preferredComponent.name){
-            
             matches += 1
         }
-        //print("Returning a match count of \(matches) for \(cocktail.cocktailName)")
         return matches
     }
     func convertTagsAndSpecToStrings(for cocktail: Cocktail) -> [String] {
@@ -216,10 +184,6 @@ final class SearchCriteriaViewModel: ObservableObject {
                 return dataShells
             }
         }()
-        for p in selectedPreferredIngredients() {
-            print(p.name)
-        }
-        
         /**Then, loop over every cocktail in the startingCocktailsArray and pull out the cocktails that match with > 50% of the ingredients in the preferredArray. Keeping track of the matched count, add them to the appropriate object in the array of finalMatchedCocktails. */
         for cocktail in startingCocktails {
             
@@ -285,7 +249,6 @@ final class SearchCriteriaViewModel: ObservableObject {
                     matches += 1
                 }
         }
-        //print("Returning a match count of \(matches) for \(cocktail.cocktailName)")
         return matches
     }
     private func convertAllTagsOmittingBaseSpirits(tags: Tags, cocktail: Cocktail) -> [String] {
@@ -312,7 +275,6 @@ final class SearchCriteriaViewModel: ObservableObject {
         if let profiles = tags.profiles {
             strings.append(contentsOf: profiles.map({$0.rawValue}))
         }
-        //print("The cocktail \(cocktail.cocktailName) has the following tags:")
         for g in strings{
             print(g)
         }

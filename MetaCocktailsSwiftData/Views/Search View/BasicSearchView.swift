@@ -14,23 +14,10 @@ struct BasicSearchView: View {
     @State var selectedFlavorsOrIngredients: FlavorsOrIngredient = .flavors
     @State var isShowingFlavors: Bool 
  
- 
-    
     var body: some View {
         
         NavigationStack {
             VStack{
-                
-                Picker("Choose Your Weapon.", selection: $selectedFlavorsOrIngredients) {
-                    ForEach(FlavorsOrIngredient.allCases, id: \.self) {
-                        Text($0.rawValue)
-                    }
-                }
-                .pickerStyle(.segmented)
-                .onChange(of: selectedFlavorsOrIngredients) {
-                    isShowingFlavors.toggle()
-                }
-                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 80))
                 HStack {
                     Picker("Pick Out Likes Or Dislikes", selection: $selectedLikesOrDislikes) {
                         ForEach(LikesOrDislikes.allCases, id: \.self) {
@@ -81,13 +68,19 @@ struct BasicSearchView: View {
                         Text("Clear Search")
                           
                     }
-                    .padding(10)
+                    
                     .font(.footnote).bold()
-                    .background(Color(UIColor.systemBackground))
-                    .clipShape(RoundedRectangle(cornerRadius: 140))
-                    .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
-                    .foregroundColor(Color(UIColor.systemCyan))
-
+                    .buttonStyle(whiteButton())
+                    Menu("Search Type") {
+                        Button("Search with flavors.", action: {
+                            isShowingFlavors = true
+                        })
+                        Button("Search with ingredients.", action: {
+                           isShowingFlavors = false
+                        })
+                    }
+                    .font(.footnote).bold()
+                    .buttonStyle(whiteButton())
                 }
             }
             .navigationTitle("Select Ingredients")
