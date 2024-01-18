@@ -9,7 +9,7 @@ import SwiftUI
 
 
 final class SearchCriteriaViewModel: ObservableObject {
-    
+   
     @Published var searchText: String = ""
     @Published var cocktailComponents = createComponentArray().sorted(by: { $0.name < $1.name })
     @Published var preferredCount = 0
@@ -228,27 +228,27 @@ final class SearchCriteriaViewModel: ObservableObject {
     }
     private func countMatchesForMultipleSpirits(for cocktail: Cocktail) -> Int {
         // compare preferredComponent against current cocktail of loop, then return number of matches.
-        var matches = 0
         var justBases = [String]()
         var alreadyMatchedSpec = 0
         if let booze = cocktail.compiledTags.booze {
-            for booz in booze {
-                if !convertOnlyBaseSpiritsIntoStrings().contains(booz.name) {
-                    justBases.append(booz.name)
+            for booze in booze {
+                if !convertOnlyBaseSpiritsIntoStrings().contains(booze.name) {
+                    justBases.append(booze.name)
                 }
+                
             }
         }
-        for component in selectedPreferredIngredients() {
+        var matches = selectedPreferredIngredients().reduce(into: 0, { partialResult, component in
             for spec in justBases {
                 if spec == component.name && alreadyMatchedSpec == 0 {
-                    matches += 1
+                    partialResult += 1
                     alreadyMatchedSpec += 1
                 }
             }
             if convertAllTagsOmittingBaseSpirits(tags: cocktail.compiledTags, cocktail: cocktail).contains(component.name){
-                    matches += 1
+                    partialResult += 1
                 }
-        }
+        })
         return matches
     }
     private func convertAllTagsOmittingBaseSpirits(tags: Tags, cocktail: Cocktail) -> [String] {
@@ -274,9 +274,6 @@ final class SearchCriteriaViewModel: ObservableObject {
         }
         if let profiles = tags.profiles {
             strings.append(contentsOf: profiles.map({$0.rawValue}))
-        }
-        for g in strings{
-            print(g)
         }
         return Array(Set(strings))
         

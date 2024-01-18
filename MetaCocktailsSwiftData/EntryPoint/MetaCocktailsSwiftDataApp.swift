@@ -16,6 +16,7 @@ struct MetaCocktailsSwiftDataApp: App {
         WindowGroup {
             TabBarView()
                 .environmentObject(criteria)
+                .preferredColorScheme(.dark)
         }
         .modelContainer(for: Cocktail.self)
     }

@@ -20,7 +20,7 @@ struct PreferencesCheckListCell: View {
                     
                 }
                 .padding(.horizontal, 20)
-                .listItemTint(Color(.brandPrimaryBlue))
+                .tint(Color(.brandPrimaryGreen))
                 
             } else {
                 
@@ -29,6 +29,7 @@ struct PreferencesCheckListCell: View {
                     
                 }
                 .padding(.horizontal, 20)
+                .tint(Color(.brandPrimaryRed))
             }
         }
     }

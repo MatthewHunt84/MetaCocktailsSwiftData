@@ -28,7 +28,7 @@ struct ListView: View {
                         ForEach($viewModel.cocktailComponents) { ingredient in
                             if ingredient.isPreferred.wrappedValue == false && ingredient.matchesCurrentSearch.wrappedValue && (ingredient.preferenceType.wrappedValue == selectedList || selectedList == .all) {
                                 PreferencesCheckListCell(ingredient: ingredient, isShowingPreferences: isShowingLikes)
-                                    .tint(.red)
+                                    
                             }
                         }
                     }
@@ -61,7 +61,7 @@ struct ListView: View {
                                             .font(.headline)
                                             .padding(.leading, 5)
                                     }
-                                    .tint(Color(.green))
+                                    .tint(Color(.brandPrimaryGreen))
                                 }
                             }
                         } else {
@@ -82,7 +82,7 @@ struct ListView: View {
                                             .font(.headline)
                                             .padding(.leading, 5)
                                     }
-                                    .tint(Color(.red))
+                                    .tint(Color(.brandPrimaryRed))
                                 }
                             }
                             
@@ -114,7 +114,7 @@ struct ListView: View {
                                         .font(.headline)
                                         .padding(.leading, 5)
                                 }
-                                .tint(Color(.green))
+                                .tint(Color(.brandPrimaryGreen))
                             }
                         }
                     } else  {
@@ -135,7 +135,7 @@ struct ListView: View {
                                         .font(.headline)
                                         .padding(.leading, 5)
                                 }
-                                .tint(Color(.red))
+                                .tint(Color(.brandPrimaryRed))
                             }
                         }
                         

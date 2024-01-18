@@ -10,68 +10,73 @@ import SwiftUI
 struct CocktailListView: View {
     @EnvironmentObject var criteria: SearchCriteriaViewModel
     @StateObject var viewModel = CocktailListViewModel()
-    @State var isShowingIngredientsList = false
-    @State private var colorNumber = 0
-    @Environment(\.modelContext) private var modelContext
-    private var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    //@Environment(\.modelContext) private var modelContext
+    @State private var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     
     
     var body: some View {
         NavigationStack{
-            ZStack {
+            ZStack{
                 VStack{
                     HStack {
                         Text("Cocktails")
-                            .fontWeight(.bold)
-                            .font(.largeTitle)
-                            .padding()
+                            .font(.largeTitle).bold()
+                            .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
                         Spacer()
                     }
-                    ScrollView {
-                        ScrollViewReader { value in
-                            HStack{
-                                List{
-                                    ForEach(alphabet, id: \.self) { letter in
-                                        Section {
-                                            ForEach(viewModel.cocktails.filter { $0.cocktailName.hasPrefix(letter) }, id: \.self) { cocktail in
-                                                NavigationLink {
-                                                    RecipeIngredientsView(cocktail: cocktail)
-                                                } label: {
-                                                    Text(cocktail.cocktailName)
-                                                }
-                                            }
-                                        } header: {
-                                            Text("\(letter)")
-                                                .fontWeight(.bold)
-                                                .font(.title)
-                                        }.id(letter)
-                                    }
-                                }
-                                .listStyle(.plain)
+                    GeometryReader { geometry in
+                        ScrollView {
+                            ScrollViewReader { value in
                                 HStack{
-                                    VStack {
-                                        ForEach(0..<alphabet.count, id: \.self) { i in
-                                            Button(action: {
-                                                withAnimation {
-                                                    value.scrollTo(alphabet[i], anchor: .top)
+                                    List{
+                                        ForEach(alphabet, id: \.self) { letter in
+                                            Section {
+                                                ForEach(viewModel.cocktails.filter { $0.cocktailName.hasPrefix(letter) }, id: \.self) { cocktail in
+                                                    NavigationLink {
+                                                        RecipeIngredientsView(cocktail: cocktail)
+                                                    } label: {
+                                                        Text(cocktail.cocktailName)
+                                                    }
                                                 }
-                                            }, label: {
-                                                Text("\(alphabet[i])")
-                                                    .font(.headline)
-                                                    .frame(width: 35, height: 16)
-                                            })
-                                            .foregroundStyle(Color(.black))
-                                            .buttonStyle(ScaleButtonStyle())
+                                            } header: {
+                                                Text("\(letter)")
+                                                    .fontWeight(.bold)
+                                                    .font(.title)
+                                            }.id(letter)
                                         }
                                     }
+                                    .listStyle(.plain)
+                                    .frame(width: geometry.size.width * 0.91, height: geometry.size.height)
+                                    HStack{
+                                        
+                                        VStack {
+                                            
+                                            ForEach(0..<alphabet.count, id: \.self) { i in
+                                                Button(action: {
+                                                    withAnimation {
+                                                        value.scrollTo(alphabet[i], anchor: .top)
+                                                    }
+                                                }, label: {
+                                                    Text("\(alphabet[i])")
+                                                        .font(.subheadline).bold()
+                                                })
+                                                .buttonStyle(ScaleButtonStyle())
+                                            }
+                                            
+                                            
+                                        }
+                                    }
+                                    
+                                    .frame(width: geometry.size.width * 0.09, height: geometry.size.height, alignment: .center)
                                 }
                             }
                         }
+                        .scrollDisabled(true)
                     }
-                    .scrollDisabled(true)
                 }
+                
+                
             }
-            .containerRelativeFrame(.vertical, count: 1, spacing: 0)
             
         }
     }
@@ -80,7 +85,7 @@ struct CocktailListView: View {
 
 struct CocktailListView_Previews: PreviewProvider {
     static var previews: some View {
-        CocktailListView()
+        CocktailListView(viewModel: CocktailListViewModel())
             .environmentObject(SearchCriteriaViewModel())
     }
 }

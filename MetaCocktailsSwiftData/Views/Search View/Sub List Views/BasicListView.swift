@@ -17,7 +17,8 @@ struct BasicListView: View {
     
     var body: some View {
         
-            VStack{
+        VStack{
+            GeometryReader { geometry in
                 ScrollView {
                     ScrollViewReader { value in
                         HStack{
@@ -34,7 +35,7 @@ struct BasicListView: View {
                                                 } else {
                                                     if component.isPreferred.wrappedValue == false && component.matchesCurrentSearch.wrappedValue && (component.isFlavor.wrappedValue || component.isSpirit.wrappedValue)  {
                                                         PreferencesCheckListCell(ingredient: component, isShowingPreferences: isShowingLikes)
-                                                            .tint(.red)
+                                                            .tint(.brandPrimaryRed)
                                                     }
                                                 }
                                             }
@@ -48,7 +49,7 @@ struct BasicListView: View {
                                                 } else {
                                                     if component.isPreferred.wrappedValue == false && component.matchesCurrentSearch.wrappedValue && (component.isNA.wrappedValue || component.isSpirit.wrappedValue) {
                                                         PreferencesCheckListCell(ingredient: component, isShowingPreferences: isShowingLikes)
-                                                            .tint(.red)
+                                                            .tint(.brandPrimaryRed)
                                                     }
                                                 }
                                             }
@@ -62,7 +63,7 @@ struct BasicListView: View {
                                 
                             }
                             .listStyle(.plain)
-                            
+                            .frame(width: geometry.size.width * 0.9, height: geometry.size.height, alignment: .leading)
                             
                             VStack {
                                 ForEach(0..<alphabet.count, id: \.self) { i in
@@ -70,28 +71,23 @@ struct BasicListView: View {
                                         withAnimation {
                                             value.scrollTo(alphabet[i], anchor: .top)
                                         }
-                                        
                                     }, label: {
                                         Text("\(alphabet[i])")
                                             .font(.subheadline).bold()
-                                            //.frame(width: 35, height: 10)
+                                            
                                     })
-                                    .foregroundStyle(Color(.black))
                                     .buttonStyle(ScaleButtonStyle())
-                                    
-                                    
                                 }
                             }
-                            .containerRelativeFrame(.vertical, count: 1, spacing: 0)
-                            
-                            
+                            .frame(width: geometry.size.width * 0.1, height: geometry.size.height, alignment: .center)
                         }
                     }
+                    
+                    
                 }
                 .scrollDisabled(true)
-                
             }
-       
+        }
     }
 }
 
