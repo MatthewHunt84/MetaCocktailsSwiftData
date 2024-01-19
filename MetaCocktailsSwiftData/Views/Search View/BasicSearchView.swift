@@ -13,10 +13,12 @@ struct BasicSearchView: View {
     @State var selectedLikesOrDislikes: LikesOrDislikes = .likes
     @State var selectedFlavorsOrIngredients: FlavorsOrIngredient = .flavors
     @State var isShowingFlavors: Bool = true
- 
+    
 //    init() {
-//        UISegmentedControl.appearance().selectedSegmentTintColor = .brandPrimaryYellow
-//        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor : UIColor.black], for: .selected)
+//       
+////        UISegmentedControl.appearance().selectedSegmentTintColor = .brandPrimaryYellow
+////        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor : UIColor.black], for: .selected)
+//       
 //    }
     var body: some View {
         
@@ -24,7 +26,7 @@ struct BasicSearchView: View {
             VStack{
                 GeometryReader { geometry in
                     VStack{
-                        
+                      
                         HStack {
                             Text("Select Ingredients")
                                 .font(.largeTitle).bold()

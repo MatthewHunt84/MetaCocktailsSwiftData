@@ -66,18 +66,27 @@ struct BasicListView: View {
                             .frame(width: geometry.size.width * 0.9, height: geometry.size.height, alignment: .leading)
                             
                             VStack {
-                                ForEach(0..<alphabet.count, id: \.self) { i in
-                                    Button(action: {
-                                        withAnimation {
-                                            value.scrollTo(alphabet[i], anchor: .top)
-                                        }
-                                    }, label: {
-                                        Text("\(alphabet[i])")
-                                            .font(.subheadline).bold()
+                            
+                                    ForEach(0..<alphabet.count, id: \.self) { i in
+                                        Button(action: {
+                                            withAnimation {
+                                                value.scrollTo(alphabet[i], anchor: .top)
+                                            }
+                                        }, label: {
+                                            Text("\(alphabet[i])")
+                                                .font(.subheadline).bold()
+                                                
                                             
-                                    })
-                                    .buttonStyle(ScaleButtonStyle())
-                                }
+                                        })
+                                        .buttonStyle(ScaleButtonStyle())
+                                        .frame(width: geometry.size.width, height: geometry.size.height/47, alignment: .center)
+                                        .offset(x: -4)
+                                        
+                                        
+                                    }
+                                   
+                                
+                                
                             }
                             .frame(width: geometry.size.width * 0.1, height: geometry.size.height, alignment: .center)
                         }

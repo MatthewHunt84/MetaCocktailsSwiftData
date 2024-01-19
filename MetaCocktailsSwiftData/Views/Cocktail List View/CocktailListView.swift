@@ -58,9 +58,11 @@ struct CocktailListView: View {
                                                     }
                                                 }, label: {
                                                     Text("\(alphabet[i])")
-                                                        .font(.subheadline).bold()
+                                                        .font(.headline).bold()
                                                 })
                                                 .buttonStyle(ScaleButtonStyle())
+                                                .frame(width: geometry.size.width, height: geometry.size.height/40, alignment: .center)
+                                                .offset(x: -4, y: 5)
                                             }
                                             
                                             
