@@ -207,6 +207,7 @@ enum MeasurementUnit: String, Codable {
     case sliceOf        = "slice of"
     case dash           = "dash"
     case dashes         = "dashes"
+    case drops          = "drops"
     case berries        = "berries"
     case leaves         = "leaves"
     case ml             = "ml"

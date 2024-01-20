@@ -21,6 +21,8 @@ enum Garnish: String, Codable {
     case cucumberSlices            = "Cucumber Slices"
     case skeweredBlackberryAndSage = "Skewered blackberry and sage leaf"
     case lemonWheel                = "Lemon Wheel"
+    case lemongrass                = "Lemongrass spears"
+    case chineseFiveSpice          = "Dusted Chinese five spice over the top of the pebble ice"
     case candiedGinger             = "Candied Ginger"
     case noGarnish                 = "No Garnish"
     case halfOrangeWheel           = "Half Orange Wheel"

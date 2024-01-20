@@ -18,7 +18,12 @@ struct SearchCriteriaView: View {
 
     var body: some View {
         NavigationStack {
-            
+            HStack {
+                Text(selectedList.getTitle())
+                    .font(.largeTitle).bold()
+                    .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
+                Spacer()
+            }
             VStack {
                 Picker("Choose a preferences list", selection: $selectedList){
                     ForEach(PreferenceType.allCases, id: \.self) {
@@ -27,15 +32,20 @@ struct SearchCriteriaView: View {
                 }
                 .pickerStyle(.segmented)
                 Picker("Pick Out Likes Or Dislikes", selection: $selectedLikesOrDislikes) {
-                    ForEach(LikesOrDislikes.allCases, id: \.self) {
-                        Text($0.rawValue)
+                    ForEach(LikesOrDislikes.allCases, id: \.self) { s in
+                        Text(s.rawValue)
+                            .colorMultiply(s.getLikesOrDislikesColor())
+                        
                     }
                 }
                 .pickerStyle(.segmented)
                 .onChange(of: selectedLikesOrDislikes) {
                     isShowingPreferences.toggle()
                 }
-                .foregroundColor(Color.blue)
+                
+                
+                
+                
                 ListView(selectedList: $selectedList, navigationTitle: selectedList.getTitle(), isShowingLikes: $isShowingPreferences)
                 HStack {
                     NavigationLink {
@@ -44,7 +54,7 @@ struct SearchCriteriaView: View {
                         Text("SEARCH!")
                             .font(.footnote).bold()
                             .padding(EdgeInsets(top: 10, leading: 30, bottom: 10, trailing: 30))
-                            .background(viewModel.selectedPreferredIngredients().count == 0 ? Color(UIColor.systemGray) : Color.brandPrimaryOrange)
+                            .background(viewModel.selectedPreferredIngredients().count == 0 ? Color(UIColor.systemGray) : Color.brandPrimaryGreen)
                             .clipShape(RoundedRectangle(cornerRadius: 140))
                             .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
                             .foregroundColor(.white)
@@ -65,8 +75,6 @@ struct SearchCriteriaView: View {
                 }
                 
             }
-            .navigationTitle(selectedList.getTitle())
-            .navigationBarTitleDisplayMode(.large)
         }
     }
 }
@@ -105,6 +113,15 @@ enum LikesOrDislikes: String, CaseIterable {
     
     case likes = "Likes"
     case dislikes = "Dislikes"
+    
+    func getLikesOrDislikesColor() -> Color {
+        switch self {
+        case .likes:
+            Color(.brandPrimaryGreen)
+        case .dislikes:
+            Color(.brandPrimaryRed)
+        }
+    }
 }
 
 
