@@ -15,7 +15,7 @@ extension UIApplication {
 struct whiteButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-        .padding(10)
+        .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
         .background(Color(UIColor.systemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 40))
         .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
@@ -23,3 +23,4 @@ struct whiteButton: ButtonStyle {
         
     }
 }
+

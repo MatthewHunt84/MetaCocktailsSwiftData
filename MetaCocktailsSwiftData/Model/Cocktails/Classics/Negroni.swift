@@ -11,7 +11,7 @@ var negroni  =  Cocktail(cocktailName: "Negroni",
                          glasswareType: Glassware.doubleOld,
                          garnish: [.orangePeel],
                          ice: .bigRock,
-                         author: "Count Camillo Negroni",
+                         author: ["Count Camillo Negroni"],
                          spec: negroniSpec,
                          buildOrder: nil,
                          tags: negroniTags)

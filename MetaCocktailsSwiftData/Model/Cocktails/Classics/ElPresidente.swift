@@ -12,7 +12,7 @@ var elPresidente  = Cocktail(cocktailName: "El Presidente",
                              glasswareType: .coupe,
                              garnish: [.orangePeel, .maraschinoCherry],
                              ice: nil,
-                             author: "Constante Ribalaiuga",
+                             author: ["Constante Ribalaiuga"],
                              spec: elPresidenteSpec,
                              buildOrder: nil,
                              tags: elPresidenteTags)

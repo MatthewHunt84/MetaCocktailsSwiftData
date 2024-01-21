@@ -12,7 +12,7 @@ var cosmopolitan  = Cocktail(cocktailName: "Cosmopolitan",
                              glasswareType: .martini,
                              garnish: [.orangePeel],
                              ice: nil,
-                             author: "Cheryl Cook (Not Actually Dale DeGroff, but we still love Dale!)",
+                             author: ["Cheryl Cook (Not Actually Dale DeGroff, but we still love Dale!)"],
                              spec: cosmoSpec,
                              buildOrder: nil,
                              tags: cosmoTags)

@@ -11,7 +11,7 @@ var penicillin = Cocktail(cocktailName: "Penicillin",
                           glasswareType: Glassware.doubleOld,
                           garnish: [.candiedGinger],
                           ice: .bigRock,
-                          author: "Sasha Petraske",
+                          author: ["Sasha Petraske", Authors.milkAndHoney.rawValue],
                           spec: penicillinSpec,
                           buildOrder: penicillinBuild,
                           tags: penicillinTags)

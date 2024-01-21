@@ -11,16 +11,16 @@ var sazerac = Cocktail(cocktailName: "Sazerac",
                        glasswareType: .singleOld,
                        garnish: [.lemonPeel],
                        ice: nil,
-                       author: "Somewhere in New Orleans in the 1800's",
+                       author: ["Somewhere in New Orleans in the 1800's"],
                        spec: sazeracSpec,
                        buildOrder: sazeracBuild,
                        tags: sazeracTags)
 
 var sazeracSpec  = [CocktailIngredient(.syrups(.richDem), value: 2, unit: .barspoon),
                     CocktailIngredient(.whiskies(.ryeWhiskey), value: 2),
-                    CocktailIngredient(.otherAlcohol(.absinthe), value: 5, unit: .sprays),
-                    CocktailIngredient(.bitters(.peychauds), value: 4, unit: .dash),
-                    CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash)]
+                    CocktailIngredient(.bitters(.peychauds), value: 4, unit: .dashes),
+                    CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),
+                    CocktailIngredient(.otherAlcohol(.absinthe), value: 1, unit: .glassRinse),]
 
 var sazeracTags = Tags(profiles: [.spiritForward],
                        textures: [.rich],

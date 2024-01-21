@@ -16,7 +16,7 @@ var mojito = Cocktail(cocktailName: "Mojito",
                                    buildOrder: mojitoBuild,
                                    tags: mojitoTags)
 
-let mojitoSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 8, unit: .leaves),
+let mojitoSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
                                         CocktailIngredient(.juices(.lime), value: 0.75),
                                         CocktailIngredient(.syrups(.simple), value: 0.75),
                                         CocktailIngredient(.rums(.rumWhite), value: 1.5),

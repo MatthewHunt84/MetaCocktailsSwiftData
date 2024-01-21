@@ -8,7 +8,10 @@
 import SwiftUI
 
 
-struct Prep: Identifiable {
+struct Prep: Identifiable, Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(prepIngredientName)
+    }
     
     var id: Int
     var prepIngredientName: String

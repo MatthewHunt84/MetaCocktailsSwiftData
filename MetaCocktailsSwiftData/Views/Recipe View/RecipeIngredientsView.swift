@@ -11,30 +11,100 @@ struct RecipeIngredientsView: View {
     
     var cocktail: Cocktail
     let recipeSpacing: CGFloat = 2
+   
 
     var body: some View {
         
-        Text(cocktail.cocktailName.uppercased())
-            .font(.title2)
-        
-        Text("GW: \(cocktail.glasswareType.rawValue)")
-        
-        ForEach(cocktail.spec, id: \.id) { ingredient in
-            Text("\(ingredient.value, specifier: "%.2f") oz. \(ingredient.ingredient.name)")
-                .padding(recipeSpacing)
-        }
-        
-        if let garnishes = cocktail.garnish {
-            ForEach(garnishes, id: \.self) { garnish in
-                Text("G: \(garnish.rawValue)")
+        VStack{
+            
+            Text(cocktail.cocktailName)
+                .font(.largeTitle).bold()
+                .multilineTextAlignment(.center)
+            VStack{
+                Text("Glassware:")
+                    .font(.title3).bold()
+                Text(cocktail.glasswareType.rawValue)
             }
+            .padding(10)
+            VStack{
+                Text("Buid:")
+                    .font(.title3).bold()
+                    
+                
+                    ForEach(cocktail.spec, id: \.id) { ingredient in
+                        let number = NSNumber(value: ingredient.value)
+                        Text("\(number) \(ingredient.unit.rawValue) \(ingredient.ingredient.name)")
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 2, trailing: 0))
+                        .multilineTextAlignment(.center)
+                        
+                    }
+                
+            }
+            
+            if  cocktail.garnish != nil {
+                VStack{
+                    Text("Garnish:")
+                        .font(.title3).bold()
+                    if let garnishes = cocktail.garnish {
+                        ForEach(garnishes, id: \.self) { garnish in
+                            Text(garnish.rawValue)
+                                .multilineTextAlignment(.center)
+                        }
+                        
+                    }
+                }
+                .padding(10)
+            }
+            
+           
+            
+            
+            if let buildOrder = cocktail.buildOrder {
+                NavigationLink("Build Order") {
+                    BuildOrderView(buildOrder: buildOrder)
+                }
+                .buttonStyle(whiteButton())
+                .padding(EdgeInsets(top: 50, leading: 0, bottom: 50, trailing: 0))
+                
+                
+            }
+            if cocktail.author != nil {
+                AuthorView(cocktail: cocktail)
+                    
+                    
+            }
+            
+            //        TagView(for: cocktail)
+            
         }
-      
-        
-//        TagView(for: cocktail)
-        
     }
  
+}
+
+struct AuthorView: View {
+    var authors = ""
+    let cocktail: Cocktail
+    
+    init(cocktail: Cocktail) {
+        
+        self.cocktail = cocktail
+        
+        if let authorsVar = cocktail.author {
+            let authorsCombined = authorsVar.reduce("") { $0 + ", " + $1}
+            authors = authorsCombined
+        }
+        if authors != "" {
+            authors.removeFirst()
+        }
+    }
+    var body: some View {
+        VStack {
+            Text("Author:")
+                .font(.title3).bold()
+            Text(authors)
+                .multilineTextAlignment(.center)
+        }
+    }
 }
 
 //struct TagView: View {
@@ -145,7 +215,7 @@ struct RecipeIngredientsView: View {
 struct RecipeIngredientsView_Previews: PreviewProvider {
    
     static var previews: some View {
-        RecipeIngredientsView(cocktail: aperolSpritz)
+        RecipeIngredientsView(cocktail: beckyWithTheGoodHair)
             
     }
 }

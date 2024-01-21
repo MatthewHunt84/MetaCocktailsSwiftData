@@ -11,7 +11,7 @@ var beckyWithTheGoodHair = Cocktail(cocktailName: "Becky With The Good Hair",
                                     glasswareType: .stemmedGlassware,
                                     garnish: [.nutmeg],
                                     ice: nil,
-                                    author: "Saydee Canada",
+                                    author: ["Saydee Canada", Authors.williamsAndGraham.rawValue],
                                     spec: beckyWithTheGoodHairSpec,
                                     buildOrder: beckyWithTheGoodHairBuild,
                                     tags: beckyWithTheGoodHairTags)

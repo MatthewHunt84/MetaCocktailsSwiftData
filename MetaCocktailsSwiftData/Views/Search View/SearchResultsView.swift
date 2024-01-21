@@ -64,7 +64,7 @@ struct SearchResultsView: View {
                 .scrollIndicators(.hidden)
             }
            
-          CocktailResultList(viewModel: viewModel)
+            CocktailResultList(viewModel: viewModel, isLoading: $viewModel.isLoading)
         }
         .navigationBarTitleDisplayMode(.inline)
         .onAppear() {

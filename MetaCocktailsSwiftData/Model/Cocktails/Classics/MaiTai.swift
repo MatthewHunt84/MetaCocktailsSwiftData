@@ -11,7 +11,7 @@ var maiTai  = Cocktail(cocktailName: "Mai Tai",
                        glasswareType: .doubleOld,
                        garnish: [.mintBouquet, .orchid],
                        ice: .pebbleIce,
-                       author: "Victor (Trader Vic) Bergeron (1944)",
+                       author: ["Victor (Trader Vic) Bergeron (1944)"],
                        spec: maiTaiSpec,
                        tags: maiTaiTags)
 

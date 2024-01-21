@@ -15,7 +15,7 @@ var robRoy = Cocktail(cocktailName: "Rob Roy",
                          spec: robRoySpec,
                          tags: robRoyTags)
 
-var robRoySpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dash),
+var robRoySpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
                        CocktailIngredient(.fortifiedWines(.rougeVermouth), value: 1),
                        CocktailIngredient(.whiskies(.scotchBlended), value: 2)]
 

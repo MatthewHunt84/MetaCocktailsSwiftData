@@ -11,7 +11,7 @@ import SwiftUI
 var trinidadSour = Cocktail(cocktailName: "Trinidad Sour",
                             glasswareType: .coupe,
                             garnish: [.noGarnish],
-                            author: "Giuseppe Gonzalas",
+                            author: ["Giuseppe Gonzalas"],
                             spec: trinidadSourSpec,
                             buildOrder: nil,
                             tags: trinidadSourTags)

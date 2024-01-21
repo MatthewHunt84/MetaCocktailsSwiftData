@@ -10,7 +10,7 @@ import SwiftUI
 var piscoSour = Cocktail(cocktailName: "Pisco Sour",
                         glasswareType: .stemmedGlassware,
                         ice: nil,
-                        author: "Peru or Chile (We'll let them fight it out)",
+                        author: ["Peru or Chile (We'll let them fight it out)"],
                         spec: piscoSourSpec,
                         buildOrder: piscoSourBuild,
                         tags: piscoSourTags)

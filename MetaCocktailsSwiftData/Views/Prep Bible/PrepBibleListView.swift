@@ -12,30 +12,32 @@ struct PrepBibleListView: View {
     @StateObject var prepViewModel = PrepBibleViewModel()
 
     var body: some View {
-        
-        VStack {
-
-            NavigationView {
-                
-                List(prepViewModel.prepIngredients) { prepItem in
-                    PrepListCell(prepItem: prepItem)
-                        .onTapGesture {
-                            prepViewModel.isShowingPrepRecipe = true
-                            prepViewModel.selectedPrepIngredient = prepItem
-                            print("tab was tapped")
+        VStack{
+            NavigationStack {
+             
+                    HStack {
+                        Text("Prep Ingredients ⏲️")
+                            .font(.largeTitle).bold()
+                            .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
+                        Spacer()
+                    }
+//                    frame(width: g.size.width, height: g.size.height * 0.1, alignment: .top)
+                    List {
+                        ForEach(prepViewModel.prepIngredients, id: \.self) { prepItem in
+                            NavigationLink(prepItem.prepIngredientName){
+                                PrepRecipeView(prepRecipe: prepItem.prepRecipe)
+                            }
+                            
+                            
                         }
+                    }
+//                    frame(width: g.size.width, height: g.size.height * 0.9, alignment: .center)
+                        .listStyle(.plain)
+                    
                 }
-                .frame( maxWidth: .infinity)
-                .navigationTitle("Prep Ingredients ⏲️")
-                .listStyle(.plain)
-                .disabled(prepViewModel.isShowingPrepRecipe)
-            }
-            .blur(radius: prepViewModel.isShowingPrepRecipe ? 20 : 0)
-
-            if prepViewModel.isShowingPrepRecipe {
-                PrepRecipeView(isShowingPrepRecipe: $prepViewModel.isShowingPrepRecipe, prepRecipe: prepViewModel.selectedPrepIngredient!.prepRecipe)
-            }
+            
         }
+        
     }
 }
 

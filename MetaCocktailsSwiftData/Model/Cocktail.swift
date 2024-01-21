@@ -8,8 +8,15 @@
 import SwiftData
 import SwiftUI
 
-@Model
-class Cocktail {
+//@Model
+class Cocktail: Equatable, Hashable {
+    static func == (lhs: Cocktail, rhs: Cocktail) -> Bool {
+        return lhs.cocktailName == rhs.cocktailName
+    }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(cocktailName)
+    }
+    
     
     var id = UUID()
     var cocktailName: String
@@ -17,7 +24,7 @@ class Cocktail {
     var glasswareType: Glassware
     var garnish: [Garnish]?
     var ice: Ice?
-    var author: String?
+    var author: [String]?
     var spec: [CocktailIngredient]
     var buildOrder: Build?
     var tags: Tags
@@ -25,7 +32,7 @@ class Cocktail {
   
     
     
-    init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [Garnish]? = nil, ice: Ice? = nil, author: String? = nil, spec: [CocktailIngredient], buildOrder: Build? = nil, tags: Tags) {
+    init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [Garnish]? = nil, ice: Ice? = nil, author: [String]? = nil, spec: [CocktailIngredient], buildOrder: Build? = nil, tags: Tags) {
         self.id = id
         self.cocktailName = cocktailName
         self.imageAsset = imageAsset

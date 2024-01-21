@@ -11,7 +11,7 @@ var cropTop = Cocktail(cocktailName: "Crop Top",
                        glasswareType: .nickAndNora,
                             garnish: [.grapefruitExpression],
                             ice: nil,
-                            author: "Devon Tarby (2013)",
+                            author: ["Devon Tarby (2013)", Authors.deathAndCo.rawValue],
                             spec: cropTopSpec,
                             tags: cropTopTags)
 

@@ -11,7 +11,7 @@ var peanutButterFalcon = Cocktail(cocktailName: "Peanut Butter Falcon",
                                     glasswareType: .stemmedGlassware,
                                     garnish: nil,
                                     ice: nil,
-                                    author: "James Menkal (Williams and Graham)",
+                                    author: [Authors.jamesMenkal.rawValue, Authors.williamsAndGraham.rawValue],
                                     spec: peanutButterFalconSpec,
                                     buildOrder: peanutButterFalconBuild,
                                     tags: peanutButterFalconTags)
@@ -21,7 +21,7 @@ var peanutButterFalconSpec  = [CocktailIngredient(.syrups(.honeySyrup), value: 0
                                CocktailIngredient(.amari(.amaroNonino), value: 0.5),
                                CocktailIngredient(.liqueurs(.giffardBanane), value: 1),
                                CocktailIngredient(.vodkas(.peanutButterVodka), value: 1),
-                               CocktailIngredient(.bitters(.blackWalnut), value: 2, unit: .dash)]
+                               CocktailIngredient(.bitters(.blackWalnut), value: 2, unit: .dashes)]
 
 var peanutButterFalconTags = Tags(flavors: [.nutmeg],
                                     textures: [.rich, .silky],

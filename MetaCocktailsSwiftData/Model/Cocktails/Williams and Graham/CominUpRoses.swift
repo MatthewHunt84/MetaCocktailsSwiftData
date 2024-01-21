@@ -11,7 +11,7 @@ var cominUpRoses = Cocktail(cocktailName: "Comin' Up Roses",
                             glasswareType: .stemmedGlassware,
                             garnish: [.rosePedals],
                             ice: nil,
-                            author: "James Menkal(2021ish)",
+                            author: [Authors.jamesMenkal.rawValue, Authors.williamsAndGraham.rawValue],
                             spec: cominUpRosesSpec,
                             buildOrder: nil,
                             tags: cominUpRosesTags)

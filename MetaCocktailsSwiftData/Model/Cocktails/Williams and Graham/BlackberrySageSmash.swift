@@ -11,7 +11,8 @@ var blackberrySageSmash = Cocktail(cocktailName: "Blackberry Sage Smash",
                                    imageAsset: nil,
                                    glasswareType: .doubleOld,
                                    garnish: [.skeweredBlackberryAndSage],
-                                   ice: .koldDraft, author: "Sean Kenyon",
+                                   ice: .koldDraft,
+                                   author: ["Sean Kenyon",Authors.williamsAndGraham.rawValue],
                                    spec: blackberrySageSmashSpec,
                                    buildOrder: blackberrySageSmashBuild,
                                    tags: blackberrySageSmashTags)
@@ -19,8 +20,8 @@ var blackberrySageSmash = Cocktail(cocktailName: "Blackberry Sage Smash",
 let blackberrySageSmashSpec: [CocktailIngredient] = [CocktailIngredient(.whiskies(.ryeWhiskey), value: 2),
                                                      CocktailIngredient(.juices(.lemon), value: 0.75),
                                                      CocktailIngredient(.syrups(.simple), value: 0.75),
-                                                     CocktailIngredient(.fruit(.blackBerry), value: 4, unit: .berries),
-                                                     CocktailIngredient(.herbs(.sage), value: 4, unit: .leaves)]
+                                                     CocktailIngredient(.fruit(.blackBerry), value: 4, unit: .muddled),
+                                                     CocktailIngredient(.herbs(.sage), value: 4, unit: .gentlyMuddled)]
 
 let blackberrySageSmashTags = Tags(flavors: [.lemon],
                                    profiles: [.fruity],
