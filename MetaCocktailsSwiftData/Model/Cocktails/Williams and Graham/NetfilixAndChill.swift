@@ -10,7 +10,7 @@ import Foundation
 var netflixAndChill = Cocktail(cocktailName: "Netflix and Chill",
                                glasswareType: .stemmedGlassware,
                                garnish: [.dehydratedOrangeWheel],
-                               author: [Authors.williamsAndGraham.rawValue],
+                               author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
                                spec: netflixAndChillSpec,
                                tags: netflixAndChillTags)
 

@@ -10,7 +10,7 @@ import SwiftUI
 var caipirinha   = Cocktail(cocktailName: "Caipirinha",
                             glasswareType: .doubleOld,
                             ice: .koldDraft,
-                            author: ["Brazil"],
+                            author:Author(place: "Brazil"),
                             spec: caipirinhaSpec,
                             buildOrder: caipirnhaBuild,
                             tags: caipirnhaTags)

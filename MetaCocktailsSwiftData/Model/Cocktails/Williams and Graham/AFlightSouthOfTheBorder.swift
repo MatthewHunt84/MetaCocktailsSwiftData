@@ -11,7 +11,7 @@ var aFlightSouthOfTheBorder = Cocktail(cocktailName: "A Flight South of the Bord
                                        imageAsset: nil,
                                        glasswareType: .doubleOld,
                                        garnish: [.dehydratedGrapefruitSlice],
-                                       author: [Authors.williamsAndGraham.rawValue],
+                                       author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
                                        spec: aFlightSouthOfTheBorderSpec,
                                        tags: aFlightSouthOfTheBorderTags)
 

@@ -11,13 +11,14 @@ var jungleBird = Cocktail(cocktailName: "JungleBird",
                           glasswareType: .doubleOld,
                           garnish: [.pineappleFrond, .pineappleWedge],
                           ice: .bigRock,
-                          author: ["Aviary Bar at the Kuala Lumpur Hilton (1970's)"],
+                          author: Author(place: AuthorPlaces.aviaryBar.rawValue,
+                                         year: "1970"),
                           spec: jungleBirdSpec,
                           buildOrder: nil,
                           tags: jungleBirdTags)
 
 var jungleBirdSpec  =  [CocktailIngredient(.juices(.lime), value: 0.5),
-                        CocktailIngredient(.juices(.pineappleJuice), value: 2),
+                        CocktailIngredient(.juices(.pineappleJuice), value: 4),
                         CocktailIngredient(.syrups(.simple), value: 0.5),
                         CocktailIngredient(.amari(.campari), value: 0.75),
                         CocktailIngredient(.rums(.rumJamaicanAged), value: 1.5)]

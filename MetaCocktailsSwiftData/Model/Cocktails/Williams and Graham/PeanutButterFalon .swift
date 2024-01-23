@@ -8,13 +8,14 @@
 import Foundation
 
 var peanutButterFalcon = Cocktail(cocktailName: "Peanut Butter Falcon",
-                                    glasswareType: .stemmedGlassware,
-                                    garnish: nil,
-                                    ice: nil,
-                                    author: [Authors.jamesMenkal.rawValue, Authors.williamsAndGraham.rawValue],
-                                    spec: peanutButterFalconSpec,
-                                    buildOrder: peanutButterFalconBuild,
-                                    tags: peanutButterFalconTags)
+                                  glasswareType: .stemmedGlassware,
+                                  garnish: nil,
+                                  ice: nil,
+                                  author:Author(person: AuthorNames.jamesMenkal.rawValue,
+                                                place: AuthorPlaces.williamsAndGraham.rawValue),
+                                  spec: peanutButterFalconSpec,
+                                  buildOrder: peanutButterFalconBuild,
+                                  tags: peanutButterFalconTags)
 
 var peanutButterFalconSpec  = [CocktailIngredient(.syrups(.honeySyrup), value: 0.25),
                                CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),

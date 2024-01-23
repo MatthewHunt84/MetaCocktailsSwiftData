@@ -11,7 +11,7 @@ var ginFizz  = Cocktail(cocktailName: "Gin Fizz",
                         glasswareType: .smallHighball,
                         garnish: [.lemonPeel],
                         ice: nil,
-                        author: [Authors.jerryThomas.rawValue],
+                        author:Author(person: AuthorNames.jerryThomas.rawValue),
                         spec: ginFizzSpec,
                         buildOrder: ginFizzBuild,
                         tags: ginFizzTags)

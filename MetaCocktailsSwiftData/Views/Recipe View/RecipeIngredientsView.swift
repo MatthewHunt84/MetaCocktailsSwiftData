@@ -14,67 +14,80 @@ struct RecipeIngredientsView: View {
    
 
     var body: some View {
-        
-        VStack{
-            
-            Text(cocktail.cocktailName)
-                .font(.largeTitle).bold()
-                .multilineTextAlignment(.center)
+        GeometryReader{ geo in
             VStack{
-                Text("Glassware:")
-                    .font(.title3).bold()
-                Text(cocktail.glasswareType.rawValue)
-            }
-            .padding(10)
-            VStack{
-                Text("Buid:")
-                    .font(.title3).bold()
-                    
-                
-                    ForEach(cocktail.spec, id: \.id) { ingredient in
-                        let number = NSNumber(value: ingredient.value)
-                        Text("\(number) \(ingredient.unit.rawValue) \(ingredient.ingredient.name)")
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 2, trailing: 0))
-                        .multilineTextAlignment(.center)
-                        
-                    }
-                
-            }
-            
-            if  cocktail.garnish != nil {
                 VStack{
-                    Text("Garnish:")
-                        .font(.title3).bold()
-                    if let garnishes = cocktail.garnish {
-                        ForEach(garnishes, id: \.self) { garnish in
-                            Text(garnish.rawValue)
+                    Text(cocktail.cocktailName)
+                        .dynamicTypeSize(.xxxLarge).bold()
+                        .multilineTextAlignment(.center)
+                        .padding(10)
+                        
+                    
+                        Text("Glassware:")
+                            .dynamicTypeSize(.xLarge).bold()
+                        Text(cocktail.glasswareType.rawValue)
+                            .dynamicTypeSize(.large)
+                            .multilineTextAlignment(.center)
+                    
+                        
+                }
+                .frame(width: geo.size.width, height: geo.size.height * 0.15, alignment: .top)
+                .padding(10)
+                VStack {
+                    
+                        Text("Buid:")
+                        .dynamicTypeSize(.xLarge).bold()
+                        
+                        ForEach(cocktail.spec, id: \.id) { ingredient in
+                            let number = NSNumber(value: ingredient.value)
+                            Text("\(number) \(ingredient.unit.rawValue) \(ingredient.ingredient.name)")
+
                                 .multilineTextAlignment(.center)
+                                .dynamicTypeSize(.large)
+                            
                         }
                         
+                        if  cocktail.garnish != nil {
+                            VStack{
+                                Text("Garnish:")
+                                    .dynamicTypeSize(.xLarge).bold()
+                                if let garnishes = cocktail.garnish {
+                                    ForEach(garnishes, id: \.self) { garnish in
+                                        Text(garnish.rawValue)
+                                            .multilineTextAlignment(.center)
+                                            .dynamicTypeSize(.large)
+                                    }
+                                    
+                                }
+                            }
+                            .padding(10)
+                        }
+                        
+                    
+                }
+                .frame(width: geo.size.width, height: geo.size.height * 0.55, alignment: .center)
+
+                if let buildOrder = cocktail.buildOrder {
+                    NavigationLink("Build Order") {
+                        BuildOrderView(buildOrder: buildOrder)
+                            
+                            
                     }
-                }
-                .padding(10)
-            }
-            
-           
-            
-            
-            if let buildOrder = cocktail.buildOrder {
-                NavigationLink("Build Order") {
-                    BuildOrderView(buildOrder: buildOrder)
-                }
-                .buttonStyle(whiteButton())
-                .padding(EdgeInsets(top: 50, leading: 0, bottom: 50, trailing: 0))
-                
-                
-            }
-            if cocktail.author != nil {
-                AuthorView(cocktail: cocktail)
                     
+                    .buttonStyle(whiteButton())
                     
+ 
+                }
+                if cocktail.author != nil {
+                    AuthorView(cocktail: cocktail)
+                        .frame(width: geo.size.width, height: geo.size.height * 0.2, alignment: .center)
+                        .offset(CGSize(width: 0, height: -10.0))
+ 
+                }
+                
+                //        TagView(for: cocktail)
+                
             }
-            
-            //        TagView(for: cocktail)
             
         }
     }
@@ -82,7 +95,9 @@ struct RecipeIngredientsView: View {
 }
 
 struct AuthorView: View {
-    var authors = ""
+    var author = ""
+    var place = ""
+    var year = ""
     let cocktail: Cocktail
     
     init(cocktail: Cocktail) {
@@ -90,19 +105,39 @@ struct AuthorView: View {
         self.cocktail = cocktail
         
         if let authorsVar = cocktail.author {
-            let authorsCombined = authorsVar.reduce("") { $0 + ", " + $1}
-            authors = authorsCombined
+            if let authorPerson = authorsVar.person {
+                author = authorPerson
+            }
+            if let authorPlace = authorsVar.place {
+                place = authorPlace
+                
+            }
+            if let authorYear = authorsVar.year {
+                year = authorYear
+            }
         }
-        if authors != "" {
-            authors.removeFirst()
-        }
+        
     }
     var body: some View {
         VStack {
             Text("Author:")
-                .font(.title3).bold()
-            Text(authors)
-                .multilineTextAlignment(.center)
+                .dynamicTypeSize(.xLarge).bold()
+            if author != "" {
+                Text(author)
+                    .multilineTextAlignment(.center)
+                    .dynamicTypeSize(.large)
+            }
+            HStack {
+            if place != "" {
+                
+                    Text(place)
+                        .dynamicTypeSize(.large)
+                }
+                if year != "" {
+                    Text("(\(year))")
+                        .dynamicTypeSize(.large)
+                }
+            }
         }
     }
 }
@@ -215,7 +250,7 @@ struct AuthorView: View {
 struct RecipeIngredientsView_Previews: PreviewProvider {
    
     static var previews: some View {
-        RecipeIngredientsView(cocktail: beckyWithTheGoodHair)
+        RecipeIngredientsView(cocktail: smokingMonkey)
             
     }
 }

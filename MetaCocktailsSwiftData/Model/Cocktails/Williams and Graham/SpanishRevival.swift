@@ -11,7 +11,8 @@ var spanishRevival = Cocktail(cocktailName: "Spanish Revival",
                               glasswareType: .stemmedGlassware,
                               garnish: [.grapefruitPeel],
                               ice: nil,
-                              author: [Authors.jamesMenkal.rawValue, Authors.williamsAndGraham.rawValue],
+                              author:Author(person: AuthorNames.jamesMenkal.rawValue,
+                                            place: AuthorPlaces.williamsAndGraham.rawValue),
                               spec: spanishRevivalSpec,
                               tags: spanishRevivalTags)
 

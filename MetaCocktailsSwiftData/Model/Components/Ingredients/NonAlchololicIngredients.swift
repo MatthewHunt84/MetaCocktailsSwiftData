@@ -32,6 +32,7 @@ enum Juice: String, Codable, CaseIterable {
     case grapefruit           = "Grapefruit Juice (Fresh)"
     case lemon                = "Lemon Juice (Fresh Squeezed) "
     case lime                 = "Lime Juice (Fresh Squeezed)"
+    case orange               = "Orange Juice (Fresh Squeezed)"
     case pineappleJuice       = "Pineapple Juice (Fresh)"
     
     var nAComponent: CocktailComponent {
@@ -50,6 +51,8 @@ enum Juice: String, Codable, CaseIterable {
             Tags(flavors: [.pineapple], profiles: [.fruity], nA: [NAIngredients(.juices(self))])
         case .grapefruit:
             Tags(flavors: [.grapefruit], profiles: [.fruity], nA: [NAIngredients(.juices(self))])
+        case .orange:
+            Tags(flavors: [.orange], profiles: [.fruity], nA: [NAIngredients(.juices(self))])
         }
     }
 }

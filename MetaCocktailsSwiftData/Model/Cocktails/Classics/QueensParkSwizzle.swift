@@ -13,7 +13,7 @@ var queensParkSwizzle = Cocktail(cocktailName: "Queens Park Swizzle",
                                  glasswareType: .collins,
                                  garnish: [.mintBouquet],
                                  ice: .pebbleIce,
-                                 author: ["Queens Park Hotel(1920s)"],
+                                 author:Author(place: "Queens Park Hotel", year: "1920's"),
                                  spec: queensParkSpec,
                                  buildOrder: queensParkBuild,
                                  tags: queensParkTags)

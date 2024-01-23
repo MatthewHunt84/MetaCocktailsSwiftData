@@ -11,7 +11,7 @@ var twentiethCenturyCocktail  = Cocktail(cocktailName: "20th Century Cocktail",
                                 glasswareType: .coupe,
                                 garnish: [.lemonPeel],
                                 ice: nil,
-                                author: ["C.A. Tuck (1937)"],
+                                author:Author(person: "C.A. Tuck", year: "1937"),
                                 spec: twentiethCenturyCocktailSpec,
                                 tags: twentiethCenturyCocktailTags)
 

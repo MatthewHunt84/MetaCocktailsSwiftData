@@ -11,7 +11,7 @@ var elChicicabra = Cocktail(cocktailName: "El Chicicabra",
                             imageAsset: nil,
                             glasswareType: .doubleOld,
                             garnish: [.flamedOrange],
-                            author: [Authors.williamsAndGraham.rawValue],
+                            author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
                             spec: elChicicabraSpec,
                             tags: elChicicabraTags)
 

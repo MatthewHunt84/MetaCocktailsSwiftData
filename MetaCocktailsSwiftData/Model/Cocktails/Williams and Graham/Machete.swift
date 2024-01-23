@@ -12,7 +12,7 @@ var machete  =  Cocktail(cocktailName: "Machete",
                          glasswareType: Glassware.doubleOld,
                          garnish: [.grapefruitPeel],
                          ice: .bigRock,
-                         author: [Authors.williamsAndGraham.rawValue],
+                         author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
                          spec: macheteSpec,
                          buildOrder: nil,
                          tags: macheteTags)

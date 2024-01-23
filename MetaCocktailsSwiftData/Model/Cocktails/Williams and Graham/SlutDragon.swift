@@ -8,12 +8,13 @@
 import Foundation
 
 
-var slutDragon = Cocktail(cocktailName: "Slut Dragon (Aka: Soul Bond)",
+var slutDragon = Cocktail(cocktailName: "Slut Dragon",
                          imageAsset: nil,
                          glasswareType: .doubleOldCelerySalt,
                          garnish: [.celeryTop],
                          ice: .bigRock,
-                         author: [Authors.jamesMenkal.rawValue, Authors.williamsAndGraham.rawValue],
+                         author:Author(person: AuthorNames.jamesMenkal.rawValue,
+                                       place: AuthorPlaces.williamsAndGraham.rawValue),
                          spec: slutDragonSpec,
                          tags: slutDragonTags)
 

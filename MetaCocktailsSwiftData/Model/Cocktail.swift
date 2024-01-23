@@ -24,7 +24,7 @@ class Cocktail: Equatable, Hashable {
     var glasswareType: Glassware
     var garnish: [Garnish]?
     var ice: Ice?
-    var author: [String]?
+    var author: Author?
     var spec: [CocktailIngredient]
     var buildOrder: Build?
     var tags: Tags
@@ -32,7 +32,7 @@ class Cocktail: Equatable, Hashable {
   
     
     
-    init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [Garnish]? = nil, ice: Ice? = nil, author: [String]? = nil, spec: [CocktailIngredient], buildOrder: Build? = nil, tags: Tags) {
+    init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [Garnish]? = nil, ice: Ice? = nil, author: Author? = nil, spec: [CocktailIngredient], buildOrder: Build? = nil, tags: Tags) {
         self.id = id
         self.cocktailName = cocktailName
         self.imageAsset = imageAsset

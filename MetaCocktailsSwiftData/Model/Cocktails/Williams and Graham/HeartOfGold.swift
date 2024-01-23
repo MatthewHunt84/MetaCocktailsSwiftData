@@ -11,7 +11,7 @@ var heartOfGold = Cocktail(cocktailName: "Heart of Gold",
                            imageAsset: nil,
                            glasswareType: .stemmedGlassware,
                            garnish: nil,
-                           author: [Authors.williamsAndGraham.rawValue],
+                           author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
                            spec: heartOfGoldSpec,
                            tags: heartOfGoldTags)
 

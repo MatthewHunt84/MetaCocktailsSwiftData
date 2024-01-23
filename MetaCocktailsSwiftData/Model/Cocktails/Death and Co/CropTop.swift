@@ -9,11 +9,13 @@ import SwiftUI
 
 var cropTop = Cocktail(cocktailName: "Crop Top",
                        glasswareType: .nickAndNora,
-                            garnish: [.grapefruitExpression],
-                            ice: nil,
-                            author: ["Devon Tarby (2013)", Authors.deathAndCo.rawValue],
-                            spec: cropTopSpec,
-                            tags: cropTopTags)
+                       garnish: [.grapefruitExpression],
+                       ice: nil,
+                       author: Author(person: AuthorNames.devonTarby.rawValue,
+                                      place: AuthorPlaces.deathAndCo.rawValue,
+                                      year: "2013"),
+                       spec: cropTopSpec,
+                       tags: cropTopTags)
 
 var cropTopSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                     CocktailIngredient(.gins(.ginLondonDry), value: 0.75),

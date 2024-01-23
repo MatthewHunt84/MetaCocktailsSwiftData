@@ -212,6 +212,7 @@ final class SearchCriteriaViewModel: ObservableObject {
             return resultSectionData.cocktails.isEmpty ? nil : resultSectionData } */
 
         isLoading = false
+        print("The cocktail count is \(CocktailListViewModel().cocktails.count)")
     }
     private func modifiedPreferredCount() -> Int {
         // compare preferredComponent against current cocktail of loop, then return number of matches.

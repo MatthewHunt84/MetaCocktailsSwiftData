@@ -11,7 +11,8 @@ var secondSunrise = Cocktail(cocktailName: "Second Sunrise",
                              imageAsset: nil,
                              glasswareType: .stemmedGlassware,
                              garnish: [.edibleFlower],
-                             author: [Authors.jamesMenkal.rawValue, Authors.williamsAndGraham.rawValue],
+                             author:Author(person: AuthorNames.jamesMenkal.rawValue,
+                                           place: AuthorPlaces.williamsAndGraham.rawValue),
                              spec: secondSunriseSpec,
                              tags: secondSunriseTags)
 

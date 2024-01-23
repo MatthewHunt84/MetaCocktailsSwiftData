@@ -12,7 +12,8 @@ var greatWhiteBuffalo = Cocktail(cocktailName: "Great White Buffalo",
                                  glasswareType: .collins,
                                  garnish: [.lemongrass, .chineseFiveSpice],
                                  ice: .pebbleIce,
-                                 author: [Authors.jamesMenkal.rawValue, Authors.williamsAndGraham.rawValue],
+                                 author:Author(person: AuthorNames.jamesMenkal.rawValue,
+                                               place: AuthorPlaces.williamsAndGraham.rawValue),
                                  spec: greatWhiteBuffaloSpec,
                                  tags: greatWhiteBuffaloTags)
 

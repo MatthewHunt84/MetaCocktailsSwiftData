@@ -11,7 +11,7 @@ var boulevardier  =  Cocktail(cocktailName: "Boulevardier",
                          glasswareType: Glassware.doubleOld,
                          garnish: [.orangePeel],
                          ice: .bigRock,
-                         author: ["Erskine Gwynne (1920s)"],
+                         author:Author(person: "Erskine Gwynne",place: "Paris", year: "1920's"),
                          spec: boulevardierSpec,
                          buildOrder: nil,
                          tags: boulevardierTags)

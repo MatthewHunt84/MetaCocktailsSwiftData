@@ -11,7 +11,7 @@ var cloverClub = Cocktail(cocktailName: "Clover Club",
                            glasswareType: .stemmedGlassware,
                            garnish: [.raspberry],
                            ice: nil,
-                           author: ["Somewhere in Philadelphia (1901)"],
+                           author: Author(place: "Somewhere in Philadelphia", year: "1901"),
                            spec: cloverClubSpec,
                            buildOrder: cloverClubBuild,
                            tags: cloverClubTags)

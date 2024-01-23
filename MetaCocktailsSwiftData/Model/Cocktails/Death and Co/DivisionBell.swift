@@ -11,7 +11,8 @@ var divisionBell = Cocktail(cocktailName: "Division Bell",
                             glasswareType: .stemmedGlassware,
                             garnish: [.grapefruitExpression],
                             ice: nil,
-                            author: [Authors.philWard.rawValue, Authors.deathAndCo.rawValue],
+                            author:Author(person: AuthorNames.philWard.rawValue,
+                                          place: AuthorPlaces.deathAndCo.rawValue),
                             spec: divisionBellSpec,
                             tags: divisionBellTags)
 

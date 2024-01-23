@@ -12,12 +12,12 @@ var giftHorse = Cocktail(cocktailName: "Gift Horse",
                             glasswareType: .stemmedGlassware,
                             garnish: [.orangePeel],
                             ice: nil,
-                            author: [Authors.williamsAndGraham.rawValue],
+                            author: Author(person: AuthorPlaces.williamsAndGraham.rawValue),
                             spec: giftHorseSpec,
                             tags: giftHorseTags)
 
 var giftHorseSpec  = [CocktailIngredient(.syrups(.honeySyrup), value: 0.25),
-                      CocktailIngredient(.liqueurs(.drambuie), value: 1, unit: .barspoon),
+                      CocktailIngredient(.liqueurs(.drambuie), value: 1, unit: .teaspoon),
                       CocktailIngredient(.fortifiedWines(.Byrrh), value: 0.5),
                       CocktailIngredient(.amari(.DellErborista), value: 0.75),
                       CocktailIngredient(.agaves(.tequilaSieteLeguasRepo), value: 1.5)]

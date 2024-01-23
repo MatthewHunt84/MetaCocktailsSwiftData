@@ -12,7 +12,7 @@ var bamboo = Cocktail(cocktailName: "Bamboo",
                       glasswareType: Glassware.coupe,
                       garnish: [.orangeOrLemon],
                       ice: nil,
-                      author: ["Louis Eppinger"],
+                      author: Author(person: "Louis Eppinger"),
                       spec: bambooSpec,
                       buildOrder: nil,
                       tags: bambooTags)

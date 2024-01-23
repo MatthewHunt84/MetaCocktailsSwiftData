@@ -12,7 +12,7 @@ import SwiftUI
 var manhattan = Cocktail(cocktailName: "Manhattan",
                          glasswareType: .stemmedGlassware,
                          garnish: [.maraschinoCherry, .lemonExpression],
-                         author: ["Most likely the Manhattan Club (1874)"],
+                         author:Author(place: "Most likely the Manhattan Club", year: "1874"),
                          spec: manhattanSpec,
                          tags: manhattanTags)
 

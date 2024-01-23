@@ -11,7 +11,7 @@ var hereBeDragons = Cocktail(cocktailName: "Here Be Dragons",
                              imageAsset: nil,
                              glasswareType: .tikiMug,
                              garnish: [.mintBouquet, .flamingLimeBoat],
-                             author: [Authors.williamsAndGraham.rawValue],
+                             author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
                              spec: hereBeDragonsSpec,
                              tags: hereBeDragonsTags)
 

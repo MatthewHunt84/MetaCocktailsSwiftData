@@ -11,7 +11,7 @@ var saturn = Cocktail(cocktailName: "Saturn",
                       glasswareType: .doubleOld,
                       garnish: [.lemonPeel, .maraschinoCherry],
                       ice: .pebbleIce,
-                      author: ["Joseph “Po Po” Galsini 1969, But published by Jeff Berry in 2010"],
+                      author:Author(person: "Joseph “Po Po” Galsini"),
                       spec: saturnSpec,
                       buildOrder: saturnBuildOrder,
                       tags: saturnTags)

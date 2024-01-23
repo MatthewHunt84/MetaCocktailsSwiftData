@@ -10,7 +10,8 @@ import SwiftUI
 var finalWard = Cocktail(cocktailName: "Final Ward",
                          glasswareType: .stemmedGlassware,
                          ice: nil,
-                         author: ["Phil Ward", Authors.deathAndCo.rawValue],
+                         author:Author(person: AuthorNames.philWard.rawValue,
+                                       place: AuthorPlaces.deathAndCo.rawValue),
                          spec: finalWardSpec,
                          tags: finalWardTags)
 

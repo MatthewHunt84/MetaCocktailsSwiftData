@@ -10,7 +10,7 @@ import SwiftUI
 var paperPlane = Cocktail(cocktailName: "Paper Plane",
                           glasswareType: Glassware.coupe,
                           garnish: [.noGarnish],
-                          author: [Authors.samRoss.rawValue],
+                          author:Author(person: AuthorNames.samRoss.rawValue),
                           spec: paperPlaneSpec,
                           buildOrder: nil,
                           tags: paperPlaneTags)

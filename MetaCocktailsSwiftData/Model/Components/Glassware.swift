@@ -16,6 +16,7 @@ enum Glassware: String, Codable {
     case flute               = "Flute"
     case smallHighball       = "Small Chilled Highball"
     case stemmedGlassware    = "Stemmed"
+    case sugarRimStemmed     = "Stemmed with a sugar rim"
     case nickAndNora         = "Nick and Nora"
     case doubleOldSalt       = "Double Old Fashioned (half salt rim)"
     case doubleOldCelerySalt = "Double Old Fashioned (half celery salt rim)"

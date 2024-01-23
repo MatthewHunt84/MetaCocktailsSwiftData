@@ -11,7 +11,7 @@ var whiteNegroni  =  Cocktail(cocktailName: "White Negroni",
                          glasswareType: Glassware.doubleOld,
                          garnish: [.grapefruitPeel],
                          ice: .bigRock,
-                         author: ["Wayne Collins"],
+                         author: Author(person: "Wayne Collins"),
                          spec: whiteNegroniSpec,
                          buildOrder: nil,
                          tags: whiteNegroniTags)

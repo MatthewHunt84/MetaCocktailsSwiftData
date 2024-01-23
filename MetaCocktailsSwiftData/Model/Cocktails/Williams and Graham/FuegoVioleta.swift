@@ -10,7 +10,7 @@ import Foundation
 var fuegoVioleta = Cocktail(cocktailName: "Fuego Violeta",
                             glasswareType: .stemmedGlassware,
                             garnish: [.lemonPeel],
-                            author: [Authors.williamsAndGraham.rawValue],
+                            author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
                             spec: fuegoVioletaSpec,
                             buildOrder: nil,
                             tags: fuegoVioletaTags)
