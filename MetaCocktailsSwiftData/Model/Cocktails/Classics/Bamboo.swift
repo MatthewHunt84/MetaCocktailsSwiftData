@@ -18,11 +18,10 @@ var bamboo = Cocktail(cocktailName: "Bamboo",
                       tags: bambooTags)
 
 var bambooSpec = [CocktailIngredient(.fortifiedWines(.amontillado), value: 1.5),
-                  CocktailIngredient(.fortifiedWines(.dryVermouth), value: 1.5),
+                  CocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 1.5),
                   CocktailIngredient(.bitters(.orangeBitters), value: 2, unit: .dashes)]
 
 var bambooTags = Tags(flavors: [.lemon],
-                      profiles: nil,
                       textures: [.thin, .light],
                       styles: [.martini, .stirred])
                    

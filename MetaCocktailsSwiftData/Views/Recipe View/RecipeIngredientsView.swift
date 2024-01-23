@@ -127,14 +127,15 @@ struct AuthorView: View {
                     .multilineTextAlignment(.center)
                     .dynamicTypeSize(.large)
             }
-            HStack {
+            VStack {
             if place != "" {
                 
                     Text(place)
                         .dynamicTypeSize(.large)
+                        .multilineTextAlignment(.center)
                 }
                 if year != "" {
-                    Text("(\(year))")
+                    Text("\(year)")
                         .dynamicTypeSize(.large)
                 }
             }
@@ -250,7 +251,7 @@ struct AuthorView: View {
 struct RecipeIngredientsView_Previews: PreviewProvider {
    
     static var previews: some View {
-        RecipeIngredientsView(cocktail: smokingMonkey)
+        RecipeIngredientsView(cocktail: alaska)
             
     }
 }

@@ -24,8 +24,8 @@ var queensParkSpec = [CocktailIngredient(.herbs(.mint), value: 10, unit: .gently
                       CocktailIngredient(.rums(.rumDemerara), value: 2),
                       CocktailIngredient(.bitters(.angosturaBitters), value: 5, unit: .dashes) ]
 
-var queensParkTags = Tags(flavors: [.lime, .mint, .bakingSpices], 
-                          profiles: [.aromatic],
+var queensParkTags = Tags(flavors: [.lime, .mint, .bakingSpices],
+                          profiles: [.aromatic, .refreshing, .citrusy],
                           textures: [.light],
                           styles: [.swizzle, .built])
 

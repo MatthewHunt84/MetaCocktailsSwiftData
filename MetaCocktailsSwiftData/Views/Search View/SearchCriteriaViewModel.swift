@@ -239,7 +239,7 @@ final class SearchCriteriaViewModel: ObservableObject {
                 
             }
         }
-        var matches = selectedPreferredIngredients().reduce(into: 0, { partialResult, component in
+        let matches = selectedPreferredIngredients().reduce(into: 0, { partialResult, component in
             for spec in justBases {
                 if spec == component.name && alreadyMatchedSpec == 0 {
                     partialResult += 1

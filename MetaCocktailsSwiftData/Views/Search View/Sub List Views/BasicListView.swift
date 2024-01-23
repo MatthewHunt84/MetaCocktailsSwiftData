@@ -16,9 +16,9 @@ struct BasicListView: View {
     var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     
     var body: some View {
-        
+        GeometryReader { geometry in
         VStack{
-            GeometryReader { geometry in
+            
                 ScrollView {
                     ScrollViewReader { value in
                         HStack{
@@ -79,7 +79,7 @@ struct BasicListView: View {
                                             
                                         })
                                         .buttonStyle(ScaleButtonStyle())
-                                        .frame(width: geometry.size.width, height: geometry.size.height/47, alignment: .center)
+                                        .frame(width: geometry.size.width * 0.05, height: geometry.size.height/47, alignment: .center)
                                         .offset(x: -4)
                                         
                                         

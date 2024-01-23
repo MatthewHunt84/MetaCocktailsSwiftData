@@ -20,7 +20,7 @@ var vieuxCarre = Cocktail(cocktailName: "Vieux Carre",
 var vieuxCarreSpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
                            CocktailIngredient(.bitters(.peychauds), value: 2, unit: .dashes),
                            CocktailIngredient(.liqueurs(.benedictine), value: 1, unit: .teaspoon),
-                           CocktailIngredient(.fortifiedWines(.sweetVermouth), value: 1),
+                           CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),
                            CocktailIngredient(.whiskies(.ryeWhiskey), value: 2),
                            CocktailIngredient(.brandies(.cognacVSOP), value: 2)]
 

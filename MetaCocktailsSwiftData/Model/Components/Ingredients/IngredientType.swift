@@ -201,7 +201,6 @@ enum MeasurementUnit: String, Codable {
     case peel           = "Peel(s)"
     case grams          = "grams"
     case fluidOunces    = "oz"
-    case teaspoons      = "tsp"
     case disc           = "disc, with flesh"
     case limeQuarters   = "lime, quartered"
     case slices         = "slices"
@@ -214,8 +213,10 @@ enum MeasurementUnit: String, Codable {
     case nitroMuddled   = "Nitro muddled"
     case ml             = "ml"
     case teaspoon       = "teaspoon"
+    case teaspoons      = "teaspoons"
     case pinch          = "Pinch"
     case whole          = "Whole"
     case glassRinse     = "Rinse the glass with"
     case rim            = "Around the rim of the glass"
+    case bittersDeco    = "Design on top with"
 }

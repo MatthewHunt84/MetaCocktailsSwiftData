@@ -21,6 +21,8 @@ enum AuthorNames: String, Codable, CaseIterable {
     case sashaPetraske     = "Sasha Petraske"
     case walterBergeron    = "Walter Bergeron"
     case traderVic         = "Victor (Trader Vic) Bergeron"
+    case davidEmbury       = "David Embury"
+    case hugoEnsslin       = "Hugo Ensslin"
   
 }
 enum AuthorPlaces: String, Codable, CaseIterable {
@@ -28,7 +30,7 @@ enum AuthorPlaces: String, Codable, CaseIterable {
     case williamsAndGraham   = "Williams and Graham"
     case milkAndHoney        = "Milk and Honey"
     case deathAndCo          = "Death & Co"
-    case aviaryBar           = "Aviary Bar at the Kuala Lumpur Hilton (1970's)"
+    case aviaryBar           = "Aviary Bar at the Kuala Lumpur Hilton"
     case detroitAthleticClub = "Detroit Athletic club"
     case hotelMonteleone     = "Hotel Monteleone"
     case savoy               = "Savoy Hotel (Cocktail Book)"

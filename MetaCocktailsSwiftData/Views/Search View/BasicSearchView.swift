@@ -14,106 +14,117 @@ struct BasicSearchView: View {
     @State var selectedFlavorsOrIngredients: FlavorsOrIngredient = .flavors
     @State var isShowingFlavors: Bool = true
     
-//    init() {
-//       
-////        UISegmentedControl.appearance().selectedSegmentTintColor = .brandPrimaryYellow
-////        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor : UIColor.black], for: .selected)
-//       
-//    }
+    //    init() {
+    //
+    ////        UISegmentedControl.appearance().selectedSegmentTintColor = .brandPrimaryYellow
+    ////        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor : UIColor.black], for: .selected)
+    //
+    //    }
     var body: some View {
-        
-            NavigationStack {
-//                VStack{
-                    GeometryReader { geometry in
-                        VStack{
-                            
-                            HStack {
-                                Text("Select Ingredients")
-                                    .font(.largeTitle).bold()
-                                    .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
-                                Spacer()
-                            }
-                            
-                            HStack {
-                                Picker("Pick Out Likes Or Dislikes", selection: $selectedLikesOrDislikes) {
-                                    ForEach(LikesOrDislikes.allCases, id: \.self) {
-                                        Text($0.rawValue)
-                                        
-                                    }
-                                }
-                                .pickerStyle(.segmented)
-                                .onChange(of: selectedLikesOrDislikes) {
-                                    isShowingPreferences.toggle()
-                                }
-                                .foregroundColor(Color.blue)
-                                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
-                                NavigationLink { SearchCriteriaView(isShowingIngredientsList: .constant(true), isShowingPreferences: true)
-                                } label: {
-                                    HStack {
-                                        VStack {
-                                            Image(systemName: "magnifyingglass")
-                                                .foregroundStyle(Color(.systemCyan))
-                                            Text("Advanced")
-                                                .font(.footnote)
-                                                .foregroundStyle(Color(.systemCyan))
-                                        }
-                                    }
-                                }
-                                .padding(5)
-                                .font(.footnote).bold()
-                            }
-                            BasicListView(isShowingLikes: $isShowingPreferences, isShowingFlavors: $isShowingFlavors)
-                        }
-                        .frame(width: geometry.size.width, height: geometry.size.height * 0.9, alignment: .top)
-                        
+        NavigationStack {
+            GeometryReader { geometry in
+                VStack{
+                    VStack{
                         
                         HStack {
-                            
-                            Menu("Search Type") {
-                                Button("Search by flavor.", action: {
-                                    isShowingFlavors = true
-                                })
-                                Button("Search by ingredient.", action: {
-                                    isShowingFlavors = false
-                                })
-                            }
-                            .font(.footnote)
-                            .buttonStyle(whiteButton())
-                            .scaledToFill()
-                            .padding(10)
-                            
-                            NavigationLink {
-                                SearchResultsView(viewModel: viewModel)
-                            } label: {
-                                Text("SEARCH!")
-                                    .font(.footnote).bold()
-                                    .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
-                                    .background(viewModel.selectedPreferredIngredients().count == 0 ? Color(UIColor.systemGray) : Color.brandPrimaryGreen)
-                                    .clipShape(RoundedRectangle(cornerRadius: 140))
-                                    .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
-                                    .foregroundColor(.white)
-                                
-                            }
-                            
-                            Button(action: {
-                                for i in 0..<viewModel.cocktailComponents.count {
-                                    viewModel.cocktailComponents[i].isPreferred = false
-                                    viewModel.cocktailComponents[i].isUnwanted = false
-                                    viewModel.enableMultipleSpiritSelection = false
-                                }
-                            }) {
-                                Text("Clear Search")
-                                
-                            }
-                            .font(.footnote)
-                            .buttonStyle(whiteButton())
-                            .padding(10)
-                            
+                            Text("Select Ingredients")
+                                .font(.largeTitle).bold()
+                                .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
+                            Spacer()
                         }
-                        .frame(width: geometry.size.width, height: geometry.size.height, alignment: .bottom)
+                        
+                        HStack {
+                            Picker("Pick Out Likes Or Dislikes", selection: $selectedLikesOrDislikes) {
+                                ForEach(LikesOrDislikes.allCases, id: \.self) {
+                                    Text($0.rawValue)
+                                    
+                                }
+                            }
+                            .pickerStyle(.segmented)
+                            .onChange(of: selectedLikesOrDislikes) {
+                                isShowingPreferences.toggle()
+                            }
+                            .foregroundColor(Color.blue)
+                            .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
+                            NavigationLink { SearchCriteriaView(isShowingIngredientsList: .constant(true), isShowingPreferences: true)
+                            } label: {
+                                HStack {
+                                    VStack {
+                                        Image(systemName: "magnifyingglass")
+                                            .foregroundStyle(Color(.systemCyan))
+                                        Text("Advanced")
+                                            .font(.footnote)
+                                            .foregroundStyle(Color(.systemCyan))
+                                    }
+                                }
+                            }
+                            .padding(5)
+                            .font(.footnote).bold()
+                        }
+                        
+                        
+                        BasicListView(isShowingLikes: $isShowingPreferences, isShowingFlavors: $isShowingFlavors)
                     }
+                    .frame(width: geometry.size.width, height: geometry.size.height * 0.85, alignment: .center)
+                    
+                    
+                    
+                    HStack {
+                        GeometryReader { buttonGeo in
+                            HStack{
+                                Menu("Search Type") {
+                                    Button("Search by flavor.", action: {
+                                        isShowingFlavors = true
+                                    })
+                                    Button("Search by ingredient.", action: {
+                                        isShowingFlavors = false
+                                    })
+                                }
+                                .font(.footnote)
+                                .buttonStyle(whiteButton())
+                                .frame(width: buttonGeo.size.width * 0.35, height: buttonGeo.size.height, alignment: .trailing)
+                                
+                                NavigationLink {
+                                    SearchResultsView(viewModel: viewModel)
+                                    
+                                } label: {
+                                    Text("Search")
+                                        .font(.headline).bold()
+                                        .padding(25)
+                                        .background(viewModel.selectedPreferredIngredients().count == 0 ? Color(UIColor.black) : Color.brandPrimaryGreen)
+                                        .clipShape(Circle())
+                                        .shadow(color: Color(UIColor.systemGray), radius: 4)
+                                        .foregroundColor(viewModel.selectedPreferredIngredients().count == 0 ? Color(UIColor.systemGray) : Color.white)
+                                    
+                                }
+                                .frame(width: buttonGeo.size.width * 0.3, height: buttonGeo.size.height, alignment: .center)
+                                
+                                Button(action: {
+                                    for i in 0..<viewModel.cocktailComponents.count {
+                                        viewModel.cocktailComponents[i].isPreferred = false
+                                        viewModel.cocktailComponents[i].isUnwanted = false
+                                        viewModel.enableMultipleSpiritSelection = false
+                                        
+                                    }
+                                }) {
+                                    Text("Clear Search")
+                                    
+                                }
+                                .font(.footnote)
+                                .buttonStyle(whiteButton())
+                                .frame(width: buttonGeo.size.width * 0.35, height: buttonGeo.size.height, alignment: .leading)
+                                
+                            }
+                        }
+                        .frame(width: geometry.size.width, height: geometry.size.height * 0.15, alignment: .top)
+                        .offset(CGSize(width: -8, height: 0))
+                        
+                    }
+                    
                 }
-//            }
+                
+            }
+        }
         
     }
 }

@@ -17,7 +17,7 @@ var boulevardier  =  Cocktail(cocktailName: "Boulevardier",
                          tags: boulevardierTags)
 
 var boulevardierSpec = [CocktailIngredient(.whiskies(.straightRyeOrBourbon), value: 1),
-                        CocktailIngredient(.fortifiedWines(.sweetVermouth), value: 1),
+                        CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),
                         CocktailIngredient(.amari(.campari), value: 1)]
 
 var boulevardierTags = Tags(flavors: [.orange, .bakingSpices],

@@ -69,6 +69,7 @@ struct SearchResultsView: View {
         .navigationBarTitleDisplayMode(.inline)
         .onAppear() {
             viewModel.getFilteredCocktails()
+            
         }
         
     }

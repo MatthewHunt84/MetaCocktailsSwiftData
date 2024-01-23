@@ -17,7 +17,7 @@ var manhattan = Cocktail(cocktailName: "Manhattan",
                          tags: manhattanTags)
 
 var manhattanSpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
-                          CocktailIngredient(.fortifiedWines(.sweetVermouth), value: 1),
+                          CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),
                           CocktailIngredient(.whiskies(.straightRyeOrBourbon), value: 2)]
 
 var manhattanTags     = Tags(profiles: [.spiritForward],

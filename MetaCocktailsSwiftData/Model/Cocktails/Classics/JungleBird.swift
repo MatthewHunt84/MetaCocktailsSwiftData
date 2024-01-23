@@ -12,7 +12,7 @@ var jungleBird = Cocktail(cocktailName: "JungleBird",
                           garnish: [.pineappleFrond, .pineappleWedge],
                           ice: .bigRock,
                           author: Author(place: AuthorPlaces.aviaryBar.rawValue,
-                                         year: "1970"),
+                                         year: "1970's"),
                           spec: jungleBirdSpec,
                           buildOrder: nil,
                           tags: jungleBirdTags)

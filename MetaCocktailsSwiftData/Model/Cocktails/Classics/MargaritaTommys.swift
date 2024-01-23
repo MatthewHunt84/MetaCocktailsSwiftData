@@ -19,6 +19,6 @@ var margaritaTommysSpec = [CocktailIngredient(.juices(.lime), value: 1),
                            CocktailIngredient(.agaves(.tequilaBlanco), value: 2),
                            CocktailIngredient(.seasoning(.salt), value: 1, unit: .rim)]
 
-var margaritaTommysTags = Tags( profiles: [.citrusy, .tart],
+var margaritaTommysTags = Tags( profiles: [.citrusy],
                                 textures: [.light],
                                 styles: [.sour, .shaken])
