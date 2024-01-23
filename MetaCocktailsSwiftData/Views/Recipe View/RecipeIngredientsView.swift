@@ -18,8 +18,11 @@ struct RecipeIngredientsView: View {
             VStack{
                 VStack{
                     Text(cocktail.cocktailName)
-                        .dynamicTypeSize(.xxxLarge).bold()
+                        .font(.title).bold()
+                        //.dynamicTypeSize(.xxxLarge).bold()
                         .multilineTextAlignment(.center)
+                        //.minimumScaleFactor(0.2)
+                        //.lineLimit(2)
                         .padding(10)
                         
                     
@@ -31,11 +34,11 @@ struct RecipeIngredientsView: View {
                     
                         
                 }
-                .frame(width: geo.size.width, height: geo.size.height * 0.15, alignment: .top)
+                .frame(width: geo.size.width, height: geo.size.height * 0.25, alignment: .top)
                 .padding(10)
                 VStack {
                     
-                        Text("Buid:")
+                        Text("Build:")
                         .dynamicTypeSize(.xLarge).bold()
                         
                         ForEach(cocktail.spec, id: \.id) { ingredient in
@@ -65,7 +68,7 @@ struct RecipeIngredientsView: View {
                         
                     
                 }
-                .frame(width: geo.size.width, height: geo.size.height * 0.55, alignment: .center)
+                .frame(width: geo.size.width, height: geo.size.height * 0.45, alignment: .center)
 
                 if let buildOrder = cocktail.buildOrder {
                     NavigationLink("Build Order") {
@@ -251,7 +254,7 @@ struct AuthorView: View {
 struct RecipeIngredientsView_Previews: PreviewProvider {
    
     static var previews: some View {
-        RecipeIngredientsView(cocktail: alaska)
+        RecipeIngredientsView(cocktail: airMailWnG)
             
     }
 }
