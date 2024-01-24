@@ -16,7 +16,7 @@ var finalWard = Cocktail(cocktailName: "Final Ward",
                          tags: finalWardTags)
 
 var finalWardSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                      CocktailIngredient(.whiskies(.ryeWhiskey), value: 0.75),
+                      CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 0.75),
                       CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.75),
                       CocktailIngredient(.liqueurs(.greenChartreuse), value: 0.75)]
 

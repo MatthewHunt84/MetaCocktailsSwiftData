@@ -17,7 +17,7 @@ var blackManhattan = Cocktail(cocktailName: "Black Manhattan",
 var blackManhattanSpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),
                                CocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dash),
                                CocktailIngredient(.amari(.averna), value: 1),
-                               CocktailIngredient(.whiskies(.ryeWhiskey), value: 2)]
+                               CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 2)]
 
 var blackManhattanTags     = Tags(profiles: [.spiritForward, .bittersweet],
                                   textures: [.rich],

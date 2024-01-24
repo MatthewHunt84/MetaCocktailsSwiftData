@@ -46,7 +46,7 @@ enum Garnish: String, Codable {
     case olive                     = "Green Olive"
     case onion                     = "Cocktail Onion"
     case raspberry                 = "Raspberry"
-    case rosePedals                = "Skewered Rose Pedals"
+    case rosePetals                = "Skewered Rose Petals"
     case nutmeg                    = "Grated Nutmeg"
     case flamingLimeBoat           = "Hollowed out lime shell with overproof Spirit thats on fire"
     case celeryTop                 = "Leafy celery top"

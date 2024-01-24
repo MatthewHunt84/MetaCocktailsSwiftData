@@ -9,7 +9,7 @@ import SwiftUI
 
 var cominUpRoses = Cocktail(cocktailName: "Comin' Up Roses",
                             glasswareType: .stemmedGlassware,
-                            garnish: [.rosePedals],
+                            garnish: [.rosePetals],
                             ice: nil,
                             author:Author(person: AuthorNames.jamesMenkal.rawValue,
                                           place: AuthorPlaces.williamsAndGraham.rawValue),

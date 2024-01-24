@@ -11,7 +11,7 @@ enum Ice: String, Codable {
     case bigRock           = "Large Cube"
     case koldDraft         = "Kold Draft Ice"
     case pebbleIce         = "Pebble Ice"
-    case crackedIce        = "Cracked Ice"
+    case crackedIce        = "Cracked Kold Draft"
 }
 
 

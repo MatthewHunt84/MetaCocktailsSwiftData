@@ -9,8 +9,10 @@ import Foundation
 
 enum Glassware: String, Codable {
     case blueBlazerMugs      = "Blue Blazer Mugs"
+    case cinnamonSugarRim    = "Cinnamon Sugar Rimmed Cocktail Glass"
     case coupe               = "Coupe"
     case collins             = "Collins"
+    case crustaGlass         = "Narrow mouthed, stemmed cocktail glass, fitted with a wide ribbon of lemon peel around the rim. Rim the peel and glass with sugar and chill the glass."
     case doubleOld           = "Double Old Fashioned"
     case wineGlass           = "Large Wine Glass"
     case martini             = "Martini"

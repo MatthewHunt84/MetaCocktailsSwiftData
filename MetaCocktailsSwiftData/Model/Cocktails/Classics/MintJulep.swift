@@ -19,7 +19,7 @@ var mintJulep = Cocktail(cocktailName: "Mint Julep",
 
 let mintJulepSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
                                            CocktailIngredient(.syrups(.simple), value: 1),
-                                           CocktailIngredient(.whiskies(.bourbon), value: 2.25)]
+                                           CocktailIngredient(.whiskies(.bourbonAny), value: 2.25)]
 
 let mintJulepTags = Tags(profiles: [.herbal, .sweet],
                          textures: [.light],

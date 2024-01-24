@@ -198,6 +198,8 @@ enum IngredientType: Codable {
 }
 
 enum MeasurementUnit: String, Codable {
+    case barSpoon       = "Bar-spoon"
+    case barSpoons      = "Bar-spoons"
     case peel           = "Peel(s)"
     case grams          = "grams"
     case fluidOunces    = "oz"

@@ -31,41 +31,49 @@ struct RecipeIngredientsView: View {
                         Text(cocktail.glasswareType.rawValue)
                             .dynamicTypeSize(.large)
                             .multilineTextAlignment(.center)
-                    
-                        
+        
                 }
                 .frame(width: geo.size.width, height: geo.size.height * 0.25, alignment: .top)
                 .padding(10)
                 VStack {
                     
-                        Text("Build:")
+                    Text("Build:")
                         .dynamicTypeSize(.xLarge).bold()
+                    
+                    ForEach(cocktail.spec, id: \.id) { ingredient in
+                        let number = NSNumber(value: ingredient.value)
+                        Text("\(number) \(ingredient.unit.rawValue) \(ingredient.ingredient.name)")
                         
-                        ForEach(cocktail.spec, id: \.id) { ingredient in
-                            let number = NSNumber(value: ingredient.value)
-                            Text("\(number) \(ingredient.unit.rawValue) \(ingredient.ingredient.name)")
-
-                                .multilineTextAlignment(.center)
-                                .dynamicTypeSize(.large)
-                            
-                        }
+                            .multilineTextAlignment(.center)
+                            .dynamicTypeSize(.large)
                         
-                        if  cocktail.garnish != nil {
-                            VStack{
-                                Text("Garnish:")
-                                    .dynamicTypeSize(.xLarge).bold()
-                                if let garnishes = cocktail.garnish {
-                                    ForEach(garnishes, id: \.self) { garnish in
-                                        Text(garnish.rawValue)
-                                            .multilineTextAlignment(.center)
-                                            .dynamicTypeSize(.large)
-                                    }
-                                    
+                    }
+                    Spacer()
+                    if let ice = cocktail.ice?.rawValue {
+                        Text("Ice: ")
+                            .dynamicTypeSize(.xLarge).bold()
+                        Text(ice)
+                            .dynamicTypeSize(.large)
+                            .multilineTextAlignment(.center)
+                    }
+                    
+                    
+                    if  cocktail.garnish != nil {
+                        VStack{
+                            Text("Garnish:")
+                                .dynamicTypeSize(.xLarge).bold()
+                            if let garnishes = cocktail.garnish {
+                                ForEach(garnishes, id: \.self) { garnish in
+                                    Text(garnish.rawValue)
+                                        .multilineTextAlignment(.center)
+                                        .dynamicTypeSize(.large)
                                 }
+                                
                             }
-                            .padding(10)
                         }
-                        
+                        .padding(10)
+                    }
+                    
                     
                 }
                 .frame(width: geo.size.width, height: geo.size.height * 0.45, alignment: .center)
@@ -254,7 +262,7 @@ struct AuthorView: View {
 struct RecipeIngredientsView_Previews: PreviewProvider {
    
     static var previews: some View {
-        RecipeIngredientsView(cocktail: airMailWnG)
+        RecipeIngredientsView(cocktail: elChicicabra)
             
     }
 }
