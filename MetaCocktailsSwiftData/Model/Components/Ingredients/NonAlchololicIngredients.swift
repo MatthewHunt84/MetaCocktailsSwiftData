@@ -70,6 +70,7 @@ enum Syrup: String, Codable, CaseIterable {
     case orgeat               = "Orgeat"
     case passionfruitSyrup    = "Passionfruit Syrup"
     case richDem              = "Rich Demerara Syrup (2:1)"
+    case richSimple           = "Rich Simple Syrup (2:1)"
     case simple               = "Simple Syrup (1:1)"
     case raspberrySyrup       = "Raspberry Syrup"
     
@@ -107,6 +108,8 @@ enum Syrup: String, Codable, CaseIterable {
             Tags(flavors: [.grapefruit], nA: [NAIngredients(.syrups(self))])
         case .cinnamonSyrup:
             Tags(flavors: [.cinnamon], nA: [NAIngredients(.syrups(self))])
+        case .richSimple:
+            Tags(nA: [NAIngredients(.syrups(self))])
         }
     }
 }
@@ -193,12 +196,19 @@ enum Soda: String, Codable, CaseIterable {
 }
 
 enum OtherNA: String, Codable, CaseIterable {
+    case bloodyMarryMixWnG    = "Williams and Graham Bloody Marry Mix"
+    case bloodyMarryMix       = "Home made bloody marry mix"
     case cream                = "Heavy Cream"
     case eggWhites            = "Egg Whites"
     case eggWhole             = "Egg (except the shell)"
     //case eggYolk              = "Egg Yolk"
     case granulatedSugar      = "Granulated Sugar"
+    case hotWater             = "Hot Water"
     case orangeFlowerWater    = "Orange Flower Water"
+    case sugarCube            = "Sugar Cube"
+    case tobasco              = "Tobasco"
+    case tomatoJuice          = "Tomato Juice"
+    case worcestershire       = "Worcestershire"
     
     var nAComponent: CocktailComponent {
         return CocktailComponent(for: NAIngredients(.otherNonAlc(self)))
@@ -218,6 +228,20 @@ enum OtherNA: String, Codable, CaseIterable {
             Tags(flavors: [.whiteFlower], profiles: [.floral], nA: [NAIngredients(.otherNonAlc(self))])
 //        case .eggYolk:
 //            Tags(textures: [.rich], nA: [NAIngredients(.otherNonAlc(self))])
+        case .bloodyMarryMixWnG:
+            Tags(flavors: [.tomato], profiles: [.vegetal], textures: [.rich], nA: [NAIngredients(.otherNonAlc(self))])
+        case .bloodyMarryMix:
+            Tags(flavors: [.tomato], profiles: [.vegetal], textures: [.rich], nA: [NAIngredients(.otherNonAlc(self))])
+        case .tomatoJuice:
+            Tags(flavors: [.tomato], profiles: [.vegetal], textures: [.rich], nA: [NAIngredients(.otherNonAlc(self))])
+        case .tobasco:
+            Tags(flavors: [.vinegar], profiles: [.spicy], nA: [NAIngredients(.otherNonAlc(self))])
+        case .worcestershire:
+            Tags(flavors: [.umami], profiles: [.savory], nA: [NAIngredients(.otherNonAlc(self))])
+        case .sugarCube:
+            Tags(nA: [NAIngredients(.otherNonAlc(self))])
+        case .hotWater:
+            Tags(nA: [NAIngredients(.otherNonAlc(self))])
         }
     }
 }

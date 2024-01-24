@@ -219,4 +219,5 @@ enum MeasurementUnit: String, Codable {
     case glassRinse     = "Rinse the glass with"
     case rim            = "Around the rim of the glass"
     case bittersDeco    = "Design on top with"
+    case float          = "Float"
 }

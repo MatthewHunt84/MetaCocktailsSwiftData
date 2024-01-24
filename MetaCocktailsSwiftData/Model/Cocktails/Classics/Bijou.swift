@@ -10,7 +10,7 @@ import Foundation
 var bijou = Cocktail(cocktailName: "Bijou",
                      glasswareType: .stemmedGlassware,
                      garnish: [.lemonPeel],
-                     author:Author(year: "1895"),
+                     author:Author(person: AuthorNames.harryJohnson.rawValue, place: AuthorPlaces.harryJohnsonManual.rawValue, year: "1900"),
                      spec: bijouSpec,
                      tags: bijouTags)
 

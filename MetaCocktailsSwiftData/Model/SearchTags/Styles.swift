@@ -23,6 +23,9 @@ enum Style: String, Codable, CaseIterable {
     case tiki          = "Tiki"
     case julep         = "Julep"
     case flip          = "Flip"
+    case restorative   = "Restorative"
+    case toddy         = "Toddy"
+    
     
     
     

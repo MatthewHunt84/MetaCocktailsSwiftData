@@ -10,7 +10,7 @@ import Foundation
 var betweenTheSheets  = Cocktail(cocktailName: "Between the Sheets",
                                  glasswareType: .martini,
                                  garnish: [.orangePeel],
-                                 author: Author(person: "Frank Shay", place: "New York", year: "1929"),
+                                 author: Author(person: AuthorNames.harryCraddock.rawValue, place: AuthorPlaces.savoy.rawValue, year: "1929"),
                                  spec: betweenTheSheetsSpec,
                                  tags: betweenTheSheetsTags)
 

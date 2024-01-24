@@ -32,5 +32,6 @@ enum Profile: String, Codable, CaseIterable {
     //TODO: lets add spiritForward on a per cocktail basis!
     case spiritForward  = "Spirit Forward" // lets add these on a per cocktail basis.
     case refreshing     = "Refreshing"
+    case savory         = "Savory"
     
 }

@@ -22,7 +22,7 @@ var saturnSpec  =  [CocktailIngredient(.juices(.lemon), value: 0.75),
                     CocktailIngredient(.liqueurs(.velvetFalernum), value: 0.25),
                     CocktailIngredient(.gins(.ginAny), value: 2)]
 
-var saturnTags = Tags( profiles: [.citrusy, .fruity, .tropical, .sweet, .refreshing],
+var saturnTags = Tags( profiles: [.citrusy, .fruity, .tropical, .sweet, .refreshing, .floral],
                        textures: [.light],
                        styles: [.tiki, .shaken, .sour])
 

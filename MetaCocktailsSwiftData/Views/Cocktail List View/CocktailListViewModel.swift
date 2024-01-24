@@ -18,15 +18,15 @@ final class CocktailListViewModel: ObservableObject {
     
     static func collectAllCocktails() -> [Cocktail] {
         
-        let classicCocktails: [Cocktail] = [adonis, airMail, alaska, amarettoSour, americano,  aperolSpritz, armyNavy, aviation, beesKnees, betweenTheSheets, bamboo, bijou,  bloodAndSand, boulevardier, caipirinha, cloverClub, corpseReviver2, cosmopolitan,  daiquiri,  elPresidente, emerald, french75, french75Cognac, gimlet, ginFizz, jackRose,  jungleBird, lastWord, manhattan, maiTai, margarita, margaritaTommys, martini, mintJulep, mojito, negroni, oldFashioned, paloma, piscoSour, queensParkSwizzle, ramosGinFizz, robRoy, saturn, sazerac, sidecar,  tiPunch, twentiethCenturyCocktail,  vieuxCarre,  whiskeySour]
+        let classicCocktails: [Cocktail] = [adonis, airMail, alaska, amarettoSour, americano,  aperolSpritz, armyNavy, aviation, beesKnees, betweenTheSheets, bamboo, bijou,  bloodAndSand, bloodyMarry, blueBlazer, bobbyBurns, boulevardier, bramble, caipirinha, cloverClub, corpseReviver2, cosmopolitan,  daiquiri,  elPresidente, emerald, french75, french75Cognac, gimlet, ginFizz, jackRose,  jungleBird, lastWord, manhattan, maiTai, margarita, margaritaTommys, martini, mintJulep, mojito, negroni, oldFashioned, paloma, piscoSour, queensParkSwizzle, ramosGinFizz, robRoy, saturn, sazerac, sidecar,  tiPunch, twentiethCenturyCocktail,  vieuxCarre,  whiskeySour]
         
         let deathAndCoCocktails: [Cocktail] = [cropTop, divisionBell, finalWard]
         
-        let miscModernClassics: [Cocktail] = [trinidadSour, ultimaPalabra, whiteNegroni, paperPlane, penicillin ]
+        let miscModernClassics: [Cocktail] = [blackManhattan, trinidadSour, ultimaPalabra, whiteNegroni, paperPlane, penicillin ]
         
-        let williamsAndGrahamClassics: [Cocktail] = [airMailWnG, alaskaWnG, algonquinWnG,  amarettoSourWnG, americanoWnG, bambooWnG, betweenTheSheetsWnG, bijouWnG,  ]
+        let williamsAndGrahamClassics: [Cocktail] = [airMailWnG, alaskaWnG, algonquinWnG,  amarettoSourWnG, americanoWnG, bambooWnG, betweenTheSheetsWnG, bijouWnG, bloodAndSandWnG, bloodyMarryWnG, boulevardierWnG,  ]
         
-        let williamsAndGrahamModernCocktails: [Cocktail] = [aFlightSouthOfTheBorder, aloeForThatBurn, beckyWithTheGoodHair, blackberrySageSmash,  cominUpRoses, elChicicabra, giftHorse, greatWhiteBuffalo, heartOfGold, hereBeDragons, jaredLetosPrettyFace, machete, netflixAndChill, peanutButterFalcon, redWedding, reyonVert, secondSunrise, slutDragon, smokingMonkey, sunnySide,  spanishRevival]
+        let williamsAndGrahamModernCocktails: [Cocktail] = [aFlightSouthOfTheBorder, aloeForThatBurn, beckyWithTheGoodHair, blackberrySageSmash, brambleWng,  cominUpRoses, elChicicabra, giftHorse, greatWhiteBuffalo, heartOfGold, hereBeDragons, jaredLetosPrettyFace, machete, netflixAndChill, peanutButterFalcon, redWedding, reyonVert, secondSunrise, slutDragon, smokingMonkey, sunnySide,  spanishRevival]
         
         return classicCocktails + williamsAndGrahamClassics + deathAndCoCocktails + miscModernClassics + williamsAndGrahamModernCocktails
         

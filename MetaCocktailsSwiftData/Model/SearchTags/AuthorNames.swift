@@ -23,18 +23,27 @@ enum AuthorNames: String, Codable, CaseIterable {
     case traderVic         = "Victor (Trader Vic) Bergeron"
     case davidEmbury       = "David Embury"
     case hugoEnsslin       = "Hugo Ensslin"
+    case harryCraddock     = "Harry Craddock"
+    case harryJohnson      = "Harry Johnson"
+    case dickBradsell      = "Dick Bradsell"
   
 }
 enum AuthorPlaces: String, Codable, CaseIterable {
     
-    case williamsAndGraham   = "Williams and Graham"
-    case milkAndHoney        = "Milk and Honey"
-    case deathAndCo          = "Death & Co"
-    case aviaryBar           = "Aviary Bar at the Kuala Lumpur Hilton"
-    case detroitAthleticClub = "Detroit Athletic club"
-    case hotelMonteleone     = "Hotel Monteleone"
-    case savoy               = "Savoy Hotel (Cocktail Book)"
-    case hoffmanHouse        = "Hoffman House Bar"
+    case williamsAndGraham     = "Williams and Graham"
+    case milkAndHoney          = "Milk and Honey"
+    case deathAndCo            = "Death & Co"
+    case aviaryBar             = "Aviary Bar at the Kuala Lumpur Hilton"
+    case detroitAthleticClub   = "Detroit Athletic club"
+    case fredsClubLondon       = "Fred's Club, London Soho"
+    case hotelMonteleone       = "Hotel Monteleone"
+    case savoy                 = "Savoy Hotel (Cocktail Book)"
+    case hoffmanHouse          = "Hoffman House Bar"
+    case harryJohnsonManual    = "Harry Johnson's New and Improved Bartenders' Manual"
+    case bourbonNBranch        = "Bourbon & Branch"
+    case howToMixDrinksJT      = "Jerry Thomas: How to Mix Drinks"
+    case recipesForMixedDrinks = "Recipes for Mixed Drinks"
+    
 }
 
 struct Author {

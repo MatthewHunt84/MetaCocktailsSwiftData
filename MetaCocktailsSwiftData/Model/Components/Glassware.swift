@@ -8,6 +8,7 @@
 import Foundation
 
 enum Glassware: String, Codable {
+    case blueBlazerMugs      = "Blue Blazer Mugs"
     case coupe               = "Coupe"
     case collins             = "Collins"
     case doubleOld           = "Double Old Fashioned"
@@ -23,6 +24,7 @@ enum Glassware: String, Codable {
     case julep               = "Julep Cup or Highball"
     case singleOld           = "Frozen Single Old Fashioned"
     case tikiMug             = "Tiki Mug"
+    case toddyGlass          = "Toddy Glass"
    
     
 }

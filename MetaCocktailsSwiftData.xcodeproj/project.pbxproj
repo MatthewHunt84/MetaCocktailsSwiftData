@@ -124,6 +124,15 @@
 		4DBFF82D2B5FC2FD0011B5B1 /* BetweenTheSheets(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF82C2B5FC2FD0011B5B1 /* BetweenTheSheets(W&G).swift */; };
 		4DBFF82F2B5FC5400011B5B1 /* Bijou.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF82E2B5FC5400011B5B1 /* Bijou.swift */; };
 		4DBFF8312B5FC6750011B5B1 /* Bijou(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8302B5FC6750011B5B1 /* Bijou(W&G).swift */; };
+		4DBFF8332B6057F60011B5B1 /* BlackManhattan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8322B6057F60011B5B1 /* BlackManhattan.swift */; };
+		4DBFF8352B605AE70011B5B1 /* BloodAndSand(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8342B605AE70011B5B1 /* BloodAndSand(W&G).swift */; };
+		4DBFF8372B605C410011B5B1 /* BloodyMarry(WnG).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8362B605C410011B5B1 /* BloodyMarry(WnG).swift */; };
+		4DBFF8392B605F530011B5B1 /* BloodyMary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8382B605F530011B5B1 /* BloodyMary.swift */; };
+		4DBFF83B2B6063AC0011B5B1 /* BlueBlazer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF83A2B6063AC0011B5B1 /* BlueBlazer.swift */; };
+		4DBFF83D2B60803E0011B5B1 /* BobbyBurns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF83C2B60803E0011B5B1 /* BobbyBurns.swift */; };
+		4DBFF83F2B6082E40011B5B1 /* Boulevardier(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF83E2B6082E40011B5B1 /* Boulevardier(W&G).swift */; };
+		4DBFF8412B6083760011B5B1 /* Bramble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8402B6083760011B5B1 /* Bramble.swift */; };
+		4DBFF8432B6089C20011B5B1 /* Bramble(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8422B6089C20011B5B1 /* Bramble(W&G).swift */; };
 		F41045072AD4FD42000CA913 /* CocktailImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41045062AD4FD42000CA913 /* CocktailImageView.swift */; };
 		F44A28F72AC26A6A0083C04D /* TagLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44A28F62AC26A6A0083C04D /* TagLayout.swift */; };
 		F4B0ABF32B13FB2A00336D05 /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0ABF22B13FB2A00336D05 /* SearchResultsView.swift */; };
@@ -264,6 +273,15 @@
 		4DBFF82C2B5FC2FD0011B5B1 /* BetweenTheSheets(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BetweenTheSheets(W&G).swift"; sourceTree = "<group>"; };
 		4DBFF82E2B5FC5400011B5B1 /* Bijou.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bijou.swift; sourceTree = "<group>"; };
 		4DBFF8302B5FC6750011B5B1 /* Bijou(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bijou(W&G).swift"; sourceTree = "<group>"; };
+		4DBFF8322B6057F60011B5B1 /* BlackManhattan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackManhattan.swift; sourceTree = "<group>"; };
+		4DBFF8342B605AE70011B5B1 /* BloodAndSand(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BloodAndSand(W&G).swift"; sourceTree = "<group>"; };
+		4DBFF8362B605C410011B5B1 /* BloodyMarry(WnG).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BloodyMarry(WnG).swift"; sourceTree = "<group>"; };
+		4DBFF8382B605F530011B5B1 /* BloodyMary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodyMary.swift; sourceTree = "<group>"; };
+		4DBFF83A2B6063AC0011B5B1 /* BlueBlazer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueBlazer.swift; sourceTree = "<group>"; };
+		4DBFF83C2B60803E0011B5B1 /* BobbyBurns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BobbyBurns.swift; sourceTree = "<group>"; };
+		4DBFF83E2B6082E40011B5B1 /* Boulevardier(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Boulevardier(W&G).swift"; sourceTree = "<group>"; };
+		4DBFF8402B6083760011B5B1 /* Bramble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bramble.swift; sourceTree = "<group>"; };
+		4DBFF8422B6089C20011B5B1 /* Bramble(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bramble(W&G).swift"; sourceTree = "<group>"; };
 		F41045062AD4FD42000CA913 /* CocktailImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImageView.swift; sourceTree = "<group>"; };
 		F44A28F62AC26A6A0083C04D /* TagLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLayout.swift; sourceTree = "<group>"; };
 		F4B0ABF22B13FB2A00336D05 /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
@@ -368,8 +386,12 @@
 				4DBFF8282B5FC03A0011B5B1 /* BeesKnees.swift */,
 				4DBFF82A2B5FC1980011B5B1 /* BetweenTheSheets.swift */,
 				4DBFF82E2B5FC5400011B5B1 /* Bijou.swift */,
+				4DBFF83C2B60803E0011B5B1 /* BobbyBurns.swift */,
 				4D1E85E62B5DC56200214BC6 /* BloodAndSand.swift */,
+				4DBFF8382B605F530011B5B1 /* BloodyMary.swift */,
+				4DBFF83A2B6063AC0011B5B1 /* BlueBlazer.swift */,
 				1AFDB7DD2AE37207000A3812 /* Boulevardier.swift */,
+				4DBFF8402B6083760011B5B1 /* Bramble.swift */,
 				1AFDB7A32ADF1ED3000A3812 /* Caipirinha.swift */,
 				1AD87A262AE8B65800859028 /* CloverClub.swift */,
 				1AFDB7A52ADF1FAE000A3812 /* Cosmopolitan.swift */,
@@ -431,6 +453,7 @@
 				1AFDB7B92ADF277D000A3812 /* TrinidadSour.swift */,
 				1AFDB7C72AE33287000A3812 /* UltimaPalabra.swift */,
 				1AFDB7DF2AE37417000A3812 /* WhiteNegroni.swift */,
+				4DBFF8322B6057F60011B5B1 /* BlackManhattan.swift */,
 			);
 			path = MiscModernClassics;
 			sourceTree = "<group>";
@@ -586,6 +609,10 @@
 				4DBFF8262B5FBF370011B5B1 /* Bamboo(W&G).swift */,
 				4DBFF82C2B5FC2FD0011B5B1 /* BetweenTheSheets(W&G).swift */,
 				4DBFF8302B5FC6750011B5B1 /* Bijou(W&G).swift */,
+				4DBFF8342B605AE70011B5B1 /* BloodAndSand(W&G).swift */,
+				4DBFF8362B605C410011B5B1 /* BloodyMarry(WnG).swift */,
+				4DBFF83E2B6082E40011B5B1 /* Boulevardier(W&G).swift */,
+				4DBFF8422B6089C20011B5B1 /* Bramble(W&G).swift */,
 			);
 			path = WilliamsAndGrahamClassicSpecs;
 			sourceTree = "<group>";
@@ -786,12 +813,15 @@
 			files = (
 				F4C6A8E82AAFFC6B00BB0AD0 /* Styles.swift in Sources */,
 				1AFDB7A62ADF1FAE000A3812 /* Cosmopolitan.swift in Sources */,
+				4DBFF83D2B60803E0011B5B1 /* BobbyBurns.swift in Sources */,
 				F4C6A8F52AB0042400BB0AD0 /* Cocktail.swift in Sources */,
 				4D1E85C52B5C973100214BC6 /* FuegoVioleta.swift in Sources */,
 				1AD87A232AE8AA9B00859028 /* PiscoSour.swift in Sources */,
 				1AFDB7AE2ADF24A9000A3812 /* GinFizz.swift in Sources */,
 				F41045072AD4FD42000CA913 /* CocktailImageView.swift in Sources */,
 				4DBFF81B2B5FAE030011B5B1 /* GeneralInstructions.swift in Sources */,
+				4DBFF83F2B6082E40011B5B1 /* Boulevardier(W&G).swift in Sources */,
+				4DBFF8392B605F530011B5B1 /* BloodyMary.swift in Sources */,
 				1AFDB7D02AE33F7E000A3812 /* TwentiethCenturyCocktail.swift in Sources */,
 				1AFDB7BA2ADF277D000A3812 /* TrinidadSour.swift in Sources */,
 				1AFDB7B02ADF2513000A3812 /* JungleBird.swift in Sources */,
@@ -830,8 +860,10 @@
 				4DBFF8182B5FAD850011B5B1 /* AmarettoSour.swift in Sources */,
 				1AD87A212AE8A32D00859028 /* Paloma.swift in Sources */,
 				1AFDB7C02AE31EA3000A3812 /* Manhattan.swift in Sources */,
+				4DBFF8412B6083760011B5B1 /* Bramble.swift in Sources */,
 				1AC386CE2AAABED10064F52A /* SearchBarView.swift in Sources */,
 				1AC386B72AAABED10064F52A /* RamosGinFizz.swift in Sources */,
+				4DBFF8352B605AE70011B5B1 /* BloodAndSand(W&G).swift in Sources */,
 				4D1E85E72B5DC56200214BC6 /* BloodAndSand.swift in Sources */,
 				4D1F146C2B50B24F00FC3B85 /* BasicSearchView.swift in Sources */,
 				4D1E85B12B5C6AEA00214BC6 /* GreatWhiteBuffalo.swift in Sources */,
@@ -841,6 +873,7 @@
 				1AFDB7A22ADC84FF000A3812 /* Bamboo.swift in Sources */,
 				1AFDB7B42ADF2659000A3812 /* QueensParkSwizzle.swift in Sources */,
 				1AC386BC2AAABED10064F52A /* Ingredient.swift in Sources */,
+				4DBFF83B2B6063AC0011B5B1 /* BlueBlazer.swift in Sources */,
 				4DBFF81F2B5FB1D70011B5B1 /* Americano.swift in Sources */,
 				1AFDB7AC2ADF22AD000A3812 /* French75Cognac.swift in Sources */,
 				1AC386C02AAABED10064F52A /* BlackberrySageSmash.swift in Sources */,
@@ -861,6 +894,7 @@
 				1AC386B82AAABED10064F52A /* Daiquiri.swift in Sources */,
 				1AD87A252AE8ADB000859028 /* WhiskeySour.swift in Sources */,
 				4DB1C0BE2B46D74B00943C69 /* ResultViewSectionData.swift in Sources */,
+				4DBFF8372B605C410011B5B1 /* BloodyMarry(WnG).swift in Sources */,
 				1AC386C32AAABED10064F52A /* BuildOrderView.swift in Sources */,
 				4DBFF82F2B5FC5400011B5B1 /* Bijou.swift in Sources */,
 				1AFDB7CC2AE33D13000A3812 /* CropTop.swift in Sources */,
@@ -888,6 +922,7 @@
 				1AD87A2D2AE8D07E00859028 /* Sazerac.swift in Sources */,
 				1AC386C82AAABED10064F52A /* PrepBibleViewModel.swift in Sources */,
 				1AD87A2B2AE8C93A00859028 /* BeckyWithTheGoodHair.swift in Sources */,
+				4DBFF8332B6057F60011B5B1 /* BlackManhattan.swift in Sources */,
 				4D1E85CB2B5CA28C00214BC6 /* HeartOfGold.swift in Sources */,
 				4D1E85ED2B5F71B200214BC6 /* AirMail(WilliamsAndGraham).swift in Sources */,
 				4D1E85BB2B5C845400214BC6 /* SmokingMonkey.swift in Sources */,
@@ -895,6 +930,7 @@
 				4D1E85D92B5CDC4E00214BC6 /* CorpseReviver2.swift in Sources */,
 				1AC386BF2AAABED10064F52A /* Prep.swift in Sources */,
 				1AFDB7DC2AE36E0A000A3812 /* Mojito.swift in Sources */,
+				4DBFF8432B6089C20011B5B1 /* Bramble(W&G).swift in Sources */,
 				1AFDB7BC2AE2FF69000A3812 /* LastWord.swift in Sources */,
 				4D1E85C12B5C8F4500214BC6 /* AFlightSouthOfTheBorder.swift in Sources */,
 				4D1E85D32B5CD8E700214BC6 /* RedWedding.swift in Sources */,
