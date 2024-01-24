@@ -37,7 +37,7 @@ struct RecipeIngredientsView: View {
                 .padding(10)
                 VStack {
                     
-                    Text("Build:")
+                    Text("Cocktail Spec:")
                         .dynamicTypeSize(.xLarge).bold()
                     
                     ForEach(cocktail.spec, id: \.id) { ingredient in
@@ -47,6 +47,23 @@ struct RecipeIngredientsView: View {
                             .multilineTextAlignment(.center)
                             .dynamicTypeSize(.large)
                         
+                    }
+                    if let stirShakeBuild = cocktail.tags.styles {
+                        if stirShakeBuild.contains(.built) {
+                            Text("Build in glass")
+                                .multilineTextAlignment(.center)
+                                .dynamicTypeSize(.large)
+                        }
+                        if stirShakeBuild.contains(.shaken) {
+                            Text("Shake")
+                                .multilineTextAlignment(.center)
+                                .dynamicTypeSize(.large)
+                        }
+                        if stirShakeBuild.contains(.stirred) {
+                            Text("Stir")
+                                .multilineTextAlignment(.center)
+                                .dynamicTypeSize(.large)
+                        }
                     }
                     Spacer()
                     if let ice = cocktail.ice?.rawValue {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-var airMailWnG  = Cocktail(cocktailName: "Air Mail (Williams and Graham spec.)",
+var airMailWnG  = Cocktail(cocktailName: "Air Mail (Williams & Graham spec.)",
                          glasswareType: .flute,
                          garnish: [.noGarnish],
                          spec: airMailWnGSpec,

@@ -7,7 +7,7 @@
 
 import Foundation
 
-var cableCarWnG = Cocktail(cocktailName: "Cable Car (Williams and Graham Spec)",
+var cableCarWnG = Cocktail(cocktailName: "Cable Car (Williams & Graham Spec)",
                            glasswareType: .cinnamonSugarRim,
                            garnish: [.noGarnish],
                            author: Author(person: "Tony Abou-Ganim", place:  "Starlight Room, San Francisco", year: "1996"),

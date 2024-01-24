@@ -9,23 +9,24 @@ import Foundation
 
 enum AuthorNames: String, Codable, CaseIterable {
     
-    case jamesMenkal       = "James Menkal"
-    case samRoss           = "Sam Ross"
-    case philWard          = "Phil Ward"
-    case jerryThomas       = "Jerry Thomas"
     case constante         = "Constante Ribalaiuga"
-    case saydeeCanada      = "Saydee Canada"
-    case devonTarby        = "Devon Tarby"
-    case seanKenyon        = "Sean Kenyon"
-    case giuseppeGonzalas  = "Giuseppe Gonzalas"
-    case sashaPetraske     = "Sasha Petraske"
-    case walterBergeron    = "Walter Bergeron"
-    case traderVic         = "Victor (Trader Vic) Bergeron"
     case davidEmbury       = "David Embury"
-    case hugoEnsslin       = "Hugo Ensslin"
+    case devonTarby        = "Devon Tarby"
+    case dickBradsell      = "Dick Bradsell"
+    case ernestHemingway   = "Ernest Hemingway"
+    case giuseppeGonzalas  = "Giuseppe Gonzalas"
     case harryCraddock     = "Harry Craddock"
     case harryJohnson      = "Harry Johnson"
-    case dickBradsell      = "Dick Bradsell"
+    case hugoEnsslin       = "Hugo Ensslin"
+    case jamesMenkal       = "James Menkal"
+    case jerryThomas       = "Jerry Thomas"
+    case philWard          = "Phil Ward"
+    case samRoss           = "Sam Ross"
+    case seanKenyon        = "Sean Kenyon"
+    case sashaPetraske     = "Sasha Petraske"
+    case saydeeCanada      = "Saydee Canada"
+    case traderVic         = "Victor (Trader Vic) Bergeron"
+    case walterBergeron    = "Walter Bergeron"
   
 }
 enum AuthorPlaces: String, Codable, CaseIterable {

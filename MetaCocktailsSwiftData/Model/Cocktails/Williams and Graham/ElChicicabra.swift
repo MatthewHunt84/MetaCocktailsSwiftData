@@ -23,6 +23,7 @@ let elChicicabraSpec: [CocktailIngredient] = [CocktailIngredient(.liqueurs(.anch
                                               CocktailIngredient(.agaves(.mezcalDelMagueyChichicapa), value: 1.5)]
 
 
-let elChicicabraTags = Tags(textures: [.light],
-                            styles: [.sour, .shaken])
+let elChicicabraTags = Tags(profiles: [.spiritForward],
+                            textures: [.rich],
+                            styles: [.stirred])
 

@@ -17,7 +17,7 @@ var divisionBell = Cocktail(cocktailName: "Division Bell",
                             tags: divisionBellTags)
 
 var divisionBellSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
-                         CocktailIngredient(.agaves(.mezcalSmokey), value: 1),
+                         CocktailIngredient(.agaves(.mezcalDelMagueyVida), value: 1),
                          CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.5),
                          CocktailIngredient(.amari(.aperol), value: 0.75)]
 

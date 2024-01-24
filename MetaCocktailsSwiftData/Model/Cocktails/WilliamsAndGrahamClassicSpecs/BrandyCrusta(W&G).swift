@@ -7,7 +7,7 @@
 
 import Foundation
 
-var brandyCrustaWnG = Cocktail(cocktailName: "Brandy Crusta (Williams and Graham spec.)",
+var brandyCrustaWnG = Cocktail(cocktailName: "Brandy Crusta (Williams & Graham spec.)",
                                glasswareType: .coupe,
                                author:Author(person: AuthorNames.jerryThomas.rawValue,
                                              place: AuthorPlaces.howToMixDrinksJT.rawValue,

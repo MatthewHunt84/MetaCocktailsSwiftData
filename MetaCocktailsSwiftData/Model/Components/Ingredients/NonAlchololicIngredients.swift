@@ -73,6 +73,7 @@ enum Syrup: String, Codable, CaseIterable {
     case richSimple           = "Rich Simple Syrup (2:1)"
     case simple               = "Simple Syrup (1:1)"
     case raspberrySyrup       = "Raspberry Syrup"
+    case vanilla              = "Vanilla Syrup"
     
     var nAComponent: CocktailComponent {
         return CocktailComponent(for: NAIngredients(.syrups(self)))
@@ -110,6 +111,8 @@ enum Syrup: String, Codable, CaseIterable {
             Tags(flavors: [.cinnamon], nA: [NAIngredients(.syrups(self))])
         case .richSimple:
             Tags(nA: [NAIngredients(.syrups(self))])
+        case .vanilla:
+            Tags(flavors: [.vanilla], nA: [NAIngredients(.syrups(self))])
         }
     }
 }
@@ -175,6 +178,7 @@ enum Seasoning: String, Codable, CaseIterable {
 }
 
 enum Soda: String, Codable, CaseIterable {
+    case gingerBeer           = "Ginger Beer"
     case grapefruitSoda       = "Grapefruit Soda"
     case sodaWater            = "Soda Water"
     case sparklingWater       = "Sparkling Water"
@@ -191,6 +195,8 @@ enum Soda: String, Codable, CaseIterable {
             Tags(textures: [.effervescent], nA: [NAIngredients(.soda(self))])
         case .sparklingWater:
             Tags(textures: [.effervescent], nA: [NAIngredients(.soda(self))])
+        case .gingerBeer:
+            Tags(flavors: [.ginger], profiles: [.sharp], textures: [.effervescent], nA: [NAIngredients(.soda(self))])
         }
     }
 }
@@ -198,6 +204,7 @@ enum Soda: String, Codable, CaseIterable {
 enum OtherNA: String, Codable, CaseIterable {
     case bloodyMarryMixWnG    = "Williams and Graham Bloody Marry Mix"
     case bloodyMarryMix       = "Home made bloody marry mix"
+    case cocoaPowder          = "Cocoa Powder"
     case coldBrew             = "Strong Cold Brew"
     case cream                = "Heavy Cream"
     case eggWhites            = "Egg Whites"
@@ -205,6 +212,7 @@ enum OtherNA: String, Codable, CaseIterable {
     //case eggYolk              = "Egg Yolk"
     case granulatedSugar      = "Granulated Sugar"
     case hotWater             = "Hot Water"
+    case espressoCream        = "Lightly whipped and sweetened cream with angostura bitters(See 'Espresso Cream' in prep)"
     case mapleSugar           = "Maple Sugar"
     case orangeFlowerWater    = "Orange Flower Water"
     case sugarCube            = "Sugar Cube"
@@ -248,6 +256,10 @@ enum OtherNA: String, Codable, CaseIterable {
             Tags(flavors: [.maple], nA: [NAIngredients(.otherNonAlc(self))])
         case .coldBrew:
             Tags(flavors: [.coffee,.espresso], nA: [NAIngredients(.otherNonAlc(self))])
+        case .cocoaPowder:
+            Tags(flavors: [.chocolate], nA: [NAIngredients(.otherNonAlc(self))])
+        case .espressoCream:
+            Tags(nA: [NAIngredients(.otherNonAlc(self))])
         }
     }
 }

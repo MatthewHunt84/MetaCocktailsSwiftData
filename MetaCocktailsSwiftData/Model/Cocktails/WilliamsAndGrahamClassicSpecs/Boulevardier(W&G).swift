@@ -7,7 +7,7 @@
 
 import Foundation
 
-var boulevardierWnG  =  Cocktail(cocktailName: "Boulevardier (Williams and Graham spec.)",
+var boulevardierWnG  =  Cocktail(cocktailName: "Boulevardier (Williams & Graham spec.)",
                               glasswareType: .martini,
                               garnish: [.orangePeel],
                               author:Author(person: "Erskine Gwynne",place: "Paris", year: "1920's"),

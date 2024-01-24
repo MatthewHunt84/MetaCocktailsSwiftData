@@ -7,7 +7,7 @@
 
 import Foundation
 
-var algonquinWnG  = Cocktail(cocktailName: "Algonquin (Williams and Graham spec.)",
+var algonquinWnG  = Cocktail(cocktailName: "Algonquin (Williams & Graham spec.)",
                              glasswareType: .martini,
                              garnish: [.noGarnish],
                              spec: algonquinWnGSpec,

@@ -10,7 +10,6 @@ import SwiftUI
 var cloverClub = Cocktail(cocktailName: "Clover Club",
                            glasswareType: .stemmedGlassware,
                            garnish: [.raspberry],
-                           ice: nil,
                            author: Author(place: "Somewhere in Philadelphia", year: "1901"),
                            spec: cloverClubSpec,
                            buildOrder: cloverClubBuild,
