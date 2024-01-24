@@ -22,7 +22,7 @@ final class CocktailListViewModel: ObservableObject {
         
         let deathAndCoCocktails: [Cocktail] = [cropTop, divisionBell, finalWard]
         
-        let miscModernClassics: [Cocktail] = [blackManhattan, cableCar, trinidadSour, ultimaPalabra, whiteNegroni, paperPlane, penicillin ]
+        let miscModernClassics: [Cocktail] = [blackManhattan, cableCar, caucasian, trinidadSour, ultimaPalabra, whiteNegroni, paperPlane, penicillin ]
         
         let williamsAndGrahamClassics: [Cocktail] = [airMailWnG, alaskaWnG, algonquinWnG,  amarettoSourWnG, americanoWnG, bambooWnG, betweenTheSheetsWnG, bijouWnG, bloodAndSandWnG, bloodyMarryWnG, boulevardierWnG, brandyCrustaWnG, brooklynWnG, brownDerbyWnG, cableCarWnG  ]
         
