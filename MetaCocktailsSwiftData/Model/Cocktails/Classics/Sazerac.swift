@@ -17,7 +17,7 @@ var sazerac = Cocktail(cocktailName: "Sazerac",
                        tags: sazeracTags)
 
 var sazeracSpec  = [CocktailIngredient(.syrups(.richDem), value: 2, unit: .teaspoon),
-                    CocktailIngredient(.whiskies(.ryeWhiskey), value: 2),
+                    CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 2),
                     CocktailIngredient(.bitters(.peychauds), value: 4, unit: .dashes),
                     CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),
                     CocktailIngredient(.otherAlcohol(.absinthe), value: 1, unit: .glassRinse),]

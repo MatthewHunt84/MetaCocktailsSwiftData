@@ -198,12 +198,14 @@ enum Soda: String, Codable, CaseIterable {
 enum OtherNA: String, Codable, CaseIterable {
     case bloodyMarryMixWnG    = "Williams and Graham Bloody Marry Mix"
     case bloodyMarryMix       = "Home made bloody marry mix"
+    case coldBrew             = "Strong Cold Brew"
     case cream                = "Heavy Cream"
     case eggWhites            = "Egg Whites"
     case eggWhole             = "Egg (except the shell)"
     //case eggYolk              = "Egg Yolk"
     case granulatedSugar      = "Granulated Sugar"
     case hotWater             = "Hot Water"
+    case mapleSugar           = "Maple Sugar"
     case orangeFlowerWater    = "Orange Flower Water"
     case sugarCube            = "Sugar Cube"
     case tobasco              = "Tobasco"
@@ -242,6 +244,10 @@ enum OtherNA: String, Codable, CaseIterable {
             Tags(nA: [NAIngredients(.otherNonAlc(self))])
         case .hotWater:
             Tags(nA: [NAIngredients(.otherNonAlc(self))])
+        case .mapleSugar:
+            Tags(flavors: [.maple], nA: [NAIngredients(.otherNonAlc(self))])
+        case .coldBrew:
+            Tags(flavors: [.coffee,.espresso], nA: [NAIngredients(.otherNonAlc(self))])
         }
     }
 }

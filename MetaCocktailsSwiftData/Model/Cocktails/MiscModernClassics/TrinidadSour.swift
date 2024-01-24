@@ -18,7 +18,7 @@ var trinidadSour = Cocktail(cocktailName: "Trinidad Sour",
 
 var trinidadSourSpec = [CocktailIngredient(.juices(.lemon), value: 0.75),
                         CocktailIngredient(.syrups(.orgeat), value: 1),
-                        CocktailIngredient(.whiskies(.ryeWhiskey), value: 0.5),
+                        CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 0.5),
                         CocktailIngredient(.bitters(.angosturaBitters), value: 1.5)]
                         
 var trinidadSourTags = Tags(flavors: [.almond, .lemon, .bakingSpices],

@@ -15,7 +15,7 @@ var paperPlane = Cocktail(cocktailName: "Paper Plane",
                           buildOrder: nil,
                           tags: paperPlaneTags)
 
-var paperPlaneSpec = [CocktailIngredient(.whiskies(.bourbon) , value: 0.75),
+var paperPlaneSpec = [CocktailIngredient(.whiskies(.bourbonAny) , value: 0.75),
                       CocktailIngredient(.amari(.amaroNonino), value: 0.75),
                       CocktailIngredient(.amari(.aperol), value: 0.75),
                       CocktailIngredient(.juices(.lemon), value: 0.75)]

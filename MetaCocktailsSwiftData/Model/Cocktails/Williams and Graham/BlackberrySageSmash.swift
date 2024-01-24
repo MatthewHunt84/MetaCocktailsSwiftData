@@ -19,7 +19,7 @@ var blackberrySageSmash = Cocktail(cocktailName: "Blackberry Sage Smash",
                                    buildOrder: blackberrySageSmashBuild,
                                    tags: blackberrySageSmashTags)
 
-let blackberrySageSmashSpec: [CocktailIngredient] = [CocktailIngredient(.whiskies(.ryeWhiskey), value: 2),
+let blackberrySageSmashSpec: [CocktailIngredient] = [CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 2),
                                                      CocktailIngredient(.juices(.lemon), value: 0.75),
                                                      CocktailIngredient(.syrups(.simple), value: 0.75),
                                                      CocktailIngredient(.fruit(.blackBerry), value: 4, unit: .muddled),

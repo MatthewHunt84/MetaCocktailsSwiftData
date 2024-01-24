@@ -21,7 +21,7 @@ var vieuxCarreSpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value
                            CocktailIngredient(.bitters(.peychauds), value: 2, unit: .dashes),
                            CocktailIngredient(.liqueurs(.benedictine), value: 1, unit: .teaspoon),
                            CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),
-                           CocktailIngredient(.whiskies(.ryeWhiskey), value: 2),
+                           CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 2),
                            CocktailIngredient(.brandies(.cognacVSOP), value: 2)]
 
 var vieuxCarreTags     = Tags(profiles: [.spiritForward],
