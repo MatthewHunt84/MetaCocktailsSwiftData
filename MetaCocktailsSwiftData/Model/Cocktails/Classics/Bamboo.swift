@@ -12,17 +12,16 @@ var bamboo = Cocktail(cocktailName: "Bamboo",
                       glasswareType: Glassware.coupe,
                       garnish: [.orangeOrLemon],
                       ice: nil,
-                      author: "Louis Eppinger",
+                      author: Author(person: "Louis Eppinger"),
                       spec: bambooSpec,
                       buildOrder: nil,
                       tags: bambooTags)
 
 var bambooSpec = [CocktailIngredient(.fortifiedWines(.amontillado), value: 1.5),
-                  CocktailIngredient(.fortifiedWines(.dryVermouth), value: 1.5),
-                  CocktailIngredient(.bitters(.orangeBitters), value: 2, unit: .dash)]
+                  CocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 1.5),
+                  CocktailIngredient(.bitters(.orangeBitters), value: 2, unit: .dashes)]
 
 var bambooTags = Tags(flavors: [.lemon],
-                      profiles: nil,
                       textures: [.thin, .light],
                       styles: [.martini, .stirred])
                    

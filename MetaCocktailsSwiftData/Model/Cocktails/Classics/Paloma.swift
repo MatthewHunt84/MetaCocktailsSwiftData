@@ -20,6 +20,6 @@ var palomaSpec  = [CocktailIngredient(.agaves(.tequilaBlanco), value: 2),
                    CocktailIngredient(.seasoning(.salt), value: 1, unit: .pinch),
                    CocktailIngredient(.soda(.grapefruitSoda), value: 3)]
 
-var palomaTags  =  Tags(profiles: [.fruity],
+var palomaTags  =  Tags(profiles: [.fruity, .refreshing],
                         textures: [.light, .effervescent],
-                        styles: [.built, .sour])
+                        styles: [.built, .sour, .fizz])

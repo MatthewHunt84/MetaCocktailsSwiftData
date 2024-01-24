@@ -17,7 +17,7 @@ var mintJulep = Cocktail(cocktailName: "Mint Julep",
                          buildOrder: mintJulepBuild,
                          tags: mintJulepTags)
 
-let mintJulepSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 10, unit: .leaves),
+let mintJulepSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
                                            CocktailIngredient(.syrups(.simple), value: 1),
                                            CocktailIngredient(.whiskies(.bourbon), value: 2.25)]
 

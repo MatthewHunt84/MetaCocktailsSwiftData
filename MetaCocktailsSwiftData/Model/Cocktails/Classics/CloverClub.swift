@@ -11,7 +11,7 @@ var cloverClub = Cocktail(cocktailName: "Clover Club",
                            glasswareType: .stemmedGlassware,
                            garnish: [.raspberry],
                            ice: nil,
-                           author: "Somewhere in Philadelphia (1901)",
+                           author: Author(place: "Somewhere in Philadelphia", year: "1901"),
                            spec: cloverClubSpec,
                            buildOrder: cloverClubBuild,
                            tags: cloverClubTags)
@@ -19,7 +19,7 @@ var cloverClub = Cocktail(cocktailName: "Clover Club",
 var cloverClubSpec  = [CocktailIngredient(.juices(.lemon), value: 0.5),
                        CocktailIngredient(.syrups(.raspberrySyrup), value: 0.5),
                        CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
-                       CocktailIngredient(.fortifiedWines(.dryVermouth), value: 0.5),
+                       CocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 0.5),
                        CocktailIngredient(.gins(.ginAny), value: 1.5)]
 
 var cloverClubBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients into a tin a dry shake to emulsify. If you don't feel like making a raspberry syrup (we recommend Julie Reiner's version in her book: Craft Cocktail Party) then just muddle a few ripe raspberries in the tin before adding your ingredients to dry shake, then substitute simple syrup for raspberry syrup."),
@@ -28,6 +28,7 @@ var cloverClubBuild = Build(instructions: [Instruction(step: 1, method: "Add all
                                           Instruction(step: 4, method: "Garnish with a raspberry.")])
 
 
-var cloverClubTags = Tags(textures: [.light, .silky],
+var cloverClubTags = Tags(profiles: [.citrusy, .fruity, .tart],
+                          textures: [.light, .silky],
                           styles: [.sour, .shaken])
                    

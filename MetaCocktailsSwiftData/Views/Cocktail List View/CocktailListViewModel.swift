@@ -11,13 +11,29 @@ final class CocktailListViewModel: ObservableObject {
     @Environment(\.modelContext) var modelContext
 
     static let shared = CocktailListViewModel()
-    @Published var cocktails: [Cocktail] = [aperolSpritz, bamboo, beckyWithTheGoodHair, blackberrySageSmash, boulevardier, caipirinha, cloverClub, cominUpRoses, cosmopolitan, cropTop, daiquiri, divisionBell, elPresidente, emerald, finalWard, french75, french75Cognac, gimlet, ginFizz, greatWhiteBuffalo, jungleBird, lastWord, manhattan, maiTai, margarita, margaritaTommys, martini, mintJulep, mojito, negroni, paloma, piscoSour, paperPlane, peanutButterFalcon, penicillin, queensParkSwizzle, ramosGinFizz, robRoy, saturn, sazerac, sunnySide, trinidadSour, twentiethCenturyCocktail, ultimaPalabra, whiskeySour, whiteNegroni]
+    @Published var cocktails = collectAllCocktails().sorted(by: {$0.cocktailName < $1.cocktailName})
     @Published var isShowingRecipeCard = false
     @Published var selectedCocktail: Cocktail?
     @Published var isShowingBuildOrderButton = false
     
-    // TODO: Ready for swiftData
-    func addCocktailsToSwiftData() {
-        modelContext.insert(aperolSpritz)
+    static func collectAllCocktails() -> [Cocktail] {
+        
+        let classicCocktails: [Cocktail] = [adonis, airMail, alaska, amarettoSour, americano,  aperolSpritz, armyNavy, aviation, beesKnees, betweenTheSheets, bamboo, bijou,  bloodAndSand, bloodyMarry, blueBlazer, bobbyBurns, boulevardier, bramble, caipirinha, cloverClub, corpseReviver2, cosmopolitan,  daiquiri,  elPresidente, emerald, french75, french75Cognac, gimlet, ginFizz, jackRose,  jungleBird, lastWord, manhattan, maiTai, margarita, margaritaTommys, martini, mintJulep, mojito, negroni, oldFashioned, paloma, piscoSour, queensParkSwizzle, ramosGinFizz, robRoy, saturn, sazerac, sidecar,  tiPunch, twentiethCenturyCocktail,  vieuxCarre,  whiskeySour]
+        
+        let deathAndCoCocktails: [Cocktail] = [cropTop, divisionBell, finalWard]
+        
+        let miscModernClassics: [Cocktail] = [blackManhattan, trinidadSour, ultimaPalabra, whiteNegroni, paperPlane, penicillin ]
+        
+        let williamsAndGrahamClassics: [Cocktail] = [airMailWnG, alaskaWnG, algonquinWnG,  amarettoSourWnG, americanoWnG, bambooWnG, betweenTheSheetsWnG, bijouWnG, bloodAndSandWnG, bloodyMarryWnG, boulevardierWnG,  ]
+        
+        let williamsAndGrahamModernCocktails: [Cocktail] = [aFlightSouthOfTheBorder, aloeForThatBurn, beckyWithTheGoodHair, blackberrySageSmash, brambleWng,  cominUpRoses, elChicicabra, giftHorse, greatWhiteBuffalo, heartOfGold, hereBeDragons, jaredLetosPrettyFace, machete, netflixAndChill, peanutButterFalcon, redWedding, reyonVert, secondSunrise, slutDragon, smokingMonkey, sunnySide,  spanishRevival]
+        
+        return classicCocktails + williamsAndGrahamClassics + deathAndCoCocktails + miscModernClassics + williamsAndGrahamModernCocktails
+        
     }
+    
+    // TODO: Ready for swiftData
+//    func addCocktailsToSwiftData() {
+//        modelContext.insert(aperolSpritz)
+//    }
 }

@@ -14,7 +14,7 @@ var daiquiriSpec: [CocktailIngredient] = [CocktailIngredient(.rums(.rumWhite), v
                                           CocktailIngredient(.syrups(.simple), value: 0.75)]
 
 var daiquiriTags = Tags(flavors: [.lime],
-                        profiles: [.citrusy],
+                        profiles: [.citrusy, .refreshing],
                         textures: [.light],
                         styles: [.sour, .shaken])
               

@@ -198,9 +198,9 @@ enum IngredientType: Codable {
 }
 
 enum MeasurementUnit: String, Codable {
+    case peel           = "Peel(s)"
     case grams          = "grams"
     case fluidOunces    = "oz"
-    case teaspoons      = "tsp"
     case disc           = "disc, with flesh"
     case limeQuarters   = "lime, quartered"
     case slices         = "slices"
@@ -208,12 +208,16 @@ enum MeasurementUnit: String, Codable {
     case dash           = "dash"
     case dashes         = "dashes"
     case drops          = "drops"
-    case berries        = "berries"
-    case leaves         = "leaves"
+    case muddled        = "Muddled"
+    case gentlyMuddled  = "Gently muddled"
+    case nitroMuddled   = "Nitro muddled"
     case ml             = "ml"
-    case barspoon       = "Barspoon"
+    case teaspoon       = "teaspoon"
+    case teaspoons      = "teaspoons"
     case pinch          = "Pinch"
-    case whole          = "Whole (except the shell)"
-    case sprays         = "Sprays in the glass (glass rinse)"
+    case whole          = "Whole"
+    case glassRinse     = "Rinse the glass with"
     case rim            = "Around the rim of the glass"
+    case bittersDeco    = "Design on top with"
+    case float          = "Float"
 }

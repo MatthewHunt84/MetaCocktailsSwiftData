@@ -3,22 +3,27 @@
 //  MetaCocktailsSwiftData
 //
 //  Created by James Menkal on 1/4/24.
-//
 
 import SwiftUI
 
 struct CocktailResultList: View {
     
     @ObservedObject var viewModel: SearchCriteriaViewModel
+    @Binding var isLoading: Bool
 
     var body: some View {
         
         VStack {
-            if viewModel.isLoading {
-                ZStack(alignment: .center) {
-                    Color.red
-                    Text("Couldn't load in time")
-                }
+            
+            if isLoading {
+//                ZStack(alignment: .center) {
+//                    Color.black
+//                    Text("Couldn't load in time. My bad.")
+//                }
+                Image("Couldn’tLoad")
+                    .resizable()
+                    .scaledToFit()
+                
             } else {
                 if viewModel.preferredCount > 0 {
                     VStack{
@@ -66,6 +71,7 @@ struct CocktailResultList: View {
                             
                         }
                         .listStyle(.grouped)
+                        .backgroundStyle(Color(.black))
                         if viewModel.multipleBaseSpiritsSelected {
                             ResultsConfigurationMenu(viewModel: viewModel)
                         }
@@ -73,8 +79,17 @@ struct CocktailResultList: View {
                     }
                 } else  {
                     ZStack(alignment: .center) {
-                        Color.teal
-                        Text("Add more preferences to continue")
+                        Color.black
+                        
+                        VStack {
+                            Text("Add more preferences to continue")
+                                .font(.title).bold()
+                            .multilineTextAlignment(.center)
+                            Image("Urkel")
+                                .resizable()
+                                .scaledToFit()
+                        }
+                        
                     }
                 }
             }
@@ -84,6 +99,6 @@ struct CocktailResultList: View {
 }
 
 #Preview {
-    CocktailResultList(viewModel: SearchCriteriaViewModel())
+    CocktailResultList(viewModel: SearchCriteriaViewModel(), isLoading: .constant(false))
         .environmentObject(SearchCriteriaViewModel())
 }

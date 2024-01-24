@@ -15,19 +15,24 @@ struct CocktailListView: View {
     
     
     var body: some View {
-        NavigationStack{
-            ZStack{
-                VStack{
+        
+        GeometryReader { geometry in
+//           
+            NavigationStack{
+                VStack {
                     HStack {
                         Text("Cocktails")
                             .font(.largeTitle).bold()
                             .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
-                        Spacer()
+                        
                     }
-                    GeometryReader { geometry in
+                    .frame(width: geometry.size.width, height: geometry.size.height * 0.06, alignment: .bottomLeading)
+                    
+                    GeometryReader { listGeo in
+                        
                         ScrollView {
                             ScrollViewReader { value in
-                                HStack{
+                                HStack {
                                     List{
                                         ForEach(alphabet, id: \.self) { letter in
                                             Section {
@@ -46,40 +51,29 @@ struct CocktailListView: View {
                                         }
                                     }
                                     .listStyle(.plain)
-                                    .frame(width: geometry.size.width * 0.91, height: geometry.size.height)
-                                    HStack{
-                                        
-                                        VStack {
-                                            
-                                            ForEach(0..<alphabet.count, id: \.self) { i in
-                                                Button(action: {
-                                                    withAnimation {
-                                                        value.scrollTo(alphabet[i], anchor: .top)
-                                                    }
-                                                }, label: {
-                                                    Text("\(alphabet[i])")
-                                                        .font(.headline).bold()
-                                                })
-                                                .buttonStyle(ScaleButtonStyle())
-                                                .frame(width: geometry.size.width, height: geometry.size.height/40, alignment: .center)
-                                                .offset(x: -4, y: 5)
-                                            }
-                                            
-                                            
+                                    .frame(width: listGeo.size.width * 0.9, height: listGeo.size.height)
+                                    VStack {
+                                        ForEach(0..<alphabet.count, id: \.self) { i in
+                                            Button(action: {
+                                                withAnimation {
+                                                    value.scrollTo(alphabet[i], anchor: .top)
+                                                }
+                                            }, label: {
+                                                Text("\(alphabet[i])")
+                                                    .font(.headline).bold()
+                                            })
+                                            .buttonStyle(ScaleButtonStyle())
                                         }
                                     }
-                                    
-                                    .frame(width: geometry.size.width * 0.09, height: geometry.size.height, alignment: .center)
+                                    .frame(width: listGeo.size.width * 0.1, height: listGeo.size.height)
+                                    .offset(x: -4, y: 5)
                                 }
                             }
                         }
-                        .scrollDisabled(true)
                     }
+                    .frame(width: geometry.size.width, height: geometry.size.height * 0.9)
                 }
-                
-                
             }
-            
         }
     }
     
@@ -92,7 +86,7 @@ struct CocktailListView_Previews: PreviewProvider {
     }
 }
 struct ScaleButtonStyle : ButtonStyle {
-
+    
     func makeBody(configuration: Configuration) -> some View {
         configuration.label.scaleEffect(configuration.isPressed ? 2.5 : 1)
             .shadow(radius: 30)

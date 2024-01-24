@@ -7,7 +7,15 @@
 
 import SwiftUI
 
-var ramosGinFizz = Cocktail(cocktailName: "Ramos Gin Fizz", imageAsset: nil, glasswareType: .collins, garnish: [.orangePeel], ice: .koldDraft, author: "Henry C. Ramos", spec: ramosGinFizzSpec, buildOrder: ramosGinFizzBuild, tags: ramosTags)
+var ramosGinFizz = Cocktail(cocktailName: "Ramos Gin Fizz", 
+                            imageAsset: nil,
+                            glasswareType: .collins,
+                            garnish: [.orangePeel],
+                            ice: .koldDraft,
+                            author:Author(person: "Henry C. Ramos"),
+                            spec: ramosGinFizzSpec,
+                            buildOrder: ramosGinFizzBuild,
+                            tags: ramosTags)
 
 let ramosGinFizzSpec: [CocktailIngredient] = [CocktailIngredient(.gins(.ginAny), value: 2.0),
                                               CocktailIngredient(.juices(.lime), value: 0.5),
@@ -16,7 +24,7 @@ let ramosGinFizzSpec: [CocktailIngredient] = [CocktailIngredient(.gins(.ginAny),
                                               CocktailIngredient(.otherNonAlc(.cream), value: 1.0),
                                               CocktailIngredient(.otherNonAlc(.eggWhites), value: 1.25),
                                               CocktailIngredient(.soda(.sodaWater), value: 2.0),
-                                              CocktailIngredient(.otherNonAlc(.orangeFlowerWater), value: 1, unit: .dash)]
+                                              CocktailIngredient(.otherNonAlc(.orangeFlowerWater), value: 3, unit: .drops)]
 
 var ramosTags = Tags(flavors: [.lemon, .lime],
                      profiles: [.floral, .citrusy, .creamy],

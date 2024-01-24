@@ -18,6 +18,6 @@ struct MetaCocktailsSwiftDataApp: App {
                 .environmentObject(criteria)
                 .preferredColorScheme(.dark)
         }
-        .modelContainer(for: Cocktail.self)
+        //.modelContainer(for: Cocktail.self)
     }
 }

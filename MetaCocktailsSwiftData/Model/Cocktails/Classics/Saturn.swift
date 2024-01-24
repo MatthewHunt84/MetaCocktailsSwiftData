@@ -11,7 +11,7 @@ var saturn = Cocktail(cocktailName: "Saturn",
                       glasswareType: .doubleOld,
                       garnish: [.lemonPeel, .maraschinoCherry],
                       ice: .pebbleIce,
-                      author: "Joseph “Po Po” Galsini 1969, But published by Jeff Berry in 2010",
+                      author:Author(person: "Joseph “Po Po” Galsini"),
                       spec: saturnSpec,
                       buildOrder: saturnBuildOrder,
                       tags: saturnTags)
@@ -22,7 +22,7 @@ var saturnSpec  =  [CocktailIngredient(.juices(.lemon), value: 0.75),
                     CocktailIngredient(.liqueurs(.velvetFalernum), value: 0.25),
                     CocktailIngredient(.gins(.ginAny), value: 2)]
 
-var saturnTags = Tags( profiles: [.citrusy, .fruity, .tropical, .sweet],
+var saturnTags = Tags( profiles: [.citrusy, .fruity, .tropical, .sweet, .refreshing, .floral],
                        textures: [.light],
                        styles: [.tiki, .shaken, .sour])
 

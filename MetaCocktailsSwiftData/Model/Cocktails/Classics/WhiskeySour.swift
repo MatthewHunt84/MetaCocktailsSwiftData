@@ -22,7 +22,8 @@ var whiskeySourSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                         CocktailIngredient(.whiskies(.straightRyeOrBourbon), value: 0.75),
                         CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes)]
 
-var whiskeySourTags = Tags(textures: [.light, .silky],
+var whiskeySourTags = Tags(profiles: [.citrusy, .refreshing],
+                           textures: [.light, .silky],
                            styles: [.sour, .shaken])
 
 var whiskeySourBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients accept for the bitters into a tin a dry shake to emulsify"),

@@ -212,6 +212,7 @@ final class SearchCriteriaViewModel: ObservableObject {
             return resultSectionData.cocktails.isEmpty ? nil : resultSectionData } */
 
         isLoading = false
+        print("The cocktail count is \(CocktailListViewModel().cocktails.count)")
     }
     private func modifiedPreferredCount() -> Int {
         // compare preferredComponent against current cocktail of loop, then return number of matches.
@@ -238,7 +239,7 @@ final class SearchCriteriaViewModel: ObservableObject {
                 
             }
         }
-        var matches = selectedPreferredIngredients().reduce(into: 0, { partialResult, component in
+        let matches = selectedPreferredIngredients().reduce(into: 0, { partialResult, component in
             for spec in justBases {
                 if spec == component.name && alreadyMatchedSpec == 0 {
                     partialResult += 1
