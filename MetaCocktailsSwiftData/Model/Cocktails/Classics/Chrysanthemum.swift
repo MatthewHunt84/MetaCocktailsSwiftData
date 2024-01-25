@@ -21,7 +21,6 @@ var chrysanthemumSpec  = [CocktailIngredient(.otherAlcohol(.absinthe), value: 3,
 
 
 
-var chrysanthemumTags = Tags(profiles: [.herbal],
-                             textures: [.rich],
+var chrysanthemumTags = Tags(profiles: [.herbal, .rich],
                              styles: [.martini, .stirred])
 

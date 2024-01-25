@@ -11,7 +11,7 @@ var brooklynWnG = Cocktail(cocktailName: "Brooklyn Cocktail (Williams & Graham s
                            glasswareType: .stemmedGlassware,
                            garnish: [.lemonExpression],
                            author:Author(person: "Jacob A. Grohusko", place: "Jack's Manual", year: "New York, 1908"),
-                           spec: brooklynSpec,
+                           spec: brooklynWnGSpec,
                            tags: brooklynTags)
 
 var brooklynWnGSpec     =  [CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.25),

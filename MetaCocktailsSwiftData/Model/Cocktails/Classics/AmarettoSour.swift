@@ -20,8 +20,7 @@ var amarettoSourSpec  = [CocktailIngredient(.otherNonAlc(.eggWhites), value: 1),
 
 
 
-var amarettoSourTags   = Tags(profiles: [.citrusy],
-                              textures: [.light],
+var amarettoSourTags   = Tags(profiles: [.citrusy, .refreshing, .light],
                               styles: [.shaken, .sour])
 
 var amarettoSourBuild  = Build(instructions: [Instruction(step: 1, method: "NOTE: The original cocktail didn't have egg whites. We just think it makes a superior cocktail. In the case that you omit the egg whites, bring the citrus down to 0.75 oz. and add simple to taste."),

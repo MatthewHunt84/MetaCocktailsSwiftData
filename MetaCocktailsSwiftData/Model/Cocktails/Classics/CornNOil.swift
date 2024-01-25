@@ -20,7 +20,6 @@ var cornNOilSpec  = [CocktailIngredient(.bitters(.angosturaBitters), value: 3, u
                     CocktailIngredient(.rums(.rumBlackStrap), value: 2)]
 
 
-var cornNOilTags   = Tags(profiles: [.citrusy],
-                          textures: [.rich],
+var cornNOilTags   = Tags(profiles: [.citrusy, .rich],
                          styles: [.sour, .shaken])
                       

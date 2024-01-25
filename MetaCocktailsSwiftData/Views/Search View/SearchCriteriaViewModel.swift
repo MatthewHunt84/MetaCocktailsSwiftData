@@ -17,6 +17,7 @@ final class SearchCriteriaViewModel: ObservableObject {
     @Published var enableMultipleSpiritSelection = false
     @Published var isLoading = true
     @Published var multipleBaseSpiritsSelected: Bool = false
+    @Published var menuMode: Bool = false 
     @Published var boozeCategories = {Array(Set(generatedBoozeCocktailComponents.map({$0.spiritCategoryName}))).sorted()}()
     @Published var nACategories = {Array(Set(generatedNACocktailComponents.map({$0.nACategoryName}))).sorted()}()
    
@@ -93,9 +94,9 @@ final class SearchCriteriaViewModel: ObservableObject {
         for profile in Profile.allCases {
             array.append(CocktailComponent(for: profile))
         }
-        for texture in Texture.allCases {
-            array.append(CocktailComponent(for: texture))
-        }
+//        for texture in Texture.allCases {
+//            array.append(CocktailComponent(for: texture))
+//        }
         for style in Style.allCases {
             array.append(CocktailComponent(for: style))
         }

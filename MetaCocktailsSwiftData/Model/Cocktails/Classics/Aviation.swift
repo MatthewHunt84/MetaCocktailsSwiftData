@@ -20,6 +20,5 @@ var aviationSpec  = [CocktailIngredient(.juices(.lemon), value: 0.5),
                      CocktailIngredient(.gins(.ginLondonDry) , value: 2)]
 
 
-var aviationTags   = Tags(profiles: [.citrusy, .tart],
-                          textures: [.light],
+var aviationTags   = Tags(profiles: [.citrusy, .tart, .light],
                           styles: [.shaken, .sour])

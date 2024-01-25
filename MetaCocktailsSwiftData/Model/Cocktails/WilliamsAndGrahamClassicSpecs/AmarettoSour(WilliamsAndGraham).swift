@@ -22,7 +22,6 @@ var amarettoSourWnGSpec  = [CocktailIngredient(.otherNonAlc(.eggWhites), value: 
 
 
 
-var amarettoSourWnGTags   = Tags(profiles: [.citrusy],
-                                 textures: [.light],
+var amarettoSourWnGTags   = Tags(profiles: [.citrusy, .refreshing, .light],
                                  styles: [.shaken, .sour])
 

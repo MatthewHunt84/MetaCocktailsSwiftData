@@ -21,7 +21,6 @@ var cableCarSpec  = [CocktailIngredient(.juices(.lemon), value: 1),
                      CocktailIngredient(.rums(.captainMorgan), value:1.5)]
 
 var cableCarTags = Tags(flavors: [.cinnamon],
-                        profiles: [.citrusy, .fruity],
-                        textures: [.light],
+                        profiles: [.citrusy, .fruity, .light],
                         styles: [.sour, .shaken])
 

@@ -22,8 +22,7 @@ let mojitoSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value:
                                         CocktailIngredient(.rums(.rumWhite), value: 1.5),
                                         CocktailIngredient(.soda(.sparklingWater), value: 2)]
 
-let mojitoTags = Tags(profiles: [.herbal, .refreshing],
-                      textures: [.light, .effervescent],
+let mojitoTags = Tags(profiles: [.herbal, .refreshing, .light, .effervescent],
                       styles: [.sour, .shaken, .built])
 
 let mojitoBuild =  Build(instructions: [Instruction(step: 1, method: "Shake all of the ingredients accept for the soda in a tin. Use Kold draft of Hoshizake cubes and the mint will the muddled while you're shaking."),

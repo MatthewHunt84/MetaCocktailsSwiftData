@@ -27,7 +27,6 @@ var ginFizzBuild  = Build(instructions: [Instruction(step: 1, method: "Add all i
                                          Instruction(step: 4, method: "make it a silver fizz by adding eggwhites and a dry shake before shaking with ice. This is the preferred method for most. In this case, add a lemon expression to the final product.")])
 
 var ginFizzTags   = Tags(flavors: [.lemon],
-                         profiles: [.citrusy],
-                         textures: [.effervescent, .light],
+                         profiles: [.citrusy, .effervescent, .light],
                          styles: [.fizz, .shaken])
                       

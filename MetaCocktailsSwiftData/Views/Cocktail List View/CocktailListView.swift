@@ -24,6 +24,16 @@ struct CocktailListView: View {
                         Text("Cocktails")
                             .font(.largeTitle).bold()
                             .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
+                        Spacer()
+                        Menu("", systemImage: "gearshape") {
+                            Button("Bartender Mode") {
+                                criteria.menuMode = false
+                            }
+                            Button("Guest Mode") {
+                                criteria.menuMode = true
+                            }
+                        }
+                        .offset(CGSize(width: -10.0, height: 0))
                         
                     }
                     .frame(width: geometry.size.width, height: geometry.size.height * 0.06, alignment: .bottomLeading)
@@ -38,7 +48,12 @@ struct CocktailListView: View {
                                             Section {
                                                 ForEach(viewModel.cocktails.filter { $0.cocktailName.hasPrefix(letter) }, id: \.self) { cocktail in
                                                     NavigationLink {
-                                                        RecipeIngredientsView(cocktail: cocktail)
+                                                        if criteria.menuMode {
+                                                            CocktailMenuView(cocktail: cocktail)
+                                                        } else {
+                                                            RecipeIngredientsView(cocktail: cocktail)
+                                                        }
+                                                        
                                                     } label: {
                                                         Text(cocktail.cocktailName)
                                                     }

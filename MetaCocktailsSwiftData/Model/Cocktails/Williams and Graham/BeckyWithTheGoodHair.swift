@@ -8,7 +8,7 @@
 import SwiftUI
 
 var beckyWithTheGoodHair = Cocktail(cocktailName: "Becky With The Good Hair",
-                                    glasswareType: .stemmedGlassware,
+                                    glasswareType: .snifter,
                                     garnish: [.nutmeg],
                                     ice: nil,
                                     author: Author(person: AuthorNames.saydeeCanada.rawValue,
@@ -25,7 +25,7 @@ var beckyWithTheGoodHairSpec  = [CocktailIngredient(.brandies(.cognacVSOP), valu
                                  CocktailIngredient(.otherNonAlc(.eggWhole), value: 1, unit: .whole)]
 
 var beckyWithTheGoodHairTags = Tags(flavors: [.nutmeg],
-                                    textures: [.rich, .silky],
+                                    profiles: [.rich, .silky],
                                     styles: [.flip, .shaken])
 
 var beckyWithTheGoodHairBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients into a tin a dry shake to emulsify"),

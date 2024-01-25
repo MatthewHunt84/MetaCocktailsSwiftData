@@ -17,7 +17,6 @@ var brandyAlexanderSpec: [CocktailIngredient] = [CocktailIngredient(.otherNonAlc
                                                  CocktailIngredient(.liqueurs(.cremeDeCacao), value:1),
                                                  CocktailIngredient(.brandies(.pFAmber), value: 1)]
 
-var brandyAlexanderTags = Tags(profiles: [.sweet],
-                               textures: [.rich],
+var brandyAlexanderTags = Tags(profiles: [.sweet, .rich],
                                styles: [.shaken])
 

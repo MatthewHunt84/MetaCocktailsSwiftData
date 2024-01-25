@@ -23,6 +23,6 @@ let heartOfGoldSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.piment
                                              CocktailIngredient(.whiskies(.Ardbeg), value: 1, unit: .glassRinse)]
 
 
-let heartOfGoldTags = Tags(textures: [.rich],
+let heartOfGoldTags = Tags(profiles: [.rich],
                            styles: [.martini, .stirred])
 

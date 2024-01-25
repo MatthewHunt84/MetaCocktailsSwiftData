@@ -12,130 +12,72 @@ struct RecipeIngredientsView: View {
     var cocktail: Cocktail
     let recipeSpacing: CGFloat = 2
     var cocktailFrameSize = CGFloat(125)
-   
-
+    
+    
     var body: some View {
-        GeometryReader{ geo in
-            VStack{
-                VStack{
-                    Text(cocktail.cocktailName)
-                    
-                        .dynamicTypeSize(.xxxLarge).bold()
-                        .multilineTextAlignment(.center)
-                        .minimumScaleFactor(0.2)
-                        .lineLimit(2)
-                        .padding(10)
-                    
-                    HStack{
-                        Text("Glassware:")
-                            .dynamicTypeSize(.xLarge).bold()
-                            .minimumScaleFactor(0.02)
-                        Text(cocktail.glasswareType.rawValue)
-                            .dynamicTypeSize(.large)
-                            .multilineTextAlignment(.center)
-                            .minimumScaleFactor(0.02)
-                    }
-                    
-                }
-                .frame(width: geo.size.width, height: geo.size.height * 0.15, alignment: .top)
-                VStack{
-                    if cocktail.glasswareType == .coupe || cocktail.glasswareType == .stemmedGlassware  {
-                        Image("coupeBlack2")
-                            .resizable()
-                            .frame(width: cocktailFrameSize, height: cocktailFrameSize, alignment: .center)
-                    }
-                    if cocktail.glasswareType == .martini || cocktail.glasswareType == .cinnamonSugarRim || cocktail.glasswareType == .sugarRimStemmed{
-                        Image("martiniBlack2")
-                            .resizable()
-                            .frame(width: cocktailFrameSize, height: cocktailFrameSize, alignment: .center)
-                    }
-                    if cocktail.glasswareType == .doubleOld && cocktail.ice == .bigRock {
-                        Image("doubleOldBFGBlack")
-                            .resizable()
-                            .frame(width: cocktailFrameSize, height: cocktailFrameSize, alignment: .center)
-                    } else if (cocktail.glasswareType == .doubleOld || cocktail.glasswareType == .doubleOldSalt || cocktail.glasswareType == .doubleOldCelerySalt ) && cocktail.ice != .bigRock {
-                        Image("doubleOldBlack")
-                            .resizable()
-                            .frame(width: cocktailFrameSize, height: cocktailFrameSize, alignment: .center)
-                    }
-                    if cocktail.glasswareType == .flute {
-                        Image("fluteBlack2")
-                            .resizable()
-                            .frame(width: cocktailFrameSize, height: cocktailFrameSize, alignment: .center)
-                    }
-                    if cocktail.glasswareType == .collins {
-                        Image("collinsBlack")
-                            .resizable()
-                            .frame(width: cocktailFrameSize, height: cocktailFrameSize, alignment: .center)
-                    }
-                    if cocktail.glasswareType == .wineGlass {
-                        Image("wineGlassBlack")
-                            .resizable()
-                            .frame(width: cocktailFrameSize, height: cocktailFrameSize, alignment: .center)
-                    }
-                    if cocktail.glasswareType == .nickAndNora {
-                        Image("nickNNoraBlack")
-                            .resizable()
-                            .frame(width: cocktailFrameSize, height: cocktailFrameSize, alignment: .center)
-                    }
-                    if cocktail.glasswareType == .smallHighball {
-                        Image("smallHighBall")
-                            .resizable()
-                            .frame(width: cocktailFrameSize, height: cocktailFrameSize, alignment: .center)
-                    }
-                    if cocktail.glasswareType == .crustaGlass {
-                        Image("brandy crusta")
-                            .resizable()
-                            .frame(width: cocktailFrameSize, height: cocktailFrameSize, alignment: .center)
-                    }
-                    if cocktail.glasswareType == .julep {
-                        Image("julepCup")
-                            .resizable()
-                            .frame(width: cocktailFrameSize, height: cocktailFrameSize, alignment: .center)
-                    }
-                    if cocktail.glasswareType == .tikiMug {
-                        Image("tiki mug")
-                            .resizable()
-                            .frame(width: cocktailFrameSize, height: cocktailFrameSize, alignment: .center)
-                    }
         
-                }
-                .frame(width: geo.size.width, height: geo.size.height * 0.15, alignment: .center)
+        VStack{
+            Text(cocktail.cocktailName)
+                .dynamicTypeSize(.xxLarge).bold()
+                .multilineTextAlignment(.center)
+                .minimumScaleFactor(0.2)
+                .lineLimit(2)
                 .padding(10)
-                VStack {
+                
+            
+            VStack{
+                Text("Glassware:")
+                    .dynamicTypeSize(.xLarge).bold()
+                    .minimumScaleFactor(0.02)
+                Text(cocktail.glasswareType.rawValue)
+                    .dynamicTypeSize(.large)
+                    .multilineTextAlignment(.center)
+                    .minimumScaleFactor(0.02)
+            }
+            .padding(10)
+            
+            
+            //.frame(width: geo.size.width, height: geo.size.height * 0.2, alignment: .bottom)
+            
+            
+            VStack {
+                
+                Text("Cocktail Spec:")
+                    .dynamicTypeSize(.xLarge).bold()
+                
+                ForEach(cocktail.spec, id: \.id) { ingredient in
+                    let number = NSNumber(value: ingredient.value)
+                    Text("\(number) \(ingredient.unit.rawValue) \(ingredient.ingredient.name)")
                     
-                    Text("Cocktail Spec:")
-                        .dynamicTypeSize(.xLarge).bold()
-                    
-                    ForEach(cocktail.spec, id: \.id) { ingredient in
-                        let number = NSNumber(value: ingredient.value)
-                        Text("\(number) \(ingredient.unit.rawValue) \(ingredient.ingredient.name)")
-                        
-                            .multilineTextAlignment(.center)
-                            .dynamicTypeSize(.large)
-                            .minimumScaleFactor(0.02)
+                        .multilineTextAlignment(.center)
+                        .dynamicTypeSize(.large)
+                        .minimumScaleFactor(0.02)
                         
                     }
                     if let stirShakeBuild = cocktail.tags.styles {
                         if stirShakeBuild.contains(.built) {
                             Text("Build in glass")
                                 .multilineTextAlignment(.center)
-                                .dynamicTypeSize(.large)
+                                .dynamicTypeSize(.large).bold()
                                 .minimumScaleFactor(0.02)
+                              
                         }
                         if stirShakeBuild.contains(.shaken) {
                             Text("Shake")
                                 .multilineTextAlignment(.center)
-                                .dynamicTypeSize(.large)
+                                .dynamicTypeSize(.large).bold()
                                 .minimumScaleFactor(0.02)
+                                
                         }
                         if stirShakeBuild.contains(.stirred) {
                             Text("Stir")
                                 .multilineTextAlignment(.center)
-                                .dynamicTypeSize(.large)
+                                .dynamicTypeSize(.large).bold()
                                 .minimumScaleFactor(0.02)
+                                
                         }
                     }
+                        
                     
                     if let ice = cocktail.ice?.rawValue {
                         HStack {
@@ -179,22 +121,19 @@ struct RecipeIngredientsView: View {
                     
                     
                 }
-                .frame(width: geo.size.width * 0.9, height: geo.size.height * 0.5, alignment: .top)
+                //.frame(width: geo.size.width * 0.9, height: geo.size.height * 0.7, alignment: .center)
                 
-            
-            
-                if cocktail.author != nil {
-                    AuthorView(cocktail: cocktail)
-                        .frame(width: geo.size.width * 0.9, height: geo.size.height * 0.15, alignment: .top)
-                        
- 
-                }
+            if cocktail.author != nil {
+                AuthorView(cocktail: cocktail)
+            }
+                
+              
                 
                 //        TagView(for: cocktail)
                 
             }
             
-        }
+        
     }
  
 }
@@ -360,7 +299,7 @@ struct AuthorView: View {
 struct RecipeIngredientsView_Previews: PreviewProvider {
    
     static var previews: some View {
-        RecipeIngredientsView(cocktail: mintJulep)
+        RecipeIngredientsView(cocktail: aFlightSouthOfTheBorder)
             
     }
 }

@@ -39,7 +39,7 @@ class CocktailComponent: Identifiable, ObservableObject, Hashable{
         self.isFlavor = isFlavor
         self.isStyle = isStyle
         self.isProfile = isProfile
-        self.isTexture = isTexture
+//        self.isTexture = isTexture
         self.matchesCurrentSearch = matchesCurrentSearch
         
         if isFlavor {
@@ -50,8 +50,8 @@ class CocktailComponent: Identifiable, ObservableObject, Hashable{
             preferenceType = .spirits
         } else if isProfile {
             preferenceType = .profiles
-        } else if isTexture {
-            preferenceType = .textures
+//        } else if isTexture {
+//            preferenceType = .textures
         } else {
             preferenceType = .na
         }
@@ -78,13 +78,13 @@ class CocktailComponent: Identifiable, ObservableObject, Hashable{
         self.preferenceType = .style
         self.matchesCurrentSearch = true
     }
-    
-    init(for texture: Texture) {
-        self.name = texture.rawValue
-        self.isTexture = true
-        self.preferenceType = .textures
-        self.matchesCurrentSearch = true
-    }
+//    
+//    init(for texture: Texture) {
+//        self.name = texture.rawValue
+//        self.isTexture = true
+//        self.preferenceType = .textures
+//        self.matchesCurrentSearch = true
+//    }
     
     init(for booze: Booze) {
         self.name = booze.ingredientType.name

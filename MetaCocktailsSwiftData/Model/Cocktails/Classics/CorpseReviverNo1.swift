@@ -17,7 +17,6 @@ var corpseReviver1Spec     =  [CocktailIngredient(.fortifiedWines(.dolinRouge), 
                                CocktailIngredient(.brandies(.pFAmber), value: 1),
                                CocktailIngredient(.brandies(.boulardCalvados), value: 1)]
 
-var corpseReviver1Tags     = Tags(profiles: [.spiritForward, .fruity],
-                                  textures: [.rich],
+var corpseReviver1Tags     = Tags(profiles: [.spiritForward, .fruity, .rich],
                                   styles: [.martini, .stirred])
 

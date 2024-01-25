@@ -25,7 +25,5 @@ var bloodyMarryBuild  = Build(instructions: [Instruction(step: 1, method: "Add a
                                              Instruction(step: 2, method: "Dirty dump."),
                                              Instruction(step: 2, method: "Go nuts with the garnish if you'd like to.")])
 
-var bloodyMarryTags   = Tags(profiles: [.savory],
-                             textures: [.rich],
-                             styles: [.restorative])
+var bloodyMarryTags   = Tags(profiles: [.savory, .rich, .restorative])
 

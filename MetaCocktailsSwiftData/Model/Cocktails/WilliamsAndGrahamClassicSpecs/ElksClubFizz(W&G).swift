@@ -29,7 +29,6 @@ var elksClubBuildWnG = Build(instructions: [Instruction(step: 1, method: "Add al
                                             Instruction(step: 5, method: "Express the lemon and then discard.")])
 
 
-var elksClubTags = Tags(profiles: [.citrusy, .fruity],
-                        textures: [.light, .silky],
+var elksClubTags = Tags(profiles: [.citrusy, .fruity, .light, .silky],
                         styles: [.sour, .shaken])
 

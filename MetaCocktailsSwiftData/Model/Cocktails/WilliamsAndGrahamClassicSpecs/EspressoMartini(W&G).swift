@@ -20,8 +20,7 @@ var espressoMartiniSpecWnG  = [CocktailIngredient(.syrups(.demSyrupOneToOne), va
                             CocktailIngredient(.vodkas(.roaringForkVodka), value: 1.5),
                             CocktailIngredient(.otherNonAlc(.espressoCream), value: 1, unit: .float),]
 
-var espressoMartiniTagsWnG = Tags(profiles: [.creamy],
-                               textures: [.light],
+var espressoMartiniTagsWnG = Tags(profiles: [.creamy, .light],
                                styles: [.shaken])
 
 var espressoMartiniBuildWnG = Build(instructions: [Instruction(step: 1, method: "Add everything but the cream to a tin and shake."),

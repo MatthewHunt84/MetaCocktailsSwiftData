@@ -22,7 +22,6 @@ var americanoWnGSpec  = [CocktailIngredient(.soda(.sodaWater), value: 2),
 
 
 
-var americanoWnGTags   = Tags(profiles: [.bittersweet, .bitter, .refreshing],
-                              textures: [.light, .effervescent],
+var americanoWnGTags   = Tags(profiles: [.bittersweet, .refreshing, .light, .effervescent],
                               styles: [.fizz, .built])
 

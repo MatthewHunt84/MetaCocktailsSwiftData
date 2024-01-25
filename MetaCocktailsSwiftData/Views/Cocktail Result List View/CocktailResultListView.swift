@@ -33,7 +33,12 @@ struct CocktailResultList: View {
                                     Section(header: SearchedCocktailTitleHeader(searched: result.count, matched: result.matched)) {
                                         ForEach(result.cocktails, id: \.self.id) { cocktail in
                                             NavigationLink {
-                                                RecipeIngredientsView(cocktail: cocktail)
+                                                if viewModel.menuMode {
+                                                    CocktailMenuView(cocktail: cocktail)
+                                                } else {
+                                                    RecipeIngredientsView(cocktail: cocktail)
+                                                }
+                                                
                                             } label: {
                                                 HStack {
                                                     Text(cocktail.cocktailName)
@@ -49,7 +54,11 @@ struct CocktailResultList: View {
                                     Section(header: SearchedCocktailTitleHeaderForMultipleSpirits(searched: result.count, matched: result.matched, baseSpirit: result.baseSpirit)) {
                                         ForEach(result.cocktails, id: \.self.id) { cocktail in
                                             NavigationLink {
-                                                RecipeIngredientsView(cocktail: cocktail)
+                                                if viewModel.menuMode {
+                                                    CocktailMenuView(cocktail: cocktail)
+                                                } else {
+                                                    RecipeIngredientsView(cocktail: cocktail)
+                                                }
                                             } label: {
                                                 HStack {
                                                     Text(cocktail.cocktailName)

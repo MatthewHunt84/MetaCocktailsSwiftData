@@ -25,8 +25,7 @@ var queensParkSpec = [CocktailIngredient(.herbs(.mint), value: 10, unit: .gently
                       CocktailIngredient(.bitters(.angosturaBitters), value: 5, unit: .dashes) ]
 
 var queensParkTags = Tags(flavors: [.lime, .mint, .bakingSpices],
-                          profiles: [.aromatic, .refreshing, .citrusy],
-                          textures: [.light],
+                          profiles: [.aromatic, .refreshing, .citrusy, .light],
                           styles: [.swizzle, .built])
 
 var queensParkBuild = Build(instructions: [Instruction(step: 1, method: "Add mint to the bottom of the collins glass and gently press to release mint oils. Do not muddle"),

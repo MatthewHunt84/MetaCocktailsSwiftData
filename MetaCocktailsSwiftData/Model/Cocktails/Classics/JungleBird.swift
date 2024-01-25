@@ -25,6 +25,5 @@ var jungleBirdSpec  =  [CocktailIngredient(.juices(.lime), value: 0.5),
                         
 var jungleBirdTags = Tags(flavors: [.pineapple, .lime],
                           profiles: [.aromatic, .bitter, .citrusy, .fruity],
-                          textures: [.light],
                           styles: [.tiki, .shaken, .sour])
             

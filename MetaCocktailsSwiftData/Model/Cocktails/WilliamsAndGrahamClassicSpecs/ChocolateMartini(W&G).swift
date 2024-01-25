@@ -25,7 +25,6 @@ let chocolateMatiniSpec: [CocktailIngredient] = [CocktailIngredient(.seasoning(.
                                                  CocktailIngredient(.vodkas(.roaringForkVodka), value: 1)]
 
 
-let chocolateMatiniTags = Tags(profiles: [.sweet],
-                               textures: [.rich],
+let chocolateMatiniTags = Tags(profiles: [.sweet, .rich],
                                styles: [.shaken])
 

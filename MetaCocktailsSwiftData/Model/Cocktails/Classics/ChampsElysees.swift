@@ -23,7 +23,6 @@ var champsElyseesSpec  = [CocktailIngredient(.bitters(.angosturaBitters), value:
 
 
 
-var champsElyseesTags = Tags(profiles: [.citrusy, .fruity, .tart],
-                             textures: [.light, .silky],
+var champsElyseesTags = Tags(profiles: [.citrusy, .fruity, .tart, .light, .silky],
                              styles: [.sour, .shaken])
 

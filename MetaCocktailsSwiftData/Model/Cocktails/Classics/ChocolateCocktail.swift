@@ -8,7 +8,7 @@
 import Foundation
 
 var chocolateCocktail  = Cocktail(cocktailName: "Chocolate Cocktail",
-                                  glasswareType: .shortGoblet,
+                                  glasswareType: .snifter,
                                   garnish: [.cocoaPowder],
                                   author:Author(person: AuthorNames.harryCraddock.rawValue, place: AuthorPlaces.savoy.rawValue, year: "1930"),
                                   spec: chocolateCocktailSpec,
@@ -20,7 +20,6 @@ var chocolateCocktailSpec  = [CocktailIngredient(.otherNonAlc(.eggWhole), value:
                               CocktailIngredient(.liqueurs(.yellowChartreuse), value: 1),
                               CocktailIngredient(.fortifiedWines(.sandemanPort) , value: 1)]
 
-var chocolateCocktailTags   = Tags(profiles: [.sweet],
-                                   textures: [.effervescent, .rich],
+var chocolateCocktailTags   = Tags(profiles: [.sweet, .rich],
                                    styles: [.shaken, .flip])
 

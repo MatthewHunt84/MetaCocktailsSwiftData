@@ -23,5 +23,5 @@ var macheteSpec = [CocktailIngredient(.bitters(.hellfireBitters), value: 12, uni
                    CocktailIngredient(.fortifiedWines(.lilletBlanc), value: 1),
                    CocktailIngredient(.agaves(.mezcalDelMagueyVida), value: 1)]
 
-var macheteTags = Tags(textures: [.rich],
+var macheteTags = Tags(profiles: [.rich, .bittersweet, .spicy],
                        styles: [.negroni, .stirred])

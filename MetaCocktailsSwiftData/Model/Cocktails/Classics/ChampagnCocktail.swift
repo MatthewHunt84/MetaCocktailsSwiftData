@@ -19,8 +19,7 @@ var champagneCocktailSpec  = [CocktailIngredient(.liqueurs(.borghetti), value: 1
                       CocktailIngredient(.vodkas(.vodkaAny), value: 2),
                       CocktailIngredient(.otherNonAlc(.cream), value: 0.5)]
 
-var champagneCocktailTags = Tags(profiles: [.dry],
-                         textures: [.effervescent],
+var champagneCocktailTags = Tags(profiles: [.dry, .effervescent, .bitter],
                          styles: [.built])
 
 

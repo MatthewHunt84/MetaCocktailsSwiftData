@@ -21,7 +21,6 @@ var algonquinWnGSpec  = [CocktailIngredient(.bitters(.peychauds), value: 2, unit
 
 
 
-var algonquinWnGTags   = Tags(profiles: [.fruity],
-                              textures: [.light],
+var algonquinWnGTags   = Tags(profiles: [.fruity, .light],
                               styles: [.shaken, .sour])
 

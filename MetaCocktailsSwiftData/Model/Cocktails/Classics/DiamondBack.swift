@@ -17,7 +17,6 @@ var diamondBackSpec     =  [CocktailIngredient(.liqueurs(.yellowChartreuse), val
                                CocktailIngredient(.brandies(.lairdsApplejack), value: 1),
                                CocktailIngredient(.whiskies(.rittenhouseRye), value: 1)]
 
-var diamondBackTags     = Tags(profiles: [.spiritForward],
-                                  textures: [.rich],
+var diamondBackTags     = Tags(profiles: [.spiritForward, .rich],
                                   styles: [.martini, .stirred])
 

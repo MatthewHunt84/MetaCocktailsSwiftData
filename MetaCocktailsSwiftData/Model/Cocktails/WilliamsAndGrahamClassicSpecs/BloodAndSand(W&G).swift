@@ -23,6 +23,6 @@ var bloodAndSandWnGSpec  = [CocktailIngredient(.juices(.lemon), value: 0.25),
 
 
 
-var bloodAndSandWnGTags   = Tags(textures: [.rich],
+var bloodAndSandWnGTags   = Tags(profiles: [.fruity, .sweet],
                                  styles: [.sour, .shaken])
 

@@ -27,6 +27,5 @@ let fogCutterSpec     = [CocktailIngredient(.juices(.lemon), value:0.75),
 
 
 let fogCutterTags = Tags(profiles: [.refreshing, .sweet, .citrusy],
-                         textures: [.light],
                          styles: [.sour, .tiki, .shaken])
 

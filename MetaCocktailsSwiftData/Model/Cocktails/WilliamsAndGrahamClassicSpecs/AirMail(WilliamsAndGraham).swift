@@ -23,7 +23,6 @@ var airMailWnGBuild  = Build(instructions: [Instruction(step: 1, method: "Add al
                                           Instruction(step: 2, method: "Add Champagne to the flute first!"),
                                           Instruction(step: 3, method: "Then add the shaken cocktail to that.")])
 
-var airMailWnGTags   = Tags(profiles: [.citrusy],
-                          textures: [.effervescent, .light],
-                          styles: [.shaken, .fizz])
-                          
+var airMailWnGTags   = Tags(profiles: [.citrusy, .effervescent, .light],
+                            styles: [.shaken, .fizz])
+

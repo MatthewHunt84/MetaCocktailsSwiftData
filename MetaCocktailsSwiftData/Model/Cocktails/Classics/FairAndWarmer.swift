@@ -19,6 +19,5 @@ var fairAndWarmerSpec     =  [CocktailIngredient(.liqueurs(.orangeCuracao), valu
                               CocktailIngredient(.rums(.rumWhite), value: 2)]
 
 var fairAndWarmerTags     = Tags(profiles: [.spiritForward, .fruity],
-                                 textures: [.rich],
                                  styles: [.martini, .stirred])
 

@@ -20,7 +20,6 @@ var darkNStormySpec  = [CocktailIngredient(.soda(.gingerBeer), value: 4),
 
 
 
-var darkNStormyTags   = Tags(profiles: [.refreshing],
-                           textures: [.light, .effervescent],
+var darkNStormyTags   = Tags(profiles: [.refreshing, .light, .effervescent],
                            styles: [.fizz, .built])
 
