@@ -11,7 +11,7 @@ var bloodAndSand  = Cocktail(cocktailName: "Blood and Sand",
                              glasswareType: .martini,
                              garnish: [.orangePeel],
                              ice: nil,
-                             author:Author(person: AuthorNames.harryCraddock.rawValue, place: AuthorPlaces.savoy.rawValue, year: "1930"),
+                             author: harryCraddock,
                              spec: bloodAndSandSpec,
                              buildOrder: bloodAndSandBuild,
                              tags: bloodAndSandTags)

@@ -10,6 +10,7 @@ import Foundation
 enum AuthorNames: String, Codable, CaseIterable {
     
     case constante         = "Constante Ribalaiuga"
+    case crosbyGaige       = "Crosby Gaige"
     case davidEmbury       = "David Embury"
     case devonTarby        = "Devon Tarby"
     case dickBradsell      = "Dick Bradsell"
@@ -30,20 +31,23 @@ enum AuthorNames: String, Codable, CaseIterable {
   
 }
 enum AuthorPlaces: String, Codable, CaseIterable {
-    
-    case williamsAndGraham     = "Williams and Graham"
-    case milkAndHoney          = "Milk and Honey"
-    case deathAndCo            = "Death & Co"
-    case aviaryBar             = "Aviary Bar at the Kuala Lumpur Hilton"
-    case detroitAthleticClub   = "Detroit Athletic club"
-    case fredsClubLondon       = "Fred's Club, London Soho"
-    case hotelMonteleone       = "Hotel Monteleone"
-    case savoy                 = "Savoy Hotel (Cocktail Book)"
-    case hoffmanHouse          = "Hoffman House Bar"
-    case harryJohnsonManual    = "Harry Johnson's New and Improved Bartenders' Manual"
-    case bourbonNBranch        = "Bourbon & Branch"
-    case howToMixDrinksJT      = "Jerry Thomas: How to Mix Drinks"
-    case recipesForMixedDrinks = "Recipes for Mixed Drinks"
+       
+    case aviaryBar                    = "Aviary Bar at the Kuala Lumpur Hilton"
+    case bourbonNBranch               = "Bourbon & Branch"
+    case crosbyGaigeCocktailGuide     = "Crosby Gaige's Cocktail Guide and Ladies Companion, New York"
+    case deathAndCo                   = "Death & Co"
+    case detroitAthleticClub          = "Detroit Athletic club"
+    case fredsClubLondon              = "Fred's Club, London Soho"
+    case harryJohnsonManual           = "Harry Johnson's New and Improved Bartenders' Manual"
+    case hoffmanHouse                 = "Hoffman House Bar"
+    case hotelMonteleone              = "Hotel Monteleone"
+    case howToMixDrinksJT             = "Jerry Thomas: How to Mix Drinks"
+    case milkAndHoney                 = "Milk and Honey"
+    case recipesForMixedDrinks        = "Recipes for Mixed Drinks"
+    case savoy                        = "Savoy Hotel (Cocktail Book)"
+    case traderVicsBartendersGuide    = "Trader Vic's Bartender's Guide, Revised."
+    case traderVicsBookOfFoodAndDrink = "Trader Vic's Book of Food and Drink"
+    case williamsAndGraham            = "Williams and Graham"
     
 }
 
@@ -53,3 +57,4 @@ struct Author {
     var year: String?
   
 }
+var harryCraddock = Author(person: AuthorNames.harryCraddock.rawValue, place: AuthorPlaces.savoy.rawValue, year: "1930")

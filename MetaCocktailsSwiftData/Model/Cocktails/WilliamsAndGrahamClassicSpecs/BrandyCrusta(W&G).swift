@@ -20,7 +20,7 @@ var brandyCrustaSpecWnG    = [CocktailIngredient(.juices(.lemon), value: 1, unit
                               CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 1, unit: .barSpoon),
                               CocktailIngredient(.syrups(.demSyrupOneToOne), value: 1, unit: .barSpoon),
                               CocktailIngredient(.bitters(.angosturaBitters), value:2, unit: .dashes),
-                              CocktailIngredient(.brandies(.pFAmber), value:2)]
+                              CocktailIngredient(.brandies(.pF1840), value:2)]
 
 
 
