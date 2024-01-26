@@ -51,7 +51,7 @@ struct CocktailListView: View {
                                                         if criteria.menuMode {
                                                             CocktailMenuView(viewModel: CocktailMenuViewModel(cocktail: cocktail))
                                                         } else {
-                                                            RecipeIngredientsView(cocktail: cocktail)
+                                                            RecipeIngredientsView(viewModel: CocktailMenuViewModel(cocktail: cocktail))
                                                         }
                                                         
                                                     } label: {
