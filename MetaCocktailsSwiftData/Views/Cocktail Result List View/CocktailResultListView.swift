@@ -70,12 +70,12 @@ struct CocktailResultList: View {
                                         
                                     }
                                 }
-                                .font(.footnote).bold()
-                                .padding(EdgeInsets(top: 10, leading: 30, bottom: 10, trailing: 30))
-                                .background(viewModel.selectedPreferredIngredients().count == 0 ? Color(UIColor.systemGray) : Color.brandPrimaryGreen)
-                                .clipShape(RoundedRectangle(cornerRadius: 140))
-                                .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
-                                .foregroundColor(.white)
+                                //.font(.footnote).bold()
+//                                .padding(EdgeInsets(top: 10, leading: 30, bottom: 10, trailing: 30))
+//                                .background(viewModel.selectedPreferredIngredients().count == 0 ? Color(UIColor.systemGray) : Color.brandPrimaryGreen)
+//                                .clipShape(RoundedRectangle(cornerRadius: 140))
+//                                .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
+//                                .foregroundColor(.white)
                             }
                             
                         }

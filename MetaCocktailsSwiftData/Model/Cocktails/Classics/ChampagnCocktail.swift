@@ -15,9 +15,8 @@ var champagneCocktail = Cocktail(cocktailName: "Champagne Cocktail",
                          spec: champagneCocktailSpec,
                          tags: champagneCocktailTags)
 
-var champagneCocktailSpec  = [CocktailIngredient(.liqueurs(.borghetti), value: 1),
-                      CocktailIngredient(.vodkas(.vodkaAny), value: 2),
-                      CocktailIngredient(.otherNonAlc(.cream), value: 0.5)]
+var champagneCocktailSpec  = [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
+                      CocktailIngredient(.wines(.champagne), value: 5)]
 
 var champagneCocktailTags = Tags(profiles: [.dry, .effervescent, .bitter],
                          styles: [.built])

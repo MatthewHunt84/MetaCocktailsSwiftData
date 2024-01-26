@@ -94,9 +94,6 @@ final class SearchCriteriaViewModel: ObservableObject {
         for profile in Profile.allCases {
             array.append(CocktailComponent(for: profile))
         }
-//        for texture in Texture.allCases {
-//            array.append(CocktailComponent(for: texture))
-//        }
         for style in Style.allCases {
             array.append(CocktailComponent(for: style))
         }
@@ -136,9 +133,6 @@ final class SearchCriteriaViewModel: ObservableObject {
         }
         if let styles = cocktail.compiledTags.styles {
             strings.append(contentsOf: styles.map({$0.rawValue}))
-        }
-        if let textures = cocktail.compiledTags.textures {
-            strings.append(contentsOf: textures.map({$0.rawValue}))
         }
         if let profiles = cocktail.compiledTags.profiles {
             strings.append(contentsOf: profiles.map({$0.rawValue}))
@@ -199,6 +193,7 @@ final class SearchCriteriaViewModel: ObservableObject {
                 } else {
                     if resultViewSectionData.matched == countMatchesForMultipleSpirits(for: cocktail) && resultViewSectionData.baseSpirit == returnMatchedBase(cocktail) && resultViewSectionData.cocktails.last != cocktail {
                             resultViewSectionData.cocktails.append(cocktail)
+                        //print("the count match for \(cocktail.cocktailName) is \(countMatchesForMultipleSpirits(for: cocktail))")
                     }
                 }
             }
@@ -215,6 +210,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         isLoading = false
         print("The cocktail count is \(CocktailListViewModel().cocktails.count)")
     }
+    
     private func modifiedPreferredCount() -> Int {
         // compare preferredComponent against current cocktail of loop, then return number of matches.
         var baseMatches = 0
@@ -228,6 +224,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         let modifiedCount = selectedPreferredIngredients().count - baseMatches + 1
         return modifiedCount
     }
+    
     private func countMatchesForMultipleSpirits(for cocktail: Cocktail) -> Int {
         // compare preferredComponent against current cocktail of loop, then return number of matches.
         var justBases = [String]()
@@ -237,7 +234,6 @@ final class SearchCriteriaViewModel: ObservableObject {
                 if !convertOnlyBaseSpiritsIntoStrings().contains(booze.name) {
                     justBases.append(booze.name)
                 }
-                
             }
         }
         let matches = selectedPreferredIngredients().reduce(into: 0, { partialResult, component in
@@ -253,11 +249,12 @@ final class SearchCriteriaViewModel: ObservableObject {
         })
         return matches
     }
+    
     private func convertAllTagsOmittingBaseSpirits(tags: Tags, cocktail: Cocktail) -> [String] {
         var strings: [String] = [String]()
         if let boozeComponents = tags.booze {
             for booze in boozeComponents {
-                if !convertOnlyBaseSpiritsIntoStrings().contains(booze.name) {
+                if convertOnlyBaseSpiritsIntoStrings().contains(booze.name) {
                     strings.append(booze.name)
                 }
             }
@@ -271,15 +268,13 @@ final class SearchCriteriaViewModel: ObservableObject {
         if let styles = tags.styles {
             strings.append(contentsOf: styles.map({$0.rawValue}))
         }
-        if let textures = tags.textures {
-            strings.append(contentsOf: textures.map({$0.rawValue}))
-        }
         if let profiles = tags.profiles {
             strings.append(contentsOf: profiles.map({$0.rawValue}))
         }
         return Array(Set(strings))
         
     }
+    
     private func convertOnlyBaseSpiritsIntoStrings() -> [String] {
         var stringArray: [String] = [String]()
         for gin in Gin.allCases {
@@ -305,6 +300,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         }
         return stringArray
     }
+    
     func returnMatchedBase(_ cocktail: Cocktail) -> String {
         var matchedString = ""
         if let boozeComponents = cocktail.compiledTags.booze {

@@ -282,7 +282,7 @@ enum Whiskey: String, Codable, CaseIterable {
     case Ardbeg               = "Ardbeg 10 year (Peated Scotch)"
     case americanWhiskeyAny   = "American Whiskey"
     case bourbon120           = "Bourbon (120 proof)"
-    case bourbonAny           = "Bourbon (Any)"
+    case bourbonAny           = "Bourbon"
     case fourRosesYellowLabel = "Four Roses Yellow Label"
     case glenfiddich12        = "Glanfiddich 12 year"
     case irishWhiskeyAny      = "Irish Whiskey"
@@ -437,7 +437,7 @@ enum FortifiedWine: String, Codable, CaseIterable {
     case carpanoAntica        = "Carpano Antica"
     case cocchiAmericano      = "Cocchi Americano"
     case cocchiDeTorino       = "Cocchi Di Torino"
-    case dryVermouthAny       = "Dry Vermouth (French)(Any)"
+    case dryVermouthAny       = "Dry Vermouth (French)"
     case dolinDry             = "Dolin Dry Vermouth"
     case dolinBlanc           = "Dolin Blanc Vermouth"
     case dolinRouge           = "Dolin Rouge Vermouth"
@@ -445,11 +445,11 @@ enum FortifiedWine: String, Codable, CaseIterable {
     case lilletBlanc          = "Lillet Blanc"
     case puntEMes             = "Punt E Mes"
     case sandemanPort         = "Sandeman Port"
-    case sweetVermouthAny     = "Sweet Vermouth (Any)"
-    case vermouthAny          = "Vermouth (Any)"
-    case sherryAny            = "Sherry (Any)"
+    case sweetVermouthAny     = "Sweet Vermouth"
+    case vermouthAny          = "Vermouth"
+    case sherryAny            = "Sherry"
     case sherryEastIndia      = "Sherry (East India Lustau)"
-    case fortifiedWineAny     = "Fortified Wine (Any)"
+    case fortifiedWineAny     = "Fortified Wine"
     
     var tags: Tags {
         switch self {
@@ -550,7 +550,7 @@ enum Bitters: String, Codable, CaseIterable {
 }
 
 enum Amaro: String, Codable, CaseIterable {
-    case amaroAny             = "Amaro (Any)"
+    case amaroAny             = "Amaro"
     case amerPicon            = "Amer Picon"
     case angosturaAmaro       = "Angostura (Amaro)"
     case aperol               = "Aperol"

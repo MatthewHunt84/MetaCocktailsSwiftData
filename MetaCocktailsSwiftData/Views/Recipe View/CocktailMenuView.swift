@@ -8,103 +8,23 @@
 import SwiftUI
 
 struct CocktailMenuView: View {
-    
+    var menuViewModel = CocktailMenuViewModel()
     var cocktail: Cocktail
-    var cocktailFrameSize = CGFloat(125)
     
 
     var body: some View {
-        GeometryReader{ geo in
-            VStack{
-                
-                VStack{
-                    
-                    if cocktail.glasswareType == .coupe || cocktail.glasswareType == .stemmedGlassware  {
-                        Image("coupeBlack2")
-                            .resizable()
-                            .frame(width: cocktailFrameSize, height: cocktailFrameSize, alignment: .center)
-                    }
-                    if cocktail.glasswareType == .martini || cocktail.glasswareType == .cinnamonSugarRim || cocktail.glasswareType == .sugarRimStemmed{
-                        Image("martiniBlack2")
-                            .resizable()
-                            .frame(width: cocktailFrameSize, height: cocktailFrameSize, alignment: .center)
-                    }
-                    if cocktail.glasswareType == .doubleOld && cocktail.ice == .bigRock {
-                        Image("doubleOldBFGBlack")
-                            .resizable()
-                            .frame(width: cocktailFrameSize, height: cocktailFrameSize, alignment: .center)
-                    } else if (cocktail.glasswareType == .doubleOld || cocktail.glasswareType == .doubleOldSalt || cocktail.glasswareType == .doubleOldCelerySalt ) && cocktail.ice != .bigRock {
-                        Image("doubleOldBlack")
-                            .resizable()
-                            .frame(width: cocktailFrameSize, height: cocktailFrameSize, alignment: .center)
-                    }
-                    if cocktail.glasswareType == .flute {
-                        Image("fluteBlack2")
-                            .resizable()
-                            .frame(width: cocktailFrameSize, height: cocktailFrameSize, alignment: .center)
-                    }
-                    if cocktail.glasswareType == .collins {
-                        Image("collinsBlack")
-                            .resizable()
-                            .frame(width: cocktailFrameSize, height: cocktailFrameSize, alignment: .center)
-                    }
-                    if cocktail.glasswareType == .wineGlass {
-                        Image("wineGlassBlack")
-                            .resizable()
-                            .frame(width: cocktailFrameSize, height: cocktailFrameSize, alignment: .center)
-                    }
-                    if cocktail.glasswareType == .nickAndNora {
-                        Image("nickNNoraBlack")
-                            .resizable()
-                            .frame(width: cocktailFrameSize, height: cocktailFrameSize, alignment: .center)
-                    }
-                    if cocktail.glasswareType == .smallHighball {
-                        Image("smallHighBall")
-                            .resizable()
-                            .frame(width: cocktailFrameSize, height: cocktailFrameSize, alignment: .center)
-                    }
-                    if cocktail.glasswareType == .crustaGlass {
-                        Image("brandy crusta")
-                            .resizable()
-                            .frame(width: cocktailFrameSize, height: cocktailFrameSize, alignment: .center)
-                    }
-                    if cocktail.glasswareType == .julep {
-                        Image("julepCup")
-                            .resizable()
-                            .frame(width: cocktailFrameSize, height: cocktailFrameSize, alignment: .center)
-                    }
-                    if cocktail.glasswareType == .tikiMug {
-                        Image("tiki mug")
-                            .resizable()
-                            .frame(width: cocktailFrameSize, height: cocktailFrameSize, alignment: .center)
-                    }
-                    if cocktail.glasswareType == .snifter {
-                        Image("snifterBlack")
-                            .resizable()
-                            .frame(width: cocktailFrameSize, height: cocktailFrameSize, alignment: .center)
-                    }
-        
-                }
-                .frame(width: geo.size.width, height: geo.size.height * 0.35, alignment: .bottom)
-                .padding(10)
-             
-                
-                IngredientView(cocktail: cocktail)
-               
-                .frame(width: geo.size.width * 0.9, height: geo.size.height * 0.65, alignment: .top)
-                
-            
-            
-               
-                
-                    
 
-                    
-                    
-                
-                
-            }
-        }
+         
+                VStack{
+                    CocktailMenuViewModel.getCocktailGlass(cocktail: cocktail)
+                        .resizable()
+                        .frame(width: 125, height: 125, alignment: .center)
+        
+                .padding(10)
+                IngredientView(cocktail: cocktail)
+                        .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
+                }
+
     }
  
 }

@@ -23,7 +23,6 @@ var gildaSpec  = [CocktailIngredient(.juices(.lime), value: 0.5),
                     CocktailIngredient(.agaves(.tequilaBlanco), value: 2)]
 
 
-var gildaTags = Tags(profiles: [.refreshing, .fruity],
-                       textures: [.light],
+var gildaTags = Tags(profiles: [.refreshing, .fruity, .light],
                        styles: [.sour, .shaken])
                        

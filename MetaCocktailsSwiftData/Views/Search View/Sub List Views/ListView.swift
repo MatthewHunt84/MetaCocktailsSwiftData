@@ -12,6 +12,8 @@ struct ListView: View {
     @Binding var selectedList: PreferenceType
     var navigationTitle: String
     @Binding var isShowingLikes: Bool
+    @State private var spiritsAreExpanded = true
+    @State private var nonAlcoholicExpanded = true
     var body: some View {
         
 

@@ -70,6 +70,7 @@
 		1AFDB7DC2AE36E0A000A3812 /* Mojito.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFDB7DB2AE36E0A000A3812 /* Mojito.swift */; };
 		1AFDB7DE2AE37207000A3812 /* Boulevardier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFDB7DD2AE37207000A3812 /* Boulevardier.swift */; };
 		1AFDB7E02AE37417000A3812 /* WhiteNegroni.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFDB7DF2AE37417000A3812 /* WhiteNegroni.swift */; };
+		4D088FCA2B62E3640047B056 /* CocktailMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D088FC92B62E3640047B056 /* CocktailMenuViewModel.swift */; };
 		4D09E65F2B146B9500D38C35 /* Saturn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D09E65E2B146B9500D38C35 /* Saturn.swift */; };
 		4D1E85B12B5C6AEA00214BC6 /* GreatWhiteBuffalo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E85B02B5C6AEA00214BC6 /* GreatWhiteBuffalo.swift */; };
 		4D1E85B32B5C737D00214BC6 /* PeanutButterFalon .swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E85B22B5C737D00214BC6 /* PeanutButterFalon .swift */; };
@@ -176,7 +177,6 @@
 		F4C5C3E42B3B4086005B2261 /* NonAlchololicIngredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C5C3E32B3B4086005B2261 /* NonAlchololicIngredients.swift */; };
 		F4C5C3E62B3B41BA005B2261 /* Alcohol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C5C3E52B3B41BA005B2261 /* Alcohol.swift */; };
 		F4C6A8E42AAFF6AC00BB0AD0 /* Flavors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6A8E32AAFF6AC00BB0AD0 /* Flavors.swift */; };
-		F4C6A8E62AAFFC2F00BB0AD0 /* Textures.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6A8E52AAFFC2F00BB0AD0 /* Textures.swift */; };
 		F4C6A8E82AAFFC6B00BB0AD0 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6A8E72AAFFC6B00BB0AD0 /* Styles.swift */; };
 		F4C6A8EC2AAFFE5700BB0AD0 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6A8EB2AAFFE5700BB0AD0 /* Tags.swift */; };
 		F4C6A8F32AB003C200BB0AD0 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6A8F22AB003C200BB0AD0 /* Localization.swift */; };
@@ -255,6 +255,7 @@
 		1AFDB7DB2AE36E0A000A3812 /* Mojito.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mojito.swift; sourceTree = "<group>"; };
 		1AFDB7DD2AE37207000A3812 /* Boulevardier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boulevardier.swift; sourceTree = "<group>"; };
 		1AFDB7DF2AE37417000A3812 /* WhiteNegroni.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteNegroni.swift; sourceTree = "<group>"; };
+		4D088FC92B62E3640047B056 /* CocktailMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailMenuViewModel.swift; sourceTree = "<group>"; };
 		4D09E65E2B146B9500D38C35 /* Saturn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saturn.swift; sourceTree = "<group>"; };
 		4D1E85B02B5C6AEA00214BC6 /* GreatWhiteBuffalo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreatWhiteBuffalo.swift; sourceTree = "<group>"; };
 		4D1E85B22B5C737D00214BC6 /* PeanutButterFalon .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PeanutButterFalon .swift"; sourceTree = "<group>"; };
@@ -361,7 +362,6 @@
 		F4C5C3E32B3B4086005B2261 /* NonAlchololicIngredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonAlchololicIngredients.swift; sourceTree = "<group>"; };
 		F4C5C3E52B3B41BA005B2261 /* Alcohol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alcohol.swift; sourceTree = "<group>"; };
 		F4C6A8E32AAFF6AC00BB0AD0 /* Flavors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flavors.swift; sourceTree = "<group>"; };
-		F4C6A8E52AAFFC2F00BB0AD0 /* Textures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Textures.swift; sourceTree = "<group>"; };
 		F4C6A8E72AAFFC6B00BB0AD0 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		F4C6A8EB2AAFFE5700BB0AD0 /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
 		F4C6A8F22AB003C200BB0AD0 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
@@ -589,6 +589,7 @@
 				1AC386992AAABED00064F52A /* Build Order View */,
 				1AC3869D2AAABED00064F52A /* RecipeIngredientsView.swift */,
 				4DF408F32B622BB200EF9A6E /* CocktailMenuView.swift */,
+				4D088FC92B62E3640047B056 /* CocktailMenuViewModel.swift */,
 			);
 			path = "Recipe View";
 			sourceTree = "<group>";
@@ -765,7 +766,6 @@
 				F4C6A8EB2AAFFE5700BB0AD0 /* Tags.swift */,
 				F4C6A8E32AAFF6AC00BB0AD0 /* Flavors.swift */,
 				F4C6A8F62AB0145800BB0AD0 /* Profiles.swift */,
-				F4C6A8E52AAFFC2F00BB0AD0 /* Textures.swift */,
 				F4C6A8E72AAFFC6B00BB0AD0 /* Styles.swift */,
 				4D1E85C62B5C97DB00214BC6 /* AuthorNames.swift */,
 			);
@@ -950,6 +950,7 @@
 				4DBFF81D2B5FB0840011B5B1 /* Americano(WilliamsAndGraham).swift in Sources */,
 				F4C6A8F32AB003C200BB0AD0 /* Localization.swift in Sources */,
 				F4C6A8EC2AAFFE5700BB0AD0 /* Tags.swift in Sources */,
+				4D088FCA2B62E3640047B056 /* CocktailMenuViewModel.swift in Sources */,
 				4D1F15482B564DB600FC3B85 /* ResultsConfigurationMenu.swift in Sources */,
 				F4F7429E2AD6419100161A93 /* ListView.swift in Sources */,
 				4DF408E42B619FCB00EF9A6E /* Gilda.swift in Sources */,
@@ -1042,7 +1043,6 @@
 				1AFDB7B82ADF26E5000A3812 /* Penicillin.swift in Sources */,
 				1AFDB7E02AE37417000A3812 /* WhiteNegroni.swift in Sources */,
 				1AFDB7C62AE3319F000A3812 /* FinalWard.swift in Sources */,
-				F4C6A8E62AAFFC2F00BB0AD0 /* Textures.swift in Sources */,
 				4DBFF8272B5FBF370011B5B1 /* Bamboo(W&G).swift in Sources */,
 				4DBFF8452B608FCE0011B5B1 /* BrandyAlexander.swift in Sources */,
 				1AFDB7A42ADF1ED3000A3812 /* Caipirinha.swift in Sources */,

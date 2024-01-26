@@ -8,7 +8,7 @@
 import Foundation
 
 var caucasian = Cocktail(cocktailName: "Caucasian",
-                         glasswareType: .smallHighball,
+                         glasswareType: .fizzGlass,
                          garnish: [.noGarnish],
                          ice: .koldDraft,
                          author:Author(place: "The Dude Abides", year: "1998"),

@@ -8,7 +8,7 @@
 import Foundation
 
 var airMail  = Cocktail(cocktailName: "Air Mail",
-                         glasswareType: .smallHighball,
+                         glasswareType: .fizzGlass,
                          garnish: [.noGarnish],
                          spec: airMailSpec,
                          buildOrder: airMailBuild,

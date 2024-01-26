@@ -8,7 +8,7 @@
 import SwiftUI
 
 var ginFizz  = Cocktail(cocktailName: "Gin Fizz",
-                        glasswareType: .smallHighball,
+                        glasswareType: .fizzGlass,
                         garnish: [.lemonPeel],
                         ice: nil,
                         author:Author(person: AuthorNames.jerryThomas.rawValue, place: AuthorPlaces.howToMixDrinksJT.rawValue, year: "1862"),
