@@ -30,3 +30,5 @@ struct noStyleButton: ButtonStyle {
             .foregroundColor(Color(UIColor.systemCyan))
     }
 }
+
+var wNGSpecString = "(Williams & Graham Spec.)"

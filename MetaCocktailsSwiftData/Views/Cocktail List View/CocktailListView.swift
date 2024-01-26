@@ -49,7 +49,7 @@ struct CocktailListView: View {
                                                 ForEach(viewModel.cocktails.filter { $0.cocktailName.hasPrefix(letter) }, id: \.self) { cocktail in
                                                     NavigationLink {
                                                         if criteria.menuMode {
-                                                            CocktailMenuView(cocktail: cocktail)
+                                                            CocktailMenuView(viewModel: CocktailMenuViewModel(cocktail: cocktail))
                                                         } else {
                                                             RecipeIngredientsView(cocktail: cocktail)
                                                         }

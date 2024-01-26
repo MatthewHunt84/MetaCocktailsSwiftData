@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum Glassware: String, Codable {
     case blueBlazerMugs      = "Blue Blazer Mugs"
@@ -29,5 +30,67 @@ enum Glassware: String, Codable {
     case tikiMug             = "Tiki Mug"
     case toddyGlass          = "Toddy Glass"
    
-    
+    func Image(cocktail: Cocktail) -> Image {
+        switch self {
+        case .blueBlazerMugs:
+            return  SwiftUI.Image("Urkel")
+        case .cinnamonSugarRim:
+            return  SwiftUI.Image("martiniBlack2")
+        case .coupe:
+            return  SwiftUI.Image("coupeBlack2")
+        case .collins:
+            return   SwiftUI.Image("collinsBlack")
+        case .crustaGlass:
+            return   SwiftUI.Image("brandy crusta")
+        case .doubleOld:
+            if let ice = cocktail.ice  {
+                if ice == .bigRock {
+                    return SwiftUI.Image("doubleOldBFGBlack")
+                } else {
+                    return SwiftUI.Image("doubleOldBlack")
+                }
+            }
+        case .wineGlass:
+            return   SwiftUI.Image("wineGlassBlack")
+        case .martini:
+            return SwiftUI.Image("martiniBlack2")
+        case .flute:
+            return   SwiftUI.Image("fluteBlack2")
+        case .snifter:
+            return   SwiftUI.Image("snifterBlack")
+        case .fizzGlass:
+            return   SwiftUI.Image("smallHighBall")
+        case .stemmedGlassware:
+            return SwiftUI.Image("coupeBlack2")
+        case .sugarRimStemmed:
+            return SwiftUI.Image("martiniBlack2")
+        case .nickAndNora:
+            return   SwiftUI.Image("nickNNoraBlack")
+        case .doubleOldSalt:
+            if let ice = cocktail.ice  {
+                if ice == .bigRock {
+                    return SwiftUI.Image("doubleOldBFGBlack")
+                } else {
+                    return SwiftUI.Image("doubleOldBlack")
+                }
+            }
+        case .doubleOldCelerySalt:
+            if let ice = cocktail.ice  {
+                if ice == .bigRock {
+                    return SwiftUI.Image("doubleOldBFGBlack")
+                } else {
+                    return SwiftUI.Image("doubleOldBlack")
+                }
+            }
+        case .julep:
+            return SwiftUI.Image("julepCup")
+        case .singleOld:
+            return   SwiftUI.Image("singleOldBlack")
+        case .tikiMug:
+            return   SwiftUI.Image("tiki mug")
+        case .toddyGlass:
+            return SwiftUI.Image("toddy")
+        } 
+        return SwiftUI.Image("Urkel")
+    }
 }

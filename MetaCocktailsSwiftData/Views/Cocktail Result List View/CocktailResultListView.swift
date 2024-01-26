@@ -34,7 +34,7 @@ struct CocktailResultList: View {
                                         ForEach(result.cocktails, id: \.self.id) { cocktail in
                                             NavigationLink {
                                                 if viewModel.menuMode {
-                                                    CocktailMenuView(cocktail: cocktail)
+                                                    CocktailMenuView(viewModel: CocktailMenuViewModel(cocktail: cocktail))
                                                 } else {
                                                     RecipeIngredientsView(cocktail: cocktail)
                                                 }
@@ -55,7 +55,7 @@ struct CocktailResultList: View {
                                         ForEach(result.cocktails, id: \.self.id) { cocktail in
                                             NavigationLink {
                                                 if viewModel.menuMode {
-                                                    CocktailMenuView(cocktail: cocktail)
+                                                    CocktailMenuView(viewModel: CocktailMenuViewModel(cocktail: cocktail))
                                                 } else {
                                                     RecipeIngredientsView(cocktail: cocktail)
                                                 }

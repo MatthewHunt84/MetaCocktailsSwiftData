@@ -8,38 +8,40 @@
 import SwiftUI
 
 struct CocktailMenuView: View {
-    var menuViewModel = CocktailMenuViewModel()
-    var cocktail: Cocktail
+    var viewModel: CocktailMenuViewModel
     
-
+    init(viewModel: CocktailMenuViewModel) {
+        self.viewModel = viewModel
+    }
+    
+    
     var body: some View {
-
-         
-                VStack{
-                    CocktailMenuViewModel.getCocktailGlass(cocktail: cocktail)
-                        .resizable()
-                        .frame(width: 125, height: 125, alignment: .center)
         
-                .padding(10)
-                IngredientView(cocktail: cocktail)
-                        .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
-                }
-
-    }
- 
-}
-struct CocktailMenuView_Previews: PreviewProvider {
-   
-    static var previews: some View {
-        CocktailMenuView(cocktail: aFlightSouthOfTheBorder)
+        VStack{
+            viewModel.cocktail.glasswareType.Image(cocktail: viewModel.cocktail)
+                .resizable()
+                .frame(width: 125, height: 125, alignment: .center)
             
+                .padding(10)
+            IngredientView(cocktail: viewModel.cocktail)
+                .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
+        }
     }
 }
+
+struct CocktailMenuView_Previews: PreviewProvider {
+    
+    static var previews: some View {
+        CocktailMenuView(viewModel: CocktailMenuViewModel(cocktail: aFlightSouthOfTheBorder))
+        
+    }
+}
+
 struct IngredientView: View {
     let cocktail: Cocktail
     var ingredientsString = ""
     var profileString = ""
- 
+    
     
     init(cocktail: Cocktail, ingredientsString: String = "") {
         self.cocktail = cocktail
@@ -49,7 +51,7 @@ struct IngredientView: View {
         for ingredient in ingredients.reversed() {
             self.ingredientsString += " \(ingredient.ingredient.name),"
         }
-       
+        
         if let profiles = cocktail.compiledTags.profiles {
             for profile in profiles {
                 self.profileString += " \(profile.rawValue),"
@@ -72,21 +74,18 @@ struct IngredientView: View {
             Text("Ingredients:")
                 .dynamicTypeSize(.xLarge).bold()
             Text("\(ingredientsString)")
-                    .multilineTextAlignment(.center)
-                    .dynamicTypeSize(.xLarge)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
+                .multilineTextAlignment(.center)
+                .dynamicTypeSize(.xLarge)
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
             Text("Profile:")
                 .dynamicTypeSize(.xLarge).bold()
             Text("\(profileString)")
-                    .multilineTextAlignment(.center)
-                    .dynamicTypeSize(.xLarge)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
+                .multilineTextAlignment(.center)
+                .dynamicTypeSize(.xLarge)
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
             if cocktail.author != nil {
                 AuthorView(cocktail: cocktail)
-                    
-               }
-            
-            
+            }
         }
     }
 }
