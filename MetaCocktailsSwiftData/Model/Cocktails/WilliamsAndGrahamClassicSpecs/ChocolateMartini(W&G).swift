@@ -7,13 +7,13 @@
 
 import Foundation
 
-var chocolateMartiniWnG = Cocktail(cocktailName: "Chocolate Martini (Williams & Graham)",
-                               imageAsset: nil,
-                               glasswareType: .martini,
-                               garnish: [.chocolateChips],
-                               author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
-                               spec: chocolateMatiniSpec,
-                               tags: chocolateMatiniTags)
+var chocolateMartiniWnG = Cocktail(cocktailName: "Chocolate Martini(W&G)",
+                                   imageAsset: nil,
+                                   glasswareType: .martini,
+                                   garnish: [.chocolateChips],
+                                   author: williamsAndGraham,
+                                   spec: chocolateMatiniSpec,
+                                   tags: chocolateMatiniTags)
 
 let chocolateMatiniSpec: [CocktailIngredient] = [CocktailIngredient(.seasoning(.saline), value: 2, unit: .drops),
                                                  CocktailIngredient(.bitters(.chocolateMole), value: 2, unit: .dashes),

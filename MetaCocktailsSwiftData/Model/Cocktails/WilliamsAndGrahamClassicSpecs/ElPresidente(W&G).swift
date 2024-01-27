@@ -7,11 +7,11 @@
 
 import Foundation
 
-var elPresidenteWnG  = Cocktail(cocktailName: "El Presidente(Williams & Graham Spec.)",
+var elPresidenteWnG  = Cocktail(cocktailName: "El Presidente(W&G)",
                                 glasswareType: .coupe,
                                 garnish: [.orangePeel],
                                 ice: nil,
-                                author: Author(person: AuthorNames.constante.rawValue),
+                                author: williamsAndGraham,
                                 spec: elPresidenteSpecWnG,
                                 tags: elPresidenteTags)
 

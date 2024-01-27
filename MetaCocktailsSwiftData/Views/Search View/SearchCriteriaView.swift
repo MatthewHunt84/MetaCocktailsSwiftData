@@ -46,7 +46,7 @@ struct SearchCriteriaView: View {
                 
                 
                 
-                ListView(selectedList: $selectedList, navigationTitle: selectedList.getTitle(), isShowingLikes: $isShowingPreferences)
+                AdvancedCriteriaListView(selectedList: $selectedList, navigationTitle: selectedList.getTitle(), isShowingLikes: $isShowingPreferences)
                 HStack {
                     NavigationLink {
                         SearchResultsView(viewModel: viewModel)

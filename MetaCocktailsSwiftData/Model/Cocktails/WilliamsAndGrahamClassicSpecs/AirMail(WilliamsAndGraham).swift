@@ -7,17 +7,19 @@
 
 import Foundation
 
-var airMailWnG  = Cocktail(cocktailName: "Air Mail (Williams & Graham spec.)",
-                         glasswareType: .flute,
-                         garnish: [.noGarnish],
-                         spec: airMailWnGSpec,
-                         buildOrder: airMailWnGBuild,
-                         tags: airMailWnGTags)
+var airMailWnG  = Cocktail(cocktailName: "Air Mail(W&G)",
+                           glasswareType: .flute,
+                           garnish: [.noGarnish],
+                           author: Author(place: AuthorPlaces.williamsAndGraham.rawValue,
+                                          year: "2012"),
+                           spec: airMailWnGSpec,
+                           buildOrder: airMailWnGBuild,
+                           tags: airMailWnGTags)
 
 var airMailWnGSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
-                     CocktailIngredient(.syrups(.honeySyrup), value: 0.75),
-                     CocktailIngredient(.rums(.plantationBarbados), value: 1.5),
-                     CocktailIngredient(.wines(.prosecco) , value: 2)]
+                       CocktailIngredient(.syrups(.honeySyrup), value: 0.75),
+                       CocktailIngredient(.rums(.plantationBarbados), value: 1.5),
+                       CocktailIngredient(.wines(.prosecco) , value: 2)]
 
 var airMailWnGBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the Champagne, into a tin and shake with ice"),
                                           Instruction(step: 2, method: "Add Champagne to the flute first!"),

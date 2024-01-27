@@ -18,7 +18,7 @@ struct CocktailMenuView: View {
     var body: some View {
         
         VStack{
-            viewModel.cocktail.glasswareType.Image(cocktail: viewModel.cocktail)
+            viewModel.cocktailGlassImage
                 .resizable()
                 .frame(width: 125, height: 125, alignment: .center)
             

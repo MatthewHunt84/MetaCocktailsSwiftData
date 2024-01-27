@@ -7,10 +7,10 @@
 
 import Foundation
 
-var alaskaWnG  = Cocktail(cocktailName: "Alaska Cocktail (Williams & Graham spec.)",
+var alaskaWnG  = Cocktail(cocktailName: "Alaska Cocktail(W&G)",
                           glasswareType: .nickAndNora,
                           garnish: [.lemonPeel],
-                          author: Author(place: "'Fashions in Mixed Drinks.' Guthrie Daily Leader", year: "October 18, 1905"),
+                          author: williamsAndGraham,
                           spec: alaskaWnGSpec,
                           tags: alaskaWnGTags)
 

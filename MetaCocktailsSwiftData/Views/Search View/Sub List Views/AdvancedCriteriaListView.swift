@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ListView: View {
+struct AdvancedCriteriaListView: View {
     @EnvironmentObject var viewModel: SearchCriteriaViewModel
     @Binding var selectedList: PreferenceType
     var navigationTitle: String
@@ -152,7 +152,7 @@ struct ListView: View {
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        ListView(selectedList: .constant(.spirits), navigationTitle: "Beans", isShowingLikes: .constant(true))
+        AdvancedCriteriaListView(selectedList: .constant(.spirits), navigationTitle: "Beans", isShowingLikes: .constant(true))
             .environmentObject(SearchCriteriaViewModel())
 
     }

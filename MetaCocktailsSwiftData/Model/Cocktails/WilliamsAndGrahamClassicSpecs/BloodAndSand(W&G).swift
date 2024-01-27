@@ -7,11 +7,11 @@
 
 import Foundation
 
-var bloodAndSandWnG  = Cocktail(cocktailName: "Blood & Sand (Williams & Graham spec.)",
+var bloodAndSandWnG  = Cocktail(cocktailName: "Blood & Sand(W&G)",
                                 glasswareType: .martini,
                                 garnish: [.orangePeel],
                                 ice: nil,
-                                author:Author(person: AuthorNames.harryCraddock.rawValue, place: AuthorPlaces.savoy.rawValue, year: "1930"),
+                                author: williamsAndGraham,
                                 spec: bloodAndSandWnGSpec,
                                 tags: bloodAndSandTags)
 

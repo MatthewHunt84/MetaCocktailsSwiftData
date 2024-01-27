@@ -7,13 +7,11 @@
 
 import Foundation
 
-var fancyFreeWnG = Cocktail(cocktailName: "Fancy Free (Williams & Graham Spec)",
+var fancyFreeWnG = Cocktail(cocktailName: "Fancy Free(W&G)",
                             glasswareType: .doubleOld,
                             garnish: [.orangePeel],
                             ice: .bigRock,
-                            author: Author(person: AuthorNames.crosbyGaige.rawValue,
-                                           place: AuthorPlaces.crosbyGaigeCocktailGuide.rawValue,
-                                           year: "1940"),
+                            author: williamsAndGraham,
                             spec: fancyFreeWnGSpec,
                             tags: fancyFreeTags)
 

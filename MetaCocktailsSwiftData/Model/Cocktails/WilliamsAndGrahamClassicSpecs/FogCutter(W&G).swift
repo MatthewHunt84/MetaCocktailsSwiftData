@@ -7,21 +7,19 @@
 
 import Foundation
 
-var fogCutterWnG = Cocktail(cocktailName: "Fog Cutter (Williams & Graham Spec)",
+var fogCutterWnG = Cocktail(cocktailName: "Fog Cutter(W&G)",
                             imageAsset: nil,
                             glasswareType: .collins,
                             garnish: [.mintBouquet, .halfOrangeWheel],
                             ice: .pebbleIce,
-                            author: Author(person: AuthorNames.traderVic.rawValue,
-                                           year: "1940"),
+                            author: williamsAndGraham,
                             spec: fogCutterSpecWnG,
                             tags: fogCutterTags)
 
-let fogCutterSpecWnG     = [CocktailIngredient(.juices(.lemon), value: 2),
-                            CocktailIngredient(.juices(.orange), value: 1),
-                            CocktailIngredient(.syrups(.orgeat), value: 0.5),
-                            CocktailIngredient(.gins(.ginAny), value: 0.5),
-                            CocktailIngredient(.brandies(.brandyAny), value: 1),
-                            CocktailIngredient(.rums(.rumPuertoRican), value: 2),
-                            CocktailIngredient(.fortifiedWines(.sherryEastIndia), value: 0.5, unit: .fluidOuncesFloated)]
-
+let fogCutterSpecWnG   = [CocktailIngredient(.juices(.lemon), value:0.75),
+                          CocktailIngredient(.juices(.orange), value: 1),
+                          CocktailIngredient(.syrups(.orgeat), value: 0.5),
+                          CocktailIngredient(.gins(.ransomOldTom), value: 0.25),
+                          CocktailIngredient(.brandies(.pFAmber), value: 0.5),
+                          CocktailIngredient(.rums(.plantationBarbados), value: 1.5),
+                          CocktailIngredient(.fortifiedWines(.sherryEastIndia), value: 0.5, unit: .fluidOuncesFloated)]

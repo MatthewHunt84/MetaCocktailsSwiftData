@@ -7,9 +7,10 @@
 
 import Foundation
 
-var bloodyMarryWnG  = Cocktail(cocktailName: "Bloody Marry (Williams & Graham spec.)",
+var bloodyMarryWnG  = Cocktail(cocktailName: "Bloody Marry(W&G)",
                                glasswareType: .collins,
-                               garnish: [.olive, .onion],
+                               garnish: [.olive, .cocktailOnion],
+                               author: williamsAndGraham,
                                spec: bloodyMarryWnGSpec,
                                buildOrder: bloodyMarryWnGBuild,
                                tags: bloodyMarryWnGTags)

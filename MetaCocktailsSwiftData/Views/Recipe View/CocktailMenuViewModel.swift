@@ -9,10 +9,11 @@ import SwiftUI
 
 final class CocktailMenuViewModel: ObservableObject {
     var cocktail: Cocktail
+    var cocktailGlassImage: Image
 
     init(cocktail: Cocktail) {
         self.cocktail = cocktail
-        
+        self.cocktailGlassImage = cocktail.glasswareType.glassImage(cocktail: cocktail)
     }
    
 }

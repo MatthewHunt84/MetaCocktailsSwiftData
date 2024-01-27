@@ -11,7 +11,7 @@ var french75  = Cocktail(cocktailName: "French 75",
                          glasswareType: .collins,
                          garnish: [.lemonPeel],
                          ice: .crackedIce,
-                         author: nil,
+                         author: harryCraddock,
                          spec: french75Spec,
                          buildOrder: french75Build,
                          tags: french75Tags)

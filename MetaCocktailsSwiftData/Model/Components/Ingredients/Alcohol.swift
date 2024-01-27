@@ -130,6 +130,7 @@ enum Gin: String, Codable, CaseIterable {
     case plymouth             = "Plymouth Gin"
     case ransomOldTom         = "Ransom Old Tom"
     case stGeorgeTerroir      = "St. George Terroir Gin"
+    case tanqueray            = "Tanqueray"
     
     
     
@@ -153,6 +154,8 @@ enum Gin: String, Codable, CaseIterable {
             Tags(flavors: [.juniper],booze: [Booze(.gins(self)), Booze(.gins(.ginAny))])
         case .ransomOldTom:
             Tags(booze: [Booze(.gins(self)), Booze(.gins(.ginAny))])
+        case .tanqueray:
+            Tags(flavors: [.juniper],booze: [Booze(.gins(self)), Booze(.gins(.ginAny)), Booze(.gins(.ginLondonDry))])
         }
     }
     

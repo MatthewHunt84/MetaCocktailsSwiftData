@@ -10,6 +10,7 @@ import Foundation
 var airMail  = Cocktail(cocktailName: "Air Mail",
                          glasswareType: .fizzGlass,
                          garnish: [.noGarnish],
+                        author: Author(person: "Bacardi and It's Many Uses.", place: "Santiago de Cuba", year: "1930"),
                          spec: airMailSpec,
                          buildOrder: airMailBuild,
                          tags: airMailTags)

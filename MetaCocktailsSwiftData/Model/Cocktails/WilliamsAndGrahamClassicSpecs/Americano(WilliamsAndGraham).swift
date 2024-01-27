@@ -8,11 +8,11 @@
 import Foundation
 
 
-var americanoWnG  = Cocktail(cocktailName: "Americano (Williams & Graham spec.)",
+var americanoWnG  = Cocktail(cocktailName: "Americano(W&G)",
                              glasswareType: .collins,
                              garnish: [.orangePeel],
                              ice: .koldDraft,
-                             author: Author(person: "Emile Lefeuvre", place: "Paris", year: "1889"),
+                             author: williamsAndGraham,
                              spec: americanoWnGSpec,
                              tags: americanoWnGTags)
 

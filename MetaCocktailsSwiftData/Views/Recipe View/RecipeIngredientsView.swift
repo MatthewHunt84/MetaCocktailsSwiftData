@@ -110,7 +110,7 @@ struct RecipeIngredientsView: View {
                     NavigationLink("Build Order") {
                         BuildOrderView(buildOrder: buildOrder)
                     }
-                  
+                    
                     
                     .buttonStyle(whiteButton())
                 }
@@ -120,6 +120,7 @@ struct RecipeIngredientsView: View {
             if viewModel.cocktail.author != nil {
                 AuthorView(cocktail: viewModel.cocktail)
             }
+        
         }
     }
 }

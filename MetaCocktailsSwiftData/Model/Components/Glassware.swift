@@ -30,7 +30,7 @@ enum Glassware: String, Codable {
     case tikiMug             = "Tiki Mug"
     case toddyGlass          = "Toddy Glass"
    
-    func Image(cocktail: Cocktail) -> Image {
+    func glassImage(cocktail: Cocktail) -> Image {
         switch self {
         case .blueBlazerMugs:
             return  SwiftUI.Image("Urkel")

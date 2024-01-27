@@ -20,7 +20,7 @@ var fancyFree = Cocktail(cocktailName: "Fancy Free",
 var fancyFreeSpec     =  [CocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dash),
                           CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),
                           CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.5),
-                          CocktailIngredient(.whiskies(.rittenhouseRye), value: 2)]
+                          CocktailIngredient(.whiskies(.straightRyeOrBourbon), value: 2)]
 
 var fancyFreeTags     = Tags(profiles: [.spiritForward, .fruity, .bittersweet],
                              styles: [.oldFashioned, .stirred])

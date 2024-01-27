@@ -7,10 +7,10 @@
 
 import Foundation
 
-var elksClubWnG = Cocktail(cocktailName: "Elk's Club Fizz (Williams & Graham spec.)",
+var elksClubWnG = Cocktail(cocktailName: "Elk's Club Fizz(W&G)",
                            glasswareType: .fizzGlass,
                            garnish: [.lemonExpression],
-                           author: Author(person: "Peter Sindar", place: "St. Paul, Minnesota", year: "1901"),
+                           author: williamsAndGraham,
                            spec: elksClubSpecWnG,
                            buildOrder: elksClubBuildWnG,
                            tags: elksClubTags)

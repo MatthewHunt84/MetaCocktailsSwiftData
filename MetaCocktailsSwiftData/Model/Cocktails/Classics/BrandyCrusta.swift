@@ -16,10 +16,10 @@ var brandyCrusta = Cocktail(cocktailName: "Brandy Crusta",
                             buildOrder: brandyCrustaBuild,
                             tags: brandyCrustaTags)
 
-var brandyCrustaSpec    = [CocktailIngredient(.juices(.lemon), value: 0.5, unit: .teaspoon),
-                           CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 1, unit: .teaspoon),
-                           CocktailIngredient(.syrups(.richSimple), value: 1, unit: .teaspoon),
-                           CocktailIngredient(.bitters(.angosturaBitters), value:2, unit: .dashes),
+var brandyCrustaSpec    = [CocktailIngredient(.juices(.lemon), value: 1, unit: .dash),
+                           CocktailIngredient(.liqueurs(.orangeCuracao), value: 2, unit: .dashes),
+                           CocktailIngredient(.syrups(.richSimple), value: 4, unit: .dashes),
+                           CocktailIngredient(.bitters(.angosturaBitters), value:1, unit: .dash),
                            CocktailIngredient(.brandies(.brandyAny), value:2)]
 
 var brandyCrustaTags     = Tags(profiles: [.spiritForward, .rich, .fruity],

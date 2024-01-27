@@ -7,19 +7,19 @@
 
 import Foundation
 
-var cloverClubWnG = Cocktail(cocktailName: "Clover Club (Williams & Graham spec.)",
-                           glasswareType: .stemmedGlassware,
-                           garnish: [.raspberry],
-                           author: Author(place: "Somewhere in Philadelphia", year: "1901"),
-                           spec: cloverClubSpecWnG,
+var cloverClubWnG = Cocktail(cocktailName: "Clover Club(W&G)",
+                             glasswareType: .stemmedGlassware,
+                             garnish: [.raspberry],
+                             author: williamsAndGraham,
+                             spec: cloverClubSpecWnG,
                              buildOrder: cloverClubBuildWnG,
                              tags: cloverClubTags)
 
 var cloverClubSpecWnG  = [CocktailIngredient(.fruit(.raspberries), value: 6, unit: .whole),
                           CocktailIngredient(.juices(.lemon), value: 0.5),
                           CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
-                          CocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 0.5),
-                          CocktailIngredient(.gins(.ginAny), value: 1.5),
+                          CocktailIngredient(.fortifiedWines(.dolinDry), value: 0.5),
+                          CocktailIngredient(.gins(.fordsGin), value: 1.5),
                           CocktailIngredient(.bitters(.peychauds), value: 6, unit: .drops)]
 
 var cloverClubBuildWnG = Build(instructions: [Instruction(step: 1, method: "Muddle the raspberries then add the rest of the ingredients, except for the bitters, and dry shake."),

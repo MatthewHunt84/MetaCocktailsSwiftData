@@ -27,5 +27,5 @@ var french75CognacBuild  = Build(instructions: [Instruction(step: 1, method: "Ad
 
 var french75CognacTags   = Tags(flavors: [.lemon],
                                 profiles: [.citrusy, .effervescent, .light],
-                                styles: [.fizz, .shaken, .built])
+                                styles: [.fizz, .shaken, .fizz])
 
