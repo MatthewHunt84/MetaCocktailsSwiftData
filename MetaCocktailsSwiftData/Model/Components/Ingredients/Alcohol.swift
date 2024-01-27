@@ -353,10 +353,12 @@ enum Liqueur: String, Codable, CaseIterable {
     case clementCreole        = "Clement Creole Shrub"
     case cremeDeCacao         = "Creme De Cacao"
     case cremeDeCassis        = "Creme De Cassis"
+    case cremeDeMenthe        = "Creme de Menthe"
     case cremeDeMure          = "Creme De Mure"
     case cremeDeViolette      = "Creme De Violette"
     case drambuie             = "Drambuie"
     case falernum             = "Falernum"
+    case galliano             = "Galliano"
     case dryCuracao           = "Pierre Ferrand Dry Curacao"
     case giffardPamplemousse  = "Giffard Creme de Pamplemousse"
     case giffardBanane        = "Giffard Banane Du Bresil"
@@ -425,6 +427,10 @@ enum Liqueur: String, Codable, CaseIterable {
             Tags(flavors: [.coffee, .espresso], booze: [Booze(.liqueurs(self))])
         case .falernum:
             Tags(flavors: [.clove, .almond], booze: [Booze(.liqueurs(self))])
+        case .cremeDeMenthe:
+            Tags(flavors: [.menthol, .mint], booze: [Booze(.liqueurs(self))])
+        case .galliano:
+            Tags(flavors: [.anise], booze: [Booze(.liqueurs(self))])
         }
     }
     

@@ -51,7 +51,7 @@ struct CocktailListView: View {
                                                 Section{
                                                     ForEach(guestViewCocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.cocktailName) { item in
                                                         NavigationLink {
-                                                            ListCocktailMenuView(cocktails: item.cocktailVariations, cocktailName: item.cocktailName)
+                                                            GuestCocktailListView(cocktails: item.cocktailVariations, cocktailName: item.cocktailName)
                                                         } label: {
                                                             Text(item.cocktailName)
                                                             if item.cocktailVariations.count > 1 {
@@ -70,7 +70,7 @@ struct CocktailListView: View {
                                                 Section{
                                                     ForEach(bartenderViewCocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.cocktailName) { item in
                                                         NavigationLink {
-                                                            CocktailListRecipeIngredientsView(cocktails: item.cocktailVariations, cocktailName: item.cocktailName)
+                                                            BartenderCocktailListView(cocktails: item.cocktailVariations, cocktailName: item.cocktailName)
                                                             
                                                         } label: {
                                                             Text(item.cocktailName)

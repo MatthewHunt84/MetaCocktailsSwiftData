@@ -215,6 +215,7 @@ enum MeasurementUnit: String, Codable {
     case ml                 = "ml"
     case muddled            = "Muddled"
     case nitroMuddled       = "Nitro muddled"
+    case none               = ""
     case peel               = "Peel(s)"
     case pinch              = "Pinch"
     case rim                = "Around the rim of the glass"

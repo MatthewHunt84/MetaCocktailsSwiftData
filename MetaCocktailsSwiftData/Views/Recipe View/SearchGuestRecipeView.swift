@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CocktailMenuView: View {
+struct SearchGuestRecipeView: View {
     var viewModel: CocktailMenuViewModel
     
     init(viewModel: CocktailMenuViewModel) {
@@ -32,7 +32,7 @@ struct CocktailMenuView: View {
 struct CocktailMenuView_Previews: PreviewProvider {
     
     static var previews: some View {
-        CocktailMenuView(viewModel: CocktailMenuViewModel(cocktail: aFlightSouthOfTheBorder))
+        SearchGuestRecipeView(viewModel: CocktailMenuViewModel(cocktail: aFlightSouthOfTheBorder))
         
     }
 }

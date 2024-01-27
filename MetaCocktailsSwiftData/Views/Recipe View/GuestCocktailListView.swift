@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ListCocktailMenuView: View {
+struct GuestCocktailListView: View {
     @State var cocktails: [Cocktail] = []
     @State var cocktailName: String = ""
     
@@ -40,5 +40,5 @@ struct ListCocktailMenuView: View {
 }
 
 #Preview {
-    ListCocktailMenuView(cocktails: CocktailListViewModel.getBartenderViewCocktails()[3].cocktailVariations , cocktailName: CocktailListViewModel.getBartenderViewCocktails()[3].cocktailName)
+    GuestCocktailListView(cocktails: CocktailListViewModel.getBartenderViewCocktails()[3].cocktailVariations , cocktailName: CocktailListViewModel.getBartenderViewCocktails()[3].cocktailName)
 }

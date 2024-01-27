@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RecipeIngredientsView: View {
+struct SearchBartenderRecipeView: View {
     
     var viewModel: CocktailMenuViewModel
     let recipeSpacing: CGFloat = 2
@@ -181,7 +181,7 @@ struct AuthorView: View {
 struct RecipeIngredientsView_Previews: PreviewProvider {
    
     static var previews: some View {
-        RecipeIngredientsView(viewModel: CocktailMenuViewModel(cocktail: aFlightSouthOfTheBorder))
+        SearchBartenderRecipeView(viewModel: CocktailMenuViewModel(cocktail: aFlightSouthOfTheBorder))
             
     }
 }

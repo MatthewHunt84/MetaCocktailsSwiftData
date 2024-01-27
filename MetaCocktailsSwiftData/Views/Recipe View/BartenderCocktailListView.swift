@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CocktailListRecipeIngredientsView: View {
+struct BartenderCocktailListView: View {
     
     let recipeSpacing: CGFloat = 2
     var cocktailFrameSize = CGFloat(125)
@@ -135,5 +135,5 @@ struct CocktailListRecipeIngredientsView: View {
 }
         
         #Preview {
-            CocktailListRecipeIngredientsView(cocktails:  CocktailListViewModel.getBartenderViewCocktails()[3].cocktailVariations , cocktailName: CocktailListViewModel.getBartenderViewCocktails()[3].cocktailName)
+            BartenderCocktailListView(cocktails:  CocktailListViewModel.getBartenderViewCocktails()[3].cocktailVariations , cocktailName: CocktailListViewModel.getBartenderViewCocktails()[3].cocktailName)
 }

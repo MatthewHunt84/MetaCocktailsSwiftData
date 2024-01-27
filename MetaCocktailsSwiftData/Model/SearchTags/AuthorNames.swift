@@ -44,7 +44,7 @@ enum AuthorPlaces: String, Codable, CaseIterable {
     case howToMixDrinksJT             = "Jerry Thomas: How to Mix Drinks"
     case milkAndHoney                 = "Milk and Honey"
     case recipesForMixedDrinks        = "Recipes for Mixed Drinks"
-    case savoy                        = "Savoy Hotel (Cocktail Book)"
+    case savoy                        = "American Bar at the Savoy Hotel, London."
     case traderVicsBartendersGuide    = "Trader Vic's Bartender's Guide, Revised."
     case traderVicsBookOfFoodAndDrink = "Trader Vic's Book of Food and Drink"
     case williamsAndGraham            = "Williams and Graham. Denver, Colorado"

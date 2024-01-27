@@ -30,10 +30,10 @@ struct CocktailResultList: View {
                                         ForEach(result.cocktails, id: \.self.id) { cocktail in
                                             NavigationLink {
                                                 if viewModel.menuMode {
-                                                    CocktailMenuView(viewModel: CocktailMenuViewModel(cocktail: cocktail))
+                                                    SearchGuestRecipeView(viewModel: CocktailMenuViewModel(cocktail: cocktail))
                                                                      
                                                     } else {
-                                                    RecipeIngredientsView(viewModel: CocktailMenuViewModel(cocktail: cocktail))
+                                                    SearchBartenderRecipeView(viewModel: CocktailMenuViewModel(cocktail: cocktail))
                                                 }
                                                 
                                             } label: {
@@ -50,9 +50,9 @@ struct CocktailResultList: View {
                                         ForEach(result.cocktails, id: \.self.id) { cocktail in
                                             NavigationLink {
                                                 if viewModel.menuMode {
-                                                    CocktailMenuView(viewModel: CocktailMenuViewModel(cocktail: cocktail))
+                                                    SearchGuestRecipeView(viewModel: CocktailMenuViewModel(cocktail: cocktail))
                                                 } else {
-                                                    RecipeIngredientsView(viewModel: CocktailMenuViewModel(cocktail: cocktail))
+                                                    SearchBartenderRecipeView(viewModel: CocktailMenuViewModel(cocktail: cocktail))
                                                 }
                                             } label: {
                                                 HStack {
