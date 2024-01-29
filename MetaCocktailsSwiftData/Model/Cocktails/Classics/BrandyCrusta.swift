@@ -9,9 +9,7 @@ import Foundation
 
 var brandyCrusta = Cocktail(cocktailName: "Brandy Crusta",
                             glasswareType: .crustaGlass,
-                            author:Author(person: AuthorNames.jerryThomas.rawValue,
-                                          place: AuthorPlaces.howToMixDrinksJT.rawValue,
-                                          year: "1862"),
+                            author: jerryThomas,
                             spec: brandyCrustaSpec,
                             buildOrder: brandyCrustaBuild,
                             tags: brandyCrustaTags)

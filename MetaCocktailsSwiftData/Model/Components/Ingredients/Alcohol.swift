@@ -296,6 +296,7 @@ enum Whiskey: String, Codable, CaseIterable {
     case glenfiddich12        = "Glanfiddich 12 year"
     case irishWhiskeyAny      = "Irish Whiskey"
     case jimBeamRye           = "Jim Beam Rye"
+    case larcenyBourbon       = "Larceny Bourbon"
     case rittenhouseRye       = "Rittenhouse Rye"
     case ryeWhiskeyAny        = "Rye Whiskey"
     case straightRye          = "Straight Rye"
@@ -341,6 +342,8 @@ enum Whiskey: String, Codable, CaseIterable {
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)), Booze(.whiskies(.ryeWhiskeyAny))])
         case .fourRosesYellowLabel:
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)),Booze(.whiskies(.bourbonAny))])
+        case .larcenyBourbon:
+            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)),Booze(.whiskies(.bourbonAny))])
         }
     }
     
@@ -349,6 +352,7 @@ enum Whiskey: String, Codable, CaseIterable {
     }
 }
 enum Liqueur: String, Codable, CaseIterable {
+    case allspiceDram         = "Allspice Dram"
     case amaretto             = "Amaretto"
     case anchoVerde           = "Ancho Reyes Verde Poblano Chile Liquor"
     case benedictine          = "Benedictine"
@@ -437,6 +441,8 @@ enum Liqueur: String, Codable, CaseIterable {
             Tags(flavors: [.menthol, .mint], booze: [Booze(.liqueurs(self))])
         case .galliano:
             Tags(flavors: [.anise], booze: [Booze(.liqueurs(self))])
+        case .allspiceDram:
+            Tags(flavors: [.bakingSpices], booze: [Booze(.liqueurs(self))])
         }
     }
     

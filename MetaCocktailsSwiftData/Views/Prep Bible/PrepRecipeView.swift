@@ -9,24 +9,33 @@ import SwiftUI
 
 struct PrepRecipeView: View {
     
-    var prepRecipe: String
+    var prep: Prep
     
     var body: some View {
-
-        //Let's throw a geometry reader here and only show the dismiss button if the view height is larger than the screen height
-
-        ScrollView{
-            Text(prepRecipe)
-                .multilineTextAlignment(.leading)
+        
+        NavigationStack{   //Let's throw a geometry reader here and only show the dismiss button if the view height is larger than the screen height
+            VStack{
+                List{
+                    ForEach(prep.prepRecipe) { recipe in
+                        HStack {
+                           Text("\(recipe.step). \(recipe.method)")
+                        }
+                        .font(.body)
+                        .fontWeight(.bold)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 2, trailing: 0))
+                        .multilineTextAlignment(.leading)
+                    }
+                }
+                .listStyle(.plain)
+            }
+            .navigationTitle("Instructions:")
         }
-
-
         
     }
 }
 
 struct PrepRecipeView_Previews: PreviewProvider {
     static var previews: some View {
-        PrepRecipeView(prepRecipe: "Recipe")
+        PrepRecipeView(prep: Prep(prepIngredientName: "Balls", prepRecipe: [Instruction(step: 1, method: "Stroke")]))
     }
 }

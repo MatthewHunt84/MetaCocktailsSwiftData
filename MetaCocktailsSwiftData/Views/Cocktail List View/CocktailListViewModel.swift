@@ -30,6 +30,7 @@ final class CocktailListViewModel: ObservableObject {
         cocktailDict["Gin Fizz"] = [ginFizz, silverGinFizz]
         cocktailDict["Hanky Panky"] = [hankyPanky]
         cocktailDict["Harvey Wallbanger"] = [harveyWallbanger]
+        cocktailDict["Greenpoint"] = [greenpoint]
  
         for cocktails in cocktailDict {
             guestCocktails.append(CocktailListCocktail(cocktailName: cocktails.key, cocktailVariations: cocktails.value))
@@ -101,7 +102,8 @@ final class CocktailListViewModel: ObservableObject {
                                                                      "Hanky Panky":[hankyPanky, hankyPankyWnG],
                                                                      "Harvey Wallbanger": [harveyWallbanger, harveyWallbangerWnG],
                                                                      "Honeymoon Cocktail": [honeymoonCocktail1st, honeymoonCocktailEmbury, honeymoonCocktailWnG],
-                                                                     "Holland House": [hollandHouseCocktail, hollandHouseKappeler, hollandHouseCocktailWnG],
+                                                                     "Holland House": [hollandHouseKappeler, hollandHouseCocktail, hollandHouseCocktailWnG],
+                                                                     "Hot Toddy": [hotBrandyToddy, hotToddyWnG, morgenthalersToddy],
                                                                      "Jack Rose": [jackRose],
                                                                      "Jungle Bird": [jungleBird],
                                                                      "Last Word": [lastWord],

@@ -25,7 +25,7 @@ struct PrepBibleListView: View {
                     List {
                         ForEach(prepViewModel.prepIngredients, id: \.self) { prepItem in
                             NavigationLink(prepItem.prepIngredientName){
-                                PrepRecipeView(prepRecipe: prepItem.prepRecipe)
+                                PrepRecipeView(prep: prepItem)
                             }
                             
                             

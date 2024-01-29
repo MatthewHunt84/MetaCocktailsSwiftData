@@ -11,7 +11,7 @@ var silverGinFizz  = Cocktail(cocktailName: "Silver Gin Fizz",
                               glasswareType: .fizzGlass,
                               garnish: [.lemonPeel],
                               ice: nil,
-                              author:Author(person: AuthorNames.jerryThomas.rawValue, place: AuthorPlaces.howToMixDrinksJT.rawValue, year: "1862"),
+                              author: jerryThomas,
                               spec: silverGinFizzSpec,
                               buildOrder: silverGinFizzBuild,
                               tags: silverGinFizzTags)

@@ -59,21 +59,22 @@ enum Juice: String, Codable, CaseIterable {
 
 enum Syrup: String, Codable, CaseIterable { 
     
-    case agaveSyrup           = "Agave Syrup"
-    case cinnamonSyrup        = "Cinnamon Syrup"
-    case cucumberSyrup        = "Cucumber Syrup"
-    case demSyrupOneToOne     = "Demerara Syrup"
-    case gingerSyrup          = "Ginger Syrup"
-    case grapefruitShrub      = "Grapefruit Shrub"
-    case grenadine            = "Grenadine (Pomegranate Syrup, Not Roses Grenadine)"
-    case honeySyrup           = "Honey Syrup"
-    case orgeat               = "Orgeat"
-    case passionfruitSyrup    = "Passionfruit Syrup"
-    case richDem              = "Rich Demerara Syrup (2:1)"
-    case richSimple           = "Rich Simple Syrup (2:1)"
-    case simple               = "Simple Syrup"
-    case raspberrySyrup       = "Raspberry Syrup"
-    case vanilla              = "Vanilla Syrup"
+    case agaveSyrup              = "Agave Syrup"
+    case cinnamonSyrup           = "Cinnamon Syrup"
+    case cucumberSyrup           = "Cucumber Syrup"
+    case demSyrupOneToOne        = "Demerara Syrup"
+    case gingerSyrup             = "Ginger Syrup"
+    case grapefruitShrub         = "Grapefruit Shrub"
+    case grenadine               = "Grenadine (Pomegranate Syrup, Not Roses Grenadine)"
+    case honeySyrup              = "Honey Syrup"
+    case morenthalersGingerSyrup = "Morgenthaler's Ginger Syrup (See prep)"
+    case orgeat                  = "Orgeat"
+    case passionfruitSyrup       = "Passionfruit Syrup"
+    case richDem                 = "Rich Demerara Syrup (2:1)"
+    case richSimple              = "Rich Simple Syrup (2:1)"
+    case simple                  = "Simple Syrup"
+    case raspberrySyrup          = "Raspberry Syrup"
+    case vanilla                 = "Vanilla Syrup"
     
     var nAComponent: CocktailComponent {
         return CocktailComponent(for: NAIngredients(.syrups(self)))
@@ -113,6 +114,8 @@ enum Syrup: String, Codable, CaseIterable {
             Tags(nA: [NAIngredients(.syrups(self))])
         case .vanilla:
             Tags(flavors: [.vanilla], nA: [NAIngredients(.syrups(self))])
+        case .morenthalersGingerSyrup:
+            Tags(flavors: [.ginger], nA: [NAIngredients(.syrups(self))])
         }
     }
 }

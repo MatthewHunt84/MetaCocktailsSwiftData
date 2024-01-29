@@ -10,9 +10,7 @@ import Foundation
 var blueBlazer = Cocktail(cocktailName: "Blue Blazer",
                           glasswareType: .toddyGlass,
                           garnish: [.lemonPeel],
-                          author:Author(person: AuthorNames.jerryThomas.rawValue,
-                                        place: AuthorPlaces.howToMixDrinksJT.rawValue,
-                                        year: "1862"),
+                          author: jerryThomas,
                           spec: blueBlazerSpec,
                           buildOrder: blueBlazerBuild,
                           tags: blueBlazerTags)
