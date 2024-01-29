@@ -11,7 +11,7 @@ var bloodAndSand  = Cocktail(cocktailName: "Blood and Sand",
                              glasswareType: .martini,
                              garnish: [.orangePeel],
                              ice: nil,
-                             author:Author(person: AuthorNames.harryCraddock.rawValue, place: AuthorPlaces.savoy.rawValue, year: "1930"),
+                             author: harryCraddock,
                              spec: bloodAndSandSpec,
                              buildOrder: bloodAndSandBuild,
                              tags: bloodAndSandTags)
@@ -23,6 +23,6 @@ var bloodAndSandSpec  = [CocktailIngredient(.juices(.orange), value: 0.75),
 
 var bloodAndSandBuild  = Build(instructions: [Instruction(step: 1, method: "Gross")])
 
-var bloodAndSandTags   = Tags(textures: [.light],
+var bloodAndSandTags   = Tags(profiles: [.fruity, .sweet],
                               styles: [.sour, .shaken])
 

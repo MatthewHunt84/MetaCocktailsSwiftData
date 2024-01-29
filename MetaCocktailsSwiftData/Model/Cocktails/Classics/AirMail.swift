@@ -8,8 +8,9 @@
 import Foundation
 
 var airMail  = Cocktail(cocktailName: "Air Mail",
-                         glasswareType: .smallHighball,
+                         glasswareType: .fizzGlass,
                          garnish: [.noGarnish],
+                        author: Author(person: "Bacardi and It's Many Uses.", place: "Santiago de Cuba", year: "1930"),
                          spec: airMailSpec,
                          buildOrder: airMailBuild,
                          tags: airMailTags)
@@ -23,7 +24,6 @@ var airMailBuild  = Build(instructions: [Instruction(step: 1, method: "Add all i
                                           Instruction(step: 2, method: "Add Champagne to the glass first!"),
                                           Instruction(step: 3, method: "Then add the shaken cocktail to that.")])
 
-var airMailTags   = Tags(profiles: [.citrusy],
-                          textures: [.effervescent, .light],
+var airMailTags   = Tags(profiles: [.citrusy, .effervescent, .light],
                           styles: [.shaken, .fizz])
                           

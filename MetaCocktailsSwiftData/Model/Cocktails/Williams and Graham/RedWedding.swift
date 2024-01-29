@@ -24,5 +24,5 @@ var redWeddingSpec = [CocktailIngredient(.seasoning(.saline), value: 5, unit: .d
                       CocktailIngredient(.amari(.aperol), value: 0.75),
                       CocktailIngredient(.agaves(.mezcalDelMagueyVida), value: 1.5)]
 
-var redWeddingTags = Tags(textures: [.rich],
+var redWeddingTags = Tags(profiles: [.rich, .bittersweet, .punchy],
                           styles: [.negroni, .stirred])

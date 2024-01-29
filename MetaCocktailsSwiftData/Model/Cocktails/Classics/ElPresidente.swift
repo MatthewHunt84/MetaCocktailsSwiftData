@@ -24,6 +24,5 @@ var elPresidenteSpec  = [CocktailIngredient(.rums(.rumWhite), value: 1.5),
 
 var elPresidenteTags  = Tags(flavors: [.orange, .pomegranate],
                              profiles: [.aromatic, .fruity, .spiritForward],
-                             textures: [.rich],
                              styles: [.martini, .stirred])
                              

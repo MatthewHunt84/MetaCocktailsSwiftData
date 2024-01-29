@@ -7,9 +7,10 @@
 
 import Foundation
 
-var algonquinWnG  = Cocktail(cocktailName: "Algonquin (Williams and Graham spec.)",
+var algonquinWnG  = Cocktail(cocktailName: "Algonquin(W&G)",
                              glasswareType: .martini,
                              garnish: [.noGarnish],
+                             author: williamsAndGraham,
                              spec: algonquinWnGSpec,
                              tags: algonquinWnGTags)
 
@@ -21,7 +22,6 @@ var algonquinWnGSpec  = [CocktailIngredient(.bitters(.peychauds), value: 2, unit
 
 
 
-var algonquinWnGTags   = Tags(profiles: [.fruity],
-                              textures: [.light],
+var algonquinWnGTags   = Tags(profiles: [.fruity, .light],
                               styles: [.shaken, .sour])
 

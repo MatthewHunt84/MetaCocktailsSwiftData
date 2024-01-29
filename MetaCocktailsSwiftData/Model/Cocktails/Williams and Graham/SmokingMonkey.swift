@@ -27,8 +27,7 @@ let smokingMonkeySpec: [CocktailIngredient] = [CocktailIngredient(.syrups(.ginge
                                                CocktailIngredient(.gins(.monkey47), value: 1)]
 
 
-let smokingMonkeyTags = Tags(profiles: [.herbal, .refreshing],
-                      textures: [.light],
+let smokingMonkeyTags = Tags(profiles: [.herbal, .refreshing, .complex, .silky],
                       styles: [.sour, .shaken])
 
 let smokingMonkeyBuild =  Build(instructions: [Instruction(step: 1, method: "Add all ingredients except the biters and dry shake."),

@@ -20,7 +20,6 @@ var emeraldSpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 2
                         CocktailIngredient(.fortifiedWines(.dolinRouge), value: 1),
                         CocktailIngredient(.whiskies(.irishWhiskeyAny), value: 2)]
 
-var emeraldTags     = Tags(profiles: [.spiritForward],
-                           textures: [.rich],
+var emeraldTags     = Tags(profiles: [.spiritForward, .fruity],
                            styles: [.manhattan, .stirred])
 

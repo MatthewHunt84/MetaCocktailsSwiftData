@@ -21,7 +21,6 @@ var paperPlaneSpec = [CocktailIngredient(.whiskies(.bourbonAny) , value: 0.75),
                       CocktailIngredient(.juices(.lemon), value: 0.75)]
 
 var paperPlaneTags =  Tags(flavors: [.lemon, .orange, .rhubarb, .grapefruit, .bakingSpices], 
-                           profiles: [.citrusy, .tart],
-                           textures: [.light],
+                           profiles: [.citrusy, .tart, .light, .dry],
                            styles: [.sour, .shaken])
                            

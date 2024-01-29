@@ -17,8 +17,7 @@ var brunelleSpec: [CocktailIngredient] = [CocktailIngredient(.otherAlcohol(.absi
                                           CocktailIngredient(.juices(.lemon), value: 1),
                                           CocktailIngredient(.syrups(.simple), value: 1)]
 
-var brunelleTags = Tags(profiles: [.citrusy, .refreshing],
-                        textures: [.light],
+var brunelleTags = Tags(profiles: [.citrusy, .refreshing, .light],
                         styles: [.sour, .shaken])
 
 

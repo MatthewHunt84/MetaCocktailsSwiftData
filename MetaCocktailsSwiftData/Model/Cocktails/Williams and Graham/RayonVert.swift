@@ -25,8 +25,7 @@ let reyonVertSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.basil), va
                                            CocktailIngredient(.otherAlcohol(.absinthe), value: 1, unit: .glassRinse)]
                                         
 
-let reyonVertTags = Tags(profiles: [.herbal, .refreshing],
-                      textures: [.light],
+let reyonVertTags = Tags(profiles: [.herbal, .refreshing, .light, .restorative],
                       styles: [.sour, .shaken])
 
 let reyonVertBuild =  Build(instructions: [Instruction(step: 1, method: "Add the basil to a tin and nitro muddle (muddle with liquid nitrogen.)"),

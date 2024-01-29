@@ -21,7 +21,7 @@ var piscoSourSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
                       CocktailIngredient(.brandies(.pisco), value: 1.5),
                       CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes)]
 
-var piscoSourTags = Tags(textures: [.light, .silky],
+var piscoSourTags = Tags(profiles: [.light, .silky, .fruity, .refreshing],
                          styles: [.sour, .shaken])
 
 var piscoSourBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients accept for the bitters into a tin a dry shake to emulsify"),

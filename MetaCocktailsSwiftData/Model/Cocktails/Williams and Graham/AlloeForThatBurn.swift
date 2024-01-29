@@ -23,7 +23,6 @@ let aloeForThatBurnSpec: [CocktailIngredient] = [CocktailIngredient(.otherAlcoho
                                                  CocktailIngredient(.agaves(.tequilaOchoBlanco), value: 1.25)]
 
 
-let aloeForThatBurnTags = Tags(profiles: [.spicy, .refreshing],
-                               textures: [.light],
+let aloeForThatBurnTags = Tags(profiles: [.spicy, .refreshing, .citrusy, .light],
                                styles: [.sour, .shaken])
 

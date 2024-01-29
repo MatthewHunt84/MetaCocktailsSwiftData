@@ -21,7 +21,6 @@ var boulevardierSpec = [CocktailIngredient(.whiskies(.straightRyeOrBourbon), val
                         CocktailIngredient(.amari(.campari), value: 1)]
 
 var boulevardierTags = Tags(flavors: [.orange, .bakingSpices],
-                            profiles: [.bittersweet, .spiritForward],
-                            textures: [.rich],
+                            profiles: [.bittersweet, .spiritForward, .rich],
                             styles: [.negroni, .stirred])
 
