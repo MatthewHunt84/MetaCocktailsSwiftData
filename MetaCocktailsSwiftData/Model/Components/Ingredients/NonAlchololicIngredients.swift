@@ -141,6 +141,7 @@ enum Fruit: String, Codable, CaseIterable {
     case blackBerry           = "Blackberries"
     case grapefruitPeel       = "Grapefruit Peel"
     case raspberries          = "Raspberries"
+    case pineapple            = "Pineapple"
     
     var nAComponent: CocktailComponent {
         return CocktailComponent(for: NAIngredients(.fruit(self)))
@@ -153,6 +154,8 @@ enum Fruit: String, Codable, CaseIterable {
             Tags(flavors: [.raspberry], profiles: [.fruity], nA: [NAIngredients(.fruit(self))])
         case .grapefruitPeel:
             Tags(flavors: [.grapefruit], nA: [NAIngredients(.fruit(self))])
+        case .pineapple:
+            Tags(flavors: [.pineapple], profiles: [.fruity], nA: [NAIngredients(.fruit(self))])
         }
     }
 }

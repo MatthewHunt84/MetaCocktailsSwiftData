@@ -100,6 +100,8 @@ final class CocktailListViewModel: ObservableObject {
                                                                      "Grasshopper":[grasshopper, grasshopperWnG],
                                                                      "Hanky Panky":[hankyPanky, hankyPankyWnG],
                                                                      "Harvey Wallbanger": [harveyWallbanger, harveyWallbangerWnG],
+                                                                     "Honeymoon Cocktail": [honeymoonCocktail1st, honeymoonCocktailEmbury, honeymoonCocktailWnG],
+                                                                     "Holland House": [hollandHouseCocktail, hollandHouseKappeler, hollandHouseCocktailWnG],
                                                                      "Jack Rose": [jackRose],
                                                                      "Jungle Bird": [jungleBird],
                                                                      "Last Word": [lastWord],
