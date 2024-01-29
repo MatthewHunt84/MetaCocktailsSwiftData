@@ -26,7 +26,6 @@ let slutDragonSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.celeryB
                                            CocktailIngredient(.agaves(.tequilaOchoBlanco), value: 1.5)]
                                         
 
-let slutDragonTags = Tags(profiles: [.herbal, .refreshing, .vegetal, .savory],
-                      textures: [.light],
+let slutDragonTags = Tags(profiles: [.herbal, .refreshing, .vegetal, .savory, .light],
                       styles: [.sour, .shaken])
 

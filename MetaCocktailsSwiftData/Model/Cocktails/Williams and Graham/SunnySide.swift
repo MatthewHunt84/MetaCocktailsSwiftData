@@ -27,8 +27,7 @@ let sunnySideSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), val
                                            CocktailIngredient(.gins(.ginAny), value: 1.5)]
                                         
 
-let sunnySideTags = Tags(profiles: [.herbal, .refreshing],
-                      textures: [.light],
+let sunnySideTags = Tags(profiles: [.herbal, .refreshing, .light, .restorative],
                       styles: [.sour, .shaken])
 
 let sunnySideBuild =  Build(instructions: [Instruction(step: 1, method: "Use Kold draft or Hoshizake cubes and the mint will the muddled while you're shaking."),

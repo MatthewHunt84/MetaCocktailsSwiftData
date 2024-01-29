@@ -25,8 +25,7 @@ let brambleSpec: [CocktailIngredient] = [CocktailIngredient(.juices(.lemon), val
                                          CocktailIngredient(.gins(.ginLondonDry), value: 2)]
 
 let brambleTags = Tags(flavors: [.lemon],
-                       profiles: [.fruity, .floral],
-                       textures: [.light],
+                       profiles: [.fruity, .floral, .light],
                        styles: [.built, .shaken])
 
 let brambleBuild =  Build(instructions: [Instruction(step: 1, method: "This is typically a built cocktail."),

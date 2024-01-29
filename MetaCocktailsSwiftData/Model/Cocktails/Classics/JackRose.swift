@@ -19,7 +19,6 @@ var jackRoseSpec  = [CocktailIngredient(.juices(.lime), value: 0.5),
                      CocktailIngredient(.syrups(.richDem), value: 2, unit: .teaspoon),
                      CocktailIngredient(.brandies(.bondedApple), value: 2)]
 
-var jackRoseTags = Tags(profiles: [.citrusy],
-                        textures: [.light],
+var jackRoseTags = Tags(profiles: [.citrusy, .light, .fruity, .refreshing],
                         styles: [.sour, .shaken])
                     

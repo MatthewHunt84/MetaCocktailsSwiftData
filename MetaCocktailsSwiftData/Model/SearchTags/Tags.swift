@@ -11,7 +11,6 @@ import SwiftUI
 struct Tags: Codable {
     var flavors: [Flavor]?
     var profiles: [Profile]?
-    var textures: [Texture]?
     var styles: [Style]?
     var booze: [Booze]?
     var nA: [NAIngredients]?
@@ -22,7 +21,6 @@ struct Tags: Codable {
         
         mergedTags.flavors = combine(newTags.flavors, self.flavors)
         mergedTags.profiles = combine(newTags.profiles, self.profiles)
-        mergedTags.textures = combine(newTags.textures, self.textures)
         mergedTags.styles = combine(newTags.styles, self.styles)
         mergedTags.booze = combine(newTags.booze, self.booze)
         mergedTags.nA = combine(newTags.nA, self.nA)

@@ -46,7 +46,7 @@ struct SearchCriteriaView: View {
                 
                 
                 
-                ListView(selectedList: $selectedList, navigationTitle: selectedList.getTitle(), isShowingLikes: $isShowingPreferences)
+                AdvancedCriteriaListView(selectedList: $selectedList, navigationTitle: selectedList.getTitle(), isShowingLikes: $isShowingPreferences)
                 HStack {
                     NavigationLink {
                         SearchResultsView(viewModel: viewModel)
@@ -86,7 +86,6 @@ enum PreferenceType: String, CaseIterable {
     case na       = "N/A"
     case profiles = "Profile"
     case flavors  = "Flavor"
-    case textures = "Texture"
     case style    = "Style"
     
     func getTitle() -> String {
@@ -99,8 +98,6 @@ enum PreferenceType: String, CaseIterable {
             "Profile Preferences"
         case .flavors:
             "Flavor Preferences"
-        case .textures:
-            "Texture Preferences"
         case .style:
             "Style Preferences"
         case .na:
