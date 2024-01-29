@@ -19,7 +19,6 @@ var bijouSpec     =  [CocktailIngredient(.bitters(.orangeBitters), value: 2, uni
                       CocktailIngredient(.liqueurs(.greenChartreuse), value: 1),
                       CocktailIngredient(.gins(.plymouth), value: 1)]
 
-var bijouTags     = Tags(profiles: [.spiritForward],
-                         textures: [.rich],
+var bijouTags     = Tags(profiles: [.spiritForward, .complex, .sophisticated, .rich],
                          styles: [.martini, .stirred])
 

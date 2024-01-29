@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct BasicListView: View {
+struct BasicComponentSearchListView: View {
     @EnvironmentObject var viewModel: SearchCriteriaViewModel
     @Binding var isShowingLikes: Bool
     @Binding var isShowingFlavors: Bool
@@ -101,6 +101,6 @@ struct BasicListView: View {
 }
 
 #Preview {
-    BasicListView(isShowingLikes: .constant(true), isShowingFlavors: .constant(true), alphabet: ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"])
+    BasicComponentSearchListView(isShowingLikes: .constant(true), isShowingFlavors: .constant(true), alphabet: ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"])
         .environmentObject(SearchCriteriaViewModel())
 }

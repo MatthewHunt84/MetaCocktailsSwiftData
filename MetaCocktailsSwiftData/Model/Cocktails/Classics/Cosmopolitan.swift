@@ -12,8 +12,9 @@ var cosmopolitan  = Cocktail(cocktailName: "Cosmopolitan",
                              glasswareType: .martini,
                              garnish: [.orangePeel],
                              ice: nil,
-                             author:Author(person: "Cheryl Cook",
-                                           place: "Miami"),
+                             author:Author(person: "Toby Cecchini",
+                                           place: "Odeon, TriBeCa",
+                                           year: "1988"),
                              spec: cosmoSpec,
                              buildOrder: nil,
                              tags: cosmoTags)
@@ -24,7 +25,6 @@ var cosmoSpec  = [CocktailIngredient(.juices(.lime), value: 0.25),
                   CocktailIngredient(.vodkas(.vodkaCitrus), value: 1.5)]
 
 var cosmoTags  = Tags(flavors: [.orange, .cranberry, .lime],
-                      profiles: [.fruity, .citrusy],
-                      textures: [.light],
+                      profiles: [.fruity, .citrusy, .light],
                       styles: [.sour, .shaken])
                      

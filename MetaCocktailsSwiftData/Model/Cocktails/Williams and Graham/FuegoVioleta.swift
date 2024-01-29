@@ -20,6 +20,6 @@ var fuegoVioletaSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
                          CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.75),
                          CocktailIngredient(.liqueurs(.greenChartreuse), value: 0.75)]
 
-var fuegoVioletaTags = Tags(textures: [.light],
+var fuegoVioletaTags = Tags(profiles: [.light, .floral, .herbal, .fruity],
                             styles: [.sour, .shaken])
 

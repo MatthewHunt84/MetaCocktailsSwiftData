@@ -21,8 +21,7 @@ let mintJulepSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), val
                                            CocktailIngredient(.syrups(.simple), value: 1),
                                            CocktailIngredient(.whiskies(.bourbonAny), value: 2.25)]
 
-let mintJulepTags = Tags(profiles: [.herbal, .sweet],
-                         textures: [.light],
+let mintJulepTags = Tags(profiles: [.herbal, .sweet, .refreshing],
                          styles: [.julep, .built])
 
 let mintJulepBuild =  Build(instructions: [Instruction(step: 1, method: "In Highball or Julep cup, gently muddle 8-10 mint leaves along with the simple syrup. Don't break the leaves apart here. You only want to release the oils. If you break apart the leaves, you get a more bitter taste because of the chlorophyll."),

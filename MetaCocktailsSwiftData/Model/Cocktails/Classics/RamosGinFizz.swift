@@ -28,7 +28,6 @@ let ramosGinFizzSpec: [CocktailIngredient] = [CocktailIngredient(.gins(.ginAny),
 
 var ramosTags = Tags(flavors: [.lemon, .lime],
                      profiles: [.floral, .citrusy, .creamy],
-                     textures: [.creamy],
                      styles: [.sour, .shaken])
 
 var ramosGinFizzBuild: Build = Build(instructions: [Instruction(step: 1, method: "Chill your 14oz. collins glass ahead of time"),

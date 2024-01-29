@@ -11,7 +11,7 @@ var french75  = Cocktail(cocktailName: "French 75",
                          glasswareType: .collins,
                          garnish: [.lemonPeel],
                          ice: .crackedIce,
-                         author: nil,
+                         author: harryCraddock,
                          spec: french75Spec,
                          buildOrder: french75Build,
                          tags: french75Tags)
@@ -26,7 +26,6 @@ var french75Build  = Build(instructions: [Instruction(step: 1, method: "Add all 
                                           Instruction(step: 3, method: "Give a gentle stir")])
 
 var french75Tags   = Tags(flavors: [.lemon], 
-                          profiles: [.citrusy, .floral],
-                          textures: [.effervescent, .light],
+                          profiles: [.citrusy, .floral, .effervescent, .light],
                           styles: [.collins, .shaken, .built, .fizz])
                           

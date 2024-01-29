@@ -19,7 +19,6 @@ var alaskaSpec  = [CocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.75)
 
 
 
-var alaskaTags   = Tags(profiles: [.spiritForward],
-                        textures: [.rich],
+var alaskaTags   = Tags(profiles: [.spiritForward, .rich],
                         styles: [.stirred, .martini])
 

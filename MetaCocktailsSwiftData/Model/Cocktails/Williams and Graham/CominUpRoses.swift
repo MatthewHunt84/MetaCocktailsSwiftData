@@ -22,5 +22,5 @@ var cominUpRosesSpec  = [CocktailIngredient(.juices(.lemon), value: 0.5),
                          CocktailIngredient(.amari(.amaroMontenegro), value: 1.5),
                          CocktailIngredient(.whiskies(.bourbon120), value: 0.75)]
 
-var cominUpRosesTags = Tags(textures: [.light],
+var cominUpRosesTags = Tags(profiles: [.herbal, .punchy, .floral, .citrusy],
                             styles: [.sour, .shaken])

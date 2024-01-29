@@ -7,9 +7,10 @@
 
 import Foundation
 
-var amarettoSourWnG  = Cocktail(cocktailName: "Amaretto Sour (Williams and Graham spec.)",
+var amarettoSourWnG  = Cocktail(cocktailName: "Amaretto Sour(W&G)",
                                 glasswareType: .martini,
                                 garnish: [.maraschinoCherry],
+                                author: williamsAndGraham,
                                 spec: amarettoSourWnGSpec,
                                 buildOrder: eggWhiteBittersDecoInstructions,
                                 tags: amarettoSourWnGTags)
@@ -22,7 +23,6 @@ var amarettoSourWnGSpec  = [CocktailIngredient(.otherNonAlc(.eggWhites), value: 
 
 
 
-var amarettoSourWnGTags   = Tags(profiles: [.citrusy],
-                                 textures: [.light],
+var amarettoSourWnGTags   = Tags(profiles: [.citrusy, .refreshing, .light],
                                  styles: [.shaken, .sour])
 
