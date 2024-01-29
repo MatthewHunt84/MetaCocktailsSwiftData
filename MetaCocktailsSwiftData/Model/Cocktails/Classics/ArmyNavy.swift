@@ -10,7 +10,7 @@ import Foundation
 var armyNavy  = Cocktail(cocktailName: "Army & Navy",
                          glasswareType: .coupe,
                          garnish: [.lemonPeel],
-                         author: Author(person: AuthorNames.davidEmbury.rawValue, place: "The Fine Art of Mixing Drinks", year: "1948"),
+                         author: davidEmbury,
                          spec: armyNavySpec,
                          buildOrder: armyNavyBuild,
                          tags: armyNavyTags)

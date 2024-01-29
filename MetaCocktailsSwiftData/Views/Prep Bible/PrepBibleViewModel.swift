@@ -10,9 +10,7 @@ import SwiftUI
 
 final class PrepBibleViewModel: ObservableObject {
     
-    @Published var isShowingPrepRecipe = false
-    @Published var prepIngredients: [Prep] = [PrepItemRecipe.cucumberSyrup, PrepItemRecipe.gingerSyrup, PrepItemRecipe.orgeat, PrepItemRecipe.richDem, PrepItemRecipe.grapefruitShrub, PrepItemRecipe.peanutButterVodka]
-    @Published var selectedPrepIngredient: Prep?
+    @Published var prepIngredients: [Prep] = [cucumberSyrup, gingerSyrup, orgeat, richDem, grapefruitShrub, peanutButterVodka, morgenthalersGingerSyrup].sorted(by: {$0.prepIngredientName < $1.prepIngredientName})
     
     
 }

@@ -8,28 +8,40 @@
 import SwiftUI
 
 
-struct Prep: Identifiable, Hashable {
+struct Prep: Identifiable, Hashable, Equatable {
+    static func == (lhs: Prep, rhs: Prep) -> Bool {
+        lhs.prepIngredientName == rhs.prepIngredientName
+    }
+    
     func hash(into hasher: inout Hasher) {
         hasher.combine(prepIngredientName)
     }
     
-    var id: Int
+    var id = UUID()
     var prepIngredientName: String
-    var prepRecipe: String
+    var prepRecipe: [Instruction]
 }
 
-struct PrepItemRecipe: Identifiable {
-    var id = UUID()
-    
-    static let richDem = Prep(id: 034, prepIngredientName: "Rich Demerara Syrup", prepRecipe: "Make a rich syrup")
-    
-    static let cucumberSyrup = Prep(id: 035, prepIngredientName: "Cucumber Syrup", prepRecipe: "Make a cucumber syrup")
-    
-    static let gingerSyrup = Prep(id: 036, prepIngredientName: "Ginger Syrup", prepRecipe: PrepRecipeDescriptions.gingerSyrupRecipe)
-    
-    static let orgeat = Prep(id: 037, prepIngredientName: "Orgeat", prepRecipe: "Make orgeat, orNot.")
-    
-    static let grapefruitShrub = Prep(id: 038, prepIngredientName: "Grapefruit Shrub", prepRecipe: "For 500ml: Add 250ml white sugar to 150g grapefruit peels. Let sit in a mason jar for 24 hours in a semi-warm place. Add 250g fresh grapefruit juice and shake until the oleo emulsifies with the grapefruit juice. Strain the peels out. Keeps for 1 week in the fridge.")
-    
-    static let peanutButterVodka = Prep(id: 039, prepIngredientName: "Peanut Butter Vodka", prepRecipe: "Add 150ml of skippy creamy peanut butter into a deli and add a 750 ml. bottle of vodka. Then just whisk in the PB until it dissolves. Keeps forever, probably.")
-}
+
+
+let richDem = Prep(prepIngredientName: "Rich Demerara Syrup", prepRecipe:[Instruction(step: 1, method: "Weigh out two parts Demerara sugar to one part water and combine in a pot."),
+                                                                          Instruction(step: 2, method: "Bring to a boil and then immediately take off heat."),
+                                                                          Instruction(step: 3, method: "Let cool before bottling.")]   )
+
+let cucumberSyrup = Prep(prepIngredientName: "Cucumber Syrup", prepRecipe:[Instruction(step: 1, method:  "Make a cucumber syrup")])
+
+let gingerSyrup = Prep(prepIngredientName: "Ginger Syrup", prepRecipe:[Instruction(step: 1, method:  "Make a ginger syrup")] )
+
+let orgeat = Prep(prepIngredientName: "Orgeat", prepRecipe: [Instruction(step: 1, method:  "Make orgeat, orNot.")])
+
+let grapefruitShrub = Prep(prepIngredientName: "Grapefruit Shrub", prepRecipe: [Instruction(step: 1, method:  "For 500ml: Add 250ml white sugar to 150g grapefruit peels."),
+                                                                                Instruction(step: 2, method: "Let sit in a mason jar for 24 hours in a semi-warm place."),
+                                                                                Instruction(step: 3, method: " Add 250g fresh grapefruit juice and shake until the oleo emulsifies with the grapefruit juice."),
+                                                                                Instruction(step: 4, method: "Strain the peels out. Keeps for 1 week in the fridge.")])
+
+let peanutButterVodka = Prep(prepIngredientName: "Peanut Butter Vodka", prepRecipe:[Instruction(step: 1, method:"Add 150g of skippy creamy peanut butter into a deli and add a 750 ml. bottle of vodka."),
+                                                                                    Instruction(step: 2, method: " Then just whisk in the peanut butter until it dissolves. Keeps forever, probably.")] )
+
+let morgenthalersGingerSyrup = Prep(prepIngredientName: "Morgenthaler's Ginger Syrup", prepRecipe:[Instruction(step: 1, method:  "Roughly chop 8 ounces washed, unpeeled ginger (each piece about the size of your pinkie-tip). "),
+                                                                                                   Instruction(step: 2, method: "Put in a blender and combine with equal parts sugar and boiling water."),
+                                                                                                   Instruction(step: 3, method: " Blend on high until mixture is smooth, then fine-strain")])

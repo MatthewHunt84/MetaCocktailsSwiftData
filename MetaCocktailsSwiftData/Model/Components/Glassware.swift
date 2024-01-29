@@ -10,25 +10,28 @@ import SwiftUI
 
 enum Glassware: String, Codable {
     case blueBlazerMugs      = "Blue Blazer Mugs"
+    case buenaVistaIrish     = "Irish Coffee Glass (180ml)"
     case cinnamonSugarRim    = "Cinnamon Sugar Rimmed Cocktail Glass"
     case coupe               = "Coupe"
     case collins             = "Collins"
     case crustaGlass         = "Crusta Glass (See build order)"
     case doubleOld           = "Double Old Fashioned"
-    case wineGlass           = "Large Wine Glass"
-    case martini             = "Martini"
+    case doubleOldCelerySalt = "Double Old Fashioned (half celery salt rim)"
+    case doubleOldSalt       = "Double Old Fashioned (half salt rim)"
     case flute               = "Flute"
-    case snifter             = "Snifter (Flip Glass)"
     case fizzGlass           = "Chilled 8 oz. Fizz Glass"
+    case hurricaneGlass      = "Hurricane Glass"
+    case julep               = "Julep Cup or Highball"
+    case tikiBird            = "Bird Shaped Tiki Glass"
+    case martini             = "Martini"
+    case nickAndNora         = "Nick and Nora"
+    case singleOld           = "Frozen Single Old Fashioned"
+    case snifter             = "Snifter (Flip Glass)"
     case stemmedGlassware    = "Stemmed"
     case sugarRimStemmed     = "Stemmed with a sugar rim"
-    case nickAndNora         = "Nick and Nora"
-    case doubleOldSalt       = "Double Old Fashioned (half salt rim)"
-    case doubleOldCelerySalt = "Double Old Fashioned (half celery salt rim)"
-    case julep               = "Julep Cup or Highball"
-    case singleOld           = "Frozen Single Old Fashioned"
     case tikiMug             = "Tiki Mug"
     case toddyGlass          = "Toddy Glass"
+    case wineGlass           = "Large Wine Glass"
    
     func glassImage(cocktail: Cocktail) -> Image {
         switch self {
@@ -59,7 +62,7 @@ enum Glassware: String, Codable {
         case .snifter:
             return   SwiftUI.Image("snifterBlack")
         case .fizzGlass:
-            return   SwiftUI.Image("smallHighBall")
+            return   SwiftUI.Image("fizzGlass")
         case .stemmedGlassware:
             return SwiftUI.Image("coupeBlack2")
         case .sugarRimStemmed:
@@ -87,10 +90,16 @@ enum Glassware: String, Codable {
         case .singleOld:
             return   SwiftUI.Image("singleOldBlack")
         case .tikiMug:
-            return   SwiftUI.Image("tiki mug")
+            return   SwiftUI.Image("tikiMugs")
         case .toddyGlass:
             return SwiftUI.Image("toddy")
-        } 
+        case .hurricaneGlass:
+            return SwiftUI.Image("hurricaneGlass")
+        case .buenaVistaIrish:
+            return SwiftUI.Image("buenaVistIrish")
+        case .tikiBird:
+            return SwiftUI.Image("junglebird")
+        }
         return SwiftUI.Image("Urkel")
     }
 }
