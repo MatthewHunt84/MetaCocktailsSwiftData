@@ -23,7 +23,7 @@ var adonisSpec = [CocktailIngredient(.fortifiedWines(.fino), value: 1.5),
                   CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),]
 
 var adonisTags = Tags(flavors: [.lemon],
-                      profiles: [.sophisticated, .thin, .light],
+                      textures: [.thin, .light],
                       styles: [.martini, .stirred])
                    
 

@@ -19,6 +19,7 @@ var sidecarSpec  = [CocktailIngredient(.juices(.lemon), value: 0.5),
                      CocktailIngredient(.liqueurs(.cointreau), value: 0.75),
                     CocktailIngredient(.brandies(.cognacVSOP), value: 1.5)]
 
-var sidecarTags = Tags(profiles: [.citrusy, .fruity, .tart, .light],
+var sidecarTags = Tags(profiles: [.citrusy, .fruity],
+                       textures: [.light],
                         styles: [.sour, .shaken])
                     

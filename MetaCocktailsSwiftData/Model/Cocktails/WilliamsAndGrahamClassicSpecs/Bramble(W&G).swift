@@ -7,12 +7,14 @@
 
 import Foundation
 
-var brambleWng = Cocktail(cocktailName: "Bramble(W&G)",
+var brambleWng = Cocktail(cocktailName: "Bramble (Williams and Graham spec.)",
                           imageAsset: nil,
                           glasswareType: .doubleOld,
                           garnish: [.lemonWheel],
                           ice: .pebbleIce,
-                          author: williamsAndGraham,
+                          author:Author(person: AuthorNames.dickBradsell.rawValue,
+                                        place: AuthorPlaces.fredsClubLondon.rawValue,
+                                        year: "1989") ,
                           spec: brambleWnGSpec,
                           tags: brambleTags)
 

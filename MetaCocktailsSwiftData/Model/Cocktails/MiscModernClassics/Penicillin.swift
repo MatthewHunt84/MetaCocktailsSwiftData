@@ -24,7 +24,8 @@ var penicillinSpec = [CocktailIngredient(.juices(.lemon), value: 0.75, unit: .fl
                       CocktailIngredient(.whiskies(.scotchIsla), value: 0.25)]
 
 var penicillinTags = Tags(flavors: [.lemon, .honey, .ginger, .peat],
-                          profiles: [.citrusy, .smokey, .light, .complex],
+                          profiles: [.citrusy, .smokey],
+                          textures: [.light],
                           styles: [.sour, .shaken])
 
 var penicillinBuild = Build(instructions: [Instruction(step: 1, method: "Mix all ingredients, except the Isla Scotch, together in a tin and shake with ice."), 

@@ -22,5 +22,5 @@ var spanishRevivalSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                            CocktailIngredient(.liqueurs(.giffardPamplemousse), value: 0.75),
                            CocktailIngredient(.otherAlcohol(.absinthe), value: 1, unit: .glassRinse)]
 
-var spanishRevivalTags = Tags(profiles: [.light, .fruity, .refreshing],
+var spanishRevivalTags = Tags(textures: [.light],
                               styles: [.sour, .shaken])

@@ -24,11 +24,3 @@ struct whiteButton: ButtonStyle {
     }
 }
 
-struct noStyleButton: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .foregroundColor(Color(UIColor.systemCyan))
-    }
-}
-
-var wNGSpecString = "(Williams & Graham Spec.)"

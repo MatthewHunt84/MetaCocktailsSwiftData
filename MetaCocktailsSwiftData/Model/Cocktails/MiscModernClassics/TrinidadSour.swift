@@ -22,5 +22,6 @@ var trinidadSourSpec = [CocktailIngredient(.juices(.lemon), value: 0.75),
                         CocktailIngredient(.bitters(.angosturaBitters), value: 1.5)]
                         
 var trinidadSourTags = Tags(flavors: [.almond, .lemon, .bakingSpices],
-                            profiles: [.aromatic, .bitter, .silky, .complex],
+                            profiles: [.aromatic, .bitter],
+                            textures: [.silky],
                             styles: [.sour, .shaken])

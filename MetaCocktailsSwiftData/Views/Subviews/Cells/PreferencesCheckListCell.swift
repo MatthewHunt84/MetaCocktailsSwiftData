@@ -22,9 +22,8 @@ struct PreferencesCheckListCell: View {
                     Toggle(isOn: $ingredient.isPreferred) {}
                         .padding(.horizontal, 20)
                         .tint(Color(.brandPrimaryGreen))
-                        .frame(width: geo.size.width/9, height: 40, alignment: .leading)
-                    
-                        .offset(x: -15)
+                        .frame(width: geo.size.width/7, height: 40, alignment: .leading)
+                        .offset(x: -10)
                     
                     
                    Text(ingredient.name)
@@ -42,8 +41,8 @@ struct PreferencesCheckListCell: View {
                     Toggle(isOn: $ingredient.isUnwanted) {}
                         .padding(.horizontal, 20)
                         .tint(Color(.brandPrimaryRed))
-                        .frame(width: geo.size.width/9, height: 40, alignment: .leading)
-                        .offset(x: -15)
+                        .frame(width: geo.size.width/7, height: 40, alignment: .leading)
+                        .offset(x: -10)
                     Text(ingredient.name)
                         .frame(width: geo.size.width * 0.8, height: 40, alignment: .leading)
                         .minimumScaleFactor(0.2)

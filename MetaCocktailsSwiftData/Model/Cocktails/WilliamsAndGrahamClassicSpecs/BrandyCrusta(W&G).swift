@@ -7,9 +7,11 @@
 
 import Foundation
 
-var brandyCrustaWnG = Cocktail(cocktailName: "Brandy Crusta(W&G)",
+var brandyCrustaWnG = Cocktail(cocktailName: "Brandy Crusta (Williams and Graham spec.)",
                                glasswareType: .coupe,
-                               author: williamsAndGraham,
+                               author:Author(person: AuthorNames.jerryThomas.rawValue,
+                                             place: AuthorPlaces.howToMixDrinksJT.rawValue,
+                                             year: "1862"),
                                spec: brandyCrustaSpecWnG,
                                buildOrder: brandyCrustaBuildWnG,
                                tags: brandyCrustaTags)
@@ -18,7 +20,7 @@ var brandyCrustaSpecWnG    = [CocktailIngredient(.juices(.lemon), value: 1, unit
                               CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 1, unit: .barSpoon),
                               CocktailIngredient(.syrups(.demSyrupOneToOne), value: 1, unit: .barSpoon),
                               CocktailIngredient(.bitters(.angosturaBitters), value:2, unit: .dashes),
-                              CocktailIngredient(.brandies(.pF1840), value:2)]
+                              CocktailIngredient(.brandies(.pFAmber), value:2)]
 
 
 

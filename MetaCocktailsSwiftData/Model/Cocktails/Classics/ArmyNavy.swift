@@ -21,7 +21,8 @@ var armyNavySpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                      CocktailIngredient(.gins(.fordsGin) , value: 2)]
 
 
-var armyNavyTags   = Tags(profiles: [.citrusy, .tart, .light],
+var armyNavyTags   = Tags(profiles: [.citrusy, .tart],
+                          textures: [.light],
                           styles: [.shaken, .sour])
                           
 var armyNavyBuild   = Build(instructions: [Instruction(step: 1, method: "This cocktail was not invented by Mr. Embury, we simply like his build the most and we think it's more suitable for the modern palate. The original author, like many classics, is unknown.")])

@@ -14,11 +14,11 @@ var ultimaPalabra = Cocktail(cocktailName: "Ultima Palabra",
                         tags: ultimaPalabraTags)
 
 var ultimaPalabraSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
-                          CocktailIngredient(.agaves(.mezcalSmokeyAny), value: 0.75),
+                          CocktailIngredient(.agaves(.mezcalSmokey), value: 0.75),
                           CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.75),
                           CocktailIngredient(.liqueurs(.greenChartreuse), value: 0.75)]
 
-var ultimaPalabraTags = Tags(profiles: [.punchy, .herbal, .citrusy],
+var ultimaPalabraTags = Tags(textures: [.light],
                              styles: [.sour, .shaken],
                              booze: [Booze(.agaves(.mezcalAny))])
                             

@@ -7,10 +7,10 @@
 
 import Foundation
 
-var alaskaWnG  = Cocktail(cocktailName: "Alaska Cocktail(W&G)",
+var alaskaWnG  = Cocktail(cocktailName: "Alaska Cocktail (Williams and Graham spec.)",
                           glasswareType: .nickAndNora,
                           garnish: [.lemonPeel],
-                          author: williamsAndGraham,
+                          author: Author(place: "'Fashions in Mixed Drinks.' Guthrie Daily Leader", year: "October 18, 1905"),
                           spec: alaskaWnGSpec,
                           tags: alaskaWnGTags)
 
@@ -20,6 +20,7 @@ var alaskaWnGSpec  = [CocktailIngredient(.bitters(.orangeBitters), value: 2, uni
 
 
 
-var alaskaWnGTags   = Tags(profiles: [.spiritForward, .rich],
+var alaskaWnGTags   = Tags(profiles: [.spiritForward],
+                           textures: [.rich],
                            styles: [.stirred, .martini])
 

@@ -16,6 +16,10 @@ struct CocktailResultList: View {
         VStack {
             
             if isLoading {
+//                ZStack(alignment: .center) {
+//                    Color.black
+//                    Text("Couldn't load in time. My bad.")
+//                }
                 Image("Couldn’tLoad")
                     .resizable()
                     .scaledToFit()
@@ -29,18 +33,14 @@ struct CocktailResultList: View {
                                     Section(header: SearchedCocktailTitleHeader(searched: result.count, matched: result.matched)) {
                                         ForEach(result.cocktails, id: \.self.id) { cocktail in
                                             NavigationLink {
-                                                if viewModel.menuMode {
-                                                    SearchGuestRecipeView(viewModel: CocktailMenuViewModel(cocktail: cocktail))
-                                                                     
-                                                    } else {
-                                                    SearchBartenderRecipeView(viewModel: CocktailMenuViewModel(cocktail: cocktail))
-                                                }
-                                                
+                                                RecipeIngredientsView(cocktail: cocktail)
                                             } label: {
                                                 HStack {
                                                     Text(cocktail.cocktailName)
                                                 }
-                                            }  
+                                            }
+                                            
+                                            
                                         }
                                     }
                                 }
@@ -49,20 +49,24 @@ struct CocktailResultList: View {
                                     Section(header: SearchedCocktailTitleHeaderForMultipleSpirits(searched: result.count, matched: result.matched, baseSpirit: result.baseSpirit)) {
                                         ForEach(result.cocktails, id: \.self.id) { cocktail in
                                             NavigationLink {
-                                                if viewModel.menuMode {
-                                                    SearchGuestRecipeView(viewModel: CocktailMenuViewModel(cocktail: cocktail))
-                                                } else {
-                                                    SearchBartenderRecipeView(viewModel: CocktailMenuViewModel(cocktail: cocktail))
-                                                }
+                                                RecipeIngredientsView(cocktail: cocktail)
                                             } label: {
                                                 HStack {
                                                     Text(cocktail.cocktailName)
                                                         
                                                 }
                                             }
+                                            
                                         }
+                                        
                                     }
                                 }
+                                .font(.footnote).bold()
+                                .padding(EdgeInsets(top: 10, leading: 30, bottom: 10, trailing: 30))
+                                .background(viewModel.selectedPreferredIngredients().count == 0 ? Color(UIColor.systemGray) : Color.brandPrimaryGreen)
+                                .clipShape(RoundedRectangle(cornerRadius: 140))
+                                .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
+                                .foregroundColor(.white)
                             }
                             
                         }
@@ -71,6 +75,7 @@ struct CocktailResultList: View {
                         if viewModel.multipleBaseSpiritsSelected {
                             ResultsConfigurationMenu(viewModel: viewModel)
                         }
+                        
                     }
                 } else  {
                     ZStack(alignment: .center) {

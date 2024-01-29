@@ -23,5 +23,5 @@ let hereBeDragonsSpec: [CocktailIngredient] = [CocktailIngredient(.syrups(.grena
                                                CocktailIngredient(.agaves(.mezcalDelMagueyVida), value: 1.5)]
 
 
-let hereBeDragonsTags = Tags(profiles: [.light, .fruity, .spicy],
+let hereBeDragonsTags = Tags(textures: [.light],
                              styles: [.sour, .shaken, .tiki])

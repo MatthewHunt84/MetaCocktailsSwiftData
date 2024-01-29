@@ -7,12 +7,12 @@
 
 import Foundation
 
-var boulevardierWnG  =  Cocktail(cocktailName: "Boulevardier(W&G)",
-                                 glasswareType: .martini,
-                                 garnish: [.orangePeel],
-                                 author: williamsAndGraham,
-                                 spec: boulevardierWnGSpec,
-                                 tags: boulevardierTags)
+var boulevardierWnG  =  Cocktail(cocktailName: "Boulevardier (Williams and Graham spec.)",
+                              glasswareType: .martini,
+                              garnish: [.orangePeel],
+                              author:Author(person: "Erskine Gwynne",place: "Paris", year: "1920's"),
+                              spec: boulevardierWnGSpec,
+                              tags: boulevardierTags)
 
 var boulevardierWnGSpec = [CocktailIngredient(.whiskies(.straightRyeOrBourbon), value: 1.5),
                            CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 0.75),

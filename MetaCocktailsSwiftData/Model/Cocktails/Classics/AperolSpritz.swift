@@ -26,7 +26,8 @@ var aperolSpritzBuild = Build(instructions: [Instruction(step: 1, method: "Add a
                                              Instruction(step: 3, method: "Give a gentle stir and garnish with an orange half-moon.")])
 
 var aperolSpritzTags = Tags(flavors: [.orange, .rhubarb, .grapefruit],
-                            profiles: [.bittersweet, .refreshing, .effervescent],
+                            profiles: [.bittersweet, .refreshing],
+                            textures: [.effervescent],
                             styles: [.spritz, .built])
 
                         
