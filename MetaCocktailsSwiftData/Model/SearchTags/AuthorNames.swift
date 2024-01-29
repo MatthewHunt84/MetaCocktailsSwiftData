@@ -41,13 +41,14 @@ enum AuthorPlaces: String, Codable, CaseIterable {
     case harryJohnsonManual           = "Harry Johnson's New and Improved Bartenders' Manual"
     case hoffmanHouse                 = "Hoffman House Bar"
     case hotelMonteleone              = "Hotel Monteleone"
-    case howToMixDrinksJT             = "Jerry Thomas: How to Mix Drinks"
+    case howToMixDrinksJT             = "Bartender's Guide: How to Mix Drinks"
     case milkAndHoney                 = "Milk and Honey"
     case recipesForMixedDrinks        = "Recipes for Mixed Drinks"
     case savoy                        = "American Bar at the Savoy Hotel, London."
     case traderVicsBartendersGuide    = "Trader Vic's Bartender's Guide, Revised."
     case traderVicsBookOfFoodAndDrink = "Trader Vic's Book of Food and Drink"
     case williamsAndGraham            = "Williams and Graham. Denver, Colorado"
+    case theFineArtOfMixingDrinks     = "The Fine Art of Mixing Drinks"
     
 }
 
@@ -59,3 +60,6 @@ struct Author {
 }
 var harryCraddock = Author(person: AuthorNames.harryCraddock.rawValue, place: AuthorPlaces.savoy.rawValue, year: "1930")
 var williamsAndGraham = Author(place: AuthorPlaces.williamsAndGraham.rawValue, year: "2012")
+var hugoEnsslin = Author(person: AuthorNames.hugoEnsslin.rawValue, place: AuthorPlaces.recipesForMixedDrinks.rawValue, year: "1916")
+var davidEmbury = Author(person: AuthorNames.davidEmbury.rawValue, place: AuthorPlaces.theFineArtOfMixingDrinks.rawValue, year: "1948")
+var jerryThomas = Author(person: AuthorNames.jerryThomas.rawValue, place: AuthorPlaces.howToMixDrinksJT.rawValue, year: "1862")
