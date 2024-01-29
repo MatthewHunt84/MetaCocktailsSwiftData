@@ -19,6 +19,7 @@ var brooklynSpec     =  [CocktailIngredient(.liqueurs(.maraschinoLiqueur), value
                          CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1.5),
                          CocktailIngredient(.whiskies(.straightRye), value: 1.5)]
 
-var brooklynTags     = Tags(profiles: [.spiritForward, .rich, .complex, .bittersweet],
+var brooklynTags     = Tags(profiles: [.spiritForward],
+                             textures: [.rich],
                              styles: [.manhattan, .stirred])
                         

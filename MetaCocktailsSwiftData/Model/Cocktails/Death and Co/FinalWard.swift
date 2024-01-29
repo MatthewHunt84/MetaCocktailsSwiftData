@@ -20,6 +20,6 @@ var finalWardSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                       CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.75),
                       CocktailIngredient(.liqueurs(.greenChartreuse), value: 0.75)]
 
-var finalWardTags = Tags(profiles: [.light],
+var finalWardTags = Tags(textures: [.light],
                          styles: [.sour, .shaken])
                   

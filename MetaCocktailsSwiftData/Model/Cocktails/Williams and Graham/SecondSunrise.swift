@@ -24,5 +24,6 @@ let secondSunriseSpec: [CocktailIngredient] = [CocktailIngredient(.syrups(.cinna
                                                CocktailIngredient(.otherAlcohol(.lavenderTincture), value: 2, unit: .dashes)]
 
 
-let secondSunriseTags = Tags(profiles: [.herbal, .refreshing, .floral, .light],
+let secondSunriseTags = Tags(profiles: [.herbal, .refreshing, .floral],
+                      textures: [.light],
                       styles: [.sour, .shaken])

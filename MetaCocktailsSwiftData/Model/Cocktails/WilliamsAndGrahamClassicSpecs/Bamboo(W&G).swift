@@ -7,12 +7,12 @@
 
 import Foundation
 
-var bambooWnG = Cocktail(cocktailName: "Bamboo(W&G)",
+var bambooWnG = Cocktail(cocktailName: "Bamboo (Williams and Graham spec.)",
                          imageAsset: nil,
                          glasswareType: Glassware.coupe,
                          garnish: [.orangePeel],
                          ice: nil,
-                         author: williamsAndGraham,
+                         author: Author(person: "Louis Eppinger"),
                          spec: bambooWnGSpec,
                          buildOrder: nil,
                          tags: bambooTags)

@@ -7,7 +7,7 @@
 
 import Foundation
 
-var eggWhiteInstructionsNoBitters  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients into a tin and dry shake to emulsify."),
+var eggWhiteInstructionsNoBitters  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the bitters, into a tin and dry shake to emulsify."),
                                                             Instruction(step: 2, method: "Then Shake with ice."),
                                                             Instruction(step: 3, method: "Strain into a chilled glass.")])
 

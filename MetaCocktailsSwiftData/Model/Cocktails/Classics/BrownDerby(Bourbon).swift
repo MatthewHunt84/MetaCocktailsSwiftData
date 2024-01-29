@@ -16,7 +16,8 @@ var brownDerbyBourbonSpec: [CocktailIngredient] = [CocktailIngredient(.whiskies(
                                                    CocktailIngredient(.juices(.grapefruit), value: 1),
                                                    CocktailIngredient(.syrups(.honeySyrup), value: 0.5)]
 
-var brownDerbyBourbonTags = Tags(profiles: [.citrusy, .refreshing, .light],
+var brownDerbyBourbonTags = Tags(profiles: [.citrusy, .refreshing],
+                                 textures: [.light],
                                  styles: [.sour, .shaken])
 
 

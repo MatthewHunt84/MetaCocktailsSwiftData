@@ -11,7 +11,6 @@ var aFlightSouthOfTheBorder = Cocktail(cocktailName: "A Flight South of the Bord
                                        imageAsset: nil,
                                        glasswareType: .doubleOld,
                                        garnish: [.dehydratedGrapefruitSlice],
-                                       ice: .bigRock,
                                        author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
                                        spec: aFlightSouthOfTheBorderSpec,
                                        tags: aFlightSouthOfTheBorderTags)
@@ -26,6 +25,7 @@ let aFlightSouthOfTheBorderSpec: [CocktailIngredient] = [CocktailIngredient(.her
                                                          CocktailIngredient(.agaves(.tequilaOchoBlanco), value: 0.75)]
 
 
-let aFlightSouthOfTheBorderTags = Tags(profiles: [.refreshing, .complex, .fruity],
+let aFlightSouthOfTheBorderTags = Tags(profiles: [.refreshing],
+                                       textures: [.light],
                                        styles: [.sour, .shaken])
 

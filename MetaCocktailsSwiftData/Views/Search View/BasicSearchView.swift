@@ -63,7 +63,7 @@ struct BasicSearchView: View {
                         }
                         
                         
-                        BasicComponentSearchListView(isShowingLikes: $isShowingPreferences, isShowingFlavors: $isShowingFlavors)
+                        BasicListView(isShowingLikes: $isShowingPreferences, isShowingFlavors: $isShowingFlavors)
                     }
                     .frame(width: geometry.size.width, height: geometry.size.height * 0.85, alignment: .center)
                     

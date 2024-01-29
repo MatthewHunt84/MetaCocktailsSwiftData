@@ -19,6 +19,7 @@ var beesKneesSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                       CocktailIngredient(.gins(.fordsGin) , value: 2)]
 
 
-var beesKneesTags   = Tags(profiles: [.citrusy, .refreshing, .light],
+var beesKneesTags   = Tags(profiles: [.citrusy],
+                           textures: [.light],
                            styles: [.shaken, .sour])
 

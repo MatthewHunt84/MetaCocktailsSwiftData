@@ -25,7 +25,7 @@ var peanutButterFalconSpec  = [CocktailIngredient(.syrups(.honeySyrup), value: 0
                                CocktailIngredient(.bitters(.blackWalnut), value: 2, unit: .dashes)]
 
 var peanutButterFalconTags = Tags(flavors: [.nutmeg],
-                                  profiles: [.rich, .silky, .savory, .bittersweet],
+                                    textures: [.rich, .silky],
                                     styles: [.flip, .shaken])
 
 var peanutButterFalconBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients except the bitters into a tin shake with ice"),

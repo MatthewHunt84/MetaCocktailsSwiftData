@@ -17,7 +17,8 @@ var brownDerbyRumSpec: [CocktailIngredient] = [CocktailIngredient(.rums(.rumDark
                                                CocktailIngredient(.juices(.lime), value: 1),
                                                CocktailIngredient(.otherNonAlc(.mapleSugar), value: 1, unit: .teaspoon)]
 
-var brownDerbyRumTags = Tags(profiles: [.citrusy, .refreshing, .light],
+var brownDerbyRumTags = Tags(profiles: [.citrusy, .refreshing],
+                             textures: [.light],
                              styles: [.sour, .shaken])
 
 

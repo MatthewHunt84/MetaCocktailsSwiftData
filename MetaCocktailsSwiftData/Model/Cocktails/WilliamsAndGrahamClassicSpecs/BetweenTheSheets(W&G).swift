@@ -7,10 +7,10 @@
 
 import Foundation
 
-var betweenTheSheetsWnG  = Cocktail(cocktailName: "Between the Sheets(W&G)",
+var betweenTheSheetsWnG  = Cocktail(cocktailName: "Between the Sheets (Williams and Graham spec.)",
                                     glasswareType: .martini,
                                     garnish: [.orangeAndLemon],
-                                    author: williamsAndGraham,
+                                    author: Author(person: AuthorNames.harryCraddock.rawValue, place: AuthorPlaces.savoy.rawValue, year: "1929"),
                                     spec: betweenTheSheetsWnGSpec,
                                     tags: betweenTheSheetsTags)
 

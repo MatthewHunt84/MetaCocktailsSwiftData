@@ -23,7 +23,7 @@ var blueBlazerSpec  = [CocktailIngredient(.otherNonAlc(.hotWater), value: 2),
                        CocktailIngredient(.whiskies(.aberlourAbundah), value: 2)]
 
 var blueBlazerTags = Tags(flavors: [.lemon, .tea],
-                          profiles: [.hot],
+                          textures: [.rich],
                           styles: [.toddy])
 
 var blueBlazerBuild = Build(instructions: [Instruction(step: 1, method: "Heat your Blue Blazer mugs and toddy glass with boiling water. It helps to heat your whiskey up in a tin as well. Place the whiskey in the small tin in a large tin on top of the boiling water."),

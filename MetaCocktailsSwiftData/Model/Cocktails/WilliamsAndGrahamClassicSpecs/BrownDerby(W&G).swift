@@ -7,11 +7,10 @@
 
 import Foundation
 
-let brownDerbyWnG = Cocktail(cocktailName: "Brown Derby(W&G)",
+let brownDerbyWnG = Cocktail(cocktailName: "Brown Derby (Williams and Graham spec.)",
                              glasswareType: .doubleOld,
                              garnish: [.grapefruitPeel],
-                             ice: .bigRock, 
-                             author: williamsAndGraham,
+                             ice: .bigRock,
                              spec: brownDerbyWnGSpec,
                              tags: brownDerbyBourbonTags)
 

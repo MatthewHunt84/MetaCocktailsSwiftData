@@ -23,5 +23,5 @@ let jaredLetosPrettyFaceSpec: [CocktailIngredient] = [CocktailIngredient(.fruit(
                                                       CocktailIngredient(.agaves(.tequilaOchoBlanco), value: 2)]
 
 
-let jaredLetosPrettyFaceTags = Tags(profiles: [.light,.sharp, .fruity, .refreshing],
+let jaredLetosPrettyFaceTags = Tags(textures: [.light],
                                     styles: [.sour, .shaken])

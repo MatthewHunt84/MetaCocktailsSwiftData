@@ -7,10 +7,9 @@
 
 import Foundation
 
-var bloodyMarryWnG  = Cocktail(cocktailName: "Bloody Marry(W&G)",
+var bloodyMarryWnG  = Cocktail(cocktailName: "Bloody Marry (Williams and Graham spec.)",
                                glasswareType: .collins,
-                               garnish: [.olive, .cocktailOnion],
-                               author: williamsAndGraham,
+                               garnish: [.olive, .onion],
                                spec: bloodyMarryWnGSpec,
                                buildOrder: bloodyMarryWnGBuild,
                                tags: bloodyMarryWnGTags)
@@ -21,5 +20,7 @@ var bloodyMarryWnGSpec  = [CocktailIngredient(.otherNonAlc(.bloodyMarryMixWnG), 
 var bloodyMarryWnGBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients along with the ice and toss from tin to tin."),
                                                 Instruction(step: 2, method: "Dirty dump")])
 
-var bloodyMarryWnGTags   = Tags(profiles: [.savory, .rich, .restorative])
+var bloodyMarryWnGTags   = Tags(profiles: [.savory],
+                                textures: [.rich],
+                                styles: [.restorative])
 

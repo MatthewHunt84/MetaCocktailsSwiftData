@@ -24,8 +24,9 @@ let greatWhiteBuffaloSpec: [CocktailIngredient] = [CocktailIngredient(.juices(.l
                                                    CocktailIngredient(.vodkas(.zubrowka), value: 1.5)]
 
 
-let greatWhiteBuffaloTags = Tags(profiles: [.fruity, .refreshing, .light],
-                                 styles: [.sour, .shaken])
+let greatWhiteBuffaloTags = Tags(profiles: [.herbal, .refreshing],
+                      textures: [.light],
+                      styles: [.sour, .shaken])
 
 
 

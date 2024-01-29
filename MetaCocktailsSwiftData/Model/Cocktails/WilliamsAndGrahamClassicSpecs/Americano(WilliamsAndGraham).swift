@@ -8,11 +8,11 @@
 import Foundation
 
 
-var americanoWnG  = Cocktail(cocktailName: "Americano(W&G)",
+var americanoWnG  = Cocktail(cocktailName: "Americano (Williams and Graham spec.)",
                              glasswareType: .collins,
                              garnish: [.orangePeel],
                              ice: .koldDraft,
-                             author: williamsAndGraham,
+                             author: Author(person: "Emile Lefeuvre", place: "Paris", year: "1889"),
                              spec: americanoWnGSpec,
                              tags: americanoWnGTags)
 
@@ -22,6 +22,7 @@ var americanoWnGSpec  = [CocktailIngredient(.soda(.sodaWater), value: 2),
 
 
 
-var americanoWnGTags   = Tags(profiles: [.bittersweet, .refreshing, .light, .effervescent],
+var americanoWnGTags   = Tags(profiles: [.bittersweet, .bitter, .refreshing],
+                              textures: [.light, .effervescent],
                               styles: [.fizz, .built])
 

@@ -22,7 +22,7 @@ var maiTaiSpec    = [CocktailIngredient(.juices(.lime), value: 1),
                      CocktailIngredient(.liqueurs(.orangeCuracao), value: 0.5),
                      CocktailIngredient(.rums(.rumAged), value: 2.25)]
 
-var maiTaiTags     = Tags(profiles: [.fruity, .refreshing, .citrusy], 
+var maiTaiTags     = Tags(textures: [.light],
                           styles: [.sour, .shaken])
                           
 

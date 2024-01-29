@@ -19,6 +19,7 @@ var oldFashionedSpec  =  [CocktailIngredient(.syrups(.richDem), value: 2, unit: 
                           CocktailIngredient(.bitters(.angosturaBitters), value: 3, unit: .dashes),
                           CocktailIngredient(.whiskies(.straightRyeOrBourbon), value: 2)]
 
-var oldFashionedTags = Tags( profiles: [.bittersweet, .spiritForward],
+var oldFashionedTags = Tags( profiles: [.sweet],
+                             textures: [.rich],
                              styles: [.oldFashioned, .stirred])
 
