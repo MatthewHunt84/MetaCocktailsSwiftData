@@ -42,7 +42,7 @@ enum AuthorPlaces: String, Codable, CaseIterable {
     case hoffmanHouse                 = "Hoffman House Bar"
     case hotelMonteleone              = "Hotel Monteleone"
     case howToMixDrinksJT             = "Bartender's Guide: How to Mix Drinks"
-    case milkAndHoney                 = "Milk and Honey"
+    case milkAndHoney                 = "Milk and Honey, New York"
     case recipesForMixedDrinks        = "Recipes for Mixed Drinks"
     case savoy                        = "American Bar at the Savoy Hotel, London."
     case traderVicsBartendersGuide    = "Trader Vic's Bartender's Guide, Revised."

@@ -31,6 +31,8 @@ final class CocktailListViewModel: ObservableObject {
         cocktailDict["Hanky Panky"] = [hankyPanky]
         cocktailDict["Harvey Wallbanger"] = [harveyWallbanger]
         cocktailDict["Greenpoint"] = [greenpoint]
+        cocktailDict["Hotel Nacional"] = [hotelNacional]
+        cocktailDict["Japanese Cocktail"] = [japaneseCocktail]
  
         for cocktails in cocktailDict {
             guestCocktails.append(CocktailListCocktail(cocktailName: cocktails.key, cocktailVariations: cocktails.value))
@@ -104,8 +106,13 @@ final class CocktailListViewModel: ObservableObject {
                                                                      "Honeymoon Cocktail": [honeymoonCocktail1st, honeymoonCocktailEmbury, honeymoonCocktailWnG],
                                                                      "Holland House": [hollandHouseKappeler, hollandHouseCocktail, hollandHouseCocktailWnG],
                                                                      "Hot Toddy": [hotBrandyToddy, hotToddyWnG, morgenthalersToddy],
+                                                                     "Hotel Nacional": [hotelNacional, hotelNacionalWnG],
+                                                                     "Hurricane": [hurricane, hurricaneWnG],
+                                                                     "Irish Coffee": [irishCoffee, irishCoffeeWnG],
                                                                      "Jack Rose": [jackRose],
-                                                                     "Jungle Bird": [jungleBird],
+                                                                     "Japanese Cocktail": [japaneseCocktail, japaneseCocktailWnG],
+                                                                     "Jungle Bird": [jungleBird, jungleBirdWnG],
+                                                                     "Kentucky Maid": [kentuckyMaid, kentuckyMaidWnG],
                                                                      "Last Word": [lastWord],
                                                                      "Manhattan": [manhattan],
                                                                      "Mai Tai": [maiTai],

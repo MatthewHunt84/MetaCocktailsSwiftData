@@ -10,7 +10,7 @@ import Foundation
 var morgenthalersToddy = Cocktail(cocktailName: "Hot Toddy(Morgenthaler’s)",
                                   glasswareType: .toddyGlass,
                                   garnish: [.orangePeel],
-                                  author: Author(person: "Jeffrey Morggenthaler"),
+                                  author: Author(person: "Jeffrey Morggenthaler", year: "2014"),
                                   spec: morgenthalersToddySpec,
                                   buildOrder: hotToddyWnGBuild,
                                   tags: morgenthalersToddyTags)
