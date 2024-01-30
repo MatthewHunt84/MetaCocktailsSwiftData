@@ -8,9 +8,10 @@
 import Foundation
 
 var goldRush  = Cocktail(cocktailName: "Gold Rush",
-                         glasswareType: .doubleOld,
+                         glasswareType: .doubleOld ,
                          garnish: [.lemonPeel],
-                         author: Author(place: AuthorPlaces.milkAndHoney.rawValue, year: "Early 2000s"),
+                         ice: .bigRock,
+                         author: Author(person: "T.J. Siegal(Sasha's best friend)" , place: AuthorPlaces.milkAndHoney.rawValue, year: "Early 2000s"),
                          spec: goldRushSpec,
                          tags: goldRushTags)
 
