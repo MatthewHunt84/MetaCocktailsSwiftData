@@ -8,6 +8,8 @@
 import Foundation
 
 enum Flavor: String, Codable, CaseIterable {
+    
+    
     case apple          = "Apple"
     case apricot        = "Apricot"
     case pimento        = "Pimento"
@@ -66,6 +68,7 @@ enum Flavor: String, Codable, CaseIterable {
     case tarragon       = "Tarragon"
     case tea            = "Tea"
     case tomato         = "Tomato"
+    case sloeBerries    = "Sloe Berries (AKA Blackthorn)"
     case walnut         = "Walnut"
     case pine           = "Pine"
     case gentian        = "Gentian"

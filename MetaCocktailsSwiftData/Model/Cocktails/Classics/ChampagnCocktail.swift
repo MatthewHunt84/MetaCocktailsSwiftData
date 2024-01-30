@@ -10,7 +10,7 @@ import Foundation
 var champagneCocktail = Cocktail(cocktailName: "Champagne Cocktail",
                          glasswareType: .flute,
                          garnish: [.noGarnish],
-                         ice: .koldDraft,
+                         ice: nil,
                          author:Author(place: "Some American Bar in Panama", year: "1855"),
                          spec: champagneCocktailSpec,
                          tags: champagneCocktailTags)

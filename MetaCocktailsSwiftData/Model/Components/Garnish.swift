@@ -58,6 +58,7 @@ enum Garnish: String, Codable {
     case raspberry                 = "Raspberry"
     case rosePetals                = "Skewered Rose Petals"
     case skeweredBlackberryAndSage = "Skewered blackberry and sage leaf"
+    case spentLimeShell            = "Spent Lime Shell"
    
     
     

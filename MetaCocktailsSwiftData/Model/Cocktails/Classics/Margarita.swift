@@ -8,17 +8,16 @@
 import SwiftUI
 
 var margarita = Cocktail(cocktailName: "Margarita",
-                         glasswareType: .doubleOldSalt,
-                          garnish: [.limeWheel],
-                          ice: .koldDraft,
-                          spec: margaritaSpec,
-                          tags: margaritaTags)
+                         glasswareType: .coupeSalt,
+                         garnish: [.noGarnish],
+                         ice: nil,
+                         spec: margaritaSpec,
+                         tags: margaritaTags)
 
-var margaritaSpec = [CocktailIngredient(.juices(.lime), value: 1),
-                     CocktailIngredient(.liqueurs(.cointreau), value: 1),
-                     CocktailIngredient(.agaves(.tequilaBlanco), value: 2),
-                     CocktailIngredient(.seasoning(.salt), value: 1, unit: .rim)]
+var margaritaSpec = [CocktailIngredient(.juices(.lime), value: 0.75),
+                     CocktailIngredient(.liqueurs(.cointreau), value: 0.67628),
+                     CocktailIngredient(.agaves(.tequilaBlanco), value: 1.5)]
 
 var margaritaTags = Tags( profiles: [.citrusy, .tart, .punchy],
                           styles: [.sour, .shaken])
-                        
+

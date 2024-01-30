@@ -15,6 +15,9 @@ struct CocktailListView: View {
     @State private var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     @State private var bartenderViewCocktails: [CocktailListCocktail] = CocktailListViewModel.getBartenderViewCocktails()
     @State private var guestViewCocktails: [CocktailListCocktail] = CocktailListViewModel.getGuestViewCocktails()
+    @State var isShowingRando = false
+    
+    
     
     var body: some View {
         
@@ -26,6 +29,25 @@ struct CocktailListView: View {
                         Text("Cocktails")
                             .font(.largeTitle).bold()
                             .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
+                        Spacer()
+                        
+                        Button(action:  { self.isShowingRando.toggle()   }, label: {
+                            Image("dice")
+                                .resizable()
+                                .frame(width: 40, height: 40, alignment: .bottom)
+                                .offset(CGSize(width: 0, height: 5.0))
+                        }).sheet(isPresented: $isShowingRando, content: {
+                            ZStack {
+                                Color.black.ignoresSafeArea(.all)
+                                if criteria.menuMode {
+                                    SearchGuestRecipeView(viewModel: CocktailMenuViewModel(cocktail: CocktailListViewModel.fetchRandomCocktail()))
+                                } else {
+                                    SearchBartenderRecipeView(viewModel: CocktailMenuViewModel(cocktail: CocktailListViewModel.fetchRandomCocktail()))
+                                }
+                                
+                            }
+                        })
+   
                         Spacer()
                         Menu("", systemImage: "gearshape") {
                             Button("Bartender Mode") {

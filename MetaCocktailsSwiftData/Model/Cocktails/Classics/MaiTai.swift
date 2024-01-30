@@ -9,7 +9,7 @@ import SwiftUI
 
 var maiTai  = Cocktail(cocktailName: "Mai Tai",
                        glasswareType: .doubleOld,
-                       garnish: [.mintBouquet, .orchid],
+                       garnish: [.mintBouquet, .spentLimeShell],
                        ice: .pebbleIce,
                        author:Author(person: AuthorNames.traderVic.rawValue,
                                      year: "1944"),
@@ -19,8 +19,8 @@ var maiTai  = Cocktail(cocktailName: "Mai Tai",
 var maiTaiSpec    = [CocktailIngredient(.juices(.lime), value: 1),
                      CocktailIngredient(.syrups(.richDem), value: 1, unit: .teaspoon),
                      CocktailIngredient(.syrups(.orgeat), value: 0.25),
-                     CocktailIngredient(.liqueurs(.orangeCuracao), value: 0.5),
-                     CocktailIngredient(.rums(.rumAged), value: 2.25)]
+                     CocktailIngredient(.liqueurs(.orangeCuracao), value: 0.25),
+                     CocktailIngredient(.rums(.wrayAndNephew17), value: 2)]
 
 var maiTaiTags     = Tags(profiles: [.fruity, .refreshing, .citrusy], 
                           styles: [.sour, .shaken])
