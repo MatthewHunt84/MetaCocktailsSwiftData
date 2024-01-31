@@ -211,6 +211,15 @@ final class CocktailListViewModel: ObservableObject {
    func fetchRandomCocktail() -> Cocktail {
         return CocktailListViewModel.getGuestViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName}).randomElement()!
     }
+    
+    @ViewBuilder
+    func getRandomCocktailView(for menuMode: Bool) -> some View {
+        if menuMode {
+            SearchGuestRecipeView(viewModel: CocktailMenuViewModel(cocktail: randomCocktail))
+        } else {
+            SearchBartenderRecipeView(viewModel: CocktailMenuViewModel(cocktail: randomCocktail))
+        }
+    }
 
     
     // TODO: Ready for swiftData

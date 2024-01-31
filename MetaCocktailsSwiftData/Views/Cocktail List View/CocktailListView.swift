@@ -25,11 +25,7 @@ struct CocktailListView: View {
                     Spacer()
                     
                     NavigationLink {
-                        if criteria.menuMode {
-                            SearchGuestRecipeView(viewModel: CocktailMenuViewModel(cocktail: viewModel.randomCocktail))
-                        } else {
-                            SearchBartenderRecipeView(viewModel: CocktailMenuViewModel(cocktail: viewModel.randomCocktail))
-                        }
+                        viewModel.getRandomCocktailView(for: criteria.menuMode)
                     } label: {
                         Image("dice")
                             .resizable()
