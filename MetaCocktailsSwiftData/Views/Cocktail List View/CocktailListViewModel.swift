@@ -15,6 +15,10 @@ final class CocktailListViewModel: ObservableObject {
     @Published var isShowingRecipeCard = false
     @Published var selectedCocktail: Cocktail?
     @Published var isShowingBuildOrderButton = false
+    @Published var isShowingRandomCocktailView = false
+    @Published var bartenderViewCocktails: [CocktailListCocktail] = getBartenderViewCocktails()
+    @Published var guestViewCocktails: [CocktailListCocktail] = getGuestViewCocktails()
+    @Published var randomCocktail = fetchRandomCocktail()
    
    
     static func getGuestViewCocktails() -> [CocktailListCocktail] {

@@ -10,19 +10,12 @@ import SwiftUI
 struct CocktailListView: View {
     @EnvironmentObject var criteria: SearchCriteriaViewModel
     @StateObject var viewModel = CocktailListViewModel()
-    
     //@Environment(\.modelContext) private var modelContext
-    @State private var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-    @State private var bartenderViewCocktails: [CocktailListCocktail] = CocktailListViewModel.getBartenderViewCocktails()
-    @State private var guestViewCocktails: [CocktailListCocktail] = CocktailListViewModel.getGuestViewCocktails()
-    @State var isShowingRando = false
-    
+    @State private var randomCocktailKey = UUID()
     
     
     var body: some View {
         
-        GeometryReader { geometry in
-            //
             NavigationStack{
                 VStack {
                     HStack {
@@ -30,13 +23,13 @@ struct CocktailListView: View {
                             .font(.largeTitle).bold()
                             .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
                         Spacer()
-                        
-                        Button(action:  { self.isShowingRando.toggle()   }, label: {
+
+                        Button(action:  { viewModel.isShowingRandomCocktailView.toggle()   }, label: {
                             Image("dice")
                                 .resizable()
                                 .frame(width: 40, height: 40, alignment: .bottom)
                                 .offset(CGSize(width: 0, height: 5.0))
-                        }).sheet(isPresented: $isShowingRando, content: {
+                        }).sheet(isPresented: $viewModel.isShowingRandomCocktailView, content: {
                             ZStack {
                                 Color.black.ignoresSafeArea(.all)
                                 if criteria.menuMode {
@@ -47,6 +40,7 @@ struct CocktailListView: View {
                                 
                             }
                         })
+                      
    
                         Spacer()
                         Menu("", systemImage: "gearshape") {
@@ -60,7 +54,7 @@ struct CocktailListView: View {
                         .offset(CGSize(width: -10.0, height: 0))
                         
                     }
-                    .frame(width: geometry.size.width, height: geometry.size.height * 0.06, alignment: .bottomLeading)
+    
                     
                     GeometryReader { listGeo in
                         
@@ -69,9 +63,9 @@ struct CocktailListView: View {
                                 HStack {
                                     List{
                                         if criteria.menuMode{
-                                            ForEach(alphabet, id: \.self) { letter in
+                                            ForEach(Utility.alphabet, id: \.self) { letter in
                                                 Section{
-                                                    ForEach(guestViewCocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.cocktailName) { item in
+                                                    ForEach(viewModel.guestViewCocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.cocktailName) { item in
                                                         NavigationLink {
                                                             GuestCocktailListView(cocktails: item.cocktailVariations, cocktailName: item.cocktailName)
                                                         } label: {
@@ -88,9 +82,9 @@ struct CocktailListView: View {
                                                 }.id(letter)
                                             }
                                         } else {
-                                            ForEach(alphabet, id: \.self) { letter in
+                                            ForEach(Utility.alphabet, id: \.self) { letter in
                                                 Section{
-                                                    ForEach(bartenderViewCocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.cocktailName) { item in
+                                                    ForEach(viewModel.bartenderViewCocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.cocktailName) { item in
                                                         NavigationLink {
                                                             BartenderCocktailListView(cocktails: item.cocktailVariations, cocktailName: item.cocktailName)
                                                             
@@ -112,13 +106,13 @@ struct CocktailListView: View {
                                         .listStyle(.plain)
                                         .frame(width: listGeo.size.width * 0.9, height: listGeo.size.height)
                                         VStack {
-                                            ForEach(0..<alphabet.count, id: \.self) { i in
+                                            ForEach(0..<Utility.alphabet.count, id: \.self) { i in
                                                 Button(action: {
                                                     withAnimation {
-                                                        value.scrollTo(alphabet[i], anchor: .top)
+                                                        value.scrollTo(Utility.alphabet[i], anchor: .top)
                                                     }
                                                 }, label: {
-                                                    Text("\(alphabet[i])")
+                                                    Text("\(Utility.alphabet[i])")
                                                         .font(.headline).bold()
                                                 })
                                                 .buttonStyle(ScaleButtonStyle())
@@ -130,10 +124,9 @@ struct CocktailListView: View {
                                 }
                             }
                         }
-                        .frame(width: geometry.size.width, height: geometry.size.height * 0.9)
+                
                     }
                 }
-            }
         }
         
     

@@ -13,7 +13,7 @@ struct BasicComponentSearchListView: View {
     @Binding var isShowingFlavors: Bool
   
     
-    var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+   
     
     var body: some View {
         GeometryReader { geometry in
@@ -23,7 +23,7 @@ struct BasicComponentSearchListView: View {
                     ScrollViewReader { value in
                         HStack{
                             List{
-                                ForEach(alphabet, id: \.self) { letter in
+                                ForEach(Utility.alphabet, id: \.self) { letter in
                                     Section {
                                         if isShowingFlavors {
                                             ForEach( $viewModel.cocktailComponents.filter({$0.name.wrappedValue.hasPrefix(letter)}), id: \.self.id) { component in
@@ -67,13 +67,13 @@ struct BasicComponentSearchListView: View {
                             
                             VStack {
                             
-                                    ForEach(0..<alphabet.count, id: \.self) { i in
+                                    ForEach(0..<Utility.alphabet.count, id: \.self) { i in
                                         Button(action: {
                                             withAnimation {
-                                                value.scrollTo(alphabet[i], anchor: .top)
+                                                value.scrollTo(Utility.alphabet[i], anchor: .top)
                                             }
                                         }, label: {
-                                            Text("\(alphabet[i])")
+                                            Text("\(Utility.alphabet[i])")
                                                 .font(.subheadline).bold()
                                                 
                                             
@@ -101,6 +101,6 @@ struct BasicComponentSearchListView: View {
 }
 
 #Preview {
-    BasicComponentSearchListView(isShowingLikes: .constant(true), isShowingFlavors: .constant(true), alphabet: ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"])
+    BasicComponentSearchListView(isShowingLikes: .constant(true), isShowingFlavors: .constant(true))
         .environmentObject(SearchCriteriaViewModel())
 }

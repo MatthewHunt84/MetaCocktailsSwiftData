@@ -177,6 +177,7 @@
 		4DBBA4B22B68D22E00179B8F /* OldFashioned(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBBA4B12B68D22E00179B8F /* OldFashioned(W&G).swift */; };
 		4DBBA4B42B68D44200179B8F /* OldPal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBBA4B32B68D44200179B8F /* OldPal.swift */; };
 		4DBBA4B62B68D5D000179B8F /* OldPal(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBBA4B52B68D5D000179B8F /* OldPal(W&G).swift */; };
+		4DBBA4BE2B69BCE800179B8F /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBBA4BD2B69BCE800179B8F /* Utility.swift */; };
 		4DBFF8142B5F9E4E0011B5B1 /* Algonquin(WilliamsAndGraham).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8132B5F9E4E0011B5B1 /* Algonquin(WilliamsAndGraham).swift */; };
 		4DBFF8162B5FA7C40011B5B1 /* AmarettoSour(WilliamsAndGraham).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8152B5FA7C40011B5B1 /* AmarettoSour(WilliamsAndGraham).swift */; };
 		4DBFF8182B5FAD850011B5B1 /* AmarettoSour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8172B5FAD850011B5B1 /* AmarettoSour.swift */; };
@@ -428,6 +429,7 @@
 		4DBBA4B12B68D22E00179B8F /* OldFashioned(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OldFashioned(W&G).swift"; sourceTree = "<group>"; };
 		4DBBA4B32B68D44200179B8F /* OldPal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldPal.swift; sourceTree = "<group>"; };
 		4DBBA4B52B68D5D000179B8F /* OldPal(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OldPal(W&G).swift"; sourceTree = "<group>"; };
+		4DBBA4BD2B69BCE800179B8F /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		4DBFF8132B5F9E4E0011B5B1 /* Algonquin(WilliamsAndGraham).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Algonquin(WilliamsAndGraham).swift"; sourceTree = "<group>"; };
 		4DBFF8152B5FA7C40011B5B1 /* AmarettoSour(WilliamsAndGraham).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AmarettoSour(WilliamsAndGraham).swift"; sourceTree = "<group>"; };
 		4DBFF8172B5FAD850011B5B1 /* AmarettoSour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmarettoSour.swift; sourceTree = "<group>"; };
@@ -550,6 +552,7 @@
 			isa = PBXGroup;
 			children = (
 				1AC3867F2AAABED00064F52A /* Extensions */,
+				4DBBA4BD2B69BCE800179B8F /* Utility.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1332,6 +1335,7 @@
 				4D1E85BD2B5C881500214BC6 /* SecondSunrise.swift in Sources */,
 				4DBBA4A02B68B95600179B8F /* NakedAndFamous.swift in Sources */,
 				4D1E85CD2B5CA98800214BC6 /* Here be Dragons.swift in Sources */,
+				4DBBA4BE2B69BCE800179B8F /* Utility.swift in Sources */,
 				4DBBA4882B688A8200179B8F /* Martinez(W&G).swift in Sources */,
 				4D1F14722B50B64500FC3B85 /* BasicComponentSearchListView.swift in Sources */,
 				4DBFF8252B5FB9DF0011B5B1 /* Aviation.swift in Sources */,
