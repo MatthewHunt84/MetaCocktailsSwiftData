@@ -10,6 +10,7 @@ import Foundation
 var RustyNailWnG = Cocktail(cocktailName: "Rusty Nail(W&G Version)",
                             glasswareType: .doubleOld,
                             garnish: [.lemonPeel,],
+                            ice: .bigRock,
                             author: williamsAndGraham,
                             spec: robRoySpecWnG,
                             tags: robRoyTagsWnG)
