@@ -21,7 +21,6 @@ struct PrepBibleListView: View {
                             .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
                         Spacer()
                     }
-//                    frame(width: g.size.width, height: g.size.height * 0.1, alignment: .top)
                     List {
                         ForEach(prepViewModel.prepIngredients, id: \.self) { prepItem in
                             NavigationLink(prepItem.prepIngredientName){
@@ -31,11 +30,10 @@ struct PrepBibleListView: View {
                             
                         }
                     }
-//                    frame(width: g.size.width, height: g.size.height * 0.9, alignment: .center)
+
                         .listStyle(.plain)
                     
                 }
-            
         }
         
     }

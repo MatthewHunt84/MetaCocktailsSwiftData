@@ -60,6 +60,7 @@ enum Juice: String, Codable, CaseIterable {
 enum Syrup: String, Codable, CaseIterable { 
     
     case agaveSyrup              = "Agave Syrup"
+    case agaveNectar             = "Agave Nectar"
     case cinnamonSyrup           = "Cinnamon Syrup"
     case cucumberSyrup           = "Cucumber Syrup"
     case demSyrupOneToOne        = "Demerara Syrup"
@@ -116,6 +117,8 @@ enum Syrup: String, Codable, CaseIterable {
             Tags(flavors: [.vanilla], nA: [NAIngredients(.syrups(self))])
         case .morenthalersGingerSyrup:
             Tags(flavors: [.ginger], nA: [NAIngredients(.syrups(self))])
+        case .agaveNectar:
+            Tags(flavors: [.agave], nA: [NAIngredients(.syrups(self))])
         }
     }
 }
@@ -217,6 +220,7 @@ enum OtherNA: String, Codable, CaseIterable {
     case coffee               = "Hot Coffee"
     case coldBrew             = "Strong Cold Brew"
     case cream                = "Heavy Cream"
+    case demeraraSugarCube    = "Demerara Sugar Cube"
     case stiffCream           = "Lightly Whipped Cream"
     case eggWhites            = "Egg Whites"
     case eggWhole             = "One Egg"
@@ -272,6 +276,8 @@ enum OtherNA: String, Codable, CaseIterable {
             Tags(flavors: [.coffee], nA: [NAIngredients(.otherNonAlc(self))])
         case .stiffCream:
             Tags(profiles: [.creamy, .rich], nA: [NAIngredients(.otherNonAlc(self))])
+        case .demeraraSugarCube:
+            Tags(nA: [NAIngredients(.otherNonAlc(self))])
         }
     }
 }

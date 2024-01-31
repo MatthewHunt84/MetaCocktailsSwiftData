@@ -15,6 +15,10 @@ final class CocktailListViewModel: ObservableObject {
     @Published var isShowingRecipeCard = false
     @Published var selectedCocktail: Cocktail?
     @Published var isShowingBuildOrderButton = false
+    @Published var isShowingRandomCocktailView = false
+    @Published var bartenderViewCocktails: [CocktailListCocktail] = getBartenderViewCocktails()
+    @Published var guestViewCocktails: [CocktailListCocktail] = getGuestViewCocktails()
+    @Published var randomCocktail = oldFashioned
    
     static func getGuestViewCocktails() -> [CocktailListCocktail] {
         var guestCocktails: [CocktailListCocktail] = []
@@ -33,6 +37,16 @@ final class CocktailListViewModel: ObservableObject {
         cocktailDict["Greenpoint"] = [greenpoint]
         cocktailDict["Hotel Nacional"] = [hotelNacional]
         cocktailDict["Japanese Cocktail"] = [japaneseCocktail]
+        cocktailDict["Last Word"] = [lastWord]
+        cocktailDict["La Louisiane"] = [laLouisiane]
+        cocktailDict["Major Bailey"] = [majorBailey]
+        cocktailDict["Mint Julep"] = [mintJulep]
+        cocktailDict["Modern Cocktail"] = [modernCocktail]
+        cocktailDict["Mojito"] = [mojito]
+        cocktailDict["Morning Glory Fizz"] = [morningGloryFizz]
+        cocktailDict["Old Cuban"] = [oldCuban]
+        cocktailDict["Old Fashioned"] = [oldFashioned]
+        cocktailDict["Old Pal"] = [oldPal]
  
         for cocktails in cocktailDict {
             guestCocktails.append(CocktailListCocktail(cocktailName: cocktails.key, cocktailVariations: cocktails.value))
@@ -112,16 +126,29 @@ final class CocktailListViewModel: ObservableObject {
                                                                      "Jack Rose": [jackRose],
                                                                      "Japanese Cocktail": [japaneseCocktail, japaneseCocktailWnG],
                                                                      "Jungle Bird": [jungleBird, jungleBirdWnG],
-                                                                     "Kentucky Maid": [kentuckyMaid, kentuckyMaidWnG],
-                                                                     "Last Word": [lastWord],
+                                                                     "Kir Royale": [kirRoyale, kirRoyaleWnG],
+                                                                     "La Louisiane": [laLouisiane, laLouisianeWnG],
+                                                                     "Last Word": [lastWord, lastWordWnG],
+                                                                     "Lemon Drop": [lemonDrop, lemonDropWnG],
                                                                      "Manhattan": [manhattan],
-                                                                     "Mai Tai": [maiTai],
+                                                                     "Mai Tai": [maiTai, maiTaiWnG],
+                                                                     "Major Bailey": [majorBailey, majorBaileyWnG],
                                                                      "Margarita": [margarita, margaritaTommys],
+                                                                     "Martinez": [martinez, martinezWnG],
                                                                      "Martini": [martini, gibson],
-                                                                     "Mint Julep": [mintJulep],
-                                                                     "Mojito": [mojito],
+                                                                     "Mexican Firing Squad": [mexicanFiringSquad, mexicanFiringSquadWnG],
+                                                                     "Mezcalero": [mezcalero],
+                                                                     "Mint Julep": [mintJulep, mintJulepWnG],
+                                                                     "Mojito": [mojito, mojitoWnG],
+                                                                     "Modern Cocktail": [modernCocktail, modernCocktailWnG],
+                                                                     "Morning Glory Fizz": [morningGloryFizz, morningGloryFizzWnG],
+                                                                     "Moscow Mule" : [moscowMule],
                                                                      "Negroni": [negroni],
-                                                                     "Old Fashioned": [oldFashioned],
+                                                                     "New York Sour": [NewYorkSour, NewYorkSourWnG],
+                                                                     "Old Fashioned": [oldFashioned, oldFashionedWnG],
+                                                                     "Oaxaca Old Fashioned": [oaxacaOldFashioned, oaxacaOldFashionedWnG],
+                                                                     "Old Cuban": [oldCuban, oldCubanWnG],
+                                                                     "Old Pal" : [oldPal, oldPalWnG],
                                                                      "Paloma": [paloma],
                                                                      "Pisco Sour": [piscoSour],
                                                                      "Queens Park Swizzle": [queensParkSwizzle],
@@ -167,6 +194,8 @@ final class CocktailListViewModel: ObservableObject {
                                                           "Caucasian":[caucasian],
                                                           "Gold Rush": [goldRush],
                                                           "Greenpoint": [greenpoint, greenpointWnG],
+                                                          "Kentucky Maid": [kentuckyMaid, kentuckyMaidWnG],
+                                                          "Naked and Famous": [nakedAndFamous],
                                                           "Trinidad Sour": [trinidadSour],
                                                           "Ultima Palabra": [ultimaPalabra],
                                                           "White Negroni": [whiteNegroni],
@@ -179,6 +208,19 @@ final class CocktailListViewModel: ObservableObject {
         return allCocktails
     }
     
+   func fetchRandomCocktail() -> Cocktail {
+        return CocktailListViewModel.getGuestViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName}).randomElement()!
+    }
+    
+    @ViewBuilder
+    func getRandomCocktailView(for menuMode: Bool) -> some View {
+        if menuMode {
+            SearchGuestRecipeView(viewModel: CocktailMenuViewModel(cocktail: randomCocktail))
+        } else {
+            SearchBartenderRecipeView(viewModel: CocktailMenuViewModel(cocktail: randomCocktail))
+        }
+    }
+
     
     // TODO: Ready for swiftData
 //    func addCocktailsToSwiftData() {
