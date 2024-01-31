@@ -7,7 +7,7 @@
 
 import Foundation
 
-var irishCoffeeWnG = Cocktail(cocktailName: "Irish Coffee(W&G)",
+var irishCoffeeWnG = Cocktail(cocktailName: "Irish Coffee(W&G Version)",
                               glasswareType: .toddyGlass,
                               garnish: nil,
                               author: williamsAndGraham,

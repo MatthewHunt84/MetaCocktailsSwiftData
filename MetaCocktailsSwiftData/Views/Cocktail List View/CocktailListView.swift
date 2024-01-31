@@ -26,12 +26,15 @@ struct CocktailListView: View {
                     
                     NavigationLink {
                         viewModel.getRandomCocktailView(for: criteria.menuMode)
+                            
+                            
                     } label: {
                         Image("dice")
                             .resizable()
                             .frame(width: 40, height: 40, alignment: .bottom)
                             .offset(CGSize(width: 0, height: 5.0))
                     }
+                
                     
                     Spacer()
                     Menu("", systemImage: "gearshape") {
@@ -59,6 +62,7 @@ struct CocktailListView: View {
                                                 ForEach(viewModel.guestViewCocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.cocktailName) { item in
                                                     NavigationLink {
                                                         GuestCocktailListView(cocktails: item.cocktailVariations, cocktailName: item.cocktailName)
+                                                            .navigationBarBackButtonHidden(true)
                                                     } label: {
                                                         Text(item.cocktailName)
                                                         if item.cocktailVariations.count > 1 {
@@ -78,7 +82,7 @@ struct CocktailListView: View {
                                                 ForEach(viewModel.bartenderViewCocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.cocktailName) { item in
                                                     NavigationLink {
                                                         BartenderCocktailListView(cocktails: item.cocktailVariations, cocktailName: item.cocktailName)
-                                                        
+                                                            .navigationBarBackButtonHidden(true)
                                                     } label: {
                                                         Text(item.cocktailName)
                                                         if item.cocktailVariations.count > 1 {
@@ -121,6 +125,7 @@ struct CocktailListView: View {
                 viewModel.randomCocktail = viewModel.fetchRandomCocktail()
             }
         }
+        
     }
     
     

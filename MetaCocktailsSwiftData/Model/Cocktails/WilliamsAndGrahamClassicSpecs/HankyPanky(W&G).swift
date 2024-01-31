@@ -7,7 +7,7 @@
 
 import Foundation
 
-var hankyPankyWnG = Cocktail(cocktailName: "Hanky Panky(W&G)",
+var hankyPankyWnG = Cocktail(cocktailName: "Hanky Panky(W&G Version)",
                              glasswareType: .stemmedGlassware,
                              garnish: [.orangePeel],
                              author: williamsAndGraham,

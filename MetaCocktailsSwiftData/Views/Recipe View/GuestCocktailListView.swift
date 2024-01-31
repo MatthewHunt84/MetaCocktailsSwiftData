@@ -36,6 +36,8 @@ struct GuestCocktailListView: View {
             
             
         }
+        
+        
     }
 }
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-var mojitoWnG = Cocktail(cocktailName: "Mojito(W&G)",
+var mojitoWnG = Cocktail(cocktailName: "Mojito(W&G Version)",
                          imageAsset: nil,
                          glasswareType: .collins,
                          garnish: [.mintBouquet],

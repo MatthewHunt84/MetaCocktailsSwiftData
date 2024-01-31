@@ -72,6 +72,13 @@ struct SearchBartenderRecipeView: View {
                             .minimumScaleFactor(0.02)
                         
                     }
+                    if stirShakeBuild.contains(.swizzle) {
+                        Text("Swizzle")
+                            .multilineTextAlignment(.center)
+                            .dynamicTypeSize(.large).bold()
+                            .minimumScaleFactor(0.02)
+                        
+                    }
                 }
                 
                 
