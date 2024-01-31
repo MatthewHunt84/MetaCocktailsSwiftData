@@ -46,6 +46,7 @@ enum Garnish: String, Codable {
     case maraschinoCherry          = "Maraschino Cherry"
     case mintBouquet               = "Mint Bouquet"
     case mintSprig                 = "Mint Sprig"
+    case mintSprigPowdered         = "Mint sprig with powdered sugar"
     case mintLeaf                  = "Mint Leaf"
     case olive                     = "Green Olive"
     case orangeAndLemon            = "Twist of orange and lemon"

@@ -517,13 +517,15 @@ enum FortifiedWine: String, Codable, CaseIterable {
     case Byrrh                = "Byrrh Grand Quinquina Aperitif"
     case carpanoAntica        = "Carpano Antica"
     case cocchiAmericano      = "Cocchi Americano"
-    case cocchiDeTorino       = "Cocchi Di Torino"
+    case cocchiDeTorino       = "Cocchi Di Torino Sweet Vermouth"
     case dryVermouthAny       = "Dry Vermouth (French)"
     case dolinDry             = "Dolin Dry Vermouth"
     case dolinBlanc           = "Dolin Blanc Vermouth"
     case dolinRouge           = "Dolin Rouge Vermouth"
     case fino                 = "Fino Sherry"
-    case lilletBlanc          = "Lillet Blanc"
+    case lilletBlanc          = "Lillet Blanc Vermouth"
+    case lustauAmontillado    = "Lustau Amontillado Sherry"
+    case lustauPX             = "Lustau Pedro Ximénez Sherry"
     case puntEMes             = "Punt E Mes"
     case sandemanPort         = "Sandeman Port"
     case sweetVermouthAny     = "Sweet Vermouth"
@@ -571,6 +573,10 @@ enum FortifiedWine: String, Codable, CaseIterable {
         case .sandemanPort:
             Tags(booze: [Booze(.fortifiedWines(self)), Booze(.fortifiedWines(.fortifiedWineAny))])
         case .sherryEastIndia:
+            Tags(profiles: [.fruity], booze: [Booze(.fortifiedWines(self)), Booze(.fortifiedWines(.sherryAny)), Booze(.fortifiedWines(.fortifiedWineAny))])
+        case .lustauAmontillado:
+            Tags(booze: [Booze(.fortifiedWines(self)), Booze(.fortifiedWines(.sherryAny)), Booze(.fortifiedWines(.fortifiedWineAny))])
+        case .lustauPX:
             Tags(profiles: [.fruity], booze: [Booze(.fortifiedWines(self)), Booze(.fortifiedWines(.sherryAny)), Booze(.fortifiedWines(.fortifiedWineAny))])
         }
     }

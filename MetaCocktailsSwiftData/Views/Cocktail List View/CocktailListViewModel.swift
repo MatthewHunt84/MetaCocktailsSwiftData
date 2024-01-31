@@ -52,6 +52,10 @@ final class CocktailListViewModel: ObservableObject {
         cocktailDict["Queens Park Swizzle"] = [queensParkSwizzle]
         cocktailDict["Remember The Maine"] = [rememberTheMaineOG]
         cocktailDict["Rob Roy"] = [robRoy]
+        cocktailDict["Saturn"] = [saturn]
+        cocktailDict["Sazerac"] = [sazerac]
+        cocktailDict["Sidecar"] = [sidecar]
+        cocktailDict["Singapore Sling"] = [singaporSling]
  
         for cocktails in cocktailDict {
             guestCocktails.append(CocktailListCocktail(cocktailName: cocktails.key, cocktailVariations: cocktails.value))
@@ -166,9 +170,14 @@ final class CocktailListViewModel: ObservableObject {
                                                                      "Remember The Maine": [rememberTheMaineOG, rememberTheMaineWnG],
                                                                      "Rusty Nail": [RustyNailWnG],
                                                                      "Rob Roy": [robRoy, robRoyWnG],
-                                                                     "Saturn": [saturn],
-                                                                     "Sazerac": [sazerac],
-                                                                     "Sidecar": [sidecar],
+                                                                     "Saturn": [saturn, saturnWnG],
+                                                                     "Sazerac": [sazerac, sazeracWnG],
+                                                                     "Scofflaw": [scofflaw , scofflawWnG],
+                                                                     "Sherry Cobbler" : [sherryCobbler, sherryCobblerWnG],
+                                                                     "Sidecar": [sidecar, sidecarWnG],
+                                                                     "Singapore Sling": [singaporSling, singaporSlingWnG],
+                                                                     "Sloe Gin Fizz" : [sloeGinFizz, sloeGinFizzWnG],
+                                                                     "Stinger": [stingerWnG],
                                                                      "Ti Punch": [tiPunch],
                                                                      "20th Century Coctkail": [twentiethCenturyCocktail],
                                                                      "Vieux Carre" : [vieuxCarre],
