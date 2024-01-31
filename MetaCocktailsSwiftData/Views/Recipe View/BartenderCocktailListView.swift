@@ -13,11 +13,20 @@ struct BartenderCocktailListView: View {
     var cocktailFrameSize = CGFloat(125)
     @State var cocktails: [Cocktail] = []
     @State var cocktailName: String = ""
-    
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         
         VStack{
+            HStack{
+                Button{
+                    dismiss()
+                } label: {
+                    Image(systemName: "chevron.backward")
+                    Text("Back")
+                }
+                Spacer()
+            }
             TabView {
                 ForEach($cocktails, id: \.self) { cocktail in
                     VStack {
@@ -71,6 +80,13 @@ struct BartenderCocktailListView: View {
                                 }
                                 if stirShakeBuild.contains(.stirred) {
                                     Text("Stir")
+                                        .multilineTextAlignment(.center)
+                                        .dynamicTypeSize(.large).bold()
+                                        .minimumScaleFactor(0.02)
+                                    
+                                }
+                                if stirShakeBuild.contains(.swizzle) {
+                                    Text("Swizzle")
                                         .multilineTextAlignment(.center)
                                         .dynamicTypeSize(.large).bold()
                                         .minimumScaleFactor(0.02)

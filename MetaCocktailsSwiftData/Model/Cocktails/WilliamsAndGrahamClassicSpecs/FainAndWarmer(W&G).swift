@@ -7,7 +7,7 @@
 
 import Foundation
 
-var fairAndWarmerWnG = Cocktail(cocktailName: "Fair & Warmer(W&G)",
+var fairAndWarmerWnG = Cocktail(cocktailName: "Fair & Warmer(W&G Version)",
                                 glasswareType: .coupe,
                                 garnish: [.orangePeel],
                                 author: williamsAndGraham,

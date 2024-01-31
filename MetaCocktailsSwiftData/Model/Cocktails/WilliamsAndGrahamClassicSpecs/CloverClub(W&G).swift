@@ -7,7 +7,7 @@
 
 import Foundation
 
-var cloverClubWnG = Cocktail(cocktailName: "Clover Club(W&G)",
+var cloverClubWnG = Cocktail(cocktailName: "Clover Club(W&G Version)",
                              glasswareType: .stemmedGlassware,
                              garnish: [.raspberry],
                              author: williamsAndGraham,

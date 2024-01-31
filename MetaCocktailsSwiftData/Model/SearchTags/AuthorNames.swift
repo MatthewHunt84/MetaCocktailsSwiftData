@@ -10,7 +10,7 @@ import Foundation
 enum AuthorNames: String, Codable, CaseIterable {
     
     case audrySaunders     = "Audrey Saunders"
-    case constante         = "Constante Ribalaiuga"
+    case constante         = "Constante Ribalaigua"
     case crosbyGaige       = "Crosby Gaige"
     case charlesBaker      = "Charles H. Baker"
     case charlesMahoney    = "Charles Mahoney"
@@ -50,6 +50,7 @@ enum AuthorPlaces: String, Codable, CaseIterable {
     case hoffmanBartendersGuide       = "Hoffman House Bartender's Guide"
     case hotelMonteleone              = "Hotel Monteleone"
     case howToMixDrinksJT             = "Bartender's Guide: How to Mix Drinks"
+    case laFloridita                  = "La Floridita"
     case milkAndHoney                 = "Milk and Honey, New York"
     case peguClub                     = "Pegu Club, Soho."
     case recipesForMixedDrinks        = "Recipes for Mixed Drinks"
@@ -58,6 +59,7 @@ enum AuthorPlaces: String, Codable, CaseIterable {
     case traderVicsBookOfFoodAndDrink = "Trader Vic's Book of Food and Drink"
     case williamsAndGraham            = "Williams and Graham. Denver, Colorado"
     case theFineArtOfMixingDrinks     = "The Fine Art of Mixing Drinks"
+    case theVioletHour                = "The Violet Hour, Chicago."
     
 }
 
@@ -68,7 +70,7 @@ struct Author {
   
 }
 var harryCraddock = Author(person: AuthorNames.harryCraddock.rawValue, place: AuthorPlaces.savoy.rawValue, year: "1930")
-var williamsAndGraham = Author(place: AuthorPlaces.williamsAndGraham.rawValue, year: "2012")
+var williamsAndGraham = Author(place: AuthorPlaces.williamsAndGraham.rawValue, year: "2023")
 var hugoEnsslin = Author(person: AuthorNames.hugoEnsslin.rawValue, place: AuthorPlaces.recipesForMixedDrinks.rawValue, year: "1916")
 var davidEmbury = Author(person: AuthorNames.davidEmbury.rawValue, place: AuthorPlaces.theFineArtOfMixingDrinks.rawValue, year: "1948")
 var jerryThomas = Author(person: AuthorNames.jerryThomas.rawValue, place: AuthorPlaces.howToMixDrinksJT.rawValue, year: "1862")

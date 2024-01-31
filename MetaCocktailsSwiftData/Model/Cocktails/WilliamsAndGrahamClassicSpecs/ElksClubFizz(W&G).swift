@@ -7,7 +7,7 @@
 
 import Foundation
 
-var elksClubWnG = Cocktail(cocktailName: "Elk's Club Fizz(W&G)",
+var elksClubWnG = Cocktail(cocktailName: "Elk's Club Fizz(W&G Version)",
                            glasswareType: .fizzGlass,
                            garnish: [.lemonExpression],
                            author: williamsAndGraham,

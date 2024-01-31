@@ -1,0 +1,27 @@
+//
+//  HemingwayDaiquiri.swift
+//  MetaCocktailsSwiftData
+//
+//  Created by James Menkal on 1/30/24.
+//
+
+import Foundation
+
+let hemingwayDaiquiri = Cocktail(cocktailName: "Hemingway Daiquiri",
+                                 glasswareType: .coupe,
+                                 garnish: [.limeWheel],
+                                 author:Author(person: AuthorNames.constante.rawValue, place: AuthorPlaces.laFloridita.rawValue, year: "1938"),
+                                 spec: hemingwayDaiquiriSpec,
+                                 buildOrder: hemingwayBuild,
+                                 tags: hemingwayDaiquiriTags)
+
+var hemingwayDaiquiriSpec: [CocktailIngredient] = [CocktailIngredient(.juices(.lime), value: 0.5),
+                                                   CocktailIngredient(.juices(.grapefruit), value: 0.25),
+                                                   CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.25),
+                                                   CocktailIngredient(.rums(.rumWhite), value: 2.0)]
+
+let hemingwayBuild = Build(instructions: [Instruction(step: 1, method: "Note: The original cocktail stemmed from the Daiquiri No. 3 at La Floridita, which actually was one of the first blended Daiquiris to ever exist as Constantino 'Constante' Ribalaigua was utilizing the latest technology that existed at the time, the blender. Hemingway loved the cocktail but asked for it with no sugar and double the rum making it an insanely tart and punchy cocktail. The cocktail is unbalanced but I think it's important to understand where this cocktail came from and why it exists.")])
+
+var hemingwayDaiquiriTags = Tags(profiles: [.citrusy, .tart, .punchy],
+                                 styles: [.sour, .shaken])
+

@@ -13,7 +13,7 @@ var queensParkSwizzle = Cocktail(cocktailName: "Queens Park Swizzle",
                                  glasswareType: .collins,
                                  garnish: [.mintBouquet],
                                  ice: .pebbleIce,
-                                 author:Author(place: "Queens Park Hotel", year: "1920's"),
+                                 author: Author(place: "Queens Park Hotel, Trinidad", year: "1920's"),
                                  spec: queensParkSpec,
                                  buildOrder: queensParkBuild,
                                  tags: queensParkTags)
@@ -21,14 +21,13 @@ var queensParkSwizzle = Cocktail(cocktailName: "Queens Park Swizzle",
 var queensParkSpec = [CocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
                       CocktailIngredient(.juices(.lime), value: 0.75),
                       CocktailIngredient(.syrups(.richDem), value: 0.5),
-                      CocktailIngredient(.rums(.rumDemerara), value: 2),
-                      CocktailIngredient(.bitters(.angosturaBitters), value: 5, unit: .dashes) ]
+                      CocktailIngredient(.rums(.rumDemerara), value: 3),
+                      CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes) ]
 
 var queensParkTags = Tags(flavors: [.lime, .mint, .bakingSpices],
                           profiles: [.aromatic, .refreshing, .citrusy, .light],
-                          styles: [.swizzle, .built])
+                          styles: [.swizzle, .sour])
 
-var queensParkBuild = Build(instructions: [Instruction(step: 1, method: "Add mint to the bottom of the collins glass and gently press to release mint oils. Do not muddle"),
-                                           Instruction(step: 2, method: "Pack the glass with pebble ice and add the rest of the ingredients, besides the angostura bitters, and swizzle. Try to keep the mint at the bottom of the glass."),
-                                           Instruction(step: 3, method: "Pack the glass with more ice to fill and then add the Angostura bitters."),
-                                           Instruction(step: 4, method: "Garnish with a mint bouquet.")])
+var queensParkBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients to a tall glass and swizzle."),
+                                           Instruction(step: 2, method: "Garnish with mint"),
+                                           Instruction(step: 3, method: "NOTE: The original recipe says 'juice of half a lime and 15ml of a sugar syrup.' Interpret that how you must.")])

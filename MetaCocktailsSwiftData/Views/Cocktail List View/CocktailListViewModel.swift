@@ -47,6 +47,11 @@ final class CocktailListViewModel: ObservableObject {
         cocktailDict["Old Cuban"] = [oldCuban]
         cocktailDict["Old Fashioned"] = [oldFashioned]
         cocktailDict["Old Pal"] = [oldPal]
+        cocktailDict["Pain Killer"] = [painKiller]
+        cocktailDict["Penicillin"] = [penicillin]
+        cocktailDict["Queens Park Swizzle"] = [queensParkSwizzle]
+        cocktailDict["Remember The Maine"] = [rememberTheMaineOG]
+        cocktailDict["Rob Roy"] = [robRoy]
  
         for cocktails in cocktailDict {
             guestCocktails.append(CocktailListCocktail(cocktailName: cocktails.key, cocktailVariations: cocktails.value))
@@ -117,6 +122,7 @@ final class CocktailListViewModel: ObservableObject {
                                                                      "Grasshopper":[grasshopper, grasshopperWnG],
                                                                      "Hanky Panky":[hankyPanky, hankyPankyWnG],
                                                                      "Harvey Wallbanger": [harveyWallbanger, harveyWallbangerWnG],
+                                                                     "Hemingway Daiquiri": [hemingwayDaiquiri, papaDoble],
                                                                      "Honeymoon Cocktail": [honeymoonCocktail1st, honeymoonCocktailEmbury, honeymoonCocktailWnG],
                                                                      "Holland House": [hollandHouseKappeler, hollandHouseCocktail, hollandHouseCocktailWnG],
                                                                      "Hot Toddy": [hotBrandyToddy, hotToddyWnG, morgenthalersToddy],
@@ -149,11 +155,17 @@ final class CocktailListViewModel: ObservableObject {
                                                                      "Oaxaca Old Fashioned": [oaxacaOldFashioned, oaxacaOldFashionedWnG],
                                                                      "Old Cuban": [oldCuban, oldCubanWnG],
                                                                      "Old Pal" : [oldPal, oldPalWnG],
+                                                                     "Pain Killer": [painKiller, painKillerWnG],
                                                                      "Paloma": [paloma],
+                                                                     "Pimms Cup": [pimmsCup],
+                                                                     "Pink Lady": [pinkLady],
                                                                      "Pisco Sour": [piscoSour],
-                                                                     "Queens Park Swizzle": [queensParkSwizzle],
+                                                                     "Prince Edward": [princeEdward],
+                                                                     "Queens Park Swizzle": [queensParkSwizzle, queensParkSwizzleWnG],
                                                                      "Ramos Gin Fizz": [ramosGinFizz],
-                                                                     "Rob Roy": [robRoy],
+                                                                     "Remember The Maine": [rememberTheMaineOG, rememberTheMaineWnG],
+                                                                     "Rusty Nail": [RustyNailWnG],
+                                                                     "Rob Roy": [robRoy, robRoyWnG],
                                                                      "Saturn": [saturn],
                                                                      "Sazerac": [sazerac],
                                                                      "Sidecar": [sidecar],
@@ -200,7 +212,7 @@ final class CocktailListViewModel: ObservableObject {
                                                           "Ultima Palabra": [ultimaPalabra],
                                                           "White Negroni": [whiteNegroni],
                                                           "Paper Plane": [paperPlane],
-                                                          "Penicillin": [penicillin] ]
+                                                          "Penicillin": [penicillin, penicillinWnG] ]
 
         
         let allCocktails = classicCocktailsForBartenders.merging(deathAndCoCocktails) { (_, new) in new }.merging(wNgModernCocktails) { (_, new) in new }.merging(miscModernCocktails) { (_, new) in new }
@@ -216,8 +228,12 @@ final class CocktailListViewModel: ObservableObject {
     func getRandomCocktailView(for menuMode: Bool) -> some View {
         if menuMode {
             SearchGuestRecipeView(viewModel: CocktailMenuViewModel(cocktail: randomCocktail))
+             
         } else {
             SearchBartenderRecipeView(viewModel: CocktailMenuViewModel(cocktail: randomCocktail))
+             
+                
+            
         }
     }
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-var cableCarWnG = Cocktail(cocktailName: "Cable Car(W&G)",
+var cableCarWnG = Cocktail(cocktailName: "Cable Car(W&G Version)",
                            glasswareType: .cinnamonSugarRim,
                            garnish: [.noGarnish],
                            author: williamsAndGraham,

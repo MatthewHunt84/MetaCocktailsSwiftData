@@ -62,6 +62,7 @@ enum Syrup: String, Codable, CaseIterable {
     case agaveSyrup              = "Agave Syrup"
     case agaveNectar             = "Agave Nectar"
     case cinnamonSyrup           = "Cinnamon Syrup"
+    case cocoLopez               = "Coco Lopez"
     case cucumberSyrup           = "Cucumber Syrup"
     case demSyrupOneToOne        = "Demerara Syrup"
     case gingerSyrup             = "Ginger Syrup"
@@ -119,6 +120,8 @@ enum Syrup: String, Codable, CaseIterable {
             Tags(flavors: [.ginger], nA: [NAIngredients(.syrups(self))])
         case .agaveNectar:
             Tags(flavors: [.agave], nA: [NAIngredients(.syrups(self))])
+        case .cocoLopez:
+            Tags(flavors: [.coconut], nA: [NAIngredients(.syrups(self))])
         }
     }
 }
@@ -148,6 +151,7 @@ enum Fruit: String, Codable, CaseIterable {
     case cucumberSlices       = "Cucumber Slice(s)"
     case grapefruitPeel       = "Grapefruit Peel"
     case raspberries          = "Raspberries"
+    case seasonalBerries      = "Seasonal Berries"
     case pineapple            = "Pineapple"
     
     var nAComponent: CocktailComponent {
@@ -165,6 +169,8 @@ enum Fruit: String, Codable, CaseIterable {
             Tags(flavors: [.pineapple], profiles: [.fruity], nA: [NAIngredients(.fruit(self))])
         case .cucumberSlices:
             Tags(flavors: [.cucumber], nA: [NAIngredients(.fruit(self))])
+        case .seasonalBerries:
+            Tags(profiles: [.fruity], nA: [NAIngredients(.fruit(self))])
         }
     }
 }

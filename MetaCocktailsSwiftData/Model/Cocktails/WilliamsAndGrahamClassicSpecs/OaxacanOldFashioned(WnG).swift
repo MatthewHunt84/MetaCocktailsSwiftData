@@ -7,7 +7,7 @@
 
 import Foundation
 
-var oaxacaOldFashionedWnG = Cocktail(cocktailName: "Oaxaca Old Fashioned(W&G)",
+var oaxacaOldFashionedWnG = Cocktail(cocktailName: "Oaxaca Old Fashioned(W&G Version)",
                                      glasswareType: .doubleOld,
                                      garnish: [.orangePeel],
                                      ice: .bigRock,
