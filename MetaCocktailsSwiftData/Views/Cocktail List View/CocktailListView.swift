@@ -11,124 +11,122 @@ struct CocktailListView: View {
     @EnvironmentObject var criteria: SearchCriteriaViewModel
     @StateObject var viewModel = CocktailListViewModel()
     //@Environment(\.modelContext) private var modelContext
-    @State private var randomCocktailKey = UUID()
+
     
     
     var body: some View {
         
-            NavigationStack{
-                VStack {
-                    HStack {
-                        Text("Cocktails")
-                            .font(.largeTitle).bold()
-                            .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
-                        Spacer()
-
-                        Button(action:  { viewModel.isShowingRandomCocktailView.toggle()   }, label: {
-                            Image("dice")
-                                .resizable()
-                                .frame(width: 40, height: 40, alignment: .bottom)
-                                .offset(CGSize(width: 0, height: 5.0))
-                        }).sheet(isPresented: $viewModel.isShowingRandomCocktailView, content: {
-                            ZStack {
-                                Color.black.ignoresSafeArea(.all)
-                                if criteria.menuMode {
-                                    SearchGuestRecipeView(viewModel: CocktailMenuViewModel(cocktail: CocktailListViewModel.fetchRandomCocktail()))
-                                } else {
-                                    SearchBartenderRecipeView(viewModel: CocktailMenuViewModel(cocktail: CocktailListViewModel.fetchRandomCocktail()))
-                                }
-                                
-                            }
-                        })
-                      
-   
-                        Spacer()
-                        Menu("", systemImage: "gearshape") {
-                            Button("Bartender Mode") {
-                                criteria.menuMode = false
-                            }
-                            Button("Guest Mode") {
-                                criteria.menuMode = true
-                            }
-                        }
-                        .offset(CGSize(width: -10.0, height: 0))
-                        
-                    }
-    
+        NavigationStack{
+            VStack {
+                HStack {
+                    Text("Cocktails")
+                        .font(.largeTitle).bold()
+                        .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
+                    Spacer()
                     
-                    GeometryReader { listGeo in
-                        
-                        ScrollView {
-                            ScrollViewReader { value in
-                                HStack {
-                                    List{
-                                        if criteria.menuMode{
-                                            ForEach(Utility.alphabet, id: \.self) { letter in
-                                                Section{
-                                                    ForEach(viewModel.guestViewCocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.cocktailName) { item in
-                                                        NavigationLink {
-                                                            GuestCocktailListView(cocktails: item.cocktailVariations, cocktailName: item.cocktailName)
-                                                        } label: {
-                                                            Text(item.cocktailName)
-                                                            if item.cocktailVariations.count > 1 {
-                                                                Text("(\(item.cocktailVariations.count))")
-                                                            }
+                    NavigationLink {
+                        if criteria.menuMode {
+                            SearchGuestRecipeView(viewModel: CocktailMenuViewModel(cocktail: viewModel.randomCocktail))
+                        } else {
+                            SearchBartenderRecipeView(viewModel: CocktailMenuViewModel(cocktail: viewModel.randomCocktail))
+                        }
+                    } label: {
+                        Image("dice")
+                            .resizable()
+                            .frame(width: 40, height: 40, alignment: .bottom)
+                            .offset(CGSize(width: 0, height: 5.0))
+                    }
+                    
+                    Spacer()
+                    Menu("", systemImage: "gearshape") {
+                        Button("Bartender Mode") {
+                            criteria.menuMode = false
+                        }
+                        Button("Guest Mode") {
+                            criteria.menuMode = true
+                        }
+                    }
+                    .offset(CGSize(width: -10.0, height: 0))
+                    
+                }
+                
+                
+                GeometryReader { listGeo in
+                    
+                    ScrollView {
+                        ScrollViewReader { value in
+                            HStack {
+                                List{
+                                    if criteria.menuMode{
+                                        ForEach(Utility.alphabet, id: \.self) { letter in
+                                            Section{
+                                                ForEach(viewModel.guestViewCocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.cocktailName) { item in
+                                                    NavigationLink {
+                                                        GuestCocktailListView(cocktails: item.cocktailVariations, cocktailName: item.cocktailName)
+                                                    } label: {
+                                                        Text(item.cocktailName)
+                                                        if item.cocktailVariations.count > 1 {
+                                                            Text("(\(item.cocktailVariations.count))")
                                                         }
                                                     }
-                                                } header: {
-                                                    Text("\(letter)")
-                                                        .fontWeight(.bold)
-                                                        .font(.title)
-                                                }.id(letter)
-                                            }
-                                        } else {
-                                            ForEach(Utility.alphabet, id: \.self) { letter in
-                                                Section{
-                                                    ForEach(viewModel.bartenderViewCocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.cocktailName) { item in
-                                                        NavigationLink {
-                                                            BartenderCocktailListView(cocktails: item.cocktailVariations, cocktailName: item.cocktailName)
-                                                            
-                                                        } label: {
-                                                            Text(item.cocktailName)
-                                                            if item.cocktailVariations.count > 1 {
-                                                                Text("(\(item.cocktailVariations.count))")
-                                                            }
+                                                }
+                                            } header: {
+                                                Text("\(letter)")
+                                                    .fontWeight(.bold)
+                                                    .font(.title)
+                                            }.id(letter)
+                                        }
+                                    } else {
+                                        ForEach(Utility.alphabet, id: \.self) { letter in
+                                            Section{
+                                                ForEach(viewModel.bartenderViewCocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.cocktailName) { item in
+                                                    NavigationLink {
+                                                        BartenderCocktailListView(cocktails: item.cocktailVariations, cocktailName: item.cocktailName)
+                                                        
+                                                    } label: {
+                                                        Text(item.cocktailName)
+                                                        if item.cocktailVariations.count > 1 {
+                                                            Text("(\(item.cocktailVariations.count))")
                                                         }
                                                     }
-                                                } header: {
-                                                    Text("\(letter)")
-                                                        .fontWeight(.bold)
-                                                        .font(.title)
-                                                }.id(letter)
-                                            }
+                                                }
+                                            } header: {
+                                                Text("\(letter)")
+                                                    .fontWeight(.bold)
+                                                    .font(.title)
+                                            }.id(letter)
                                         }
-                                        }
-                                        .listStyle(.plain)
-                                        .frame(width: listGeo.size.width * 0.9, height: listGeo.size.height)
-                                        VStack {
-                                            ForEach(0..<Utility.alphabet.count, id: \.self) { i in
-                                                Button(action: {
-                                                    withAnimation {
-                                                        value.scrollTo(Utility.alphabet[i], anchor: .top)
-                                                    }
-                                                }, label: {
-                                                    Text("\(Utility.alphabet[i])")
-                                                        .font(.headline).bold()
-                                                })
-                                                .buttonStyle(ScaleButtonStyle())
-                                            }
-                                        }
-                                        .frame(width: listGeo.size.width * 0.1, height: listGeo.size.height)
-                                        .offset(x: -4, y: 5)
                                     }
                                 }
+                                .listStyle(.plain)
+                                .frame(width: listGeo.size.width * 0.9, height: listGeo.size.height)
+                                VStack {
+                                    ForEach(0..<Utility.alphabet.count, id: \.self) { i in
+                                        Button(action: {
+                                            withAnimation {
+                                                value.scrollTo(Utility.alphabet[i], anchor: .top)
+                                            }
+                                        }, label: {
+                                            Text("\(Utility.alphabet[i])")
+                                                .font(.headline).bold()
+                                        })
+                                        .buttonStyle(ScaleButtonStyle())
+                                    }
+                                }
+                                .frame(width: listGeo.size.width * 0.1, height: listGeo.size.height)
+                                .offset(x: -4, y: 5)
                             }
                         }
-                
                     }
                 }
+                
+            }
+            .task {
+                viewModel.randomCocktail = viewModel.fetchRandomCocktail()
+            }
         }
-        
+    }
+    
     
 }
 

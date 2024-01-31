@@ -18,8 +18,7 @@ final class CocktailListViewModel: ObservableObject {
     @Published var isShowingRandomCocktailView = false
     @Published var bartenderViewCocktails: [CocktailListCocktail] = getBartenderViewCocktails()
     @Published var guestViewCocktails: [CocktailListCocktail] = getGuestViewCocktails()
-    @Published var randomCocktail = fetchRandomCocktail()
-   
+    @Published var randomCocktail = oldFashioned
    
     static func getGuestViewCocktails() -> [CocktailListCocktail] {
         var guestCocktails: [CocktailListCocktail] = []
@@ -209,9 +208,7 @@ final class CocktailListViewModel: ObservableObject {
         return allCocktails
     }
     
-   static func fetchRandomCocktail() -> Cocktail {
-       
-        
+   func fetchRandomCocktail() -> Cocktail {
         return CocktailListViewModel.getGuestViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName}).randomElement()!
     }
 
