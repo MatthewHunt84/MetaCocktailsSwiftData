@@ -56,6 +56,7 @@ final class CocktailListViewModel: ObservableObject {
         cocktailDict["Sazerac"] = [sazerac]
         cocktailDict["Sidecar"] = [sidecar]
         cocktailDict["Singapore Sling"] = [singaporSling]
+        cocktailDict["Ultima Palabra"] = [ultimaPalabra]
  
         for cocktails in cocktailDict {
             guestCocktails.append(CocktailListCocktail(cocktailName: cocktails.key, cocktailVariations: cocktails.value))
@@ -77,6 +78,7 @@ final class CocktailListViewModel: ObservableObject {
         let classicCocktailsForBartenders: [String: [Cocktail]] =  [ "Adonis": [adonis],
                                                                      "Air Mail": [airMail, airMailWnG],
                                                                      "Alaska": [alaska, alaskaWnG],
+                                                                     "Algonquin":[algonquinWnG],
                                                                      "Amaretto Sour": [amarettoSour, amarettoSourWnG],
                                                                      "Americano": [americano, americanoWnG],
                                                                      "Aperol Spritz": [aperolSpritz],
@@ -178,7 +180,9 @@ final class CocktailListViewModel: ObservableObject {
                                                                      "Singapore Sling": [singaporSling, singaporSlingWnG],
                                                                      "Sloe Gin Fizz" : [sloeGinFizz, sloeGinFizzWnG],
                                                                      "Stinger": [stingerWnG],
-                                                                     "Ti Punch": [tiPunch],
+                                                                     "Ti Punch": [tiPunch, tiPunchWnG],
+                                                                     "Tipperary": [tipperary, tipperaryDR, tipperaryWnG],
+                                                                     "Tom Collins": [tomCollins, tomCollinsWnG],
                                                                      "20th Century Coctkail": [twentiethCenturyCocktail],
                                                                      "Vieux Carre" : [vieuxCarre],
                                                                      "Whiskey Sour": [whiskeySour]]
@@ -218,7 +222,7 @@ final class CocktailListViewModel: ObservableObject {
                                                           "Kentucky Maid": [kentuckyMaid, kentuckyMaidWnG],
                                                           "Naked and Famous": [nakedAndFamous],
                                                           "Trinidad Sour": [trinidadSour],
-                                                          "Ultima Palabra": [ultimaPalabra],
+                                                          "Ultima Palabra": [ultimaPalabra, ultimaPalabraWnG, ultimaPalabraLondon],
                                                           "White Negroni": [whiteNegroni],
                                                           "Paper Plane": [paperPlane],
                                                           "Penicillin": [penicillin, penicillinWnG] ]

@@ -211,6 +211,7 @@ enum Rum: String, Codable, CaseIterable {
     case cachaca                      = "Cachaca"
     case captainMorgan                = "Captain Morgan"
     case cruzanBlackstrap             = "Cruzan Blackstrap Rum"
+    case clementBleue                 = "Clement Rhum Blanc Agricole"
     case goslingsBlackSeal            = "Goslings Black Seal"
     case plantation3Star              = "Plantation 3 Star Rum"
     case plantationBarbados           = "Plantation Barbados 5 Year Rum"
@@ -274,6 +275,8 @@ enum Rum: String, Codable, CaseIterable {
             Tags(profiles: [.funky], booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumJamaicanAged)),])
         case .pussersRum:
             Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
+        case .clementBleue:
+            Tags(profiles: [.funky], booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
         }
     }
     
@@ -320,6 +323,7 @@ enum Whiskey: String, Codable, CaseIterable {
     case balvinieDW            = "Balvenie DoubleWood 12-year"
     case bourbon120            = "Bourbon (120 proof)"
     case bourbonAny            = "Bourbon"
+    case bushmills             = "Bushmills Irish Whiskey"
     case bushmills12           = "Bushmills 12 year Single Malt"
     case compassBoxOrchard      = "Compass Box Orchard House"
     case elijahCraigSmallBatch = "Elijah Craig Small Batch Bourbon"
@@ -392,6 +396,8 @@ enum Whiskey: String, Codable, CaseIterable {
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.scotchAny))])
         case .balvinieDW:
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.scotchAny))])
+        case .bushmills:
+            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.irishWhiskeyAny))])
         }
     }
     

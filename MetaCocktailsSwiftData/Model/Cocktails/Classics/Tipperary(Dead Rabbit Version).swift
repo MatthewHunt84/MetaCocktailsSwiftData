@@ -1,0 +1,24 @@
+//
+//  Tipperary(Dead Rabbit Version).swift
+//  MetaCocktailsSwiftData
+//
+//  Created by James Menkal on 2/1/24.
+//
+
+import Foundation
+
+var tipperaryDR = Cocktail(cocktailName: "Tipperary(Dead Rabbit Version)",
+                           glasswareType: .stemmedGlassware,
+                           garnish: [.orangePeel],
+                           author: Author(person: "Gary McGarry", place: "The Dead Rabbit, New York", year: "2020"),
+                           spec: tipperarySpecDR,
+                           tags: tipperaryTagsDR)
+
+var tipperarySpecDR     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 2),
+                            CocktailIngredient(.liqueurs(.greenChartreuse), value: 0.5),
+                            CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),
+                            CocktailIngredient(.whiskies(.irishWhiskeyAny), value: 1.5)]
+
+var tipperaryTagsDR     = Tags(profiles: [.spiritForward, .bittersweet, .sophisticated, .herbal],
+                               styles: [.manhattan, .stirred])
+
