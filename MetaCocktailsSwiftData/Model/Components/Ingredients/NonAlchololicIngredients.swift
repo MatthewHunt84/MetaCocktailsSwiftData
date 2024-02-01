@@ -150,6 +150,8 @@ enum Fruit: String, Codable, CaseIterable {
     case blackBerry           = "Blackberries"
     case cucumberSlices       = "Cucumber Slice(s)"
     case grapefruitPeel       = "Grapefruit Peel"
+    case lemonRibbon          = "long lemon ribbon"
+    case orangeMoons          = "Orange Moons"
     case raspberries          = "Raspberries"
     case seasonalBerries      = "Seasonal Berries"
     case pineapple            = "Pineapple"
@@ -171,6 +173,10 @@ enum Fruit: String, Codable, CaseIterable {
             Tags(flavors: [.cucumber], nA: [NAIngredients(.fruit(self))])
         case .seasonalBerries:
             Tags(profiles: [.fruity], nA: [NAIngredients(.fruit(self))])
+        case .orangeMoons:
+            Tags(profiles: [.fruity], nA: [NAIngredients(.fruit(self))])
+        case .lemonRibbon:
+            Tags(flavors: [.lemon], nA: [NAIngredients(.fruit(self))])
         }
     }
 }

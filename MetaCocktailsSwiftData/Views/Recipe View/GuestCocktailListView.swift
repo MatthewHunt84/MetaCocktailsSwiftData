@@ -10,11 +10,20 @@ import SwiftUI
 struct GuestCocktailListView: View {
     @State var cocktails: [Cocktail] = []
     @State var cocktailName: String = ""
-    
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         
         VStack{
+            HStack{
+                Button{
+                    dismiss()
+                } label: {
+                    Image(systemName: "chevron.backward")
+                    Text("Back")
+                }
+                Spacer()
+            }
             TabView {
                 ForEach(cocktails, id: \.self) { cocktail in
                     VStack {

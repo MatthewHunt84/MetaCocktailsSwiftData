@@ -30,7 +30,7 @@ enum Glassware: String, Codable {
     case singleOld           = "Frozen Single Old Fashioned"
     case snifter             = "Snifter (Flip Glass)"
     case stemmedGlassware    = "Stemmed"
-    case sugarRimStemmed     = "Stemmed with a sugar rim"
+    case sugarRimStemmed     = "Stemmed with a half sugar rim"
     case tikiMug             = "Tiki Mug"
     case toddyGlass          = "Toddy Glass"
     case wineGlass           = "Large Wine Glass"
