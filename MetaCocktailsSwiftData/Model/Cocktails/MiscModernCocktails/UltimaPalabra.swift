@@ -19,5 +19,5 @@ var ultimaPalabraSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
                           CocktailIngredient(.liqueurs(.greenChartreuse), value: 0.75)]
 
 var ultimaPalabraTags = Tags(profiles: [.punchy, .herbal, .citrusy],
-                             styles: [.sour, .shaken])
+                             styles: [.daisy, .shaken, .sour])
                             

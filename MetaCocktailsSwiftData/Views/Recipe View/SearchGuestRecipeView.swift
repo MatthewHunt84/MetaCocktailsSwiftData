@@ -89,3 +89,42 @@ struct IngredientView: View {
         }
     }
 }
+struct CocktailProfileView: View {
+    
+    
+    
+    var profileString = ""
+    let cocktail: Cocktail
+    
+    init(cocktail: Cocktail) {
+        self.cocktail = cocktail
+        
+        let ingredients = cocktail.spec
+        
+        
+        
+        if let profiles = cocktail.compiledTags.profiles {
+            for profile in profiles {
+                self.profileString += " \(profile.rawValue),"
+            }
+        }
+        if profileString != "" {
+            self.profileString.removeLast()
+        }
+    }
+    var body: some View {
+        VStack {
+            Text("Profile:")
+                .dynamicTypeSize(.xLarge).bold()
+            Text("\(profileString)")
+                .multilineTextAlignment(.center)
+                .dynamicTypeSize(.xLarge)
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
+            
+        }
+    }
+    
+    
+    
+    
+}

@@ -12,7 +12,7 @@ enum Style: String, Codable, CaseIterable {
     case shaken        = "Shaken"
     case stirred       = "Stirred"
     
-    
+    case blended       = "Blended"
     case built         = "Built"
     case collins       = "Collins"
     case fizz          = "Fizz"
@@ -24,6 +24,7 @@ enum Style: String, Codable, CaseIterable {
     case negroni       = "Negroni"
     
     case sour          = "Sour"
+    case daisy         = "Daisy"
     case spritz        = "Spritz"
     case swizzle       = "Swizzle"
     case tiki          = "Tiki"

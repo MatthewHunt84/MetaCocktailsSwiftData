@@ -44,7 +44,7 @@ struct BartenderCocktailListView: View {
                                     .minimumScaleFactor(0.2)
                                     .lineLimit(2)
                                     .padding(10)
-                                
+                                CocktailProfileView(cocktail: cocktail.wrappedValue)
                                 
                                 VStack{
                                     Text("Glassware:")
@@ -82,13 +82,19 @@ struct BartenderCocktailListView: View {
                                                 .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
                                             
                                         }
-                                        if stirShakeBuild.contains(.shaken) {
-                                            Text("Shake")
+                                        if stirShakeBuild.contains(.shaken) && stirShakeBuild.contains(.blended) {
+                                            Text("Shake or Blend")
                                                 .multilineTextAlignment(.center)
                                                 .dynamicTypeSize(.large).bold()
                                                 .minimumScaleFactor(0.02)
                                                 .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
                                             
+                                        } else if stirShakeBuild.contains(.shaken) && !stirShakeBuild.contains(.blended) {
+                                            Text("Shake")
+                                                .multilineTextAlignment(.center)
+                                                .dynamicTypeSize(.large).bold()
+                                                .minimumScaleFactor(0.02)
+                                                .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
                                         }
                                         if stirShakeBuild.contains(.stirred) {
                                             Text("Stir")
@@ -155,6 +161,10 @@ struct BartenderCocktailListView: View {
                                     
                                     .buttonStyle(whiteButton())
                                 }
+                                Rectangle()
+                                    .fill(.black)
+                                    .frame(width: 60, height: 40, alignment: .center)
+                                    
                             }
                             .frame(width: geo.size.width)
                             .frame(minHeight: geo.size.height)

@@ -57,7 +57,7 @@ struct CocktailListView: View {
                             HStack {
                                 List{
                                     if criteria.menuMode{
-                                        ForEach(Utility.alphabet, id: \.self) { letter in
+                                        ForEach(criteria.alphabet, id: \.self) { letter in
                                             Section{
                                                 ForEach(viewModel.guestViewCocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.cocktailName) { item in
                                                     NavigationLink {
@@ -77,7 +77,7 @@ struct CocktailListView: View {
                                             }.id(letter)
                                         }
                                     } else {
-                                        ForEach(Utility.alphabet, id: \.self) { letter in
+                                        ForEach(criteria.alphabet, id: \.self) { letter in
                                             Section{
                                                 ForEach(viewModel.bartenderViewCocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.cocktailName) { item in
                                                     NavigationLink {
@@ -101,13 +101,13 @@ struct CocktailListView: View {
                                 .listStyle(.plain)
                                 .frame(width: listGeo.size.width * 0.9, height: listGeo.size.height)
                                 VStack {
-                                    ForEach(0..<Utility.alphabet.count, id: \.self) { i in
+                                    ForEach(0..<criteria.alphabet.count, id: \.self) { i in
                                         Button(action: {
                                             withAnimation {
-                                                value.scrollTo(Utility.alphabet[i], anchor: .top)
+                                                value.scrollTo(criteria.alphabet[i], anchor: .top)
                                             }
                                         }, label: {
-                                            Text("\(Utility.alphabet[i])")
+                                            Text("\(criteria.alphabet[i])")
                                                 .font(.headline).bold()
                                         })
                                         .buttonStyle(ScaleButtonStyle())

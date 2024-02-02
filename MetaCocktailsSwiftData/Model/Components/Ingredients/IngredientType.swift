@@ -42,6 +42,7 @@ enum IngredientType: Codable {
         cocktailComponentArrayForNA.append(contentsOf: OtherNA.allCases.map({ $0.nAComponent}))
         
         
+        
         return cocktailComponentArrayForNA
     }
     
@@ -203,6 +204,7 @@ enum MeasurementUnit: String, Codable {
     case bittersDeco        = "Design on top with"
     case dash               = "dash"
     case dashes             = "dashes"
+    case floatedDashes      = "Floated dashes of"
     case disc               = "disc, with flesh"
     case drops              = "drops"
     case float              = "Float"
@@ -223,6 +225,7 @@ enum MeasurementUnit: String, Codable {
     case sliceOf            = "Slice of"
     case splash             = "Splash of"
     case sprays             = "Sprays in the glass of"
+    case spritzOnTop        = "Spritz over the finished cocktail with"
     case teaspoon           = "Teaspoon"
     case tablespoon         = "Tablespoon"
     case teaspoons          = "Teaspoons"

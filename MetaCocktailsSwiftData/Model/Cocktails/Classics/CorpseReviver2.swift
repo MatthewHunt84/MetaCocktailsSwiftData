@@ -22,7 +22,7 @@ var corpseReviver2Spec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                            CocktailIngredient(.otherAlcohol(.absinthe), value: 1, unit: .dash)]
 
 var corpseReviver2Tags = Tags(profiles: [.citrusy, .tart, .light, .restorative],
-                              styles: [.sour, .shaken])
+                              styles: [.daisy, .shaken, .sour])
 
 var kinaLilletExplanation = Build(instructions: [Instruction(step: 1, method: "The original cocktail called for Kina Lillet which is a quinine bitter that stopped production in 1985. The closest thing we can find to it is Cocchi Americano, so that's why we're using it here. Lillet Blanc is nothing like Kina Lillet.")])
 

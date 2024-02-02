@@ -21,5 +21,5 @@ var ultimaPalabraSpecWnG  = [CocktailIngredient(.juices(.lime), value: 0.75),
                              CocktailIngredient(.agaves(.mezcalDelMagueyVida), value: 1)]
 
 var ultimaPalabraTagsWnG = Tags(profiles: [.punchy, .herbal, .citrusy],
-                                styles: [.sour, .shaken])
+                                styles: [.sour, .daisy, .shaken])
 

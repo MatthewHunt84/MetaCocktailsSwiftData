@@ -19,7 +19,8 @@ var hollandHouseCocktailSpec  =  [CocktailIngredient(.juices(.lemon), value: 0.2
                                   CocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 1),
                                   CocktailIngredient(.fruit(.pineapple), value: 1, unit: .sliceOf),
                                   CocktailIngredient(.gins(.ginLondonDry), value: 2)]
+
 var hollandHouseCocktailTags = Tags( profiles: [.fruity, .citrusy, .dry],
-                                     styles: [.sour, .shaken])
+                                     styles: [.daisy, .shaken, .sour])
 
 ///

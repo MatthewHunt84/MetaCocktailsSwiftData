@@ -24,6 +24,7 @@ class CocktailComponent: Identifiable, ObservableObject, Hashable{
     var isFlavor: Bool = false
     var isProfile: Bool = false
     var isStyle: Bool = false
+    var is86d: Bool = false
     var preferenceType: PreferenceType
     var spiritCategory: IngredientType?
     var nACategory: IngredientType?
@@ -31,12 +32,13 @@ class CocktailComponent: Identifiable, ObservableObject, Hashable{
     var spiritCategoryName: String = ""
     
     
-    init(name: String, isFlavor: Bool = false, isProfile: Bool = false, isStyle: Bool = false, isSpirit: Bool = false, isNA: Bool = false, matchesCurrentSearch: Bool = true) {
+    init(name: String, isFlavor: Bool = false, isProfile: Bool = false, isStyle: Bool = false, is86d: Bool = false, isSpirit: Bool = false, isNA: Bool = false, matchesCurrentSearch: Bool = true) {
         self.name = name
         self.isSpirit = isSpirit
         self.isNA = isNA
         self.isFlavor = isFlavor
         self.isStyle = isStyle
+        self.is86d = is86d
         self.isProfile = isProfile
         self.matchesCurrentSearch = matchesCurrentSearch
         

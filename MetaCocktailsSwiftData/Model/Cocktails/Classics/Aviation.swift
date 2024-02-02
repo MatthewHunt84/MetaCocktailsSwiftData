@@ -21,4 +21,4 @@ var aviationSpec  = [CocktailIngredient(.juices(.lemon), value: 0.5),
 
 
 var aviationTags   = Tags(profiles: [.citrusy, .tart, .light],
-                          styles: [.shaken, .sour])
+                          styles: [.shaken,.sour, .daisy])

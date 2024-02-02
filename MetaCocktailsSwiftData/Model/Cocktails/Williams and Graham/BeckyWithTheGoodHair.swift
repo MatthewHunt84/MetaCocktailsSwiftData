@@ -25,7 +25,7 @@ var beckyWithTheGoodHairSpec  = [CocktailIngredient(.brandies(.cognacVSOP), valu
                                  CocktailIngredient(.otherNonAlc(.eggWhole), value: 1, unit: .whole)]
 
 var beckyWithTheGoodHairTags = Tags(flavors: [.nutmeg],
-                                    profiles: [.rich, .silky],
+                                    profiles: [.rich, .silky, .savory],
                                     styles: [.flip, .shaken])
 
 var beckyWithTheGoodHairBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients into a tin a dry shake to emulsify"),

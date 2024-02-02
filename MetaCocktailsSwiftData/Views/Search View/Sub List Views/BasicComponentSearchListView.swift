@@ -23,7 +23,7 @@ struct BasicComponentSearchListView: View {
                     ScrollViewReader { value in
                         HStack{
                             List{
-                                ForEach(Utility.alphabet, id: \.self) { letter in
+                                ForEach(viewModel.alphabet, id: \.self) { letter in
                                     Section {
                                         if isShowingFlavors {
                                             ForEach( $viewModel.cocktailComponents.filter({$0.name.wrappedValue.hasPrefix(letter)}), id: \.self.id) { component in
@@ -67,13 +67,13 @@ struct BasicComponentSearchListView: View {
                             
                             VStack {
                             
-                                    ForEach(0..<Utility.alphabet.count, id: \.self) { i in
+                                    ForEach(0..<viewModel.alphabet.count, id: \.self) { i in
                                         Button(action: {
                                             withAnimation {
-                                                value.scrollTo(Utility.alphabet[i], anchor: .top)
+                                                value.scrollTo(viewModel.alphabet[i], anchor: .top)
                                             }
                                         }, label: {
-                                            Text("\(Utility.alphabet[i])")
+                                            Text("\(viewModel.alphabet[i])")
                                                 .font(.subheadline).bold()
                                                 
                                             
