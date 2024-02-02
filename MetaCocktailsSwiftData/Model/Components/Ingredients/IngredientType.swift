@@ -42,6 +42,7 @@ enum IngredientType: Codable {
         cocktailComponentArrayForNA.append(contentsOf: OtherNA.allCases.map({ $0.nAComponent}))
         
         
+        
         return cocktailComponentArrayForNA
     }
     

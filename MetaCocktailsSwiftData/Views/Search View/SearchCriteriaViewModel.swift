@@ -20,7 +20,7 @@ final class SearchCriteriaViewModel: ObservableObject {
     @Published var menuMode: Bool = false 
     @Published var boozeCategories = {Array(Set(generatedBoozeCocktailComponents.map({$0.spiritCategoryName}))).sorted()}()
     @Published var nACategories = {Array(Set(generatedNACocktailComponents.map({$0.nACategoryName}))).sorted()}()
-   
+    @Published var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     
     static var generatedBoozeCocktailComponents: [CocktailComponent] = {
         return IngredientType.getBoozeComponents()
