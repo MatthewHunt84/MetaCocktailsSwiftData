@@ -17,5 +17,6 @@ var hollandHouseKappeler = Cocktail(cocktailName: "Holland House (Kappeler's)",
 var hollandHouseKappelerSpec  =  [CocktailIngredient(.bitters(.peychauds), value: 2, unit: .dashes),
                                   CocktailIngredient(.liqueurs(.orangeCuracao), value: 0.5),
                                   CocktailIngredient(.whiskies(.straightRye), value: 2)]
+
 var hollandHouseKappelerTags = Tags( profiles: [.fruity, .spiritForward],
                                      styles: [.oldFashioned, .stirred])

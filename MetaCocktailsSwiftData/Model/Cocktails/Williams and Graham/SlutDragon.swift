@@ -8,7 +8,7 @@
 import Foundation
 
 
-var slutDragon = Cocktail(cocktailName: "Slut Dragon",
+var slutDragon = Cocktail(cocktailName: "Slut Dragon(AKA: Soul Bond)",
                          imageAsset: nil,
                          glasswareType: .doubleOldCelerySalt,
                          garnish: [.celeryTop],

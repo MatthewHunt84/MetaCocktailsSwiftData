@@ -19,6 +19,7 @@ final class CocktailListViewModel: ObservableObject {
     @Published var bartenderViewCocktails: [CocktailListCocktail] = getBartenderViewCocktails()
     @Published var guestViewCocktails: [CocktailListCocktail] = getGuestViewCocktails()
     @Published var randomCocktail = oldFashioned
+    @Published var isShowingAllCocktails: Bool = true
    
     static func getGuestViewCocktails() -> [CocktailListCocktail] {
         var guestCocktails: [CocktailListCocktail] = []
@@ -78,7 +79,7 @@ final class CocktailListViewModel: ObservableObject {
         let classicCocktailsForBartenders: [String: [Cocktail]] =  [ "Adonis": [adonis],
                                                                      "Air Mail": [airMail, airMailWnG],
                                                                      "Alaska": [alaska, alaskaWnG],
-                                                                     "Algonquin":[algonquinWnG],
+                                                                     "Algonquin":[algonquin, algonquinWnG],
                                                                      "Amaretto Sour": [amarettoSour, amarettoSourWnG],
                                                                      "Americano": [americano, americanoWnG],
                                                                      "Aperol Spritz": [aperolSpritz],
@@ -184,38 +185,67 @@ final class CocktailListViewModel: ObservableObject {
                                                                      "Tipperary": [tipperary, tipperaryDR, tipperaryWnG],
                                                                      "Tom Collins": [tomCollins, tomCollinsWnG],
                                                                      "20th Century Coctkail": [twentiethCenturyCocktail],
+                                                                     "Vesper": [vesper, vesperWnG],
                                                                      "Vieux Carre" : [vieuxCarre],
-                                                                     "Whiskey Sour": [whiskeySour]]
+                                                                     "Whiskey Smash": [whiskeySmash],
+                                                                     "Whiskey Sour": [whiskeySour],
+                                                                     "Zombie": [zombie, zombieWnG]]
         
         let deathAndCoCocktails: [String : [Cocktail]] = ["Crop Top": [cropTop],
                                                           "Division Bell": [divisionBell],
                                                           "Final Ward": [finalWard],
                                                           "Gilda": [gilda]]
-       
+        
         let wNgModernCocktails: [String : [Cocktail]] = ["A Flight South of the Border":[aFlightSouthOfTheBorder],
+                                                         "Acquit Your Quest": [acquitYourQuest],
                                                          "Aloe for that Burn": [aloeForThatBurn],
+                                                         "Banh Mi": [banhMi],
                                                          "Becky with the Good Hair": [beckyWithTheGoodHair],
                                                          "Blackberry Sage Smash": [blackberrySageSmash],
+                                                         "Clever Girl": [cleverGirl],
                                                          "Comin' Up Roses": [cominUpRoses],
+                                                         "Davey Crocket's Locker": [daveyCrocketsLocker],
+                                                         "Easy Street" : [easyStreet],
                                                          "El Chichicabra": [elChicicabra],
+                                                         "El Ocho Rosado": [elOchoRosado],
                                                          "Gift Horse": [giftHorse],
                                                          "Great White Buffalo": [greatWhiteBuffalo],
+                                                         "Harvest Moon": [harvestMoon],
                                                          "Heart of Gold": [heartOfGold],
                                                          "Here Be Dragons": [hereBeDragons],
                                                          "Jared Leto's Pretty Face": [jaredLetosPrettyFace],
+                                                         "Jupiter(W&G)": [jupiter],
+                                                         "Kitten with a Whip": [kittenWithAWhip],
                                                          "Machete": [machete],
                                                          "Netflix and Chill": [netflixAndChill],
+                                                         "Northern Duchess": [northernDuchess],
+                                                         "Lavandula Rosa": [lavandulaRosa],
+                                                         "Long Way Down": [longWayDown],
+                                                         "Lord Reyes the VIII ": [lordReyesTheVIII],
+                                                         "Lord Touchingtons Delight": [lordTouchingtonsDelight],
+                                                         "Money Penny": [moneyPenny],
+                                                         "Night Vision": [nightVision],
+                                                         "Northmans Conquest": [northmansConquest],
+                                                         "Peaks of Reykjavic": [peaksOfReykjavic],
                                                          "Peanut Butter Falcon": [peanutButterFalcon],
                                                          "Red Wedding": [redWedding],
                                                          "Reyon Vert": [reyonVert],
+                                                         "Rich Girl" : [richGirl],
                                                          "Second Surise": [secondSunrise],
                                                          "Slut Dragon": [slutDragon],
                                                          "Smoking Monkey": [smokingMonkey],
+                                                         "Something Bitter": [somethingBitter],
                                                          "Sunny Side": [sunnySide],
-                                                         "Spanish Revival": [spanishRevival]]
+                                                         "Spanish Revival": [spanishRevival],
+                                                         "Switchblade Romance": [switchbladeRomance],
+                                                         "The Roastery": [TheRoastery],
+                                                         "The Rural Juror": [theRuralJuror],
+                                                         "What's Your Favorite": [whatsYourFavorite],
+                                                         "Zombie 129": [zombie129]]
         
         let miscModernCocktails: [String : [Cocktail]] = ["Black Manhattan": [blackManhattan], 
                                                           "Cable Car":[cableCar, cableCarWnG],
+                                                          "Casanova Cocktail": [casanovaCocktail],
                                                           "Caucasian":[caucasian],
                                                           "Gold Rush": [goldRush],
                                                           "Greenpoint": [greenpoint, greenpointWnG],

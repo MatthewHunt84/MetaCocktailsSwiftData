@@ -24,5 +24,5 @@ var bloodAndSandSpec  = [CocktailIngredient(.juices(.orange), value: 0.75),
 var bloodAndSandBuild  = Build(instructions: [Instruction(step: 1, method: "Gross")])
 
 var bloodAndSandTags   = Tags(profiles: [.fruity, .sweet],
-                              styles: [.sour, .shaken])
+                              styles: [.daisy, .sour, .shaken])
 

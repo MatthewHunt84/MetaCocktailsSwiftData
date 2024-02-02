@@ -26,5 +26,5 @@ var cosmoSpec  = [CocktailIngredient(.juices(.lime), value: 0.25),
 
 var cosmoTags  = Tags(flavors: [.orange, .cranberry, .lime],
                       profiles: [.fruity, .citrusy, .light],
-                      styles: [.sour, .shaken])
+                      styles: [.daisy, .shaken, .sour])
                      

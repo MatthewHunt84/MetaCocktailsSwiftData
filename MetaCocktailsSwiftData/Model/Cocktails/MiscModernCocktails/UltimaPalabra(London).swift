@@ -22,5 +22,5 @@ var ultimaPalabraLondonSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
                                 CocktailIngredient(.liqueurs(.greenChartreuse), value: 0.75)]
 
 var ultimaPalabraLondonTags = Tags(profiles: [.herbal, .citrusy, .fruity],
-                                   styles: [.sour, .shaken])
+                                   styles: [.daisy, .shaken, .sour])
 

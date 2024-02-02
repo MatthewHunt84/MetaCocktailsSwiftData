@@ -71,6 +71,7 @@ struct Author {
 }
 var harryCraddock = Author(person: AuthorNames.harryCraddock.rawValue, place: AuthorPlaces.savoy.rawValue, year: "1930")
 var williamsAndGraham = Author(place: AuthorPlaces.williamsAndGraham.rawValue, year: "2023")
+var justWnG = Author(place: AuthorPlaces.williamsAndGraham.rawValue)
 var hugoEnsslin = Author(person: AuthorNames.hugoEnsslin.rawValue, place: AuthorPlaces.recipesForMixedDrinks.rawValue, year: "1916")
 var davidEmbury = Author(person: AuthorNames.davidEmbury.rawValue, place: AuthorPlaces.theFineArtOfMixingDrinks.rawValue, year: "1948")
 var jerryThomas = Author(person: AuthorNames.jerryThomas.rawValue, place: AuthorPlaces.howToMixDrinksJT.rawValue, year: "1862")

@@ -27,5 +27,5 @@ let aFlightSouthOfTheBorderSpec: [CocktailIngredient] = [CocktailIngredient(.her
 
 
 let aFlightSouthOfTheBorderTags = Tags(profiles: [.refreshing, .complex, .fruity],
-                                       styles: [.sour, .shaken])
+                                       styles: [.sour, .shaken, .tiki])
 

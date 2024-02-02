@@ -133,6 +133,41 @@
 		4DA567542B6C408B003F6F04 /* TomCollins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA567532B6C408B003F6F04 /* TomCollins.swift */; };
 		4DA567562B6C41C6003F6F04 /* UltimaPalabra(W&G Version).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA567552B6C41C6003F6F04 /* UltimaPalabra(W&G Version).swift */; };
 		4DA567582B6C43CA003F6F04 /* UltimaPalabra(London).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA567572B6C43CA003F6F04 /* UltimaPalabra(London).swift */; };
+		4DA567622B6C6F06003F6F04 /* Vesper(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA567612B6C6F06003F6F04 /* Vesper(W&G).swift */; };
+		4DA567642B6C6F46003F6F04 /* Vesper(OG).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA567632B6C6F46003F6F04 /* Vesper(OG).swift */; };
+		4DA567662B6C6FF3003F6F04 /* WhiskeySmash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA567652B6C6FF3003F6F04 /* WhiskeySmash.swift */; };
+		4DA567682B6C7053003F6F04 /* WhiteLady(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA567672B6C7053003F6F04 /* WhiteLady(W&G).swift */; };
+		4DA5676A2B6C7160003F6F04 /* WhiteLady.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA567692B6C7160003F6F04 /* WhiteLady.swift */; };
+		4DA5676C2B6C763D003F6F04 /* Algonquin(1935).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5676B2B6C763D003F6F04 /* Algonquin(1935).swift */; };
+		4DA5676E2B6C7785003F6F04 /* Zombie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5676D2B6C7785003F6F04 /* Zombie.swift */; };
+		4DA567702B6C7BF5003F6F04 /* Zombie(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5676F2B6C7BF5003F6F04 /* Zombie(W&G).swift */; };
+		4DA567722B6C7FBF003F6F04 /* HarvestMoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA567712B6C7FBF003F6F04 /* HarvestMoon.swift */; };
+		4DA567742B6C827C003F6F04 /* LavandulaRosa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA567732B6C827C003F6F04 /* LavandulaRosa.swift */; };
+		4DA567762B6C8791003F6F04 /* MoneyPenny.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA567752B6C8791003F6F04 /* MoneyPenny.swift */; };
+		4DA567782B6C8AAC003F6F04 /* PeaksOfReykjavik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA567772B6C8AAC003F6F04 /* PeaksOfReykjavik.swift */; };
+		4DA5677A2B6C90E9003F6F04 /* CleverGirl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA567792B6C90E9003F6F04 /* CleverGirl.swift */; };
+		4DA5677C2B6C928F003F6F04 /* EasyStreet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5677B2B6C928F003F6F04 /* EasyStreet.swift */; };
+		4DA5677E2B6C9504003F6F04 /* KittenWithAWhip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5677D2B6C9504003F6F04 /* KittenWithAWhip.swift */; };
+		4DA567802B6C9D74003F6F04 /* NorthernDutchess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5677F2B6C9D74003F6F04 /* NorthernDutchess.swift */; };
+		4DA567822B6CB182003F6F04 /* TheRoastery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA567812B6CB182003F6F04 /* TheRoastery.swift */; };
+		4DA567842B6CB4E4003F6F04 /* El Ocho Rosado.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA567832B6CB4E4003F6F04 /* El Ocho Rosado.swift */; };
+		4DA567862B6CB742003F6F04 /* LordReyesTheVIII.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA567852B6CB742003F6F04 /* LordReyesTheVIII.swift */; };
+		4DA567882B6CB8DB003F6F04 /* LordTouchingtonsDelight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA567872B6CB8DB003F6F04 /* LordTouchingtonsDelight.swift */; };
+		4DA5678A2B6CBC3B003F6F04 /* BanhMi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA567892B6CBC3B003F6F04 /* BanhMi.swift */; };
+		4DA5678C2B6CBFE3003F6F04 /* DaveyCrocketsLocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5678B2B6CBFE3003F6F04 /* DaveyCrocketsLocker.swift */; };
+		4DA5678E2B6CC30B003F6F04 /* LongWayDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5678D2B6CC30B003F6F04 /* LongWayDown.swift */; };
+		4DA567902B6CC716003F6F04 /* TheSeventhSon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5678F2B6CC716003F6F04 /* TheSeventhSon.swift */; };
+		4DA567922B6CC8EC003F6F04 /* Casanova.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA567912B6CC8EC003F6F04 /* Casanova.swift */; };
+		4DA567942B6CCC1F003F6F04 /* NightVision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA567932B6CCC1F003F6F04 /* NightVision.swift */; };
+		4DA567962B6CCD6A003F6F04 /* NorthmansConquest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA567952B6CCD6A003F6F04 /* NorthmansConquest.swift */; };
+		4DA567982B6CCF5F003F6F04 /* RichGirl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA567972B6CCF5F003F6F04 /* RichGirl.swift */; };
+		4DA5679A2B6CD213003F6F04 /* SwitchbladeRomance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA567992B6CD213003F6F04 /* SwitchbladeRomance.swift */; };
+		4DA5679C2B6CD371003F6F04 /* WhatsYourFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5679B2B6CD371003F6F04 /* WhatsYourFavorite.swift */; };
+		4DA5679E2B6CD4B2003F6F04 /* Zombie129.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5679D2B6CD4B2003F6F04 /* Zombie129.swift */; };
+		4DA567A02B6CD994003F6F04 /* AcquitYourQuest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5679F2B6CD994003F6F04 /* AcquitYourQuest.swift */; };
+		4DA567A22B6CDB0A003F6F04 /* Jupiter(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA567A12B6CDB0A003F6F04 /* Jupiter(W&G).swift */; };
+		4DA567A42B6CDC78003F6F04 /* SomethingBitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA567A32B6CDC78003F6F04 /* SomethingBitter.swift */; };
+		4DA567A62B6CDDE2003F6F04 /* TheRuralJuror.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA567A52B6CDDE2003F6F04 /* TheRuralJuror.swift */; };
 		4DB1C0B92B46D4E600943C69 /* CocktailComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB1C0B82B46D4E600943C69 /* CocktailComponent.swift */; };
 		4DB1C0BC2B46D63300943C69 /* CocktailResultListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB1C0BB2B46D63300943C69 /* CocktailResultListView.swift */; };
 		4DB1C0BE2B46D74B00943C69 /* ResultViewSectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB1C0BD2B46D74B00943C69 /* ResultViewSectionData.swift */; };
@@ -418,6 +453,41 @@
 		4DA567532B6C408B003F6F04 /* TomCollins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomCollins.swift; sourceTree = "<group>"; };
 		4DA567552B6C41C6003F6F04 /* UltimaPalabra(W&G Version).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UltimaPalabra(W&G Version).swift"; sourceTree = "<group>"; };
 		4DA567572B6C43CA003F6F04 /* UltimaPalabra(London).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UltimaPalabra(London).swift"; sourceTree = "<group>"; };
+		4DA567612B6C6F06003F6F04 /* Vesper(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vesper(W&G).swift"; sourceTree = "<group>"; };
+		4DA567632B6C6F46003F6F04 /* Vesper(OG).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vesper(OG).swift"; sourceTree = "<group>"; };
+		4DA567652B6C6FF3003F6F04 /* WhiskeySmash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiskeySmash.swift; sourceTree = "<group>"; };
+		4DA567672B6C7053003F6F04 /* WhiteLady(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WhiteLady(W&G).swift"; sourceTree = "<group>"; };
+		4DA567692B6C7160003F6F04 /* WhiteLady.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteLady.swift; sourceTree = "<group>"; };
+		4DA5676B2B6C763D003F6F04 /* Algonquin(1935).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Algonquin(1935).swift"; sourceTree = "<group>"; };
+		4DA5676D2B6C7785003F6F04 /* Zombie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zombie.swift; sourceTree = "<group>"; };
+		4DA5676F2B6C7BF5003F6F04 /* Zombie(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Zombie(W&G).swift"; sourceTree = "<group>"; };
+		4DA567712B6C7FBF003F6F04 /* HarvestMoon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarvestMoon.swift; sourceTree = "<group>"; };
+		4DA567732B6C827C003F6F04 /* LavandulaRosa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LavandulaRosa.swift; sourceTree = "<group>"; };
+		4DA567752B6C8791003F6F04 /* MoneyPenny.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyPenny.swift; sourceTree = "<group>"; };
+		4DA567772B6C8AAC003F6F04 /* PeaksOfReykjavik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeaksOfReykjavik.swift; sourceTree = "<group>"; };
+		4DA567792B6C90E9003F6F04 /* CleverGirl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleverGirl.swift; sourceTree = "<group>"; };
+		4DA5677B2B6C928F003F6F04 /* EasyStreet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyStreet.swift; sourceTree = "<group>"; };
+		4DA5677D2B6C9504003F6F04 /* KittenWithAWhip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KittenWithAWhip.swift; sourceTree = "<group>"; };
+		4DA5677F2B6C9D74003F6F04 /* NorthernDutchess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NorthernDutchess.swift; sourceTree = "<group>"; };
+		4DA567812B6CB182003F6F04 /* TheRoastery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheRoastery.swift; sourceTree = "<group>"; };
+		4DA567832B6CB4E4003F6F04 /* El Ocho Rosado.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "El Ocho Rosado.swift"; sourceTree = "<group>"; };
+		4DA567852B6CB742003F6F04 /* LordReyesTheVIII.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LordReyesTheVIII.swift; sourceTree = "<group>"; };
+		4DA567872B6CB8DB003F6F04 /* LordTouchingtonsDelight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LordTouchingtonsDelight.swift; sourceTree = "<group>"; };
+		4DA567892B6CBC3B003F6F04 /* BanhMi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanhMi.swift; sourceTree = "<group>"; };
+		4DA5678B2B6CBFE3003F6F04 /* DaveyCrocketsLocker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaveyCrocketsLocker.swift; sourceTree = "<group>"; };
+		4DA5678D2B6CC30B003F6F04 /* LongWayDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongWayDown.swift; sourceTree = "<group>"; };
+		4DA5678F2B6CC716003F6F04 /* TheSeventhSon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheSeventhSon.swift; sourceTree = "<group>"; };
+		4DA567912B6CC8EC003F6F04 /* Casanova.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Casanova.swift; sourceTree = "<group>"; };
+		4DA567932B6CCC1F003F6F04 /* NightVision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightVision.swift; sourceTree = "<group>"; };
+		4DA567952B6CCD6A003F6F04 /* NorthmansConquest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NorthmansConquest.swift; sourceTree = "<group>"; };
+		4DA567972B6CCF5F003F6F04 /* RichGirl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RichGirl.swift; sourceTree = "<group>"; };
+		4DA567992B6CD213003F6F04 /* SwitchbladeRomance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchbladeRomance.swift; sourceTree = "<group>"; };
+		4DA5679B2B6CD371003F6F04 /* WhatsYourFavorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsYourFavorite.swift; sourceTree = "<group>"; };
+		4DA5679D2B6CD4B2003F6F04 /* Zombie129.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zombie129.swift; sourceTree = "<group>"; };
+		4DA5679F2B6CD994003F6F04 /* AcquitYourQuest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcquitYourQuest.swift; sourceTree = "<group>"; };
+		4DA567A12B6CDB0A003F6F04 /* Jupiter(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Jupiter(W&G).swift"; sourceTree = "<group>"; };
+		4DA567A32B6CDC78003F6F04 /* SomethingBitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomethingBitter.swift; sourceTree = "<group>"; };
+		4DA567A52B6CDDE2003F6F04 /* TheRuralJuror.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheRuralJuror.swift; sourceTree = "<group>"; };
 		4DB1C0B82B46D4E600943C69 /* CocktailComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailComponent.swift; sourceTree = "<group>"; };
 		4DB1C0BB2B46D63300943C69 /* CocktailResultListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailResultListView.swift; sourceTree = "<group>"; };
 		4DB1C0BD2B46D74B00943C69 /* ResultViewSectionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewSectionData.swift; sourceTree = "<group>"; };
@@ -649,6 +719,7 @@
 				4D1E85E82B5DCDE300214BC6 /* Adonis.swift */,
 				4D1E85EA2B5DD0A800214BC6 /* AirMail.swift */,
 				4D3EA6932B5F982E009EE902 /* AlaskaCocktail.swift */,
+				4DA5676B2B6C763D003F6F04 /* Algonquin(1935).swift */,
 				4DBFF8172B5FAD850011B5B1 /* AmarettoSour.swift */,
 				4DBFF81E2B5FB1D70011B5B1 /* Americano.swift */,
 				F4C74C802AD8CC3300EA3334 /* AperolSpritz.swift */,
@@ -742,6 +813,7 @@
 				1AD87A222AE8AA9B00859028 /* PiscoSour.swift */,
 				1AFDB7B32ADF2659000A3812 /* QueensParkSwizzle.swift */,
 				1AC386892AAABED00064F52A /* RamosGinFizz.swift */,
+				4DBBA4D22B6A425B00179B8F /* RememberTheMaine(OG).swift */,
 				1AFDB7C12AE32F2E000A3812 /* RobRoy.swift */,
 				4D09E65E2B146B9500D38C35 /* Saturn.swift */,
 				1AD87A2C2AE8D07E00859028 /* Sazerac.swift */,
@@ -756,9 +828,12 @@
 				4D1E85DE2B5DBB6A00214BC6 /* TiPunch.swift */,
 				4DA567532B6C408B003F6F04 /* TomCollins.swift */,
 				1AFDB7CF2AE33F7E000A3812 /* TwentiethCenturyCocktail.swift */,
+				4DA567632B6C6F46003F6F04 /* Vesper(OG).swift */,
 				4D1E85DC2B5DB8A300214BC6 /* VieuxCarre.swift */,
+				4DA567652B6C6FF3003F6F04 /* WhiskeySmash.swift */,
 				1AD87A242AE8ADB000859028 /* WhiskeySour.swift */,
-				4DBBA4D22B6A425B00179B8F /* RememberTheMaine(OG).swift */,
+				4DA567692B6C7160003F6F04 /* WhiteLady.swift */,
+				4DA5676D2B6C7785003F6F04 /* Zombie.swift */,
 			);
 			path = Classics;
 			sourceTree = "<group>";
@@ -790,6 +865,7 @@
 				4DA567572B6C43CA003F6F04 /* UltimaPalabra(London).swift */,
 				1AFDB7DF2AE37417000A3812 /* WhiteNegroni.swift */,
 				4DF408C12B60D0F100EF9A6E /* Caucasian.swift */,
+				4DA567912B6CC8EC003F6F04 /* Casanova.swift */,
 			);
 			path = MiscModernCocktails;
 			sourceTree = "<group>";
@@ -883,28 +959,54 @@
 		4D1E85B82B5C831100214BC6 /* Williams and Graham */ = {
 			isa = PBXGroup;
 			children = (
+				4DA5679F2B6CD994003F6F04 /* AcquitYourQuest.swift */,
 				4D1E85C02B5C8F4500214BC6 /* AFlightSouthOfTheBorder.swift */,
 				4D1E85BE2B5C8C1900214BC6 /* AlloeForThatBurn.swift */,
+				4DA567892B6CBC3B003F6F04 /* BanhMi.swift */,
 				1AD87A2A2AE8C93A00859028 /* BeckyWithTheGoodHair.swift */,
 				1AC386942AAABED00064F52A /* BlackberrySageSmash.swift */,
+				4DA567792B6C90E9003F6F04 /* CleverGirl.swift */,
 				1AD87A282AE8C22900859028 /* CominUpRoses.swift */,
+				4DA5678B2B6CBFE3003F6F04 /* DaveyCrocketsLocker.swift */,
+				4DA5677B2B6C928F003F6F04 /* EasyStreet.swift */,
 				4D1E85C22B5C924F00214BC6 /* ElChicicabra.swift */,
+				4DA567832B6CB4E4003F6F04 /* El Ocho Rosado.swift */,
 				4D1E85C42B5C973100214BC6 /* FuegoVioleta.swift */,
 				4D1E85C82B5C9E8A00214BC6 /* GiftHorse.swift */,
 				4D1E85B02B5C6AEA00214BC6 /* GreatWhiteBuffalo.swift */,
+				4DA567712B6C7FBF003F6F04 /* HarvestMoon.swift */,
 				4D1E85CA2B5CA28C00214BC6 /* HeartOfGold.swift */,
 				4D1E85CC2B5CA98800214BC6 /* Here be Dragons.swift */,
+				4DA567A12B6CDB0A003F6F04 /* Jupiter(W&G).swift */,
+				4DA5677D2B6C9504003F6F04 /* KittenWithAWhip.swift */,
+				4DA567732B6C827C003F6F04 /* LavandulaRosa.swift */,
+				4DA5678D2B6CC30B003F6F04 /* LongWayDown.swift */,
+				4DA567852B6CB742003F6F04 /* LordReyesTheVIII.swift */,
+				4DA567872B6CB8DB003F6F04 /* LordTouchingtonsDelight.swift */,
+				4DA567932B6CCC1F003F6F04 /* NightVision.swift */,
+				4DA567952B6CCD6A003F6F04 /* NorthmansConquest.swift */,
 				4D1E85D22B5CD8E700214BC6 /* RedWedding.swift */,
 				4D1E85CE2B5CAB8D00214BC6 /* JeredLetosPrettyFace.swift */,
 				4D1E85D02B5CD40F00214BC6 /* Machete.swift */,
+				4DA567752B6C8791003F6F04 /* MoneyPenny.swift */,
 				4D1E85B42B5C7B6500214BC6 /* NetfilixAndChill.swift */,
+				4DA5677F2B6C9D74003F6F04 /* NorthernDutchess.swift */,
+				4DA567772B6C8AAC003F6F04 /* PeaksOfReykjavik.swift */,
 				4D1E85B22B5C737D00214BC6 /* PeanutButterFalon .swift */,
 				4D1E85B62B5C7ED200214BC6 /* RayonVert.swift */,
+				4DA567972B6CCF5F003F6F04 /* RichGirl.swift */,
 				4D1E85BC2B5C881500214BC6 /* SecondSunrise.swift */,
 				4D1E85BA2B5C845300214BC6 /* SmokingMonkey.swift */,
 				4D1E85D42B5CDB2E00214BC6 /* SpanishRevival.swift */,
 				4D1F15452B55B76F00FC3B85 /* SunnySide.swift */,
 				4D1E85DA2B5CEBFB00214BC6 /* SlutDragon.swift */,
+				4DA567A32B6CDC78003F6F04 /* SomethingBitter.swift */,
+				4DA567992B6CD213003F6F04 /* SwitchbladeRomance.swift */,
+				4DA567812B6CB182003F6F04 /* TheRoastery.swift */,
+				4DA567A52B6CDDE2003F6F04 /* TheRuralJuror.swift */,
+				4DA5678F2B6CC716003F6F04 /* TheSeventhSon.swift */,
+				4DA5679B2B6CD371003F6F04 /* WhatsYourFavorite.swift */,
+				4DA5679D2B6CD4B2003F6F04 /* Zombie129.swift */,
 			);
 			path = "Williams and Graham";
 			sourceTree = "<group>";
@@ -1029,6 +1131,9 @@
 				4DA5674D2B6C39B2003F6F04 /* Tipperary(W&G Version).swift */,
 				4DA567512B6C3DB7003F6F04 /* TomCollins(W&G).swift */,
 				4DA567552B6C41C6003F6F04 /* UltimaPalabra(W&G Version).swift */,
+				4DA567612B6C6F06003F6F04 /* Vesper(W&G).swift */,
+				4DA567672B6C7053003F6F04 /* WhiteLady(W&G).swift */,
+				4DA5676F2B6C7BF5003F6F04 /* Zombie(W&G).swift */,
 			);
 			path = WilliamsAndGrahamClassicSpecs;
 			sourceTree = "<group>";
@@ -1231,6 +1336,7 @@
 				1AFDB7A62ADF1FAE000A3812 /* Cosmopolitan.swift in Sources */,
 				4DBFF83D2B60803E0011B5B1 /* BobbyBurns.swift in Sources */,
 				F4C6A8F52AB0042400BB0AD0 /* Cocktail.swift in Sources */,
+				4DA567942B6CCC1F003F6F04 /* NightVision.swift in Sources */,
 				4D1E85C52B5C973100214BC6 /* FuegoVioleta.swift in Sources */,
 				4DF408D22B60EF2400EF9A6E /* CornNOil.swift in Sources */,
 				1AD87A232AE8AA9B00859028 /* PiscoSour.swift in Sources */,
@@ -1247,6 +1353,8 @@
 				1AFDB7BA2ADF277D000A3812 /* TrinidadSour.swift in Sources */,
 				1AFDB7B02ADF2513000A3812 /* JungleBird.swift in Sources */,
 				1AFDB7B22ADF2582000A3812 /* Negroni.swift in Sources */,
+				4DA567982B6CCF5F003F6F04 /* RichGirl.swift in Sources */,
+				4DA5676E2B6C7785003F6F04 /* Zombie.swift in Sources */,
 				4DBBA4262B659EA000179B8F /* GoldRush.swift in Sources */,
 				4DF408DA2B60FFFC00EF9A6E /* DiamondBack.swift in Sources */,
 				4D1E85B32B5C737D00214BC6 /* PeanutButterFalon .swift in Sources */,
@@ -1261,10 +1369,12 @@
 				4D9025A82B64B970005F44F6 /* GuestCocktailListView.swift in Sources */,
 				4DBBA4CD2B6A376B00179B8F /* PinceEdward.swift in Sources */,
 				4D1E85E12B5DBDE200214BC6 /* SideCar.swift in Sources */,
+				4DA5679A2B6CD213003F6F04 /* SwitchbladeRomance.swift in Sources */,
 				4DA5672E2B6AE00B003F6F04 /* Saturn(W&G Version).swift in Sources */,
 				4DBBA4D12B6A407F00179B8F /* RememberTheMaine(W&G).swift in Sources */,
 				4DBBA4602B676F4800179B8F /* Hurricane(W&G).swift in Sources */,
 				4DBFF8312B5FC6750011B5B1 /* Bijou(W&G).swift in Sources */,
+				4DA567622B6C6F06003F6F04 /* Vesper(W&G).swift in Sources */,
 				4DBBA4A22B68C11100179B8F /* NewYourSour.swift in Sources */,
 				1AC386C92AAABED10064F52A /* CocktailListView.swift in Sources */,
 				4DBFF8472B6091320011B5B1 /* BrandyCrusta.swift in Sources */,
@@ -1275,6 +1385,7 @@
 				4D088FCA2B62E3640047B056 /* CocktailMenuViewModel.swift in Sources */,
 				4DBBA46E2B67A0B700179B8F /* KentuckyMaid.swift in Sources */,
 				4DBBA4582B675ECD00179B8F /* MoergenthalersToddy.swift in Sources */,
+				4DA5676C2B6C763D003F6F04 /* Algonquin(1935).swift in Sources */,
 				4DBBA4802B687F4D00179B8F /* MaiTai(W&G).swift in Sources */,
 				4DBBA4D52B6A4A8D00179B8F /* PinkLady.swift in Sources */,
 				4D1F15482B564DB600FC3B85 /* ResultsConfigurationMenu.swift in Sources */,
@@ -1291,10 +1402,12 @@
 				F4C5C3E12B3B3F2E005B2261 /* IngredientType.swift in Sources */,
 				4DBBA48E2B68963200179B8F /* Mezcalero.swift in Sources */,
 				4DBFF8232B5FB71E0011B5B1 /* ArmyNavy.swift in Sources */,
+				4DA567842B6CB4E4003F6F04 /* El Ocho Rosado.swift in Sources */,
 				F4DBE4C52AB8831C009A0C09 /* AnimatedSearchView.swift in Sources */,
 				4DBBA4AA2B68CA4300179B8F /* OaxacanOldFashioned(WnG).swift in Sources */,
 				4DF408EA2B61A86A00EF9A6E /* FancyFree.swift in Sources */,
 				4DA567562B6C41C6003F6F04 /* UltimaPalabra(W&G Version).swift in Sources */,
+				4DA5679E2B6CD4B2003F6F04 /* Zombie129.swift in Sources */,
 				4DBBA4762B6873D000179B8F /* LemonDrop.swift in Sources */,
 				4DF408C22B60D0F100EF9A6E /* Caucasian.swift in Sources */,
 				1AC386CA2AAABED10064F52A /* CocktailListViewModel.swift in Sources */,
@@ -1305,6 +1418,8 @@
 				4DF408F22B61BCCC00EF9A6E /* FogCutter(W&G).swift in Sources */,
 				4D9025A62B645BF3005F44F6 /* GinRicky.swift in Sources */,
 				4DBBA48C2B68948100179B8F /* MexicanFiringSquad(W&G).swift in Sources */,
+				4DA567922B6CC8EC003F6F04 /* Casanova.swift in Sources */,
+				4DA5676A2B6C7160003F6F04 /* WhiteLady.swift in Sources */,
 				4DB1C0B92B46D4E600943C69 /* CocktailComponent.swift in Sources */,
 				F4C74C812AD8CC3300EA3334 /* AperolSpritz.swift in Sources */,
 				4DBFF8592B60AD800011B5B1 /* CableCar(W&G).swift in Sources */,
@@ -1321,6 +1436,7 @@
 				4DBBA4902B689B3800179B8F /* MintJulep(W&G).swift in Sources */,
 				1AFDB7C02AE31EA3000A3812 /* Manhattan.swift in Sources */,
 				4DBBA4282B65A13600179B8F /* Grasshopper(W&G).swift in Sources */,
+				4DA567762B6C8791003F6F04 /* MoneyPenny.swift in Sources */,
 				4DBFF8412B6083760011B5B1 /* Bramble.swift in Sources */,
 				4DBBA4D72B6A506A00179B8F /* RobRoy(W&G).swift in Sources */,
 				4DBFF84D2B609D0C0011B5B1 /* Brooklyn(W&G).swift in Sources */,
@@ -1346,10 +1462,13 @@
 				1AFDB7A22ADC84FF000A3812 /* Bamboo.swift in Sources */,
 				1AFDB7B42ADF2659000A3812 /* QueensParkSwizzle.swift in Sources */,
 				4DBBA46A2B6795BB00179B8F /* JapaneseCocktail(W&G).swift in Sources */,
+				4DA5677E2B6C9504003F6F04 /* KittenWithAWhip.swift in Sources */,
 				4DF408C82B60D71400EF9A6E /* ChampagnCocktail.swift in Sources */,
 				1AC386BC2AAABED10064F52A /* Ingredient.swift in Sources */,
 				4DF408E02B610D6D00EF9A6E /* ElksClubFizz(W&G).swift in Sources */,
 				4D9025A02B645868005F44F6 /* Gibson.swift in Sources */,
+				4DA567862B6CB742003F6F04 /* LordReyesTheVIII.swift in Sources */,
+				4DA5678C2B6CBFE3003F6F04 /* DaveyCrocketsLocker.swift in Sources */,
 				4DA5673E2B6AF4A4003F6F04 /* SingaporeSling(1910).swift in Sources */,
 				4DBFF83B2B6063AC0011B5B1 /* BlueBlazer.swift in Sources */,
 				4DF408CC2B60DDC700EF9A6E /* Chrysanthemum.swift in Sources */,
@@ -1360,6 +1479,7 @@
 				4DBBA47C2B6877CC00179B8F /* LaLouisiane(W&G).swift in Sources */,
 				4DF408F42B622BB200EF9A6E /* SearchGuestRecipeView.swift in Sources */,
 				4DF408CA2B60D80C00EF9A6E /* ChocolateCocktail.swift in Sources */,
+				4DA567962B6CCD6A003F6F04 /* NorthmansConquest.swift in Sources */,
 				4DA567362B6AE48F003F6F04 /* Scofflaw.swift in Sources */,
 				1AC386C02AAABED10064F52A /* BlackberrySageSmash.swift in Sources */,
 				4DBFF84F2B609F1F0011B5B1 /* BrownDerby(OGRumVersion).swift in Sources */,
@@ -1374,6 +1494,7 @@
 				4DBFF8572B60AAFB0011B5B1 /* CableCar.swift in Sources */,
 				4DBBA4C22B6A1A0600179B8F /* HemingwayDaiquiri.swift in Sources */,
 				4DBBA4502B673F2300179B8F /* HoneymoonEmbury.swift in Sources */,
+				4DA567A42B6CDC78003F6F04 /* SomethingBitter.swift in Sources */,
 				4DA567522B6C3DB7003F6F04 /* TomCollins(W&G).swift in Sources */,
 				4DBBA4642B677A5300179B8F /* IrishCoffee.swift in Sources */,
 				4D1E85DF2B5DBB6A00214BC6 /* TiPunch.swift in Sources */,
@@ -1393,17 +1514,21 @@
 				F4FBF1232AAABBB900BBF7CF /* MetaCocktailsSwiftDataApp.swift in Sources */,
 				1AC386B82AAABED10064F52A /* Daiquiri.swift in Sources */,
 				4DA567482B6AFC3A003F6F04 /* Stinger(W&G).swift in Sources */,
+				4DA567A22B6CDB0A003F6F04 /* Jupiter(W&G).swift in Sources */,
 				1AD87A252AE8ADB000859028 /* WhiskeySour.swift in Sources */,
+				4DA567A62B6CDDE2003F6F04 /* TheRuralJuror.swift in Sources */,
 				4DB1C0BE2B46D74B00943C69 /* ResultViewSectionData.swift in Sources */,
 				4DBBA49A2B68AE7C00179B8F /* MorningGloryFizz.swift in Sources */,
 				4DF408DC2B6104B800EF9A6E /* ElDiablo.swift in Sources */,
 				4DBFF8372B605C410011B5B1 /* BloodyMarry(WnG).swift in Sources */,
+				4DA567882B6CB8DB003F6F04 /* LordTouchingtonsDelight.swift in Sources */,
 				4DBBA48A2B6892C300179B8F /* MexicanFiringSquad.swift in Sources */,
 				4DBBA4622B67733D00179B8F /* IrishCoffee(W&G).swift in Sources */,
 				4DF408D82B60FD9100EF9A6E /* DeathInTheAfternoon.swift in Sources */,
 				4DBBA42E2B65ABDF00179B8F /* Greenpoint(W&G.swift in Sources */,
 				4DBBA4C82B6A2F4700179B8F /* PimsCup.swift in Sources */,
 				4DBBA47A2B6876F800179B8F /* LastWork(W&G).swift in Sources */,
+				4DA567662B6C6FF3003F6F04 /* WhiskeySmash.swift in Sources */,
 				1AC386C32AAABED10064F52A /* BuildOrderView.swift in Sources */,
 				4D9025A22B6459C0005F44F6 /* GinFizz(W&G).swift in Sources */,
 				4DBFF82F2B5FC5400011B5B1 /* Bijou.swift in Sources */,
@@ -1418,9 +1543,11 @@
 				F44A28F72AC26A6A0083C04D /* TagLayout.swift in Sources */,
 				4D1E85B52B5C7B6500214BC6 /* NetfilixAndChill.swift in Sources */,
 				1AFDB7B82ADF26E5000A3812 /* Penicillin.swift in Sources */,
+				4DA567A02B6CD994003F6F04 /* AcquitYourQuest.swift in Sources */,
 				4DBBA4362B65B9BB00179B8F /* HarveyWallbanger(WnG).swift in Sources */,
 				1AFDB7E02AE37417000A3812 /* WhiteNegroni.swift in Sources */,
 				1AFDB7C62AE3319F000A3812 /* FinalWard.swift in Sources */,
+				4DA567702B6C7BF5003F6F04 /* Zombie(W&G).swift in Sources */,
 				4DBFF8272B5FBF370011B5B1 /* Bamboo(W&G).swift in Sources */,
 				4DBBA4C62B6A28FC00179B8F /* PainKiller.swift in Sources */,
 				4DBFF8452B608FCE0011B5B1 /* BrandyAlexander.swift in Sources */,
@@ -1434,6 +1561,9 @@
 				4DBBA49C2B68B20200179B8F /* MorningGloryFizz(W&G).swift in Sources */,
 				4DBBA46C2B6796C200179B8F /* JungleBird(WnG).swift in Sources */,
 				1AC386C62AAABED10064F52A /* PrepRecipeView.swift in Sources */,
+				4DA5679C2B6CD371003F6F04 /* WhatsYourFavorite.swift in Sources */,
+				4DA5677C2B6C928F003F6F04 /* EasyStreet.swift in Sources */,
+				4DA567902B6CC716003F6F04 /* TheSeventhSon.swift in Sources */,
 				1AFDB7BE2AE31AF4000A3812 /* MaiTai.swift in Sources */,
 				4DF408E22B61109700EF9A6E /* EspressoMartini(W&G).swift in Sources */,
 				1AC386B32AAABED10064F52A /* RoundButtonStyle.swift in Sources */,
@@ -1461,12 +1591,17 @@
 				4DF408E62B61A2B900EF9A6E /* FairAndWarmer.swift in Sources */,
 				1AC386BF2AAABED10064F52A /* Prep.swift in Sources */,
 				1AFDB7DC2AE36E0A000A3812 /* Mojito.swift in Sources */,
+				4DA567642B6C6F46003F6F04 /* Vesper(OG).swift in Sources */,
 				4DBFF8432B6089C20011B5B1 /* Bramble(W&G).swift in Sources */,
 				1AFDB7BC2AE2FF69000A3812 /* LastWord.swift in Sources */,
 				4D1E85C12B5C8F4500214BC6 /* AFlightSouthOfTheBorder.swift in Sources */,
 				4D1E85D32B5CD8E700214BC6 /* RedWedding.swift in Sources */,
+				4DA567782B6C8AAC003F6F04 /* PeaksOfReykjavik.swift in Sources */,
+				4DA567742B6C827C003F6F04 /* LavandulaRosa.swift in Sources */,
+				4DA5677A2B6C90E9003F6F04 /* CleverGirl.swift in Sources */,
 				4DBFF8142B5F9E4E0011B5B1 /* Algonquin(WilliamsAndGraham).swift in Sources */,
 				4D90259C2B6456C0005F44F6 /* French75(WnG).swift in Sources */,
+				4DA567722B6C7FBF003F6F04 /* HarvestMoon.swift in Sources */,
 				1AFDB7C42AE3305F000A3812 /* Emerald.swift in Sources */,
 				4D1E85BD2B5C881500214BC6 /* SecondSunrise.swift in Sources */,
 				4DBBA4A02B68B95600179B8F /* NakedAndFamous.swift in Sources */,
@@ -1476,11 +1611,14 @@
 				4D1F14722B50B64500FC3B85 /* BasicComponentSearchListView.swift in Sources */,
 				4DBFF8252B5FB9DF0011B5B1 /* Aviation.swift in Sources */,
 				1AFDB7DE2AE37207000A3812 /* Boulevardier.swift in Sources */,
+				4DA5678A2B6CBC3B003F6F04 /* BanhMi.swift in Sources */,
 				F4B0ABF32B13FB2A00336D05 /* SearchResultsView.swift in Sources */,
 				F4C5C3E62B3B41BA005B2261 /* Alcohol.swift in Sources */,
 				4D1E85C32B5C924F00214BC6 /* ElChicicabra.swift in Sources */,
+				4DA567682B6C7053003F6F04 /* WhiteLady(W&G).swift in Sources */,
 				1AC386C22AAABED10064F52A /* TabBarView.swift in Sources */,
 				1AD87A272AE8B65800859028 /* CloverClub.swift in Sources */,
+				4DA567822B6CB182003F6F04 /* TheRoastery.swift in Sources */,
 				4DBBA4862B68880300179B8F /* Martinez.swift in Sources */,
 				4DA5674E2B6C39B2003F6F04 /* Tipperary(W&G Version).swift in Sources */,
 				4DF408EC2B61A9F900EF9A6E /* FancyFree(W&G).swift in Sources */,
@@ -1489,6 +1627,7 @@
 				4DBBA4722B6845D700179B8F /* KirRoyale.swift in Sources */,
 				4D1E85E92B5DCDE300214BC6 /* Adonis.swift in Sources */,
 				4DA5673C2B6AF3B1003F6F04 /* SideCar(W&G).swift in Sources */,
+				4DA5678E2B6CC30B003F6F04 /* LongWayDown.swift in Sources */,
 				4DF408D42B60F0F200EF9A6E /* CorpseReviverNo1.swift in Sources */,
 				4DBBA4B62B68D5D000179B8F /* OldPal(W&G).swift in Sources */,
 				4DBBA4302B65ACE700179B8F /* Hanky Panky.swift in Sources */,
@@ -1504,6 +1643,7 @@
 				4DBFF84B2B609B060011B5B1 /* Brooklyn.swift in Sources */,
 				4DA567402B6AF6A5003F6F04 /* SingaporeSling(W&G).swift in Sources */,
 				4DBBA45E2B676B6200179B8F /* Hurricane.swift in Sources */,
+				4DA567802B6C9D74003F6F04 /* NorthernDutchess.swift in Sources */,
 				1AFDB7DA2AE35ECA000A3812 /* MintJulep.swift in Sources */,
 				4DA567342B6AE3E8003F6F04 /* Scofflaw(W&G).swift in Sources */,
 				4DBFF85B2B60AFE60011B5B1 /* Carajillo.swift in Sources */,

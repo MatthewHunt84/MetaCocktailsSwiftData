@@ -18,6 +18,7 @@ enum Profile: String, Codable, CaseIterable {
     case creamy         = "Creamy"
     case complex        = "Complex"
     case dry            = "Dry"
+    case elegant        = "Elegant"
     case floral         = "Floral"
     case fruity         = "Fruity"
     case funky          = "Funky"
