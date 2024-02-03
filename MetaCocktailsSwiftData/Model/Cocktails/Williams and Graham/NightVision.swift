@@ -11,7 +11,7 @@ var nightVision  =  Cocktail(cocktailName: "Night Vision",
                              glasswareType: .stemmedGlassware,
                              garnish: [.peaTendril],
                              ice: nil,
-                             author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
+                             author: Author(person:AuthorNames.valarieAlvarado.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue, year: "2018"),
                              spec: nightVisionSpec,
                              buildOrder: nil,
                              tags: nightVisionTags)

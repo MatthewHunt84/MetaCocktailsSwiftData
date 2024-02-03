@@ -21,7 +21,7 @@ var hotToddyWnGSpec  = [CocktailIngredient(.otherNonAlc(.hotWater), value: 2),
                        CocktailIngredient(.whiskies(.larcenyBourbon), value: 2)]
 
 var hotToddyWnGTags = Tags(flavors: [.lemon, .tea],
-                          profiles: [.hot],
+                           profiles: [.hot, .comforting],
                           styles: [.toddy])
 
 var hotToddyWnGBuild = Build(instructions: [Instruction(step: 1, method: "Place all ingredients except the hot water in a small shaker tin. "),

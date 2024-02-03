@@ -29,14 +29,25 @@ struct CocktailListView: View {
                             
                             
                     } label: {
-                        Image("dice")
+                        Image(systemName: "dice.fill")
                             .resizable()
-                            .frame(width: 40, height: 40, alignment: .bottom)
-                            .offset(CGSize(width: 0, height: 5.0))
+                       
+                            .frame(width: 25, height: 25, alignment: .center)
+                            .foregroundStyle(Color.white)
+//                            .offset(CGSize(width: 0, height: 5.0))
                     }
-                
-                    
-                    Spacer()
+                    .padding(10)
+                    NavigationLink {
+                        EightySixListView()
+                    } label: {
+                        VStack{
+                            Image(systemName: "list.clipboard")
+                                .foregroundStyle(Color.white)
+                            Text("86")
+                                .foregroundStyle(Color.white)
+                        }
+                    }
+                    .padding(10)
                     Menu("", systemImage: "gearshape") {
                         Button("Bartender Mode") {
                             criteria.menuMode = false
@@ -44,8 +55,11 @@ struct CocktailListView: View {
                         Button("Guest Mode") {
                             criteria.menuMode = true
                         }
+                        
                     }
-                    .offset(CGSize(width: -10.0, height: 0))
+                    .foregroundStyle(Color.white)
+                    .padding(10)
+                    //.offset(CGSize(width: -10.0, height: 0))
                     
                 }
                 
@@ -97,6 +111,7 @@ struct CocktailListView: View {
                                             }.id(letter)
                                         }
                                     }
+                                    
                                 }
                                 .listStyle(.plain)
                                 .frame(width: listGeo.size.width * 0.9, height: listGeo.size.height)

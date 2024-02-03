@@ -9,10 +9,10 @@ import Foundation
 
 var peaksOfReykjavic = Cocktail(cocktailName: "Peaks of Reykjavic",
                                 imageAsset: nil,
-                                glasswareType: .martini,
-                                garnish: [.raspberry],
-                                ice: nil,
-                                author: williamsAndGraham,
+                                glasswareType: .collins,
+                                garnish: [.raspberry, .mintSprig],
+                                ice: .pebbleIce,
+                                author: Author(person: "Tom Lagae", place: AuthorPlaces.williamsAndGraham.rawValue, year: "2018"),
                                 spec: peaksOfReykjavicSpec,
                                 buildOrder: peaksOfReykjavicBuild,
                                 tags: peaksOfReykjavicTags)
@@ -34,4 +34,4 @@ let peaksOfReykjavicTags = Tags(profiles: [.fruity, .refreshing, .light],
 var peaksOfReykjavicBuild = Build(instructions: [Instruction(step: 1, method: "Add mint to the bottom of the collins glass and gently press to release mint oils. Do not muddle"),
                                                  Instruction(step: 2, method: "Pack the glass with pebble ice and add the rest of the ingredients, besides the bitters, and swizzle. Try to keep the mint at the bottom of the glass."),
                                                  Instruction(step: 3, method: "Pack the glass with more ice to fill and then add the bitters."),
-                                                 Instruction(step: 4, method: "Garnish with a mint sprig.")])
+                                                 Instruction(step: 4, method: "Garnish with a raspberry and mint sprig.")])

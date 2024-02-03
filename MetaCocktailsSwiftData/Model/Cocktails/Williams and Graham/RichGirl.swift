@@ -12,7 +12,7 @@ var richGirl  =  Cocktail(cocktailName: "Rich Girl",
                           glasswareType: .nickAndNora,
                           garnish: [.lemonPeel],
                           ice: nil,
-                          author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
+                          author: Author(person: "Justin Jenkins", place: AuthorPlaces.williamsAndGraham.rawValue, year: "2019"),
                           spec: richGirlSpec,
                           buildOrder: nil,
                           tags: richGirlTags)

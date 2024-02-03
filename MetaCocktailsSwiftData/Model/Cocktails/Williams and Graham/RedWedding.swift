@@ -13,7 +13,7 @@ var redWedding  =  Cocktail(cocktailName: "Red Wedding",
                             garnish: [.orangePeel],
                             ice: .bigRock,
                             author:Author(person: AuthorNames.jamesMenkal.rawValue,
-                                          place: AuthorPlaces.williamsAndGraham.rawValue),
+                                          place: AuthorPlaces.williamsAndGraham.rawValue, year: "2018"),
                             spec: redWeddingSpec,
                             buildOrder: nil,
                             tags: redWeddingTags)

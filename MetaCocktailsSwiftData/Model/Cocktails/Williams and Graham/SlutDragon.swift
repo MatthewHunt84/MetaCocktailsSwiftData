@@ -14,7 +14,7 @@ var slutDragon = Cocktail(cocktailName: "Slut Dragon(AKA: Soul Bond)",
                          garnish: [.celeryTop],
                          ice: .bigRock,
                          author:Author(person: AuthorNames.jamesMenkal.rawValue,
-                                       place: AuthorPlaces.williamsAndGraham.rawValue),
+                                       place: AuthorPlaces.williamsAndGraham.rawValue, year: "2021"),
                          spec: slutDragonSpec,
                          tags: slutDragonTags)
 

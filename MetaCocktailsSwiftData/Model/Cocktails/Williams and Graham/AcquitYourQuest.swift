@@ -11,7 +11,9 @@ var acquitYourQuest = Cocktail(cocktailName: "Acquit Your Quest",
                                glasswareType: .doubleOld,
                                garnish: [.flamedOrange],
                                ice: .bigRock,
-                               author: justWnG,
+                               author: Author(person: AuthorNames.kennyRemster.rawValue,
+                                              place: AuthorPlaces.williamsAndGraham.rawValue,
+                                              year: "2018"),
                                spec: acquitYourQuestSpec,
                                tags: acquitYourQuestTags)
 

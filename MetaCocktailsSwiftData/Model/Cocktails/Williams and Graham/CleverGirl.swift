@@ -12,7 +12,7 @@ var cleverGirl = Cocktail(cocktailName: "Clever Girl",
                           glasswareType: .doubleOld,
                           garnish: [.grapefruitExpression, .chamomileFlowers],
                           ice: .bigRock,
-                          author: Author(person: "Kristen Blair", place: AuthorPlaces.williamsAndGraham.rawValue, year: "2019"),
+                          author: Author(person: "Kristen Bair", place: AuthorPlaces.williamsAndGraham.rawValue, year: "2018"),
                           spec: cleverGirlSpec,
                           tags: cleverGirlTags)
 

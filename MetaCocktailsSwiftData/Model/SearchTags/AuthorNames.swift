@@ -33,6 +33,10 @@ enum AuthorNames: String, Codable, CaseIterable {
     case StanleyArthur     = "Stanley Clisby Arthur"
     case traderVic         = "Victor (Trader Vic) Bergeron"
     case walterBergeron    = "Walter Bergeron"
+    case valarieAlvarado   = "Valarie Alvarado"
+    case killian           = "Killian Hopkins"
+    case jesseBowen        = "Jesse Bowen"
+    case kennyRemster      = "Kenny Remster"
   
 }
 enum AuthorPlaces: String, Codable, CaseIterable {

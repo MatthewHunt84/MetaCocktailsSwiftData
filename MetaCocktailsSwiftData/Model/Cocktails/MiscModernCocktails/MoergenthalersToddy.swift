@@ -22,6 +22,6 @@ var morgenthalersToddySpec  = [CocktailIngredient(.otherNonAlc(.hotWater), value
                                CocktailIngredient(.whiskies(.bourbonAny), value: 1.5)]
 
 var morgenthalersToddyTags = Tags(flavors: [.tea],
-                                  profiles: [.hot, .aromatic],
+                                  profiles: [.hot, .aromatic, .comforting],
                                   styles: [.toddy])
 

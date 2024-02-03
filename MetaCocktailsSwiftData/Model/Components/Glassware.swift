@@ -26,8 +26,10 @@ enum Glassware: String, Codable {
     case fizzGlass                 = "Chilled 8 oz. Fizz Glass"
     case hurricaneGlass            = "Hurricane Glass"
     case julep                     = "Julep Cup or Highball"
+    case teaCup                    = "Ornate Tea Cup"
     case tikiBird                  = "Bird Shaped Tiki Glass"
     case martini                   = "Martini"
+    case milkShake                 = "Milkshake Glass"
     case nickAndNora               = "Nick and Nora"
     case singleOld                 = "Frozen Single Old Fashioned"
     case snifter                   = "Snifter (Flip Glass)"
@@ -111,6 +113,10 @@ enum Glassware: String, Codable {
             return SwiftUI.Image("doubleOldBFGBlack")
         case .doubleOldSmokedSalt:
             return SwiftUI.Image("doubleOldBFGBlack")
+        case .teaCup:
+            return SwiftUI.Image("teaCup")
+        case .milkShake:
+            return SwiftUI.Image("milkShake")
         }
         return SwiftUI.Image("Urkel")
     }

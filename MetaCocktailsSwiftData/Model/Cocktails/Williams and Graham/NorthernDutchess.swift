@@ -11,7 +11,7 @@ var northernDuchess = Cocktail(cocktailName: "Northern Duchess",
                                glasswareType: .nickAndNora,
                                garnish: [.flamedLemon],
                                ice: nil,
-                               author: Author(person: AuthorPlaces.williamsAndGraham.rawValue),
+                               author: Author(person: AuthorNames.kennyRemster.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue, year: "2018"),
                                spec: northernDuchessSpec,
                                tags: northernDuchessTags)
 

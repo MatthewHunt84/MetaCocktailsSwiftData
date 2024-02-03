@@ -39,8 +39,10 @@ struct CocktailResultList: View {
                                             } label: {
                                                 HStack {
                                                     Text(cocktail.cocktailName)
+                                                        
                                                 }
-                                            }  
+                                               
+                                            }
                                         }
                                     }
                                 }
@@ -66,7 +68,7 @@ struct CocktailResultList: View {
                             }
                             
                         }
-                        .listStyle(.grouped)
+                        .listStyle(.plain)
                         .backgroundStyle(Color(.black))
                         if viewModel.multipleBaseSpiritsSelected {
                             ResultsConfigurationMenu(viewModel: viewModel)
