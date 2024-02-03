@@ -12,6 +12,7 @@ final class CocktailListViewModel: ObservableObject {
     static let shared = CocktailListViewModel()
     @Published var guestCocktails: [Cocktail] = getGuestViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName})
     @Published var bartenderCocktails: [Cocktail] = getBartenderViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName})
+    //@Published var bartenderCocktails: [Cocktail] = [cloverClub]
     @Published var justWilliamsAndGrahamCocktails = getBartenderViewCocktails().flatMap({$0.cocktailVariations}).filter({$0.author?.place == AuthorPlaces.williamsAndGraham.rawValue})
     @Published var isShowingRecipeCard = false
     @Published var selectedCocktail: Cocktail?
@@ -21,6 +22,28 @@ final class CocktailListViewModel: ObservableObject {
     @Published var guestViewCocktails: [CocktailListCocktail] = getGuestViewCocktails()
     @Published var randomCocktail = oldFashioned
     @Published var isShowingAllCocktails: Bool = true
+    
+    func filter86dCocktailsForBartenders() -> [Cocktail] {
+        let startingCocktails = CocktailListViewModel.getBartenderViewCocktails().flatMap({$0.cocktailVariations})
+        let theList = SearchCriteriaViewModel.get86ListNames()
+        
+        var acceptedCocktails: [Cocktail] = []
+        for cocktail in startingCocktails {
+            var doesntMatch = 0
+            for spec in cocktail.spec {
+                if theList.contains(spec.ingredient.name) {
+                    doesntMatch += 1
+                }
+            }
+            if doesntMatch == 0 {
+                acceptedCocktails.append(cocktail)
+            }
+        }
+        
+        
+        
+        return acceptedCocktails.sorted(by: {$0.cocktailName < $1.cocktailName})
+    }
    
     static func getGuestViewCocktails() -> [CocktailListCocktail] {
         var guestCocktails: [CocktailListCocktail] = []

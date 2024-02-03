@@ -9,7 +9,7 @@ import Foundation
 
 final class EightySixListViewModel: ObservableObject {
     
-    
-    
+   
+ 
     
 }

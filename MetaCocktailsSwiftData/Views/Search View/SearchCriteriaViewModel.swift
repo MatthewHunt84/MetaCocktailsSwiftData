@@ -83,6 +83,20 @@ final class SearchCriteriaViewModel: ObservableObject {
         cocktailComponent.first?.isUnwanted = false
         getFilteredCocktails()
     }
+    static func get86ListNames() -> [String] {
+        var new86List: [String] = []
+        let convertedBoozeArray: [CocktailComponent] = SearchCriteriaViewModel.generatedBoozeCocktailComponents.filter({$0.is86d == true})
+        let convertedNAArray: [CocktailComponent] = SearchCriteriaViewModel.generatedNACocktailComponents.filter({$0.is86d == true})
+        for component in convertedBoozeArray {
+            new86List.append(component.name)
+        }
+        for component in convertedNAArray {
+            new86List.append(component.name)
+        }
+        
+        return new86List
+    }
+    
     static func createComponentArray() ->  [CocktailComponent] {
         
         var array = [CocktailComponent]()

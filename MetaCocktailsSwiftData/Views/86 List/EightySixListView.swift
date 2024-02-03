@@ -43,5 +43,6 @@ struct EightySixListView: View {
     
     
     EightySixListView()
+        .environmentObject(SearchCriteriaViewModel())
         
 }

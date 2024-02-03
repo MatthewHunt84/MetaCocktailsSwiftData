@@ -138,6 +138,7 @@ struct CocktailListView: View {
             }
             .task {
                 viewModel.randomCocktail = viewModel.fetchRandomCocktail()
+                
             }
         }
         
