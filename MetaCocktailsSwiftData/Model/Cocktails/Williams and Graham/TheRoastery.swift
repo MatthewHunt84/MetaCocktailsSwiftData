@@ -21,5 +21,5 @@ var TheRoasterySpec  = [CocktailIngredient(.bitters(.chocolateMole), value: 4, u
                         CocktailIngredient(.fortifiedWines(.cocchiAmericano), value: 0.75),
                         CocktailIngredient(.gins(.stGeorgeBotanivore), value: 1.5)]
 
-var TheRoasteryTags = Tags(profiles: [.rich, .complex, .punchy],
-                           styles: [.flip, .shaken])
+var TheRoasteryTags = Tags(profiles: [.rich, .complex, .punchy, .spiritForward],
+                           styles: [.stirred, .negroni])

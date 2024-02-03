@@ -12,7 +12,9 @@ var elChicicabra = Cocktail(cocktailName: "El Chicicabra",
                             glasswareType: .doubleOld,
                             garnish: [.flamedOrange],
                             ice: .bigRock,
-                            author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
+                            author: Author(person: "Jimmy Kenyon",
+                                           place: AuthorPlaces.williamsAndGraham.rawValue,
+                                           year: "2019"),
                             spec: elChicicabraSpec,
                             tags: elChicicabraTags)
 

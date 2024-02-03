@@ -12,7 +12,7 @@ var aFlightSouthOfTheBorder = Cocktail(cocktailName: "A Flight South of the Bord
                                        glasswareType: .doubleOld,
                                        garnish: [.dehydratedGrapefruitSlice],
                                        ice: .bigRock,
-                                       author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
+                                       author: Author(person: "Tom Lagae", place: AuthorPlaces.williamsAndGraham.rawValue, year: "2019"),
                                        spec: aFlightSouthOfTheBorderSpec,
                                        tags: aFlightSouthOfTheBorderTags)
 

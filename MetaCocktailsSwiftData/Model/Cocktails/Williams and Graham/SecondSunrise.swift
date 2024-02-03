@@ -12,7 +12,7 @@ var secondSunrise = Cocktail(cocktailName: "Second Sunrise",
                              glasswareType: .stemmedGlassware,
                              garnish: [.edibleFlower],
                              author:Author(person: AuthorNames.jamesMenkal.rawValue,
-                                           place: AuthorPlaces.williamsAndGraham.rawValue),
+                                           place: AuthorPlaces.williamsAndGraham.rawValue, year: "2021"),
                              spec: secondSunriseSpec,
                              tags: secondSunriseTags)
 

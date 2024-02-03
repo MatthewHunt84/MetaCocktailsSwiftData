@@ -11,7 +11,7 @@ var aloeForThatBurn = Cocktail(cocktailName: "Aloe for that Burn",
                          imageAsset: nil,
                          glasswareType: .stemmedGlassware,
                          garnish: [.limeWheel],
-                         author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
+                         author: Author(person: "Killian Hopkins", place: AuthorPlaces.williamsAndGraham.rawValue, year: "2018"),
                          spec: aloeForThatBurnSpec,
                          tags: aloeForThatBurnTags)
 

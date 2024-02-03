@@ -8,11 +8,11 @@
 import Foundation
 
 
-var somethingBitter  =  Cocktail(cocktailName: "Something Bitter",
+var somethingBitter  =  Cocktail(cocktailName: "Something Bitter This Way Comes",
                                  glasswareType: .doubleOld,
                                  garnish: [.orangePeel],
                                  ice: .bigRock,
-                                 author:Author(place: AuthorPlaces.williamsAndGraham.rawValue),
+                                 author:Author(person: "Whitney Allen & \(AuthorNames.valarieAlvarado.rawValue)", place: AuthorPlaces.williamsAndGraham.rawValue, year: "2018"),
                                  spec: somethingBitterSpec,
                                  buildOrder: nil,
                                  tags: somethingBitterTags)

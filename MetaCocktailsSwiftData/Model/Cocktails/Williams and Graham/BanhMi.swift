@@ -12,7 +12,7 @@ var banhMi  =  Cocktail(cocktailName: "Banh Mi",
                         garnish: [.mintSprig],
                         ice: .bigRock,
                         author:Author(person: AuthorNames.jamesMenkal.rawValue,
-                                      place: AuthorPlaces.williamsAndGraham.rawValue),
+                                      place: AuthorPlaces.williamsAndGraham.rawValue, year: "2019"),
                         spec: banhMiSpec,
                         buildOrder: nil,
                         tags: banhMiTags)
@@ -25,5 +25,5 @@ var banhMiSpec = [CocktailIngredient(.herbs(.mint), value: 5, unit: .gentlyMuddl
                   CocktailIngredient(.rums(.plantation3Star), value: 1),
                   CocktailIngredient(.otherAlcohol(.bataviaArrack), value: 1)]
 
-var banhMiTags = Tags(profiles: [.savory, .refreshing, .funky],
-                      styles: [.negroni, .stirred])
+var banhMiTags = Tags(profiles: [.savory, .refreshing, .funky, .restorative],
+                      styles: [.sour, .shaken])

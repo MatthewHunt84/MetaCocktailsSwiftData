@@ -12,7 +12,7 @@ var moneyPenny = Cocktail(cocktailName: "Money Penny",
                           glasswareType: .nickAndNora,
                           garnish: [.lemonPeel],
                           ice: nil,
-                          author: justWnG,
+                          author: Author(person: AuthorNames.kennyRemster.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue, year: "2019"),
                           spec: moneyPennySpec,
                           tags: moneyPennyTags)
 
