@@ -58,7 +58,7 @@ struct SearchCriteriaView: View {
                 
                 
                 AdvancedCriteriaListView(selectedList: $selectedList, navigationTitle: selectedList.getTitle(), isShowingLikes: $isShowingPreferences)
-               searchButtonView()
+               SearchButtonView()
                 
             }
         }

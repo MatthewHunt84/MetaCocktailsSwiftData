@@ -87,7 +87,7 @@ struct BasicSearchView: View {
                     
                     
                     
-                    searchButtonView()
+                    SearchButtonView()
                     .frame(width: geometry.size.width, height: geometry.size.height * 0.12, alignment: .center)
                     
                 }
