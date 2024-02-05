@@ -27,6 +27,6 @@ let theTravelerSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.angost
                                              CocktailIngredient(.whiskies(.johnnyDrum), value: 0.5)]
 
 
-let theTravelerTags = Tags(profiles: [.bittersweet, .spiritForward, .complex, .fruity, .sophisticated],
+let theTravelerTags = Tags(profiles: [.bittersweet, .spiritForward, .complex, .fruity],
                            styles: [.oldFashioned, .stirred, .tiki])
 

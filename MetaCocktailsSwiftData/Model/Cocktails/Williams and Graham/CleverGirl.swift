@@ -23,7 +23,7 @@ let cleverGirlSpec = [CocktailIngredient(.bitters(.hoppedGrapefruit), value: 3, 
                       CocktailIngredient(.gins(.stGeorgeTerroir), value: 1.25)]
 
 
-let cleverGirlTags = Tags(profiles: [.botanical, .complex, .spiritForward, .bright, .elegant],
+let cleverGirlTags = Tags(profiles: [.botanical, .complex, .spiritForward, .bright],
                           styles: [.stirred, .martini])
 
 

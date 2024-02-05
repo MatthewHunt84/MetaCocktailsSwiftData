@@ -22,7 +22,7 @@ var adonisSpec = [CocktailIngredient(.fortifiedWines(.fino), value: 1.5),
                   CocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dash),
                   CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),]
 
-var adonisTags = Tags(profiles: [.sophisticated, .light, .elegant],
+var adonisTags = Tags(profiles: [ .light, .complex, .bittersweet ],
                       styles: [.martini, .stirred])
                    
 

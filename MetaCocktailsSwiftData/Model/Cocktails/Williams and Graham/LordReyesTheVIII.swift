@@ -21,5 +21,5 @@ var lordReyesTheVIIISpec = [CocktailIngredient(.bitters(.angosturaBitters), valu
                             CocktailIngredient(.liqueurs(.anchoRayesAncho), value: 0.75),
                             CocktailIngredient(.agaves(.tequilaOchoBlanco), value: 1)]
 
-var lordReyesTheVIIITags = Tags(profiles: [.complex, .spicy, .punchy, .sophisticated],
+var lordReyesTheVIIITags = Tags(profiles: [.complex, .spicy, .punchy],
                                 styles: [.stirred])

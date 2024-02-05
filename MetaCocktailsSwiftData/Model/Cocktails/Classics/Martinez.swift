@@ -19,6 +19,6 @@ var martinezSpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 
                          CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1.5),
                          CocktailIngredient(.gins(.ginAny), value: 1.5)]
 
-var martinezTags    = Tags(profiles: [.spiritForward, .rich, .complex, .bittersweet, .elegant],
+var martinezTags    = Tags(profiles: [.spiritForward, .rich, .complex, .bittersweet],
                            styles: [.martini, .stirred])
 

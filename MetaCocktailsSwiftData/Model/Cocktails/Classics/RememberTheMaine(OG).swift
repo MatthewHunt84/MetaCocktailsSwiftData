@@ -19,6 +19,6 @@ var rememberTheMaineOGSpec     =  [CocktailIngredient(.otherAlcohol(.absinthe), 
                                    CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 0.75),
                                    CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 2)]
 
-var rememberTheMaineOGTags     = Tags(profiles: [.spiritForward, .bittersweet, .complex, .elegant],
+var rememberTheMaineOGTags     = Tags(profiles: [.spiritForward, .bittersweet, .complex],
                                       styles: [.manhattan, .stirred])
 

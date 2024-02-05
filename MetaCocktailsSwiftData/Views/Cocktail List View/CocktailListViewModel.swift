@@ -21,7 +21,7 @@ final class CocktailListViewModel: ObservableObject {
     @Published var bartenderViewCocktails: [CocktailListCocktail] = getBartenderViewCocktails()
     @Published var guestViewCocktails: [CocktailListCocktail] = getGuestViewCocktails()
     @Published var randomCocktail = oldFashioned
-    @Published var isShowingAllCocktails: Bool = true
+    @Published var isShowingWnGCocktailsOnly: Bool = false
     
     func filter86dCocktailsForBartenders() -> [Cocktail] {
         let startingCocktails = CocktailListViewModel.getBartenderViewCocktails().flatMap({$0.cocktailVariations})
@@ -38,8 +38,11 @@ final class CocktailListViewModel: ObservableObject {
             if doesntMatch == 0 {
                 acceptedCocktails.append(cocktail)
             }
+            
         }
-        
+        for name in theList {
+            print("\(name)")
+        }
         
         
         return acceptedCocktails.sorted(by: {$0.cocktailName < $1.cocktailName})
@@ -194,6 +197,7 @@ final class CocktailListViewModel: ObservableObject {
                                                                      "Prince Edward": [princeEdward],
                                                                      "Queens Park Swizzle": [queensParkSwizzle, queensParkSwizzleWnG],
                                                                      "Ramos Gin Fizz": [ramosGinFizz],
+                                                                     "Ramona Flowers": [ramonaFlowers],
                                                                      "Remember The Maine": [rememberTheMaineOG, rememberTheMaineWnG],
                                                                      "Rusty Nail": [RustyNailWnG],
                                                                      "Rob Roy": [robRoy, robRoyWnG],

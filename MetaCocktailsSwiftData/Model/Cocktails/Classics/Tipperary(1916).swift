@@ -18,6 +18,6 @@ var tipperarySpec     =  [CocktailIngredient(.whiskies(.bushmills), value: 1),
                           CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),
                           CocktailIngredient(.liqueurs(.greenChartreuse), value: 1)]
 
-var tipperaryTags     = Tags(profiles: [.spiritForward, .bittersweet, .sophisticated, .herbal],
+var tipperaryTags     = Tags(profiles: [.spiritForward, .bittersweet, .herbal],
                              styles: [ .stirred])
                         

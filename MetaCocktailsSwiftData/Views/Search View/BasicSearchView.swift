@@ -13,6 +13,7 @@ struct BasicSearchView: View {
     @State var selectedLikesOrDislikes: LikesOrDislikes = .likes
     @State var selectedFlavorsOrIngredients: FlavorsOrIngredient = .flavors
     @State var isShowingFlavors: Bool = true
+    @State private var buttonIsBeingLongPressed = false
     
     //    init() {
     //
@@ -38,6 +39,12 @@ struct BasicSearchView: View {
                                 Button("Filter Williams and Graham Cocktails") {
                                     viewModel.showWilliamsAndGrahamCocktails = true
                                 }
+                                Button("Search by flavor.", action: {
+                                    isShowingFlavors = true
+                                })
+                                Button("Search by ingredient.", action: {
+                                    isShowingFlavors = false
+                                })
                                 
                             }
                             .offset(x: -19, y: 5.0)
@@ -76,64 +83,14 @@ struct BasicSearchView: View {
                         
                         BasicComponentSearchListView(isShowingLikes: $isShowingPreferences, isShowingFlavors: $isShowingFlavors)
                     }
-                    .frame(width: geometry.size.width, height: geometry.size.height * 0.85, alignment: .center)
+                    .frame(width: geometry.size.width, height: geometry.size.height * 0.88, alignment: .center)
                     
                     
                     
-                    HStack {
-                        GeometryReader { buttonGeo in
-                            HStack{
-                                Menu("Search Type") {
-                                    Button("Search by flavor.", action: {
-                                        isShowingFlavors = true
-                                    })
-                                    Button("Search by ingredient.", action: {
-                                        isShowingFlavors = false
-                                    })
-                                }
-                                .font(.footnote)
-                                .buttonStyle(whiteButton())
-                                .frame(width: buttonGeo.size.width * 0.35, height: buttonGeo.size.height, alignment: .trailing)
-                                
-                                NavigationLink {
-                                    SearchResultsView(viewModel: viewModel)
-                                    
-                                } label: {
-                                    Text("Search")
-                                        .font(.headline).bold()
-                                        .padding(25)
-                                        .background(viewModel.selectedPreferredIngredients().count == 0 ? Color(UIColor.black) : Color.brandPrimaryGreen)
-                                        .clipShape(Circle())
-                                        .shadow(color: Color(UIColor.systemGray), radius: 4)
-                                        .foregroundColor(viewModel.selectedPreferredIngredients().count == 0 ? Color(UIColor.systemGray) : Color.white)
-                                    
-                                }
-                                .frame(width: buttonGeo.size.width * 0.3, height: buttonGeo.size.height, alignment: .center)
-                                
-                                Button(action: {
-                                    for i in 0..<viewModel.cocktailComponents.count {
-                                        viewModel.cocktailComponents[i].isPreferred = false
-                                        viewModel.cocktailComponents[i].isUnwanted = false
-                                        viewModel.enableMultipleSpiritSelection = false
-                                        
-                                    }
-                                }) {
-                                    Text("Clear Search")
-                                    
-                                }
-                                .font(.footnote)
-                                .buttonStyle(whiteButton())
-                                .frame(width: buttonGeo.size.width * 0.35, height: buttonGeo.size.height, alignment: .leading)
-                                
-                            }
-                        }
-                        .frame(width: geometry.size.width, height: geometry.size.height * 0.15, alignment: .top)
-                        .offset(CGSize(width: -8, height: 0))
-                        
-                    }
+                    searchButtonView()
+                    .frame(width: geometry.size.width, height: geometry.size.height * 0.12, alignment: .center)
                     
                 }
-                
             }
         }
         
@@ -151,3 +108,4 @@ enum FlavorsOrIngredient: String, CaseIterable {
     case flavors = "Search Flavors"
     case dislikes = "Search Ingredients"
 }
+

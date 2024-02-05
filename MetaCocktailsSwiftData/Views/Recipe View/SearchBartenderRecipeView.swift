@@ -26,7 +26,6 @@ struct SearchBartenderRecipeView: View {
                     Text(viewModel.cocktail.cocktailName)
                         .dynamicTypeSize(.xxLarge).bold()
                         .multilineTextAlignment(.center)
-                        .minimumScaleFactor(0.2)
                         .lineLimit(2)
                         .padding(10)
                     CocktailProfileView(cocktail: viewModel.cocktail)
@@ -34,11 +33,9 @@ struct SearchBartenderRecipeView: View {
                     VStack{
                         Text("Glassware:")
                             .dynamicTypeSize(.xLarge).bold()
-                            .minimumScaleFactor(0.02)
                         Text(viewModel.cocktail.glasswareType.rawValue)
                             .dynamicTypeSize(.large)
                             .multilineTextAlignment(.center)
-                            .minimumScaleFactor(0.02)
                     }
                     .padding(10)
                     
@@ -47,21 +44,26 @@ struct SearchBartenderRecipeView: View {
                         Text("Cocktail Spec:")
                             .dynamicTypeSize(.xLarge).bold()
                         
-                        ForEach(viewModel.cocktail.spec, id: \.id) { ingredient in
-                            let number = NSNumber(value: ingredient.value)
-                            Text("\(number) \(ingredient.unit.rawValue) \(ingredient.ingredient.name)")
-                            
-                                .multilineTextAlignment(.center)
-                                .dynamicTypeSize(.large)
-                                .minimumScaleFactor(0.02)
-                            
-                        }
+                            ForEach(viewModel.cocktail.spec, id: \.id) { ingredient in
+                                let number = NSNumber(value: ingredient.value)
+                                HStack {
+                                    Text("\(number)")
+                                        .dynamicTypeSize(.large).bold()
+                                    Text("\(ingredient.unit.rawValue) \(ingredient.ingredient.name)")
+                                        .multilineTextAlignment(.leading)
+                                        .dynamicTypeSize(.large)
+                                }
+                                
+                            }
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .offset(x: geo.size.width/2-140)
+                        
+                        
                         if let stirShakeBuild = viewModel.cocktail.tags.styles {
                             if stirShakeBuild.contains(.built) {
                                 Text("Build in glass")
                                     .multilineTextAlignment(.center)
                                     .dynamicTypeSize(.large).bold()
-                                    .minimumScaleFactor(0.02)
                                     .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
                                 
                             }
@@ -69,21 +71,18 @@ struct SearchBartenderRecipeView: View {
                                 Text("Shake or Blend")
                                     .multilineTextAlignment(.center)
                                     .dynamicTypeSize(.large).bold()
-                                    .minimumScaleFactor(0.02)
                                     .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
                                 
                             } else if stirShakeBuild.contains(.shaken) && !stirShakeBuild.contains(.blended) {
                                 Text("Shake")
                                     .multilineTextAlignment(.center)
                                     .dynamicTypeSize(.large).bold()
-                                    .minimumScaleFactor(0.02)
                                     .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
                             }
                             if stirShakeBuild.contains(.stirred) {
                                 Text("Stir")
                                     .multilineTextAlignment(.center)
                                     .dynamicTypeSize(.large).bold()
-                                    .minimumScaleFactor(0.02)
                                     .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
                                 
                             }
@@ -91,7 +90,6 @@ struct SearchBartenderRecipeView: View {
                                 Text("Swizzle")
                                     .multilineTextAlignment(.center)
                                     .dynamicTypeSize(.large).bold()
-                                    .minimumScaleFactor(0.02)
                                     .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
                                 
                             }
@@ -102,11 +100,9 @@ struct SearchBartenderRecipeView: View {
                             HStack {
                                 Text("Ice: ")
                                     .dynamicTypeSize(.xLarge).bold()
-                                    .minimumScaleFactor(0.02)
                                 Text(ice)
                                     .dynamicTypeSize(.large)
                                     .multilineTextAlignment(.center)
-                                    .minimumScaleFactor(0.02)
                             }
                         }
                         
@@ -115,13 +111,11 @@ struct SearchBartenderRecipeView: View {
                             VStack{
                                 Text("Garnish:")
                                     .dynamicTypeSize(.xLarge).bold()
-                                    .minimumScaleFactor(0.02)
                                 if let garnishes = viewModel.cocktail.garnish {
                                     ForEach(garnishes, id: \.self) { garnish in
                                         Text("\(garnish.rawValue)")
                                             .multilineTextAlignment(.center)
                                             .dynamicTypeSize(.large)
-                                            .minimumScaleFactor(0.02)
                                         
                                     }
                                     

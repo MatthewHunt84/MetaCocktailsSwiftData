@@ -19,6 +19,6 @@ var tipperarySpecDR     =  [CocktailIngredient(.bitters(.angosturaBitters), valu
                             CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),
                             CocktailIngredient(.whiskies(.irishWhiskeyAny), value: 1.5)]
 
-var tipperaryTagsDR     = Tags(profiles: [.spiritForward, .bittersweet, .sophisticated, .herbal],
+var tipperaryTagsDR     = Tags(profiles: [.spiritForward, .bittersweet, .herbal],
                                styles: [.manhattan, .stirred])
 

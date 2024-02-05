@@ -23,5 +23,5 @@ var theSeventhSonSpec = [CocktailIngredient(.bitters(.grapefruitBitters), value:
                          CocktailIngredient(.fortifiedWines(.dolinBlanc), value: 1),
                          CocktailIngredient(.agaves(.tequilaSieteLeguasBlanco), value: 1.5)]
 
-var theSeventhSonTags = Tags(profiles: [.rich, .bittersweet, .punchy, .spiritForward, .elegant],
+var theSeventhSonTags = Tags(profiles: [.rich, .bittersweet, .punchy, .spiritForward],
                              styles: [.negroni, .stirred])

@@ -21,5 +21,5 @@ var oneNightInKyotoSpec = [CocktailIngredient(.bitters(.bitterTruthJTDecanter), 
                            CocktailIngredient(.fortifiedWines(.cocchiBaroloChinato), value: 2),
                            CocktailIngredient(.whiskies(.hibikiHarmony), value: 2)]
 
-var oneNightInKyotoTags = Tags(profiles: [.rich, .herbal, .punchy, .sophisticated],
+var oneNightInKyotoTags = Tags(profiles: [.rich, .herbal, .punchy],
                                styles: [.manhattan, .stirred])

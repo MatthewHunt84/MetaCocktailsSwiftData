@@ -990,12 +990,12 @@
 			isa = PBXGroup;
 			children = (
 				4DA567B02B6D9524003F6F04 /* CocktailBatchingCalculator */,
-				4DA567A72B6CEBBD003F6F04 /* 86 List */,
 				F4DBE4C32AB882FF009A0C09 /* AnimatedViews */,
 				F4C6A8EF2AB0000800BB0AD0 /* Subviews */,
 				1AC386972AAABED00064F52A /* Tab Bar View */,
 				1AC3869B2AAABED00064F52A /* Recipe View */,
 				1AC3869E2AAABED00064F52A /* Prep Bible */,
+				4DA567A72B6CEBBD003F6F04 /* 86 List */,
 				1AC386A22AAABED00064F52A /* Cocktail List View */,
 				4DB1C0BA2B46D5FC00943C69 /* Cocktail Result List View */,
 				1AC386A52AAABED00064F52A /* Search View */,
