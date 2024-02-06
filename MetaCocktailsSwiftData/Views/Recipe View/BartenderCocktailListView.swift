@@ -17,19 +17,19 @@ struct BartenderCocktailListView: View {
     
     var body: some View {
         GeometryReader{ geo in
-        VStack{
-            HStack{
-                Button{
-                    dismiss()
-                } label: {
-                    Image(systemName: "chevron.backward")
-                    Text("Back")
+            VStack{
+                HStack{
+                    Button{
+                        dismiss()
+                    } label: {
+                        Image(systemName: "chevron.backward")
+                        Text("Back")
+                    }
+                    Spacer()
                 }
-                Spacer()
-            }
-            TabView {
-                ForEach($cocktails, id: \.self) { cocktail in
-                    
+                TabView {
+                    ForEach($cocktails, id: \.self) { cocktail in
+                        
                         ScrollView(.vertical){
                             VStack {
                                 
@@ -41,7 +41,6 @@ struct BartenderCocktailListView: View {
                                 Text(cocktail.cocktailName.wrappedValue)
                                     .dynamicTypeSize(.xxLarge).bold()
                                     .multilineTextAlignment(.center)
-                                    .minimumScaleFactor(0.2)
                                     .lineLimit(2)
                                     .padding(10)
                                 CocktailProfileView(cocktail: cocktail.wrappedValue)
@@ -49,11 +48,9 @@ struct BartenderCocktailListView: View {
                                 VStack{
                                     Text("Glassware:")
                                         .dynamicTypeSize(.xLarge).bold()
-                                        .minimumScaleFactor(0.02)
                                     Text(cocktail.glasswareType.wrappedValue.rawValue)
                                         .dynamicTypeSize(.large)
                                         .multilineTextAlignment(.center)
-                                        .minimumScaleFactor(0.02)
                                 }
                                 .padding(10)
                                 
@@ -63,22 +60,30 @@ struct BartenderCocktailListView: View {
                                     Text("Cocktail Spec:")
                                         .dynamicTypeSize(.xLarge).bold()
                                     
+                                    
                                     ForEach(cocktail.spec.wrappedValue, id: \.id) { ingredient in
                                         let number = NSNumber(value: ingredient.value)
-                                        Text("\(number) \(ingredient.unit.rawValue) \(ingredient.ingredient.name)")
                                         
-                                            .multilineTextAlignment(.center)
-                                            .dynamicTypeSize(.large)
-                                            .minimumScaleFactor(0.02)
+                                        HStack {
+                                            Text("\(number)")
+                                                .dynamicTypeSize(.large).bold()
+                                            Text("\(ingredient.unit.rawValue) \(ingredient.ingredient.name)")
+                                                .multilineTextAlignment(.leading)
+                                                .dynamicTypeSize(.large)
+                                        }
+                                        .padding(0.2)
+                                        
+                                        
                                         
                                     }
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .offset(x: geo.size.width/2-140)
                                     
                                     if let stirShakeBuild = cocktail.tags.styles.wrappedValue {
                                         if stirShakeBuild.contains(.built) {
                                             Text("Build in glass")
                                                 .multilineTextAlignment(.center)
                                                 .dynamicTypeSize(.large).bold()
-                                                .minimumScaleFactor(0.02)
                                                 .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
                                             
                                         }
@@ -86,21 +91,18 @@ struct BartenderCocktailListView: View {
                                             Text("Shake or Blend")
                                                 .multilineTextAlignment(.center)
                                                 .dynamicTypeSize(.large).bold()
-                                                .minimumScaleFactor(0.02)
                                                 .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
                                             
                                         } else if stirShakeBuild.contains(.shaken) && !stirShakeBuild.contains(.blended) {
                                             Text("Shake")
                                                 .multilineTextAlignment(.center)
                                                 .dynamicTypeSize(.large).bold()
-                                                .minimumScaleFactor(0.02)
                                                 .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
                                         }
                                         if stirShakeBuild.contains(.stirred) {
                                             Text("Stir")
                                                 .multilineTextAlignment(.center)
                                                 .dynamicTypeSize(.large).bold()
-                                                .minimumScaleFactor(0.02)
                                                 .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
                                             
                                         }
@@ -108,7 +110,6 @@ struct BartenderCocktailListView: View {
                                             Text("Swizzle")
                                                 .multilineTextAlignment(.center)
                                                 .dynamicTypeSize(.large).bold()
-                                                .minimumScaleFactor(0.02)
                                                 .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
                                             
                                         }
@@ -119,11 +120,9 @@ struct BartenderCocktailListView: View {
                                         HStack {
                                             Text("Ice: ")
                                                 .dynamicTypeSize(.xLarge).bold()
-                                                .minimumScaleFactor(0.02)
                                             Text(ice)
                                                 .dynamicTypeSize(.large)
                                                 .multilineTextAlignment(.center)
-                                                .minimumScaleFactor(0.02)
                                         }
                                     }
                                     
@@ -132,13 +131,12 @@ struct BartenderCocktailListView: View {
                                         VStack{
                                             Text("Garnish:")
                                                 .dynamicTypeSize(.xLarge).bold()
-                                                .minimumScaleFactor(0.02)
+                                            
                                             if let garnishes = cocktail.garnish.wrappedValue {
                                                 ForEach(garnishes, id: \.self) { garnish in
                                                     Text("\(garnish.rawValue)")
                                                         .multilineTextAlignment(.center)
                                                         .dynamicTypeSize(.large)
-                                                        .minimumScaleFactor(0.02)
                                                     
                                                 }
                                                 
@@ -164,7 +162,7 @@ struct BartenderCocktailListView: View {
                                 Rectangle()
                                     .fill(.black)
                                     .frame(width: 60, height: 40, alignment: .center)
-                                    
+                                
                             }
                             .frame(width: geo.size.width)
                             .frame(minHeight: geo.size.height)
@@ -180,7 +178,7 @@ struct BartenderCocktailListView: View {
         }
     }
 }
-        
-        #Preview {
-            BartenderCocktailListView(cocktails:  CocktailListViewModel.getBartenderViewCocktails()[3].cocktailVariations , cocktailName: CocktailListViewModel.getBartenderViewCocktails()[3].cocktailName)
+
+#Preview {
+    BartenderCocktailListView(cocktails:  CocktailListViewModel.getBartenderViewCocktails()[3].cocktailVariations , cocktailName: CocktailListViewModel.getBartenderViewCocktails()[3].cocktailName)
 }

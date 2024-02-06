@@ -12,6 +12,7 @@ final class CocktailListViewModel: ObservableObject {
     static let shared = CocktailListViewModel()
     @Published var guestCocktails: [Cocktail] = getGuestViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName})
     @Published var bartenderCocktails: [Cocktail] = getBartenderViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName})
+    //@Published var bartenderCocktails: [Cocktail] = [cloverClub]
     @Published var justWilliamsAndGrahamCocktails = getBartenderViewCocktails().flatMap({$0.cocktailVariations}).filter({$0.author?.place == AuthorPlaces.williamsAndGraham.rawValue})
     @Published var isShowingRecipeCard = false
     @Published var selectedCocktail: Cocktail?
@@ -20,7 +21,32 @@ final class CocktailListViewModel: ObservableObject {
     @Published var bartenderViewCocktails: [CocktailListCocktail] = getBartenderViewCocktails()
     @Published var guestViewCocktails: [CocktailListCocktail] = getGuestViewCocktails()
     @Published var randomCocktail = oldFashioned
-    @Published var isShowingAllCocktails: Bool = true
+    @Published var isShowingWnGCocktailsOnly: Bool = false
+    
+    func filter86dCocktailsForBartenders() -> [Cocktail] {
+        let startingCocktails = CocktailListViewModel.getBartenderViewCocktails().flatMap({$0.cocktailVariations})
+        let theList = SearchCriteriaViewModel.get86ListNames()
+        
+        var acceptedCocktails: [Cocktail] = []
+        for cocktail in startingCocktails {
+            var doesntMatch = 0
+            for spec in cocktail.spec {
+                if theList.contains(spec.ingredient.name) {
+                    doesntMatch += 1
+                }
+            }
+            if doesntMatch == 0 {
+                acceptedCocktails.append(cocktail)
+            }
+            
+        }
+        for name in theList {
+            print("\(name)")
+        }
+        
+        
+        return acceptedCocktails.sorted(by: {$0.cocktailName < $1.cocktailName})
+    }
    
     static func getGuestViewCocktails() -> [CocktailListCocktail] {
         var guestCocktails: [CocktailListCocktail] = []
@@ -171,6 +197,7 @@ final class CocktailListViewModel: ObservableObject {
                                                                      "Prince Edward": [princeEdward],
                                                                      "Queens Park Swizzle": [queensParkSwizzle, queensParkSwizzleWnG],
                                                                      "Ramos Gin Fizz": [ramosGinFizz],
+                                                                     "Ramona Flowers": [ramonaFlowers],
                                                                      "Remember The Maine": [rememberTheMaineOG, rememberTheMaineWnG],
                                                                      "Rusty Nail": [RustyNailWnG],
                                                                      "Rob Roy": [robRoy, robRoyWnG],

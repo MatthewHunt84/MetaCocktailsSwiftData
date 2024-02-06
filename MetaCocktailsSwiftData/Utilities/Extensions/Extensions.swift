@@ -24,11 +24,18 @@ struct whiteButton: ButtonStyle {
     }
 }
 
-struct noStyleButton: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .foregroundColor(Color(UIColor.systemCyan))
-    }
-}
 
 var wNGSpecString = "(Williams & Graham Spec.)"
+
+
+extension TextField {
+    func cBCTextField() -> some View {
+        self
+            .padding(EdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 5))
+            .background(Color(UIColor.systemBackground))
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
+            .foregroundColor(Color(UIColor.white))
+            .multilineTextAlignment(.center)
+    }
+}

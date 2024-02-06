@@ -12,8 +12,8 @@ var RustyNailWnG = Cocktail(cocktailName: "Rusty Nail(W&G Version)",
                             garnish: [.lemonPeel,],
                             ice: .bigRock,
                             author: williamsAndGraham,
-                            spec: robRoySpecWnG,
-                            tags: robRoyTagsWnG)
+                            spec: RustyNailSpecWnG,
+                            tags: RustyNailTagsWnG)
 
 var RustyNailSpecWnG     =  [CocktailIngredient(.liqueurs(.drambuie), value: 0.5),
                              CocktailIngredient(.whiskies(.balvinieDW), value: 2.5)]

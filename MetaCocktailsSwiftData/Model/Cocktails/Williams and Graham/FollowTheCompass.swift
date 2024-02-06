@@ -24,6 +24,6 @@ let followTheCompassSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.a
                                                   CocktailIngredient(.whiskies(.compassBoxOakCross), value: 1.25)]
 
 
-let followTheCompassTags = Tags(profiles: [.floral, .spiritForward, .herbal, .sophisticated],
+let followTheCompassTags = Tags(profiles: [.floral, .spiritForward, .herbal],
                                 styles: [.manhattan, .stirred])
 

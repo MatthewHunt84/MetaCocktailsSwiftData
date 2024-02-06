@@ -19,6 +19,6 @@ var rememberTheMaineSpecWnG     =  [CocktailIngredient(.otherAlcohol(.absinthe),
                                     CocktailIngredient(.fortifiedWines(.carpanoAntica), value: 0.75),
                                  CocktailIngredient(.whiskies(.jimBeamRye), value: 2)]
 
-var rememberTheMaineTagsWnG     = Tags(profiles: [.spiritForward, .bittersweet, .sophisticated, .complex],
+var rememberTheMaineTagsWnG     = Tags(profiles: [.spiritForward, .bittersweet, .complex],
                                     styles: [.manhattan, .stirred])
 

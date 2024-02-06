@@ -58,32 +58,7 @@ struct SearchCriteriaView: View {
                 
                 
                 AdvancedCriteriaListView(selectedList: $selectedList, navigationTitle: selectedList.getTitle(), isShowingLikes: $isShowingPreferences)
-                HStack {
-                    NavigationLink {
-                        SearchResultsView(viewModel: viewModel)
-                    } label: {
-                        Text("SEARCH!")
-                            .font(.footnote).bold()
-                            .padding(EdgeInsets(top: 10, leading: 30, bottom: 10, trailing: 30))
-                            .background(viewModel.selectedPreferredIngredients().count == 0 ? Color(UIColor.systemGray) : Color.brandPrimaryGreen)
-                            .clipShape(RoundedRectangle(cornerRadius: 140))
-                            .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
-                            .foregroundColor(.white)
-                    }
-                    Button(action: {
-                        for i in 0..<viewModel.cocktailComponents.count {
-                            viewModel.cocktailComponents[i].isPreferred = false
-                            viewModel.cocktailComponents[i].isUnwanted = false
-                            viewModel.enableMultipleSpiritSelection = false
-                        }
-                    }) {
-                        Text("Clear Search")
-                          
-                    }
-                    .padding(10)
-                    .font(.footnote).bold()
-                    .buttonStyle(whiteButton())
-                }
+               SearchButtonView()
                 
             }
         }

@@ -1,0 +1,185 @@
+//
+//  CBCMainView.swift
+//  MetaCocktailsSwiftData
+//
+//  Created by James Menkal on 2/4/24.
+//
+
+import SwiftUI
+import SwiftData
+
+struct CBCMainView: View {
+    @EnvironmentObject var viewModel: CBCViewModel
+    @Environment(\.modelContext) var modelContext
+    @Bindable var batchCocktail: BatchedCocktail
+    @State var didSave: Bool = false
+    @Query var favoriteCocktails: [BatchedCocktail]
+    
+    
+    var body: some View {
+        ZStack{
+            NavigationStack {
+                VStack {
+                    VStack {
+                        HStack {
+                            Text("Cocktail Specs")
+                                .font(.largeTitle).bold()
+                            Spacer()
+                            Button("Clear") {
+                                viewModel.clearPageData()
+                            }
+                            
+                            ZStack{
+                                Button {
+                                    
+                                    modelContext.insert(BatchedCocktail(batchCocktailName: viewModel.cocktailNameText, dilutionPercentage: viewModel.dilutionPercentage, dilutionType: viewModel.dilutionName, notes: viewModel.notesText, batchCocktailIngredients: viewModel.ingredients))
+                                    didSave.toggle()
+                                    withAnimation(.easeInOut(duration: 5.0)) {
+                                        didSave.toggle()
+                                    }
+                                    
+                                    
+                                    print("Saved")
+                                } label: {
+                                    HStack{
+                                        Image(systemName: didSave ? "checkmark.circle.fill" : "circle")
+                                            .scaleEffect(didSave ? 1.5 : 1.0)
+                                            .foregroundStyle(didSave ? .brandPrimaryGreen : .white)
+                                        Text("Save")
+                                            .foregroundStyle(didSave ? .brandPrimaryGreen : .white)
+                                    }
+                                }
+                                
+                            }
+                        }
+                        .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
+                        
+                        HStack {
+                            TextField("Enter a cocktail name.", text: $viewModel.cocktailNameText).cBCTextField()
+                            NavigationLink {
+                                CBCFavoriteCocktailsView()
+                            } label: {
+                                Text("Batches")
+                            }
+                            .buttonStyle(BlackNWhiteButton())
+                            NavigationLink{
+                                NotesView(newText: viewModel.notesText, batchCocktail: batchCocktail)
+                            } label: {
+                                Image(systemName: "pencil.and.list.clipboard")
+                            }
+                            .buttonStyle(BlackNWhiteButton())
+                        }
+                        
+                        HStack {
+                            NavigationLink {
+                                CBCAddIngredientView()
+                            }label: {
+                                Text("✚ Ingredient")
+                            }
+                            .buttonStyle(BlackNWhiteButton())
+                            
+                            
+                            Spacer()
+                            Text("Cocktail Count:")
+                            TextField("#", text: $viewModel.numberOfCocktailsText).cBCTextField()
+                                .frame(maxWidth: 75)
+                                .keyboardType(.decimalPad)
+                        }
+                    }
+                    .padding(EdgeInsets(top: 0, leading: 5, bottom: 5, trailing: 5))
+                    
+                    List {
+                        ForEach($viewModel.ingredients, id: \.self) { ingredient in
+                            CBCIngredientCell(ingredient: ingredient)
+                        }
+                        .onDelete(perform: viewModel.delete)
+                        .onMove(perform: viewModel.moveIngredients)
+                        if viewModel.dilutionName != "" {
+                            DilutionCell()
+                                .swipeActions{
+                                    Button("Delete"){
+                                        viewModel.dilutionName = ""
+                                        viewModel.dilutionPercentage = ""
+                                        viewModel.calculateABV()
+                                    }
+                                }
+                        }
+                        
+                        if viewModel.ingredients.count > 0 {
+                            
+                            if viewModel.isShowingSwipeTip {
+                                Text("← Swipe to delete")
+                                    .swipeActions {
+                                        Button("Delete") {
+                                            viewModel.isShowingSwipeTip.toggle()
+                                        }
+                                    }
+                            }
+                            
+                        }
+                        
+                    }
+                    .background(content: {
+                        if viewModel.ingredients.count == 0 {
+                            Image("ingredientHintView")
+                                .resizable()
+                                .scaledToFit()
+                        }
+                    })
+                    .listStyle(.plain)
+                    .overlay( RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
+                        .stroke(.gray.gradient, lineWidth: 2))
+                    
+                    VStack {
+                        
+                        
+                        
+                        Text("Your ABV is \(viewModel.totalCocktailABVPercentage)%")
+                        
+                        
+                        
+                        Button("Batch"){
+                            for ingredients in viewModel.ingredients {
+                                print("\(ingredients.name) has the amount of \(ingredients.amount) and the abv of \(ingredients.aBV)")
+                            }
+                        }
+                        .buttonStyle(BlackNWhiteButton())
+                    }
+                }
+                
+            }
+            .task {
+                viewModel.ingredients = batchCocktail.batchCocktailIngredients
+                viewModel.cocktailNameText = batchCocktail.batchCocktailName
+                viewModel.notesText = batchCocktail.notes
+                viewModel.didUpdateDilution.toggle()
+                viewModel.calculateABV()
+            }
+            
+        }
+    }
+    
+}
+
+#Preview {
+    do{
+        
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: BatchedCocktail.self, configurations: config)
+        
+        @State var cocktail = BatchedCocktail(batchCocktailName: "Frenchies",
+                                              dilutionPercentage: "10",
+                                              dilutionType: "Milk", notes: "asadads",
+                                              batchCocktailIngredients: [BatchIngredient(name: "Vodka", amount: "1", aBV: "57"),
+                                                                         BatchIngredient(name: "Maraschino", amount: "0.5", aBV: "2"),
+                                                                         BatchIngredient(name: "Orgeat", amount: "2", aBV: "6")])
+        return CBCMainView(batchCocktail: cocktail, didSave: false)
+            .modelContainer(container)
+            .environmentObject(CBCViewModel())
+        
+    } catch {
+        return Text("Ooopsies")
+    }
+    
+}
+

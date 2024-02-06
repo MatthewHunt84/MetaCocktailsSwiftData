@@ -19,9 +19,9 @@ struct TabBarView: View {
 
             PrepBibleListView()
                 .tabItem { Label("Prep", systemImage: "book.fill") }
-            
-//            EightySixListView()
-//                .tabItem { Label("86", systemImage: "list.clipboard") }
+            CBCMainView( batchCocktail: BatchedCocktail(batchCocktailName: "", dilutionPercentage: "", dilutionType: "", notes: "", batchCocktailIngredients: []))
+                .tabItem { Label("Batch", systemImage: "plus.forwardslash.minus") }
+
         }
         
         .environmentObject(SearchCriteriaViewModel()) // If we create the environmentObject on the main tabView like this, it gets automatically passed to all the child views. So any view in the tabView can just declare "@EnvironmentObject var viewModel: SearchCriteriaViewModel" and they will all have access to this same instance. Neat.

@@ -22,5 +22,5 @@ var elOchoRosadoSpec = [CocktailIngredient(.bitters(.lemonBitters), value: 2, un
                         CocktailIngredient(.fortifiedWines(.lilletRose), value: 1),
                         CocktailIngredient(.agaves(.tequilaOchoBlanco), value: 1.5)]
 
-var elOchoRosadoTags = Tags(profiles: [.complex, .dry, .punchy, .sophisticated],
+var elOchoRosadoTags = Tags(profiles: [.complex, .dry, .punchy],
                             styles: [.martini, .stirred])

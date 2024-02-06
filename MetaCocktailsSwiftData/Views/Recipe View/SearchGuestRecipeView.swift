@@ -87,6 +87,7 @@ struct IngredientView: View {
                 AuthorView(cocktail: cocktail)
             }
         }
+        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
     }
 }
 struct CocktailProfileView: View {
@@ -99,7 +100,7 @@ struct CocktailProfileView: View {
     init(cocktail: Cocktail) {
         self.cocktail = cocktail
         
-        let ingredients = cocktail.spec
+        //let ingredients = cocktail.spec
         
         
         
