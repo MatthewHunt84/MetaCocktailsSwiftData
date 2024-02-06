@@ -42,7 +42,7 @@ struct CBCAddIngredientView: View {
                     HStack{
                         Spacer()
                         Text("ABV percentage:")
-                        TextField("%ABV", text: $viewModel.abvPercentage).cBCTextField()
+                        TextField("%ABV", text: $viewModel.ingredientAbvPercentage).cBCTextField()
                             .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 40, alignment: .center)
                     }
                     
@@ -57,7 +57,7 @@ struct CBCAddIngredientView: View {
                     HStack{
                         Spacer()
                         Text("Percent Amount:")
-                        TextField("%Dilution", text: $viewModel.abvPercentage).cBCTextField()
+                        TextField("%Dilution", text: $viewModel.dilutionPercentage).cBCTextField()
                         
                         
                             .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 40, alignment: .center)
@@ -65,10 +65,17 @@ struct CBCAddIngredientView: View {
                 }
                 
                 Button("Add Ingredient") {
-                    viewModel.ingredients.append(CBCIngredient(name: viewModel.ingredientNameText, amount: viewModel.ingredientAmount, aBV: viewModel.abvPercentage))
+                    
+                    
+                    if ingredientOrDilution == .ingredient {
+                        if viewModel.ingredientNameText != ""{
+                            viewModel.ingredients.append(BatchIngredient(name: viewModel.ingredientNameText, amount: viewModel.ingredientAmount, aBV: viewModel.ingredientAbvPercentage))
+                        }
+                    }
+                    viewModel.calculateABV()
                     viewModel.ingredientNameText = ""
                     viewModel.ingredientAmount = ""
-                    viewModel.abvPercentage = ""
+                    viewModel.ingredientAbvPercentage = ""
                     dismiss()
                     
                 }
@@ -90,6 +97,6 @@ struct CBCAddIngredientView: View {
 enum IngredientOrDilution: String, CaseIterable {
     
     case ingredient = "Ingredient"
-    case dislikes = "Dilution"
+    case dilution = "Dilution"
 }
 

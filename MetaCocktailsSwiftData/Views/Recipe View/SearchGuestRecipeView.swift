@@ -100,7 +100,7 @@ struct CocktailProfileView: View {
     init(cocktail: Cocktail) {
         self.cocktail = cocktail
         
-        let ingredients = cocktail.spec
+        //let ingredients = cocktail.spec
         
         
         

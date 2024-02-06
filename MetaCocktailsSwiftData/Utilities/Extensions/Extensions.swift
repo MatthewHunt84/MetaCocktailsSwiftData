@@ -31,7 +31,7 @@ var wNGSpecString = "(Williams & Graham Spec.)"
 extension TextField {
     func cBCTextField() -> some View {
         self
-            .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+            .padding(EdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 5))
             .background(Color(UIColor.systemBackground))
             .clipShape(RoundedRectangle(cornerRadius: 20))
             .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
