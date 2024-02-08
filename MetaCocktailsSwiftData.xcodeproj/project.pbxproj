@@ -1045,6 +1045,7 @@
 		1AC386992AAABED00064F52A /* Build Order View */ = {
 			isa = PBXGroup;
 			children = (
+				4DE9AC122B750D8700A39D03 /* Guest Views */,
 				1AC3869A2AAABED00064F52A /* BuildOrderView.swift */,
 			);
 			path = "Build Order View";
@@ -1055,8 +1056,6 @@
 			children = (
 				1AC386992AAABED00064F52A /* Build Order View */,
 				1AC3869D2AAABED00064F52A /* SearchBartenderRecipeView.swift */,
-				4DF408F32B622BB200EF9A6E /* SearchGuestRecipeView.swift */,
-				4D9025A72B64B970005F44F6 /* GuestCocktailListView.swift */,
 				4D9025A92B64C5C0005F44F6 /* BartenderCocktailListView.swift */,
 				4D088FC92B62E3640047B056 /* CocktailMenuViewModel.swift */,
 			);
@@ -1381,6 +1380,15 @@
 				4DBFF81A2B5FAE030011B5B1 /* GeneralInstructions.swift */,
 			);
 			path = "General Cocktail Instructions";
+			sourceTree = "<group>";
+		};
+		4DE9AC122B750D8700A39D03 /* Guest Views */ = {
+			isa = PBXGroup;
+			children = (
+				4D9025A72B64B970005F44F6 /* GuestCocktailListView.swift */,
+				4DF408F32B622BB200EF9A6E /* SearchGuestRecipeView.swift */,
+			);
+			path = "Guest Views";
 			sourceTree = "<group>";
 		};
 		F44A28F52AC26A590083C04D /* Layouts */ = {

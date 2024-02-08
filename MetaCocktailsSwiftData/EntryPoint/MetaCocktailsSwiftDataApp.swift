@@ -27,9 +27,7 @@ struct MetaCocktailsSwiftDataApp: App {
                 .environmentObject(cocktailBC)
                 .preferredColorScheme(.dark)
         }
-        //.modelContainer(for: Cocktail.self)
-        //.modelContainer(container)
         .modelContainer(for: [BatchedCocktail.self, BatchIngredient.self])
-        //.modelContainer(for: BatchIngredient.self)
+ 
     }
 }

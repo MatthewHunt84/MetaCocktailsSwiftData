@@ -14,6 +14,7 @@ final class BatchedCocktailsViewModel: ObservableObject {
     var CBCFavoriteCocktailsArray: [BatchedCocktail] = []
    
     
+    
 }
 
 @Model

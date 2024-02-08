@@ -31,7 +31,8 @@ struct CBCAddIngredientView: View {
                     HStack{
                         Text("Name:")
                         TextField("Ingredient Name", text: $viewModel.ingredientNameText).cBCTextField()
-                        
+                            .frame(width: 300, height: 40, alignment: .center)
+                           
                     }
                     HStack{
                         Spacer()
@@ -77,22 +78,23 @@ struct CBCAddIngredientView: View {
                     
                     
                     if ingredientOrDilution == .ingredient {
-                        if viewModel.ingredientNameText != ""{
+
                             if mlsOrOunces == .ounces {
                                 viewModel.ingredients.append(BatchIngredient(name: viewModel.ingredientNameText, amount: viewModel.ingredientAmount, aBV: viewModel.ingredientAbvPercentage))
                             } else {
                                 viewModel.ingredients.append(BatchIngredient(name: viewModel.ingredientNameText, amount: viewModel.convertMlToOz(for: viewModel.ingredientAmount), aBV: viewModel.ingredientAbvPercentage))
                             }
-                            
-                        }
+
                     }
-                    viewModel.calculateABV()
+                    
                     viewModel.ingredientNameText = ""
                     viewModel.ingredientAmount = ""
                     viewModel.ingredientAbvPercentage = ""
+                   
                     dismiss()
                     
                 }
+                .disabled(viewModel.ingredientNameText != "" ? false : true)
                 .buttonStyle(BlackNWhiteButton())
                 .padding()
                 Spacer()

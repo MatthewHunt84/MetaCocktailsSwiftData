@@ -17,8 +17,8 @@ struct TabBarView: View {
             CocktailListView()
                 .tabItem { Label("A-Z", systemImage: "list.bullet") }
 
-            PrepBibleListView()
-                .tabItem { Label("Prep", systemImage: "book.fill") }
+//            PrepBibleListView()
+//                .tabItem { Label("Prep", systemImage: "book.fill") }
             CBCMainView( savedBatchCocktail: BatchedCocktail(batchCocktailName: "", dilutionPercentage: "", dilutionType: "", notes: "", batchCocktailIngredients: []))
                 .tabItem { Label("Batch", systemImage: "plus.forwardslash.minus") }
 

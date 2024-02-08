@@ -13,6 +13,7 @@ struct SavedBatchCocktailsView: View {
     @Environment(\.modelContext) var modelContext
     @Query var savedBatchCocktails: [BatchedCocktail]
     @State private var isShowingTestView: Bool = false
+   
     
     
     var body: some View {
@@ -27,6 +28,7 @@ struct SavedBatchCocktailsView: View {
                         }
                         .onTapGesture {
                             viewModel.notesText = batch.notes
+                       
                         }
                         
                     }

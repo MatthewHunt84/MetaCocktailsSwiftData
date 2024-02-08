@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 
+
 final class CBCViewModel: ObservableObject {
  
     
@@ -46,7 +47,7 @@ final class CBCViewModel: ObservableObject {
     }
     func calculateABV() {
         var totalVolumePreDilution = 0.0
-        var pureAlcohol = 0.0
+        var pureAlcoholVolume = 0.0
         var dilutionPerCent = 0.0
         /// The goal here is to divide the total amount of pure alcohol by the total volume and then multiply that by 100 to get the ABV.
         ///  we fist check to see if there's any dilution. If there is, we convert it into a usable double for later.
@@ -58,12 +59,10 @@ final class CBCViewModel: ObservableObject {
             ///While the loop is happening, we're tallying up the total volume one ingredient at a time.
             let abvPerCent = (Double(ingredient.aBV) ?? 0.0) / 100
             /// we convert the ABV string into a usable double. We then multiply the ingredient volume by the ABV% to get the amount of pure alcohol and add that to the pureAlcohol var total.
-            pureAlcohol += (Double(ingredient.amount) ?? 0.0) * abvPerCent
+            pureAlcoholVolume += (Double(ingredient.amount) ?? 0.0) * abvPerCent
         }
         /// Multiply the dilution percentage by the totalVolumePREdilution by the dilution percent. Add that to the totalVolumePREdilution to get the Total Volume.
-        let dilutionVolume = totalVolumePreDilution * dilutionPerCent
-        let totalVolumePostDilution = totalVolumePreDilution + dilutionVolume
-        let abvPC = (pureAlcohol / totalVolumePostDilution) * 100
+        let abvPC = (pureAlcoholVolume / (totalVolumePreDilution + (totalVolumePreDilution * dilutionPerCent))) * 100
         /// we divide the pure alcohol by the total volume and then multiply that by 100 to get the final ABV.
         if abvPC > 0.0  {
             totalCocktailABVPercentage = String(format: "%.2f", abvPC)
