@@ -55,11 +55,18 @@ struct SearchCriteriaView: View {
                 }
                 
                 
-                
-                
-                AdvancedCriteriaListView(selectedList: $selectedList, navigationTitle: selectedList.getTitle(), isShowingLikes: $isShowingPreferences)
-               SearchButtonView()
-                
+                ZStack {
+                    GeometryReader { geo in
+                        
+                        AdvancedCriteriaListView(selectedList: $selectedList, navigationTitle: selectedList.getTitle(), isShowingLikes: $isShowingPreferences)
+                            .frame(width: geo.size.width, height: geo.size.height)
+                        SearchButtonView()
+                            .frame(width: geo.size.width, height: geo.size.height * 0.9, alignment: .bottomTrailing)
+                            .offset(x: -40)
+                    }
+                    
+                    
+                }
             }
         }
     }

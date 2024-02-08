@@ -41,11 +41,13 @@ final class BatchIngredient {
     var name: String
     var amount: String
     var aBV: String
-    
+ 
     
     init(name: String, amount: String, aBV: String) {
         self.name = name
         self.amount = amount
         self.aBV = aBV
     }
+    
+
 }

@@ -10,9 +10,9 @@ import SwiftUI
 struct BlackNWhiteButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
+            .padding(8)
             .background(Color.black.gradient)
-            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .clipShape(RoundedRectangle(cornerRadius: 13))
             .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
             .foregroundColor(Color(UIColor.white))
         

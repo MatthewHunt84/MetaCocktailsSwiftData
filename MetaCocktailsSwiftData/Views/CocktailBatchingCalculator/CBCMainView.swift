@@ -30,6 +30,7 @@ struct CBCMainView: View {
                             }
                             
                             ZStack{
+                                
                                 Button {
                                     
                                     modelContext.insert(BatchedCocktail(batchCocktailName: viewModel.cocktailNameText, dilutionPercentage: viewModel.dilutionPercentage, dilutionType: viewModel.dilutionName, notes: viewModel.notesText, batchCocktailIngredients: viewModel.ingredients))
@@ -49,6 +50,8 @@ struct CBCMainView: View {
                                             .foregroundStyle(didSave ? .brandPrimaryGreen : .white)
                                     }
                                 }
+                                .disabled(viewModel.cocktailNameText == "" ? true : false)
+                                
                                 
                             }
                         }
@@ -56,16 +59,17 @@ struct CBCMainView: View {
                         
                         HStack {
                             TextField("Enter a cocktail name.", text: $viewModel.cocktailNameText).cBCTextField()
-                            NavigationLink {
-                                CBCFavoriteCocktailsView()
-                            } label: {
-                                Text("Batches")
-                            }
-                            .buttonStyle(BlackNWhiteButton())
+                            
                             NavigationLink{
                                 NotesView(newText: viewModel.notesText, batchCocktail: batchCocktail)
                             } label: {
                                 Image(systemName: "pencil.and.list.clipboard")
+                            }
+                            .buttonStyle(BlackNWhiteButton())
+                            NavigationLink {
+                                CBCFavoriteCocktailsView()
+                            } label: {
+                                Text("Batches")
                             }
                             .buttonStyle(BlackNWhiteButton())
                         }
@@ -89,8 +93,8 @@ struct CBCMainView: View {
                     .padding(EdgeInsets(top: 0, leading: 5, bottom: 5, trailing: 5))
                     
                     List {
-                        ForEach($viewModel.ingredients, id: \.self) { ingredient in
-                            CBCIngredientCell(ingredient: ingredient)
+                        ForEach(viewModel.ingredients, id: \.self) { ingredient in
+                            CBCIngredientCell(ingredient: ingredient, amountInMls: viewModel.convertIngredientOzAmountIntoMls(for: ingredient))
                         }
                         .onDelete(perform: viewModel.delete)
                         .onMove(perform: viewModel.moveIngredients)
@@ -119,13 +123,13 @@ struct CBCMainView: View {
                         }
                         
                     }
-                    .background(content: {
-                        if viewModel.ingredients.count == 0 {
-                            Image("ingredientHintView")
-                                .resizable()
-                                .scaledToFit()
-                        }
-                    })
+//                    .background(content: {
+//                        if viewModel.ingredients.count == 0 {
+//                            Image("ingredientHintView")
+//                                .resizable()
+//                                .scaledToFit()
+//                        }
+//                    })
                     .listStyle(.plain)
                     .overlay( RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
                         .stroke(.gray.gradient, lineWidth: 2))
@@ -138,10 +142,10 @@ struct CBCMainView: View {
                         
                         
                         
-                        Button("Batch"){
-                            for ingredients in viewModel.ingredients {
-                                print("\(ingredients.name) has the amount of \(ingredients.amount) and the abv of \(ingredients.aBV)")
-                            }
+                        NavigationLink{
+                            MainBatchView()
+                        } label: {
+                            Text("Batch")
                         }
                         .buttonStyle(BlackNWhiteButton())
                     }

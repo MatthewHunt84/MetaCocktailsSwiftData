@@ -18,6 +18,8 @@ final class CBCViewModel: ObservableObject {
     @Published var ingredientNameText = ""
     @Published var dilutionName = ""
     @Published var dilutionPercentage = ""
+    @Published var totalDilutionVolume = 0.0
+    @Published var totalBatchVolume = 0.0
     @Published var ingredientAmount = ""
     @Published var editedIngredientVolumeTextField = ""
     @Published var ingredients: [BatchIngredient] = []
@@ -58,8 +60,8 @@ final class CBCViewModel: ObservableObject {
             pureAlcohol += (Double(ingredient.amount) ?? 0.0) * abvPerCent
         }
         /// Multiply the dilution percentage by the totalVolumePREdilution by the dilution percent. Add that to the totalVolumePREdilution to get the Total Volume.
-        let dilutionAmount = totalVolumePreDilution * dilutionPerCent
-        let totalVolumePostDilution = totalVolumePreDilution + dilutionAmount
+        let dilutionVolume = totalVolumePreDilution * dilutionPerCent
+        let totalVolumePostDilution = totalVolumePreDilution + dilutionVolume
         let abvPC = (pureAlcohol / totalVolumePostDilution) * 100
         /// we divide the pure alcohol by the total volume and then multiply that by 100 to get the final ABV.
         if abvPC > 0.0  {
@@ -68,6 +70,16 @@ final class CBCViewModel: ObservableObject {
             totalCocktailABVPercentage = "0"
         }
         ///Check to make sure there's a number there, if not, add a 0 so the prompt doesn't read "nan".
+    }
+    func convertIngredientOzAmountIntoMls(for ingredient: BatchIngredient) -> String {
+        return String(Int(ceil((Double(ingredient.amount) ?? 0.0) * 29.5735)))
+    }
+    func convertMlToOz(for ingredient: String) -> String {
+        return String((Double(ingredient) ?? 0.0) / 29.5735)
+    }
+    
+    func doBatchMath() {
+        
     }
     
     
