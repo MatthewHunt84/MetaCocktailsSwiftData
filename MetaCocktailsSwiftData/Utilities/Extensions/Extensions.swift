@@ -17,7 +17,7 @@ struct whiteButton: ButtonStyle {
         configuration.label
         .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
         .background(Color(UIColor.systemBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 40))
+        .clipShape(RoundedRectangle(cornerRadius: 20))
         .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
         .foregroundColor(Color(UIColor.systemCyan))
         
@@ -31,9 +31,9 @@ var wNGSpecString = "(Williams & Graham Spec.)"
 extension TextField {
     func cBCTextField() -> some View {
         self
-            .padding(EdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 5))
+            .padding(5)
             .background(Color(UIColor.systemBackground))
-            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .clipShape(RoundedRectangle(cornerRadius: 10))
             .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
             .foregroundColor(Color(UIColor.white))
             .multilineTextAlignment(.center)

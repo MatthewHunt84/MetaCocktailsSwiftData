@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CBCAddIngredientView: View {
     @State var ingredientOrDilution: IngredientOrDilution = .ingredient
+    @State var mlsOrOunces: MlsOrOunces = .ounces
     @EnvironmentObject var viewModel: CBCViewModel
     @Environment(\.dismiss) private var dismiss
     
@@ -34,8 +35,16 @@ struct CBCAddIngredientView: View {
                     }
                     HStack{
                         Spacer()
-                        Text("Amount in ounces:")
-                        TextField("Oz. amount", text: $viewModel.ingredientAmount).cBCTextField()
+                        Text("Amount in")
+                        Picker("", selection: $mlsOrOunces) {
+                            ForEach(MlsOrOunces.allCases, id: \.self) {
+                                Text($0.rawValue)
+                                
+                            }
+                        }
+                        .pickerStyle(.segmented)
+                        .padding()
+                        TextField("Amount", text: $viewModel.ingredientAmount).cBCTextField()
                             .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 40, alignment: .center)
                         
                     }
@@ -69,7 +78,12 @@ struct CBCAddIngredientView: View {
                     
                     if ingredientOrDilution == .ingredient {
                         if viewModel.ingredientNameText != ""{
-                            viewModel.ingredients.append(BatchIngredient(name: viewModel.ingredientNameText, amount: viewModel.ingredientAmount, aBV: viewModel.ingredientAbvPercentage))
+                            if mlsOrOunces == .ounces {
+                                viewModel.ingredients.append(BatchIngredient(name: viewModel.ingredientNameText, amount: viewModel.ingredientAmount, aBV: viewModel.ingredientAbvPercentage))
+                            } else {
+                                viewModel.ingredients.append(BatchIngredient(name: viewModel.ingredientNameText, amount: viewModel.convertMlToOz(for: viewModel.ingredientAmount), aBV: viewModel.ingredientAbvPercentage))
+                            }
+                            
                         }
                     }
                     viewModel.calculateABV()
@@ -100,3 +114,7 @@ enum IngredientOrDilution: String, CaseIterable {
     case dilution = "Dilution"
 }
 
+enum MlsOrOunces: String, CaseIterable {
+    case mls = "ml."
+    case ounces = "oz."
+}

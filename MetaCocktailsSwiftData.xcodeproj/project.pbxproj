@@ -107,6 +107,8 @@
 		4D3EA6942B5F982E009EE902 /* AlaskaCocktail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3EA6932B5F982E009EE902 /* AlaskaCocktail.swift */; };
 		4D4D9EE02B5868C2004E7EA5 /* Gimlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4D9EDF2B5868C2004E7EA5 /* Gimlet.swift */; };
 		4D7B01732B71DF690026FE34 /* DilutionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7B01722B71DF690026FE34 /* DilutionCell.swift */; };
+		4D7B01752B72BF0A0026FE34 /* MainBatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7B01742B72BF0A0026FE34 /* MainBatchView.swift */; };
+		4D7B01772B72C2260026FE34 /* BatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7B01762B72C2260026FE34 /* BatchCell.swift */; };
 		4D90259C2B6456C0005F44F6 /* French75(WnG).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D90259B2B6456C0005F44F6 /* French75(WnG).swift */; };
 		4D9025A02B645868005F44F6 /* Gibson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D90259F2B645868005F44F6 /* Gibson.swift */; };
 		4D9025A22B6459C0005F44F6 /* GinFizz(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9025A12B6459C0005F44F6 /* GinFizz(W&G).swift */; };
@@ -495,6 +497,8 @@
 		4D3EA6932B5F982E009EE902 /* AlaskaCocktail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlaskaCocktail.swift; sourceTree = "<group>"; };
 		4D4D9EDF2B5868C2004E7EA5 /* Gimlet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gimlet.swift; sourceTree = "<group>"; };
 		4D7B01722B71DF690026FE34 /* DilutionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DilutionCell.swift; sourceTree = "<group>"; };
+		4D7B01742B72BF0A0026FE34 /* MainBatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBatchView.swift; sourceTree = "<group>"; };
+		4D7B01762B72C2260026FE34 /* BatchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchCell.swift; sourceTree = "<group>"; };
 		4D90259B2B6456C0005F44F6 /* French75(WnG).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "French75(WnG).swift"; sourceTree = "<group>"; };
 		4D90259F2B645868005F44F6 /* Gibson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gibson.swift; sourceTree = "<group>"; };
 		4D9025A12B6459C0005F44F6 /* GinFizz(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GinFizz(W&G).swift"; sourceTree = "<group>"; };
@@ -801,6 +805,7 @@
 				4DA567AE2B6CF101003F6F04 /* EightySixCheckListCell.swift */,
 				4DA5686D2B70EB26003F6F04 /* CBCIngredientCell.swift */,
 				4D7B01722B71DF690026FE34 /* DilutionCell.swift */,
+				4D7B01762B72C2260026FE34 /* BatchCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1238,6 +1243,7 @@
 				4DA568602B70A924003F6F04 /* CBCMainView.swift */,
 				4DA568652B70AF07003F6F04 /* CBCViewModel.swift */,
 				4DA568672B70B00D003F6F04 /* NotesView.swift */,
+				4D7B01742B72BF0A0026FE34 /* MainBatchView.swift */,
 				4DA5686B2B70CF4E003F6F04 /* CBCAddIngredientView.swift */,
 			);
 			path = CocktailBatchingCalculator;
@@ -1833,6 +1839,7 @@
 				4DBBA49C2B68B20200179B8F /* MorningGloryFizz(W&G).swift in Sources */,
 				4DBBA46C2B6796C200179B8F /* JungleBird(WnG).swift in Sources */,
 				1AC386C62AAABED10064F52A /* PrepRecipeView.swift in Sources */,
+				4D7B01772B72C2260026FE34 /* BatchCell.swift in Sources */,
 				4DA5679C2B6CD371003F6F04 /* WhatsYourFavorite.swift in Sources */,
 				4DA5677C2B6C928F003F6F04 /* EasyStreet.swift in Sources */,
 				4DA5681C2B6E2819003F6F04 /* Yeen.swift in Sources */,
@@ -1928,6 +1935,7 @@
 				4DBFF8162B5FA7C40011B5B1 /* AmarettoSour(WilliamsAndGraham).swift in Sources */,
 				4DA567D42B6DC156003F6F04 /* WhereEaglesFly.swift in Sources */,
 				4DBBA42C2B65AAA900179B8F /* Greenpoint.swift in Sources */,
+				4D7B01752B72BF0A0026FE34 /* MainBatchView.swift in Sources */,
 				1AC386B52AAABED10064F52A /* StandardButtonStyle.swift in Sources */,
 				4DA568612B70A924003F6F04 /* CBCMainView.swift in Sources */,
 				4DBBA4782B68758400179B8F /* LemonDrop(W&G).swift in Sources */,

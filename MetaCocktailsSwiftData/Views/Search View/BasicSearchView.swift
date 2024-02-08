@@ -80,16 +80,18 @@ struct BasicSearchView: View {
                             .font(.footnote).bold()
                         }
                         
-                        
-                        BasicComponentSearchListView(isShowingLikes: $isShowingPreferences, isShowingFlavors: $isShowingFlavors)
+                        ZStack{
+                            BasicComponentSearchListView(isShowingLikes: $isShowingPreferences, isShowingFlavors: $isShowingFlavors)
+                            
+                                .frame(width: geometry.size.width, height: geometry.size.height * 0.88, alignment: .center)
+                            
+                            
+                            
+                            SearchButtonView()
+                                .frame(width: geometry.size.width / 3, height: geometry.size.height * 0.81, alignment: .bottomTrailing)
+                                .offset(x: 90)
+                        }
                     }
-                    .frame(width: geometry.size.width, height: geometry.size.height * 0.88, alignment: .center)
-                    
-                    
-                    
-                    SearchButtonView()
-                    .frame(width: geometry.size.width, height: geometry.size.height * 0.12, alignment: .center)
-                    
                 }
             }
         }
