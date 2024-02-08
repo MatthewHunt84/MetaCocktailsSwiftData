@@ -10,6 +10,7 @@ import SwiftData
 
 final class CBCViewModel: ObservableObject {
  
+    
     @Published var cocktailNameText = ""
     @Published var notesText = ""
     @Published var numberOfCocktailsText = ""

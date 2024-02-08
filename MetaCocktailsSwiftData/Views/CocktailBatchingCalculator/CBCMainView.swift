@@ -11,9 +11,9 @@ import SwiftData
 struct CBCMainView: View {
     @EnvironmentObject var viewModel: CBCViewModel
     @Environment(\.modelContext) var modelContext
-    @Bindable var batchCocktail: BatchedCocktail
+    @Bindable var savedBatchCocktail: BatchedCocktail
     @State var didSave: Bool = false
-    @Query var favoriteCocktails: [BatchedCocktail]
+   
     
     
     var body: some View {
@@ -61,13 +61,13 @@ struct CBCMainView: View {
                             TextField("Enter a cocktail name.", text: $viewModel.cocktailNameText).cBCTextField()
                             
                             NavigationLink{
-                                NotesView(newText: viewModel.notesText, batchCocktail: batchCocktail)
+                                NotesView(newText: viewModel.notesText, batchCocktail: savedBatchCocktail)
                             } label: {
                                 Image(systemName: "pencil.and.list.clipboard")
                             }
                             .buttonStyle(BlackNWhiteButton())
                             NavigationLink {
-                                CBCFavoriteCocktailsView()
+                                SavedBatchCocktailsView()
                             } label: {
                                 Text("Batches")
                             }
@@ -153,9 +153,9 @@ struct CBCMainView: View {
                 
             }
             .task {
-                viewModel.ingredients = batchCocktail.batchCocktailIngredients
-                viewModel.cocktailNameText = batchCocktail.batchCocktailName
-                viewModel.notesText = batchCocktail.notes
+                viewModel.ingredients = savedBatchCocktail.batchCocktailIngredients
+                viewModel.cocktailNameText = savedBatchCocktail.batchCocktailName
+                viewModel.notesText = savedBatchCocktail.notes
                 viewModel.didUpdateDilution.toggle()
                 viewModel.calculateABV()
             }
@@ -177,7 +177,7 @@ struct CBCMainView: View {
                                               batchCocktailIngredients: [BatchIngredient(name: "Vodka", amount: "1", aBV: "57"),
                                                                          BatchIngredient(name: "Maraschino", amount: "0.5", aBV: "2"),
                                                                          BatchIngredient(name: "Orgeat", amount: "2", aBV: "6")])
-        return CBCMainView(batchCocktail: cocktail, didSave: false)
+        return CBCMainView(savedBatchCocktail: cocktail, didSave: false)
             .modelContainer(container)
             .environmentObject(CBCViewModel())
         

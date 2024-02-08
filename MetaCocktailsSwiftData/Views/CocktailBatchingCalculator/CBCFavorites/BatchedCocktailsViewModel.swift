@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 
-final class CBCFavoriteCocktailsVM: ObservableObject {
+final class BatchedCocktailsViewModel: ObservableObject {
     
     var CBCFavoriteCocktailsArray: [BatchedCocktail] = []
    
@@ -23,7 +23,7 @@ final class BatchedCocktail  {
     var dilutionType: String = ""
     var notes: String = ""
     
-    var batchCocktailIngredients: [BatchIngredient] = []
+    @Relationship var batchCocktailIngredients: [BatchIngredient] = []
     
     init(batchCocktailName: String, dilutionPercentage: String, dilutionType: String, notes: String, batchCocktailIngredients: [BatchIngredient]) {
         self.batchCocktailName = batchCocktailName

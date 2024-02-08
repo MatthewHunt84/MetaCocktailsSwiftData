@@ -5,19 +5,20 @@
 //  Created by Matt Hunt on 9/7/23.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
+
 
 @main
 struct MetaCocktailsSwiftDataApp: App {
     var criteria = SearchCriteriaViewModel()
     var cocktailBC = CBCViewModel()
-    let container: ModelContainer = {
-        let schema = Schema([BatchedCocktail.self, BatchIngredient.self])
-        let container = try! ModelContainer(for: schema, configurations: [])
-        
-        return container
-    }()
+//    let container: ModelContainer = {
+//        let schema = Schema([BatchedCocktail.self, BatchIngredient.self])
+//        let container = try! ModelContainer(for: schema, configurations: [])
+//        
+//        return container
+//    }()
     
     var body: some Scene {
         WindowGroup {
@@ -27,7 +28,8 @@ struct MetaCocktailsSwiftDataApp: App {
                 .preferredColorScheme(.dark)
         }
         //.modelContainer(for: Cocktail.self)
-        .modelContainer(container)
+        //.modelContainer(container)
+        .modelContainer(for: [BatchedCocktail.self, BatchIngredient.self])
         //.modelContainer(for: BatchIngredient.self)
     }
 }

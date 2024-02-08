@@ -8,40 +8,39 @@
 import SwiftUI
 import SwiftData
 
-struct CBCFavoriteCocktailsView: View {
+struct SavedBatchCocktailsView: View {
     @EnvironmentObject var viewModel: CBCViewModel
     @Environment(\.modelContext) var modelContext
-    @Query var favoriteCocktails: [BatchedCocktail]
-  
+    @Query var savedBatchCocktails: [BatchedCocktail]
+    @State private var isShowingTestView: Bool = false
+    
     
     var body: some View {
         NavigationStack{
             VStack{
-                List{
-                    ForEach(favoriteCocktails) { favorite in
-                        NavigationLink(value: favorite) {
-                            Text(favorite.batchCocktailName)
+                List {
+                    ForEach(savedBatchCocktails) { batch in
+                        NavigationLink {
+                            CBCMainView(savedBatchCocktail: batch)
+                        } label: {
+                            Text(batch.batchCocktailName)
                         }
                         .onTapGesture {
-                            viewModel.notesText = favorite.notes
+                            viewModel.notesText = batch.notes
                         }
+                        
                     }
                     .onDelete(perform: deleteSavedBatch)
-                    
-                    
-                    if favoriteCocktails.count > 0 {
+                    if savedBatchCocktails.count > 0 {
                         Text("← Swipe to delete")
                             .backgroundStyle(.red)
                     }
-                    
                 }
-                .navigationDestination(for: BatchedCocktail.self, destination: { batchedCocktail in
-                    CBCMainView(batchCocktail: batchedCocktail)
-                     })
-                
                 .listStyle(.plain)
                 .overlay( RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
                     .stroke(.gray.gradient, lineWidth: 2))
+                
+                
                 
                 .toolbar {
                     Button("Add Samples", action: addSamples)
@@ -85,13 +84,13 @@ struct CBCFavoriteCocktailsView: View {
     }
     func deleteSavedBatch(_ indexSet: IndexSet) {
         for item in indexSet {
-            let object = favoriteCocktails[item]
+            let object = savedBatchCocktails[item]
             modelContext.delete(object)
         }
     }
 }
 
 #Preview {
-    CBCFavoriteCocktailsView()
+    SavedBatchCocktailsView()
         .environmentObject(CBCViewModel())
 }
