@@ -25,12 +25,12 @@ struct BatchCell: View {
             TextField("Btl#", text: $viewModel.dilutionPercentage).cBCTextField()
                 .frame(width: 60, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .onSubmit {
-                    
+                    viewModel.do1LBatchMath()
                 }
             TextField("/mls.", text: $viewModel.dilutionPercentage).cBCTextField()
                 .frame(width: 60, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .onSubmit {
-                    
+                    viewModel.do1LBatchMath()
                 }
             
         }

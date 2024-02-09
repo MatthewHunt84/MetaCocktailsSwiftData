@@ -34,7 +34,7 @@ extension TextField {
             .padding(5)
             .background(Color(UIColor.systemBackground))
             .clipShape(RoundedRectangle(cornerRadius: 10))
-            .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
+            .shadow(color: Color(UIColor.systemGray), radius: 4, x: 0, y: 0)
             .foregroundColor(Color(UIColor.white))
             .multilineTextAlignment(.center)
     }

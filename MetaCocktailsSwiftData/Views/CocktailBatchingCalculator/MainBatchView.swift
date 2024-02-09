@@ -27,7 +27,7 @@ struct MainBatchView: View {
                 TextField("#", text: $viewModel.numberOfCocktailsText).cBCTextField()
                     .frame(width: 70, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .onSubmit {
-                        viewModel.doBatchMath()
+                        viewModel.do1LBatchMath()
                     }
             }
             HStack{

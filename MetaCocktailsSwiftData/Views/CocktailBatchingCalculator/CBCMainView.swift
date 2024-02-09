@@ -77,7 +77,7 @@ struct CBCMainView: View {
                         
                         HStack {
                             NavigationLink {
-                                CBCAddIngredientView()
+                                CBCAddIngredientView(savedBatchCocktail: savedBatchCocktail)
                             }label: {
                                 Text("✚ Ingredient")
                             }
@@ -159,6 +159,7 @@ struct CBCMainView: View {
                 viewModel.notesText = savedBatchCocktail.notes
                 viewModel.didUpdateDilution.toggle()
                 viewModel.calculateABV()
+                
             }
             
         }

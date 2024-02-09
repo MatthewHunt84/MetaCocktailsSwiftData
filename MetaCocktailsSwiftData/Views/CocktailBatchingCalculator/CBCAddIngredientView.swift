@@ -12,6 +12,8 @@ struct CBCAddIngredientView: View {
     @State var mlsOrOunces: MlsOrOunces = .ounces
     @EnvironmentObject var viewModel: CBCViewModel
     @Environment(\.dismiss) private var dismiss
+    ///@FocusState private var textfieldFocused: Bool
+    @Bindable var savedBatchCocktail: BatchedCocktail
     
     var body: some View {
         ZStack {
@@ -28,46 +30,52 @@ struct CBCAddIngredientView: View {
                 
                 
                 if ingredientOrDilution == .ingredient {
-                    HStack{
-                        Text("Name:")
-                        TextField("Ingredient Name", text: $viewModel.ingredientNameText).cBCTextField()
-                            .frame(width: 300, height: 40, alignment: .center)
-                           
-                    }
-                    HStack{
-                        Spacer()
-                        Text("Amount in")
-                        Picker("", selection: $mlsOrOunces) {
-                            ForEach(MlsOrOunces.allCases, id: \.self) {
-                                Text($0.rawValue)
+                    VStack{
+                        HStack{
+                            Text("Name:")
+                            TextField("Ingredient Name", text: $viewModel.ingredientNameText).cBCTextField()
+                                .autocorrectionDisabled()
                                 
-                            }
+                            
                         }
-                        .pickerStyle(.segmented)
-                        .padding()
-                        TextField("Amount", text: $viewModel.ingredientAmount).cBCTextField()
-                            .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 40, alignment: .center)
+                        HStack{
+                            Spacer()
+                            Text("Amount in")
+                            Picker("", selection: $mlsOrOunces) {
+                                ForEach(MlsOrOunces.allCases, id: \.self) {
+                                    Text($0.rawValue)
+                                    
+                                }
+                            }
+                            .pickerStyle(.segmented)
+                            .padding()
+                            TextField("Amount", text: $viewModel.ingredientAmount).cBCTextField()
+                                .autocorrectionDisabled()
+                                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 40, alignment: .center)
+                            
+                        }
+                        HStack{
+                            Spacer()
+                            Text("ABV percentage:")
+                            TextField("%ABV", text: $viewModel.ingredientAbvPercentage).cBCTextField()
+                                .autocorrectionDisabled()
+                                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 40, alignment: .center)
+                        }
                         
                     }
-                    HStack{
-                        Spacer()
-                        Text("ABV percentage:")
-                        TextField("%ABV", text: $viewModel.ingredientAbvPercentage).cBCTextField()
-                            .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 40, alignment: .center)
-                    }
-                    
-                    
                     
                 } else {
                     HStack {
                         Text("Dilution Type:")
                         TextField("Usually water", text: $viewModel.dilutionName).cBCTextField()
+                            .autocorrectionDisabled()
                         
                     }
                     HStack{
                         Spacer()
                         Text("Percent Amount:")
                         TextField("%Dilution", text: $viewModel.dilutionPercentage).cBCTextField()
+                            .autocorrectionDisabled()
                         
                         
                             .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 40, alignment: .center)
@@ -75,14 +83,12 @@ struct CBCAddIngredientView: View {
                 }
                 
                 Button("Add Ingredient") {
-                    
-                    
                     if ingredientOrDilution == .ingredient {
 
                             if mlsOrOunces == .ounces {
-                                viewModel.ingredients.append(BatchIngredient(name: viewModel.ingredientNameText, amount: viewModel.ingredientAmount, aBV: viewModel.ingredientAbvPercentage))
+                                savedBatchCocktail.batchCocktailIngredients.append(BatchIngredient(name: viewModel.ingredientNameText, amount: viewModel.ingredientAmount, aBV: viewModel.ingredientAbvPercentage))
                             } else {
-                                viewModel.ingredients.append(BatchIngredient(name: viewModel.ingredientNameText, amount: viewModel.convertMlToOz(for: viewModel.ingredientAmount), aBV: viewModel.ingredientAbvPercentage))
+                                savedBatchCocktail.batchCocktailIngredients.append(BatchIngredient(name: viewModel.ingredientNameText, amount: viewModel.convertMlToOz(for: viewModel.ingredientAmount), aBV: viewModel.ingredientAbvPercentage))
                             }
 
                     }
@@ -90,11 +96,10 @@ struct CBCAddIngredientView: View {
                     viewModel.ingredientNameText = ""
                     viewModel.ingredientAmount = ""
                     viewModel.ingredientAbvPercentage = ""
-                   
                     dismiss()
                     
                 }
-                .disabled(viewModel.ingredientNameText != "" ? false : true)
+                .disabled(viewModel.ingredientNameText != "" || viewModel.dilutionName != "" ? false : true)
                 .buttonStyle(BlackNWhiteButton())
                 .padding()
                 Spacer()
@@ -106,7 +111,7 @@ struct CBCAddIngredientView: View {
 }
 
 #Preview {
-    CBCAddIngredientView()
+    CBCAddIngredientView( savedBatchCocktail: BatchedCocktail(batchCocktailName: "", dilutionPercentage: "", dilutionType: "", notes: "", batchCocktailIngredients: []))
         .environmentObject(CBCViewModel())
 }
 
