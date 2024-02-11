@@ -13,6 +13,7 @@ struct CBCMainView: View {
     @Environment(\.modelContext) var modelContext
     @Bindable var savedBatchCocktail: BatchedCocktail
     @State var didSave: Bool = false
+    
   
    
     
@@ -28,6 +29,7 @@ struct CBCMainView: View {
                             Spacer()
                             Button("Clear") {
                                 viewModel.clearPageData()
+                                viewModel.editingSavedCocktail = false 
                             }
                             
                             ZStack{
@@ -60,6 +62,7 @@ struct CBCMainView: View {
                         
                         HStack {
                             TextField("Enter a cocktail name.", text: $viewModel.cocktailNameText).cBCTextField()
+                                .autocorrectionDisabled()
                             
                             NavigationLink{
                                 NotesView(newText: viewModel.notesText, batchCocktail: savedBatchCocktail)
@@ -87,6 +90,7 @@ struct CBCMainView: View {
                             Spacer()
                             Text("Cocktail Count:")
                             TextField("#", text: $viewModel.numberOfCocktailsText).cBCTextField()
+                                .autocorrectionDisabled()
                                 .frame(maxWidth: 75)
                                 .keyboardType(.decimalPad)
                         }
@@ -139,12 +143,12 @@ struct CBCMainView: View {
                         
                         
                         
-                        Text("Your ABV is \(viewModel.totalCocktailABVPercentage)%")
+                        Text("Your ABV is \(NSNumber(value:Double(viewModel.totalCocktailABVPercentage) ?? 0.0))%")
                         
                         
                         
                         NavigationLink{
-                            MainBatchView()
+                            MainBatchView(quantifiedBatchedIngredients: $viewModel.quantifiedBatchedIngredients)
                         } label: {
                             Text("Batch")
                         }
@@ -154,11 +158,19 @@ struct CBCMainView: View {
                 
             }
             .task {
+                
+                
                 viewModel.ingredients = savedBatchCocktail.batchCocktailIngredients
                 viewModel.cocktailNameText = savedBatchCocktail.batchCocktailName
                 viewModel.notesText = savedBatchCocktail.notes
+                viewModel.dilutionName = savedBatchCocktail.dilutionType
+                viewModel.dilutionPercentage = savedBatchCocktail.dilutionPercentage
                 viewModel.didUpdateDilution.toggle()
                 viewModel.calculateABV()
+                
+                if viewModel.cocktailNameText != "" {
+                    viewModel.editingSavedCocktail = true
+                }
                 
             }
             

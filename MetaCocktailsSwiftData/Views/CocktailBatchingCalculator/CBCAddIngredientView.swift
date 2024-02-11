@@ -12,8 +12,8 @@ struct CBCAddIngredientView: View {
     @State var mlsOrOunces: MlsOrOunces = .ounces
     @EnvironmentObject var viewModel: CBCViewModel
     @Environment(\.dismiss) private var dismiss
-    ///@FocusState private var textfieldFocused: Bool
     @Bindable var savedBatchCocktail: BatchedCocktail
+    
     
     var body: some View {
         ZStack {
@@ -83,16 +83,25 @@ struct CBCAddIngredientView: View {
                 }
                 
                 Button("Add Ingredient") {
-                    if ingredientOrDilution == .ingredient {
+                    if viewModel.editingSavedCocktail == true {
+                        if ingredientOrDilution == .ingredient {
+                                if mlsOrOunces == .ounces {
+                                    savedBatchCocktail.batchCocktailIngredients.append(BatchIngredient(name: viewModel.ingredientNameText, amount: viewModel.ingredientAmount, aBV: viewModel.ingredientAbvPercentage))
+                                } else {
+                                    savedBatchCocktail.batchCocktailIngredients.append(BatchIngredient(name: viewModel.ingredientNameText, amount: viewModel.convertMlToOz(for: viewModel.ingredientAmount), aBV: viewModel.ingredientAbvPercentage))
+                                }
 
+                        }
+                    } else {
+                        if ingredientOrDilution == .ingredient {
                             if mlsOrOunces == .ounces {
-                                savedBatchCocktail.batchCocktailIngredients.append(BatchIngredient(name: viewModel.ingredientNameText, amount: viewModel.ingredientAmount, aBV: viewModel.ingredientAbvPercentage))
+                                viewModel.ingredients.append(BatchIngredient(name: viewModel.ingredientNameText, amount: viewModel.ingredientAmount, aBV: viewModel.ingredientAbvPercentage))
                             } else {
-                                savedBatchCocktail.batchCocktailIngredients.append(BatchIngredient(name: viewModel.ingredientNameText, amount: viewModel.convertMlToOz(for: viewModel.ingredientAmount), aBV: viewModel.ingredientAbvPercentage))
+                                viewModel.ingredients.append(BatchIngredient(name: viewModel.ingredientNameText, amount: viewModel.convertMlToOz(for: viewModel.ingredientAmount), aBV: viewModel.ingredientAbvPercentage))
                             }
-
+                            
+                        }
                     }
-                    
                     viewModel.ingredientNameText = ""
                     viewModel.ingredientAmount = ""
                     viewModel.ingredientAbvPercentage = ""
@@ -111,7 +120,7 @@ struct CBCAddIngredientView: View {
 }
 
 #Preview {
-    CBCAddIngredientView( savedBatchCocktail: BatchedCocktail(batchCocktailName: "", dilutionPercentage: "", dilutionType: "", notes: "", batchCocktailIngredients: []))
+    CBCAddIngredientView(savedBatchCocktail: BatchedCocktail(batchCocktailName: "", dilutionPercentage: "", dilutionType: "", notes: "", batchCocktailIngredients: []))
         .environmentObject(CBCViewModel())
 }
 

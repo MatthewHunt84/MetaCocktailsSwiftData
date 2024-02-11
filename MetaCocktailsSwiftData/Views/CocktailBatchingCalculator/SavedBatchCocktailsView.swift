@@ -26,10 +26,7 @@ struct SavedBatchCocktailsView: View {
                         } label: {
                             Text(batch.batchCocktailName)
                         }
-                        .onTapGesture {
-                            viewModel.notesText = batch.notes
-                       
-                        }
+                        
                         
                     }
                     .onDelete(perform: deleteSavedBatch)

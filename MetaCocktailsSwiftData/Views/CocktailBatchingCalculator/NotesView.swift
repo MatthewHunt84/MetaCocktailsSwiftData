@@ -32,6 +32,7 @@ struct NotesView: View {
                 
                 Button {
                     save()
+                    dismiss()
                 } label: {
                     Text("Save".uppercased())
                         .font(.headline)
@@ -61,19 +62,11 @@ struct NotesView: View {
         save()
     }
     private func save() {
-        for cocktails in favoriteCocktails {
-            
-                //cocktails.notes = newText
-                print(cocktails.id.hashValue)
-            
-        }
-        print("\(batchCocktail.id.hashValue) <--- batch cocktail ")
         viewModel.notesText = newText
-        print(newText)
         batchCocktail.notes = newText
     }
 }
 
-//#Preview {
-//    NotesView()
-//}
+#Preview {
+    NotesView(newText: "", batchCocktail: BatchedCocktail(batchCocktailName: "", dilutionPercentage: "", dilutionType: "", notes: "", batchCocktailIngredients: []))
+}

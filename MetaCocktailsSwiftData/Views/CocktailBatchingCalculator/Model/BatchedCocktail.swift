@@ -1,21 +1,14 @@
 //
-//  CBCFavoriteCocktailsVM.swift
+//  BatchedCocktail.swift
 //  MetaCocktailsSwiftData
 //
-//  Created by James Menkal on 2/5/24.
+//  Created by James Menkal on 2/10/24.
 //
+
 
 import Foundation
 import SwiftData
 
-
-final class BatchedCocktailsViewModel: ObservableObject {
-    
-    var CBCFavoriteCocktailsArray: [BatchedCocktail] = []
-   
-    
-    
-}
 
 @Model
 final class BatchedCocktail  {
@@ -24,7 +17,7 @@ final class BatchedCocktail  {
     var dilutionType: String = ""
     var notes: String = ""
     
-    @Relationship var batchCocktailIngredients: [BatchIngredient] = []
+    var batchCocktailIngredients: [BatchIngredient] = []
     
     init(batchCocktailName: String, dilutionPercentage: String, dilutionType: String, notes: String, batchCocktailIngredients: [BatchIngredient]) {
         self.batchCocktailName = batchCocktailName

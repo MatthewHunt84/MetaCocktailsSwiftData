@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MainBatchView: View {
     @EnvironmentObject var viewModel: CBCViewModel
+    @Binding var quantifiedBatchedIngredients: [BatchedCellData]
+    
     var body: some View {
         VStack{
             HStack {
@@ -25,9 +27,10 @@ struct MainBatchView: View {
             HStack{
                 Text("Cocktail Count:")
                 TextField("#", text: $viewModel.numberOfCocktailsText).cBCTextField()
+                    .autocorrectionDisabled()
                     .frame(width: 70, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .onSubmit {
-                        viewModel.do1LBatchMath()
+                        viewModel.convertIngredientsToBatchCellData()
                     }
             }
             HStack{
@@ -38,15 +41,15 @@ struct MainBatchView: View {
                     .dynamicTypeSize(.small)
             }
             List {
-                ForEach($viewModel.ingredients, id: \.self){ ingredient in
-                    BatchCell(ingredient: ingredient)
+                ForEach($viewModel.quantifiedBatchedIngredients, id: \.self){ ingredient in
+                    BatchCell(quantifiedBatchedIngredient: ingredient)
                 }
             }
             .listStyle(.plain)
             .overlay( RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
                 .stroke(.gray.gradient, lineWidth: 2))
-            Text("Total Dilution (\(viewModel.dilutionName)) = \(NSNumber(value: viewModel.totalDilutionVolume) )")
-            Text("Total Volume = \(NSNumber(value: viewModel.totalBatchVolume) )")
+            Text("Total Dilution (\(viewModel.dilutionName)) = \(Int(ceil(viewModel.totalDilutionVolume)))ml (\((viewModel.totalDilutionVolume / 1000.0), specifier: "%.3f")L)")
+            Text("Total Volume = \(Int(ceil(viewModel.totalBatchVolume)))ml (\((viewModel.totalBatchVolume / 1000.0), specifier: "%.3f")L)")
             Button {
                 
             } label: {
@@ -54,13 +57,13 @@ struct MainBatchView: View {
             }
             .buttonStyle(BlackNWhiteButton())
         }
-//        .task {
-//            UISegmentedControl.appearance().selectedSegmentTintColor = .brandPrimaryGreen
-//        }
+        .task {
+            viewModel.convertIngredientsToBatchCellData()
+        }
     }
 }
 
 #Preview {
-    MainBatchView()
+    MainBatchView(quantifiedBatchedIngredients: .constant([]))
         .environmentObject(CBCViewModel())
 }
