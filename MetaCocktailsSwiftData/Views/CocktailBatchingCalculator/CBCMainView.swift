@@ -89,7 +89,7 @@ struct CBCMainView: View {
                             
                             Spacer()
                             Text("Cocktail Count:")
-                            TextField("#", text: $viewModel.numberOfCocktailsText).cBCTextField()
+                            TextField("#", text:  $viewModel.numberOfCocktailsText).cBCTextField()
                                 .autocorrectionDisabled()
                                 .frame(maxWidth: 75)
                                 .keyboardType(.decimalPad)
@@ -99,7 +99,7 @@ struct CBCMainView: View {
                     
                     List {
                         ForEach(viewModel.ingredients, id: \.self) { ingredient in
-                            CBCIngredientCell(ingredient: ingredient, amountInMls: viewModel.convertIngredientOzAmountIntoMls(for: ingredient))
+                            CBCIngredientCell(ingredient: ingredient, amountInMls: viewModel.convertIngredientOzAmountIntoMls(for: ingredient.amount))
                         }
                         .onDelete(perform: viewModel.delete)
                         .onMove(perform: viewModel.moveIngredients)

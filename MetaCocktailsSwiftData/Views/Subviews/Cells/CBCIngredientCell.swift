@@ -16,7 +16,7 @@ struct CBCIngredientCell: View {
     
     var body: some View {
         HStack {
-            TextField("Vol.", text:  $amountInMls ).cBCTextField()
+            TextField("Vol.", text:  $amountInMls).cBCTextField()
                 .frame(width: 70, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .onSubmit {
                     viewModel.calculateABV()

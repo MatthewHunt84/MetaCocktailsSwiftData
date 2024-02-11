@@ -17,11 +17,16 @@ final class CBCViewModel: ObservableObject {
     @Published var ingredientAmount = ""
     @Published var dilutionName = ""
     @Published var dilutionPercentage = "0"
+    @Published var  formatter: NumberFormatter = {
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            return formatter
+        }()
     
     ///CBCMainView variables
     @Published var cocktailNameText = ""
     @Published var notesText = ""
-    @Published var numberOfCocktailsText = "1"
+    @Published var numberOfCocktailsText = ""
     @Published var totalCocktailABVPercentage = ""
     @Published var editedIngredientVolumeTextField = ""
     @Published var ingredients: [BatchIngredient] = []
@@ -79,8 +84,8 @@ final class CBCViewModel: ObservableObject {
         }
         ///Check to make sure there's a number there, if not, add a 0 so the prompt doesn't read "nan".
     }
-    func convertIngredientOzAmountIntoMls(for ingredient: BatchIngredient) -> String {
-        return String(Int(ceil((Double(ingredient.amount) ?? 0.0) * 29.5735)))
+    func convertIngredientOzAmountIntoMls(for ingredient: String) -> String {
+        return String(Int(ceil((Double(ingredient) ?? 0.0) * 29.5735)))
     }
     func convertMlToOz(for ingredient: String) -> String {
         return String((Double(ingredient) ?? 0.0) / 29.5735)
@@ -92,19 +97,33 @@ final class CBCViewModel: ObservableObject {
         var totalVolume = 0.0
         let numberOfCocktailsDouble = Double(numberOfCocktailsText) ?? 0.0
         for ingredient in ingredients {
-            let ingredientVolume = (Double(convertIngredientOzAmountIntoMls(for: ingredient)) ?? 0.0) * numberOfCocktailsDouble
+            let ingredientVolume = (Double(convertIngredientOzAmountIntoMls(for: ingredient.amount)) ?? 0.0) * numberOfCocktailsDouble
             totalVolume += ingredientVolume
             quantifiableIngredients.append(BatchedCellData(ingredientName: ingredient.name,
                                                            whole1LBottles: String(Int((ingredientVolume / 1000).rounded(.down))),
                                                            remaining1LMls: String(Int(ingredientVolume.truncatingRemainder(dividingBy: 1000))),
                                                            whole750mlBottles: String(Int((ingredientVolume / 750).rounded(.down))),
                                                            remaining750mLs: String(Int(ingredientVolume.truncatingRemainder(dividingBy: 750))),
-                                                           mlAmount: ingredient.amount))
+                                                           mlAmount: convertIngredientOzAmountIntoMls(for: ingredient.amount) ))
         }
         totalDilutionVolume = totalVolume * ((Double(dilutionPercentage) ?? 0.0) / 100.0)
         totalBatchVolume = totalVolume + totalDilutionVolume
         quantifiedBatchedIngredients = quantifiableIngredients
         
+    }
+    func doMathForModified1LBottleCount(initialAmount: String, newQuantityAmount: String) {
+        let initialNewAmount = Double(initialAmount) ?? 0.0
+        print("initial amount is \(initialNewAmount)")
+        let newQuantity = (Double(newQuantityAmount) ?? 0.0) * 1000
+        print("new quantity is \(newQuantity)")
+        numberOfCocktailsText = String(newQuantity / initialNewAmount)
+        convertIngredientsToBatchCellData()
+    }
+    func doMathForModified750mlBottleCount(initialAmount: String, newQuantityAmount: String) {
+        let initialNewAmount = Double(initialAmount) ?? 0.0
+        let newQuantity = (Double(newQuantityAmount) ?? 0.0) * 750
+        numberOfCocktailsText = String(newQuantity / initialNewAmount)
+        convertIngredientsToBatchCellData()
     }
     
 }
@@ -118,7 +137,7 @@ struct BatchedCellData: Hashable, Equatable {
     }
     
     var ingredientName: String
-    var whole1LBottles: String
+    var whole1LBottles: String 
     var remaining1LMls: String
     var whole750mlBottles: String
     var remaining750mLs: String

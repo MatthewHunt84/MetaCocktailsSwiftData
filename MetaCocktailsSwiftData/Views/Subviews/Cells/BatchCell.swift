@@ -11,6 +11,8 @@ struct BatchCell: View {
     @EnvironmentObject var viewModel: CBCViewModel
     @State var bottleSize: BottleSize = .oneLiter
     @Binding var quantifiedBatchedIngredient: BatchedCellData
+    
+    
     var body: some View {
         HStack{
             Text(quantifiedBatchedIngredient.ingredientName)
@@ -23,18 +25,16 @@ struct BatchCell: View {
             .pickerStyle(.segmented)
             .frame(width: 100, height: 50)
             if bottleSize == .oneLiter {
-                TextField("Btl#", text: $quantifiedBatchedIngredient.whole1LBottles).cBCTextField()
+                TextField("Btl#", value: $quantifiedBatchedIngredient.whole1LBottles, formatter: viewModel.formatter).cBCTextField()
                     .autocorrectionDisabled()
                     .frame(width: 60, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .onSubmit {
-                        viewModel.convertIngredientsToBatchCellData()
+                        viewModel.doMathForModified1LBottleCount(initialAmount: quantifiedBatchedIngredient.mlAmount, newQuantityAmount: quantifiedBatchedIngredient.whole1LBottles)
                     }
-                TextField("/mls.", text: $quantifiedBatchedIngredient.remaining1LMls).cBCTextField()
-                    .autocorrectionDisabled()
-                    .frame(width: 60, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    .onSubmit {
-                        viewModel.convertIngredientsToBatchCellData()
-                    }
+                Text("\(quantifiedBatchedIngredient.remaining1LMls)ml")
+                    .frame(width: 80, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    
+                    
             } else {
                 TextField("Btl#", text: $quantifiedBatchedIngredient.whole750mlBottles).cBCTextField()
                     .autocorrectionDisabled()
