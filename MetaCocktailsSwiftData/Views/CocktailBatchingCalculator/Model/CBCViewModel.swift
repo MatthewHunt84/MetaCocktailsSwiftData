@@ -41,7 +41,11 @@ final class CBCViewModel: ObservableObject {
     @Published var totalBatchVolume = 0.0
     @Published var quantifiedBatchedIngredients: [BatchedCellData] = []
     
-    
+    ///Split Batch View
+    let containerType = ["4 Liter", "5 Liter", "6 Liter", "7 Liter", "8 Liter", "9 Liter", "10 Liter", "11 Liter", "12 Liter", "13 Liter", "14 Liter", "15 Liter", "16 Liter", "17 Liter", "18 Liter", "5 Gallon Bucket"]
+    @Published var containerSizeInMls = [4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000, 14000, 15000, 16000, 17000, 18000, 18927]
+    @Published var containerSize =  "5 Liter"
+    @Published var numberOfContainers = 2
     
     
     func delete(at offsets: IndexSet){

@@ -32,9 +32,8 @@ struct MainBatchView: View {
                     .autocorrectionDisabled()
                     .frame(width: 70, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .onSubmit {
-                        viewModel.numberOfCocktailsText = cocktailCount
                         viewModel.convertIngredientsToBatchCellData()
-                        cocktailCount = viewModel.numberOfCocktailsText
+                    
                     }
             }
             HStack{
@@ -54,8 +53,8 @@ struct MainBatchView: View {
                 .stroke(.gray.gradient, lineWidth: 2))
             Text("Total Dilution (\(viewModel.dilutionName)) = \(Int(ceil(viewModel.totalDilutionVolume)))ml (\((viewModel.totalDilutionVolume / 1000.0), specifier: "%.3f")L)")
             Text("Total Volume = \(Int(ceil(viewModel.totalBatchVolume)))ml (\((viewModel.totalBatchVolume / 1000.0), specifier: "%.3f")L)")
-            Button {
-                
+            NavigationLink {
+               VesselPickerView()
             } label: {
                 Text("Split Batch")
             }

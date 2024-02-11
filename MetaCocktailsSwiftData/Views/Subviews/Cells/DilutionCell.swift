@@ -29,4 +29,5 @@ struct DilutionCell: View {
 
 #Preview {
     DilutionCell()
+        .environmentObject(CBCViewModel())
 }
