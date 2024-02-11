@@ -8,11 +8,14 @@
 import SwiftUI
 import SwiftData
 
+
 struct CBCMainView: View {
     @EnvironmentObject var viewModel: CBCViewModel
     @Environment(\.modelContext) var modelContext
     @Bindable var savedBatchCocktail: BatchedCocktail
     @State var didSave: Bool = false
+    @State var cocktailCount = 20.0
+    
     
   
    
@@ -89,10 +92,14 @@ struct CBCMainView: View {
                             
                             Spacer()
                             Text("Cocktail Count:")
-                            TextField("#", text:  $viewModel.numberOfCocktailsText).cBCTextField()
+                            TextField("#", value:  $cocktailCount, formatter: viewModel.formatter).cBCTextField()
+                                .onSubmit {
+                                    viewModel.numberOfCocktailsText = cocktailCount
+                                }
                                 .autocorrectionDisabled()
+                                
                                 .frame(maxWidth: 75)
-                                .keyboardType(.decimalPad)
+                                
                         }
                     }
                     .padding(EdgeInsets(top: 0, leading: 5, bottom: 5, trailing: 5))
@@ -108,7 +115,7 @@ struct CBCMainView: View {
                                 .swipeActions{
                                     Button("Delete"){
                                         viewModel.dilutionName = ""
-                                        viewModel.dilutionPercentage = ""
+                                        viewModel.dilutionPercentage = 0.0
                                         viewModel.calculateABV()
                                     }
                                 }
@@ -143,12 +150,12 @@ struct CBCMainView: View {
                         
                         
                         
-                        Text("Your ABV is \(NSNumber(value:Double(viewModel.totalCocktailABVPercentage) ?? 0.0))%")
+                        Text("Your ABV is \(viewModel.totalCocktailABVPercentage, specifier: "%.2f")%")
                         
                         
                         
                         NavigationLink{
-                            MainBatchView(quantifiedBatchedIngredients: $viewModel.quantifiedBatchedIngredients)
+                            MainBatchView(quantifiedBatchedIngredients: $viewModel.quantifiedBatchedIngredients, cocktailCount: $cocktailCount)
                         } label: {
                             Text("Batch")
                         }
@@ -186,11 +193,11 @@ struct CBCMainView: View {
         let container = try ModelContainer(for: BatchedCocktail.self, configurations: config)
         
         @State var cocktail = BatchedCocktail(batchCocktailName: "Frenchies",
-                                              dilutionPercentage: "10",
+                                              dilutionPercentage: 10,
                                               dilutionType: "Milk", notes: "asadads",
-                                              batchCocktailIngredients: [BatchIngredient(name: "Vodka", amount: "1", aBV: "57"),
-                                                                         BatchIngredient(name: "Maraschino", amount: "0.5", aBV: "2"),
-                                                                         BatchIngredient(name: "Orgeat", amount: "2", aBV: "6")])
+                                              batchCocktailIngredients: [BatchIngredient(name: "Vodka", amount: 1, aBV: 57),
+                                                                         BatchIngredient(name: "Maraschino", amount: 0.5, aBV: 3),
+                                                                         BatchIngredient(name: "Orgeat", amount: 2, aBV: 6)])
         return CBCMainView(savedBatchCocktail: cocktail, didSave: false)
             .modelContainer(container)
             .environmentObject(CBCViewModel())

@@ -49,7 +49,7 @@ struct CBCAddIngredientView: View {
                             }
                             .pickerStyle(.segmented)
                             .padding()
-                            TextField("Amount", text: $viewModel.ingredientAmount).cBCTextField()
+                            TextField("Amount", value: $viewModel.ingredientAmount, formatter: viewModel.formatter).cBCTextField()
                                 .autocorrectionDisabled()
                                 .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 40, alignment: .center)
                             
@@ -57,7 +57,7 @@ struct CBCAddIngredientView: View {
                         HStack{
                             Spacer()
                             Text("ABV percentage:")
-                            TextField("%ABV", text: $viewModel.ingredientAbvPercentage).cBCTextField()
+                            TextField("%ABV", value: $viewModel.ingredientAbvPercentage, formatter: viewModel.formatter).cBCTextField()
                                 .autocorrectionDisabled()
                                 .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 40, alignment: .center)
                         }
@@ -74,7 +74,7 @@ struct CBCAddIngredientView: View {
                     HStack{
                         Spacer()
                         Text("Percent Amount:")
-                        TextField("%Dilution", text: $viewModel.dilutionPercentage).cBCTextField()
+                        TextField("%Dilution", value: $viewModel.dilutionPercentage, formatter: viewModel.formatter).cBCTextField()
                             .autocorrectionDisabled()
                         
                         
@@ -86,25 +86,33 @@ struct CBCAddIngredientView: View {
                     if viewModel.editingSavedCocktail == true {
                         if ingredientOrDilution == .ingredient {
                                 if mlsOrOunces == .ounces {
-                                    savedBatchCocktail.batchCocktailIngredients.append(BatchIngredient(name: viewModel.ingredientNameText, amount: viewModel.ingredientAmount, aBV: viewModel.ingredientAbvPercentage))
+                                    savedBatchCocktail.batchCocktailIngredients.append(BatchIngredient(name: viewModel.ingredientNameText, 
+                                                                                                       amount: viewModel.ingredientAmount,
+                                                                                                       aBV: viewModel.ingredientAbvPercentage))
                                 } else {
-                                    savedBatchCocktail.batchCocktailIngredients.append(BatchIngredient(name: viewModel.ingredientNameText, amount: viewModel.convertMlToOz(for: viewModel.ingredientAmount), aBV: viewModel.ingredientAbvPercentage))
+                                    savedBatchCocktail.batchCocktailIngredients.append(BatchIngredient(name: viewModel.ingredientNameText, 
+                                                                                                       amount: viewModel.convertMlToOz(for: Int(viewModel.ingredientAmount)),
+                                                                                                       aBV: viewModel.ingredientAbvPercentage))
                                 }
 
                         }
                     } else {
                         if ingredientOrDilution == .ingredient {
                             if mlsOrOunces == .ounces {
-                                viewModel.ingredients.append(BatchIngredient(name: viewModel.ingredientNameText, amount: viewModel.ingredientAmount, aBV: viewModel.ingredientAbvPercentage))
+                                viewModel.ingredients.append(BatchIngredient(name: viewModel.ingredientNameText, 
+                                                                             amount: viewModel.ingredientAmount,
+                                                                             aBV: viewModel.ingredientAbvPercentage))
                             } else {
-                                viewModel.ingredients.append(BatchIngredient(name: viewModel.ingredientNameText, amount: viewModel.convertMlToOz(for: viewModel.ingredientAmount), aBV: viewModel.ingredientAbvPercentage))
+                                viewModel.ingredients.append(BatchIngredient(name: viewModel.ingredientNameText, 
+                                                                             amount: viewModel.convertMlToOz(for: Int(viewModel.ingredientAmount)),
+                                                                             aBV: viewModel.ingredientAbvPercentage))
                             }
                             
                         }
                     }
                     viewModel.ingredientNameText = ""
-                    viewModel.ingredientAmount = ""
-                    viewModel.ingredientAbvPercentage = ""
+                    viewModel.ingredientAmount = 0.0
+                    viewModel.ingredientAbvPercentage = 0.0
                     dismiss()
                     
                 }
@@ -120,7 +128,7 @@ struct CBCAddIngredientView: View {
 }
 
 #Preview {
-    CBCAddIngredientView(savedBatchCocktail: BatchedCocktail(batchCocktailName: "", dilutionPercentage: "", dilutionType: "", notes: "", batchCocktailIngredients: []))
+    CBCAddIngredientView(savedBatchCocktail: BatchedCocktail(batchCocktailName: "", dilutionPercentage: 0.0, dilutionType: "", notes: "", batchCocktailIngredients: []))
         .environmentObject(CBCViewModel())
 }
 

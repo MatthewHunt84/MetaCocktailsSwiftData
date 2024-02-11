@@ -10,6 +10,8 @@ import SwiftUI
 struct MainBatchView: View {
     @EnvironmentObject var viewModel: CBCViewModel
     @Binding var quantifiedBatchedIngredients: [BatchedCellData]
+    @Binding var cocktailCount: Double
+    
     
     var body: some View {
         VStack{
@@ -26,11 +28,13 @@ struct MainBatchView: View {
             }
             HStack{
                 Text("Cocktail Count:")
-                TextField("#", text: $viewModel.numberOfCocktailsText).cBCTextField()
+                TextField("#", value: $viewModel.numberOfCocktailsText, formatter: viewModel.formatter).cBCTextField()
                     .autocorrectionDisabled()
                     .frame(width: 70, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .onSubmit {
+                        viewModel.numberOfCocktailsText = cocktailCount
                         viewModel.convertIngredientsToBatchCellData()
+                        cocktailCount = viewModel.numberOfCocktailsText
                     }
             }
             HStack{
@@ -58,12 +62,13 @@ struct MainBatchView: View {
             .buttonStyle(BlackNWhiteButton())
         }
         .task {
+            cocktailCount = viewModel.numberOfCocktailsText
             viewModel.convertIngredientsToBatchCellData()
         }
     }
 }
 
 #Preview {
-    MainBatchView(quantifiedBatchedIngredients: .constant([]))
+    MainBatchView(quantifiedBatchedIngredients: .constant([]), cocktailCount: .constant(20.0))
         .environmentObject(CBCViewModel())
 }

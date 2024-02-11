@@ -11,6 +11,8 @@ struct BatchCell: View {
     @EnvironmentObject var viewModel: CBCViewModel
     @State var bottleSize: BottleSize = .oneLiter
     @Binding var quantifiedBatchedIngredient: BatchedCellData
+
+  
     
     
     var body: some View {
@@ -29,25 +31,22 @@ struct BatchCell: View {
                     .autocorrectionDisabled()
                     .frame(width: 60, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .onSubmit {
-                        viewModel.doMathForModified1LBottleCount(initialAmount: quantifiedBatchedIngredient.mlAmount, newQuantityAmount: quantifiedBatchedIngredient.whole1LBottles)
+                        viewModel.doMathForModified1LBottleCount(initialAmount: Double(quantifiedBatchedIngredient.mlAmount), newQuantityAmount: quantifiedBatchedIngredient.whole1LBottles)  
                     }
                 Text("\(quantifiedBatchedIngredient.remaining1LMls)ml")
-                    .frame(width: 80, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .frame(width: 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     
                     
             } else {
-                TextField("Btl#", text: $quantifiedBatchedIngredient.whole750mlBottles).cBCTextField()
+                TextField("Btl#", value: $quantifiedBatchedIngredient.whole750mlBottles, formatter: viewModel.formatter).cBCTextField()
                     .autocorrectionDisabled()
                     .frame(width: 60, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .onSubmit {
-                        viewModel.convertIngredientsToBatchCellData()
+                        viewModel.doMathForModified750mlBottleCount(initialAmount: Double(quantifiedBatchedIngredient.mlAmount), newQuantityAmount: quantifiedBatchedIngredient.whole750mlBottles)
                     }
-                TextField("/mls.", text: $quantifiedBatchedIngredient.remaining750mLs).cBCTextField()
-                    .autocorrectionDisabled()
-                    .frame(width: 60, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    .onSubmit {
-                        viewModel.convertIngredientsToBatchCellData()
-                    }
+                Text("\(quantifiedBatchedIngredient.remaining750mLs)ml")
+                    .frame(width: 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    
             }
             
             
@@ -56,11 +55,11 @@ struct BatchCell: View {
         
     }
 }
-//
-//#Preview {
-//    BatchCell(quantifiedBatchedIngredient: .constant(BatchedCellData(ingredientName: "", whole1LBottles: "", remaining1LMls: "", mlAmount: "")))
-//        .environmentObject(CBCViewModel())
-//}
+
+#Preview {
+    BatchCell(quantifiedBatchedIngredient: .constant(BatchedCellData(ingredientName: "Creme de Cacao", whole1LBottles: 2.1, remaining1LMls: 900, whole750mlBottles: 1.2, remaining750mLs: 34, mlAmount: 55)))
+        .environmentObject(CBCViewModel())
+}
 enum BottleSize: String, CaseIterable {
     case oneLiter = "1L"
     case seven50ml = "750ml"

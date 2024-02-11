@@ -68,5 +68,5 @@ struct NotesView: View {
 }
 
 #Preview {
-    NotesView(newText: "", batchCocktail: BatchedCocktail(batchCocktailName: "", dilutionPercentage: "", dilutionType: "", notes: "", batchCocktailIngredients: []))
+    NotesView(newText: "", batchCocktail: BatchedCocktail(batchCocktailName: "", dilutionPercentage: 0.0, dilutionType: "", notes: "", batchCocktailIngredients: []))
 }

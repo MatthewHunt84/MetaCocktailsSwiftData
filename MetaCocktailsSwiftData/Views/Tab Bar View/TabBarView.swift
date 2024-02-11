@@ -19,7 +19,7 @@ struct TabBarView: View {
 
 //            PrepBibleListView()
 //                .tabItem { Label("Prep", systemImage: "book.fill") }
-            CBCMainView(savedBatchCocktail: BatchedCocktail(batchCocktailName: "", dilutionPercentage: "", dilutionType: "", notes: "", batchCocktailIngredients: []))
+            CBCMainView(savedBatchCocktail: BatchedCocktail(batchCocktailName: "", dilutionPercentage: 0.0, dilutionType: "", notes: "", batchCocktailIngredients: []))
                 .tabItem { Label("Batch", systemImage: "plus.forwardslash.minus") }
 
         }

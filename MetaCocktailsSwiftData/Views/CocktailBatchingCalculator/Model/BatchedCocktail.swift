@@ -13,13 +13,13 @@ import SwiftData
 @Model
 final class BatchedCocktail  {
     var batchCocktailName: String = ""
-    var dilutionPercentage: String = ""
+    var dilutionPercentage: Double = 0.0
     var dilutionType: String = ""
     var notes: String = ""
     
     var batchCocktailIngredients: [BatchIngredient] = []
     
-    init(batchCocktailName: String, dilutionPercentage: String, dilutionType: String, notes: String, batchCocktailIngredients: [BatchIngredient]) {
+    init(batchCocktailName: String, dilutionPercentage: Double, dilutionType: String, notes: String, batchCocktailIngredients: [BatchIngredient]) {
         self.batchCocktailName = batchCocktailName
         self.dilutionPercentage = dilutionPercentage
         self.dilutionType = dilutionType
@@ -33,11 +33,11 @@ final class BatchIngredient {
    
     
     var name: String
-    var amount: String
-    var aBV: String
+    var amount: Double
+    var aBV: Double
  
     
-    init(name: String, amount: String, aBV: String) {
+    init(name: String, amount: Double, aBV: Double) {
         self.name = name
         self.amount = amount
         self.aBV = aBV
