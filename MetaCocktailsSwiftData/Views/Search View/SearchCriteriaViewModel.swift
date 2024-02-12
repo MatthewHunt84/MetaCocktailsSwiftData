@@ -351,6 +351,5 @@ final class SearchCriteriaViewModel: ObservableObject {
         }
         return baseArray
     }
-
 }
 

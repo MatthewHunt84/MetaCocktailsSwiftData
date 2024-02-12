@@ -67,7 +67,7 @@ enum AuthorPlaces: String, Codable, CaseIterable {
     
 }
 
-struct Author {
+struct Author: Codable {
     var person: String?
     var place: String?
     var year: String?

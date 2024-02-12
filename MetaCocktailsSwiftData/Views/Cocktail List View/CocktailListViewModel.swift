@@ -8,6 +8,11 @@
 import SwiftUI
 
 final class CocktailListViewModel: ObservableObject {
+    
+    init() {
+        addCocktailsToSwiftData() 
+    }
+    
     @Environment(\.modelContext) var modelContext
     static let shared = CocktailListViewModel()
     @Published var guestCocktails: [Cocktail] = getGuestViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName})
@@ -22,6 +27,12 @@ final class CocktailListViewModel: ObservableObject {
     @Published var guestViewCocktails: [CocktailListCocktail] = getGuestViewCocktails()
     @Published var randomCocktail = oldFashioned
     @Published var isShowingWnGCocktailsOnly: Bool = false
+    
+    func addCocktailsToSwiftData() {
+        for cocktail in bartenderCocktails {
+            modelContext.insert(cocktail)
+        }
+    }
     
     func filter86dCocktailsForBartenders() -> [Cocktail] {
         let startingCocktails = CocktailListViewModel.getBartenderViewCocktails().flatMap({$0.cocktailVariations})
@@ -339,13 +350,17 @@ final class CocktailListViewModel: ObservableObject {
                                                           "Penicillin": [penicillin, penicillinWnG] ]
 
         
-        let allCocktails = classicCocktailsForBartenders.merging(deathAndCoCocktails) { (_, new) in new }.merging(wNgModernCocktails) { (_, new) in new }.merging(miscModernCocktails) { (_, new) in new }
+        let allCocktails = classicCocktailsForBartenders.merging(deathAndCoCocktails) { (_, new) in new }
+                                                        .merging(wNgModernCocktails) { (_, new) in new }
+                                                        .merging(miscModernCocktails) { (_, new) in new }
         
         return allCocktails
     }
     
    func fetchRandomCocktail() -> Cocktail {
-        return CocktailListViewModel.getGuestViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName}).randomElement()!
+        return CocktailListViewModel.getGuestViewCocktails().flatMap({$0.cocktailVariations})
+                                                            .sorted(by: {$0.cocktailName < $1.cocktailName})
+                                                            .randomElement()!
     }
     
     @ViewBuilder
@@ -360,12 +375,6 @@ final class CocktailListViewModel: ObservableObject {
             
         }
     }
-
-    
-    // TODO: Ready for swiftData
-//    func addCocktailsToSwiftData() {
-//        modelContext.insert(aperolSpritz)
-//    }
 }
 
 struct CocktailListCocktail: Identifiable {

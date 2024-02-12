@@ -8,7 +8,7 @@
 import SwiftData
 import SwiftUI
 
-//@Model
+@Model
 class Cocktail: Equatable, Hashable {
     static func == (lhs: Cocktail, rhs: Cocktail) -> Bool {
         return lhs.cocktailName == rhs.cocktailName
