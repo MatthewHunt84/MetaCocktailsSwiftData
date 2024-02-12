@@ -57,7 +57,7 @@ struct BatchCell: View {
 }
 
 #Preview {
-    BatchCell(quantifiedBatchedIngredient: .constant(BatchedCellData(ingredientName: "Creme de Cacao", whole1LBottles: 2.1, remaining1LMls: 900, whole750mlBottles: 1.2, remaining750mLs: 34, mlAmount: 55)))
+    BatchCell(quantifiedBatchedIngredient: .constant(BatchedCellData(ingredientName: "Creme de Cacao", whole1LBottles: 2.1, remaining1LMls: 900, whole750mlBottles: 1.2, remaining750mLs: 34, mlAmount: 55, totalMls: 786)))
         .environmentObject(CBCViewModel())
 }
 enum BottleSize: String, CaseIterable {

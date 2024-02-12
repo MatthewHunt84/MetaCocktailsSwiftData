@@ -9,18 +9,18 @@ import SwiftUI
 
 struct SplitBatchCell: View {
     @EnvironmentObject var viewModel: CBCViewModel
-    @Binding var quantifiedBatchedIngredient: BatchedCellData
+    @Binding var quantifiedSpiltBatches: SplitBatchCellData
     var body: some View {
         HStack {
             Spacer()
-            Text("\(quantifiedBatchedIngredient.ingredientName)")
-            Text("\(quantifiedBatchedIngredient.remaining1LMls)ml")
+            Text("\(quantifiedSpiltBatches.ingredientName)")
+            Text("\(quantifiedSpiltBatches.splitIngredientAmount)ml")
         }
         .padding()
     }
 }
 
 #Preview {
-    SplitBatchCell(quantifiedBatchedIngredient: .constant(BatchedCellData(ingredientName: "Johnson Town", whole1LBottles: 2.5, remaining1LMls: 56, whole750mlBottles: 3.6, remaining750mLs: 500, mlAmount: 45)))
+    SplitBatchCell(quantifiedSpiltBatches: .constant(SplitBatchCellData(ingredientName: "Jungus", splitIngredientAmount: 69)))
         .environmentObject(CBCViewModel())
 }

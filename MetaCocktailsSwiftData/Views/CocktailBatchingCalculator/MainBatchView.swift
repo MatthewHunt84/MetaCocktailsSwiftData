@@ -54,7 +54,7 @@ struct MainBatchView: View {
             Text("Total Dilution (\(viewModel.dilutionName)) = \(Int(ceil(viewModel.totalDilutionVolume)))ml (\((viewModel.totalDilutionVolume / 1000.0), specifier: "%.3f")L)")
             Text("Total Volume = \(Int(ceil(viewModel.totalBatchVolume)))ml (\((viewModel.totalBatchVolume / 1000.0), specifier: "%.3f")L)")
             NavigationLink {
-               VesselPickerView()
+               SplitBatchView()
             } label: {
                 Text("Split Batch")
             }

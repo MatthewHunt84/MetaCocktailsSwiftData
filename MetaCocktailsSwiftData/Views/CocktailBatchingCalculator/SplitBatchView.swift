@@ -12,22 +12,31 @@ struct SplitBatchView: View {
     var body: some View {
         VStack {
             
-            Text("Container Size: \(viewModel.containerSize)")
-            Text("Number of Containers: \(viewModel.numberOfContainers)")
+            HStack{
+                Text("Container Size: ")
+                ContainerMenuView()
+            }
             Text("Batch Recipe Per Container:")
-                .dynamicTypeSize(.xLarge).bold()
             List {
-                ForEach($viewModel.quantifiedBatchedIngredients, id: \.self) { ingredient in
-                    SplitBatchCell(quantifiedBatchedIngredient: ingredient)
+                ForEach($viewModel.splitBatchData, id: \.self) { ingredient in
+                    SplitBatchCell(quantifiedSpiltBatches: ingredient)
                 }
             }
             .listStyle(.plain)
             .overlay( RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
                 .stroke(.gray.gradient, lineWidth: 2))
+            Text("Number of Containers: \(viewModel.numberOfContainers)")
+                .dynamicTypeSize(.large)
+            Text("At least 10% of the container's volume will be left empty for safe transportation.")
+                .multilineTextAlignment(.center)
+                .dynamicTypeSize(.large).bold()
+                .padding(10)
             
         }
         .navigationTitle("Split Batch: \(viewModel.cocktailNameText)")
-        
+        .task {
+            viewModel.doSplitBatchMath()
+        }
     }
         
 }
@@ -36,3 +45,4 @@ struct SplitBatchView: View {
     SplitBatchView()
         .environmentObject(CBCViewModel())
 }
+

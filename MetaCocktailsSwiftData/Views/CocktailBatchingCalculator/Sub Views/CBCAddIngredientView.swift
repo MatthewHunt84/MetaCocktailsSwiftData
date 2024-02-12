@@ -13,6 +13,8 @@ struct CBCAddIngredientView: View {
     @EnvironmentObject var viewModel: CBCViewModel
     @Environment(\.dismiss) private var dismiss
     @Bindable var savedBatchCocktail: BatchedCocktail
+    @State private var changedDilutionName = ""
+    @State private var changedDilutionAmount = 0.0
     
     
     var body: some View {
@@ -67,60 +69,31 @@ struct CBCAddIngredientView: View {
                 } else {
                     HStack {
                         Text("Dilution Type:")
-                        TextField("Usually water", text: $viewModel.dilutionName).cBCTextField()
+                        TextField("Usually water", text: $changedDilutionName).cBCTextField()
                             .autocorrectionDisabled()
-                        
                     }
                     HStack{
                         Spacer()
                         Text("Percent Amount:")
-                        TextField("%Dilution", value: $viewModel.dilutionPercentage, formatter: viewModel.formatter).cBCTextField()
+                        TextField("%Dilution", value: $changedDilutionAmount, formatter: viewModel.formatter).cBCTextField()
                             .autocorrectionDisabled()
-                        
-                        
                             .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 40, alignment: .center)
                     }
                 }
                 
                 Button("Add Ingredient") {
-                    if viewModel.editingSavedCocktail == true {
-                        if ingredientOrDilution == .ingredient {
-                                if mlsOrOunces == .ounces {
-                                    savedBatchCocktail.batchCocktailIngredients.append(BatchIngredient(name: viewModel.ingredientNameText, 
-                                                                                                       amount: viewModel.ingredientAmount,
-                                                                                                       aBV: viewModel.ingredientAbvPercentage))
-                                } else {
-                                    savedBatchCocktail.batchCocktailIngredients.append(BatchIngredient(name: viewModel.ingredientNameText, 
-                                                                                                       amount: viewModel.convertMlToOz(for: Int(viewModel.ingredientAmount)),
-                                                                                                       aBV: viewModel.ingredientAbvPercentage))
-                                }
-
-                        }
-                    } else {
-                        if ingredientOrDilution == .ingredient {
-                            if mlsOrOunces == .ounces {
-                                viewModel.ingredients.append(BatchIngredient(name: viewModel.ingredientNameText, 
-                                                                             amount: viewModel.ingredientAmount,
-                                                                             aBV: viewModel.ingredientAbvPercentage))
-                            } else {
-                                viewModel.ingredients.append(BatchIngredient(name: viewModel.ingredientNameText, 
-                                                                             amount: viewModel.convertMlToOz(for: Int(viewModel.ingredientAmount)),
-                                                                             aBV: viewModel.ingredientAbvPercentage))
-                            }
-                            
-                        }
-                    }
-                    viewModel.ingredientNameText = ""
-                    viewModel.ingredientAmount = 0.0
-                    viewModel.ingredientAbvPercentage = 0.0
+                    viewModel.appendCorrectIngredient(for: savedBatchCocktail, ingredientOrDilution, mlsOrOunces, changedDilutionName, changedDilutionAmount)
                     dismiss()
                     
                 }
-                .disabled(viewModel.ingredientNameText != "" || viewModel.dilutionName != "" ? false : true)
+                //.disabled(viewModel.ingredientNameText != "" || viewModel.dilutionName != "" ? false : true)
                 .buttonStyle(BlackNWhiteButton())
                 .padding()
                 Spacer()
                 
+            }
+            .task {
+                changedDilutionName = viewModel.dilutionName
             }
             .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
         }

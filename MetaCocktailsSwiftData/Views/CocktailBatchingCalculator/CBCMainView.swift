@@ -113,11 +113,20 @@ struct CBCMainView: View {
                         if viewModel.dilutionName != "" {
                             DilutionCell()
                                 .swipeActions{
-                                    Button("Delete"){
-                                        viewModel.dilutionName = ""
-                                        viewModel.dilutionPercentage = 0.0
-                                        viewModel.calculateABV()
+                                    if viewModel.editingSavedCocktail {
+                                        Button("Delete"){
+                                            savedBatchCocktail.dilutionType = ""
+                                            savedBatchCocktail.dilutionPercentage = 0.0
+                                            viewModel.calculateABV()
+                                        }
+                                    } else {
+                                        Button("Delete"){
+                                            viewModel.dilutionName = ""
+                                            viewModel.dilutionPercentage = 0.0
+                                            viewModel.calculateABV()
+                                        }
                                     }
+                                    
                                 }
                         }
                         

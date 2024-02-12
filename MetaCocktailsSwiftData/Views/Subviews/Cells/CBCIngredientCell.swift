@@ -16,20 +16,32 @@ struct CBCIngredientCell: View {
     
     var body: some View {
         HStack {
-            TextField("Vol.", value:  $amountInMls, formatter: viewModel.formatter).cBCTextField()
-                .frame(width: 70, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                .onSubmit {
-                    ingredient.amount = Double(amountInMls)
-                    viewModel.calculateABV()
-                }
-            Text("ml \(ingredient.name)")
+//            TextField("Vol.", value:  $amountInMls, formatter: viewModel.formatter).cBCTextField()
+//                .frame(width: 70, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+//                .onSubmit {
+//                    ingredient.amount = Double(amountInMls)
+//                    viewModel.calculateABV()
+//                }
+            Text("\(amountInMls)ml (\(NSNumber(value: ingredient.amount))oz) \(ingredient.name)")
+                //.frame(width: 200, height: 50, alignment: .leading)
+//                .onSubmit {
+//                    ingredient.amount = Double(amountInMls)
+//                    viewModel.calculateABV()
+//                }
+//            Text("ml \(ingredient.name)")
             Spacer()
-            TextField("ABV", value: $ingredient.aBV, formatter: viewModel.formatter).cBCTextField()
-                .frame(width: 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                .onSubmit {
-                    viewModel.calculateABV()
-                }
-            Text(" %ABV")
+//            TextField("ABV", value: $ingredient.aBV, formatter: viewModel.formatter).cBCTextField()
+//                .frame(width: 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+//                .onSubmit {
+//                    viewModel.calculateABV()
+//                }
+            Text("\(NSNumber(value: ingredient.aBV)) %ABV")
+                //.frame(width: 100, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+//                .onSubmit {
+//                    ingredient.amount = Double(amountInMls)
+//                    viewModel.calculateABV()
+//                }
+//            Text(" %ABV")
             
         }
 
@@ -44,6 +56,7 @@ struct CBCIngredientCell: View {
     
    
     CBCIngredientCell(ingredient: BatchIngredient(name: "Balls", amount: 0.0, aBV: 0.0))
+        .environmentObject(CBCViewModel())
                 
       
 }

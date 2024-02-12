@@ -28,7 +28,7 @@ final class CBCViewModel: ObservableObject {
     ///CBCMainView variables
     @Published var cocktailNameText = ""
     @Published var notesText = ""
-    @Published var numberOfCocktailsText = 20.0
+    @Published var numberOfCocktailsText = 100.0
     @Published var totalCocktailABVPercentage = 0.0
     @Published var editedIngredientVolumeTextField = 0.0
     @Published var ingredients: [BatchIngredient] = []
@@ -42,10 +42,10 @@ final class CBCViewModel: ObservableObject {
     @Published var quantifiedBatchedIngredients: [BatchedCellData] = []
     
     ///Split Batch View
-    let containerType = ["4 Liter", "5 Liter", "6 Liter", "7 Liter", "8 Liter", "9 Liter", "10 Liter", "11 Liter", "12 Liter", "13 Liter", "14 Liter", "15 Liter", "16 Liter", "17 Liter", "18 Liter", "5 Gallon Bucket"]
-    @Published var containerSizeInMls = [4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000, 14000, 15000, 16000, 17000, 18000, 18927]
-    @Published var containerSize =  "5 Liter"
+    @Published var containerSize =  4000
     @Published var numberOfContainers = 2
+    @Published var splitBatchData: [SplitBatchCellData] = []
+ 
     
     
     func delete(at offsets: IndexSet){
@@ -94,39 +94,80 @@ final class CBCViewModel: ObservableObject {
         return Int(ceil((ingredient) * 29.5735))
     }
     func convertMlToOz(for ingredient: Int) -> Double {
-        return (Double(ingredient) / 29.5735)
+       return round((Double(ingredient) / 29.5735) * 100) / 100.0
+        
     }
     
     
     func convertIngredientsToBatchCellData()  {
         var quantifiableIngredients = [BatchedCellData]()
         var totalVolume = 0.0
-        let numberOfCocktailsDouble = numberOfCocktailsText
         for ingredient in ingredients {
-            let ingredientVolume = Double(convertIngredientOzAmountIntoMls(for: ingredient.amount)) * numberOfCocktailsDouble
+            let ingredientVolume = Double(convertIngredientOzAmountIntoMls(for: ingredient.amount)) * numberOfCocktailsText
             totalVolume += ingredientVolume
             quantifiableIngredients.append(BatchedCellData(ingredientName: ingredient.name,
                                                            whole1LBottles: (ingredientVolume / 1000).rounded(.down),
                                                            remaining1LMls: Int(ingredientVolume.truncatingRemainder(dividingBy: 1000)),
                                                            whole750mlBottles: (ingredientVolume / 750).rounded(.down),
                                                            remaining750mLs: Int(ingredientVolume.truncatingRemainder(dividingBy: 750)),
-                                                           mlAmount: convertIngredientOzAmountIntoMls(for: ingredient.amount) ))
+                                                           mlAmount: convertIngredientOzAmountIntoMls(for: ingredient.amount), 
+                                                           totalMls: Int(ingredientVolume) ))
         }
         totalDilutionVolume = totalVolume * (dilutionPercentage / 100.0)
         totalBatchVolume = totalVolume + totalDilutionVolume
+        numberOfContainers = Int(ceil(totalBatchVolume / (Double(containerSize) * 0.9)))
         quantifiedBatchedIngredients = quantifiableIngredients
         
     }
+    func doSplitBatchMath() {
+        var splitData: [SplitBatchCellData] = []
+        for ingredient in quantifiedBatchedIngredients {
+            splitData.append(SplitBatchCellData(ingredientName: ingredient.ingredientName, splitIngredientAmount: Int(ingredient.totalMls / numberOfContainers)))
+        }
+        splitData.append(SplitBatchCellData(ingredientName: dilutionName, splitIngredientAmount: Int(totalDilutionVolume / Double(numberOfContainers))))
+        splitBatchData = splitData
+    
+    }
     func doMathForModified1LBottleCount(initialAmount: Double, newQuantityAmount: Double) {
         numberOfCocktailsText = (newQuantityAmount * 1000) / initialAmount
-        print("initial amount is \(initialAmount). new quantity = \(newQuantityAmount) and number of cocktails text = \(numberOfCocktailsText)")
-        
         convertIngredientsToBatchCellData()
     }
     func doMathForModified750mlBottleCount(initialAmount: Double, newQuantityAmount: Double) {
         numberOfCocktailsText = (newQuantityAmount * 750) / initialAmount
         convertIngredientsToBatchCellData()
     }
+    
+    func appendCorrectIngredient(for savedBatch: BatchedCocktail, _ toggle: IngredientOrDilution, _ mlOrOz: MlsOrOunces, _ newDilutionName: String, _ newDilutionAmount: Double) {
+        if editingSavedCocktail == true {
+            if toggle == .ingredient {
+                if mlOrOz == .ounces {
+                    savedBatch.batchCocktailIngredients.append(BatchIngredient(name: ingredientNameText, amount: ingredientAmount, aBV: ingredientAbvPercentage))
+                } else {
+                    savedBatch.batchCocktailIngredients.append(BatchIngredient(name: ingredientNameText, amount: convertMlToOz(for: Int(ingredientAmount)), aBV: ingredientAbvPercentage))
+                }
+            } else {
+                savedBatch.dilutionType = newDilutionName
+                savedBatch.dilutionPercentage = newDilutionAmount
+            }
+        } else {
+            if toggle == .ingredient {
+                if mlOrOz == .ounces {
+                    ingredients.append(BatchIngredient(name: ingredientNameText, amount: ingredientAmount, aBV: ingredientAbvPercentage))
+                } else {
+                    ingredients.append(BatchIngredient(name: ingredientNameText, amount: convertMlToOz(for: Int(truncating: ingredientAmount as NSNumber)) , aBV: ingredientAbvPercentage))
+                }
+            } else {
+                dilutionName = newDilutionName
+                dilutionPercentage = newDilutionAmount
+            }
+        }
+        ingredientNameText = ""
+        ingredientAmount = 0.0
+        ingredientAbvPercentage = 0.0
+    }
+    
+    
+   
     
 }
 
@@ -144,7 +185,19 @@ struct BatchedCellData: Hashable, Equatable {
     var whole750mlBottles: Double
     var remaining750mLs: Int
     var mlAmount: Int
+    var totalMls: Int
 }
 
 
-
+struct SplitBatchCellData: Hashable, Equatable {
+    static func == (lhs: SplitBatchCellData, rhs: SplitBatchCellData) -> Bool {
+        return lhs.ingredientName == rhs.ingredientName
+    }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(ingredientName)
+    }
+    var ingredientName: String
+    var splitIngredientAmount: Int
+    
+    
+}
