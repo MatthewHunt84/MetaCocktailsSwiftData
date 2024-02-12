@@ -10,7 +10,7 @@ import SwiftUI
 final class CocktailListViewModel: ObservableObject {
     
     init() {
-        addCocktailsToSwiftData() 
+        addCocktailsToSwiftData()  // probably has something to do with being on a viewModel instead of a view!
     }
     
     @Environment(\.modelContext) var modelContext
@@ -29,9 +29,11 @@ final class CocktailListViewModel: ObservableObject {
     @Published var isShowingWnGCocktailsOnly: Bool = false
     
     func addCocktailsToSwiftData() {
-        for cocktail in bartenderCocktails {
-            modelContext.insert(cocktail)
-        }
+        modelContext.insert(aperolSpritz)
+//        print("--- bartenderCocktails.count = \(bartenderCocktails.count)")
+//        for cocktail in bartenderCocktails {
+//            modelContext.insert(aperolSpritz)
+//        }
     }
     
     func filter86dCocktailsForBartenders() -> [Cocktail] {
