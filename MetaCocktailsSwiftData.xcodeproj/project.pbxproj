@@ -109,6 +109,9 @@
 		4D54F7322B795AA100D046D9 /* SplitBatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D54F7312B795AA100D046D9 /* SplitBatchView.swift */; };
 		4D54F7342B795E2700D046D9 /* SplitBatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D54F7332B795E2700D046D9 /* SplitBatchCell.swift */; };
 		4D54F7362B79F1E500D046D9 /* ContainerMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D54F7352B79F1E500D046D9 /* ContainerMenuView.swift */; };
+		4D54F7392B7AFC1200D046D9 /* CBCLoadedCocktailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D54F7382B7AFC1200D046D9 /* CBCLoadedCocktailView.swift */; };
+		4D54F73C2B7AFDB100D046D9 /* AddDilutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D54F73B2B7AFDB100D046D9 /* AddDilutionView.swift */; };
+		4D54F73E2B7B053800D046D9 /* LoadedCocktailIngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D54F73D2B7B053800D046D9 /* LoadedCocktailIngredientCell.swift */; };
 		4D7B01732B71DF690026FE34 /* DilutionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7B01722B71DF690026FE34 /* DilutionCell.swift */; };
 		4D7B01752B72BF0A0026FE34 /* MainBatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7B01742B72BF0A0026FE34 /* MainBatchView.swift */; };
 		4D7B01772B72C2260026FE34 /* BatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7B01762B72C2260026FE34 /* BatchCell.swift */; };
@@ -502,6 +505,9 @@
 		4D54F7312B795AA100D046D9 /* SplitBatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitBatchView.swift; sourceTree = "<group>"; };
 		4D54F7332B795E2700D046D9 /* SplitBatchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitBatchCell.swift; sourceTree = "<group>"; };
 		4D54F7352B79F1E500D046D9 /* ContainerMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerMenuView.swift; sourceTree = "<group>"; };
+		4D54F7382B7AFC1200D046D9 /* CBCLoadedCocktailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBCLoadedCocktailView.swift; sourceTree = "<group>"; };
+		4D54F73B2B7AFDB100D046D9 /* AddDilutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDilutionView.swift; sourceTree = "<group>"; };
+		4D54F73D2B7B053800D046D9 /* LoadedCocktailIngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadedCocktailIngredientCell.swift; sourceTree = "<group>"; };
 		4D7B01722B71DF690026FE34 /* DilutionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DilutionCell.swift; sourceTree = "<group>"; };
 		4D7B01742B72BF0A0026FE34 /* MainBatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBatchView.swift; sourceTree = "<group>"; };
 		4D7B01762B72C2260026FE34 /* BatchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchCell.swift; sourceTree = "<group>"; };
@@ -809,9 +815,10 @@
 			children = (
 				1AC386782AAABED00064F52A /* PreferencesCheckListCell.swift */,
 				4DA567AE2B6CF101003F6F04 /* EightySixCheckListCell.swift */,
-				4DA5686D2B70EB26003F6F04 /* CBCIngredientCell.swift */,
 				4D7B01722B71DF690026FE34 /* DilutionCell.swift */,
 				4D7B01762B72C2260026FE34 /* BatchCell.swift */,
+				4D54F73D2B7B053800D046D9 /* LoadedCocktailIngredientCell.swift */,
+				4DA5686D2B70EB26003F6F04 /* CBCIngredientCell.swift */,
 				4D54F7332B795E2700D046D9 /* SplitBatchCell.swift */,
 			);
 			path = Cells;
@@ -1236,10 +1243,20 @@
 			isa = PBXGroup;
 			children = (
 				4D54F7352B79F1E500D046D9 /* ContainerMenuView.swift */,
-				4DA568672B70B00D003F6F04 /* NotesView.swift */,
-				4DA5686B2B70CF4E003F6F04 /* CBCAddIngredientView.swift */,
 			);
 			path = "Sub Views";
+			sourceTree = "<group>";
+		};
+		4D54F73A2B7AFD1600D046D9 /* OldViews */ = {
+			isa = PBXGroup;
+			children = (
+				4DA568602B70A924003F6F04 /* CBCMainView.swift */,
+				4DA568672B70B00D003F6F04 /* NotesView.swift */,
+				4DA5686F2B71698D003F6F04 /* SavedBatchCocktailsView.swift */,
+				4DA5686B2B70CF4E003F6F04 /* CBCAddIngredientView.swift */,
+				4DE9AC152B78681D00A39D03 /* Model */,
+			);
+			path = OldViews;
 			sourceTree = "<group>";
 		};
 		4DA567A72B6CEBBD003F6F04 /* 86 List */ = {
@@ -1255,13 +1272,13 @@
 		4DA567B02B6D9524003F6F04 /* CocktailBatchingCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				4D54F73A2B7AFD1600D046D9 /* OldViews */,
 				4D54F7372B79FD5B00D046D9 /* Sub Views */,
 				4DA568652B70AF07003F6F04 /* CBCViewModel.swift */,
-				4DA568602B70A924003F6F04 /* CBCMainView.swift */,
-				4DA5686F2B71698D003F6F04 /* SavedBatchCocktailsView.swift */,
+				4D54F7382B7AFC1200D046D9 /* CBCLoadedCocktailView.swift */,
 				4D7B01742B72BF0A0026FE34 /* MainBatchView.swift */,
+				4D54F73B2B7AFDB100D046D9 /* AddDilutionView.swift */,
 				4D54F7312B795AA100D046D9 /* SplitBatchView.swift */,
-				4DE9AC152B78681D00A39D03 /* Model */,
 			);
 			path = CocktailBatchingCalculator;
 			sourceTree = "<group>";
@@ -1667,6 +1684,7 @@
 				4D54F7342B795E2700D046D9 /* SplitBatchCell.swift in Sources */,
 				4DF408C62B60D4A100EF9A6E /* ChampsElysees.swift in Sources */,
 				F4C5C3E12B3B3F2E005B2261 /* IngredientType.swift in Sources */,
+				4D54F73C2B7AFDB100D046D9 /* AddDilutionView.swift in Sources */,
 				4DA567E82B6DD90A003F6F04 /* MadusasFang.swift in Sources */,
 				4DBBA48E2B68963200179B8F /* Mezcalero.swift in Sources */,
 				4DA568702B71698D003F6F04 /* SavedBatchCocktailsView.swift in Sources */,
@@ -1910,6 +1928,7 @@
 				4D1E85D32B5CD8E700214BC6 /* RedWedding.swift in Sources */,
 				4DA567782B6C8AAC003F6F04 /* PeaksOfReykjavik.swift in Sources */,
 				4DA567742B6C827C003F6F04 /* LavandulaRosa.swift in Sources */,
+				4D54F73E2B7B053800D046D9 /* LoadedCocktailIngredientCell.swift in Sources */,
 				4DA5677A2B6C90E9003F6F04 /* CleverGirl.swift in Sources */,
 				4DA567F22B6DE424003F6F04 /* BurisBovineBeverage.swift in Sources */,
 				4DA567C82B6DB8F5003F6F04 /* PrettyInParadox.swift in Sources */,
@@ -1940,6 +1959,7 @@
 				1AC386C22AAABED10064F52A /* TabBarView.swift in Sources */,
 				1AD87A272AE8B65800859028 /* CloverClub.swift in Sources */,
 				4DA567822B6CB182003F6F04 /* TheRoastery.swift in Sources */,
+				4D54F7392B7AFC1200D046D9 /* CBCLoadedCocktailView.swift in Sources */,
 				4DBBA4862B68880300179B8F /* Martinez.swift in Sources */,
 				4DA5674E2B6C39B2003F6F04 /* Tipperary(W&G Version).swift in Sources */,
 				4DF408EC2B61A9F900EF9A6E /* FancyFree(W&G).swift in Sources */,

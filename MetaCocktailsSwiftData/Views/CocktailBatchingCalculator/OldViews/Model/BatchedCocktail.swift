@@ -28,20 +28,12 @@ final class BatchedCocktail  {
     }
 }
 
-@Model
-final class BatchIngredient {
+
+struct BatchIngredient: Codable, Hashable {
    
     
     var name: String
     var amount: Double
     var aBV: Double
- 
-    
-    init(name: String, amount: Double, aBV: Double) {
-        self.name = name
-        self.amount = amount
-        self.aBV = aBV
-    }
-    
 
 }

@@ -141,7 +141,7 @@ struct SearchBartenderRecipeView: View {
                             }
                            
                             NavigationLink{
-                                CBCMainView(savedBatchCocktail: BatchedCocktail(batchCocktailName: viewModel.cocktail.cocktailName, dilutionPercentage: 0.0, dilutionType: "", notes: "", batchCocktailIngredients: viewModel.convertCocktailToBatch()))
+                                CBCLoadedCocktailView(cocktail: viewModel.cocktail)
                             } label: {
                                 VStack{
                                     Image("batchBottles", label: Text("Batch"))

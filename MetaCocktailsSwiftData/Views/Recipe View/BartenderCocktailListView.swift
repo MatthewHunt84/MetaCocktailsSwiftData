@@ -159,6 +159,25 @@ struct BartenderCocktailListView: View {
                                     
                                     .buttonStyle(whiteButton())
                                 }
+                                NavigationLink{
+                                    CBCLoadedCocktailView(cocktail: cocktail.wrappedValue)
+                                } label: {
+                                    ZStack {
+                                        VStack{
+                                            Image("batchBottles", label: Text("Batch"))
+                                                .resizable()
+                                                .frame(width: 100, height: 100, alignment: .center)
+                                            Text("Batch")
+                                                .foregroundStyle(.white)
+                                                .dynamicTypeSize(.large).bold()
+                                        }
+                                    }
+                             
+                                    
+                                    
+                                    
+                                }
+                                
                                 Rectangle()
                                     .fill(.black)
                                     .frame(width: 60, height: 40, alignment: .center)
