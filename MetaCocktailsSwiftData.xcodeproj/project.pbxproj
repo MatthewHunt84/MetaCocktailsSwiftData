@@ -105,6 +105,7 @@
 		4D1F15462B55B76F00FC3B85 /* SunnySide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1F15452B55B76F00FC3B85 /* SunnySide.swift */; };
 		4D1F15482B564DB600FC3B85 /* ResultsConfigurationMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1F15472B564DB600FC3B85 /* ResultsConfigurationMenu.swift */; };
 		4D3EA6942B5F982E009EE902 /* AlaskaCocktail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3EA6932B5F982E009EE902 /* AlaskaCocktail.swift */; };
+		4D49243D2B7B5E2700BBE86C /* BatchButton .swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D49243C2B7B5E2700BBE86C /* BatchButton .swift */; };
 		4D4D9EE02B5868C2004E7EA5 /* Gimlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4D9EDF2B5868C2004E7EA5 /* Gimlet.swift */; };
 		4D54F7322B795AA100D046D9 /* SplitBatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D54F7312B795AA100D046D9 /* SplitBatchView.swift */; };
 		4D54F7342B795E2700D046D9 /* SplitBatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D54F7332B795E2700D046D9 /* SplitBatchCell.swift */; };
@@ -501,6 +502,7 @@
 		4D1F15452B55B76F00FC3B85 /* SunnySide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnySide.swift; sourceTree = "<group>"; };
 		4D1F15472B564DB600FC3B85 /* ResultsConfigurationMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsConfigurationMenu.swift; sourceTree = "<group>"; };
 		4D3EA6932B5F982E009EE902 /* AlaskaCocktail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlaskaCocktail.swift; sourceTree = "<group>"; };
+		4D49243C2B7B5E2700BBE86C /* BatchButton .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BatchButton .swift"; sourceTree = "<group>"; };
 		4D4D9EDF2B5868C2004E7EA5 /* Gimlet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gimlet.swift; sourceTree = "<group>"; };
 		4D54F7312B795AA100D046D9 /* SplitBatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitBatchView.swift; sourceTree = "<group>"; };
 		4D54F7332B795E2700D046D9 /* SplitBatchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitBatchCell.swift; sourceTree = "<group>"; };
@@ -832,6 +834,7 @@
 				1AC386822AAABED00064F52A /* RoundButtonStyle.swift */,
 				1AC3867B2AAABED00064F52A /* XDismissButton.swift */,
 				4DA568692B70BC4F003F6F04 /* BlackNWhiteButton.swift */,
+				4D49243C2B7B5E2700BBE86C /* BatchButton .swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -1723,6 +1726,7 @@
 				4DA567F82B6DF024003F6F04 /* RamonaFlowers.swift in Sources */,
 				4DA567CA2B6DBA86003F6F04 /* Shameless.swift in Sources */,
 				1AC386C52AAABED10064F52A /* SearchBartenderRecipeView.swift in Sources */,
+				4D49243D2B7B5E2700BBE86C /* BatchButton .swift in Sources */,
 				4DBBA4C02B6A18EE00179B8F /* PapaDoble(WnG).swift in Sources */,
 				4DB1C0BC2B46D63300943C69 /* CocktailResultListView.swift in Sources */,
 				F4C6A8F72AB0145800BB0AD0 /* Profiles.swift in Sources */,

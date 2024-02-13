@@ -11,14 +11,20 @@ struct MainBatchView: View {
     @EnvironmentObject var viewModel: CBCViewModel
     @Binding var quantifiedBatchedIngredients: [BatchedCellData]
     @Binding var cocktailCount: Double
+
     
     
     var body: some View {
         VStack{
             HStack {
-                Text(viewModel.cocktailNameText)
-                    .font(.largeTitle).bold()
-                Spacer()
+//                Text("\(viewModel.cocktail.cocktailName)")
+//                    .font(.title).bold()
+              Spacer()
+                Button{
+                   
+                } label: {
+                    Image(systemName: "house")
+                }
                 Button{
                     
                 } label: {
@@ -30,11 +36,14 @@ struct MainBatchView: View {
                 Text("Cocktail Count:")
                 TextField("#", value: $viewModel.numberOfCocktailsText, formatter: viewModel.formatter).cBCTextField()
                     .autocorrectionDisabled()
-                    .frame(width: 70, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .frame(width: 125, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .onSubmit {
                         viewModel.convertIngredientsToBatchCellData()
                     
                     }
+                
+                
+                
             }
             HStack{
                 Spacer()
@@ -60,6 +69,8 @@ struct MainBatchView: View {
             }
             .buttonStyle(BlackNWhiteButton())
         }
+        .navigationTitle("\(viewModel.cocktail.cocktailName)")
+   
         .task {
             cocktailCount = viewModel.numberOfCocktailsText
             viewModel.convertIngredientsToBatchCellData()

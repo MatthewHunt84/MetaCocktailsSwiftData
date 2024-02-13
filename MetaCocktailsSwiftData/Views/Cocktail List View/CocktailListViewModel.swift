@@ -22,6 +22,7 @@ final class CocktailListViewModel: ObservableObject {
     @Published var guestViewCocktails: [CocktailListCocktail] = getGuestViewCocktails()
     @Published var randomCocktail = oldFashioned
     @Published var isShowingWnGCocktailsOnly: Bool = false
+   
     
     func filter86dCocktailsForBartenders() -> [Cocktail] {
         let startingCocktails = CocktailListViewModel.getBartenderViewCocktails().flatMap({$0.cocktailVariations})

@@ -11,6 +11,7 @@ struct CBCLoadedCocktailView: View {
     @EnvironmentObject var viewModel: CBCViewModel
     @State var cocktailCount = 100.0
     @State var cocktail: Cocktail
+  
     
   
    
@@ -71,7 +72,7 @@ struct CBCLoadedCocktailView: View {
                             
                             
                             
-                            Text("Your ABV is \(viewModel.totalCocktailABVPercentage, specifier: "%.2f")%")
+//                            Text("Your ABV is \(viewModel.totalCocktailABVPercentage, specifier: "%.2f")%")
                             
                             
                             
@@ -96,7 +97,8 @@ struct CBCLoadedCocktailView: View {
     
 }
 
-#Preview {
-    CBCLoadedCocktailView(cocktail: aFlightSouthOfTheBorder)
-        .environmentObject(CBCViewModel())
-}
+//#Preview {
+//    @Binding var navPath: NavigationPath
+//    CBCLoadedCocktailView(cocktail: aFlightSouthOfTheBorder, navPath: .constant($navPath))
+//        .environmentObject(CBCViewModel())
+//}

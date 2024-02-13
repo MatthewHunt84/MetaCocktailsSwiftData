@@ -14,47 +14,51 @@ struct BartenderCocktailListView: View {
     @State var cocktails: [Cocktail] = []
     @State var cocktailName: String = ""
     @Environment(\.dismiss) private var dismiss
+   
     
     var body: some View {
-        GeometryReader{ geo in
-            VStack{
-                HStack{
-                    Button{
-                        dismiss()
-                    } label: {
-                        Image(systemName: "chevron.backward")
-                        Text("Back")
+        
+            GeometryReader{ geo in
+                VStack{
+                    HStack{
+                        Button{
+                            dismiss()
+                        } label: {
+                            Image(systemName: "chevron.backward")
+                            Text("Back")
+                        }
+                        Spacer()
                     }
-                    Spacer()
-                }
-                TabView {
-                    ForEach($cocktails, id: \.self) { cocktail in
-                        
-                        ScrollView(.vertical){
-                            VStack {
-                                
-                                cocktail.glasswareType.wrappedValue.glassImage(cocktail: cocktail.wrappedValue)
-                                    .resizable()
-                                    .frame(width: 125, height: 125, alignment: .center)
-                                
-                                    .padding(10)
-                                Text(cocktail.cocktailName.wrappedValue)
-                                    .dynamicTypeSize(.xxLarge).bold()
-                                    .multilineTextAlignment(.center)
-                                    .lineLimit(2)
-                                    .padding(10)
-                                CocktailProfileView(cocktail: cocktail.wrappedValue)
-                                
-                                VStack{
-                                    Text("Glassware:")
-                                        .dynamicTypeSize(.xLarge).bold()
-                                    Text(cocktail.glasswareType.wrappedValue.rawValue)
-                                        .dynamicTypeSize(.large)
-                                        .multilineTextAlignment(.center)
-                                }
-                                .padding(10)
-                                
+                    TabView {
+                        ForEach($cocktails, id: \.self) { cocktail in
+                            
+                            ScrollView(.vertical){
                                 VStack {
+                                    
+                                    cocktail.glasswareType.wrappedValue.glassImage(cocktail: cocktail.wrappedValue)
+                                        .resizable()
+                                        .frame(width: 125, height: 125, alignment: .center)
+                                    
+                                        .padding(10)
+                                    Text(cocktail.cocktailName.wrappedValue)
+                                        .dynamicTypeSize(.xxLarge).bold()
+                                        .multilineTextAlignment(.center)
+                                        .lineLimit(2)
+                                        .padding(10)
+                                    CocktailProfileView(cocktail: cocktail.wrappedValue)
+                                    
+                                    VStack{
+                                        Text("Glassware:")
+                                            .dynamicTypeSize(.xLarge).bold()
+                                        Text(cocktail.glasswareType.wrappedValue.rawValue)
+                                            .dynamicTypeSize(.large)
+                                            .multilineTextAlignment(.center)
+                                    }
+                                    .padding(10)
+                                    
+                                    
+                                    
+                                    
                                     
                                     
                                     Text("Cocktail Spec:")
@@ -147,54 +151,44 @@ struct BartenderCocktailListView: View {
                                     
                                     
                                     
-                                }
-                                if cocktail.author.wrappedValue != nil {
-                                    AuthorView(cocktail: cocktail.wrappedValue)
-                                }
-                                if let buildOrder = cocktail.buildOrder.wrappedValue {
-                                    NavigationLink("Build Order") {
-                                        BuildOrderView(buildOrder: buildOrder)
+                                    
+                                    if cocktail.author.wrappedValue != nil {
+                                        AuthorView(cocktail: cocktail.wrappedValue)
+                                            .padding()
                                     }
-                                    
-                                    
-                                    .buttonStyle(whiteButton())
-                                }
-                                NavigationLink{
-                                    CBCLoadedCocktailView(cocktail: cocktail.wrappedValue)
-                                } label: {
-                                    ZStack {
-                                        VStack{
-                                            Image("batchBottles", label: Text("Batch"))
-                                                .resizable()
-                                                .frame(width: 100, height: 100, alignment: .center)
-                                            Text("Batch")
-                                                .foregroundStyle(.white)
-                                                .dynamicTypeSize(.large).bold()
+                                    if let buildOrder = cocktail.buildOrder.wrappedValue {
+                                        NavigationLink("Build Order") {
+                                            BuildOrderView(buildOrder: buildOrder)
+                                                .padding()
                                         }
+                                        
+                                        
+                                        .buttonStyle(whiteButton())
                                     }
-                             
+                                    
+                                    BatchButton(cocktail: cocktail.wrappedValue)
+                                        .padding()
                                     
                                     
+                                    
+                                    Rectangle()
+                                        .fill(.black)
+                                        .frame(width: 60, height: 40, alignment: .center)
                                     
                                 }
-                                
-                                Rectangle()
-                                    .fill(.black)
-                                    .frame(width: 60, height: 40, alignment: .center)
-                                
+                                .frame(width: geo.size.width)
+                                .frame(minHeight: geo.size.height)
                             }
-                            .frame(width: geo.size.width)
-                            .frame(minHeight: geo.size.height)
+                            
+                            
                         }
-                        
-                        
                     }
                 }
+                .tabViewStyle(.page)
+                .indexViewStyle(.page(backgroundDisplayMode: .interactive))
+                
             }
-            .tabViewStyle(.page)
-            .indexViewStyle(.page(backgroundDisplayMode: .interactive))
-            
-        }
+        
     }
 }
 

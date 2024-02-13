@@ -15,6 +15,8 @@ struct SearchBartenderRecipeView: View {
     var cocktailFrameSize = CGFloat(125)
     
     
+    
+    
     var body: some View {
         NavigationStack{
             GeometryReader{ geo in
@@ -140,21 +142,7 @@ struct SearchBartenderRecipeView: View {
                                 .buttonStyle(whiteButton())
                             }
                            
-                            NavigationLink{
-                                CBCLoadedCocktailView(cocktail: viewModel.cocktail)
-                            } label: {
-                                VStack{
-                                    Image("batchBottles", label: Text("Batch"))
-                                        .resizable()
-                                        .frame(width: 125, height: 125, alignment: .center)
-                                    Text("Batch")
-                                        .foregroundStyle(.white)
-                                        .dynamicTypeSize(.large)
-                                }
-                            }
-                            
-                            
-                            
+                            BatchButton(cocktail: viewModel.cocktail)
                             
                             Rectangle()
                                 .fill(.black)
@@ -225,10 +213,10 @@ struct AuthorView: View {
     }
 }
 
-//struct RecipeIngredientsView_Previews: PreviewProvider {
-//   
-//    static var previews: some View {
-//        SearchBartenderRecipeView(viewModel: CocktailMenuViewModel(cocktail: aFlightSouthOfTheBorder))
-//            
-//    }
-//}
+struct RecipeIngredientsView_Previews: PreviewProvider {
+   
+    static var previews: some View {
+        SearchBartenderRecipeView(viewModel: CocktailMenuViewModel(cocktail: aFlightSouthOfTheBorder))
+            
+    }
+}

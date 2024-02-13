@@ -11,6 +11,7 @@ struct CocktailListView: View {
     @EnvironmentObject var criteria: SearchCriteriaViewModel
     @StateObject var viewModel = CocktailListViewModel()
     //@Environment(\.modelContext) private var modelContext
+    
 
     
     
