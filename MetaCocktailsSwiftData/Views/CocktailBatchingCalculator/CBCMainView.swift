@@ -14,7 +14,7 @@ struct CBCMainView: View {
     @Environment(\.modelContext) var modelContext
     @Bindable var savedBatchCocktail: BatchedCocktail
     @State var didSave: Bool = false
-    @State var cocktailCount = 20.0
+    @State var cocktailCount = 100.0
     
     
   

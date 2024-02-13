@@ -12,7 +12,7 @@ struct SavedBatchCocktailsView: View {
     @EnvironmentObject var viewModel: CBCViewModel
     @Environment(\.modelContext) var modelContext
     @Query var savedBatchCocktails: [BatchedCocktail]
-    @State private var isShowingTestView: Bool = false
+
    
     
     
