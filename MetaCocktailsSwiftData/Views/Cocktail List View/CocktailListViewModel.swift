@@ -9,11 +9,6 @@ import SwiftUI
 
 final class CocktailListViewModel: ObservableObject {
     
-    init() {
-        addCocktailsToSwiftData()  // probably has something to do with being on a viewModel instead of a view!
-    }
-    
-    @Environment(\.modelContext) var modelContext
     static let shared = CocktailListViewModel()
     @Published var guestCocktails: [Cocktail] = getGuestViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName})
     @Published var bartenderCocktails: [Cocktail] = getBartenderViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName})
@@ -27,14 +22,6 @@ final class CocktailListViewModel: ObservableObject {
     @Published var guestViewCocktails: [CocktailListCocktail] = getGuestViewCocktails()
     @Published var randomCocktail = oldFashioned
     @Published var isShowingWnGCocktailsOnly: Bool = false
-    
-    func addCocktailsToSwiftData() {
-        modelContext.insert(aperolSpritz)
-//        print("--- bartenderCocktails.count = \(bartenderCocktails.count)")
-//        for cocktail in bartenderCocktails {
-//            modelContext.insert(aperolSpritz)
-//        }
-    }
     
     func filter86dCocktailsForBartenders() -> [Cocktail] {
         let startingCocktails = CocktailListViewModel.getBartenderViewCocktails().flatMap({$0.cocktailVariations})
@@ -383,5 +370,4 @@ struct CocktailListCocktail: Identifiable {
     let id = UUID()
     let cocktailName: String
     let cocktailVariations: [Cocktail]
-    
 }

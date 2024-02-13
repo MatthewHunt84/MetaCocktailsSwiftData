@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct CocktailListView: View {
     @EnvironmentObject var criteria: SearchCriteriaViewModel
     @StateObject var viewModel = CocktailListViewModel()
-    //@Environment(\.modelContext) private var modelContext
+    @Query var cocktails: [Cocktail]
+    @Environment(\.modelContext) private var modelContext
 
     
     
@@ -139,7 +141,7 @@ struct CocktailListView: View {
                                         } else {
                                             ForEach(criteria.alphabet, id: \.self) { letter in
                                                 Section{
-                                                    ForEach(viewModel.bartenderViewCocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.cocktailName) { item in
+                                                    ForEach(cocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.cocktailName) { item in
                                                         NavigationLink {
                                                             BartenderCocktailListView(cocktails: item.cocktailVariations, cocktailName: item.cocktailName)
                                                                 .navigationBarBackButtonHidden(true)
@@ -184,14 +186,15 @@ struct CocktailListView: View {
                 }
                 
             }
-//            .task {
-//                viewModel.randomCocktail = viewModel.fetchRandomCocktail()
-//                
-//            }
+            .task {
+                for cocktail in viewModel.bartenderCocktails {
+                    print("--- inserting \(cocktail.cocktailName)")
+                    modelContext.insert(aperolSpritz)
+                }
+            }
         }
         
     }
-    
     
 }
 
