@@ -141,7 +141,7 @@ struct CocktailListView: View {
                                         } else {
                                             ForEach(criteria.alphabet, id: \.self) { letter in
                                                 Section{
-                                                    ForEach(cocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.cocktailName) { item in
+                                                    ForEach(viewModel.bartenderViewCocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.cocktailName) { item in
                                                         NavigationLink {
                                                             BartenderCocktailListView(cocktails: item.cocktailVariations, cocktailName: item.cocktailName)
                                                                 .navigationBarBackButtonHidden(true)
