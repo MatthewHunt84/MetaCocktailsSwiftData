@@ -382,6 +382,7 @@
 		4DF408EE2B61B89B00EF9A6E /* FogCutter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF408ED2B61B89B00EF9A6E /* FogCutter.swift */; };
 		4DF408F22B61BCCC00EF9A6E /* FogCutter(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF408F12B61BCCC00EF9A6E /* FogCutter(W&G).swift */; };
 		4DF408F42B622BB200EF9A6E /* SearchGuestRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF408F32B622BB200EF9A6E /* SearchGuestRecipeView.swift */; };
+		F40FB6B12B7E38DA0047D597 /* CocktailCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40FB6B02B7E38DA0047D597 /* CocktailCollection.swift */; };
 		F41045072AD4FD42000CA913 /* CocktailImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41045062AD4FD42000CA913 /* CocktailImageView.swift */; };
 		F44A28F72AC26A6A0083C04D /* TagLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44A28F62AC26A6A0083C04D /* TagLayout.swift */; };
 		F4A628E22B7E31BF0084FD80 /* Variation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A628E12B7E31BF0084FD80 /* Variation.swift */; };
@@ -780,6 +781,7 @@
 		4DF408ED2B61B89B00EF9A6E /* FogCutter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FogCutter.swift; sourceTree = "<group>"; };
 		4DF408F12B61BCCC00EF9A6E /* FogCutter(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FogCutter(W&G).swift"; sourceTree = "<group>"; };
 		4DF408F32B622BB200EF9A6E /* SearchGuestRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGuestRecipeView.swift; sourceTree = "<group>"; };
+		F40FB6B02B7E38DA0047D597 /* CocktailCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailCollection.swift; sourceTree = "<group>"; };
 		F41045062AD4FD42000CA913 /* CocktailImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImageView.swift; sourceTree = "<group>"; };
 		F44A28F62AC26A6A0083C04D /* TagLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLayout.swift; sourceTree = "<group>"; };
 		F4A628E12B7E31BF0084FD80 /* Variation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variation.swift; sourceTree = "<group>"; };
@@ -1007,6 +1009,7 @@
 			children = (
 				F4C5C3E22B3B4061005B2261 /* Ingredients */,
 				1AC3868F2AAABED00064F52A /* Ingredient.swift */,
+				F40FB6B02B7E38DA0047D597 /* CocktailCollection.swift */,
 				4DB1C0B82B46D4E600943C69 /* CocktailComponent.swift */,
 				F4A628E12B7E31BF0084FD80 /* Variation.swift */,
 				1AC3868E2AAABED00064F52A /* Glassware.swift */,
@@ -1803,6 +1806,7 @@
 				4DA567362B6AE48F003F6F04 /* Scofflaw.swift in Sources */,
 				1AC386C02AAABED10064F52A /* BlackberrySageSmash.swift in Sources */,
 				4DBFF84F2B609F1F0011B5B1 /* BrownDerby(OGRumVersion).swift in Sources */,
+				F40FB6B12B7E38DA0047D597 /* CocktailCollection.swift in Sources */,
 				4DA567582B6C43CA003F6F04 /* UltimaPalabra(London).swift in Sources */,
 				4DBBA42A2B65A2FC00179B8F /* Grasshopper.swift in Sources */,
 				1AC386C72AAABED10064F52A /* PrepBibleListView.swift in Sources */,

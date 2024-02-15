@@ -11,7 +11,7 @@ import SwiftData
 struct CocktailListView: View {
     @EnvironmentObject var criteria: SearchCriteriaViewModel
     @StateObject var viewModel = CocktailListViewModel()
-    @Query var cocktails: [Cocktail]
+    @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
     @Environment(\.modelContext) private var modelContext
     
     var body: some View {
@@ -75,48 +75,6 @@ struct CocktailListView: View {
                         ScrollViewReader { value in
                             HStack {
                                 List{
-                                    if criteria.menuMode{
-                                        if viewModel.isShowingWnGCocktailsOnly {
-                                            ForEach(criteria.alphabet, id: \.self) { letter in
-                                                Section{
-                                                    ForEach(viewModel.justWilliamsAndGrahamCocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.cocktailName) { item in
-                                                        NavigationLink {
-                                                            SearchGuestRecipeView(viewModel: CocktailMenuViewModel(cocktail: item))
-                                                                //.navigationBarBackButtonHidden(true)
-                                                        } label: {
-                                                            Text(item.cocktailName)
-                                                           
-                                                        }
-                                                    }
-                                                } header: {
-                                                    Text("\(letter)")
-                                                        .fontWeight(.bold)
-                                                        .font(.title)
-                                                }.id(letter)
-                                            }
-                                        } else {
-                                            ForEach(criteria.alphabet, id: \.self) { letter in
-                                                Section{
-                                                    ForEach(viewModel.guestViewCocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.cocktailName) { item in
-                                                        NavigationLink {
-                                                            GuestCocktailListView(cocktails: item.cocktailVariations, cocktailName: item.cocktailName)
-                                                                .navigationBarBackButtonHidden(true)
-                                                        } label: {
-                                                            Text(item.cocktailName)
-                                                            if item.cocktailVariations.count > 1 {
-                                                                Text("(\(item.cocktailVariations.count))")
-                                                            }
-                                                        }
-                                                    }
-                                                } header: {
-                                                    Text("\(letter)")
-                                                        .fontWeight(.bold)
-                                                        .font(.title)
-                                                }.id(letter)
-                                            }
-                                        }
-                                        
-                                    } else {
                                         if viewModel.isShowingWnGCocktailsOnly {
                                             ForEach(criteria.alphabet, id: \.self) { letter in
                                                 Section{
@@ -157,9 +115,6 @@ struct CocktailListView: View {
                                                 }.id(letter)
                                             }
                                         }
-                                        
-                                    }
-                                    
                                 }
                                 .listStyle(.plain)
                                 .frame(width: listGeo.size.width * 0.9, height: listGeo.size.height)

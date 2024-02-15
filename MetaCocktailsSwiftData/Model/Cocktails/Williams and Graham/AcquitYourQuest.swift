@@ -15,7 +15,8 @@ var acquitYourQuest = Cocktail(cocktailName: "Acquit Your Quest",
                                               place: AuthorPlaces.williamsAndGraham.rawValue,
                                               year: "2018"),
                                spec: acquitYourQuestSpec,
-                               tags: acquitYourQuestTags)
+                               tags: acquitYourQuestTags,
+                               collection: .williamsAndGraham)
 
 var acquitYourQuestSpec  = [CocktailIngredient(.bitters(.peychauds), value: 2, unit: .dashes),
                             CocktailIngredient(.amari(.amaroNonino), value: 0.5),

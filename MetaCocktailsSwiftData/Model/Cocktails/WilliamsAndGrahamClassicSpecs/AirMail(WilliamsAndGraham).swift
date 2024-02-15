@@ -14,7 +14,8 @@ var airMailWnG  = Cocktail(cocktailName: "Air Mail(W&G Version)",
                                           year: "2012"),
                            spec: airMailWnGSpec,
                            buildOrder: airMailWnGBuild,
-                           tags: airMailWnGTags)
+                           tags: airMailWnGTags,
+                           variation: .airMail)
 
 var airMailWnGSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
                        CocktailIngredient(.syrups(.honeySyrup), value: 0.75),
@@ -22,8 +23,8 @@ var airMailWnGSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
                        CocktailIngredient(.wines(.prosecco) , value: 2)]
 
 var airMailWnGBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the Champagne, into a tin and shake with ice"),
-                                          Instruction(step: 2, method: "Add Champagne to the flute first!"),
-                                          Instruction(step: 3, method: "Then add the shaken cocktail to that.")])
+                                            Instruction(step: 2, method: "Add Champagne to the flute first!"),
+                                            Instruction(step: 3, method: "Then add the shaken cocktail to that.")])
 
 var airMailWnGTags   = Tags(profiles: [.citrusy, .effervescent, .light],
                             styles: [.shaken, .fizz])
