@@ -9,8 +9,8 @@
 import Foundation
 import SwiftData
 
-
-@Model
+//
+//@Model
 final class BatchedCocktail  {
     var batchCocktailName: String = ""
     var dilutionPercentage: Double = 0.0

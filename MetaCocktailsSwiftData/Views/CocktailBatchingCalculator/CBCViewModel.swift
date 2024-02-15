@@ -11,6 +11,7 @@ import Combine
 
 
 final class CBCViewModel: ObservableObject {
+    
  
     ///AddIngredientView variables
 //    @Published var ingredientNameText = ""
@@ -18,7 +19,6 @@ final class CBCViewModel: ObservableObject {
 //    @Published var ingredientAmount = 0.0
     @Published var dilutionName = ""
     @Published var dilutionPercentage = 0.0
-    @Published var cocktail: Cocktail = aFlightSouthOfTheBorder
     var  formatter: NumberFormatter = {
             let formatter = NumberFormatter()
             formatter.numberStyle = .decimal
@@ -104,7 +104,7 @@ final class CBCViewModel: ObservableObject {
         var quantifiableIngredients = [BatchedCellData]()
         var totalVolume = 0.0
         var ingredientVolume = 0.0
-        for ingredient in cocktail.spec {
+        for ingredient in aFlightSouthOfTheBorder.spec {
             if ingredient.ingredient.category != "Herbs" && ingredient.ingredient.category != "Fruit" && ingredient.unit != .whole {
                 var modifiedMeasurement = 0.0
                 /// go through all the modified measurement units and calculate the difference to oz conversion to later be converted into mls.

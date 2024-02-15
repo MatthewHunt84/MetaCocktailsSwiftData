@@ -10,25 +10,18 @@ import SwiftUI
 struct CBCLoadedCocktailView: View {
     @EnvironmentObject var viewModel: CBCViewModel
     @State var cocktailCount = 100.0
-    @State var cocktail: Cocktail
-  
-    
-  
-   
-    
-    
+    @State var cocktail = aFlightSouthOfTheBorder
+
     var body: some View {
         ZStack{
             NavigationStack {
                 VStack {
-               
-                   
                             Text("Cocktail Specs")
                                 .font(.largeTitle).bold()
                            
                         
                         VStack {
-                            TextField("Enter a cocktail name.", text: $viewModel.cocktail.cocktailName).cBCTextField()
+                            TextField("Enter a cocktail name.", text: $cocktail.cocktailName).cBCTextField()
                                 .autocorrectionDisabled()
                             HStack {
                                 NavigationLink {
@@ -54,7 +47,7 @@ struct CBCLoadedCocktailView: View {
                         .padding(EdgeInsets(top: 0, leading: 5, bottom: 5, trailing: 5))
                         
                         List {
-                            ForEach($viewModel.cocktail.spec, id: \.ingredient.name) { ingredient in
+                            ForEach($cocktail.spec, id: \.ingredient.name) { ingredient in
                                
                                     LoadedCocktailIngredientCell(ingredient: ingredient.wrappedValue)
                                 
@@ -86,11 +79,6 @@ struct CBCLoadedCocktailView: View {
                     
                     
                 }
-                .task {
-                    //viewModel.calculateABV()
-                    viewModel.cocktail = cocktail
-                }
-                
             }
         }
     }

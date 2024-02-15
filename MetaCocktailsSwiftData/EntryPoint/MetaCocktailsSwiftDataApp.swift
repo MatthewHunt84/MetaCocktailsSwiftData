@@ -13,12 +13,6 @@ import SwiftUI
 struct MetaCocktailsSwiftDataApp: App {
     var criteria = SearchCriteriaViewModel()
     var cocktailBC = CBCViewModel()
-//    let container: ModelContainer = {
-//        let schema = Schema([BatchedCocktail.self, BatchIngredient.self])
-//        let container = try! ModelContainer(for: schema, configurations: [])
-//        
-//        return container
-//    }()
     
     var body: some Scene {
         WindowGroup {
@@ -27,8 +21,6 @@ struct MetaCocktailsSwiftDataApp: App {
                 .environmentObject(cocktailBC)
                 .preferredColorScheme(.dark)
         }
-        .modelContainer(for: [BatchedCocktail.self])
-        
- 
+        .modelContainer(for: Cocktail.self)
     }
 }

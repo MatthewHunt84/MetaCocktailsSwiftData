@@ -6,14 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct CocktailListView: View {
     @EnvironmentObject var criteria: SearchCriteriaViewModel
     @StateObject var viewModel = CocktailListViewModel()
-    //@Environment(\.modelContext) private var modelContext
-    
-
-    
+    @Query var cocktails: [Cocktail]
+    @Environment(\.modelContext) private var modelContext
     
     var body: some View {
         
@@ -185,10 +184,11 @@ struct CocktailListView: View {
                 }
                 
             }
-//            .task {
-//                viewModel.randomCocktail = viewModel.fetchRandomCocktail()
-//                
-//            }
+            .task {
+                for cocktail in viewModel.bartenderCocktails {
+                    modelContext.insert(cocktail)
+                }
+            }
         }
         
     }
