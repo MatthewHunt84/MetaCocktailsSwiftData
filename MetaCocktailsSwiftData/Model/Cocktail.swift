@@ -29,10 +29,11 @@ class Cocktail: Equatable, Hashable {
     var buildOrder: Build?
     var tags: Tags
     var compiledTags: Tags
+    var variation: Variation?
   
     
     
-    init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [Garnish]? = nil, ice: Ice? = nil, author: Author? = nil, spec: [CocktailIngredient], buildOrder: Build? = nil, tags: Tags) {
+    init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [Garnish]? = nil, ice: Ice? = nil, author: Author? = nil, spec: [CocktailIngredient], buildOrder: Build? = nil, tags: Tags, variation: Variation? = nil) {
         self.id = id
         self.cocktailName = cocktailName
         self.imageAsset = imageAsset
