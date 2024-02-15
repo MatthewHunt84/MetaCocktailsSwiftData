@@ -1256,6 +1256,7 @@
 				4DA568602B70A924003F6F04 /* CBCMainView.swift */,
 				4DA568672B70B00D003F6F04 /* NotesView.swift */,
 				4DA5686F2B71698D003F6F04 /* SavedBatchCocktailsView.swift */,
+				4D54F73B2B7AFDB100D046D9 /* AddDilutionView.swift */,
 				4DA5686B2B70CF4E003F6F04 /* CBCAddIngredientView.swift */,
 				4DE9AC152B78681D00A39D03 /* Model */,
 			);
@@ -1280,7 +1281,6 @@
 				4DA568652B70AF07003F6F04 /* CBCViewModel.swift */,
 				4D54F7382B7AFC1200D046D9 /* CBCLoadedCocktailView.swift */,
 				4D7B01742B72BF0A0026FE34 /* MainBatchView.swift */,
-				4D54F73B2B7AFDB100D046D9 /* AddDilutionView.swift */,
 				4D54F7312B795AA100D046D9 /* SplitBatchView.swift */,
 			);
 			path = CocktailBatchingCalculator;

@@ -51,7 +51,7 @@ struct CBCIngredientCell: View {
     
     
    
-    CBCIngredientCell(ingredient: BatchIngredient(name: "Balls", amount: 0.0, aBV: 0.0))
+    CBCIngredientCell(ingredient: BatchIngredient(name: "Lemon Juice", amount: 2.0, aBV: 4.0))
         .environmentObject(CBCViewModel())
                 
       

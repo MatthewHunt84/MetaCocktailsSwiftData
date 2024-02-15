@@ -60,7 +60,7 @@ struct MainBatchView: View {
             .listStyle(.plain)
             .overlay( RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
                 .stroke(.gray.gradient, lineWidth: 2))
-            Text("Total Dilution (\(viewModel.dilutionName)) = \(Int(ceil(viewModel.totalDilutionVolume)))ml (\((viewModel.totalDilutionVolume / 1000.0), specifier: "%.3f")L)")
+            Text("Total Dilution = \(Int(ceil(viewModel.totalDilutionVolume)))ml (\((viewModel.totalDilutionVolume / 1000.0), specifier: "%.3f")L)")
             Text("Total Volume = \(Int(ceil(viewModel.totalBatchVolume)))ml (\((viewModel.totalBatchVolume / 1000.0), specifier: "%.3f")L)")
             NavigationLink {
                SplitBatchView()
@@ -79,6 +79,8 @@ struct MainBatchView: View {
 }
 
 #Preview {
-    MainBatchView(quantifiedBatchedIngredients: .constant([]), cocktailCount: .constant(20.0))
+    let previewContainer = PreviewContainer([Cocktail.self])
+    return MainBatchView(quantifiedBatchedIngredients: .constant([]), cocktailCount: .constant(20.0))
         .environmentObject(CBCViewModel())
+        .modelContainer(previewContainer.container)
 }

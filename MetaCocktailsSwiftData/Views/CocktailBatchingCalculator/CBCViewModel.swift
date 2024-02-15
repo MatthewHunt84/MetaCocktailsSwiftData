@@ -18,7 +18,7 @@ final class CBCViewModel: ObservableObject {
 //    @Published var ingredientAbvPercentage = 0.0
 //    @Published var ingredientAmount = 0.0
     @Published var dilutionName = ""
-    @Published var dilutionPercentage = 0.0
+    @Published var dilutionPercentage = 25.0
     var  formatter: NumberFormatter = {
             let formatter = NumberFormatter()
             formatter.numberStyle = .decimal
@@ -31,6 +31,7 @@ final class CBCViewModel: ObservableObject {
     //@Published var notesText = ""
     @Published var numberOfCocktailsText = 100.0
     @Published var totalCocktailABVPercentage = 0.0
+    @Published var dilutionNumbersArray = Array(0...100)
     //@Published var editedIngredientVolumeTextField = 0.0
     //@Published var ingredients: [BatchIngredient] = []
     //@Published var didUpdateDilution: Bool = false
@@ -145,7 +146,7 @@ final class CBCViewModel: ObservableObject {
         for ingredient in quantifiedBatchedIngredients {
             splitData.append(SplitBatchCellData(ingredientName: ingredient.ingredientName, splitIngredientAmount: Int(ingredient.totalMls / numberOfContainers)))
         }
-        splitData.append(SplitBatchCellData(ingredientName: dilutionName, splitIngredientAmount: Int(totalDilutionVolume / Double(numberOfContainers))))
+        splitData.append(SplitBatchCellData(ingredientName: "Dilution", splitIngredientAmount: Int(totalDilutionVolume / Double(numberOfContainers))))
         splitBatchData = splitData
     
     }

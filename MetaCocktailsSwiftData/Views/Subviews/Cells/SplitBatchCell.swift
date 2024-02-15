@@ -21,6 +21,6 @@ struct SplitBatchCell: View {
 }
 
 #Preview {
-    SplitBatchCell(quantifiedSpiltBatches: .constant(SplitBatchCellData(ingredientName: "Jungus", splitIngredientAmount: 69)))
+    SplitBatchCell(quantifiedSpiltBatches: .constant(SplitBatchCellData(ingredientName: "Test", splitIngredientAmount: 69)))
         .environmentObject(CBCViewModel())
 }
