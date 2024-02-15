@@ -366,5 +366,4 @@ struct CocktailListCocktail: Identifiable {
     let id = UUID()
     let cocktailName: String
     let cocktailVariations: [Cocktail]
-    
 }

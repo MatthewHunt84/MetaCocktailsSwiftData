@@ -11,11 +11,12 @@ struct BartenderCocktailListView: View {
     
     let recipeSpacing: CGFloat = 2
     var cocktailFrameSize = CGFloat(125)
-    @State var cocktails: [Cocktail] = []
-    @State var cocktailName: String = ""
+    @State var cocktail: Cocktail
+    @State var variations: [Cocktail]
     @Environment(\.dismiss) private var dismiss
-   
-    
+    @Environment(\.modelContext) private var modelContext
+//    @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
+
     var body: some View {
         
             GeometryReader{ geo in
@@ -30,7 +31,7 @@ struct BartenderCocktailListView: View {
                         Spacer()
                     }
                     TabView {
-                        ForEach($cocktails, id: \.self) { cocktail in
+                        ForEach($variations, id: \.self) { cocktail in
                             
                             ScrollView(.vertical){
                                 VStack {
@@ -56,11 +57,7 @@ struct BartenderCocktailListView: View {
                                     }
                                     .padding(10)
                                     
-                                    
-                                    
-                                    
-                                    
-                                    
+
                                     Text("Cocktail Spec:")
                                         .dynamicTypeSize(.xLarge).bold()
                                     
@@ -192,6 +189,8 @@ struct BartenderCocktailListView: View {
     }
 }
 
-#Preview {
-    BartenderCocktailListView(cocktails:  CocktailListViewModel.getBartenderViewCocktails()[3].cocktailVariations , cocktailName: CocktailListViewModel.getBartenderViewCocktails()[3].cocktailName)
-}
+// I Broke this, sorry!
+
+//#Preview {
+//    BartenderCocktailListView(cocktails:  CocktailListViewModel.getBartenderViewCocktails()[3].cocktailVariations , cocktailName: CocktailListViewModel.getBartenderViewCocktails()[3].cocktailName)
+//}

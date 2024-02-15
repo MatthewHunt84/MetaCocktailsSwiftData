@@ -14,6 +14,15 @@ struct CocktailListView: View {
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
     @Environment(\.modelContext) private var modelContext
     
+    func selectedCocktailVariations(for cocktail: Cocktail) -> [Cocktail] {
+        if let variation = cocktail.variation {
+            return cocktails.filter({$0.variation == variation})
+        } else {
+            return [cocktail]
+        }
+
+    }
+    
     var body: some View {
         
         NavigationStack{
@@ -97,14 +106,14 @@ struct CocktailListView: View {
                                         } else {
                                             ForEach(criteria.alphabet, id: \.self) { letter in
                                                 Section{
-                                                    ForEach(viewModel.bartenderViewCocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.cocktailName) { item in
+                                                    ForEach(cocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.cocktailName) { cocktail in
                                                         NavigationLink {
-                                                            BartenderCocktailListView(cocktails: item.cocktailVariations, cocktailName: item.cocktailName)
+                                                            BartenderCocktailListView(cocktail: cocktail, variations: selectedCocktailVariations(for: cocktail))
                                                                 .navigationBarBackButtonHidden(true)
                                                         } label: {
-                                                            Text(item.cocktailName)
-                                                            if item.cocktailVariations.count > 1 {
-                                                                Text("(\(item.cocktailVariations.count))")
+                                                            Text(cocktail.cocktailName)
+                                                            if let variation = cocktail.variation {
+                                                                Text("(\(selectedCocktailVariations(for: cocktail).count))")
                                                             }
                                                         }
                                                     }
@@ -140,6 +149,7 @@ struct CocktailListView: View {
                 
             }
             .task {
+                // This needs to be in a pre load function that runs before the app loads for the first time, not as an async task here because it loads too slow.
                 for cocktail in viewModel.bartenderCocktails {
                     modelContext.insert(cocktail)
                 }
