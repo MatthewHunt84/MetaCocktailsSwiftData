@@ -14,13 +14,13 @@ struct DilutionCell: View {
     
     var body: some View {
         HStack {
-            TextField("% Dilution", text: $viewModel.dilutionPercentage).cBCTextField()
-                .frame(width: 70, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                .onSubmit {
-                    viewModel.calculateABV()
-                }
-            Text("% dilution with \(viewModel.dilutionName)")
-            Spacer()
+            Text("\(NSNumber(value: viewModel.dilutionPercentage))% dilution with \(viewModel.dilutionName)")
+                //.frame(width: 70, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+//                .onSubmit {
+//                    viewModel.calculateABV()
+//                }
+            //Text("% dilution with \(viewModel.dilutionName)")
+            //Spacer()
         }
 
         .frame(maxHeight: 50)
@@ -29,4 +29,5 @@ struct DilutionCell: View {
 
 #Preview {
     DilutionCell()
+        .environmentObject(CBCViewModel())
 }

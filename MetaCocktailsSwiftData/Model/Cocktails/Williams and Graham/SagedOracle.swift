@@ -22,7 +22,7 @@ let sagedOracleSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.sage), v
                                              CocktailIngredient(.juices(.lemon), value: 0.5),
                                              CocktailIngredient(.juices(.grapefruit), value: 0.75),
                                              CocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.25),
-                                             CocktailIngredient(.gins(.juniperJones), value: 2, unit: .dashes)]
+                                             CocktailIngredient(.gins(.juniperJones), value: 2)]
 
 
 let sagedOracleTags = Tags(profiles: [.herbal, .refreshing, .floral, .light],

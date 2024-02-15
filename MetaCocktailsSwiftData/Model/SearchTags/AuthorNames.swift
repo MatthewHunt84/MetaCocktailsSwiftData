@@ -39,6 +39,7 @@ enum AuthorNames: String, Codable, CaseIterable {
     case kennyRemster      = "Kenny Remster"
   
 }
+
 enum AuthorPlaces: String, Codable, CaseIterable {
        
     case aviaryBar                    = "Aviary Bar at the Kuala Lumpur Hilton"
@@ -67,12 +68,12 @@ enum AuthorPlaces: String, Codable, CaseIterable {
     
 }
 
-struct Author {
+struct Author: Codable {
     var person: String?
     var place: String?
     var year: String?
-  
 }
+
 var harryCraddock = Author(person: AuthorNames.harryCraddock.rawValue, place: AuthorPlaces.savoy.rawValue, year: "1930")
 var williamsAndGraham = Author(place: AuthorPlaces.williamsAndGraham.rawValue, year: "2023")
 var justWnG = Author(place: AuthorPlaces.williamsAndGraham.rawValue)

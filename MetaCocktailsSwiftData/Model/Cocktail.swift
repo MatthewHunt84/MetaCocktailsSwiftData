@@ -8,7 +8,7 @@
 import SwiftData
 import SwiftUI
 
-//@Model
+@Model
 class Cocktail: Equatable, Hashable {
     static func == (lhs: Cocktail, rhs: Cocktail) -> Bool {
         return lhs.cocktailName == rhs.cocktailName
@@ -19,7 +19,7 @@ class Cocktail: Equatable, Hashable {
     
     
     var id = UUID()
-    var cocktailName: String
+    @Attribute(.unique) var cocktailName: String
     var imageAsset: CocktailImage?
     var glasswareType: Glassware
     var garnish: [Garnish]?
@@ -29,10 +29,12 @@ class Cocktail: Equatable, Hashable {
     var buildOrder: Build?
     var tags: Tags
     var compiledTags: Tags
+    var variation: Variation?
+    var collection: CocktailCollection?
   
     
     
-    init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [Garnish]? = nil, ice: Ice? = nil, author: Author? = nil, spec: [CocktailIngredient], buildOrder: Build? = nil, tags: Tags) {
+    init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [Garnish]? = nil, ice: Ice? = nil, author: Author? = nil, spec: [CocktailIngredient], buildOrder: Build? = nil, tags: Tags, variation: Variation? = nil, collection: CocktailCollection? = nil) {
         self.id = id
         self.cocktailName = cocktailName
         self.imageAsset = imageAsset
@@ -43,6 +45,8 @@ class Cocktail: Equatable, Hashable {
         self.spec = spec
         self.buildOrder = buildOrder
         self.tags = tags
+        self.variation = variation
+        self.collection = collection
         self.compiledTags = {
             // when we initialize each cocktail we immediately make a stored property of it's combined cocktail + ingredient tags
             var newCompiledTags = Tags()
@@ -54,5 +58,17 @@ class Cocktail: Equatable, Hashable {
         }()
         
     }
+}
+
+
+struct PreviewContainer {
+    let container: ModelContainer!
     
+    init(_ types: [any PersistentModel.Type],
+         isStoredInMemoryOnly: Bool = true) {
+        
+        let schema = Schema(types)
+        let config = ModelConfiguration(isStoredInMemoryOnly: isStoredInMemoryOnly)
+        self.container = try! ModelContainer(for: schema, configurations: [config])
+    }
 }

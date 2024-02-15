@@ -8,7 +8,6 @@
 import SwiftUI
 
 final class CocktailListViewModel: ObservableObject {
-    @Environment(\.modelContext) var modelContext
     static let shared = CocktailListViewModel()
     @Published var guestCocktails: [Cocktail] = getGuestViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName})
     @Published var bartenderCocktails: [Cocktail] = getBartenderViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName})
@@ -22,6 +21,7 @@ final class CocktailListViewModel: ObservableObject {
     @Published var guestViewCocktails: [CocktailListCocktail] = getGuestViewCocktails()
     @Published var randomCocktail = oldFashioned
     @Published var isShowingWnGCocktailsOnly: Bool = false
+   
     
     func filter86dCocktailsForBartenders() -> [Cocktail] {
         let startingCocktails = CocktailListViewModel.getBartenderViewCocktails().flatMap({$0.cocktailVariations})
@@ -360,17 +360,10 @@ final class CocktailListViewModel: ObservableObject {
             
         }
     }
-
-    
-    // TODO: Ready for swiftData
-//    func addCocktailsToSwiftData() {
-//        modelContext.insert(aperolSpritz)
-//    }
 }
 
 struct CocktailListCocktail: Identifiable {
     let id = UUID()
     let cocktailName: String
     let cocktailVariations: [Cocktail]
-    
 }

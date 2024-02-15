@@ -17,7 +17,7 @@ var aFlightSouthOfTheBorder = Cocktail(cocktailName: "A Flight South of the Bord
                                        tags: aFlightSouthOfTheBorderTags)
 
 let aFlightSouthOfTheBorderSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 9, unit: .gentlyMuddled),
-                                                         CocktailIngredient(.fruit(.grapefruitPeel), value: 2, unit: .peel),
+                                                         CocktailIngredient(.fruit(.grapefruitPeel), value: 2, unit: .none),
                                                          CocktailIngredient(.syrups(.honeySyrup), value: 0.75),
                                                          CocktailIngredient(.juices(.lemon), value: 0.75),
                                                          CocktailIngredient(.amari(.suze), value: 0.25),

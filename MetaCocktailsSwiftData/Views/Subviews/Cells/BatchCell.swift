@@ -10,10 +10,14 @@ import SwiftUI
 struct BatchCell: View {
     @EnvironmentObject var viewModel: CBCViewModel
     @State var bottleSize: BottleSize = .oneLiter
-    @Binding var ingredient: BatchIngredient
+    @Binding var quantifiedBatchedIngredient: BatchedCellData
+
+  
+    
+    
     var body: some View {
         HStack{
-            Text(ingredient.name)
+            Text(quantifiedBatchedIngredient.ingredientName)
             Spacer()
             Picker("Bottle Size", selection: $bottleSize) {
                 ForEach(BottleSize.allCases, id: \.self) {
@@ -22,16 +26,29 @@ struct BatchCell: View {
             }
             .pickerStyle(.segmented)
             .frame(width: 100, height: 50)
-            TextField("Btl#", text: $viewModel.dilutionPercentage).cBCTextField()
-                .frame(width: 60, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                .onSubmit {
+            if bottleSize == .oneLiter {
+                TextField("Btl#", value: $quantifiedBatchedIngredient.whole1LBottles, formatter: viewModel.formatter).cBCTextField()
+                    .autocorrectionDisabled()
+                    .frame(width: 60, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .onSubmit {
+                        viewModel.doMathForModified1LBottleCount(initialAmount: Double(quantifiedBatchedIngredient.mlAmount), newQuantityAmount: quantifiedBatchedIngredient.whole1LBottles)  
+                    }
+                Text("\(quantifiedBatchedIngredient.remaining1LMls)ml")
+                    .frame(width: 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     
-                }
-            TextField("/mls.", text: $viewModel.dilutionPercentage).cBCTextField()
-                .frame(width: 60, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                .onSubmit {
                     
-                }
+            } else {
+                TextField("Btl#", value: $quantifiedBatchedIngredient.whole750mlBottles, formatter: viewModel.formatter).cBCTextField()
+                    .autocorrectionDisabled()
+                    .frame(width: 60, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .onSubmit {
+                        viewModel.doMathForModified750mlBottleCount(initialAmount: Double(quantifiedBatchedIngredient.mlAmount), newQuantityAmount: quantifiedBatchedIngredient.whole750mlBottles)
+                    }
+                Text("\(quantifiedBatchedIngredient.remaining750mLs)ml")
+                    .frame(width: 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    
+            }
+            
             
         }
         .frame(maxHeight: 50)
@@ -40,7 +57,7 @@ struct BatchCell: View {
 }
 
 #Preview {
-    BatchCell(ingredient: .constant(BatchIngredient(name: "Super Long Ingredient", amount: "45", aBV: "20")))
+    BatchCell(quantifiedBatchedIngredient: .constant(BatchedCellData(ingredientName: "Creme de Cacao", whole1LBottles: 2.1, remaining1LMls: 900, whole750mlBottles: 1.2, remaining750mLs: 34, mlAmount: 55, totalMls: 786)))
         .environmentObject(CBCViewModel())
 }
 enum BottleSize: String, CaseIterable {

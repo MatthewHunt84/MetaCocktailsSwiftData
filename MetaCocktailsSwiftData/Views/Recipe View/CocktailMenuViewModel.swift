@@ -15,5 +15,5 @@ final class CocktailMenuViewModel: ObservableObject {
         self.cocktail = cocktail
         self.cocktailGlassImage = cocktail.glasswareType.glassImage(cocktail: cocktail)
     }
-   
+
 }

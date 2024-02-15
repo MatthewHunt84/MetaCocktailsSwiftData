@@ -170,7 +170,7 @@ enum Herbs: String, Codable, CaseIterable {
 enum Fruit: String, Codable, CaseIterable {
     case blackBerry           = "Blackberries"
     case cucumberSlices       = "Cucumber Slice(s)"
-    case grapefruitPeel       = "Grapefruit Peel"
+    case grapefruitPeel       = "Grapefruit Peel(s)"
     case guavaPure            = "Guava Puree"
     case lemonRibbon          = "long lemon ribbon"
     case orangeMoons          = "Orange Moons"

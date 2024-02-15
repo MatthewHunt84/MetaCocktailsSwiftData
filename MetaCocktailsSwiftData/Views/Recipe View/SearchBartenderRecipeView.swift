@@ -8,42 +8,46 @@
 import SwiftUI
 
 struct SearchBartenderRecipeView: View {
-    
+    //@EnvironmentObject var cBCViewModel: CBCViewModel
+ 
     var viewModel: CocktailMenuViewModel
     let recipeSpacing: CGFloat = 2
     var cocktailFrameSize = CGFloat(125)
     
     
+    
+    
     var body: some View {
-        GeometryReader{ geo in
-            ScrollView{
-                VStack{
-                    viewModel.cocktail.glasswareType.glassImage(cocktail: viewModel.cocktail)
-                        .resizable()
-                        .frame(width: 125, height: 125, alignment: .center)
-                    
-                        .padding(10)
-                    Text(viewModel.cocktail.cocktailName)
-                        .dynamicTypeSize(.xxLarge).bold()
-                        .multilineTextAlignment(.center)
-                        .lineLimit(2)
-                        .padding(10)
-                    CocktailProfileView(cocktail: viewModel.cocktail)
-                    
+        NavigationStack{
+            GeometryReader{ geo in
+                ScrollView{
                     VStack{
-                        Text("Glassware:")
-                            .dynamicTypeSize(.xLarge).bold()
-                        Text(viewModel.cocktail.glasswareType.rawValue)
-                            .dynamicTypeSize(.large)
+                        viewModel.cocktail.glasswareType.glassImage(cocktail: viewModel.cocktail)
+                            .resizable()
+                            .frame(width: 125, height: 125, alignment: .center)
+                        
+                            .padding(10)
+                        Text(viewModel.cocktail.cocktailName)
+                            .dynamicTypeSize(.xxLarge).bold()
                             .multilineTextAlignment(.center)
-                    }
-                    .padding(10)
-                    
-                    VStack {
+                            .lineLimit(2)
+                            .padding(10)
+                        CocktailProfileView(cocktail: viewModel.cocktail)
                         
-                        Text("Cocktail Spec:")
-                            .dynamicTypeSize(.xLarge).bold()
+                        VStack{
+                            Text("Glassware:")
+                                .dynamicTypeSize(.xLarge).bold()
+                            Text(viewModel.cocktail.glasswareType.rawValue)
+                                .dynamicTypeSize(.large)
+                                .multilineTextAlignment(.center)
+                        }
+                        .padding(10)
                         
+                        VStack {
+                            
+                            Text("Cocktail Spec:")
+                                .dynamicTypeSize(.xLarge).bold()
+                            
                             ForEach(viewModel.cocktail.spec, id: \.id) { ingredient in
                                 let number = NSNumber(value: ingredient.value)
                                 HStack {
@@ -57,97 +61,100 @@ struct SearchBartenderRecipeView: View {
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .offset(x: geo.size.width/2-140)
-                        
-                        
-                        if let stirShakeBuild = viewModel.cocktail.tags.styles {
-                            if stirShakeBuild.contains(.built) {
-                                Text("Build in glass")
-                                    .multilineTextAlignment(.center)
-                                    .dynamicTypeSize(.large).bold()
-                                    .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
-                                
-                            }
-                            if stirShakeBuild.contains(.shaken) && stirShakeBuild.contains(.blended) {
-                                Text("Shake or Blend")
-                                    .multilineTextAlignment(.center)
-                                    .dynamicTypeSize(.large).bold()
-                                    .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
-                                
-                            } else if stirShakeBuild.contains(.shaken) && !stirShakeBuild.contains(.blended) {
-                                Text("Shake")
-                                    .multilineTextAlignment(.center)
-                                    .dynamicTypeSize(.large).bold()
-                                    .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
-                            }
-                            if stirShakeBuild.contains(.stirred) {
-                                Text("Stir")
-                                    .multilineTextAlignment(.center)
-                                    .dynamicTypeSize(.large).bold()
-                                    .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
-                                
-                            }
-                            if stirShakeBuild.contains(.swizzle) {
-                                Text("Swizzle")
-                                    .multilineTextAlignment(.center)
-                                    .dynamicTypeSize(.large).bold()
-                                    .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
-                                
-                            }
-                        }
-                        
-                        
-                        if let ice = viewModel.cocktail.ice?.rawValue {
-                            HStack {
-                                Text("Ice: ")
-                                    .dynamicTypeSize(.xLarge).bold()
-                                Text(ice)
-                                    .dynamicTypeSize(.large)
-                                    .multilineTextAlignment(.center)
-                            }
-                        }
-                        
-                        
-                        if  viewModel.cocktail.garnish != nil {
-                            VStack{
-                                Text("Garnish:")
-                                    .dynamicTypeSize(.xLarge).bold()
-                                if let garnishes = viewModel.cocktail.garnish {
-                                    ForEach(garnishes, id: \.self) { garnish in
-                                        Text("\(garnish.rawValue)")
-                                            .multilineTextAlignment(.center)
-                                            .dynamicTypeSize(.large)
-                                        
-                                    }
+                            
+                            
+                            if let stirShakeBuild = viewModel.cocktail.tags.styles {
+                                if stirShakeBuild.contains(.built) {
+                                    Text("Build in glass")
+                                        .multilineTextAlignment(.center)
+                                        .dynamicTypeSize(.large).bold()
+                                        .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
+                                    
+                                }
+                                if stirShakeBuild.contains(.shaken) && stirShakeBuild.contains(.blended) {
+                                    Text("Shake or Blend")
+                                        .multilineTextAlignment(.center)
+                                        .dynamicTypeSize(.large).bold()
+                                        .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
+                                    
+                                } else if stirShakeBuild.contains(.shaken) && !stirShakeBuild.contains(.blended) {
+                                    Text("Shake")
+                                        .multilineTextAlignment(.center)
+                                        .dynamicTypeSize(.large).bold()
+                                        .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
+                                }
+                                if stirShakeBuild.contains(.stirred) {
+                                    Text("Stir")
+                                        .multilineTextAlignment(.center)
+                                        .dynamicTypeSize(.large).bold()
+                                        .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
+                                    
+                                }
+                                if stirShakeBuild.contains(.swizzle) {
+                                    Text("Swizzle")
+                                        .multilineTextAlignment(.center)
+                                        .dynamicTypeSize(.large).bold()
+                                        .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
                                     
                                 }
                             }
-                            .padding(10)
-                        }
-                        if viewModel.cocktail.author != nil {
-                            AuthorView(cocktail: viewModel.cocktail)
-                                .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
                             
-                        }
                             
-                        if let buildOrder = viewModel.cocktail.buildOrder {
-                            NavigationLink("Build Order") {
-                                BuildOrderView(buildOrder: buildOrder)
+                            if let ice = viewModel.cocktail.ice?.rawValue {
+                                HStack {
+                                    Text("Ice: ")
+                                        .dynamicTypeSize(.xLarge).bold()
+                                    Text(ice)
+                                        .dynamicTypeSize(.large)
+                                        .multilineTextAlignment(.center)
+                                }
                             }
                             
                             
-                            .buttonStyle(whiteButton())
+                            if  viewModel.cocktail.garnish != nil {
+                                VStack{
+                                    Text("Garnish:")
+                                        .dynamicTypeSize(.xLarge).bold()
+                                    if let garnishes = viewModel.cocktail.garnish {
+                                        ForEach(garnishes, id: \.self) { garnish in
+                                            Text("\(garnish.rawValue)")
+                                                .multilineTextAlignment(.center)
+                                                .dynamicTypeSize(.large)
+                                            
+                                        }
+                                        
+                                    }
+                                }
+                                .padding(10)
+                            }
+                            if viewModel.cocktail.author != nil {
+                                AuthorView(cocktail: viewModel.cocktail)
+                                    .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
+                                
+                            }
+                            
+                            if let buildOrder = viewModel.cocktail.buildOrder {
+                                NavigationLink("Build Order") {
+                                    BuildOrderView(buildOrder: buildOrder)
+                                }
+                                
+                                
+                                .buttonStyle(whiteButton())
+                            }
+                           
+                            BatchButton(cocktail: viewModel.cocktail)
+                            
+                            Rectangle()
+                                .fill(.black)
+                                .frame(width: 60, height: 40, alignment: .center)
+                            
+                            
                         }
                         
-                        Rectangle()
-                            .fill(.black)
-                            .frame(width: 60, height: 40, alignment: .center)
-                            
-                           
                     }
-                    
+                    .frame(width: geo.size.width)
+                    .frame(minHeight: geo.size.height)
                 }
-                .frame(width: geo.size.width)
-                .frame(minHeight: geo.size.height)
             }
         }
     }

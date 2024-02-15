@@ -17,10 +17,10 @@ struct TabBarView: View {
             CocktailListView()
                 .tabItem { Label("A-Z", systemImage: "list.bullet") }
 
-            PrepBibleListView()
-                .tabItem { Label("Prep", systemImage: "book.fill") }
-            CBCMainView( batchCocktail: BatchedCocktail(batchCocktailName: "", dilutionPercentage: "", dilutionType: "", notes: "", batchCocktailIngredients: []))
-                .tabItem { Label("Batch", systemImage: "plus.forwardslash.minus") }
+//            PrepBibleListView()
+//                .tabItem { Label("Prep", systemImage: "book.fill") }
+//            CBCLoadedCocktailView()
+//                .tabItem { Label("Batch", systemImage: "plus.forwardslash.minus") }
 
         }
         
