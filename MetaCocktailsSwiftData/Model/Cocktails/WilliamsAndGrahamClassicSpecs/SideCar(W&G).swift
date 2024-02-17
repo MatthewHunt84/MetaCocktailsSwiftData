@@ -10,9 +10,9 @@ import Foundation
 var sidecarWnG = Cocktail(cocktailName: "Sidecar(W&G Version)",
                        glasswareType: .sugarRimStemmed,
                        ice: nil,
-                       spec: sidecarSpec,
+                       spec: sidecarSpecWnG,
                        buildOrder: nil,
-                       tags: sidecarTags)
+                       tags: sidecarTagsWnG)
 
 var sidecarSpecWnG  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                     CocktailIngredient(.liqueurs(.dryCuracao), value: 0.75),

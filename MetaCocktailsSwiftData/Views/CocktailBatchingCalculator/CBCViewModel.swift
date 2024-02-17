@@ -13,34 +13,32 @@ import Combine
 final class CBCViewModel: ObservableObject {
     
  
-
-
-    
-    var  formatter: NumberFormatter = {
-            let formatter = NumberFormatter()
-            formatter.numberStyle = .decimal
-        formatter.maximumFractionDigits = 2
-        return formatter
-    }()
     
     ///CBCMainView variables
     @Published var cocktailNameText = ""
     @Published var dilutionPercentage = 25.0
     @Published var numberOfCocktailsText = 100.0
-    @Published var totalCocktailABVPercentage = 0.0
-    @Published var dilutionNumbersArray = Array(0...100)
+    //@Published var totalCocktailABVPercentage = 0.0
+    @Published var loadedCocktailData: CBCLoadedCocktailData = CBCLoadedCocktailData(cocktailName: "Test", ingredients: [])
   
     ///Main batch view variables
     @Published var totalDilutionVolume = 0.0
     @Published var totalBatchVolume = 0.0
     @Published var quantifiedBatchedIngredients: [BatchedCellData] = []
+    //@Published var chosenCocktail: Cocktail = aFlightSouthOfTheBorder
     
     ///Split Batch View
     @Published var containerSize =  4000
     @Published var numberOfContainers = 2
     @Published var splitBatchData: [SplitBatchCellData] = []
- 
     
+    
+    var  formatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 2
+        return formatter
+    }()
     
 
 
@@ -57,32 +55,35 @@ final class CBCViewModel: ObservableObject {
         var quantifiableIngredients = [BatchedCellData]()
         var totalVolume = 0.0
         var ingredientVolume = 0.0
-        for ingredient in aFlightSouthOfTheBorder.spec {
-            if ingredient.ingredient.category != "Herbs" && ingredient.ingredient.category != "Fruit" && ingredient.unit != .whole {
-                var modifiedMeasurement = 0.0
-                /// go through all the modified measurement units and calculate the difference to oz conversion to later be converted into mls.
-                
-                if ingredient.unit == .barSpoon || ingredient.unit == .barSpoons || ingredient.unit == .teaspoon || ingredient.unit == .teaspoons || ingredient.unit == .bittersDeco || ingredient.unit == .glassRinse || ingredient.unit == .splash || ingredient.unit == .sprays || ingredient.unit == .spritzOnTop {
-                    modifiedMeasurement = ingredient.value * 0.17
-                    ingredientVolume = Double(convertIngredientOzAmountIntoMls(for: modifiedMeasurement)) * numberOfCocktailsText
-                } else if  ingredient.unit == .dash || ingredient.unit == .dashes || ingredient.unit == .floatedDashes {
-                    modifiedMeasurement = ingredient.value * 0.09
-                    ingredientVolume = Double(convertIngredientOzAmountIntoMls(for: modifiedMeasurement)) * numberOfCocktailsText
-                } else if ingredient.unit == .drops {
-                    modifiedMeasurement = ingredient.value * 0.0017
-                    ingredientVolume = Double(convertIngredientOzAmountIntoMls(for: modifiedMeasurement)) * numberOfCocktailsText
-                } else {
-                    ingredientVolume = Double(convertIngredientOzAmountIntoMls(for: ingredient.value)) * numberOfCocktailsText
+        for ingredient in loadedCocktailData.ingredients {
+            if ingredient.ingredient.ingredient.category != "Herbs" && ingredient.ingredient.ingredient.category != "Fruit" && ingredient.ingredient.unit != .whole {
+                if ingredient.isIncluded {
+                    print("\(ingredient.ingredient.ingredient.name) is included. it's bool = \(ingredient.isIncluded)")
+                    var modifiedMeasurement = 0.0
+                    /// go through all the modified measurement units and calculate the difference to oz conversion to later be converted into mls.
+                    
+                    if ingredient.ingredient.unit == .barSpoon || ingredient.ingredient.unit == .barSpoons || ingredient.ingredient.unit == .teaspoon || ingredient.ingredient.unit == .teaspoons || ingredient.ingredient.unit == .bittersDeco || ingredient.ingredient.unit == .glassRinse || ingredient.ingredient.unit == .splash || ingredient.ingredient.unit == .sprays || ingredient.ingredient.unit == .spritzOnTop {
+                        modifiedMeasurement = ingredient.ingredient.value * 0.17
+                        ingredientVolume = Double(convertIngredientOzAmountIntoMls(for: modifiedMeasurement)) * numberOfCocktailsText
+                    } else if  ingredient.ingredient.unit == .dash || ingredient.ingredient.unit == .dashes || ingredient.ingredient.unit == .floatedDashes {
+                        modifiedMeasurement = ingredient.ingredient.value * 0.09
+                        ingredientVolume = Double(convertIngredientOzAmountIntoMls(for: modifiedMeasurement)) * numberOfCocktailsText
+                    } else if ingredient.ingredient.unit == .drops {
+                        modifiedMeasurement = ingredient.ingredient.value * 0.0017
+                        ingredientVolume = Double(convertIngredientOzAmountIntoMls(for: modifiedMeasurement)) * numberOfCocktailsText
+                    } else {
+                        ingredientVolume = Double(convertIngredientOzAmountIntoMls(for: ingredient.ingredient.value)) * numberOfCocktailsText
+                    }
+                    
+                    totalVolume += ingredientVolume
+                    quantifiableIngredients.append(BatchedCellData(ingredientName: ingredient.ingredient.ingredient.name,
+                                                                   whole1LBottles: (ingredientVolume / 1000).rounded(.down),
+                                                                   remaining1LMls: Int(ingredientVolume.truncatingRemainder(dividingBy: 1000)),
+                                                                   whole750mlBottles: (ingredientVolume / 750).rounded(.down),
+                                                                   remaining750mLs: Int(ingredientVolume.truncatingRemainder(dividingBy: 750)),
+                                                                   mlAmount: Int(convertIngredientOzAmountIntoMls(for: ingredient.ingredient.value)),
+                                                                   totalMls: Int(ingredientVolume) ))
                 }
-                
-                totalVolume += ingredientVolume
-                quantifiableIngredients.append(BatchedCellData(ingredientName: ingredient.ingredient.name,
-                                                               whole1LBottles: (ingredientVolume / 1000).rounded(.down),
-                                                               remaining1LMls: Int(ingredientVolume.truncatingRemainder(dividingBy: 1000)),
-                                                               whole750mlBottles: (ingredientVolume / 750).rounded(.down),
-                                                               remaining750mLs: Int(ingredientVolume.truncatingRemainder(dividingBy: 750)),
-                                                               mlAmount: Int(convertIngredientOzAmountIntoMls(for: ingredient.value)),
-                                                               totalMls: Int(ingredientVolume) ))
          
             }
             
@@ -92,6 +93,14 @@ final class CBCViewModel: ObservableObject {
         numberOfContainers = Int(ceil(totalBatchVolume / (Double(containerSize) * 0.9)))
         quantifiedBatchedIngredients = quantifiableIngredients
         
+    }
+    func convertLoadedCocktail(for cocktail: Cocktail) {
+        var newLoadedCocktailData = CBCLoadedCocktailData(cocktailName: cocktail.cocktailName, ingredients: [])
+        for spec in cocktail.spec {
+            newLoadedCocktailData.ingredients.append(CBCLoadedIngredient(ingredient: spec, isIncluded: true))
+        }
+        
+        loadedCocktailData = newLoadedCocktailData
     }
     func doSplitBatchMath() {
         var splitData: [SplitBatchCellData] = []
@@ -110,6 +119,24 @@ final class CBCViewModel: ObservableObject {
         numberOfCocktailsText = (newQuantityAmount * 750) / initialAmount
         convertIngredientsToBatchCellData()
     }
+}
+
+struct CBCLoadedCocktailData: Hashable, Equatable {
+    static func == (lhs: CBCLoadedCocktailData, rhs: CBCLoadedCocktailData) -> Bool {
+        return lhs.cocktailName == rhs.cocktailName
+    }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(cocktailName)
+    }
+    var cocktailName: String
+    var ingredients: [CBCLoadedIngredient]
+    
+}
+struct CBCLoadedIngredient {
+    var ingredient: CocktailIngredient
+    var isIncluded: Bool
+    
+    
 }
 
 struct BatchedCellData: Hashable, Equatable {

@@ -69,7 +69,7 @@ struct MainBatchView: View {
             }
             .buttonStyle(BlackNWhiteButton())
         }
-        .navigationTitle("\(aFlightSouthOfTheBorder.cocktailName)")
+        .navigationTitle("\(viewModel.loadedCocktailData.cocktailName)")
    
         .task {
             cocktailCount = viewModel.numberOfCocktailsText
