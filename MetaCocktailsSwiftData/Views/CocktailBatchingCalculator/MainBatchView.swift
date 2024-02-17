@@ -39,11 +39,8 @@ struct MainBatchView: View {
                     .frame(width: 125, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .onSubmit {
                         viewModel.convertIngredientsToBatchCellData()
-                    
                     }
-                
-                
-                
+    
             }
             HStack{
                 Spacer()
@@ -60,16 +57,17 @@ struct MainBatchView: View {
             .listStyle(.plain)
             .overlay( RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
                 .stroke(.gray.gradient, lineWidth: 2))
-            Text("Total Dilution = \(Int(ceil(viewModel.totalDilutionVolume)))ml (\((viewModel.totalDilutionVolume / 1000.0), specifier: "%.3f")L)")
-            Text("Total Volume = \(Int(ceil(viewModel.totalBatchVolume)))ml (\((viewModel.totalBatchVolume / 1000.0), specifier: "%.3f")L)")
+            Text("Total Dilution = \(Int(ceil(viewModel.totalDilutionVolume)))ml")
+            Text("Total Volume = \(Int(ceil(viewModel.totalBatchVolume)))ml")
             NavigationLink {
                SplitBatchView()
+                    .environmentObject(viewModel)
             } label: {
                 Text("Split Batch")
             }
             .buttonStyle(BlackNWhiteButton())
         }
-        .navigationTitle("\(aFlightSouthOfTheBorder.cocktailName)")
+        .navigationTitle("\(viewModel.loadedCocktailData.cocktailName)")
    
         .task {
             cocktailCount = viewModel.numberOfCocktailsText

@@ -8,7 +8,9 @@
 import Foundation
 
 enum Variation: Int, Codable {
-    case airMail
+    
+    
+    case airMail 
     case alaska
     case algonquin
     case amarettoSour
