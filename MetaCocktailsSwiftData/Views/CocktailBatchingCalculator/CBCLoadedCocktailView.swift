@@ -49,8 +49,11 @@ struct CBCLoadedCocktailView: View {
                             
                         }
                         HStack {
-                            Text("\(viewModel.dilutionPercentage, specifier: "%.0f") % Dilution")
+                            Text("Batch Dilution")
                             Slider(value: $viewModel.dilutionPercentage, in: 0...100, step: 1.0)
+                                .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                            Text("\(viewModel.dilutionPercentage, specifier: "%.0f")%")
+                                .frame(width: 50)
                         }
                         
                         

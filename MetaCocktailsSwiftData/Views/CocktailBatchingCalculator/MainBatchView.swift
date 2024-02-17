@@ -39,11 +39,8 @@ struct MainBatchView: View {
                     .frame(width: 125, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .onSubmit {
                         viewModel.convertIngredientsToBatchCellData()
-                    
                     }
-                
-                
-                
+    
             }
             HStack{
                 Spacer()
