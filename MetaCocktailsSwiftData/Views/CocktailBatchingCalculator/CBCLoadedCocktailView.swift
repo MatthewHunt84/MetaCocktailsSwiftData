@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CBCLoadedCocktailView: View {
-    @EnvironmentObject var viewModel: CBCViewModel
+    @ObservedObject var viewModel = CBCViewModel()
     @State var cocktailCount = 100.0
     @State var cocktail = aFlightSouthOfTheBorder
     
@@ -64,6 +64,7 @@ struct CBCLoadedCocktailView: View {
                     VStack {
                             NavigationLink{
                                 MainBatchView(quantifiedBatchedIngredients: $viewModel.quantifiedBatchedIngredients, cocktailCount: $cocktailCount)
+                                    .environmentObject(viewModel)
                             } label: {
                                 Text("Batch")
                             }
@@ -79,7 +80,6 @@ struct CBCLoadedCocktailView: View {
             }
         }
     }
-    
 }
 
 #Preview {

@@ -25,7 +25,7 @@ final class CBCViewModel: ObservableObject {
     @Published var totalDilutionVolume = 0.0
     @Published var totalBatchVolume = 0.0
     @Published var quantifiedBatchedIngredients: [BatchedCellData] = []
-    //@Published var chosenCocktail: Cocktail = aFlightSouthOfTheBorder
+    @Published var chosenCocktail: Cocktail = aFlightSouthOfTheBorder
     
     ///Split Batch View
     @Published var containerSize =  4000

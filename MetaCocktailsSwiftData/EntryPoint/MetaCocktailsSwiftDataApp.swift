@@ -12,13 +12,11 @@ import SwiftUI
 @main
 struct MetaCocktailsSwiftDataApp: App {
     var criteria = SearchCriteriaViewModel()
-    var cocktailBC = CBCViewModel()
     
     var body: some Scene {
         WindowGroup {
             TabBarView()
                 .environmentObject(criteria)
-                .environmentObject(cocktailBC)
                 .preferredColorScheme(.dark)
         }
         .modelContainer(for: Cocktail.self)
