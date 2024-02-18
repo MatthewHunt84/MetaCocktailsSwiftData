@@ -12,6 +12,7 @@ import SwiftUI
 @main
 struct MetaCocktailsSwiftDataApp: App {
     var criteria = SearchCriteriaViewModel()
+    @AppStorage("shouldPreload") private var shouldPreload: Bool = true
     
     var body: some Scene {
         WindowGroup {
@@ -19,6 +20,6 @@ struct MetaCocktailsSwiftDataApp: App {
                 .environmentObject(criteria)
                 .preferredColorScheme(.dark)
         }
-        .modelContainer(for: Cocktail.self)
+        .modelContainer(CocktailContainer.preload(&shouldPreload))
     }
 }

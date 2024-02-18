@@ -12,7 +12,7 @@ var oldFashionedWnG = Cocktail(cocktailName: "Old Fashioned(W&G Version)",
                                garnish: [.lemonPeel],
                                ice: .bigRock,
                                author: williamsAndGraham,
-                               spec: oldFashionedSpec,
+                               spec: oldFashionedSpecWnG,
                                tags: oldFashionedTags)
 
 var oldFashionedSpecWnG  =  [CocktailIngredient(.otherNonAlc(.sugarCube), value: 1, unit: .muddled),
