@@ -12,7 +12,7 @@ var oldPalWnG  =  Cocktail(cocktailName: "Old Pal(W&G Version)",
                            garnish: [.lemonPeel],
                            ice: nil,
                            author: williamsAndGraham,
-                           spec: oldPalSpecWnG,
+                           spec: oldPalSpec,
                            buildOrder: nil,
                            tags: oldPalTags)
 

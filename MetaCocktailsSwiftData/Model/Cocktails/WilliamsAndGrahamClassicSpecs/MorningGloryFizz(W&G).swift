@@ -12,7 +12,7 @@ var morningGloryFizzWnG = Cocktail(cocktailName: "Morning Glory Fizz(W&G Version
                                    garnish: [.lemonExpression],
                                    ice: nil,
                                    author: williamsAndGraham,
-                                   spec: morningGloryFizzSpecWnG,
+                                   spec: morningGloryFizzSpec,
                                    buildOrder: morningGloryFizzBuild,
                                    tags: morningGloryFizzTags)
 
