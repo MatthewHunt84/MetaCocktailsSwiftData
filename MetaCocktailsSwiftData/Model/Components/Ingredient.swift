@@ -8,7 +8,6 @@
 import Foundation
 import SwiftData
 
-@Model
 class CocktailIngredient: Codable, Hashable {
 
     let id: UUID
@@ -40,28 +39,6 @@ class CocktailIngredient: Codable, Hashable {
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
-    }
-    
-    // MARK: - @Model codable conformance
-    
-    enum CodingKeys: CodingKey {
-        case id, ingredient, value, unit
-    }
-    
-    required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.decode(UUID.self, forKey: .id)
-        self.ingredient = try container.decode(IngredientType.self, forKey: .ingredient)
-        self.value = try container.decode(Double.self, forKey: .value)
-        self.unit = try container.decode(MeasurementUnit.self, forKey: .unit)
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(id, forKey: .id)
-        try container.encode(value, forKey: .value)
-        try container.encode(ingredient, forKey: .ingredient)
-        try container.encode(unit, forKey: .unit)
     }
 }
 

@@ -12,7 +12,7 @@ var sazeracWnG = Cocktail(cocktailName: "Sazerac(W&G Version)",
                           garnish: [.lemonPeel],
                           ice: nil,
                           author: williamsAndGraham,
-                          spec: sazeracSpecWnG,
+                          spec: sazeracSpec,
                           buildOrder: sazeracBuild,
                           tags: sazeracTags)
 

@@ -148,8 +148,17 @@ struct CocktailListView: View {
                 }
                 
             }
+            .task {
+                // This needs to be in a pre load function that runs before the app loads for the first time, not as an async task here because it loads too slow.
+                for cocktail in viewModel.bartenderCocktails {
+                    modelContext.insert(cocktail)
+                }
+            }
         }
+        
     }
+    
+    
 }
 
 struct CocktailListView_Previews: PreviewProvider {

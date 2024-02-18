@@ -12,7 +12,7 @@ var saturnWnG = Cocktail(cocktailName: "Saturn(W&G Version)",
                          garnish: [.pineappleFrond, .lemonWheel],
                          ice: .pebbleIce,
                          author: williamsAndGraham,
-                         spec: saturnSpecWnG,
+                         spec: saturnSpec,
                          tags: saturnTags)
 
 var saturnSpecWnG  =  [CocktailIngredient(.juices(.lemon), value: 0.75),

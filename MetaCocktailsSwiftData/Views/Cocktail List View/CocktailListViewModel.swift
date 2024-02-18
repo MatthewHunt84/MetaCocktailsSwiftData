@@ -83,7 +83,7 @@ final class CocktailListViewModel: ObservableObject {
         cocktailDict["Saturn"] = [saturn]
         cocktailDict["Sazerac"] = [sazerac]
         cocktailDict["Sidecar"] = [sidecar]
-        cocktailDict["Singapore Sling"] = [singaporeSling]
+        cocktailDict["Singapore Sling"] = [singaporSling]
         cocktailDict["Ultima Palabra"] = [ultimaPalabra]
  
         for cocktails in cocktailDict {
@@ -206,7 +206,7 @@ final class CocktailListViewModel: ObservableObject {
                                                                      "Scofflaw": [scofflaw , scofflawWnG],
                                                                      "Sherry Cobbler" : [sherryCobbler, sherryCobblerWnG],
                                                                      "Sidecar": [sidecar, sidecarWnG],
-                                                                     "Singapore Sling": [singaporeSling, singaporeSlingWnG],
+                                                                     "Singapore Sling": [singaporSling, singaporSlingWnG],
                                                                      "Sloe Gin Fizz" : [sloeGinFizz, sloeGinFizzWnG],
                                                                      "Stinger": [stingerWnG],
                                                                      "Ti Punch": [tiPunch, tiPunchWnG],
