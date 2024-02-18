@@ -13,7 +13,7 @@ var mojitoWnG = Cocktail(cocktailName: "Mojito(W&G Version)",
                          garnish: [.mintBouquet],
                          ice: .koldDraft,
                          author: williamsAndGraham,
-                         spec: mojitoSpec,
+                         spec: mojitoSpecWnG,
                          buildOrder: mojitoBuild,
                          tags: mojitoTags)
 

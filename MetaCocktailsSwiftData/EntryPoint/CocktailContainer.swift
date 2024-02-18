@@ -20,7 +20,11 @@ actor CocktailContainer {
             
             if shouldPreload {
                 print("🕔🕔🕔 PRELOADING COCKTAILS FOR FIRST TIME LAUNCH 🕔🕔🕔")
-                CocktailListViewModel().bartenderCocktails.forEach { container.mainContext.insert($0) } // add cocktails directly here instead if this works.
+
+                let _ = Preload.allCases.map { $0.cocktails }
+                                        .flatMap { $0 }
+                                        .map { container.mainContext.insert($0) }
+
                 shouldPreload = false
             } else {
                 print("✅✅✅ COCKTAILS LOADED FROM DATABASE ✅✅✅")

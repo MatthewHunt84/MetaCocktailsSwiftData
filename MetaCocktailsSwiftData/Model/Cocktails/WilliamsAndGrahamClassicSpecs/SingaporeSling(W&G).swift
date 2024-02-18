@@ -7,22 +7,22 @@
 
 import Foundation
 
-var singaporSlingWnG = Cocktail(cocktailName: "Singapore Sling(W&G version)",
+var singaporeSlingWnG = Cocktail(cocktailName: "Singapore Sling(W&G version)",
                                 glasswareType: .collins,
                                 garnish: [.limeWheel, .maraschinoCherry],
                                 ice: .columnIce,
                                 author: nil,
-                                spec: singaporSlingSpecWnG,
+                                spec: singaporeSlingSpecWnG,
                                 buildOrder: nil,
-                                tags: singaporSlingTagsWnG)
+                                tags: singaporeSlingTagsWnG)
 
-var singaporSlingSpecWnG  = [CocktailIngredient(.soda(.sparklingWater), value: 2),
+var singaporeSlingSpecWnG  = [CocktailIngredient(.soda(.sparklingWater), value: 2),
                              CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),
                              CocktailIngredient(.juices(.lime), value: 0.75),
                              CocktailIngredient(.liqueurs(.luxardoCherry), value: 0.75),
                              CocktailIngredient(.liqueurs(.benedictine), value: 0.75),
                              CocktailIngredient(.gins(.fordsGin), value: 0.75)]
 
-var singaporSlingTagsWnG = Tags(profiles: [.herbal, .refreshing, .light, .dry],
+var singaporeSlingTagsWnG = Tags(profiles: [.herbal, .refreshing, .light, .dry],
                                 styles: [.sour, .built])
 
