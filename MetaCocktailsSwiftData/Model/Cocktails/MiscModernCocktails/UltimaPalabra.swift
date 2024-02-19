@@ -8,10 +8,11 @@
 import SwiftUI
 
 var ultimaPalabra = Cocktail(cocktailName: "Ultima Palabra",
-                        glasswareType: .stemmedGlassware,
-                        ice: nil,
-                        spec: ultimaPalabraSpec,
-                        tags: ultimaPalabraTags)
+                             glasswareType: .stemmedGlassware,
+                             ice: nil,
+                             spec: ultimaPalabraSpec,
+                             tags: ultimaPalabraTags,
+                             variation: .ultimaPalabra)
 
 var ultimaPalabraSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
                           CocktailIngredient(.agaves(.mezcalSmokeyAny), value: 0.75),
@@ -20,4 +21,4 @@ var ultimaPalabraSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
 
 var ultimaPalabraTags = Tags(profiles: [.punchy, .herbal, .citrusy],
                              styles: [.daisy, .shaken, .sour])
-                            
+

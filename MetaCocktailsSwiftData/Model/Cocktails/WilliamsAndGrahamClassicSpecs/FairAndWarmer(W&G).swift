@@ -1,5 +1,5 @@
 //
-//  FainAndWarmer(W&G).swift
+//  FairAndWarmer(W&G).swift
 //  MetaCocktailsSwiftData
 //
 //  Created by James Menkal on 1/24/24.
@@ -12,7 +12,8 @@ var fairAndWarmerWnG = Cocktail(cocktailName: "Fair & Warmer(W&G Version)",
                                 garnish: [.orangePeel],
                                 author: williamsAndGraham,
                                 spec: fairAndWarmerWnGSpec,
-                                tags: fairAndWarmerTags)
+                                tags: fairAndWarmerTags,
+                                variation: .fairAndWarmer)
 
 var fairAndWarmerWnGSpec     =  [CocktailIngredient(.liqueurs(.orangeCuracao), value: 0.5),
                                  CocktailIngredient(.fortifiedWines(.dolinRouge), value: 0.5),

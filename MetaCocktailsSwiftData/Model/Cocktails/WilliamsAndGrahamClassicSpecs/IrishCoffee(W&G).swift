@@ -13,7 +13,8 @@ var irishCoffeeWnG = Cocktail(cocktailName: "Irish Coffee(W&G Version)",
                               author: williamsAndGraham,
                               spec: irishCoffeeWnGSpec,
                               buildOrder: irishCoffeeWnGBuild,
-                              tags: irishCoffeeWnGTags)
+                              tags: irishCoffeeWnGTags,
+                              variation: .irishCoffee)
 
 var irishCoffeeWnGSpec  = [CocktailIngredient(.otherNonAlc(.stiffCream), value: 1),
                            CocktailIngredient(.otherNonAlc(.coffee), value: 3),

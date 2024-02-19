@@ -7,13 +7,14 @@
 
 import Foundation
 
-var bloodyMarryWnG  = Cocktail(cocktailName: "Bloody Marry(W&G Version)",
+var bloodyMaryWnG  = Cocktail(cocktailName: "Bloody Mary(W&G Version)",
                                glasswareType: .collins,
                                garnish: [.olive, .cocktailOnion],
                                author: williamsAndGraham,
                                spec: bloodyMarryWnGSpec,
                                buildOrder: bloodyMarryWnGBuild,
-                               tags: bloodyMarryWnGTags)
+                               tags: bloodyMarryWnGTags,
+                               variation: .bloodyMary)
 
 var bloodyMarryWnGSpec  = [CocktailIngredient(.otherNonAlc(.bloodyMarryMixWnG), value: 4),
                            CocktailIngredient(.vodkas(.vodkaAny), value: 2)]

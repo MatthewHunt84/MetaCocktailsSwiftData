@@ -12,7 +12,8 @@ var alaskaWnG  = Cocktail(cocktailName: "Alaska Cocktail(W&G Version)",
                           garnish: [.lemonPeel],
                           author: williamsAndGraham,
                           spec: alaskaWnGSpec,
-                          tags: alaskaWnGTags)
+                          tags: alaskaWnGTags,
+                          variation: .alaska)
 
 var alaskaWnGSpec  = [CocktailIngredient(.bitters(.orangeBitters), value: 2, unit: .dashes),
                       CocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.75),

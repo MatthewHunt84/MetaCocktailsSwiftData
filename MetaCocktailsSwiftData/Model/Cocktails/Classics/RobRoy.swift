@@ -13,7 +13,8 @@ var robRoy = Cocktail(cocktailName: "Rob Roy",
                       garnish: [.maraschinoCherry, .orangeExpress],
                       author: nil,
                       spec: robRoySpec,
-                      tags: robRoyTags)
+                      tags: robRoyTags,
+                      variation: .robRoy)
 
 var robRoySpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
                        CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),

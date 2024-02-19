@@ -15,7 +15,8 @@ var elPresidente  = Cocktail(cocktailName: "El Presidente",
                              author: Author(person: AuthorNames.constante.rawValue),
                              spec: elPresidenteSpec,
                              buildOrder: nil,
-                             tags: elPresidenteTags)
+                             tags: elPresidenteTags,
+                             variation: .elPresidente)
 
 var elPresidenteSpec  = [CocktailIngredient(.rums(.rumWhite), value: 1.5),
                          CocktailIngredient(.fortifiedWines(.blancVermouth), value: 1.5),

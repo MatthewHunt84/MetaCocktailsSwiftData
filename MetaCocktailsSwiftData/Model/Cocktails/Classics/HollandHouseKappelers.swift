@@ -13,7 +13,9 @@ var hollandHouseKappeler = Cocktail(cocktailName: "Holland House (Kappeler's)",
                                     ice: nil,
                                     author:Author(person: "George J. Kappeler", place: "Modern American Drinks: How to Mix and Serve All Kinds of Cups and Drinks.", year: "1895"),
                                     spec: hollandHouseKappelerSpec,
-                                    tags: hollandHouseKappelerTags)
+                                    tags: hollandHouseKappelerTags,
+                                    variation: .hollandHouse)
+
 var hollandHouseKappelerSpec  =  [CocktailIngredient(.bitters(.peychauds), value: 2, unit: .dashes),
                                   CocktailIngredient(.liqueurs(.orangeCuracao), value: 0.5),
                                   CocktailIngredient(.whiskies(.straightRye), value: 2)]

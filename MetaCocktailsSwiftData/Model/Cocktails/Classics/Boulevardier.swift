@@ -14,7 +14,8 @@ var boulevardier  =  Cocktail(cocktailName: "Boulevardier",
                               author:Author(person: "Erskine Gwynne",place: "Paris", year: "1920's"),
                               spec: boulevardierSpec,
                               buildOrder: nil,
-                              tags: boulevardierTags)
+                              tags: boulevardierTags,
+                              variation: .boulevardier)
 
 var boulevardierSpec = [CocktailIngredient(.whiskies(.straightRyeOrBourbon), value: 1.25),
                         CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),

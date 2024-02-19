@@ -1,5 +1,5 @@
 //
-//  NewYourSour.swift
+//  NewYorkSour.swift
 //  MetaCocktailsSwiftData
 //
 //  Created by James Menkal on 1/29/24.
@@ -15,7 +15,8 @@ var NewYorkSour = Cocktail(cocktailName: "New York Sour",
                                          year: "December, 13, 1885, pg. 18"),
                            spec: NewYorkSourSpec,
                            buildOrder: NewYorkSourBuild,
-                           tags: NewYorkSourTags)
+                           tags: NewYorkSourTags,
+                           variation: .newYorkSour)
 
 var NewYorkSourSpec = [CocktailIngredient(.juices(.lemon), value: 0.25),
                        CocktailIngredient(.syrups(.simple), value: 0.25),

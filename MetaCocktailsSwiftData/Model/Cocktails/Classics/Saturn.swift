@@ -14,7 +14,8 @@ var saturn = Cocktail(cocktailName: "Saturn",
                       author: Author(person: "Joseph “Po Po” Galsini", year: "1967"),
                       spec: saturnSpec,
                       buildOrder: saturnBuildOrder,
-                      tags: saturnTags)
+                      tags: saturnTags,
+                      variation: .saturn)
 
 var saturnSpec  =  [CocktailIngredient(.juices(.lemon), value: 0.5),
                     CocktailIngredient(.syrups(.passionfruitSyrup), value: 0.5),

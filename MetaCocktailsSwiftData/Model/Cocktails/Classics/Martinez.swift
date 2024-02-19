@@ -12,7 +12,8 @@ var martinez = Cocktail(cocktailName: "Martinez(1884)",
                         garnish: nil,
                         author: oHByron,
                         spec: martinezSpec,
-                        tags: martinezTags)
+                        tags: martinezTags,
+                        variation: .martinez)
 
 var martinezSpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
                          CocktailIngredient(.liqueurs(.dryCuracao), value: 2, unit: .dashes),

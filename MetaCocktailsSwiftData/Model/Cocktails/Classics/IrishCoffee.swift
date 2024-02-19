@@ -13,7 +13,8 @@ var irishCoffee = Cocktail(cocktailName: "Irish Coffee",
                            author: Author(person: "Joe Sheridan", place: "Flying Boat Station. Foynes, Ireland", year: "1944"),
                            spec: irishCoffeeSpec,
                            buildOrder: irishCoffeeBuild,
-                           tags: irishCoffeeTags)
+                           tags: irishCoffeeTags,
+                           variation: .irishCoffee)
 
 var irishCoffeeSpec  = [CocktailIngredient(.otherNonAlc(.stiffCream), value: 30, unit: .ml),
                         CocktailIngredient(.otherNonAlc(.coffee), value: 75, unit: .ml),

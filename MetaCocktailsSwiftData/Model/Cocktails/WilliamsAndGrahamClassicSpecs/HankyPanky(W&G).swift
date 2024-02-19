@@ -12,7 +12,8 @@ var hankyPankyWnG = Cocktail(cocktailName: "Hanky Panky(W&G Version)",
                              garnish: [.orangePeel],
                              author: williamsAndGraham,
                              spec: hankyPankySpecWnG,
-                             tags: hankyPankyTags)
+                             tags: hankyPankyTags,
+                             variation: .hankyPanky)
 
 var hankyPankySpecWnG     =  [CocktailIngredient(.amari(.fernetBranca), value: 0.5),
                               CocktailIngredient(.gins(.fordsGin), value: 2),

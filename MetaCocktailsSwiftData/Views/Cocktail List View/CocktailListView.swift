@@ -16,11 +16,15 @@ struct CocktailListView: View {
     
     func selectedCocktailVariations(for cocktail: Cocktail) -> [Cocktail] {
         if let variation = cocktail.variation {
-            return cocktails.filter({$0.variation == variation})
+            let variationsWithSelectedCocktailFirst = cocktails.filter({$0.variation == variation}).sorted {
+                $1.cocktailName == cocktail.cocktailName ? false :
+                $0.cocktailName == cocktail.cocktailName ? true :
+                $0.cocktailName < $1.cocktailName
+            }
+            return variationsWithSelectedCocktailFirst
         } else {
             return [cocktail]
         }
-
     }
     
     var body: some View {

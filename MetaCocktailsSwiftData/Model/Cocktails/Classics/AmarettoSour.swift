@@ -11,7 +11,8 @@ var amarettoSour  = Cocktail(cocktailName: "Amaretto Sour",
                              glasswareType: .martini,
                              garnish: [.maraschinoCherry],
                              spec: amarettoSourSpec,
-                             tags: amarettoSourTags)
+                             tags: amarettoSourTags,
+                             variation: .amarettoSour)
 
 var amarettoSourSpec  = [CocktailIngredient(.syrups(.simple), value: 0.75),
                          CocktailIngredient(.juices(.lemon), value: 0.75),

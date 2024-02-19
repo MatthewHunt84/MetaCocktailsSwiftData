@@ -8,14 +8,15 @@
 import Foundation
 
 var mintJulepWnG = Cocktail(cocktailName: "Mint Julep(W&G Version)",
-                         imageAsset: nil,
-                         glasswareType: .julep,
-                         garnish: [.mintBouquet],
-                         ice: .pebbleIce,
-                         author: Author(person: "Old as Fuck."),
-                         spec: mintJulepSpecWnG,
-                         buildOrder: mintJulepBuild,
-                         tags: mintJulepTags)
+                            imageAsset: nil,
+                            glasswareType: .julep,
+                            garnish: [.mintBouquet],
+                            ice: .pebbleIce,
+                            author: Author(person: "Old as Fuck."),
+                            spec: mintJulepSpecWnG,
+                            buildOrder: mintJulepBuild,
+                            tags: mintJulepTags,
+                            variation: .mintJulep)
 
 let mintJulepSpecWnG: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
                                               CocktailIngredient(.syrups(.simple), value: 0.5),

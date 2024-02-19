@@ -16,7 +16,8 @@ var queensParkSwizzle = Cocktail(cocktailName: "Queens Park Swizzle",
                                  author: Author(place: "Queens Park Hotel, Trinidad", year: "1920's"),
                                  spec: queensParkSpec,
                                  buildOrder: queensParkBuild,
-                                 tags: queensParkTags)
+                                 tags: queensParkTags,
+                                 variation: .queensParkSwizzle)
 
 var queensParkSpec = [CocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
                       CocktailIngredient(.juices(.lime), value: 0.75),

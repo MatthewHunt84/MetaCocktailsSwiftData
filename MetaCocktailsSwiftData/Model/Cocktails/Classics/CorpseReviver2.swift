@@ -13,7 +13,8 @@ var corpseReviver2 = Cocktail(cocktailName: "Corpse Reviver No.2",
                               author:Author(person: AuthorNames.harryCraddock.rawValue, place: AuthorPlaces.savoy.rawValue, year: "1930"),
                               spec: corpseReviver2Spec,
                               buildOrder: kinaLilletExplanation,
-                              tags: corpseReviver2Tags)
+                              tags: corpseReviver2Tags,
+                              variation: .corpseReviver)
 
 var corpseReviver2Spec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                            CocktailIngredient(.gins(.ginLondonDry), value: 0.75),

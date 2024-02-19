@@ -13,7 +13,8 @@ var morgenthalersToddy = Cocktail(cocktailName: "Hot Toddy(Morgenthaler’s)",
                                   author: Author(person: "Jeffrey Morggenthaler", year: "2014"),
                                   spec: morgenthalersToddySpec,
                                   buildOrder: hotToddyWnGBuild,
-                                  tags: morgenthalersToddyTags)
+                                  tags: morgenthalersToddyTags,
+                                  variation: .hotToddy)
 
 var morgenthalersToddySpec  = [CocktailIngredient(.otherNonAlc(.hotWater), value: 3),
                                CocktailIngredient(.juices(.lemon), value: 0.75),

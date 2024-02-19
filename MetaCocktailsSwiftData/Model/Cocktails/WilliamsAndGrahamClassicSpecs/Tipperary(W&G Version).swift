@@ -12,7 +12,8 @@ var tipperaryWnG = Cocktail(cocktailName: "Tipperary(W&G Version)",
                             garnish: [.orangeExpress, .maraschinoCherry],
                             author: williamsAndGraham,
                             spec: tipperarySpecWnG,
-                            tags: tipperaryTagsWnG)
+                            tags: tipperaryTagsWnG,
+                            variation: .tipperary)
 
 var tipperarySpecWnG     =  [CocktailIngredient(.fortifiedWines(.puntEMes), value: 0.5),
                              CocktailIngredient(.liqueurs(.greenChartreuse), value: 0.5),

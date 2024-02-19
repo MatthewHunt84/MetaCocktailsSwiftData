@@ -15,7 +15,8 @@ var zombie = Cocktail(cocktailName: "Zombie",
                       ice: .pebbleIce,
                       author: Author(person: "Don Beach", place: "Don the Beachcomber's: Hollywood, CA", year: "1934"),
                       spec: zombieSpec,
-                      tags: zombieTags)
+                      tags: zombieTags,
+                      variation: .zombie)
 
 let zombieSpec: [CocktailIngredient] = [CocktailIngredient(.juices(.lime), value: 0.75),
                                         CocktailIngredient(.juices(.donsMix), value: 0.5),

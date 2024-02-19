@@ -8,11 +8,12 @@
 import Foundation
 
 var alaska  = Cocktail(cocktailName: "Alaska Cocktail",
-                          glasswareType: .martini,
-                          garnish: [.noGarnish],
-                          author: Author(place: "'Fashions in Mixed Drinks.' Guthrie Daily Leader", year: "October 18, 1905"),
-                          spec: alaskaSpec,
-                          tags: alaskaTags)
+                       glasswareType: .martini,
+                       garnish: [.noGarnish],
+                       author: Author(place: "'Fashions in Mixed Drinks.' Guthrie Daily Leader", year: "October 18, 1905"),
+                       spec: alaskaSpec,
+                       tags: alaskaTags,
+                       variation: .alaska)
 
 var alaskaSpec  = [CocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.75),
                    CocktailIngredient(.gins(.ginLondonDry), value: 2.25)]

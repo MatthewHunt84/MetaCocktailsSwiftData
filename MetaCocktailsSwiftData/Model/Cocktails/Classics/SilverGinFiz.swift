@@ -14,7 +14,8 @@ var silverGinFizz  = Cocktail(cocktailName: "Silver Gin Fizz",
                               author: jerryThomas,
                               spec: silverGinFizzSpec,
                               buildOrder: silverGinFizzBuild,
-                              tags: silverGinFizzTags)
+                              tags: silverGinFizzTags,
+                              variation: .ginFizz)
 
 var silverGinFizzSpec  = [CocktailIngredient(.juices(.lemon), value: 1),
                           CocktailIngredient(.syrups(.simple), value: 1),

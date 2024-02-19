@@ -13,7 +13,8 @@ var honeymoonCocktailEmbury = Cocktail(cocktailName: "Honeymoon Cocktail(Embury)
                                        ice: nil,
                                        author: davidEmbury,
                                        spec: honeymoonCocktailSpecEmbury,
-                                       tags: honeymoonCocktailTagsEmbury)
+                                       tags: honeymoonCocktailTagsEmbury,
+                                       variation: .honeymoon)
 
 var honeymoonCocktailSpecEmbury =  [CocktailIngredient(.juices(.lime), value: 0.5),
                                     CocktailIngredient(.liqueurs(.orangeCuracao), value: 0.125),

@@ -13,10 +13,13 @@ var honeymoonCocktailWnG = Cocktail(cocktailName: "Honeymoon(WnG Version)",
                                     ice: nil,
                                     author: williamsAndGraham,
                                     spec: honeymoonCocktailSpecWnG,
-                                    tags: honeymoonCocktailTagsWnG)
+                                    tags: honeymoonCocktailTagsWnG,
+                                    variation: .honeymoon)
+
 var honeymoonCocktailSpecWnG =  [CocktailIngredient(.juices(.lemon), value: 0.5),
                                  CocktailIngredient(.liqueurs(.orangeCuracao), value: 0.5, unit: .dashes),
                                  CocktailIngredient(.liqueurs(.benedictine), value: 0.5),
                                  CocktailIngredient(.brandies(.boulardCalvados), value: 1.5)]
+
 var honeymoonCocktailTagsWnG = Tags( profiles: [.fruity, .citrusy],
                                      styles: [.sour, .shaken])

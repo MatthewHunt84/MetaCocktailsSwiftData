@@ -15,7 +15,8 @@ var penicillin = Cocktail(cocktailName: "Penicillin",
                                         place: AuthorPlaces.milkAndHoney.rawValue),
                           spec: penicillinSpec,
                           buildOrder: penicillinBuild,
-                          tags: penicillinTags)
+                          tags: penicillinTags,
+                          variation: .penicillin)
 
 var penicillinSpec = [CocktailIngredient(.juices(.lemon), value: 0.75, unit: .fluidOunces),
                       CocktailIngredient(.syrups(.honeySyrup), value: 0.375),

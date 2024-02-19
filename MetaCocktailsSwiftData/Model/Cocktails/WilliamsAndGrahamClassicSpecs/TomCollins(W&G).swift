@@ -14,7 +14,8 @@ var tomCollinsWnG  = Cocktail(cocktailName: "Tom Collins(W&G Version)",
                               author: williamsAndGraham,
                               spec: tomCollinsWnGSpec,
                               buildOrder: tomCollinsWnGBuild,
-                              tags: tomCollinsWnGTags)
+                              tags: tomCollinsWnGTags,
+                              variation: .tomCollins)
 
 var tomCollinsWnGSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                           CocktailIngredient(.syrups(.simple), value: 0.75),

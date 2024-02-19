@@ -13,7 +13,8 @@ var hotBrandyToddy = Cocktail(cocktailName: "Hot Brandy Toddy",
                               author: jerryThomas,
                               spec: hotBrandyToddySpec,
                               buildOrder: hotToddyWnGBuild,
-                              tags: hotBrandyToddyTags)
+                              tags: hotBrandyToddyTags,
+                              variation: .hotToddy)
 
 var hotBrandyToddySpec  = [CocktailIngredient(.otherNonAlc(.granulatedSugar), value: 1, unit: .teaspoon),
                            CocktailIngredient(.otherNonAlc(.hotWater), value: 3),

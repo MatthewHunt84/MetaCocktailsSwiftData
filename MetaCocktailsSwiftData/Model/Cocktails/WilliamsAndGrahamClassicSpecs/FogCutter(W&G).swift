@@ -14,7 +14,8 @@ var fogCutterWnG = Cocktail(cocktailName: "Fog Cutter(W&G Version)",
                             ice: .pebbleIce,
                             author: williamsAndGraham,
                             spec: fogCutterSpecWnG,
-                            tags: fogCutterTags)
+                            tags: fogCutterTags,
+                            variation: .fogCutter)
 
 let fogCutterSpecWnG   = [CocktailIngredient(.juices(.lemon), value:0.75),
                           CocktailIngredient(.juices(.orange), value: 1),

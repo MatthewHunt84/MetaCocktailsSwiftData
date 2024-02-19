@@ -1,5 +1,5 @@
 //
-//  ModernCoctail.swift
+//  ModernCocktail.swift
 //  MetaCocktailsSwiftData
 //
 //  Created by James Menkal on 1/29/24.
@@ -15,7 +15,8 @@ var modernCocktail = Cocktail(cocktailName: "Modern Cocktail",
                                             place: AuthorPlaces.hoffmanBartendersGuide.rawValue,
                                             year: "1905"),
                               spec: modernCocktailSpec,
-                              tags: modernCocktailTags)
+                              tags: modernCocktailTags,
+                              variation: .modernCocktail)
 
 var modernCocktailSpec = [CocktailIngredient(.juices(.lemon), value: 3, unit: .dashes),
                           CocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dash),

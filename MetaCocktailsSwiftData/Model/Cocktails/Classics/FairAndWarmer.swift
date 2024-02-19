@@ -12,7 +12,8 @@ var fairAndWarmer = Cocktail(cocktailName: "Fair & Warmer",
                              garnish: [.noGarnish],
                              author: harryCraddock,
                              spec: fairAndWarmerSpec,
-                             tags: fairAndWarmerTags)
+                             tags: fairAndWarmerTags,
+                             variation: .fairAndWarmer)
 
 var fairAndWarmerSpec     =  [CocktailIngredient(.liqueurs(.orangeCuracao), value: 2, unit: .dashes),
                               CocktailIngredient(.fortifiedWines(.dolinRouge), value: 1),

@@ -13,7 +13,8 @@ var lastWord = Cocktail(cocktailName: "Last Word",
                         author: Author(person: "Frank Fogarty", place: AuthorPlaces.detroitAthleticClub.rawValue),
                         spec: lastWordSpec,
                         buildOrder: nil,
-                        tags: lastWordTags)
+                        tags: lastWordTags,
+                        variation: .lastWord)
 
 var lastWordSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
                      CocktailIngredient(.gins(.ginLondonDry), value: 0.75),

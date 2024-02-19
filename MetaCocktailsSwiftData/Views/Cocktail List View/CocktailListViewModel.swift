@@ -54,7 +54,7 @@ final class CocktailListViewModel: ObservableObject {
         cocktailDict["Americano"] = [americano]
         cocktailDict["Bamboo"] = [bamboo]
         cocktailDict["Bijou"] = [bijou]
-        cocktailDict["Bloody Marry"] = [bloodyMarry]
+        cocktailDict["Bloody Marry"] = [bloodyMary]
         cocktailDict["Fair and Warmer"] = [fairAndWarmer]
         cocktailDict["Between the Sheets"] = [betweenTheSheets]
         cocktailDict["El Presidente"] = [elPresidente]
@@ -78,12 +78,12 @@ final class CocktailListViewModel: ObservableObject {
         cocktailDict["Pain Killer"] = [painKiller]
         cocktailDict["Penicillin"] = [penicillin]
         cocktailDict["Queens Park Swizzle"] = [queensParkSwizzle]
-        cocktailDict["Remember The Maine"] = [rememberTheMaineOG]
+        cocktailDict["Remember The Maine"] = [rememberTheMaine]
         cocktailDict["Rob Roy"] = [robRoy]
         cocktailDict["Saturn"] = [saturn]
         cocktailDict["Sazerac"] = [sazerac]
         cocktailDict["Sidecar"] = [sidecar]
-        cocktailDict["Singapore Sling"] = [singaporSling]
+        cocktailDict["Singapore Sling"] = [singaporeSling]
         cocktailDict["Ultima Palabra"] = [ultimaPalabra]
  
         for cocktails in cocktailDict {
@@ -117,7 +117,7 @@ final class CocktailListViewModel: ObservableObject {
                                                                      "Bamboo": [bamboo, bambooWnG],
                                                                      "Bijou": [bijou, bijouWnG],
                                                                      "Blood & Sand": [bloodAndSand, bloodAndSandWnG],
-                                                                     "Bloody Marry": [bloodyMarry, bloodyMarryWnG],
+                                                                     "Bloody Marry": [bloodyMary, bloodyMaryWnG],
                                                                      "Blue Blazer": [blueBlazer],
                                                                      "Bobby Burns": [bobbyBurns],
                                                                      "Boulevardier": [boulevardier, boulevardierWnG],
@@ -156,7 +156,7 @@ final class CocktailListViewModel: ObservableObject {
                                                                      "Grasshopper":[grasshopper, grasshopperWnG],
                                                                      "Hanky Panky":[hankyPanky, hankyPankyWnG],
                                                                      "Harvey Wallbanger": [harveyWallbanger, harveyWallbangerWnG],
-                                                                     "Hemingway Daiquiri": [hemingwayDaiquiri, papaDoble],
+                                                                     "Hemingway Daiquiri": [hemingwayDaiquiri, papaDobleWnG],
                                                                      "Honeymoon Cocktail": [honeymoonCocktail1st, honeymoonCocktailEmbury, honeymoonCocktailWnG],
                                                                      "Holland House": [hollandHouseKappeler, hollandHouseCocktail, hollandHouseCocktailWnG],
                                                                      "Hot Toddy": [hotBrandyToddy, hotToddyWnG, morgenthalersToddy],
@@ -198,7 +198,7 @@ final class CocktailListViewModel: ObservableObject {
                                                                      "Queens Park Swizzle": [queensParkSwizzle, queensParkSwizzleWnG],
                                                                      "Ramos Gin Fizz": [ramosGinFizz],
                                                                      "Ramona Flowers": [ramonaFlowers],
-                                                                     "Remember The Maine": [rememberTheMaineOG, rememberTheMaineWnG],
+                                                                     "Remember The Maine": [rememberTheMaine, rememberTheMaineWnG],
                                                                      "Rusty Nail": [RustyNailWnG],
                                                                      "Rob Roy": [robRoy, robRoyWnG],
                                                                      "Saturn": [saturn, saturnWnG],
@@ -206,7 +206,7 @@ final class CocktailListViewModel: ObservableObject {
                                                                      "Scofflaw": [scofflaw , scofflawWnG],
                                                                      "Sherry Cobbler" : [sherryCobbler, sherryCobblerWnG],
                                                                      "Sidecar": [sidecar, sidecarWnG],
-                                                                     "Singapore Sling": [singaporSling, singaporSlingWnG],
+                                                                     "Singapore Sling": [singaporeSling, singaporeSlingWnG],
                                                                      "Sloe Gin Fizz" : [sloeGinFizz, sloeGinFizzWnG],
                                                                      "Stinger": [stingerWnG],
                                                                      "Ti Punch": [tiPunch, tiPunchWnG],

@@ -12,7 +12,8 @@ var margarita = Cocktail(cocktailName: "Margarita",
                          garnish: [.noGarnish],
                          ice: nil,
                          spec: margaritaSpec,
-                         tags: margaritaTags)
+                         tags: margaritaTags,
+                         variation: .margarita)
 
 var margaritaSpec = [CocktailIngredient(.juices(.lime), value: 0.75),
                      CocktailIngredient(.liqueurs(.cointreau), value: 0.75),

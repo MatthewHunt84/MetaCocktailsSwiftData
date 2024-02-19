@@ -17,7 +17,8 @@ var kentuckyMaid = Cocktail(cocktailName: "Kentucky Maid",
                                                           year: "2005"),
                             spec: kentuckyMaidSpec,
                             buildOrder: kentuckyMaidBuild,
-                            tags: kentuckyMaidTags)
+                            tags: kentuckyMaidTags,
+                            variation: .kentuckyMaid)
 
 let kentuckyMaidSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
                                               CocktailIngredient(.fruit(.cucumberSlices), value: 2, unit: .gentlyMuddled),

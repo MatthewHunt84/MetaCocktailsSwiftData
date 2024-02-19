@@ -12,7 +12,8 @@ var betweenTheSheets  = Cocktail(cocktailName: "Between the Sheets",
                                  garnish: [.orangePeel],
                                  author: Author(person: AuthorNames.harryCraddock.rawValue, place: AuthorPlaces.savoy.rawValue, year: "1929"),
                                  spec: betweenTheSheetsSpec,
-                                 tags: betweenTheSheetsTags)
+                                 tags: betweenTheSheetsTags,
+                                 variation: .betweenTheSheets)
 
 var betweenTheSheetsSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                              CocktailIngredient(.rums(.rumWhite), value: 0.75),

@@ -7,7 +7,7 @@
 
 import Foundation
 
-var bloodyMarry  = Cocktail(cocktailName: "Bloody Marry",
+var bloodyMary  = Cocktail(cocktailName: "Bloody Mary",
                             glasswareType: .collins,
                             garnish: [.garnishAtWill],
                             ice: .koldDraft,

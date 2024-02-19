@@ -13,7 +13,9 @@ var hollandHouseCocktail = Cocktail(cocktailName: "Holland House Cocktail",
                                     ice: nil,
                                     author: harryCraddock,
                                     spec: hollandHouseCocktailSpec,
-                                    tags: hollandHouseCocktailTags)
+                                    tags: hollandHouseCocktailTags,
+                                    variation: .hollandHouse)
+
 var hollandHouseCocktailSpec  =  [CocktailIngredient(.juices(.lemon), value: 0.25),
                                   CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 4, unit: .dashes),
                                   CocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 1),

@@ -14,7 +14,8 @@ var sazeracWnG = Cocktail(cocktailName: "Sazerac(W&G Version)",
                           author: williamsAndGraham,
                           spec: sazeracSpec,
                           buildOrder: sazeracBuild,
-                          tags: sazeracTags)
+                          tags: sazeracTags,
+                          variation: .sazerac)
 
 var sazeracSpecWnG  = [CocktailIngredient(.otherNonAlc(.demeraraSugarCube), value: 1, unit: .whole),
                        CocktailIngredient(.whiskies(.rittenhouseRye), value: 2),
