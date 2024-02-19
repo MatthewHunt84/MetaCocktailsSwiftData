@@ -14,7 +14,8 @@ var zombie129 = Cocktail(cocktailName: "Zombie 129",
                          ice: .pebbleIce,
                          author: justWnG,
                          spec: zombie129Spec,
-                         tags: zombie129Tags)
+                         tags: zombie129Tags,
+                         variation: .zombie)
 
 let zombie129Spec  = [CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
                       CocktailIngredient(.juices(.lemon), value: 0.5),

@@ -16,7 +16,8 @@ var jungleBird = Cocktail(cocktailName: "JungleBird",
                                          year: "1970s"),
                           spec: jungleBirdSpec,
                           buildOrder: nil,
-                          tags: jungleBirdTags)
+                          tags: jungleBirdTags,
+                          variation: .jungleBird)
 
 var jungleBirdSpec  =  [CocktailIngredient(.juices(.lime), value: 0.5),
                         CocktailIngredient(.juices(.pineappleJuice), value: 4),

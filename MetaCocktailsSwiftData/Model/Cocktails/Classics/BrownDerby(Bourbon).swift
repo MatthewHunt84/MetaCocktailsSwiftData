@@ -10,7 +10,8 @@ import Foundation
 let brownDerbyBourbon = Cocktail(cocktailName: "Brown Derby (Bourbon Version)",
                                  glasswareType: .stemmedGlassware,
                                  spec: brownDerbyBourbonSpec,
-                                 tags: brownDerbyBourbonTags)
+                                 tags: brownDerbyBourbonTags,
+                                 variation: .brownDerby)
 
 var brownDerbyBourbonSpec: [CocktailIngredient] = [CocktailIngredient(.whiskies(.bourbonAny), value: 2),
                                                    CocktailIngredient(.juices(.grapefruit), value: 1),

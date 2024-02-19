@@ -13,7 +13,8 @@ var elPresidenteWnG  = Cocktail(cocktailName: "El Presidente(W&G Version)",
                                 ice: nil,
                                 author: williamsAndGraham,
                                 spec: elPresidenteSpecWnG,
-                                tags: elPresidenteTags)
+                                tags: elPresidenteTags,
+                                variation: .elPresidente)
 
 var elPresidenteSpecWnG  = [CocktailIngredient(.rums(.plantation3Star), value: 2),
                             CocktailIngredient(.fortifiedWines(.dolinDry), value: 1),

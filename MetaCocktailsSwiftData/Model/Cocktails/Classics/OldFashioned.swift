@@ -13,7 +13,8 @@ var oldFashioned = Cocktail(cocktailName: "Old Fashioned",
                             ice: .bigRock,
                             author:Author(place: "Too old to tell"),
                             spec: oldFashionedSpec,
-                            tags: oldFashionedTags)
+                            tags: oldFashionedTags,
+                            variation: .oldFashioned)
 
 var oldFashionedSpec  =  [CocktailIngredient(.syrups(.richDem), value: 2, unit: .teaspoon),
                           CocktailIngredient(.bitters(.angosturaBitters), value: 3, unit: .dashes),

@@ -14,7 +14,8 @@ var french75  = Cocktail(cocktailName: "French 75",
                          author: harryCraddock,
                          spec: french75Spec,
                          buildOrder: french75Build,
-                         tags: french75Tags)
+                         tags: french75Tags,
+                         variation: .french75)
 
 var french75Spec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                      CocktailIngredient(.syrups(.simple), value: 0.75),

@@ -14,7 +14,8 @@ var oldPalWnG  =  Cocktail(cocktailName: "Old Pal(W&G Version)",
                            author: williamsAndGraham,
                            spec: oldPalSpec,
                            buildOrder: nil,
-                           tags: oldPalTags)
+                           tags: oldPalTags,
+                           variation: .oldPal)
 
 var oldPalSpecWnG = [CocktailIngredient(.whiskies(.pendletonRye), value: 1),
                      CocktailIngredient(.fortifiedWines(.dolinDry), value: 1),

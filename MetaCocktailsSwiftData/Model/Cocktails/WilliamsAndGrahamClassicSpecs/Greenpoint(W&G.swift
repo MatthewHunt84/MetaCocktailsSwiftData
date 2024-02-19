@@ -12,7 +12,8 @@ var greenpointWnG = Cocktail(cocktailName: "Greenpoint(W&G Version)",
                              garnish: [.orangePeel],
                              author:williamsAndGraham,
                              spec: greenpointSpecWnG,
-                             tags: greenpointTagsWnG)
+                             tags: greenpointTagsWnG,
+                             variation: .greenpoint)
 
 var greenpointSpecWnG     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dash),
                               CocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dash),

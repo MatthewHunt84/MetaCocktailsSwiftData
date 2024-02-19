@@ -12,7 +12,8 @@ var algonquin  = Cocktail(cocktailName: "Algonquin(1935 version)",
                           garnish: [.noGarnish],
                           author: Author(person: "G. Selmer Foughner", place: "Along The Wine Trail: an anthology of wine and spirits", year: "1935"),
                           spec: algonquinSpec,
-                          tags: algonquinTags)
+                          tags: algonquinTags,
+                          variation: .algonquin)
 
 var algonquinSpec  = [CocktailIngredient(.juices(.pineappleJuice), value: 1),
                       CocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 1),

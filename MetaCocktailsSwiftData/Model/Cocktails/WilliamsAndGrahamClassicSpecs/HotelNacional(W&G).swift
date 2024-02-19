@@ -9,18 +9,19 @@ import Foundation
 
 
 var hotelNacionalWnG = Cocktail(cocktailName: "Hotel Nacional(W&G Version)",
-                             glasswareType: .stemmedGlassware,
-                             garnish: [.limeWheel],
-                             ice: nil,
-                             author: williamsAndGraham,
-                             spec: hotelNacionalSpecWnG,
-                             tags: hotelNacionalTagsWnG)
+                                glasswareType: .stemmedGlassware,
+                                garnish: [.limeWheel],
+                                ice: nil,
+                                author: williamsAndGraham,
+                                spec: hotelNacionalSpecWnG,
+                                tags: hotelNacionalTagsWnG,
+                                variation: .hotelNacional)
 
 var hotelNacionalSpecWnG = [CocktailIngredient(.syrups(.simple), value: 0.25),
-                         CocktailIngredient(.juices(.lime), value: 0.5),
-                         CocktailIngredient(.juices(.pineappleJuice), value: 1),
-                         CocktailIngredient(.liqueurs(.giffardAbricot), value: 0.25),
-                         CocktailIngredient(.rums(.plantation3Star), value: 2) ]
+                            CocktailIngredient(.juices(.lime), value: 0.5),
+                            CocktailIngredient(.juices(.pineappleJuice), value: 1),
+                            CocktailIngredient(.liqueurs(.giffardAbricot), value: 0.25),
+                            CocktailIngredient(.rums(.plantation3Star), value: 2) ]
 
 var hotelNacionalTagsWnG = Tags(profiles: [.fruity, .refreshing, .citrusy, .light, .tropical],
-                             styles: [.shaken, .sour])
+                                styles: [.shaken, .sour])

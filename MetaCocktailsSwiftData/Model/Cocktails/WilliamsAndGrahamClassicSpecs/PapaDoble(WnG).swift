@@ -7,12 +7,13 @@
 
 import Foundation
 
-let papaDoble = Cocktail(cocktailName: "Hemingway Daiquiri(W&G Version)",
+let papaDobleWnG = Cocktail(cocktailName: "Hemingway Daiquiri(W&G Version)",
                          glasswareType: .coupe,
                          garnish: [.limeWheel],
                          author: williamsAndGraham,
                          spec: papaDobleSpec,
-                         tags: papaDobleTags)
+                         tags: papaDobleTags,
+                         variation: .daiquiri)
 
 var papaDobleSpec: [CocktailIngredient] = [CocktailIngredient(.syrups(.simple), value: 0.25),
                                            CocktailIngredient(.juices(.lime), value: 0.5),

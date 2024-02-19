@@ -13,7 +13,8 @@ var oaxacaOldFashioned = Cocktail(cocktailName: "Oaxaca Old Fashioned",
                                   ice: .bigRock,
                                   author:Author(person: AuthorNames.philWard.rawValue, place: AuthorPlaces.deathAndCo.rawValue, year: "2007"),
                                   spec: oaxacaOldFashionedSpec,
-                                  tags: oaxacaOldFashionedTags)
+                                  tags: oaxacaOldFashionedTags,
+                                  variation: .oaxacaOldFashioned)
 
 var oaxacaOldFashionedSpec  = [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
                                CocktailIngredient(.syrups(.agaveNectar), value: 1, unit: .teaspoon),

@@ -14,7 +14,8 @@ var sloeGinFizzWnG  = Cocktail(cocktailName: "Sloe Gin Fizz(W&G version)",
                                author: nil,
                                spec: sloeGinFizzSpecWnG,
                                buildOrder: sloeGinFizzBuildWnG,
-                               tags: sloeGinFizzTagsWnG)
+                               tags: sloeGinFizzTagsWnG,
+                               variation: .sloeGinFizz)
 
 var sloeGinFizzSpecWnG  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                            CocktailIngredient(.syrups(.simple), value: 0.75),

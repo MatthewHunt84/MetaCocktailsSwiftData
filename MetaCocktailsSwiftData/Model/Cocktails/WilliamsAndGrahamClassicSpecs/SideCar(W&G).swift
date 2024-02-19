@@ -8,16 +8,17 @@
 import Foundation
 
 var sidecarWnG = Cocktail(cocktailName: "Sidecar(W&G Version)",
-                       glasswareType: .sugarRimStemmed,
-                       ice: nil,
-                       spec: sidecarSpecWnG,
-                       buildOrder: nil,
-                       tags: sidecarTagsWnG)
+                          glasswareType: .sugarRimStemmed,
+                          ice: nil,
+                          spec: sidecarSpecWnG,
+                          buildOrder: nil,
+                          tags: sidecarTagsWnG,
+                          variation: .sidecar)
 
 var sidecarSpecWnG  = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                    CocktailIngredient(.liqueurs(.dryCuracao), value: 0.75),
-                    CocktailIngredient(.brandies(.pFAmber), value: 2)]
+                       CocktailIngredient(.liqueurs(.dryCuracao), value: 0.75),
+                       CocktailIngredient(.brandies(.pFAmber), value: 2)]
 
 var sidecarTagsWnG = Tags(profiles: [.citrusy, .fruity, .tart, .light],
-                       styles: [.sour, .shaken])
+                          styles: [.sour, .shaken])
 

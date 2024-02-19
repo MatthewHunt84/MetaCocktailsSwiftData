@@ -7,12 +7,13 @@
 
 import Foundation
 
-var rememberTheMaineOG = Cocktail(cocktailName: "Remember The Maine(OG)",
-                                  glasswareType: .coupe,
-                                  garnish: [.maraschinoCherry],
-                                  author: charlesBaker,
-                                  spec: rememberTheMaineOGSpec,
-                                  tags: rememberTheMaineOGTags)
+var rememberTheMaine = Cocktail(cocktailName: "Remember The Maine",
+                                glasswareType: .coupe,
+                                garnish: [.maraschinoCherry],
+                                author: charlesBaker,
+                                spec: rememberTheMaineOGSpec,
+                                tags: rememberTheMaineOGTags,
+                                variation: .rememberTheMaine)
 
 var rememberTheMaineOGSpec     =  [CocktailIngredient(.otherAlcohol(.absinthe), value: 0.5, unit: .teaspoon),
                                    CocktailIngredient(.liqueurs(.cherryHeering), value: 2, unit: .teaspoons),

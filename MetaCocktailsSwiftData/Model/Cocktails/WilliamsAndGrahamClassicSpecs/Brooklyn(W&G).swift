@@ -12,7 +12,8 @@ var brooklynWnG = Cocktail(cocktailName: "Brooklyn Cocktail(W&G Version)",
                            garnish: [.lemonExpression],
                            author: williamsAndGraham,
                            spec: brooklynWnGSpec,
-                           tags: brooklynTags)
+                           tags: brooklynTags,
+                           variation: .brooklyn)
 
 var brooklynWnGSpec     =  [CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.25),
                             CocktailIngredient(.amari(.chinaChina), value: 0.25),

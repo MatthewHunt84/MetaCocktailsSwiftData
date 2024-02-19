@@ -14,7 +14,8 @@ var ginFizzWnG  = Cocktail(cocktailName: "Gin Fizz(W&G Version)",
                            author: williamsAndGraham,
                            spec: ginFizzSpecWnG,
                            buildOrder: ginFizzBuild,
-                           tags: ginFizzTags)
+                           tags: ginFizzTags,
+                           variation: .ginFizz)
 
 var ginFizzSpecWnG  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                        CocktailIngredient(.syrups(.simple), value: 0.75),

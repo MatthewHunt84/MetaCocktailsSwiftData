@@ -14,7 +14,8 @@ var morningGloryFizzWnG = Cocktail(cocktailName: "Morning Glory Fizz(W&G Version
                                    author: williamsAndGraham,
                                    spec: morningGloryFizzSpec,
                                    buildOrder: morningGloryFizzBuild,
-                                   tags: morningGloryFizzTags)
+                                   tags: morningGloryFizzTags,
+                                   variation: .morningGloryFizz)
 
 var morningGloryFizzSpecWnG = [CocktailIngredient(.soda(.sodaWater), value: 2),
                                CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),

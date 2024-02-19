@@ -15,7 +15,8 @@ var fancyFree = Cocktail(cocktailName: "Fancy Free",
                                         place: AuthorPlaces.crosbyGaigeCocktailGuide.rawValue,
                                         year: "1940"),
                          spec: fancyFreeSpec,
-                         tags: fancyFreeTags)
+                         tags: fancyFreeTags,
+                         variation: .fancyFree)
 
 var fancyFreeSpec     =  [CocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dash),
                           CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),

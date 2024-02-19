@@ -12,7 +12,8 @@ var brandyCrusta = Cocktail(cocktailName: "Brandy Crusta",
                             author: jerryThomas,
                             spec: brandyCrustaSpec,
                             buildOrder: brandyCrustaBuild,
-                            tags: brandyCrustaTags)
+                            tags: brandyCrustaTags,
+                            variation: .brandyCrusta)
 
 var brandyCrustaSpec    = [CocktailIngredient(.juices(.lemon), value: 1, unit: .dash),
                            CocktailIngredient(.liqueurs(.orangeCuracao), value: 2, unit: .dashes),

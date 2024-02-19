@@ -15,7 +15,8 @@ var fogCutter = Cocktail(cocktailName: "Fog Cutter",
                          author: Author(person: AuthorNames.traderVic.rawValue,
                                         year: "1940"),
                          spec: fogCutterSpec,
-                         tags: fogCutterTags)
+                         tags: fogCutterTags,
+                         variation: .fogCutter)
 
 
 let fogCutterSpec     = [CocktailIngredient(.juices(.lemon), value: 2),

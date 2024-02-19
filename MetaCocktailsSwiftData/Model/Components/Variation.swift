@@ -19,13 +19,19 @@ enum Variation: Int, Codable {
     case bamboo
     case bijou
     case bloodAndSand
+    case bloodyMary
+    case boulevardier
+    case bramble
     case brandyCrusta
     case brownDerby
     case brooklyn
     case cloverClub
+    case corpseReviver
+    case daiquiri
     case elPresidente
     case fairAndWarmer
     case fancyFree
+    case featheredHatFlip
     case fogCutter
     case french75
     case ginFizz
@@ -33,10 +39,10 @@ enum Variation: Int, Codable {
     case greenpoint
     case hankyPanky
     case harveyWallbanger
-    case hemmingWayDaquiri
     case honeymoon
     case hollandHouse
     case hotelNacional
+    case hotToddy
     case hurricane
     case irishCoffee
     case japanese
@@ -54,8 +60,10 @@ enum Variation: Int, Codable {
     case mexicanFiringSquad
     case mintJulep
     case modernCocktail
+    case mojito
     case morningGloryFizz
     case newYorkSour
+    case oaxacaOldFashioned
     case oldFashioned
     case oldCuban
     case oldPal
@@ -67,8 +75,8 @@ enum Variation: Int, Codable {
     case saturn
     case sazerac
     case scofflaw
-    case sherryCobler
-    case sideCar
+    case sherryCobbler
+    case sidecar
     case singaporeSling
     case sloeGinFizz
     case tiPunch

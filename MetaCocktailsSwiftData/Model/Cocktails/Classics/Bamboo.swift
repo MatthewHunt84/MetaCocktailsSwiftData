@@ -15,7 +15,8 @@ var bamboo = Cocktail(cocktailName: "Bamboo",
                       author: Author(person: "Louis Eppinger"),
                       spec: bambooSpec,
                       buildOrder: nil,
-                      tags: bambooTags)
+                      tags: bambooTags,
+                      variation: .bamboo)
 
 var bambooSpec = [CocktailIngredient(.fortifiedWines(.amontillado), value: 1.5),
                   CocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 1.5),

@@ -13,7 +13,8 @@ var modernCocktailWnG = Cocktail(cocktailName: "Modern Cocktail(WnG Version)",
                                  ice: nil,
                                  author: williamsAndGraham,
                                  spec: modernCocktailSpecWnG,
-                                 tags: modernCocktailTagsWnG)
+                                 tags: modernCocktailTagsWnG,
+                                 variation: .modernCocktail)
 
 var modernCocktailSpecWnG = [CocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dash),
                              CocktailIngredient(.juices(.lemon), value: 0.75),

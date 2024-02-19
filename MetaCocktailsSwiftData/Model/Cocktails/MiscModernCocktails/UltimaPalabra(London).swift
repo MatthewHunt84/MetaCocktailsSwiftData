@@ -13,7 +13,8 @@ var ultimaPalabraLondon = Cocktail(cocktailName: "Ultima Palabra(London Version)
                                    ice: nil,
                                    author: Author(person: "Simone de Luca", place: "High Road House Club, London"),
                                    spec: ultimaPalabraLondonSpec,
-                                   tags: ultimaPalabraLondonTags)
+                                   tags: ultimaPalabraLondonTags,
+                                   variation: .ultimaPalabra)
 
 var ultimaPalabraLondonSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
                                 CocktailIngredient(.juices(.pineappleJuice), value: 0.75),

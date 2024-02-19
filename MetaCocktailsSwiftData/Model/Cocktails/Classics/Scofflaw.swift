@@ -14,7 +14,8 @@ var scofflaw = Cocktail(cocktailName: "Scofflaw(1924)",
                         author: Author(person: "Maxim's Bar", place: "Paris", year: "1924"),
                         spec: scofflawSpec,
                         buildOrder: nil,
-                        tags: scofflawTags)
+                        tags: scofflawTags,
+                        variation: .scofflaw)
 
 var scofflawSpec  = [CocktailIngredient(.juices(.lemon), value: 1, unit: .dash),
                      CocktailIngredient(.syrups(.grenadine), value: 1, unit: .dash),

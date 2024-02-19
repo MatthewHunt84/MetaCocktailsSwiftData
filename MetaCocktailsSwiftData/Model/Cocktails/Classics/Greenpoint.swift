@@ -14,7 +14,8 @@ var greenpoint = Cocktail(cocktailName: "Greenpoint",
                                         place: AuthorPlaces.milkAndHoney.rawValue,
                                         year: "2006"),
                           spec: greenpointSpec,
-                          tags: greenpointTags)
+                          tags: greenpointTags,
+                          variation: .greenpoint)
 
 var greenpointSpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),
                            CocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dash),

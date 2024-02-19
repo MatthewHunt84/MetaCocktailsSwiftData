@@ -12,7 +12,8 @@ var robRoyWnG = Cocktail(cocktailName: "Rob Roy(W&G Version)",
                          garnish: [.maraschinoCherry, .orangeExpress],
                          author: williamsAndGraham,
                          spec: robRoySpecWnG,
-                         tags: robRoyTagsWnG)
+                         tags: robRoyTagsWnG,
+                         variation: .robRoy)
 
 var robRoySpecWnG     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
                           CocktailIngredient(.fortifiedWines(.cocchiDeTorino), value: 1),

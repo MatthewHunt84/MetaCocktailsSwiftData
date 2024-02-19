@@ -14,7 +14,8 @@ var french75Cognac  = Cocktail(cocktailName: "French 75 (Arnaud's French 75 Vers
                                author: nil,
                                spec: french75CognacSpec,
                                buildOrder: french75CognacBuild,
-                               tags: french75CognacTags)
+                               tags: french75CognacTags,
+                               variation: .french75)
 
 var french75CognacSpec  = [CocktailIngredient(.juices(.lemon), value: 0.25),
                            CocktailIngredient(.syrups(.simple), value: 0.25),

@@ -13,7 +13,8 @@ let hemingwayDaiquiri = Cocktail(cocktailName: "Hemingway Daiquiri",
                                  author:Author(person: AuthorNames.constante.rawValue, place: AuthorPlaces.laFloridita.rawValue, year: "1938"),
                                  spec: hemingwayDaiquiriSpec,
                                  buildOrder: hemingwayBuild,
-                                 tags: hemingwayDaiquiriTags)
+                                 tags: hemingwayDaiquiriTags,
+                                 variation: .daiquiri)
 
 var hemingwayDaiquiriSpec: [CocktailIngredient] = [CocktailIngredient(.juices(.lime), value: 0.5),
                                                    CocktailIngredient(.juices(.grapefruit), value: 0.25),

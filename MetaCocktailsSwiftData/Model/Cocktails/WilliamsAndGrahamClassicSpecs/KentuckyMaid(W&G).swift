@@ -14,7 +14,8 @@ var kentuckyMaidWnG = Cocktail(cocktailName: "Kentucky Maid(W&G Version)",
                                ice: .koldDraft,
                                author: williamsAndGraham,
                                spec: kentuckyMaidSpecWnG,
-                               tags: kentuckyMaidTags)
+                               tags: kentuckyMaidTags,
+                               variation: .kentuckyMaid)
 
 let kentuckyMaidSpecWnG : [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
                                                   CocktailIngredient(.juices(.lime), value: 1),

@@ -14,7 +14,8 @@ var hurricane = Cocktail(cocktailName: "Hurricane",
                          ice: .pebbleIce,
                          author: Author(person: "Louis Culligan", place: "Pat O'Brian's, New Orleans", year: "1939" ),
                          spec: hurricaneSpec,
-                         tags: hurricaneTags)
+                         tags: hurricaneTags,
+                         variation: .hurricane)
 
 let hurricaneSpec: [CocktailIngredient] =  [CocktailIngredient(.juices(.lemon), value: 2),
                                             CocktailIngredient(.syrups(.passionfruitSyrup), value: 2),

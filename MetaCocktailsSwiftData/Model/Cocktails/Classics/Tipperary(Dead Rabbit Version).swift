@@ -12,7 +12,8 @@ var tipperaryDR = Cocktail(cocktailName: "Tipperary(Dead Rabbit Version)",
                            garnish: [.orangePeel],
                            author: Author(person: "Gary McGarry", place: "The Dead Rabbit, New York", year: "2020"),
                            spec: tipperarySpecDR,
-                           tags: tipperaryTagsDR)
+                           tags: tipperaryTagsDR,
+                           variation: .tipperary)
 
 var tipperarySpecDR     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 2),
                             CocktailIngredient(.liqueurs(.greenChartreuse), value: 0.5),

@@ -16,7 +16,8 @@ var featheredHatFlipNo1 = Cocktail(cocktailName: "Feathered Hat Flip No. 1",
                                                   year: "2018"),
                                    spec: featheredHatFlipSpec,
                                    buildOrder: featheredHatFlipBuild,
-                                   tags: featheredHatFlipTags)
+                                   tags: featheredHatFlipTags,
+                                   variation: .featheredHatFlip)
 
 var featheredHatFlipSpec  = [CocktailIngredient(.bitters(.angosturaBitters), value: 1,unit: .floatedDashes),
                              CocktailIngredient(.otherAlcohol(.leftHandMilkStout), value: 0.5),

@@ -1,5 +1,5 @@
 //
-//  LastWork(W&G).swift
+//  LastWord(W&G).swift
 //  MetaCocktailsSwiftData
 //
 //  Created by James Menkal on 1/29/24.
@@ -13,7 +13,8 @@ var lastWordWnG = Cocktail(cocktailName: "Last Word(W&G Version)",
                            author: williamsAndGraham,
                            spec: lastWordSpecWnG,
                            buildOrder: nil,
-                           tags: lastWordTags)
+                           tags: lastWordTags,
+                           variation: .lastWord)
 
 var lastWordSpecWnG  = [CocktailIngredient(.juices(.lime), value: 0.75),
                         CocktailIngredient(.syrups(.simple), value: 0.25),

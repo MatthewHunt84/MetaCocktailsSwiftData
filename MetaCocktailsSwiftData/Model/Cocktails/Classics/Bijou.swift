@@ -12,7 +12,8 @@ var bijou = Cocktail(cocktailName: "Bijou",
                      garnish: [.lemonPeel],
                      author:Author(person: AuthorNames.harryJohnson.rawValue, place: AuthorPlaces.harryJohnsonManual.rawValue, year: "1900"),
                      spec: bijouSpec,
-                     tags: bijouTags)
+                     tags: bijouTags,
+                     variation: .bijou)
 
 var bijouSpec     =  [CocktailIngredient(.bitters(.orangeBitters), value: 2, unit: .dashes),
                       CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),

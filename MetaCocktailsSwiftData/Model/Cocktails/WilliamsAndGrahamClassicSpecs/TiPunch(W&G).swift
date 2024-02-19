@@ -14,7 +14,8 @@ var tiPunchWnG = Cocktail(cocktailName: "Ti' Punch(W&G version)",
                           author: Author(place: "Somewhere in Martinique"),
                           spec: tiPunchSpecWnG,
                           buildOrder: tiPunchBuildOrderWnG,
-                          tags: tiPunchTagsWnG)
+                          tags: tiPunchTagsWnG,
+                          variation: .tiPunch)
 
 var tiPunchSpecWnG  =  [CocktailIngredient(.syrups(.simple), value: 1, unit: .barSpoon),
                         CocktailIngredient(.rums(.clementBleue), value: 2)]

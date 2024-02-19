@@ -13,7 +13,8 @@ var painKillerWnG  = Cocktail(cocktailName: "Pain Killer(W&G Version)",
                               ice: .crackedIce,
                               author: williamsAndGraham,
                               spec: painKillerWnGSpec,
-                              tags: painKillerWnGTags)
+                              tags: painKillerWnGTags,
+                              variation: .painKiller)
 
 var painKillerWnGSpec  = [CocktailIngredient(.juices(.orange), value: 0.75),
                           CocktailIngredient(.syrups(.cocoLopez), value: 0.75),

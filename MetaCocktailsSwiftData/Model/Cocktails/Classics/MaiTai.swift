@@ -14,7 +14,8 @@ var maiTai  = Cocktail(cocktailName: "Mai Tai",
                        author:Author(person: AuthorNames.traderVic.rawValue,
                                      year: "1944"),
                        spec: maiTaiSpec,
-                       tags: maiTaiTags)
+                       tags: maiTaiTags,
+                       variation: .maiTai)
 
 var maiTaiSpec    = [CocktailIngredient(.juices(.lime), value: 1),
                      CocktailIngredient(.syrups(.richDem), value: 1, unit: .teaspoon),

@@ -1,5 +1,5 @@
 //
-//  HarvyWallbanger.swift
+//  HarveyWallbanger.swift
 //  MetaCocktailsSwiftData
 //
 //  Created by James Menkal on 1/27/24.
@@ -16,7 +16,8 @@ var harveyWallbanger = Cocktail(cocktailName: "Harvey Wallbanger",
                                               year: "1969"),
                                 spec: harveyWallbangerSpec,
                                 buildOrder: harveyWallbangerBuild,
-                                tags: harveyWallbangerTags)
+                                tags: harveyWallbangerTags,
+                                variation: .harveyWallbanger)
 
 var harveyWallbangerSpec     =  [CocktailIngredient(.liqueurs(.galliano), value: 0.75, unit: .float),
                                 CocktailIngredient(.juices(.orange), value: 2),

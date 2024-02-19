@@ -11,7 +11,8 @@ var corpseReviver1 = Cocktail(cocktailName: "Corpse Reviver No.1",
                               glasswareType: .stemmedGlassware,
                               author:Author(person: AuthorNames.harryCraddock.rawValue, place: AuthorPlaces.savoy.rawValue, year: "1930"),
                               spec: corpseReviver1Spec,
-                              tags: corpseReviver1Tags)
+                              tags: corpseReviver1Tags,
+                              variation: .corpseReviver)
 
 var corpseReviver1Spec     =  [CocktailIngredient(.fortifiedWines(.dolinRouge), value: 1),
                                CocktailIngredient(.brandies(.pFAmber), value: 1),

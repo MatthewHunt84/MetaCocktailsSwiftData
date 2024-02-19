@@ -9,16 +9,17 @@ import Foundation
 
 
 var tiPunch = Cocktail(cocktailName: "Ti' Punch",
-                      glasswareType: .doubleOld,
+                       glasswareType: .doubleOld,
                        garnish: [.limePeel],
-                      ice: .bigRock,
-                      author:Author(place: "Somewhere in Martinique"),
-                      spec: tiPunchSpec,
-                      buildOrder: tiPunchBuildOrder,
-                      tags: tiPunchTags)
+                       ice: .bigRock,
+                       author:Author(place: "Somewhere in Martinique"),
+                       spec: tiPunchSpec,
+                       buildOrder: tiPunchBuildOrder,
+                       tags: tiPunchTags,
+                       variation: .tiPunch)
 
 var tiPunchSpec  =  [CocktailIngredient(.syrups(.richDem), value: 2, unit: .teaspoon),
-                    CocktailIngredient(.rums(.rumWhiteAgricole), value: 2)]
+                     CocktailIngredient(.rums(.rumWhiteAgricole), value: 2)]
 
 var tiPunchTags = Tags( profiles: [.sweet, .spiritForward, .funky],
                         styles: [.oldFashioned, .stirred])

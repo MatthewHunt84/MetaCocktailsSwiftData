@@ -13,7 +13,8 @@ var cloverClubWnG = Cocktail(cocktailName: "Clover Club(W&G Version)",
                              author: williamsAndGraham,
                              spec: cloverClubSpecWnG,
                              buildOrder: cloverClubBuildWnG,
-                             tags: cloverClubTags)
+                             tags: cloverClubTags,
+                             variation: .cloverClub)
 
 var cloverClubSpecWnG  = [CocktailIngredient(.fruit(.raspberries), value: 6, unit: .whole),
                           CocktailIngredient(.juices(.lemon), value: 0.5),

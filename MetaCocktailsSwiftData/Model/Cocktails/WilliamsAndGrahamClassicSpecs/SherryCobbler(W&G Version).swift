@@ -14,7 +14,8 @@ var sherryCobblerWnG = Cocktail(cocktailName: "Sherry Cobbler(W&G Version)",
                                 ice: .pebbleIce,
                                 spec: sherryCobblerWnGSpec,
                                 buildOrder: sherryCobblerWnGBuild,
-                                tags: sherryCobblerWnGTags)
+                                tags: sherryCobblerWnGTags,
+                                variation: .sherryCobbler)
 
 let sherryCobblerWnGSpec: [CocktailIngredient] = [CocktailIngredient(.fruit(.seasonalBerries), value: 5, unit: .muddled),
                                                   CocktailIngredient(.fruit(.orangeMoons), value: 2, unit: .muddled),

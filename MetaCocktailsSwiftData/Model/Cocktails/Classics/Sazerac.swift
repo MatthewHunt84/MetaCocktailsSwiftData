@@ -14,7 +14,8 @@ var sazerac = Cocktail(cocktailName: "Sazerac",
                        author:Author(place: "Somewhere in New Orleans in", year: "1800's"),
                        spec: sazeracSpec,
                        buildOrder: sazeracBuild,
-                       tags: sazeracTags)
+                       tags: sazeracTags,
+                       variation: .sazerac)
 
 var sazeracSpec  = [CocktailIngredient(.syrups(.richDem), value: 2, unit: .teaspoon),
                     CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 2),
