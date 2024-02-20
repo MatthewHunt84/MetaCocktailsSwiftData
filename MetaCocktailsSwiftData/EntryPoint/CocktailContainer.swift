@@ -21,11 +21,11 @@ actor CocktailContainer {
             if shouldPreload {
                 print("🕔🕔🕔 PRELOADING COCKTAILS FOR FIRST TIME LAUNCH 🕔🕔🕔")
                 
-                container.mainContext.insert(aloeForThatBurn)
+//                container.mainContext.insert(aloeForThatBurn)
 
-//                let _ = Preload.allCases.map { $0.cocktails }
-//                                        .flatMap { $0 }
-//                                        .map { container.mainContext.insert($0) }
+                let _ = Preload.allCases.map { $0.cocktails }
+                                        .flatMap { $0 }
+                                        .map { container.mainContext.insert($0) }
 
                 shouldPreload = false
             } else {
