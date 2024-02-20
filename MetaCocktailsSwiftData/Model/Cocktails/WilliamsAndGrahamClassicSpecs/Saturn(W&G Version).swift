@@ -12,8 +12,9 @@ var saturnWnG = Cocktail(cocktailName: "Saturn(W&G Version)",
                          garnish: [.pineappleFrond, .lemonWheel],
                          ice: .pebbleIce,
                          author: williamsAndGraham,
-                         spec: saturnSpec,
-                         tags: saturnTags,
+                         spec: saturnSpecWnG,
+                         buildOrder: saturnBuildOrder,
+                         tags: saturnTagsWnG,
                          variation: .saturn)
 
 var saturnSpecWnG  =  [CocktailIngredient(.juices(.lemon), value: 0.75),
@@ -21,3 +22,6 @@ var saturnSpecWnG  =  [CocktailIngredient(.juices(.lemon), value: 0.75),
                        CocktailIngredient(.syrups(.orgeat), value: 0.25),
                        CocktailIngredient(.liqueurs(.velvetFalernum), value: 0.25),
                        CocktailIngredient(.gins(.fordsGin), value: 1.5)]
+
+var saturnTagsWnG = Tags( profiles: [.citrusy, .fruity, .tropical, .sweet, .refreshing, .floral, .light],
+                       styles: [.tiki, .shaken, .sour])
