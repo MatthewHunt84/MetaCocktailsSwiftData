@@ -17,7 +17,6 @@ class Cocktail: Equatable, Hashable {
         hasher.combine(cocktailName)
     }
     
-    
     var id = UUID()
     @Attribute(.unique) var cocktailName: String 
     var imageAsset: CocktailImage?
