@@ -356,6 +356,7 @@
 		4DBFF85B2B60AFE60011B5B1 /* Carajillo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF85A2B60AFE60011B5B1 /* Carajillo.swift */; };
 		4DD171CD2B843C1C00EA8BD6 /* OldRandomCocktailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD171CC2B843C1C00EA8BD6 /* OldRandomCocktailButton.swift */; };
 		4DDC116C2B857EF0009EF5C4 /* SwipeRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDC116B2B857EF0009EF5C4 /* SwipeRecipeView.swift */; };
+		4DDC116E2B861576009EF5C4 /* InlineDisclosureGroupStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDC116D2B861576009EF5C4 /* InlineDisclosureGroupStyle.swift */; };
 		4DE9AC142B7867F300A39D03 /* BatchedCocktail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE9AC132B7867F300A39D03 /* BatchedCocktail.swift */; };
 		4DF408C22B60D0F100EF9A6E /* Caucasian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF408C12B60D0F100EF9A6E /* Caucasian.swift */; };
 		4DF408C62B60D4A100EF9A6E /* ChampsElysees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF408C52B60D4A100EF9A6E /* ChampsElysees.swift */; };
@@ -756,6 +757,7 @@
 		4DBFF85A2B60AFE60011B5B1 /* Carajillo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carajillo.swift; sourceTree = "<group>"; };
 		4DD171CC2B843C1C00EA8BD6 /* OldRandomCocktailButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldRandomCocktailButton.swift; sourceTree = "<group>"; };
 		4DDC116B2B857EF0009EF5C4 /* SwipeRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeRecipeView.swift; sourceTree = "<group>"; };
+		4DDC116D2B861576009EF5C4 /* InlineDisclosureGroupStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineDisclosureGroupStyle.swift; sourceTree = "<group>"; };
 		4DE9AC132B7867F300A39D03 /* BatchedCocktail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchedCocktail.swift; sourceTree = "<group>"; };
 		4DF408C12B60D0F100EF9A6E /* Caucasian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caucasian.swift; sourceTree = "<group>"; };
 		4DF408C52B60D4A100EF9A6E /* ChampsElysees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampsElysees.swift; sourceTree = "<group>"; };
@@ -1102,6 +1104,7 @@
 			children = (
 				1AC386A32AAABED00064F52A /* CocktailListView.swift */,
 				1AC386A42AAABED00064F52A /* CocktailListViewModel.swift */,
+				4DDC116D2B861576009EF5C4 /* InlineDisclosureGroupStyle.swift */,
 			);
 			path = "Cocktail List View";
 			sourceTree = "<group>";
@@ -1678,6 +1681,7 @@
 				F4C6A8EC2AAFFE5700BB0AD0 /* Tags.swift in Sources */,
 				4D088FCA2B62E3640047B056 /* CocktailMenuViewModel.swift in Sources */,
 				4DBBA46E2B67A0B700179B8F /* KentuckyMaid.swift in Sources */,
+				4DDC116E2B861576009EF5C4 /* InlineDisclosureGroupStyle.swift in Sources */,
 				4DBBA4582B675ECD00179B8F /* MoergenthalersToddy.swift in Sources */,
 				4DA5680A2B6E0FE6003F6F04 /* CorporateJargon.swift in Sources */,
 				4DA5676C2B6C763D003F6F04 /* Algonquin(1935).swift in Sources */,
