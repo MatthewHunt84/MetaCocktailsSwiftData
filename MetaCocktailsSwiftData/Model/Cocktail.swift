@@ -17,7 +17,6 @@ class Cocktail: Equatable, Hashable {
         hasher.combine(cocktailName)
     }
     
-    
     var id = UUID()
     @Attribute(.unique) var cocktailName: String 
     var imageAsset: CocktailImage?
@@ -27,8 +26,8 @@ class Cocktail: Equatable, Hashable {
     var author: Author?
     var spec: [CocktailIngredient]
     var buildOrder: Build?
-    var tags: Tags
-    var compiledTags: Tags
+    @Transient var tags: Tags = Tags()
+    @Transient var compiledTags: Tags = Tags()
     var variation: Variation?
     var collection: CocktailCollection?
   
