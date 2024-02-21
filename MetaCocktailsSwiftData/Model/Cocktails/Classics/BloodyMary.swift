@@ -8,12 +8,13 @@
 import Foundation
 
 var bloodyMary  = Cocktail(cocktailName: "Bloody Mary",
-                            glasswareType: .collins,
-                            garnish: [.garnishAtWill],
-                            ice: .koldDraft,
-                            spec: bloodyMarrySpec,
-                            buildOrder: bloodyMarryBuild,
-                            tags: bloodyMarryTags)
+                           glasswareType: .collins,
+                           garnish: [.garnishAtWill],
+                           ice: .koldDraft,
+                           spec: bloodyMarrySpec,
+                           buildOrder: bloodyMarryBuild,
+                           tags: bloodyMarryTags,
+                           variation: .bloodyMary)
 
 var bloodyMarrySpec  = [CocktailIngredient(.otherNonAlc(.tomatoJuice), value: 4.5),
                         CocktailIngredient(.otherNonAlc(.worcestershire), value: 3, unit: .dashes),

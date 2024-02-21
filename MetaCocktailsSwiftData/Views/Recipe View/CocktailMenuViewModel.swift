@@ -17,3 +17,27 @@ final class CocktailMenuViewModel: ObservableObject {
     }
 
 }
+
+struct NavigationLinkWithoutIndicator<Label: View, Destination: View>: View {
+    let label: () -> Label
+    let destination: () -> Destination
+
+    init(@ViewBuilder label: @escaping () -> Label,
+         @ViewBuilder destination: @escaping () -> Destination) {
+        self.label = label
+        self.destination = destination
+    }
+
+    var body: some View {
+        ZStack {
+            NavigationLink {
+                self.destination()
+            } label: {
+                EmptyView()
+            }
+            .opacity(0)
+            self.label()
+        }
+        
+    }
+}

@@ -112,7 +112,7 @@ final class CocktailListViewModel: ObservableObject {
         let classicCocktailsForBartenders: [String: [Cocktail]] =  [ "Adonis": [adonis],
                                                                      "Air Mail": [airMail, airMailWnG],
                                                                      "Alaska": [alaska, alaskaWnG],
-                                                                     "Algonquin":[algonquin, algonquinWnG],
+                                                                     "Algonquin": [algonquin, algonquinWnG],
                                                                      "Amaretto Sour": [amarettoSour, amarettoSourWnG],
                                                                      "Americano": [americano, americanoWnG],
                                                                      "Aperol Spritz": [aperolSpritz],
@@ -353,8 +353,7 @@ final class CocktailListViewModel: ObservableObject {
    func fetchRandomCocktail() -> Cocktail {
         return CocktailListViewModel.getGuestViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName}).randomElement()!
     }
-   
-    
+
     
     @ViewBuilder
     func getRandomCocktailView(for menuMode: Bool) -> some View {
