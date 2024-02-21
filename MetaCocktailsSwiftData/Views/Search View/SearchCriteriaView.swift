@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SearchCriteriaView: View {
 
-    @EnvironmentObject var viewModel: SearchCriteriaViewModel
+    @ObservedObject var viewModel = SearchCriteriaViewModel()
     @Binding var isShowingIngredientsList: Bool
     @State var selectedList: PreferenceType = .all
     @State var isShowingPreferences: Bool
@@ -61,6 +61,7 @@ struct SearchCriteriaView: View {
                         AdvancedCriteriaListView(selectedList: $selectedList, navigationTitle: selectedList.getTitle(), isShowingLikes: $isShowingPreferences)
                             .frame(width: geo.size.width, height: geo.size.height)
                         SearchButtonView()
+                            .environmentObject(viewModel)
                             .frame(width: geo.size.width, height: geo.size.height * 0.9, alignment: .bottomTrailing)
                             .offset(x: -40)
                     }
