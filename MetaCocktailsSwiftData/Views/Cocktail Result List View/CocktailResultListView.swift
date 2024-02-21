@@ -33,7 +33,7 @@ struct CocktailResultList: View {
                                                     SearchGuestRecipeView(viewModel: CocktailMenuViewModel(cocktail: cocktail))
                                                                      
                                                     } else {
-                                                    SearchBartenderRecipeView(viewModel: CocktailMenuViewModel(cocktail: cocktail))
+                                                    RecipeView(viewModel: CocktailMenuViewModel(cocktail: cocktail))
                                                 }
                                                 
                                             } label: {
@@ -54,7 +54,7 @@ struct CocktailResultList: View {
                                                 if viewModel.menuMode {
                                                     SearchGuestRecipeView(viewModel: CocktailMenuViewModel(cocktail: cocktail))
                                                 } else {
-                                                    SearchBartenderRecipeView(viewModel: CocktailMenuViewModel(cocktail: cocktail))
+                                                    RecipeView(viewModel: CocktailMenuViewModel(cocktail: cocktail))
                                                 }
                                             } label: {
                                                 HStack {

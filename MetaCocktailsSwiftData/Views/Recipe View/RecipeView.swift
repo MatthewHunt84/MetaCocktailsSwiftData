@@ -7,18 +7,27 @@
 
 import SwiftUI
 
-struct SearchBartenderRecipeView: View {
+struct RecipeView: View {
     //@EnvironmentObject var cBCViewModel: CBCViewModel
  
     var viewModel: CocktailMenuViewModel
     let recipeSpacing: CGFloat = 2
     var cocktailFrameSize = CGFloat(125)
-    
+    @Environment(\.dismiss) private var dismiss
     
     
     
     var body: some View {
         NavigationStack{
+            HStack{
+                Button{
+                    dismiss()
+                } label: {
+                    Image(systemName: "chevron.backward")
+                    Text("Back")
+                }
+                Spacer()
+            }
             GeometryReader{ geo in
                 ScrollView{
                     VStack{
@@ -216,7 +225,7 @@ struct AuthorView: View {
 struct RecipeIngredientsView_Previews: PreviewProvider {
    
     static var previews: some View {
-        SearchBartenderRecipeView(viewModel: CocktailMenuViewModel(cocktail: aFlightSouthOfTheBorder))
+        RecipeView(viewModel: CocktailMenuViewModel(cocktail: aFlightSouthOfTheBorder))
             
     }
 }

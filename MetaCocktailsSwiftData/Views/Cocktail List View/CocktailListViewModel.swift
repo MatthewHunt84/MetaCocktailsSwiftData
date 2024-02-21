@@ -21,8 +21,14 @@ final class CocktailListViewModel: ObservableObject {
     @Published var guestViewCocktails: [CocktailListCocktail] = getGuestViewCocktails()
     @Published var randomCocktail = oldFashioned
     @Published var isShowingWnGCocktailsOnly: Bool = false
+    @Published var currentVariation = "Placeholder"
+
    
-    
+    func changePlaceholder(for cocktail: Cocktail) {
+        if let variation = cocktail.variation {
+            currentVariation = variation.rawValue
+        }
+    }
     func filter86dCocktailsForBartenders() -> [Cocktail] {
         let startingCocktails = CocktailListViewModel.getBartenderViewCocktails().flatMap({$0.cocktailVariations})
         let theList = SearchCriteriaViewModel.get86ListNames()
@@ -347,6 +353,8 @@ final class CocktailListViewModel: ObservableObject {
    func fetchRandomCocktail() -> Cocktail {
         return CocktailListViewModel.getGuestViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName}).randomElement()!
     }
+   
+    
     
     @ViewBuilder
     func getRandomCocktailView(for menuMode: Bool) -> some View {
@@ -354,7 +362,7 @@ final class CocktailListViewModel: ObservableObject {
             SearchGuestRecipeView(viewModel: CocktailMenuViewModel(cocktail: randomCocktail))
              
         } else {
-            SearchBartenderRecipeView(viewModel: CocktailMenuViewModel(cocktail: randomCocktail))
+            RecipeView(viewModel: CocktailMenuViewModel(cocktail: randomCocktail))
              
                 
             
@@ -363,6 +371,8 @@ final class CocktailListViewModel: ObservableObject {
 }
 
 struct CocktailListCocktail: Identifiable {
+    
+    
     let id = UUID()
     let cocktailName: String
     let cocktailVariations: [Cocktail]
