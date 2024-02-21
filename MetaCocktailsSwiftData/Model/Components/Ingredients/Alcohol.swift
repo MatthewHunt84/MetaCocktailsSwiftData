@@ -861,7 +861,7 @@ enum FortifiedWine: String, Codable, CaseIterable {
 
 enum Wine: String, Codable, CaseIterable {
     case bourgogneAligote     = "Bourgogne Aligote (Chilled)"
-    case champagne            = "Champagne (with a high Dosage) (Chilled)"
+    case champagne            = "Champagne (Chilled)"
     case dryRedWine           = "Dry Red Wine"
     case junmeiSake           = "Junmei Sake"
     case prosecco             = "Prosecco (Chilled)"

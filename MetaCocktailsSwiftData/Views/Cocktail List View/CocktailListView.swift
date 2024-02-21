@@ -7,25 +7,27 @@
 
 import SwiftUI
 import SwiftData
+import UIKit
 
 struct CocktailListView: View {
     @EnvironmentObject var criteria: SearchCriteriaViewModel
     @StateObject var viewModel = CocktailListViewModel()
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
     @Environment(\.modelContext) private var modelContext
+    
  
-//    func selectedCocktailVariations(for cocktail: Cocktail) -> [Cocktail] {
-//        if let variation = cocktail.variation {
-//            let variationsWithSelectedCocktailFirst = cocktails.filter({$0.variation == variation}).sorted {
-//                $1.cocktailName == cocktail.cocktailName ? false :
-//                $0.cocktailName == cocktail.cocktailName ? true :
-//                $0.cocktailName < $1.cocktailName
-//            }
-//            return variationsWithSelectedCocktailFirst
-//        } else {
-//            return [cocktail]
-//        }
-//    }
+    func selectedCocktailVariations(for cocktail: Cocktail) -> [Cocktail] {
+        if let variation = cocktail.variation {
+            let variationsWithSelectedCocktailFirst = cocktails.filter({$0.variation == variation}).sorted {
+                $1.cocktailName == cocktail.cocktailName ? false :
+                $0.cocktailName == cocktail.cocktailName ? true :
+                $0.cocktailName < $1.cocktailName
+            }
+            return variationsWithSelectedCocktailFirst
+        } else {
+            return [cocktail]
+        }
+    }
 //    func selectedCocktailVariations(for cocktail: Cocktail) -> [Cocktail] {
 //        //viewModel.changePlaceholder(for: cocktail)
 //        if let variation = cocktail.variation {
@@ -98,28 +100,39 @@ struct CocktailListView: View {
                                                 Section{
                                                     ForEach(viewModel.bartenderViewCocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.id) { cocktail in
                                                         if cocktail.cocktailVariations.count == 1   {
-                                                            NavigationLink {
+                                                            NavigationLinkWithoutIndicator {
+                                                                HStack{
+                                                                    Text(cocktail.cocktailName)
+                                                                    Spacer()
+                                                                }
+                                                            } destination: {
                                                                 RecipeView(viewModel: CocktailMenuViewModel(cocktail: cocktail.cocktailVariations[0]))
                                                                     .navigationBarBackButtonHidden(true)
-                                                            } label: {
-                                                                Text(cocktail.cocktailName)
-                                                                
                                                             }
+                                                            
+                                                            
                                                         } else {
                                                             DisclosureGroup {
                                                                 ForEach(cocktail.cocktailVariations, id: \.cocktailName) { variationCocktail in
-                                                                    NavigationLink {
-                                                                        RecipeView(viewModel: CocktailMenuViewModel(cocktail: variationCocktail))
+                                                                    NavigationLinkWithoutIndicator {
+                                                                        HStack{
+                                                                            Text(variationCocktail.cocktailName)
+                                                                            Spacer()
+                                                                        }
+                                                                    } destination: {
+                                                                        SwipeRecipeView(variations: selectedCocktailVariations(for: variationCocktail))
                                                                             .navigationBarBackButtonHidden(true)
-                                                                    } label: {
-                                                                        Text(variationCocktail.cocktailName)
-                                                                        
+                                                                            
                                                                     }
+
                                                                 }
                                                             } label: {
                                                                 Text(cocktail.cocktailName)
-                                                                
                                                             }
+                                                            .disclosureGroupStyle(InlineDisclosureGroupStyle())
+                                                    
+                                            
+
                                                         }
                                                         
                                                     }
@@ -131,6 +144,7 @@ struct CocktailListView: View {
                                             }
                                         }
                                 }
+
                                 .listStyle(.plain)
                                 .frame(width: listGeo.size.width * 0.9, height: listGeo.size.height)
                                 VStack {
@@ -152,14 +166,10 @@ struct CocktailListView: View {
                         }
                     }
                 }
-                
             }
-
+            
         }
-        
     }
-    
-    
 }
 
 struct CocktailListView_Previews: PreviewProvider {
@@ -176,3 +186,36 @@ struct ScaleButtonStyle : ButtonStyle {
         
     }
 }
+
+
+struct InlineDisclosureGroupStyle: DisclosureGroupStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        HStack {
+            configuration.label
+            Image(systemName: configuration.isExpanded ? "chevron.down" : "chevron.right")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 12, height: 12)
+                .foregroundColor(.blue)
+            Spacer()
+        }
+        .contentShape(Rectangle()) // Make the entire HStack tappable
+        .onTapGesture {
+            // Toggle the expanded state when the HStack is tapped
+            withAnimation {
+                configuration.isExpanded.toggle()
+            }
+        }
+        // The content of the DisclosureGroup, conditionally displayed
+        if configuration.isExpanded {
+            
+            configuration.content
+                .padding(.leading) // Indent the content to align under the label
+                .transition(.opacity) // Animate the appearance/disappearance of the content
+        }
+    }
+}
+
+
+
+

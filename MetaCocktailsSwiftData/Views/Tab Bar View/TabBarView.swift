@@ -11,8 +11,8 @@ struct TabBarView: View {
     var body: some View {
 
         TabView {
-            BasicSearchView()
-                .tabItem { Label("Search", systemImage: "magnifyingglass.circle.fill") }
+//            BasicSearchView()
+//                .tabItem { Label("Search", systemImage: "magnifyingglass.circle.fill") }
 
             CocktailListView()
                 .tabItem { Label("A-Z", systemImage: "list.bullet") }
