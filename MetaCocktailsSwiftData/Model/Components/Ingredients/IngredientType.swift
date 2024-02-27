@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum IngredientType: Codable {
+enum IngredientType: Codable{
     
     case syrups(Syrup)
     case juices(Juice)
@@ -199,7 +199,7 @@ enum IngredientType: Codable {
     }
 }
 
-enum MeasurementUnit: String, Codable {
+enum MeasurementUnit: String, Codable, CaseIterable {
     case barSpoon           = "Bar-spoon"
     case barSpoons          = "Bar-spoons"
     case bittersDeco        = "Design on top with"

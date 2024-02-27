@@ -11,7 +11,7 @@ import UIKit
 
 struct CocktailListView: View {
     @EnvironmentObject var criteria: SearchCriteriaViewModel
-    @StateObject var viewModel = CocktailListViewModel()
+    @ObservedObject var viewModel = CocktailListViewModel()
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
     @Environment(\.modelContext) private var modelContext
     
@@ -67,6 +67,11 @@ struct CocktailListView: View {
                         .font(.largeTitle).bold()
                         .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
                     Spacer()
+//                    Button {
+//                      
+//                    } label: {
+//                        Image(systemName: isExpanded ? "line.3.horizontal.decrease" : "arrow.up.to.line")
+//                    }
                 }
                 
                 
@@ -76,65 +81,45 @@ struct CocktailListView: View {
                         ScrollViewReader { value in
                             HStack {
                                 List{
-                                        if viewModel.isShowingWnGCocktailsOnly {
-                                            ForEach(criteria.alphabet, id: \.self) { letter in
-                                                Section{
-                                                    ForEach(viewModel.justWilliamsAndGrahamCocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.cocktailName) { item in
-                                                        NavigationLink {
-                                                            RecipeView(viewModel: CocktailMenuViewModel(cocktail: item))
-                                                                //.navigationBarBackButtonHidden(true)
-                                                        } label: {
-                                                            Text(item.cocktailName)
-                                                           
+                                    ForEach(criteria.alphabet, id: \.self) { letter in
+                                        Section{
+                                            ForEach(viewModel.bartenderViewCocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.self) { cocktail in
+                                                if cocktail.cocktailVariations.count == 1   {
+                                                    NavigationLinkWithoutIndicator {
+                                                        HStack{
+                                                            Text(cocktail.cocktailName)
+                                                            Spacer()
                                                         }
+                                                    } destination: {
+                                                        RecipeView(viewModel: CocktailMenuViewModel(cocktail: cocktail.cocktailVariations[0]))
+                                                            .navigationBarBackButtonHidden(true)
                                                     }
-                                                } header: {
-                                                    Text("\(letter)")
-                                                        .fontWeight(.bold)
-                                                        .font(.title)
-                                                }.id(letter)
-                                            }
-                                            
-                                        } else {
-                                            ForEach(criteria.alphabet, id: \.self) { letter in
-                                                Section{
-                                                    ForEach(viewModel.bartenderViewCocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.id) { cocktail in
-                                                        if cocktail.cocktailVariations.count == 1   {
+                                                    
+                                                    
+                                                } else {
+                                                    DisclosureGroup {
+                                                        ForEach(cocktail.cocktailVariations, id: \.cocktailName) { variationCocktail in
                                                             NavigationLinkWithoutIndicator {
                                                                 HStack{
-                                                                    Text(cocktail.cocktailName)
+                                                                    Text(variationCocktail.cocktailName)
                                                                     Spacer()
                                                                 }
                                                             } destination: {
-                                                                RecipeView(viewModel: CocktailMenuViewModel(cocktail: cocktail.cocktailVariations[0]))
+                                                                SwipeRecipeView(variations: selectedCocktailVariations(for: variationCocktail))
                                                                     .navigationBarBackButtonHidden(true)
+                                                                
                                                             }
                                                             
-                                                            
-                                                        } else {
-                                                            DisclosureGroup {
-                                                                ForEach(cocktail.cocktailVariations, id: \.cocktailName) { variationCocktail in
-                                                                    NavigationLinkWithoutIndicator {
-                                                                        HStack{
-                                                                            Text(variationCocktail.cocktailName)
-                                                                            Spacer()
-                                                                        }
-                                                                    } destination: {
-                                                                        SwipeRecipeView(variations: selectedCocktailVariations(for: variationCocktail))
-                                                                            .navigationBarBackButtonHidden(true)
-                                                                            
-                                                                    }
-
-                                                                }
-                                                            } label: {
-                                                                Text(cocktail.cocktailName)
-                                                            }
-                                                            .disclosureGroupStyle(InlineDisclosureGroupStyle())
-                                                    
-                                            
-
                                                         }
-                                                        
+                                                    } label: {
+                                                        Text(cocktail.cocktailName)
+                                                    }
+                                                    .disclosureGroupStyle(InlineDisclosureGroupStyle())
+                                                    
+                                                    
+                                                    
+                                                }
+                                                
                                                     }
                                                 } header: {
                                                     Text("\(letter)")
@@ -169,7 +154,7 @@ struct CocktailListView: View {
             }
             
         }
-    }
+    
 }
 
 struct CocktailListView_Previews: PreviewProvider {

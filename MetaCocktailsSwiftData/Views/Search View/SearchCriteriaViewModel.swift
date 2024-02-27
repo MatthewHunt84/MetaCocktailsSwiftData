@@ -171,11 +171,9 @@ final class SearchCriteriaViewModel: ObservableObject {
         /** First, loop over every cocktail and add any cocktails that don't match any unwanted preferences to create the StartingCocktails array. */
         /// Start with the appropriate set of cocktails for the corresponding mode
         /// 
-        if menuMode == true {
-           startingCocktails = filterUnwantedCocktails(cocktailComponentArray: selectedUnwantedIngredients(), cocktails: CocktailListViewModel().guestCocktails)
-        } else {
-           startingCocktails = filterUnwantedCocktails(cocktailComponentArray: selectedUnwantedIngredients(), cocktails: CocktailListViewModel().bartenderCocktails)
-        }
+        
+        startingCocktails = filterUnwantedCocktails(cocktailComponentArray: selectedUnwantedIngredients(), cocktails: CocktailListViewModel().bartenderCocktails)
+        
         
         if showWilliamsAndGrahamCocktails {
             startingCocktails = filterUnwantedCocktails(cocktailComponentArray: selectedUnwantedIngredients(), cocktails: CocktailListViewModel().justWilliamsAndGrahamCocktails)

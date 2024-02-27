@@ -9,14 +9,14 @@ import SwiftUI
 
 final class CocktailListViewModel: ObservableObject {
     static let shared = CocktailListViewModel()
-    @Published var guestCocktails: [Cocktail] = getGuestViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName})
+    //@Published var guestCocktails: [Cocktail] = getGuestViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName})
     @Published var bartenderCocktails: [Cocktail] = getBartenderViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName})
     //@Published var bartenderCocktails: [Cocktail] = [cloverClub]
     @Published var justWilliamsAndGrahamCocktails = getBartenderViewCocktails().flatMap({$0.cocktailVariations}).filter({$0.author?.place == AuthorPlaces.williamsAndGraham.rawValue})
     @Published var isShowingRecipeCard = false
     @Published var selectedCocktail: Cocktail?
     @Published var isShowingBuildOrderButton = false
-    @Published var isShowingRandomCocktailView = false
+
     @Published var bartenderViewCocktails: [CocktailListCocktail] = getBartenderViewCocktails()
     @Published var guestViewCocktails: [CocktailListCocktail] = getGuestViewCocktails()
     @Published var randomCocktail = oldFashioned
@@ -92,9 +92,9 @@ final class CocktailListViewModel: ObservableObject {
         cocktailDict["Singapore Sling"] = [singaporeSling]
         cocktailDict["Ultima Palabra"] = [ultimaPalabra]
  
-        for cocktails in cocktailDict {
-            guestCocktails.append(CocktailListCocktail(cocktailName: cocktails.key, cocktailVariations: cocktails.value))
-        }
+//        for cocktails in cocktailDict {
+//            guestCocktails.append(CocktailListCocktail(cocktailName: cocktails.key, cocktailVariations: cocktails.value, isOpen: true))
+//        }
         let sortedCocktails = guestCocktails.sorted(by: {$0.cocktailName < $1.cocktailName})
         return sortedCocktails
     }
@@ -102,7 +102,8 @@ final class CocktailListViewModel: ObservableObject {
     static func getBartenderViewCocktails() -> [CocktailListCocktail] {
         var bartenderCocktails: [CocktailListCocktail] = []
         for cocktails in getCocktailDict() {
-            bartenderCocktails.append(CocktailListCocktail(cocktailName: cocktails.key, cocktailVariations: cocktails.value))
+            bartenderCocktails.append(CocktailListCocktail(cocktailName: cocktails.key, cocktailVariations: cocktails.value, isOpen: true))
+       
         }
         let sortedCocktails = bartenderCocktails.sorted(by: {$0.cocktailName < $1.cocktailName})
         return sortedCocktails
@@ -369,10 +370,20 @@ final class CocktailListViewModel: ObservableObject {
     }
 }
 
-struct CocktailListCocktail: Identifiable {
+struct CocktailListCocktail: Hashable, Equatable {
+    static func == (lhs: CocktailListCocktail, rhs: CocktailListCocktail) -> Bool {
+        return lhs.cocktailName == rhs.cocktailName
+    }
     
-    
-    let id = UUID()
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(cocktailName)
+    }
+   
+
     let cocktailName: String
     let cocktailVariations: [Cocktail]
+    var isOpen: Bool
+    
+  
+
 }
