@@ -165,6 +165,10 @@ struct SearchedCocktailCell: View {
     }
 }
 
+
 #Preview {
-    SearchResultsView(viewModel: SearchCriteriaViewModel())
+    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
+    return SearchResultsView(viewModel: SearchCriteriaViewModel())
+        .modelContainer(preview.container)
+       
 }

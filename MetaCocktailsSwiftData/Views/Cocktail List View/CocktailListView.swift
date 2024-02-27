@@ -129,11 +129,12 @@ struct CocktailListView: View {
     
 }
 
-struct CocktailListView_Previews: PreviewProvider {
-    static var previews: some View {
-        CocktailListView(viewModel: CocktailListViewModel())
-            .environmentObject(SearchCriteriaViewModel())
-    }
+
+#Preview {
+    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
+    return CocktailListView(viewModel: CocktailListViewModel())
+        .modelContainer(preview.container)
+        .environmentObject(SearchCriteriaViewModel())
 }
 struct ScaleButtonStyle : ButtonStyle {
     
