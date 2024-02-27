@@ -11,7 +11,7 @@ import UIKit
 
 struct CocktailListView: View {
     @EnvironmentObject var criteria: SearchCriteriaViewModel
-    @ObservedObject var viewModel = CocktailListViewModel()
+    @Bindable var viewModel = CocktailListViewModel()
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
     @Environment(\.modelContext) private var modelContext
     
@@ -28,35 +28,7 @@ struct CocktailListView: View {
             return [cocktail]
         }
     }
-//    func selectedCocktailVariations(for cocktail: Cocktail) -> [Cocktail] {
-//        //viewModel.changePlaceholder(for: cocktail)
-//        if let variation = cocktail.variation {
-//            let variationsWithSelectedCocktailFirst = cocktails.filter({$0.variation == variation})
-//            return variationsWithSelectedCocktailFirst
-//        } else {
-//            return [cocktail]
-//        }
-//    }
-//    func convertCocktailsIntoCocktailListCocktails(cocktails: [Cocktail]) -> [CocktailListCocktail] {
-//        var cocktailListCocktails: [CocktailListCocktail] = []
-//        var currentVariation = ""
-//        for cocktail in self.cocktails {
-//            
-//            if cocktail.variation != nil {
-//                
-//                
-//                currentVariation = cocktail.variation!.rawValue
-//                
-//                
-//            } else {
-//                cocktailListCocktails.append(CocktailListCocktail(cocktailName: cocktail.cocktailName, cocktailVariations: [cocktail]))
-//            }
-//        }
-//        
-//        
-//        return cocktailListCocktails
-//    }
-    
+
     
     var body: some View {
         

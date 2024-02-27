@@ -7,21 +7,21 @@
 
 import SwiftUI
 
-final class CocktailListViewModel: ObservableObject {
+@Observable final class CocktailListViewModel {
     static let shared = CocktailListViewModel()
     //@Published var guestCocktails: [Cocktail] = getGuestViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName})
-    @Published var bartenderCocktails: [Cocktail] = getBartenderViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName})
+    var bartenderCocktails: [Cocktail] = getBartenderViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName})
     //@Published var bartenderCocktails: [Cocktail] = [cloverClub]
-    @Published var justWilliamsAndGrahamCocktails = getBartenderViewCocktails().flatMap({$0.cocktailVariations}).filter({$0.author?.place == AuthorPlaces.williamsAndGraham.rawValue})
-    @Published var isShowingRecipeCard = false
-    @Published var selectedCocktail: Cocktail?
-    @Published var isShowingBuildOrderButton = false
+    var justWilliamsAndGrahamCocktails = getBartenderViewCocktails().flatMap({$0.cocktailVariations}).filter({$0.author?.place == AuthorPlaces.williamsAndGraham.rawValue})
+    var isShowingRecipeCard = false
+    var selectedCocktail: Cocktail?
+    var isShowingBuildOrderButton = false
 
-    @Published var bartenderViewCocktails: [CocktailListCocktail] = getBartenderViewCocktails()
-    @Published var guestViewCocktails: [CocktailListCocktail] = getGuestViewCocktails()
-    @Published var randomCocktail = oldFashioned
-    @Published var isShowingWnGCocktailsOnly: Bool = false
-    @Published var currentVariation = "Placeholder"
+    var bartenderViewCocktails: [CocktailListCocktail] = getBartenderViewCocktails()
+    var guestViewCocktails: [CocktailListCocktail] = getGuestViewCocktails()
+    var randomCocktail = oldFashioned
+    var isShowingWnGCocktailsOnly: Bool = false
+    var currentVariation = "Placeholder"
 
    
     func changePlaceholder(for cocktail: Cocktail) {

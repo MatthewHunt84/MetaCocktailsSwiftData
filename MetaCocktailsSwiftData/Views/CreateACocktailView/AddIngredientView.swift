@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddIngredientView: View {
     
-    @ObservedObject var viewModel = CreateACocktailViewModel()
+    @Bindable var viewModel = CreateACocktailViewModel()
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {

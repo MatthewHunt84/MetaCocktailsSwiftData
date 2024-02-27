@@ -6,16 +6,17 @@
 //
 
 import SwiftUI
+import Observation
 
-final class CreateACocktailViewModel: ObservableObject {
+ @Observable final class CreateACocktailViewModel {
     
-    @Published var ingredientName = ""
-    @Published var ingredientAmount = 0.0
-    @Published var ingredientType: IngredientType = IngredientType.agaves(.tequilaAny)
-    @Published var selectedMeasurementUnit = MeasurementUnit.fluidOunces
-    @Published var currentSelectedComponent = CocktailComponent(name: "Placeholder")
-    @Published var addedIngredients: [CocktailIngredient] = []
-    @Published var allPhysicalCocktailComponents: [CocktailComponent] = createPhysicalComponentArray()
+    var ingredientName = ""
+    var ingredientAmount = 0.0
+    var ingredientType: IngredientType = IngredientType.agaves(.tequilaAny)
+    var selectedMeasurementUnit = MeasurementUnit.fluidOunces
+    var currentSelectedComponent = CocktailComponent(name: "Placeholder")
+    var addedIngredients: [CocktailIngredient] = []
+    var allPhysicalCocktailComponents: [CocktailComponent] = createPhysicalComponentArray()
     
     
     var  formatter: NumberFormatter = {
@@ -32,8 +33,6 @@ final class CreateACocktailViewModel: ObservableObject {
             for component in allPhysicalCocktailComponents {
                 component.matchesCurrentSearch = true
             }
-            // this forces an update when the search bar is empty, instead of waiting for the user to hit return
-            self.objectWillChange.send()
             return
         }
         
@@ -45,7 +44,7 @@ final class CreateACocktailViewModel: ObservableObject {
                 component.matchesCurrentSearch = false
             }
         }
-        self.objectWillChange.send()
+
     }
     
     static func createPhysicalComponentArray() ->  [CocktailComponent] {
