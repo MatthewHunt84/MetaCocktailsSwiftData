@@ -7,7 +7,7 @@
 
 import Foundation
 
-var bloodAndSand  = Cocktail(cocktailName: "Blood and Sand",
+var bloodAndSand  = Cocktail(cocktailName: "Blood and Sand(1930)",
                              glasswareType: .martini,
                              garnish: [.orangePeel],
                              ice: nil,

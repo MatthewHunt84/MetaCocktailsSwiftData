@@ -7,7 +7,7 @@
 
 import Foundation
 
-var alaska  = Cocktail(cocktailName: "Alaska Cocktail",
+var alaska  = Cocktail(cocktailName: "Alaska Cocktail(1905)",
                        glasswareType: .martini,
                        garnish: [.noGarnish],
                        author: Author(place: "'Fashions in Mixed Drinks.' Guthrie Daily Leader", year: "October 18, 1905"),

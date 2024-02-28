@@ -7,7 +7,7 @@
 
 import Foundation
 
-var irishCoffee = Cocktail(cocktailName: "Irish Coffee",
+var irishCoffee = Cocktail(cocktailName: "Irish Coffee(1944)",
                            glasswareType: .buenaVistaIrish,
                            garnish: nil,
                            author: Author(person: "Joe Sheridan", place: "Flying Boat Station. Foynes, Ireland", year: "1944"),

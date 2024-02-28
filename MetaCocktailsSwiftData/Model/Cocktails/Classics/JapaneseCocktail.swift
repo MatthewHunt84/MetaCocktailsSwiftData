@@ -8,7 +8,7 @@
 import Foundation
 
 
-var japaneseCocktail  = Cocktail(cocktailName: "Japanese Cocktail",
+var japaneseCocktail  = Cocktail(cocktailName: "Japanese Cocktail(1862)",
                                  glasswareType: .stemmedGlassware,
                                  garnish: [.lemonPeel],
                                  author: jerryThomas,

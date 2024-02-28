@@ -7,7 +7,7 @@
 
 import Foundation
 
-var hotBrandyToddy = Cocktail(cocktailName: "Hot Brandy Toddy",
+var hotBrandyToddy = Cocktail(cocktailName: "Hot Brandy Toddy(1862)",
                               glasswareType: .toddyGlass,
                               garnish: [.nutmeg],
                               author: jerryThomas,

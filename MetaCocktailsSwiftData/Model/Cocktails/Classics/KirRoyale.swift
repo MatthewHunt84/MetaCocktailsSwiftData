@@ -7,7 +7,7 @@
 
 import Foundation
 
-var kirRoyale = Cocktail(cocktailName: "Kir Royale",
+var kirRoyale = Cocktail(cocktailName: "Kir Royale(1959)",
                          glasswareType: .wineGlass,
                          garnish: [.noGarnish],
                          ice: nil,

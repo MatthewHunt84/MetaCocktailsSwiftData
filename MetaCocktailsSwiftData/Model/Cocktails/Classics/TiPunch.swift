@@ -8,7 +8,7 @@
 import Foundation
 
 
-var tiPunch = Cocktail(cocktailName: "Ti' Punch",
+var tiPunch = Cocktail(cocktailName: "Ti' Punch(1800s)",
                        glasswareType: .doubleOld,
                        garnish: [.limePeel],
                        ice: .bigRock,

@@ -7,7 +7,7 @@
 
 import Foundation
 
-var laLouisiane = Cocktail(cocktailName: "La Louisiane",
+var laLouisiane = Cocktail(cocktailName: "La Louisiane(1937)",
                            glasswareType: .coupe,
                            garnish: [.maraschinoCherry],
                            ice: nil,

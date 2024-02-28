@@ -15,11 +15,11 @@ var champsElysees = Cocktail(cocktailName: "Champs Elysees",
                              spec:champsElyseesSpec,
                              tags: champsElyseesTags)
 
-var champsElyseesSpec  = [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
+var champsElyseesSpec  = [CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
                           CocktailIngredient(.syrups(.simple), value: 0.25),
                           CocktailIngredient(.juices(.lemon), value: 0.75),
                           CocktailIngredient(.liqueurs(.greenChartreuse), value: 0.5),
-                          CocktailIngredient(.brandies(.pFAmber), value: 1.5)]
+                          CocktailIngredient(.brandies(.cognacVSOP), value: 1.5)]
 
 
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-var rememberTheMaine = Cocktail(cocktailName: "Remember The Maine",
+var rememberTheMaine = Cocktail(cocktailName: "Remember The Maine(1939)",
                                 glasswareType: .coupe,
                                 garnish: [.maraschinoCherry],
                                 author: charlesBaker,

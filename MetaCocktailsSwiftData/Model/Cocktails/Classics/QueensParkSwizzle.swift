@@ -9,11 +9,11 @@ import SwiftUI
 
 
 
-var queensParkSwizzle = Cocktail(cocktailName: "Queens Park Swizzle",
+var queensParkSwizzle = Cocktail(cocktailName: "Queens Park Swizzle(1920s)",
                                  glasswareType: .collins,
                                  garnish: [.mintBouquet],
                                  ice: .pebbleIce,
-                                 author: Author(place: "Queens Park Hotel, Trinidad", year: "1920's"),
+                                 author: Author(place: "Queens Park Hotel, Trinidad", year: "1920s"),
                                  spec: queensParkSpec,
                                  buildOrder: queensParkBuild,
                                  tags: queensParkTags,

@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-var sazerac = Cocktail(cocktailName: "Sazerac",
+var sazerac = Cocktail(cocktailName: "Sazerac(1800s)",
                        glasswareType: .singleOld,
                        garnish: [.lemonPeel],
                        ice: nil,
-                       author:Author(place: "Somewhere in New Orleans in", year: "1800's"),
+                       author:Author(place: "Somewhere in New Orleans in", year: "1800s"),
                        spec: sazeracSpec,
                        buildOrder: sazeracBuild,
                        tags: sazeracTags,

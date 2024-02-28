@@ -7,7 +7,7 @@
 
 import Foundation
 
-let hemingwayDaiquiri = Cocktail(cocktailName: "Hemingway Daiquiri",
+let hemingwayDaiquiri = Cocktail(cocktailName: "Hemingway Daiquiri(1938)",
                                  glasswareType: .coupe,
                                  garnish: [.limeWheel],
                                  author:Author(person: AuthorNames.constante.rawValue, place: AuthorPlaces.laFloridita.rawValue, year: "1938"),

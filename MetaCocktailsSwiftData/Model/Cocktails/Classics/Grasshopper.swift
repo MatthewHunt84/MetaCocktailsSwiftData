@@ -7,12 +7,12 @@
 
 import Foundation
 
-var grasshopper = Cocktail(cocktailName: "Grasshopper",
+var grasshopper = Cocktail(cocktailName: "Grasshopper(1920s)",
                            imageAsset: nil,
                            glasswareType: .coupe,
                            garnish: [.noGarnish],
                            ice: nil,
-                           author: Author(place: "Too old to tell."),
+                           author: Author(place: "Somewhere in America in the 1920s-ish."),
                            spec: grasshopperSpec,
                            tags: grasshopperTags,
                            variation: .grasshopper)

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-var boulevardier  =  Cocktail(cocktailName: "Boulevardier",
+var boulevardier  =  Cocktail(cocktailName: "Boulevardier(1920s)",
                               glasswareType: .doubleOld,
                               garnish: [.orangePeel],
                               ice: .bigRock,

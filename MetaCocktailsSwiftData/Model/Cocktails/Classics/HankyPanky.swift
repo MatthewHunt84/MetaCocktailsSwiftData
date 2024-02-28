@@ -7,7 +7,7 @@
 
 import Foundation
 
-var hankyPanky = Cocktail(cocktailName: "Hanky Panky",
+var hankyPanky = Cocktail(cocktailName: "Hanky Panky(1921)",
                           glasswareType: .stemmedGlassware,
                           garnish: [.orangePeel],
                           author:Author(person: "Ada 'Coley' Colman",

@@ -7,7 +7,7 @@
 
 import Foundation
 
-var hollandHouseCocktail = Cocktail(cocktailName: "Holland House Cocktail",
+var hollandHouseCocktail = Cocktail(cocktailName: "Holland House Cocktail(1930)",
                                     glasswareType: .stemmedGlassware,
                                     garnish: nil,
                                     ice: nil,

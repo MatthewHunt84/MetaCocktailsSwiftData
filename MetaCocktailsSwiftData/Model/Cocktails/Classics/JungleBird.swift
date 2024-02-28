@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-var jungleBird = Cocktail(cocktailName: "JungleBird",
+var jungleBird = Cocktail(cocktailName: "JungleBird(1970s)",
                           glasswareType: .tikiBird,
                           garnish: [.orchid, .limeWheel, .orangeFlag],
                           ice: .pebbleIce,

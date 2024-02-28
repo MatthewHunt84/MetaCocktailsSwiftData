@@ -8,11 +8,11 @@
 import SwiftUI
 
 
-var elPresidente  = Cocktail(cocktailName: "El Presidente",
+var elPresidente  = Cocktail(cocktailName: "El Presidente(1910s)",
                              glasswareType: .coupe,
                              garnish: [.orangePeel, .maraschinoCherry],
                              ice: nil,
-                             author: Author(person: AuthorNames.constante.rawValue),
+                             author: Author(person: AuthorNames.constante.rawValue, place: "Cuba", year: "1910s"),
                              spec: elPresidenteSpec,
                              buildOrder: nil,
                              tags: elPresidenteTags,

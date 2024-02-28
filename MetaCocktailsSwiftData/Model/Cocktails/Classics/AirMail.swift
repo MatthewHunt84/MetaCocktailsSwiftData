@@ -7,7 +7,7 @@
 
 import Foundation
 
-var airMail  = Cocktail(cocktailName: "Air Mail",
+var airMail  = Cocktail(cocktailName: "Air Mail(1930)",
                         glasswareType: .fizzGlass,
                         garnish: [.noGarnish],
                         author: Author(person: "Bacardi and It's Many Uses.", place: "Santiago de Cuba", year: "1930"),

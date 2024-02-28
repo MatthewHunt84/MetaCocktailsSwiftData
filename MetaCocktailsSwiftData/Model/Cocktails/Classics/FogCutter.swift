@@ -7,7 +7,7 @@
 
 import Foundation
 
-var fogCutter = Cocktail(cocktailName: "Fog Cutter",
+var fogCutter = Cocktail(cocktailName: "Fog Cutter(1940)",
                          imageAsset: nil,
                          glasswareType: .tikiMug,
                          garnish: [.mintBouquet],

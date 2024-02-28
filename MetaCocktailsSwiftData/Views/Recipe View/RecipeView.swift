@@ -87,8 +87,9 @@ struct RecipeView: View {
                                 
                                 
                             }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .offset(x: geo.size.width/2-140)
+                            .frame(maxWidth: geo.size.width * 0.9, alignment: .leading)
+                            
+                            //.offset(x: geo.size.width/2-140)
                             
                             
                             if let stirShakeBuild = viewModel.cocktail.tags.styles {
@@ -252,7 +253,7 @@ struct AuthorView: View {
 
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    return RecipeView(viewModel: RecipeViewModel(cocktail: cloverClub))
+    return RecipeView(viewModel: RecipeViewModel(cocktail: peanutButterFalcon))
         .modelContainer(preview.container)
        
 }

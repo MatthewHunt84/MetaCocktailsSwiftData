@@ -8,7 +8,7 @@
 import Foundation
 
 
-var sidecar = Cocktail(cocktailName: "Sidecar",
+var sidecar = Cocktail(cocktailName: "Sidecar(1922)",
                        glasswareType: .sugarRimStemmed,
                        ice: nil,
                        spec: sidecarSpec,

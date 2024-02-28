@@ -8,7 +8,7 @@
 import Foundation
 
 
-var zombie = Cocktail(cocktailName: "Zombie",
+var zombie = Cocktail(cocktailName: "Zombie(1934)",
                       imageAsset: nil,
                       glasswareType: .tikiMug,
                       garnish: [.mintSprig],

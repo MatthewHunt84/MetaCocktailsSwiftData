@@ -7,7 +7,7 @@
 
 import Foundation
 
-var hotelNacional = Cocktail(cocktailName: "Hotel Nacional",
+var hotelNacional = Cocktail(cocktailName: "Hotel Nacional(1930s)",
                              glasswareType: .stemmedGlassware,
                              garnish: [.limeWheel],
                              ice: nil,

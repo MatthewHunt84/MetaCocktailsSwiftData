@@ -7,7 +7,7 @@
 
 import Foundation
 
-var bramble = Cocktail(cocktailName: "Bramble",
+var bramble = Cocktail(cocktailName: "Bramble(1989)",
                        imageAsset: nil,
                        glasswareType: .doubleOld,
                        garnish: [.lemonWheel, .blackberry],

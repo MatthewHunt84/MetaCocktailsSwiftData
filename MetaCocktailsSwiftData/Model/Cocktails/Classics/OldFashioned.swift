@@ -7,7 +7,7 @@
 
 import Foundation
 
-var oldFashioned = Cocktail(cocktailName: "Old Fashioned",
+var oldFashioned = Cocktail(cocktailName: "Old Fashioned(Mid-1800s)",
                             glasswareType: .doubleOld,
                             garnish: [.orangeOrLemon],
                             ice: .bigRock,

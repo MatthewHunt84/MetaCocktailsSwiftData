@@ -6,9 +6,9 @@
 //
 
 import SwiftUI
-import Observation
 
-@Observable final class PrepBibleViewModel{
+
+final class PrepBibleViewModel{
     
     
     let richDem = Prep(prepIngredientName: "Rich Demerara Syrup", prepRecipe:[Instruction(step: 1, method: "Weigh out two parts Demerara sugar to one part water and combine in a pot."),
@@ -21,9 +21,20 @@ import Observation
                                                                                Instruction(step: 4, method:  "Store in the fridge for up to a week."),
                                                                                Instruction(step: 5, method:  "This is about a 40 bricks syrup. Adjust proportions to fit your needs. The key here is not to cook the cucumbers.")])
     
-    let gingerSyrup = Prep(prepIngredientName: "Ginger Syrup", prepRecipe:[Instruction(step: 1, method:  "Make a ginger syrup")] )
+    let gingerSyrup = Prep(prepIngredientName: "Ginger Syrup", prepRecipe:[Instruction(step: 1, method:  "This requires juicing fresh ginger, which can be a strain on household juicers."),
+                                                                           Instruction(step: 2, method:  "Add equal parts fresh ginger juice to sugar to a pot and bring to a boil while stirring. Some prefer Demerara sugar for a darker and more robust flavor. You can use plain what sugar for a brighter and sharper flavor."),
+                                                                           Instruction(step: 3, method:  "Take off heat immediately after boiling and let cool."),
+                                                                           Instruction(step: 1, method:  "Add 1oz(30ml) vodka to every 750ml of syrup to stabilize.")] )
     
-    let orgeat = Prep(prepIngredientName: "Orgeat", prepRecipe: [Instruction(step: 1, method:  "Make orgeat, orNot.")])
+    let orgeat = Prep(prepIngredientName: "Orgeat", prepRecipe: [Instruction(step: 1, method:  "Makes 300ml - (Milk and Honey Recipe)."),
+                                                                 Instruction(step: 2, method: "Lightly toast 220g of slivered almonds in the oven. They toast quick, do not burn them."),
+                                                                 Instruction(step: 3, method: "Grind the almonds in a food processor to a coarse powder."),
+                                                                 Instruction(step: 4, method: "Add 300g white sugar and 200ml water into a pot and bring to a boil over low heat stirring constantly."),
+                                                                 Instruction(step: 5, method: "Add the ground toasted almonds and cook for another 3 minutes while continuing to stir."),
+                                                                 Instruction(step: 6, method: "Remove from heat and cover. Let sit for up to 6 hours."),
+                                                                 Instruction(step: 7, method: "Transfer the syrup to a jelly bag or nut bag and strain into a spouted measuring cup."),
+                                                                 Instruction(step: 8, method: "Add 1 oz.(30ml) vodka and 1 teaspoon orange flower water and stir to combine."),
+                                                                 Instruction(step: 7, method: "Cover and refrigerate. Keeps for about a month.")])
     
     let grapefruitShrub = Prep(prepIngredientName: "Grapefruit Shrub", prepRecipe: [Instruction(step: 1, method:  "For 500ml: Add 250ml white sugar to 150g grapefruit peels."),
                                                                                     Instruction(step: 2, method: "Let sit in a mason jar for 24 hours in a semi-warm place."),
@@ -37,7 +48,7 @@ import Observation
                                                                                                        Instruction(step: 2, method: "Put in a blender and combine with equal parts sugar and boiling water."),
                                                                                                        Instruction(step: 3, method: " Blend on high until mixture is smooth, then fine-strain")])
     
-    let honeySyrup = Prep(prepIngredientName: "Honey Syrup", prepRecipe:[Instruction(step: 1, method: "Weigh out two parts honey to one part boiling water and combine."),
+    let honeySyrup = Prep(prepIngredientName: "Honey Syrup", prepRecipe:[Instruction(step: 1, method: "Weigh out three parts honey to one part boiling water and combine."),
                                                                          Instruction(step: 2, method: "Let cool before bottling.")]   )
     
     let agaveSyrup = Prep(prepIngredientName: "Agave Syrup", prepRecipe:[Instruction(step: 1, method: "Weigh out three parts agave nectar to one part boiling water and combine."),

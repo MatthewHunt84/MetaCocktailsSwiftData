@@ -7,7 +7,7 @@
 
 import Foundation
 
-var brandyCrusta = Cocktail(cocktailName: "Brandy Crusta",
+var brandyCrusta = Cocktail(cocktailName: "Brandy Crusta(1862)",
                             glasswareType: .crustaGlass,
                             author: jerryThomas,
                             spec: brandyCrustaSpec,

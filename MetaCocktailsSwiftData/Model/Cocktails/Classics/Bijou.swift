@@ -7,7 +7,7 @@
 
 import Foundation
 
-var bijou = Cocktail(cocktailName: "Bijou",
+var bijou = Cocktail(cocktailName: "Bijou(1900)",
                      glasswareType: .stemmedGlassware,
                      garnish: [.lemonPeel],
                      author:Author(person: AuthorNames.harryJohnson.rawValue, place: AuthorPlaces.harryJohnsonManual.rawValue, year: "1900"),

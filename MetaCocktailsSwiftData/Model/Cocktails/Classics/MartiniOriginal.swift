@@ -9,7 +9,7 @@ import SwiftUI
 
 
 
-var martini   = Cocktail(cocktailName: "Martini",
+var martini   = Cocktail(cocktailName: "Martini(Late 1800s)",
                          glasswareType: .martini,
                          garnish: [.lemonPeel],
                          spec: martiniSpec,

@@ -762,6 +762,7 @@ enum FortifiedWine: String, Codable, CaseIterable {
     case dolinDry               = "Dolin Dry Vermouth"
     case dolinBlanc             = "Dolin Blanc Vermouth"
     case dolinRouge             = "Dolin Rouge Vermouth"
+    case dubonnet               = "Dubonnet"
     case fino                   = "Fino Sherry"
     case hidalgoManzanilla      = "Hildago Manzanilla Sherry"
     case kinaLillet             = "Kina Lillet(Stopped Production in 1986)"
@@ -850,6 +851,8 @@ enum FortifiedWine: String, Codable, CaseIterable {
         case .oloroso:
             Tags(booze: [Booze(.fortifiedWines(self)), Booze(.fortifiedWines(.sherryAny)), Booze(.fortifiedWines(.fortifiedWineAny))])
         case .cocchiRosa:
+            Tags(booze: [Booze(.fortifiedWines(self)), Booze(.fortifiedWines(.fortifiedWineAny))])
+        case .dubonnet:
             Tags(booze: [Booze(.fortifiedWines(self)), Booze(.fortifiedWines(.fortifiedWineAny))])
         }
     }

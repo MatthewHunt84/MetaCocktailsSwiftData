@@ -7,7 +7,7 @@
 
 import Foundation
 
-var hurricane = Cocktail(cocktailName: "Hurricane",
+var hurricane = Cocktail(cocktailName: "Hurricane(1939)",
                          imageAsset: nil,
                          glasswareType: .hurricaneGlass,
                          garnish: [.orangeFlag],
