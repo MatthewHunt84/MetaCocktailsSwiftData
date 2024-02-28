@@ -20,7 +20,7 @@ var sherryCobbler = Cocktail(cocktailName: "Sherry Cobbler(1800s version)",
 let sherryCobblerSpec: [CocktailIngredient] = [CocktailIngredient(.fruit(.lemonRibbon), value: 1, unit: .whole),
                                                CocktailIngredient(.fruit(.orangeMoons), value: 2, unit: .muddled),
                                                CocktailIngredient(.juices(.lemon), value: 0.25),
-                                               CocktailIngredient(.syrups(.richSimple), value: 0.5),
+                                               CocktailIngredient(.syrups(.richSimple), value: 0.5, prep: PrepBibleViewModel().richSimple),
                                                CocktailIngredient(.fortifiedWines(.lustauAmontillado), value: 3)]
 
 let sherryCobblerBuild = Build(instructions: [Instruction(step: 1, method: "Muddle 2 orange moons and then add your lemon peel."),

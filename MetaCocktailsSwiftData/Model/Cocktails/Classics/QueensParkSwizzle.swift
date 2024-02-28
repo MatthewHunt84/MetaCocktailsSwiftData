@@ -21,7 +21,7 @@ var queensParkSwizzle = Cocktail(cocktailName: "Queens Park Swizzle",
 
 var queensParkSpec = [CocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
                       CocktailIngredient(.juices(.lime), value: 0.75),
-                      CocktailIngredient(.syrups(.richDem), value: 0.5),
+                      CocktailIngredient(.syrups(.richDem), value: 0.5, prep: PrepBibleViewModel().richDem),
                       CocktailIngredient(.rums(.rumDemerara), value: 3),
                       CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes) ]
 

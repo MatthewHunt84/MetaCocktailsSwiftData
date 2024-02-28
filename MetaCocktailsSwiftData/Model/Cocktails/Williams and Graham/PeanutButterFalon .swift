@@ -17,11 +17,11 @@ var peanutButterFalcon = Cocktail(cocktailName: "Peanut Butter Falcon",
                                   buildOrder: peanutButterFalconBuild,
                                   tags: peanutButterFalconTags)
 
-var peanutButterFalconSpec  = [CocktailIngredient(.syrups(.honeySyrup), value: 0.25),
+var peanutButterFalconSpec  = [CocktailIngredient(.syrups(.honeySyrup), value: 0.25, prep: PrepBibleViewModel().honeySyrup),
                                CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
                                CocktailIngredient(.amari(.angosturaAmaro), value: 0.5),
                                CocktailIngredient(.liqueurs(.giffardBanane), value: 1),
-                               CocktailIngredient(.vodkas(.peanutButterVodka), value: 1),
+                               CocktailIngredient(.vodkas(.peanutButterVodka), value: 1, prep: PrepBibleViewModel().peanutButterVodka),
                                CocktailIngredient(.bitters(.blackWalnut), value: 2, unit: .dashes)]
 
 var peanutButterFalconTags = Tags(flavors: [.nutmeg],

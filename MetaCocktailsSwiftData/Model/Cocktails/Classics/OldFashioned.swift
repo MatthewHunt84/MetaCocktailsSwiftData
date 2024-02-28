@@ -16,7 +16,7 @@ var oldFashioned = Cocktail(cocktailName: "Old Fashioned",
                             tags: oldFashionedTags,
                             variation: .oldFashioned)
 
-var oldFashionedSpec  =  [CocktailIngredient(.syrups(.richDem), value: 2, unit: .teaspoon),
+var oldFashionedSpec  =  [CocktailIngredient(.syrups(.richDem), value: 2, unit: .teaspoon, prep: PrepBibleViewModel().richDem),
                           CocktailIngredient(.bitters(.angosturaBitters), value: 3, unit: .dashes),
                           CocktailIngredient(.whiskies(.straightRyeOrBourbon), value: 2)]
 

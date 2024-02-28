@@ -18,7 +18,7 @@ var airMailWnG  = Cocktail(cocktailName: "Air Mail(W&G Version)",
                            variation: .airMail)
 
 var airMailWnGSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
-                       CocktailIngredient(.syrups(.honeySyrup), value: 0.75),
+                       CocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBibleViewModel().honeySyrup),
                        CocktailIngredient(.rums(.plantationBarbados), value: 1.5),
                        CocktailIngredient(.wines(.prosecco) , value: 2)]
 

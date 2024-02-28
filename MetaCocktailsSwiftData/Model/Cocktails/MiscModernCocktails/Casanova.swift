@@ -19,7 +19,7 @@ var casanovaCocktail  =  Cocktail(cocktailName: "Casanova Cocktail",
 
 var casanovaCocktailSpec = [CocktailIngredient(.herbs(.cilantro), value: 10, unit: .gentlyMuddled),
                             CocktailIngredient(.juices(.lime), value: 0.75),
-                            CocktailIngredient(.syrups(.agaveSyrup), value: 0.75),
+                            CocktailIngredient(.syrups(.agaveSyrup), value: 0.75, prep: PrepBibleViewModel().agaveSyrup),
                             CocktailIngredient(.otherNonAlc(.vanillaExtract), value: 4, unit: .drops),
                             CocktailIngredient(.otherAlcohol(.jalapeñoTincture), value: 2, unit: .dashes),
                             CocktailIngredient(.agaves(.tequilaFortalezaRepo), value: 2)]

@@ -18,7 +18,7 @@ var oaxacaOldFashionedWnG = Cocktail(cocktailName: "Oaxaca Old Fashioned(W&G Ver
 
 var oaxacaOldFashionedSpecWnG  = [CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
                                   CocktailIngredient(.bitters(.chocolateMole), value: 1, unit: .dashes),
-                                  CocktailIngredient(.syrups(.agaveSyrup), value: 1, unit: .barSpoon),
+                                  CocktailIngredient(.syrups(.agaveSyrup), value: 1, unit: .barSpoon, prep: PrepBibleViewModel().agaveSyrup),
                                   CocktailIngredient(.agaves(.mezcalDelMagueyVida), value: 0.5),
                                   CocktailIngredient(.agaves(.tequilaFortalezaRepo), value: 1.5)]
 

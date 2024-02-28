@@ -17,7 +17,7 @@ var brandyCrusta = Cocktail(cocktailName: "Brandy Crusta",
 
 var brandyCrustaSpec    = [CocktailIngredient(.juices(.lemon), value: 1, unit: .dash),
                            CocktailIngredient(.liqueurs(.orangeCuracao), value: 2, unit: .dashes),
-                           CocktailIngredient(.syrups(.richSimple), value: 4, unit: .dashes),
+                           CocktailIngredient(.syrups(.richSimple), value: 4, unit: .dashes, prep: PrepBibleViewModel().richSimple),
                            CocktailIngredient(.bitters(.angosturaBitters), value:1, unit: .dash),
                            CocktailIngredient(.brandies(.brandyAny), value:2)]
 

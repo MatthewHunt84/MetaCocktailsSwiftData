@@ -15,7 +15,7 @@ let brownDerbyBourbon = Cocktail(cocktailName: "Brown Derby (Bourbon Version)",
 
 var brownDerbyBourbonSpec: [CocktailIngredient] = [CocktailIngredient(.whiskies(.bourbonAny), value: 2),
                                                    CocktailIngredient(.juices(.grapefruit), value: 1),
-                                                   CocktailIngredient(.syrups(.honeySyrup), value: 0.5)]
+                                                   CocktailIngredient(.syrups(.honeySyrup), value: 0.5, prep: PrepBibleViewModel().honeySyrup)]
 
 var brownDerbyBourbonTags = Tags(profiles: [.citrusy, .refreshing, .light],
                                  styles: [.sour, .shaken])

@@ -6,8 +6,9 @@
 //
 
 import SwiftUI
+import Observation
 
-@Observable final class CocktailListViewModel {
+@Observable final class CocktailListViewModel{
     static let shared = CocktailListViewModel()
     //@Published var guestCocktails: [Cocktail] = getGuestViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName})
     var bartenderCocktails: [Cocktail] = getBartenderViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName})
@@ -355,19 +356,19 @@ import SwiftUI
         return CocktailListViewModel.getGuestViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName}).randomElement()!
     }
 
-    
-    @ViewBuilder
-    func getRandomCocktailView(for menuMode: Bool) -> some View {
-        if menuMode {
-            SearchGuestRecipeView(viewModel: CocktailMenuViewModel(cocktail: randomCocktail))
-             
-        } else {
-            RecipeView(viewModel: CocktailMenuViewModel(cocktail: randomCocktail))
-             
-                
-            
-        }
-    }
+//    
+//    @ViewBuilder
+//    func getRandomCocktailView(for menuMode: Bool) -> some View {
+//        if menuMode {
+//            SearchGuestRecipeView(viewModel: CocktailMenuViewModel(cocktail: randomCocktail))
+//             
+//        } else {
+//            RecipeView(viewModel: CocktailMenuViewModel(cocktail: randomCocktail))
+//             
+//                
+//            
+//        }
+//    }
 }
 
 struct CocktailListCocktail: Hashable, Equatable {
@@ -379,7 +380,7 @@ struct CocktailListCocktail: Hashable, Equatable {
         hasher.combine(cocktailName)
     }
    
-
+    var id = UUID()
     let cocktailName: String
     let cocktailVariations: [Cocktail]
     var isOpen: Bool

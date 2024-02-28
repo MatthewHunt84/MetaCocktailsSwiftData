@@ -19,7 +19,7 @@ var fogCutterWnG = Cocktail(cocktailName: "Fog Cutter(W&G Version)",
 
 let fogCutterSpecWnG   = [CocktailIngredient(.juices(.lemon), value:0.75),
                           CocktailIngredient(.juices(.orange), value: 1),
-                          CocktailIngredient(.syrups(.orgeat), value: 0.5),
+                          CocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBibleViewModel().orgeat),
                           CocktailIngredient(.gins(.ransomOldTom), value: 0.25),
                           CocktailIngredient(.brandies(.pFAmber), value: 0.5),
                           CocktailIngredient(.rums(.plantationBarbados), value: 1.5),

@@ -16,15 +16,19 @@ struct PrepRecipeView: View {
         NavigationStack{   //Let's throw a geometry reader here and only show the dismiss button if the view height is larger than the screen height
             VStack{
                 List{
+                    
+                    
                     ForEach(prep.prepRecipe) { recipe in
                         HStack {
-                           Text("\(recipe.step). \(recipe.method)")
+                            Text("\(recipe.step). \(recipe.method)")
                         }
                         .font(.body)
                         .fontWeight(.bold)
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 2, trailing: 0))
                         .multilineTextAlignment(.leading)
                     }
+                    
+                    
                 }
                 .listStyle(.plain)
             }
@@ -34,8 +38,10 @@ struct PrepRecipeView: View {
     }
 }
 
-struct PrepRecipeView_Previews: PreviewProvider {
-    static var previews: some View {
-        PrepRecipeView(prep: Prep(prepIngredientName: "Balls", prepRecipe: [Instruction(step: 1, method: "Stroke")]))
-    }
+
+#Preview {
+    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
+    return PrepRecipeView(prep: Prep(prepIngredientName: "Placeholder", prepRecipe: [Instruction(step: 1, method: "Do some prep")]))
+        .modelContainer(preview.container)
+        .environmentObject(SearchCriteriaViewModel())
 }

@@ -19,7 +19,7 @@ var falcoor = Cocktail(cocktailName: "Falcoooor!",
 var falcoorSpec  = [CocktailIngredient(.fruit(.cucumberSlices), value: 2, unit: .muddled),
                     CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
                     CocktailIngredient(.juices(.lime), value: 0.5),
-                    CocktailIngredient(.syrups(.orgeat), value: 1),
+                    CocktailIngredient(.syrups(.orgeat), value: 1, prep: PrepBibleViewModel().orgeat),
                     CocktailIngredient(.amari(.amaroMontenegro), value: 0.5),
                     CocktailIngredient(.bitters(.orangeBitters), value: 0.5),
                     CocktailIngredient(.rums(.smithAndCross), value: 0.75)]

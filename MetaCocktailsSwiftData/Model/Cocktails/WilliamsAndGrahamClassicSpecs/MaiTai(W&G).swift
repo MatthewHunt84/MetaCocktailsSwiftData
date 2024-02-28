@@ -17,7 +17,7 @@ var maiTaiWnG  = Cocktail(cocktailName: "Mai Tai(W&G Version)",
                           variation: .maiTai)
 
 var maiTaiSpecWnG    = [CocktailIngredient(.juices(.lime), value: 1),
-                        CocktailIngredient(.syrups(.orgeat), value: 0.5),
+                        CocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBibleViewModel().orgeat),
                         CocktailIngredient(.liqueurs(.orangeCuracao), value: 0.75),
                         CocktailIngredient(.rums(.smithAndCross), value: 0.5),
                         CocktailIngredient(.rums(.plantationBarbados), value: 1.5)]

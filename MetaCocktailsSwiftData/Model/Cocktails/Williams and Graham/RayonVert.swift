@@ -21,7 +21,7 @@ var reyonVert = Cocktail(cocktailName: "Rayon Vert",
 
 let reyonVertSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.basil), value: 7, unit: .nitroMuddled),
                                            CocktailIngredient(.juices(.lime), value: 0.5),
-                                           CocktailIngredient(.syrups(.cucumberSyrup), value: 0.5),
+                                           CocktailIngredient(.syrups(.cucumberSyrup), value: 0.5, prep: PrepBibleViewModel().cucumberSyrup),
                                            CocktailIngredient(.gins(.juinipero), value: 2),
                                            CocktailIngredient(.otherAlcohol(.absinthe), value: 1, unit: .glassRinse)]
                                         

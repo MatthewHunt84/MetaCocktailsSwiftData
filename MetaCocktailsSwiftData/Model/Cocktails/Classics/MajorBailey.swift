@@ -21,7 +21,7 @@ var majorBailey = Cocktail(cocktailName: "Major Bailey",
 let majorBaileySpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 12, unit: .gentlyMuddled),
                                              CocktailIngredient(.juices(.lime), value: 0.25),
                                              CocktailIngredient(.juices(.lime), value: 0.25),
-                                             CocktailIngredient(.syrups(.richSimple), value: 0.5),
+                                             CocktailIngredient(.syrups(.richSimple), value: 0.5, prep: PrepBibleViewModel().richSimple),
                                              CocktailIngredient(.gins(.haymansLondonDry), value: 2)]
 
 

@@ -15,7 +15,7 @@ var beesKnees  = Cocktail(cocktailName: "Bee's Knees",
                           tags: beesKneesTags)
 
 var beesKneesSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                      CocktailIngredient(.syrups(.honeySyrup), value: 0.75),
+                      CocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBibleViewModel().honeySyrup),
                       CocktailIngredient(.gins(.fordsGin) , value: 2)]
 
 

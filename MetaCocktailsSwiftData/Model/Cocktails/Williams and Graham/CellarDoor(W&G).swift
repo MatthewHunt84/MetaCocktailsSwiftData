@@ -17,7 +17,7 @@ var cellarDoor = Cocktail(cocktailName: "Cellar Door(W&G)",
                           tags: cellarDoorTags)
 
 var cellarDoorSpec  = [CocktailIngredient(.otherNonAlc(.butter), value: 0.25),
-                       CocktailIngredient(.syrups(.orgeat), value: 0.75),
+                       CocktailIngredient(.syrups(.orgeat), value: 0.75, prep: PrepBibleViewModel().orgeat),
                        CocktailIngredient(.liqueurs(.stGeorgeSpicesPear), value: 0.5),
                        CocktailIngredient(.fortifiedWines(.oloroso), value: 2)]
 

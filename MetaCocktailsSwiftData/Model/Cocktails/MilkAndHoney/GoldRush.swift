@@ -16,7 +16,7 @@ var goldRush  = Cocktail(cocktailName: "Gold Rush",
                          tags: goldRushTags)
 
 var goldRushSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                     CocktailIngredient(.syrups(.honeySyrup), value: 0.75),
+                     CocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBibleViewModel().honeySyrup),
                      CocktailIngredient(.whiskies(.bourbonAny) , value: 2)]
 
 

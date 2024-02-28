@@ -19,8 +19,8 @@ var penicillin = Cocktail(cocktailName: "Penicillin",
                           variation: .penicillin)
 
 var penicillinSpec = [CocktailIngredient(.juices(.lemon), value: 0.75, unit: .fluidOunces),
-                      CocktailIngredient(.syrups(.honeySyrup), value: 0.375),
-                      CocktailIngredient(.syrups(.gingerSyrup), value: 0.375),
+                      CocktailIngredient(.syrups(.honeySyrup), value: 0.375, prep: PrepBibleViewModel().honeySyrup),
+                      CocktailIngredient(.syrups(.gingerSyrup), value: 0.375, prep: PrepBibleViewModel().gingerSyrup),
                       CocktailIngredient(.whiskies(.scotchBlended), value: 2),
                       CocktailIngredient(.whiskies(.scotchIsla), value: 0.25)]
 

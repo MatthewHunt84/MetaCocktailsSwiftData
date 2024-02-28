@@ -30,10 +30,10 @@ struct CocktailResultList: View {
                                         ForEach(result.cocktails, id: \.self.id) { cocktail in
                                             NavigationLink {
                                                 if viewModel.menuMode {
-                                                    SearchGuestRecipeView(viewModel: CocktailMenuViewModel(cocktail: cocktail))
+                                                    SearchGuestRecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
                                                                      
                                                     } else {
-                                                    RecipeView(viewModel: CocktailMenuViewModel(cocktail: cocktail))
+                                                    RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
                                                 }
                                                 
                                             } label: {
@@ -52,9 +52,9 @@ struct CocktailResultList: View {
                                         ForEach(result.cocktails, id: \.self.id) { cocktail in
                                             NavigationLink {
                                                 if viewModel.menuMode {
-                                                    SearchGuestRecipeView(viewModel: CocktailMenuViewModel(cocktail: cocktail))
+                                                    SearchGuestRecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
                                                 } else {
-                                                    RecipeView(viewModel: CocktailMenuViewModel(cocktail: cocktail))
+                                                    RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
                                                 }
                                             } label: {
                                                 HStack {
