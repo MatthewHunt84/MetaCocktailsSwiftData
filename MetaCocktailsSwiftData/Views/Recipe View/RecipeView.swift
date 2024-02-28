@@ -176,17 +176,7 @@ struct RecipeView: View {
                                 .padding()
                             
                             
-                            ForEach(viewModel.cocktail.spec, id: \.ingredient.name) { ingredient in
-                                if ingredient.prep != nil {
-                                    NavigationLink {
-                                        PrepRecipeView(prep: ingredient.prep!)
-                                    } label: {
-                                        Text("View prep for \(ingredient.ingredient.name)")
-                                    }
-                                }
-                                
-                            }
-                            
+                         
                             Rectangle()
                                 .fill(.black)
                                 .frame(width: 60, height: 40, alignment: .center)
