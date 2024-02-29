@@ -51,18 +51,18 @@ import Observation
          if ingredientType.category == "Fruit" {
              selectedMeasurementUnit = MeasurementUnit.muddled
              
-         }
-         if ingredientType.category == "Bitters" {
+         } else if ingredientType.category == "Bitters" {
+           
              selectedMeasurementUnit = MeasurementUnit.dashes
              
-         }
-         if ingredientType.category == "Herbs" {
+         } else if ingredientType.category == "Herbs" {
              selectedMeasurementUnit = MeasurementUnit.gentlyMuddled
              
-         }
-         if ingredientType.category == "Seasoning" {
+         } else if ingredientType.category == "Seasoning" {
              selectedMeasurementUnit = MeasurementUnit.drops
              
+         } else {
+             selectedMeasurementUnit = MeasurementUnit.fluidOunces
          }
          
          
