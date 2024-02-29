@@ -47,6 +47,26 @@ import Observation
         }
 
     }
+     func dynamicallyChangeMeasurementUnit() {
+         if ingredientType.category == "Fruit" {
+             selectedMeasurementUnit = MeasurementUnit.muddled
+             
+         }
+         if ingredientType.category == "Bitters" {
+             selectedMeasurementUnit = MeasurementUnit.dashes
+             
+         }
+         if ingredientType.category == "Herbs" {
+             selectedMeasurementUnit = MeasurementUnit.gentlyMuddled
+             
+         }
+         if ingredientType.category == "Seasoning" {
+             selectedMeasurementUnit = MeasurementUnit.drops
+             
+         }
+         
+         
+     }
     
     static func createPhysicalComponentArray() ->  [CocktailComponent] {
         

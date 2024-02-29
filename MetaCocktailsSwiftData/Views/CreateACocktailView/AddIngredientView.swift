@@ -28,9 +28,11 @@ struct AddIngredientView: View {
                             viewModel.currentSelectedComponent = component
                             if component.isNA {
                                 viewModel.ingredientType = component.nACategory ?? IngredientType.juices(.carrotJuice)
+                                viewModel.dynamicallyChangeMeasurementUnit()
                             }
                             if component.isSpirit {
                                 viewModel.ingredientType = component.spiritCategory ?? IngredientType.vodkas(.vodkaAny)
+                                viewModel.dynamicallyChangeMeasurementUnit()
                             }
                             
                         } label: {
