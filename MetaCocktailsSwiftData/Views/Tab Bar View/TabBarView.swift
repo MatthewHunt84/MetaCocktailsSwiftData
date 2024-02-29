@@ -11,14 +11,16 @@ struct TabBarView: View {
     var body: some View {
 
         TabView {
+            AddIngredientView()
+                .tabItem { Label("Build", systemImage: "birthday.cake.fill") }
+            
             BasicSearchView()
                 .tabItem { Label("Search", systemImage: "magnifyingglass.circle.fill") }
 
             CocktailListView()
                 .tabItem { Label("A-Z", systemImage: "list.bullet") }
 
-//            AddIngredientView()
-//                .tabItem { Label("Build", systemImage: "birthday.cake.fill") }
+            
 
         }
         

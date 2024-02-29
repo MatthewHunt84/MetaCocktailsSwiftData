@@ -33,6 +33,7 @@ import Observation
             for component in allPhysicalCocktailComponents {
                 component.matchesCurrentSearch = false
             }
+            //self.objectWillChange.send()
             return
         }
         
