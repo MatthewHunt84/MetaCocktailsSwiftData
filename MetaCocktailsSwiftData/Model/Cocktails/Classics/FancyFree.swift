@@ -7,7 +7,7 @@
 
 import Foundation
 
-var fancyFree = Cocktail(cocktailName: "Fancy Free(1940)",
+var fancyFree = Cocktail(cocktailName: "Fancy Free",
                          glasswareType: .doubleOld,
                          garnish: [.orangePeel],
                          ice: .bigRock,
@@ -16,7 +16,8 @@ var fancyFree = Cocktail(cocktailName: "Fancy Free(1940)",
                                         year: "1940"),
                          spec: fancyFreeSpec,
                          tags: fancyFreeTags,
-                         variation: .fancyFree)
+                         variation: .fancyFree,
+                         collection: .originals)
 
 var fancyFreeSpec     =  [CocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dash),
                           CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),

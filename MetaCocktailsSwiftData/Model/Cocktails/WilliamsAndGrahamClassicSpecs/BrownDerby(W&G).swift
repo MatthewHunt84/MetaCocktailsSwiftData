@@ -18,7 +18,7 @@ let brownDerbyWnG = Cocktail(cocktailName: "Brown Derby(W&G Version)",
 
 var brownDerbyWnGSpec: [CocktailIngredient] = [CocktailIngredient(.whiskies(.fourRosesYellowLabel), value: 2),
                                                CocktailIngredient(.juices(.grapefruit), value: 0.75),
-                                               CocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBibleViewModel().honeySyrup)]
+                                               CocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup)]
 
 
 

@@ -18,7 +18,7 @@ var aLightInTheDark = Cocktail(cocktailName: "A Light in the Dark",
                                tags: aLightInTheDarkTags)
 
 let aLightInTheDarkSpec: [CocktailIngredient] = [CocktailIngredient(.juices(.lime), value: 0.25),
-                                                 CocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBibleViewModel().orgeat),
+                                                 CocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBible.orgeat),
                                                  CocktailIngredient(.syrups(.pineappleGumSyrup), value: 1),
                                                  CocktailIngredient(.whiskies(.rittenhouseRye), value: 0.5),
                                                  CocktailIngredient(.fortifiedWines(.fino), value: 1),

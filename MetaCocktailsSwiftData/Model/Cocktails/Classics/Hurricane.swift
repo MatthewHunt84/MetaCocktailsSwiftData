@@ -7,7 +7,7 @@
 
 import Foundation
 
-var hurricane = Cocktail(cocktailName: "Hurricane(1939)",
+var hurricane = Cocktail(cocktailName: "Hurricane",
                          imageAsset: nil,
                          glasswareType: .hurricaneGlass,
                          garnish: [.orangeFlag],
@@ -15,7 +15,8 @@ var hurricane = Cocktail(cocktailName: "Hurricane(1939)",
                          author: Author(person: "Louis Culligan", place: "Pat O'Brian's, New Orleans", year: "1939" ),
                          spec: hurricaneSpec,
                          tags: hurricaneTags,
-                         variation: .hurricane)
+                         variation: .hurricane,
+                         collection: .originals)
 
 let hurricaneSpec: [CocktailIngredient] =  [CocktailIngredient(.juices(.lemon), value: 2),
                                             CocktailIngredient(.syrups(.passionfruitSyrup), value: 2),

@@ -17,7 +17,7 @@ var aloeForThatBurn = Cocktail(cocktailName: "Aloe for that Burn",
 
 let aloeForThatBurnSpec: [CocktailIngredient] = [CocktailIngredient(.otherAlcohol(.jalapeñoTincture), value: 5, unit: .dashes),
                                                  CocktailIngredient(.juices(.lime), value: 0.5),
-                                                 CocktailIngredient(.syrups(.cucumberSyrup), value: 0.5, prep: PrepBibleViewModel().cucumberSyrup),
+                                                 CocktailIngredient(.syrups(.cucumberSyrup), value: 0.5, prep: PrepBible.cucumberSyrup),
                                                  CocktailIngredient(.liqueurs(.charaeu), value: 0.75),
                                                  CocktailIngredient(.vodkas(.stGeorgeGreenChileVodka), value: 0.75),
                                                  CocktailIngredient(.agaves(.tequilaOchoBlanco), value: 1.25)]

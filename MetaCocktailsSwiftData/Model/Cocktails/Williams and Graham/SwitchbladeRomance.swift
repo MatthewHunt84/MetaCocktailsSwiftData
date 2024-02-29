@@ -18,7 +18,7 @@ var switchbladeRomance = Cocktail(cocktailName: "Switchblade Romance",
 
 let switchbladeRomanceSpec: [CocktailIngredient] = [CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
                                                     CocktailIngredient(.juices(.lemon), value: 0.5),
-                                                    CocktailIngredient(.syrups(.orgeat), value: 0.75, prep: PrepBibleViewModel().orgeat),
+                                                    CocktailIngredient(.syrups(.orgeat), value: 0.75, prep: PrepBible.orgeat),
                                                     CocktailIngredient(.fortifiedWines(.byrrh), value: 0.5),
                                                     CocktailIngredient(.bitters(.angosturaBitters), value: 0.25),
                                                     CocktailIngredient(.rums(.plantationPineapple), value: 2)]

@@ -7,13 +7,14 @@
 
 import Foundation
 
-var brooklyn = Cocktail(cocktailName: "Brooklyn Cocktail(1908)",
+var brooklyn = Cocktail(cocktailName: "Brooklyn Cocktail",
                         glasswareType: .stemmedGlassware,
                         garnish: [.lemonExpression],
                         author:Author(person: "Jacob A. Grohusko", place: "Jack's Manual, New York", year: "1908"),
                         spec: brooklynSpec,
                         tags: brooklynTags,
-                        variation: .brooklyn)
+                        variation: .brooklyn,
+                        collection: .originals)
 
 var brooklynSpec     =  [CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 1, unit: .teaspoon),
                          CocktailIngredient(.amari(.amerPicon), value: 1, unit: .teaspoon),

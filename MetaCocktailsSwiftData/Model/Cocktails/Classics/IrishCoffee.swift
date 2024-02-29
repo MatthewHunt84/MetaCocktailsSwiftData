@@ -7,14 +7,15 @@
 
 import Foundation
 
-var irishCoffee = Cocktail(cocktailName: "Irish Coffee(1944)",
+var irishCoffee = Cocktail(cocktailName: "Irish Coffee",
                            glasswareType: .buenaVistaIrish,
                            garnish: nil,
                            author: Author(person: "Joe Sheridan", place: "Flying Boat Station. Foynes, Ireland", year: "1944"),
                            spec: irishCoffeeSpec,
                            buildOrder: irishCoffeeBuild,
                            tags: irishCoffeeTags,
-                           variation: .irishCoffee)
+                           variation: .irishCoffee,
+                           collection: .originals)
 
 var irishCoffeeSpec  = [CocktailIngredient(.otherNonAlc(.stiffCream), value: 30, unit: .ml),
                         CocktailIngredient(.otherNonAlc(.coffee), value: 75, unit: .ml),

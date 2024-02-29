@@ -7,7 +7,7 @@
 
 import Foundation
 
-var laLouisiane = Cocktail(cocktailName: "La Louisiane(1937)",
+var laLouisiane = Cocktail(cocktailName: "La Louisiane",
                            glasswareType: .coupe,
                            garnish: [.maraschinoCherry],
                            ice: nil,
@@ -15,7 +15,8 @@ var laLouisiane = Cocktail(cocktailName: "La Louisiane(1937)",
                            spec: laLouisianeSpec,
                            buildOrder: laLouisianeBuild,
                            tags: laLouisianeTags,
-                           variation: .laLouisiane)
+                           variation: .laLouisiane,
+                           collection: .originals)
 
 var laLouisianeSpec     =  [CocktailIngredient(.otherAlcohol(.absinthe), value: 3, unit: .dashes),
                             CocktailIngredient(.bitters(.peychauds), value: 3, unit: .dashes),

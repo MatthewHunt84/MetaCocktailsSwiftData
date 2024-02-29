@@ -89,7 +89,7 @@ class CocktailComponent: Identifiable, ObservableObject, Hashable{
         self.isSpirit = false
         self.preferenceType = .na
         self.matchesCurrentSearch = true
-        self.isNA = true 
+        self.isNA = true
         self.nACategory = nA.ingredientType
         self.nACategoryName = nA.ingredientType.category
     }

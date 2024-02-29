@@ -17,7 +17,7 @@ var cloverClub = Cocktail(cocktailName: "Clover Club(Reiner's)",
                           variation: .cloverClub)
 
 var cloverClubSpec  = [CocktailIngredient(.juices(.lemon), value: 0.5),
-                       CocktailIngredient(.syrups(.raspberrySyrup), value: 0.5, prep: PrepBibleViewModel().raspberrySyrup),
+                       CocktailIngredient(.syrups(.raspberrySyrup), value: 0.5, prep: PrepBible.raspberrySyrup),
                        CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.5),
                        CocktailIngredient(.fortifiedWines(.dolinDry), value: 0.5),
                        CocktailIngredient(.gins(.plymouth), value: 1.5)]

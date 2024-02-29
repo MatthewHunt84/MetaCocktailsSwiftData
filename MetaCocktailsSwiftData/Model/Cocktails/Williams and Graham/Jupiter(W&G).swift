@@ -18,7 +18,7 @@ var jupiter = Cocktail(cocktailName: "Jupiter(W&G)",
 var jupiterSpec  =  [CocktailIngredient(.bitters(.tikiBitters), value: 1, unit: .dash),
                      CocktailIngredient(.juices(.lemon), value: 0.5),
                      CocktailIngredient(.syrups(.passionfruitSyrup), value: 0.5),
-                     CocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBibleViewModel().orgeat),
+                     CocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBible.orgeat),
                      CocktailIngredient(.otherNonAlc(.coconutMilk), value: 0.5),
                      CocktailIngredient(.brandies(.pF1840), value: 2)]
 

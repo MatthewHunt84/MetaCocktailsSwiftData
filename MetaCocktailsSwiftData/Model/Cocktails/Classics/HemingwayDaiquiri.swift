@@ -7,14 +7,15 @@
 
 import Foundation
 
-let hemingwayDaiquiri = Cocktail(cocktailName: "Hemingway Daiquiri(1938)",
+let hemingwayDaiquiri = Cocktail(cocktailName: "Hemingway Daiquiri",
                                  glasswareType: .coupe,
                                  garnish: [.limeWheel],
                                  author:Author(person: AuthorNames.constante.rawValue, place: AuthorPlaces.laFloridita.rawValue, year: "1938"),
                                  spec: hemingwayDaiquiriSpec,
                                  buildOrder: hemingwayBuild,
                                  tags: hemingwayDaiquiriTags,
-                                 variation: .daiquiri)
+                                 variation: .daiquiri,
+                                 collection: .originals)
 
 var hemingwayDaiquiriSpec: [CocktailIngredient] = [CocktailIngredient(.juices(.lime), value: 0.5),
                                                    CocktailIngredient(.juices(.grapefruit), value: 0.25),

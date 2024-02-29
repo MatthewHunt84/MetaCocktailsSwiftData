@@ -17,7 +17,7 @@ var shameless = Cocktail(cocktailName: "Shameless",
                          tags: shamelessTags)
 
 let shamelessSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.orangeBitters), value: 3, unit: .dashes),
-                                           CocktailIngredient(.syrups(.honeySyrup), value: 1, unit: .barSpoon, prep: PrepBibleViewModel().honeySyrup),
+                                           CocktailIngredient(.syrups(.honeySyrup), value: 1, unit: .barSpoon, prep: PrepBible.honeySyrup),
                                            CocktailIngredient(.amari(.suze), value: 0.25),
                                            CocktailIngredient(.liqueurs(.benedictine), value: 0.5),
                                            CocktailIngredient(.amari(.cynar), value: 0.75),

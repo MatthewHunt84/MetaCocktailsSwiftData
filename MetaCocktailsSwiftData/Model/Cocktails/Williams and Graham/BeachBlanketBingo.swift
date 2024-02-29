@@ -19,7 +19,7 @@ var beachBlanketBingo = Cocktail(cocktailName: "Beach Blanket Bingo",
 let beachBlanketBingoSpec: [CocktailIngredient] = [CocktailIngredient(.wines(.prosecco), value: 2),
                                                    CocktailIngredient(.fruit(.raspberries), value: 2, unit: .muddled),
                                                    CocktailIngredient(.juices(.lemon), value: 0.5),
-                                                   CocktailIngredient(.syrups(.honeySyrup), value: 0.5, prep: PrepBibleViewModel().honeySyrup),
+                                                   CocktailIngredient(.syrups(.honeySyrup), value: 0.5, prep: PrepBible.honeySyrup),
                                                    CocktailIngredient(.liqueurs(.giffardPamplemousse), value: 0.5),
                                                    CocktailIngredient(.rums(.plantationPineapple), value: 1),
                                                    CocktailIngredient(.liqueurs(.anchoRayesAncho), value: 1.5)]

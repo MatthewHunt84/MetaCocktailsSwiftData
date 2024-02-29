@@ -8,7 +8,7 @@
 import Foundation
 
 
-var tiPunch = Cocktail(cocktailName: "Ti' Punch(1800s)",
+var tiPunch = Cocktail(cocktailName: "Ti' Punch",
                        glasswareType: .doubleOld,
                        garnish: [.limePeel],
                        ice: .bigRock,
@@ -16,9 +16,10 @@ var tiPunch = Cocktail(cocktailName: "Ti' Punch(1800s)",
                        spec: tiPunchSpec,
                        buildOrder: tiPunchBuildOrder,
                        tags: tiPunchTags,
-                       variation: .tiPunch)
+                       variation: .tiPunch,
+                       collection: .originals)
 
-var tiPunchSpec  =  [CocktailIngredient(.syrups(.richDem), value: 2, unit: .teaspoon, prep: PrepBibleViewModel().richDem),
+var tiPunchSpec  =  [CocktailIngredient(.syrups(.richDem), value: 2, unit: .teaspoon, prep: PrepBible.richDem),
                      CocktailIngredient(.rums(.rumWhiteAgricole), value: 2)]
 
 var tiPunchTags = Tags( profiles: [.sweet, .spiritForward, .funky],

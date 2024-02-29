@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-var saturn = Cocktail(cocktailName: "Saturn(1967)",
+var saturn = Cocktail(cocktailName: "Saturn",
                       glasswareType: .doubleOld,
                       garnish: [.lemonPeel, .maraschinoCherry],
                       ice: .pebbleIce,
@@ -15,11 +15,12 @@ var saturn = Cocktail(cocktailName: "Saturn(1967)",
                       spec: saturnSpec,
                       buildOrder: saturnBuildOrder,
                       tags: saturnTags,
-                      variation: .saturn)
+                      variation: .saturn,
+                      collection: .originals)
 
 var saturnSpec  =  [CocktailIngredient(.juices(.lemon), value: 0.5),
                     CocktailIngredient(.syrups(.passionfruitSyrup), value: 0.5),
-                    CocktailIngredient(.syrups(.orgeat), value: 0.25, prep: PrepBibleViewModel().orgeat),
+                    CocktailIngredient(.syrups(.orgeat), value: 0.25, prep: PrepBible.orgeat),
                     CocktailIngredient(.liqueurs(.velvetFalernum), value: 0.25),
                     CocktailIngredient(.gins(.ginAny), value: 1.5)]
 

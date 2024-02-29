@@ -17,7 +17,7 @@ var nightVision  =  Cocktail(cocktailName: "Night Vision",
                              tags: nightVisionTags)
 
 var nightVisionSpec = [CocktailIngredient(.juices(.lemon), value: 0.25),
-                       CocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBibleViewModel().orgeat),
+                       CocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBible.orgeat),
                        CocktailIngredient(.juices(.carrotJuice), value: 1),
                        CocktailIngredient(.amari(.becherovka), value: 0.5),
                        CocktailIngredient(.rums(.avuaPrata), value: 1.5)]

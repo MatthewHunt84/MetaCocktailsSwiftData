@@ -7,7 +7,7 @@
 
 import Foundation
 
-var whiteLady = Cocktail(cocktailName: "White Lady(1930)",
+var whiteLady = Cocktail(cocktailName: "White Lady",
                          glasswareType: .martini,
                          garnish: nil,
                          author: harryCraddock,

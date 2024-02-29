@@ -17,10 +17,8 @@ struct TabBarView: View {
             CocktailListView()
                 .tabItem { Label("A-Z", systemImage: "list.bullet") }
 
-//            PrepBibleListView()
-//                .tabItem { Label("Prep", systemImage: "book.fill") }
-//            CBCLoadedCocktailView()
-//                .tabItem { Label("Batch", systemImage: "plus.forwardslash.minus") }
+//            AddIngredientView()
+//                .tabItem { Label("Build", systemImage: "birthday.cake.fill") }
 
         }
         
@@ -28,9 +26,12 @@ struct TabBarView: View {
     }
 }
 
-struct TabBarView_Previews: PreviewProvider {
-    static var previews: some View {
-        TabBarView()
-            .environmentObject(SearchCriteriaViewModel())
-    }
+
+
+#Preview {
+    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
+    return TabBarView()
+        .environmentObject(SearchCriteriaViewModel())
+        .modelContainer(preview.container)
+        
 }

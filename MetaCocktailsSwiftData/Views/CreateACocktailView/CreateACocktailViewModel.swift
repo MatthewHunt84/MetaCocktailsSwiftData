@@ -27,18 +27,18 @@ import Observation
     }()
 
     func matchAllPhysicalCocktailComponents() {
-        // if searchText is empty, show everything again
+        // if searchText is empty, don't show any results
         
         if ingredientName == "" {
             for component in allPhysicalCocktailComponents {
-                component.matchesCurrentSearch = true
+                component.matchesCurrentSearch = false
             }
             return
         }
         
         // if searchText has text, match it and set the viewModel properties accordingly
         for component in allPhysicalCocktailComponents {
-            if component.name.localizedCaseInsensitiveContains(ingredientName) {
+            if component.name.localizedCaseInsensitiveContains(ingredientName) && ingredientName != "" {
                 component.matchesCurrentSearch = true
             } else {
                 component.matchesCurrentSearch = false

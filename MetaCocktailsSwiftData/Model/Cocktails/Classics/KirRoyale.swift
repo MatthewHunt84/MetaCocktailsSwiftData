@@ -7,14 +7,15 @@
 
 import Foundation
 
-var kirRoyale = Cocktail(cocktailName: "Kir Royale(1959)",
+var kirRoyale = Cocktail(cocktailName: "Kir Royale",
                          glasswareType: .wineGlass,
                          garnish: [.noGarnish],
                          ice: nil,
                          author: Author(person: "Gaston Gerard" , place: "'Le miroir de coin et de temps'. Dijon: Edition des Etats Generaux de la Gastronomie", year: "1959"),
                          spec: kirRoyaleSpec,
                          tags: kirRoyaleTags,
-                         variation: .kirRoyale)
+                         variation: .kirRoyale,
+                         collection: .originals)
 
 var kirRoyaleSpec  = [CocktailIngredient(.liqueurs(.cremeDeCassis), value: 15, unit: .ml),
                       CocktailIngredient(.wines(.bourgogneAligote), value: 100, unit: .ml)]

@@ -7,12 +7,13 @@
 
 import Foundation
 
-let brownDerbyRum = Cocktail(cocktailName: "Brown Derby(1939: Rum Version)",
+let brownDerbyRum = Cocktail(cocktailName: "Brown Derby",
                              glasswareType: .stemmedGlassware,
                              author: Author(person: "Esquire", place: "'Potables' column", year: "1939"),
                              spec: brownDerbyRumSpec,
                              tags: brownDerbyRumTags,
-                             variation: .brownDerby)
+                             variation: .brownDerby,
+                             collection: .originals)
 
 var brownDerbyRumSpec: [CocktailIngredient] = [CocktailIngredient(.rums(.rumDark), value: 2),
                                                CocktailIngredient(.juices(.lime), value: 1),

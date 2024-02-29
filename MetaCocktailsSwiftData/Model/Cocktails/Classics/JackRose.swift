@@ -7,7 +7,7 @@
 
 import Foundation
 
-var jackRose = Cocktail(cocktailName: "Jack Rose(1899)",
+var jackRose = Cocktail(cocktailName: "Jack Rose",
                            glasswareType: .stemmedGlassware,
                            garnish: [.limeWheel],
                            ice: nil,
@@ -16,7 +16,8 @@ var jackRose = Cocktail(cocktailName: "Jack Rose(1899)",
                                           year: "1899"),
                            spec: jackRoseSpecWnG,
                            buildOrder: nil,
-                           tags: jackRoseTags)
+                           tags: jackRoseTags,
+                        collection: .originals)
 
 var jackRoseSpecWnG  = [CocktailIngredient(.juices(.lime), value: 0.5),
                         CocktailIngredient(.syrups(.grenadine), value: 0.5),

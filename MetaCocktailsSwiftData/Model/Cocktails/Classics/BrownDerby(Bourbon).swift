@@ -7,16 +7,17 @@
 
 import Foundation
 
-let brownDerbyBourbon = Cocktail(cocktailName: "Brown Derby(1930s)",
+let brownDerbyBourbon = Cocktail(cocktailName: "Brown Derby",
                                  glasswareType: .stemmedGlassware,
                                  author: Author(place: "Hollywood(maybe)", year: "1930s"),
                                  spec: brownDerbyBourbonSpec,
                                  tags: brownDerbyBourbonTags,
-                                 variation: .brownDerby)
+                                 variation: .brownDerby,
+                                 collection: .originals)
 
 var brownDerbyBourbonSpec: [CocktailIngredient] = [CocktailIngredient(.whiskies(.bourbonAny), value: 2),
                                                    CocktailIngredient(.juices(.grapefruit), value: 1),
-                                                   CocktailIngredient(.syrups(.honeySyrup), value: 0.5, prep: PrepBibleViewModel().honeySyrup)]
+                                                   CocktailIngredient(.syrups(.honeySyrup), value: 0.5, prep: PrepBible.honeySyrup)]
 
 var brownDerbyBourbonTags = Tags(profiles: [.citrusy, .refreshing, .light],
                                  styles: [.sour, .shaken])

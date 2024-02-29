@@ -16,7 +16,7 @@ var japaneseCocktailWnG  = Cocktail(cocktailName: "Japanese Cocktail(W&G Version
                                     variation: .japanese)
 
 var japaneseCocktailSpecWnG  = [CocktailIngredient(.bitters(.angosturaBitters), value: 3, unit: .dash),
-                                CocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBibleViewModel().orgeat),
+                                CocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBible.orgeat),
                                 CocktailIngredient(.brandies(.pFAmber) , value: 2.5)]
 
 

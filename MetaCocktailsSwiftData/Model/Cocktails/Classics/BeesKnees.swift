@@ -7,15 +7,16 @@
 
 import Foundation
 
-var beesKnees  = Cocktail(cocktailName: "Bee's Knees(1929)",
+var beesKnees  = Cocktail(cocktailName: "Bee's Knees",
                           glasswareType: .coupe,
                           garnish: [.lemonPeel],
                           author: Author(person: "The Standard Union", place: "Brooklyn, NY", year: "April 23, 1929"),
                           spec: beesKneesSpec,
-                          tags: beesKneesTags)
+                          tags: beesKneesTags,
+                          collection: .originals)
 
 var beesKneesSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                      CocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBibleViewModel().honeySyrup),
+                      CocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup),
                       CocktailIngredient(.gins(.fordsGin) , value: 2)]
 
 

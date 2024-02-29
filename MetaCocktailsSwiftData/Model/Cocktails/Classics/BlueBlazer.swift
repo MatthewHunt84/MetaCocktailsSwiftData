@@ -13,7 +13,8 @@ var blueBlazer = Cocktail(cocktailName: "Blue Blazer",
                           author: jerryThomas,
                           spec: blueBlazerSpec,
                           buildOrder: blueBlazerBuild,
-                          tags: blueBlazerTags)
+                          tags: blueBlazerTags,
+                          collection: .originals)
 
 var blueBlazerSpec  = [CocktailIngredient(.otherNonAlc(.hotWater), value: 2),
                        CocktailIngredient(.otherNonAlc(.sugarCube), value: 2, unit: .whole),

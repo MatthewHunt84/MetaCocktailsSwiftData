@@ -7,7 +7,7 @@
 
 import Foundation
 
-var hankyPanky = Cocktail(cocktailName: "Hanky Panky(1921)",
+var hankyPanky = Cocktail(cocktailName: "Hanky Panky",
                           glasswareType: .stemmedGlassware,
                           garnish: [.orangePeel],
                           author:Author(person: "Ada 'Coley' Colman",
@@ -15,7 +15,8 @@ var hankyPanky = Cocktail(cocktailName: "Hanky Panky(1921)",
                                         year: "1921"),
                           spec: hankyPankySpec,
                           tags: hankyPankyTags,
-                          variation: .hankyPanky)
+                          variation: .hankyPanky,
+                          collection: .originals)
 
 var hankyPankySpec     =  [CocktailIngredient(.amari(.fernetBranca), value: 2, unit: .dashes),
                            CocktailIngredient(.gins(.ginLondonDry), value: 1.5),

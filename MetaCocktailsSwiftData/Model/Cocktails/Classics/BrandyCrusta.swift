@@ -7,17 +7,18 @@
 
 import Foundation
 
-var brandyCrusta = Cocktail(cocktailName: "Brandy Crusta(1862)",
+var brandyCrusta = Cocktail(cocktailName: "Brandy Crusta",
                             glasswareType: .crustaGlass,
                             author: jerryThomas,
                             spec: brandyCrustaSpec,
                             buildOrder: brandyCrustaBuild,
                             tags: brandyCrustaTags,
-                            variation: .brandyCrusta)
+                            variation: .brandyCrusta,
+                            collection: .originals)
 
 var brandyCrustaSpec    = [CocktailIngredient(.juices(.lemon), value: 1, unit: .dash),
                            CocktailIngredient(.liqueurs(.orangeCuracao), value: 2, unit: .dashes),
-                           CocktailIngredient(.syrups(.richSimple), value: 4, unit: .dashes, prep: PrepBibleViewModel().richSimple),
+                           CocktailIngredient(.syrups(.richSimple), value: 4, unit: .dashes, prep: PrepBible.richSimple),
                            CocktailIngredient(.bitters(.angosturaBitters), value:1, unit: .dash),
                            CocktailIngredient(.brandies(.brandyAny), value:2)]
 

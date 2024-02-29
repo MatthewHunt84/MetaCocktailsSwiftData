@@ -21,8 +21,8 @@ var sunnySide = Cocktail(cocktailName: "Sunny Side",
 
 let sunnySideSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
                                            CocktailIngredient(.juices(.lime), value: 0.75),
-                                           CocktailIngredient(.syrups(.cucumberSyrup), value: 0.5, prep: PrepBibleViewModel().cucumberSyrup),
-                                           CocktailIngredient(.syrups(.gingerSyrup), value: 0.25, prep: PrepBibleViewModel().gingerSyrup),
+                                           CocktailIngredient(.syrups(.cucumberSyrup), value: 0.5, prep: PrepBible.cucumberSyrup),
+                                           CocktailIngredient(.syrups(.gingerSyrup), value: 0.25, prep: PrepBible.gingerSyrup),
                                            CocktailIngredient(.fortifiedWines(.cocchiAmericano), value: 0.5),
                                            CocktailIngredient(.gins(.ginAny), value: 1.5)]
                                         

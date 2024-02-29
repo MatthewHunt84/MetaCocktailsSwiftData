@@ -7,7 +7,7 @@
 
 import Foundation
 
-var majorBailey = Cocktail(cocktailName: "Major Bailey(1947)",
+var majorBailey = Cocktail(cocktailName: "Major Bailey",
                            imageAsset: nil,
                            glasswareType: .fizzGlass,
                            garnish: [.mintSprig],
@@ -16,12 +16,13 @@ var majorBailey = Cocktail(cocktailName: "Major Bailey(1947)",
                            spec: majorBaileySpec,
                            buildOrder: majorBaileyBuild,
                            tags: majorBaileyTags,
-                           variation: .majorBailey)
+                           variation: .majorBailey,
+                           collection: .originals)
 
 let majorBaileySpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 12, unit: .gentlyMuddled),
                                              CocktailIngredient(.juices(.lime), value: 0.25),
                                              CocktailIngredient(.juices(.lime), value: 0.25),
-                                             CocktailIngredient(.syrups(.richSimple), value: 0.5, prep: PrepBibleViewModel().richSimple),
+                                             CocktailIngredient(.syrups(.richSimple), value: 0.5, prep: PrepBible.richSimple),
                                              CocktailIngredient(.gins(.haymansLondonDry), value: 2)]
 
 

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-var ginFizz  = Cocktail(cocktailName: "Gin Fizz(1862)",
+var ginFizz  = Cocktail(cocktailName: "Gin Fizz",
                         glasswareType: .fizzGlass,
                         garnish: [.noGarnish],
                         ice: nil,
@@ -15,7 +15,8 @@ var ginFizz  = Cocktail(cocktailName: "Gin Fizz(1862)",
                         spec: ginFizzSpec,
                         buildOrder: ginFizzBuild,
                         tags: ginFizzTags,
-                        variation: .ginFizz)
+                        variation: .ginFizz,
+                        collection: .originals)
 
 var ginFizzSpec  = [CocktailIngredient(.juices(.lemon), value: 1),
                     CocktailIngredient(.syrups(.simple), value: 1),

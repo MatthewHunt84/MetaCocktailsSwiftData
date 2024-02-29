@@ -7,7 +7,7 @@
 
 import Foundation
 
-var honeymoonCocktailEmbury = Cocktail(cocktailName: "Honeymoon Cocktail(1948)",
+var honeymoonCocktailEmbury = Cocktail(cocktailName: "Honeymoon Cocktail(Embury)",
                                        glasswareType: .stemmedGlassware,
                                        garnish: nil,
                                        ice: nil,

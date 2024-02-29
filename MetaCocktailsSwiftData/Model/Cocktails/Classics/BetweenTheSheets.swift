@@ -7,13 +7,14 @@
 
 import Foundation
 
-var betweenTheSheets  = Cocktail(cocktailName: "Between the Sheets(1929)",
+var betweenTheSheets  = Cocktail(cocktailName: "Between the Sheets",
                                  glasswareType: .martini,
                                  garnish: [.orangePeel],
                                  author: Author(person: AuthorNames.harryCraddock.rawValue, place: AuthorPlaces.savoy.rawValue, year: "1929"),
                                  spec: betweenTheSheetsSpec,
                                  tags: betweenTheSheetsTags,
-                                 variation: .betweenTheSheets)
+                                 variation: .betweenTheSheets,
+                                 collection: .originals)
 
 var betweenTheSheetsSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                              CocktailIngredient(.rums(.rumWhite), value: 0.75),

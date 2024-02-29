@@ -8,12 +8,13 @@
 import Foundation
 
 
-var homeOnTheRange = Cocktail(cocktailName: "Home on the Range(1941)",
+var homeOnTheRange = Cocktail(cocktailName: "Home on the Range",
                               glasswareType: .stemmedGlassware,
                               garnish: [.lemonPeel, .orangePeel],
                               author:Author(person: "Crosby Gaige",  place: AuthorPlaces.crosbyGaigeCocktailGuide.rawValue , year: "1941"),
                               spec: homeOnTheRangeSpec,
-                              tags: homeOnTheRangeTags)
+                              tags: homeOnTheRangeTags,
+                              collection: .originals)
 
 var homeOnTheRangeSpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),
                                CocktailIngredient(.liqueurs(.cointreau), value: 3, unit: .dashes),

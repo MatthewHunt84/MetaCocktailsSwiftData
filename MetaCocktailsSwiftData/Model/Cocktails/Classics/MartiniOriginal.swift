@@ -9,12 +9,13 @@ import SwiftUI
 
 
 
-var martini   = Cocktail(cocktailName: "Martini(Late 1800s)",
+var martini   = Cocktail(cocktailName: "Martini",
                          glasswareType: .martini,
                          garnish: [.lemonPeel],
                          spec: martiniSpec,
                          tags: martiniTags,
-                         variation: .martini)
+                         variation: .martini,
+                         collection: .originals)
 
 var martiniSpec     =  [CocktailIngredient(.bitters(.orangeBitters), value: 2, unit: .dashes),
                         CocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 1.5),

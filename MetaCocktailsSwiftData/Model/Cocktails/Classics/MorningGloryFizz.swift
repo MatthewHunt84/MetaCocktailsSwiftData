@@ -7,7 +7,7 @@
 
 import Foundation
 
-var morningGloryFizz = Cocktail(cocktailName: "Morning Glory Fizz(1884)",
+var morningGloryFizz = Cocktail(cocktailName: "Morning Glory Fizz",
                                 glasswareType: .collins,
                                 garnish: nil ,
                                 ice: nil,
@@ -15,7 +15,8 @@ var morningGloryFizz = Cocktail(cocktailName: "Morning Glory Fizz(1884)",
                                 spec: morningGloryFizzSpec,
                                 buildOrder: morningGloryFizzBuild,
                                 tags: morningGloryFizzTags,
-                                variation: .morningGloryFizz)
+                                variation: .morningGloryFizz,
+                                collection: .originals)
 
 var morningGloryFizzSpec = [CocktailIngredient(.soda(.sodaWater), value: 2),
                             CocktailIngredient(.juices(.lemon), value: 5, unit: .dashes),

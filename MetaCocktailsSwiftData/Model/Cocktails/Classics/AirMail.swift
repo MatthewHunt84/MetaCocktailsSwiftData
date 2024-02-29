@@ -7,17 +7,18 @@
 
 import Foundation
 
-var airMail  = Cocktail(cocktailName: "Air Mail(1930)",
+var airMail  = Cocktail(cocktailName: "Air Mail",
                         glasswareType: .fizzGlass,
                         garnish: [.noGarnish],
                         author: Author(person: "Bacardi and It's Many Uses.", place: "Santiago de Cuba", year: "1930"),
                         spec: airMailSpec,
                         buildOrder: airMailBuild,
                         tags: airMailTags,
-                        variation: .airMail)
+                        variation: .airMail,
+                        collection: .originals)
 
 var airMailSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
-                    CocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBibleViewModel().honeySyrup),
+                    CocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup),
                     CocktailIngredient(.rums(.rumAgedCuban), value: 1.5),
                     CocktailIngredient(.wines(.champagne) , value: 2)]
 

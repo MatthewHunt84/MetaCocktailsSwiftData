@@ -11,9 +11,15 @@ struct AddIngredientView: View {
     
     @Bindable var viewModel = CreateACocktailViewModel()
     @Environment(\.dismiss) private var dismiss
+    @FocusState private var keyboardFocused: Bool
     
     var body: some View {
         VStack {
+            SearchBarView(searchText: $viewModel.ingredientName)
+                .focused($keyboardFocused)
+                .onChange(of: viewModel.ingredientName) {
+                    viewModel.matchAllPhysicalCocktailComponents()
+                }
             List {
                 ForEach(viewModel.allPhysicalCocktailComponents, id: \.self) { component in
                     if component.matchesCurrentSearch {
@@ -34,12 +40,8 @@ struct AddIngredientView: View {
                 }
             }
             
-            Text("Ingredient Type: \(viewModel.ingredientType.category)")
             
-            SearchBarView(searchText: $viewModel.ingredientName)
-                .onChange(of: viewModel.ingredientName) {
-                    viewModel.matchAllPhysicalCocktailComponents()
-                }
+            
             
             HStack {
                 TextField("Amount", value: $viewModel.ingredientAmount, formatter: viewModel.formatter).cBCTextField()
@@ -77,8 +79,14 @@ struct AddIngredientView: View {
                 Text("Add to Ingredients")
                 
             }
+            .task {
+                viewModel.matchAllPhysicalCocktailComponents()
+                keyboardFocused = true
+                
+            }
             .buttonStyle(BlackNWhiteButton())
         }
+        
     }
 }
 

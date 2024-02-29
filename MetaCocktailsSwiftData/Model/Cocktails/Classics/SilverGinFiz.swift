@@ -7,7 +7,7 @@
 
 import Foundation
 
-var silverGinFizz  = Cocktail(cocktailName: "Silver Gin Fizz(1862)",
+var silverGinFizz  = Cocktail(cocktailName: "Silver Gin Fizz",
                               glasswareType: .fizzGlass,
                               garnish: [.lemonPeel],
                               ice: nil,
@@ -15,7 +15,8 @@ var silverGinFizz  = Cocktail(cocktailName: "Silver Gin Fizz(1862)",
                               spec: silverGinFizzSpec,
                               buildOrder: silverGinFizzBuild,
                               tags: silverGinFizzTags,
-                              variation: .ginFizz)
+                              variation: .ginFizz,
+                              collection: .originals)
 
 var silverGinFizzSpec  = [CocktailIngredient(.juices(.lemon), value: 1),
                           CocktailIngredient(.syrups(.simple), value: 1),

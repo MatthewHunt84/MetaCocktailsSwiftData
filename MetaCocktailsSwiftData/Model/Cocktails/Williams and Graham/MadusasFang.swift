@@ -17,7 +17,7 @@ var madusasFang = Cocktail(cocktailName: "Madusa's Fang",
                            tags: madusasFangTags)
 
 let madusasFangSpec: [CocktailIngredient] = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                                             CocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBibleViewModel().orgeat),
+                                             CocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBible.orgeat),
                                              CocktailIngredient(.liqueurs(.dryCuracao), value: 0.5),
                                              CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.5),
                                              CocktailIngredient(.otherAlcohol(.stGeorgeAbsinthe), value: 1)]

@@ -7,7 +7,7 @@
 
 import Foundation
 
-var oldFashioned = Cocktail(cocktailName: "Old Fashioned(Mid-1800s)",
+var oldFashioned = Cocktail(cocktailName: "Old Fashioned",
                             glasswareType: .doubleOld,
                             garnish: [.orangeOrLemon],
                             ice: .bigRock,
@@ -16,7 +16,7 @@ var oldFashioned = Cocktail(cocktailName: "Old Fashioned(Mid-1800s)",
                             tags: oldFashionedTags,
                             variation: .oldFashioned)
 
-var oldFashionedSpec  =  [CocktailIngredient(.syrups(.richDem), value: 2, unit: .teaspoon, prep: PrepBibleViewModel().richDem),
+var oldFashionedSpec  =  [CocktailIngredient(.syrups(.richDem), value: 2, unit: .teaspoon, prep: PrepBible.richDem),
                           CocktailIngredient(.bitters(.angosturaBitters), value: 3, unit: .dashes),
                           CocktailIngredient(.whiskies(.straightRyeOrBourbon), value: 2)]
 

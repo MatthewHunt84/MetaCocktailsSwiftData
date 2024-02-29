@@ -7,7 +7,7 @@
 
 import Foundation
 
-var oldPal  =  Cocktail(cocktailName: "Old Pal(1920s)",
+var oldPal  =  Cocktail(cocktailName: "Old Pal",
                         glasswareType: .coupe,
                         garnish: [.lemonPeel],
                         ice: nil ,
@@ -15,7 +15,8 @@ var oldPal  =  Cocktail(cocktailName: "Old Pal(1920s)",
                         spec: oldPalSpec,
                         buildOrder: nil,
                         tags: oldPalTags,
-                        variation: .oldPal)
+                        variation: .oldPal,
+                        collection: .originals)
 
 var oldPalSpec = [CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 1),
                   CocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 1),

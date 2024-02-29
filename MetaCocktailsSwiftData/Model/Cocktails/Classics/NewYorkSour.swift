@@ -7,7 +7,7 @@
 
 import Foundation
 
-var NewYorkSour = Cocktail(cocktailName: "New York Sour(1885)",
+var NewYorkSour = Cocktail(cocktailName: "New York Sour",
                            glasswareType: .stemmedGlassware,
                            garnish: nil,
                            ice: nil,
@@ -16,7 +16,8 @@ var NewYorkSour = Cocktail(cocktailName: "New York Sour(1885)",
                            spec: NewYorkSourSpec,
                            buildOrder: NewYorkSourBuild,
                            tags: NewYorkSourTags,
-                           variation: .newYorkSour)
+                           variation: .newYorkSour,
+                           collection: .originals)
 
 var NewYorkSourSpec = [CocktailIngredient(.juices(.lemon), value: 0.25),
                        CocktailIngredient(.syrups(.simple), value: 0.25),

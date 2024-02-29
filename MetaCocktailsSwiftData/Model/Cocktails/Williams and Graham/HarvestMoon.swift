@@ -17,7 +17,7 @@ var harvestMoon = Cocktail(cocktailName: "Harvest Moon",
                            tags: harvestMoonTags)
 
 let harvestMoonSpec = [CocktailIngredient(.juices(.lemon), value: 0.5),
-                       CocktailIngredient(.syrups(.honeySyrup), value: 0.5, prep: PrepBibleViewModel().honeySyrup),
+                       CocktailIngredient(.syrups(.honeySyrup), value: 0.5, prep: PrepBible.honeySyrup),
                        CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),
                        CocktailIngredient(.bitters(.appleBitters), value: 1, unit: .dash),
                        CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.5),

@@ -25,7 +25,7 @@
 		1AC386C32AAABED10064F52A /* BuildOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC3869A2AAABED00064F52A /* BuildOrderView.swift */; };
 		1AC386C52AAABED10064F52A /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC3869D2AAABED00064F52A /* RecipeView.swift */; };
 		1AC386C62AAABED10064F52A /* PrepRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC3869F2AAABED00064F52A /* PrepRecipeView.swift */; };
-		1AC386C82AAABED10064F52A /* PrepBibleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC386A12AAABED00064F52A /* PrepBibleViewModel.swift */; };
+		1AC386C82AAABED10064F52A /* PrepBible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC386A12AAABED00064F52A /* PrepBible.swift */; };
 		1AC386C92AAABED10064F52A /* CocktailListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC386A32AAABED00064F52A /* CocktailListView.swift */; };
 		1AC386CA2AAABED10064F52A /* CocktailListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC386A42AAABED00064F52A /* CocktailListViewModel.swift */; };
 		1AC386CD2AAABED10064F52A /* SearchCriteriaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC386A92AAABED00064F52A /* SearchCriteriaView.swift */; };
@@ -430,7 +430,7 @@
 		1AC3869A2AAABED00064F52A /* BuildOrderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildOrderView.swift; sourceTree = "<group>"; };
 		1AC3869D2AAABED00064F52A /* RecipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 		1AC3869F2AAABED00064F52A /* PrepRecipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrepRecipeView.swift; sourceTree = "<group>"; };
-		1AC386A12AAABED00064F52A /* PrepBibleViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrepBibleViewModel.swift; sourceTree = "<group>"; };
+		1AC386A12AAABED00064F52A /* PrepBible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrepBible.swift; sourceTree = "<group>"; };
 		1AC386A32AAABED00064F52A /* CocktailListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocktailListView.swift; sourceTree = "<group>"; };
 		1AC386A42AAABED00064F52A /* CocktailListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocktailListViewModel.swift; sourceTree = "<group>"; };
 		1AC386A92AAABED00064F52A /* SearchCriteriaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCriteriaView.swift; sourceTree = "<group>"; };
@@ -1103,7 +1103,7 @@
 			children = (
 				4DB1C08F2B2E484A00943C69 /* Prep Descriptions */,
 				1AC3869F2AAABED00064F52A /* PrepRecipeView.swift */,
-				1AC386A12AAABED00064F52A /* PrepBibleViewModel.swift */,
+				1AC386A12AAABED00064F52A /* PrepBible.swift */,
 			);
 			path = "Prep Bible";
 			sourceTree = "<group>";
@@ -1943,7 +1943,7 @@
 				4DBBA4842B68836200179B8F /* MajorBailey(W&G).swift in Sources */,
 				1AD87A2D2AE8D07E00859028 /* Sazerac.swift in Sources */,
 				4DA567442B6AF84D003F6F04 /* SloeGinFizz.swift in Sources */,
-				1AC386C82AAABED10064F52A /* PrepBibleViewModel.swift in Sources */,
+				1AC386C82AAABED10064F52A /* PrepBible.swift in Sources */,
 				1AD87A2B2AE8C93A00859028 /* BeckyWithTheGoodHair.swift in Sources */,
 				4DBFF8332B6057F60011B5B1 /* BlackManhattan.swift in Sources */,
 				4D1E85CB2B5CA28C00214BC6 /* HeartOfGold.swift in Sources */,

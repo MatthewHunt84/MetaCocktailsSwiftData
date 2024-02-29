@@ -8,7 +8,7 @@
 import Foundation
 
 
-var zombie = Cocktail(cocktailName: "Zombie(1934)",
+var zombie = Cocktail(cocktailName: "Zombie",
                       imageAsset: nil,
                       glasswareType: .tikiMug,
                       garnish: [.mintSprig],
@@ -16,7 +16,8 @@ var zombie = Cocktail(cocktailName: "Zombie(1934)",
                       author: Author(person: "Don Beach", place: "Don the Beachcomber's: Hollywood, CA", year: "1934"),
                       spec: zombieSpec,
                       tags: zombieTags,
-                      variation: .zombie)
+                      variation: .zombie,
+                      collection: .originals)
 
 let zombieSpec: [CocktailIngredient] = [CocktailIngredient(.juices(.lime), value: 0.75),
                                         CocktailIngredient(.juices(.donsMix), value: 0.5),

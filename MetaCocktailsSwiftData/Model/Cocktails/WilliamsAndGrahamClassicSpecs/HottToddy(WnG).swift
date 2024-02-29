@@ -17,7 +17,7 @@ var hotToddyWnG = Cocktail(cocktailName: "Hot Toddy(W&G Version)",
                            variation: .hotToddy)
 
 var hotToddyWnGSpec  = [CocktailIngredient(.otherNonAlc(.hotWater), value: 2),
-                        CocktailIngredient(.syrups(.honeySyrup), value: 0.5, prep: PrepBibleViewModel().honeySyrup),
+                        CocktailIngredient(.syrups(.honeySyrup), value: 0.5, prep: PrepBible.honeySyrup),
                         CocktailIngredient(.juices(.lemon), value: 0.25),
                         CocktailIngredient(.whiskies(.larcenyBourbon), value: 2)]
 

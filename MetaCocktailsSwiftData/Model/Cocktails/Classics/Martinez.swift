@@ -7,13 +7,14 @@
 
 import Foundation
 
-var martinez = Cocktail(cocktailName: "Martinez(1884)",
+var martinez = Cocktail(cocktailName: "Martinez",
                         glasswareType: .stemmedGlassware,
                         garnish: nil,
                         author: oHByron,
                         spec: martinezSpec,
                         tags: martinezTags,
-                        variation: .martinez)
+                        variation: .martinez,
+                        collection: .originals)
 
 var martinezSpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
                          CocktailIngredient(.liqueurs(.dryCuracao), value: 2, unit: .dashes),

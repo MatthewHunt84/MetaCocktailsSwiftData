@@ -7,14 +7,15 @@
 
 import Foundation
 
-var hollandHouseCocktail = Cocktail(cocktailName: "Holland House Cocktail(1930)",
+var hollandHouseCocktail = Cocktail(cocktailName: "Holland House Cocktail",
                                     glasswareType: .stemmedGlassware,
                                     garnish: nil,
                                     ice: nil,
                                     author: harryCraddock,
                                     spec: hollandHouseCocktailSpec,
                                     tags: hollandHouseCocktailTags,
-                                    variation: .hollandHouse)
+                                    variation: .hollandHouse,
+                                    collection: .originals)
 
 var hollandHouseCocktailSpec  =  [CocktailIngredient(.juices(.lemon), value: 0.25),
                                   CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 4, unit: .dashes),

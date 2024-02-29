@@ -17,7 +17,7 @@ var margaritaTommys = Cocktail(cocktailName: "Margarita (Tommy's)",
                                variation: .margarita)
 
 var margaritaTommysSpec = [CocktailIngredient(.juices(.lime), value: 1),
-                           CocktailIngredient(.syrups(.agaveSyrup), value: 1, prep: PrepBibleViewModel().agaveSyrup),
+                           CocktailIngredient(.syrups(.agaveSyrup), value: 1, prep: PrepBible.agaveSyrup),
                            CocktailIngredient(.agaves(.tequilaBlanco), value: 2)]
 
 var margaritaTommysTags = Tags( profiles: [.citrusy, .punchy],

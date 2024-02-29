@@ -7,7 +7,7 @@
 
 import Foundation
 
-var modernCocktail = Cocktail(cocktailName: "Modern Cocktail(1905)",
+var modernCocktail = Cocktail(cocktailName: "Modern Cocktail",
                               glasswareType: .stemmedGlassware,
                               garnish: [.maraschinoCherry],
                               ice: nil,
@@ -16,7 +16,8 @@ var modernCocktail = Cocktail(cocktailName: "Modern Cocktail(1905)",
                                             year: "1905"),
                               spec: modernCocktailSpec,
                               tags: modernCocktailTags,
-                              variation: .modernCocktail)
+                              variation: .modernCocktail,
+                              collection: .originals)
 
 var modernCocktailSpec = [CocktailIngredient(.juices(.lemon), value: 3, unit: .dashes),
                           CocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dash),

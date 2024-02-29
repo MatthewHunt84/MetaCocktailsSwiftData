@@ -15,7 +15,8 @@ var vieuxCarre = Cocktail(cocktailName: "Vieux Carre",
                                          place: AuthorPlaces.hotelMonteleone.rawValue,
                                          year: "1934"),
                           spec: vieuxCarreSpec,
-                          tags: vieuxCarreTags)
+                          tags: vieuxCarreTags,
+                          collection: .originals)
 
 var vieuxCarreSpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
                            CocktailIngredient(.bitters(.peychauds), value: 2, unit: .dashes),

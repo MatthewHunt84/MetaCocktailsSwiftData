@@ -7,14 +7,15 @@
 
 import Foundation
 
-var vesper = Cocktail(cocktailName: "Vesper(1953)",
+var vesper = Cocktail(cocktailName: "Vesper",
                       glasswareType: .martini,
                       garnish: [.lemonPeel],
                       author: Author(person: "Ivar Bryce", place: "Casino Royale: by Ian Fleming", year: "1953"),
                       spec: vesperSpec,
                       buildOrder: vesperNotes,
                       tags: vesperTags,
-                      variation: .vesper)
+                      variation: .vesper,
+                      collection: .originals)
 
 var vesperSpec     =  [CocktailIngredient(.fortifiedWines(.kinaLillet), value: 0.25),
                        CocktailIngredient(.vodkas(.vodkaAny), value: 0.5),

@@ -7,7 +7,7 @@
 
 import Foundation
 
-var tomCollins  = Cocktail(cocktailName: "Tom Collins(1800s)",
+var tomCollins  = Cocktail(cocktailName: "Tom Collins",
                            glasswareType: .collins,
                            garnish: [.lemonWheel],
                            ice: .koldDraft,
@@ -15,7 +15,8 @@ var tomCollins  = Cocktail(cocktailName: "Tom Collins(1800s)",
                            spec: tomCollinsSpec,
                            buildOrder: tomCollinsBuild,
                            tags: tomCollinsTags,
-                           variation: .tomCollins)
+                           variation: .tomCollins,
+                           collection: .originals)
 
 var tomCollinsSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                        CocktailIngredient(.syrups(.simple), value: 1),
