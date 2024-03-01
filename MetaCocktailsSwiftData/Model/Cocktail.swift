@@ -18,8 +18,7 @@ class Cocktail: Equatable, Hashable {
     }
     
     var id = UUID()
-   // @Attribute(.unique) var cocktailName: String
-    var cocktailName: String
+    @Attribute(.unique) var cocktailName: String
     var imageAsset: CocktailImage?
     var glasswareType: Glassware
     var garnish: [Garnish]?

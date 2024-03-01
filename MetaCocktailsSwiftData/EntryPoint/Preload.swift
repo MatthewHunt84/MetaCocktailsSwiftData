@@ -15,6 +15,7 @@ enum Preload: CaseIterable {
     case wngModern
     case williamsAndGrahamOriginals
     case deathAndCoCocktails
+    case milkAndHoney
     
     var cocktails: [Cocktail] {
         switch self {
@@ -22,7 +23,7 @@ enum Preload: CaseIterable {
             [adonis, airMail, alaska, algonquin, amarettoSour, americano, aperolSpritz, armyNavy, aviation, beesKnees, betweenTheSheets, bamboo, bijou, bloodAndSand, bloodyMary, blueBlazer, bobbyBurns, boulevardier, bramble, brandyAlexander, brandyCrusta, brownDerbyRum, brownDerbyBourbon, brooklyn, brunelle, caipirinha, carajillo, champsElysees, champagneCocktail, chocolateCocktail, chrysanthemum, cloverClub, cornNOil, corpseReviver1, corpseReviver2, cosmopolitan, daiquiri, darkNStormy, deathInTheAfternoon, diamondBack, elDiablo, elPresidente, emerald, fairAndWarmer, fancyFree, fogCutter, french75, french75Cognac, ginRickey, gimlet, ginFizz, silverGinFizz, grasshopper, hankyPanky, harveyWallbanger, hemingwayDaiquiri, papaDobleWnG, honeymoonCocktail1st, honeymoonCocktailEmbury, hollandHouseKappeler, hollandHouseCocktail, hotBrandyToddy, morgenthalersToddy, hotelNacional, hurricane, irishCoffee, jackRose, japaneseCocktail, jungleBird, kirRoyale, laLouisiane, lastWord, lemonDrop, manhattan, maiTai, majorBailey, margarita, margaritaTommys, martinez, martinezWnG, martini, gibson, mexicanFiringSquad, mezcalero, mintJulep, mojito, modernCocktail, morningGloryFizz, moscowMule, negroni, NewYorkSour, oldFashioned, oaxacaOldFashioned, oldCuban, oldPal, painKiller, paloma, pimmsCup, pinkLady, piscoSour, princeEdward, queensParkSwizzle, ramosGinFizz, ramonaFlowers, rememberTheMaine, robRoy, saturn, sazerac, scofflaw, sherryCobbler, sidecar, singaporeSling, sloeGinFizz, tiPunch, tipperary, tipperaryDR, tomCollins, twentiethCenturyCocktail, vesper, vieuxCarre, whiskeySmash, whiskeySour, zombie]
             
         case .modernCocktails:
-            [blackManhattan, cableCar, casanovaCocktail, caucasian, goldRush, greenpoint, kentuckyMaid, trinidadSour, ultimaPalabra, ultimaPalabraLondon, whiteNegroni, paperPlane, penicillin]
+            [blackManhattan, cableCar, casanovaCocktail, caucasian, goldRush, greenpoint, trinidadSour, ultimaPalabra, ultimaPalabraLondon, whiteNegroni, paperPlane]
             
         case .williamsAndGrahamClassicCocktails:
             [airMailWnG, alaskaWnG, algonquin, amarettoSourWnG, americanoWnG, betweenTheSheetsWnG, bambooWnG, bijouWnG, bloodAndSandWnG, bloodyMaryWnG, boulevardierWnG, brambleWng, brandyCrustaWnG, brownDerbyWnG, brooklynWnG, chocolateMartiniWnG, cloverClubWnG, elPresidenteWnG, fairAndWarmerWnG, fancyFreeWnG, fogCutterWnG, french75WnG, ginFizzWnG, grasshopperWnG, hankyPankyWnG, harveyWallbangerWnG, honeymoonCocktailWnG, hollandHouseCocktailWnG, hotToddyWnG, hotelNacionalWnG, hurricaneWnG, irishCoffeeWnG, japaneseCocktailWnG, jungleBirdWnG, kirRoyaleWnG, laLouisianeWnG, lastWordWnG, lemonDropWnG, maiTaiWnG, majorBaileyWnG, martinezWnG, mexicanFiringSquadWnG, mintJulepWnG, mojitoWnG, modernCocktailWnG, morningGloryFizzWnG, NewYorkSourWnG, oldFashionedWnG, oaxacaOldFashionedWnG, oldCubanWnG, oldPalWnG, painKillerWnG, queensParkSwizzleWnG, rememberTheMaineWnG, RustyNailWnG, robRoyWnG, saturnWnG, sazeracWnG, scofflawWnG, sherryCobblerWnG, sidecarWnG, singaporeSlingWnG, sloeGinFizzWnG, stingerWnG, tiPunchWnG, tipperaryWnG, tomCollinsWnG, vesperWnG, zombieWnG]
@@ -35,6 +36,9 @@ enum Preload: CaseIterable {
             
         case .deathAndCoCocktails:
             [cropTop, divisionBell, finalWard, gilda, nakedAndFamous]
+            
+        case .milkAndHoney:
+            [appleJackMnH, bensonhurst, calvados75, cobbleHill, cosmonaut, deepBlueSea, fallbackCocktail, ginAndIt, goldRush, kentuckyMaid, leftHand, penicillin, redHookCocktail, savoirFaire, siGuey, springForward, tattletale, thirtyEightSpecial, americanTrilogy, theBusiness]
         }
     }
 }
