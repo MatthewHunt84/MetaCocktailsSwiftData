@@ -14,7 +14,8 @@ var coffeeAndCigs = Cocktail(cocktailName: "Coffee & Cigs",
                              author:Author(place: AuthorPlaces.williamsAndGraham.rawValue),
                              spec: coffeeAndCigsSpec,
                              buildOrder: nil,
-                             tags: coffeeAndCigsTags)
+                             tags: coffeeAndCigsTags,
+                             collection: .williamsAndGraham)
 
 var coffeeAndCigsSpec  = [CocktailIngredient(.otherNonAlc(.stiffCream), value: 1, unit: .fluidOuncesFloated),
                           CocktailIngredient(.liqueurs(.borghetti), value: 1),

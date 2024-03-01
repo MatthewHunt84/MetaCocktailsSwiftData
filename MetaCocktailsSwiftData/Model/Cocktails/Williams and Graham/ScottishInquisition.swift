@@ -14,7 +14,8 @@ var scottishInquisition = Cocktail(cocktailName: "The Scottish Inquisition",
                                     author:Author(person: "Jimmy Kenyon", place: AuthorPlaces.williamsAndGraham.rawValue, year: "2019"),
                                     spec: scottishInquisitionSpec,
                                     buildOrder: nil,
-                                    tags: scottishInquisitionTags)
+                                    tags: scottishInquisitionTags,
+                                   collection: .williamsAndGraham)
 
 var scottishInquisitionSpec  = [CocktailIngredient(.bitters(.chocolateMole), value: 1, unit: .dash),
                                  CocktailIngredient(.amari(.averna), value: 0.75),

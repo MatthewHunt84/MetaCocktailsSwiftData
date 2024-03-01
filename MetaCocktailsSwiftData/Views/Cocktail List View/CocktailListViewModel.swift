@@ -119,6 +119,7 @@ import Observation
                                                                      "The American Trilogy" : [americanTrilogy],
                                                                      "Americano": [americano, americanoWnG],
                                                                      "Aperol Spritz": [aperolSpritz],
+                                                                     "Apple Jack Cocktail" : [appleJackCocktail],
                                                                      "Army & Navy": [armyNavy],
                                                                      "Aviation": [aviation],
                                                                      "Bee's Knees": [beesKnees],
@@ -258,6 +259,7 @@ import Observation
                                                          "El Chichicabra": [elChicicabra],
                                                          "El Ocho Rosado": [elOchoRosado],
                                                          "End of an Empire": [endOfAnEmpire],
+                                                         "Espresso Martini": [espressoMartiniWnG],
                                                          "Falcoooor!": [falcoor],
                                                          "Farewell Ride": [farewellRide],
                                                          "Feathered Hat Flip No. 1": [featheredHatFlipNo1],
@@ -338,18 +340,37 @@ import Observation
                                                           "Cable Car":[cableCar, cableCarWnG],
                                                           "Casanova Cocktail": [casanovaCocktail],
                                                           "Caucasian":[caucasian],
-                                                          "Gold Rush": [goldRush],
                                                           "Greenpoint": [greenpoint, greenpointWnG],
-                                                          "Kentucky Maid": [kentuckyMaid, kentuckyMaidWnG],
                                                           "Naked and Famous": [nakedAndFamous],
                                                           "Trinidad Sour": [trinidadSour],
                                                           "Ultima Palabra": [ultimaPalabra, ultimaPalabraWnG, ultimaPalabraLondon],
                                                           "White Negroni": [whiteNegroni],
                                                           "Paper Plane": [paperPlane],
-                                                          "Penicillin": [penicillin, penicillinWnG] ]
+        ]
+        
+        let milkAndHoneyCocktails: [String : [Cocktail]] = ["Apple Jack" : [appleJackMnH],
+                                                            "Bensonhurst": [bensonhurst],
+                                                            "Calvados 75" : [calvados75],
+                                                            "Cobble Hill" : [cobbleHill],
+                                                            "Cosmonaut" : [cosmonaut],
+                                                            "Deep Blue Sea": [deepBlueSea],
+                                                            "Fallback Cocktail" : [fallbackCocktail],
+                                                            "Gin and It": [ginAndIt],
+                                                            "Gold Rush": [goldRush],
+                                                            "Kentucky Maid": [kentuckyMaid, kentuckyMaidWnG],
+                                                            "Left Hand" : [leftHand],
+                                                            "Penicillin": [penicillin, penicillinWnG],
+                                                            "Red Hook Cocktail" : [redHookCocktail],
+                                                            "Savoir Faire" : [savoirFaire],
+                                                            "Si-Guey": [siGuey],
+                                                            "Spring Forward" : [springForward],
+                                                            "Tattletale": [tattletale],
+                                                            "The .38 Special": [thirtyEightSpecial],
+                                                            "The American Trilogy" : [americanTrilogy],
+                                                            "The Business" : [theBusiness]]
 
         
-        let allCocktails = classicCocktailsForBartenders.merging(deathAndCoCocktails) { (_, new) in new }.merging(wNgModernCocktails) { (_, new) in new }.merging(miscModernCocktails) { (_, new) in new }
+        let allCocktails = classicCocktailsForBartenders.merging(deathAndCoCocktails) { (_, new) in new }.merging(wNgModernCocktails) { (_, new) in new }.merging(miscModernCocktails) { (_, new) in new }.merging(milkAndHoneyCocktails) { (_, new) in new }
         
         return allCocktails
     }

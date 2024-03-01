@@ -13,7 +13,8 @@ var sidecarWnG = Cocktail(cocktailName: "Sidecar(W&G Version)",
                           spec: sidecarSpecWnG,
                           buildOrder: nil,
                           tags: sidecarTagsWnG,
-                          variation: .sidecar)
+                          variation: .sidecar,
+                          collection: .williamsAndGraham)
 
 var sidecarSpecWnG  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                        CocktailIngredient(.liqueurs(.dryCuracao), value: 0.75),

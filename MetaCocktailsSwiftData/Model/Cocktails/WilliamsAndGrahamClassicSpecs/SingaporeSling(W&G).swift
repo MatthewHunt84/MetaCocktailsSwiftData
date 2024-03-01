@@ -15,7 +15,8 @@ var singaporeSlingWnG = Cocktail(cocktailName: "Singapore Sling(W&G version)",
                                  spec: singaporeSlingSpecWnG,
                                  buildOrder: nil,
                                  tags: singaporeSlingTagsWnG,
-                                 variation: .singaporeSling)
+                                 variation: .singaporeSling,
+                                 collection: .williamsAndGraham)
 
 var singaporeSlingSpecWnG  = [CocktailIngredient(.soda(.sparklingWater), value: 2),
                              CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),

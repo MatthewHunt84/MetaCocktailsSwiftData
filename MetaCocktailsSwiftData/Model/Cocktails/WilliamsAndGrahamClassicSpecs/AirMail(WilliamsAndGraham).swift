@@ -15,7 +15,8 @@ var airMailWnG  = Cocktail(cocktailName: "Air Mail(W&G Version)",
                            spec: airMailWnGSpec,
                            buildOrder: airMailWnGBuild,
                            tags: airMailWnGTags,
-                           variation: .airMail)
+                           variation: .airMail,
+                           collection: .williamsAndGraham)
 
 var airMailWnGSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
                        CocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup),

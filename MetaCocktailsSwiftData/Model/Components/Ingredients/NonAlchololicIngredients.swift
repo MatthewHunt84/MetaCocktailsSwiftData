@@ -28,6 +28,7 @@ struct NAIngredients: Codable, Hashable, Equatable {
     
 }
 enum Juice: String, Codable, CaseIterable {
+    case appleCider           = "Apple Cider"
     case carrotJuice          = "Carrot Juice (Fresh)"
     case cranberryJuice       = "Cranberry Juice"
     case donsMix              = "Don's Mix"
@@ -59,6 +60,8 @@ enum Juice: String, Codable, CaseIterable {
             Tags(flavors: [.grapefruit, .cinnamon], profiles: [.fruity], nA: [NAIngredients(.juices(self))])
         case .carrotJuice:
             Tags(flavors: [.carrot], profiles: [.vegetal], nA: [NAIngredients(.juices(self))])
+        case .appleCider:
+            Tags(flavors: [.apple, .bakingSpices], nA: [NAIngredients(.juices(self))])
         }
     }
 }
@@ -75,6 +78,7 @@ enum Syrup: String, Codable, CaseIterable {
     case gingerSyrup             = "Ginger Syrup"
     case grapefruitShrub         = "Grapefruit Shrub"
     case grenadine               = "Grenadine(Pomegranate Syrup)"
+    case honey                   = "Honey"
     case honeySyrup              = "Honey Syrup"
     case morenthalersGingerSyrup = "Morgenthaler's Ginger Syrup"
     case orgeat                  = "Orgeat"
@@ -86,6 +90,7 @@ enum Syrup: String, Codable, CaseIterable {
     case raspberrySyrup          = "Raspberry Syrup"
     case simple                  = "Simple Syrup"
     case vanilla                 = "Vanilla Syrup"
+    case violetteSyrup           = "Violette Syrup"
     
     var nAComponent: CocktailComponent {
         return CocktailComponent(for: NAIngredients(.syrups(self)))
@@ -137,64 +142,14 @@ enum Syrup: String, Codable, CaseIterable {
             Tags(flavors: [.vanilla, .cinnamon], nA: [NAIngredients(.syrups(self))])
         case .clementineShrub:
             Tags(flavors: [.orange, .clementine], nA: [NAIngredients(.syrups(self))])
+        case .violetteSyrup:
+            Tags(profiles: [.floral], nA: [NAIngredients(.syrups(self))])
+        case .honey:
+            Tags(flavors: [.honey], nA: [NAIngredients(.syrups(self))])
         }
     }
     
-    var prep: Prep {
-        switch self {
-        case .agaveSyrup:
-            Prep(prepIngredientName: "Agave Syrup", prepRecipe: [Instruction(step: 1, method: "Weigh out 3 parts agave nectar to one part water and combine in a pot."),
-                                                                 Instruction(step: 2, method: "Bring almost to a boil and then immediately take off heat."),
-                                                                 Instruction(step: 3, method: "Let cool before bottling.")])
-        case .agaveNectar:
-            Prep(prepIngredientName: "No Prep Necessary", prepRecipe: [])
-        case .cinnamonSyrup:
-            Prep(prepIngredientName: "No Prep Necessary", prepRecipe: [])
-        case .clementineShrub:
-            Prep(prepIngredientName: "No Prep Necessary", prepRecipe: [])
-        case .cocoLopez:
-            Prep(prepIngredientName: "No Prep Necessary", prepRecipe: [])
-        case .cucumberSyrup:
-            Prep(prepIngredientName: "No Prep Necessary", prepRecipe: [])
-        case .demSyrupOneToOne:
-            Prep(prepIngredientName: "No Prep Necessary", prepRecipe: [])
-        case .gingerSyrup:
-            Prep(prepIngredientName: "No Prep Necessary", prepRecipe: [])
-        case .grapefruitShrub:
-            Prep(prepIngredientName: "No Prep Necessary", prepRecipe: [])
-        case .grenadine:
-            Prep(prepIngredientName: "No Prep Necessary", prepRecipe: [])
-        case .honeySyrup:
-            Prep(prepIngredientName: "No Prep Necessary", prepRecipe: [])
-        case .morenthalersGingerSyrup:
-            Prep(prepIngredientName: "Morgenthaler's Ginger Syrup", prepRecipe:[Instruction(step: 1, method:  "Roughly chop 8 ounces washed, unpeeled ginger (each piece about the size of your pinkie-tip). "),
-                                                                                                               Instruction(step: 2, method: "Put in a blender and combine with equal parts sugar and boiling water."),
-                                                                                                               Instruction(step: 3, method: " Blend on high until mixture is smooth, then fine-strain")])
-        case .orgeat:
-            Prep(prepIngredientName: "No Prep Necessary", prepRecipe: [])
-        case .passionfruitSyrup:
-            Prep(prepIngredientName: "Grapefruit Shrub", prepRecipe: [Instruction(step: 1, method:  "For 500ml: Add 250ml white sugar to 150g grapefruit peels."),
-                                                                                            Instruction(step: 2, method: "Let sit in a mason jar for 24 hours in a semi-warm place."),
-                                                                                            Instruction(step: 3, method: " Add 250g fresh grapefruit juice and shake until the oleo emulsifies with the grapefruit juice."),
-                                                                                            Instruction(step: 4, method: "Strain the peels out. Keeps for 1 week in the fridge.")])
-        case .pineappleGumSyrup:
-            Prep(prepIngredientName: "No Prep Necessary", prepRecipe: [])
-        case .richCinnamonAndVanilla:
-            Prep(prepIngredientName: "No Prep Necessary", prepRecipe: [])
-        case .richDem:
-            Prep(prepIngredientName: "Rich Demerara Syrup", prepRecipe:[Instruction(step: 1, method: "Weigh out two parts Demerara sugar to one part water and combine in a pot."),
-                                                                                      Instruction(step: 2, method: "Bring to a boil and then immediately take off heat."),
-                                                                                      Instruction(step: 3, method: "Let cool before bottling.")]   )
-        case .richSimple:
-            Prep(prepIngredientName: "No Prep Necessary", prepRecipe: [])
-        case .raspberrySyrup:
-            Prep(prepIngredientName: "No Prep Necessary", prepRecipe: [])
-        case .simple:
-            Prep(prepIngredientName: "No Prep Necessary", prepRecipe: [])
-        case .vanilla:
-            Prep(prepIngredientName: "No Prep Necessary", prepRecipe: [])
-        }
-    }
+ 
 }
 
 enum Herbs: String, Codable, CaseIterable {
@@ -229,6 +184,7 @@ enum Fruit: String, Codable, CaseIterable {
     case grapefruitPeel       = "Grapefruit Peel(s)"
     case guavaPure            = "Guava Puree"
     case lemonRibbon          = "long lemon ribbon"
+    case limeHalf             = "Lime Half"
     case orangeMoons          = "Orange Moons"
     case raspberries          = "Raspberries"
     case seasonalBerries      = "Seasonal Berries"
@@ -257,6 +213,8 @@ enum Fruit: String, Codable, CaseIterable {
             Tags(flavors: [.lemon], nA: [NAIngredients(.fruit(self))])
         case .guavaPure:
             Tags(flavors: [.guava], nA: [NAIngredients(.fruit(self))])
+        case .limeHalf:
+            Tags(flavors: [.lime], nA: [NAIngredients(.fruit(self))])
         }
     }
 }
@@ -329,11 +287,13 @@ enum OtherNA: String, Codable, CaseIterable {
     case eggWhole             = "One Egg"
     case granulatedSugar      = "Granulated Sugar"
     case hotWater             = "Hot Water"
-    case espressoCream        = "Lightly whipped and sweetened cream with angostura bitters(See 'Espresso Cream' in prep)"
+    case angosturaCream       = "Angostura Cream"
     case mapleSugar           = "Maple Sugar"
     case orangeConcentrate    = "Orange Concentrate"
     case orangeFlowerWater    = "Orange Flower Water"
+    case raspberryPreserves   = "Bonne Maman Raspberry Preserves"
     case sesameOil            = "Sesame Oil"
+    case springOnion          = "Spring Onion (or ramp)"
     case sugarCube            = "Demerara Sugar Cube(s)"
     case tobasco              = "Tobasco"
     case tomatoJuice          = "Tomato Juice"
@@ -376,7 +336,7 @@ enum OtherNA: String, Codable, CaseIterable {
             Tags(flavors: [.coffee,.espresso], nA: [NAIngredients(.otherNonAlc(self))])
         case .cocoaPowder:
             Tags(flavors: [.chocolate], nA: [NAIngredients(.otherNonAlc(self))])
-        case .espressoCream:
+        case .angosturaCream:
             Tags(nA: [NAIngredients(.otherNonAlc(self))])
         case .coffee:
             Tags(flavors: [.coffee], nA: [NAIngredients(.otherNonAlc(self))])
@@ -398,6 +358,10 @@ enum OtherNA: String, Codable, CaseIterable {
             Tags(nA: [NAIngredients(.otherNonAlc(self))])
         case .orangeConcentrate:
             Tags(flavors: [.orange], nA: [NAIngredients(.otherNonAlc(self))])
+        case .springOnion:
+            Tags(flavors: [.springOnion], profiles: [.vegetal], nA: [NAIngredients(.otherNonAlc(self))])
+        case .raspberryPreserves:
+            Tags(flavors: [.raspberry], profiles: [.fruity], nA: [NAIngredients(.otherNonAlc(self))])
         }
     }
 }

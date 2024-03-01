@@ -15,7 +15,8 @@ var peaksOfReykjavic = Cocktail(cocktailName: "Peaks of Reykjavic",
                                 author: Author(person: "Tom Lagae", place: AuthorPlaces.williamsAndGraham.rawValue, year: "2018"),
                                 spec: peaksOfReykjavicSpec,
                                 buildOrder: peaksOfReykjavicBuild,
-                                tags: peaksOfReykjavicTags)
+                                tags: peaksOfReykjavicTags,
+                                collection: .williamsAndGraham)
 
 let peaksOfReykjavicSpec = [CocktailIngredient(.bitters(.peychauds), value: 4, unit: .dashes),
                             CocktailIngredient(.juices(.lime), value: 0.75),

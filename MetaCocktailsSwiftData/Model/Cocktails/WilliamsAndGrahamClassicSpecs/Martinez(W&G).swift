@@ -13,7 +13,8 @@ var martinezWnG = Cocktail(cocktailName: "Martinez(W&G Version)",
                            author: williamsAndGraham,
                            spec: martinezSpecWnG,
                            tags: martinezTagsWnG,
-                           variation: .martinez)
+                           variation: .martinez,
+                           collection: .williamsAndGraham)
 
 var martinezSpecWnG     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
                             CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 1, unit: .barSpoon),

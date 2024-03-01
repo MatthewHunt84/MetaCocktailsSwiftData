@@ -14,7 +14,8 @@ var maiTaiWnG  = Cocktail(cocktailName: "Mai Tai(W&G Version)",
                           author: williamsAndGraham,
                           spec: maiTaiSpecWnG,
                           tags: maiTaiTagsWnG,
-                          variation: .maiTai)
+                          variation: .maiTai,
+                          collection: .williamsAndGraham)
 
 var maiTaiSpecWnG    = [CocktailIngredient(.juices(.lime), value: 1),
                         CocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBible.orgeat),

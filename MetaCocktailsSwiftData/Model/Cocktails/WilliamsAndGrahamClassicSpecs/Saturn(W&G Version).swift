@@ -15,7 +15,8 @@ var saturnWnG = Cocktail(cocktailName: "Saturn(W&G Version)",
                          spec: saturnSpecWnG,
                          buildOrder: saturnBuildOrder,
                          tags: saturnTagsWnG,
-                         variation: .saturn)
+                         variation: .saturn,
+                         collection: .williamsAndGraham)
 
 var saturnSpecWnG  =  [CocktailIngredient(.juices(.lemon), value: 0.75),
                        CocktailIngredient(.syrups(.passionfruitSyrup), value: 0.75),

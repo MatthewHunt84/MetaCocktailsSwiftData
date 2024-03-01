@@ -14,7 +14,8 @@ var falcoor = Cocktail(cocktailName: "Falcoooor!",
                        ice: nil,
                        author: Author(person: "Jesse Bowen", place: AuthorPlaces.williamsAndGraham.rawValue, year: "2018"),
                        spec: falcoorSpec,
-                       tags: falcoorTags)
+                       tags: falcoorTags,
+                       collection: .williamsAndGraham)
 
 var falcoorSpec  = [CocktailIngredient(.fruit(.cucumberSlices), value: 2, unit: .muddled),
                     CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),

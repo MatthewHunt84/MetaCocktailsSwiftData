@@ -13,7 +13,8 @@ var betweenTheSheetsWnG  = Cocktail(cocktailName: "Between the Sheets(W&G Versio
                                     author: williamsAndGraham,
                                     spec: betweenTheSheetsWnGSpec,
                                     tags: betweenTheSheetsTags,
-                                    variation: .betweenTheSheets)
+                                    variation: .betweenTheSheets,
+                                    collection: .williamsAndGraham)
 
 var betweenTheSheetsWnGSpec  = [CocktailIngredient(.juices(.lemon), value: 0.25),
                                 CocktailIngredient(.rums(.rumWhite), value: 1),

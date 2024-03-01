@@ -16,7 +16,8 @@ var theSeventhSon  =  Cocktail(cocktailName: "The Seventh Son",
                                              place: "5280, The Cookbook. Pg. 140", year: "2014"),
                                spec: theSeventhSonSpec,
                                buildOrder: nil,
-                               tags: theSeventhSonTags)
+                               tags: theSeventhSonTags,
+                               collection: .williamsAndGraham)
 
 var theSeventhSonSpec = [CocktailIngredient(.bitters(.grapefruitBitters), value: 2, unit: .dashes),
                          CocktailIngredient(.amari(.amaroMontenegro), value: 0.5),

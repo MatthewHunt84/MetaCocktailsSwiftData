@@ -16,7 +16,8 @@ var slutDragon = Cocktail(cocktailName: "Slut Dragon(AKA: Soul Bond)",
                          author:Author(person: AuthorNames.jamesMenkal.rawValue,
                                        place: AuthorPlaces.williamsAndGraham.rawValue, year: "2021"),
                          spec: slutDragonSpec,
-                         tags: slutDragonTags)
+                         tags: slutDragonTags,
+                          collection: .williamsAndGraham)
 
 let slutDragonSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.celeryBitters), value: 2, unit: .dashes),
                                            CocktailIngredient(.juices(.lime), value: 0.75),

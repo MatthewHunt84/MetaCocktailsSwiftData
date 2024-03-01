@@ -14,7 +14,8 @@ var lavandulaRosa = Cocktail(cocktailName: "Lavandula Rosa",
                              ice: nil,
                              author: justWnG,
                              spec: lavandulaRosaSpec,
-                             tags: lavandulaRosaTags)
+                             tags: lavandulaRosaTags,
+                             collection: .williamsAndGraham)
 
 let lavandulaRosaSpec = [CocktailIngredient(.fruit(.raspberries), value: 2, unit: .muddled),
                          CocktailIngredient(.juices(.lemon), value: 0.5),

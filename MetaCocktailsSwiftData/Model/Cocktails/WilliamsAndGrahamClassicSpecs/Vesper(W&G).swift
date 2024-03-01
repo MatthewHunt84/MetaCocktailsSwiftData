@@ -13,7 +13,8 @@ var vesperWnG = Cocktail(cocktailName: "Vesper(W&G Version)",
                          author: williamsAndGraham,
                          spec: vesperSpecWnG,
                          tags: vesperTagsWnG,
-                         variation: .vesper)
+                         variation: .vesper,
+                         collection: .williamsAndGraham)
 
 var vesperSpecWnG     =  [CocktailIngredient(.fortifiedWines(.cocchiAmericano), value: 0.5),
                           CocktailIngredient(.vodkas(.stoli100), value: 1),

@@ -15,7 +15,8 @@ var paperPilot = Cocktail(cocktailName: "Paper Pilot",
                          author:Author(person: AuthorNames.jamesMenkal.rawValue,
                                        place: AuthorPlaces.williamsAndGraham.rawValue, year: "Spring, 2022"),
                          spec: paperPilotSpec,
-                         tags: paperPilotTags)
+                         tags: paperPilotTags,
+                          collection: .williamsAndGraham)
 
 let paperPilotSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.tarragon), value: 1, unit: .gentlyMuddled),
                                            CocktailIngredient(.juices(.lemon), value: 0.5),

@@ -15,7 +15,8 @@ var highlandLass = Cocktail(cocktailName: "Highland Lass",
                             ice: .bigRock,
                             author: Author(person: "Kenny Remster", place: AuthorPlaces.williamsAndGraham.rawValue),
                             spec: highlandLassSpec,
-                            tags: highlandLassTags)
+                            tags: highlandLassTags,
+                            collection: .williamsAndGraham)
 
 let highlandLassSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
                                               CocktailIngredient(.bitters(.peychauds), value: 2, unit: .dashes),

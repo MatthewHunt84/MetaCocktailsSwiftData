@@ -62,7 +62,7 @@ final class CBCViewModel: ObservableObject {
                 var modifiedMeasurement = 0.0
                 /// go through all the modified measurement units and calculate the difference to oz conversion to later be converted into mls.
                 
-                if ingredient.ingredient.unit == .barSpoon || ingredient.ingredient.unit == .barSpoons || ingredient.ingredient.unit == .teaspoon || ingredient.ingredient.unit == .teaspoons || ingredient.ingredient.unit == .bittersDeco || ingredient.ingredient.unit == .glassRinse || ingredient.ingredient.unit == .splash || ingredient.ingredient.unit == .sprays || ingredient.ingredient.unit == .spritzOnTop {
+                if ingredient.ingredient.unit == .barSpoon || ingredient.ingredient.unit == .barSpoons || ingredient.ingredient.unit == .teaspoon || ingredient.ingredient.unit == .teaspoons || ingredient.ingredient.unit == .bittersDeco || ingredient.ingredient.unit == .glassRinse || ingredient.ingredient.unit == .splash || ingredient.ingredient.unit == .spraysInGlass || ingredient.ingredient.unit == .spritzOnTop {
                     modifiedMeasurement = ingredient.ingredient.value * 0.17
                     ingredientVolume = Double(convertIngredientOzAmountIntoMls(for: modifiedMeasurement)) * numberOfCocktailsText
                 } else if  ingredient.ingredient.unit == .dash || ingredient.ingredient.unit == .dashes || ingredient.ingredient.unit == .floatedDashes {

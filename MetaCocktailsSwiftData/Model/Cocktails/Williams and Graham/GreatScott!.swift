@@ -13,7 +13,8 @@ var greatScott = Cocktail(cocktailName: "Great Scott!",
                           ice: nil,
                           author: Author(person: "Whitney Allen", place: AuthorPlaces.williamsAndGraham.rawValue, year: "2018"),
                           spec: greatScottSpec,
-                          tags: greatScottTags)
+                          tags: greatScottTags,
+                          collection: .williamsAndGraham)
 
 var greatScottSpec  = [CocktailIngredient(.soda(.lemonMintSoda), value: 2),
                        CocktailIngredient(.juices(.lemon), value: 0.5),

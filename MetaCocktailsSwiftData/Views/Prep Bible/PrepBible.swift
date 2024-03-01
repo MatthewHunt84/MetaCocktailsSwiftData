@@ -49,10 +49,10 @@ final class PrepBible{
                                                                                                        Instruction(step: 3, method: " Blend on high until mixture is smooth, then fine-strain")])
     
     static let honeySyrup = Prep(prepIngredientName: "Honey Syrup", prepRecipe:[Instruction(step: 1, method: "Weigh out three parts honey to one part boiling water and combine."),
-                                                                         Instruction(step: 2, method: "Let cool before bottling.")]   )
+                                                                         Instruction(step: 2, method: "Let cool before bottling.")])
     
     static let agaveSyrup = Prep(prepIngredientName: "Agave Syrup", prepRecipe:[Instruction(step: 1, method: "Weigh out three parts agave nectar to one part boiling water and combine."),
-                                                                         Instruction(step: 2, method: "Let cool before bottling.")]   )
+                                                                         Instruction(step: 2, method: "Let cool before bottling.")])
     
     static let raspberrySyrup = Prep(prepIngredientName: "Raspberry Syrup", prepRecipe: [Instruction(step: 1, method:  "Weigh out one part raspberries to two parts sugar and add them to a pot."),
                                                                                   Instruction(step: 2, method: "Get some gloves on a smash the berries and sugar together. This is easiest with your hands, but if you don't have gloves you can use a spatula or a muddler."),
@@ -64,5 +64,12 @@ final class PrepBible{
     
     static let richSimple = Prep(prepIngredientName: "Rich Simple Syrup", prepRecipe:[Instruction(step: 1, method: "Weigh out two parts sugar to one part water and combine in a pot."),
                                                                                  Instruction(step: 2, method: "Bring to a boil and then immediately take off heat."),
-                                                                                 Instruction(step: 3, method: "Let cool before bottling.")]   )
+                                                                                 Instruction(step: 3, method: "Let cool before bottling.")])
+    
+    static let angoCream = Prep(prepIngredientName: "Angostura Cream", prepRecipe:[Instruction(step: 1, method: "Add 8oz.(240ml) heavy cream, 1oz.(30ml) simple syrup, and 2 dashes of angostura to a 20oz. squeeze bottle."),
+                                                                                 Instruction(step: 2, method: "Shake until it doubles in size. The cream needs to be thickened but still fluid."),
+                                                                                 Instruction(step: 3, method: "Keep refrigerated.")])
+    
+    static let violetteSyrup = Prep(prepIngredientName: "Violette Syrup", prepRecipe:[Instruction(step: 1, method: "Add 2oz.(60ml) gin, 1oz.(30ml) violet syrup such as Monin, and 1oz.(30ml) simple syrup together."),
+                                                                                 Instruction(step: 2, method: "Keep refrigerated for up to a month.")])
 }

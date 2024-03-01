@@ -17,7 +17,8 @@ var sunnySide = Cocktail(cocktailName: "Sunny Side",
                                        place: AuthorPlaces.williamsAndGraham.rawValue),
                          spec: sunnySideSpec,
                          buildOrder: sunnySideBuild,
-                         tags: sunnySideTags)
+                         tags: sunnySideTags,
+                         collection: .williamsAndGraham)
 
 let sunnySideSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
                                            CocktailIngredient(.juices(.lime), value: 0.75),

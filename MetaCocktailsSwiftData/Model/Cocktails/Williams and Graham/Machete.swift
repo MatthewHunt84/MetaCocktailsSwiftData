@@ -15,7 +15,8 @@ var machete  =  Cocktail(cocktailName: "Machete",
                          author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
                          spec: macheteSpec,
                          buildOrder: nil,
-                         tags: macheteTags)
+                         tags: macheteTags,
+                         collection: .williamsAndGraham)
 
 var macheteSpec = [CocktailIngredient(.bitters(.hellfireBitters), value: 12, unit: .drops),
                    CocktailIngredient(.amari(.fernetBranca), value: 0.5),

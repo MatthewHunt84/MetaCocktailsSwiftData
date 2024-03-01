@@ -13,7 +13,8 @@ var stingerWnG = Cocktail(cocktailName: "Stinger(W&G Version)",
                             ice: .pebbleIce,
                             author: williamsAndGraham,
                             spec: stingerSpecWnG,
-                            tags: stingerTagsWnG)
+                            tags: stingerTagsWnG,
+                          collection: .williamsAndGraham)
 
 var stingerSpecWnG     =  [CocktailIngredient(.liqueurs(.cremeDeMenthe), value: 0.75),
                              CocktailIngredient(.brandies(.pF1840), value: 2.25)]

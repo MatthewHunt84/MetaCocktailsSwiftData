@@ -14,7 +14,8 @@ var northmansConquest  =  Cocktail(cocktailName: "Northmans Conquest",
                                    author: justWnG,
                                    spec: northmansConquestSpec,
                                    buildOrder: nil,
-                                   tags: northmansConquestTags)
+                                   tags: northmansConquestTags,
+                                   collection: .williamsAndGraham)
 
 var northmansConquestSpec = [CocktailIngredient(.fortifiedWines(.lustauPX), value: 0.25),
                              CocktailIngredient(.fortifiedWines(.carpanoAntica), value: 0.75),

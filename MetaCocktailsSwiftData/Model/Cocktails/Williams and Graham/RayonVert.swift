@@ -17,7 +17,8 @@ var reyonVert = Cocktail(cocktailName: "Rayon Vert",
                                        year: "2018"),
                          spec: reyonVertSpec,
                          buildOrder: reyonVertBuild,
-                         tags: reyonVertTags)
+                         tags: reyonVertTags,
+                         collection: .williamsAndGraham)
 
 let reyonVertSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.basil), value: 7, unit: .nitroMuddled),
                                            CocktailIngredient(.juices(.lime), value: 0.5),

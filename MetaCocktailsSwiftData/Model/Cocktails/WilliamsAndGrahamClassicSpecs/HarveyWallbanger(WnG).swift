@@ -14,7 +14,8 @@ var harveyWallbangerWnG = Cocktail(cocktailName: "Harvey Wallbanger(WnG Version)
                                    author: williamsAndGraham,
                                    spec: harveyWallbangerSpecWnG,
                                    tags: harveyWallbangerTagsWnG,
-                                   variation: .harveyWallbanger)
+                                   variation: .harveyWallbanger,
+                                   collection: .williamsAndGraham)
 
 var harveyWallbangerSpecWnG    =  [CocktailIngredient(.liqueurs(.galliano), value: 0.5, unit: .float),
                                    CocktailIngredient(.juices(.orange), value: 2),

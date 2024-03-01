@@ -13,7 +13,8 @@ var homeOnTheRangeMnH = Cocktail(cocktailName: "Home on the Range (Milk and Hone
                                  ice: .bigRock,
                                  author:Author(person: "Michael Madrusan",  place: AuthorPlaces.milkAndHoney.rawValue , year: "Early 2000s"),
                                  spec: homeOnTheRangeSpecMnH,
-                                 tags: homeOnTheRangeTagsMnH)
+                                 tags: homeOnTheRangeTagsMnH,
+                                 collection: .milkAndHoney)
 
 var homeOnTheRangeSpecMnH     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 3, unit: .dashes),
                                   CocktailIngredient(.fortifiedWines(.cocchiDeTorino), value: 0.25),

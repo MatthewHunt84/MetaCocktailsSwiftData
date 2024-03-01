@@ -14,7 +14,8 @@ var americanGothic = Cocktail(cocktailName: "American Gothic",
                               ice: .bigRock,
                               author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
                               spec: americanGothicSpec,
-                              tags: americanGothicTags)
+                              tags: americanGothicTags,
+                              collection: .williamsAndGraham)
 
 let americanGothicSpec: [CocktailIngredient] = [CocktailIngredient(.otherAlcohol(.absinthe), value: 1, unit: .glassRinse),
                                                 CocktailIngredient(.amari(.leopold3Pins), value: 0.75),

@@ -14,7 +14,8 @@ var mostelyHarmless = Cocktail(cocktailName: "Mostly Harmless",
                                ice: .pebbleIce,
                                author: Author(person: "Justin Jenkins", place: AuthorPlaces.williamsAndGraham.rawValue, year: "Fall, 2021"),
                                spec: mostelyHarmlessSpec,
-                               tags: mostelyHarmlessTags)
+                               tags: mostelyHarmlessTags,
+                               collection: .williamsAndGraham)
 
 let mostelyHarmlessSpec: [CocktailIngredient] = [CocktailIngredient(.juices(.lemon), value: 0.5),
                                                  CocktailIngredient(.otherNonAlc(.orangeConcentrate), value: 0.25),

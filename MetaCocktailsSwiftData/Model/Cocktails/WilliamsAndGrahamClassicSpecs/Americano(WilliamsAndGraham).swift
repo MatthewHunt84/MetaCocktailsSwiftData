@@ -15,7 +15,8 @@ var americanoWnG  = Cocktail(cocktailName: "Americano(W&G Version)",
                              author: williamsAndGraham,
                              spec: americanoWnGSpec,
                              tags: americanoWnGTags,
-                             variation: .americano)
+                             variation: .americano,
+                             collection: .williamsAndGraham)
 
 var americanoWnGSpec  = [CocktailIngredient(.soda(.sodaWater), value: 2),
                          CocktailIngredient(.fortifiedWines(.carpanoAntica), value: 1.5),

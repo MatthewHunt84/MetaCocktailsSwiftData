@@ -13,7 +13,8 @@ var aloeForThatBurn = Cocktail(cocktailName: "Aloe for that Burn",
                          garnish: [.limeWheel],
                          author: Author(person: "Killian Hopkins", place: AuthorPlaces.williamsAndGraham.rawValue, year: "2018"),
                          spec: aloeForThatBurnSpec,
-                         tags: aloeForThatBurnTags)
+                         tags: aloeForThatBurnTags,
+                               collection: .williamsAndGraham)
 
 let aloeForThatBurnSpec: [CocktailIngredient] = [CocktailIngredient(.otherAlcohol(.jalapeñoTincture), value: 5, unit: .dashes),
                                                  CocktailIngredient(.juices(.lime), value: 0.5),

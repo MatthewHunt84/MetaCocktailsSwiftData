@@ -14,7 +14,8 @@ var aFlightSouthOfTheBorder = Cocktail(cocktailName: "A Flight South of the Bord
                                        ice: .bigRock,
                                        author: Author(person: "Tom Lagae", place: AuthorPlaces.williamsAndGraham.rawValue, year: "2019"),
                                        spec: aFlightSouthOfTheBorderSpec,
-                                       tags: aFlightSouthOfTheBorderTags)
+                                       tags: aFlightSouthOfTheBorderTags,
+                                       collection: .williamsAndGraham)
 
 let aFlightSouthOfTheBorderSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 9, unit: .gentlyMuddled),
                                                          CocktailIngredient(.fruit(.grapefruitPeel), value: 2, unit: .none),

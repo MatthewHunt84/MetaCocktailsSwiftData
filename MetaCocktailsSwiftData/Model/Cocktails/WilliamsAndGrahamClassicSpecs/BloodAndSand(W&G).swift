@@ -14,7 +14,8 @@ var bloodAndSandWnG  = Cocktail(cocktailName: "Blood & Sand(W&G Version)",
                                 author: williamsAndGraham,
                                 spec: bloodAndSandWnGSpec,
                                 tags: bloodAndSandTags,
-                                variation: .bloodAndSand)
+                                variation: .bloodAndSand,
+                                collection: .williamsAndGraham)
 
 var bloodAndSandWnGSpec  = [CocktailIngredient(.juices(.lemon), value: 0.25),
                             CocktailIngredient(.juices(.orange), value: 0.75),

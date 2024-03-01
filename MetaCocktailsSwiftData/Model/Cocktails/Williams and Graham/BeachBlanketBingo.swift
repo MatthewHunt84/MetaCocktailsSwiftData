@@ -14,7 +14,8 @@ var beachBlanketBingo = Cocktail(cocktailName: "Beach Blanket Bingo",
                                  ice: .koldDraft,
                                  author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
                                  spec: beachBlanketBingoSpec,
-                                 tags: beachBlanketBingoTags)
+                                 tags: beachBlanketBingoTags,
+                                 collection: .williamsAndGraham)
 
 let beachBlanketBingoSpec: [CocktailIngredient] = [CocktailIngredient(.wines(.prosecco), value: 2),
                                                    CocktailIngredient(.fruit(.raspberries), value: 2, unit: .muddled),

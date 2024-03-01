@@ -15,7 +15,8 @@ var sloeWalker = Cocktail(cocktailName: "Sloe Walker",
                           author:Author(place: AuthorPlaces.williamsAndGraham.rawValue),
                           spec: sloeWalkerSpec,
                           buildOrder: nil,
-                          tags: sloeWalkerTags)
+                          tags: sloeWalkerTags,
+                          collection: .williamsAndGraham)
 
 var sloeWalkerSpec  = [CocktailIngredient(.amari(.amargoVallet), value: 0.25),
                        CocktailIngredient(.liqueurs(.plymouthSloeGin), value: 0.25),

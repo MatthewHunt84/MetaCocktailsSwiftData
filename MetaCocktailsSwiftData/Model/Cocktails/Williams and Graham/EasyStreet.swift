@@ -15,7 +15,8 @@ var easyStreet = Cocktail(cocktailName: "Easy Street",
                           author: williamsAndGraham ,
                           spec: easyStreetSpec,
                           buildOrder: easyStreetBuild,
-                          tags: easyStreetTags)
+                          tags: easyStreetTags,
+                          collection: .williamsAndGraham)
 
 let easyStreetSpec: [CocktailIngredient] = [CocktailIngredient(.syrups(.simple), value: 0.5),
                                             CocktailIngredient(.juices(.lemon), value: 0.75),

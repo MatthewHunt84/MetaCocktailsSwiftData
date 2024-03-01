@@ -16,7 +16,8 @@ var redWedding  =  Cocktail(cocktailName: "Red Wedding",
                                           place: AuthorPlaces.williamsAndGraham.rawValue, year: "2018"),
                             spec: redWeddingSpec,
                             buildOrder: nil,
-                            tags: redWeddingTags)
+                            tags: redWeddingTags,
+                            collection: .williamsAndGraham)
 
 var redWeddingSpec = [CocktailIngredient(.seasoning(.saline), value: 5, unit: .drops),
                       CocktailIngredient(.amari(.sfumato), value: 0.25),

@@ -15,7 +15,8 @@ var banhMi  =  Cocktail(cocktailName: "Banh Mi",
                                       place: AuthorPlaces.williamsAndGraham.rawValue, year: "2019"),
                         spec: banhMiSpec,
                         buildOrder: nil,
-                        tags: banhMiTags)
+                        tags: banhMiTags,
+                        collection: .williamsAndGraham)
 
 var banhMiSpec = [CocktailIngredient(.herbs(.mint), value: 5, unit: .gentlyMuddled),
                   CocktailIngredient(.herbs(.cilantro), value: 5, unit: .gentlyMuddled),

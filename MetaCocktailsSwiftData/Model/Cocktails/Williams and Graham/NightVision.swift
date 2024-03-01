@@ -14,7 +14,8 @@ var nightVision  =  Cocktail(cocktailName: "Night Vision",
                              author: Author(person:AuthorNames.valarieAlvarado.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue, year: "2018"),
                              spec: nightVisionSpec,
                              buildOrder: nil,
-                             tags: nightVisionTags)
+                             tags: nightVisionTags,
+                             collection: .williamsAndGraham)
 
 var nightVisionSpec = [CocktailIngredient(.juices(.lemon), value: 0.25),
                        CocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBible.orgeat),

@@ -12,7 +12,8 @@ var princeEdward = Cocktail(cocktailName: "Prince Edward(W&G Version)",
                             garnish: [.orangePeel],
                             author: williamsAndGraham,
                             spec: princeEdwardSpec,
-                            tags: princeEdwardTags)
+                            tags: princeEdwardTags,
+                            collection: .williamsAndGraham)
 
 var princeEdwardSpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
                              CocktailIngredient(.liqueurs(.drambuie), value: 0.25),

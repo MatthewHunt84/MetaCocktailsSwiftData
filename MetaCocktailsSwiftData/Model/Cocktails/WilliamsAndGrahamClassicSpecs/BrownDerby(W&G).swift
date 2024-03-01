@@ -14,7 +14,8 @@ let brownDerbyWnG = Cocktail(cocktailName: "Brown Derby(W&G Version)",
                              author: williamsAndGraham,
                              spec: brownDerbyWnGSpec,
                              tags: brownDerbyBourbonTags,
-                             variation: .brownDerby)
+                             variation: .brownDerby,
+                             collection: .williamsAndGraham)
 
 var brownDerbyWnGSpec: [CocktailIngredient] = [CocktailIngredient(.whiskies(.fourRosesYellowLabel), value: 2),
                                                CocktailIngredient(.juices(.grapefruit), value: 0.75),

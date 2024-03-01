@@ -15,7 +15,8 @@ var sagedOracle = Cocktail(cocktailName: "Saged Oracle",
                            author:Author(person: AuthorNames.jamesMenkal.rawValue,
                                          place: AuthorPlaces.williamsAndGraham.rawValue, year: "2018"),
                            spec: sagedOracleSpec,
-                           tags: sagedOracleTags)
+                           tags: sagedOracleTags,
+                           collection: .williamsAndGraham)
 
 let sagedOracleSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.sage), value: 5, unit: .gentlyMuddled),
                                              CocktailIngredient(.syrups(.simple), value: 0.75),

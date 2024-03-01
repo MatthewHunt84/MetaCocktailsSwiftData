@@ -16,7 +16,8 @@ var yeen = Cocktail(cocktailName: "Yeen.",
                                   place: AuthorPlaces.williamsAndGraham.rawValue,
                                   year: "Spring, 2022"),
                     spec: yeenSpec,
-                    tags: yeenTags)
+                    tags: yeenTags,
+                    collection: .williamsAndGraham)
 
 let yeenSpec: [CocktailIngredient] = [CocktailIngredient(.rums(.rumFire), value: 0.25),
                                       CocktailIngredient(.rums(.plantationOFTD), value: 0.75),

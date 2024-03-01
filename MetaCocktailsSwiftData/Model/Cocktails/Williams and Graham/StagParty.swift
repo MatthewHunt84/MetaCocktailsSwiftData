@@ -15,7 +15,8 @@ var stagParty  =  Cocktail(cocktailName: "Stag Party",
                                          place: AuthorPlaces.williamsAndGraham.rawValue, year: "2020"),
                            spec: stagPartySpec,
                            buildOrder: nil,
-                           tags: stagPartyTags)
+                           tags: stagPartyTags,
+                           collection: .williamsAndGraham)
 
 var stagPartySpec = [CocktailIngredient(.otherNonAlc(.stiffCream), value: 1, unit: .fluidOuncesFloated),
                      CocktailIngredient(.liqueurs(.licor43), value: 0.5),

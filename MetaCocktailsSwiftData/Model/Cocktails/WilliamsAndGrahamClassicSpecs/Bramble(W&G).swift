@@ -15,7 +15,8 @@ var brambleWng = Cocktail(cocktailName: "Bramble(W&G Version)",
                           author: williamsAndGraham,
                           spec: brambleWnGSpec,
                           tags: brambleTags,
-                          variation: .bramble)
+                          variation: .bramble,
+                          collection: .williamsAndGraham)
 
 let brambleWnGSpec: [CocktailIngredient] = [CocktailIngredient(.juices(.lemon), value: 0.75),
                                             CocktailIngredient(.syrups(.simple), value: 0.75),

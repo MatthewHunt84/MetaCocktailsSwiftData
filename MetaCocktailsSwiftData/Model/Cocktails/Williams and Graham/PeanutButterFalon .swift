@@ -15,7 +15,8 @@ var peanutButterFalcon = Cocktail(cocktailName: "Peanut Butter Falcon",
                                                 place: AuthorPlaces.williamsAndGraham.rawValue),
                                   spec: peanutButterFalconSpec,
                                   buildOrder: peanutButterFalconBuild,
-                                  tags: peanutButterFalconTags)
+                                  tags: peanutButterFalconTags,
+                                  collection: .williamsAndGraham)
 
 var peanutButterFalconSpec  = [CocktailIngredient(.syrups(.honeySyrup), value: 0.25, prep: PrepBible.honeySyrup),
                                CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),

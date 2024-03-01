@@ -16,7 +16,8 @@ var penicillinWnG = Cocktail(cocktailName: "Penicillin(W&G Version)",
                              spec: penicillinSpecWnG,
                              buildOrder: penicillinBuildWnG,
                              tags: penicillinTagsWnG,
-                             variation: .penicillin)
+                             variation: .penicillin,
+                             collection: .williamsAndGraham)
 
 var penicillinSpecWnG = [CocktailIngredient(.juices(.lemon), value: 0.75, unit: .fluidOunces),
                          CocktailIngredient(.syrups(.honeySyrup), value: 0.5, prep: PrepBible.honeySyrup),

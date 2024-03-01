@@ -15,7 +15,8 @@ var darkCorners  =  Cocktail(cocktailName: "Dark Corners",
                                            place: AuthorPlaces.williamsAndGraham.rawValue, year: "Summer, 2022"),
                              spec: darkCornersSpec,
                              buildOrder: nil,
-                             tags: darkCornersTags)
+                             tags: darkCornersTags,
+                             collection: .williamsAndGraham)
 
 var darkCornersSpec = [CocktailIngredient(.seasoning(.saline), value: 3, unit: .drops),
                        CocktailIngredient(.amari(.fernetBranca), value: 1, unit: .barSpoon),

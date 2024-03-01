@@ -13,7 +13,8 @@ var northernDuchess = Cocktail(cocktailName: "Northern Duchess",
                                ice: nil,
                                author: Author(person: AuthorNames.kennyRemster.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue, year: "2018"),
                                spec: northernDuchessSpec,
-                               tags: northernDuchessTags)
+                               tags: northernDuchessTags,
+                               collection: .williamsAndGraham)
 
 var northernDuchessSpec  = [CocktailIngredient(.syrups(.demSyrupOneToOne), value: 1, unit: .barSpoon),
                             CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),

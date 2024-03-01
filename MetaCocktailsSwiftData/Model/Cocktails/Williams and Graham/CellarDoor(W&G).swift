@@ -14,7 +14,8 @@ var cellarDoor = Cocktail(cocktailName: "Cellar Door(W&G)",
                           author: justWnG,
                           spec: cellarDoorSpec,
                           buildOrder: cellarDoorBuild,
-                          tags: cellarDoorTags)
+                          tags: cellarDoorTags,
+                          collection: .williamsAndGraham)
 
 var cellarDoorSpec  = [CocktailIngredient(.otherNonAlc(.butter), value: 0.25),
                        CocktailIngredient(.syrups(.orgeat), value: 0.75, prep: PrepBible.orgeat),

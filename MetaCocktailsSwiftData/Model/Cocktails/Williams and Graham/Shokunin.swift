@@ -15,7 +15,8 @@ var shokunin = Cocktail(cocktailName: "Shokunin",
                         author: Author(person: "Kenny Remster", place: AuthorPlaces.williamsAndGraham.rawValue, year: "2018"),
                         spec: shokuninSpec,
                         buildOrder: shokuninBuild,
-                        tags: shokuninTags)
+                        tags: shokuninTags,
+                        collection: .williamsAndGraham)
 
 let shokuninSpec: [CocktailIngredient] = [CocktailIngredient(.fortifiedWines(.carpanoBianco), value: 1),
                                           CocktailIngredient(.amari(.campari), value: 1),

@@ -15,7 +15,8 @@ var burisBovineBev = Cocktail(cocktailName: "Buris' Bovine Beverage",
                                              place: AuthorPlaces.williamsAndGraham.rawValue,
                                              year: "2018"),
                               spec: burisBovineBevSpec,
-                              tags: burisBovineBevTags)
+                              tags: burisBovineBevTags,
+                              collection: .williamsAndGraham)
 
 var burisBovineBevSpec  = [CocktailIngredient(.otherNonAlc(.cream), value: 0.75),
                            CocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.25),

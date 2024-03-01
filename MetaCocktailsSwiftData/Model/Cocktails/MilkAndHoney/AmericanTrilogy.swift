@@ -14,7 +14,8 @@ var americanTrilogy = Cocktail(cocktailName: "The American Trilogy",
                                author: Author(person: "Michael McIlroy, Richard Boccato", place: AuthorPlaces.milkAndHoney.rawValue, year: "Early 2000s"),
                                spec: americanTrilogySpec,
                                tags: americanTrilogyTags,
-                               variation: .oldFashioned)
+                               variation: .oldFashioned,
+                               collection: .milkAndHoney)
 
 var americanTrilogySpec  =  [CocktailIngredient(.otherNonAlc(.sugarCube), value: 1, unit: .muddled),
                              CocktailIngredient(.soda(.sodaWater), value: 1, unit: .splash),

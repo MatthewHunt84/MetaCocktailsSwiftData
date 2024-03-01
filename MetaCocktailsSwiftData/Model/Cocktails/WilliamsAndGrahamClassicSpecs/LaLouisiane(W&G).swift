@@ -14,7 +14,8 @@ var laLouisianeWnG = Cocktail(cocktailName: "La Louisiane(W&G Version)",
                               author: williamsAndGraham,
                               spec: laLouisianeWnGSpec,
                               tags: laLouisianeWnGTags,
-                              variation: .laLouisiane)
+                              variation: .laLouisiane,
+                              collection: .williamsAndGraham)
 
 var laLouisianeWnGSpec     =  [CocktailIngredient(.otherAlcohol(.absinthe), value: 6, unit: .dashes),
                                CocktailIngredient(.bitters(.peychauds), value: 2, unit: .dashes),

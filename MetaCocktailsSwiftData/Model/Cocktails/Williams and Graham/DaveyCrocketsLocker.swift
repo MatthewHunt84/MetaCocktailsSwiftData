@@ -14,7 +14,8 @@ var daveyCrocketsLocker = Cocktail(cocktailName: "Davey Crocket's Locker",
                                    ice: .bigRock,
                                    author: justWnG,
                                    spec: daveyCrocketsLockerSpec,
-                                   tags: daveyCrocketsLockerTags)
+                                   tags: daveyCrocketsLockerTags,
+                                   collection: .williamsAndGraham)
 
 let daveyCrocketsLockerSpec = [CocktailIngredient(.liqueurs(.allspiceDram), value: 1, unit: .barSpoon),
                                CocktailIngredient(.fortifiedWines(.sandemanPort), value: 0.5),

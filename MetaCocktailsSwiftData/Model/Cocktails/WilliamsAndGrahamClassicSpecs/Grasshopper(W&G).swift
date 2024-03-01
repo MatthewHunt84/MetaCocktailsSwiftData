@@ -15,7 +15,8 @@ var grasshopperWnG = Cocktail(cocktailName: "Grasshopper(W&G Version)",
                               author: williamsAndGraham,
                               spec: grasshopperWnGSpec,
                               tags: grasshopperTags,
-                              variation: .grasshopper)
+                              variation: .grasshopper,
+                              collection: .williamsAndGraham)
 
 var grasshopperWnGSpec = [CocktailIngredient(.otherNonAlc(.cream), value: 1),
                           CocktailIngredient(.liqueurs(.cremeDeCacao), value: 1),

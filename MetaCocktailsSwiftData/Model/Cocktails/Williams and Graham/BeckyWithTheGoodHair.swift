@@ -16,7 +16,8 @@ var beckyWithTheGoodHair = Cocktail(cocktailName: "Becky With The Good Hair",
                                                    year: "2016"),
                                     spec: beckyWithTheGoodHairSpec,
                                     buildOrder: beckyWithTheGoodHairBuild,
-                                    tags: beckyWithTheGoodHairTags)
+                                    tags: beckyWithTheGoodHairTags,
+                                    collection: .williamsAndGraham)
 
 var beckyWithTheGoodHairSpec  = [CocktailIngredient(.brandies(.cognacVSOP), value: 0.75),
                                  CocktailIngredient(.amari(.becherovka), value: 0.75),

@@ -15,7 +15,8 @@ var richGirl  =  Cocktail(cocktailName: "Rich Girl",
                           author: Author(person: "Justin Jenkins", place: AuthorPlaces.williamsAndGraham.rawValue, year: "2019"),
                           spec: richGirlSpec,
                           buildOrder: nil,
-                          tags: richGirlTags)
+                          tags: richGirlTags,
+                          collection: .williamsAndGraham)
 
 var richGirlSpec = [CocktailIngredient(.seasoning(.saline), value: 2, unit: .drops),
                     CocktailIngredient(.bitters(.bolivarBitters), value: 2, unit: .dashes),

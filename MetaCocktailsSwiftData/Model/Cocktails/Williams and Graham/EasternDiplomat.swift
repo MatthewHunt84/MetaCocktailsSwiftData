@@ -14,7 +14,8 @@ var easternDiplomat = Cocktail(cocktailName: "Eastern Diplomat",
                                ice: nil,
                                author: Author(person: AuthorNames.kennyRemster.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue, year: "2018"),
                                spec: easternDiplomatSpec,
-                               tags: easternDiplomatTags)
+                               tags: easternDiplomatTags,
+                               collection: .williamsAndGraham)
 
 var easternDiplomatSpec  = [CocktailIngredient(.otherAlcohol(.absinthe), value: 1, unit: .glassRinse),
                             CocktailIngredient(.amari(.amaroMontenegro), value: 0.75),

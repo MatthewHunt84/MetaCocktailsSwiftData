@@ -13,7 +13,8 @@ var hereBeDragons = Cocktail(cocktailName: "Here Be Dragons",
                              garnish: [.mintBouquet, .flamingLimeBoat],
                              author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
                              spec: hereBeDragonsSpec,
-                             tags: hereBeDragonsTags)
+                             tags: hereBeDragonsTags,
+                             collection: .williamsAndGraham)
 
 let hereBeDragonsSpec: [CocktailIngredient] = [CocktailIngredient(.syrups(.grenadine), value: 0.25),
                                                CocktailIngredient(.juices(.grapefruit), value: 0.5),

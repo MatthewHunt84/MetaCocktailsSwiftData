@@ -14,7 +14,8 @@ var whereEaglesFly = Cocktail(cocktailName: "Where Eagles Fly",
                               author: Author(person: AuthorPlaces.williamsAndGraham.rawValue),
                               spec: whereEaglesFlySpec,
                               buildOrder: whereEaglesFlyBuild,
-                              tags: whereEaglesFlyTags)
+                              tags: whereEaglesFlyTags,
+                              collection: .williamsAndGraham)
 
 var whereEaglesFlySpec  = [CocktailIngredient(.wines(.prosecco), value: 2),
                            CocktailIngredient(.herbs(.basil), value: 3, unit: .gentlyMuddled),

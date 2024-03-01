@@ -15,7 +15,8 @@ var hotelNacionalWnG = Cocktail(cocktailName: "Hotel Nacional(W&G Version)",
                                 author: williamsAndGraham,
                                 spec: hotelNacionalSpecWnG,
                                 tags: hotelNacionalTagsWnG,
-                                variation: .hotelNacional)
+                                variation: .hotelNacional,
+                                collection: .williamsAndGraham)
 
 var hotelNacionalSpecWnG = [CocktailIngredient(.syrups(.simple), value: 0.25),
                             CocktailIngredient(.juices(.lime), value: 0.5),

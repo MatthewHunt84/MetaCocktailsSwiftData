@@ -14,7 +14,8 @@ var ramonaFlowers = Cocktail(cocktailName: "Ramona Flowers",
                              author:Author(person: AuthorNames.saydeeCanada.rawValue,
                                            place: AuthorPlaces.williamsAndGraham.rawValue),
                              spec: ramonaFlowersSpec,
-                             tags: ramonaFlowersTags)
+                             tags: ramonaFlowersTags,
+                             collection: .williamsAndGraham)
 
 let ramonaFlowersSpec: [CocktailIngredient] = [CocktailIngredient(.syrups(.simple), value: 0.5),
                                                CocktailIngredient(.juices(.lime), value: 0.5),

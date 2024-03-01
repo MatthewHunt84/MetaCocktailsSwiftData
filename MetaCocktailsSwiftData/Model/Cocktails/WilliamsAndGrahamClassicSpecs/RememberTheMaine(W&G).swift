@@ -13,7 +13,8 @@ var rememberTheMaineWnG = Cocktail(cocktailName: "Remember The Maine(W&G Version
                                    author: williamsAndGraham,
                                    spec: manhattanSpec,
                                    tags: manhattanTags,
-                                   variation: .rememberTheMaine)
+                                   variation: .rememberTheMaine,
+                                   collection: .williamsAndGraham)
 
 var rememberTheMaineSpecWnG     =  [CocktailIngredient(.otherAlcohol(.absinthe), value: 4, unit: .dashes),
                                     CocktailIngredient(.liqueurs(.luxardoCherry), value: 0.25),

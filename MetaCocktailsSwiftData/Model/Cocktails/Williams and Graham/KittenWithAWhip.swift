@@ -15,7 +15,8 @@ var kittenWithAWhip = Cocktail(cocktailName: "Kitten with a Whip",
                                ice: nil,
                                author: justWnG,
                                spec: kittenWithAWhipSpec,
-                               tags: kittenWithAWhipTags)
+                               tags: kittenWithAWhipTags,
+                               collection: .williamsAndGraham)
 
 let kittenWithAWhipSpec = [CocktailIngredient(.liqueurs(.tempusFugitKina), value: 3, unit: .drops),
                            CocktailIngredient(.amari(.cynar), value: 0.5),

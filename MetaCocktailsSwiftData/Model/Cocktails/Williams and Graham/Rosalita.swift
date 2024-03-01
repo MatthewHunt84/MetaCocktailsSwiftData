@@ -14,7 +14,8 @@ var rosalita = Cocktail(cocktailName: "Rosalita",
                         ice: .koldDraft,
                         author: Author(person: AuthorNames.kennyRemster.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue, year: "2020"),
                         spec: rosalitaSpec,
-                        tags: rosalitaTags)
+                        tags: rosalitaTags,
+                        collection: .williamsAndGraham)
 
 let rosalitaSpec = [CocktailIngredient(.soda(.feverTreeAromatic), value: 2),
                     CocktailIngredient(.amari(.ramazzottiRosato), value: 1),

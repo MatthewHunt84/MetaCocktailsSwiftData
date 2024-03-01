@@ -15,7 +15,8 @@ var longWayDown = Cocktail(cocktailName: "Long Way Down",
                            ice: .pebbleIce,
                            author: justWnG,
                            spec: longWayDownSpec,
-                           tags: longWayDownTags)
+                           tags: longWayDownTags,
+                           collection: .williamsAndGraham)
 
 let longWayDownSpec: [CocktailIngredient] = [CocktailIngredient(.juices(.lime), value: 0.75),
                                              CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .floatedDashes),

@@ -12,7 +12,7 @@ struct TabBarView: View {
 
         TabView {
             AddIngredientView()
-                .tabItem { Label("Build", systemImage: "wineglass") }
+                .tabItem { Label("Build", systemImage: "hourglass.bottomhalf.filled") }
             
             BasicSearchView()
                 .tabItem { Label("Search", systemImage: "magnifyingglass.circle.fill") }

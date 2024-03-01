@@ -15,14 +15,15 @@ var zombieWnG = Cocktail(cocktailName: "Zombie(W&G version)",
                          author: williamsAndGraham,
                          spec: zombieSpecWnG,
                          tags: zombieTagsWnG,
-                         variation: .zombie)
+                         variation: .zombie,
+                         collection: .williamsAndGraham)
 
 let zombieSpecWnG  = [CocktailIngredient(.juices(.lime), value: 0.75),
                       CocktailIngredient(.juices(.grapefruit), value: 0.5),
                       CocktailIngredient(.syrups(.cinnamonSyrup), value: 0.25),
                       CocktailIngredient(.syrups(.grenadine), value: 1, unit: .barSpoon),
                       CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),
-                      CocktailIngredient(.otherAlcohol(.absinthe), value: 2, unit: .sprays),
+                      CocktailIngredient(.otherAlcohol(.absinthe), value: 2, unit: .spraysInGlass),
                       CocktailIngredient(.rums(.havanaClubAnjeo), value: 1.5),
                       CocktailIngredient(.rums(.appletonEstateSignatureBlend), value: 1.5),
                       CocktailIngredient(.rums(.lemonHeart151), value: 1)]

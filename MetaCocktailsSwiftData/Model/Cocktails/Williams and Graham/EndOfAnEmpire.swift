@@ -14,7 +14,8 @@ var endOfAnEmpire = Cocktail(cocktailName: "End of an Empire",
                              ice: .bigRock,
                              author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
                              spec: endOfAnEmpireSpec,
-                             tags: endOfAnEmpireTags)
+                             tags: endOfAnEmpireTags,
+                             collection: .williamsAndGraham)
 
 let endOfAnEmpireSpec: [CocktailIngredient] = [CocktailIngredient(.fortifiedWines(.sherryEastIndia), value: 0.75),
                                                CocktailIngredient(.amari(.braulio), value: 0.75),

@@ -14,7 +14,8 @@ var jungleBirdWnG = Cocktail(cocktailName: "JungleBird(W&G Version)",
                              author: williamsAndGraham,
                              spec: jungleBirdSpecWnG,
                              tags: jungleBirdTagsWnG,
-                             variation: .jungleBird)
+                             variation: .jungleBird,
+                             collection: .williamsAndGraham)
 
 var jungleBirdSpecWnG  =  [CocktailIngredient(.juices(.lime), value: 0.5),
                            CocktailIngredient(.juices(.pineappleJuice), value: 1.5),

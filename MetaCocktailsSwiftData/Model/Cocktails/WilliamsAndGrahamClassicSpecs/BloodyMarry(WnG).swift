@@ -14,7 +14,8 @@ var bloodyMaryWnG  = Cocktail(cocktailName: "Bloody Mary(W&G Version)",
                                spec: bloodyMarryWnGSpec,
                                buildOrder: bloodyMarryWnGBuild,
                                tags: bloodyMarryWnGTags,
-                               variation: .bloodyMary)
+                               variation: .bloodyMary,
+                              collection: .williamsAndGraham)
 
 var bloodyMarryWnGSpec  = [CocktailIngredient(.otherNonAlc(.bloodyMarryMixWnG), value: 4),
                            CocktailIngredient(.vodkas(.vodkaAny), value: 2)]

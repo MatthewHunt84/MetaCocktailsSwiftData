@@ -12,6 +12,7 @@ enum AuthorNames: String, Codable, CaseIterable {
     case audrySaunders     = "Audrey Saunders"
     case constante         = "Constante Ribalaigua"
     case crosbyGaige       = "Crosby Gaige"
+    case chadSolomon       = "Chad Solomon"
     case charlesBaker      = "Charles H. Baker"
     case charlesMahoney    = "Charles Mahoney"
     case davidEmbury       = "David Embury"
@@ -25,18 +26,23 @@ enum AuthorNames: String, Codable, CaseIterable {
     case jamesMenkal       = "James Menkal"
     case jerryThomas       = "Jerry Thomas"
     case joaquinSimo       = "Joaquín Simó"
+    case laurenMcLaughlin  = "Lauren McLaughlin"
+    case michaelMadrusan   = "Michael Madrusan"
     case philWard          = "Phil Ward"
+    case rKFox             = "R.K. Fox"
     case samRoss           = "Sam Ross"
     case seanKenyon        = "Sean Kenyon"
     case sashaPetraske     = "Sasha Petraske"
     case saydeeCanada      = "Saydee Canada"
-    case StanleyArthur     = "Stanley Clisby Arthur"
+    case stanleyArthur     = "Stanley Clisby Arthur"
+    case tjSiegal          = "T.J. Siegal"
     case traderVic         = "Victor (Trader Vic) Bergeron"
     case walterBergeron    = "Walter Bergeron"
     case valarieAlvarado   = "Valarie Alvarado"
     case killian           = "Killian Hopkins"
     case jesseBowen        = "Jesse Bowen"
     case kennyRemster      = "Kenny Remster"
+    case vincenzoErrico    = "Vincenzo Errico"
   
 }
 
@@ -55,6 +61,7 @@ enum AuthorPlaces: String, Codable, CaseIterable {
     case hoffmanBartendersGuide       = "Hoffman House Bartender's Guide"
     case hotelMonteleone              = "Hotel Monteleone"
     case howToMixDrinksJT             = "Bartender's Guide: How to Mix Drinks"
+    case johnDoryOysterBar            = "John Dory Oyster Bar, New York"
     case laFloridita                  = "La Floridita"
     case milkAndHoney                 = "Milk and Honey, New York"
     case peguClub                     = "Pegu Club, Soho."
@@ -80,8 +87,9 @@ var justWnG = Author(place: AuthorPlaces.williamsAndGraham.rawValue)
 var hugoEnsslin = Author(person: AuthorNames.hugoEnsslin.rawValue, place: AuthorPlaces.recipesForMixedDrinks.rawValue, year: "1916")
 var davidEmbury = Author(person: AuthorNames.davidEmbury.rawValue, place: AuthorPlaces.theFineArtOfMixingDrinks.rawValue, year: "1948")
 var jerryThomas = Author(person: AuthorNames.jerryThomas.rawValue, place: AuthorPlaces.howToMixDrinksJT.rawValue, year: "1862")
-var stanleyArthur = Author(person: AuthorNames.StanleyArthur.rawValue, place: AuthorPlaces.famousNewOrleansDrinks.rawValue, year: "1937")
+var stanleyArthur = Author(person: AuthorNames.stanleyArthur.rawValue, place: AuthorPlaces.famousNewOrleansDrinks.rawValue, year: "1937")
 var traderVic1947  = Author(person: AuthorNames.traderVic.rawValue, place: AuthorPlaces.traderVicsBartendersGuide.rawValue, year: "1947")
 var charlesBaker = Author(person: AuthorNames.charlesBaker.rawValue, place: AuthorPlaces.gentlemansCompanion.rawValue, year: "1939")
 var oHByron = Author(person: "O.H. Byron", place: "The Modern Bartenders' Guide", year: "1884")
+var sashaPetraske = Author(person: AuthorNames.sashaPetraske.rawValue, place: AuthorPlaces.milkAndHoney.rawValue, year: "Early 2000s")
 

@@ -15,6 +15,7 @@ enum Variation: String, Codable {
     case algonquin = "Algonquin"
     case amarettoSour = "Amaretto Sour"
     case americano = "Americano"
+    case appleJackCocktail = "Apple Jack Cocktail"
     case betweenTheSheets = "Between the Sheets"
     case bamboo = "Bamboo"
     case bijou = "Bijou"

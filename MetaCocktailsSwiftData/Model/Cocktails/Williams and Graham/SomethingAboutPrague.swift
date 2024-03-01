@@ -14,7 +14,8 @@ var somethingAboutPrague = Cocktail(cocktailName: "Something About Prague",
                                     ice: .koldDraft,
                                     author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
                                     spec: somethingAboutPragueSpec,
-                                    tags: somethingAboutPragueTags)
+                                    tags: somethingAboutPragueTags,
+                                    collection: .williamsAndGraham)
 
 let somethingAboutPragueSpec: [CocktailIngredient] = [CocktailIngredient(.fruit(.orangeMoons), value: 2, unit: .muddled),
                                                       CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),

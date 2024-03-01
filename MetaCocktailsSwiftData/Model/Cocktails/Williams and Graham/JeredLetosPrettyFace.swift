@@ -14,7 +14,8 @@ var jaredLetosPrettyFace = Cocktail(cocktailName: "Jared Leto's Pretty Face",
                                     ice: .pebbleIce,
                                     author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
                                     spec: jaredLetosPrettyFaceSpec,
-                                    tags: jaredLetosPrettyFaceTags)
+                                    tags: jaredLetosPrettyFaceTags,
+                                    collection: .williamsAndGraham)
 
 let jaredLetosPrettyFaceSpec: [CocktailIngredient] = [CocktailIngredient(.fruit(.raspberries), value: 2, unit: .muddled),
                                                       CocktailIngredient(.syrups(.passionfruitSyrup), value: 0.75),

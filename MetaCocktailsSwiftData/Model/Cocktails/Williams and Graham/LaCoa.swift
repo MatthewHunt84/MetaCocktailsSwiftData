@@ -15,7 +15,8 @@ var laCoa = Cocktail(cocktailName: "La Coa",
                      ice: .bigRock,
                      author: Author(person: "", place: AuthorPlaces.williamsAndGraham.rawValue, year: "Spring, 2022"),
                      spec: laCoaSpec,
-                     tags: laCoaTags)
+                     tags: laCoaTags,
+                     collection: .williamsAndGraham)
 
 let laCoaSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.chocolateMole), value: 2, unit: .dashes),
                                        CocktailIngredient(.rums(.cruzanBlackstrap), value: 2, unit: .barSpoons),

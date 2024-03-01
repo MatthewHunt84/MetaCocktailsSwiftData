@@ -16,7 +16,8 @@ var cardiC = Cocktail(cocktailName: "Cardi C",
                                      place: AuthorPlaces.williamsAndGraham.rawValue,
                                      year: "2020"),
                       spec: cardiCSpec,
-                      tags: cardiCTags)
+                      tags: cardiCTags,
+                      collection: .williamsAndGraham)
 
 let cardiCSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.chocolateMole), value: 8, unit: .drops),
                                         CocktailIngredient(.amari(.sfumato), value: 0.25),

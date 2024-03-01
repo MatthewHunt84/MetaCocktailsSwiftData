@@ -14,7 +14,8 @@ var oaxacaOldFashionedWnG = Cocktail(cocktailName: "Oaxaca Old Fashioned(W&G Ver
                                      author: williamsAndGraham,
                                      spec: oaxacaOldFashionedSpecWnG,
                                      tags: oaxacaOldFashionedTags,
-                                     variation: .oaxacaOldFashioned)
+                                     variation: .oaxacaOldFashioned,
+                                     collection: .williamsAndGraham)
 
 var oaxacaOldFashionedSpecWnG  = [CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
                                   CocktailIngredient(.bitters(.chocolateMole), value: 1, unit: .dashes),

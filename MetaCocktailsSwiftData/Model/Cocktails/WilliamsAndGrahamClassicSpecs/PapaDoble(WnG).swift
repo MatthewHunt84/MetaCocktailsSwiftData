@@ -13,7 +13,8 @@ let papaDobleWnG = Cocktail(cocktailName: "Hemingway Daiquiri(W&G Version)",
                          author: williamsAndGraham,
                          spec: papaDobleSpec,
                          tags: papaDobleTags,
-                         variation: .daiquiri)
+                         variation: .daiquiri,
+                            collection: .williamsAndGraham)
 
 var papaDobleSpec: [CocktailIngredient] = [CocktailIngredient(.syrups(.simple), value: 0.25),
                                            CocktailIngredient(.juices(.lime), value: 0.5),

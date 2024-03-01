@@ -14,7 +14,8 @@ var happyAccidents = Cocktail(cocktailName: "Happy Accidents",
                               ice: .columnIce,
                               author: Author(person: "Justin Jenkins", place: AuthorPlaces.williamsAndGraham.rawValue, year: "Spring, 2022"),
                               spec: happyAccidentsSpec,
-                              tags: happyAccidentsTags)
+                              tags: happyAccidentsTags,
+                              collection: .williamsAndGraham)
 
 let happyAccidentsSpec: [CocktailIngredient] = [CocktailIngredient(.soda(.sodaWater), value: 2),
                                                 CocktailIngredient(.fruit(.cucumberSlices), value: 2, unit: .muddled),

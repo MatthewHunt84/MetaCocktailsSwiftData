@@ -14,7 +14,8 @@ var amarettoSourWnG  = Cocktail(cocktailName: "Amaretto Sour(W&G Version)",
                                 spec: amarettoSourWnGSpec,
                                 buildOrder: eggWhiteBittersDecoInstructions,
                                 tags: amarettoSourWnGTags,
-                                variation: .amarettoSour)
+                                variation: .amarettoSour,
+                                collection: .williamsAndGraham)
 
 var amarettoSourWnGSpec  = [CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
                             CocktailIngredient(.juices(.lemon), value: 0.75),

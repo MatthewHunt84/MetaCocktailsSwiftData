@@ -80,6 +80,7 @@ enum Flavor: String, Codable, CaseIterable {
     case serrano        = "Serrano"
     case sesame         = "Sesame"
     case sloeBerries    = "Sloe Berries (AKA Blackthorn)"
+    case springOnion    = "Ramps(Spring onion)"
     case tarragon       = "Tarragon"
     case tea            = "Tea"
     case tomato         = "Tomato"
