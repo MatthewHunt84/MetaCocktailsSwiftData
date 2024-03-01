@@ -48,25 +48,22 @@ import Observation
 
     }
      func dynamicallyChangeMeasurementUnit() {
-         if ingredientType.category == "Fruit" {
-             selectedMeasurementUnit = MeasurementUnit.muddled
-             
-         } else if ingredientType.category == "Bitters" {
-           
-             selectedMeasurementUnit = MeasurementUnit.dashes
-             
-         } else if ingredientType.category == "Herbs" {
-             selectedMeasurementUnit = MeasurementUnit.gentlyMuddled
-             
-         } else if ingredientType.category == "Seasoning" {
-             selectedMeasurementUnit = MeasurementUnit.drops
-             
-         } else {
-             selectedMeasurementUnit = MeasurementUnit.fluidOunces
-         }
-         
-         
-     }
+            switch ingredientType {
+            case .herbs:
+                selectedMeasurementUnit = MeasurementUnit.gentlyMuddled
+            case .fruit:
+                selectedMeasurementUnit = MeasurementUnit.muddled
+            case .seasoning:
+                selectedMeasurementUnit = MeasurementUnit.drops
+            case .wines:
+                selectedMeasurementUnit = MeasurementUnit.float
+            case .bitters:
+                selectedMeasurementUnit = MeasurementUnit.dashes
+            default:
+                selectedMeasurementUnit = MeasurementUnit.fluidOunces
+            }
+        }
+
     
     static func createPhysicalComponentArray() ->  [CocktailComponent] {
         

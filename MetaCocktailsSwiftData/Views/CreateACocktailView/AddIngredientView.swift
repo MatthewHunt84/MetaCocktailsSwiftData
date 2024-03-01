@@ -24,16 +24,20 @@ struct AddIngredientView: View {
                 ForEach(viewModel.allPhysicalCocktailComponents, id: \.self) { component in
                     if component.matchesCurrentSearch {
                         Button {
-                            viewModel.ingredientName = component.name
                             viewModel.currentSelectedComponent = component
                             if component.isNA {
-                                viewModel.ingredientType = component.nACategory ?? IngredientType.juices(.carrotJuice)
+                                if let category = component.nACategory {
+                                    viewModel.ingredientType = category
+                                }
                                 viewModel.dynamicallyChangeMeasurementUnit()
                             }
                             if component.isSpirit {
-                                viewModel.ingredientType = component.spiritCategory ?? IngredientType.vodkas(.vodkaAny)
+                                if let category = component.spiritCategory {
+                                    viewModel.ingredientType = category
+                                }
                                 viewModel.dynamicallyChangeMeasurementUnit()
                             }
+                            
                             
                         } label: {
                             Text(component.name)
