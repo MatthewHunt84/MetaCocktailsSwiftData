@@ -7,14 +7,15 @@
 
 import Foundation
 
-var hollandHouseKappeler = Cocktail(cocktailName: "Holland House (Kappeler's)",
+var hollandHouseKappeler = Cocktail(cocktailName: "Holland House",
                                     glasswareType: .stemmedGlassware,
                                     garnish: [.orangePeel],
                                     ice: nil,
                                     author:Author(person: "George J. Kappeler", place: "Modern American Drinks: How to Mix and Serve All Kinds of Cups and Drinks.", year: "1895"),
                                     spec: hollandHouseKappelerSpec,
                                     tags: hollandHouseKappelerTags,
-                                    variation: .hollandHouse)
+                                    variation: .hollandHouse,
+                                    collection: .originals)
 
 var hollandHouseKappelerSpec  =  [CocktailIngredient(.bitters(.peychauds), value: 2, unit: .dashes),
                                   CocktailIngredient(.liqueurs(.orangeCuracao), value: 0.5),

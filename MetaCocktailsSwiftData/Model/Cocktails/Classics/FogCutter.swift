@@ -16,12 +16,13 @@ var fogCutter = Cocktail(cocktailName: "Fog Cutter",
                                         year: "1940"),
                          spec: fogCutterSpec,
                          tags: fogCutterTags,
-                         variation: .fogCutter)
+                         variation: .fogCutter,
+                         collection: .originals)
 
 
 let fogCutterSpec     = [CocktailIngredient(.juices(.lemon), value: 2),
                             CocktailIngredient(.juices(.orange), value: 1),
-                            CocktailIngredient(.syrups(.orgeat), value: 0.5),
+                            CocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBible.orgeat),
                             CocktailIngredient(.gins(.ginAny), value: 0.5),
                             CocktailIngredient(.brandies(.brandyAny), value: 1),
                             CocktailIngredient(.rums(.rumPuertoRican), value: 2),

@@ -14,7 +14,8 @@ var americano  = Cocktail(cocktailName: "Americano",
                           author: Author(person: "Emile Lefeuvre", place: "Paris", year: "1889"),
                           spec: americanoSpec,
                           tags: americanoTags,
-                          variation: .americano)
+                          variation: .americano,
+                          collection: .originals)
 
 var americanoSpec  = [CocktailIngredient(.soda(.sodaWater), value: 2),
                       CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1.5),

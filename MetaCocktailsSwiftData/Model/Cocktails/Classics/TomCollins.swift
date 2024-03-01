@@ -15,7 +15,8 @@ var tomCollins  = Cocktail(cocktailName: "Tom Collins",
                            spec: tomCollinsSpec,
                            buildOrder: tomCollinsBuild,
                            tags: tomCollinsTags,
-                           variation: .tomCollins)
+                           variation: .tomCollins,
+                           collection: .originals)
 
 var tomCollinsSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                        CocktailIngredient(.syrups(.simple), value: 1),

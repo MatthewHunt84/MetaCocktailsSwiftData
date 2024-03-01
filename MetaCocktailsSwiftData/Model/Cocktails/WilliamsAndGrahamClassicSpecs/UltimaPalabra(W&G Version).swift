@@ -13,7 +13,8 @@ var ultimaPalabraWnG = Cocktail(cocktailName: "Ultima Palabra(W&G version)",
                                 ice: nil,
                                 spec: ultimaPalabraSpecWnG,
                                 tags: ultimaPalabraTagsWnG,
-                                variation: .ultimaPalabra)
+                                variation: .ultimaPalabra,
+                                collection: .williamsAndGraham)
 
 var ultimaPalabraSpecWnG  = [CocktailIngredient(.juices(.lime), value: 0.75),
                              CocktailIngredient(.syrups(.simple), value: 0.25),

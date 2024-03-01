@@ -79,6 +79,7 @@ enum Garnish: String, Codable {
     case raisins                   = "Raisins"
     case seasonalBerries           = "Seasonal Berries"
     case sesameOil                 = "Sesame Oil"
+    case springOnions              = "Spring onion or ramp, trimmed"
     case stroopwaffle              = "Stroopwafel"
     case thyme                     = "Thyme Sprig"
     case rosePetals                = "Skewered Rose Petals"

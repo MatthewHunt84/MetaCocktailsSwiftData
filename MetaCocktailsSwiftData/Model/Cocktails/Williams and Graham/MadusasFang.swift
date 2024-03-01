@@ -14,10 +14,11 @@ var madusasFang = Cocktail(cocktailName: "Madusa's Fang",
                            ice: .pebbleIce,
                            author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
                            spec: madusasFangSpec,
-                           tags: madusasFangTags)
+                           tags: madusasFangTags,
+                           collection: .williamsAndGraham)
 
 let madusasFangSpec: [CocktailIngredient] = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                                             CocktailIngredient(.syrups(.orgeat), value: 0.5),
+                                             CocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBible.orgeat),
                                              CocktailIngredient(.liqueurs(.dryCuracao), value: 0.5),
                                              CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.5),
                                              CocktailIngredient(.otherAlcohol(.stGeorgeAbsinthe), value: 1)]

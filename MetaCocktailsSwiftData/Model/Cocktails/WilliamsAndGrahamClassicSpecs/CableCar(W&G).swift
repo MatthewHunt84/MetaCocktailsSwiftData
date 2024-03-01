@@ -12,7 +12,8 @@ var cableCarWnG = Cocktail(cocktailName: "Cable Car(W&G Version)",
                            garnish: [.noGarnish],
                            author: williamsAndGraham,
                            spec: cableCarWnGSpec,
-                           tags: cableCarTags)
+                           tags: cableCarTags,
+                           collection: .williamsAndGraham)
 
 var cableCarWnGSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                         CocktailIngredient(.liqueurs(.cointreau), value: 0.5),

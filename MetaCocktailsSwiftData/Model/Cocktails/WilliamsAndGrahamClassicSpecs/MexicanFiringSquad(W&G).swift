@@ -15,7 +15,8 @@ var mexicanFiringSquadWnG = Cocktail(cocktailName: "Mexican Firing Squad(W&G Ver
                                      author: williamsAndGraham,
                                      spec: mexicanFiringSquadSpecWnG,
                                      tags: mexicanFiringSquadTagsWnG,
-                                     variation: .mexicanFiringSquad)
+                                     variation: .mexicanFiringSquad,
+                                     collection: .williamsAndGraham)
 
 var mexicanFiringSquadSpecWnG = [CocktailIngredient(.bitters(.angosturaBitters), value: 4, unit: .dashes),
                                  CocktailIngredient(.juices(.lime), value: 0.75),

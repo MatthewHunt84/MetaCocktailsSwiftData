@@ -16,7 +16,8 @@ var bambooWnG = Cocktail(cocktailName: "Bamboo(W&G Version)",
                          spec: bambooWnGSpec,
                          buildOrder: nil,
                          tags: bambooTags,
-                         variation: .bamboo)
+                         variation: .bamboo,
+                         collection: .williamsAndGraham)
 
 var bambooWnGSpec = [CocktailIngredient(.fortifiedWines(.amontillado), value: 1.5),
                      CocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 1.5),

@@ -15,7 +15,8 @@ var somethingBitter  =  Cocktail(cocktailName: "Something Bitter This Way Comes"
                                  author:Author(person: "Whitney Allen & \(AuthorNames.valarieAlvarado.rawValue)", place: AuthorPlaces.williamsAndGraham.rawValue, year: "2018"),
                                  spec: somethingBitterSpec,
                                  buildOrder: nil,
-                                 tags: somethingBitterTags)
+                                 tags: somethingBitterTags,
+                                 collection: .williamsAndGraham)
 
 var somethingBitterSpec = [CocktailIngredient(.bitters(.chocolateMole), value: 8, unit: .drops),
                            CocktailIngredient(.liqueurs(.clementCreole), value: 0.25),

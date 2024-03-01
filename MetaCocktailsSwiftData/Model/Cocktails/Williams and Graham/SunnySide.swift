@@ -17,12 +17,13 @@ var sunnySide = Cocktail(cocktailName: "Sunny Side",
                                        place: AuthorPlaces.williamsAndGraham.rawValue),
                          spec: sunnySideSpec,
                          buildOrder: sunnySideBuild,
-                         tags: sunnySideTags)
+                         tags: sunnySideTags,
+                         collection: .williamsAndGraham)
 
 let sunnySideSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
                                            CocktailIngredient(.juices(.lime), value: 0.75),
-                                           CocktailIngredient(.syrups(.cucumberSyrup), value: 0.5),
-                                           CocktailIngredient(.syrups(.gingerSyrup), value: 0.25),
+                                           CocktailIngredient(.syrups(.cucumberSyrup), value: 0.5, prep: PrepBible.cucumberSyrup),
+                                           CocktailIngredient(.syrups(.gingerSyrup), value: 0.25, prep: PrepBible.gingerSyrup),
                                            CocktailIngredient(.fortifiedWines(.cocchiAmericano), value: 0.5),
                                            CocktailIngredient(.gins(.ginAny), value: 1.5)]
                                         

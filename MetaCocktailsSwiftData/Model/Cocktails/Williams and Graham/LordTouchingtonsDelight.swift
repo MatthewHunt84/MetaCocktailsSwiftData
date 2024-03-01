@@ -14,7 +14,8 @@ var lordTouchingtonsDelight = Cocktail(cocktailName: "Lord Touchingtons Delight"
                                        ice: .pebbleIce,
                                        author: Author(person: "Nick Touch", place: AuthorPlaces.williamsAndGraham.rawValue, year: "2015"),
                                        spec: lordTouchingtonsDelightSpec,
-                                       tags: lordTouchingtonsDelightTags)
+                                       tags: lordTouchingtonsDelightTags,
+                                       collection: .williamsAndGraham)
 
 let lordTouchingtonsDelightSpec: [CocktailIngredient] = [CocktailIngredient(.juices(.lime), value: 0.5),
                                                          CocktailIngredient(.juices(.pineappleJuice), value: 0.5),

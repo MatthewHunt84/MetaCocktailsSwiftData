@@ -17,8 +17,8 @@ var pimmsCup = Cocktail(cocktailName: "Pimms Cup",
                        tags: pimsCupTags)
 
 let pimsCupSpec: [CocktailIngredient] = [CocktailIngredient(.fruit(.seasonalBerries), value: 4, unit: .muddled),
-                                         CocktailIngredient(.syrups(.gingerSyrup), value: 0.5),
-                                         CocktailIngredient(.syrups(.cucumberSyrup), value: 0.5),
+                                         CocktailIngredient(.syrups(.gingerSyrup), value: 0.5, prep: PrepBible.gingerSyrup),
+                                         CocktailIngredient(.syrups(.cucumberSyrup), value: 0.5, prep: PrepBible.cucumberSyrup),
                                          CocktailIngredient(.juices(.lemon), value: 1),
                                          CocktailIngredient(.gins(.fordsGin), value: 1),
                                          CocktailIngredient(.liqueurs(.pimms), value: 2)]

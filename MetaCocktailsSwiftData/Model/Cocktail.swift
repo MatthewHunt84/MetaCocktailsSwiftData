@@ -18,7 +18,7 @@ class Cocktail: Equatable, Hashable {
     }
     
     var id = UUID()
-    @Attribute(.unique) var cocktailName: String 
+    @Attribute(.unique) var cocktailName: String
     var imageAsset: CocktailImage?
     var glasswareType: Glassware
     var garnish: [Garnish]?
@@ -61,13 +61,15 @@ class Cocktail: Equatable, Hashable {
 
 
 struct PreviewContainer {
-    let container: ModelContainer!
+    let container: ModelContainer
     
     init(_ types: [any PersistentModel.Type],
          isStoredInMemoryOnly: Bool = true) {
         
         let schema = Schema(types)
         let config = ModelConfiguration(isStoredInMemoryOnly: isStoredInMemoryOnly)
+        
         self.container = try! ModelContainer(for: schema, configurations: [config])
+        
     }
 }

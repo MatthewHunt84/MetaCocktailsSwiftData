@@ -13,7 +13,8 @@ var rememberTheMaine = Cocktail(cocktailName: "Remember The Maine",
                                 author: charlesBaker,
                                 spec: rememberTheMaineOGSpec,
                                 tags: rememberTheMaineOGTags,
-                                variation: .rememberTheMaine)
+                                variation: .rememberTheMaine,
+                                collection: .originals)
 
 var rememberTheMaineOGSpec     =  [CocktailIngredient(.otherAlcohol(.absinthe), value: 0.5, unit: .teaspoon),
                                    CocktailIngredient(.liqueurs(.cherryHeering), value: 2, unit: .teaspoons),

@@ -12,10 +12,11 @@ var grasshopper = Cocktail(cocktailName: "Grasshopper",
                            glasswareType: .coupe,
                            garnish: [.noGarnish],
                            ice: nil,
-                           author: Author(place: "Too old to tell."),
+                           author: Author(place: "Somewhere in America in the 1920s-ish."),
                            spec: grasshopperSpec,
                            tags: grasshopperTags,
-                           variation: .grasshopper)
+                           variation: .grasshopper,
+                           collection: .originals)
 
 var grasshopperSpec = [CocktailIngredient(.otherNonAlc(.cream), value: 1),
                        CocktailIngredient(.liqueurs(.cremeDeCacao), value: 1),

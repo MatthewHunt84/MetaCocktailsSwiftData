@@ -15,7 +15,8 @@ var morningGloryFizz = Cocktail(cocktailName: "Morning Glory Fizz",
                                 spec: morningGloryFizzSpec,
                                 buildOrder: morningGloryFizzBuild,
                                 tags: morningGloryFizzTags,
-                                variation: .morningGloryFizz)
+                                variation: .morningGloryFizz,
+                                collection: .originals)
 
 var morningGloryFizzSpec = [CocktailIngredient(.soda(.sodaWater), value: 2),
                             CocktailIngredient(.juices(.lemon), value: 5, unit: .dashes),

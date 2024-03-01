@@ -13,7 +13,8 @@ var fairAndWarmerWnG = Cocktail(cocktailName: "Fair & Warmer(W&G Version)",
                                 author: williamsAndGraham,
                                 spec: fairAndWarmerWnGSpec,
                                 tags: fairAndWarmerTags,
-                                variation: .fairAndWarmer)
+                                variation: .fairAndWarmer,
+                                collection: .williamsAndGraham)
 
 var fairAndWarmerWnGSpec     =  [CocktailIngredient(.liqueurs(.orangeCuracao), value: 0.5),
                                  CocktailIngredient(.fortifiedWines(.dolinRouge), value: 0.5),

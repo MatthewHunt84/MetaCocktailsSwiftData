@@ -13,7 +13,8 @@ var TheRoastery = Cocktail(cocktailName: "The Roastery",
                            ice: .bigRock,
                            author: justWnG,
                            spec: TheRoasterySpec,
-                           tags: TheRoasteryTags)
+                           tags: TheRoasteryTags,
+                           collection: .williamsAndGraham)
 
 var TheRoasterySpec  = [CocktailIngredient(.bitters(.chocolateMole), value: 4, unit: .drops),
                         CocktailIngredient(.liqueurs(.borghetti), value: 0.5),

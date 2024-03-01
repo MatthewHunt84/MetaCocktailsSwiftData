@@ -15,11 +15,12 @@ var maiTai  = Cocktail(cocktailName: "Mai Tai",
                                      year: "1944"),
                        spec: maiTaiSpec,
                        tags: maiTaiTags,
-                       variation: .maiTai)
+                       variation: .maiTai,
+                       collection: .originals)
 
 var maiTaiSpec    = [CocktailIngredient(.juices(.lime), value: 1),
-                     CocktailIngredient(.syrups(.richDem), value: 1, unit: .teaspoon),
-                     CocktailIngredient(.syrups(.orgeat), value: 0.25),
+                     CocktailIngredient(.syrups(.richDem), value: 1, unit: .teaspoon, prep: PrepBible.richDem),
+                     CocktailIngredient(.syrups(.orgeat), value: 0.25, prep: PrepBible.orgeat),
                      CocktailIngredient(.liqueurs(.orangeCuracao), value: 0.25),
                      CocktailIngredient(.rums(.wrayAndNephew17), value: 2)]
 

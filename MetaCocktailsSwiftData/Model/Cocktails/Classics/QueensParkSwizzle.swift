@@ -13,15 +13,16 @@ var queensParkSwizzle = Cocktail(cocktailName: "Queens Park Swizzle",
                                  glasswareType: .collins,
                                  garnish: [.mintBouquet],
                                  ice: .pebbleIce,
-                                 author: Author(place: "Queens Park Hotel, Trinidad", year: "1920's"),
+                                 author: Author(place: "Queens Park Hotel, Trinidad", year: "1920s"),
                                  spec: queensParkSpec,
                                  buildOrder: queensParkBuild,
                                  tags: queensParkTags,
-                                 variation: .queensParkSwizzle)
+                                 variation: .queensParkSwizzle,
+                                 collection: .originals)
 
 var queensParkSpec = [CocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
                       CocktailIngredient(.juices(.lime), value: 0.75),
-                      CocktailIngredient(.syrups(.richDem), value: 0.5),
+                      CocktailIngredient(.syrups(.richDem), value: 0.5, prep: PrepBible.richDem),
                       CocktailIngredient(.rums(.rumDemerara), value: 3),
                       CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes) ]
 

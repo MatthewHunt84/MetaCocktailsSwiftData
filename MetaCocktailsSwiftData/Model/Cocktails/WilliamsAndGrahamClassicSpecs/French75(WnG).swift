@@ -15,7 +15,8 @@ var french75WnG  = Cocktail(cocktailName: "French 75(W&G Version)",
                             spec: french75WnGSpec,
                             buildOrder: french75CognacBuild,
                             tags: french75CognacTags,
-                            variation: .french75)
+                            variation: .french75,
+                            collection: .williamsAndGraham)
 
 var french75WnGSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                         CocktailIngredient(.syrups(.simple), value: 0.75),

@@ -15,13 +15,14 @@ var peanutButterFalcon = Cocktail(cocktailName: "Peanut Butter Falcon",
                                                 place: AuthorPlaces.williamsAndGraham.rawValue),
                                   spec: peanutButterFalconSpec,
                                   buildOrder: peanutButterFalconBuild,
-                                  tags: peanutButterFalconTags)
+                                  tags: peanutButterFalconTags,
+                                  collection: .williamsAndGraham)
 
-var peanutButterFalconSpec  = [CocktailIngredient(.syrups(.honeySyrup), value: 0.25),
+var peanutButterFalconSpec  = [CocktailIngredient(.syrups(.honeySyrup), value: 0.25, prep: PrepBible.honeySyrup),
                                CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
                                CocktailIngredient(.amari(.angosturaAmaro), value: 0.5),
                                CocktailIngredient(.liqueurs(.giffardBanane), value: 1),
-                               CocktailIngredient(.vodkas(.peanutButterVodka), value: 1),
+                               CocktailIngredient(.vodkas(.peanutButterVodka), value: 1, prep: PrepBible.peanutButterVodka),
                                CocktailIngredient(.bitters(.blackWalnut), value: 2, unit: .dashes)]
 
 var peanutButterFalconTags = Tags(flavors: [.nutmeg],

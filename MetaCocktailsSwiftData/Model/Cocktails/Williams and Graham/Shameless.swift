@@ -14,10 +14,11 @@ var shameless = Cocktail(cocktailName: "Shameless",
                          ice: .bigRock,
                          author: Author(person: "Lauren", place: AuthorPlaces.williamsAndGraham.rawValue, year: "2019"),
                          spec: shamelessSpec,
-                         tags: shamelessTags)
+                         tags: shamelessTags,
+                         collection: .williamsAndGraham)
 
 let shamelessSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.orangeBitters), value: 3, unit: .dashes),
-                                           CocktailIngredient(.syrups(.honeySyrup), value: 1, unit: .barSpoon),
+                                           CocktailIngredient(.syrups(.honeySyrup), value: 1, unit: .barSpoon, prep: PrepBible.honeySyrup),
                                            CocktailIngredient(.amari(.suze), value: 0.25),
                                            CocktailIngredient(.liqueurs(.benedictine), value: 0.5),
                                            CocktailIngredient(.amari(.cynar), value: 0.75),

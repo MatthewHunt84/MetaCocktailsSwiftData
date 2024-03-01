@@ -14,11 +14,12 @@ var switchbladeRomance = Cocktail(cocktailName: "Switchblade Romance",
                                   ice: nil,
                                   author:Author(place: AuthorPlaces.williamsAndGraham.rawValue),
                                   spec: switchbladeRomanceSpec,
-                                  tags: switchbladeRomanceTags)
+                                  tags: switchbladeRomanceTags,
+                                  collection: .williamsAndGraham)
 
 let switchbladeRomanceSpec: [CocktailIngredient] = [CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
                                                     CocktailIngredient(.juices(.lemon), value: 0.5),
-                                                    CocktailIngredient(.syrups(.orgeat), value: 0.75),
+                                                    CocktailIngredient(.syrups(.orgeat), value: 0.75, prep: PrepBible.orgeat),
                                                     CocktailIngredient(.fortifiedWines(.byrrh), value: 0.5),
                                                     CocktailIngredient(.bitters(.angosturaBitters), value: 0.25),
                                                     CocktailIngredient(.rums(.plantationPineapple), value: 2)]

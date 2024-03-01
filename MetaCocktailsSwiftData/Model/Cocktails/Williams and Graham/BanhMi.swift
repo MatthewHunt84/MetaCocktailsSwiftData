@@ -15,12 +15,13 @@ var banhMi  =  Cocktail(cocktailName: "Banh Mi",
                                       place: AuthorPlaces.williamsAndGraham.rawValue, year: "2019"),
                         spec: banhMiSpec,
                         buildOrder: nil,
-                        tags: banhMiTags)
+                        tags: banhMiTags,
+                        collection: .williamsAndGraham)
 
 var banhMiSpec = [CocktailIngredient(.herbs(.mint), value: 5, unit: .gentlyMuddled),
                   CocktailIngredient(.herbs(.cilantro), value: 5, unit: .gentlyMuddled),
                   CocktailIngredient(.juices(.lime), value: 0.75),
-                  CocktailIngredient(.syrups(.cucumberSyrup), value: 0.75),
+                  CocktailIngredient(.syrups(.cucumberSyrup), value: 0.75, prep: PrepBible.cucumberSyrup),
                   CocktailIngredient(.juices(.carrotJuice), value: 0.5),
                   CocktailIngredient(.rums(.plantation3Star), value: 1),
                   CocktailIngredient(.otherAlcohol(.bataviaArrack), value: 1)]

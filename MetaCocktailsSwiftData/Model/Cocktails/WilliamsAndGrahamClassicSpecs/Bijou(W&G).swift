@@ -13,7 +13,8 @@ var bijouWnG = Cocktail(cocktailName: "Bijou(W&G Version)",
                         author: williamsAndGraham,
                         spec: bijouWnGSpec,
                         tags: bijouTags,
-                        variation: .bijou)
+                        variation: .bijou,
+                        collection: .williamsAndGraham)
 
 var bijouWnGSpec     =  [CocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dashes),
                          CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),

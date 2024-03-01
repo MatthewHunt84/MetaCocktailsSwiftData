@@ -14,12 +14,15 @@ class CocktailIngredient: Codable, Hashable {
     let ingredient: IngredientType
     let value: Double
     let unit: MeasurementUnit
+    let prep: Prep?
     
-    init(_ ingredient: IngredientType, value: Double, unit: MeasurementUnit = .fluidOunces) {
+    
+    init(_ ingredient: IngredientType, value: Double, unit: MeasurementUnit = .fluidOunces, prep: Prep? = nil) {
         self.ingredient = ingredient
         self.value = value
         self.unit = unit
         self.id = UUID()
+        self.prep = prep
     }
     
     func localizedVolumetricString(location: Location) -> String {

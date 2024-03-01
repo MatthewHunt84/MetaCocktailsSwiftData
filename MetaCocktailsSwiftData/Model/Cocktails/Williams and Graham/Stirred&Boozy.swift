@@ -14,7 +14,8 @@ var stirredAndBoozy = Cocktail(cocktailName: "Stirred & Boozy",
                                author:Author(person: AuthorNames.saydeeCanada.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue, year: "2019"),
                                spec: stirredAndBoozySpec,
                                buildOrder: nil,
-                               tags: stirredAndBoozyTags)
+                               tags: stirredAndBoozyTags,
+                               collection: .williamsAndGraham)
 
 var stirredAndBoozySpec  = [CocktailIngredient(.amari(.angosturaAmaro), value: 0.25),
                             CocktailIngredient(.amari(.jagerManifest), value: 0.5),

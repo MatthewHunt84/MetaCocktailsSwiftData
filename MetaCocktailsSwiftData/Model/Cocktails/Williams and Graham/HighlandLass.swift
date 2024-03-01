@@ -15,14 +15,15 @@ var highlandLass = Cocktail(cocktailName: "Highland Lass",
                             ice: .bigRock,
                             author: Author(person: "Kenny Remster", place: AuthorPlaces.williamsAndGraham.rawValue),
                             spec: highlandLassSpec,
-                            tags: highlandLassTags)
+                            tags: highlandLassTags,
+                            collection: .williamsAndGraham)
 
 let highlandLassSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
                                               CocktailIngredient(.bitters(.peychauds), value: 2, unit: .dashes),
                                               CocktailIngredient(.juices(.lemon), value: 0.75),
-                                              CocktailIngredient(.syrups(.honeySyrup), value: 0.25),
-                                              CocktailIngredient(.syrups(.gingerSyrup), value: 0.25),
-                                              CocktailIngredient(.syrups(.cucumberSyrup), value: 0.5),
+                                              CocktailIngredient(.syrups(.honeySyrup), value: 0.25, prep: PrepBible.honeySyrup),
+                                              CocktailIngredient(.syrups(.gingerSyrup), value: 0.25, prep: PrepBible.gingerSyrup),
+                                              CocktailIngredient(.syrups(.cucumberSyrup), value: 0.5, prep: PrepBible.cucumberSyrup),
                                               CocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.5),
                                               CocktailIngredient(.whiskies(.compassBoxOakCross), value: 1.5)]
 

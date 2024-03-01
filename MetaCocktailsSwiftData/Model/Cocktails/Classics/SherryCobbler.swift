@@ -7,7 +7,7 @@
 
 import Foundation
 
-var sherryCobbler = Cocktail(cocktailName: "Sherry Cobbler(1800s version)",
+var sherryCobbler = Cocktail(cocktailName: "Sherry Cobbler",
                              imageAsset: nil,
                              glasswareType: .collins,
                              garnish: [.seasonalBerries, .mintSprig],
@@ -15,12 +15,13 @@ var sherryCobbler = Cocktail(cocktailName: "Sherry Cobbler(1800s version)",
                              spec: sherryCobblerSpec,
                              buildOrder: sherryCobblerBuild,
                              tags: sherryCobblerTags,
-                             variation: .sherryCobbler)
+                             variation: .sherryCobbler,
+                             collection: .originals)
 
 let sherryCobblerSpec: [CocktailIngredient] = [CocktailIngredient(.fruit(.lemonRibbon), value: 1, unit: .whole),
                                                CocktailIngredient(.fruit(.orangeMoons), value: 2, unit: .muddled),
                                                CocktailIngredient(.juices(.lemon), value: 0.25),
-                                               CocktailIngredient(.syrups(.richSimple), value: 0.5),
+                                               CocktailIngredient(.syrups(.richSimple), value: 0.5, prep: PrepBible.richSimple),
                                                CocktailIngredient(.fortifiedWines(.lustauAmontillado), value: 3)]
 
 let sherryCobblerBuild = Build(instructions: [Instruction(step: 1, method: "Muddle 2 orange moons and then add your lemon peel."),

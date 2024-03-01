@@ -14,7 +14,8 @@ var prettyInParadox = Cocktail(cocktailName: "Pretty In Paradox",
                                ice: .bigRock,
                                author: Author(person: AuthorNames.saydeeCanada.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue, year: "2019"),
                                spec: prettyInParadoxSpec,
-                               tags: prettyInParadoxTags)
+                               tags: prettyInParadoxTags,
+                               collection: .williamsAndGraham)
 
 let prettyInParadoxSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
                                                  CocktailIngredient(.amari(.cynar), value: 0.25),

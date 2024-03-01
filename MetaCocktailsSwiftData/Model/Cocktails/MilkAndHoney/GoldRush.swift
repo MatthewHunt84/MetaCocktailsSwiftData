@@ -11,12 +11,13 @@ var goldRush  = Cocktail(cocktailName: "Gold Rush",
                          glasswareType: .doubleOld ,
                          garnish: [.lemonPeel],
                          ice: .bigRock,
-                         author: Author(person: "T.J. Siegal(Sasha's best friend)" , place: AuthorPlaces.milkAndHoney.rawValue, year: "Early 2000s"),
+                         author: Author(person: AuthorNames.tjSiegal.rawValue , place: AuthorPlaces.milkAndHoney.rawValue, year: "Early 2000s"),
                          spec: goldRushSpec,
-                         tags: goldRushTags)
+                         tags: goldRushTags,
+                         collection: .milkAndHoney)
 
 var goldRushSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                     CocktailIngredient(.syrups(.honeySyrup), value: 0.75),
+                     CocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup),
                      CocktailIngredient(.whiskies(.bourbonAny) , value: 2)]
 
 

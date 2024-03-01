@@ -14,7 +14,8 @@ var followTheCompass = Cocktail(cocktailName: "Follow The Compass",
                                 ice: .bigRock,
                                 author: Author(person: AuthorNames.kennyRemster.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue, year: "2018"),
                                 spec: followTheCompassSpec,
-                                tags: followTheCompassTags)
+                                tags: followTheCompassTags,
+                                collection: .williamsAndGraham)
 
 let followTheCompassSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),
                                                   CocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.25),

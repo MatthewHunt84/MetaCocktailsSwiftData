@@ -16,7 +16,8 @@ var elChicicabra = Cocktail(cocktailName: "El Chicicabra",
                                            place: AuthorPlaces.williamsAndGraham.rawValue,
                                            year: "2019"),
                             spec: elChicicabraSpec,
-                            tags: elChicicabraTags)
+                            tags: elChicicabraTags,
+                            collection: .williamsAndGraham)
 
 let elChicicabraSpec: [CocktailIngredient] = [CocktailIngredient(.liqueurs(.anchoVerde), value: 0.25),
                                               CocktailIngredient(.amari(.suze), value: 0.25),

@@ -12,11 +12,12 @@ var elPresidente  = Cocktail(cocktailName: "El Presidente",
                              glasswareType: .coupe,
                              garnish: [.orangePeel, .maraschinoCherry],
                              ice: nil,
-                             author: Author(person: AuthorNames.constante.rawValue),
+                             author: Author(person: AuthorNames.constante.rawValue, place: "Cuba", year: "1910s"),
                              spec: elPresidenteSpec,
                              buildOrder: nil,
                              tags: elPresidenteTags,
-                             variation: .elPresidente)
+                             variation: .elPresidente,
+                             collection: .originals)
 
 var elPresidenteSpec  = [CocktailIngredient(.rums(.rumWhite), value: 1.5),
                          CocktailIngredient(.fortifiedWines(.blancVermouth), value: 1.5),

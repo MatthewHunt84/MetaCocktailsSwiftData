@@ -14,7 +14,8 @@ var lastWordWnG = Cocktail(cocktailName: "Last Word(W&G Version)",
                            spec: lastWordSpecWnG,
                            buildOrder: nil,
                            tags: lastWordTags,
-                           variation: .lastWord)
+                           variation: .lastWord,
+                           collection: .williamsAndGraham)
 
 var lastWordSpecWnG  = [CocktailIngredient(.juices(.lime), value: 0.75),
                         CocktailIngredient(.syrups(.simple), value: 0.25),

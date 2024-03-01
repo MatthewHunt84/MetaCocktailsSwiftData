@@ -14,9 +14,10 @@ var giftHorse = Cocktail(cocktailName: "Gift Horse",
                             ice: nil,
                             author: Author(person: AuthorPlaces.williamsAndGraham.rawValue),
                             spec: giftHorseSpec,
-                            tags: giftHorseTags)
+                            tags: giftHorseTags,
+                         collection: .williamsAndGraham)
 
-var giftHorseSpec  = [CocktailIngredient(.syrups(.honeySyrup), value: 0.25),
+var giftHorseSpec  = [CocktailIngredient(.syrups(.honeySyrup), value: 0.25, prep: PrepBible.honeySyrup),
                       CocktailIngredient(.liqueurs(.drambuie), value: 1, unit: .teaspoon),
                       CocktailIngredient(.fortifiedWines(.byrrh), value: 0.5),
                       CocktailIngredient(.amari(.DellErborista), value: 0.75),

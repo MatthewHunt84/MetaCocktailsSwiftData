@@ -14,7 +14,8 @@ var painKiller  = Cocktail(cocktailName: "Pain Killer",
                            author: Author(person: "Daphne Henderson", place: "Soggy Dollar Bar. White Bay, Jost Van Dyke", year: "1970s"),
                            spec: painKillerSpec,
                            tags: painKillerTags,
-                           variation: .painKiller)
+                           variation: .painKiller,
+                           collection: .originals)
 
 var painKillerSpec  = [CocktailIngredient(.juices(.orange), value: 0.5),
                        CocktailIngredient(.syrups(.cocoLopez), value: 0.75),

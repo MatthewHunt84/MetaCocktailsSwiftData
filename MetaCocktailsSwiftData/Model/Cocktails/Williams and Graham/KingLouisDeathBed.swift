@@ -17,7 +17,8 @@ var kingLouisDeathBed = Cocktail(cocktailName: "King Louis Death Bed",
                                                 place: AuthorPlaces.williamsAndGraham.rawValue,
                                                 year: "2021"),
                                  spec: kingLouisDeathBedSpec,
-                                 tags: kingLouisDeathBedTags)
+                                 tags: kingLouisDeathBedTags,
+                                 collection: .williamsAndGraham)
 
 let kingLouisDeathBedSpec: [CocktailIngredient] = [CocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.25),
                                                    CocktailIngredient(.liqueurs(.traderVicsChestnut), value: 0.5),

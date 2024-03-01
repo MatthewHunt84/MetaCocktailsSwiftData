@@ -14,7 +14,8 @@ var whatsYourFavorite  =  Cocktail(cocktailName: "What's Your Favorite",
                                    author: justWnG,
                                    spec: whatsYourFavoriteSpec,
                                    buildOrder: nil,
-                                   tags: whatsYourFavoriteTags)
+                                   tags: whatsYourFavoriteTags,
+                                   collection: .williamsAndGraham)
 
 var whatsYourFavoriteSpec = [CocktailIngredient(.bitters(.peychauds), value: 2, unit: .dashes),
                              CocktailIngredient(.fortifiedWines(.amontillado), value: 0.25),

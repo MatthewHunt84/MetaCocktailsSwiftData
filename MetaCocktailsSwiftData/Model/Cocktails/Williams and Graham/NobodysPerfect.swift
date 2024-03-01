@@ -15,7 +15,8 @@ var nobodysPerfect = Cocktail(cocktailName: "Nobody's Perfect",
                               author: Author(person: AuthorNames.kennyRemster.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue, year: "2019"),
                               spec: nobodysPerfectSpec,
                               buildOrder: nil,
-                              tags: nobodysPerfectTags)
+                              tags: nobodysPerfectTags,
+                              collection: .williamsAndGraham)
 
 var nobodysPerfectSpec  = [CocktailIngredient(.amari(.braulio), value: 0.5),
                            CocktailIngredient(.fortifiedWines(.lustauBlancVermouth), value: 0.75),

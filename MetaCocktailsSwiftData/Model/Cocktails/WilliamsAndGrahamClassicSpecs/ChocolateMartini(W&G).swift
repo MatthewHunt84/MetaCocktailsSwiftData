@@ -13,7 +13,8 @@ var chocolateMartiniWnG = Cocktail(cocktailName: "Chocolate Martini(W&G Version)
                                    garnish: [.chocolateChips],
                                    author: williamsAndGraham,
                                    spec: chocolateMatiniSpec,
-                                   tags: chocolateMatiniTags)
+                                   tags: chocolateMatiniTags,
+                                   collection: .williamsAndGraham)
 
 let chocolateMatiniSpec: [CocktailIngredient] = [CocktailIngredient(.seasoning(.saline), value: 2, unit: .drops),
                                                  CocktailIngredient(.bitters(.chocolateMole), value: 2, unit: .dashes),

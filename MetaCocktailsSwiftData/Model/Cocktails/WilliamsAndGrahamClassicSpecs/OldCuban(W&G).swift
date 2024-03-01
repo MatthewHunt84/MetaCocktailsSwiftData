@@ -16,7 +16,8 @@ var oldCubanWnG = Cocktail(cocktailName: "Old Cuban(W&G Version)",
                            spec: oldCubanSpecWnG,
                            buildOrder: oldCubanWnGBuild,
                            tags: oldCubanTags,
-                           variation: .oldCuban)
+                           variation: .oldCuban,
+                           collection: .williamsAndGraham)
 
 let oldCubanSpecWnG: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
                                              CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),

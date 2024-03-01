@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum IngredientType: Codable {
+enum IngredientType: Codable{
     
     case syrups(Syrup)
     case juices(Juice)
@@ -199,7 +199,7 @@ enum IngredientType: Codable {
     }
 }
 
-enum MeasurementUnit: String, Codable {
+enum MeasurementUnit: String, Codable, CaseIterable {
     case barSpoon           = "Bar-spoon"
     case barSpoons          = "Bar-spoons"
     case bittersDeco        = "Design on top with"
@@ -214,7 +214,7 @@ enum MeasurementUnit: String, Codable {
     case gentlyMuddled      = "Gently muddled"
     case glassRinse         = "Rinse the glass with"
     case grams              = "grams"
-    case limeQuarters       = "lime, quartered"
+    case cutInto6           = "(Cut into 6 pieces)"
     case ml                 = "ml"
     case muddled            = "Muddled"
     case nitroMuddled       = "Nitro muddled"
@@ -225,7 +225,7 @@ enum MeasurementUnit: String, Codable {
     case slices             = "Slices"
     case sliceOf            = "Slice of"
     case splash             = "Splash of"
-    case sprays             = "Sprays in the glass of"
+    case spraysInGlass      = "Sprays in a prepared glass"
     case spritzOnTop        = "Spritz over the finished cocktail with"
     case teaspoon           = "Teaspoon"
     case tablespoon         = "Tablespoon"

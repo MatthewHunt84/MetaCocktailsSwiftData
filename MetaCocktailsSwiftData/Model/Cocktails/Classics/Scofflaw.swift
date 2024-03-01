@@ -7,7 +7,7 @@
 
 import Foundation
 
-var scofflaw = Cocktail(cocktailName: "Scofflaw(1924)",
+var scofflaw = Cocktail(cocktailName: "Scofflaw",
                         glasswareType: .stemmedGlassware,
                         garnish: [.lemonPeel],
                         ice: nil,
@@ -15,7 +15,8 @@ var scofflaw = Cocktail(cocktailName: "Scofflaw(1924)",
                         spec: scofflawSpec,
                         buildOrder: nil,
                         tags: scofflawTags,
-                        variation: .scofflaw)
+                        variation: .scofflaw,
+                        collection: .originals)
 
 var scofflawSpec  = [CocktailIngredient(.juices(.lemon), value: 1, unit: .dash),
                      CocktailIngredient(.syrups(.grenadine), value: 1, unit: .dash),

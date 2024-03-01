@@ -12,10 +12,11 @@ var ramosGinFizz = Cocktail(cocktailName: "Ramos Gin Fizz",
                             glasswareType: .collins,
                             garnish: [.orangePeel],
                             ice: .koldDraft,
-                            author:Author(person: "Henry Charles Ramos", place: ""),
+                            author:Author(person: "Henry Charles Ramos", place: "New Orleans"),
                             spec: ramosGinFizzSpec,
                             buildOrder: ramosGinFizzBuild,
-                            tags: ramosTags)
+                            tags: ramosTags,
+                            collection: .originals)
 
 let ramosGinFizzSpec: [CocktailIngredient] = [CocktailIngredient(.gins(.ginAny), value: 2.0),
                                               CocktailIngredient(.juices(.lime), value: 0.5),

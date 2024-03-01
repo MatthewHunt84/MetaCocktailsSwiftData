@@ -14,7 +14,8 @@ var vesper = Cocktail(cocktailName: "Vesper",
                       spec: vesperSpec,
                       buildOrder: vesperNotes,
                       tags: vesperTags,
-                      variation: .vesper)
+                      variation: .vesper,
+                      collection: .originals)
 
 var vesperSpec     =  [CocktailIngredient(.fortifiedWines(.kinaLillet), value: 0.25),
                        CocktailIngredient(.vodkas(.vodkaAny), value: 0.5),

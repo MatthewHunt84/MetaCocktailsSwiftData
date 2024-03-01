@@ -13,7 +13,8 @@ var williamsCross  =  Cocktail(cocktailName: "William's Cross",
                                author:Author(place: AuthorPlaces.williamsAndGraham.rawValue),
                                spec: williamsCrossSpec,
                                buildOrder: nil,
-                               tags: williamsCrossTags)
+                               tags: williamsCrossTags,
+                               collection: .williamsAndGraham)
 
 var williamsCrossSpec = [CocktailIngredient(.bitters(.orangeBitters), value: 2, unit: .dashes),
                          CocktailIngredient(.amari(.amaroNonino), value: 0.25),

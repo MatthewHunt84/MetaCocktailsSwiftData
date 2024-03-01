@@ -15,7 +15,8 @@ var hurricaneWnG = Cocktail(cocktailName: "Hurricane(W&G Version)",
                             author: williamsAndGraham,
                             spec: hurricaneSpecWnG,
                             tags: hurricaneTagsWnG,
-                            variation: .hurricane)
+                            variation: .hurricane,
+                            collection: .williamsAndGraham)
 
 let hurricaneSpecWnG: [CocktailIngredient] =  [CocktailIngredient(.juices(.lime), value: 1),
                                                CocktailIngredient(.juices(.orange), value: 1),

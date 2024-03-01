@@ -14,7 +14,8 @@ var martini   = Cocktail(cocktailName: "Martini",
                          garnish: [.lemonPeel],
                          spec: martiniSpec,
                          tags: martiniTags,
-                         variation: .martini)
+                         variation: .martini,
+                         collection: .originals)
 
 var martiniSpec     =  [CocktailIngredient(.bitters(.orangeBitters), value: 2, unit: .dashes),
                         CocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 1.5),

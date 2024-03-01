@@ -15,7 +15,8 @@ var dontPanic = Cocktail(cocktailName: "Don't Panic",
                          ice: .columnIce,
                          author: Author(person: "Justin Jenkins", place: AuthorPlaces.williamsAndGraham.rawValue, year: "Fall, 2022"),
                          spec: dontPanicSpec,
-                         tags: dontPanicTags)
+                         tags: dontPanicTags,
+                         collection: .williamsAndGraham)
 
 let dontPanicSpec: [CocktailIngredient] = [CocktailIngredient(.soda(.sodaWater), value: 1),
                                            CocktailIngredient(.juices(.lemon), value: 0.5),

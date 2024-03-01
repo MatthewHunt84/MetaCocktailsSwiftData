@@ -14,7 +14,8 @@ var theRuralJuror  =  Cocktail(cocktailName: "The Rural Juror",
                                author:Author(place: AuthorPlaces.williamsAndGraham.rawValue),
                                spec: theRuralJurorSpec,
                                buildOrder: nil,
-                               tags: theRuralJurorTags)
+                               tags: theRuralJurorTags,
+                               collection: .williamsAndGraham)
 
 var theRuralJurorSpec = [CocktailIngredient(.liqueurs(.velvetFalernum), value: 0.25),
                          CocktailIngredient(.fortifiedWines(.cocchiDeTorino), value: 0.5),

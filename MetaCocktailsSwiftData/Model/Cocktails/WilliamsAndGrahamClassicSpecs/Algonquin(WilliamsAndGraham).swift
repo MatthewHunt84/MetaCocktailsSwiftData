@@ -13,7 +13,8 @@ var algonquinWnG  = Cocktail(cocktailName: "Algonquin(W&G Version)",
                              author: williamsAndGraham,
                              spec: algonquinWnGSpec,
                              tags: algonquinWnGTags,
-                             variation: .algonquin)
+                             variation: .algonquin,
+                             collection: .williamsAndGraham)
 
 var algonquinWnGSpec  = [CocktailIngredient(.bitters(.peychauds), value: 2, unit: .dashes),
                          CocktailIngredient(.juices(.pineappleJuice), value: 0.75),

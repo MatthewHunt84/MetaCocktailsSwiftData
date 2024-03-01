@@ -16,7 +16,8 @@ var mintJulep = Cocktail(cocktailName: "Mint Julep",
                          spec: mintJulepSpec,
                          buildOrder: mintJulepBuild,
                          tags: mintJulepTags,
-                         variation: .mintJulep)
+                         variation: .mintJulep,
+                         collection: .originals)
 
 let mintJulepSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
                                            CocktailIngredient(.syrups(.simple), value: 1),

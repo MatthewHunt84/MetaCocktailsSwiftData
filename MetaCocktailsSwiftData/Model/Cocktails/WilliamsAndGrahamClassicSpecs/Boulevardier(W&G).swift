@@ -13,7 +13,8 @@ var boulevardierWnG  =  Cocktail(cocktailName: "Boulevardier(W&G Version)",
                                  author: williamsAndGraham,
                                  spec: boulevardierWnGSpec,
                                  tags: boulevardierTags,
-                                 variation: .boulevardier)
+                                 variation: .boulevardier,
+                                 collection: .williamsAndGraham)
 
 var boulevardierWnGSpec = [CocktailIngredient(.whiskies(.straightRyeOrBourbon), value: 1.5),
                            CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 0.75),

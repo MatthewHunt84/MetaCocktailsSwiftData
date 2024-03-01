@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct SearchGuestRecipeView: View {
-    var viewModel: CocktailMenuViewModel
+    var viewModel: RecipeViewModel
     
-    init(viewModel: CocktailMenuViewModel) {
+    init(viewModel: RecipeViewModel) {
         self.viewModel = viewModel
     }
     
@@ -32,7 +32,7 @@ struct SearchGuestRecipeView: View {
 struct CocktailMenuView_Previews: PreviewProvider {
     
     static var previews: some View {
-        SearchGuestRecipeView(viewModel: CocktailMenuViewModel(cocktail: aFlightSouthOfTheBorder))
+        SearchGuestRecipeView(viewModel: RecipeViewModel(cocktail: aFlightSouthOfTheBorder))
         
     }
 }

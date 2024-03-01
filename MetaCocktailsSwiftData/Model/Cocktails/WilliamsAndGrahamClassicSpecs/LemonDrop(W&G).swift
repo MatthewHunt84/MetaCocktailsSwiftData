@@ -14,7 +14,8 @@ var lemonDropWnG = Cocktail(cocktailName: "Lemon Drop(W&G Version)",
                             author: williamsAndGraham,
                             spec: lemonDropSpecWnG,
                             tags: lemonDropTagsWnG,
-                            variation: .lemonDrop)
+                            variation: .lemonDrop,
+                            collection: .williamsAndGraham)
 
 var lemonDropSpecWnG  = [CocktailIngredient(.juices(.lemon), value: 1),
                          CocktailIngredient(.syrups(.simple), value: 0.75),

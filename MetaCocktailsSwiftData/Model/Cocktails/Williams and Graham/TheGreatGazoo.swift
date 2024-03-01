@@ -14,7 +14,8 @@ var theGreatGazoo = Cocktail(cocktailName: "The Great Gazoo",
                              ice: .bigRock,
                              author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
                              spec: theGreatGazooSpec,
-                             tags: theGreatGazooTags)
+                             tags: theGreatGazooTags,
+                             collection: .williamsAndGraham)
 
 let theGreatGazooSpec: [CocktailIngredient] = [CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
                                                CocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.5),

@@ -13,7 +13,8 @@ var fuegoVioleta = Cocktail(cocktailName: "Fuego Violeta",
                             author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
                             spec: fuegoVioletaSpec,
                             buildOrder: nil,
-                            tags: fuegoVioletaTags)
+                            tags: fuegoVioletaTags,
+                            collection: .williamsAndGraham)
 
 var fuegoVioletaSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
                          CocktailIngredient(.gins(.ginLondonDry), value: 0.75),

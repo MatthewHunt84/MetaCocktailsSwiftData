@@ -13,7 +13,8 @@ var autumnRainbows = Cocktail(cocktailName: "Autumn Rainbows",
                               garnish: [.lemonWheel],
                               author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
                               spec: autumnRainbowsSpec,
-                              tags: autumnRainbowsTags)
+                              tags: autumnRainbowsTags,
+                              collection: .williamsAndGraham)
 
 let autumnRainbowsSpec: [CocktailIngredient] = [CocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.25),
                                                 CocktailIngredient(.juices(.lemon), value: 0.5),

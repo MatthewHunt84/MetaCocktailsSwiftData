@@ -15,7 +15,8 @@ var pourLenore  =  Cocktail(cocktailName: "Pour Lenore",
                                           place: AuthorPlaces.williamsAndGraham.rawValue, year: "Spring, 2022"),
                             spec: pourLenoreSpec,
                             buildOrder: nil,
-                            tags: pourLenoreTags)
+                            tags: pourLenoreTags,
+                            collection: .williamsAndGraham)
 
 var pourLenoreSpec = [CocktailIngredient(.otherAlcohol(.burdockRootTincture), value: 1, unit: .dash),
                       CocktailIngredient(.bitters(.blackWalnut), value: 1, unit: .dash),

@@ -12,7 +12,8 @@ var aviation  = Cocktail(cocktailName: "Aviation",
                          garnish: [.maraschinoCherry],
                          author: Author(person: AuthorNames.hugoEnsslin.rawValue, place: "'Recipes for Mixed Drinks'", year: "1916"),
                          spec: aviationSpec,
-                         tags: aviationTags)
+                         tags: aviationTags,
+                         collection: .originals)
 
 var aviationSpec  = [CocktailIngredient(.juices(.lemon), value: 0.5),
                      CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.5),

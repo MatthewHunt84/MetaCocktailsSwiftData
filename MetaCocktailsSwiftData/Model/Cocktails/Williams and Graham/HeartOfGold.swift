@@ -13,7 +13,8 @@ var heartOfGold = Cocktail(cocktailName: "Heart of Gold",
                            garnish: nil,
                            author: Author(person: "Justin Jenkins", place: AuthorPlaces.williamsAndGraham.rawValue, year: "2020"),
                            spec: heartOfGoldSpec,
-                           tags: heartOfGoldTags)
+                           tags: heartOfGoldTags,
+                           collection: .williamsAndGraham)
 
 let heartOfGoldSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.pimentoBitters), value: 2, unit: .dashes),
                                              CocktailIngredient(.amari(.angosturaAmaro), value: 0.75),

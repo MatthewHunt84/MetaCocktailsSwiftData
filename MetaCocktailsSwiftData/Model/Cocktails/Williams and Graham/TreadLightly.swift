@@ -16,7 +16,8 @@ var treadLightly = Cocktail(cocktailName: "Tread Lightly",
                                           place: AuthorPlaces.williamsAndGraham.rawValue,
                                           year: "2018"),
                            spec: treadLightlySpec,
-                           tags: treadLightlyTags)
+                           tags: treadLightlyTags,
+                            collection: .williamsAndGraham)
 
 let treadLightlySpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
                                              CocktailIngredient(.bitters(.peychauds), value: 3, unit: .dashes),

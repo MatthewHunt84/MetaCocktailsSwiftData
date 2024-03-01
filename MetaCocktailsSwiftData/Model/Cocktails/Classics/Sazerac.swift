@@ -11,13 +11,14 @@ var sazerac = Cocktail(cocktailName: "Sazerac",
                        glasswareType: .singleOld,
                        garnish: [.lemonPeel],
                        ice: nil,
-                       author:Author(place: "Somewhere in New Orleans in", year: "1800's"),
+                       author:Author(place: "Somewhere in New Orleans in", year: "1800s"),
                        spec: sazeracSpec,
                        buildOrder: sazeracBuild,
                        tags: sazeracTags,
-                       variation: .sazerac)
+                       variation: .sazerac,
+                       collection: .originals)
 
-var sazeracSpec  = [CocktailIngredient(.syrups(.richDem), value: 2, unit: .teaspoon),
+var sazeracSpec  = [CocktailIngredient(.syrups(.richDem), value: 2, unit: .teaspoon, prep: PrepBible.richDem),
                     CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 2),
                     CocktailIngredient(.bitters(.peychauds), value: 4, unit: .dashes),
                     CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),

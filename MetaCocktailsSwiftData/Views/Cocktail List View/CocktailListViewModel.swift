@@ -6,22 +6,23 @@
 //
 
 import SwiftUI
+import Observation
 
-final class CocktailListViewModel: ObservableObject {
+@Observable final class CocktailListViewModel{
     static let shared = CocktailListViewModel()
-    @Published var guestCocktails: [Cocktail] = getGuestViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName})
-    @Published var bartenderCocktails: [Cocktail] = getBartenderViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName})
+    //@Published var guestCocktails: [Cocktail] = getGuestViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName})
+    var bartenderCocktails: [Cocktail] = getBartenderViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName})
     //@Published var bartenderCocktails: [Cocktail] = [cloverClub]
-    @Published var justWilliamsAndGrahamCocktails = getBartenderViewCocktails().flatMap({$0.cocktailVariations}).filter({$0.author?.place == AuthorPlaces.williamsAndGraham.rawValue})
-    @Published var isShowingRecipeCard = false
-    @Published var selectedCocktail: Cocktail?
-    @Published var isShowingBuildOrderButton = false
-    @Published var isShowingRandomCocktailView = false
-    @Published var bartenderViewCocktails: [CocktailListCocktail] = getBartenderViewCocktails()
-    @Published var guestViewCocktails: [CocktailListCocktail] = getGuestViewCocktails()
-    @Published var randomCocktail = oldFashioned
-    @Published var isShowingWnGCocktailsOnly: Bool = false
-    @Published var currentVariation = "Placeholder"
+    var justWilliamsAndGrahamCocktails = getBartenderViewCocktails().flatMap({$0.cocktailVariations}).filter({$0.author?.place == AuthorPlaces.williamsAndGraham.rawValue})
+    var isShowingRecipeCard = false
+    var selectedCocktail: Cocktail?
+    var isShowingBuildOrderButton = false
+
+    var bartenderViewCocktails: [CocktailListCocktail] = getBartenderViewCocktails()
+    var guestViewCocktails: [CocktailListCocktail] = getGuestViewCocktails()
+    var randomCocktail = oldFashioned
+    var isShowingWnGCocktailsOnly: Bool = false
+    var currentVariation = "Placeholder"
 
    
     func changePlaceholder(for cocktail: Cocktail) {
@@ -92,9 +93,9 @@ final class CocktailListViewModel: ObservableObject {
         cocktailDict["Singapore Sling"] = [singaporeSling]
         cocktailDict["Ultima Palabra"] = [ultimaPalabra]
  
-        for cocktails in cocktailDict {
-            guestCocktails.append(CocktailListCocktail(cocktailName: cocktails.key, cocktailVariations: cocktails.value))
-        }
+//        for cocktails in cocktailDict {
+//            guestCocktails.append(CocktailListCocktail(cocktailName: cocktails.key, cocktailVariations: cocktails.value, isOpen: true))
+//        }
         let sortedCocktails = guestCocktails.sorted(by: {$0.cocktailName < $1.cocktailName})
         return sortedCocktails
     }
@@ -102,7 +103,8 @@ final class CocktailListViewModel: ObservableObject {
     static func getBartenderViewCocktails() -> [CocktailListCocktail] {
         var bartenderCocktails: [CocktailListCocktail] = []
         for cocktails in getCocktailDict() {
-            bartenderCocktails.append(CocktailListCocktail(cocktailName: cocktails.key, cocktailVariations: cocktails.value))
+            bartenderCocktails.append(CocktailListCocktail(cocktailName: cocktails.key, cocktailVariations: cocktails.value, isOpen: true))
+       
         }
         let sortedCocktails = bartenderCocktails.sorted(by: {$0.cocktailName < $1.cocktailName})
         return sortedCocktails
@@ -114,8 +116,10 @@ final class CocktailListViewModel: ObservableObject {
                                                                      "Alaska": [alaska, alaskaWnG],
                                                                      "Algonquin": [algonquin, algonquinWnG],
                                                                      "Amaretto Sour": [amarettoSour, amarettoSourWnG],
+                                                                     "The American Trilogy" : [americanTrilogy],
                                                                      "Americano": [americano, americanoWnG],
                                                                      "Aperol Spritz": [aperolSpritz],
+                                                                     "Apple Jack Cocktail" : [appleJackCocktail],
                                                                      "Army & Navy": [armyNavy],
                                                                      "Aviation": [aviation],
                                                                      "Bee's Knees": [beesKnees],
@@ -165,6 +169,7 @@ final class CocktailListViewModel: ObservableObject {
                                                                      "Hemingway Daiquiri": [hemingwayDaiquiri, papaDobleWnG],
                                                                      "Honeymoon Cocktail": [honeymoonCocktail1st, honeymoonCocktailEmbury, honeymoonCocktailWnG],
                                                                      "Holland House": [hollandHouseKappeler, hollandHouseCocktail, hollandHouseCocktailWnG],
+                                                                     "Home on the Range" : [homeOnTheRange, homeOnTheRangeMnH],
                                                                      "Hot Toddy": [hotBrandyToddy, hotToddyWnG, morgenthalersToddy],
                                                                      "Hotel Nacional": [hotelNacional, hotelNacionalWnG],
                                                                      "Hurricane": [hurricane, hurricaneWnG],
@@ -254,6 +259,7 @@ final class CocktailListViewModel: ObservableObject {
                                                          "El Chichicabra": [elChicicabra],
                                                          "El Ocho Rosado": [elOchoRosado],
                                                          "End of an Empire": [endOfAnEmpire],
+                                                         "Espresso Martini": [espressoMartiniWnG],
                                                          "Falcoooor!": [falcoor],
                                                          "Farewell Ride": [farewellRide],
                                                          "Feathered Hat Flip No. 1": [featheredHatFlipNo1],
@@ -334,18 +340,37 @@ final class CocktailListViewModel: ObservableObject {
                                                           "Cable Car":[cableCar, cableCarWnG],
                                                           "Casanova Cocktail": [casanovaCocktail],
                                                           "Caucasian":[caucasian],
-                                                          "Gold Rush": [goldRush],
                                                           "Greenpoint": [greenpoint, greenpointWnG],
-                                                          "Kentucky Maid": [kentuckyMaid, kentuckyMaidWnG],
                                                           "Naked and Famous": [nakedAndFamous],
                                                           "Trinidad Sour": [trinidadSour],
                                                           "Ultima Palabra": [ultimaPalabra, ultimaPalabraWnG, ultimaPalabraLondon],
                                                           "White Negroni": [whiteNegroni],
                                                           "Paper Plane": [paperPlane],
-                                                          "Penicillin": [penicillin, penicillinWnG] ]
+        ]
+        
+        let milkAndHoneyCocktails: [String : [Cocktail]] = ["Apple Jack" : [appleJackMnH],
+                                                            "Bensonhurst": [bensonhurst],
+                                                            "Calvados 75" : [calvados75],
+                                                            "Cobble Hill" : [cobbleHill],
+                                                            "Cosmonaut" : [cosmonaut],
+                                                            "Deep Blue Sea": [deepBlueSea],
+                                                            "Fallback Cocktail" : [fallbackCocktail],
+                                                            "Gin and It": [ginAndIt],
+                                                            "Gold Rush": [goldRush],
+                                                            "Kentucky Maid": [kentuckyMaid, kentuckyMaidWnG],
+                                                            "Left Hand" : [leftHand],
+                                                            "Penicillin": [penicillin, penicillinWnG],
+                                                            "Red Hook Cocktail" : [redHookCocktail],
+                                                            "Savoir Faire" : [savoirFaire],
+                                                            "Si-Guey": [siGuey],
+                                                            "Spring Forward" : [springForward],
+                                                            "Tattletale": [tattletale],
+                                                            "The .38 Special": [thirtyEightSpecial],
+                                                            "The American Trilogy" : [americanTrilogy],
+                                                            "The Business" : [theBusiness]]
 
         
-        let allCocktails = classicCocktailsForBartenders.merging(deathAndCoCocktails) { (_, new) in new }.merging(wNgModernCocktails) { (_, new) in new }.merging(miscModernCocktails) { (_, new) in new }
+        let allCocktails = classicCocktailsForBartenders.merging(deathAndCoCocktails) { (_, new) in new }.merging(wNgModernCocktails) { (_, new) in new }.merging(miscModernCocktails) { (_, new) in new }.merging(milkAndHoneyCocktails) { (_, new) in new }
         
         return allCocktails
     }
@@ -354,25 +379,35 @@ final class CocktailListViewModel: ObservableObject {
         return CocktailListViewModel.getGuestViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName}).randomElement()!
     }
 
-    
-    @ViewBuilder
-    func getRandomCocktailView(for menuMode: Bool) -> some View {
-        if menuMode {
-            SearchGuestRecipeView(viewModel: CocktailMenuViewModel(cocktail: randomCocktail))
-             
-        } else {
-            RecipeView(viewModel: CocktailMenuViewModel(cocktail: randomCocktail))
-             
-                
-            
-        }
-    }
+//    
+//    @ViewBuilder
+//    func getRandomCocktailView(for menuMode: Bool) -> some View {
+//        if menuMode {
+//            SearchGuestRecipeView(viewModel: CocktailMenuViewModel(cocktail: randomCocktail))
+//             
+//        } else {
+//            RecipeView(viewModel: CocktailMenuViewModel(cocktail: randomCocktail))
+//             
+//                
+//            
+//        }
+//    }
 }
 
-struct CocktailListCocktail: Identifiable {
+struct CocktailListCocktail: Hashable, Equatable {
+    static func == (lhs: CocktailListCocktail, rhs: CocktailListCocktail) -> Bool {
+        return lhs.cocktailName == rhs.cocktailName
+    }
     
-    
-    let id = UUID()
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(cocktailName)
+    }
+   
+    var id = UUID()
     let cocktailName: String
     let cocktailVariations: [Cocktail]
+    var isOpen: Bool
+    
+  
+
 }

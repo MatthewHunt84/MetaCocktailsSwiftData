@@ -18,10 +18,11 @@ var bramble = Cocktail(cocktailName: "Bramble",
                        spec: brambleSpec,
                        buildOrder: brambleBuild,
                        tags: brambleTags,
-                       variation: .bramble)
+                       variation: .bramble,
+                       collection: .originals)
 
 let brambleSpec: [CocktailIngredient] = [CocktailIngredient(.juices(.lemon), value: 1),
-                                         CocktailIngredient(.syrups(.richSimple), value: 0.5),
+                                         CocktailIngredient(.syrups(.richSimple), value: 0.5, prep: PrepBible.richSimple),
                                          CocktailIngredient(.liqueurs(.cremeDeMure), value: 1, unit: .float),
                                          CocktailIngredient(.gins(.ginLondonDry), value: 2)]
 

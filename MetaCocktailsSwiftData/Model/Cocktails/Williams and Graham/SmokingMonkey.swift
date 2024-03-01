@@ -16,9 +16,10 @@ var smokingMonkey = Cocktail(cocktailName: "Smoking Monkey",
                                            place: AuthorPlaces.williamsAndGraham.rawValue, year: "2018"),
                              spec: smokingMonkeySpec,
                              buildOrder: smokingMonkeyBuild,
-                             tags: smokingMonkeyTags)
+                             tags: smokingMonkeyTags,
+                             collection: .williamsAndGraham)
 
-let smokingMonkeySpec: [CocktailIngredient] = [CocktailIngredient(.syrups(.gingerSyrup), value: 0.25),
+let smokingMonkeySpec: [CocktailIngredient] = [CocktailIngredient(.syrups(.gingerSyrup), value: 0.25, prep: PrepBible.gingerSyrup),
                                                CocktailIngredient(.juices(.lemon), value: 0.5),
                                                CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
                                                CocktailIngredient(.liqueurs(.velvetFalernum), value: 0.25),

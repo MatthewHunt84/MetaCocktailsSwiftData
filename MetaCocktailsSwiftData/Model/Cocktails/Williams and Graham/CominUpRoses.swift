@@ -15,7 +15,8 @@ var cominUpRoses = Cocktail(cocktailName: "Comin' Up Roses",
                                           place: AuthorPlaces.williamsAndGraham.rawValue, year: "Winter, 2021"),
                             spec: cominUpRosesSpec,
                             buildOrder: nil,
-                            tags: cominUpRosesTags)
+                            tags: cominUpRosesTags,
+                            collection: .williamsAndGraham)
 
 var cominUpRosesSpec  = [CocktailIngredient(.juices(.lemon), value: 0.5),
                          CocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.5),

@@ -14,7 +14,8 @@ var moneyPenny = Cocktail(cocktailName: "Money Penny",
                           ice: nil,
                           author: Author(person: AuthorNames.kennyRemster.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue, year: "2019"),
                           spec: moneyPennySpec,
-                          tags: moneyPennyTags)
+                          tags: moneyPennyTags,
+                          collection: .williamsAndGraham)
 
 let moneyPennySpec = [CocktailIngredient(.bitters(.hoppedGrapefruit), value: 3, unit: .drops),
                       CocktailIngredient(.liqueurs(.giffardElderflour), value: 0.25),

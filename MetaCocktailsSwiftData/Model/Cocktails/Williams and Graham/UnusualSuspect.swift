@@ -16,7 +16,8 @@ var unusualSuspect = Cocktail(cocktailName: "Unusual Suspect",
                                             place: AuthorPlaces.williamsAndGraham.rawValue,
                                             year: "2019"),
                               spec: unusualSuspectSpec,
-                              tags: unusualSuspectTags)
+                              tags: unusualSuspectTags,
+                              collection: .williamsAndGraham)
 
 let unusualSuspectSpec: [CocktailIngredient] = [CocktailIngredient(.seasoning(.saline), value: 4, unit: .drops),
                                                 CocktailIngredient(.otherNonAlc(.coconutWater), value: 1),

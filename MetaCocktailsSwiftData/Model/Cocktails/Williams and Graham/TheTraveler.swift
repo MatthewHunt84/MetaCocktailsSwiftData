@@ -16,7 +16,8 @@ var theTraveler = Cocktail(cocktailName: "The Traveler",
                                           place: AuthorPlaces.williamsAndGraham.rawValue,
                                           year: "2021"),
                            spec: theTravelerSpec,
-                           tags: theTravelerTags)
+                           tags: theTravelerTags,
+                           collection: .williamsAndGraham)
 
 let theTravelerSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.angosturaBitters), value: 3, unit: .dashes),
                                              CocktailIngredient(.syrups(.vanilla), value: 1, unit: .barSpoon),

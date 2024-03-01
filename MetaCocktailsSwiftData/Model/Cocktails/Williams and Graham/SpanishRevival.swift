@@ -14,7 +14,8 @@ var spanishRevival = Cocktail(cocktailName: "Spanish Revival",
                               author:Author(person: AuthorNames.jamesMenkal.rawValue,
                                             place: AuthorPlaces.williamsAndGraham.rawValue),
                               spec: spanishRevivalSpec,
-                              tags: spanishRevivalTags)
+                              tags: spanishRevivalTags,
+                              collection: .williamsAndGraham)
 
 var spanishRevivalSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                            CocktailIngredient(.agaves(.tequilaOchoBlanco), value: 0.75),

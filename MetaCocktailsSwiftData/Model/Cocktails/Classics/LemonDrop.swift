@@ -16,7 +16,8 @@ var lemonDrop = Cocktail(cocktailName: "Lemon Drop",
                                         year: "1970s"),
                          spec: lemonDropSpec,
                          tags: lemonDropTags,
-                         variation: .lemonDrop)
+                         variation: .lemonDrop,
+                         collection: .originals)
 
 var lemonDropSpec  = [CocktailIngredient(.juices(.lemon), value: 1.5),
                       CocktailIngredient(.syrups(.simple), value: 1),

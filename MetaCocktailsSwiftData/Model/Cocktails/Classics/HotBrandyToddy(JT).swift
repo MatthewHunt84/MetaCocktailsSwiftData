@@ -7,14 +7,15 @@
 
 import Foundation
 
-var hotBrandyToddy = Cocktail(cocktailName: "Hot Brandy Toddy",
+var hotBrandyToddy = Cocktail(cocktailName: "Hot Brandy Toddy(1862)",
                               glasswareType: .toddyGlass,
                               garnish: [.nutmeg],
                               author: jerryThomas,
                               spec: hotBrandyToddySpec,
                               buildOrder: hotToddyWnGBuild,
                               tags: hotBrandyToddyTags,
-                              variation: .hotToddy)
+                              variation: .hotToddy,
+                              collection: .originals)
 
 var hotBrandyToddySpec  = [CocktailIngredient(.otherNonAlc(.granulatedSugar), value: 1, unit: .teaspoon),
                            CocktailIngredient(.otherNonAlc(.hotWater), value: 3),

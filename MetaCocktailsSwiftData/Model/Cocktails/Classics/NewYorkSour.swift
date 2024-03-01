@@ -16,7 +16,8 @@ var NewYorkSour = Cocktail(cocktailName: "New York Sour",
                            spec: NewYorkSourSpec,
                            buildOrder: NewYorkSourBuild,
                            tags: NewYorkSourTags,
-                           variation: .newYorkSour)
+                           variation: .newYorkSour,
+                           collection: .originals)
 
 var NewYorkSourSpec = [CocktailIngredient(.juices(.lemon), value: 0.25),
                        CocktailIngredient(.syrups(.simple), value: 0.25),

@@ -15,7 +15,8 @@ var bloodAndSand  = Cocktail(cocktailName: "Blood and Sand",
                              spec: bloodAndSandSpec,
                              buildOrder: bloodAndSandBuild,
                              tags: bloodAndSandTags,
-                             variation: .bloodAndSand)
+                             variation: .bloodAndSand,
+                             collection: .originals)
 
 var bloodAndSandSpec  = [CocktailIngredient(.juices(.orange), value: 0.75),
                          CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 0.75),

@@ -14,7 +14,8 @@ var secondSunrise = Cocktail(cocktailName: "Second Sunrise",
                              author:Author(person: AuthorNames.jamesMenkal.rawValue,
                                            place: AuthorPlaces.williamsAndGraham.rawValue, year: "2021"),
                              spec: secondSunriseSpec,
-                             tags: secondSunriseTags)
+                             tags: secondSunriseTags,
+                             collection: .williamsAndGraham)
 
 let secondSunriseSpec: [CocktailIngredient] = [CocktailIngredient(.syrups(.cinnamonSyrup), value: 0.75),
                                                CocktailIngredient(.juices(.lemon), value: 0.75),

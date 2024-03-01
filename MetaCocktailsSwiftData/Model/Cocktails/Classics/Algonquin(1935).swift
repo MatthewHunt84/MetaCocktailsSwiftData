@@ -7,13 +7,14 @@
 
 import Foundation
 
-var algonquin  = Cocktail(cocktailName: "Algonquin(1935 version)",
+var algonquin  = Cocktail(cocktailName: "Algonquin",
                           glasswareType: .martini,
                           garnish: [.noGarnish],
                           author: Author(person: "G. Selmer Foughner", place: "Along The Wine Trail: an anthology of wine and spirits", year: "1935"),
                           spec: algonquinSpec,
                           tags: algonquinTags,
-                          variation: .algonquin)
+                          variation: .algonquin,
+                          collection: .originals)
 
 var algonquinSpec  = [CocktailIngredient(.juices(.pineappleJuice), value: 1),
                       CocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 1),

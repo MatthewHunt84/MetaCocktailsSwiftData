@@ -12,11 +12,12 @@ var bamboo = Cocktail(cocktailName: "Bamboo",
                       glasswareType: Glassware.coupe,
                       garnish: [.orangeOrLemon],
                       ice: nil,
-                      author: Author(person: "Louis Eppinger"),
+                      author: Author(person: "Louis Eppinger", place: "Grand Hotel in Yokohama, Japan", year: "1908"),
                       spec: bambooSpec,
                       buildOrder: nil,
                       tags: bambooTags,
-                      variation: .bamboo)
+                      variation: .bamboo,
+                      collection: .originals)
 
 var bambooSpec = [CocktailIngredient(.fortifiedWines(.amontillado), value: 1.5),
                   CocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 1.5),

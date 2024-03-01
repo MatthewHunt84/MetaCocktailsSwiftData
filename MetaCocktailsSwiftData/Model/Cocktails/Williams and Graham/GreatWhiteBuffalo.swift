@@ -15,10 +15,11 @@ var greatWhiteBuffalo = Cocktail(cocktailName: "Great White Buffalo",
                                  author:Author(person: AuthorNames.jamesMenkal.rawValue,
                                                place: AuthorPlaces.williamsAndGraham.rawValue, year: "2019"),
                                  spec: greatWhiteBuffaloSpec,
-                                 tags: greatWhiteBuffaloTags)
+                                 tags: greatWhiteBuffaloTags,
+                                 collection: .williamsAndGraham)
 
 let greatWhiteBuffaloSpec: [CocktailIngredient] = [CocktailIngredient(.juices(.lemon), value: 0.25),
-                                                   CocktailIngredient(.syrups(.grapefruitShrub), value: 1.25),
+                                                   CocktailIngredient(.syrups(.grapefruitShrub), value: 1.25, prep: PrepBible.grapefruitShrub),
                                                    CocktailIngredient(.liqueurs(.licor43), value: 0.5),
                                                    CocktailIngredient(.seasoning(.saline), value: 5, unit: .drops),
                                                    CocktailIngredient(.vodkas(.zubrowka), value: 1.5)]

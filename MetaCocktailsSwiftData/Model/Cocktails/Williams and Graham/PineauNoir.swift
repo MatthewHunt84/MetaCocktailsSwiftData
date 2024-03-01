@@ -14,7 +14,8 @@ var pineauNoir = Cocktail(cocktailName: "Pineau Noir",
                           author:Author(place: AuthorPlaces.williamsAndGraham.rawValue),
                           spec: pineauNoirSpec,
                           buildOrder: nil,
-                          tags: pineauNoirTags)
+                          tags: pineauNoirTags,
+                          collection: .williamsAndGraham)
 
 var pineauNoirSpec  = [CocktailIngredient(.bitters(.angosturaBitters), value: 2),
                        CocktailIngredient(.fortifiedWines(.bonal), value: 0.75),

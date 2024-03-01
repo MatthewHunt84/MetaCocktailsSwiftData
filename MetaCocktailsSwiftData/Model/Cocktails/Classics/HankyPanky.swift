@@ -15,7 +15,8 @@ var hankyPanky = Cocktail(cocktailName: "Hanky Panky",
                                         year: "1921"),
                           spec: hankyPankySpec,
                           tags: hankyPankyTags,
-                          variation: .hankyPanky)
+                          variation: .hankyPanky,
+                          collection: .originals)
 
 var hankyPankySpec     =  [CocktailIngredient(.amari(.fernetBranca), value: 2, unit: .dashes),
                            CocktailIngredient(.gins(.ginLondonDry), value: 1.5),

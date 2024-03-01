@@ -7,14 +7,15 @@
 
 import Foundation
 
-var singaporeSling = Cocktail(cocktailName: "Singapore Sling(1910s version)",
+var singaporeSling = Cocktail(cocktailName: "Singapore Sling",
                               glasswareType: .collins,
                               ice: .koldDraft,
                               author: nil,
                               spec: singaporeSlingSpec,
                               buildOrder: nil,
                               tags: singaporeSlingTags,
-                              variation: .singaporeSling)
+                              variation: .singaporeSling,
+                              collection: .originals)
 
 var singaporeSlingSpec  = [CocktailIngredient(.soda(.sparklingWater), value: 2),
                           CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),

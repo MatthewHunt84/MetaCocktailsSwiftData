@@ -9,4 +9,6 @@ import Foundation
 
 enum CocktailCollection: Int, Codable {
     case williamsAndGraham
+    case originals 
+    case milkAndHoney
 }

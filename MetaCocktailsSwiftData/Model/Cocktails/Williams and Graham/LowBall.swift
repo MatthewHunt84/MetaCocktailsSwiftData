@@ -16,7 +16,8 @@ var lowBall  =  Cocktail(cocktailName: "Low Ball",
                                        year: "2020"),
                          spec: lowBallSpec,
                          buildOrder: nil,
-                         tags: lowBallTags)
+                         tags: lowBallTags,
+                         collection: .williamsAndGraham)
 
 var lowBallSpec = [CocktailIngredient(.agaves(.tanteoJalepeno), value: 0.25, unit: .dashes),
                    CocktailIngredient(.amari(.suze), value: 0.5),

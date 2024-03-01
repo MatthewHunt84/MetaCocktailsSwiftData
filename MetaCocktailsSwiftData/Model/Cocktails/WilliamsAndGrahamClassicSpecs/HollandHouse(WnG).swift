@@ -14,7 +14,8 @@ var hollandHouseCocktailWnG = Cocktail(cocktailName: "Holland House(W&G Version)
                                        author:williamsAndGraham,
                                        spec: hollandHouseCocktailSpecWnG,
                                        tags: hollandHouseCocktailTagsWnG,
-                                       variation: .hollandHouse)
+                                       variation: .hollandHouse,
+                                       collection: .williamsAndGraham)
 
 var hollandHouseCocktailSpecWnG  =  [CocktailIngredient(.juices(.lemon), value: 0.5),
                                      CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.25),

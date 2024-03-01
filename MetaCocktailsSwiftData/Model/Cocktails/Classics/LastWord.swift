@@ -10,11 +10,12 @@ import SwiftUI
 var lastWord = Cocktail(cocktailName: "Last Word",
                         glasswareType: .stemmedGlassware,
                         ice: nil,
-                        author: Author(person: "Frank Fogarty", place: AuthorPlaces.detroitAthleticClub.rawValue),
+                        author: Author(person: "Frank Fogarty", place: AuthorPlaces.detroitAthleticClub.rawValue, year: "1916"),
                         spec: lastWordSpec,
                         buildOrder: nil,
                         tags: lastWordTags,
-                        variation: .lastWord)
+                        variation: .lastWord,
+                        collection: .originals)
 
 var lastWordSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
                      CocktailIngredient(.gins(.ginLondonDry), value: 0.75),

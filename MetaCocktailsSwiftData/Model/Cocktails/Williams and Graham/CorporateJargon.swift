@@ -13,7 +13,8 @@ var corporateJargon = Cocktail(cocktailName: "Corporate Jargon",
                                garnish: nil,
                                author: Author(person: "Justin Jenkins", place: AuthorPlaces.williamsAndGraham.rawValue, year: "Fall, 2021"),
                                spec: corporateJargonSpec,
-                               tags: corporateJargonTags)
+                               tags: corporateJargonTags,
+                               collection: .williamsAndGraham)
 
 let corporateJargonSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.bolivarBitters), value: 3, unit: .dashes),
                                                  CocktailIngredient(.syrups(.richCinnamonAndVanilla), value: 1, unit: .barSpoon),

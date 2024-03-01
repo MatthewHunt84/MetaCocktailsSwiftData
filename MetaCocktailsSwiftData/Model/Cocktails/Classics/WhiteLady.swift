@@ -7,10 +7,10 @@
 
 import Foundation
 
-var whiteLady = Cocktail(cocktailName: "White Lady(Savoy version)",
+var whiteLady = Cocktail(cocktailName: "White Lady",
                          glasswareType: .martini,
                          garnish: nil,
-                         author: williamsAndGraham,
+                         author: harryCraddock,
                          spec: whiteLadySpec,
                          tags: whiteLadyTags)
 

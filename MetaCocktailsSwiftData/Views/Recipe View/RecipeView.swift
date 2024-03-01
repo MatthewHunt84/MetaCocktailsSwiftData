@@ -10,10 +10,11 @@ import SwiftUI
 struct RecipeView: View {
     //@EnvironmentObject var cBCViewModel: CBCViewModel
  
-    var viewModel: CocktailMenuViewModel
+    @Bindable var viewModel: RecipeViewModel
     let recipeSpacing: CGFloat = 2
     var cocktailFrameSize = CGFloat(125)
     @Environment(\.dismiss) private var dismiss
+    @State private var prepItems: [CocktailIngredient] = []
     
     
     
@@ -24,7 +25,9 @@ struct RecipeView: View {
                     dismiss()
                 } label: {
                     Image(systemName: "chevron.backward")
+                        .tint(.cyan)
                     Text("Back")
+                        .tint(.cyan)
                 }
                 Spacer()
             }
@@ -62,14 +65,31 @@ struct RecipeView: View {
                                 HStack {
                                     Text("\(number)")
                                         .dynamicTypeSize(.large).bold()
-                                    Text("\(ingredient.unit.rawValue) \(ingredient.ingredient.name)")
+                                    Text("\(ingredient.unit.rawValue)")
                                         .multilineTextAlignment(.leading)
                                         .dynamicTypeSize(.large)
+                                    if ingredient.prep != nil {
+                                        NavigationLink {
+                                            PrepRecipeView(prep: ingredient.prep!)
+                                        } label: {
+                                            Text(ingredient.ingredient.name)
+                                                .dynamicTypeSize(.large)
+                                                .tint(.cyan)
+                                            
+                                        }
+                                    } else {
+                                        Text("\(ingredient.ingredient.name)")
+                                            .multilineTextAlignment(.leading)
+                                            .dynamicTypeSize(.large)
+                                    }
                                 }
                                 
+                                
+                                
                             }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .offset(x: geo.size.width/2-140)
+                            .frame(maxWidth: geo.size.width * 0.9, alignment: .leading)
+                            
+                            //.offset(x: geo.size.width/2-140)
                             
                             
                             if let stirShakeBuild = viewModel.cocktail.tags.styles {
@@ -150,9 +170,14 @@ struct RecipeView: View {
                                 
                                 .buttonStyle(whiteButton())
                             }
+                            
+                         
                            
                             BatchButton(cocktail: viewModel.cocktail)
+                                .padding()
                             
+                            
+                         
                             Rectangle()
                                 .fill(.black)
                                 .frame(width: 60, height: 40, alignment: .center)
@@ -165,6 +190,9 @@ struct RecipeView: View {
                     .frame(minHeight: geo.size.height)
                 }
             }
+        }
+        .task {
+            prepItems = viewModel.findPrepItems()
         }
     }
 }
@@ -222,10 +250,10 @@ struct AuthorView: View {
     }
 }
 
-struct RecipeIngredientsView_Previews: PreviewProvider {
-   
-    static var previews: some View {
-        RecipeView(viewModel: CocktailMenuViewModel(cocktail: aFlightSouthOfTheBorder))
-            
-    }
+
+#Preview {
+    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
+    return RecipeView(viewModel: RecipeViewModel(cocktail: peanutButterFalcon))
+        .modelContainer(preview.container)
+       
 }

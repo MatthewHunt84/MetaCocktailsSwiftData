@@ -15,12 +15,13 @@ var sazeracWnG = Cocktail(cocktailName: "Sazerac(W&G Version)",
                           spec: sazeracSpec,
                           buildOrder: sazeracBuild,
                           tags: sazeracTags,
-                          variation: .sazerac)
+                          variation: .sazerac,
+                          collection: .williamsAndGraham)
 
 var sazeracSpecWnG  = [CocktailIngredient(.otherNonAlc(.demeraraSugarCube), value: 1, unit: .whole),
                        CocktailIngredient(.whiskies(.rittenhouseRye), value: 2),
                        CocktailIngredient(.bitters(.peychauds), value: 7, unit: .dashes),
-                       CocktailIngredient(.otherAlcohol(.absinthe), value: 7, unit: .sprays),]
+                       CocktailIngredient(.otherAlcohol(.absinthe), value: 7, unit: .spraysInGlass),]
 
 var sazeracTagsWnG = Tags(profiles: [.spiritForward, .punchy],
                           styles: [.oldFashioned, .stirred])

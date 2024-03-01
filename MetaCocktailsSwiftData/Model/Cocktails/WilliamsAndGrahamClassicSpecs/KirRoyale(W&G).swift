@@ -14,7 +14,8 @@ var kirRoyaleWnG = Cocktail(cocktailName: "Kir Royale(W&G Version)",
                             author: williamsAndGraham,
                             spec: kirRoyaleSpecWnG,
                             tags: kirRoyaleTagsWnG,
-                            variation: .kirRoyale)
+                            variation: .kirRoyale,
+                            collection: .williamsAndGraham)
 
 var kirRoyaleSpecWnG  = [CocktailIngredient(.liqueurs(.cremeDeCassis), value: 0.25),
                          CocktailIngredient(.wines(.prosecco), value: 4.5)]

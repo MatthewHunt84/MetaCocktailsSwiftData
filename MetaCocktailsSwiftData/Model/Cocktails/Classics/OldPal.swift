@@ -15,7 +15,8 @@ var oldPal  =  Cocktail(cocktailName: "Old Pal",
                         spec: oldPalSpec,
                         buildOrder: nil,
                         tags: oldPalTags,
-                        variation: .oldPal)
+                        variation: .oldPal,
+                        collection: .originals)
 
 var oldPalSpec = [CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 1),
                   CocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 1),

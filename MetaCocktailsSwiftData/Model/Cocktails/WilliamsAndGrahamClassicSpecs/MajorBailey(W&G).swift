@@ -16,7 +16,8 @@ var majorBaileyWnG = Cocktail(cocktailName: "Major Bailey(W&G Version)",
                               spec: majorBaileySpecWnG,
                               buildOrder: majorBaileyBuildWnG,
                               tags: majorBaileyTagsWnG,
-                              variation: .majorBailey)
+                              variation: .majorBailey,
+                              collection: .williamsAndGraham)
 
 let majorBaileySpecWnG: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
                                                 CocktailIngredient(.juices(.lime), value: 0.5),

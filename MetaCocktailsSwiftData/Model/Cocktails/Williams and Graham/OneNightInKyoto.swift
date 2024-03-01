@@ -14,7 +14,8 @@ var oneNightInKyoto  =  Cocktail(cocktailName: "One Night In Kyoto",
                                  author:Author(place: AuthorPlaces.williamsAndGraham.rawValue),
                                  spec: oneNightInKyotoSpec,
                                  buildOrder: nil,
-                                 tags: oneNightInKyotoTags)
+                                 tags: oneNightInKyotoTags,
+                                 collection: .williamsAndGraham)
 
 var oneNightInKyotoSpec = [CocktailIngredient(.bitters(.bitterTruthJTDecanter), value: 2, unit: .dashes),
                            CocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.25),

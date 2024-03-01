@@ -15,7 +15,8 @@ var scofflawWnG = Cocktail(cocktailName: "Scofflaw(W&G Version)",
                            spec: scofflawSpecWnG,
                            buildOrder: nil,
                            tags: scofflawTagsWnG,
-                           variation: .scofflaw)
+                           variation: .scofflaw,
+                           collection: .williamsAndGraham)
 
 var scofflawSpecWnG  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                         CocktailIngredient(.syrups(.grenadine), value: 0.75),

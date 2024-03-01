@@ -14,7 +14,8 @@ var cleverGirl = Cocktail(cocktailName: "Clever Girl",
                           ice: .bigRock,
                           author: Author(person: "Kristen Bair", place: AuthorPlaces.williamsAndGraham.rawValue, year: "2018"),
                           spec: cleverGirlSpec,
-                          tags: cleverGirlTags)
+                          tags: cleverGirlTags,
+                          collection: .williamsAndGraham)
 
 let cleverGirlSpec = [CocktailIngredient(.bitters(.hoppedGrapefruit), value: 3, unit: .dash),
                       CocktailIngredient(.liqueurs(.velvetFalernum), value: 0.25),

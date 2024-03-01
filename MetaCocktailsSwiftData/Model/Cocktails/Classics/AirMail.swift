@@ -14,10 +14,11 @@ var airMail  = Cocktail(cocktailName: "Air Mail",
                         spec: airMailSpec,
                         buildOrder: airMailBuild,
                         tags: airMailTags,
-                        variation: .airMail)
+                        variation: .airMail,
+                        collection: .originals)
 
 var airMailSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
-                    CocktailIngredient(.syrups(.honeySyrup), value: 0.75),
+                    CocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup),
                     CocktailIngredient(.rums(.rumAgedCuban), value: 1.5),
                     CocktailIngredient(.wines(.champagne) , value: 2)]
 

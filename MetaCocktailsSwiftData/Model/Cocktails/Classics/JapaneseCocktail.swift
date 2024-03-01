@@ -14,10 +14,11 @@ var japaneseCocktail  = Cocktail(cocktailName: "Japanese Cocktail",
                                  author: jerryThomas,
                                  spec: japaneseCocktailSpec,
                                  tags: japaneseCocktailTags,
-                                 variation: .japanese)
+                                 variation: .japanese,
+                                 collection: .originals)
 
 var japaneseCocktailSpec  = [CocktailIngredient(.bitters(.aromaticBitters), value: 2, unit: .dash),
-                             CocktailIngredient(.syrups(.orgeat), value: 1),
+                             CocktailIngredient(.syrups(.orgeat), value: 1, prep: PrepBible.orgeat),
                              CocktailIngredient(.brandies(.brandyAny) , value: 2)]
 
 

@@ -14,7 +14,8 @@ var pinkLady = Cocktail(cocktailName: "Pink Lady",
                                        place: "Straub's Manual of Mixed Drinks.",
                                        year: "1901"),
                         spec: pinkLadySpec,
-                        tags: pinkLadyTags)
+                        tags: pinkLadyTags,
+                        collection: .originals)
 
 var pinkLadySpec  = [CocktailIngredient(.juices(.lime), value: 0.5),
                      CocktailIngredient(.syrups(.grenadine), value: 0.5),

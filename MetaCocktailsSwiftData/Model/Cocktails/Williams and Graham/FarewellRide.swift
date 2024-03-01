@@ -13,7 +13,8 @@ var farewellRide = Cocktail(cocktailName: "Farewell Ride",
                                ice: nil,
                                author: Author(person: AuthorPlaces.williamsAndGraham.rawValue),
                                spec: farewellRideSpec,
-                               tags: farewellRideTags)
+                               tags: farewellRideTags,
+                            collection: .williamsAndGraham)
 
 var farewellRideSpec  = [CocktailIngredient(.bitters(.blackstrapBitters), value: 2, unit: .dashes),
                             CocktailIngredient(.amari(.amaroNonino), value: 0.5),

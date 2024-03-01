@@ -17,7 +17,8 @@ var pipeDream  =  Cocktail(cocktailName: "Pipe Dream",
                                          place: AuthorPlaces.williamsAndGraham.rawValue, year: "Winter, 2021"),
                            spec: pipeDreamSpec,
                            buildOrder: nil,
-                           tags: pipeDreamTags)
+                           tags: pipeDreamTags,
+                           collection: .williamsAndGraham)
 
 var pipeDreamSpec = [CocktailIngredient(.seasoning(.saline), value: 2, unit: .drops),
                      CocktailIngredient(.otherAlcohol(.serranoTincture), value: 1, unit: .dash),

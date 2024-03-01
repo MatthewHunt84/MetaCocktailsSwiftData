@@ -13,7 +13,8 @@ var midnightInMichoacan = Cocktail(cocktailName: "Midnight In Michoacan",
                                    ice: nil,
                                    author: Author(person: AuthorNames.kennyRemster.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue, year: "Summer, 2022"),
                                    spec: midnightInMichoacanSpec,
-                                   tags: midnightInMichoacanTags)
+                                   tags: midnightInMichoacanTags,
+                                   collection: .williamsAndGraham)
 
 var midnightInMichoacanSpec  = [CocktailIngredient(.amari(.amaroMontenegro), value: 0.5),
                                 CocktailIngredient(.liqueurs(.nocino), value: 1),

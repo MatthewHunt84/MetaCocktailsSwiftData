@@ -16,7 +16,8 @@ var jackRose = Cocktail(cocktailName: "Jack Rose",
                                           year: "1899"),
                            spec: jackRoseSpecWnG,
                            buildOrder: nil,
-                           tags: jackRoseTags)
+                           tags: jackRoseTags,
+                        collection: .originals)
 
 var jackRoseSpecWnG  = [CocktailIngredient(.juices(.lime), value: 0.5),
                         CocktailIngredient(.syrups(.grenadine), value: 0.5),

@@ -15,7 +15,8 @@ var robMcKenna = Cocktail(cocktailName: "Rob McKenna",
                           ice: .bigRock,
                           author: Author(person: "Justin Jenkins", place: AuthorPlaces.williamsAndGraham.rawValue, year: "Winter, 2021"),
                           spec: robMcKennaSpec,
-                          tags: robMcKennaTags)
+                          tags: robMcKennaTags,
+                          collection: .williamsAndGraham)
 
 let robMcKennaSpec: [CocktailIngredient] = [CocktailIngredient(.seasoning(.saline), value: 15, unit: .drops),
                                             CocktailIngredient(.bitters(.orangeBitters), value: 2, unit: .dashes),

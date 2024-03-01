@@ -16,7 +16,8 @@ var mojito = Cocktail(cocktailName: "Mojito",
                       spec: mojitoSpec,
                       buildOrder: mojitoBuild,
                       tags: mojitoTags,
-                      variation: .mojito)
+                      variation: .mojito,
+                      collection: .originals)
 
 let mojitoSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
                                         CocktailIngredient(.juices(.lime), value: 1),

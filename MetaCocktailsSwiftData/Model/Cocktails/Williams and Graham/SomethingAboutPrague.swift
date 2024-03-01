@@ -14,12 +14,13 @@ var somethingAboutPrague = Cocktail(cocktailName: "Something About Prague",
                                     ice: .koldDraft,
                                     author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
                                     spec: somethingAboutPragueSpec,
-                                    tags: somethingAboutPragueTags)
+                                    tags: somethingAboutPragueTags,
+                                    collection: .williamsAndGraham)
 
 let somethingAboutPragueSpec: [CocktailIngredient] = [CocktailIngredient(.fruit(.orangeMoons), value: 2, unit: .muddled),
                                                       CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),
                                                       CocktailIngredient(.juices(.lemon), value: 0.5),
-                                                      CocktailIngredient(.syrups(.orgeat), value: 0.75),
+                                                      CocktailIngredient(.syrups(.orgeat), value: 0.75, prep: PrepBible.orgeat),
                                                       CocktailIngredient(.amari(.becherovka), value: 0.75),
                                                       CocktailIngredient(.whiskies(.eagleRare10), value: 1.5)]
 

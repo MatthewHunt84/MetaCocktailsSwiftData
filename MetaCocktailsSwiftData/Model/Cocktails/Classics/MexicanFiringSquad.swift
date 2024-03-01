@@ -7,14 +7,15 @@
 
 import Foundation
 
-var mexicanFiringSquad = Cocktail(cocktailName: "Mexican Firing Squad(1939)",
+var mexicanFiringSquad = Cocktail(cocktailName: "Mexican Firing Squad",
                                   glasswareType: .doubleOld,
                                   garnish: [.orangeFlag, .pineappleWedge],
                                   ice: .crackedIce,
                                   author: charlesBaker,
                                   spec: mexicanFiringSquadSpec,
                                   tags: mexicanFiringSquadTags,
-                                  variation: .mexicanFiringSquad)
+                                  variation: .mexicanFiringSquad,
+                                  collection: .originals)
 
 var mexicanFiringSquadSpec = [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
                               CocktailIngredient(.juices(.lime), value: 1),

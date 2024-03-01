@@ -15,7 +15,8 @@ var elOchoRosado  =  Cocktail(cocktailName: "El Ocho Rosado",
                               ice: .bigRock,
                               author:justWnG,
                               spec: elOchoRosadoSpec,
-                              tags: elOchoRosadoTags)
+                              tags: elOchoRosadoTags,
+                              collection: .williamsAndGraham)
 
 var elOchoRosadoSpec = [CocktailIngredient(.bitters(.lemonBitters), value: 2, unit: .dashes),
                         CocktailIngredient(.fortifiedWines(.hidalgoManzanilla), value: 0.5),

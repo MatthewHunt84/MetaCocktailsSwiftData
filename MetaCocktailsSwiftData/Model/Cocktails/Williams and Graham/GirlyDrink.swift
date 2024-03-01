@@ -14,7 +14,8 @@ var girlyDrink = Cocktail(cocktailName: "Girly Drink",
                             ice: nil,
                             author: Author(person: AuthorPlaces.williamsAndGraham.rawValue),
                             spec: girlyDrinkSpec,
-                            tags: girlyDrinkTags)
+                            tags: girlyDrinkTags,
+                          collection: .williamsAndGraham)
 
 var girlyDrinkSpec  = [CocktailIngredient(.bitters(.bittercubeJamaican1), value: 2, unit: .dashes),
                        CocktailIngredient(.amari(.campari), value: 0.5),

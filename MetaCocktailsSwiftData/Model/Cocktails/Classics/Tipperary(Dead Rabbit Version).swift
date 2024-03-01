@@ -7,7 +7,7 @@
 
 import Foundation
 
-var tipperaryDR = Cocktail(cocktailName: "Tipperary(Dead Rabbit Version)",
+var tipperaryDR = Cocktail(cocktailName: "Tipperary(Dead Rabbit)",
                            glasswareType: .stemmedGlassware,
                            garnish: [.orangePeel],
                            author: Author(person: "Gary McGarry", place: "The Dead Rabbit, New York", year: "2020"),

@@ -14,12 +14,13 @@ var falcoor = Cocktail(cocktailName: "Falcoooor!",
                        ice: nil,
                        author: Author(person: "Jesse Bowen", place: AuthorPlaces.williamsAndGraham.rawValue, year: "2018"),
                        spec: falcoorSpec,
-                       tags: falcoorTags)
+                       tags: falcoorTags,
+                       collection: .williamsAndGraham)
 
 var falcoorSpec  = [CocktailIngredient(.fruit(.cucumberSlices), value: 2, unit: .muddled),
                     CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
                     CocktailIngredient(.juices(.lime), value: 0.5),
-                    CocktailIngredient(.syrups(.orgeat), value: 1),
+                    CocktailIngredient(.syrups(.orgeat), value: 1, prep: PrepBible.orgeat),
                     CocktailIngredient(.amari(.amaroMontenegro), value: 0.5),
                     CocktailIngredient(.bitters(.orangeBitters), value: 0.5),
                     CocktailIngredient(.rums(.smithAndCross), value: 0.75)]
