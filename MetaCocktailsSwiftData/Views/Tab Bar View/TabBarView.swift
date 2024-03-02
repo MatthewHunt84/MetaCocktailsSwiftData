@@ -11,8 +11,6 @@ struct TabBarView: View {
     var body: some View {
 
         TabView {
-            AddIngredientView()
-                .tabItem { Label("Build", systemImage: "hourglass.bottomhalf.filled") }
             
             BasicSearchView()
                 .tabItem { Label("Search", systemImage: "magnifyingglass.circle.fill") }
@@ -22,6 +20,9 @@ struct TabBarView: View {
 
             AddCocktailView()
                 .tabItem { Label("Add Cocktail", image: "custom.book.fill.badge.plus") }
+            
+            AddIngredientView()
+                .tabItem { Label("Build", systemImage: "hourglass.bottomhalf.filled") }
         }
         
         .environmentObject(SearchCriteriaViewModel()) // If we create the environmentObject on the main tabView like this, it gets automatically passed to all the child views. So any view in the tabView can just declare "@EnvironmentObject var viewModel: SearchCriteriaViewModel" and they will all have access to this same instance. Neat.
