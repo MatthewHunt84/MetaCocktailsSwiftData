@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Variation: String, Codable {
+enum Variation: String, Codable, CaseIterable {
     
     
     case airMail = "Air Mail"
