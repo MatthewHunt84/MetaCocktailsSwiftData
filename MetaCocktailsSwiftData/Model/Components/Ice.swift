@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Ice: String, Codable {
+enum Ice: String, Codable, CaseIterable {
     case bigRock           = "Large Cube"
     case columnIce         = "Column Ice"
     case koldDraft         = "Kold Draft Ice"

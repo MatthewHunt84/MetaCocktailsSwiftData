@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum Glassware: String, Codable {
+enum Glassware: String, Codable, CaseIterable {
     case blueBlazerMugs            = "Blue Blazer Mugs"
     case buenaVistaIrish           = "Irish Coffee Glass (180ml)"
     case cinnamonSugarRim          = "Cinnamon Sugar Rimmed Cocktail Glass"

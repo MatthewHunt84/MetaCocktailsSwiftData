@@ -10,7 +10,7 @@ import SwiftUI
 
 // This is where we store all our garnishes
 
-enum Garnish: String, Codable {
+enum Garnish: String, Codable, CaseIterable {
     
     case angoDeco                  = "Angostura bitters design over egg whites"
     case almonds                   = "Almonds"
