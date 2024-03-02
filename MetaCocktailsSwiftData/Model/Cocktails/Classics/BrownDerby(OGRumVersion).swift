@@ -7,7 +7,7 @@
 
 import Foundation
 
-let brownDerbyRum = Cocktail(cocktailName: "Brown Derby",
+let brownDerbyRum = Cocktail(cocktailName: "Brown Derby (Rum)",
                              glasswareType: .stemmedGlassware,
                              author: Author(person: "Esquire", place: "'Potables' column", year: "1939"),
                              spec: brownDerbyRumSpec,
