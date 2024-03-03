@@ -83,6 +83,13 @@ struct CocktailListView: View {
                                                     }
                                                 }
                                             }
+                                            .onDelete { indexSet in
+                                                for index in indexSet {
+                                                    modelContext.delete(cocktails[index])
+                                                }
+                                            }
+                                            
+                                            
                                         } header: {
                                             Text("Custom Cocktails")
                                         }

@@ -10,6 +10,8 @@ import Observation
 
 @Observable final class AddCocktailViewModel {
     
+    
+    
     //AddIngredientView
     var ingredientName = ""
     var ingredientAmount = 0.0
@@ -35,7 +37,7 @@ import Observation
     
     // Extras
     var glass: Glassware? = .doubleOld
-    var ice: Ice?
+    var ice: Ice? = .none
     var garnish: Garnish? = .noGarnish
     var variation: Variation?
     
@@ -46,6 +48,20 @@ import Observation
     
     // Build
     var build: Build?
+    
+    func clearData() {
+        cocktailName = ""
+        authorName = ""
+        authorPlace = ""
+        authorYear = ""
+        glass = .doubleOld
+        ice = .none
+        garnish = .noGarnish
+        variation = nil
+        addedIngredients = []
+        defaultName = "Add Cocktail"
+        build = nil 
+    }
     
     func isValid() -> Bool {
         return cocktailName != "" && ((addedIngredients.count) > 2)
@@ -76,7 +92,11 @@ import Observation
         return Text(text)
     }
     
-    
+    @ViewBuilder
+    func navigateToCocktailListView() -> some View {
+        
+         CocktailListView()
+    }
    
 
     func matchAllPhysicalCocktailComponents() {

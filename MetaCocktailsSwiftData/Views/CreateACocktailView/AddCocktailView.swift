@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct AddCocktailView: View {
-    
+    @EnvironmentObject var criteria: SearchCriteriaViewModel
     @Bindable var viewModel = AddCocktailViewModel()
     @State private var isShowingAddIngredients: Bool = false
     @Environment(\.modelContext) private var modelContext
@@ -95,6 +95,9 @@ struct AddCocktailView: View {
                                                     collection: .custom)
                             
                             modelContext.insert(cocktail)
+                            viewModel.clearData()
+                            
+                            criteria.tabSelection = 1
                             
                         } else {
                             viewModel.isShowingAlert.toggle()

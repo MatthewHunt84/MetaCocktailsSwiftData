@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CBCLoadedCocktailView: View {
     @ObservedObject var viewModel = CBCViewModel()
+    @EnvironmentObject var criteria: SearchCriteriaViewModel
     @State var cocktailCount = 100.0
     @State var cocktail = aFlightSouthOfTheBorder
     
@@ -17,10 +18,19 @@ struct CBCLoadedCocktailView: View {
         ZStack{
             NavigationStack {
                 VStack {
-                    Text("Cocktail Specs")
-                        .font(.largeTitle).bold()
-                    
-                    
+                    HStack {
+                        Text("Cocktail Specs")
+                            .font(.largeTitle).bold()
+                        Spacer()
+                        Button {
+                            
+                            
+                        } label: {
+                            Image(systemName: "house")
+                        }
+
+                        
+                    }
                     VStack {
                         TextField("Enter a cocktail name.", text: $viewModel.loadedCocktailData.cocktailName).cBCTextField()
                             .autocorrectionDisabled()
