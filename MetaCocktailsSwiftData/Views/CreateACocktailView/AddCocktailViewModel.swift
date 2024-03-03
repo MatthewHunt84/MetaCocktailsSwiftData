@@ -12,6 +12,7 @@ import Observation
 
     
     //AddIngredientView
+    var isShowingingredientAlert: Bool = false
     var ingredientName = ""
     var ingredientAmount = 0.0
     var ingredientType: IngredientType = IngredientType.agaves(.tequilaAny)
@@ -61,12 +62,41 @@ import Observation
         addedIngredients = []
         defaultName = "Add Cocktail"
         build = nil 
+       
     }
+    func clearIngredientData() {
+        ingredientName = ""
+        ingredientAmount = 0
+        selectedMeasurementUnit = .fluidOunces
+    }
+    
+    func validateCurrentSelectedComponent(for component: CocktailComponent) -> IngredientType {
+       
+        
+        if component != CocktailComponent(name: "Placeholder") {
+            if component.isSpirit {
+                if let spirit = currentSelectedComponent.spiritCategory {
+                    return spirit
+                }
+            } else if component.isNA {
+                if let nA = currentSelectedComponent.nACategory {
+                   return  nA
+                }
+            }
+        }
+        
+        return IngredientType.seasoning(.nutmeg)
+    }
+    
     
     func isValid() -> Bool {
         return cocktailName != "" && ((addedIngredients.count) > 1) && glass != nil
     }
     
+    func ingredientIsValid() -> Bool {
+        
+        return ingredientAmount != 0.0 && ingredientName != ""
+    }
     // Can't add cocktail alert
     
     var isShowingAlert: Bool = false
@@ -92,11 +122,7 @@ import Observation
         return Text(text)
     }
     
-    @ViewBuilder
-    func navigateToCocktailListView() -> some View {
-        
-         CocktailListView()
-    }
+   
    
 
     func matchAllPhysicalCocktailComponents() {

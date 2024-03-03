@@ -223,6 +223,7 @@ enum Seasoning: String, Codable, CaseIterable {
     case nutmeg               = "Nutmeg (Spice)"
     case salt                 = "Salt"
     case saline               = "Saline 3:1"
+   
     
     var nAComponent: CocktailComponent {
         return CocktailComponent(for: NAIngredients(.seasoning(self)))

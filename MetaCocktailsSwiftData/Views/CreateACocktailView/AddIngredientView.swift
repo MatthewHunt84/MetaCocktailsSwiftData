@@ -13,6 +13,7 @@ struct AddIngredientView: View {
     @Binding var isShowingAddIngredients: Bool
     @FocusState private var keyboardFocused: Bool
     
+    
     var body: some View {
         VStack {
             SearchBarView(searchText: $viewModel.ingredientName)
@@ -68,25 +69,23 @@ struct AddIngredientView: View {
             }
             
             Button {
-                if viewModel.currentSelectedComponent.isSpirit {
-                    viewModel.addedIngredients.append(CocktailIngredient(viewModel.currentSelectedComponent.spiritCategory ?? IngredientType.vodkas(.vodkaAny), value: viewModel.ingredientAmount, unit: viewModel.selectedMeasurementUnit))
+                if viewModel.ingredientIsValid() {
+                    viewModel.addedIngredients.append(CocktailIngredient(viewModel.validateCurrentSelectedComponent(for: viewModel.currentSelectedComponent) , value: viewModel.ingredientAmount, unit: viewModel.selectedMeasurementUnit))
+                    
+                    
+                    viewModel.clearIngredientData()
+                    isShowingAddIngredients.toggle()
                 } else {
-                    viewModel.addedIngredients.append(CocktailIngredient(viewModel.currentSelectedComponent.nACategory ?? IngredientType.juices(.carrotJuice), value: viewModel.ingredientAmount, unit: viewModel.selectedMeasurementUnit))
+                    viewModel.isShowingingredientAlert.toggle()
                 }
-                for ingredients in viewModel.addedIngredients {
-                    print("\(ingredients.value) \(ingredients.unit) of \(ingredients.ingredient.name)")
-                }
-                viewModel.ingredientName = ""
-                viewModel.ingredientType = IngredientType.agaves(.elTesoroRepo)
-                viewModel.ingredientAmount = 0
-                viewModel.selectedMeasurementUnit = .fluidOunces
                 
-                isShowingAddIngredients.toggle()
-               
             } label: {
                 Text("Add to Ingredients")
                 
             }
+            .alert(isPresented: $viewModel.isShowingingredientAlert, content: {
+                Alert(title: Text("Please choose an ingredient and measurement to add."))
+            })
             .task {
                 viewModel.matchAllPhysicalCocktailComponents()
                 keyboardFocused = true
