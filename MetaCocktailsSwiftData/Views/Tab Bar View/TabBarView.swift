@@ -12,11 +12,11 @@ struct TabBarView: View {
 
         TabView {
             
-//            BasicSearchView()
-//                .tabItem { Label("Search", systemImage: "magnifyingglass.circle.fill") }
-//
-//            CocktailListView()
-//                .tabItem { Label("A-Z", systemImage: "list.bullet") }
+            BasicSearchView()
+                .tabItem { Label("Search", systemImage: "magnifyingglass.circle.fill") }
+
+            CocktailListView()
+                .tabItem { Label("A-Z", systemImage: "list.bullet") }
 
             AddCocktailView()
                 .tabItem { Label("Add Cocktail", image: "custom.book.fill.badge.plus") }

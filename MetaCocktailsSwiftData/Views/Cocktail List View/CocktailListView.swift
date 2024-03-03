@@ -69,6 +69,24 @@ struct CocktailListView: View {
                                         }
                                         
                                     } else {
+                                        Section {
+                                            ForEach(cocktails) { cocktail in
+                                                if cocktail.collection == .custom {
+                                                    NavigationLinkWithoutIndicator {
+                                                        HStack{
+                                                            Text(cocktail.cocktailName)
+                                                            Spacer()
+                                                        }
+                                                    } destination: {
+                                                        RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                                                            .navigationBarBackButtonHidden(true)
+                                                    }
+                                                }
+                                            }
+                                        } header: {
+                                            Text("Custom Cocktails")
+                                        }
+                                        
                                         ForEach(criteria.alphabet, id: \.self) { letter in
                                             Section{
                                                 ForEach(viewModel.bartenderViewCocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.self) { cocktail in

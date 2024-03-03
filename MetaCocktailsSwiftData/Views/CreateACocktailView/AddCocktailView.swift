@@ -4,6 +4,7 @@ struct AddCocktailView: View {
     
     @Bindable var viewModel = AddCocktailViewModel()
     @State private var isShowingAddIngredients: Bool = false
+    @Environment(\.modelContext) private var modelContext
     
     var body: some View {
         
@@ -35,18 +36,12 @@ struct AddCocktailView: View {
                     
                     List{
                         ForEach(viewModel.addedIngredients, id: \.ingredient.name) { ingredient in
-                            
                             Text("\(NSNumber(value: ingredient.value)) \(ingredient.unit.rawValue) \(ingredient.ingredient.name)")
-                            
-                            
                         }
                         .onDelete(perform: { indexSet in
                             viewModel.addedIngredients.remove(atOffsets: indexSet)
                         })
                     }
-                    
-                    
-                    
                 }
              
                 
@@ -55,10 +50,16 @@ struct AddCocktailView: View {
                     
                     IcePicker(ice: $viewModel.ice)
                     
-                    GarnishPicker(garnish: $viewModel.garnish)
                     
-                    VariationPicker(variaton: $viewModel.variation)
+                    
+                    VariationPicker(variation: $viewModel.variation)
                 }
+                Section {
+                    GarnishPicker(garnish: $viewModel.garnish)
+                } header: {
+                    Text("Garnish")
+                }
+
                 
                 Section(header: Text("Credit (optional)")) {
                     TextField("Author", text: $viewModel.authorName)
@@ -80,7 +81,21 @@ struct AddCocktailView: View {
                 ToolbarItem(placement: .bottomBar) {
                     Button {
                         if viewModel.isValid() {
-                            print("Add cocktail to swift data")
+                            let cocktail = Cocktail(cocktailName: viewModel.cocktailName,
+                                                    glasswareType: viewModel.glass!,
+                                                    garnish: [viewModel.garnish!] ,
+                                                    ice: viewModel.ice,
+                                                    author: Author(person: viewModel.authorName,
+                                                                   place: viewModel.authorPlace,
+                                                                   year: viewModel.authorYear),
+                                                    spec: viewModel.addedIngredients,
+                                                    buildOrder: viewModel.build,
+                                                    tags: Tags(flavors: [], profiles: [], styles: [], booze: [], nA: []), 
+                                                    variation: viewModel.variation, 
+                                                    collection: .custom)
+                            
+                            modelContext.insert(cocktail)
+                            
                         } else {
                             viewModel.isShowingAlert.toggle()
                         }
@@ -102,7 +117,7 @@ struct AddCocktailView: View {
 }
 
 private struct AddedIngredientView: View {
-    @Binding var addedIngredints: [CocktailIngredient]?
+    @Binding var addedIngredeints: CocktailIngredient?
     
     var body: some View {
         List {
@@ -192,12 +207,12 @@ private struct GarnishPicker: View {
 }
 
 private struct VariationPicker: View {
-    @Binding var variaton: Variation?
+    @Binding var variation: Variation?
     @State var isShowingInfo = false
     
     var body: some View {
         VStack {
-            Picker(selection: $variaton) {
+            Picker(selection: $variation) {
                 Text("none").tag(Optional<String>(nil))
                 
                 ForEach(Variation.allCases, id: \.rawValue)  { variation in
