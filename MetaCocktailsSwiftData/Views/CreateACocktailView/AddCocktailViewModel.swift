@@ -8,8 +8,9 @@
 import SwiftUI
 import Observation
 
- @Observable final class CreateACocktailViewModel {
+@Observable final class AddCocktailViewModel {
     
+    //AddIngredientView
     var ingredientName = ""
     var ingredientAmount = 0.0
     var ingredientType: IngredientType = IngredientType.agaves(.tequilaAny)
@@ -18,13 +19,65 @@ import Observation
     var addedIngredients: [CocktailIngredient] = []
     var allPhysicalCocktailComponents: [CocktailComponent] = createPhysicalComponentArray()
     
+    var dateAdded = Date()
+    var defaultName = "Add Cocktail"
     
+    // Required
+    var cocktailName: String = ""
+    
+    // Ingredients
     var  formatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.maximumFractionDigits = 2
         return formatter
     }()
+    
+    // Extras
+    var glass: Glassware?
+    var ice: Ice?
+    var garnish: Garnish?
+    var variation: Variation?
+    
+    // Author
+    var authorName: String = ""
+    var authorPlace: String = ""
+    var authorYear: String = ""
+    
+    // Build
+    var build: Build?
+    
+    func isValid() -> Bool {
+        return cocktailName != "" && glass != nil && ((addedIngredients.count) > 2)
+    }
+    
+    // Can't add cocktail alert
+    
+    var isShowingAlert: Bool = false
+    
+    func cantAddCocktailMessage() -> Text {
+        var text = ""
+        
+        if cocktailName == "" {
+            text = "Your cocktail must have a name"
+            if glass == nil {
+                text += ", and a glass"
+            }
+        } else if glass == nil {
+            text = "Select a glass"
+        }
+        if (addedIngredients.count) < 2 {
+            if text == "" {
+                text = "You must add at least two ingredients"
+            } else {
+                text += ", and at least two ingredients"
+            }
+        }
+        return Text(text)
+    }
+    
+    
+   
 
     func matchAllPhysicalCocktailComponents() {
         // if searchText is empty, don't show any results

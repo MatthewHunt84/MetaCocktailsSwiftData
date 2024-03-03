@@ -1,63 +1,9 @@
 import SwiftUI
-import Observation
-
-@Observable class AddCocktailViewModel: Observable {
-    var dateAdded = Date()
-    var defaultName = "Add Cocktail"
-    
-    // Required
-    var cocktailName: String = ""
-    
-    // Ingredients
-    var ingredients: [CocktailIngredient]?
-    
-    // Extras
-    var glass: Glassware?
-    var ice: Ice?
-    var garnish: Garnish?
-    var variation: Variation?
-    
-    // Author
-    var authorName: String = ""
-    var authorPlace: String = ""
-    var authorYear: String = ""
-    
-    // Build
-    var build: Build?
-    
-    func isValid() -> Bool {
-        return cocktailName != "" && glass != nil && ((ingredients?.count ?? 0) > 2)
-    }
-    
-    // Can't add cocktail alert
-    
-    var isShowingAlert: Bool = false
-    
-    func cantAddCocktailMessage() -> Text {
-        var text = ""
-        
-        if cocktailName == "" {
-            text = "Your cocktail must have a name"
-            if glass == nil {
-                text += ", and a glass"
-            }
-        } else if glass == nil {
-            text = "Select a glass"
-        }
-        if (ingredients?.count ?? 0) < 2 {
-            if text == "" {
-                text = "You must add at least two ingredients"
-            } else {
-                text += ", and at least two ingredients"
-            }
-        }
-        return Text(text)
-    }
-}
 
 struct AddCocktailView: View {
     
     @Bindable var viewModel = AddCocktailViewModel()
+    @State private var isShowingAddIngredients: Bool = false
     
     var body: some View {
         
@@ -70,8 +16,37 @@ struct AddCocktailView: View {
                 }
                 
                 Section(header: Text("Ingredients")) {
-                    AddedIngredientView(ingredients: $viewModel.ingredients)
+                    
+                    Button(action: {
+                        isShowingAddIngredients.toggle()
+                        for ingredient in viewModel.addedIngredients {
+                            print(ingredient.ingredient.name)
+                        }
+                    }, label: {
+                        HStack{
+                            Text("Add Ingredient")
+                                .tint(.white)
+                            Spacer()
+                            Image(systemName: "plus.circle.fill")
+                                .foregroundStyle(.brandPrimaryGold)
+                        }
+                    })
+                    .sheet(isPresented: $isShowingAddIngredients) {
+                        AddIngredientView(isShowingAddIngredients: $isShowingAddIngredients)
+                    }
+                    
+                    
+                    ForEach(viewModel.addedIngredients, id: \.ingredient.name) { ingredient in
+                        HStack {
+                            Text("\(ingredient.value)")
+                            Text(ingredient.ingredient.name)
+                        }
+                    }
+                    
+                    
+                    
                 }
+             
                 
                 Section(header: Text("Extras")) {
                     GlassPicker(glass: $viewModel.glass)
@@ -125,12 +100,12 @@ struct AddCocktailView: View {
 }
 
 private struct AddedIngredientView: View {
-    @Binding var ingredients: [CocktailIngredient]?
+    @Binding var addedIngredints: [CocktailIngredient]?
     
     var body: some View {
         List {
             Button {
-                print("show the add ingredient modal view")
+               
             } label: {
                 HStack {
                     Text("Add ingredient")
