@@ -55,7 +55,35 @@ struct AddCocktailView: View {
                     VariationPicker(variation: $viewModel.variation)
                 }
                 Section {
-                    GarnishPicker(garnish: $viewModel.garnish)
+                    
+                    Menu {
+                        ForEach(Garnish.allCases, id: \.rawValue ) { garnish in
+                            Button(action: {
+                                viewModel.addGarnish.append(garnish)
+                            }, label: {
+                                Text("\(garnish.rawValue)")
+                            })
+                        }
+                    } label: {
+                        HStack {
+                            Text("Add Garnish")
+                                .tint(.white)
+                            Spacer()
+                            Image(systemName: "plus.circle.fill")
+                                .foregroundStyle(.brandPrimaryGold)
+                        }
+                    }
+                    
+                    List{
+                        ForEach(viewModel.addGarnish, id: \.self) { garnish in
+                            Text("\(garnish.rawValue)")
+                        }
+                        .onDelete(perform: { indexSet in
+                            viewModel.addGarnish.remove(atOffsets: indexSet)
+                        })
+                    }
+                    
+                    
                 } header: {
                     Text("Garnish")
                 }
@@ -83,7 +111,7 @@ struct AddCocktailView: View {
                         if viewModel.isValid() {
                             let cocktail = Cocktail(cocktailName: viewModel.cocktailName,
                                                     glasswareType: viewModel.glass!,
-                                                    garnish: [viewModel.garnish!] ,
+                                                    garnish: viewModel.addGarnish,
                                                     ice: viewModel.ice,
                                                     author: Author(person: viewModel.authorName,
                                                                    place: viewModel.authorPlace,

@@ -19,6 +19,7 @@ import Observation
     var selectedMeasurementUnit = MeasurementUnit.fluidOunces
     var currentSelectedComponent = CocktailComponent(name: "Placeholder")
     var addedIngredients: [CocktailIngredient] = []
+    var addGarnish: [Garnish] = []
     var allPhysicalCocktailComponents: [CocktailComponent] = createPhysicalComponentArray()
     
     var dateAdded = Date()
