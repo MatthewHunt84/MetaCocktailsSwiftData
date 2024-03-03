@@ -37,7 +37,7 @@ import Observation
     }()
     
     // Extras
-    var glass: Glassware? = .doubleOld
+    var glass: Glassware?
     var ice: Ice? = .none
     var garnish: Garnish? = .noGarnish
     var variation: Variation?
@@ -65,7 +65,7 @@ import Observation
     }
     
     func isValid() -> Bool {
-        return cocktailName != "" && ((addedIngredients.count) > 2)
+        return cocktailName != "" && ((addedIngredients.count) > 1)
     }
     
     // Can't add cocktail alert

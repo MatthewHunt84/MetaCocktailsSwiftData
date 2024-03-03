@@ -18,6 +18,15 @@ struct AddCocktailView: View {
                 
                 Section(header: Text("Ingredients")) {
                     
+                    List{
+                        ForEach(viewModel.addedIngredients, id: \.ingredient.name) { ingredient in
+                            Text("\(NSNumber(value: ingredient.value)) \(ingredient.unit.rawValue) \(ingredient.ingredient.name)")
+                        }
+                        .onDelete(perform: { indexSet in
+                            viewModel.addedIngredients.remove(atOffsets: indexSet)
+                        })
+                    }
+                    
                     Button(action: {
                         isShowingAddIngredients.toggle()
                         
@@ -32,15 +41,6 @@ struct AddCocktailView: View {
                     })
                     .sheet(isPresented: $isShowingAddIngredients) {
                         AddIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
-                    }
-                    
-                    List{
-                        ForEach(viewModel.addedIngredients, id: \.ingredient.name) { ingredient in
-                            Text("\(NSNumber(value: ingredient.value)) \(ingredient.unit.rawValue) \(ingredient.ingredient.name)")
-                        }
-                        .onDelete(perform: { indexSet in
-                            viewModel.addedIngredients.remove(atOffsets: indexSet)
-                        })
                     }
                 }
              
