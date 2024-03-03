@@ -32,8 +32,8 @@ struct AddCocktailView: View {
                         
                     }, label: {
                         HStack{
-                            Text("Add Ingredient")
-                                .tint(.white)
+                            Text(viewModel.addedIngredients.count < 2 ? "Add Ingredient" : "Add another ingredient")
+                                .tint(viewModel.addedIngredients.count < 2 ? .white : .secondary)
                             Spacer()
                             Image(systemName: "plus.circle.fill")
                                 .foregroundStyle(.brandPrimaryGold)
@@ -49,41 +49,37 @@ struct AddCocktailView: View {
                     GlassPicker(glass: $viewModel.glass)
                     
                     IcePicker(ice: $viewModel.ice)
-                    
-                    
-                    
+
                     VariationPicker(variation: $viewModel.variation)
                 }
                 Section {
                     
+                    List{
+                        ForEach(viewModel.addedGarnish, id: \.self) { garnish in
+                            Text("\(garnish.rawValue)")
+                        }
+                        .onDelete(perform: { indexSet in
+                            viewModel.addedGarnish.remove(atOffsets: indexSet)
+                        })
+                    }
+                    
                     Menu {
                         ForEach(Garnish.allCases, id: \.rawValue ) { garnish in
                             Button(action: {
-                                viewModel.addGarnish.append(garnish)
+                                viewModel.addedGarnish.append(garnish)
                             }, label: {
                                 Text("\(garnish.rawValue)")
                             })
                         }
                     } label: {
                         HStack {
-                            Text("Add Garnish")
-                                .tint(.white)
+                            Text(viewModel.addedGarnish.count < 1 ? "Add Garnish" : "Add another garnish")
+                                .tint(viewModel.addedGarnish.count < 1 ? .white : .secondary)
                             Spacer()
                             Image(systemName: "plus.circle.fill")
                                 .foregroundStyle(.brandPrimaryGold)
                         }
                     }
-                    
-                    List{
-                        ForEach(viewModel.addGarnish, id: \.self) { garnish in
-                            Text("\(garnish.rawValue)")
-                        }
-                        .onDelete(perform: { indexSet in
-                            viewModel.addGarnish.remove(atOffsets: indexSet)
-                        })
-                    }
-                    
-                    
                 } header: {
                     Text("Garnish")
                 }
@@ -111,7 +107,7 @@ struct AddCocktailView: View {
                         if viewModel.isValid() {
                             let cocktail = Cocktail(cocktailName: viewModel.cocktailName,
                                                     glasswareType: viewModel.glass!,
-                                                    garnish: viewModel.addGarnish,
+                                                    garnish: viewModel.addedGarnish,
                                                     ice: viewModel.ice,
                                                     author: Author(person: viewModel.authorName,
                                                                    place: viewModel.authorPlace,

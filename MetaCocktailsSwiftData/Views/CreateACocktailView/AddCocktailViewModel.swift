@@ -9,8 +9,7 @@ import SwiftUI
 import Observation
 
 @Observable final class AddCocktailViewModel {
-    
-    
+
     
     //AddIngredientView
     var ingredientName = ""
@@ -19,7 +18,7 @@ import Observation
     var selectedMeasurementUnit = MeasurementUnit.fluidOunces
     var currentSelectedComponent = CocktailComponent(name: "Placeholder")
     var addedIngredients: [CocktailIngredient] = []
-    var addGarnish: [Garnish] = []
+    var addedGarnish: [Garnish] = []
     var allPhysicalCocktailComponents: [CocktailComponent] = createPhysicalComponentArray()
     
     var dateAdded = Date()
@@ -39,7 +38,7 @@ import Observation
     // Extras
     var glass: Glassware?
     var ice: Ice? = .none
-    var garnish: Garnish? = .noGarnish
+    var garnish: Garnish = .noGarnish
     var variation: Variation?
     
     // Author
@@ -55,7 +54,7 @@ import Observation
         authorName = ""
         authorPlace = ""
         authorYear = ""
-        glass = .doubleOld
+        glass = nil
         ice = .none
         garnish = .noGarnish
         variation = nil
@@ -65,7 +64,7 @@ import Observation
     }
     
     func isValid() -> Bool {
-        return cocktailName != "" && ((addedIngredients.count) > 1)
+        return cocktailName != "" && ((addedIngredients.count) > 1) && glass != nil
     }
     
     // Can't add cocktail alert
