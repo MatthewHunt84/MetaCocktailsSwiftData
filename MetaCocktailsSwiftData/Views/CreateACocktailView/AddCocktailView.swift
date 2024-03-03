@@ -8,7 +8,7 @@ struct AddCocktailView: View {
     var body: some View {
         
         NavigationStack {
-            
+           
             Form {
                 
                 Section(header: Text("Name")) {
@@ -19,9 +19,7 @@ struct AddCocktailView: View {
                     
                     Button(action: {
                         isShowingAddIngredients.toggle()
-                        for ingredient in viewModel.addedIngredients {
-                            print(ingredient.ingredient.name)
-                        }
+                        
                     }, label: {
                         HStack{
                             Text("Add Ingredient")
@@ -32,15 +30,19 @@ struct AddCocktailView: View {
                         }
                     })
                     .sheet(isPresented: $isShowingAddIngredients) {
-                        AddIngredientView(isShowingAddIngredients: $isShowingAddIngredients)
+                        AddIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
                     }
                     
-                    
-                    ForEach(viewModel.addedIngredients, id: \.ingredient.name) { ingredient in
-                        HStack {
-                            Text("\(ingredient.value)")
-                            Text(ingredient.ingredient.name)
+                    List{
+                        ForEach(viewModel.addedIngredients, id: \.ingredient.name) { ingredient in
+                            
+                            Text("\(NSNumber(value: ingredient.value)) \(ingredient.unit.rawValue) \(ingredient.ingredient.name)")
+                            
+                            
                         }
+                        .onDelete(perform: { indexSet in
+                            viewModel.addedIngredients.remove(atOffsets: indexSet)
+                        })
                     }
                     
                     
@@ -226,5 +228,6 @@ private struct VariationPicker: View {
 }
 
 #Preview {
-    AddCocktailView()
+    AddCocktailView(viewModel: AddCocktailViewModel())
+        
 }

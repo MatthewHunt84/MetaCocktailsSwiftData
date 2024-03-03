@@ -9,14 +9,14 @@ import SwiftUI
 
 struct AddIngredientView: View {
     
-    @Bindable var viewModel = AddCocktailViewModel()
+    @Bindable var viewModel: AddCocktailViewModel
     @Binding var isShowingAddIngredients: Bool
     @FocusState private var keyboardFocused: Bool
     
     var body: some View {
         VStack {
             SearchBarView(searchText: $viewModel.ingredientName)
-                //.focused($keyboardFocused)
+                .focused($keyboardFocused)
                 .onChange(of: viewModel.ingredientName) {
                     viewModel.matchAllPhysicalCocktailComponents()
                 }
@@ -74,7 +74,7 @@ struct AddIngredientView: View {
                     viewModel.addedIngredients.append(CocktailIngredient(viewModel.currentSelectedComponent.nACategory ?? IngredientType.juices(.carrotJuice), value: viewModel.ingredientAmount, unit: viewModel.selectedMeasurementUnit))
                 }
                 for ingredients in viewModel.addedIngredients {
-                    print("\(ingredients.value) \(ingredients.unit) \(ingredients.ingredient.name)")
+                    print("\(ingredients.value) \(ingredients.unit) of \(ingredients.ingredient.name)")
                 }
                 viewModel.ingredientName = ""
                 viewModel.ingredientType = IngredientType.agaves(.elTesoroRepo)
@@ -93,11 +93,12 @@ struct AddIngredientView: View {
                 
             }
             .buttonStyle(BlackNWhiteButton())
+            
         }
         
     }
 }
 
 #Preview {
-    AddIngredientView(isShowingAddIngredients: .constant(true))
+    AddIngredientView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true))
 }
