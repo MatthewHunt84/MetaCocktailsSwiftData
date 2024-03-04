@@ -69,62 +69,64 @@ struct CocktailListView: View {
                                         }
                                         
                                     } else {
-                                        Section {
-                                            ForEach(cocktails) { cocktail in
-                                                if cocktail.collection == .custom {
-                                                    NavigationLinkWithoutIndicator {
-                                                        HStack{
-                                                            Text(cocktail.cocktailName)
-                                                            Spacer()
-                                                        }
-                                                    } destination: {
-                                                        RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                                                            .navigationBarBackButtonHidden(true)
-                                                    }
-                                                }
-                                            }
-                                            .onDelete { indexSet in
-                                                for index in indexSet {
-                                                    modelContext.delete(cocktails[index])
-                                                }
-                                            }
-                                            
-                                            
-                                        } header: {
-                                            Text("Custom Cocktails")
-                                        }
-                                        
                                         ForEach(criteria.alphabet, id: \.self) { letter in
                                             Section{
                                                 ForEach(cocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.self) { cocktail in
-                                                    if cocktail.variation != nil  {
+                                                    //                                                    if cocktail.variation != nil  {
+                                                    
+                                                    if cocktail.collection == .custom {
+                                                        NavigationLinkWithoutIndicator {
+                                                            HStack{
+                                                                Text(cocktail.cocktailName)
+                                                                Spacer()
+                                                                Text("New!")
+                                                                    .foregroundStyle(Color.brandPrimaryGold)
+                                                                    .font(.subheadline)
+                                                            }
+                                                            .bold()
+                                                        } destination: {
+                                                            RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                                                                .navigationBarBackButtonHidden(true)
+                                                        }
+                                                    } else {
+                                                        
                                                         NavigationLinkWithoutIndicator {
                                                             HStack{
                                                                 Text(cocktail.cocktailName)
                                                                 Spacer()
                                                             }
+                                                            .bold()
                                                         } destination: {
                                                             RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
                                                                 .navigationBarBackButtonHidden(true)
                                                         }
-                                                    } //else {
-//                                                        DisclosureGroup {
-//                                                            ForEach(cocktail.cocktailVariations, id: \.cocktailName) { variationCocktail in
-//                                                                NavigationLinkWithoutIndicator {
-//                                                                    HStack{
-//                                                                        Text(variationCocktail.cocktailName)
-//                                                                        Spacer()
-//                                                                    }
-//                                                                } destination: {
-//                                                                    SwipeRecipeView(variations: selectedCocktailVariations(for: variationCocktail))
-//                                                                        .navigationBarBackButtonHidden(true)
-//                                                                }
-//                                                            }
-//                                                        } label: {
-//                                                            Text(cocktail.cocktailName)
-//                                                        }
-//                                                        .disclosureGroupStyle(InlineDisclosureGroupStyle())
-//                                                    }
+                                                    }
+                                                    //                                                    } //else {
+                                                    //                                                        DisclosureGroup {
+                                                    //                                                            ForEach(cocktail.cocktailVariations, id: \.cocktailName) { variationCocktail in
+                                                    //                                                                NavigationLinkWithoutIndicator {
+                                                    //                                                                    HStack{
+                                                    //                                                                        Text(variationCocktail.cocktailName)
+                                                    //                                                                        Spacer()
+                                                    //                                                                    }
+                                                    //                                                                } destination: {
+                                                    //                                                                    SwipeRecipeView(variations: selectedCocktailVariations(for: variationCocktail))
+                                                    //                                                                        .navigationBarBackButtonHidden(true)
+                                                    //                                                                }
+                                                    //                                                            }
+                                                    //                                                        } label: {
+                                                    //                                                            Text(cocktail.cocktailName)
+                                                    //                                                        }
+                                                    //                                                        .disclosureGroupStyle(InlineDisclosureGroupStyle())
+                                                    //                                                    }
+                                                }
+                                                // I'm Bugged. Needs fix
+                                                .onDelete { indexSet in
+                                                    for index in indexSet { 
+                                                        print("--- about to delete: \(cocktails[index].cocktailName)")
+                                                        print("--- because of index: \(index)")
+                                                        modelContext.delete(cocktails[index])
+                                                    }
                                                 }
                                             } header: {
                                                 Text("\(letter)")
