@@ -19,7 +19,8 @@ var bramble = Cocktail(cocktailName: "Bramble",
                        buildOrder: brambleBuild,
                        tags: brambleTags,
                        variation: .bramble,
-                       collection: .originals)
+                       collection: .originals,
+                       titleCocktail: true)
 
 let brambleSpec: [CocktailIngredient] = [CocktailIngredient(.juices(.lemon), value: 1),
                                          CocktailIngredient(.syrups(.richSimple), value: 0.5, prep: PrepBible.richSimple),

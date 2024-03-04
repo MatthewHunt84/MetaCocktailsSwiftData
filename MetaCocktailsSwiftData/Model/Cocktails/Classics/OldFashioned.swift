@@ -14,7 +14,8 @@ var oldFashioned = Cocktail(cocktailName: "Old Fashioned",
                             author:Author(place: "Too old to tell"),
                             spec: oldFashionedSpec,
                             tags: oldFashionedTags,
-                            variation: .oldFashioned)
+                            variation: .oldFashioned,
+                            titleCocktail: true)
 
 var oldFashionedSpec  =  [CocktailIngredient(.syrups(.richDem), value: 2, unit: .teaspoon, prep: PrepBible.richDem),
                           CocktailIngredient(.bitters(.angosturaBitters), value: 3, unit: .dashes),

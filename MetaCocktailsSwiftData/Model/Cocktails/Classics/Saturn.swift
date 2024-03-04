@@ -16,7 +16,8 @@ var saturn = Cocktail(cocktailName: "Saturn",
                       buildOrder: saturnBuildOrder,
                       tags: saturnTags,
                       variation: .saturn,
-                      collection: .originals)
+                      collection: .originals,
+                      titleCocktail: true)
 
 var saturnSpec  =  [CocktailIngredient(.juices(.lemon), value: 0.5),
                     CocktailIngredient(.syrups(.passionfruitSyrup), value: 0.5),

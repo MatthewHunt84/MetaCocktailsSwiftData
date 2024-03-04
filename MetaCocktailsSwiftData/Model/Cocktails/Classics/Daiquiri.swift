@@ -11,7 +11,8 @@ let daiquiri = Cocktail(cocktailName: "Daiquiri",
                         glasswareType: .coupe,
                         garnish: [.limeWheel],
                         spec: daiquiriSpec,
-                        tags: daiquiriTags)
+                        tags: daiquiriTags,
+                        titleCocktail: true)
 
 var daiquiriSpec: [CocktailIngredient] = [CocktailIngredient(.rums(.rumWhite), value: 2.0),
                                           CocktailIngredient(.juices(.lime), value: 0.75),

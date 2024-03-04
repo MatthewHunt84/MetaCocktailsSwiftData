@@ -14,7 +14,8 @@ var homeOnTheRange = Cocktail(cocktailName: "Home on the Range",
                               author:Author(person: "Crosby Gaige",  place: AuthorPlaces.crosbyGaigeCocktailGuide.rawValue , year: "1941"),
                               spec: homeOnTheRangeSpec,
                               tags: homeOnTheRangeTags,
-                              collection: .originals)
+                              collection: .originals,
+                              titleCocktail: true)
 
 var homeOnTheRangeSpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),
                                CocktailIngredient(.liqueurs(.cointreau), value: 3, unit: .dashes),

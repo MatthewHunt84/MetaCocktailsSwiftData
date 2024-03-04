@@ -15,7 +15,8 @@ var irishCoffee = Cocktail(cocktailName: "Irish Coffee",
                            buildOrder: irishCoffeeBuild,
                            tags: irishCoffeeTags,
                            variation: .irishCoffee,
-                           collection: .originals)
+                           collection: .originals,
+                           titleCocktail: true)
 
 var irishCoffeeSpec  = [CocktailIngredient(.otherNonAlc(.stiffCream), value: 30, unit: .ml),
                         CocktailIngredient(.otherNonAlc(.coffee), value: 75, unit: .ml),

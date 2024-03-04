@@ -16,7 +16,8 @@ var laLouisiane = Cocktail(cocktailName: "La Louisiane",
                            buildOrder: laLouisianeBuild,
                            tags: laLouisianeTags,
                            variation: .laLouisiane,
-                           collection: .originals)
+                           collection: .originals,
+                           titleCocktail: true)
 
 var laLouisianeSpec     =  [CocktailIngredient(.otherAlcohol(.absinthe), value: 3, unit: .dashes),
                             CocktailIngredient(.bitters(.peychauds), value: 3, unit: .dashes),

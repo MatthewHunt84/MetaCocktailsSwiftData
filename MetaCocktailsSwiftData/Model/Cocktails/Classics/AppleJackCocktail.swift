@@ -16,7 +16,8 @@ var appleJackCocktail = Cocktail(cocktailName: "Apple Jack Cocktail",
                                  buildOrder: nil,
                                  tags: appleJackCocktailTags,
                                  variation: .appleJackCocktail,
-                                 collection: .originals)
+                                 collection: .originals,
+                                 titleCocktail: true)
 
 var appleJackCocktailSpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),
                                   CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1.5),

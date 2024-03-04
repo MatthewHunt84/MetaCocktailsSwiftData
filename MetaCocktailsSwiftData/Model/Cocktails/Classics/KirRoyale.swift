@@ -15,7 +15,8 @@ var kirRoyale = Cocktail(cocktailName: "Kir Royale",
                          spec: kirRoyaleSpec,
                          tags: kirRoyaleTags,
                          variation: .kirRoyale,
-                         collection: .originals)
+                         collection: .originals,
+                         titleCocktail: true)
 
 var kirRoyaleSpec  = [CocktailIngredient(.liqueurs(.cremeDeCassis), value: 15, unit: .ml),
                       CocktailIngredient(.wines(.bourgogneAligote), value: 100, unit: .ml)]

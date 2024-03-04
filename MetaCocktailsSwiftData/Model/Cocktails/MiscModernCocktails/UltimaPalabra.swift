@@ -12,7 +12,8 @@ var ultimaPalabra = Cocktail(cocktailName: "Ultima Palabra",
                              ice: nil,
                              spec: ultimaPalabraSpec,
                              tags: ultimaPalabraTags,
-                             variation: .ultimaPalabra)
+                             variation: .ultimaPalabra,
+                             titleCocktail: true)
 
 var ultimaPalabraSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
                           CocktailIngredient(.agaves(.mezcalSmokeyAny), value: 0.75),

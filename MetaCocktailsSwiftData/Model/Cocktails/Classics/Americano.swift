@@ -15,7 +15,8 @@ var americano  = Cocktail(cocktailName: "Americano",
                           spec: americanoSpec,
                           tags: americanoTags,
                           variation: .americano,
-                          collection: .originals)
+                          collection: .originals,
+                          titleCocktail: true)
 
 var americanoSpec  = [CocktailIngredient(.soda(.sodaWater), value: 2),
                       CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1.5),

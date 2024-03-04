@@ -15,7 +15,8 @@ var sidecar = Cocktail(cocktailName: "Sidecar",
                        buildOrder: nil,
                        tags: sidecarTags,
                        variation: .sidecar,
-                       collection: .originals)
+                       collection: .originals,
+                       titleCocktail: true)
 
 var sidecarSpec  = [CocktailIngredient(.juices(.lemon), value: 0.5),
                     CocktailIngredient(.liqueurs(.cointreau), value: 0.75),

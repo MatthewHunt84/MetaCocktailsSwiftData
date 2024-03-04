@@ -17,7 +17,8 @@ var tiPunch = Cocktail(cocktailName: "Ti' Punch",
                        buildOrder: tiPunchBuildOrder,
                        tags: tiPunchTags,
                        variation: .tiPunch,
-                       collection: .originals)
+                       collection: .originals,
+                       titleCocktail: true)
 
 var tiPunchSpec  =  [CocktailIngredient(.syrups(.richDem), value: 2, unit: .teaspoon, prep: PrepBible.richDem),
                      CocktailIngredient(.rums(.rumWhiteAgricole), value: 2)]

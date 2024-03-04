@@ -16,7 +16,8 @@ var sherryCobbler = Cocktail(cocktailName: "Sherry Cobbler",
                              buildOrder: sherryCobblerBuild,
                              tags: sherryCobblerTags,
                              variation: .sherryCobbler,
-                             collection: .originals)
+                             collection: .originals,
+                             titleCocktail: true)
 
 let sherryCobblerSpec: [CocktailIngredient] = [CocktailIngredient(.fruit(.lemonRibbon), value: 1, unit: .whole),
                                                CocktailIngredient(.fruit(.orangeMoons), value: 2, unit: .muddled),

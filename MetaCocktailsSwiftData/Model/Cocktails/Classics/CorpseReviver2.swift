@@ -14,7 +14,8 @@ var corpseReviver2 = Cocktail(cocktailName: "Corpse Reviver No.2",
                               spec: corpseReviver2Spec,
                               buildOrder: kinaLilletExplanation,
                               tags: corpseReviver2Tags,
-                              variation: .corpseReviver)
+                              variation: .corpseReviver,
+                              titleCocktail: true)
 
 var corpseReviver2Spec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                            CocktailIngredient(.gins(.ginLondonDry), value: 0.75),

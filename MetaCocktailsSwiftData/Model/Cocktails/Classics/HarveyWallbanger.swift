@@ -18,7 +18,8 @@ var harveyWallbanger = Cocktail(cocktailName: "Harvey Wallbanger",
                                 buildOrder: harveyWallbangerBuild,
                                 tags: harveyWallbangerTags,
                                 variation: .harveyWallbanger,
-                                collection: .originals)
+                                collection: .originals,
+                                titleCocktail: true)
 
 var harveyWallbangerSpec     =  [CocktailIngredient(.liqueurs(.galliano), value: 0.75, unit: .float),
                                 CocktailIngredient(.juices(.orange), value: 2),

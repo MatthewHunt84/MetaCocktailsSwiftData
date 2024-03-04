@@ -17,7 +17,8 @@ var zombie = Cocktail(cocktailName: "Zombie",
                       spec: zombieSpec,
                       tags: zombieTags,
                       variation: .zombie,
-                      collection: .originals)
+                      collection: .originals,
+                      titleCocktail: true)
 
 let zombieSpec: [CocktailIngredient] = [CocktailIngredient(.juices(.lime), value: 0.75),
                                         CocktailIngredient(.juices(.donsMix), value: 0.5),

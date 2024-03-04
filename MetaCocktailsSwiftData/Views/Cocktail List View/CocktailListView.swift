@@ -13,6 +13,9 @@ struct CocktailListView: View {
     @EnvironmentObject var criteria: SearchCriteriaViewModel
     @Bindable var viewModel = CocktailListViewModel()
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
+    @Query(filter: #Predicate {
+        $0.titleCocktail == true
+    } , sort: \Cocktail.cocktailName) var titleCocktails: [Cocktail]
     @Environment(\.modelContext) private var modelContext
     
     
@@ -103,9 +106,10 @@ struct CocktailListView: View {
                                                         }
                                                     } else {
                                                         // TODO: Issue 1 - I'm showing disclosures for every cocktail, need to find a way to make a disclosure only show once per variation. Also this takes way too long
-                                                        let variations = cocktails.filter({$0.variation == cocktail.variation})
+                                                        
                                                         DisclosureGroup {
-                                                            ForEach(variations, id: \.cocktailName) { variationCocktail in
+                                                            ForEach(titleCocktails) { variationCocktail in
+                                                                
                                                                 NavigationLinkWithoutIndicator {
                                                                     HStack{
                                                                         Text(variationCocktail.cocktailName)
@@ -121,6 +125,26 @@ struct CocktailListView: View {
                                                             Text(cocktail.cocktailName)
                                                         }
                                                         .disclosureGroupStyle(InlineDisclosureGroupStyle())
+                                                        
+//                                                        let variations = cocktails.filter({$0.variation == cocktail.variation})
+//                                                        DisclosureGroup {
+//                                                            ForEach(variations, id: \.cocktailName) { variationCocktail in
+//                                                                
+//                                                                NavigationLinkWithoutIndicator {
+//                                                                    HStack{
+//                                                                        Text(variationCocktail.cocktailName)
+//                                                                        Spacer()
+//                                                                    }
+//                                                                    .bold()
+//                                                                } destination: {
+//                                                                    SwipeRecipeView(variations: selectedCocktailVariations(for: variationCocktail))
+//                                                                        .navigationBarBackButtonHidden(true)
+//                                                                }
+//                                                            }
+//                                                        } label: {
+//                                                            Text(cocktail.cocktailName)
+//                                                        }
+//                                                        .disclosureGroupStyle(InlineDisclosureGroupStyle())
                                                     }
                                                 }
                                                 // TODO: Issue 2 - I'm bugged, my index is out of wack so swipe to delete is deleting the wrong item.

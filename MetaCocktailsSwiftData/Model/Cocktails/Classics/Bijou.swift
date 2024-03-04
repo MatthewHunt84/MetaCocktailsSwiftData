@@ -14,7 +14,8 @@ var bijou = Cocktail(cocktailName: "Bijou",
                      spec: bijouSpec,
                      tags: bijouTags,
                      variation: .bijou,
-                     collection: .originals)
+                     collection: .originals,
+                     titleCocktail: true)
 
 var bijouSpec     =  [CocktailIngredient(.bitters(.orangeBitters), value: 2, unit: .dashes),
                       CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),
