@@ -13,9 +13,7 @@ struct CocktailListView: View {
     @EnvironmentObject var criteria: SearchCriteriaViewModel
     @Bindable var viewModel = CocktailListViewModel()
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
-    @Query(filter: #Predicate {
-        $0.titleCocktail == true
-    } , sort: \Cocktail.cocktailName) var titleCocktails: [Cocktail]
+    //@Query(filter: #Predicate { $0.titleCocktail == true } , sort: \Cocktail.cocktailName) var titleCocktails: [Cocktail]
     @Environment(\.modelContext) private var modelContext
     
     
@@ -72,6 +70,32 @@ struct CocktailListView: View {
                                         }
                                         
                                     } else {
+                                        Section {
+                                            ForEach(cocktails) { cocktail in
+                                                if cocktail.collection == .custom {
+                                                    NavigationLinkWithoutIndicator {
+                                                        HStack{
+                                                            Text(cocktail.cocktailName)
+                                                            Spacer()
+                                                        }
+                                                    } destination: {
+                                                        RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                                                            .navigationBarBackButtonHidden(true)
+                                                    }
+                                                }
+                                            }
+                                            .onDelete { indexSet in
+                                                for index in indexSet {
+                                                    modelContext.delete(cocktails[index])
+                                                }
+                                            }
+                                            
+                                            
+                                        } header: {
+                                            Text("Custom Cocktails")
+                                        }
+                                      
+
                                         ForEach(criteria.alphabet, id: \.self) { letter in
                                             Section{
                                                 ForEach(cocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.self) { cocktail in
@@ -106,55 +130,34 @@ struct CocktailListView: View {
                                                         }
                                                     } else {
                                                         // TODO: Issue 1 - I'm showing disclosures for every cocktail, need to find a way to make a disclosure only show once per variation. Also this takes way too long
+
                                                         
-                                                        DisclosureGroup {
-                                                            ForEach(titleCocktails) { variationCocktail in
-                                                                
-                                                                NavigationLinkWithoutIndicator {
-                                                                    HStack{
-                                                                        Text(variationCocktail.cocktailName)
-                                                                        Spacer()
+                                                        let variations = cocktails.filter({$0.variation == cocktail.variation})
+                                                        if cocktail.titleCocktail == true {
+                                                            DisclosureGroup {
+                                                                ForEach(variations, id: \.cocktailName) { variationCocktail in
+                                                                    
+                                                                    NavigationLinkWithoutIndicator {
+                                                                        HStack{
+                                                                            Text(variationCocktail.cocktailName)
+                                                                            Spacer()
+                                                                        }
+                                                                        .bold()
+                                                                    } destination: {
+                                                                        SwipeRecipeView(variations: selectedCocktailVariations(for: variationCocktail))
+                                                                            .navigationBarBackButtonHidden(true)
                                                                     }
-                                                                    .bold()
-                                                                } destination: {
-                                                                    SwipeRecipeView(variations: selectedCocktailVariations(for: variationCocktail))
-                                                                        .navigationBarBackButtonHidden(true)
+                                                                    
                                                                 }
+                                                            } label: {
+                                                                Text(cocktail.cocktailName)
                                                             }
-                                                        } label: {
-                                                            Text(cocktail.cocktailName)
+                                                            .disclosureGroupStyle(InlineDisclosureGroupStyle())
                                                         }
-                                                        .disclosureGroupStyle(InlineDisclosureGroupStyle())
-                                                        
-//                                                        let variations = cocktails.filter({$0.variation == cocktail.variation})
-//                                                        DisclosureGroup {
-//                                                            ForEach(variations, id: \.cocktailName) { variationCocktail in
-//                                                                
-//                                                                NavigationLinkWithoutIndicator {
-//                                                                    HStack{
-//                                                                        Text(variationCocktail.cocktailName)
-//                                                                        Spacer()
-//                                                                    }
-//                                                                    .bold()
-//                                                                } destination: {
-//                                                                    SwipeRecipeView(variations: selectedCocktailVariations(for: variationCocktail))
-//                                                                        .navigationBarBackButtonHidden(true)
-//                                                                }
-//                                                            }
-//                                                        } label: {
-//                                                            Text(cocktail.cocktailName)
-//                                                        }
-//                                                        .disclosureGroupStyle(InlineDisclosureGroupStyle())
                                                     }
                                                 }
                                                 // TODO: Issue 2 - I'm bugged, my index is out of wack so swipe to delete is deleting the wrong item.
-                                                .onDelete { indexSet in
-                                                    for index in indexSet {
-                                                        print("--- about to delete: \(cocktails[index].cocktailName)")
-                                                        print("--- because of index: \(index)")
-                                                        modelContext.delete(cocktails[index])
-                                                    }
-                                                }
+                                                
                                             } header: {
                                                 Text("\(letter)")
                                                     .fontWeight(.bold)
