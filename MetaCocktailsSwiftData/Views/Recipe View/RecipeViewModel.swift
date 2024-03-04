@@ -11,8 +11,6 @@ import Observation
 @Observable final class RecipeViewModel {
     var cocktail: Cocktail
     var cocktailGlassImage: Image
-    
-    
 
     init(cocktail: Cocktail) {
         self.cocktail = cocktail
