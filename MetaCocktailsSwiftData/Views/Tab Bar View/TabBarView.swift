@@ -8,24 +8,25 @@
 import SwiftUI
 
 struct TabBarView: View {
+    
+    @EnvironmentObject var viewModel: SearchCriteriaViewModel
+    
     var body: some View {
 
-        TabView {
+        TabView(selection: $viewModel.tabSelection) {
             
             BasicSearchView()
                 .tabItem { Label("Search", systemImage: "magnifyingglass.circle.fill") }
+                .tag(0)
 
             CocktailListView()
                 .tabItem { Label("A-Z", systemImage: "list.bullet") }
+                .tag(1)
 
             AddCocktailView()
                 .tabItem { Label("Add Cocktail", image: "custom.book.fill.badge.plus") }
-            
-            AddIngredientView()
-                .tabItem { Label("Build", systemImage: "hourglass.bottomhalf.filled") }
+                .tag(2)
         }
-        
-        .environmentObject(SearchCriteriaViewModel()) // If we create the environmentObject on the main tabView like this, it gets automatically passed to all the child views. So any view in the tabView can just declare "@EnvironmentObject var viewModel: SearchCriteriaViewModel" and they will all have access to this same instance. Neat.
     }
 }
 

@@ -1,87 +1,38 @@
 import SwiftUI
-import Observation
-
-@Observable class AddCocktailViewModel: Observable {
-    var dateAdded = Date()
-    var defaultName = "Add Cocktail"
-    
-    // Required
-    var cocktailName: String = ""
-    
-    // Ingredients
-    var ingredients: [CocktailIngredient]?
-    
-    // Extras
-    var glass: Glassware?
-    var ice: Ice?
-    var garnish: Garnish?
-    var variation: Variation?
-    
-    // Author
-    var authorName: String = ""
-    var authorPlace: String = ""
-    var authorYear: String = ""
-    
-    // Build
-    var build: Build?
-    
-    func isValid() -> Bool {
-        return cocktailName != "" && glass != nil && ((ingredients?.count ?? 0) > 2)
-    }
-    
-    // Can't add cocktail alert
-    
-    var isShowingAlert: Bool = false
-    
-    func cantAddCocktailMessage() -> Text {
-        var text = ""
-        
-        if cocktailName == "" {
-            text = "Your cocktail must have a name"
-            if glass == nil {
-                text += ", and a glass"
-            }
-        } else if glass == nil {
-            text = "Select a glass"
-        }
-        if (ingredients?.count ?? 0) < 2 {
-            if text == "" {
-                text = "You must add at least two ingredients"
-            } else {
-                text += ", and at least two ingredients"
-            }
-        }
-        return Text(text)
-    }
-}
 
 struct AddCocktailView: View {
-    
+    @EnvironmentObject var criteria: SearchCriteriaViewModel
     @Bindable var viewModel = AddCocktailViewModel()
+    @State private var isShowingAddIngredients: Bool = false
+    @Environment(\.modelContext) private var modelContext
     
     var body: some View {
         
         NavigationStack {
-            
+           
             Form {
                 
                 Section(header: Text("Name")) {
                     TextField("Cocktail Name", text: $viewModel.cocktailName)
                 }
                 
-                Section(header: Text("Ingredients")) {
-                    AddedIngredientView(ingredients: $viewModel.ingredients)
-                }
+                AddedIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
+             
                 
                 Section(header: Text("Extras")) {
                     GlassPicker(glass: $viewModel.glass)
                     
                     IcePicker(ice: $viewModel.ice)
-                    
-                    GarnishPicker(garnish: $viewModel.garnish)
-                    
-                    VariationPicker(variaton: $viewModel.variation)
+
+                    VariationPicker(variation: $viewModel.variation)
                 }
+                Section {
+                    
+                    GarnishPicker(viewModel: viewModel)
+                } header: {
+                    Text("Garnish")
+                }
+
                 
                 Section(header: Text("Credit (optional)")) {
                     TextField("Author", text: $viewModel.authorName)
@@ -103,7 +54,24 @@ struct AddCocktailView: View {
                 ToolbarItem(placement: .bottomBar) {
                     Button {
                         if viewModel.isValid() {
-                            print("Add cocktail to swift data")
+                            let cocktail = Cocktail(cocktailName: viewModel.cocktailName,
+                                                    glasswareType: viewModel.glass!,
+                                                    garnish: viewModel.addedGarnish,
+                                                    ice: viewModel.ice,
+                                                    author: Author(person: viewModel.authorName,
+                                                                   place: viewModel.authorPlace,
+                                                                   year: viewModel.authorYear),
+                                                    spec: viewModel.addedIngredients,
+                                                    buildOrder: viewModel.build,
+                                                    tags: Tags(flavors: [], profiles: [], styles: [], booze: [], nA: []), 
+                                                    variation: viewModel.variation, 
+                                                    collection: .custom)
+                            
+                            modelContext.insert(cocktail)
+                            viewModel.clearData()
+                            
+                            criteria.tabSelection = 1
+                            
                         } else {
                             viewModel.isShowingAlert.toggle()
                         }
@@ -125,22 +93,37 @@ struct AddCocktailView: View {
 }
 
 private struct AddedIngredientView: View {
-    @Binding var ingredients: [CocktailIngredient]?
+   
+    @Bindable var viewModel: AddCocktailViewModel
+    @Binding var isShowingAddIngredients: Bool
+    
     
     var body: some View {
-        List {
-            Button {
-                print("show the add ingredient modal view")
-            } label: {
-                HStack {
-                    Text("Add ingredient")
-                        .foregroundStyle(.white)
-                    
+        Section(header: Text("Ingredients")) {
+            
+            List{
+                ForEach(viewModel.addedIngredients, id: \.ingredient.name) { ingredient in
+                    Text("\(NSNumber(value: ingredient.value)) \(ingredient.unit.rawValue) \(ingredient.ingredient.name)")
+                }
+                .onDelete(perform: { indexSet in
+                    viewModel.addedIngredients.remove(atOffsets: indexSet)
+                })
+            }
+            
+            Button(action: {
+                isShowingAddIngredients.toggle()
+                
+            }, label: {
+                HStack{
+                    Text(viewModel.addedIngredients.count < 2 ? "Add Ingredient" : "Add another ingredient")
+                        .tint(viewModel.addedIngredients.count < 2 ? .white : .secondary)
                     Spacer()
-                    
                     Image(systemName: "plus.circle.fill")
                         .foregroundStyle(.brandPrimaryGold)
                 }
+            })
+            .sheet(isPresented: $isShowingAddIngredients) {
+                AddIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
             }
         }
     }
@@ -200,27 +183,46 @@ private struct IcePicker: View {
 
 
 private struct GarnishPicker: View {
-    @Binding var garnish: Garnish?
+    
+    @Bindable var viewModel: AddCocktailViewModel
     
     var body: some View {
-        Picker("Garnish", selection: $garnish) {
-            Text("none").tag(Optional<String>(nil))
-            
-            ForEach(Garnish.allCases, id: \.rawValue)  { garnish in
-                Text(garnish.rawValue)
-                    .tag(Optional(garnish))
+        List{
+            ForEach(viewModel.addedGarnish, id: \.self) { garnish in
+                Text("\(garnish.rawValue)")
             }
-        }.pickerStyle(.navigationLink)
+            .onDelete(perform: { indexSet in
+                viewModel.addedGarnish.remove(atOffsets: indexSet)
+            })
+        }
+        
+        Menu {
+            ForEach(Garnish.allCases, id: \.rawValue ) { garnish in
+                Button(action: {
+                    viewModel.addedGarnish.append(garnish)
+                }, label: {
+                    Text("\(garnish.rawValue)")
+                })
+            }
+        } label: {
+            HStack {
+                Text(viewModel.addedGarnish.count < 1 ? "Add Garnish" : "Add another garnish")
+                    .tint(viewModel.addedGarnish.count < 1 ? .white : .secondary)
+                Spacer()
+                Image(systemName: "plus.circle.fill")
+                    .foregroundStyle(.brandPrimaryGold)
+            }
+        }
     }
 }
 
 private struct VariationPicker: View {
-    @Binding var variaton: Variation?
+    @Binding var variation: Variation?
     @State var isShowingInfo = false
     
     var body: some View {
         VStack {
-            Picker(selection: $variaton) {
+            Picker(selection: $variation) {
                 Text("none").tag(Optional<String>(nil))
                 
                 ForEach(Variation.allCases, id: \.rawValue)  { variation in
@@ -251,5 +253,6 @@ private struct VariationPicker: View {
 }
 
 #Preview {
-    AddCocktailView()
+    AddCocktailView(viewModel: AddCocktailViewModel())
+        
 }
