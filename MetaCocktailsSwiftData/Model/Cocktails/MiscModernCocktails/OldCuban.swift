@@ -17,7 +17,8 @@ var oldCuban = Cocktail(cocktailName: "Old Cuban",
                         spec: oldCubanSpec,
                         buildOrder: oldCubanBuild,
                         tags: oldCubanTags,
-                        variation: .oldCuban)
+                        variation: .oldCuban,
+                        titleCocktail: true)
 
 let oldCubanSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 6, unit: .gentlyMuddled),
                                           CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),

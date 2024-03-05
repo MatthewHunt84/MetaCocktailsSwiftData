@@ -30,10 +30,11 @@ class Cocktail: Equatable, Hashable {
     @Transient var compiledTags: Tags = Tags()
     var variation: Variation?
     var collection: CocktailCollection?
+    var titleCocktail: Bool?
   
     
     
-    init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [Garnish]? = nil, ice: Ice? = nil, author: Author? = nil, spec: [CocktailIngredient], buildOrder: Build? = nil, tags: Tags, variation: Variation? = nil, collection: CocktailCollection? = nil) {
+    init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [Garnish]? = nil, ice: Ice? = nil, author: Author? = nil, spec: [CocktailIngredient], buildOrder: Build? = nil, tags: Tags, variation: Variation? = nil, collection: CocktailCollection? = nil, titleCocktail: Bool = false) {
         self.id = id
         self.cocktailName = cocktailName
         self.imageAsset = imageAsset
@@ -46,6 +47,7 @@ class Cocktail: Equatable, Hashable {
         self.tags = tags
         self.variation = variation
         self.collection = collection
+        self.titleCocktail = titleCocktail
         self.compiledTags = {
             // when we initialize each cocktail we immediately make a stored property of it's combined cocktail + ingredient tags
             var newCompiledTags = Tags()

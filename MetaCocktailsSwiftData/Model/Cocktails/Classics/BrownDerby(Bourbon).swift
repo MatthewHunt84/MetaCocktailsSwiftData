@@ -13,7 +13,8 @@ let brownDerbyBourbon = Cocktail(cocktailName: "Brown Derby (Bourbon)",
                                  spec: brownDerbyBourbonSpec,
                                  tags: brownDerbyBourbonTags,
                                  variation: .brownDerby,
-                                 collection: .originals)
+                                 collection: .originals,
+                                 titleCocktail: true)
 
 var brownDerbyBourbonSpec: [CocktailIngredient] = [CocktailIngredient(.whiskies(.bourbonAny), value: 2),
                                                    CocktailIngredient(.juices(.grapefruit), value: 1),

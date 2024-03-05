@@ -14,7 +14,8 @@ var algonquin  = Cocktail(cocktailName: "Algonquin",
                           spec: algonquinSpec,
                           tags: algonquinTags,
                           variation: .algonquin,
-                          collection: .originals)
+                          collection: .originals,
+                          titleCocktail: true)
 
 var algonquinSpec  = [CocktailIngredient(.juices(.pineappleJuice), value: 1),
                       CocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 1),

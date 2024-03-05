@@ -17,7 +17,7 @@ struct MetaCocktailsSwiftDataApp: App {
         WindowGroup {
             TabBarView()
                 .preferredColorScheme(.dark)
-                .environmentObject(SearchCriteriaViewModel())
+                //.environmentObject(ViewRouter())
         }
         .modelContainer(CocktailContainer.preload(&shouldPreload))
     }

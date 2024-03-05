@@ -17,7 +17,8 @@ var bamboo = Cocktail(cocktailName: "Bamboo",
                       buildOrder: nil,
                       tags: bambooTags,
                       variation: .bamboo,
-                      collection: .originals)
+                      collection: .originals,
+                      titleCocktail: true)
 
 var bambooSpec = [CocktailIngredient(.fortifiedWines(.amontillado), value: 1.5),
                   CocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 1.5),

@@ -14,7 +14,8 @@ var brooklyn = Cocktail(cocktailName: "Brooklyn Cocktail",
                         spec: brooklynSpec,
                         tags: brooklynTags,
                         variation: .brooklyn,
-                        collection: .originals)
+                        collection: .originals,
+                        titleCocktail: true)
 
 var brooklynSpec     =  [CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 1, unit: .teaspoon),
                          CocktailIngredient(.amari(.amerPicon), value: 1, unit: .teaspoon),

@@ -16,7 +16,8 @@ var maiTai  = Cocktail(cocktailName: "Mai Tai",
                        spec: maiTaiSpec,
                        tags: maiTaiTags,
                        variation: .maiTai,
-                       collection: .originals)
+                       collection: .originals,
+                       titleCocktail: true)
 
 var maiTaiSpec    = [CocktailIngredient(.juices(.lime), value: 1),
                      CocktailIngredient(.syrups(.richDem), value: 1, unit: .teaspoon, prep: PrepBible.richDem),

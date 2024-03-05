@@ -15,7 +15,8 @@ var singaporeSling = Cocktail(cocktailName: "Singapore Sling",
                               buildOrder: nil,
                               tags: singaporeSlingTags,
                               variation: .singaporeSling,
-                              collection: .originals)
+                              collection: .originals,
+                              titleCocktail: true)
 
 var singaporeSlingSpec  = [CocktailIngredient(.soda(.sparklingWater), value: 2),
                           CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),

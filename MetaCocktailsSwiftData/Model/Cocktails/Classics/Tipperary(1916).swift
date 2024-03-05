@@ -14,7 +14,8 @@ var tipperary = Cocktail(cocktailName: "Tipperary",
                          spec: tipperarySpec,
                          tags: tipperaryTags,
                          variation: .tipperary,
-                         collection: .originals)
+                         collection: .originals,
+                         titleCocktail: true)
 
 var tipperarySpec     =  [CocktailIngredient(.whiskies(.bushmills), value: 1),
                           CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),

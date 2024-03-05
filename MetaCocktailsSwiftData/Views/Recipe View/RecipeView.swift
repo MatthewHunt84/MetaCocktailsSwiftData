@@ -15,9 +15,7 @@ struct RecipeView: View {
     var cocktailFrameSize = CGFloat(125)
     @Environment(\.dismiss) private var dismiss
     @State private var prepItems: [CocktailIngredient] = []
-    
-    
-    
+
     var body: some View {
         NavigationStack{
             HStack{

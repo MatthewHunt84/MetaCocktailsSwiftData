@@ -16,7 +16,8 @@ var hurricane = Cocktail(cocktailName: "Hurricane",
                          spec: hurricaneSpec,
                          tags: hurricaneTags,
                          variation: .hurricane,
-                         collection: .originals)
+                         collection: .originals,
+                         titleCocktail: true)
 
 let hurricaneSpec: [CocktailIngredient] =  [CocktailIngredient(.juices(.lemon), value: 2),
                                             CocktailIngredient(.syrups(.passionfruitSyrup), value: 2),

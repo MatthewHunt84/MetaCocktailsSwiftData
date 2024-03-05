@@ -16,7 +16,8 @@ var scofflaw = Cocktail(cocktailName: "Scofflaw",
                         buildOrder: nil,
                         tags: scofflawTags,
                         variation: .scofflaw,
-                        collection: .originals)
+                        collection: .originals,
+                        titleCocktail: true)
 
 var scofflawSpec  = [CocktailIngredient(.juices(.lemon), value: 1, unit: .dash),
                      CocktailIngredient(.syrups(.grenadine), value: 1, unit: .dash),

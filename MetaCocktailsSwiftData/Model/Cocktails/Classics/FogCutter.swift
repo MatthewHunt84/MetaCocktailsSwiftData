@@ -17,7 +17,8 @@ var fogCutter = Cocktail(cocktailName: "Fog Cutter",
                          spec: fogCutterSpec,
                          tags: fogCutterTags,
                          variation: .fogCutter,
-                         collection: .originals)
+                         collection: .originals,
+                         titleCocktail: true)
 
 
 let fogCutterSpec     = [CocktailIngredient(.juices(.lemon), value: 2),

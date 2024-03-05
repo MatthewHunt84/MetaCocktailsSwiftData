@@ -17,7 +17,8 @@ var fancyFree = Cocktail(cocktailName: "Fancy Free",
                          spec: fancyFreeSpec,
                          tags: fancyFreeTags,
                          variation: .fancyFree,
-                         collection: .originals)
+                         collection: .originals,
+                         titleCocktail: true)
 
 var fancyFreeSpec     =  [CocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dash),
                           CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),

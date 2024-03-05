@@ -15,7 +15,8 @@ var painKiller  = Cocktail(cocktailName: "Pain Killer",
                            spec: painKillerSpec,
                            tags: painKillerTags,
                            variation: .painKiller,
-                           collection: .originals)
+                           collection: .originals,
+                           titleCocktail: true)
 
 var painKillerSpec  = [CocktailIngredient(.juices(.orange), value: 0.5),
                        CocktailIngredient(.syrups(.cocoLopez), value: 0.75),

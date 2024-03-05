@@ -17,7 +17,8 @@ var elPresidente  = Cocktail(cocktailName: "El Presidente",
                              buildOrder: nil,
                              tags: elPresidenteTags,
                              variation: .elPresidente,
-                             collection: .originals)
+                             collection: .originals,
+                             titleCocktail: true)
 
 var elPresidenteSpec  = [CocktailIngredient(.rums(.rumWhite), value: 1.5),
                          CocktailIngredient(.fortifiedWines(.blancVermouth), value: 1.5),

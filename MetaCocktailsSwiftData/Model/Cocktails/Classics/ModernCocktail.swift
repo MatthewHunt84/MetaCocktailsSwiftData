@@ -17,7 +17,8 @@ var modernCocktail = Cocktail(cocktailName: "Modern Cocktail",
                               spec: modernCocktailSpec,
                               tags: modernCocktailTags,
                               variation: .modernCocktail,
-                              collection: .originals)
+                              collection: .originals,
+                              titleCocktail: true)
 
 var modernCocktailSpec = [CocktailIngredient(.juices(.lemon), value: 3, unit: .dashes),
                           CocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dash),

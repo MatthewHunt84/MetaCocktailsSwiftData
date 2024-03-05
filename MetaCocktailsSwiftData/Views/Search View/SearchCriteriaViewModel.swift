@@ -10,7 +10,7 @@ import SwiftUI
 
 final class SearchCriteriaViewModel: ObservableObject {
    
-    @Published var tabSelection = 0
+    
     
     @Published var searchText: String = ""
     @Published var cocktailComponents = createComponentArray().sorted(by: { $0.name < $1.name })

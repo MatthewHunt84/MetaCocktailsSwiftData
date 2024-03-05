@@ -14,7 +14,8 @@ var bloodyMary  = Cocktail(cocktailName: "Bloody Mary",
                            spec: bloodyMarrySpec,
                            buildOrder: bloodyMarryBuild,
                            tags: bloodyMarryTags,
-                           variation: .bloodyMary)
+                           variation: .bloodyMary,
+                           titleCocktail: true)
 
 var bloodyMarrySpec  = [CocktailIngredient(.otherNonAlc(.tomatoJuice), value: 4.5),
                         CocktailIngredient(.otherNonAlc(.worcestershire), value: 3, unit: .dashes),

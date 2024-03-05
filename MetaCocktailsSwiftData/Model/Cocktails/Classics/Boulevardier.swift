@@ -16,7 +16,8 @@ var boulevardier  =  Cocktail(cocktailName: "Boulevardier",
                               buildOrder: nil,
                               tags: boulevardierTags,
                               variation: .boulevardier,
-                              collection: .originals)
+                              collection: .originals,
+                              titleCocktail: true)
 
 var boulevardierSpec = [CocktailIngredient(.whiskies(.straightRyeOrBourbon), value: 1.25),
                         CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),

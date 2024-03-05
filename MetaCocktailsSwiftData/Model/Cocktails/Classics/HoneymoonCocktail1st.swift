@@ -15,7 +15,8 @@ var honeymoonCocktail1st = Cocktail(cocktailName: "Honeymoon Cocktail",
                                     spec: honeymoonCocktailSpec1st,
                                     tags: honeymoonCocktailTags1st,
                                     variation: .honeymoon,
-                                    collection: .originals)
+                                    collection: .originals,
+                                    titleCocktail: true)
 
 var honeymoonCocktailSpec1st =  [CocktailIngredient(.juices(.lemon), value: 0.5),
                                  CocktailIngredient(.liqueurs(.orangeCuracao), value: 3, unit: .dashes),

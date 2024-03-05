@@ -15,7 +15,8 @@ var mexicanFiringSquad = Cocktail(cocktailName: "Mexican Firing Squad",
                                   spec: mexicanFiringSquadSpec,
                                   tags: mexicanFiringSquadTags,
                                   variation: .mexicanFiringSquad,
-                                  collection: .originals)
+                                  collection: .originals,
+                                  titleCocktail: true)
 
 var mexicanFiringSquadSpec = [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
                               CocktailIngredient(.juices(.lime), value: 1),
