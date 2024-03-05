@@ -353,6 +353,7 @@
 		4DBFF8572B60AAFB0011B5B1 /* CableCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8562B60AAFB0011B5B1 /* CableCar.swift */; };
 		4DBFF8592B60AD800011B5B1 /* CableCar(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8582B60AD800011B5B1 /* CableCar(W&G).swift */; };
 		4DBFF85B2B60AFE60011B5B1 /* Carajillo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF85A2B60AFE60011B5B1 /* Carajillo.swift */; };
+		4DD0DE992B97E020008EF203 /* TabBarComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD0DE982B97E020008EF203 /* TabBarComponents.swift */; };
 		4DD171CD2B843C1C00EA8BD6 /* OldRandomCocktailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD171CC2B843C1C00EA8BD6 /* OldRandomCocktailButton.swift */; };
 		4DDC116C2B857EF0009EF5C4 /* SwipeRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDC116B2B857EF0009EF5C4 /* SwipeRecipeView.swift */; };
 		4DDC116E2B861576009EF5C4 /* InlineDisclosureGroupStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDC116D2B861576009EF5C4 /* InlineDisclosureGroupStyle.swift */; };
@@ -776,6 +777,7 @@
 		4DBFF8562B60AAFB0011B5B1 /* CableCar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CableCar.swift; sourceTree = "<group>"; };
 		4DBFF8582B60AD800011B5B1 /* CableCar(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CableCar(W&G).swift"; sourceTree = "<group>"; };
 		4DBFF85A2B60AFE60011B5B1 /* Carajillo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carajillo.swift; sourceTree = "<group>"; };
+		4DD0DE982B97E020008EF203 /* TabBarComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarComponents.swift; sourceTree = "<group>"; };
 		4DD171CC2B843C1C00EA8BD6 /* OldRandomCocktailButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldRandomCocktailButton.swift; sourceTree = "<group>"; };
 		4DDC116B2B857EF0009EF5C4 /* SwipeRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeRecipeView.swift; sourceTree = "<group>"; };
 		4DDC116D2B861576009EF5C4 /* InlineDisclosureGroupStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineDisclosureGroupStyle.swift; sourceTree = "<group>"; };
@@ -1111,6 +1113,7 @@
 			isa = PBXGroup;
 			children = (
 				1AC386982AAABED00064F52A /* TabBarView.swift */,
+				4DD0DE982B97E020008EF203 /* TabBarComponents.swift */,
 			);
 			path = "Tab Bar View";
 			sourceTree = "<group>";
@@ -1484,9 +1487,17 @@
 			path = "General Cocktail Instructions";
 			sourceTree = "<group>";
 		};
+		4DD0DE9A2B97E4CE008EF203 /* AddCocktailSubViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AddCocktailSubViews;
+			sourceTree = "<group>";
+		};
 		4DE33DF52B8D931500312EC3 /* CreateACocktailView */ = {
 			isa = PBXGroup;
 			children = (
+				4DD0DE9A2B97E4CE008EF203 /* AddCocktailSubViews */,
 				4DE33DF82B8D96B500312EC3 /* AddCocktailViewModel.swift */,
 				F4AA50472B93A54E00A05F54 /* AddCocktailView.swift */,
 				4DE33DF62B8D933700312EC3 /* AddIngredientView.swift */,
@@ -1709,6 +1720,7 @@
 				1AFDB7AE2ADF24A9000A3812 /* GinFizz.swift in Sources */,
 				4D54F7362B79F1E500D046D9 /* ContainerMenuView.swift in Sources */,
 				F41045072AD4FD42000CA913 /* CocktailImageView.swift in Sources */,
+				4DD0DE992B97E020008EF203 /* TabBarComponents.swift in Sources */,
 				4DBBA4CF2B6A3B7100179B8F /* QueensParkSwizzle(W&G).swift in Sources */,
 				4DE33E012B91559C00312EC3 /* SiGuey.swift in Sources */,
 				4DA567AB2B6CEC19003F6F04 /* EightySixListViewModel.swift in Sources */,

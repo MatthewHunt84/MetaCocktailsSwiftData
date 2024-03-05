@@ -4,8 +4,8 @@ struct AddCocktailView: View {
  
     @Bindable var viewModel = AddCocktailViewModel()
     @State private var isShowingAddIngredients: Bool = false
-    @State private var didAddCocktail: Bool = false
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.currentTab) private var selectedTab
     
     var body: some View {
         
@@ -70,8 +70,7 @@ struct AddCocktailView: View {
                             
                             modelContext.insert(cocktail)
                             viewModel.clearData()
-                            
-                            didAddCocktail.toggle()
+                            selectedTab.wrappedValue = .cocktailListView
                             
                         } else {
                             viewModel.isShowingAlert.toggle()
@@ -87,9 +86,6 @@ struct AddCocktailView: View {
                             Alert(title: viewModel.cantAddCocktailMessage())
                         })
                        
-                        .alert(isPresented: $didAddCocktail, content: {
-                            Alert(title: Text("You've successfully added a cocktail! You can find it on the cocktail list tab."))
-                        })
                     }
                 }
             }
