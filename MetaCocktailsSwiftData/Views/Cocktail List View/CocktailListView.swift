@@ -50,50 +50,50 @@ struct CocktailListView: View {
                         ScrollViewReader { value in
                             HStack {
                                 List{
-                                    if viewModel.isShowingWnGCocktailsOnly {
-                                        ForEach(criteria.alphabet, id: \.self) { letter in
-                                            Section{
-                                                ForEach(viewModel.justWilliamsAndGrahamCocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.cocktailName) { item in
-                                                    NavigationLink {
-                                                        RecipeView(viewModel: RecipeViewModel(cocktail: item))
-                                                        //.navigationBarBackButtonHidden(true)
-                                                    } label: {
-                                                        Text(item.cocktailName)
-                                                        
-                                                    }
-                                                }
-                                            } header: {
-                                                Text("\(letter)")
-                                                    .fontWeight(.bold)
-                                                    .font(.title)
-                                            }.id(letter)
-                                        }
-                                        
-                                    } else {
-                                        Section {
-                                            ForEach(cocktails) { cocktail in
-                                                if cocktail.collection == .custom {
-                                                    NavigationLinkWithoutIndicator {
-                                                        HStack{
-                                                            Text(cocktail.cocktailName)
-                                                            Spacer()
-                                                        }
-                                                    } destination: {
-                                                        RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                                                            .navigationBarBackButtonHidden(true)
-                                                    }
-                                                }
-                                            }
-                                            .onDelete { indexSet in
-                                                for index in indexSet {
-                                                    modelContext.delete(cocktails[index])
-                                                }
-                                            }
-                                            
-                                            
-                                        } header: {
-                                            Text("Custom Cocktails")
-                                        }
+//                                    if viewModel.isShowingWnGCocktailsOnly {
+//                                        ForEach(criteria.alphabet, id: \.self) { letter in
+//                                            Section{
+//                                                ForEach(viewModel.justWilliamsAndGrahamCocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.cocktailName) { item in
+//                                                    NavigationLink {
+//                                                        RecipeView(viewModel: RecipeViewModel(cocktail: item))
+//                                                        //.navigationBarBackButtonHidden(true)
+//                                                    } label: {
+//                                                        Text(item.cocktailName)
+//                                                        
+//                                                    }
+//                                                }
+//                                            } header: {
+//                                                Text("\(letter)")
+//                                                    .fontWeight(.bold)
+//                                                    .font(.title)
+//                                            }.id(letter)
+//                                        }
+//                                        
+//                                    } else {
+//                                        Section {
+//                                            ForEach(cocktails) { cocktail in
+//                                                if cocktail.collection == .custom {
+//                                                    NavigationLinkWithoutIndicator {
+//                                                        HStack{
+//                                                            Text(cocktail.cocktailName)
+//                                                            Spacer()
+//                                                        }
+//                                                    } destination: {
+//                                                        RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+//                                                            .navigationBarBackButtonHidden(true)
+//                                                    }
+//                                                }
+//                                            }
+//                                            .onDelete { indexSet in
+//                                                for index in indexSet {
+//                                                    modelContext.delete(cocktails[index])
+//                                                }
+//                                            }
+//                                            
+//                                            
+//                                        } header: {
+//                                            Text("Custom Cocktails")
+//                                        }
                                       
 
                                         ForEach(criteria.alphabet, id: \.self) { letter in
@@ -106,7 +106,7 @@ struct CocktailListView: View {
                                                                 HStack{
                                                                     Text(cocktail.cocktailName)
                                                                     Spacer()
-                                                                    Text("New!")
+                                                                    Text("Custom")
                                                                         .foregroundStyle(Color.brandPrimaryGold)
                                                                         .font(.subheadline)
                                                                 }
@@ -129,11 +129,12 @@ struct CocktailListView: View {
                                                             }
                                                         }
                                                     } else {
-                                                        // TODO: Issue 1 - I'm showing disclosures for every cocktail, need to find a way to make a disclosure only show once per variation. Also this takes way too long
-
-                                                        
-                                                        let variations = cocktails.filter({$0.variation == cocktail.variation})
+                                                        // TODO: This takes way too long
+                                                       
+                                                    
+//
                                                         if cocktail.titleCocktail == true {
+                                                            let variations = cocktails.filter({$0.variation == cocktail.variation})
                                                             DisclosureGroup {
                                                                 ForEach(variations, id: \.cocktailName) { variationCocktail in
                                                                     
@@ -164,7 +165,7 @@ struct CocktailListView: View {
                                                     .font(.title)
                                             }.id(letter)
                                         }
-                                    }
+//                                    }
                                 }
                                 .listStyle(.plain)
                                 .frame(width: listGeo.size.width * 0.9, height: listGeo.size.height)

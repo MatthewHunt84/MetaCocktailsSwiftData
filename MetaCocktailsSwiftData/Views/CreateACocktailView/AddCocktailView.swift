@@ -70,7 +70,7 @@ struct AddCocktailView: View {
                             modelContext.insert(cocktail)
                             viewModel.clearData()
                             
-                            criteria.tabSelection = 1
+                            criteria.tabSelection = 0
                             
                         } else {
                             viewModel.isShowingAlert.toggle()

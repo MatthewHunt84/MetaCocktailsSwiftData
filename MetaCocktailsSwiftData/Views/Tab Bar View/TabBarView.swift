@@ -15,14 +15,14 @@ struct TabBarView: View {
 
         TabView(selection: $viewModel.tabSelection) {
             
-            BasicSearchView()
-                .tabItem { Label("Search", systemImage: "magnifyingglass.circle.fill") }
-                .tag(0)
-
             CocktailListView()
                 .tabItem { Label("A-Z", systemImage: "list.bullet") }
+                .tag(0)
+            
+            BasicSearchView()
+                .tabItem { Label("Search", systemImage: "magnifyingglass.circle.fill") }
                 .tag(1)
-
+            
             AddCocktailView()
                 .tabItem { Label("Add Cocktail", image: "custom.book.fill.badge.plus") }
                 .tag(2)
