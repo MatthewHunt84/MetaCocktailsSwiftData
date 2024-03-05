@@ -12,6 +12,8 @@ let daiquiri = Cocktail(cocktailName: "Daiquiri",
                         garnish: [.limeWheel],
                         spec: daiquiriSpec,
                         tags: daiquiriTags,
+                        variation: .daiquiri,
+                        collection: .originals,
                         titleCocktail: true)
 
 var daiquiriSpec: [CocktailIngredient] = [CocktailIngredient(.rums(.rumWhite), value: 2.0),

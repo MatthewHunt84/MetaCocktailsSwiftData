@@ -40,6 +40,7 @@ enum Variation: String, Codable, CaseIterable {
     case greenpoint = "Greenpoint"
     case hankyPanky = "Hanky Panky"
     case harveyWallbanger = "Harvey Wallbanger"
+    case homeOnTheRange = "Home on the Range"
     case honeymoon = "Honeymoon Cocktail"
     case hollandHouse = "Holland House"
     case hotelNacional = "Hotel Nacional"

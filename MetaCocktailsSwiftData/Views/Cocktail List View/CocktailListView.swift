@@ -157,8 +157,7 @@ struct CocktailListView: View {
                                                         }
                                                     }
                                                 }
-                                                // TODO: Issue 2 - I'm bugged, my index is out of wack so swipe to delete is deleting the wrong item.
-                                                
+                                               
                                             } header: {
                                                 Text("\(letter)")
                                                     .fontWeight(.bold)

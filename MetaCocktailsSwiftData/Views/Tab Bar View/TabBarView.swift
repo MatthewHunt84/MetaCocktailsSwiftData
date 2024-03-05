@@ -9,24 +9,23 @@ import SwiftUI
 
 struct TabBarView: View {
     
-    @EnvironmentObject var viewModel: SearchCriteriaViewModel
+
     
     var body: some View {
-
-        TabView(selection: $viewModel.tabSelection) {
-            
+        TabView{
             CocktailListView()
                 .tabItem { Label("A-Z", systemImage: "list.bullet") }
-                .tag(0)
+                
             
             BasicSearchView()
                 .tabItem { Label("Search", systemImage: "magnifyingglass.circle.fill") }
-                .tag(1)
+              
             
             AddCocktailView()
                 .tabItem { Label("Add Cocktail", image: "custom.book.fill.badge.plus") }
-                .tag(2)
+             
         }
+        .environmentObject(SearchCriteriaViewModel())
     }
 }
 

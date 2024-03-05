@@ -42,7 +42,7 @@ enum Glassware: String, Codable, CaseIterable {
     func glassImage(cocktail: Cocktail) -> Image {
         switch self {
         case .blueBlazerMugs:
-            return  SwiftUI.Image("Urkel")
+            return  SwiftUI.Image("Blue Blazer Mugs")
         case .cinnamonSugarRim:
             return  SwiftUI.Image("martiniBlack2")
         case .coupe:

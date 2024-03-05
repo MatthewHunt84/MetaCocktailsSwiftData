@@ -1,9 +1,10 @@
 import SwiftUI
 
 struct AddCocktailView: View {
-    @EnvironmentObject var criteria: SearchCriteriaViewModel
+ 
     @Bindable var viewModel = AddCocktailViewModel()
     @State private var isShowingAddIngredients: Bool = false
+    @State private var didAddCocktail: Bool = false
     @Environment(\.modelContext) private var modelContext
     
     var body: some View {
@@ -70,7 +71,7 @@ struct AddCocktailView: View {
                             modelContext.insert(cocktail)
                             viewModel.clearData()
                             
-                            criteria.tabSelection = 0
+                            didAddCocktail.toggle()
                             
                         } else {
                             viewModel.isShowingAlert.toggle()
@@ -84,6 +85,10 @@ struct AddCocktailView: View {
                         .foregroundStyle(viewModel.isValid() ? .brandPrimaryGold : .secondary)
                         .alert(isPresented: $viewModel.isShowingAlert, content: {
                             Alert(title: viewModel.cantAddCocktailMessage())
+                        })
+                       
+                        .alert(isPresented: $didAddCocktail, content: {
+                            Alert(title: Text("You've successfully added a cocktail! You can find it on the cocktail list tab."))
                         })
                     }
                 }
