@@ -13,7 +13,6 @@ struct CocktailListView: View {
     
     @Bindable var viewModel = CocktailListViewModel()
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
-    //@Query(filter: #Predicate { $0.titleCocktail == true } , sort: \Cocktail.cocktailName) var titleCocktails: [Cocktail]
     @Environment(\.modelContext) private var modelContext
     
     
@@ -88,7 +87,7 @@ struct CocktailListView: View {
 
                                         ForEach(viewModel.cocktailListAlphabet, id: \.self) { letter in
                                             Section{
-                                                if letter == "pencil.circle.fill" {
+                                                if letter == CocktailListViewModel.sfSymbolForCustomCocktails {
                                                     ForEach(cocktails) { cocktail in
                                                         if cocktail.collection == .custom {
                                                             NavigationLinkWithoutIndicator {
@@ -167,7 +166,7 @@ struct CocktailListView: View {
                                                 }
                                                
                                             } header: {
-                                                if letter == "pencil.circle.fill" {
+                                                if letter == CocktailListViewModel.sfSymbolForCustomCocktails {
                                                     Text("Custom")
                                                         .fontWeight(.bold)
                                                         .font(.title)
@@ -199,6 +198,7 @@ struct CocktailListView: View {
                                             } else {
                                                 Text("\(viewModel.cocktailListAlphabet[i])")
                                                     .font(.headline).bold()
+                                                    .frame(width: 17, height: 13, alignment: .center)
                                             }
                                             
                                         })
@@ -206,7 +206,8 @@ struct CocktailListView: View {
                                     }
                                 }
                                 .frame(width: listGeo.size.width * 0.1, height: listGeo.size.height)
-                                .offset(x: -4, y: 5)
+                                .scaledToFit()
+                                .offset(x: -10, y: 5)
                             }
                         }
                     }
