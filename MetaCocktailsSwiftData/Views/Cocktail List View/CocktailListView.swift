@@ -10,7 +10,7 @@ import SwiftData
 import UIKit
 
 struct CocktailListView: View {
-    @EnvironmentObject var criteria: SearchCriteriaViewModel
+    
     @Bindable var viewModel = CocktailListViewModel()
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
     //@Query(filter: #Predicate { $0.titleCocktail == true } , sort: \Cocktail.cocktailName) var titleCocktails: [Cocktail]
@@ -41,6 +41,21 @@ struct CocktailListView: View {
                         .font(.largeTitle).bold()
                         .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
                     Spacer()
+                    Button {
+                        modelContext.insert(TestCocktails.textCocktail1)
+                        modelContext.insert(TestCocktails.textCocktail2)
+                        modelContext.insert(TestCocktails.textCocktail3)
+                        modelContext.insert(TestCocktails.textCocktail4)
+                        modelContext.insert(TestCocktails.textCocktail5)
+                        modelContext.insert(TestCocktails.textCocktail6)
+                        modelContext.insert(TestCocktails.textCocktail7)
+                        modelContext.insert(TestCocktails.textCocktail8)
+                        modelContext.insert(TestCocktails.textCocktail9)
+                        modelContext.insert(TestCocktails.textCocktail10)
+                    } label: {
+                        Text("Load Custom Cocktails")
+                    }
+
                 }
                 
                 
@@ -51,7 +66,7 @@ struct CocktailListView: View {
                             HStack {
                                 List{
                                     if viewModel.isShowingWnGCocktailsOnly {
-                                        ForEach(criteria.alphabet, id: \.self) { letter in
+                                        ForEach(viewModel.cocktailListAlphabet, id: \.self) { letter in
                                             Section{
                                                 ForEach(viewModel.justWilliamsAndGrahamCocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.cocktailName) { item in
                                                     NavigationLink {
@@ -70,35 +85,32 @@ struct CocktailListView: View {
                                         }
                                         
                                     } else {
-                                        Section {
-                                            ForEach(cocktails) { cocktail in
-                                                if cocktail.collection == .custom {
-                                                    NavigationLinkWithoutIndicator {
-                                                        HStack{
-                                                            Text(cocktail.cocktailName)
-                                                            Spacer()
+
+                                        ForEach(viewModel.cocktailListAlphabet, id: \.self) { letter in
+                                            Section{
+                                                if letter == "pencil.circle.fill" {
+                                                    ForEach(cocktails) { cocktail in
+                                                        if cocktail.collection == .custom {
+                                                            NavigationLinkWithoutIndicator {
+                                                                HStack{
+                                                                    Text(cocktail.cocktailName)
+                                                                    Spacer()
+                                                                }
+                                                            } destination: {
+                                                                RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                                                                    .navigationBarBackButtonHidden(true)
+                                                            }
                                                         }
-                                                    } destination: {
-                                                        RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                                                            .navigationBarBackButtonHidden(true)
+                                                    }
+                                                    .onDelete { indexSet in
+                                                        for index in indexSet {
+                                                            modelContext.delete(cocktails[index])
+                                                        }
                                                     }
                                                 }
-                                            }
-                                            .onDelete { indexSet in
-                                                for index in indexSet {
-                                                    modelContext.delete(cocktails[index])
-                                                }
-                                            }
-                                            
-                                            
-                                        } header: {
-                                            Text("Custom Cocktails")
-                                        }
-                                      
-
-                                        ForEach(criteria.alphabet, id: \.self) { letter in
-                                            Section{
                                                 ForEach(cocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.self) { cocktail in
+                                                    
+                                                    
                                                     if cocktail.variation == nil  {
                                                         
                                                         if cocktail.collection == .custom {
@@ -129,10 +141,6 @@ struct CocktailListView: View {
                                                             }
                                                         }
                                                     } else {
-                                                        // TODO: This takes way too long
-                                                       
-                                                    
-//
                                                         if cocktail.titleCocktail == true {
                                                             let variations = cocktails.filter({$0.variation == cocktail.variation})
                                                             DisclosureGroup {
@@ -159,9 +167,16 @@ struct CocktailListView: View {
                                                 }
                                                
                                             } header: {
-                                                Text("\(letter)")
-                                                    .fontWeight(.bold)
-                                                    .font(.title)
+                                                if letter == "pencil.circle.fill" {
+                                                    Text("Custom")
+                                                        .fontWeight(.bold)
+                                                        .font(.title)
+                                                } else {
+                                                    Text("\(letter)")
+                                                        .fontWeight(.bold)
+                                                        .font(.title)
+                                                }
+                                                
                                             }.id(letter)
                                         }
                                     }
@@ -169,14 +184,23 @@ struct CocktailListView: View {
                                 .listStyle(.plain)
                                 .frame(width: listGeo.size.width * 0.9, height: listGeo.size.height)
                                 VStack {
-                                    ForEach(0..<criteria.alphabet.count, id: \.self) { i in
+
+                                    ForEach(0..<viewModel.cocktailListAlphabet.count, id: \.self) { i in
                                         Button(action: {
                                             withAnimation {
-                                                value.scrollTo(criteria.alphabet[i], anchor: .top)
+                                                value.scrollTo(viewModel.cocktailListAlphabet[i], anchor: .top)
                                             }
                                         }, label: {
-                                            Text("\(criteria.alphabet[i])")
-                                                .font(.headline).bold()
+                                            if i == 0 {
+                                                Image(systemName: viewModel.cocktailListAlphabet[i] )
+                                                    .resizable()
+                                                    .frame(width: 15, height: 15, alignment: .center)
+                                                    .tint(.white)
+                                            } else {
+                                                Text("\(viewModel.cocktailListAlphabet[i])")
+                                                    .font(.headline).bold()
+                                            }
+                                            
                                         })
                                         .buttonStyle(ScaleButtonStyle())
                                     }
@@ -197,7 +221,7 @@ struct CocktailListView: View {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
     return CocktailListView(viewModel: CocktailListViewModel())
         .modelContainer(preview.container)
-        .environmentObject(SearchCriteriaViewModel())
+        
 }
 struct ScaleButtonStyle : ButtonStyle {
     
@@ -207,7 +231,6 @@ struct ScaleButtonStyle : ButtonStyle {
         
     }
 }
-
 
 
 

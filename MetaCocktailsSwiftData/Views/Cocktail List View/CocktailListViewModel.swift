@@ -23,6 +23,7 @@ import Observation
     var randomCocktail = oldFashioned
     var isShowingWnGCocktailsOnly: Bool = false
     var currentVariation = "Placeholder"
+    var cocktailListAlphabet = ["pencil.circle.fill", "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 
    
     func changePlaceholder(for cocktail: Cocktail) {
