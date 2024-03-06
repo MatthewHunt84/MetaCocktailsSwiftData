@@ -9,22 +9,18 @@ import SwiftUI
 
 struct TabBarView: View {
     
-
+    @State private var selectedTab: TabBarComponents = .cocktailListView
     
     var body: some View {
-        TabView{
-            CocktailListView()
-                .tabItem { Label("A-Z", systemImage: "list.bullet") }
-                
-            
-            BasicSearchView()
-                .tabItem { Label("Search", systemImage: "magnifyingglass.circle.fill") }
-              
-            
-            AddCocktailView()
-                .tabItem { Label("Add Cocktail", image: "custom.book.fill.badge.plus") }
-             
+        
+        TabView(selection: $selectedTab)  {
+            ForEach(TabBarComponents.allCases) { screen in
+                screen.destination
+                    .tag(screen as TabBarComponents?)
+                    .tabItem { screen.label }
+            }
         }
+        .environment(\.currentTab, $selectedTab)
         .environmentObject(SearchCriteriaViewModel())
     }
 }
@@ -36,5 +32,6 @@ struct TabBarView: View {
     return TabBarView()
         .environmentObject(SearchCriteriaViewModel())
         .modelContainer(preview.container)
-        
+    
 }
+

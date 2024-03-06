@@ -12,6 +12,7 @@ struct AddIngredientView: View {
     @Bindable var viewModel: AddCocktailViewModel
     @Binding var isShowingAddIngredients: Bool
     @FocusState private var keyboardFocused: Bool
+    @FocusState private var amountKeyboardFocus: Bool
     
     
     var body: some View {
@@ -32,6 +33,7 @@ struct AddIngredientView: View {
                                 }
                                 viewModel.dynamicallyChangeMeasurementUnit()
                                 viewModel.ingredientName = component.name
+                                amountKeyboardFocus = true
                             }
                             if component.isSpirit {
                                 if let category = component.spiritCategory {
@@ -39,6 +41,7 @@ struct AddIngredientView: View {
                                 }
                                 viewModel.dynamicallyChangeMeasurementUnit()
                                 viewModel.ingredientName = component.name
+                                amountKeyboardFocus = true
                             }
                             
                             
@@ -55,6 +58,8 @@ struct AddIngredientView: View {
             HStack {
                 TextField("Amount", value: $viewModel.ingredientAmount, formatter: viewModel.formatter).cBCTextField()
                     .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .keyboardType(.decimalPad)
+                    .focused($amountKeyboardFocus)
                 Menu(viewModel.selectedMeasurementUnit.rawValue) {
                     ForEach(MeasurementUnit.allCases, id: \.self) { unit in
                         Button {

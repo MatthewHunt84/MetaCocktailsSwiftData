@@ -43,6 +43,7 @@ enum AuthorNames: String, Codable, CaseIterable {
     case jesseBowen        = "Jesse Bowen"
     case kennyRemster      = "Kenny Remster"
     case vincenzoErrico    = "Vincenzo Errico"
+    case zacharyRubin      = "Zachary Gelnaw-Rubin"
   
 }
 
@@ -53,6 +54,7 @@ enum AuthorPlaces: String, Codable, CaseIterable {
     case crosbyGaigeCocktailGuide     = "Crosby Gaige's Cocktail Guide and Ladies Companion, New York"
     case deathAndCo                   = "Death & Co"
     case detroitAthleticClub          = "Detroit Athletic club"
+    case dutchKills                   = "Dutch Kills, New York"
     case fredsClubLondon              = "Fred's Club. London, Soho"
     case famousNewOrleansDrinks       = "Famous New Orleans Drinks and How to Mix 'Em'"
     case gentlemansCompanion          = "Gentleman's Companion"
