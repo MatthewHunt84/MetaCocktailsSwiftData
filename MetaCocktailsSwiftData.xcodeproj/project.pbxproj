@@ -241,6 +241,7 @@
 		4DA5686C2B70CF4E003F6F04 /* CBCAddIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5686B2B70CF4E003F6F04 /* CBCAddIngredientView.swift */; };
 		4DA5686E2B70EB26003F6F04 /* CBCIngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5686D2B70EB26003F6F04 /* CBCIngredientCell.swift */; };
 		4DA568702B71698D003F6F04 /* SavedBatchCocktailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5686F2B71698D003F6F04 /* SavedBatchCocktailsView.swift */; };
+		4DAF57C32B99365C00FEA72F /* Daiquiri(M&H).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAF57C22B99365C00FEA72F /* Daiquiri(M&H).swift */; };
 		4DB1C0B92B46D4E600943C69 /* CocktailComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB1C0B82B46D4E600943C69 /* CocktailComponent.swift */; };
 		4DB1C0BC2B46D63300943C69 /* CocktailResultListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB1C0BB2B46D63300943C69 /* CocktailResultListView.swift */; };
 		4DB1C0BE2B46D74B00943C69 /* ResultViewSectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB1C0BD2B46D74B00943C69 /* ResultViewSectionData.swift */; };
@@ -667,6 +668,7 @@
 		4DA5686B2B70CF4E003F6F04 /* CBCAddIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBCAddIngredientView.swift; sourceTree = "<group>"; };
 		4DA5686D2B70EB26003F6F04 /* CBCIngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBCIngredientCell.swift; sourceTree = "<group>"; };
 		4DA5686F2B71698D003F6F04 /* SavedBatchCocktailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedBatchCocktailsView.swift; sourceTree = "<group>"; };
+		4DAF57C22B99365C00FEA72F /* Daiquiri(M&H).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Daiquiri(M&H).swift"; sourceTree = "<group>"; };
 		4DB1C0B82B46D4E600943C69 /* CocktailComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailComponent.swift; sourceTree = "<group>"; };
 		4DB1C0BB2B46D63300943C69 /* CocktailResultListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailResultListView.swift; sourceTree = "<group>"; };
 		4DB1C0BD2B46D74B00943C69 /* ResultViewSectionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewSectionData.swift; sourceTree = "<group>"; };
@@ -1379,6 +1381,7 @@
 				4DE33E1E2B91B5DA00312EC3 /* Calvados75.swift */,
 				4DE33E082B9160DF00312EC3 /* CobbleHill.swift */,
 				4DE33E202B91B82E00312EC3 /* Cosmonaut.swift */,
+				4DAF57C22B99365C00FEA72F /* Daiquiri(M&H).swift */,
 				4DD0DE9F2B981EC3008EF203 /* Debbie, Don't.swift */,
 				4DE33E0A2B9165A100312EC3 /* DeepBlueSea.swift */,
 				4DE33E0C2B916F8800312EC3 /* FallbackCocktail.swift */,
@@ -1814,6 +1817,7 @@
 				4DBBA4762B6873D000179B8F /* LemonDrop.swift in Sources */,
 				4DF408C22B60D0F100EF9A6E /* Caucasian.swift in Sources */,
 				4DA567EE2B6DDDDF003F6F04 /* ALightInTheDark.swift in Sources */,
+				4DAF57C32B99365C00FEA72F /* Daiquiri(M&H).swift in Sources */,
 				1AC386CA2AAABED10064F52A /* CocktailListViewModel.swift in Sources */,
 				4DBBA4322B65AEBC00179B8F /* HankyPanky(W&G).swift in Sources */,
 				4DA567542B6C408B003F6F04 /* TomCollins.swift in Sources */,
