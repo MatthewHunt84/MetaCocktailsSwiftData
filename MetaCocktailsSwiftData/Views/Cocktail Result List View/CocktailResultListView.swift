@@ -15,13 +15,13 @@ struct CocktailResultList: View {
         
         VStack {
             
-            if isLoading {
-                Image("Couldn’tLoad")
-                    .resizable()
-                    .scaledToFit()
-                
-            } else {
-                if viewModel.preferredCount > 0 {
+//            if isLoading {
+//                Image("Couldn’tLoad")
+//                    .resizable()
+//                    .scaledToFit()
+//                
+//            } else {
+//                if viewModel.preferredCount > 0 {
                     VStack{
                         List {
                             if viewModel.enableMultipleSpiritSelection == false {
@@ -67,22 +67,22 @@ struct CocktailResultList: View {
                             ResultsConfigurationMenu(viewModel: viewModel)
                         }
                     }
-                } else  {
-                    ZStack(alignment: .center) {
-                        Color.black
-                        
-                        VStack {
-                            Text("Add more preferences to continue")
-                                .font(.title).bold()
-                            .multilineTextAlignment(.center)
-                            Image("Urkel")
-                                .resizable()
-                                .scaledToFit()
-                        }
-                        
-                    }
-                }
-            }
+//                } else  {
+//                    ZStack(alignment: .center) {
+//                        Color.black
+//                        
+//                        VStack {
+//                            Text("Add more preferences to continue")
+//                                .font(.title).bold()
+//                            .multilineTextAlignment(.center)
+//                            Image("Urkel")
+//                                .resizable()
+//                                .scaledToFit()
+//                        }
+//                        
+//                    }
+//                }
+//            }
             Spacer()
         }
     }
