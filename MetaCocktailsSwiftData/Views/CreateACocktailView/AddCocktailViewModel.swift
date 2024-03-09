@@ -20,7 +20,7 @@ import Observation
     var currentSelectedComponent = CocktailComponent(name: "Placeholder")
     var addedIngredients: [CocktailIngredient] = []
     var addedGarnish: [Garnish] = []
-    var allPhysicalCocktailComponents: [CocktailComponent] = createPhysicalComponentArray()
+    var allPhysicalCocktailComponents: [CocktailComponent] = getAllPhysicalComponents()
     
     var dateAdded = Date()
     var defaultName = "Add Cocktail"
@@ -163,19 +163,7 @@ import Observation
             }
         }
 
-    
-    static func createPhysicalComponentArray() ->  [CocktailComponent] {
-        
-        var array = [CocktailComponent]()
-        let convertedBoozeArray: [CocktailComponent] = AddCocktailViewModel.getAllPhysicalComponents()
-        
-        for component in convertedBoozeArray {
-            array.append(component)
-        }
-       
-        
-        return array
-    }
+
     
     static func getAllPhysicalComponents() -> [CocktailComponent] {
         var cocktailComponentArray = [CocktailComponent]()

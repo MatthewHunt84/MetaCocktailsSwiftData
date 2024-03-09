@@ -6,23 +6,25 @@
 //
 
 import SwiftUI
+import Observation
 
-
+//                                                                                          MARK: Fix all of this.
+@Observable
 final class SearchCriteriaViewModel: ObservableObject {
 
-    @Published var searchText: String = ""
-    @Published var cocktailComponents = createComponentArray().sorted(by: { $0.name < $1.name })
-    @Published var preferredCount = 0
-    @Published var sections = [ResultViewSectionData]()
-    @Published var enableMultipleSpiritSelection = false
-    @Published var isLoading = true
-    @Published var multipleBaseSpiritsSelected: Bool = false
-    @Published var menuMode: Bool = false 
-    @Published var showWilliamsAndGrahamCocktails: Bool = false
-    @Published var boozeCategories = {Array(Set(generatedBoozeCocktailComponents.map({$0.spiritCategoryName}))).sorted()}()
-    @Published var nACategories = {Array(Set(generatedNACocktailComponents.map({$0.nACategoryName}))).sorted()}()
-    @Published var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-    @Published var cocktailListAlphabet = ["pencil.circle.fill", "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    var searchText: String = ""
+    var cocktailComponents = createComponentArray().sorted(by: { $0.name < $1.name })
+    var preferredCount = 0
+    var sections = [ResultViewSectionData]()
+    var enableMultipleSpiritSelection = false
+    var isLoading = true
+    var multipleBaseSpiritsSelected: Bool = false
+   
+    var showWilliamsAndGrahamCocktails: Bool = false
+    var boozeCategories = {Array(Set(generatedBoozeCocktailComponents.map({$0.spiritCategoryName}))).sorted()}()
+    var nACategories = {Array(Set(generatedNACocktailComponents.map({$0.nACategoryName}))).sorted()}()
+    var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    var cocktailListAlphabet = ["pencil.circle.fill", "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     
     static var generatedBoozeCocktailComponents: [CocktailComponent] = {
         return IngredientType.getBoozeComponents()
@@ -30,7 +32,7 @@ final class SearchCriteriaViewModel: ObservableObject {
     static var generatedNACocktailComponents: [CocktailComponent] = {
         return IngredientType.getNAComponents()
     }()
-    
+    //                          MARK: For loops
     func matchAllTheThings() {
         // if searchText is empty, show everything again
         
@@ -84,20 +86,26 @@ final class SearchCriteriaViewModel: ObservableObject {
         cocktailComponent.first?.isUnwanted = false
         getFilteredCocktails()
     }
-    static func get86ListNames() -> [String] {
-        var new86List: [String] = []
-        let convertedBoozeArray: [CocktailComponent] = SearchCriteriaViewModel.generatedBoozeCocktailComponents.filter({$0.is86d == true})
-        let convertedNAArray: [CocktailComponent] = SearchCriteriaViewModel.generatedNACocktailComponents.filter({$0.is86d == true})
-        for component in convertedBoozeArray {
-            new86List.append(component.name)
-        }
-        for component in convertedNAArray {
-            new86List.append(component.name)
-        }
-        
-        return new86List
-    }
     
+    
+    
+    //                          MARK: For loops  . But we can just delete this. It's not in use.
+//    static func get86ListNames() -> [String] {
+//        var new86List: [String] = []
+//        let convertedBoozeArray: [CocktailComponent] = SearchCriteriaViewModel.generatedBoozeCocktailComponents.filter({$0.is86d == true})
+//        let convertedNAArray: [CocktailComponent] = SearchCriteriaViewModel.generatedNACocktailComponents.filter({$0.is86d == true})
+//        for component in convertedBoozeArray {
+//            new86List.append(component.name)
+//        }
+//        for component in convertedNAArray {
+//            new86List.append(component.name)
+//        }
+//        
+//        return new86List
+//    }
+    
+    
+    //                                                                                  MARK: For loops
     static func createComponentArray() ->  [CocktailComponent] {
         
         var array = [CocktailComponent]()
@@ -138,6 +146,8 @@ final class SearchCriteriaViewModel: ObservableObject {
         }
         return matches
     }
+    
+    
     func convertTagsAndSpecToStrings(for cocktail: Cocktail) -> [String] {
         var strings: [String] = [String]()
         strings.append(contentsOf: cocktail.spec.map({$0.ingredient.name}))
@@ -158,6 +168,8 @@ final class SearchCriteriaViewModel: ObservableObject {
         }
         return Array(Set(strings))
     }
+    
+    //                                                              MARK: We need to change this to utilize SwiftData @Query
     func getFilteredCocktails() {
         var startingCocktails: [Cocktail] = []
         isLoading = true
@@ -236,6 +248,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         print("The cocktail count is \(CocktailListViewModel().bartenderCocktails.count)")
     }
     
+    //                                                                                          MARK: For loops
     private func modifiedPreferredCount() -> Int {
         // compare preferredComponent against current cocktail of loop, then return number of matches.
         var baseMatches = 0
@@ -249,7 +262,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         let modifiedCount = selectedPreferredIngredients().count - baseMatches + 1
         return modifiedCount
     }
-    
+    //                                                                                          MARK: For loops
     private func countMatchesForMultipleSpirits(for cocktail: Cocktail) -> Int {
         // compare preferredComponent against current cocktail of loop, then return number of matches.
         var justBases = [String]()
@@ -275,6 +288,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         return matches
     }
     
+    //                                                                                          MARK: For loops
     private func convertAllTagsOmittingBaseSpirits(tags: Tags, cocktail: Cocktail) -> [String] {
         var strings: [String] = [String]()
         if let boozeComponents = tags.booze {
@@ -300,6 +314,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         
     }
     
+    //                                                                                          MARK: For loops
     private func convertOnlyBaseSpiritsIntoStrings() -> [String] {
         var stringArray: [String] = [String]()
         for gin in Gin.allCases {
@@ -326,6 +341,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         return stringArray
     }
     
+    //                                                                                          MARK: For loops
     func returnMatchedBase(_ cocktail: Cocktail) -> String {
         var matchedString = ""
         if let boozeComponents = cocktail.compiledTags.booze {
@@ -340,6 +356,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         return matchedString
     }
     
+    //                                                                                          MARK: For loops
     func returnPreferredBaseSpirits() -> [String] {
         var baseArray: [String] = [String]()
         

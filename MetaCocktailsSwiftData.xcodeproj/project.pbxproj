@@ -1496,17 +1496,9 @@
 			path = "General Cocktail Instructions";
 			sourceTree = "<group>";
 		};
-		4DD0DE9A2B97E4CE008EF203 /* AddCocktailSubViews */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AddCocktailSubViews;
-			sourceTree = "<group>";
-		};
 		4DE33DF52B8D931500312EC3 /* CreateACocktailView */ = {
 			isa = PBXGroup;
 			children = (
-				4DD0DE9A2B97E4CE008EF203 /* AddCocktailSubViews */,
 				4DE33DF82B8D96B500312EC3 /* AddCocktailViewModel.swift */,
 				F4AA50472B93A54E00A05F54 /* AddCocktailView.swift */,
 				4DE33DF62B8D933700312EC3 /* AddIngredientView.swift */,

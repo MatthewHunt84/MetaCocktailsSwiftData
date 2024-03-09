@@ -29,19 +29,14 @@ struct CocktailResultList: View {
                                     Section(header: SearchedCocktailTitleHeader(searched: result.count, matched: result.matched)) {
                                         ForEach(result.cocktails, id: \.self.id) { cocktail in
                                             NavigationLink {
-                                                if viewModel.menuMode {
-                                                    SearchGuestRecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                                                                     
-                                                    } else {
-                                                    RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                                                }
                                                 
+                                                RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
                                             } label: {
                                                 HStack {
                                                     Text(cocktail.cocktailName)
-                                                        
+                                                    
                                                 }
-                                               
+                                                
                                             }
                                         }
                                     }
@@ -51,11 +46,9 @@ struct CocktailResultList: View {
                                     Section(header: SearchedCocktailTitleHeaderForMultipleSpirits(searched: result.count, matched: result.matched, baseSpirit: result.baseSpirit)) {
                                         ForEach(result.cocktails, id: \.self.id) { cocktail in
                                             NavigationLink {
-                                                if viewModel.menuMode {
-                                                    SearchGuestRecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                                                } else {
-                                                    RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                                                }
+                                                
+                                                RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                                                
                                             } label: {
                                                 HStack {
                                                     Text(cocktail.cocktailName)
