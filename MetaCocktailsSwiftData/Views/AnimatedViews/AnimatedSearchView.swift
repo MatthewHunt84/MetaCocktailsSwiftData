@@ -14,7 +14,7 @@ struct AnimatedSearchView: View {
     
     private var tags: [String] = {
         var array = [String]()
-        for component in SearchCriteriaViewModel.createComponentArray() {
+        for component in SearchCriteriaViewModel().cocktailComponents {
             array.append(component.name)
         }
         return array
