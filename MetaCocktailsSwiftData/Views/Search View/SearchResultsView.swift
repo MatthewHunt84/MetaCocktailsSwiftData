@@ -117,7 +117,7 @@ struct SearchResultsView: View {
         }
         
     }
-    
+    // MARK: BEGINNING OF VIEW MODEL MIGRATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     func gitFilteredCocktailsSwiftData()  {
         var startingCocktails: [Cocktail] = []
         viewModel.isLoading = true
@@ -314,7 +314,7 @@ struct SearchResultsView: View {
         }
         return matches
     }
-    
+    // MARK: END OF VIEW MODEL MIGRATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 }
 
 struct SearchedCocktailTitleHeader: View {

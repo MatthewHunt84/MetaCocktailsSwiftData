@@ -147,10 +147,6 @@ final class SearchCriteriaViewModel: ObservableObject {
         preferredCount = 0
         sections.removeAll()
     }
-   
-    
-    
-    
     
    func modifiedPreferredCount() -> Int {
         // compare preferredComponent against current cocktail of loop, then return number of matches.
@@ -180,7 +176,7 @@ final class SearchCriteriaViewModel: ObservableObject {
     
     
     
-    // MARK: MOVE TO VIEW ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    // MARK: MOVED TO SEARCH-RESULTS-VIEW ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``````````````````~~~~~~~~~~~~~~~~~`````````````````~~~~~~~~~~~~~~~~~`````````````````~~~~~~~~~~~~~~~~`````````````````~~~~~~~~~~~~~~~~``````````````` ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //    func removePreference(for component: CocktailComponent) {
 //        // When we click a green bubble to remove a preferred tag, we change the data and the UI updates.
 //        

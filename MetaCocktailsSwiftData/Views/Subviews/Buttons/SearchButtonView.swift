@@ -30,17 +30,13 @@ struct SearchButtonView: View {
                     
                     
                 }
-                .disabled(viewModel.selectedPreferredIngredients().count == 0 ? true : false)
                 .offset(x: 16)
                 .transition(.scale)
                 Button(action: {
                     for i in 0..<viewModel.cocktailComponents.count {
                         viewModel.cocktailComponents[i].isPreferred = false
                         viewModel.cocktailComponents[i].isUnwanted = false
-                        viewModel.enableResultsForMultipleBaseSpirits = false
-                        
                     }
-                    
                 }) {
                     Image(systemName: "xmark")
                     
