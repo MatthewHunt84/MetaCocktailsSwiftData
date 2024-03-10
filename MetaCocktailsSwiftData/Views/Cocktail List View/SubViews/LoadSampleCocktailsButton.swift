@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct LoadSampleCocktailsButton: View {
+    
+    @Environment(\.modelContext) private var modelContext
     var body: some View {
-        Text("Cocktails")
-            .font(.largeTitle).bold()
-            .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
-        Spacer()
+        
         Button {
             modelContext.insert(TestCocktails.textCocktail1)
             modelContext.insert(TestCocktails.textCocktail2)

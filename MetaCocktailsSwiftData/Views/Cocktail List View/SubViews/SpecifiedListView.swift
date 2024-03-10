@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SpecifiedListView: View {
+    
     @Bindable var viewModel = CocktailListViewModel()
     var cocktails: [Cocktail]
     
@@ -39,6 +40,3 @@ struct SpecifiedListView: View {
     }
 }
 
-#Preview {
-    SpecifiedListView()
-}

@@ -12,19 +12,14 @@ import UIKit
 struct CocktailListView: View {
     
     @Bindable var viewModel = CocktailListViewModel()
-    @State private var cocktailCollection: CocktailCollection = .all
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
-
     @Query(filter: #Predicate { $0.collectionName.contains("Williams")}, sort: \Cocktail.cocktailName) var williamsAndGrahamCocktials: [Cocktail]
     @Query(filter: #Predicate { $0.collectionName.contains("Milk")}, sort: \Cocktail.cocktailName) var milkAndHoneyCocktials: [Cocktail]
     @Query(filter: #Predicate { $0.collectionName.contains("Original")}, sort: \Cocktail.cocktailName) var originalCocktials: [Cocktail]
     
-    @Environment(\.modelContext) private var modelContext
-    
     var body: some View {
         
         NavigationStack{
-            
             VStack {
                 HStack {
                     Text("Cocktails")
@@ -34,7 +29,7 @@ struct CocktailListView: View {
                     LoadSampleCocktailsButton()
                     
                 }
-                CocktailCollectionPicker(viewModel: viewModel, cocktailCollection: $cocktailCollection)
+                CocktailCollectionPicker(viewModel: viewModel, cocktailCollection: $viewModel.cocktailCollection)
                 
                 GeometryReader { listGeo in
                     
@@ -42,7 +37,7 @@ struct CocktailListView: View {
                         ScrollViewReader { value in
                             HStack {
                                 List{
-                                    switch cocktailCollection {
+                                    switch viewModel.cocktailCollection {
                                     case .all:
                                         AllCocktailsListView(cocktails: cocktails)
                                     case .williamsAndGraham:
@@ -66,12 +61,12 @@ struct CocktailListView: View {
                                             }
                                         }, label: {
                                             if i == 0 {
-                                                Image(systemName: viewModel.cocktailListAlphabet[i] )
-                                                    .resizable()
-                                                    .frame(width: 15, height: 15, alignment: .center)
-                                                    .tint(viewModel.isShowingAllCocktails ? .white : .black)
-                                                    .disabled(viewModel.isShowingAllCocktails ? true : false)
-                                                    
+                                                if viewModel.cocktailCollection == .all {
+                                                    Image(systemName: viewModel.cocktailListAlphabet[i] )
+                                                        .resizable()
+                                                        .frame(width: 15, height: 15, alignment: .center)
+                                                        .tint(.white)
+                                                }   
                                             } else {
                                                 Text("\(viewModel.cocktailListAlphabet[i])")
                                                     .font(.headline).bold()
@@ -90,7 +85,6 @@ struct CocktailListView: View {
                     }
                 }
             }
-            
         }
     }
 }

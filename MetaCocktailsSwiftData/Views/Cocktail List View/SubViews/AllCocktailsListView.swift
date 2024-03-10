@@ -123,7 +123,3 @@ struct AllCocktailsListView: View {
 }
 
 
-
-#Preview {
-    AllCocktailsListView()
-}

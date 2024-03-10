@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct CocktailCollectionPicker: View {
+    
     @Bindable var viewModel = CocktailListViewModel()
     @Binding  var cocktailCollection: CocktailCollection
-    
     
     var body: some View {
         Menu {
@@ -19,8 +19,6 @@ struct CocktailCollectionPicker: View {
                     if int.collectionName != "Custom" {
                         Text(int.collectionName)
                     }
-                        
-                    
                 }
             } label: {}
         } label: {
@@ -28,15 +26,7 @@ struct CocktailCollectionPicker: View {
                 .font(.headline)
                 .tint(.white)
         }
-        .onTapGesture {
-            if cocktailCollection == .all {
-                viewModel.isShowingAllCocktails = true
-            } else {
-                viewModel.isShowingAllCocktails = false
-            }
-        }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0))
-        
     }
 }
