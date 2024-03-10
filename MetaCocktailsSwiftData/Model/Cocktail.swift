@@ -27,7 +27,7 @@ class Cocktail: Equatable, Hashable {
     @Relationship(deleteRule: .cascade) var spec: [CocktailIngredient]
     var buildOrder: Build?
     @Transient var tags: Tags = Tags()
-    @Transient var compiledTags: Tags = Tags()
+    var compiledTags: Tags = Tags()
     var variation: Variation?
     var collection: CocktailCollection?
     var titleCocktail: Bool?

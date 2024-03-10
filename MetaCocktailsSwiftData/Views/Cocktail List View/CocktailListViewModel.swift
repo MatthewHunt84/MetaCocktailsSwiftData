@@ -11,14 +11,14 @@ import Observation
 @Observable final class CocktailListViewModel{
     static let shared = CocktailListViewModel()
     //@Published var guestCocktails: [Cocktail] = getGuestViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName})
-    var bartenderCocktails: [Cocktail] = getBartenderViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName})
+   // var bartenderCocktails: [Cocktail] = getBartenderViewCocktails().flatMap({$0.cocktailVariations}).sorted(by: {$0.cocktailName < $1.cocktailName})
     //@Published var bartenderCocktails: [Cocktail] = [cloverClub]
-    var justWilliamsAndGrahamCocktails = getBartenderViewCocktails().flatMap({$0.cocktailVariations}).filter({$0.author?.place == AuthorPlaces.williamsAndGraham.rawValue})
+    //var justWilliamsAndGrahamCocktails = getBartenderViewCocktails().flatMap({$0.cocktailVariations}).filter({$0.author?.place == AuthorPlaces.williamsAndGraham.rawValue})
     var isShowingRecipeCard = false
     var selectedCocktail: Cocktail?
     var isShowingBuildOrderButton = false
 
-    var bartenderViewCocktails: [CocktailListCocktail] = getBartenderViewCocktails()
+    //var bartenderViewCocktails: [CocktailListCocktail] = getBartenderViewCocktails()
    
     var randomCocktail = oldFashioned
     var isShowingWnGCocktailsOnly: Bool = false
@@ -33,61 +33,17 @@ import Observation
         }
     }
     
-//   
-//    static func getGuestViewCocktails() -> [CocktailListCocktail] {
-//        var guestCocktails: [CocktailListCocktail] = []
-//        var cocktailDict = getCocktailDict()
-//        cocktailDict["Americano"] = [americano]
-//        cocktailDict["Bamboo"] = [bamboo]
-//        cocktailDict["Bijou"] = [bijou]
-//        cocktailDict["Bloody Marry"] = [bloodyMary]
-//        cocktailDict["Fair and Warmer"] = [fairAndWarmer]
-//        cocktailDict["Between the Sheets"] = [betweenTheSheets]
-//        cocktailDict["El Presidente"] = [elPresidente]
-//        cocktailDict["Fancy Free"] = [fancyFree]
-//        cocktailDict["Gin Fizz"] = [ginFizz, silverGinFizz]
-//        cocktailDict["Hanky Panky"] = [hankyPanky]
-//        cocktailDict["Harvey Wallbanger"] = [harveyWallbanger]
-//        cocktailDict["Greenpoint"] = [greenpoint]
-//        cocktailDict["Hotel Nacional"] = [hotelNacional]
-//        cocktailDict["Japanese Cocktail"] = [japaneseCocktail]
-//        cocktailDict["Last Word"] = [lastWord]
-//        cocktailDict["La Louisiane"] = [laLouisiane]
-//        cocktailDict["Major Bailey"] = [majorBailey]
-//        cocktailDict["Mint Julep"] = [mintJulep]
-//        cocktailDict["Modern Cocktail"] = [modernCocktail]
-//        cocktailDict["Mojito"] = [mojito]
-//        cocktailDict["Morning Glory Fizz"] = [morningGloryFizz]
-//        cocktailDict["Old Cuban"] = [oldCuban]
-//        cocktailDict["Old Fashioned"] = [oldFashioned]
-//        cocktailDict["Old Pal"] = [oldPal]
-//        cocktailDict["Pain Killer"] = [painKiller]
-//        cocktailDict["Penicillin"] = [penicillin]
-//        cocktailDict["Queens Park Swizzle"] = [queensParkSwizzle]
-//        cocktailDict["Remember The Maine"] = [rememberTheMaine]
-//        cocktailDict["Rob Roy"] = [robRoy]
-//        cocktailDict["Saturn"] = [saturn]
-//        cocktailDict["Sazerac"] = [sazerac]
-//        cocktailDict["Sidecar"] = [sidecar]
-//        cocktailDict["Singapore Sling"] = [singaporeSling]
-//        cocktailDict["Ultima Palabra"] = [ultimaPalabra]
-// 
-////        for cocktails in cocktailDict {
-////            guestCocktails.append(CocktailListCocktail(cocktailName: cocktails.key, cocktailVariations: cocktails.value, isOpen: true))
-////        }
-//        let sortedCocktails = guestCocktails.sorted(by: {$0.cocktailName < $1.cocktailName})
+
+    
+//    static func getBartenderViewCocktails() -> [CocktailListCocktail] {
+//        var bartenderCocktails: [CocktailListCocktail] = []
+//        for cocktails in getCocktailDict() {
+//            bartenderCocktails.append(CocktailListCocktail(cocktailName: cocktails.key, cocktailVariations: cocktails.value, isOpen: true))
+//       
+//        }
+//        let sortedCocktails = bartenderCocktails.sorted(by: {$0.cocktailName < $1.cocktailName})
 //        return sortedCocktails
 //    }
-    
-    static func getBartenderViewCocktails() -> [CocktailListCocktail] {
-        var bartenderCocktails: [CocktailListCocktail] = []
-        for cocktails in getCocktailDict() {
-            bartenderCocktails.append(CocktailListCocktail(cocktailName: cocktails.key, cocktailVariations: cocktails.value, isOpen: true))
-       
-        }
-        let sortedCocktails = bartenderCocktails.sorted(by: {$0.cocktailName < $1.cocktailName})
-        return sortedCocktails
-    }
     
     static func getCocktailDict() -> [String: [Cocktail]] {
         let classicCocktailsForBartenders: [String: [Cocktail]] =  [ "Adonis": [adonis],
@@ -354,6 +310,7 @@ import Observation
         return allCocktails
     }
     
+
 }
 
 struct CocktailListCocktail: Hashable, Equatable {

@@ -111,6 +111,7 @@
 		4D54F7362B79F1E500D046D9 /* ContainerMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D54F7352B79F1E500D046D9 /* ContainerMenuView.swift */; };
 		4D54F7392B7AFC1200D046D9 /* CBCLoadedCocktailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D54F7382B7AFC1200D046D9 /* CBCLoadedCocktailView.swift */; };
 		4D54F73E2B7B053800D046D9 /* LoadedCocktailIngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D54F73D2B7B053800D046D9 /* LoadedCocktailIngredientCell.swift */; };
+		4D7439892B9D277F0020C3B8 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7439882B9D277F0020C3B8 /* BackButton.swift */; };
 		4D7B01752B72BF0A0026FE34 /* MainBatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7B01742B72BF0A0026FE34 /* MainBatchView.swift */; };
 		4D7B01772B72C2260026FE34 /* BatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7B01762B72C2260026FE34 /* BatchCell.swift */; };
 		4D90259C2B6456C0005F44F6 /* French75(WnG).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D90259B2B6456C0005F44F6 /* French75(WnG).swift */; };
@@ -118,7 +119,6 @@
 		4D9025A22B6459C0005F44F6 /* GinFizz(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9025A12B6459C0005F44F6 /* GinFizz(W&G).swift */; };
 		4D9025A42B645A36005F44F6 /* SilverGinFiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9025A32B645A36005F44F6 /* SilverGinFiz.swift */; };
 		4D9025A62B645BF3005F44F6 /* GinRicky.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9025A52B645BF3005F44F6 /* GinRicky.swift */; };
-		4D9025A82B64B970005F44F6 /* GuestCocktailListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9025A72B64B970005F44F6 /* GuestCocktailListView.swift */; };
 		4DA5672E2B6AE00B003F6F04 /* Saturn(W&G Version).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5672D2B6AE00B003F6F04 /* Saturn(W&G Version).swift */; };
 		4DA567302B6AE131003F6F04 /* Sazerac(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5672F2B6AE131003F6F04 /* Sazerac(W&G).swift */; };
 		4DA567342B6AE3E8003F6F04 /* Scofflaw(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA567332B6AE3E8003F6F04 /* Scofflaw(W&G).swift */; };
@@ -538,6 +538,7 @@
 		4D54F7352B79F1E500D046D9 /* ContainerMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerMenuView.swift; sourceTree = "<group>"; };
 		4D54F7382B7AFC1200D046D9 /* CBCLoadedCocktailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBCLoadedCocktailView.swift; sourceTree = "<group>"; };
 		4D54F73D2B7B053800D046D9 /* LoadedCocktailIngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadedCocktailIngredientCell.swift; sourceTree = "<group>"; };
+		4D7439882B9D277F0020C3B8 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		4D7B01742B72BF0A0026FE34 /* MainBatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBatchView.swift; sourceTree = "<group>"; };
 		4D7B01762B72C2260026FE34 /* BatchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchCell.swift; sourceTree = "<group>"; };
 		4D90259B2B6456C0005F44F6 /* French75(WnG).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "French75(WnG).swift"; sourceTree = "<group>"; };
@@ -545,7 +546,6 @@
 		4D9025A12B6459C0005F44F6 /* GinFizz(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GinFizz(W&G).swift"; sourceTree = "<group>"; };
 		4D9025A32B645A36005F44F6 /* SilverGinFiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SilverGinFiz.swift; sourceTree = "<group>"; };
 		4D9025A52B645BF3005F44F6 /* GinRicky.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GinRicky.swift; sourceTree = "<group>"; };
-		4D9025A72B64B970005F44F6 /* GuestCocktailListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestCocktailListView.swift; sourceTree = "<group>"; };
 		4DA5672D2B6AE00B003F6F04 /* Saturn(W&G Version).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Saturn(W&G Version).swift"; sourceTree = "<group>"; };
 		4DA5672F2B6AE131003F6F04 /* Sazerac(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sazerac(W&G).swift"; sourceTree = "<group>"; };
 		4DA567332B6AE3E8003F6F04 /* Scofflaw(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scofflaw(W&G).swift"; sourceTree = "<group>"; };
@@ -893,6 +893,7 @@
 				1AC386822AAABED00064F52A /* RoundButtonStyle.swift */,
 				1AC3867B2AAABED00064F52A /* XDismissButton.swift */,
 				4DA568692B70BC4F003F6F04 /* BlackNWhiteButton.swift */,
+				4D7439882B9D277F0020C3B8 /* BackButton.swift */,
 				4D49243C2B7B5E2700BBE86C /* BatchButton .swift */,
 			);
 			path = Buttons;
@@ -1509,7 +1510,6 @@
 		4DE9AC122B750D8700A39D03 /* Guest Views */ = {
 			isa = PBXGroup;
 			children = (
-				4D9025A72B64B970005F44F6 /* GuestCocktailListView.swift */,
 				4DF408F32B622BB200EF9A6E /* SearchGuestRecipeView.swift */,
 			);
 			path = "Guest Views";
@@ -1750,7 +1750,6 @@
 				F4A628E22B7E31BF0084FD80 /* Variation.swift in Sources */,
 				1AFDB7B62ADF26AD000A3812 /* PaperPlane.swift in Sources */,
 				4DBBA4CB2B6A346D00179B8F /* Penicillin(W&G).swift in Sources */,
-				4D9025A82B64B970005F44F6 /* GuestCocktailListView.swift in Sources */,
 				4DBBA4CD2B6A376B00179B8F /* PinceEdward.swift in Sources */,
 				4D1E85E12B5DBDE200214BC6 /* SideCar.swift in Sources */,
 				4DA5679A2B6CD213003F6F04 /* SwitchbladeRomance.swift in Sources */,
@@ -1966,6 +1965,7 @@
 				4DBBA4C82B6A2F4700179B8F /* PimsCup.swift in Sources */,
 				4DBBA47A2B6876F800179B8F /* LastWord(W&G).swift in Sources */,
 				4DA567662B6C6FF3003F6F04 /* WhiskeySmash.swift in Sources */,
+				4D7439892B9D277F0020C3B8 /* BackButton.swift in Sources */,
 				1AC386C32AAABED10064F52A /* BuildOrderView.swift in Sources */,
 				4D9025A22B6459C0005F44F6 /* GinFizz(W&G).swift in Sources */,
 				4DA568042B6E01D1003F6F04 /* Rosalita.swift in Sources */,

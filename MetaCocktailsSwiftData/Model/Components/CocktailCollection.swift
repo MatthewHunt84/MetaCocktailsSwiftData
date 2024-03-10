@@ -12,4 +12,17 @@ enum CocktailCollection: Int, Codable {
     case originals 
     case milkAndHoney
     case custom
+    
+    var collectionName: String {
+        switch self {
+        case .williamsAndGraham:
+            "Williams & Graham"
+        case .originals:
+            "Origional Cocktails"
+        case .milkAndHoney:
+            "Milk & Honey"
+        case .custom:
+            "Custom"
+        }
+    }
 }

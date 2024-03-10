@@ -13,6 +13,8 @@ struct CocktailListView: View {
     
     @Bindable var viewModel = CocktailListViewModel()
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
+
+    @Query(filter: #Predicate<Cocktail> { $0.author?.place == "Williams and Graham. Denver, Colorado" }, sort: \Cocktail.cocktailName) private var williamsAndGrahamCocktials: [Cocktail]
     @Environment(\.modelContext) private var modelContext
     
     
@@ -34,12 +36,23 @@ struct CocktailListView: View {
     var body: some View {
         
         NavigationStack{
+            
             VStack {
                 HStack {
                     Text("Cocktails")
                         .font(.largeTitle).bold()
                         .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
                     Spacer()
+                    Menu("Collection") {
+                        Button {
+                            viewModel.isShowingWnGCocktailsOnly = true
+                        } label: {
+                            Text("Show Williams & Graham Cocktails")
+                        }
+
+                    }
+                    .buttonStyle(BlackNWhiteButton())
+
                     Button {
                         modelContext.insert(TestCocktails.textCocktail1)
                         modelContext.insert(TestCocktails.textCocktail2)
@@ -52,7 +65,7 @@ struct CocktailListView: View {
                         modelContext.insert(TestCocktails.textCocktail9)
                         modelContext.insert(TestCocktails.textCocktail10)
                     } label: {
-                        Text("Load Custom Cocktails")
+                        Text("Load Samples")
                     }
 
                 }
@@ -67,7 +80,7 @@ struct CocktailListView: View {
                                     if viewModel.isShowingWnGCocktailsOnly {
                                         ForEach(viewModel.cocktailListAlphabet, id: \.self) { letter in
                                             Section{
-                                                ForEach(viewModel.justWilliamsAndGrahamCocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.cocktailName) { item in
+                                                ForEach(williamsAndGrahamCocktials.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.cocktailName) { item in
                                                     NavigationLink {
                                                         RecipeView(viewModel: RecipeViewModel(cocktail: item))
                                                         //.navigationBarBackButtonHidden(true)
@@ -77,9 +90,16 @@ struct CocktailListView: View {
                                                     }
                                                 }
                                             } header: {
-                                                Text("\(letter)")
-                                                    .fontWeight(.bold)
-                                                    .font(.title)
+                                                if letter == CocktailListViewModel.sfSymbolForCustomCocktails {
+                                                    Text("Custom")
+                                                        .fontWeight(.bold)
+                                                        .font(.title)
+                                                } else {
+                                                    Text("\(letter)")
+                                                        .fontWeight(.bold)
+                                                        .font(.title)
+                                                }
+                                                
                                             }.id(letter)
                                         }
                                         

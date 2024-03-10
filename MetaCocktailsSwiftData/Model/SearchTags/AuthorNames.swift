@@ -5,7 +5,8 @@
 //  Created by James Menkal on 1/20/24.
 //
 
-import Foundation
+import SwiftUI
+import SwiftData
 
 enum AuthorNames: String, Codable, CaseIterable {
     
@@ -77,7 +78,10 @@ enum AuthorPlaces: String, Codable, CaseIterable {
     
 }
 
-struct Author: Codable {
+struct Author: Codable, Equatable, Identifiable {
+    
+    
+    var id = UUID()
     var person: String?
     var place: String?
     var year: String?
