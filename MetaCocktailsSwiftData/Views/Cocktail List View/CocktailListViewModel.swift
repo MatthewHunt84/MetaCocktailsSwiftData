@@ -11,8 +11,10 @@ import Observation
 @Observable final class CocktailListViewModel{
     
 
-    var isShowingWnGCocktailsOnly: Bool = false
+    
+    var isShowingAllCocktails: Bool = false 
     var cocktailListAlphabet = [sfSymbolForCustomCocktails, "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    var basicAlphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     static var sfSymbolForCustomCocktails = "star.fill"
     
     /// What a sad little view model. ;( 

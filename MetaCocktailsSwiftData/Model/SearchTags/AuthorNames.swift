@@ -48,7 +48,7 @@ enum AuthorNames: String, Codable, CaseIterable {
   
 }
 
-enum AuthorPlaces: String, Codable, CaseIterable {
+enum AuthorPlaces: String, Codable, CaseIterable, Identifiable {
        
     case aviaryBar                    = "Aviary Bar at the Kuala Lumpur Hilton"
     case bourbonNBranch               = "Bourbon & Branch"
@@ -76,9 +76,13 @@ enum AuthorPlaces: String, Codable, CaseIterable {
     case theFineArtOfMixingDrinks     = "The Fine Art of Mixing Drinks"
     case theVioletHour                = "The Violet Hour, Chicago."
     
+    var id: String {
+        rawValue
+    }
+    
 }
 
-struct Author: Codable, Equatable, Identifiable {
+struct Author:  Codable, Equatable, Identifiable {
     
     
     var id = UUID()
@@ -86,6 +90,15 @@ struct Author: Codable, Equatable, Identifiable {
     var place: String?
     var year: String?
 }
+
+enum FilterOption {
+    
+    case author(Author)
+    case collection(CocktailCollection)
+    
+}
+
+
 
 var harryCraddock = Author(person: AuthorNames.harryCraddock.rawValue, place: AuthorPlaces.savoy.rawValue, year: "1930")
 var williamsAndGraham = Author(place: AuthorPlaces.williamsAndGraham.rawValue, year: "2023")
