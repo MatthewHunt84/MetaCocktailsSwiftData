@@ -10,10 +10,9 @@ import SwiftUI
 struct AddIngredientDetailView: View {
     
     @Bindable var viewModel: AddCocktailViewModel
-    @Binding var isShowingAddIngredients: Bool
     @FocusState private var keyboardFocused: Bool
     @FocusState private var amountKeyboardFocus: Bool
-    
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         ZStack{
@@ -52,6 +51,7 @@ struct AddIngredientDetailView: View {
                                 
                             } label: {
                                 Text(component.name)
+                                    .tint(.white)
                             }
                         
                     }
@@ -88,7 +88,7 @@ struct AddIngredientDetailView: View {
                                                                              value: viewModel.ingredientAmount, 
                                                                              unit: viewModel.selectedMeasurementUnit))
                         viewModel.clearIngredientData()
-                        isShowingAddIngredients.toggle()
+                        dismiss()
                     } else {
                         viewModel.isShowingingredientAlert.toggle()
                     }
@@ -124,7 +124,7 @@ struct AddIngredientDetailView: View {
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
     
-    return AddIngredientDetailView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true))
+    return AddIngredientDetailView(viewModel: AddCocktailViewModel())
         .modelContainer(preview.container)
     
 }

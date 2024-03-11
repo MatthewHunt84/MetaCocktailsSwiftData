@@ -154,6 +154,7 @@ private struct GarnishPicker: View {
                 }
                 NavigationLink {
                     GarnishDetailView(viewModel: viewModel)
+                        
                 } label: {
                     HStack {
                         Text(viewModel.addedGarnish.count < 1 ? "Add Garnish" : "Add another garnish")
