@@ -90,6 +90,8 @@ enum Glassware: String, Codable, CaseIterable {
                 } else {
                     return SwiftUI.Image("doubleOldBlack")
                 }
+            } else {
+               return SwiftUI.Image("doubleOldBlack")
             }
         case .julep:
             return SwiftUI.Image("julepCup")

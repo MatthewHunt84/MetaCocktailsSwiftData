@@ -48,7 +48,8 @@ import Observation
     var authorYear: String = ""
     
     // Build
-    var build: Build?
+    var build: Build = Build(instructions: [])
+    var buildOption: Build?
     
     func clearData() {
         cocktailName = ""
@@ -61,7 +62,8 @@ import Observation
         variation = nil
         addedIngredients = []
         defaultName = "Add Cocktail"
-        build = nil 
+        build = Build(instructions: [])
+        buildOption = nil 
        
     }
     func clearIngredientData() {
@@ -101,7 +103,7 @@ import Observation
     
     var isShowingAlert: Bool = false
     
-    func cantAddCocktailMessage() -> Text {
+    func cantAddCocktailMessage() -> String {
         var text = ""
         
         if cocktailName == "" {
@@ -119,7 +121,7 @@ import Observation
                 text += ", and at least two ingredients"
             }
         }
-        return Text(text)
+        return text
     }
     
    

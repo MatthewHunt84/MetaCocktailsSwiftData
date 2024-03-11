@@ -7,35 +7,7 @@
 
 import SwiftUI
 
-struct SearchGuestRecipeView: View {
-    var viewModel: RecipeViewModel
-    
-    init(viewModel: RecipeViewModel) {
-        self.viewModel = viewModel
-    }
-    
-    
-    var body: some View {
-        
-        VStack{
-            viewModel.cocktailGlassImage
-                .resizable()
-                .frame(width: 125, height: 125, alignment: .center)
-            
-                .padding(10)
-            IngredientView(cocktail: viewModel.cocktail)
-                .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
-        }
-    }
-}
 
-struct CocktailMenuView_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        SearchGuestRecipeView(viewModel: RecipeViewModel(cocktail: aFlightSouthOfTheBorder))
-        
-    }
-}
 
 struct IngredientView: View {
     let cocktail: Cocktail
