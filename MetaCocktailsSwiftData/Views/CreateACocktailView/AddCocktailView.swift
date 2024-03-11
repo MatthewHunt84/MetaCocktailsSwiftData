@@ -10,87 +10,94 @@ struct AddCocktailView: View {
     var body: some View {
         
         NavigationStack {
-           
-            Form {
-                
-                Section(header: Text("Name")) {
-                    TextField("Cocktail Name", text: $viewModel.cocktailName)
-                }
-                
-                AddedIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
-             
-                
-                Section(header: Text("Extras")) {
-                    GlassPicker(glass: $viewModel.glass)
-                    
-                    IcePicker(ice: $viewModel.ice)
-
-                    VariationPicker(variation: $viewModel.variation)
-                }
-                Section {
-                    
-                    GarnishPicker(viewModel: viewModel)
-                } header: {
-                    Text("Garnish")
-                }
-
-                
-                Section(header: Text("Credit (optional)")) {
-                    TextField("Author", text: $viewModel.authorName)
-                    
-                    TextField("Origin", text: $viewModel.authorPlace)
-                    
-                    TextField("Year", text: $viewModel.authorYear)
-                        .keyboardType(.numberPad)
-                }
-                
-                Section(header: Text("Build steps (optional)")) {
-                    AddBuildStepView(viewModel: viewModel)
-                }
-            }
-            .navigationTitle(viewModel.cocktailName == "" ? $viewModel.defaultName : $viewModel.cocktailName)
-            .navigationBarTitleDisplayMode(.large)
-            .tint(Color.brandPrimaryGold)
-            .toolbar {
-                ToolbarItem(placement: .bottomBar) {
-                    Button {
-                        if viewModel.isValid() {
-                            if viewModel.build.instructions != [] {
-                                viewModel.buildOption = viewModel.build
-                            }
-                            
-                            let cocktail = Cocktail(cocktailName: viewModel.cocktailName,
-                                                    glasswareType: viewModel.glass!,
-                                                    garnish: viewModel.addedGarnish,
-                                                    ice: viewModel.ice,
-                                                    author: Author(person: viewModel.authorName,
-                                                                   place: viewModel.authorPlace,
-                                                                   year: viewModel.authorYear),
-                                                    spec: viewModel.addedIngredients,
-                                                    buildOrder: viewModel.buildOption,
-                                                    tags: Tags(flavors: [], profiles: [], styles: [], booze: [], nA: []),
-                                                    variation: viewModel.variation, 
-                                                    collection: .custom)
-                            
-                            modelContext.insert(cocktail)
-                            viewModel.clearData()
-                            selectedTab.wrappedValue = .cocktailListView
-                            
-                        } else {
-                            viewModel.isShowingAlert.toggle()
+            ZStack {
+                VStack {
+                    Form {
+                        
+                        Section(header: Text("Name")) {
+                            TextField("Cocktail Name", text: $viewModel.cocktailName)
                         }
                         
-                    } label: {
-                        HStack {
-                            Text("Add to cocktails").font(.headline)
-                            Image(systemName: "plus")
+                        AddedIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
+                        
+                        
+                        Section(header: Text("Extras")) {
+                            GlassPicker(glass: $viewModel.glass)
+                            
+                            IcePicker(ice: $viewModel.ice)
+                            
+                            VariationPicker(variation: $viewModel.variation)
                         }
-                        .foregroundStyle(viewModel.isValid() ? .brandPrimaryGold : .secondary)
-                        .alert(isPresented: $viewModel.isShowingAlert, content: {
-                            Alert(title: viewModel.cantAddCocktailMessage())
-                        })
-                       
+                        Section {
+                            
+                            GarnishPicker(viewModel: viewModel)
+                        } header: {
+                            Text("Garnish")
+                        }
+                        
+                        
+                        Section(header: Text("Credit (optional)")) {
+                            TextField("Author", text: $viewModel.authorName)
+                            
+                            TextField("Origin", text: $viewModel.authorPlace)
+                            
+                            TextField("Year", text: $viewModel.authorYear)
+                                .keyboardType(.numberPad)
+                        }
+                        
+                        Section(header: Text("Build steps (optional)")) {
+                            AddBuildStepView(viewModel: viewModel)
+                        }
                     }
+                    .navigationTitle(viewModel.cocktailName == "" ? $viewModel.defaultName : $viewModel.cocktailName)
+                    .navigationBarTitleDisplayMode(.large)
+                    .tint(Color.brandPrimaryGold)
+                    .toolbar {
+                        ToolbarItem(placement: .bottomBar) {
+                            Button {
+                                
+                                if viewModel.isValid() {
+                                    if viewModel.build.instructions != [] {
+                                        viewModel.buildOption = viewModel.build
+                                    }
+                                    
+                                    let cocktail = Cocktail(cocktailName: viewModel.cocktailName,
+                                                            glasswareType: viewModel.glass!,
+                                                            garnish: viewModel.addedGarnish,
+                                                            ice: viewModel.ice,
+                                                            author: Author(person: viewModel.authorName,
+                                                                           place: viewModel.authorPlace,
+                                                                           year: viewModel.authorYear),
+                                                            spec: viewModel.addedIngredients,
+                                                            buildOrder: viewModel.buildOption,
+                                                            tags: Tags(flavors: [], profiles: [], styles: [], booze: [], nA: []),
+                                                            variation: viewModel.variation,
+                                                            collection: .custom)
+                                    
+                                    modelContext.insert(cocktail)
+                                    viewModel.clearData()
+                                    selectedTab.wrappedValue = .cocktailListView
+                                    
+                                } else {
+                                    viewModel.isShowingAlert.toggle()
+                                }
+                                
+                            } label: {
+                                HStack {
+                                    Text("Add to cocktails").font(.headline)
+                                    Image(systemName: "plus")
+                                }
+                                .foregroundStyle(viewModel.isValid() ? .brandPrimaryGold : .secondary)
+                            }
+                        }
+                    }
+                }
+                if viewModel.isShowingAlert {
+                    CustomAlertView(isActive: $viewModel.isShowingAlert,
+                                    title: "You're almost there",
+                                    message: viewModel.cantAddCocktailMessage(),
+                                    buttonTitle: "Heard, Chef", action: {})
+                    .zIndex(1)
                 }
             }
         }

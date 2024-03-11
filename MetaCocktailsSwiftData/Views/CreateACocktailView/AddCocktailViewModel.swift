@@ -103,7 +103,7 @@ import Observation
     
     var isShowingAlert: Bool = false
     
-    func cantAddCocktailMessage() -> Text {
+    func cantAddCocktailMessage() -> String {
         var text = ""
         
         if cocktailName == "" {
@@ -121,7 +121,7 @@ import Observation
                 text += ", and at least two ingredients"
             }
         }
-        return Text(text)
+        return text
     }
     
    

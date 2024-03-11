@@ -16,90 +16,96 @@ struct AddIngredientDetailView: View {
     
     
     var body: some View {
-        VStack {
-            SearchBarView(searchText: $viewModel.ingredientName)
-                .focused($keyboardFocused)
-                .onChange(of: viewModel.ingredientName) {
-                    viewModel.matchAllPhysicalCocktailComponents()
-                }
-            List {
-                ForEach(viewModel.allPhysicalCocktailComponents, id: \.self) { component in
-                    if component.matchesCurrentSearch {
-                        Button {
-                            viewModel.currentSelectedComponent = component
-                            if component.isNA {
-                                if let category = component.nACategory {
-                                    viewModel.ingredientType = category
+        ZStack{
+            VStack {
+                SearchBarView(searchText: $viewModel.ingredientName)
+                    .focused($keyboardFocused)
+                    .onChange(of: viewModel.ingredientName) {
+                        viewModel.matchAllPhysicalCocktailComponents()
+                    }
+                List {
+                    ForEach(viewModel.allPhysicalCocktailComponents, id: \.self) { component in
+                        if component.matchesCurrentSearch {
+                            Button {
+                                viewModel.currentSelectedComponent = component
+                                if component.isNA {
+                                    if let category = component.nACategory {
+                                        viewModel.ingredientType = category
+                                    }
+                                    viewModel.dynamicallyChangeMeasurementUnit()
+                                    viewModel.ingredientName = component.name
+                                    amountKeyboardFocus = true
                                 }
-                                viewModel.dynamicallyChangeMeasurementUnit()
-                                viewModel.ingredientName = component.name
-                                amountKeyboardFocus = true
-                            }
-                            if component.isSpirit {
-                                if let category = component.spiritCategory {
-                                    viewModel.ingredientType = category
+                                if component.isSpirit {
+                                    if let category = component.spiritCategory {
+                                        viewModel.ingredientType = category
+                                    }
+                                    viewModel.dynamicallyChangeMeasurementUnit()
+                                    viewModel.ingredientName = component.name
+                                    amountKeyboardFocus = true
                                 }
-                                viewModel.dynamicallyChangeMeasurementUnit()
-                                viewModel.ingredientName = component.name
-                                amountKeyboardFocus = true
+                                
+                                
+                            } label: {
+                                Text(component.name)
                             }
-                            
-                            
-                        } label: {
-                            Text(component.name)
                         }
                     }
                 }
-            }
-            
-            
-            
-            
-            HStack {
-                TextField("Amount", value: $viewModel.ingredientAmount, formatter: viewModel.formatter).cBCTextField()
-                    .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    .keyboardType(.decimalPad)
-                    .focused($amountKeyboardFocus)
-                Menu(viewModel.selectedMeasurementUnit.rawValue) {
-                    ForEach(MeasurementUnit.allCases, id: \.self) { unit in
-                        Button {
-                            viewModel.selectedMeasurementUnit = unit
-                        } label: {
-                            Text(unit.rawValue)
+                
+                
+                
+                
+                HStack {
+                    TextField("Amount", value: $viewModel.ingredientAmount, formatter: viewModel.formatter).cBCTextField()
+                        .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        .keyboardType(.decimalPad)
+                        .focused($amountKeyboardFocus)
+                    Menu(viewModel.selectedMeasurementUnit.rawValue) {
+                        ForEach(MeasurementUnit.allCases, id: \.self) { unit in
+                            Button {
+                                viewModel.selectedMeasurementUnit = unit
+                            } label: {
+                                Text(unit.rawValue)
+                            }
+                            
                         }
+                    }
+                    .buttonStyle(.bordered)
+                }
+                
+                Button {
+                    if viewModel.ingredientIsValid() {
+                        viewModel.addedIngredients.append(CocktailIngredient(viewModel.validateCurrentSelectedComponent(for: viewModel.currentSelectedComponent) , value: viewModel.ingredientAmount, unit: viewModel.selectedMeasurementUnit))
                         
+                        
+                        viewModel.clearIngredientData()
+                        isShowingAddIngredients.toggle()
+                    } else {
+                        viewModel.isShowingingredientAlert.toggle()
                     }
-                }
-                .buttonStyle(.bordered)
-            }
-            
-            Button {
-                if viewModel.ingredientIsValid() {
-                    viewModel.addedIngredients.append(CocktailIngredient(viewModel.validateCurrentSelectedComponent(for: viewModel.currentSelectedComponent) , value: viewModel.ingredientAmount, unit: viewModel.selectedMeasurementUnit))
                     
+                } label: {
+                    Text("Add to Ingredients")
                     
-                    viewModel.clearIngredientData()
-                    isShowingAddIngredients.toggle()
-                } else {
-                    viewModel.isShowingingredientAlert.toggle()
                 }
-                
-            } label: {
-                Text("Add to Ingredients")
-                
-            }
-            .alert(isPresented: $viewModel.isShowingingredientAlert, content: {
-                Alert(title: Text("Please choose an ingredient and measurement to add."))
-            })
-            .task {
-                viewModel.matchAllPhysicalCocktailComponents()
-                keyboardFocused = true
+                .task {
+                    viewModel.matchAllPhysicalCocktailComponents()
+                    keyboardFocused = true
+                    
+                }
+                .buttonStyle(BlackNWhiteButton())
                 
             }
-            .buttonStyle(BlackNWhiteButton())
-            
+            if viewModel.isShowingingredientAlert {
+                CustomAlertView(isActive: $viewModel.isShowingingredientAlert,
+                                title: "",
+                                message: "Please choose an ingredient and measurement to add.",
+                                buttonTitle: "Heard, Chef",
+                                action: {})
+                .zIndex(1)
+            }
         }
-        
     }
 }
 

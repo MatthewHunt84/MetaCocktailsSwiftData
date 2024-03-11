@@ -13,18 +13,27 @@ struct CocktailCollectionPicker: View {
     @Binding  var cocktailCollection: CocktailCollection
     
     var body: some View {
-        Menu {
-            Picker(selection: $cocktailCollection) {
-                ForEach(CocktailCollection.allCases, id: \.self) { int in
-                    if int.collectionName != "Custom" {
-                        Text(int.collectionName)
+        HStack {
+            Menu {
+                Picker(selection: $cocktailCollection) {
+                    ForEach(CocktailCollection.allCases, id: \.self) { int in
+                        if int.collectionName != "Custom" {
+                            Text(int.collectionName)
+                        }
                     }
-                }
-            } label: {}
-        } label: {
-            Text("Collection: \(cocktailCollection.collectionName)")
-                .font(.headline)
-                .tint(.white)
+                } label: {}
+            } label: {
+                Text("Collection: \(cocktailCollection.collectionName)")
+                    .font(.headline)
+                    .tint(.white)
+            }
+            if viewModel.cocktailCollection == .originals {
+                Image(systemName: "questionmark.circle.fill")
+                    .foregroundStyle(viewModel.isShowingOriginalCocktailInfo ? .brandPrimaryGold : .blue)
+                    .onTapGesture {
+                        viewModel.isShowingOriginalCocktailInfo.toggle()
+                    }
+            }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0))
