@@ -16,7 +16,7 @@ struct whiteButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
         .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
-        .background(Color(UIColor.systemBackground))
+        .background(Color.black)
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .shadow(color: Color(UIColor.systemGray), radius: 2, x: 0, y: 0)
         .foregroundColor(Color(UIColor.systemCyan))
@@ -32,7 +32,7 @@ extension TextField {
     func cBCTextField() -> some View {
         self
             .padding(5)
-            .background(Color(UIColor.systemBackground))
+            .background(Color.black)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .shadow(color: Color(UIColor.systemGray), radius: 4, x: 0, y: 0)
             .foregroundColor(Color(UIColor.white))

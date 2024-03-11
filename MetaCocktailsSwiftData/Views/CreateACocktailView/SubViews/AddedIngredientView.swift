@@ -43,6 +43,8 @@ struct AddedIngredientView: View {
                 ZStack {
                     Color.black.ignoresSafeArea()
                     AddIngredientDetailView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
+                        .presentationDetents([.height(400)])
+                        .presentationCornerRadius(40)
                 }
             }
         }

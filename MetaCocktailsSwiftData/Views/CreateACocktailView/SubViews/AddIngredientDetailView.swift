@@ -21,12 +21,15 @@ struct AddIngredientDetailView: View {
             VStack {
                 SearchBarView(searchText: $viewModel.ingredientName)
                     .focused($keyboardFocused)
-                    .onChange(of: viewModel.ingredientName) {
+                    .padding(EdgeInsets(top: 40, leading: 0, bottom: 0, trailing: 0))
+                    .onChange(of: viewModel.ingredientName, initial: true) { old, new in
+                        viewModel.ingredientName = new
                         viewModel.matchAllPhysicalCocktailComponents()
                     }
+                
+                    
                 List {
-                    ForEach(viewModel.allPhysicalCocktailComponents, id: \.self) { component in
-                        if component.matchesCurrentSearch {
+                    ForEach(viewModel.allPhysicalCocktailComponents.filter({$0.matchesCurrentSearch}).sorted(by: { $0.name < $1.name }), id: \.self) { component in
                             Button {
                                 viewModel.currentSelectedComponent = component
                                 if component.isNA {
@@ -50,11 +53,12 @@ struct AddIngredientDetailView: View {
                             } label: {
                                 Text(component.name)
                             }
-                        }
+                        
                     }
                     .listStyle(.plain)
                     .listRowBackground(Color.black)
                 }
+                .scrollContentBackground(.hidden)
                 
                 
                 
@@ -80,9 +84,9 @@ struct AddIngredientDetailView: View {
                 
                 Button {
                     if viewModel.ingredientIsValid() {
-                        viewModel.addedIngredients.append(CocktailIngredient(viewModel.validateCurrentSelectedComponent(for: viewModel.currentSelectedComponent) , value: viewModel.ingredientAmount, unit: viewModel.selectedMeasurementUnit))
-                        
-                        
+                        viewModel.addedIngredients.append(CocktailIngredient(viewModel.validateCurrentSelectedComponent(for: viewModel.currentSelectedComponent),
+                                                                             value: viewModel.ingredientAmount, 
+                                                                             unit: viewModel.selectedMeasurementUnit))
                         viewModel.clearIngredientData()
                         isShowingAddIngredients.toggle()
                     } else {

@@ -28,12 +28,9 @@ struct AddCocktailView: View {
                             
                             VariationPicker(variation: $viewModel.variation)
                         }
-                        Section {
-                            
+                    
                             GarnishPicker(viewModel: viewModel)
-                        } header: {
-                            Text("Garnish")
-                        }
+                        
                         
                         
                         Section(header: Text("Credit (optional)")) {
@@ -144,31 +141,47 @@ private struct GarnishPicker: View {
     @Bindable var viewModel: AddCocktailViewModel
     
     var body: some View {
-        VStack {
-            List{
-                ForEach(viewModel.addedGarnish, id: \.self) { garnish in
-                    Text("\(garnish.rawValue)")
-                }
-                .onDelete(perform: { indexSet in
-                    viewModel.addedGarnish.remove(atOffsets: indexSet)
-                })
-            }
-            
-            Menu {
-                ForEach(Garnish.allCases, id: \.rawValue ) { garnish in
-                    Button(action: {
-                        viewModel.addedGarnish.append(garnish)
-                    }, label: {
+        Section {
+           
+                List{
+                    ForEach(viewModel.addedGarnish, id: \.self) { garnish in
                         Text("\(garnish.rawValue)")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    .onDelete(perform: { indexSet in
+                        viewModel.addedGarnish.remove(atOffsets: indexSet)
                     })
                 }
-            } label: {
-                HStack {
-                    Text(viewModel.addedGarnish.count < 1 ? "Add Garnish" : "Add another garnish")
-                        .tint(viewModel.addedGarnish.count < 1 ? .white : .secondary)
-                    Spacer()
-                    Image(systemName: "plus.circle.fill")
-                        .foregroundStyle(.brandPrimaryGold)
+                NavigationLink {
+                    GarnishDetailView(viewModel: viewModel)
+                } label: {
+                    HStack {
+                        Text(viewModel.addedGarnish.count < 1 ? "Add Garnish" : "Add another garnish")
+                            .tint(viewModel.addedGarnish.count < 1 ? .white : .secondary)
+                        Spacer()
+                        Image(systemName: "plus.circle.fill")
+                            .foregroundStyle(.brandPrimaryGold)
+                    }
+                }
+            
+        } header: {
+            Text("Garnish")
+        }
+    }
+}
+private struct GarnishDetailView: View {
+    
+    @Bindable var viewModel: AddCocktailViewModel
+    @Environment(\.dismiss) private var dismiss
+    var body: some View {
+        List{
+            ForEach(Garnish.allCases, id: \.rawValue) { garnish in
+                Button {
+                    viewModel.addedGarnish.append(garnish)
+                    dismiss()
+                } label: {
+                    Text(garnish.rawValue)
+                        .tint(.white)
                 }
             }
         }
