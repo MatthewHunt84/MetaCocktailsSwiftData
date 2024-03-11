@@ -45,7 +45,7 @@ struct AddCocktailView: View {
                 }
                 
                 Section(header: Text("Build steps (optional)")) {
-                    AddBuildStepView(build: $viewModel.build)
+                    AddBuildStepView(viewModel: viewModel)
                 }
             }
             .navigationTitle(viewModel.cocktailName == "" ? $viewModel.defaultName : $viewModel.cocktailName)
@@ -55,6 +55,10 @@ struct AddCocktailView: View {
                 ToolbarItem(placement: .bottomBar) {
                     Button {
                         if viewModel.isValid() {
+                            if viewModel.build.instructions != [] {
+                                viewModel.buildOption = viewModel.build
+                            }
+                            
                             let cocktail = Cocktail(cocktailName: viewModel.cocktailName,
                                                     glasswareType: viewModel.glass!,
                                                     garnish: viewModel.addedGarnish,
@@ -63,8 +67,8 @@ struct AddCocktailView: View {
                                                                    place: viewModel.authorPlace,
                                                                    year: viewModel.authorYear),
                                                     spec: viewModel.addedIngredients,
-                                                    buildOrder: viewModel.build,
-                                                    tags: Tags(flavors: [], profiles: [], styles: [], booze: [], nA: []), 
+                                                    buildOrder: viewModel.buildOption,
+                                                    tags: Tags(flavors: [], profiles: [], styles: [], booze: [], nA: []),
                                                     variation: viewModel.variation, 
                                                     collection: .custom)
                             
@@ -93,63 +97,8 @@ struct AddCocktailView: View {
     }
 }
 
-private struct AddedIngredientView: View {
-   
-    @Bindable var viewModel: AddCocktailViewModel
-    @Binding var isShowingAddIngredients: Bool
-    
-    
-    var body: some View {
-        Section(header: Text("Ingredients")) {
-            
-            List{
-                ForEach(viewModel.addedIngredients, id: \.ingredient.name) { ingredient in
-                    Text("\(NSNumber(value: ingredient.value)) \(ingredient.unit.rawValue) \(ingredient.ingredient.name)")
-                }
-                .onDelete(perform: { indexSet in
-                    viewModel.addedIngredients.remove(atOffsets: indexSet)
-                })
-            }
-            
-            Button(action: {
-                isShowingAddIngredients.toggle()
-                
-            }, label: {
-                HStack{
-                    Text(viewModel.addedIngredients.count < 2 ? "Add Ingredient" : "Add another ingredient")
-                        .tint(viewModel.addedIngredients.count < 2 ? .white : .secondary)
-                    Spacer()
-                    Image(systemName: "plus.circle.fill")
-                        .foregroundStyle(.brandPrimaryGold)
-                }
-            })
-            .sheet(isPresented: $isShowingAddIngredients) {
-                AddIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
-            }
-        }
-    }
-}
 
-private struct AddBuildStepView: View {
-    @Binding var build: Build?
-    var body: some View {
-        List {
-            Button {
-                print("show the add build step view")
-            } label: {
-                HStack {
-                    Text("Add build step")
-                        .foregroundStyle(.white)
-                    
-                    Spacer()
-                    
-                    Image(systemName: "plus.circle.fill")
-                        .foregroundStyle(.brandPrimaryGold)
-                }
-            }
-        }
-    }
-}
+
 
 private struct GlassPicker: View {
     @Binding var glass: Glassware?
@@ -254,6 +203,8 @@ private struct VariationPicker: View {
 }
 
 #Preview {
-    AddCocktailView(viewModel: AddCocktailViewModel())
-        
+    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
+    return AddCocktailView(viewModel: AddCocktailViewModel())
+        .modelContainer(preview.container)
+       
 }

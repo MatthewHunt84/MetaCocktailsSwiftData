@@ -48,7 +48,8 @@ import Observation
     var authorYear: String = ""
     
     // Build
-    var build: Build?
+    var build: Build = Build(instructions: [])
+    var buildOption: Build?
     
     func clearData() {
         cocktailName = ""
@@ -61,7 +62,8 @@ import Observation
         variation = nil
         addedIngredients = []
         defaultName = "Add Cocktail"
-        build = nil 
+        build = Build(instructions: [])
+        buildOption = nil 
        
     }
     func clearIngredientData() {

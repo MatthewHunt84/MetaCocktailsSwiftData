@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct Build: Codable {
-    let instructions: [Instruction]
+    var instructions: [Instruction]
 }
 
-struct Instruction: Codable, Identifiable {
+struct Instruction: Codable, Identifiable, Equatable {
     var id = UUID()
     
     let step: Int

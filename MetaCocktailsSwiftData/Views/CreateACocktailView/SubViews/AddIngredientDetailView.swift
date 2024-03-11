@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AddIngredientView: View {
+struct AddIngredientDetailView: View {
     
     @Bindable var viewModel: AddCocktailViewModel
     @Binding var isShowingAddIngredients: Bool
@@ -104,5 +104,9 @@ struct AddIngredientView: View {
 }
 
 #Preview {
-    AddIngredientView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true))
+    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
+    
+    return AddIngredientDetailView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true))
+        .modelContainer(preview.container)
+    
 }
