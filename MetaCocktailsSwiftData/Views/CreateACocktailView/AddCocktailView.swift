@@ -11,6 +11,7 @@ struct AddCocktailView: View {
         
         NavigationStack {
             ZStack {
+                
                 VStack {
                     Form {
                         
@@ -86,6 +87,20 @@ struct AddCocktailView: View {
                                 }
                                 .foregroundStyle(viewModel.isValid() ? .brandPrimaryGold : .secondary)
                             }
+                        }
+                    }
+                }
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button{
+                            viewModel.clearData()
+                        } label: {
+                            
+                            VStack {
+                                Image(systemName: "trash")
+                                Text("Delete")
+                            }
+                            .tint(.brandPrimaryRed)
                         }
                     }
                 }

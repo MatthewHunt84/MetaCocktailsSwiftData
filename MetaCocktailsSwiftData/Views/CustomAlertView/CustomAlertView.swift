@@ -77,7 +77,7 @@ struct CustomAlertView: View {
             .padding(30)
             .offset(x: 0, y: offset)
             .onAppear {
-                withAnimation(.easeInOut.speed(0.5)) {
+                withAnimation(.easeInOut.speed(0.75)) {
                     offset = 0
                 }
             }
@@ -86,7 +86,7 @@ struct CustomAlertView: View {
         
     }
     func close() {
-        withAnimation((.easeInOut.speed(0.5))) {
+        withAnimation((.easeInOut.speed(0.75))) {
             offset = 1000
             isActive = false
         }
