@@ -103,8 +103,10 @@ struct AddCocktailView: View {
                                     .font(.footnote).bold()
                             }
                             .tint(.brandPrimaryRed)
+                            .padding()
                         }
                     }
+                   
                 }
                 if viewModel.isShowingAlert {
                     CustomAlertView(isActive: $viewModel.isShowingAlert,
