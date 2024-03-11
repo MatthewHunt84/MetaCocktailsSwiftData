@@ -13,7 +13,7 @@ struct SpecifiedListView: View {
     var cocktails: [Cocktail]
     
     var body: some View {
-        ForEach(viewModel.basicAlphabet, id: \.self) { letter in
+        ForEach(viewModel.cocktailListAlphabet, id: \.self) { letter in
             Section{
                 ForEach(cocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.cocktailName) { item in
                     NavigationLink {
@@ -25,16 +25,11 @@ struct SpecifiedListView: View {
                     }
                 }
             } header: {
-                if letter == CocktailListViewModel.sfSymbolForCustomCocktails {
-                    Text("Custom")
-                        .fontWeight(.bold)
-                        .font(.title)
-                } else {
+                if letter != CocktailListViewModel.sfSymbolForCustomCocktails {
                     Text("\(letter)")
                         .fontWeight(.bold)
                         .font(.title)
                 }
-                
             }.id(letter)
         }
     }
