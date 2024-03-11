@@ -24,12 +24,13 @@ class Cocktail: Equatable, Hashable {
     var garnish: [Garnish]?
     var ice: Ice?
     var author: Author?
-    var spec: [CocktailIngredient]
+    @Relationship(deleteRule: .cascade) var spec: [CocktailIngredient]
     var buildOrder: Build?
     @Transient var tags: Tags = Tags()
-    @Transient var compiledTags: Tags = Tags()
+    var compiledTags: Tags = Tags()
     var variation: Variation?
     var collection: CocktailCollection?
+    var collectionName: String
     var titleCocktail: Bool?
   
     
@@ -47,6 +48,14 @@ class Cocktail: Equatable, Hashable {
         self.tags = tags
         self.variation = variation
         self.collection = collection
+        self.collectionName = {
+            var name = "None"
+            if let collection = collection {
+                name = collection.collectionName
+                return name
+            }
+            return name
+        }()
         self.titleCocktail = titleCocktail
         self.compiledTags = {
             // when we initialize each cocktail we immediately make a stored property of it's combined cocktail + ingredient tags

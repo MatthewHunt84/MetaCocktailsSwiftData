@@ -13,7 +13,7 @@ struct SwipeRecipeView: View {
     var cocktailFrameSize = CGFloat(125)
     //@State var cocktail: Cocktail
     @State var variations: [Cocktail]
-    @Environment(\.dismiss) private var dismiss
+    
     @Environment(\.modelContext) private var modelContext
     //    @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
     
@@ -21,17 +21,7 @@ struct SwipeRecipeView: View {
         NavigationStack {
             GeometryReader{ geo in
                 VStack{
-                    HStack{
-                        Button{
-                            dismiss()
-                        } label: {
-                            Image(systemName: "chevron.backward")
-                                .tint(.cyan)
-                            Text("Back")
-                                .tint(.cyan)
-                        }
-                        Spacer()
-                    }
+                    BackButton()
                     TabView {
                         ForEach($variations, id: \.self) { cocktail in
                             

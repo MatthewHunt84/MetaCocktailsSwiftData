@@ -7,9 +7,30 @@
 
 import Foundation
 
-enum CocktailCollection: Int, Codable {
+enum CocktailCollection: Int, Codable, Identifiable, CaseIterable {
+    
+    case all
     case williamsAndGraham
     case originals 
     case milkAndHoney
     case custom
+    
+    var id: Int {
+        rawValue
+    }
+    
+    var collectionName: String {
+        switch self {
+        case .williamsAndGraham:
+            "Williams & Graham"
+        case .originals:
+            "Original Cocktails"
+        case .milkAndHoney:
+            "Milk & Honey"
+        case .custom:
+            "Custom"
+        case .all:
+            "All"
+        }
+    }
 }

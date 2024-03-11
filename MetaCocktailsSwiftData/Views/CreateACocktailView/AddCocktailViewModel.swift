@@ -20,7 +20,7 @@ import Observation
     var currentSelectedComponent = CocktailComponent(name: "Placeholder")
     var addedIngredients: [CocktailIngredient] = []
     var addedGarnish: [Garnish] = []
-    var allPhysicalCocktailComponents: [CocktailComponent] = createPhysicalComponentArray()
+    var allPhysicalCocktailComponents: [CocktailComponent] = getAllPhysicalComponents()
     
     var dateAdded = Date()
     var defaultName = "Add Cocktail"
@@ -163,19 +163,37 @@ import Observation
             }
         }
 
+
     
-    static func createPhysicalComponentArray() ->  [CocktailComponent] {
+    static func getAllPhysicalComponents() -> [CocktailComponent] {
+        var cocktailComponentArray = [CocktailComponent]()
         
-        var array = [CocktailComponent]()
-        let convertedBoozeArray: [CocktailComponent] = SearchCriteriaViewModel.generatedBoozeCocktailComponents
-        let convertedNAArray: [CocktailComponent] = SearchCriteriaViewModel.generatedNACocktailComponents
-        for component in convertedBoozeArray {
-            array.append(component)
-        }
-        for component in convertedNAArray {
-            array.append(component)
-        }
+        cocktailComponentArray.append(contentsOf: Syrup.allCases.map({ $0.nAComponent}))
+        cocktailComponentArray.append(contentsOf: Juice.allCases.map({ $0.nAComponent}))
+        cocktailComponentArray.append(contentsOf: Herbs.allCases.map({ $0.nAComponent}))
+        cocktailComponentArray.append(contentsOf: Fruit.allCases.map({ $0.nAComponent}))
+        cocktailComponentArray.append(contentsOf: Seasoning.allCases.map({ $0.nAComponent}))
+        cocktailComponentArray.append(contentsOf: Soda.allCases.map({ $0.nAComponent}))
+        cocktailComponentArray.append(contentsOf: OtherNA.allCases.map({ $0.nAComponent}))
         
-        return array
+        cocktailComponentArray.append(contentsOf: Agave.allCases.map { $0.cockTailComponent })
+        cocktailComponentArray.append(contentsOf: Brandy.allCases.map { $0.cockTailComponent })
+        cocktailComponentArray.append(contentsOf: Gin.allCases.map { $0.cockTailComponent })
+        cocktailComponentArray.append(contentsOf: OtherAlcohol.allCases.map { $0.cockTailComponent })
+        cocktailComponentArray.append(contentsOf: Rum.allCases.map { $0.cockTailComponent })
+        cocktailComponentArray.append(contentsOf: Vodka.allCases.map { $0.cockTailComponent })
+        cocktailComponentArray.append(contentsOf: Whiskey.allCases.map { $0.cockTailComponent })
+        cocktailComponentArray.append(contentsOf: Liqueur.allCases.map { $0.cockTailComponent })
+        cocktailComponentArray.append(contentsOf: FortifiedWine.allCases.map { $0.cockTailComponent })
+        cocktailComponentArray.append(contentsOf: Wine.allCases.map { $0.cockTailComponent })
+        cocktailComponentArray.append(contentsOf: Bitters.allCases.map { $0.cockTailComponent })
+        cocktailComponentArray.append(contentsOf: Amaro.allCases.map { $0.cockTailComponent })
+        
+     
+        
+        return cocktailComponentArray
+        
     }
+    
+
 }

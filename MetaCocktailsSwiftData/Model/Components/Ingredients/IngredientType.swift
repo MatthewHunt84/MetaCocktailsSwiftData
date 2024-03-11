@@ -30,42 +30,7 @@ enum IngredientType: Codable{
     case bitters(Bitters)
     case amari(Amaro)
     
-    static func getNAComponents() -> [CocktailComponent] {
-        var cocktailComponentArrayForNA = [CocktailComponent]()
-        
-        cocktailComponentArrayForNA.append(contentsOf: Syrup.allCases.map({ $0.nAComponent}))
-        cocktailComponentArrayForNA.append(contentsOf: Juice.allCases.map({ $0.nAComponent}))
-        cocktailComponentArrayForNA.append(contentsOf: Herbs.allCases.map({ $0.nAComponent}))
-        cocktailComponentArrayForNA.append(contentsOf: Fruit.allCases.map({ $0.nAComponent}))
-        cocktailComponentArrayForNA.append(contentsOf: Seasoning.allCases.map({ $0.nAComponent}))
-        cocktailComponentArrayForNA.append(contentsOf: Soda.allCases.map({ $0.nAComponent}))
-        cocktailComponentArrayForNA.append(contentsOf: OtherNA.allCases.map({ $0.nAComponent}))
-        
-     
-        
-        return cocktailComponentArrayForNA
-        //return cocktailComponentArrayForNA
-    }
-    
-    static func getBoozeComponents() -> [CocktailComponent] {
-        
-        var CocktailComponentArrayForBooze = [CocktailComponent]()
-        
-        CocktailComponentArrayForBooze.append(contentsOf: Agave.allCases.map { $0.cockTailComponent })
-        CocktailComponentArrayForBooze.append(contentsOf: Brandy.allCases.map { $0.cockTailComponent })
-        CocktailComponentArrayForBooze.append(contentsOf: Gin.allCases.map { $0.cockTailComponent })
-        CocktailComponentArrayForBooze.append(contentsOf: OtherAlcohol.allCases.map { $0.cockTailComponent })
-        CocktailComponentArrayForBooze.append(contentsOf: Rum.allCases.map { $0.cockTailComponent })
-        CocktailComponentArrayForBooze.append(contentsOf: Vodka.allCases.map { $0.cockTailComponent })
-        CocktailComponentArrayForBooze.append(contentsOf: Whiskey.allCases.map { $0.cockTailComponent })
-        CocktailComponentArrayForBooze.append(contentsOf: Liqueur.allCases.map { $0.cockTailComponent })
-        CocktailComponentArrayForBooze.append(contentsOf: FortifiedWine.allCases.map { $0.cockTailComponent })
-        CocktailComponentArrayForBooze.append(contentsOf: Wine.allCases.map { $0.cockTailComponent })
-        CocktailComponentArrayForBooze.append(contentsOf: Bitters.allCases.map { $0.cockTailComponent })
-        CocktailComponentArrayForBooze.append(contentsOf: Amaro.allCases.map { $0.cockTailComponent })
-        
-        return CocktailComponentArrayForBooze
-    }
+
     
     var tags: Tags {
         switch self {

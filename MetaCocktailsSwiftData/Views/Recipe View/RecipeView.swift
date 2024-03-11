@@ -13,22 +13,11 @@ struct RecipeView: View {
     @Bindable var viewModel: RecipeViewModel
     let recipeSpacing: CGFloat = 2
     var cocktailFrameSize = CGFloat(125)
-    @Environment(\.dismiss) private var dismiss
     @State private var prepItems: [CocktailIngredient] = []
 
     var body: some View {
         NavigationStack{
-            HStack{
-                Button{
-                    dismiss()
-                } label: {
-                    Image(systemName: "chevron.backward")
-                        .tint(.cyan)
-                    Text("Back")
-                        .tint(.cyan)
-                }
-                Spacer()
-            }
+            BackButton()
             GeometryReader{ geo in
                 ScrollView{
                     VStack{
