@@ -17,6 +17,7 @@ struct AddIngredientDetailView: View {
     
     var body: some View {
         ZStack{
+            
             VStack {
                 SearchBarView(searchText: $viewModel.ingredientName)
                     .focused($keyboardFocused)
@@ -51,7 +52,10 @@ struct AddIngredientDetailView: View {
                             }
                         }
                     }
+                    .listStyle(.plain)
+                    .listRowBackground(Color.black)
                 }
+                
                 
                 
                 
@@ -97,15 +101,19 @@ struct AddIngredientDetailView: View {
                 .buttonStyle(BlackNWhiteButton())
                 
             }
+            
+            
+            
             if viewModel.isShowingingredientAlert {
                 CustomAlertView(isActive: $viewModel.isShowingingredientAlert,
                                 title: "",
                                 message: "Please choose an ingredient and measurement to add.",
                                 buttonTitle: "Heard, Chef",
                                 action: {})
-                .zIndex(1)
+                .zIndex(2)
             }
         }
+        
     }
 }
 

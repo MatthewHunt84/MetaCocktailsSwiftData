@@ -15,6 +15,7 @@ struct AddedIngredientView: View {
     
     
     var body: some View {
+        
         Section(header: Text("Ingredients")) {
             
             List{
@@ -39,7 +40,10 @@ struct AddedIngredientView: View {
                 }
             })
             .sheet(isPresented: $isShowingAddIngredients) {
-                AddIngredientDetailView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
+                ZStack {
+                    Color.black.ignoresSafeArea()
+                    AddIngredientDetailView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
+                }
             }
         }
     }

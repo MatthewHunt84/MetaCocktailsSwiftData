@@ -46,12 +46,12 @@ struct AddCocktailView: View {
                         }
                         
                         Section(header: Text("Build steps (optional)")) {
-                            AddBuildStepView(viewModel: viewModel)
+                                AddBuildStepView(viewModel: viewModel)
+                            
                         }
                     }
                     .navigationTitle(viewModel.cocktailName == "" ? $viewModel.defaultName : $viewModel.cocktailName)
                     .navigationBarTitleDisplayMode(.large)
-                    .tint(Color.brandPrimaryGold)
                     .toolbar {
                         ToolbarItem(placement: .bottomBar) {
                             Button {
@@ -94,7 +94,7 @@ struct AddCocktailView: View {
                 }
                 if viewModel.isShowingAlert {
                     CustomAlertView(isActive: $viewModel.isShowingAlert,
-                                    title: "You're almost there",
+                                    title: "Missing Information",
                                     message: viewModel.cantAddCocktailMessage(),
                                     buttonTitle: "Heard, Chef", action: {})
                     .zIndex(1)
@@ -144,30 +144,32 @@ private struct GarnishPicker: View {
     @Bindable var viewModel: AddCocktailViewModel
     
     var body: some View {
-        List{
-            ForEach(viewModel.addedGarnish, id: \.self) { garnish in
-                Text("\(garnish.rawValue)")
-            }
-            .onDelete(perform: { indexSet in
-                viewModel.addedGarnish.remove(atOffsets: indexSet)
-            })
-        }
-        
-        Menu {
-            ForEach(Garnish.allCases, id: \.rawValue ) { garnish in
-                Button(action: {
-                    viewModel.addedGarnish.append(garnish)
-                }, label: {
+        VStack {
+            List{
+                ForEach(viewModel.addedGarnish, id: \.self) { garnish in
                     Text("\(garnish.rawValue)")
+                }
+                .onDelete(perform: { indexSet in
+                    viewModel.addedGarnish.remove(atOffsets: indexSet)
                 })
             }
-        } label: {
-            HStack {
-                Text(viewModel.addedGarnish.count < 1 ? "Add Garnish" : "Add another garnish")
-                    .tint(viewModel.addedGarnish.count < 1 ? .white : .secondary)
-                Spacer()
-                Image(systemName: "plus.circle.fill")
-                    .foregroundStyle(.brandPrimaryGold)
+            
+            Menu {
+                ForEach(Garnish.allCases, id: \.rawValue ) { garnish in
+                    Button(action: {
+                        viewModel.addedGarnish.append(garnish)
+                    }, label: {
+                        Text("\(garnish.rawValue)")
+                    })
+                }
+            } label: {
+                HStack {
+                    Text(viewModel.addedGarnish.count < 1 ? "Add Garnish" : "Add another garnish")
+                        .tint(viewModel.addedGarnish.count < 1 ? .white : .secondary)
+                    Spacer()
+                    Image(systemName: "plus.circle.fill")
+                        .foregroundStyle(.brandPrimaryGold)
+                }
             }
         }
     }

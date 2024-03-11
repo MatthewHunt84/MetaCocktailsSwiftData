@@ -26,8 +26,11 @@ struct AddBuildStepView: View {
                 }
             }
             .sheet(isPresented: $isShowingBuildSheet, content: {
-                AddBuildStepDetailView(viewModel: viewModel, isShowingBuildSheet: $isShowingBuildSheet)
-                    .presentationDetents([.height(300)])
+                ZStack{
+                    Color.black.ignoresSafeArea()
+                    AddBuildStepDetailView(viewModel: viewModel, isShowingBuildSheet: $isShowingBuildSheet)
+                        .presentationDetents([.height(300)])
+                }
             })
             ForEach(viewModel.build.instructions, id: \.id) { buildStep in
                 VStack{

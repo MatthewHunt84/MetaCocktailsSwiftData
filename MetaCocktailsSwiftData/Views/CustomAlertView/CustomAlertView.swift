@@ -27,7 +27,7 @@ struct CustomAlertView: View {
                     .font(.title2)
                     .bold()
                     .padding()
-                    .foregroundStyle(.brandPrimaryGold)
+                    .foregroundStyle(.white)
                     .multilineTextAlignment(.center)
                 
                 Text(message)
@@ -54,6 +54,7 @@ struct CustomAlertView: View {
             .padding()
             .background(.black)
             .clipShape(RoundedRectangle(cornerRadius: 20))
+            .shadow(color: .white, radius: 5)
             .overlay {
                 VStack{
                     HStack {
@@ -61,9 +62,10 @@ struct CustomAlertView: View {
                         Button {
                             close()
                         } label: {
-                            Image(systemName: "xmark")
+                            Image(systemName: "x.circle.fill")
                                 .font(.title2)
                                 .fontWeight(.medium)
+                                .tint(.brandPrimaryGold)
                         }
                         .tint(.white)
                     }
@@ -71,7 +73,7 @@ struct CustomAlertView: View {
                 }
                 .padding()
             }
-            .shadow(color: .white, radius: 5)
+            
             .padding(30)
             .offset(x: 0, y: offset)
             .onAppear {
@@ -93,7 +95,7 @@ struct CustomAlertView: View {
 }
 
 #Preview {
-    CustomAlertView(isActive: .constant(true), title: "These cocktails are OLD old.", message: "Message", buttonTitle: "Custom Button") {
+    CustomAlertView(isActive: .constant(true), title: "Title", message: "Message", buttonTitle: "Custom Button") {
         
     }
 }
