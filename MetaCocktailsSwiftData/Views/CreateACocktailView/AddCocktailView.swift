@@ -98,7 +98,9 @@ struct AddCocktailView: View {
                             
                             VStack {
                                 Image(systemName: "trash")
+                                    .font(.footnote).bold()
                                 Text("Delete")
+                                    .font(.footnote).bold()
                             }
                             .tint(.brandPrimaryRed)
                         }
