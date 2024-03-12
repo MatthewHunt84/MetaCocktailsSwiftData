@@ -96,7 +96,7 @@ struct AddCocktailView: View {
                             viewModel.clearData()
                         } label: {
                             
-                            VStack {
+                            HStack {
                                 Image(systemName: "trash")
                                     .font(.footnote).bold()
                                 Text("Delete")
