@@ -9,33 +9,47 @@ import Foundation
 import SwiftUI
 
 enum Glassware: String, Codable, CaseIterable {
+    
+    // most common
+    case doubleOld                 = "Double Old Fashioned"
+    case coupe                     = "Coupe"
+    case martini                   = "Martini"
+    case collins                   = "Collins"
+    case fizzGlass                 = "Chilled 8 oz. Fizz Glass"
+    case singleOld                 = "Frozen Single Old Fashioned"
+    case nickAndNora               = "Nick and Nora"
+    case tikiMug                   = "Tiki Mug"
+    case flute                     = "Flute"
+    case julep                     = "Julep Cup"
+    case stemmedGlassware          = "Stemmed"
+    
+    case coupeSalt                 = "Coupe with a salted rim"
+    case doubleOldSalt             = "Double Old Fashioned (half salt rim)"
+    case snifter                   = "Snifter (Flip Glass)"
     case blueBlazerMugs            = "Blue Blazer Mugs"
     case buenaVistaIrish           = "Irish Coffee Glass (180ml)"
     case cinnamonSugarRim          = "Cinnamon Sugar Rimmed Cocktail Glass"
     case copperMuleCup             = "Copper Mule Cup"
-    case coupe                     = "Coupe"
-    case coupeSalt                 = "Coupe with a salted rim"
-    case collins                   = "Collins"
+    
     case crustaGlass               = "Crusta Glass (See build order)"
-    case doubleOld                 = "Double Old Fashioned"
+    
     case doubleOldAsparagusSaltRim = "Double Old Fashioned (half asparagus salt rim)"
     case doubleOldCelerySalt       = "Double Old Fashioned (half celery salt rim)"
-    case doubleOldSalt             = "Double Old Fashioned (half salt rim)"
+    
     case doubleOldSmokedSalt       = "Double Old Fashioned (half smoked salt rim)"
-    case flute                     = "Flute"
-    case fizzGlass                 = "Chilled 8 oz. Fizz Glass"
+    
+    
     case hurricaneGlass            = "Hurricane Glass"
-    case julep                     = "Julep Cup"
+    
     case teaCup                    = "Ornate Tea Cup"
     case tikiBird                  = "Bird Shaped Tiki Glass"
-    case martini                   = "Martini"
+    
     case milkShake                 = "Milkshake Glass"
-    case nickAndNora               = "Nick and Nora"
-    case singleOld                 = "Frozen Single Old Fashioned"
-    case snifter                   = "Snifter (Flip Glass)"
-    case stemmedGlassware          = "Stemmed"
+    
+    
+    
     case sugarRimStemmed           = "Stemmed with a half sugar rim"
-    case tikiMug                   = "Tiki Mug"
+    
     case toddyGlass                = "Toddy Glass"
     case wineGlass                 = "Large Wine Glass"
    
