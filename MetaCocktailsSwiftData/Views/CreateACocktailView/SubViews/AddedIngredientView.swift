@@ -26,11 +26,7 @@ struct AddedIngredientView: View {
                     viewModel.addedIngredients.remove(atOffsets: indexSet)
                 })
             }
-            
-            Button(action: {
-                isShowingAddIngredients.toggle()
-                
-            }, label: {
+            NavigationLinkWithoutIndicator {
                 HStack{
                     Text(viewModel.addedIngredients.count < 2 ? "Add Ingredient" : "Add another ingredient")
                         .tint(viewModel.addedIngredients.count < 2 ? .white : .secondary)
@@ -38,12 +34,9 @@ struct AddedIngredientView: View {
                     Image(systemName: "plus.circle.fill")
                         .foregroundStyle(.brandPrimaryGold)
                 }
-            })
-            .sheet(isPresented: $isShowingAddIngredients) {
-                ZStack {
-                    Color.black.ignoresSafeArea()
-                    AddIngredientDetailView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
-                }
+            } destination: {
+                AddIngredientDetailView(viewModel: viewModel)
+                    .navigationBarBackButtonHidden(true)
             }
         }
     }

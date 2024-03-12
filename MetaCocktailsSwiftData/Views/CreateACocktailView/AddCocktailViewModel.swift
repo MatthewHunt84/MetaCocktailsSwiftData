@@ -39,7 +39,6 @@ import Observation
     // Extras
     var glass: Glassware?
     var ice: Ice? = .none
-    var garnish: Garnish = .noGarnish
     var variation: Variation?
     
     // Author
@@ -58,7 +57,7 @@ import Observation
         authorYear = ""
         glass = nil
         ice = .none
-        garnish = .noGarnish
+        addedGarnish = []
         variation = nil
         addedIngredients = []
         defaultName = "Add Cocktail"
