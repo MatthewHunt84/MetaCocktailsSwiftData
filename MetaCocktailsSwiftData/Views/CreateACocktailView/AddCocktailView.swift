@@ -122,7 +122,6 @@ struct AddCocktailView: View {
     }
 }
 private struct GlassPickerButton: View {
-    
    @State private var glasswareName = "none"
     var body: some View {
         NavigationLink {
@@ -133,7 +132,8 @@ private struct GlassPickerButton: View {
                 Spacer()
                 Text(glasswareName)
                     .foregroundStyle(.gray)
-                
+                    
+            }
         }
     }
 }
@@ -153,7 +153,7 @@ private struct GlassPickerDetailView: View {
                         Button{
                             viewModel.glass = newGlass
                             print("view model glass = \(viewModel.glass!.rawValue) the the new glass = \(newGlass.rawValue)")
-                        
+                            print(viewModel.isValid())
                             glasswareName = newGlass.rawValue
                             
                             
