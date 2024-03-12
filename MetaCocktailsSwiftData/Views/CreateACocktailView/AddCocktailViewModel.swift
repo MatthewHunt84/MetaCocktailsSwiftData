@@ -38,7 +38,7 @@ import Observation
     }()
     
     // Extras
-    var glass: Glassware?
+    var uniqueGlasswareName: Glassware?
     var ice: Ice? = .none
     var garnish: [Garnish]?
     var variation: Variation?
@@ -58,9 +58,10 @@ import Observation
         authorName = ""
         authorPlace = ""
         authorYear = ""
-        glass = nil
+        uniqueGlasswareName = .blueBlazerMugs
         ice = .none
         garnish = nil 
+        addedGarnish = []
         variation = nil
         addedIngredients = []
         defaultName = "Add Cocktail"
@@ -94,17 +95,7 @@ import Observation
     
     
     func isValid() -> Bool {
-        print("cocktail name = \(cocktailName)")
-        print("ingredient count = \(addedIngredients.count)")
-        if let glassValue = glass {
-            print("glass  = \(glassValue.rawValue)")
-        } else {
-            print("glass = nil")
-        }
-        
-        
-        print(cocktailName != "" && ((addedIngredients.count) > 1) && glass != nil)
-        return cocktailName != "" && ((addedIngredients.count) > 1) && glass != nil
+        return cocktailName != "" && ((addedIngredients.count) > 1) && uniqueGlasswareName != nil
     }
     
     func ingredientIsValid() -> Bool {
@@ -120,10 +111,10 @@ import Observation
         
         if cocktailName == "" {
             text = "Your cocktail must have a name"
-            if glass == nil {
+            if uniqueGlasswareName == nil {
                 text += ", and a glass"
             }
-        } else if glass == nil {
+        } else if uniqueGlasswareName == nil {
             text = "Select a glass"
         }
         if (addedIngredients.count) < 2 {

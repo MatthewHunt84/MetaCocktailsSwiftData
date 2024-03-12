@@ -25,7 +25,7 @@ struct AddCocktailView: View {
                         
                         Section(header: Text("Extras")) {
                            
-                            GlassPickerButton()
+                            GlassPickerButton(viewModel: viewModel)
                             
                             IcePicker(ice: $viewModel.ice)
                             
@@ -71,7 +71,7 @@ struct AddCocktailView: View {
                                     viewModel.validateBuildInstructions()
                                     
                                     let cocktail = Cocktail(cocktailName: viewModel.cocktailName,
-                                                            glasswareType: viewModel.glass!,
+                                                            glasswareType: viewModel.uniqueGlasswareName!,
                                                             garnish: viewModel.garnish,
                                                             ice: viewModel.ice,
                                                             author: viewModel.author,
@@ -122,10 +122,11 @@ struct AddCocktailView: View {
     }
 }
 private struct GlassPickerButton: View {
+   @Bindable var viewModel: AddCocktailViewModel
    @State private var glasswareName = "none"
     var body: some View {
         NavigationLink {
-            GlassPickerDetailView(glasswareName: $glasswareName)
+            GlassPickerDetailView(glasswareName: $glasswareName, viewModel: viewModel)
         } label: {
             HStack {
                 Text("Glassware")
@@ -143,20 +144,20 @@ private struct GlassPickerButton: View {
 private struct GlassPickerDetailView: View {
     
     @Binding var glasswareName: String
-    @Bindable var viewModel = AddCocktailViewModel()
+    @Bindable var viewModel: AddCocktailViewModel
     @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
+        
         VStack{
             List {
                 ForEach(Glassware.allCases, id: \.self) { newGlass in
                     if newGlass != .blueBlazerMugs && newGlass != .cinnamonSugarRim && newGlass != .crustaGlass  && newGlass != .doubleOldAsparagusSaltRim  && newGlass != .doubleOldSmokedSalt  && newGlass != .doubleOldCelerySalt {
+                        
+                        
                         Button{
-                            viewModel.glass = newGlass
-                            print("view model glass = \(viewModel.glass!.rawValue) the the new glass = \(newGlass.rawValue)")
-                            print(viewModel.isValid())
+                            viewModel.uniqueGlasswareName = newGlass
                             glasswareName = newGlass.rawValue
-                            
-                            
                             dismiss()
                         } label: {
                             HStack {
@@ -166,7 +167,6 @@ private struct GlassPickerDetailView: View {
                                 
                                 Text(newGlass.rawValue)
                                     .tag(Optional(newGlass))
-                                
                             }
                         }
                         .padding(.horizontal)
@@ -176,23 +176,6 @@ private struct GlassPickerDetailView: View {
             .listStyle(.plain)
             .listRowBackground(Color.black)
         }
-//        Picker("Glass", selection: $glass) {
-//            Text("Select Glassware").tag(Optional<String>(nil))
-//            
-//            ForEach(Glassware.allCases, id: \.rawValue)  { glass in
-//                HStack {
-//                    glass.findGlass(for: glass)
-//                        .resizable()
-//                        .frame(width: 50, height: 50, alignment: .trailing)
-//                    Text(glass.rawValue)
-//                        .tag(Optional(glass))
-//                    
-//                }
-//                
-//            }
-//            .backgroundStyle(.black)
-//        }.pickerStyle(.navigationLink)
-            
     }
 }
 
