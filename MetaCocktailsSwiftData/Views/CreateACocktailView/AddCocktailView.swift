@@ -113,9 +113,7 @@ struct AddCocktailView: View {
                     CustomAlertView(isActive: $viewModel.isShowingUniqueNameAlert,
                                     title: "Name must be unique",
                                     message: "Please modify your cocktail name. ",
-                                    buttonTitle: heardChef, action: {
-                        viewModel.ingredientName += " No. 2"
-                    })
+                                    buttonTitle: heardChef, action: {})
                     .zIndex(1)
                 }
                 
@@ -124,8 +122,8 @@ struct AddCocktailView: View {
     }
 }
 private struct GlassPickerButton: View {
+    
    @State private var glasswareName = "none"
-    @Bindable var viewModel = AddCocktailViewModel()
     var body: some View {
         NavigationLink {
             GlassPickerDetailView(glasswareName: $glasswareName)
@@ -135,7 +133,7 @@ private struct GlassPickerButton: View {
                 Spacer()
                 Text(glasswareName)
                     .foregroundStyle(.gray)
-            }
+                
         }
     }
 }
@@ -143,19 +141,22 @@ private struct GlassPickerButton: View {
 
 
 private struct GlassPickerDetailView: View {
-
+    
     @Binding var glasswareName: String
     @Bindable var viewModel = AddCocktailViewModel()
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         VStack{
             List {
-                ForEach(Glassware.allCases, id: \.rawValue) { newGlass in
+                ForEach(Glassware.allCases, id: \.self) { newGlass in
                     if newGlass != .blueBlazerMugs && newGlass != .cinnamonSugarRim && newGlass != .crustaGlass  && newGlass != .doubleOldAsparagusSaltRim  && newGlass != .doubleOldSmokedSalt  && newGlass != .doubleOldCelerySalt {
                         Button{
                             viewModel.glass = newGlass
+                            print("view model glass = \(viewModel.glass!.rawValue) the the new glass = \(newGlass.rawValue)")
+                        
                             glasswareName = newGlass.rawValue
-                            print(viewModel.glass!.rawValue)
+                            
+                            
                             dismiss()
                         } label: {
                             HStack {
@@ -175,14 +176,6 @@ private struct GlassPickerDetailView: View {
             .listStyle(.plain)
             .listRowBackground(Color.black)
         }
-        .onAppear {
-            viewModel.isShowingGlasswareDetailView = true
-        }
-        
-        
-        
-        
-//        
 //        Picker("Glass", selection: $glass) {
 //            Text("Select Glassware").tag(Optional<String>(nil))
 //            

@@ -39,7 +39,6 @@ import Observation
     
     // Extras
     var glass: Glassware?
-    var isShowingGlasswareDetailView: Bool = false
     var ice: Ice? = .none
     var garnish: [Garnish]?
     var variation: Variation?
@@ -95,9 +94,17 @@ import Observation
     
     
     func isValid() -> Bool {
+        print("cocktail name = \(cocktailName)")
+        print("ingredient count = \(addedIngredients.count)")
+        if let glassValue = glass {
+            print("glass  = \(glassValue.rawValue)")
+        } else {
+            print("glass = nil")
+        }
         
         
-        return cocktailName != "" && ((addedIngredients.count) > 1) && glass != nil && isShowingUniqueNameAlert == false
+        print(cocktailName != "" && ((addedIngredients.count) > 1) && glass != nil)
+        return cocktailName != "" && ((addedIngredients.count) > 1) && glass != nil
     }
     
     func ingredientIsValid() -> Bool {
