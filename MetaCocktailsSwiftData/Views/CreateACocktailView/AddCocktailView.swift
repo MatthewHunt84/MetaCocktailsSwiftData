@@ -13,8 +13,14 @@ struct AddCocktailView: View {
             ZStack {
                 
                 VStack {
+                    HStack {
+                        Text(viewModel.cocktailName == "" ? viewModel.defaultName : viewModel.cocktailName)
+                            .font(.largeTitle).bold()
+                            .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
+                        Spacer()
+                       
+                    }
                     Form {
-                        
                         Section(header: Text("Name")) {
                             TextField("Cocktail Name", text: $viewModel.cocktailName)
                         }
@@ -31,6 +37,7 @@ struct AddCocktailView: View {
                         }
                     
                             GarnishPicker(viewModel: viewModel)
+                            
                         
                         
                         
@@ -47,9 +54,21 @@ struct AddCocktailView: View {
                                 AddBuildStepView(viewModel: viewModel)
                             
                         }
+                        Button{
+                            viewModel.clearData()
+                        } label: {
+                            
+                            HStack {
+                                Image(systemName: "arrow.triangle.2.circlepath")
+                                    .font(.footnote).bold()
+                                Text("Reset to Defaults")
+                                    .font(.footnote).bold()
+                            }
+                            .tint(.brandPrimaryRed)
+                            .padding()
+                        }
+                        .frame(width: 380, height: 40,  alignment: .center)
                     }
-                    .navigationTitle(viewModel.cocktailName == "" ? $viewModel.defaultName : $viewModel.cocktailName)
-                    .navigationBarTitleDisplayMode(.large)
                     .toolbar {
                         ToolbarItem(placement: .bottomBar) {
                             Button {
@@ -89,25 +108,9 @@ struct AddCocktailView: View {
                             }
                         }
                     }
+                    
                 }
-                .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button{
-                            viewModel.clearData()
-                        } label: {
-                            
-                            HStack {
-                                Image(systemName: "trash")
-                                    .font(.footnote).bold()
-                                Text("Delete")
-                                    .font(.footnote).bold()
-                            }
-                            .tint(.brandPrimaryRed)
-                            .padding()
-                        }
-                    }
-                   
-                }
+                
                 if viewModel.isShowingAlert {
                     CustomAlertView(isActive: $viewModel.isShowingAlert,
                                     title: "Missing Information",
@@ -160,6 +163,7 @@ private struct GarnishPicker: View {
     @Bindable var viewModel: AddCocktailViewModel
     
     var body: some View {
+        
         Section {
            
                 List{
@@ -173,6 +177,7 @@ private struct GarnishPicker: View {
                 }
                 NavigationLink {
                     GarnishDetailView(viewModel: viewModel)
+                        .navigationBarBackButtonHidden(true)
                         
                 } label: {
                     HStack {
@@ -194,6 +199,7 @@ private struct GarnishDetailView: View {
     @Bindable var viewModel: AddCocktailViewModel
     @Environment(\.dismiss) private var dismiss
     var body: some View {
+        BackButton()
         List{
             ForEach(Garnish.allCases, id: \.rawValue) { garnish in
                 Button {

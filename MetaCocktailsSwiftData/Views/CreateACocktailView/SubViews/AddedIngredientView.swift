@@ -36,6 +36,7 @@ struct AddedIngredientView: View {
                 }
             } destination: {
                 AddIngredientDetailView(viewModel: viewModel)
+                    .navigationBarBackButtonHidden(true)
             }
         }
     }

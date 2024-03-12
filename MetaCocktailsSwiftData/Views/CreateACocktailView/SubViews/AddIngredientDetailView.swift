@@ -18,6 +18,7 @@ struct AddIngredientDetailView: View {
         ZStack{
             
             VStack {
+                BackButton()
                 SearchBarView(searchText: $viewModel.ingredientName)
                     .focused($keyboardFocused)
                     .padding(EdgeInsets(top: 40, leading: 0, bottom: 0, trailing: 0))
