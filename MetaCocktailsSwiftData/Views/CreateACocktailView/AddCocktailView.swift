@@ -24,7 +24,8 @@ struct AddCocktailView: View {
                         
                         
                         Section(header: Text("Extras")) {
-                            GlassPicker(glass: $viewModel.glass)
+                           
+                            GlassPickerButton()
                             
                             IcePicker(ice: $viewModel.ice)
                             
@@ -64,17 +65,16 @@ struct AddCocktailView: View {
                                 }
                                 
                                 if viewModel.isValid() {
-                                    if viewModel.build.instructions != [] {
-                                        viewModel.buildOption = viewModel.build
-                                    }
+                                    
+                                    viewModel.validateAuthor()
+                                    viewModel.validateGarnish()
+                                    viewModel.validateBuildInstructions()
                                     
                                     let cocktail = Cocktail(cocktailName: viewModel.cocktailName,
                                                             glasswareType: viewModel.glass!,
-                                                            garnish: viewModel.addedGarnish,
+                                                            garnish: viewModel.garnish,
                                                             ice: viewModel.ice,
-                                                            author: Author(person: viewModel.authorName,
-                                                                           place: viewModel.authorPlace,
-                                                                           year: viewModel.authorYear),
+                                                            author: viewModel.author,
                                                             spec: viewModel.addedIngredients,
                                                             buildOrder: viewModel.buildOption,
                                                             tags: Tags(flavors: [], profiles: [], styles: [], booze: [], nA: []),
@@ -123,22 +123,83 @@ struct AddCocktailView: View {
         }
     }
 }
-
-
-
-
-private struct GlassPicker: View {
-    @Binding var glass: Glassware?
-    
+private struct GlassPickerButton: View {
+   @State private var glasswareName = "none"
+    @Bindable var viewModel = AddCocktailViewModel()
     var body: some View {
-        Picker("Glass", selection: $glass) {
-            Text("Select Glassware").tag(Optional<String>(nil))
-            
-            ForEach(Glassware.allCases, id: \.rawValue)  { glass in
-                Text(glass.rawValue)
-                    .tag(Optional(glass))
+        NavigationLink {
+            GlassPickerDetailView(glasswareName: $glasswareName)
+        } label: {
+            HStack {
+                Text("Glassware")
+                Spacer()
+                Text(glasswareName)
+                    .foregroundStyle(.gray)
             }
-        }.pickerStyle(.navigationLink)
+        }
+    }
+}
+
+
+
+private struct GlassPickerDetailView: View {
+
+    @Binding var glasswareName: String
+    @Bindable var viewModel = AddCocktailViewModel()
+    @Environment(\.dismiss) private var dismiss
+    var body: some View {
+        VStack{
+            List {
+                ForEach(Glassware.allCases, id: \.rawValue) { newGlass in
+                    if newGlass != .blueBlazerMugs && newGlass != .cinnamonSugarRim && newGlass != .crustaGlass  && newGlass != .doubleOldAsparagusSaltRim  && newGlass != .doubleOldSmokedSalt  && newGlass != .doubleOldCelerySalt {
+                        Button{
+                            viewModel.glass = newGlass
+                            glasswareName = newGlass.rawValue
+                            print(viewModel.glass!.rawValue)
+                            dismiss()
+                        } label: {
+                            HStack {
+                                newGlass.findGlass(for: newGlass)
+                                    .resizable()
+                                    .frame(width: 60, height: 60, alignment: .trailing)
+                                
+                                Text(newGlass.rawValue)
+                                    .tag(Optional(newGlass))
+                                
+                            }
+                        }
+                        .padding(.horizontal)
+                    }
+                }
+            }
+            .listStyle(.plain)
+            .listRowBackground(Color.black)
+        }
+        .onAppear {
+            viewModel.isShowingGlasswareDetailView = true
+        }
+        
+        
+        
+        
+//        
+//        Picker("Glass", selection: $glass) {
+//            Text("Select Glassware").tag(Optional<String>(nil))
+//            
+//            ForEach(Glassware.allCases, id: \.rawValue)  { glass in
+//                HStack {
+//                    glass.findGlass(for: glass)
+//                        .resizable()
+//                        .frame(width: 50, height: 50, alignment: .trailing)
+//                    Text(glass.rawValue)
+//                        .tag(Optional(glass))
+//                    
+//                }
+//                
+//            }
+//            .backgroundStyle(.black)
+//        }.pickerStyle(.navigationLink)
+            
     }
 }
 

@@ -25,7 +25,7 @@ enum Glassware: String, Codable, CaseIterable {
     case flute                     = "Flute"
     case fizzGlass                 = "Chilled 8 oz. Fizz Glass"
     case hurricaneGlass            = "Hurricane Glass"
-    case julep                     = "Julep Cup or Highball"
+    case julep                     = "Julep Cup"
     case teaCup                    = "Ornate Tea Cup"
     case tikiBird                  = "Bird Shaped Tiki Glass"
     case martini                   = "Martini"
@@ -121,5 +121,69 @@ enum Glassware: String, Codable, CaseIterable {
             return SwiftUI.Image("milkShake")
         }
         return SwiftUI.Image("Urkel")
+    }
+    
+    func findGlass(for: Glassware) -> Image {
+        switch self {
+        case .blueBlazerMugs:
+            return  SwiftUI.Image("Blue Blazer Mugs")
+        case .cinnamonSugarRim:
+            return  SwiftUI.Image("martiniBlack2")
+        case .coupe:
+            return  SwiftUI.Image("coupeBlack2")
+        case .collins:
+            return   SwiftUI.Image("collinsBlack")
+        case .crustaGlass:
+            return   SwiftUI.Image("brandy crusta")
+        case .doubleOld:
+            return SwiftUI.Image("doubleOldBlack")
+        case .wineGlass:
+            return   SwiftUI.Image("wineGlassBlack")
+        case .martini:
+            return SwiftUI.Image("martiniBlack2")
+        case .flute:
+            return   SwiftUI.Image("fluteBlack2")
+        case .snifter:
+            return   SwiftUI.Image("snifterBlack")
+        case .fizzGlass:
+            return   SwiftUI.Image("fizzGlass")
+        case .stemmedGlassware:
+            return SwiftUI.Image("coupeBlack2")
+        case .sugarRimStemmed:
+            return SwiftUI.Image("martiniBlack2")
+        case .nickAndNora:
+            return   SwiftUI.Image("nickNNoraBlack")
+        case .doubleOldSalt:
+            return SwiftUI.Image("doubleOldBlack")
+        case .doubleOldCelerySalt:
+            return SwiftUI.Image("doubleOldBlack")
+        case .julep:
+            return SwiftUI.Image("julepCup")
+        case .singleOld:
+            return   SwiftUI.Image("singleOldBlack")
+        case .tikiMug:
+            return   SwiftUI.Image("tikiMugs")
+        case .toddyGlass:
+            return SwiftUI.Image("toddy")
+        case .hurricaneGlass:
+            return SwiftUI.Image("hurricaneGlass")
+        case .buenaVistaIrish:
+            return SwiftUI.Image("buenaVistIrish")
+        case .tikiBird:
+            return SwiftUI.Image("junglebird")
+        case .coupeSalt:
+            return  SwiftUI.Image("coupeBlack2")
+        case .copperMuleCup:
+            return  SwiftUI.Image("muleCup")
+        case .doubleOldAsparagusSaltRim:
+            return SwiftUI.Image("doubleOldBFGBlack")
+        case .doubleOldSmokedSalt:
+            return SwiftUI.Image("doubleOldBFGBlack")
+        case .teaCup:
+            return SwiftUI.Image("teaCup")
+        case .milkShake:
+            return SwiftUI.Image("milkShake")
+        }
+        
     }
 }

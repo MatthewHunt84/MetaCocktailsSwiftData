@@ -39,18 +39,20 @@ import Observation
     
     // Extras
     var glass: Glassware?
+    var isShowingGlasswareDetailView: Bool = false
     var ice: Ice? = .none
-    var garnish: Garnish = .noGarnish
+    var garnish: [Garnish]?
     var variation: Variation?
     
     // Author
     var authorName: String = ""
     var authorPlace: String = ""
     var authorYear: String = ""
-    
+    var author: Author?
     // Build
     var build: Build = Build(instructions: [])
     var buildOption: Build?
+    var isShowingAlert: Bool = false
     
     func clearData() {
         cocktailName = ""
@@ -59,7 +61,7 @@ import Observation
         authorYear = ""
         glass = nil
         ice = .none
-        garnish = .noGarnish
+        garnish = nil 
         variation = nil
         addedIngredients = []
         defaultName = "Add Cocktail"
@@ -104,7 +106,7 @@ import Observation
     }
     // Can't add cocktail alert
     
-    var isShowingAlert: Bool = false
+   
     
     func cantAddCocktailMessage() -> String {
         var text = ""
@@ -199,6 +201,23 @@ import Observation
         return cocktailComponentArray
         
     }
+    func validateBuildInstructions() {
+        if build.instructions != [] {
+            buildOption = build
+        }
+    }
+    func validateAuthor() {
+        if authorName != "" && authorYear != "" && authorPlace != "" {
+            author = Author(person: authorName, place: authorYear, year: authorPlace)
+        }
+    }
+    func validateGarnish() {
+        if addedGarnish.count > 0 {
+            garnish = addedGarnish
+        }
+    }
+    
+    
     
 
 }

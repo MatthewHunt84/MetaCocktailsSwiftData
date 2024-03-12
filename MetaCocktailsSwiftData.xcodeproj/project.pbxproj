@@ -118,6 +118,7 @@
 		4D5DA09A2B9EBEB900C14F1F /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5DA0992B9EBEB900C14F1F /* CustomAlertView.swift */; };
 		4D5DA09E2B9FE96A00C14F1F /* DaiquiriNo4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5DA09D2B9FE96A00C14F1F /* DaiquiriNo4.swift */; };
 		4D5DA0A02B9FEAF300C14F1F /* FrescaPlatino.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5DA09F2B9FEAF300C14F1F /* FrescaPlatino.swift */; };
+		4D5DA0A22BA00A5100C14F1F /* Gabriella.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5DA0A12BA00A5100C14F1F /* Gabriella.swift */; };
 		4D7439892B9D277F0020C3B8 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7439882B9D277F0020C3B8 /* BackButton.swift */; };
 		4D74398B2B9E581A0020C3B8 /* LoadSampleCocktailsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D74398A2B9E581A0020C3B8 /* LoadSampleCocktailsButton.swift */; };
 		4D74398E2B9E58820020C3B8 /* CocktailCollectionPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D74398D2B9E58820020C3B8 /* CocktailCollectionPicker.swift */; };
@@ -552,6 +553,7 @@
 		4D5DA0992B9EBEB900C14F1F /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		4D5DA09D2B9FE96A00C14F1F /* DaiquiriNo4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaiquiriNo4.swift; sourceTree = "<group>"; };
 		4D5DA09F2B9FEAF300C14F1F /* FrescaPlatino.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrescaPlatino.swift; sourceTree = "<group>"; };
+		4D5DA0A12BA00A5100C14F1F /* Gabriella.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gabriella.swift; sourceTree = "<group>"; };
 		4D7439882B9D277F0020C3B8 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		4D74398A2B9E581A0020C3B8 /* LoadSampleCocktailsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSampleCocktailsButton.swift; sourceTree = "<group>"; };
 		4D74398D2B9E58820020C3B8 /* CocktailCollectionPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailCollectionPicker.swift; sourceTree = "<group>"; };
@@ -1423,6 +1425,7 @@
 				4DE33E0A2B9165A100312EC3 /* DeepBlueSea.swift */,
 				4DE33E0C2B916F8800312EC3 /* FallbackCocktail.swift */,
 				4D5DA09F2B9FEAF300C14F1F /* FrescaPlatino.swift */,
+				4D5DA0A12BA00A5100C14F1F /* Gabriella.swift */,
 				4DE33E0E2B91764900312EC3 /* Gin&It.swift */,
 				4DBBA4252B659EA000179B8F /* GoldRush.swift */,
 				4DE33DFC2B8ED01C00312EC3 /* HomeOnTheRange.swift */,
@@ -2107,6 +2110,7 @@
 				4DA5678A2B6CBC3B003F6F04 /* BanhMi.swift in Sources */,
 				4DE33DFD2B8ED01C00312EC3 /* HomeOnTheRange.swift in Sources */,
 				F4B0ABF32B13FB2A00336D05 /* SearchResultsView.swift in Sources */,
+				4D5DA0A22BA00A5100C14F1F /* Gabriella.swift in Sources */,
 				4DA567EA2B6DDB39003F6F04 /* Shokunin.swift in Sources */,
 				4DA567E62B6DD6EF003F6F04 /* ScottishInquisition.swift in Sources */,
 				4D5DA0982B9EB46E00C14F1F /* AddBuildStepView.swift in Sources */,
