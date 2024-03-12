@@ -38,6 +38,7 @@ enum Agave: String, Codable, CaseIterable {
     case mezcalNotSmokeyAny        = "Mezcal (Not Smokey)"
     case puebloViejoBlanco104      = "Pueblo Viejo Blanco 104 Tequila"
     case tanteoJalepeno            = "Tanteo Jalapenno Tequila"
+    case tapatioTequilaBlanco      = "Tapatio Tequila Blanco"
     case tequilaAny                = "Tequila"
     case tequilaAnejo              = "Tequila Anejo"
     case tequilaBlanco             = "Tequila Blanco"
@@ -86,6 +87,8 @@ enum Agave: String, Codable, CaseIterable {
             Tags(flavors: [.jalapeño], booze: [Booze(.agaves(self)), Booze(.agaves(.tequilaAny))])
         case .mezcalDelMagueyJabali:
             Tags(profiles: [.smokey, .funky], booze: [Booze(.agaves(self)),Booze(.agaves(.mezcalAny)), Booze(.agaves(.mezcalSmokeyAny))])
+        case .tapatioTequilaBlanco:
+            Tags(booze: [Booze(.agaves(self)),Booze(.agaves(.tequilaAny)), Booze(.agaves(.tequilaBlanco))])
         }
       
     }

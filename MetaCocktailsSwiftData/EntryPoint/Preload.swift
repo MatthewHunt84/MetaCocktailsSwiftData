@@ -38,7 +38,7 @@ enum Preload: CaseIterable {
             [cropTop, divisionBell, finalWard, gilda, nakedAndFamous]
             
         case .milkAndHoney:
-            [americanTrilogy, appleJackMnH, bensonhurst, calvados75, cobbleHill, cosmonaut,daiquiriMnH, debbieDont, deepBlueSea, fallbackCocktail, ginAndIt, goldRush, homeOnTheRangeMnH, kentuckyMaid, leftHand, penicillin, redHookCocktail, savoirFaire, siGuey, springForward, tattletale, theBusiness, thirtyEightSpecial ]
+            [americanTrilogy, appleJackMnH, bensonhurst, calvados75, cobbleHill, cosmonaut,daiquiriMnH, daiquiriNo4MnH, debbieDont, deepBlueSea, fallbackCocktail, frescaPlatino, ginAndIt, goldRush, homeOnTheRangeMnH, kentuckyMaid, leftHand, penicillin, redHookCocktail, savoirFaire, siGuey, springForward, tattletale, theBusiness, thirtyEightSpecial ]
         }
     }
 }

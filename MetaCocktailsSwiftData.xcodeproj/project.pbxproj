@@ -116,6 +116,8 @@
 		4D5DA0962B9EB43600C14F1F /* AddedIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5DA0952B9EB43600C14F1F /* AddedIngredientView.swift */; };
 		4D5DA0982B9EB46E00C14F1F /* AddBuildStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5DA0972B9EB46E00C14F1F /* AddBuildStepView.swift */; };
 		4D5DA09A2B9EBEB900C14F1F /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5DA0992B9EBEB900C14F1F /* CustomAlertView.swift */; };
+		4D5DA09E2B9FE96A00C14F1F /* DaiquiriNo4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5DA09D2B9FE96A00C14F1F /* DaiquiriNo4.swift */; };
+		4D5DA0A02B9FEAF300C14F1F /* FrescaPlatino.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5DA09F2B9FEAF300C14F1F /* FrescaPlatino.swift */; };
 		4D7439892B9D277F0020C3B8 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7439882B9D277F0020C3B8 /* BackButton.swift */; };
 		4D74398B2B9E581A0020C3B8 /* LoadSampleCocktailsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D74398A2B9E581A0020C3B8 /* LoadSampleCocktailsButton.swift */; };
 		4D74398E2B9E58820020C3B8 /* CocktailCollectionPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D74398D2B9E58820020C3B8 /* CocktailCollectionPicker.swift */; };
@@ -548,6 +550,8 @@
 		4D5DA0952B9EB43600C14F1F /* AddedIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedIngredientView.swift; sourceTree = "<group>"; };
 		4D5DA0972B9EB46E00C14F1F /* AddBuildStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBuildStepView.swift; sourceTree = "<group>"; };
 		4D5DA0992B9EBEB900C14F1F /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
+		4D5DA09D2B9FE96A00C14F1F /* DaiquiriNo4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaiquiriNo4.swift; sourceTree = "<group>"; };
+		4D5DA09F2B9FEAF300C14F1F /* FrescaPlatino.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrescaPlatino.swift; sourceTree = "<group>"; };
 		4D7439882B9D277F0020C3B8 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		4D74398A2B9E581A0020C3B8 /* LoadSampleCocktailsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSampleCocktailsButton.swift; sourceTree = "<group>"; };
 		4D74398D2B9E58820020C3B8 /* CocktailCollectionPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailCollectionPicker.swift; sourceTree = "<group>"; };
@@ -1414,9 +1418,11 @@
 				4DE33E082B9160DF00312EC3 /* CobbleHill.swift */,
 				4DE33E202B91B82E00312EC3 /* Cosmonaut.swift */,
 				4DAF57C22B99365C00FEA72F /* Daiquiri(M&H).swift */,
+				4D5DA09D2B9FE96A00C14F1F /* DaiquiriNo4.swift */,
 				4DD0DE9F2B981EC3008EF203 /* Debbie, Don't.swift */,
 				4DE33E0A2B9165A100312EC3 /* DeepBlueSea.swift */,
 				4DE33E0C2B916F8800312EC3 /* FallbackCocktail.swift */,
+				4D5DA09F2B9FEAF300C14F1F /* FrescaPlatino.swift */,
 				4DE33E0E2B91764900312EC3 /* Gin&It.swift */,
 				4DBBA4252B659EA000179B8F /* GoldRush.swift */,
 				4DE33DFC2B8ED01C00312EC3 /* HomeOnTheRange.swift */,
@@ -1790,6 +1796,7 @@
 				4DBFF8472B6091320011B5B1 /* BrandyCrusta.swift in Sources */,
 				4D1E85E52B5DC1DB00214BC6 /* JackRose.swift in Sources */,
 				4DBFF81D2B5FB0840011B5B1 /* Americano(WilliamsAndGraham).swift in Sources */,
+				4D5DA0A02B9FEAF300C14F1F /* FrescaPlatino.swift in Sources */,
 				F4C6A8F32AB003C200BB0AD0 /* Localization.swift in Sources */,
 				F4C6A8EC2AAFFE5700BB0AD0 /* Tags.swift in Sources */,
 				4D088FCA2B62E3640047B056 /* RecipeViewModel.swift in Sources */,
@@ -1889,6 +1896,7 @@
 				4D1E85E72B5DC56200214BC6 /* BloodAndSand.swift in Sources */,
 				4DBBA4C42B6A205200179B8F /* PainKiller(W&G).swift in Sources */,
 				4D1F146C2B50B24F00FC3B85 /* BasicSearchView.swift in Sources */,
+				4D5DA09E2B9FE96A00C14F1F /* DaiquiriNo4.swift in Sources */,
 				4D1E85B12B5C6AEA00214BC6 /* GreatWhiteBuffalo.swift in Sources */,
 				4DA567CE2B6DBCBD003F6F04 /* TheGreatGazoo.swift in Sources */,
 				4DA567502B6C3AAD003F6F04 /* Tipperary(Dead Rabbit Version).swift in Sources */,

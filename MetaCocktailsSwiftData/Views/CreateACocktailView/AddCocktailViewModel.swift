@@ -27,6 +27,7 @@ import Observation
     
     // Required
     var cocktailName: String = ""
+    var isShowingUniqueNameAlert: Bool = false
     
     // Ingredients
     var  formatter: NumberFormatter = {
@@ -92,7 +93,9 @@ import Observation
     
     
     func isValid() -> Bool {
-        return cocktailName != "" && ((addedIngredients.count) > 1) && glass != nil
+        
+        
+        return cocktailName != "" && ((addedIngredients.count) > 1) && glass != nil && isShowingUniqueNameAlert == false
     }
     
     func ingredientIsValid() -> Bool {
@@ -198,4 +201,20 @@ import Observation
     }
     
 
+}
+
+extension AddCocktailView {
+    
+    func nameIsUnique() -> Bool {
+        
+        let cocktailNames: [String] = cocktails.map({$0.cocktailName})
+        
+        if cocktailNames.allSatisfy({ $0 != viewModel.cocktailName}) {
+            print("\(viewModel.cocktailName) in not in cocktail names.")
+            return true
+        } else {
+            return false
+        }
+    }
+    
 }

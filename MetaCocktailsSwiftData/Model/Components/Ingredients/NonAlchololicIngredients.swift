@@ -226,6 +226,7 @@ enum Seasoning: String, Codable, CaseIterable {
     case nutmeg               = "Nutmeg (Spice)"
     case salt                 = "Salt"
     case saline               = "Saline 3:1"
+    case mineralSaline        = "Mineral Saline"
    
     
     var nAComponent: CocktailComponent {
@@ -239,6 +240,8 @@ enum Seasoning: String, Codable, CaseIterable {
             Tags(nA: [NAIngredients(.seasoning(self))])
         case .saline:
             Tags(nA: [NAIngredients(.seasoning(self))])
+        case .mineralSaline:
+            Tags(nA: [NAIngredients(.seasoning(self))])
         }
     }
 }
@@ -251,6 +254,7 @@ enum Soda: String, Codable, CaseIterable {
     case lemonMintSoda        = "Lemon Mint San Pellegrino"
     case sodaWater            = "Soda Water"
     case sparklingWater       = "Sparkling Water"
+    
     
     var nAComponent: CocktailComponent {
         return CocktailComponent(for: NAIngredients(.soda(self)))

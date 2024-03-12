@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 struct AddCocktailView: View {
  
@@ -6,6 +7,7 @@ struct AddCocktailView: View {
     @State private var isShowingAddIngredients: Bool = false
     @Environment(\.modelContext) private var modelContext
     @Environment(\.currentTab) private var selectedTab
+    @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
     
     var body: some View {
         
@@ -55,6 +57,11 @@ struct AddCocktailView: View {
                     .toolbar {
                         ToolbarItem(placement: .bottomBar) {
                             Button {
+                                if nameIsUnique() {
+                                    viewModel.isShowingUniqueNameAlert = false
+                                } else {
+                                    viewModel.isShowingUniqueNameAlert = true
+                                }
                                 
                                 if viewModel.isValid() {
                                     if viewModel.build.instructions != [] {
@@ -79,7 +86,10 @@ struct AddCocktailView: View {
                                     selectedTab.wrappedValue = .cocktailListView
                                     
                                 } else {
-                                    viewModel.isShowingAlert.toggle()
+                                    
+                                    if viewModel.isShowingUniqueNameAlert == false  {
+                                        viewModel.isShowingAlert.toggle()
+                                    }
                                 }
                                 
                             } label: {
@@ -96,9 +106,19 @@ struct AddCocktailView: View {
                     CustomAlertView(isActive: $viewModel.isShowingAlert,
                                     title: "Missing Information",
                                     message: viewModel.cantAddCocktailMessage(),
-                                    buttonTitle: "Heard, Chef", action: {})
+                                    buttonTitle: heardChef, action: {})
                     .zIndex(1)
                 }
+                if viewModel.isShowingUniqueNameAlert {
+                    CustomAlertView(isActive: $viewModel.isShowingUniqueNameAlert,
+                                    title: "Name must be unique",
+                                    message: "Please modify your cocktail name. ",
+                                    buttonTitle: heardChef, action: {
+                        viewModel.ingredientName += " No. 2"
+                    })
+                    .zIndex(1)
+                }
+                
             }
         }
     }

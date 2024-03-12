@@ -72,4 +72,6 @@ final class PrepBible{
     
     static let violetteSyrup = Prep(prepIngredientName: "Violette Syrup", prepRecipe:[Instruction(step: 1, method: "Add 2oz.(60ml) gin, 1oz.(30ml) violet syrup such as Monin, and 1oz.(30ml) simple syrup together."),
                                                                                  Instruction(step: 2, method: "Keep refrigerated for up to a month.")])
+    
+    static let mineralSaline = Prep(prepIngredientName: "Mineral Saline", prepRecipe: [Instruction(step: 1, method: "Add 68g of kosher salt to 1 liter of mineral water, warmed."), Instruction(step: 2, method: "Keep refrigerated for up to a month.")])
 }

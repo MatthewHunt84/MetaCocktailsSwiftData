@@ -68,7 +68,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         
         return array.sorted(by: { $0.name < $1.name })
     }()
-    
+ 
     var searchText: String = ""
     var preferredCount = 0
     var sections = [ResultViewSectionData]()
@@ -375,6 +375,8 @@ extension SearchResultsView {
         }
         return matches
     }
+    
+   
 }
 
 
