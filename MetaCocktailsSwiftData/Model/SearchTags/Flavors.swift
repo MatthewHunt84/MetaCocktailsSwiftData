@@ -13,6 +13,7 @@ enum Flavor: String, Codable, CaseIterable {
     case agave          = "Agave"
     case almond         = "Almond"
     case aloe           = "Aloe"
+    case allspice       = "Allspice"
     case angelica       = "Angelica"
     case anise          = "Anise"
     case apple          = "Apple"

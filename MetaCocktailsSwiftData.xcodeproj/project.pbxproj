@@ -377,6 +377,9 @@
 		4DBFF8572B60AAFB0011B5B1 /* CableCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8562B60AAFB0011B5B1 /* CableCar.swift */; };
 		4DBFF8592B60AD800011B5B1 /* CableCar(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8582B60AD800011B5B1 /* CableCar(W&G).swift */; };
 		4DBFF85B2B60AFE60011B5B1 /* Carajillo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF85A2B60AFE60011B5B1 /* Carajillo.swift */; };
+		4DCB16F62BA239D60002D7D9 /* StreetAndFlynnSpecial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB16F52BA239D60002D7D9 /* StreetAndFlynnSpecial.swift */; };
+		4DCB16F82BA249800002D7D9 /* SugarPlum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB16F72BA249800002D7D9 /* SugarPlum.swift */; };
+		4DCB16FA2BA24A620002D7D9 /* SuttersMill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB16F92BA24A620002D7D9 /* SuttersMill.swift */; };
 		4DD0DE992B97E020008EF203 /* TabBarComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD0DE982B97E020008EF203 /* TabBarComponents.swift */; };
 		4DD0DE9E2B97F5E1008EF203 /* TestCocktails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD0DE9D2B97F5E1008EF203 /* TestCocktails.swift */; };
 		4DD0DEA02B981EC3008EF203 /* Debbie, Don't.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD0DE9F2B981EC3008EF203 /* Debbie, Don't.swift */; };
@@ -826,6 +829,9 @@
 		4DBFF8562B60AAFB0011B5B1 /* CableCar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CableCar.swift; sourceTree = "<group>"; };
 		4DBFF8582B60AD800011B5B1 /* CableCar(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CableCar(W&G).swift"; sourceTree = "<group>"; };
 		4DBFF85A2B60AFE60011B5B1 /* Carajillo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carajillo.swift; sourceTree = "<group>"; };
+		4DCB16F52BA239D60002D7D9 /* StreetAndFlynnSpecial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetAndFlynnSpecial.swift; sourceTree = "<group>"; };
+		4DCB16F72BA249800002D7D9 /* SugarPlum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SugarPlum.swift; sourceTree = "<group>"; };
+		4DCB16F92BA24A620002D7D9 /* SuttersMill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuttersMill.swift; sourceTree = "<group>"; };
 		4DD0DE982B97E020008EF203 /* TabBarComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarComponents.swift; sourceTree = "<group>"; };
 		4DD0DE9D2B97F5E1008EF203 /* TestCocktails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCocktails.swift; sourceTree = "<group>"; };
 		4DD0DE9F2B981EC3008EF203 /* Debbie, Don't.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Debbie, Don't.swift"; sourceTree = "<group>"; };
@@ -1475,6 +1481,9 @@
 				4DE33E142B91933D00312EC3 /* SavoirFaire.swift */,
 				4DE33E002B91559C00312EC3 /* SiGuey.swift */,
 				4DE33E162B91967F00312EC3 /* Spring Forward.swift */,
+				4DCB16F52BA239D60002D7D9 /* StreetAndFlynnSpecial.swift */,
+				4DCB16F72BA249800002D7D9 /* SugarPlum.swift */,
+				4DCB16F92BA24A620002D7D9 /* SuttersMill.swift */,
 				4DE33E022B9158D300312EC3 /* TattleTale.swift */,
 				4DE33E1C2B91A8D500312EC3 /* TheBusiness.swift */,
 				4DE33E042B915BAB00312EC3 /* ThirtyEightSpecial.swift */,
@@ -1813,6 +1822,7 @@
 				1AFDB7B22ADF2582000A3812 /* Negroni.swift in Sources */,
 				4DA567982B6CCF5F003F6F04 /* RichGirl.swift in Sources */,
 				4DA5676E2B6C7785003F6F04 /* Zombie.swift in Sources */,
+				4DCB16F82BA249800002D7D9 /* SugarPlum.swift in Sources */,
 				4DBBA4262B659EA000179B8F /* GoldRush.swift in Sources */,
 				4DF408DA2B60FFFC00EF9A6E /* DiamondBack.swift in Sources */,
 				4D1E85B32B5C737D00214BC6 /* PeanutButterFalon .swift in Sources */,
@@ -1852,6 +1862,7 @@
 				4DDC116E2B861576009EF5C4 /* InlineDisclosureGroupStyle.swift in Sources */,
 				4DBBA4582B675ECD00179B8F /* MoergenthalersToddy.swift in Sources */,
 				4DA5680A2B6E0FE6003F6F04 /* CorporateJargon.swift in Sources */,
+				4DCB16F62BA239D60002D7D9 /* StreetAndFlynnSpecial.swift in Sources */,
 				4DA5676C2B6C763D003F6F04 /* Algonquin(1935).swift in Sources */,
 				4D5DA0BA2BA12FC400C14F1F /* RyeHummingbirdDown.swift in Sources */,
 				4DBBA4802B687F4D00179B8F /* MaiTai(W&G).swift in Sources */,
@@ -2009,6 +2020,7 @@
 				4DA568662B70AF07003F6F04 /* CBCViewModel.swift in Sources */,
 				4DA567522B6C3DB7003F6F04 /* TomCollins(W&G).swift in Sources */,
 				4DBBA4642B677A5300179B8F /* IrishCoffee.swift in Sources */,
+				4DCB16FA2BA24A620002D7D9 /* SuttersMill.swift in Sources */,
 				4D1E85DF2B5DBB6A00214BC6 /* TiPunch.swift in Sources */,
 				4DA568292B6E38C2003F6F04 /* VictoryLap.swift in Sources */,
 				4DBBA4662B67926800179B8F /* JapaneseCocktail.swift in Sources */,

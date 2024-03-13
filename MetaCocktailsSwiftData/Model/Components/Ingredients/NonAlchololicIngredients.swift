@@ -193,7 +193,7 @@ enum Fruit: String, Codable, CaseIterable {
     case raspberries          = "Raspberries"
     case seasonalBerries      = "Seasonal Berries"
     case strawberryHalf       = "Strawberry Half"
-    case pineapple            = "Pineapple"
+    case pineapple            = "Pineapple Wedge"
     
     var nAComponent: CocktailComponent {
         return CocktailComponent(for: NAIngredients(.fruit(self)))

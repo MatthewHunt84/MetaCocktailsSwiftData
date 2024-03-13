@@ -289,6 +289,7 @@ enum Rum: String, Codable, CaseIterable {
     case banks5                       = "Banks 5 Island Rum"
     case cachaca                      = "Cachaca"
     case captainMorgan                = "Captain Morgan"
+    case corubaDark                   = "Coruba Dark Jamaican Rum"
     case cruzanBlackstrap             = "Cruzan Blackstrap Rum"
     case clementBleue                 = "Clement Rhum Blanc Agricole"
     case diplomaticoExclusivaRum      = "Diplomatico Rum Reserva Exclusiva"
@@ -397,6 +398,8 @@ enum Rum: String, Codable, CaseIterable {
             Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
         case .uruapanAnejo:
             Tags(profiles: [.funky], booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
+        case .corubaDark:
+            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumJamaicanAged))])
         }
     }
     
@@ -642,6 +645,7 @@ enum Liqueur: String, Codable, CaseIterable {
     case nocino               = "Nocino Liquor"
     case nuxAlpina            = "Nux Alpina Walnut Liqueur"
     case orangeCuracao        = "Orange Curacao"
+    case pimentoDram          = "Pimento Dram Liqueur"
     case pimms                = "Pimms No. 1"
     case plymouthSloeGin      = "Plymouth Sloe Gin"
     case salersAperitif       = "Salers Gentian Apéritif"
@@ -712,7 +716,7 @@ enum Liqueur: String, Codable, CaseIterable {
         case .galliano:
             Tags(flavors: [.anise], booze: [Booze(.liqueurs(self))])
         case .allspiceDram:
-            Tags(flavors: [.bakingSpices], booze: [Booze(.liqueurs(self))])
+            Tags(flavors: [.bakingSpices, .allspice], booze: [Booze(.liqueurs(self))])
         case .apricotLiqueur:
             Tags(flavors: [.apricot], booze: [Booze(.liqueurs(self))])
         case .giffardAbricot:
@@ -749,6 +753,8 @@ enum Liqueur: String, Codable, CaseIterable {
             Tags(flavors: [.walnut],  booze: [Booze(.liqueurs(self))])
         case .aelredMelonApertif:
             Tags(flavors: [.melon],  booze: [Booze(.liqueurs(self))])
+        case .pimentoDram:
+            Tags(flavors: [.allspice, .bakingSpices],  booze: [Booze(.liqueurs(self))])
         }
     }
     

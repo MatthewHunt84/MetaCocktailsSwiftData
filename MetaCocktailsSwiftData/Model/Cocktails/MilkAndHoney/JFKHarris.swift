@@ -17,7 +17,7 @@ var jFKHarris = Cocktail(cocktailName: "JFK Harris",
                          spec: jFKHarrisSpec,
                          buildOrder: jFKHarrisBuild,
                          tags: jFKHarrisTags,
-                         variation: .mojito,
+                         variation: nil ,
                          collection: .milkAndHoney)
 
 var jFKHarrisSpec     =  [CocktailIngredient(.herbs(.mint), value: 11, unit: .gentlyMuddled),
