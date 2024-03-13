@@ -146,6 +146,7 @@ private struct GlassPickerButton: View {
     var body: some View {
         NavigationLink {
             GlassPickerDetailView(glasswareName: $glasswareName, viewModel: viewModel)
+                .navigationBarBackButtonHidden(true)
         } label: {
             HStack {
                 Text("Glassware")
@@ -169,6 +170,7 @@ private struct GlassPickerDetailView: View {
     var body: some View {
         
         VStack{
+            BackButton()
             List {
                 ForEach(Glassware.allCases, id: \.self) { newGlass in
                     if newGlass != .blueBlazerMugs && newGlass != .cinnamonSugarRim && newGlass != .crustaGlass  && newGlass != .doubleOldAsparagusSaltRim  && newGlass != .doubleOldSmokedSalt  && newGlass != .doubleOldCelerySalt {
