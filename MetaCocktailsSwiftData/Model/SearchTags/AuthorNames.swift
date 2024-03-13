@@ -11,6 +11,8 @@ import SwiftData
 enum AuthorNames: String, Codable, CaseIterable {
     
     case audrySaunders     = "Audrey Saunders"
+    case benLong           = "Ben Long"
+    case carolynGil        = "Carolyn Gil"
     case constante         = "Constante Ribalaigua"
     case crosbyGaige       = "Crosby Gaige"
     case chadSolomon       = "Chad Solomon"
@@ -20,6 +22,7 @@ enum AuthorNames: String, Codable, CaseIterable {
     case devonTarby        = "Devon Tarby"
     case dickBradsell      = "Dick Bradsell"
     case ernestHemingway   = "Ernest Hemingway"
+    case gilBouhana        = "Gil Bouhana"
     case giuseppeGonzalas  = "Giuseppe Gonzalas"
     case harryCraddock     = "Harry Craddock"
     case harryJohnson      = "Harry Johnson"
@@ -28,6 +31,7 @@ enum AuthorNames: String, Codable, CaseIterable {
     case jerryThomas       = "Jerry Thomas"
     case joaquinSimo       = "Joaquín Simó"
     case laurenMcLaughlin  = "Lauren McLaughlin"
+    case marcosTello       = "Marcos Tello"
     case michaelMadrusan   = "Michael Madrusan"
     case philWard          = "Phil Ward"
     //case richardBoccato    = "Richard Boccato"

@@ -34,6 +34,7 @@ enum Agave: String, Codable, CaseIterable {
     case mezcalDelMagueyJabali     = "Mezcal Del Maguey Wild Jabali"
     case mezcalDelMagueyVida       = "Mezcal Del Maguey Vida"
     case mezcalDelMagueySanLuis    = "Mezcal Del Maguey San Luis Del Rio"
+    case mezcalEspadin             = "Mezcal Espadine"
     case mezcalSmokeyAny           = "Mezcal (Smokey)"
     case mezcalNotSmokeyAny        = "Mezcal (Not Smokey)"
     case puebloViejoBlanco104      = "Pueblo Viejo Blanco 104 Tequila"
@@ -89,6 +90,8 @@ enum Agave: String, Codable, CaseIterable {
             Tags(profiles: [.smokey, .funky], booze: [Booze(.agaves(self)),Booze(.agaves(.mezcalAny)), Booze(.agaves(.mezcalSmokeyAny))])
         case .tapatioTequilaBlanco:
             Tags(booze: [Booze(.agaves(self)),Booze(.agaves(.tequilaAny)), Booze(.agaves(.tequilaBlanco))])
+        case .mezcalEspadin:
+            Tags(profiles: [.smokey], booze: [Booze(.agaves(self)),Booze(.agaves(.mezcalAny)), Booze(.agaves(.mezcalSmokeyAny))])
         }
       
     }
@@ -114,6 +117,7 @@ enum Brandy: String, Codable, CaseIterable {
     case pFAmber              = "Pierre Ferrand Amber Cognac"
     case pF1840               = "Pierre Ferrand 1840 Cognac"
     case pisco                = "Pisco"
+    case peruvianMustoVerde   = "Peruvian Musto Verde Pisco"
     
     var tags: Tags {
 //        return Tags(booze: [Booze(.brandies(self)), Booze(.brandies(.brandyAny))])
@@ -144,6 +148,8 @@ enum Brandy: String, Codable, CaseIterable {
             Tags(booze: [Booze(.brandies(self)), Booze(.brandies(.brandyAny))])
         case .clearCreekPearBrandy:
             Tags(flavors: [.pear], booze: [Booze(.brandies(self)), Booze(.brandies(.brandyAny))])
+        case .peruvianMustoVerde:
+            Tags(booze: [Booze(.brandies(self)), Booze(.brandies(.brandyAny)), Booze(.brandies(.pisco))])
         }
     }
     

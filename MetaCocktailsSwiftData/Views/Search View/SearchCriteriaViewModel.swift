@@ -251,7 +251,7 @@ extension SearchResultsView {
                 i.e.
             sections = finalMatchContainers.compactMap { resultSectionData in
             return resultSectionData.cocktails.isEmpty ? nil : resultSectionData } */
-
+        print("The cocktail count is \(cocktails.count)")
         viewModel.isLoading = false
     }
     

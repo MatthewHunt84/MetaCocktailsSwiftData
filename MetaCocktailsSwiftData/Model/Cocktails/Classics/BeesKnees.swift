@@ -13,7 +13,9 @@ var beesKnees  = Cocktail(cocktailName: "Bee's Knees",
                           author: Author(person: "The Standard Union", place: "Brooklyn, NY", year: "April 23, 1929"),
                           spec: beesKneesSpec,
                           tags: beesKneesTags,
-                          collection: .originals)
+                          variation: .beesKnees,
+                          collection: .originals,
+                          titleCocktail: true)
 
 var beesKneesSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                       CocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup),

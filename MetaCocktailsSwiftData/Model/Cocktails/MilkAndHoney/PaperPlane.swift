@@ -13,7 +13,9 @@ var paperPlane = Cocktail(cocktailName: "Paper Plane",
                           author:Author(person: AuthorNames.samRoss.rawValue, place: AuthorPlaces.theVioletHour.rawValue, year: "2008"),
                           spec: paperPlaneSpec,
                           buildOrder: nil,
-                          tags: paperPlaneTags)
+                          tags: paperPlaneTags,
+                          variation: .lastWord,
+                          collection: .milkAndHoney)
 
 var paperPlaneSpec = [CocktailIngredient(.whiskies(.bourbonAny) , value: 0.75),
                       CocktailIngredient(.amari(.amaroNonino), value: 0.75),
