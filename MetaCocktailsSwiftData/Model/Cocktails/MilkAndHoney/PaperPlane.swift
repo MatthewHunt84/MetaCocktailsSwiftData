@@ -14,7 +14,7 @@ var paperPlane = Cocktail(cocktailName: "Paper Plane",
                           spec: paperPlaneSpec,
                           buildOrder: nil,
                           tags: paperPlaneTags,
-                          variation: .lastWord,
+                          variation: nil,
                           collection: .milkAndHoney)
 
 var paperPlaneSpec = [CocktailIngredient(.whiskies(.bourbonAny) , value: 0.75),

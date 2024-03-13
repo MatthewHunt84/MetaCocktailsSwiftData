@@ -30,6 +30,7 @@ enum AuthorNames: String, Codable, CaseIterable {
     case jamesMenkal       = "James Menkal"
     case jerryThomas       = "Jerry Thomas"
     case joaquinSimo       = "Joaquín Simó"
+    case josephSchwartz    = "Joseph Schwartz"
     case laurenMcLaughlin  = "Lauren McLaughlin"
     case marcosTello       = "Marcos Tello"
     case michaelMadrusan   = "Michael Madrusan"
