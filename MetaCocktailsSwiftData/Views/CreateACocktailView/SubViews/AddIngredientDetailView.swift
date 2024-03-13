@@ -10,23 +10,26 @@ import SwiftUI
 struct AddIngredientDetailView: View {
     
     @Bindable var viewModel: AddCocktailViewModel
-    @Binding var isShowingAddIngredients: Bool
     @FocusState private var keyboardFocused: Bool
     @FocusState private var amountKeyboardFocus: Bool
-    
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         ZStack{
             
             VStack {
+                BackButton()
                 SearchBarView(searchText: $viewModel.ingredientName)
                     .focused($keyboardFocused)
-                    .onChange(of: viewModel.ingredientName) {
+                    .padding(EdgeInsets(top: 40, leading: 0, bottom: 0, trailing: 0))
+                    .onChange(of: viewModel.ingredientName, initial: true) { old, new in
+                        viewModel.ingredientName = new
                         viewModel.matchAllPhysicalCocktailComponents()
                     }
+                
+                    
                 List {
-                    ForEach(viewModel.allPhysicalCocktailComponents, id: \.self) { component in
-                        if component.matchesCurrentSearch {
+                    ForEach(viewModel.allPhysicalCocktailComponents.filter({$0.matchesCurrentSearch}).sorted(by: { $0.name < $1.name }), id: \.self) { component in
                             Button {
                                 viewModel.currentSelectedComponent = component
                                 if component.isNA {
@@ -49,12 +52,14 @@ struct AddIngredientDetailView: View {
                                 
                             } label: {
                                 Text(component.name)
+                                    .tint(.white)
                             }
-                        }
+                        
                     }
                     .listStyle(.plain)
                     .listRowBackground(Color.black)
                 }
+                .scrollContentBackground(.hidden)
                 
                 
                 
@@ -80,11 +85,11 @@ struct AddIngredientDetailView: View {
                 
                 Button {
                     if viewModel.ingredientIsValid() {
-                        viewModel.addedIngredients.append(CocktailIngredient(viewModel.validateCurrentSelectedComponent(for: viewModel.currentSelectedComponent) , value: viewModel.ingredientAmount, unit: viewModel.selectedMeasurementUnit))
-                        
-                        
+                        viewModel.addedIngredients.append(CocktailIngredient(viewModel.validateCurrentSelectedComponent(for: viewModel.currentSelectedComponent),
+                                                                             value: viewModel.ingredientAmount, 
+                                                                             unit: viewModel.selectedMeasurementUnit))
                         viewModel.clearIngredientData()
-                        isShowingAddIngredients.toggle()
+                        dismiss()
                     } else {
                         viewModel.isShowingingredientAlert.toggle()
                     }
@@ -120,7 +125,7 @@ struct AddIngredientDetailView: View {
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
     
-    return AddIngredientDetailView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true))
+    return AddIngredientDetailView(viewModel: AddCocktailViewModel())
         .modelContainer(preview.container)
     
 }

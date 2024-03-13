@@ -36,9 +36,9 @@ struct SearchBarView: View {
         .padding(8)
         .background(
             RoundedRectangle(cornerRadius: 25)
-                .fill(Color(UIColor.systemBackground))
+                .fill(Color.black)
                 .shadow(
-                    color: .gray.opacity(0.5),
+                    color: .white.opacity(0.5),
                     radius: 5, x: 0, y: 0)
 
         )
