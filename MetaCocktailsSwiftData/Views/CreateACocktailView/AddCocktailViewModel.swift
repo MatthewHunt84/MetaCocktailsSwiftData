@@ -10,7 +10,6 @@ import Observation
 
 @Observable final class AddCocktailViewModel {
 
-    
     //AddIngredientView
     var isShowingingredientAlert: Bool = false
     var ingredientName = ""
@@ -21,34 +20,28 @@ import Observation
     var addedIngredients: [CocktailIngredient] = []
     var addedGarnish: [Garnish] = []
     var allPhysicalCocktailComponents: [CocktailComponent] = getAllPhysicalComponents()
-    
-    var dateAdded = Date()
+
     var defaultName = "Add Cocktail"
-    
-    // Required
+
     var cocktailName: String = ""
     var isShowingUniqueNameAlert: Bool = false
-    
-    // Ingredients
     var  formatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.maximumFractionDigits = 2
         return formatter
     }()
-    
-    // Extras
-    var uniqueGlasswareName: Glassware?
+
+    var glass: Glassware?
     var ice: Ice? = .none
     var garnish: [Garnish]?
     var variation: Variation?
-    
-    // Author
+
     var authorName: String = ""
     var authorPlace: String = ""
     var authorYear: String = ""
     var author: Author?
-    // Build
+
     var build: Build = Build(instructions: [])
     var buildOption: Build?
     var isShowingAlert: Bool = false
@@ -58,17 +51,17 @@ import Observation
         authorName = ""
         authorPlace = ""
         authorYear = ""
-        uniqueGlasswareName = .blueBlazerMugs
+        glass = nil
         ice = .none
-        garnish = nil 
-        addedGarnish = []
+        garnish = nil
         variation = nil
         addedIngredients = []
         defaultName = "Add Cocktail"
         build = Build(instructions: [])
-        buildOption = nil 
+        buildOption = nil
        
     }
+    
     func clearIngredientData() {
         ingredientName = ""
         ingredientAmount = 0
@@ -76,8 +69,6 @@ import Observation
     }
     
     func validateCurrentSelectedComponent(for component: CocktailComponent) -> IngredientType {
-       
-        
         if component != CocktailComponent(name: "Placeholder") {
             if component.isSpirit {
                 if let spirit = currentSelectedComponent.spiritCategory {
@@ -92,29 +83,32 @@ import Observation
         
         return IngredientType.seasoning(.nutmeg)
     }
-    
-    
+
     func isValid() -> Bool {
-        return cocktailName != "" && ((addedIngredients.count) > 1) && uniqueGlasswareName != nil
+        print("cocktail name = \(cocktailName)")
+        print("ingredient count = \(addedIngredients.count)")
+        if let glassValue = glass {
+            print("glass  = \(glassValue.rawValue)")
+        } else {
+            print("glass = nil")
+        }
+        
+        return cocktailName != "" && ((addedIngredients.count) > 1) && glass != nil
     }
     
     func ingredientIsValid() -> Bool {
-        
         return ingredientAmount != 0.0 && ingredientName != ""
     }
-    // Can't add cocktail alert
-    
-   
-    
+
     func cantAddCocktailMessage() -> String {
         var text = ""
         
         if cocktailName == "" {
             text = "Your cocktail must have a name"
-            if uniqueGlasswareName == nil {
+            if glass == nil {
                 text += ", and a glass"
             }
-        } else if uniqueGlasswareName == nil {
+        } else if glass == nil {
             text = "Select a glass"
         }
         if (addedIngredients.count) < 2 {
@@ -126,12 +120,9 @@ import Observation
         }
         return text
     }
-    
-   
-   
 
     func matchAllPhysicalCocktailComponents() {
-        // if searchText is empty, don't show any results
+        /// if searchText is empty, don't show any results
         
         if ingredientName == "" {
             for component in allPhysicalCocktailComponents {
@@ -141,7 +132,7 @@ import Observation
             return
         }
         
-        // if searchText has text, match it and set the viewModel properties accordingly
+        /// if searchText has text, match it and set the viewModel properties accordingly
         for component in allPhysicalCocktailComponents {
             if component.name.localizedCaseInsensitiveContains(ingredientName) && ingredientName != "" {
                 component.matchesCurrentSearch = true
@@ -149,8 +140,8 @@ import Observation
                 component.matchesCurrentSearch = false
             }
         }
-
     }
+    
      func dynamicallyChangeMeasurementUnit() {
             switch ingredientType {
             case .herbs:
@@ -168,8 +159,6 @@ import Observation
             }
         }
 
-
-    
     static func getAllPhysicalComponents() -> [CocktailComponent] {
         var cocktailComponentArray = [CocktailComponent]()
         
@@ -194,30 +183,25 @@ import Observation
         cocktailComponentArray.append(contentsOf: Bitters.allCases.map { $0.cockTailComponent })
         cocktailComponentArray.append(contentsOf: Amaro.allCases.map { $0.cockTailComponent })
         
-     
-        
         return cocktailComponentArray
-        
     }
     func validateBuildInstructions() {
         if build.instructions != [] {
             buildOption = build
         }
     }
+    
     func validateAuthor() {
         if authorName != "" && authorYear != "" && authorPlace != "" {
             author = Author(person: authorName, place: authorYear, year: authorPlace)
         }
     }
+    
     func validateGarnish() {
         if addedGarnish.count > 0 {
             garnish = addedGarnish
         }
     }
-    
-    
-    
-
 }
 
 extension AddCocktailView {
@@ -233,5 +217,4 @@ extension AddCocktailView {
             return false
         }
     }
-    
 }

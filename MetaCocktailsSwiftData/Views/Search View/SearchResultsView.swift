@@ -32,7 +32,7 @@ struct SearchResultsView: View {
                     
                     HStack(spacing: 12) {
                         ForEach(viewModel.cocktailComponents.filter({ $0.isPreferred }), id: \.self.id) { selectedIngredient in
-                            TagView(selectedIngredient.name, .green , "xmark")
+                            TagView(selectedIngredient.name, .green, "xmark")
                                 .onTapGesture {
                                     withAnimation(.snappy) {
                                         removePreference(for: selectedIngredient)
