@@ -73,7 +73,7 @@ struct AllCocktailsListView: View {
                                     Text(cocktail.cocktailName)
                                     Spacer()
                                 }
-                               
+                                
                             } destination: {
                                 RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
                                     .navigationBarBackButtonHidden(true)

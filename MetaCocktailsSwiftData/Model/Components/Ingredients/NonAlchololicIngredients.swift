@@ -309,6 +309,7 @@ enum OtherNA: String, Codable, CaseIterable {
     case mapleSugar           = "Maple Sugar"
     case orangeConcentrate    = "Orange Concentrate"
     case orangeFlowerWater    = "Orange Flower Water"
+    case powderedSugar        = "Powdered Sugar"
     case raspberryPreserves   = "Bonne Maman Raspberry Preserves"
     case sesameOil            = "Sesame Oil"
     case springOnion          = "Spring Onion (or ramp)"
@@ -382,6 +383,8 @@ enum OtherNA: String, Codable, CaseIterable {
             Tags(flavors: [.raspberry], profiles: [.fruity], nA: [NAIngredients(.otherNonAlc(self))])
         case .cholula:
             Tags(flavors: [.cholula], profiles: [.spicy], nA: [NAIngredients(.otherNonAlc(self))])
+        case .powderedSugar:
+            Tags(nA: [NAIngredients(.otherNonAlc(self))])
         }
     }
 }
