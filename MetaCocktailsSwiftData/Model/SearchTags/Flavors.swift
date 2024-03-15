@@ -70,6 +70,7 @@ enum Flavor: String, Codable, CaseIterable {
     case passionfruit   = "Passionfruit"
     case peanut         = "Peanut"
     case pear           = "Pear"
+    case peach          = "Peach"
     case peat           = "Peat"
     case pimento        = "Pimento"
     case pine           = "Pine"

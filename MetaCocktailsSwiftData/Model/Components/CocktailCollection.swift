@@ -10,6 +10,7 @@ import Foundation
 enum CocktailCollection: Int, Codable, Identifiable, CaseIterable {
     
     case all
+    case deathAndCo
     case williamsAndGraham
     case originals 
     case milkAndHoney
@@ -31,6 +32,8 @@ enum CocktailCollection: Int, Codable, Identifiable, CaseIterable {
             "Custom"
         case .all:
             "All"
+        case .deathAndCo:
+            "Death & Co."
         }
     }
 }

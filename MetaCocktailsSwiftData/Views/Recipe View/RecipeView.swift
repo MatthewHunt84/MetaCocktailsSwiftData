@@ -182,6 +182,8 @@ struct RecipeView: View {
             prepItems = viewModel.findPrepItems()
         }
     }
+    
+    //TODO: REFACTOR THIS 
     func orderSpec() -> [CocktailIngredient] {
         var orderedSpec: [CocktailIngredient] = []
         

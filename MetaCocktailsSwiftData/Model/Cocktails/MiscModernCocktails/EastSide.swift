@@ -26,7 +26,7 @@ var eastSide = Cocktail(cocktailName: "East Side",
 let eastSideSpec: [CocktailIngredient] = [CocktailIngredient(.fruit(.cucumberSlices), value: 3, unit: .muddled),
                                           CocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
                                           CocktailIngredient(.juices(.lime), value: 0.75),
-                                          CocktailIngredient(.syrups(.richSimple), value: 0.5),
+                                          CocktailIngredient(.syrups(.richSimple), value: 0.5, prep: PrepBible.richSimple),
                                           CocktailIngredient(.gins(.haymansLondonDry), value: 2),
                                           CocktailIngredient(.soda(.sparklingWater), value: 2)]
 

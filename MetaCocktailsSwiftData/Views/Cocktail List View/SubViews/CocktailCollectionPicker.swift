@@ -17,7 +17,7 @@ struct CocktailCollectionPicker: View {
             Menu {
                 Picker(selection: $cocktailCollection) {
                     ForEach(CocktailCollection.allCases, id: \.self) { int in
-                        if int.collectionName != "Custom" {
+                        if int.collectionName != "Custom" && int.collectionName != "Death & Co." {
                             Text(int.collectionName)
                         }
                     }

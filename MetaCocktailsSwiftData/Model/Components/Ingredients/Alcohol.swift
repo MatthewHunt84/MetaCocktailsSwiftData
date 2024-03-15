@@ -461,6 +461,7 @@ enum Whiskey: String, Codable, CaseIterable {
     case buffaloTrace          = "Buffalo Trace Bourbon"
     case bushmills             = "Bushmills Irish Whiskey"
     case bushmills12           = "Bushmills 12 year Single Malt"
+    case canadianWhiskeyAny    = "Canadian Whiskey"
     case compassBoxOrchard     = "Compass Box Orchard House"
     case compassBoxOakCross    = "Compass Box Oak Cross Blended Scotch"
     case eagleRare10           = "Eagle Rare 10 year Bourbon"
@@ -483,6 +484,7 @@ enum Whiskey: String, Codable, CaseIterable {
     case rittenhouseRye        = "Rittenhouse Rye"
     case russels6yearRye       = "Russel's 6 year rye"
     case ryeWhiskeyAny         = "Rye Whiskey"
+    
     case stagJr                = "Stag Jr. Bourbon"
     case straightRye           = "Straight Rye"
     case straightRyeOrBourbon  = "Straight Rye or Bourbon (100 proof)"
@@ -522,9 +524,9 @@ enum Whiskey: String, Codable, CaseIterable {
         case .rittenhouseRye:
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)), Booze(.whiskies(.ryeWhiskeyAny))])
         case .scotchAny:
-            Tags(booze: [Booze(.whiskies(self))])
+            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)),])
         case .americanWhiskeyAny:
-            Tags(booze: [Booze(.whiskies(self))])
+            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)),])
         case .glenfiddich12:
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.scotchAny))])
         case .aberlourAbundah:
@@ -542,7 +544,7 @@ enum Whiskey: String, Codable, CaseIterable {
         case .elijahCraigSmallBatch:
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)),Booze(.whiskies(.bourbonAny))])
         case .pendletonRye:
-            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.ryeWhiskeyAny))])
+            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.ryeWhiskeyAny)), Booze(.whiskies(.canadianWhiskeyAny))])
         case .laphroaig10:
             Tags(flavors: [.peat], profiles: [.smokey], booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.scotchAny))])
         case .monkeyShoulder:
@@ -599,6 +601,9 @@ enum Whiskey: String, Codable, CaseIterable {
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)),Booze(.whiskies(.bourbonAny))])
         case .scotchHighland:
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.scotchAny))])
+        
+        case .canadianWhiskeyAny:
+            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny))])
         }
     }
     

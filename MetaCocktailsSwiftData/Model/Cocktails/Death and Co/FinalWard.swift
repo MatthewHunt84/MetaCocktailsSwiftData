@@ -13,7 +13,8 @@ var finalWard = Cocktail(cocktailName: "Final Ward",
                          author:Author(person: AuthorNames.philWard.rawValue,
                                        place: AuthorPlaces.deathAndCo.rawValue),
                          spec: finalWardSpec,
-                         tags: finalWardTags)
+                         tags: finalWardTags,
+                         collection: .deathAndCo)
 
 var finalWardSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                       CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 0.75),

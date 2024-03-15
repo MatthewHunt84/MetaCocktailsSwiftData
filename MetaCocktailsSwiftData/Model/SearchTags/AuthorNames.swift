@@ -33,9 +33,11 @@ enum AuthorNames: String, Codable, CaseIterable {
     case jerryThomas       = "Jerry Thomas"
     case joaquinSimo       = "Joaquín Simó"
     case josephSchwartz    = "Joseph Schwartz"
+    case laClarke          = "L. A. Clarke"
     case laurenMcLaughlin  = "Lauren McLaughlin"
     case marcosTello       = "Marcos Tello"
     case michaelMadrusan   = "Michael Madrusan"
+    case ohByron           = "O.H. Byron"
     case philWard          = "Phil Ward"
     case richardBoccato    = "Richard Boccato"
     case rKFox             = "R.K. Fox"
@@ -60,6 +62,7 @@ enum AuthorPlaces: String, Codable, CaseIterable, Identifiable {
        
     case aviaryBar                    = "Aviary Bar at the Kuala Lumpur Hilton"
     case bourbonNBranch               = "Bourbon & Branch"
+    case cafeRoyalCocktialBook        = "Cafe Royal Cocktail Book (London)"
     case crosbyGaigeCocktailGuide     = "Crosby Gaige's Cocktail Guide and Ladies Companion, New York"
     case deathAndCo                   = "Death & Co"
     case detroitAthleticClub          = "Detroit Athletic club"
@@ -118,6 +121,6 @@ var jerryThomas = Author(person: AuthorNames.jerryThomas.rawValue, place: Author
 var stanleyArthur = Author(person: AuthorNames.stanleyArthur.rawValue, place: AuthorPlaces.famousNewOrleansDrinks.rawValue, year: "1937")
 var traderVic1947  = Author(person: AuthorNames.traderVic.rawValue, place: AuthorPlaces.traderVicsBartendersGuide.rawValue, year: "1947")
 var charlesBaker = Author(person: AuthorNames.charlesBaker.rawValue, place: AuthorPlaces.gentlemansCompanion.rawValue, year: "1939")
-var oHByron = Author(person: "O.H. Byron", place: "The Modern Bartenders' Guide", year: "1884")
+var oHByron = Author(person: AuthorNames.ohByron.rawValue, place: "The Modern Bartenders' Guide", year: "1884")
 var sashaPetraske = Author(person: AuthorNames.sashaPetraske.rawValue, place: AuthorPlaces.milkAndHoney.rawValue, year: "Early 2000s")
 
