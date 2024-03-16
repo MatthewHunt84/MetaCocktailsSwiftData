@@ -153,15 +153,14 @@ struct RecipeView: View {
                                 NavigationLink("Build Order") {
                                     BuildOrderView(buildOrder: buildOrder)
                                 }
-                                
-                                
                                 .buttonStyle(whiteButton())
                             }
                             
-                         
-                           
-                            BatchButton(cocktail: viewModel.cocktail)
-                                .padding()
+                            if !viewModel.cocktail.cocktailName.lowercased().contains("punch") {
+                                BatchButton(cocktail: viewModel.cocktail)
+                                    .padding()
+                            }
+                            
                             
                             
                          

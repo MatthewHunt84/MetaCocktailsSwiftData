@@ -71,6 +71,9 @@ final class CBCViewModel: ObservableObject {
                 } else if ingredient.ingredient.unit == .drops {
                     modifiedMeasurement = ingredient.ingredient.value * 0.0017
                     ingredientVolume = Double(convertIngredientOzAmountIntoMls(for: modifiedMeasurement)) * numberOfCocktailsText
+                } else if ingredient.ingredient.unit == .bottles {
+                    modifiedMeasurement = ingredient.ingredient.value * 25.36
+                    ingredientVolume = Double(convertIngredientOzAmountIntoMls(for: modifiedMeasurement)) * numberOfCocktailsText
                 } else {
                     ingredientVolume = Double(convertIngredientOzAmountIntoMls(for: ingredient.ingredient.value)) * numberOfCocktailsText
                 }

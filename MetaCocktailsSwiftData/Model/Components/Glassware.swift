@@ -22,6 +22,7 @@ enum Glassware: String, Codable, CaseIterable {
     case flute                     = "Flute"
     case julep                     = "Julep Cup"
     case stemmedGlassware          = "Stemmed"
+    case punchBowl                 = "Large Punch Bowl"
     
     case coupeSalt                 = "Coupe with a salted rim"
     case doubleOldSalt             = "Double Old Fashioned (half salt rim)"
@@ -133,6 +134,8 @@ enum Glassware: String, Codable, CaseIterable {
             return SwiftUI.Image("teaCup")
         case .milkShake:
             return SwiftUI.Image("milkShake")
+        case .punchBowl:
+            return SwiftUI.Image("punchBowl")
         }
         return SwiftUI.Image("Urkel")
     }
@@ -197,6 +200,8 @@ enum Glassware: String, Codable, CaseIterable {
             return SwiftUI.Image("teaCup")
         case .milkShake:
             return SwiftUI.Image("milkShake")
+        case .punchBowl:
+            return SwiftUI.Image("punchBowl")
         }
         
     }

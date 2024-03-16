@@ -85,4 +85,9 @@ final class PrepBible{
     static let whitePeachPuree = Prep(prepIngredientName: "White Peach Puree", prepRecipe: [Instruction(step: 1, method: "Combine 1 white peach, skin left on, pitted and sliced, 1 oz (30 ml) fresh Meyer lemon juice, and 1 oz (30 ml) simple syrup in a food processor and purée."),
                                                                                             Instruction(step: 2, method: "Strain through a fine-mesh sieve. "),
                                                                                             Instruction(step: 3, method: "Use immediately, or cover and refrigerate for up to 2 days.")])
+    
+    static let aPPBitters = Prep(prepIngredientName: "A.P.P. Bitters", prepRecipe: [Instruction(step: 1, method: "Equal parts Angostura, Peychaud's and Dale DeGroff's Pimento Bitters.")])
+    
+    static let houseOrangeBitters = Prep(prepIngredientName: "House Orange Bitters", prepRecipe: [Instruction(step: 1, method: "Equal parts Fee Brothers West Indian Orange bitters and Regan's No. 6 bitters.")])
+    
 }
