@@ -16,6 +16,7 @@ struct CocktailListView: View {
     @Query(filter: #Predicate { $0.collectionName.contains("Williams")}, sort: \Cocktail.cocktailName) var williamsAndGrahamCocktials: [Cocktail]
     @Query(filter: #Predicate { $0.collectionName.contains("Milk")}, sort: \Cocktail.cocktailName) var milkAndHoneyCocktials: [Cocktail]
     @Query(filter: #Predicate { $0.collectionName.contains("Original")}, sort: \Cocktail.cocktailName) var originalCocktials: [Cocktail]
+    @Query(filter: #Predicate { $0.collectionName.contains("Death & Co.")}, sort: \Cocktail.cocktailName) var deathAndCoCocktails: [Cocktail]
     
     var body: some View {
         
@@ -40,6 +41,8 @@ struct CocktailListView: View {
                                         switch viewModel.cocktailCollection {
                                         case .all:
                                             AllCocktailsListView(cocktails: cocktails)
+                                        case .deathAndCo:
+                                            SpecifiedListView(viewModel: viewModel, cocktails: deathAndCoCocktails )
                                         case .williamsAndGraham:
                                             SpecifiedListView(viewModel: viewModel, cocktails: williamsAndGrahamCocktials)
                                         case .originals:
@@ -48,6 +51,7 @@ struct CocktailListView: View {
                                             SpecifiedListView(viewModel: viewModel, cocktails: milkAndHoneyCocktials)
                                         case .custom:
                                             AllCocktailsListView(cocktails: cocktails)
+                                            
                                         }
                                     }
                                     .listStyle(.plain)

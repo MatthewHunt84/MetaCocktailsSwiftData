@@ -14,6 +14,7 @@ enum Ice: String, Codable, CaseIterable {
     case kildDraftCube     = "Kold Draft Cube"
     case pebbleIce         = "Pebble Ice"
     case crackedIce        = "Cracked Kold Draft"
+    case oneLargeBlock     = "One large block of ice"
 }
 
 

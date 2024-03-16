@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SearchCriteriaView: View {
 
-    @ObservedObject var viewModel = SearchCriteriaViewModel()
+    @EnvironmentObject var viewModel: SearchCriteriaViewModel
     @Binding var isShowingIngredientsList: Bool
     @State var selectedList: PreferenceType = .all
     @State var isShowingPreferences: Bool

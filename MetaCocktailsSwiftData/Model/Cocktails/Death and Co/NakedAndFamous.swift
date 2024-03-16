@@ -15,7 +15,8 @@ var nakedAndFamous = Cocktail(cocktailName: "Naked and Famous",
                                              place: AuthorPlaces.deathAndCo.rawValue,
                                              year: "2013"),
                               spec: cropTopSpec,
-                              tags: cropTopTags)
+                              tags: cropTopTags,
+                              collection: .deathAndCo)
 
 var nakedAndFamousSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
                            CocktailIngredient(.amari(.aperol), value: 0.75),

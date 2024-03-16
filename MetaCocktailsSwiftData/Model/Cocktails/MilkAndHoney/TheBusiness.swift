@@ -13,6 +13,7 @@ var theBusiness  = Cocktail(cocktailName: "The Business",
                             author: Author(person: AuthorNames.sashaPetraske.rawValue, place: AuthorPlaces.milkAndHoney.rawValue, year: "Early 2000s"),
                             spec: theBusinessSpec,
                             tags: theBusinessTags,
+                            variation: .beesKnees,
                             collection: .milkAndHoney)
 
 var theBusinessSpec  = [CocktailIngredient(.juices(.lime), value: 1),

@@ -10,6 +10,7 @@ import Foundation
 let daiquiriMnH = Cocktail(cocktailName: "Daiquiri(Milk and Honey version)",
                            glasswareType: .coupe,
                            garnish: nil,
+                           author: Author(place: AuthorPlaces.milkAndHoney.rawValue, year: "Early 2000s"),
                            spec: daiquiriMnHSpec,
                            tags: daiquiriMnHTags,
                            variation: .daiquiri,

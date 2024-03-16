@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 struct AddCocktailView: View {
  
@@ -6,6 +7,7 @@ struct AddCocktailView: View {
     @State private var isShowingAddIngredients: Bool = false
     @Environment(\.modelContext) private var modelContext
     @Environment(\.currentTab) private var selectedTab
+    @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
     
     var body: some View {
         
@@ -29,7 +31,8 @@ struct AddCocktailView: View {
                         
                         
                         Section(header: Text("Extras")) {
-                            GlassPicker(glass: $viewModel.glass)
+                           
+                            GlassPickerButton(viewModel: viewModel)
                             
                             IcePicker(ice: $viewModel.ice)
                             
@@ -72,19 +75,23 @@ struct AddCocktailView: View {
                     .toolbar {
                         ToolbarItem(placement: .bottomBar) {
                             Button {
+                                if nameIsUnique() {
+                                    viewModel.isShowingUniqueNameAlert = false
+                                } else {
+                                    viewModel.isShowingUniqueNameAlert = true
+                                }
                                 
                                 if viewModel.isValid() {
-                                    if viewModel.build.instructions != [] {
-                                        viewModel.buildOption = viewModel.build
-                                    }
+                                    
+                                    viewModel.validateAuthor()
+                                    viewModel.validateGarnish()
+                                    viewModel.validateBuildInstructions()
                                     
                                     let cocktail = Cocktail(cocktailName: viewModel.cocktailName,
-                                                            glasswareType: viewModel.glass!,
-                                                            garnish: viewModel.addedGarnish,
+                                                            glasswareType: viewModel.uniqueGlasswareName!,
+                                                            garnish: viewModel.garnish,
                                                             ice: viewModel.ice,
-                                                            author: Author(person: viewModel.authorName,
-                                                                           place: viewModel.authorPlace,
-                                                                           year: viewModel.authorYear),
+                                                            author: viewModel.author,
                                                             spec: viewModel.addedIngredients,
                                                             buildOrder: viewModel.buildOption,
                                                             tags: Tags(flavors: [], profiles: [], styles: [], booze: [], nA: []),
@@ -96,7 +103,10 @@ struct AddCocktailView: View {
                                     selectedTab.wrappedValue = .cocktailListView
                                     
                                 } else {
-                                    viewModel.isShowingAlert.toggle()
+                                    
+                                    if viewModel.isShowingUniqueNameAlert == false  {
+                                        viewModel.isShowingAlert.toggle()
+                                    }
                                 }
                                 
                             } label: {
@@ -115,9 +125,35 @@ struct AddCocktailView: View {
                     CustomAlertView(isActive: $viewModel.isShowingAlert,
                                     title: "Missing Information",
                                     message: viewModel.cantAddCocktailMessage(),
-                                    buttonTitle: "Heard, Chef", action: {})
+                                    buttonTitle: heardChef, action: {})
                     .zIndex(1)
                 }
+                if viewModel.isShowingUniqueNameAlert {
+                    CustomAlertView(isActive: $viewModel.isShowingUniqueNameAlert,
+                                    title: "Name must be unique",
+                                    message: "Please modify your cocktail name. ",
+                                    buttonTitle: heardChef, action: {})
+                    .zIndex(1)
+                }
+                
+            }
+        }
+    }
+}
+private struct GlassPickerButton: View {
+   @Bindable var viewModel: AddCocktailViewModel
+   @State private var glasswareName = "none"
+    var body: some View {
+        NavigationLink {
+            GlassPickerDetailView(glasswareName: $glasswareName, viewModel: viewModel)
+                .navigationBarBackButtonHidden(true)
+        } label: {
+            HStack {
+                Text("Glassware")
+                Spacer()
+                Text(glasswareName)
+                    .foregroundStyle(.gray)
+                    
             }
         }
     }
@@ -125,19 +161,42 @@ struct AddCocktailView: View {
 
 
 
-
-private struct GlassPicker: View {
-    @Binding var glass: Glassware?
+private struct GlassPickerDetailView: View {
+    
+    @Binding var glasswareName: String
+    @Bindable var viewModel: AddCocktailViewModel
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        Picker("Glass", selection: $glass) {
-            Text("Select Glassware").tag(Optional<String>(nil))
-            
-            ForEach(Glassware.allCases, id: \.rawValue)  { glass in
-                Text(glass.rawValue)
-                    .tag(Optional(glass))
+        
+        VStack{
+            BackButton()
+            List {
+                ForEach(Glassware.allCases, id: \.self) { newGlass in
+                    if newGlass != .blueBlazerMugs && newGlass != .cinnamonSugarRim && newGlass != .crustaGlass  && newGlass != .doubleOldAsparagusSaltRim  && newGlass != .doubleOldSmokedSalt  && newGlass != .doubleOldCelerySalt {
+                        
+                        
+                        Button{
+                            viewModel.uniqueGlasswareName = newGlass
+                            glasswareName = newGlass.rawValue
+                            dismiss()
+                        } label: {
+                            HStack {
+                                newGlass.findGlass(for: newGlass)
+                                    .resizable()
+                                    .frame(width: 60, height: 60, alignment: .trailing)
+                                
+                                Text(newGlass.rawValue)
+                                    .tag(Optional(newGlass))
+                            }
+                        }
+                        .padding(.horizontal)
+                    }
+                }
             }
-        }.pickerStyle(.navigationLink)
+            .listStyle(.plain)
+            .listRowBackground(Color.black)
+        }
     }
 }
 

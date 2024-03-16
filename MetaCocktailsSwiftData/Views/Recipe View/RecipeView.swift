@@ -47,7 +47,7 @@ struct RecipeView: View {
                             Text("Cocktail Spec:")
                                 .dynamicTypeSize(.xLarge).bold()
                             
-                            ForEach(viewModel.cocktail.spec, id: \.id) { ingredient in
+                            ForEach(orderSpec(), id: \.id) { ingredient in
                                 let number = NSNumber(value: ingredient.value)
                                 HStack {
                                     Text("\(number)")
@@ -153,15 +153,14 @@ struct RecipeView: View {
                                 NavigationLink("Build Order") {
                                     BuildOrderView(buildOrder: buildOrder)
                                 }
-                                
-                                
                                 .buttonStyle(whiteButton())
                             }
                             
-                         
-                           
-                            BatchButton(cocktail: viewModel.cocktail)
-                                .padding()
+                            if !viewModel.cocktail.cocktailName.lowercased().contains("punch") {
+                                BatchButton(cocktail: viewModel.cocktail)
+                                    .padding()
+                            }
+                            
                             
                             
                          
@@ -181,6 +180,33 @@ struct RecipeView: View {
         .task {
             prepItems = viewModel.findPrepItems()
         }
+    }
+    
+    //TODO: REFACTOR THIS 
+    func orderSpec() -> [CocktailIngredient] {
+        var orderedSpec: [CocktailIngredient] = []
+        
+        orderedSpec.append(contentsOf: viewModel.cocktail.spec.filter({ $0.ingredient.category == "Herbs"}))
+        orderedSpec.append(contentsOf: viewModel.cocktail.spec.filter({ $0.ingredient.category == "Fruit"}))
+        orderedSpec.append(contentsOf: viewModel.cocktail.spec.filter({ $0.ingredient.category == "Bitters"}))
+        orderedSpec.append(contentsOf: viewModel.cocktail.spec.filter({ $0.ingredient.category == "Other N/A"}))
+        orderedSpec.append(contentsOf: viewModel.cocktail.spec.filter({ $0.ingredient.category == "Seasoning"}))
+        orderedSpec.append(contentsOf: viewModel.cocktail.spec.filter({ $0.ingredient.category == "Syrups"}))
+        orderedSpec.append(contentsOf: viewModel.cocktail.spec.filter({ $0.ingredient.category == "Juice"}))
+        orderedSpec.append(contentsOf: viewModel.cocktail.spec.filter({ $0.ingredient.category == "Liqueurs"}))
+        orderedSpec.append(contentsOf: viewModel.cocktail.spec.filter({ $0.ingredient.category == "Fortified Wine"}))
+        orderedSpec.append(contentsOf: viewModel.cocktail.spec.filter({ $0.ingredient.category == "Amari"}))
+        orderedSpec.append(contentsOf: viewModel.cocktail.spec.filter({ $0.ingredient.category == "Whiskies"}))
+        orderedSpec.append(contentsOf: viewModel.cocktail.spec.filter({ $0.ingredient.category == "Rum"}))
+        orderedSpec.append(contentsOf: viewModel.cocktail.spec.filter({ $0.ingredient.category == "Gin"}))
+        orderedSpec.append(contentsOf: viewModel.cocktail.spec.filter({ $0.ingredient.category == "Brandy"}))
+        orderedSpec.append(contentsOf: viewModel.cocktail.spec.filter({ $0.ingredient.category == "Agave"}))
+        orderedSpec.append(contentsOf: viewModel.cocktail.spec.filter({ $0.ingredient.category == "Vodka"}))
+        orderedSpec.append(contentsOf: viewModel.cocktail.spec.filter({ $0.ingredient.category == "Other Alcohol"}))
+        orderedSpec.append(contentsOf: viewModel.cocktail.spec.filter({ $0.ingredient.category == "Sodas"}))
+        orderedSpec.append(contentsOf: viewModel.cocktail.spec.filter({ $0.ingredient.category == "Wine"}))
+        
+        return orderedSpec
     }
 }
 

@@ -14,7 +14,8 @@ var divisionBell = Cocktail(cocktailName: "Division Bell",
                             author:Author(person: AuthorNames.philWard.rawValue,
                                           place: AuthorPlaces.deathAndCo.rawValue),
                             spec: divisionBellSpec,
-                            tags: divisionBellTags)
+                            tags: divisionBellTags,
+                            collection: .deathAndCo)
 
 var divisionBellSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
                          CocktailIngredient(.agaves(.mezcalDelMagueyVida), value: 1),

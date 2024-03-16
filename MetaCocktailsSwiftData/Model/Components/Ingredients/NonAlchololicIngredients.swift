@@ -76,6 +76,7 @@ enum Syrup: String, Codable, CaseIterable {
     case cucumberSyrup           = "Cucumber Syrup"
     case demSyrupOneToOne        = "Demerara Syrup"
     case gingerSyrup             = "Ginger Syrup"
+    case gommeSyrup              = "Gomme Syrup"
     case grapefruitShrub         = "Grapefruit Shrub"
     case grenadine               = "Grenadine(Pomegranate Syrup)"
     case honey                   = "Honey"
@@ -149,6 +150,8 @@ enum Syrup: String, Codable, CaseIterable {
             Tags(flavors: [.honey], nA: [NAIngredients(.syrups(self))])
         case .mapleSyrup:
             Tags(flavors: [.maple], nA: [NAIngredients(.syrups(self))])
+        case .gommeSyrup:
+            Tags(nA: [NAIngredients(.syrups(self))])
         }
     }
     
@@ -184,14 +187,17 @@ enum Herbs: String, Codable, CaseIterable {
 enum Fruit: String, Codable, CaseIterable {
     case blackBerry           = "Blackberries"
     case cucumberSlices       = "Cucumber Slice(s)"
-    case grapefruitPeel       = "Grapefruit Peel(s)"
+    case grapefruitPeel       = "Grapefruit Peel(s), shaken in."
     case guavaPure            = "Guava Puree"
     case lemonRibbon          = "long lemon ribbon"
+    case lemons               = "Lemons"
     case limeHalf             = "Lime Half"
+    case limeWedges           = "Lime wedge(s)"
     case orangeMoons          = "Orange Moons"
     case raspberries          = "Raspberries"
     case seasonalBerries      = "Seasonal Berries"
-    case pineapple            = "Pineapple"
+    case strawberryHalf       = "Strawberry Half"
+    case pineapple            = "Pineapple Wedge"
     
     var nAComponent: CocktailComponent {
         return CocktailComponent(for: NAIngredients(.fruit(self)))
@@ -218,14 +224,22 @@ enum Fruit: String, Codable, CaseIterable {
             Tags(flavors: [.guava], nA: [NAIngredients(.fruit(self))])
         case .limeHalf:
             Tags(flavors: [.lime], nA: [NAIngredients(.fruit(self))])
+        case .strawberryHalf:
+            Tags(flavors: [.strawberry], nA: [NAIngredients(.fruit(self))])
+        case .limeWedges:
+            Tags(flavors: [.lime], nA: [NAIngredients(.fruit(self))])
+        case .lemons:
+            Tags(flavors: [.lemon], nA: [NAIngredients(.fruit(self))])
         }
     }
 }
 
 enum Seasoning: String, Codable, CaseIterable {
     case nutmeg               = "Nutmeg (Spice)"
-    case salt                 = "Salt"
+    case salt                 = "Kosher Salt"
     case saline               = "Saline 3:1"
+    case mineralSaline        = "Mineral Saline"
+    case pepper               = "Ground black pepper (fresh)"
    
     
     var nAComponent: CocktailComponent {
@@ -239,6 +253,10 @@ enum Seasoning: String, Codable, CaseIterable {
             Tags(nA: [NAIngredients(.seasoning(self))])
         case .saline:
             Tags(nA: [NAIngredients(.seasoning(self))])
+        case .mineralSaline:
+            Tags(nA: [NAIngredients(.seasoning(self))])
+        case .pepper:
+            Tags(flavors: [.blackPepper], nA: [NAIngredients(.seasoning(self))])
         }
     }
 }
@@ -251,6 +269,7 @@ enum Soda: String, Codable, CaseIterable {
     case lemonMintSoda        = "Lemon Mint San Pellegrino"
     case sodaWater            = "Soda Water"
     case sparklingWater       = "Sparkling Water"
+    
     
     var nAComponent: CocktailComponent {
         return CocktailComponent(for: NAIngredients(.soda(self)))
@@ -278,30 +297,39 @@ enum OtherNA: String, Codable, CaseIterable {
     case bloodyMarryMixWnG    = "Williams and Graham Bloody Marry Mix"
     case bloodyMarryMix       = "Home made bloody marry mix"
     case butter               = "Butter"
+    case celeryStrip          = "Matchstick-size celery strip"
+    case cholula              = "Cholula hot sauce"
     case cocoaPowder          = "Cocoa Powder"
     case coconutCream         = "Coconut Cream"
     case coconutMilk          = "Coconut Milk"
     case coconutWater         = "Coconut Water"
     case coffee               = "Hot Coffee"
+    case hotWater             = "Hot Water"
     case coldBrew             = "Strong Cold Brew"
     case cream                = "Heavy Cream"
     case demeraraSugarCube    = "Demerara Sugar Cube"
+    case espressoShot         = "Espresso shot"
     case stiffCream           = "Lightly Whipped Cream"
     case eggWhites            = "Egg Whites"
     case eggWhole             = "One Egg"
+    case eggYolk              = "Egg Yolk"
     case granulatedSugar      = "Granulated Sugar"
-    case hotWater             = "Hot Water"
+    case jalapenoSlice        = "1/4 inch thick jalepeno slice"
     case angosturaCream       = "Angostura Cream"
     case mapleSugar           = "Maple Sugar"
+    case nutmegGrated         = "Grated Nutmeg"
     case orangeConcentrate    = "Orange Concentrate"
     case orangeFlowerWater    = "Orange Flower Water"
+    case powderedSugar        = "Powdered Sugar"
     case raspberryPreserves   = "Bonne Maman Raspberry Preserves"
+    case roseWater            = "Rose Water"
     case sesameOil            = "Sesame Oil"
     case springOnion          = "Spring Onion (or ramp)"
     case sugarCube            = "Demerara Sugar Cube(s)"
     case tobasco              = "Tobasco"
     case tomatoJuice          = "Tomato Juice"
     case vanillaExtract       = "Vanilla Extract (Real)"
+    case whitePeachPure       = "White Peach Puree"
     case worcestershire       = "Worcestershire"
     
     var nAComponent: CocktailComponent {
@@ -366,6 +394,24 @@ enum OtherNA: String, Codable, CaseIterable {
             Tags(flavors: [.springOnion], profiles: [.vegetal], nA: [NAIngredients(.otherNonAlc(self))])
         case .raspberryPreserves:
             Tags(flavors: [.raspberry], profiles: [.fruity], nA: [NAIngredients(.otherNonAlc(self))])
+        case .cholula:
+            Tags(flavors: [.cholula], profiles: [.spicy], nA: [NAIngredients(.otherNonAlc(self))])
+        case .powderedSugar:
+            Tags(nA: [NAIngredients(.otherNonAlc(self))])
+        case .whitePeachPure:
+            Tags(flavors: [.peach], profiles: [.fruity], nA: [NAIngredients(.otherNonAlc(self))])
+        case .jalapenoSlice:
+            Tags(flavors: [.jalapeño], profiles: [.spicy], nA: [NAIngredients(.otherNonAlc(self))])
+        case .celeryStrip:
+            Tags(flavors: [.celery], nA: [NAIngredients(.otherNonAlc(self))])
+        case .roseWater:
+            Tags(flavors: [.rose], nA: [NAIngredients(.otherNonAlc(self))])
+        case .eggYolk:
+            Tags(flavors: [.egg], profiles: [.rich, .silky], nA: [NAIngredients(.otherNonAlc(self))])
+        case .espressoShot:
+            Tags(flavors: [.coffee,.espresso], nA: [NAIngredients(.otherNonAlc(self))])
+        case .nutmegGrated:
+            Tags(flavors: [.nutmeg], nA: [NAIngredients(.otherNonAlc(self))])
         }
     }
 }

@@ -15,7 +15,8 @@ var cropTop = Cocktail(cocktailName: "Crop Top",
                                       place: AuthorPlaces.deathAndCo.rawValue,
                                       year: "2013"),
                        spec: cropTopSpec,
-                       tags: cropTopTags)
+                       tags: cropTopTags,
+                       collection: .deathAndCo)
 
 var cropTopSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                     CocktailIngredient(.gins(.ginLondonDry), value: 0.75),

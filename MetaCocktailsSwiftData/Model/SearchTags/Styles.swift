@@ -22,9 +22,10 @@ enum Style: String, Codable, CaseIterable {
     case oldFashioned  = "Old Fashioned"
     case martini       = "Martini"
     case negroni       = "Negroni"
-    
+    case nonAlcoholic  = "Non-Alcoholic"
     case sour          = "Sour"
     case daisy         = "Daisy"
+    case punch         = "Punch"
     case spritz        = "Spritz"
     case swizzle       = "Swizzle"
     case tiki          = "Tiki"

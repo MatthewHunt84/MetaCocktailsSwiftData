@@ -27,6 +27,7 @@ import Observation
     
     // Required
     var cocktailName: String = ""
+    var isShowingUniqueNameAlert: Bool = false
     
     // Ingredients
     var  formatter: NumberFormatter = {
@@ -37,26 +38,29 @@ import Observation
     }()
     
     // Extras
-    var glass: Glassware?
+    var uniqueGlasswareName: Glassware?
     var ice: Ice? = .none
+    var garnish: [Garnish]?
     var variation: Variation?
     
     // Author
     var authorName: String = ""
     var authorPlace: String = ""
     var authorYear: String = ""
-    
+    var author: Author?
     // Build
     var build: Build = Build(instructions: [])
     var buildOption: Build?
+    var isShowingAlert: Bool = false
     
     func clearData() {
         cocktailName = ""
         authorName = ""
         authorPlace = ""
         authorYear = ""
-        glass = nil
+        uniqueGlasswareName = .blueBlazerMugs
         ice = .none
+        garnish = nil 
         addedGarnish = []
         variation = nil
         addedIngredients = []
@@ -91,7 +95,7 @@ import Observation
     
     
     func isValid() -> Bool {
-        return cocktailName != "" && ((addedIngredients.count) > 1) && glass != nil
+        return cocktailName != "" && ((addedIngredients.count) > 1) && uniqueGlasswareName != nil
     }
     
     func ingredientIsValid() -> Bool {
@@ -100,17 +104,17 @@ import Observation
     }
     // Can't add cocktail alert
     
-    var isShowingAlert: Bool = false
+   
     
     func cantAddCocktailMessage() -> String {
         var text = ""
         
         if cocktailName == "" {
             text = "Your cocktail must have a name"
-            if glass == nil {
+            if uniqueGlasswareName == nil {
                 text += ", and a glass"
             }
-        } else if glass == nil {
+        } else if uniqueGlasswareName == nil {
             text = "Select a glass"
         }
         if (addedIngredients.count) < 2 {
@@ -195,6 +199,39 @@ import Observation
         return cocktailComponentArray
         
     }
+    func validateBuildInstructions() {
+        if build.instructions != [] {
+            buildOption = build
+        }
+    }
+    func validateAuthor() {
+        if authorName != "" && authorYear != "" && authorPlace != "" {
+            author = Author(person: authorName, place: authorYear, year: authorPlace)
+        }
+    }
+    func validateGarnish() {
+        if addedGarnish.count > 0 {
+            garnish = addedGarnish
+        }
+    }
+    
+    
     
 
+}
+
+extension AddCocktailView {
+    
+    func nameIsUnique() -> Bool {
+        
+        let cocktailNames: [String] = cocktails.map({$0.cocktailName})
+        
+        if cocktailNames.allSatisfy({ $0 != viewModel.cocktailName}) {
+            print("\(viewModel.cocktailName) in not in cocktail names.")
+            return true
+        } else {
+            return false
+        }
+    }
+    
 }

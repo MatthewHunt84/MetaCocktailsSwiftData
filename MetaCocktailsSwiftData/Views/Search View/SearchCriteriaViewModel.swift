@@ -68,7 +68,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         
         return array.sorted(by: { $0.name < $1.name })
     }()
-    
+ 
     var searchText: String = ""
     var preferredCount = 0
     var sections = [ResultViewSectionData]()
@@ -251,7 +251,7 @@ extension SearchResultsView {
                 i.e.
             sections = finalMatchContainers.compactMap { resultSectionData in
             return resultSectionData.cocktails.isEmpty ? nil : resultSectionData } */
-
+        print("The cocktail count is \(cocktails.count)")
         viewModel.isLoading = false
     }
     
@@ -375,6 +375,8 @@ extension SearchResultsView {
         }
         return matches
     }
+    
+   
 }
 
 

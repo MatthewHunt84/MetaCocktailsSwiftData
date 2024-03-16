@@ -14,8 +14,9 @@ let hemingwayDaiquiri = Cocktail(cocktailName: "Hemingway Daiquiri",
                                  spec: hemingwayDaiquiriSpec,
                                  buildOrder: hemingwayBuild,
                                  tags: hemingwayDaiquiriTags,
-                                 variation: .daiquiri,
-                                 collection: .originals)
+                                 variation: .hemingwayDaiquiri,
+                                 collection: .originals, 
+                                 titleCocktail: true)
 
 var hemingwayDaiquiriSpec: [CocktailIngredient] = [CocktailIngredient(.juices(.lime), value: 0.5),
                                                    CocktailIngredient(.juices(.grapefruit), value: 0.25),

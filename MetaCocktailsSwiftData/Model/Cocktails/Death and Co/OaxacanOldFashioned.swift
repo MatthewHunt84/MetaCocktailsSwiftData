@@ -15,6 +15,7 @@ var oaxacaOldFashioned = Cocktail(cocktailName: "Oaxaca Old Fashioned",
                                   spec: oaxacaOldFashionedSpec,
                                   tags: oaxacaOldFashionedTags,
                                   variation: .oaxacaOldFashioned,
+                                  collection: .deathAndCo,
                                   titleCocktail: true)
 
 var oaxacaOldFashionedSpec  = [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),

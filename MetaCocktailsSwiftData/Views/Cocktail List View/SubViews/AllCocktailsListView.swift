@@ -62,7 +62,6 @@ struct AllCocktailsListView: View {
                                         .foregroundStyle(Color.brandPrimaryGold)
                                         .font(.subheadline)
                                 }
-                                .bold()
                             } destination: {
                                 RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
                                     .navigationBarBackButtonHidden(true)
@@ -74,7 +73,7 @@ struct AllCocktailsListView: View {
                                     Text(cocktail.cocktailName)
                                     Spacer()
                                 }
-                                .bold()
+                                
                             } destination: {
                                 RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
                                     .navigationBarBackButtonHidden(true)
@@ -91,7 +90,7 @@ struct AllCocktailsListView: View {
                                             Text(variationCocktail.cocktailName)
                                             Spacer()
                                         }
-                                        .bold()
+                                        
                                     } destination: {
                                         SwipeRecipeView(variations: selectedCocktailVariations(for: variationCocktail))
                                             .navigationBarBackButtonHidden(true)
