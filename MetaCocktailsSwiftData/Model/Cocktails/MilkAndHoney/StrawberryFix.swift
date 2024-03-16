@@ -17,7 +17,7 @@ var strawberryFix = Cocktail(cocktailName: "Strawberry Fix",
                              spec: queensParkLightMnHSpec,
                              buildOrder: queensParkLightMnHBuild,
                              tags: queensParkLightMnHTags,
-                             variation: .queensParkSwizzle,
+                             variation: nil,
                              collection: .milkAndHoney,
                              titleCocktail: false)
 

@@ -73,7 +73,6 @@ struct AllCocktailsListView: View {
                                     Text(cocktail.cocktailName)
                                     Spacer()
                                 }
-                                
                             } destination: {
                                 RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
                                     .navigationBarBackButtonHidden(true)
@@ -98,7 +97,11 @@ struct AllCocktailsListView: View {
                                     
                                 }
                             } label: {
-                                Text(cocktail.cocktailName)
+                                if let variationName = cocktail.variation {
+                                    Text(variationName.rawValue)
+                                } else {
+                                    Text(cocktail.cocktailName)
+                                } 
                             }
                             .disclosureGroupStyle(InlineDisclosureGroupStyle())
                         }

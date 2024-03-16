@@ -5,7 +5,7 @@
 //  Created by James Menkal on 3/14/24.
 //
 
-import Foundation
+import SwiftUI
 
 var southSideCocktail = Cocktail(cocktailName: "South Side Cocktail(Milk & Honey Version)",
                                  imageAsset: nil,
