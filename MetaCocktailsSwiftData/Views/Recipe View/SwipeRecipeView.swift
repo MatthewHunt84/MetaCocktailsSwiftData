@@ -11,11 +11,7 @@ struct SwipeRecipeView: View {
     
     let recipeSpacing: CGFloat = 2
     var cocktailFrameSize = CGFloat(125)
-    //@State var cocktail: Cocktail
     @State var variations: [Cocktail]
-    
-    @Environment(\.modelContext) private var modelContext
-    //    @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
     
     var body: some View {
         NavigationStack {
