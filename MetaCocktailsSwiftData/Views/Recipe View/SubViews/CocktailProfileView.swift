@@ -63,9 +63,7 @@ struct IngredientView: View {
     }
 }
 struct CocktailProfileView: View {
-    
-    
-    
+
     var profileString = ""
     let cocktail: Cocktail
     
@@ -86,7 +84,7 @@ struct CocktailProfileView: View {
         }
     }
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             Text("Profile:")
                 .dynamicTypeSize(.xLarge).bold()
             Text("\(profileString)")
