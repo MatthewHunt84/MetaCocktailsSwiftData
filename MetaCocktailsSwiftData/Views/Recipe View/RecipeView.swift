@@ -7,6 +7,30 @@
 
 import SwiftUI
 
+struct CustomButtonSnippet: View {
+    var body: some View {
+        Button("Label") {
+            // Code
+        }.buttonStyle(.custom)
+    }
+}
+
+public struct CustomButtonStyle: ButtonStyle {
+    public func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .fontWeight(.medium)
+            .padding(.vertical, 12)
+            .foregroundStyle(.white)
+            .frame(maxWidth: .infinity)
+            .background(.tint, in: .rect(cornerRadius: 14, style: .continuous))
+            .opacity(configuration.isPressed ? 0.4 : 1.0)
+    }
+}
+
+extension ButtonStyle where Self == CustomButtonStyle {
+    static var custom: CustomButtonStyle { .init() }
+}
+
 private struct Layout {
     static var header: Font = .system(size: 18, weight: .bold)
     static var specMeasurement: Font = .system(size: 16, weight: .bold)
@@ -19,9 +43,8 @@ private struct RecipeTitleView: View {
         Text(title)
             .fontDesign(.serif)
             .font(.largeTitle)
-            .multilineTextAlignment(.leading)
-            .lineLimit(0)
-            .padding(10)
+            .lineLimit(1)
+            .minimumScaleFactor(0.4)
     }
 }
 
@@ -32,20 +55,29 @@ private struct Border: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 8.0)
                         .foregroundStyle(.darkGrey)
-                        .frame(width: geo.size.width * 0.8)
-                        .frame(height: geo.size.height * 0.92)
+                        .frame(width: geo.size.width * 0.88)
+                        .frame(height: geo.size.height * 0.905)
+                    
+                    Image(.smallBorderSides)
+                        .resizable()
+                        .frame(height: geo.size.height * 0.8)
+                        .frame(width: geo.size.width)
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundStyle(.brandPrimaryGold)
+                        .background(.clear)
                     
                     VStack(alignment: .leading) {
                         
-                        Image(.citrusBorder)
+                        Image(.smallBorderTop)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .foregroundStyle(.brandPrimaryGold)
                             .background(.clear)
                         
                         Spacer()
+
                         
-                        Image(.citrusBorder)
+                        Image(.smallBorderTop)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .foregroundStyle(.brandPrimaryGold)
@@ -81,7 +113,7 @@ private struct GlasswareView: View {
 //                .background(.red)
         }
 //        .background(.yellow)
-        .padding(.top, 10)
+        .padding(.top, -10)
     }
 }
 
@@ -208,7 +240,9 @@ private struct GarnishView: View {
                     Text("\(garnish.rawValue)")
                         .font(Layout.body)
                 }
-                
+            } else {
+                Text("None")
+                    .font(Layout.body)
             }
         }
     }
@@ -239,11 +273,11 @@ struct RecipeView: View {
     
     var body: some View {
         NavigationStack{
-            BackButton()
             GeometryReader { geo in
                 ScrollView{
                     VStack(alignment: .center) {
-                        RecipeTitleView(title: viewModel.cocktail.cocktailName)
+                        //                        RecipeTitleView(title: viewModel.cocktail.cocktailName)
+                        //                            .background()
                         
                         ZStack() {
                             Border()
@@ -262,46 +296,42 @@ struct RecipeView: View {
                                 
                                 GarnishView(cocktail: viewModel.cocktail)
                                 
-                                BuildOrderButton(cocktail: viewModel.cocktail)
-
-                                
-                                //                                CocktailProfileView(cocktail: viewModel.cocktail)
-                                
-                                
-                                
+                                Button("Build Order") {
+                                    // Code to flip
+                                }.buttonStyle(.custom)
                                 
                                 if viewModel.cocktail.author != nil {
                                     AuthorView(cocktail: viewModel.cocktail)
-                                        .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
-                                    
-                                }
-                                
-
-                                
-                                if !viewModel.cocktail.cocktailName.lowercased().contains("punch") {
-                                    BatchButton(cocktail: viewModel.cocktail)
-                                        .padding()
+                                        .frame(maxWidth: .infinity, alignment: .center)
+                                        .padding(.bottom, 50)
                                 }
                                 
                                 
+                                //                                if !viewModel.cocktail.cocktailName.lowercased().contains("punch") {
+                                //                                    BatchButton(cocktail: viewModel.cocktail)
+                                //                                        .padding()
+                                //                                }
                                 
-                                
-                                Rectangle()
-                                    .fill(.black)
-                                    .frame(width: 60, height: 40, alignment: .leading)
-                                
-                                
-//                            }
-                        }
+                            }
                             .frame(width: geo.size.width * 0.75)
-//                            .frame(height: geo.size.height)
-                        
+                            //                            .frame(height: geo.size.height * 1.1)
+                            
+                        }
+                        .frame(width: geo.size.width)
+                        .frame(minHeight: geo.size.height)
                     }
-                    .frame(width: geo.size.width)
-                    .frame(minHeight: geo.size.height)
+                    //                    .navigationTitle(viewModel.cocktail.cocktailName)
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .principal) {
+                            RecipeTitleView(title: viewModel.cocktail.cocktailName)
+                        }
+                        ToolbarItem(placement: .topBarLeading) {
+                            BackButton()
+                        }
+                    }
                 }
             }
-        }
         }
         .task {
             prepItems = viewModel.findPrepItems()
@@ -325,7 +355,6 @@ struct AuthorView: View {
             }
             if let authorPlace = authorsVar.place {
                 place = authorPlace
-                
             }
             if let authorYear = authorsVar.year {
                 year = authorYear
@@ -340,7 +369,7 @@ struct AuthorView: View {
                 .minimumScaleFactor(0.02)
             if author != "" {
                 Text(author)
-                    .multilineTextAlignment(.leading)
+                    .multilineTextAlignment(.center)
                     .dynamicTypeSize(.large)
                     .minimumScaleFactor(0.02)
             }
@@ -349,7 +378,7 @@ struct AuthorView: View {
                 
                     Text(place)
                         .dynamicTypeSize(.large)
-                        .multilineTextAlignment(.leading)
+                        .multilineTextAlignment(.center)
                         .minimumScaleFactor(0.02)
                 }
                 if year != "" {
@@ -365,7 +394,7 @@ struct AuthorView: View {
 
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    return RecipeView(viewModel: RecipeViewModel(cocktail: ramosGinFizz))
+    return RecipeView(viewModel: RecipeViewModel(cocktail: peanutButterFalcon))
         .modelContainer(preview.container)
        
 }
