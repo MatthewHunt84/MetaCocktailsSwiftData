@@ -180,32 +180,46 @@ private struct MethodView: View {
     var cocktail: Cocktail
     var body: some View {
         
-        VStack(alignment: .leading, spacing: 5) {
-            Text("Method")
-                .font(Layout.header)
-            
-            if let stirShakeBuild = cocktail.tags.styles {
-                if stirShakeBuild.contains(.built) {
+        if let stirShakeBuild = cocktail.compiledTags.styles {
+            if stirShakeBuild.contains(.built) {
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("Method")
+                        .font(Layout.header)
                     Text("Build in glass")
                         .font(Layout.body)
-                    
                 }
-                if stirShakeBuild.contains(.shaken) && stirShakeBuild.contains(.blended) {
+            }
+            if stirShakeBuild.contains(.shaken) && stirShakeBuild.contains(.blended) {
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("Method")
+                        .font(Layout.header)
                     Text("Shake or Blend")
                         .font(Layout.body)
-                    
-                    
-                } else if stirShakeBuild.contains(.shaken) && !stirShakeBuild.contains(.blended) {
+                }
+                
+                
+            } else if stirShakeBuild.contains(.shaken) && !stirShakeBuild.contains(.blended) {
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("Method")
+                        .font(Layout.header)
                     Text("Shake")
                         .font(Layout.body)
-                    
                 }
-                if stirShakeBuild.contains(.stirred) {
+                
+            }
+            if stirShakeBuild.contains(.stirred) {
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("Method")
+                        .font(Layout.header)
                     Text("Stir")
                         .font(Layout.body)
-                    
                 }
-                if stirShakeBuild.contains(.swizzle) {
+                
+            }
+            if stirShakeBuild.contains(.swizzle) {
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("Method")
+                        .font(Layout.header)
                     Text("Swizzle")
                         .font(Layout.body)
                 }
@@ -288,13 +302,13 @@ struct RecipeView: View {
                                 
                                 SpecView(cocktail: viewModel.cocktail)
                                 
+                                GarnishView(cocktail: viewModel.cocktail)
+                                
                                 HStack {
                                     MethodView(cocktail: viewModel.cocktail)
                                     Spacer()
                                     IceView(cocktail: viewModel.cocktail)
                                 }
-                                
-                                GarnishView(cocktail: viewModel.cocktail)
                                 
                                 Button("Build Order") {
                                     // Code to flip
