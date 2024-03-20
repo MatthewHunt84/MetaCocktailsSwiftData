@@ -15,7 +15,7 @@ var hayesFizz  = Cocktail(cocktailName: "Hayes Fizz",
                           spec: hayesFizzSpec,
                           buildOrder: hayesFizzBuild,
                           tags: hayesFizzTags,
-                          variation: .ginFizz,
+                          variation: nil,
                           collection: .milkAndHoney)
 
 var hayesFizzSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),

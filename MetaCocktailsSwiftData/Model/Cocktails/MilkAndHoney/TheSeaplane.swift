@@ -17,7 +17,7 @@ var theSeaPlane  = Cocktail(cocktailName: "The Seaplane",
                             spec: theSeaPlaneSpec,
                             buildOrder: theSeaPlaneBuild,
                             tags: theSeaPlaneTags,
-                            variation: .french75,
+                            variation: nil,
                             collection: .milkAndHoney)
 
 var theSeaPlaneSpec  = [CocktailIngredient(.juices(.lemon), value: 0.5),

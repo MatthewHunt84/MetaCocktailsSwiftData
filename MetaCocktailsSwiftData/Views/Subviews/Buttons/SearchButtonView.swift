@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SearchButtonView: View {
     @EnvironmentObject var viewModel: SearchCriteriaViewModel
-   
+  
     var body: some View {
         if viewModel.selectedPreferredIngredients().count > 0 {
             HStack{
@@ -33,10 +33,12 @@ struct SearchButtonView: View {
                 .offset(x: 16)
                 .transition(.scale)
                 Button(action: {
-                    for i in 0..<viewModel.cocktailComponents.count {
-                        viewModel.cocktailComponents[i].isPreferred = false
-                        viewModel.cocktailComponents[i].isUnwanted = false
+                    
+                    for component in viewModel.cocktailComponents {
+                        component.isPreferred = false
+                        component.isUnwanted = false
                     }
+                    viewModel.matchAllTheThings()
                 }) {
                     Image(systemName: "xmark")
                     
@@ -44,8 +46,8 @@ struct SearchButtonView: View {
                 .font(.footnote)
                 .font(.headline).bold()
                 .padding(10)
-                .background(viewModel.selectedPreferredIngredients().count == 0 ? Color(UIColor.black) : Color.brandPrimaryRed)
-                .foregroundColor(viewModel.selectedPreferredIngredients().count == 0 ? Color(UIColor.systemGray) : Color.white)
+                .background(Color.brandPrimaryRed)
+                .foregroundColor(.white)
                 .clipShape(Circle())
                 .transition(.scale)
                 //.shadow(color: Color(UIColor.lightGray), radius: 4)
