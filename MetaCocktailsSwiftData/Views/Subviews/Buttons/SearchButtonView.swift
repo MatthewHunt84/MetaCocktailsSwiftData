@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SearchButtonView: View {
     @EnvironmentObject var viewModel: SearchCriteriaViewModel
-  
+//    @State private var searchButtonOffset: CGFloat = 1000
+//    @Binding var isActive: Bool
     var body: some View {
         if viewModel.selectedPreferredIngredients().count > 0 {
             HStack{
@@ -52,16 +53,24 @@ struct SearchButtonView: View {
                 .transition(.scale)
                 //.shadow(color: Color(UIColor.lightGray), radius: 4)
                 
-                
                 .offset(x: -3, y: -40)
                 
                 
             }
+//            .onAppear {
+//                withAnimation(.easeInOut.speed(0.75)) {
+//                    searchButtonOffset = 0 
+//                }
+//            }
             
         }
-            
-        
     }
+//    func close() {
+//        withAnimation((.easeInOut.speed(0.75))) {
+//            searchButtonOffset = 1000
+//            isActive = false
+//        }
+//    }
 }
 #Preview {
     SearchButtonView()

@@ -75,7 +75,7 @@ final class SearchCriteriaViewModel: ObservableObject {
     var enableResultsForMultipleBaseSpirits = false
     var isLoading = true
     var multipleBaseSpiritsSelectedToEnableMenu: Bool = false
-   
+    var isShowingSearchButton: Bool = false
     var showWilliamsAndGrahamCocktails: Bool = false
     var boozeCategories = {Array(Set(generatedBoozeCocktailComponents.map({$0.spiritCategoryName}))).sorted()}()
     var nACategories = {Array(Set(generatedNACocktailComponents.map({$0.nACategoryName}))).sorted()}()
