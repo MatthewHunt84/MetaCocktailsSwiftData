@@ -7,14 +7,14 @@
 
 import Foundation
 
-var americanTrilogy = Cocktail(cocktailName: "The American Trilogy",
+var americanTrilogy = Cocktail(cocktailName: "American Trilogy",
                                glasswareType: .doubleOld,
                                garnish: [.lemonPeel, .orangePeel],
                                ice: .bigRock,
                                author: Author(person: "Michael McIlroy, Richard Boccato", place: AuthorPlaces.milkAndHoney.rawValue, year: "Early 2000s"),
                                spec: americanTrilogySpec,
                                tags: americanTrilogyTags,
-                               variation: .oldFashioned,
+                               variation: nil,
                                collection: .milkAndHoney)
 
 var americanTrilogySpec  =  [CocktailIngredient(.otherNonAlc(.sugarCube), value: 1, unit: .muddled),

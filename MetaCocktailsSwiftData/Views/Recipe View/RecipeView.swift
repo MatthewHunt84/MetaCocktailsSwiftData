@@ -305,6 +305,7 @@ struct RecipeView: View {
                                 GarnishView(cocktail: viewModel.cocktail)
                                 
                                 HStack {
+<<<<<<< HEAD
                                     MethodView(cocktail: viewModel.cocktail)
                                     Spacer()
                                     IceView(cocktail: viewModel.cocktail)
@@ -318,7 +319,32 @@ struct RecipeView: View {
                                     AuthorView(cocktail: viewModel.cocktail)
                                         .frame(maxWidth: .infinity, alignment: .center)
                                         .padding(.bottom, 50)
+//=======
+//                                    Text("\(number)")
+//                                        .dynamicTypeSize(.large).bold()
+//                                    Text("\(ingredient.unit.rawValue)")
+//                                        .multilineTextAlignment(.leading)
+//                                        .dynamicTypeSize(.large)
+//                                    if ingredient.prep != nil {
+//                                        NavigationLink {
+//                                            PrepRecipeView(prep: ingredient.prep!)
+//                                        } label: {
+//                                            Text(ingredient.ingredient.name)
+//                                                .dynamicTypeSize(.large)
+//                                                .tint(.cyan)
+//                                                //.accessibilityAddTraits(.isButton)
+//                                                
+//                                            
+//                                        }
+//                                        .accessibilityHint("\(ingredient.ingredient.name). Double tap to learn the recipe")
+//                                    } else {
+//                                        Text("\(ingredient.ingredient.name)")
+//                                            .multilineTextAlignment(.leading)
+//                                            .dynamicTypeSize(.large)
+//                                    }
+//>>>>>>> main
                                 }
+                                .accessibilityElement(children: .combine)
                                 
                                 
                                 //                                if !viewModel.cocktail.cocktailName.lowercased().contains("punch") {

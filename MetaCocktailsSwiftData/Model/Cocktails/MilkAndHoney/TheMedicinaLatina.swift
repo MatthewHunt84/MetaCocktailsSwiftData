@@ -16,7 +16,7 @@ var theMedicinaLatina = Cocktail(cocktailName: "The Medicina Latina",
                                  spec: theMedicinaLatinaSpec,
                                  buildOrder: theMedicinaLatinaBuild,
                                  tags: theMedicinaLatinaTags,
-                                 variation: .penicillin,
+                                 variation: nil,
                                  collection: .milkAndHoney,
                                  titleCocktail: false)
 

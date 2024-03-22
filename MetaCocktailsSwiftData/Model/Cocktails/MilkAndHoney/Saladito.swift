@@ -16,7 +16,7 @@ var saladito  = Cocktail(cocktailName: "Saladito",
                          spec: saladitoSpec,
                          buildOrder: salditoBuild,
                          tags: saladitoTags,
-                         variation: .beesKnees,
+                         variation: nil,
                          collection: .milkAndHoney)
 
 var saladitoSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
