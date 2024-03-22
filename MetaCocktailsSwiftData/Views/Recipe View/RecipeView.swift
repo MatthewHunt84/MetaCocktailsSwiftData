@@ -94,7 +94,7 @@ private struct GlasswareView: View {
     
     var cocktail: Cocktail
     var body: some View {
-        HStack(alignment: .bottom) {
+        HStack(alignment: .center) {
             VStack(alignment: .leading, spacing: 5) {
                 Text("Glassware:")
                     .font(Layout.header)
@@ -102,18 +102,15 @@ private struct GlasswareView: View {
                     .dynamicTypeSize(.large)
                     .multilineTextAlignment(.leading)
             }
-//            .background(.blue)
             
             Spacer()
             
             cocktail.glasswareType.glassImage(cocktail: cocktail)
                 .resizable()
-                .frame(width: 100, height: 100, alignment: .trailing)
+                .frame(width: 80, height: 80, alignment: .trailing)
                 .padding(.trailing, 10)
-//                .background(.red)
         }
-//        .background(.yellow)
-        .padding(.top, -10)
+        .padding(.top, 10)
     }
 }
 
@@ -305,7 +302,6 @@ struct RecipeView: View {
                                 GarnishView(cocktail: viewModel.cocktail)
                                 
                                 HStack {
-<<<<<<< HEAD
                                     MethodView(cocktail: viewModel.cocktail)
                                     Spacer()
                                     IceView(cocktail: viewModel.cocktail)
@@ -319,42 +315,18 @@ struct RecipeView: View {
                                     AuthorView(cocktail: viewModel.cocktail)
                                         .frame(maxWidth: .infinity, alignment: .center)
                                         .padding(.bottom, 50)
-//=======
-//                                    Text("\(number)")
-//                                        .dynamicTypeSize(.large).bold()
-//                                    Text("\(ingredient.unit.rawValue)")
-//                                        .multilineTextAlignment(.leading)
-//                                        .dynamicTypeSize(.large)
-//                                    if ingredient.prep != nil {
-//                                        NavigationLink {
-//                                            PrepRecipeView(prep: ingredient.prep!)
-//                                        } label: {
-//                                            Text(ingredient.ingredient.name)
-//                                                .dynamicTypeSize(.large)
-//                                                .tint(.cyan)
-//                                                //.accessibilityAddTraits(.isButton)
-//                                                
-//                                            
-//                                        }
-//                                        .accessibilityHint("\(ingredient.ingredient.name). Double tap to learn the recipe")
-//                                    } else {
-//                                        Text("\(ingredient.ingredient.name)")
-//                                            .multilineTextAlignment(.leading)
-//                                            .dynamicTypeSize(.large)
-//                                    }
-//>>>>>>> main
+                                    
                                 }
-                                .accessibilityElement(children: .combine)
                                 
                                 
-                                //                                if !viewModel.cocktail.cocktailName.lowercased().contains("punch") {
-                                //                                    BatchButton(cocktail: viewModel.cocktail)
-                                //                                        .padding()
-                                //                                }
+//                                if !viewModel.cocktail.cocktailName.lowercased().contains("punch") {
+//                                    BatchButton(cocktail: viewModel.cocktail)
+//                                        .padding()
+//                                }
                                 
                             }
                             .frame(width: geo.size.width * 0.75)
-                            //                            .frame(height: geo.size.height * 1.1)
+                            .frame(height: geo.size.height)
                             
                         }
                         .frame(width: geo.size.width)
@@ -434,7 +406,7 @@ struct AuthorView: View {
 
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    return RecipeView(viewModel: RecipeViewModel(cocktail: peanutButterFalcon))
+    return RecipeView(viewModel: RecipeViewModel(cocktail: falcoor))
         .modelContainer(preview.container)
        
 }
