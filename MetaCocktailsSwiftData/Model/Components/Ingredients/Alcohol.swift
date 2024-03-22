@@ -658,6 +658,7 @@ enum Liqueur: String, Codable, CaseIterable {
     case lopoldsApple         = "Leopold Bros New York Sour Apple Liqueur"
     case leopoldCherry        = "Leopold Bros Michigan Cherry Liqueur"
     case licor43              = "Licor 43"
+    case lolita               = "Caffe Lolita Coffee Liqueur"
     case luxardoCherry        = "Luxardo Sangue Morlacco Cherry"
     case maraschinoLiqueur    = "Maraschino Liqueur"
     case nocino               = "Nocino Liquor"
@@ -775,6 +776,8 @@ enum Liqueur: String, Codable, CaseIterable {
             Tags(flavors: [.allspice, .bakingSpices],  booze: [Booze(.liqueurs(self))])
         case .berentzenApple:
             Tags(flavors: [.apple], booze: [Booze(.liqueurs(self))])
+        case .lolita:
+            Tags(flavors: [.coffee, .espresso], booze: [Booze(.liqueurs(self))])
         }
     }
     

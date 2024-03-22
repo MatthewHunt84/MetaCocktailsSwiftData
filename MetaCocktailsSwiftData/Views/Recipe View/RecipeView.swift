@@ -62,14 +62,18 @@ struct RecipeView: View {
                                             Text(ingredient.ingredient.name)
                                                 .dynamicTypeSize(.large)
                                                 .tint(.cyan)
+                                                //.accessibilityAddTraits(.isButton)
+                                                
                                             
                                         }
+                                        .accessibilityHint("\(ingredient.ingredient.name). Double tap to learn the recipe")
                                     } else {
                                         Text("\(ingredient.ingredient.name)")
                                             .multilineTextAlignment(.leading)
                                             .dynamicTypeSize(.large)
                                     }
                                 }
+                                .accessibilityElement(children: .combine)
                                 
                                 
                                 

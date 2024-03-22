@@ -17,7 +17,7 @@ var harvestOldFashioned = Cocktail(cocktailName: "Harvest Old Fashioned",
                                    spec: harvestOldFashionedSpec,
                                    buildOrder: harvestOldFashionedBuild,
                                    tags: harvestOldFashionedTags,
-                                   variation: .oldFashioned,
+                                   variation: nil,
                                    collection: .milkAndHoney)
 
 var harvestOldFashionedSpec     =  [CocktailIngredient(.otherNonAlc(.sugarCube), value: 1, unit: .muddled),

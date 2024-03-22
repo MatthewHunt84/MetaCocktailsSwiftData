@@ -15,7 +15,7 @@ var ryeHummingbirdDown  = Cocktail(cocktailName: "Rye Hummingbird Down",
                                                   year: "Early 2000s"),
                                    spec: ryeHummingbirdDownSpec,
                                    tags: ryeHummingbirdDownTags,
-                                   variation: .beesKnees,
+                                   variation: nil,
                                    collection: .milkAndHoney)
 
 var ryeHummingbirdDownSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),

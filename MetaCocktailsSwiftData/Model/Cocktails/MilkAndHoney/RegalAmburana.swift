@@ -16,7 +16,7 @@ var regalAmburana = Cocktail(cocktailName: "Regal Amburana",
                              spec: regalAmburanaSpec,
                              buildOrder: nil,
                              tags: regalAmburanaTags,
-                             variation: .daiquiri,
+                             variation: nil,
                              collection: .milkAndHoney)
 
 var regalAmburanaSpec  = [CocktailIngredient(.juices(.lime), value: 0.875),

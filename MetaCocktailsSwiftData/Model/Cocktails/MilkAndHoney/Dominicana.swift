@@ -18,7 +18,7 @@ var dominicana = Cocktail(cocktailName: "Dominicana",
                           collection: .milkAndHoney)
 
 var dominicanaSpec  = [CocktailIngredient(.otherNonAlc(.stiffCream), value: 2, unit: .fluidOuncesFloated),
-                       CocktailIngredient(.liqueurs(.borghetti), value: 1.5),
+                       CocktailIngredient(.liqueurs(.lolita), value: 1.5),
                        CocktailIngredient(.rums(.rumDominican), value: 1.5)]
 
 var dominicanaTags = Tags(flavors: [.coffee],
