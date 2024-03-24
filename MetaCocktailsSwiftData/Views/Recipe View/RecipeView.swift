@@ -7,6 +7,157 @@
 
 import SwiftUI
 
+struct RecipeView: View {
+    
+    @Bindable var viewModel: RecipeViewModel
+    let recipeSpacing: CGFloat = 2
+    var cocktailFrameSize = CGFloat(125)
+    @State private var prepItems: [CocktailIngredient] = []
+    
+    var body: some View {
+        NavigationStack{
+            GeometryReader { geo in
+                ScrollView{
+                    VStack(alignment: .center) {
+                        
+                        ScrollView {
+                            
+                            ZStack() {
+                                
+                                Border()
+                                    .frame(minHeight: geo.size.height)
+                                
+                                VStack(alignment: .leading, spacing: 20) {
+                                    
+                                    GlasswareView(cocktail: viewModel.cocktail)
+                                    
+                                    SpecView(cocktail: viewModel.cocktail)
+                                    
+                                    GarnishView(cocktail: viewModel.cocktail)
+                                    
+                                    MethodIceView(cocktail: viewModel.cocktail)
+                                    
+                                    if viewModel.cocktail.buildOrder != nil {
+                                        
+                                        Button("Build Order") {
+                                            // Code to flip coming soon...
+                                        }.buttonStyle(.custom)
+                                    }
+                                    
+                                    if viewModel.cocktail.author != nil {
+                                        AuthorView(cocktail: viewModel.cocktail)
+                                            .frame(maxWidth: .infinity, alignment: .center)
+                                            .padding(.bottom, 50)
+                                        
+                                    }
+                                    
+                                    // Needs design still  for batch button
+                                    
+//                                    if !viewModel.cocktail.cocktailName.lowercased().contains("punch") {
+//                                        BatchButton(cocktail: viewModel.cocktail)
+//                                            .padding()
+//                                    }
+                                }
+                                .padding(.top, 50)
+                                .padding(.bottom, 20)
+                                .frame(width: geo.size.width * 0.75)
+                            }
+                        }
+                    }
+                    .frame(minHeight: geo.size.height)
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .principal) {
+                            RecipeTitleView(title: viewModel.cocktail.cocktailName)
+                        }
+                        ToolbarItem(placement: .topBarLeading) {
+                            BackButton()
+                        }
+                    }
+                }
+            }
+        }
+        .task {
+            prepItems = viewModel.findPrepItems()
+        }
+    }
+}
+
+private struct BorderWithBackground: View {
+    var body: some View {
+        GeometryReader { geo in
+            ZStack(alignment: .top) {
+                RoundedRectangle(cornerRadius: 8.0)
+                    .foregroundStyle(.darkGrey)
+                    .frame(width: geo.size.width * 0.88)
+                    .frame(height: geo.size.height * 0.3)
+                    .padding(.top, 35)
+                
+                Image(.smallBorderTop)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundStyle(.brandPrimaryGold)
+                    .background(.clear)
+            }
+        }
+    }
+}
+
+private struct BorderSidesWithBackground: View {
+    var body: some View {
+        GeometryReader { geo in
+            VStack {
+                
+                Spacer()
+                
+                ZStack {
+                    Rectangle()
+                        .foregroundStyle(.darkGrey)
+                        .frame(width: geo.size.width * 0.88)
+                        .frame(height: geo.size.height * 0.8)
+                    
+                    Image(.smallBorderSides)
+                        .resizable()
+                        .frame(height: geo.size.height * 0.8)
+                        .frame(width: geo.size.width)
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundStyle(.brandPrimaryGold)
+                        .background(.clear)
+                }
+                
+                Spacer()
+            }
+        }
+    }
+}
+
+private struct Border: View {
+    /// Main Border View, containing 3 elements
+    var body: some View {
+        GeometryReader { geo in
+            
+            VStack {
+                Spacer()
+                
+                ZStack {
+                    BorderSidesWithBackground()
+                    
+                    VStack(alignment: .leading) {
+                        BorderWithBackground()
+                        
+                        Spacer()
+                        
+                        BorderWithBackground()
+                            .rotationEffect(.degrees(180))
+                    }
+                }
+                Spacer()
+            }
+        }
+    }
+}
+
+
 struct CustomButtonSnippet: View {
     var body: some View {
         Button("Label") {
@@ -48,48 +199,6 @@ private struct RecipeTitleView: View {
     }
 }
 
-private struct Border: View {
-    var body: some View {
-        GeometryReader { geo in
-            VStack {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 8.0)
-                        .foregroundStyle(.darkGrey)
-                        .frame(width: geo.size.width * 0.88)
-                        .frame(height: geo.size.height * 0.905)
-                    
-                    Image(.smallBorderSides)
-                        .resizable()
-                        .frame(height: geo.size.height * 0.8)
-                        .frame(width: geo.size.width)
-                        .aspectRatio(contentMode: .fit)
-                        .foregroundStyle(.brandPrimaryGold)
-                        .background(.clear)
-                    
-                    VStack(alignment: .leading) {
-                        
-                        Image(.smallBorderTop)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .foregroundStyle(.brandPrimaryGold)
-                            .background(.clear)
-                        
-                        Spacer()
-
-                        
-                        Image(.smallBorderTop)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .foregroundStyle(.brandPrimaryGold)
-                            .background(.clear)
-                            .rotationEffect(.degrees(180))
-                    }
-                }
-            }
-        }
-    }
-}
-
 private struct GlasswareView: View {
     
     var cocktail: Cocktail
@@ -107,10 +216,9 @@ private struct GlasswareView: View {
             
             cocktail.glasswareType.glassImage(cocktail: cocktail)
                 .resizable()
-                .frame(width: 80, height: 80, alignment: .trailing)
+                .frame(width: 70, height: 70, alignment: .trailing)
                 .padding(.trailing, 10)
         }
-        .padding(.top, 10)
     }
 }
 
@@ -174,53 +282,14 @@ private struct SpecView: View {
 }
 
 private struct MethodView: View {
-    var cocktail: Cocktail
+    let methodText: String
     var body: some View {
         
-        if let stirShakeBuild = cocktail.compiledTags.styles {
-            if stirShakeBuild.contains(.built) {
-                VStack(alignment: .leading, spacing: 5) {
-                    Text("Method")
-                        .font(Layout.header)
-                    Text("Build in glass")
-                        .font(Layout.body)
-                }
-            }
-            if stirShakeBuild.contains(.shaken) && stirShakeBuild.contains(.blended) {
-                VStack(alignment: .leading, spacing: 5) {
-                    Text("Method")
-                        .font(Layout.header)
-                    Text("Shake or Blend")
-                        .font(Layout.body)
-                }
-                
-                
-            } else if stirShakeBuild.contains(.shaken) && !stirShakeBuild.contains(.blended) {
-                VStack(alignment: .leading, spacing: 5) {
-                    Text("Method")
-                        .font(Layout.header)
-                    Text("Shake")
-                        .font(Layout.body)
-                }
-                
-            }
-            if stirShakeBuild.contains(.stirred) {
-                VStack(alignment: .leading, spacing: 5) {
-                    Text("Method")
-                        .font(Layout.header)
-                    Text("Stir")
-                        .font(Layout.body)
-                }
-                
-            }
-            if stirShakeBuild.contains(.swizzle) {
-                VStack(alignment: .leading, spacing: 5) {
-                    Text("Method")
-                        .font(Layout.header)
-                    Text("Swizzle")
-                        .font(Layout.body)
-                }
-            }
+        VStack(alignment: .leading, spacing: 5) {
+            Text("Method")
+                .font(Layout.header)
+            Text(methodText)
+                .font(Layout.body)
         }
     }
 }
@@ -235,7 +304,52 @@ private struct IceView: View {
                 Text(ice)
                     .font(Layout.body)
             }
+        } else {
+            VStack(alignment: .leading, spacing: 5) {
+                Text("Ice")
+                    .font(Layout.header)
+                Text("None")
+                    .font(Layout.body)
+            }
         }
+    }
+}
+
+struct MethodIceView: View {
+    var cocktail: Cocktail
+    var body: some View {
+        
+        if let methodText = getMethodText() {
+            HStack {
+                MethodView(methodText: methodText)
+                Spacer()
+                IceView(cocktail: cocktail)
+            }
+        } else {
+            HStack {
+                IceView(cocktail: cocktail)
+            }
+        }
+    }
+    
+    func getMethodText() -> String? {
+        if let stirShakeBuild = cocktail.compiledTags.styles {
+            if stirShakeBuild.contains(.built) {
+                return "Shake or Blend"
+            }
+            if stirShakeBuild.contains(.shaken) && stirShakeBuild.contains(.blended) {
+                return "Build in glass"
+            } else if stirShakeBuild.contains(.shaken) && !stirShakeBuild.contains(.blended) {
+                return"Shake"
+            }
+            if stirShakeBuild.contains(.stirred) {
+                return"Stir"
+            }
+            if stirShakeBuild.contains(.swizzle) {
+                return"Swizzle"
+            }
+        }
+        return nil
     }
 }
 
@@ -247,9 +361,21 @@ private struct GarnishView: View {
                 .font(Layout.header)
             
             if let garnishes = cocktail.garnish {
-                ForEach(garnishes, id: \.self) { garnish in
-                    Text("\(garnish.rawValue)")
-                        .font(Layout.body)
+                
+                if garnishes.count == 2 {
+                    HStack(alignment: .top) {
+                        Text("\(garnishes.first!.rawValue)")
+                        
+                        Text("+")
+                            .bold()
+                        
+                        Text("\(garnishes.last!.rawValue)")
+                    }
+                } else {
+                    ForEach(garnishes, id: \.self) { garnish in
+                        Text("\(garnish.rawValue)")
+                            .font(Layout.body)
+                    }
                 }
             } else {
                 Text("None")
@@ -267,86 +393,6 @@ private struct BuildOrderButton: View {
                 BuildOrderView(buildOrder: buildOrder)
             }
             .buttonStyle(defaultButton())
-        }
-    }
-}
-
-
-
-
-struct RecipeView: View {
-    //@EnvironmentObject var cBCViewModel: CBCViewModel
-    
-    @Bindable var viewModel: RecipeViewModel
-    let recipeSpacing: CGFloat = 2
-    var cocktailFrameSize = CGFloat(125)
-    @State private var prepItems: [CocktailIngredient] = []
-    
-    var body: some View {
-        NavigationStack{
-            GeometryReader { geo in
-                ScrollView{
-                    VStack(alignment: .center) {
-                        //                        RecipeTitleView(title: viewModel.cocktail.cocktailName)
-                        //                            .background()
-                        
-                        ZStack() {
-                            Border()
-                            
-                            VStack(alignment: .leading, spacing: 20) {
-                                
-                                GlasswareView(cocktail: viewModel.cocktail)
-                                
-                                SpecView(cocktail: viewModel.cocktail)
-                                
-                                GarnishView(cocktail: viewModel.cocktail)
-                                
-                                HStack {
-                                    MethodView(cocktail: viewModel.cocktail)
-                                    Spacer()
-                                    IceView(cocktail: viewModel.cocktail)
-                                }
-                                
-                                Button("Build Order") {
-                                    // Code to flip
-                                }.buttonStyle(.custom)
-                                
-                                if viewModel.cocktail.author != nil {
-                                    AuthorView(cocktail: viewModel.cocktail)
-                                        .frame(maxWidth: .infinity, alignment: .center)
-                                        .padding(.bottom, 50)
-                                    
-                                }
-                                
-                                
-//                                if !viewModel.cocktail.cocktailName.lowercased().contains("punch") {
-//                                    BatchButton(cocktail: viewModel.cocktail)
-//                                        .padding()
-//                                }
-                                
-                            }
-                            .frame(width: geo.size.width * 0.75)
-                            .frame(height: geo.size.height)
-                            
-                        }
-                        .frame(width: geo.size.width)
-                        .frame(minHeight: geo.size.height)
-                    }
-                    //                    .navigationTitle(viewModel.cocktail.cocktailName)
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        ToolbarItem(placement: .principal) {
-                            RecipeTitleView(title: viewModel.cocktail.cocktailName)
-                        }
-                        ToolbarItem(placement: .topBarLeading) {
-                            BackButton()
-                        }
-                    }
-                }
-            }
-        }
-        .task {
-            prepItems = viewModel.findPrepItems()
         }
     }
 }
@@ -403,10 +449,8 @@ struct AuthorView: View {
     }
 }
 
-
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    return RecipeView(viewModel: RecipeViewModel(cocktail: falcoor))
+    return RecipeView(viewModel: RecipeViewModel(cocktail: aLightInTheDark))
         .modelContainer(preview.container)
-       
 }
