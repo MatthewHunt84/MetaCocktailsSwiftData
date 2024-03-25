@@ -11,16 +11,20 @@ struct BackButton: View {
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        HStack{
+        VStack(alignment: .leading) {
             Button{
                 dismiss()
             } label: {
                 Image(systemName: "chevron.backward")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 9)
+                    .bold()
                     .tint(.cyan)
-                Text("Back")
-                    .tint(.cyan)
+                
+//                Text("Back")
+//                    .tint(.cyan)
             }
-            Spacer()
         }
     }
 }
