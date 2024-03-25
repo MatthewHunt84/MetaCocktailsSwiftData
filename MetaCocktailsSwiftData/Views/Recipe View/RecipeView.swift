@@ -131,7 +131,7 @@ private struct BorderSidesWithBackground: View {
     }
 }
 
-private struct Border: View {
+struct Border: View {
     /// Main Border View, containing 3 elements
     var body: some View {
         GeometryReader { geo in
@@ -188,7 +188,7 @@ private struct Layout {
     static var body: Font = .system(size: 16, weight: .regular)
 }
 
-private struct RecipeTitleView: View {
+struct RecipeTitleView: View {
     var title: String
     var body: some View {
         Text(title)
@@ -199,7 +199,7 @@ private struct RecipeTitleView: View {
     }
 }
 
-private struct GlasswareView: View {
+struct GlasswareView: View {
     
     var cocktail: Cocktail
     var body: some View {
@@ -216,13 +216,14 @@ private struct GlasswareView: View {
             
             cocktail.glasswareType.glassImage(cocktail: cocktail)
                 .resizable()
-                .frame(width: 70, height: 70, alignment: .trailing)
-                .padding(.trailing, 10)
+                .frame(width: 70, height: 70, alignment: .center)
+                .padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 10))
+             
         }
     }
 }
 
-private struct SpecView: View {
+struct SpecView: View {
     var cocktail: Cocktail
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
@@ -353,7 +354,7 @@ struct MethodIceView: View {
     }
 }
 
-private struct GarnishView: View {
+struct GarnishView: View {
     var cocktail: Cocktail
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
