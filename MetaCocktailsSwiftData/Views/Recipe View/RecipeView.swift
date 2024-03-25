@@ -199,7 +199,6 @@ struct RecipeTitleView: View {
     }
 }
 
-
 struct GlasswareView: View {
     
     var cocktail: Cocktail
@@ -223,6 +222,7 @@ struct GlasswareView: View {
         }
     }
 }
+
 
 struct SpecView: View {
     var cocktail: Cocktail
