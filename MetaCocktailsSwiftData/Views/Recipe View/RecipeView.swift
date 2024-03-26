@@ -20,7 +20,7 @@ struct RecipeView: View {
                 ScrollView{
                     VStack(alignment: .center) {
                         
-                        ScrollView {
+                     
                             
                             ZStack() {
                                 
@@ -62,7 +62,7 @@ struct RecipeView: View {
                                 .padding(.bottom, 20)
                                 .frame(width: geo.size.width * 0.75)
                             }
-                        }
+                        
                     }
                     .frame(minHeight: geo.size.height)
                     .navigationBarTitleDisplayMode(.inline)
@@ -321,38 +321,38 @@ struct MethodIceView: View {
     var cocktail: Cocktail
     var body: some View {
         
-        if let methodText = getMethodText() {
+//        if let methodText = getMethodText() {
             HStack {
-                MethodView(methodText: methodText)
+                MethodView(methodText: "methodText")
                 Spacer()
                 IceView(cocktail: cocktail)
             }
-        } else {
-            HStack {
-                IceView(cocktail: cocktail)
-            }
-        }
+//        } else {
+//            HStack {
+//                IceView(cocktail: cocktail)
+//            }
+//        }
     }
     
-    func getMethodText() -> String? {
-        if let stirShakeBuild = cocktail.compiledTags.styles {
-            if stirShakeBuild.contains(.built) {
-                return "Shake or Blend"
-            }
-            if stirShakeBuild.contains(.shaken) && stirShakeBuild.contains(.blended) {
-                return "Build in glass"
-            } else if stirShakeBuild.contains(.shaken) && !stirShakeBuild.contains(.blended) {
-                return"Shake"
-            }
-            if stirShakeBuild.contains(.stirred) {
-                return"Stir"
-            }
-            if stirShakeBuild.contains(.swizzle) {
-                return"Swizzle"
-            }
-        }
-        return nil
-    }
+//    func getMethodText() -> String? {
+//        if let stirShakeBuild = cocktail.compiledTags.styles {
+//            if stirShakeBuild.contains(.built) {
+//                return "Shake or Blend"
+//            }
+//            if stirShakeBuild.contains(.shaken) && stirShakeBuild.contains(.blended) {
+//                return "Build in glass"
+//            } else if stirShakeBuild.contains(.shaken) && !stirShakeBuild.contains(.blended) {
+//                return"Shake"
+//            }
+//            if stirShakeBuild.contains(.stirred) {
+//                return"Stir"
+//            }
+//            if stirShakeBuild.contains(.swizzle) {
+//                return"Swizzle"
+//            }
+//        }
+//        return nil
+//    }
 }
 
 struct GarnishView: View {
@@ -426,12 +426,12 @@ struct AuthorView: View {
         VStack {
             Text("Author:")
                 .dynamicTypeSize(.xLarge).bold()
-                .minimumScaleFactor(0.02)
+                .minimumScaleFactor(0.4)
             if author != "" {
                 Text(author)
                     .multilineTextAlignment(.center)
                     .dynamicTypeSize(.large)
-                    .minimumScaleFactor(0.02)
+                    .minimumScaleFactor(0.4)
             }
             VStack {
             if place != "" {
@@ -439,12 +439,12 @@ struct AuthorView: View {
                     Text(place)
                         .dynamicTypeSize(.large)
                         .multilineTextAlignment(.center)
-                        .minimumScaleFactor(0.02)
+                        .minimumScaleFactor(0.4)
                 }
                 if year != "" {
                     Text("\(year)")
                         .dynamicTypeSize(.large)
-                        .minimumScaleFactor(0.02)
+                        .minimumScaleFactor(0.4)
                 }
             }
         }
@@ -453,6 +453,6 @@ struct AuthorView: View {
 
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    return RecipeView(viewModel: RecipeViewModel(cocktail: aLightInTheDark))
+    return RecipeView(viewModel: RecipeViewModel(cocktail: ramosGinFizz))
         .modelContainer(preview.container)
 }

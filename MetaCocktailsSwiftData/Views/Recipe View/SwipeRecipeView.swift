@@ -12,16 +12,13 @@ struct SwipeRecipeView: View {
     let recipeSpacing: CGFloat = 2
     var cocktailFrameSize = CGFloat(125)
     @State var variations: [Cocktail]
-    @State private var cocktailTitle = "Placeholder"
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
+        
         NavigationStack {
             GeometryReader{ geo in
-                VStack{
-                    HStack {
-                        BackButton()
-                        RecipeTitleView(title: cocktailTitle)
-                    }
+               // ScrollView{
                     TabView {
                         ForEach($variations, id: \.self) { cocktail in
                             
@@ -41,57 +38,69 @@ struct SwipeRecipeView: View {
                                         
                                         MethodIceView(cocktail: cocktail.wrappedValue)
                                         
-                                        
-                                        
-                                        if cocktail.author.wrappedValue != nil {
-                                            AuthorView(cocktail: cocktail.wrappedValue)
-                                                .frame(maxWidth: .infinity, alignment: .center)
-                                                .padding(.bottom, 50)
-                                        }
                                         if let buildOrder = cocktail.buildOrder.wrappedValue {
                                             NavigationLink("Build Order") {
                                                 BuildOrderView(buildOrder: buildOrder)
                                                     .padding()
                                             }
-                                            .frame(maxWidth: .infinity, alignment: .center)
-                                            .padding(.bottom, 50)
-                                            
-                                            .buttonStyle(whiteButton())
+                                            .buttonStyle(.custom)
                                         }
                                         
-//                                        BatchButton(cocktail: cocktail.wrappedValue)
-//                                            .padding()
-//                                        
+                                        if cocktail.author.wrappedValue != nil {
+                                            AuthorView(cocktail: cocktail.wrappedValue)
+                                                .frame(maxWidth: .infinity, alignment: .center)
+                                                .padding(.bottom, 80)
+                                        }
                                         
                                         
-                                      
+                                        //                                        BatchButton(cocktail: cocktail.wrappedValue)
+                                        //                                            .padding()
+                                        //
+                                        
+                                        
+                                        
                                         
                                     }
                                     .padding(.top, 50)
                                     .padding(.bottom, 20)
                                     .frame(width: geo.size.width * 0.75)
-                                    .onAppear {
-                                       cocktailTitle = cocktail.wrappedValue.cocktailName
+                                    .navigationBarTitleDisplayMode(.inline)
+                                    .toolbar {
+                                        ToolbarItem(placement: .principal) {
+                                            RecipeTitleView(title: cocktail.wrappedValue.cocktailName)
+                                            
+                                            
+                                        }
+                                        ToolbarItem(placement: .topBarLeading) {
+                                            VStack(alignment: .leading) {
+                                                Button{
+                                                    dismiss()
+                                                } label: {
+                                                    Image(systemName: "chevron.backward")
+                                                        .resizable()
+                                                        .aspectRatio(contentMode: .fit)
+                                                        .frame(width: 9)
+                                                        .bold()
+                                                        .tint(.cyan)
+                                                }
+                                            }
+                                            
+                                        }
+                                        
                                     }
+                                    
+                                    
                                 }
+                                
                             }
-//                            .navigationBarTitleDisplayMode(.inline)
-//                            .toolbar {
-//                                ToolbarItem(placement: .principal) {
-//                                    RecipeTitleView(title: cocktail.wrappedValue.cocktailName)
-//                                }
-//                                ToolbarItem(placement: .topBarLeading) {
-//                                    
-//
-//                                }
-//                            }
-                            
                             
                         }
+                        
                     }
-                }
-                .tabViewStyle(.page)
-                .indexViewStyle(.page(backgroundDisplayMode: .interactive))
+                    .tabViewStyle(.page)
+                    .indexViewStyle(.page(backgroundDisplayMode: .interactive))
+                    .frame(minHeight: geo.size.height)
+               // }
                 
             }
         }
@@ -100,7 +109,7 @@ struct SwipeRecipeView: View {
 
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    return SwipeRecipeView(variations: [cloverClub, airMail, airMailWnG, peanutButterFalcon])
+    return SwipeRecipeView(variations: [cloverClub, zombie, airMailWnG, peanutButterFalcon])
         .modelContainer(preview.container)
        
 }
