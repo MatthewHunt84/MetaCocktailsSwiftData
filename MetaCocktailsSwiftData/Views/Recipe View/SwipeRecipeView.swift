@@ -17,91 +17,73 @@ struct SwipeRecipeView: View {
     var body: some View {
         
         NavigationStack {
-            GeometryReader{ geo in
-               // ScrollView{
-                    TabView {
-                        ForEach($variations, id: \.self) { cocktail in
+            
+            ScrollView {
+                
+                TabView {
+                    
+                    ForEach($variations, id: \.self) { cocktail in
+                        
+                        ZStack {
+                            Border()
+                                .frame(height: UIScreen.main.bounds.height)
+                                .padding(.bottom, 50)
                             
-                            ScrollView(.vertical){
-                                ZStack {
-                                    Border()
-                                        .frame(minHeight: geo.size.height)
-                                    VStack(alignment: .leading, spacing: 20) {
-                                        
-                                        GlasswareView(cocktail: cocktail.wrappedValue)
-                                        
-                                        CocktailProfileView(cocktail: cocktail.wrappedValue)
-                                        
-                                        SpecView(cocktail: cocktail.wrappedValue)
-                                        
-                                        GarnishView(cocktail: cocktail.wrappedValue)
-                                        
-                                        MethodIceView(cocktail: cocktail.wrappedValue)
-                                        
-                                        if let buildOrder = cocktail.buildOrder.wrappedValue {
-                                            NavigationLink("Build Order") {
-                                                BuildOrderView(buildOrder: buildOrder)
-                                                    .padding()
-                                            }
-                                            .buttonStyle(.custom)
-                                        }
-                                        
-                                        if cocktail.author.wrappedValue != nil {
-                                            AuthorView(cocktail: cocktail.wrappedValue)
-                                                .frame(maxWidth: .infinity, alignment: .center)
-                                                .padding(.bottom, 80)
-                                        }
-                                        
-                                        
-                                        //                                        BatchButton(cocktail: cocktail.wrappedValue)
-                                        //                                            .padding()
-                                        //
-                                        
-                                        
-                                        
-                                        
+                            VStack(alignment: .leading, spacing: 20) {
+                                
+                                GlasswareView(cocktail: cocktail.wrappedValue)
+                                
+                                CocktailProfileView(cocktail: cocktail.wrappedValue)
+                                
+                                SpecView(cocktail: cocktail.wrappedValue)
+                                
+                                GarnishView(cocktail: cocktail.wrappedValue)
+                                
+                                MethodIceView(cocktail: cocktail.wrappedValue)
+                                
+                                if let buildOrder = cocktail.buildOrder.wrappedValue {
+                                    NavigationLink("Build Order") {
+                                        BuildOrderView(buildOrder: buildOrder)
+                                            .padding()
                                     }
-                                    .padding(.top, 50)
-                                    .padding(.bottom, 20)
-                                    .frame(width: geo.size.width * 0.75)
-                                    .navigationBarTitleDisplayMode(.inline)
-                                    .toolbar {
-                                        ToolbarItem(placement: .principal) {
-                                            RecipeTitleView(title: cocktail.wrappedValue.cocktailName)
-                                            
-                                            
-                                        }
-                                        ToolbarItem(placement: .topBarLeading) {
-                                            VStack(alignment: .leading) {
-                                                Button{
-                                                    dismiss()
-                                                } label: {
-                                                    Image(systemName: "chevron.backward")
-                                                        .resizable()
-                                                        .aspectRatio(contentMode: .fit)
-                                                        .frame(width: 9)
-                                                        .bold()
-                                                        .tint(.cyan)
-                                                }
-                                            }
-                                            
-                                        }
-                                        
-                                    }
-                                    
-                                    
+                                    .buttonStyle(.custom)
                                 }
                                 
+                                if cocktail.author.wrappedValue != nil {
+                                    AuthorView(cocktail: cocktail.wrappedValue)
+                                        .frame(maxWidth: .infinity, alignment: .center)
+                                        .padding(.bottom, 80)
+                                }
                             }
-                            
+                            .frame(width: UIScreen.main.bounds.width * 0.75)
+                            .navigationBarTitleDisplayMode(.inline)
+                            .toolbar {
+                                ToolbarItem(placement: .principal) {
+                                    RecipeTitleView(title: cocktail.wrappedValue.cocktailName)
+                                }
+                            }
                         }
-                        
                     }
-                    .tabViewStyle(.page)
-                    .indexViewStyle(.page(backgroundDisplayMode: .interactive))
-                    .frame(minHeight: geo.size.height)
-               // }
-                
+                }
+                .tabViewStyle(.page)
+                .indexViewStyle(.page(backgroundDisplayMode: .always))
+                .frame(minHeight: UIScreen.main.bounds.height)
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    VStack(alignment: .leading) {
+                        Button{
+                            dismiss()
+                        } label: {
+                            Image(systemName: "chevron.backward")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 9)
+                                .bold()
+                                .tint(.cyan)
+                        }
+                    }
+                }
             }
         }
     }
@@ -109,7 +91,7 @@ struct SwipeRecipeView: View {
 
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    return SwipeRecipeView(variations: [cloverClub, zombie, airMailWnG, peanutButterFalcon])
+    return SwipeRecipeView(variations: [cloverClub, zombie, airMailWnG, peanutButterFalcon, brandyAlexander])
         .modelContainer(preview.container)
        
 }
