@@ -91,7 +91,7 @@ struct SwipeRecipeView: View {
 
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    return SwipeRecipeView(variations: [cloverClub, zombie, airMailWnG, peanutButterFalcon, brandyAlexander])
+    return SwipeRecipeView(variations: [savoirFaire, zombie129, cloverClub, zombie, airMailWnG, peanutButterFalcon, brandyAlexander])
         .modelContainer(preview.container)
        
 }
