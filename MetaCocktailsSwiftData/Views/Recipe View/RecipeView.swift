@@ -83,17 +83,17 @@ struct RecipeView: View {
     }
 }
 
-private struct BorderWithBackground: View {
+private struct BorderTop: View {
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .top) {
-                RoundedRectangle(cornerRadius: 8.0)
-                    .foregroundStyle(.darkGrey)
-                    .frame(width: geo.size.width * 0.88)
-                    .frame(height: geo.size.height * 0.3)
-                    .padding(.top, 35)
                 
-                Image(.smallBorderTop)
+                Image(.backgroundTop)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundStyle(.darkGrey)
+                
+                Image(.borderTop)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .foregroundStyle(.brandPrimaryGold)
@@ -103,26 +103,25 @@ private struct BorderWithBackground: View {
     }
 }
 
-private struct BorderSidesWithBackground: View {
+
+
+private struct BorderSides: View {
     var body: some View {
         GeometryReader { geo in
             VStack {
-                
                 Spacer()
                 
                 ZStack {
-                    Rectangle()
+                    Image(.backgroundSides)
+                        .resizable()
                         .foregroundStyle(.darkGrey)
-                        .frame(width: geo.size.width * 0.88)
                         .frame(height: geo.size.height * 0.8)
                     
-                    Image(.smallBorderSides)
+                    Image(.borderSides)
                         .resizable()
-                        .frame(height: geo.size.height * 0.8)
-                        .frame(width: geo.size.width)
-                        .aspectRatio(contentMode: .fit)
                         .foregroundStyle(.brandPrimaryGold)
                         .background(.clear)
+                        .frame(height: geo.size.height * 0.8)
                 }
                 
                 Spacer()
@@ -140,14 +139,14 @@ struct Border: View {
                 Spacer()
                 
                 ZStack {
-                    BorderSidesWithBackground()
+                    BorderSides()
                     
                     VStack(alignment: .leading) {
-                        BorderWithBackground()
+                        BorderTop()
                         
                         Spacer()
                         
-                        BorderWithBackground()
+                        BorderTop()
                             .rotationEffect(.degrees(180))
                     }
                 }
