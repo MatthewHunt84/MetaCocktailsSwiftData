@@ -20,7 +20,7 @@ var savoirFaire = Cocktail(cocktailName: "Savoir Faire",
 var savoirFaireSpec     =  [CocktailIngredient(.amari(.aveze), value: 0.25),
                             CocktailIngredient(.fortifiedWines(.dolinDry), value: 0.25),
                             CocktailIngredient(.gins(.ginAny), value: 2),
-                            CocktailIngredient(.otherNonAlc(.orangeFlowerWater), value: 2, unit: .spraysInGlass)]
+                            CocktailIngredient(.otherNonAlc(.orangeFlowerWater), value: 2, unit: .sprays)]
 
 var savoirFaireTags     = Tags(profiles: [.spiritForward, .bittersweet, .fruity],
                                styles: [.manhattan, .stirred])

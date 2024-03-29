@@ -19,7 +19,7 @@ var laCoa = Cocktail(cocktailName: "La Coa",
                      collection: .williamsAndGraham)
 
 let laCoaSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.chocolateMole), value: 2, unit: .dashes),
-                                       CocktailIngredient(.rums(.cruzanBlackstrap), value: 2, unit: .barSpoons),
+                                       CocktailIngredient(.rums(.cruzanBlackstrap), value: 2, unit: .barSpoon),
                                        CocktailIngredient(.liqueurs(.giffardPassion), value: 0.25),
                                        CocktailIngredient(.amari(.angosturaAmaro), value: 0.5),
                                        CocktailIngredient(.brandies(.boulardCalvados), value: 0.5),

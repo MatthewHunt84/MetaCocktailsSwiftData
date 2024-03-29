@@ -17,7 +17,7 @@ var scottishInquisition = Cocktail(cocktailName: "The Scottish Inquisition",
                                     tags: scottishInquisitionTags,
                                    collection: .williamsAndGraham)
 
-var scottishInquisitionSpec  = [CocktailIngredient(.bitters(.chocolateMole), value: 1, unit: .dash),
+var scottishInquisitionSpec  = [CocktailIngredient(.bitters(.chocolateMole), value: 1, unit: .dashes),
                                  CocktailIngredient(.amari(.averna), value: 0.75),
                                  CocktailIngredient(.fortifiedWines(.cocchiDeTorino), value: 0.75),
                                  CocktailIngredient(.rums(.avuaAmburana), value: 0.5),

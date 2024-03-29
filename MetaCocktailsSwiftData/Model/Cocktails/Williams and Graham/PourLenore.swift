@@ -18,10 +18,10 @@ var pourLenore  =  Cocktail(cocktailName: "Pour Lenore",
                             tags: pourLenoreTags,
                             collection: .williamsAndGraham)
 
-var pourLenoreSpec = [CocktailIngredient(.otherAlcohol(.burdockRootTincture), value: 1, unit: .dash),
-                      CocktailIngredient(.bitters(.blackWalnut), value: 1, unit: .dash),
+var pourLenoreSpec = [CocktailIngredient(.otherAlcohol(.burdockRootTincture), value: 1, unit: .dashes),
+                      CocktailIngredient(.bitters(.blackWalnut), value: 1, unit: .dashes),
                       CocktailIngredient(.amari(.sfumato), value: 1, unit: .barSpoon),
-                      CocktailIngredient(.syrups(.demSyrupOneToOne), value: 2, unit: .barSpoons),
+                      CocktailIngredient(.syrups(.demSyrupOneToOne), value: 2, unit: .barSpoon),
                       CocktailIngredient(.liqueurs(.giffardBanane), value: 0.25),
                       CocktailIngredient(.whiskies(.rittenhouseRye), value: 1.5)]
 

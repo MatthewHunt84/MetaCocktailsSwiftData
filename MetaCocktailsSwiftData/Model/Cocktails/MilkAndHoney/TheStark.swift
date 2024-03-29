@@ -21,7 +21,7 @@ var theStark = Cocktail(cocktailName: "The Stark",
                         collection: .milkAndHoney,
                         titleCocktail: false)
 
-var theStarkSpec = [CocktailIngredient(.bitters(.angosturaBitters), value: 4, unit: .floatedDashes),
+var theStarkSpec = [CocktailIngredient(.bitters(.angosturaBitters), value: 4, unit: .dashes),
                     CocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.75),
                     CocktailIngredient(.juices(.lemon), value: 0.5, unit: .fluidOunces),
                     CocktailIngredient(.syrups(.honeySyrup), value: 0.5, prep: PrepBible.honeySyrup),
@@ -30,3 +30,7 @@ var theStarkSpec = [CocktailIngredient(.bitters(.angosturaBitters), value: 4, un
 var theStarkTags = Tags(profiles: [.citrusy, .refreshing, .herbal, .complex],
                         styles: [.sour, .shaken])
 
+
+let theStarkBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except the bitters, into a tin and shake with ice."),
+                                         Instruction(step: 2, method: "Strain into a double old fashioned glass and then fill the glass with cracked ice."),
+                                         Instruction(step: 3, method: "Float the bitters on top.")])

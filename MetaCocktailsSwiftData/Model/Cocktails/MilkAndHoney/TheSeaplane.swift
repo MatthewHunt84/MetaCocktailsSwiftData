@@ -23,12 +23,12 @@ var theSeaPlane  = Cocktail(cocktailName: "The Seaplane",
 var theSeaPlaneSpec  = [CocktailIngredient(.juices(.lemon), value: 0.5),
                         CocktailIngredient(.syrups(.simple), value: 0.5),
                         CocktailIngredient(.gins(.ginAny), value: 1),
-                        CocktailIngredient(.otherAlcohol(.absinthe), value: 1, unit: .glassRinse),
+                        CocktailIngredient(.otherAlcohol(.absinthe), value: 5, unit: .sprays),
                         CocktailIngredient(.bitters(.orangeBitters), value: 2, unit: .dashes),
                         CocktailIngredient(.wines(.champagne) , value: 2)]
 
-var theSeaPlaneBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the Champagne, into a tin and shake with ice"),
-                                             Instruction(step: 2, method: "Strain into a flute and top with Champagne"),
+var theSeaPlaneBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the Champagne and absinthe, into a tin and shake with ice"),
+                                             Instruction(step: 2, method: "Strain into an absinthe rinsed flute and top with Champagne"),
                                              Instruction(step: 3, method: "Give a gentle stir")])
 
 var theSeaPlaneTags   = Tags(profiles: [.citrusy, .effervescent, .bright],

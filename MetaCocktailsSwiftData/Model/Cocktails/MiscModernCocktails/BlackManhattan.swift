@@ -14,8 +14,8 @@ var blackManhattan = Cocktail(cocktailName: "Black Manhattan",
                               spec: blackManhattanSpec,
                               tags: blackManhattanTags)
 
-var blackManhattanSpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),
-                               CocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dash),
+var blackManhattanSpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
+                               CocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dashes),
                                CocktailIngredient(.amari(.averna), value: 1),
                                CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 2)]
 

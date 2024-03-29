@@ -16,7 +16,7 @@ var lordReyesTheVIII  =  Cocktail(cocktailName: "Lord Reyes the VIII ",
                                   tags: elOchoRosadoTags,
                                   collection: .williamsAndGraham)
 
-var lordReyesTheVIIISpec = [CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),
+var lordReyesTheVIIISpec = [CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
                             CocktailIngredient(.liqueurs(.cremeDeCacao), value: 0.5),
                             CocktailIngredient(.fortifiedWines(.amontillado), value: 0.75),
                             CocktailIngredient(.liqueurs(.anchoRayesAncho), value: 0.75),

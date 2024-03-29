@@ -18,7 +18,7 @@ var homeOnTheRange = Cocktail(cocktailName: "Home on the Range",
                               collection: .originals,
                               titleCocktail: true)
 
-var homeOnTheRangeSpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),
+var homeOnTheRangeSpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
                                CocktailIngredient(.liqueurs(.cointreau), value: 3, unit: .dashes),
                                CocktailIngredient(.fortifiedWines(.dubonnet), value: 1.5),
                                CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 1.5)]

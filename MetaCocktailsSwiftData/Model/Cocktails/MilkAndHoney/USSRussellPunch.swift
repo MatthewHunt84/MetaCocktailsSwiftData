@@ -21,7 +21,7 @@ var uSSRussellPunch = Cocktail(cocktailName: "U.S.S. Russell Punch",
                                collection: .milkAndHoney,
                                titleCocktail: false)
 
-var uSSRussellPunchSpec = [CocktailIngredient(.fruit(.lemons), value: 50, unit: .peeledAndJuiced),
+var uSSRussellPunchSpec = [CocktailIngredient(.fruit(.lemons), value: 50, unit: .whole),
                            CocktailIngredient(.otherNonAlc(.granulatedSugar), value: 1360, unit: .grams),
                            CocktailIngredient(.otherNonAlc(.nutmegGrated), value: 1, unit: .tablespoon),
                            CocktailIngredient(.rums(.appletonEstateSignatureBlend), value: 3, unit: .bottles),
@@ -32,9 +32,10 @@ var uSSRussellPunchSpec = [CocktailIngredient(.fruit(.lemons), value: 50, unit: 
 var uSSRussellPunchTags = Tags(profiles: [.aromatic, .refreshing, .citrusy, .effervescent],
                                styles: [.punch, .built])
 
-var uSSRussellPunchBuild = Build(instructions: [Instruction(step: 1, method: "Combine the lemon peels and sugar in a large punch bowl and let stand for 1½ and up to 4 hours."),
-                                                Instruction(step: 2, method: "Discard 80 percent of the peels from the sugar, brushing any sugar clinging to the peels back into the bowl."),
-                                                Instruction(step: 3, method: "Add the lemon juice to the sugar; then add the Jamaican, white, and dark rums and gently whisk. "),
-                                                Instruction(step: 4, method: "Top off with 2 to 3 bottles of prosecco; add the nutmeg and whisk again. "),
-                                                Instruction(step: 5, method: "Add a 5-inch (13 cm) square block of ice and the cinnamon sticks and cloves. Refresh the punch with more prosecco over the course of the party."),
-                                                Instruction(step: 6, method: "Makes 10 liters.")])
+var uSSRussellPunchBuild = Build(instructions: [Instruction(step: 1, method: "Start by peeling and juicing the lemons. Then, set the peels aside to make an oleo saccharum."),
+                                                Instruction(step: 2, method: "Combine the lemon peels and sugar in a large punch bowl and let stand for 1½ and up to 4 hours."),
+                                                Instruction(step: 3, method: "Discard 80 percent of the peels from the sugar, brushing any sugar clinging to the peels back into the bowl."),
+                                                Instruction(step: 4, method: "Add the lemon juice to the sugar; then add the 750ml bottles of Jamaican, 750ml bottles of white, and 750ml bottles of dark rums and gently whisk. "),
+                                                Instruction(step: 5, method: "Top off with 2 to 3 750ml bottles of bottles of prosecco; add the nutmeg and whisk again. "),
+                                                Instruction(step: 6, method: "Add a 5-inch (13 cm) square block of ice and the cinnamon sticks and cloves. Refresh the punch with more prosecco over the course of the party."),
+                                                Instruction(step: 7, method: "Makes 10 liters.")])

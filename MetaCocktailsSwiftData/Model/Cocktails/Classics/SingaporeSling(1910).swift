@@ -19,7 +19,7 @@ var singaporeSling = Cocktail(cocktailName: "Singapore Sling",
                               titleCocktail: true)
 
 var singaporeSlingSpec  = [CocktailIngredient(.soda(.sparklingWater), value: 2),
-                          CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),
+                          CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
                           CocktailIngredient(.juices(.lime), value: 0.5),
                           CocktailIngredient(.liqueurs(.cherryHeering), value: 0.5),
                           CocktailIngredient(.liqueurs(.benedictine), value: 0.5),

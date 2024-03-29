@@ -25,15 +25,15 @@ let easyStreetSpec: [CocktailIngredient] = [CocktailIngredient(.syrups(.simple),
                                             CocktailIngredient(.fortifiedWines(.byrrh), value: 0.75),
                                             CocktailIngredient(.gins(.woodyCreekGin), value: 1.5),
                                             CocktailIngredient(.bitters(.peychauds), value: 2, unit: .dashes),
-                                            CocktailIngredient(.fortifiedWines(.sandemanPort), value: 0.25, unit: .float)]
+                                            CocktailIngredient(.fortifiedWines(.sandemanPort), value: 0.25)]
 
 let easyStreetTags = Tags(flavors: [.lemon],
                           profiles: [.fruity, .light, .herbal],
                           styles: [.sour, .shaken])
 
 let easyStreetBuild =  Build(instructions: [Instruction(step: 1, method: "In a tin, muddle 1 blackberries and 1 raspberry."),
-                                            Instruction(step: 2, method: "Add your ingredients and shake with ice."),
-                                            Instruction(step: 3, method: "Double strain over crushed ice."),
+                                            Instruction(step: 2, method: "Add all ingredients, except for bitters and port, and shake with ice."),
+                                            Instruction(step: 3, method: "Double strain over crushed ice in a double old fashioned glass."),
                                             Instruction(step: 3, method: "Float peychaud's and port."),
                                             Instruction(step: 4, method: "Garnish with mint sprig and berries.")])
 

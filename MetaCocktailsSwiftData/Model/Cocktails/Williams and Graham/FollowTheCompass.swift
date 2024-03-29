@@ -17,7 +17,7 @@ var followTheCompass = Cocktail(cocktailName: "Follow The Compass",
                                 tags: followTheCompassTags,
                                 collection: .williamsAndGraham)
 
-let followTheCompassSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),
+let followTheCompassSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
                                                   CocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.25),
                                                   CocktailIngredient(.fortifiedWines(.amontillado), value: 0.25),
                                                   CocktailIngredient(.amari(.amaroMontenegro), value: 0.25),

@@ -24,7 +24,7 @@ var NewYorkSourSpec = [CocktailIngredient(.juices(.lemon), value: 0.25),
                        CocktailIngredient(.syrups(.simple), value: 0.25),
                        CocktailIngredient(.juices(.orange), value: 0.125),
                        CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 2),
-                       CocktailIngredient(.wines(.dryRedWine), value: 0.25, unit: .float)]
+                       CocktailIngredient(.wines(.dryRedWine), value: 0.5)]
 
 var NewYorkSourTags = Tags(profiles: [.citrusy, .light, .refreshing],
                            styles: [.sour, .shaken])

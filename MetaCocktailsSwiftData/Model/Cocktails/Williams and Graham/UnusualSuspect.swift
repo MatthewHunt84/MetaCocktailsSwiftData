@@ -21,7 +21,7 @@ var unusualSuspect = Cocktail(cocktailName: "Unusual Suspect",
 
 let unusualSuspectSpec: [CocktailIngredient] = [CocktailIngredient(.seasoning(.saline), value: 4, unit: .drops),
                                                 CocktailIngredient(.otherNonAlc(.coconutWater), value: 1),
-                                                CocktailIngredient(.otherAlcohol(.burdockRootTincture), value:1, unit: .dash),
+                                                CocktailIngredient(.otherAlcohol(.burdockRootTincture), value:1, unit: .dashes),
                                                 CocktailIngredient(.liqueurs(.giffardBanane), value: 0.75),
                                                 CocktailIngredient(.fortifiedWines(.cocchiDeTorino), value: 0.75),
                                                 CocktailIngredient(.whiskies(.tullamoreDew), value: 1)]

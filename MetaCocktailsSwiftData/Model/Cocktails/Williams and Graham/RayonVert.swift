@@ -24,7 +24,7 @@ let reyonVertSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.basil), va
                                            CocktailIngredient(.juices(.lime), value: 0.5),
                                            CocktailIngredient(.syrups(.cucumberSyrup), value: 0.5, prep: PrepBible.cucumberSyrup),
                                            CocktailIngredient(.gins(.juinipero), value: 2),
-                                           CocktailIngredient(.otherAlcohol(.absinthe), value: 1, unit: .glassRinse)]
+                                           CocktailIngredient(.otherAlcohol(.absinthe), value: 5, unit: .sprays)]
                                         
 
 let reyonVertTags = Tags(profiles: [.herbal, .refreshing, .light, .restorative],

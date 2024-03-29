@@ -21,7 +21,7 @@ var pipeDream  =  Cocktail(cocktailName: "Pipe Dream",
                            collection: .williamsAndGraham)
 
 var pipeDreamSpec = [CocktailIngredient(.seasoning(.saline), value: 2, unit: .drops),
-                     CocktailIngredient(.otherAlcohol(.serranoTincture), value: 1, unit: .dash),
+                     CocktailIngredient(.otherAlcohol(.serranoTincture), value: 1, unit: .dashes),
                      CocktailIngredient(.bitters(.chocolateMole), value: 2, unit: .dashes),
                      CocktailIngredient(.liqueurs(.damiana), value: 1.5),
                      CocktailIngredient(.agaves(.mezcalDelMagueyVida), value: 1.5)]

@@ -18,7 +18,7 @@ var rememberTheMaine = Cocktail(cocktailName: "Remember The Maine",
                                 titleCocktail: true)
 
 var rememberTheMaineOGSpec     =  [CocktailIngredient(.otherAlcohol(.absinthe), value: 0.5, unit: .teaspoon),
-                                   CocktailIngredient(.liqueurs(.cherryHeering), value: 2, unit: .teaspoons),
+                                   CocktailIngredient(.liqueurs(.cherryHeering), value: 2, unit: .teaspoon),
                                    CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 0.75),
                                    CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 2)]
 

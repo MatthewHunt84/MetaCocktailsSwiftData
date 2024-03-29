@@ -18,7 +18,7 @@ var japaneseCocktail  = Cocktail(cocktailName: "Japanese Cocktail",
                                  collection: .originals,
                                  titleCocktail: true)
 
-var japaneseCocktailSpec  = [CocktailIngredient(.bitters(.aromaticBitters), value: 2, unit: .dash),
+var japaneseCocktailSpec  = [CocktailIngredient(.bitters(.aromaticBitters), value: 2, unit: .dashes),
                              CocktailIngredient(.syrups(.orgeat), value: 1, prep: PrepBible.orgeat),
                              CocktailIngredient(.brandies(.brandyAny) , value: 2)]
 

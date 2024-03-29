@@ -21,8 +21,8 @@ var harvestOldFashioned = Cocktail(cocktailName: "Harvest Old Fashioned",
                                    collection: .milkAndHoney)
 
 var harvestOldFashionedSpec     =  [CocktailIngredient(.otherNonAlc(.sugarCube), value: 1, unit: .muddled),
-                                    CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),
-                                    CocktailIngredient(.bitters(.peychauds), value: 1, unit: .dash),
+                                    CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
+                                    CocktailIngredient(.bitters(.peychauds), value: 1, unit: .dashes),
                                     CocktailIngredient(.brandies(.lairdsApplejack), value: 1),
                                     CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 1)]
 

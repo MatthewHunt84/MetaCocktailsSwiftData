@@ -17,7 +17,7 @@ var fancyFreeWnG = Cocktail(cocktailName: "Fancy Free(W&G Version)",
                             variation: .fancyFree,
                             collection: .williamsAndGraham)
 
-var fancyFreeWnGSpec     =  [CocktailIngredient(.bitters(.orangeBitters), value: 4, unit: .dash),
-                             CocktailIngredient(.bitters(.angosturaBitters), value: 3, unit: .dash),
+var fancyFreeWnGSpec     =  [CocktailIngredient(.bitters(.orangeBitters), value: 4, unit: .dashes),
+                             CocktailIngredient(.bitters(.angosturaBitters), value: 3, unit: .dashes),
                              CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.5),
                              CocktailIngredient(.whiskies(.fourRosesYellowLabel), value: 2)]

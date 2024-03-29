@@ -14,10 +14,11 @@ var americanGothic = Cocktail(cocktailName: "American Gothic",
                               ice: .bigRock,
                               author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
                               spec: americanGothicSpec,
+                              buildOrder: americanGothicBuild,
                               tags: americanGothicTags,
                               collection: .williamsAndGraham)
 
-let americanGothicSpec: [CocktailIngredient] = [CocktailIngredient(.otherAlcohol(.absinthe), value: 1, unit: .glassRinse),
+let americanGothicSpec: [CocktailIngredient] = [CocktailIngredient(.otherAlcohol(.absinthe), value: 5 , unit: .sprays),
                                                 CocktailIngredient(.amari(.leopold3Pins), value: 0.75),
                                                 CocktailIngredient(.liqueurs(.leopoldCherry), value: 0.5),
                                                 CocktailIngredient(.whiskies(.eagleRare10), value: 2)]
@@ -26,3 +27,7 @@ let americanGothicSpec: [CocktailIngredient] = [CocktailIngredient(.otherAlcohol
 let americanGothicTags = Tags(profiles: [.rich, .punchy, .spiritForward],
                               styles: [.manhattan, .stirred])
 
+
+var americanGothicBuild  = Build(instructions: [Instruction(step: 1, method: "Combine all ingredients, except for the absinthe, into a mixing glass with ice and stir."),
+                                                Instruction(step: 2, method: "Rinse a double old fashioned glass with absinthe."),
+                                                Instruction(step: 3, method: "Strain the cocktail into the glass over a large rock.")])
