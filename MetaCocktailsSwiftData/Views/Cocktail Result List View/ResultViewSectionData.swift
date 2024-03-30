@@ -13,12 +13,14 @@ class ResultViewSectionData {
     let matched: Int
     var baseSpirit: String
     var cocktails: [Cocktail]
+    var componentsThatDontMatch: [String]
     
-    init(count: Int, matched: Int, baseSpirit: String, cocktails: [Cocktail]) {
+    init(count: Int, matched: Int, baseSpirit: String, cocktails: [Cocktail], componentsThatDontMatch: [String]) {
         self.count = count
         self.matched = matched
         self.baseSpirit = baseSpirit
         self.cocktails = cocktails
+        self.componentsThatDontMatch = componentsThatDontMatch
     }
 }
 

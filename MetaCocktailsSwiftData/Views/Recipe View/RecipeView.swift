@@ -244,10 +244,12 @@ struct SpecView: View {
                             Text(ingredient.ingredient.name)
                                 .font(Layout.body)
                                 .tint(.cyan)
+                                .multilineTextAlignment(.leading)
                         }
                     } else {
                         Text("\(ingredient.ingredient.name)")
                             .font(Layout.body)
+                            .multilineTextAlignment(.leading)
                     }
                 }
             }

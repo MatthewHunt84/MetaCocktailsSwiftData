@@ -149,6 +149,8 @@ final class SearchCriteriaViewModel: ObservableObject {
         sections.removeAll()
     }
     
+  
+    
    func modifiedPreferredCount() -> Int {
         // compare preferredComponent against current cocktail of loop, then return number of matches.
         var baseMatches = 0
@@ -211,7 +213,7 @@ extension SearchResultsView {
                 for i in 0...Int(viewModel.preferredCount / 2) {
                     let numberOfMatches = (viewModel.preferredCount - i)
                     for spirit in viewModel.returnPreferredBaseSpirits() {
-                        dataShells.append(ResultViewSectionData(count: viewModel.preferredCount, matched: numberOfMatches, baseSpirit: spirit, cocktails: []))
+                        dataShells.append(ResultViewSectionData(count: viewModel.preferredCount, matched: numberOfMatches, baseSpirit: spirit, cocktails: [], componentsThatDontMatch: []))
                     }
                 }
                 return dataShells
@@ -220,7 +222,7 @@ extension SearchResultsView {
                 viewModel.preferredCount = viewModel.selectedPreferredIngredients().count
                 for i in 0...Int(viewModel.preferredCount / 2) {
                     let numberOfMatches = (viewModel.preferredCount - i)
-                    dataShells.append(ResultViewSectionData(count: viewModel.preferredCount, matched: numberOfMatches, baseSpirit: "N/A", cocktails: []))
+                    dataShells.append(ResultViewSectionData(count: viewModel.preferredCount, matched: numberOfMatches, baseSpirit: "N/A", cocktails: [], componentsThatDontMatch: []))
                 }
                 return dataShells
             }
@@ -235,9 +237,12 @@ extension SearchResultsView {
                 if viewModel.enableResultsForMultipleBaseSpirits == false {
                     if resultViewSectionData.matched == viewModel.selectedPreferredIngredients().reduce(0, { countMatches($0, for: $1, in: cocktail)}) {
                         resultViewSectionData.cocktails.append(cocktail)
+                        resultViewSectionData.componentsThatDontMatch.append(contentsOf: findUnmatchedComponents(for: cocktail))
+                        
                     }
                 } else {
                     if resultViewSectionData.matched == countMatchesForMultipleSpirits(for: cocktail) && resultViewSectionData.baseSpirit == returnMatchedBase(cocktail) && resultViewSectionData.cocktails.last != cocktail {
+                            
                             resultViewSectionData.cocktails.append(cocktail)
                         //print("the count match for \(cocktail.cocktailName) is \(countMatchesForMultipleSpirits(for: cocktail))")
                     }
@@ -377,6 +382,15 @@ extension SearchResultsView {
         return matches
     }
     
+    func findUnmatchedComponents(for cocktail: Cocktail ) -> [String] {
+        var componentArray = [String]()
+        for preferedComponent in viewModel.selectedPreferredIngredients() {
+            if !convertTagsAndSpecToStrings(for: cocktail).contains(preferedComponent.name) {
+                componentArray.append(preferedComponent.name)
+            }
+        }
+        return componentArray
+    }
    
 }
 
