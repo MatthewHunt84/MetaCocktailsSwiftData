@@ -24,7 +24,7 @@ var jFKHarrisSpec     =  [CocktailIngredient(.herbs(.mint), value: 11, unit: .ge
                           CocktailIngredient(.syrups(.simple), value: 0.75),
                           CocktailIngredient(.juices(.lemon), value: 0.75),
                           CocktailIngredient(.rums(.rumWhite), value: 2),
-                          CocktailIngredient(.wines(.dryRedWine), value: 0.5, unit: .fluidOuncesFloated),]
+                          CocktailIngredient(.wines(.dryRedWine), value: 0.5)]
 
 var jFKHarrisTags     = Tags(profiles: [.savory, .refreshing, .citrusy, .complex],
                              styles: [.sour, .shaken])

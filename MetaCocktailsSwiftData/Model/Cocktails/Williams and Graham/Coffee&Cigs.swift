@@ -17,7 +17,7 @@ var coffeeAndCigs = Cocktail(cocktailName: "Coffee & Cigs",
                              tags: coffeeAndCigsTags,
                              collection: .williamsAndGraham)
 
-var coffeeAndCigsSpec  = [CocktailIngredient(.otherNonAlc(.stiffCream), value: 1, unit: .fluidOuncesFloated),
+var coffeeAndCigsSpec  = [CocktailIngredient(.otherNonAlc(.stiffCream), value: 1),
                           CocktailIngredient(.liqueurs(.borghetti), value: 1),
                           CocktailIngredient(.amari(.averna), value: 0.5),
                           CocktailIngredient(.whiskies(.buffaloTrace), value: 1.5)]

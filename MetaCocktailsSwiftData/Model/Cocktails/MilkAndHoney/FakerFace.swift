@@ -13,7 +13,7 @@ var fakerFace  = Cocktail(cocktailName: "Faker Face",
                           ice: nil,
                           author: sashaPetraske,
                           spec: fakerFaceSpec,
-                          buildOrder: nil,
+                          buildOrder: fakerFaceBuild,
                           tags: fakerFaceTags,
                           variation: nil,
                           collection: .milkAndHoney)
@@ -21,8 +21,10 @@ var fakerFace  = Cocktail(cocktailName: "Faker Face",
 var fakerFaceSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
                       CocktailIngredient(.syrups(.grenadine), value: 0.75),
                       CocktailIngredient(.juices(.orange), value: 1),
-                      CocktailIngredient(.soda(.sodaWater) , value: 2, unit: .fluidOuncesFloated)]
+                      CocktailIngredient(.soda(.sodaWater) , value: 2)]
 
 var fakerFaceTags   = Tags(profiles: [.citrusy, .fruity, .effervescent, .light],
                            styles: [.nonAlcoholic, .shaken, .sour])
 
+var fakerFaceBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the soda, into a tin and shake with ice."),
+                                          Instruction(step: 2, method: "Strain into a chilled coupe and top with soda.")])

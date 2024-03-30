@@ -19,7 +19,7 @@ var hayesFizz  = Cocktail(cocktailName: "Hayes Fizz",
                           collection: .milkAndHoney)
 
 var hayesFizzSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                      CocktailIngredient(.otherAlcohol(.absinthe), value: 1, unit: .glassRinse),
+                      CocktailIngredient(.otherAlcohol(.absinthe), value: 5, unit: .sprays),
                       CocktailIngredient(.syrups(.simple), value: 0.75),
                       CocktailIngredient(.gins(.ginAny), value: 2),
                       CocktailIngredient(.soda(.sodaWater) , value: 2)]

@@ -16,7 +16,7 @@ var jupiter = Cocktail(cocktailName: "Jupiter(W&G)",
                        tags: jupiterTags,
                        collection: .williamsAndGraham)
 
-var jupiterSpec  =  [CocktailIngredient(.bitters(.tikiBitters), value: 1, unit: .dash),
+var jupiterSpec  =  [CocktailIngredient(.bitters(.tikiBitters), value: 1, unit: .dashes),
                      CocktailIngredient(.juices(.lemon), value: 0.5),
                      CocktailIngredient(.syrups(.passionfruitSyrup), value: 0.5),
                      CocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBible.orgeat),

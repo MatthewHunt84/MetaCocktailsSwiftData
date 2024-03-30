@@ -9,21 +9,23 @@ import Foundation
 
 var temperanceIrishCoffee = Cocktail(cocktailName: "Temperance Irish Coffee",
                                      glasswareType: .toddyGlass,
-                                     garnish: nil,
+                                     garnish: [.nutmeg, .cinnamon],
                                      author: sashaPetraske,
                                      spec: temperanceIrishCoffeeSpec,
-                                     buildOrder: nil,
+                                     buildOrder: temperanceIrishBuild,
                                      tags: temperanceIrishCoffeeTags,
                                      variation: .irishCoffee,
                                      collection: .milkAndHoney,
                                      titleCocktail: false)
 
-var temperanceIrishCoffeeSpec  = [CocktailIngredient(.otherNonAlc(.stiffCream), value: 1.5, unit: .fluidOuncesFloated),
-                                  CocktailIngredient(.otherNonAlc(.espressoShot), value: 2, unit: .whole),
-                                  CocktailIngredient(.otherNonAlc(.demeraraSugarCube), value: 2, unit: .whole),
-                                  CocktailIngredient(.otherNonAlc(.hotWater), value: 4),
-                                  CocktailIngredient(.whiskies(.irishWhiskeyAny), value: 45, unit: .ml)]
+var temperanceIrishCoffeeSpec  = [CocktailIngredient(.otherNonAlc(.stiffCream), value: 1.5),
+                                  CocktailIngredient(.otherNonAlc(.espressoShot), value: 2, unit: .none),
+                                  CocktailIngredient(.otherNonAlc(.demeraraSugarCube), value: 2, unit: .none),
+                                  CocktailIngredient(.otherNonAlc(.hotWater), value: 4)]
 
 var temperanceIrishCoffeeTags = Tags(flavors: [.coffee],
                                      profiles: [.hot],
-                                     styles: [.toddy])
+                                     styles: [.toddy, .nonAlcoholic])
+
+var temperanceIrishBuild = Build(instructions: [Instruction(step: 1, method: "Heat up your mug with hot water."),
+                                                Instruction(step: 2, method: "Dump the water then add all the ingredients, leaving the cream to float on top.")])

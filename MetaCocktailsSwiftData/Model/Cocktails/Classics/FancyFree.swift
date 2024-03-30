@@ -20,8 +20,8 @@ var fancyFree = Cocktail(cocktailName: "Fancy Free",
                          collection: .originals,
                          titleCocktail: true)
 
-var fancyFreeSpec     =  [CocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dash),
-                          CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),
+var fancyFreeSpec     =  [CocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dashes),
+                          CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
                           CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.5),
                           CocktailIngredient(.whiskies(.straightRyeOrBourbon), value: 2)]
 

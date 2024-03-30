@@ -20,7 +20,7 @@ var lordTouchingtonsDelight = Cocktail(cocktailName: "Lord Touchingtons Delight"
 let lordTouchingtonsDelightSpec: [CocktailIngredient] = [CocktailIngredient(.juices(.lime), value: 0.5),
                                                          CocktailIngredient(.juices(.pineappleJuice), value: 0.5),
                                                          CocktailIngredient(.juices(.orange), value: 0.5),
-                                                         CocktailIngredient(.bitters(.tikiBitters), value: 1, unit: .dash),
+                                                         CocktailIngredient(.bitters(.tikiBitters), value: 1, unit: .dashes),
                                                          CocktailIngredient(.otherNonAlc(.coconutCream), value: 1),
                                                          CocktailIngredient(.liqueurs(.anchoRayesAncho), value: 1),
                                                          CocktailIngredient(.agaves(.puebloViejoBlanco104), value: 0.5),

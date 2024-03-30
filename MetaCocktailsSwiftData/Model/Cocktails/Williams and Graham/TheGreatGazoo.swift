@@ -20,7 +20,7 @@ var theGreatGazoo = Cocktail(cocktailName: "The Great Gazoo",
 let theGreatGazooSpec: [CocktailIngredient] = [CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
                                                CocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.5),
                                                CocktailIngredient(.juices(.lemon), value: 0.5),
-                                               CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),
+                                               CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
                                                CocktailIngredient(.liqueurs(.stGeorgeSpicesPear), value: 0.5),
                                                CocktailIngredient(.whiskies(.woodyCreekRye), value:1.5)]
 

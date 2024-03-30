@@ -18,7 +18,7 @@ var victoryLap = Cocktail(cocktailName: "Victory Lap",
                           collection: .williamsAndGraham)
 
 let victoryLapSpec: [CocktailIngredient] = [CocktailIngredient(.juices(.lime), value: 0.25),
-                                            CocktailIngredient(.otherAlcohol(.notSpicyJalapeñoTincture), value: 1, unit: .dash),
+                                            CocktailIngredient(.otherAlcohol(.notSpicyJalapeñoTincture), value: 1, unit: .dashes),
                                             CocktailIngredient(.syrups(.agaveSyrup), value: 0.25, prep: PrepBible.agaveSyrup),
                                             CocktailIngredient(.syrups(.clementineShrub), value: 0.5),
                                             CocktailIngredient(.fruit(.guavaPure), value: 0.75),

@@ -16,8 +16,8 @@ var caipirinha   = Cocktail(cocktailName: "Caipirinha",
                             tags: caipirnhaTags)
 
 
-var caipirinhaSpec = [CocktailIngredient(.fruit(.limeHalf), value: 1, unit: .cutInto6),
-                      CocktailIngredient(.otherNonAlc(.granulatedSugar), value: 2, unit: .barSpoons),
+var caipirinhaSpec = [CocktailIngredient(.fruit(.limeHalf), value: 1, unit: .none),
+                      CocktailIngredient(.otherNonAlc(.granulatedSugar), value: 2, unit: .barSpoon),
                       CocktailIngredient(.syrups(.simple), value: 0.5),
                       CocktailIngredient(.rums(.cachaca), value: 2)]
                       

@@ -24,7 +24,7 @@ var silverFoxSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                       CocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBible.orgeat),
                       CocktailIngredient(.otherNonAlc(.eggWhites), value: 1, unit: .whole),
                       CocktailIngredient(.gins(.ginAny), value: 1.5),
-                      CocktailIngredient(.liqueurs(.amaretto), value: 0.5, unit: .fluidOuncesFloated),
+                      CocktailIngredient(.liqueurs(.amaretto), value: 0.5),
                       CocktailIngredient(.soda(.sodaWater) , value: 1.5)]
 
 var silverFoxBuild  = Build(instructions: [Instruction(step: 1, method: "Combine the egg white, orgeat syrup, lemon juice, and gin in a cocktail shaker and shake to emulsify the mixture."),

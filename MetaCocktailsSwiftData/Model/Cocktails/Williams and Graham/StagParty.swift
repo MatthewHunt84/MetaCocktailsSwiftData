@@ -18,7 +18,7 @@ var stagParty  =  Cocktail(cocktailName: "Stag Party",
                            tags: stagPartyTags,
                            collection: .williamsAndGraham)
 
-var stagPartySpec = [CocktailIngredient(.otherNonAlc(.stiffCream), value: 1, unit: .fluidOuncesFloated),
+var stagPartySpec = [CocktailIngredient(.otherNonAlc(.stiffCream), value: 1),
                      CocktailIngredient(.liqueurs(.licor43), value: 0.5),
                      CocktailIngredient(.amari(.sfumato), value: 0.25),
                      CocktailIngredient(.amari(.jagerColdBrew), value: 1),
@@ -26,3 +26,7 @@ var stagPartySpec = [CocktailIngredient(.otherNonAlc(.stiffCream), value: 1, uni
 
 var stagPartyTags = Tags(profiles: [.rich, .bittersweet, .punchy, .spiritForward],
                          styles: [.negroni, .stirred])
+
+var stagPartyBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, besides the cream, to a mixing glass and stir."),
+                                          Instruction(step: 2, method: "Strain into a frozen single old fashioned glass."),
+                                          Instruction(step: 3, method: "Float the stiff cream on top and garnish with an orange peel.")])

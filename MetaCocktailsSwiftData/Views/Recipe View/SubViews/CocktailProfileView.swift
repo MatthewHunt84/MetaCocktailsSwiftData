@@ -63,9 +63,7 @@ struct IngredientView: View {
     }
 }
 struct CocktailProfileView: View {
-    
-    
-    
+
     var profileString = ""
     let cocktail: Cocktail
     
@@ -78,7 +76,11 @@ struct CocktailProfileView: View {
         
         if let profiles = cocktail.compiledTags.profiles {
             for profile in profiles {
-                self.profileString += " \(profile.rawValue),"
+                if profile == profiles[0] {
+                    self.profileString += "\(profile.rawValue),"
+                } else {
+                    self.profileString += " \(profile.rawValue),"
+                }
             }
         }
         if profileString != "" {
@@ -86,13 +88,13 @@ struct CocktailProfileView: View {
         }
     }
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             Text("Profile:")
                 .dynamicTypeSize(.xLarge).bold()
-            Text("\(profileString)")
-                .multilineTextAlignment(.center)
-                .dynamicTypeSize(.xLarge)
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
+            Text(profileString)
+                .multilineTextAlignment(.leading)
+                .dynamicTypeSize(.large)
+           
             
         }
     }

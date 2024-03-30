@@ -21,7 +21,7 @@ var featheredHatFlipNo1 = Cocktail(cocktailName: "Feathered Hat Flip No. 1",
                                    collection: .williamsAndGraham,
                                    titleCocktail: true)
 
-var featheredHatFlipSpec  = [CocktailIngredient(.bitters(.angosturaBitters), value: 1,unit: .floatedDashes),
+var featheredHatFlipSpec  = [CocktailIngredient(.bitters(.angosturaBitters), value: 8, unit: .drops),
                              CocktailIngredient(.otherAlcohol(.leftHandMilkStout), value: 0.5),
                              CocktailIngredient(.liqueurs(.velvetFalernum), value: 0.5),
                              CocktailIngredient(.liqueurs(.giffardBanane), value: 0.5),
@@ -33,7 +33,7 @@ var featheredHatFlipTags = Tags(flavors: [.nutmeg],
                                 profiles: [.rich, .silky, .savory],
                                 styles: [.flip, .shaken])
 
-var featheredHatFlipBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients into a tin a dry shake to emulsify"),
+var featheredHatFlipBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except the bitters, into a tin a dry shake to emulsify"),
                                                  Instruction(step: 2, method: "Add a few Kold Draft cubes and shake until cold."),
                                                  Instruction(step: 3, method: "Immediately after shaking, pop the tin and double strain into a flip glass."),
                                                  Instruction(step: 4, method: "Make a design with angostura on top.")])

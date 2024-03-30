@@ -160,7 +160,7 @@ import Observation
             case .seasoning:
                 selectedMeasurementUnit = MeasurementUnit.drops
             case .wines:
-                selectedMeasurementUnit = MeasurementUnit.float
+                selectedMeasurementUnit = MeasurementUnit.fluidOunces
             case .bitters:
                 selectedMeasurementUnit = MeasurementUnit.dashes
             default:

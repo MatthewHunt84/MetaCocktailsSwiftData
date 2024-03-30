@@ -19,8 +19,8 @@ var adonis = Cocktail(cocktailName: "Adonis",
 
 var adonisSpec = [CocktailIngredient(.fortifiedWines(.fino), value: 1.5),
                   CocktailIngredient(.fortifiedWines(.dolinRouge), value: 1.5),
-                  CocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dash),
-                  CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dash),]
+                  CocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dashes),
+                  CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),]
 
 var adonisTags = Tags(profiles: [ .light, .complex, .bittersweet ],
                       styles: [.martini, .stirred])

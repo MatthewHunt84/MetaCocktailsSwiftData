@@ -7,20 +7,22 @@
 
 import Foundation
 
-var oldFashioned = Cocktail(cocktailName: "Old Fashioned",
+let oldFashioned = Cocktail(cocktailName: "Old Fashioned",
                             glasswareType: .doubleOld,
                             garnish: [.orangeOrLemon],
                             ice: .bigRock,
-                            author:Author(place: "Too old to tell"),
+                            author: Author(place: "Too old to tell"),
                             spec: oldFashionedSpec,
                             tags: oldFashionedTags,
                             variation: .oldFashioned,
                             titleCocktail: true)
 
-var oldFashionedSpec  =  [CocktailIngredient(.syrups(.richDem), value: 2, unit: .teaspoon, prep: PrepBible.richDem),
+let oldFashionedSpec  =  [CocktailIngredient(.syrups(.richDem), value: 2, unit: .teaspoon, prep: PrepBible.richDem),
                           CocktailIngredient(.bitters(.angosturaBitters), value: 3, unit: .dashes),
                           CocktailIngredient(.whiskies(.straightRyeOrBourbon), value: 2)]
 
-var oldFashionedTags = Tags( profiles: [.bittersweet, .spiritForward],
+let oldFashionedTags = Tags( profiles: [.bittersweet, .spiritForward],
                              styles: [.oldFashioned, .stirred])
 
+
+let oldFashionedBuild = Build(instructions: [Instruction(step: 1, method: "This is a more modern version that you'll find at upscale cocktail bars. This is also our prefered version of the Old Fashioned. Making a rich dem adds texture to the cocktail and also has the added benifit of fully emulsifying. A sugar cube does not.")])

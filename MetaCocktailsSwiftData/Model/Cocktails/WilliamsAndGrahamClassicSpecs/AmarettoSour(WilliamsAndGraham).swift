@@ -21,7 +21,7 @@ var amarettoSourWnGSpec  = [CocktailIngredient(.otherNonAlc(.eggWhites), value: 
                             CocktailIngredient(.juices(.lemon), value: 0.75),
                             CocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.25),
                             CocktailIngredient(.liqueurs(.amaretto) , value: 2),
-                            CocktailIngredient(.bitters(.angosturaBitters) , value: 1, unit: .bittersDeco)]
+                            CocktailIngredient(.bitters(.angosturaBitters) , value: 10, unit: .drops)]
 
 
 

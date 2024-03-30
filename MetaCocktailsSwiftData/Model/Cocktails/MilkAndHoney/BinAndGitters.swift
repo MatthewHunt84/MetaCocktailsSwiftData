@@ -18,16 +18,20 @@ var binAndGitters = Cocktail(cocktailName: "Bin & Gitters",
                                             place: AuthorPlaces.milkAndHoney.rawValue,
                                             year: "Early 2000s"),
                              spec: binAndGittersSpec,
-                             buildOrder: nil ,
+                             buildOrder: binAndGittersBuild ,
                              tags: binAndGittersTags,
                              variation: nil,
                              collection: .milkAndHoney,
                              titleCocktail: false)
 
-let binAndGittersSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .floatedDashes),
+let binAndGittersSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
                                                CocktailIngredient(.juices(.lime), value: 1),
                                                CocktailIngredient(.syrups(.simple), value: 0.75),
                                                CocktailIngredient(.gins(.ginAny), value: 2)]
 
 let binAndGittersTags = Tags(profiles: [.refreshing, .light],
                              styles: [.sour, .shaken])
+
+let binAndGittersBuild = Build(instructions: [Instruction(step: 1, method: "Add lime, simple, and gin into a tin and shake with ice."),
+                                              Instruction(step: 2, method: "Strain into a double old fashioned glass and then pack the glass with pebble ice."),
+                                              Instruction(step: 3, method: "Float the bitters on top and add a lime wedge for garnish.")])

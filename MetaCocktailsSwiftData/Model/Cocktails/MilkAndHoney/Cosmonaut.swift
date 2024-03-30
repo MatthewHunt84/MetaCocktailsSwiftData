@@ -17,7 +17,7 @@ var cosmonaut = Cocktail(cocktailName: "Cosmonaut",
                          collection: .milkAndHoney)
 
 var cosmonautSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                      CocktailIngredient(.otherNonAlc(.raspberryPreserves), value: 2, unit: .barSpoons),
+                      CocktailIngredient(.otherNonAlc(.raspberryPreserves), value: 2, unit: .barSpoon),
                       CocktailIngredient(.gins(.ginAny), value: 2)]
 
 var cosmonautTags = Tags(profiles: [.citrusy, .fruity, .light],

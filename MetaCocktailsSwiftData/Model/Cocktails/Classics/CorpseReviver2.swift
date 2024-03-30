@@ -21,7 +21,7 @@ var corpseReviver2Spec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
                            CocktailIngredient(.gins(.ginLondonDry), value: 0.75),
                            CocktailIngredient(.liqueurs(.cointreau), value: 0.75),
                            CocktailIngredient(.fortifiedWines(.cocchiAmericano), value: 0.75),
-                           CocktailIngredient(.otherAlcohol(.absinthe), value: 1, unit: .dash)]
+                           CocktailIngredient(.otherAlcohol(.absinthe), value: 1, unit: .dashes)]
 
 var corpseReviver2Tags = Tags(profiles: [.citrusy, .tart, .light, .restorative],
                               styles: [.daisy, .shaken, .sour])
