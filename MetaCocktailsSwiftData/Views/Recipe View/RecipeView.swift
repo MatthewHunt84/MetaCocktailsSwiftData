@@ -68,7 +68,7 @@ struct RecipeView: View {
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
                         ToolbarItem(placement: .principal) {
-                            RecipeTitleView(title: viewModel.cocktail.cocktailName)
+                            RecipeTitleView(cocktail: viewModel.cocktail)
                         }
                         ToolbarItem(placement: .topBarLeading) {
                             BackButton()
@@ -188,13 +188,35 @@ private struct Layout {
 }
 
 struct RecipeTitleView: View {
-    var title: String
+    var cocktail: Cocktail
     var body: some View {
-        Text(title)
-            .fontDesign(.serif)
-            .font(.largeTitle)
-            .lineLimit(1)
-            .minimumScaleFactor(0.4)
+        if cocktail.collection != nil {
+            RecipeTitleViewWithCollection(cocktail: cocktail)
+        } else {
+            Text(cocktail.cocktailName)
+                .fontDesign(.serif)
+                .font(.largeTitle)
+                .lineLimit(1)
+                .minimumScaleFactor(0.4)
+        }
+    }
+}
+
+struct RecipeTitleViewWithCollection: View {
+    var cocktail: Cocktail
+    var body: some View {
+        HStack {
+            Text(cocktail.cocktailName)
+                .fontDesign(.serif)
+                .font(.largeTitle)
+                .lineLimit(1)
+                .minimumScaleFactor(0.4)
+            
+            Image(.wngLogo)
+                .resizable()
+                .scaledToFit()
+                .foregroundStyle(.secondary)
+        }
     }
 }
 

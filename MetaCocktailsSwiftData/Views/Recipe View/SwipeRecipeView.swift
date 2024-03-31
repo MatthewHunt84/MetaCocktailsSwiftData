@@ -59,7 +59,7 @@ struct SwipeRecipeView: View {
                             .navigationBarTitleDisplayMode(.inline)
                             .toolbar {
                                 ToolbarItem(placement: .principal) {
-                                    RecipeTitleView(title: cocktail.wrappedValue.cocktailName)
+                                    RecipeTitleView(cocktail: cocktail.wrappedValue)
                                 }
                             }
                         }
