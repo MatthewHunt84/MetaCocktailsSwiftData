@@ -36,9 +36,14 @@ struct CocktailResultList: View {
                                                 } label: {
                                                     HStack {
                                                         Text(cocktail.cocktailName)
-                                                        
+                                                        ForEach(findUnmatchedComponents(for: cocktail), id: \.self) { unmatchedTitle in
+                                                            Text("-\(unmatchedTitle)")
+                                                                .font(.caption)
+                                                                .foregroundStyle(.brandPrimaryRed)
+                                                                
+                                                            
+                                                        }
                                                     }
-                                                    
                                                 }
                                             }
                                         }
@@ -62,7 +67,6 @@ struct CocktailResultList: View {
                                         }
                                     }
                                 }
-                                
                             }
                             .listStyle(.plain)
                             .backgroundStyle(Color(.black))
@@ -82,14 +86,15 @@ struct CocktailResultList: View {
                                     .resizable()
                                     .scaledToFit()
                             }
-                            
                         }
                     }
                 }
                 Spacer()
             }
         }
+        
     }
+    
 }
 
 #Preview {

@@ -118,24 +118,26 @@ struct SearchedCocktailTitleHeader: View {
     
     var searched: Int
     var matched: Int
+    
 
     var body: some View {
-        HStack {
-            ForEach(0..<matched, id: \.self) { match in
-                Image(systemName: "circle.fill")
-                    .foregroundStyle(Color.green)
-            }
-            
-            if matched - searched < 0 {
-                ForEach(0..<(searched - matched), id: \.self) { nonMatch in
+        VStack {
+            HStack {
+                ForEach(0..<matched, id: \.self) { match in
                     Image(systemName: "circle.fill")
+                        .foregroundStyle(Color.green)
                 }
+                
+                if matched - searched < 0 {
+                    ForEach(0..<(searched - matched), id: \.self) { nonMatch in
+                        Image(systemName: "circle.fill")
+                    }
+                }
+                Spacer()
+                Text("^[\(matched)/\(searched) matches](inflect: true)")
             }
-            
-            Spacer()
-            
-            Text("^[\(matched)/\(searched) matches](inflect: true)")
         }
+        
     }
 }
 
