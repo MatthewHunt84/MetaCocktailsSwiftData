@@ -7,7 +7,7 @@
 
 import Foundation
 
-var maiTaiWnG  = Cocktail(cocktailName: "Mai Tai(W&G Version)",
+var maiTaiWnG  = Cocktail(cocktailName: "Mai Tai (W&G Version)",
                           glasswareType: .doubleOld,
                           garnish: [.mintSprig, .limeWheel],
                           ice: .pebbleIce,

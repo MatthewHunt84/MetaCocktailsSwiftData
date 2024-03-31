@@ -7,7 +7,7 @@
 
 import Foundation
 
-var robRoyWnG = Cocktail(cocktailName: "Rob Roy(W&G Version)",
+var robRoyWnG = Cocktail(cocktailName: "Rob Roy (W&G Version)",
                          glasswareType: .nickAndNora,
                          garnish: [.maraschinoCherry, .orangeExpress],
                          author: williamsAndGraham,

@@ -7,7 +7,7 @@
 
 import Foundation
 
-var vesperWnG = Cocktail(cocktailName: "Vesper(W&G Version)",
+var vesperWnG = Cocktail(cocktailName: "Vesper (W&G Version)",
                          glasswareType: .nickAndNora,
                          garnish: [.lemonPeel],
                          author: williamsAndGraham,

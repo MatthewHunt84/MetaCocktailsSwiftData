@@ -7,7 +7,7 @@
 
 import Foundation
 
-var grasshopperWnG = Cocktail(cocktailName: "Grasshopper(W&G Version)",
+var grasshopperWnG = Cocktail(cocktailName: "Grasshopper (W&G Version)",
                               imageAsset: nil,
                               glasswareType: Glassware.coupe,
                               garnish: [.mintLeaf],

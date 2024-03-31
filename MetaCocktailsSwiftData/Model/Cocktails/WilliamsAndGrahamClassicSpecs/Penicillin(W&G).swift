@@ -7,7 +7,7 @@
 
 import Foundation
 
-var penicillinWnG = Cocktail(cocktailName: "Penicillin(W&G Version)",
+var penicillinWnG = Cocktail(cocktailName: "Penicillin (W&G Version)",
                              glasswareType: Glassware.doubleOld,
                              garnish: [.candiedGinger],
                              ice: .bigRock,

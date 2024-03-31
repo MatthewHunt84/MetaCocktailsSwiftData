@@ -7,7 +7,7 @@
 
 import Foundation
 
-var princeEdward = Cocktail(cocktailName: "Prince Edward(W&G Version)",
+var princeEdward = Cocktail(cocktailName: "Prince Edward (W&G Version)",
                             glasswareType: .nickAndNora,
                             garnish: [.orangePeel],
                             author: williamsAndGraham,

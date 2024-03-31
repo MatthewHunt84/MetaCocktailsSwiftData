@@ -7,7 +7,7 @@
 
 import Foundation
 
-var chocolateMartiniWnG = Cocktail(cocktailName: "Chocolate Martini(W&G Version)",
+var chocolateMartiniWnG = Cocktail(cocktailName: "Chocolate Martini (W&G Version)",
                                    imageAsset: nil,
                                    glasswareType: .martini,
                                    garnish: [.chocolateChips],

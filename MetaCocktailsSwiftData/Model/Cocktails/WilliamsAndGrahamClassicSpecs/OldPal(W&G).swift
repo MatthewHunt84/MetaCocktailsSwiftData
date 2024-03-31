@@ -7,7 +7,7 @@
 
 import Foundation
 
-var oldPalWnG  =  Cocktail(cocktailName: "Old Pal(W&G Version)",
+var oldPalWnG  =  Cocktail(cocktailName: "Old Pal (W&G Version)",
                            glasswareType: .coupe,
                            garnish: [.lemonPeel],
                            ice: nil,

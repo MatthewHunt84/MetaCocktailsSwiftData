@@ -1,5 +1,5 @@
 //
-//  RememberTheMain(W&G Version).swift
+//  RememberTheMain (W&G Version).swift
 //  MetaCocktailsSwiftData
 //
 //  Created by James Menkal on 1/31/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-var rememberTheMaineWnG = Cocktail(cocktailName: "Remember The Maine(W&G Version)",
+var rememberTheMaineWnG = Cocktail(cocktailName: "Remember The Maine (W&G Version)",
                                    glasswareType: .coupe,
                                    garnish: [.maraschinoCherry],
                                    author: williamsAndGraham,

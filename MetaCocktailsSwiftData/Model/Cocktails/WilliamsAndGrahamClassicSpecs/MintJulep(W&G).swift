@@ -7,7 +7,7 @@
 
 import Foundation
 
-var mintJulepWnG = Cocktail(cocktailName: "Mint Julep(W&G Version)",
+var mintJulepWnG = Cocktail(cocktailName: "Mint Julep (W&G Version)",
                             imageAsset: nil,
                             glasswareType: .julep,
                             garnish: [.mintBouquet],

@@ -7,7 +7,7 @@
 
 import Foundation
 
-var sidecarWnG = Cocktail(cocktailName: "Sidecar(W&G Version)",
+var sidecarWnG = Cocktail(cocktailName: "Sidecar (W&G Version)",
                           glasswareType: .sugarRimStemmed,
                           ice: nil,
                           spec: sidecarSpecWnG,

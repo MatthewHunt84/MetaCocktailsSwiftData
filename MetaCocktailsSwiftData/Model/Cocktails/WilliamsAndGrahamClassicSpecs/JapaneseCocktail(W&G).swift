@@ -7,7 +7,7 @@
 
 import Foundation
 
-var japaneseCocktailWnG  = Cocktail(cocktailName: "Japanese Cocktail(W&G Version)",
+var japaneseCocktailWnG  = Cocktail(cocktailName: "Japanese Cocktail (W&G Version)",
                                     glasswareType: .stemmedGlassware,
                                     garnish: [.lemonPeel],
                                     author: williamsAndGraham,

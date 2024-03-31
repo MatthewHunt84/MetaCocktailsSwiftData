@@ -1,5 +1,5 @@
 //
-//  UltimaPalabra(W&G Version).swift
+//  UltimaPalabra (W&G Version).swift
 //  MetaCocktailsSwiftData
 //
 //  Created by James Menkal on 2/1/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-var ultimaPalabraWnG = Cocktail(cocktailName: "Ultima Palabra(W&G version)",
+var ultimaPalabraWnG = Cocktail(cocktailName: "Ultima Palabra (W&G Version)",
                                 glasswareType: .stemmedGlassware,
                                 garnish: [.maraschinoCherry],
                                 ice: nil,

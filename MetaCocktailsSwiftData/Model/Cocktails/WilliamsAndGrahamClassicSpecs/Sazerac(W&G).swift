@@ -7,7 +7,7 @@
 
 import Foundation
 
-var sazeracWnG = Cocktail(cocktailName: "Sazerac(W&G Version)",
+var sazeracWnG = Cocktail(cocktailName: "Sazerac (W&G Version)",
                           glasswareType: .singleOld,
                           garnish: [.lemonPeel],
                           ice: nil,

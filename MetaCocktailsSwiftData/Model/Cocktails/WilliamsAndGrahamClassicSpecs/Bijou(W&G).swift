@@ -7,7 +7,7 @@
 
 import Foundation
 
-var bijouWnG = Cocktail(cocktailName: "Bijou(W&G Version)",
+var bijouWnG = Cocktail(cocktailName: "Bijou (W&G Version)",
                         glasswareType: .stemmedGlassware,
                         garnish: [.orangePeel],
                         author: williamsAndGraham,

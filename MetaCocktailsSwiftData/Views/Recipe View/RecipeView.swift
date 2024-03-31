@@ -190,7 +190,7 @@ private struct Layout {
 struct RecipeTitleView: View {
     var cocktail: Cocktail
     var body: some View {
-        if cocktail.collection != nil {
+        if cocktail.collection?.collectionLogo != nil {
             RecipeTitleViewWithCollection(cocktail: cocktail)
         } else {
             Text(cocktail.cocktailName)
@@ -206,16 +206,17 @@ struct RecipeTitleViewWithCollection: View {
     var cocktail: Cocktail
     var body: some View {
         HStack {
-            Text(cocktail.cocktailName)
+            Text(cocktail.cocktailName.replacingOccurrences(of: (" (W&G Version)"), with: ""))
                 .fontDesign(.serif)
                 .font(.largeTitle)
                 .lineLimit(1)
                 .minimumScaleFactor(0.4)
-            
-            Image(.wngLogo)
-                .resizable()
-                .scaledToFit()
-                .foregroundStyle(.secondary)
+            if let logo = cocktail.collection?.collectionLogo {
+                    logo
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundStyle(.secondary)
+            }
         }
     }
 }

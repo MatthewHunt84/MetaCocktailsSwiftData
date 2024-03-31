@@ -1,5 +1,5 @@
 //
-//  Saturn(W&G Version).swift
+//  Saturn (W&G Version).swift
 //  MetaCocktailsSwiftData
 //
 //  Created by James Menkal on 1/31/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-var saturnWnG = Cocktail(cocktailName: "Saturn(W&G Version)",
+var saturnWnG = Cocktail(cocktailName: "Saturn (W&G Version)",
                          glasswareType: .doubleOld,
                          garnish: [.pineappleFrond, .lemonWheel],
                          ice: .pebbleIce,
