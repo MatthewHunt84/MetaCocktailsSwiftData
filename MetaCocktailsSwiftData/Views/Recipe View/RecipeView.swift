@@ -48,7 +48,6 @@ struct RecipeView: View {
                                     if viewModel.cocktail.author != nil {
                                         AuthorView(cocktail: viewModel.cocktail)
                                             .frame(maxWidth: .infinity, alignment: .center)
-                                            .padding(.bottom, 50)
                                         
                                     }
                                     
@@ -60,7 +59,7 @@ struct RecipeView: View {
 //                                    }
                                 }
                                 .padding(.top, 50)
-                                .padding(.bottom, 20)
+                                .padding(.bottom, 70)
                                 .frame(width: geo.size.width * 0.75)
                             }
                         

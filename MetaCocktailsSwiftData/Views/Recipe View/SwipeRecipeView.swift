@@ -52,11 +52,12 @@ struct SwipeRecipeView: View {
                                         if cocktail.author.wrappedValue != nil {
                                             AuthorView(cocktail: cocktail.wrappedValue)
                                                 .frame(maxWidth: .infinity, alignment: .center)
-                                                .padding(.bottom, 100)
+//                                                .padding(.bottom, 100)
                                         }
                                     }
                                     .frame(width: geo.size.width * 0.75)
                                     .padding(.top, 50)
+                                    .padding(.bottom, 100)
                                     .navigationBarTitleDisplayMode(.inline)
                                     .toolbar {
                                         ToolbarItem(placement: .principal) {
