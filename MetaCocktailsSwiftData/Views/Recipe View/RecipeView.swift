@@ -15,13 +15,14 @@ struct RecipeView: View {
     @State private var prepItems: [CocktailIngredient] = []
     
     var body: some View {
-        NavigationStack{
+        NavigationStack {
+            
             GeometryReader { geo in
-                ScrollView{
+                
+                ScrollView {
+                    
                     VStack(alignment: .center) {
-                        
-                     
-                            
+
                             ZStack() {
                                 
                                 Border()
@@ -447,34 +448,27 @@ struct AuthorView: View {
     var body: some View {
         VStack {
             Text("Author:")
-                .dynamicTypeSize(.xLarge).bold()
-                .minimumScaleFactor(0.4)
+                .font(Layout.header)
             if author != "" {
                 Text(author)
-                    .multilineTextAlignment(.center)
-                    .dynamicTypeSize(.large)
-                    .minimumScaleFactor(0.4)
+                    .font(Layout.body)
             }
-            VStack {
             if place != "" {
-                
                     Text(place)
                         .dynamicTypeSize(.large)
                         .multilineTextAlignment(.center)
-                        .minimumScaleFactor(0.4)
                 }
                 if year != "" {
                     Text("\(year)")
                         .dynamicTypeSize(.large)
-                        .minimumScaleFactor(0.4)
                 }
-            }
         }
+        .fixedSize(horizontal: false, vertical: true)
     }
 }
 
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    return RecipeView(viewModel: RecipeViewModel(cocktail: ramosGinFizz))
+    return RecipeView(viewModel: RecipeViewModel(cocktail: zombie129))
         .modelContainer(preview.container)
 }

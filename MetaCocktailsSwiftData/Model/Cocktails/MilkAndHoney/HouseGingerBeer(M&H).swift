@@ -8,7 +8,7 @@
 import Foundation
 
 
-var houseGingerBeer  = Cocktail(cocktailName: "House Ginger Beer(Milk & Honey)",
+var houseGingerBeer  = Cocktail(cocktailName: "House Ginger Beer (Milk & Honey)",
                                 glasswareType: .collins,
                                 garnish: nil,
                                 ice: .koldDraft,
