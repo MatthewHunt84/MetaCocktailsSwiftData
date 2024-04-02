@@ -1,5 +1,5 @@
 //
-//  PiscoSour(W&G Version).swift
+//  PiscoSour (W&G Version).swift
 //  MetaCocktailsSwiftData
 //
 //  Created by James Menkal on 3/12/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-var piscoSourWnG = Cocktail(cocktailName: "Pisco Sour(W&G Version)",
+var piscoSourWnG = Cocktail(cocktailName: "Pisco Sour (W&G Version)",
                             glasswareType: .coupe,
                             garnish: [.angoDeco],
                             ice: nil,

@@ -7,7 +7,7 @@
 
 import Foundation
 
-var zombieWnG = Cocktail(cocktailName: "Zombie(W&G version)",
+var zombieWnG = Cocktail(cocktailName: "Zombie (W&G Version)",
                          imageAsset: nil,
                          glasswareType: .tikiMug,
                          garnish: [.mintSprig],

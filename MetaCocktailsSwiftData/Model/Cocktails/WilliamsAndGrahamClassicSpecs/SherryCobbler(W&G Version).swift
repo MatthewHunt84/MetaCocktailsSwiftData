@@ -1,5 +1,5 @@
 //
-//  SherryCobbler(W&G Version).swift
+//  SherryCobbler (W&G Version).swift
 //  MetaCocktailsSwiftData
 //
 //  Created by James Menkal on 1/31/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-var sherryCobblerWnG = Cocktail(cocktailName: "Sherry Cobbler(W&G Version)",
+var sherryCobblerWnG = Cocktail(cocktailName: "Sherry Cobbler (W&G Version)",
                                 imageAsset: nil,
                                 glasswareType: .wineGlass,
                                 garnish: [.seasonalBerries, .mintSprig],

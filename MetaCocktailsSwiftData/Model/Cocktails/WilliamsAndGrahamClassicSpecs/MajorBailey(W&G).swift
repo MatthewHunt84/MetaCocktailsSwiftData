@@ -7,7 +7,7 @@
 
 import Foundation
 
-var majorBaileyWnG = Cocktail(cocktailName: "Major Bailey(W&G Version)",
+var majorBaileyWnG = Cocktail(cocktailName: "Major Bailey (W&G Version)",
                               imageAsset: nil,
                               glasswareType: .fizzGlass,
                               garnish: [.mintBouquet],

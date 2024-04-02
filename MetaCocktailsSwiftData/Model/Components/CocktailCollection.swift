@@ -5,7 +5,7 @@
 //  Created by Matt Hunt on 2/15/24.
 //
 
-import Foundation
+import SwiftUI
 
 enum CocktailCollection: Int, Codable, Identifiable, CaseIterable {
     
@@ -34,6 +34,15 @@ enum CocktailCollection: Int, Codable, Identifiable, CaseIterable {
             "All"
         case .deathAndCo:
             "Death & Co."
+        }
+    }
+    
+    var collectionLogo: Image? {
+        switch self {
+        case .williamsAndGraham:
+            return Image(.wngLogo)
+        default:
+            return nil
         }
     }
 }

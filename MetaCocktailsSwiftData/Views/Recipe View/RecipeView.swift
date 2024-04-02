@@ -15,13 +15,14 @@ struct RecipeView: View {
     @State private var prepItems: [CocktailIngredient] = []
     
     var body: some View {
-        NavigationStack{
+        NavigationStack {
+            
             GeometryReader { geo in
-                ScrollView{
+                
+                ScrollView {
+                    
                     VStack(alignment: .center) {
-                        
-                     
-                            
+
                             ZStack() {
                                 
                                 Border()
@@ -47,7 +48,6 @@ struct RecipeView: View {
                                     if viewModel.cocktail.author != nil {
                                         AuthorView(cocktail: viewModel.cocktail)
                                             .frame(maxWidth: .infinity, alignment: .center)
-                                            .padding(.bottom, 50)
                                         
                                     }
                                     
@@ -59,7 +59,7 @@ struct RecipeView: View {
 //                                    }
                                 }
                                 .padding(.top, 50)
-                                .padding(.bottom, 20)
+                                .padding(.bottom, 70)
                                 .frame(width: geo.size.width * 0.75)
                             }
                         
@@ -68,7 +68,7 @@ struct RecipeView: View {
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
                         ToolbarItem(placement: .principal) {
-                            RecipeTitleView(title: viewModel.cocktail.cocktailName)
+                            RecipeTitleView(cocktail: viewModel.cocktail)
                         }
                         ToolbarItem(placement: .topBarLeading) {
                             BackButton()
@@ -188,13 +188,36 @@ private struct Layout {
 }
 
 struct RecipeTitleView: View {
-    var title: String
+    var cocktail: Cocktail
     var body: some View {
-        Text(title)
-            .fontDesign(.serif)
-            .font(.largeTitle)
-            .lineLimit(1)
-            .minimumScaleFactor(0.4)
+        if cocktail.collection?.collectionLogo != nil {
+            RecipeTitleViewWithCollection(cocktail: cocktail)
+        } else {
+            Text(cocktail.cocktailName)
+                .fontDesign(.serif)
+                .font(.largeTitle)
+                .lineLimit(1)
+                .minimumScaleFactor(0.4)
+        }
+    }
+}
+
+struct RecipeTitleViewWithCollection: View {
+    var cocktail: Cocktail
+    var body: some View {
+        HStack {
+            Text(cocktail.cocktailName.replacingOccurrences(of: (" (W&G Version)"), with: ""))
+                .fontDesign(.serif)
+                .font(.largeTitle)
+                .lineLimit(1)
+                .minimumScaleFactor(0.4)
+            if let logo = cocktail.collection?.collectionLogo {
+                    logo
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundStyle(.secondary)
+            }
+        }
     }
 }
 
@@ -424,34 +447,27 @@ struct AuthorView: View {
     var body: some View {
         VStack {
             Text("Author:")
-                .dynamicTypeSize(.xLarge).bold()
-                .minimumScaleFactor(0.4)
+                .font(Layout.header)
             if author != "" {
                 Text(author)
-                    .multilineTextAlignment(.center)
-                    .dynamicTypeSize(.large)
-                    .minimumScaleFactor(0.4)
+                    .font(Layout.body)
             }
-            VStack {
             if place != "" {
-                
                     Text(place)
                         .dynamicTypeSize(.large)
                         .multilineTextAlignment(.center)
-                        .minimumScaleFactor(0.4)
                 }
                 if year != "" {
                     Text("\(year)")
                         .dynamicTypeSize(.large)
-                        .minimumScaleFactor(0.4)
                 }
-            }
         }
+        .fixedSize(horizontal: false, vertical: true)
     }
 }
 
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    return RecipeView(viewModel: RecipeViewModel(cocktail: ramosGinFizz))
+    return RecipeView(viewModel: RecipeViewModel(cocktail: zombie129))
         .modelContainer(preview.container)
 }

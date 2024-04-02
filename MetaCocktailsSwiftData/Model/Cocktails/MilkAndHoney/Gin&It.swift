@@ -7,7 +7,7 @@
 
 import Foundation
 
-var ginAndIt  = Cocktail(cocktailName: "Gin & It(Milk & Honey)",
+var ginAndIt  = Cocktail(cocktailName: "Gin & It (Milk & Honey)",
                          glasswareType: .coupe,
                          garnish: [.lemonPeel],
                          ice: nil,
