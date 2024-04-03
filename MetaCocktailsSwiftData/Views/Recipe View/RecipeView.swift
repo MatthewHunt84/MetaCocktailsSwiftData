@@ -7,82 +7,58 @@
 
 import SwiftUI
 
-struct RecipeViewBack: View {
-    @Binding var degree: Double
-    @Binding var isFlipped: Bool
-    var durationAndDelay: CGFloat
+struct BuildOrderView: View {
+    
+    let buildOrder: Build
     
     var body: some View {
-        
-        GeometryReader { geo in
-            Border()
-                .frame(minHeight: geo.size.height)
-                .rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
-        }
+
+            VStack{
+                
+                Text("Build Order")
+                    .font(Layout.header)
+                
+                
+                List {
+                    ForEach(buildOrder.instructions) { build in
+                        HStack {
+                            Text("\(build.step). \(build.method)")
+                        }
+                        .font(Layout.body)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 2, trailing: 0))
+                        .multilineTextAlignment(.leading)
+                        .listRowBackground(Color.darkGrey)
+
+                    }
+                }
+                .listStyle(.plain)
+            }
     }
 }
 
-struct RecipeViewFront: View {
+struct RecipeViewBack: View {
     let cocktail: Cocktail
+    let geometry: GeometryProxy
+    
     @Binding var degree: Double
     @Binding var isFlipped: Bool
     var durationAndDelay: CGFloat
     
     var body: some View {
         
-        GeometryReader { geo in
+        ZStack {
+            Border()
             
-            ScrollView {
-                
-                VStack(alignment: .center) {
+            // need a way to expand the frame height when the build order is giant like this
 
-                        ZStack() {
-                            
-                            Border()
-                                .frame(minHeight: geo.size.height)
-                            
-                            VStack(alignment: .leading, spacing: 20) {
-                                
-                                GlasswareView(cocktail: cocktail)
-                                
-                                SpecView(cocktail: cocktail)
-                                
-                                GarnishView(cocktail: cocktail)
-                                
-                                MethodIceView(cocktail: cocktail)
-                                
-                                if cocktail.buildOrder != nil {
-                                    
-                                    Button("Build Order") {
-//                                        isFlipped.toggle()
-                                    }.buttonStyle(.custom)
-                                }
-                                
-                                if cocktail.author != nil {
-                                    AuthorView(cocktail: cocktail)
-                                        .frame(maxWidth: .infinity, alignment: .center)
-                                    
-                                }
-                            }
-                            .padding(.top, 50)
-                            .padding(.bottom, 70)
-                            .frame(width: geo.size.width * 0.75)
-                        }
-                    
-                }
-                .frame(minHeight: geo.size.height)
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .principal) {
-                        RecipeTitleView(cocktail: cocktail)
-                    }
-                    ToolbarItem(placement: .topBarLeading) {
-                        BackButton()
-                    }
-                }
-            }
-            .rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
+            BuildOrderView(buildOrder: cocktail.buildOrder ?? ramosGinFizzBuild)
+                .background(.clear)
+                .frame(width: geometry.size.width * 0.85)
+                .padding(.top, 60)
+
         }
+        .frame(minHeight: geometry.size.height)
+
     }
 }
 
@@ -90,42 +66,88 @@ struct RecipeView: View {
     
     @Bindable var viewModel: RecipeViewModel
     @State private var prepItems: [CocktailIngredient] = []
-    
-    @State var backDegree = -90.0
-    @State var frontDegree = 0.0
-    @State var isFlipped = false
-    let durationAndDelay: CGFloat = 0.3
+    @Namespace var topID
     
     var body: some View {
-        NavigationStack {
-            ZStack {
-                RecipeViewFront(cocktail: viewModel.cocktail, degree: $frontDegree, isFlipped: $isFlipped, durationAndDelay: durationAndDelay)
-                RecipeViewBack(degree: $backDegree, isFlipped: $isFlipped, durationAndDelay: durationAndDelay)
-            }
-            .onTapGesture {
-                flipCard()
-            }
-        }
-        .task {
-            prepItems = viewModel.findPrepItems()
-        }
-    }
-    
-    func flipCard() {
-        isFlipped = !isFlipped
-        if isFlipped {
-            withAnimation(.linear(duration: durationAndDelay)) {
-                frontDegree = 90
-            }
-            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)) {
-                backDegree = 0
-            }
-        } else {
-            withAnimation(.linear(duration: durationAndDelay)) {
-                backDegree = -90
-            }
-            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)) {
-                frontDegree = 0
+        
+        GeometryReader { geo in
+            
+            ScrollViewReader { scrollReader in
+                
+                ScrollView {
+                    
+                    ZStack {
+                        
+                        RecipeViewBack(cocktail: viewModel.cocktail, geometry: geo, degree: $viewModel.backDegree, isFlipped: $viewModel.isFlipped, durationAndDelay: viewModel.durationAndDelay)
+                            .rotation3DEffect(Angle(degrees: viewModel.backDegree), axis: (x: 0, y: 1, z: 0))
+                            .id(topID)
+                        
+                        VStack(alignment: .center) {
+                            
+                            ZStack() {
+                                
+                                Border()
+                                    .frame(minHeight: geo.size.height)
+                                
+                                VStack(alignment: .leading, spacing: 20) {
+                                    
+                                    GlasswareView(cocktail: viewModel.cocktail)
+                                    GlasswareView(cocktail: viewModel.cocktail)
+                                    GlasswareView(cocktail: viewModel.cocktail)
+                                    GlasswareView(cocktail: viewModel.cocktail)
+                                    GlasswareView(cocktail: viewModel.cocktail)
+                                    
+                                    SpecView(cocktail: viewModel.cocktail)
+                                    
+                                    GarnishView(cocktail: viewModel.cocktail)
+                                    
+                                    MethodIceView(cocktail: viewModel.cocktail)
+                                    
+                                    if viewModel.cocktail.buildOrder != nil {
+                                        
+                                        Button("Build Order") {
+                                            viewModel.flipCard()
+                                            withAnimation(.easeOut(duration: viewModel.durationAndDelay)) {
+                                                scrollReader.scrollTo(topID, anchor: .top)
+                                            }
+                                            
+                                            
+                                        }
+                                        .buttonStyle(.custom)
+//                                        .disabled(viewModel.isFlipped)
+                                    }
+                                    
+                                    if viewModel.cocktail.author != nil {
+                                        AuthorView(cocktail: viewModel.cocktail)
+                                            .frame(maxWidth: .infinity, alignment: .center)
+                                        
+                                    }
+                                }
+                                .padding(.top, 50)
+                                .padding(.bottom, 70)
+                                .frame(width: geo.size.width * 0.75)
+                            }
+                            
+                        }
+                        .frame(minHeight: geo.size.height)
+                        .rotation3DEffect(Angle(degrees: viewModel.frontDegree), axis: (x: 0, y: 1, z: 0))
+                    }
+                }
+                
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        RecipeTitleView(cocktail: viewModel.cocktail)
+                    }
+                    ToolbarItem(placement: .topBarLeading) {
+                        BackButton()
+                    }
+                }
+                .task {
+                    prepItems = viewModel.findPrepItems()
+                    viewModel.flipCard()
+                }
+                
             }
         }
     }
@@ -517,6 +539,6 @@ struct AuthorView: View {
 
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    return RecipeView(viewModel: RecipeViewModel(cocktail: peanutButterFalcon))
+    return RecipeView(viewModel: RecipeViewModel(cocktail: ramosGinFizz))
         .modelContainer(preview.container)
 }

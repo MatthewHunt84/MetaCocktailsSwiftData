@@ -9,12 +9,37 @@ import SwiftUI
 import Observation
 
 @Observable final class RecipeViewModel {
-    var cocktail: Cocktail
-    var cocktailGlassImage: Image
-
+    
     init(cocktail: Cocktail) {
         self.cocktail = cocktail
         self.cocktailGlassImage = cocktail.glasswareType.glassImage(cocktail: cocktail)
+    }
+    
+    var cocktail: Cocktail
+    var cocktailGlassImage: Image
+    
+    var backDegree = -90.0
+    var frontDegree = 0.0
+    var isFlipped = false
+    let durationAndDelay: CGFloat = 0.25
+    
+    func flipCard() {
+        isFlipped = !isFlipped
+        if isFlipped {
+            withAnimation(.easeIn(duration: durationAndDelay)) {
+                frontDegree = 90
+            }
+            withAnimation(.bouncy(duration: durationAndDelay, extraBounce: 0.1).delay(durationAndDelay)) {
+                backDegree = 0
+            }
+        } else {
+            withAnimation(.easeIn(duration: durationAndDelay)) {
+                backDegree = -90
+            }
+            withAnimation(.bouncy(duration: durationAndDelay, extraBounce:  0.1).delay(durationAndDelay)) {
+                frontDegree = 0
+            }
+        }
     }
     
     func findPrepItems() -> [CocktailIngredient] {
