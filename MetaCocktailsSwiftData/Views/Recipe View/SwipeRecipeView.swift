@@ -41,13 +41,13 @@ struct SwipeRecipeView: View {
                                         
                                         MethodIceView(cocktail: cocktail.wrappedValue)
                                         
-                                        if let buildOrder = cocktail.buildOrder.wrappedValue {
-                                            NavigationLink("Build Order") {
-                                                BuildOrderView(buildOrder: buildOrder)
-                                                    .padding()
-                                            }
-                                            .buttonStyle(.custom)
-                                        }
+//                                        if let buildOrder = cocktail.buildOrder.wrappedValue {
+//                                            NavigationLink("Build Order") {
+//                                                BuildOrderView(buildOrder: buildOrder, viewModel: viewModel)
+//                                                    .padding()
+//                                            }
+//                                            .buttonStyle(.custom)
+//                                        }
                                         
                                         if cocktail.author.wrappedValue != nil {
                                             AuthorView(cocktail: cocktail.wrappedValue)

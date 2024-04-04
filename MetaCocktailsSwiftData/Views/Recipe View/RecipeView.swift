@@ -10,34 +10,61 @@ import SwiftUI
 struct BuildOrderView: View {
     
     let buildOrder: Build
+    var viewModel: RecipeViewModel
     
     var body: some View {
 
-            VStack{
+        VStack(alignment: .center) {
+            
+            HStack(alignment: .center) {
+                
+//                Button {
+////                    viewModel.flipCard()
+//                    print("----- BUTTON")
+//                } label: {
+//                    Image(systemName: "chevron.left")
+//                        .font(Layout.header)
+//                        .foregroundStyle(.cyan)
+//                }
+//                .padding(.leading, 7)
+                
+                Button("Hello") {
+                    print("----- BUTTON")
+                }
+
+                Spacer()
                 
                 Text("Build Order")
                     .font(Layout.header)
                 
-                
-                List {
-                    ForEach(buildOrder.instructions) { build in
-                        HStack {
-                            Text("\(build.step). \(build.method)")
-                        }
-                        .font(Layout.body)
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 2, trailing: 0))
-                        .multilineTextAlignment(.leading)
-                        .listRowBackground(Color.darkGrey)
-
-                    }
-                }
-                .listStyle(.plain)
+                Spacer()
             }
+            .padding(.bottom, 10)
+            
+            VStack(alignment: .leading) {
+                
+                ForEach(buildOrder.instructions) { build in
+                    HStack(alignment: .top) {
+                        Text("\(build.step)")
+                            .font(Layout.buildStep)
+                        Text("\(build.method)")
+                            .font(Layout.buildBody)
+                    }
+                    .font(Layout.buildBody)
+                    .listRowBackground(Color.darkGrey)
+                    
+                    Divider()
+                    
+                }
+            }
+            
+            Spacer()
+        }
     }
 }
 
 struct RecipeViewBack: View {
-    let cocktail: Cocktail
+    var viewModel: RecipeViewModel
     let geometry: GeometryProxy
     
     @Binding var degree: Double
@@ -49,16 +76,10 @@ struct RecipeViewBack: View {
         ZStack {
             Border()
             
-            // need a way to expand the frame height when the build order is giant like this
-
-            BuildOrderView(buildOrder: cocktail.buildOrder ?? ramosGinFizzBuild)
-                .background(.clear)
+            BuildOrderView(buildOrder: viewModel.cocktail.buildOrder ?? ramosGinFizzBuild, viewModel: viewModel)
                 .frame(width: geometry.size.width * 0.85)
                 .padding(.top, 60)
-
         }
-        .frame(minHeight: geometry.size.height)
-
     }
 }
 
@@ -78,7 +99,7 @@ struct RecipeView: View {
                     
                     ZStack {
                         
-                        RecipeViewBack(cocktail: viewModel.cocktail, geometry: geo, degree: $viewModel.backDegree, isFlipped: $viewModel.isFlipped, durationAndDelay: viewModel.durationAndDelay)
+                        RecipeViewBack(viewModel: viewModel, geometry: geo, degree: $viewModel.backDegree, isFlipped: $viewModel.isFlipped, durationAndDelay: viewModel.durationAndDelay)
                             .rotation3DEffect(Angle(degrees: viewModel.backDegree), axis: (x: 0, y: 1, z: 0))
                             .id(topID)
                         
@@ -91,10 +112,12 @@ struct RecipeView: View {
                                 
                                 VStack(alignment: .leading, spacing: 20) {
                                     
-                                    GlasswareView(cocktail: viewModel.cocktail)
-                                    GlasswareView(cocktail: viewModel.cocktail)
-                                    GlasswareView(cocktail: viewModel.cocktail)
-                                    GlasswareView(cocktail: viewModel.cocktail)
+//                                    Button("Hello") {
+//                                        print("----- BUTTON")
+//                                        viewModel.flipCard()
+//                                    }
+
+                                    
                                     GlasswareView(cocktail: viewModel.cocktail)
                                     
                                     SpecView(cocktail: viewModel.cocktail)
@@ -133,7 +156,7 @@ struct RecipeView: View {
                         .rotation3DEffect(Angle(degrees: viewModel.frontDegree), axis: (x: 0, y: 1, z: 0))
                     }
                 }
-                
+//                .scrollDisabled(viewModel.isFlipped)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .principal) {
@@ -145,7 +168,7 @@ struct RecipeView: View {
                 }
                 .task {
                     prepItems = viewModel.findPrepItems()
-                    viewModel.flipCard()
+//                    viewModel.flipCard()
                 }
                 
             }
@@ -255,6 +278,8 @@ private struct Layout {
     static var header: Font = .system(size: 18, weight: .bold)
     static var specMeasurement: Font = .system(size: 16, weight: .bold)
     static var body: Font = .system(size: 16, weight: .regular)
+    static var buildBody: Font = .system(size: 12, weight: .light)
+    static var buildStep: Font = .system(size: 12, weight: .bold)
 }
 
 struct RecipeTitleView: View {
@@ -481,11 +506,11 @@ struct GarnishView: View {
 }
 
 private struct BuildOrderButton: View {
-    var cocktail: Cocktail
+    var viewModel: RecipeViewModel
     var body: some View {
-        if let buildOrder = cocktail.buildOrder {
+        if let buildOrder = viewModel.cocktail.buildOrder {
             NavigationLink("Build Order") {
-                BuildOrderView(buildOrder: buildOrder)
+                BuildOrderView(buildOrder: buildOrder, viewModel: viewModel)
             }
             .buttonStyle(defaultButton())
         }
