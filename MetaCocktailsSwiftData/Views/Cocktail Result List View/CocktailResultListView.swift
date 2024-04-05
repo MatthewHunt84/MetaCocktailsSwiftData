@@ -11,6 +11,8 @@ struct CocktailResultList: View {
     
     @ObservedObject var viewModel: SearchCriteriaViewModel
     @Binding var isLoading: Bool
+    @State private var nonmatchSearchPreference: String = "none"
+    
     
     var body: some View {
         NavigationStack {
@@ -25,50 +27,55 @@ struct CocktailResultList: View {
                     if viewModel.preferredCount > 0 {
                         VStack{
                             List {
-                                if viewModel.enableResultsForMultipleBaseSpirits == false {
-                                    ForEach(viewModel.sections, id: \.self.id) { result in
-                                        Section(header: SearchedCocktailTitleHeader(searched: result.count, matched: result.matched)) {
-                                            ForEach(result.cocktails, id: \.self.id) { cocktail in
-                                                NavigationLink {
-                                                    
-                                                    RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                                                        .navigationBarBackButtonHidden(true)
-                                                } label: {
-                                                    HStack {
-                                                        Text(cocktail.cocktailName)
+                                ForEach(viewModel.sections, id: \.self.id) { result in
+                                    Section(header: SearchedCocktailTitleHeader(searched: result.count, matched: result.matched)) {
+                                        if result.matched == result.count {
+                                            
+                                            TotalMatchView(resultViewSectionData: result)
+                                            
+                                        } else {
+                                            
+                                            FilterMatchesMenuView(viewModel: viewModel, resultViewSectionData: result, nonmatchSearchPreference: $nonmatchSearchPreference)
+                                            
+                                            if result.filterPreference == "none" {
+                                                
+                                                PartialMatchWithNoPreferenceView(viewModel: viewModel, resultViewSectionData: result)
+                                                
+                                            } else {
+                                                
+                                                ForEach(result.cocktails.filter({ $0.nonmatchPreferences!.contains(result.filterPreference)}), id: \.self.id) { cocktail in
+                                                    NavigationLink {
                                                         
-                                                    }
-                                                    
-                                                }
-                                            }
-                                        }
-                                    }
-                                } else {
-                                    ForEach(viewModel.sections, id: \.self.id) { result in
-                                        Section(header: SearchedCocktailTitleHeaderForMultipleSpirits(searched: result.count, matched: result.matched, baseSpirit: result.baseSpirit)) {
-                                            ForEach(result.cocktails, id: \.self.id) { cocktail in
-                                                NavigationLink {
-                                                    
-                                                    RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                                                        .navigationBarBackButtonHidden(true)
-                                                    
-                                                } label: {
-                                                    HStack {
-                                                        Text(cocktail.cocktailName)
+                                                        RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
                                                         
+                                                            .navigationBarBackButtonHidden(true)
+                                                    } label: {
+                                                        VStack {
+                                                            HStack{
+                                                                Text(cocktail.cocktailName)
+                                                                Spacer()
+                                                            }
+                                                            HStack{
+                                                                if let missingPreferences = cocktail.nonmatchPreferences {
+                                                                    ForEach(missingPreferences, id: \.self) { nonMatch in
+                                                                        
+                                                                        Text("-\(nonMatch) ")
+                                                                            .foregroundStyle(.brandPrimaryRed)
+                                                                            .font(.caption)
+                                                                    }
+                                                                }
+                                                                Spacer()
+                                                            }
+                                                        }
                                                     }
                                                 }
                                             }
                                         }
                                     }
                                 }
-                                
                             }
                             .listStyle(.plain)
                             .backgroundStyle(Color(.black))
-//                            if viewModel.multipleBaseSpiritsSelectedToEnableMenu {
-//                                ResultsConfigurationMenu(viewModel: viewModel)
-//                            }
                         }
                     } else  {
                         ZStack(alignment: .center) {
@@ -82,7 +89,6 @@ struct CocktailResultList: View {
                                     .resizable()
                                     .scaledToFit()
                             }
-                            
                         }
                     }
                 }
@@ -98,3 +104,79 @@ struct CocktailResultList: View {
 }
 
 
+struct FilterMatchesMenuView: View {
+    
+    @ObservedObject var viewModel: SearchCriteriaViewModel
+    var resultViewSectionData: ResultViewSectionData
+    @Binding var nonmatchSearchPreference: String
+    
+    var body: some View {
+        Menu("Filter Matches") {
+            ForEach(viewModel.selectedPreferredIngredients(), id: \.id) { preference in
+                
+                Button("- \(preference.name)") {
+                    resultViewSectionData.filterPreference = preference.name
+                    nonmatchSearchPreference = preference.name
+                }
+                .foregroundStyle(.brandPrimaryRed)
+            }
+            Button {
+                resultViewSectionData.filterPreference = "none"
+                nonmatchSearchPreference = "none"
+            } label: {
+                Text("Show all")
+            }
+        }
+    }
+}
+
+struct TotalMatchView: View {
+    
+    var resultViewSectionData: ResultViewSectionData
+    
+    var body: some View {
+        ForEach(resultViewSectionData.cocktails, id: \.self.id) { cocktail in
+            NavigationLink {
+                RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                    .navigationBarBackButtonHidden(true)
+            } label: {
+                HStack {
+                    Text(cocktail.cocktailName)
+                }
+            }
+        }
+    }
+}
+
+struct PartialMatchWithNoPreferenceView: View {
+    
+    @ObservedObject var viewModel: SearchCriteriaViewModel
+    var resultViewSectionData: ResultViewSectionData
+    
+    var body: some View {
+        ForEach(resultViewSectionData.cocktails, id: \.self.id) { cocktail in
+            NavigationLink {
+                RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                    .navigationBarBackButtonHidden(true)
+            } label: {
+                VStack {
+                    HStack{
+                        Text(cocktail.cocktailName)
+                        Spacer()
+                    }
+                    HStack{
+                        if let missingPreferences = cocktail.nonmatchPreferences {
+                            ForEach(missingPreferences, id: \.self) { nonMatch in
+                                
+                                Text("-\(nonMatch) ")
+                                    .foregroundStyle(.brandPrimaryRed)
+                                    .font(.caption)
+                            }
+                        }
+                        Spacer()
+                    }
+                }
+            }
+        }
+    }
+}

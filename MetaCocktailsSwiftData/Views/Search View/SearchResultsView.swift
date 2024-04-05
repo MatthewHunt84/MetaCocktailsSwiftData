@@ -70,22 +70,6 @@ struct SearchResultsView: View {
            
             CocktailResultList(viewModel: viewModel, isLoading: $viewModel.isLoading)
                 .navigationBarBackButtonHidden(true)
-            if viewModel.multipleBaseSpiritsSelectedToEnableMenu {
-                Menu("Sort Results") {
-                    Button("By number of matches: Apply to a single cocktail.", action: {
-                        viewModel.enableResultsForMultipleBaseSpirits = false
-                        getFilteredCocktailsSwiftData()
-                    })
-                    Button("By Spirit: Separate your results based on the spirit.", action: {
-                        viewModel.enableResultsForMultipleBaseSpirits = true
-                        getFilteredCocktailsSwiftData()
-                    })
-                }
-                .padding(10)
-                .font(.headline).bold()
-                .buttonStyle(BlackNWhiteButton())
-                .frame(maxWidth: .infinity, alignment: .center)
-            }
         }
         .navigationBarTitleDisplayMode(.inline)
         .onAppear() {

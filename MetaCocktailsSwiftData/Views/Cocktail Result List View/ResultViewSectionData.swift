@@ -13,12 +13,14 @@ class ResultViewSectionData {
     let matched: Int
     var baseSpirit: String
     var cocktails: [Cocktail]
+    var filterPreference: String
     
-    init(count: Int, matched: Int, baseSpirit: String, cocktails: [Cocktail]) {
+    init(count: Int, matched: Int, baseSpirit: String, cocktails: [Cocktail], filterPreference: String = "none") {
         self.count = count
         self.matched = matched
         self.baseSpirit = baseSpirit
         self.cocktails = cocktails
+        self.filterPreference = filterPreference
     }
 }
 
