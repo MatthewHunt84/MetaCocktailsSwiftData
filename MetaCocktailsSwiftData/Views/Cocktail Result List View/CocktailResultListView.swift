@@ -37,7 +37,7 @@ struct CocktailResultList: View {
                                             
                                             FilterMatchesMenuView(viewModel: viewModel, resultViewSectionData: result, nonmatchSearchPreference: $nonmatchSearchPreference)
                                             
-                                            if result.filterPreference == "none" {
+                                            if nonmatchSearchPreference == "none" {
                                                 
                                                 PartialMatchWithNoPreferenceView(viewModel: viewModel, resultViewSectionData: result)
                                                 
@@ -119,13 +119,11 @@ struct FilterMatchesMenuView: View {
             ForEach(viewModel.selectedPreferredIngredients(), id: \.id) { preference in
                 
                 Button("- \(preference.name)") {
-                    resultViewSectionData.filterPreference = preference.name
                     nonmatchSearchPreference = preference.name
                 }
                 .foregroundStyle(.brandPrimaryRed)
             }
             Button {
-                resultViewSectionData.filterPreference = "none"
                 nonmatchSearchPreference = "none"
             } label: {
                 Text("Show all")

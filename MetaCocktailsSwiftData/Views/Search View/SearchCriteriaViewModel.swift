@@ -220,7 +220,7 @@ extension SearchResultsView {
                 viewModel.preferredCount = viewModel.selectedPreferredIngredients().count
                 for i in 0...Int(viewModel.preferredCount / 2) {
                     let numberOfMatches = (viewModel.preferredCount - i)
-                    dataShells.append(ResultViewSectionData(count: viewModel.preferredCount, matched: numberOfMatches, baseSpirit: "N/A", cocktails: [], filterPreference: "none"))
+                    dataShells.append(ResultViewSectionData(count: viewModel.preferredCount, matched: numberOfMatches, cocktails: []))
                 }
                 return dataShells
 //            }
@@ -237,7 +237,7 @@ extension SearchResultsView {
 //                if viewModel.enableResultsForMultipleBaseSpirits == false {
                     if resultViewSectionData.matched == viewModel.selectedPreferredIngredients().reduce(0, { countMatches($0, for: $1, in: cocktail)}) {
                    
-                        resultViewSectionData.cocktails.append(CocktailsAndTheirMissingIngredients(missingIngredients: findUnmatchedComponents(for: cocktail), cocktail: cocktail))
+                        resultViewSectionData.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findUnmatchedComponents(for: cocktail), cocktail: cocktail))
                         
                     }
                 
