@@ -43,32 +43,36 @@ struct CocktailResultList: View {
                                                 
                                             } else {
                                                 
-                                                ForEach(result.cocktails.filter({ $0.nonmatchPreferences!.contains(result.filterPreference)}), id: \.self.id) { cocktail in
+                                                ForEach(result.cocktails.filter({$0.missingIngredients.contains(nonmatchSearchPreference)}), id: \.self.id) { cocktail in
                                                     NavigationLink {
                                                         
-                                                        RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                                                        RecipeView(viewModel: RecipeViewModel(cocktail: cocktail.cocktail))
                                                         
                                                             .navigationBarBackButtonHidden(true)
                                                     } label: {
                                                         VStack {
                                                             HStack{
-                                                                Text(cocktail.cocktailName)
+                                                                Text(cocktail.cocktail.cocktailName)
                                                                 Spacer()
                                                             }
                                                             HStack{
-                                                                if let missingPreferences = cocktail.nonmatchPreferences {
-                                                                    ForEach(missingPreferences, id: \.self) { nonMatch in
-                                                                        
-                                                                        Text("-\(nonMatch) ")
-                                                                            .foregroundStyle(.brandPrimaryRed)
-                                                                            .font(.caption)
-                                                                    }
+                                                                ForEach(cocktail.missingIngredients, id: \.self) { nonMatch in
+                                                                    Text("-\(nonMatch) ")
+                                                                        .foregroundStyle(.brandPrimaryRed)
+                                                                        .font(.caption)
                                                                 }
                                                                 Spacer()
                                                             }
                                                         }
                                                     }
                                                 }
+                                                
+                                                
+                                                
+                                                
+                                                
+//                                                ForEach(result.cocktails.filter({ $0.nonmatchPreferences!.contains(result.filterPreference)}), id: \.self.id) { cocktail in
+                                                    
                                             }
                                         }
                                     }
@@ -137,11 +141,11 @@ struct TotalMatchView: View {
     var body: some View {
         ForEach(resultViewSectionData.cocktails, id: \.self.id) { cocktail in
             NavigationLink {
-                RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                RecipeView(viewModel: RecipeViewModel(cocktail: cocktail.cocktail))
                     .navigationBarBackButtonHidden(true)
             } label: {
                 HStack {
-                    Text(cocktail.cocktailName)
+                    Text(cocktail.cocktail.cocktailName)
                 }
             }
         }
@@ -156,22 +160,19 @@ struct PartialMatchWithNoPreferenceView: View {
     var body: some View {
         ForEach(resultViewSectionData.cocktails, id: \.self.id) { cocktail in
             NavigationLink {
-                RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                RecipeView(viewModel: RecipeViewModel(cocktail: cocktail.cocktail))
                     .navigationBarBackButtonHidden(true)
             } label: {
                 VStack {
                     HStack{
-                        Text(cocktail.cocktailName)
+                        Text(cocktail.cocktail.cocktailName)
                         Spacer()
                     }
                     HStack{
-                        if let missingPreferences = cocktail.nonmatchPreferences {
-                            ForEach(missingPreferences, id: \.self) { nonMatch in
-                                
-                                Text("-\(nonMatch) ")
-                                    .foregroundStyle(.brandPrimaryRed)
-                                    .font(.caption)
-                            }
+                        ForEach(cocktail.missingIngredients, id: \.self) { nonMatch in
+                            Text("-\(nonMatch) ")
+                                .foregroundStyle(.brandPrimaryRed)
+                                .font(.caption)
                         }
                         Spacer()
                     }

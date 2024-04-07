@@ -220,11 +220,13 @@ extension SearchResultsView {
                 viewModel.preferredCount = viewModel.selectedPreferredIngredients().count
                 for i in 0...Int(viewModel.preferredCount / 2) {
                     let numberOfMatches = (viewModel.preferredCount - i)
-                    dataShells.append(ResultViewSectionData(count: viewModel.preferredCount, matched: numberOfMatches, baseSpirit: "N/A", cocktails: []))
+                    dataShells.append(ResultViewSectionData(count: viewModel.preferredCount, matched: numberOfMatches, baseSpirit: "N/A", cocktails: [], filterPreference: "none"))
                 }
                 return dataShells
 //            }
         }()
+     
+        
         /**Then, loop over every cocktail in the startingCocktailsArray and pull out the cocktails that match with > 50% of the ingredients in the preferredArray. Keeping track of the matched count, add them to the appropriate object in the array of finalMatchedCocktails. */
         for cocktail in startingCocktails {
             
@@ -234,9 +236,11 @@ extension SearchResultsView {
                 /** Then we want to match cocktails to sections by calculating the number of components that match the preferred array. */
 //                if viewModel.enableResultsForMultipleBaseSpirits == false {
                     if resultViewSectionData.matched == viewModel.selectedPreferredIngredients().reduce(0, { countMatches($0, for: $1, in: cocktail)}) {
-                        cocktail.nonmatchPreferences = findUnmatchedComponents(for: cocktail)
-                        resultViewSectionData.cocktails.append(cocktail)
+                   
+                        resultViewSectionData.cocktails.append(CocktailsAndTheirMissingIngredients(missingIngredients: findUnmatchedComponents(for: cocktail), cocktail: cocktail))
+                        
                     }
+                
 //                } else {
 //                    if resultViewSectionData.matched == countMatchesForMultipleSpirits(for: cocktail) && resultViewSectionData.baseSpirit == returnMatchedBase(cocktail) && resultViewSectionData.cocktails.last != cocktail {
 //                        cocktail.nonmatchPreferences = findUnmatchedComponents(for: cocktail)
@@ -244,10 +248,13 @@ extension SearchResultsView {
 //                    }
 //                }
             }
+     
         }
+        
         
         /** Finally, we then return an array of matching cocktails as an array of ResultSectionViewData objects, checking to make sure the sections aren't empty. */
         viewModel.sections.append(contentsOf: finalMatchContainers.filter({ !$0.cocktails.isEmpty}))
+        
         
         /** (alternatively we do the same thing with compactMap and just cast the non-matches as optionals and compactMap will remove them for us)
          i.e.
@@ -379,14 +386,8 @@ extension SearchResultsView {
     }
     
     func findUnmatchedComponents(for cocktail: Cocktail ) -> [String] {
-        var componentArray = [String]()
-        for preferedComponent in viewModel.selectedPreferredIngredients() {
-            if !convertTagsAndSpecToStrings(for: cocktail).contains(preferedComponent.name) {
-                componentArray.append(preferedComponent.name)
-            }
-        }
-        return componentArray
-    }
+        
+        return viewModel.selectedPreferredIngredients().map({ $0.name }).filter({ !convertTagsAndSpecToStrings(for: cocktail).contains($0) })
     
-   
+    }
 }
