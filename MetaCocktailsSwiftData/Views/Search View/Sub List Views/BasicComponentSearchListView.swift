@@ -11,6 +11,7 @@ struct BasicComponentSearchListView: View {
     @EnvironmentObject var viewModel: SearchCriteriaViewModel
     @Binding var isShowingLikes: Bool
     @Binding var isShowingFlavors: Bool
+ 
   
     
    
@@ -39,6 +40,7 @@ struct BasicComponentSearchListView: View {
                                                     }
                                                 }
                                             }
+                                           
                                         } else {
                                             ForEach( $viewModel.cocktailComponents.filter({$0.name.wrappedValue.hasPrefix(letter)}), id: \.self.id) { component in
                                                 if isShowingLikes  {
@@ -55,10 +57,13 @@ struct BasicComponentSearchListView: View {
                                             }
                                         }
                                     } header: {
-                                        Text("\(letter)")
-                                            .fontWeight(.bold)
-                                            .font(.title)
+                                        if viewModel.searchText == "" {
+                                            Text("\(letter)")
+                                                .fontWeight(.bold)
+                                                .font(.title)
+                                        }
                                     }.id(letter)
+                                        
                                 }
                                 
                             }
@@ -66,7 +71,6 @@ struct BasicComponentSearchListView: View {
                             .frame(width: geometry.size.width * 0.9, height: geometry.size.height, alignment: .leading)
                             
                             VStack {
-                            
                                     ForEach(0..<viewModel.alphabet.count, id: \.self) { i in
                                         Button(action: {
                                             withAnimation {
@@ -84,17 +88,17 @@ struct BasicComponentSearchListView: View {
                                         
                                         
                                     }
-                                   
-                                
-                                
                             }
                             .frame(width: geometry.size.width * 0.1, height: geometry.size.height, alignment: .center)
                         }
                     }
-                    
-                    
                 }
                 .scrollDisabled(true)
+            SearchBarView(searchText: $viewModel.searchText)
+                .onChange(of: viewModel.searchText) {
+                    viewModel.matchAllTheThings()
+                }
+                //.frame(width: geometry.size.width * 0.9, height: geometry.size.height, alignment: .bottom)
             }
         }
     }

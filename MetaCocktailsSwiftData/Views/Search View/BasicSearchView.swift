@@ -81,14 +81,13 @@ struct BasicSearchView: View {
                         }
                         
                         ZStack{
-                            BasicComponentSearchListView(isShowingLikes: $isShowingPreferences, isShowingFlavors: $isShowingFlavors)
                             
-                                .frame(width: geometry.size.width, height: geometry.size.height * 0.88, alignment: .center)
+                            BasicComponentSearchListView(isShowingLikes: $isShowingPreferences, isShowingFlavors: $isShowingFlavors)
+                                //.frame(width: geometry.size.width, height: geometry.size.height * 0.88, alignment: .center)
                             
                             SearchButtonView()
                                 .frame(width: geometry.size.width / 3, height: geometry.size.height * 0.81, alignment: .bottomTrailing)
-                                .offset(x: 90)
-                            
+                                .offset(x: 90, y: -50)
                         }
                     }
                 }
