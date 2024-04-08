@@ -13,10 +13,22 @@ struct CocktailListView: View {
     
     @Bindable var viewModel = CocktailListViewModel()
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
+    @State private var cocktailListSearchText: String = ""
     @Query(filter: #Predicate { $0.collectionName.contains("Williams")}, sort: \Cocktail.cocktailName) var williamsAndGrahamCocktials: [Cocktail]
     @Query(filter: #Predicate { $0.collectionName.contains("Milk")}, sort: \Cocktail.cocktailName) var milkAndHoneyCocktials: [Cocktail]
     @Query(filter: #Predicate { $0.collectionName.contains("Original")}, sort: \Cocktail.cocktailName) var originalCocktials: [Cocktail]
     @Query(filter: #Predicate { $0.collectionName.contains("Death & Co.")}, sort: \Cocktail.cocktailName) var deathAndCoCocktails: [Cocktail]
+    var filteredCocktails: [Cocktail] {
+        if cocktailListSearchText == "" {
+            return cocktails
+        }
+        let filteredCocktails = cocktails.compactMap { cocktail in
+            let nameContainsQuery = cocktail.cocktailName.range(of: cocktailListSearchText, options: .caseInsensitive) != nil
+            return nameContainsQuery ? cocktail : nil
+        }
+        
+       return filteredCocktails
+    }
     
     var body: some View {
         
@@ -40,7 +52,7 @@ struct CocktailListView: View {
                                     List{
                                         switch viewModel.cocktailCollection {
                                         case .all:
-                                            AllCocktailsListView(cocktails: cocktails)
+                                            AllCocktailsListView(cocktails: filteredCocktails, cocktailListSearchText: $cocktailListSearchText)
                                         case .deathAndCo:
                                             SpecifiedListView(viewModel: viewModel, cocktails: deathAndCoCocktails )
                                         case .williamsAndGraham:
@@ -50,7 +62,7 @@ struct CocktailListView: View {
                                         case .milkAndHoney:
                                             SpecifiedListView(viewModel: viewModel, cocktails: milkAndHoneyCocktials)
                                         case .custom:
-                                            AllCocktailsListView(cocktails: cocktails)
+                                            AllCocktailsListView(cocktails: filteredCocktails, cocktailListSearchText: $cocktailListSearchText)
                                             
                                         }
                                     }
@@ -87,6 +99,9 @@ struct CocktailListView: View {
                                 }
                             }
                         }
+                    }
+                    if viewModel.cocktailCollection == .all || viewModel.cocktailCollection == .custom {
+                        SearchBarView(searchText: $cocktailListSearchText)
                     }
                 }
                 if viewModel.isShowingOriginalCocktailInfo {

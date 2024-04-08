@@ -11,7 +11,7 @@ struct AllCocktailsListView: View {
     @Bindable var viewModel = CocktailListViewModel()
     var cocktails: [Cocktail]
     @Environment(\.modelContext) private var modelContext
-    
+    @Binding var cocktailListSearchText: String 
     func selectedCocktailVariations(for cocktail: Cocktail) -> [Cocktail] {
         if let variation = cocktail.variation {
             let variationsWithSelectedCocktailFirst = cocktails.filter({$0.variation == variation}).sorted {
@@ -109,14 +109,18 @@ struct AllCocktailsListView: View {
                 }
                
             } header: {
-                if letter == CocktailListViewModel.sfSymbolForCustomCocktails {
-                    Text("Custom")
-                        .fontWeight(.bold)
-                        .font(.title)
+                if cocktailListSearchText == "" {
+                    if letter == CocktailListViewModel.sfSymbolForCustomCocktails {
+                        Text("Custom")
+                            .fontWeight(.bold)
+                            .font(.title)
+                    } else {
+                        Text("\(letter)")
+                            .fontWeight(.bold)
+                            .font(.title)
+                    }
                 } else {
-                    Text("\(letter)")
-                        .fontWeight(.bold)
-                        .font(.title)
+                    
                 }
                 
             }.id(letter)
