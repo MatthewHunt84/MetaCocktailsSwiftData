@@ -108,6 +108,9 @@ final class SearchCriteriaViewModel: ObservableObject {
         return stringArray
     }()
     
+    // These get initialized once for each cocktail during the search loop to cut down on all the other loops happening.
+    var preferredIngredients: [CocktailComponent] = []
+    var missingIngredients: [String] = []
    
     func matchAllTheThings() {
         // if searchText is empty, show everything again
@@ -132,8 +135,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         self.objectWillChange.send()
     }
     func selectedPreferredIngredients() -> [CocktailComponent] {
-       
-       return self.cocktailComponents.filter({ $0.isPreferred })
+        self.cocktailComponents.filter({ $0.isPreferred })
     }
     func selectedUnwantedIngredients() -> [CocktailComponent] {
         self.cocktailComponents.filter({ $0.isUnwanted })
@@ -173,9 +175,18 @@ final class SearchCriteriaViewModel: ObservableObject {
         }
         return baseArray
     }
+    
+    func countMatches(currentCount: Int, preferredComponent: CocktailComponent, cocktailTagsAsStrings: [String]) -> Int {
+        // compare preferredComponent against current cocktail of loop, then return number of matches.
+        var matches = currentCount
+        if cocktailTagsAsStrings.contains(preferredComponent.name) {
+            matches += 1
+        } else {
+            missingIngredients.append(preferredComponent.name)
+        }
+        return matches
+    }
 }
-
-
 
 // MARK: VIEW MODEL MIGRATION
 
@@ -211,16 +222,21 @@ extension SearchResultsView {
         /**Then, loop over every cocktail in the startingCocktailsArray and pull out the cocktails that match with > 50% of the ingredients in the preferredArray. Keeping track of the matched count, add them to the appropriate object in the array of finalMatchedCocktails. */
         for cocktail in startingCocktails {
             
+            let cocktailTagsAsStrings = convertTagsAndSpecToStrings(for: cocktail)
+            
             /** We use let _ = ... to loop over finalMatchContainers to append cocktails that match preferred components to the right section without creating a new array in the process */
             let _ = finalMatchContainers.map { resultViewSectionData in
                 
                 /** Then we want to match cocktails to sections by calculating the number of components that match the preferred array. */
-                //                if viewModel.enableResultsForMultipleBaseSpirits == false {
-                if resultViewSectionData.matched == viewModel.selectedPreferredIngredients().reduce(0, { countMatches($0, for: $1, in: cocktail)}) {
-                    
-                    resultViewSectionData.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findUnmatchedComponents(for: cocktail), cocktail: cocktail))
-                    
+                let selectedIngredients = viewModel.preferredIngredients
+
+                let matches = selectedIngredients.reduce(0, { viewModel.countMatches(currentCount: $0, preferredComponent: $1, cocktailTagsAsStrings: cocktailTagsAsStrings)}) // we hijack this reduce function to make a missing component array
+
+                if resultViewSectionData.matched == matches {
+                    resultViewSectionData.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: viewModel.missingIngredients, cocktail: cocktail))
                 }
+                
+                viewModel.missingIngredients.removeAll()
             }
         }
         /** Finally, we then return an array of matching cocktails as an array of ResultSectionViewData objects, checking to make sure the sections aren't empty. */
@@ -230,7 +246,6 @@ extension SearchResultsView {
          i.e.
          sections = finalMatchContainers.compactMap { resultSectionData in
          return resultSectionData.cocktails.isEmpty ? nil : resultSectionData } */
-        print("The cocktail count is \(cocktails.count)")
         viewModel.isLoading = false
     }
 
@@ -275,25 +290,10 @@ extension SearchResultsView {
     }
     
     func filterUnwantedCocktails(cocktailComponentArray: [CocktailComponent], cocktails: [Cocktail]) -> [Cocktail] {
-         cocktails.filter { cocktail in
-             cocktailComponentArray.allSatisfy { unwantedComponent in
+        cocktails.filter { cocktail in
+            cocktailComponentArray.allSatisfy { unwantedComponent in
                 !convertTagsAndSpecToStrings(for: cocktail).contains(unwantedComponent.name)
             }
         }
-    }
-    
-    func countMatches(_ currentCount: Int, for preferredComponent: CocktailComponent, in cocktail: Cocktail) -> Int {
-        // compare preferredComponent against current cocktail of loop, then return number of matches.
-        var matches = currentCount
-        if convertTagsAndSpecToStrings(for: cocktail).contains(preferredComponent.name){
-            matches += 1
-        }
-        return matches
-    }
-    
-    func findUnmatchedComponents(for cocktail: Cocktail ) -> [String] {
-        
-        return viewModel.selectedPreferredIngredients().map({ $0.name }).filter({ !convertTagsAndSpecToStrings(for: cocktail).contains($0) })
-    
     }
 }
