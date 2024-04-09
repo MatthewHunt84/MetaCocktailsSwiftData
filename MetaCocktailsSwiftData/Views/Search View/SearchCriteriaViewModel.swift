@@ -135,7 +135,9 @@ final class SearchCriteriaViewModel: ObservableObject {
         self.objectWillChange.send()
     }
     func selectedPreferredIngredients() -> [CocktailComponent] {
-        self.cocktailComponents.filter({ $0.isPreferred })
+        if preferredIngredients.count != 0 { return preferredIngredients }
+        preferredIngredients = self.cocktailComponents.filter({ $0.isPreferred })
+        return preferredIngredients
     }
     func selectedUnwantedIngredients() -> [CocktailComponent] {
         self.cocktailComponents.filter({ $0.isUnwanted })
@@ -147,6 +149,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         cocktailComponents.remove(atOffsets: offsets)
     }
     func resetSearchCriteria() {
+        preferredIngredients.removeAll()
         preferredCount = 0
         sections.removeAll()
     }
