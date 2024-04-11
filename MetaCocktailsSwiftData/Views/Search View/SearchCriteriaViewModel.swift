@@ -71,6 +71,8 @@ final class SearchCriteriaViewModel: ObservableObject {
  
     var searchText: String = ""
     var preferredCount = 0
+    var willLoadOnAppear = true
+    
     var sections = [ResultViewSectionData]()
     //var enableResultsForMultipleBaseSpirits = false
     var isLoading = true
@@ -196,6 +198,7 @@ final class SearchCriteriaViewModel: ObservableObject {
 extension SearchResultsView {
     
     func getFilteredCocktailsSwiftData()  {
+        print("This got fired")
         var startingCocktails: [Cocktail] = []
         viewModel.isLoading = true
         viewModel.resetSearchCriteria()

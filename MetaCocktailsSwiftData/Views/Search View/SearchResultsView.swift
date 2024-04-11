@@ -15,8 +15,22 @@ struct SearchResultsView: View {
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
     @Environment(\.dismiss) var dismiss
     
+    
     var body: some View {
-        BackButton()
+        HStack{
+            Button{
+                dismiss()
+                viewModel.willLoadOnAppear = true
+            } label: {
+                Image(systemName: "chevron.backward")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 9)
+                    .bold()
+                    .tint(.cyan)
+            }
+            Spacer()
+        }
         VStack(alignment: .leading) {
             
             if viewModel.preferredCount > 0 {
@@ -58,6 +72,7 @@ struct SearchResultsView: View {
                                     withAnimation(.snappy) {
                                        removeUnwanted(for: selectedIngredient)
                                     }
+                                    
                                 }
                         }
                     }
@@ -73,7 +88,11 @@ struct SearchResultsView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .onAppear() {
-            getFilteredCocktailsSwiftData()
+            if viewModel.willLoadOnAppear == true {
+                getFilteredCocktailsSwiftData()
+                
+            }
+            viewModel.willLoadOnAppear = false
         }
     }
     

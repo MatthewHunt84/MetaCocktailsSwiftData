@@ -66,13 +66,6 @@ struct CocktailResultList: View {
                                                         }
                                                     }
                                                 }
-                                                
-                                                
-                                                
-                                                
-                                                
-//                                                ForEach(result.cocktails.filter({ $0.nonmatchPreferences!.contains(result.filterPreference)}), id: \.self.id) { cocktail in
-                                                    
                                             }
                                         }
                                     }
