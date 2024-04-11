@@ -142,10 +142,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         return preferredIngredients
     }
     func shouldShowSearchButton() -> Bool {
-        if cocktailComponents.filter({ $0.isPreferred }).count > 0 {
-            return true
-        }
-        return false 
+        cocktailComponents.filter({ $0.isPreferred }).count > 0
     }
     func selectedUnwantedIngredients() -> [CocktailComponent] {
         self.cocktailComponents.filter({ $0.isUnwanted })
@@ -204,7 +201,6 @@ final class SearchCriteriaViewModel: ObservableObject {
 extension SearchResultsView {
     
     func getFilteredCocktailsSwiftData()  {
-        print("This got fired")
         var startingCocktails: [Cocktail] = []
         viewModel.isLoading = true
         viewModel.resetSearchCriteria()
