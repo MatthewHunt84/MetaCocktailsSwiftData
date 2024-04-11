@@ -13,7 +13,7 @@ struct SearchButtonView: View {
  
 
     var body: some View {
-        if viewModel.selectedPreferredIngredients().count > 0 {
+        if viewModel.shouldShowSearchButton() {
             HStack{
             
                 NavigationLink{

@@ -141,6 +141,12 @@ final class SearchCriteriaViewModel: ObservableObject {
         preferredIngredients = self.cocktailComponents.filter({ $0.isPreferred })
         return preferredIngredients
     }
+    func shouldShowSearchButton() -> Bool {
+        if cocktailComponents.filter({ $0.isPreferred }).count > 0 {
+            return true
+        }
+        return false 
+    }
     func selectedUnwantedIngredients() -> [CocktailComponent] {
         self.cocktailComponents.filter({ $0.isUnwanted })
     }
