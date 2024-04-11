@@ -10,13 +10,13 @@ import SwiftUI
 struct SearchButtonView: View {
     @EnvironmentObject var viewModel: SearchCriteriaViewModel
 //    @State private var searchButtonOffset: CGFloat = 1000
-//    @Binding var isActive: Bool
+ 
+
     var body: some View {
-        if viewModel.selectedPreferredIngredients().count > 0 {
+        if viewModel.shouldShowSearchButton() {
             HStack{
-                
-                
-                NavigationLink {
+            
+                NavigationLink{
                     
                     SearchResultsView(viewModel: viewModel)
                     
@@ -40,6 +40,7 @@ struct SearchButtonView: View {
                         component.isUnwanted = false
                     }
                     viewModel.matchAllTheThings()
+                    
                 }) {
                     Image(systemName: "xmark")
                     
@@ -76,3 +77,4 @@ struct SearchButtonView: View {
     SearchButtonView()
         .environmentObject(SearchCriteriaViewModel())
 }
+

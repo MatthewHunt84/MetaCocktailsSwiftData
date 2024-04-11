@@ -8,17 +8,25 @@
 import SwiftUI
 
 class ResultViewSectionData {
+    
     let id = UUID()
     let count: Int
     let matched: Int
-    var baseSpirit: String
-    var cocktails: [Cocktail]
+    var cocktails: [CocktailsAndMissingIngredients]
     
-    init(count: Int, matched: Int, baseSpirit: String, cocktails: [Cocktail]) {
+    init(count: Int, matched: Int, cocktails: [CocktailsAndMissingIngredients]) {
         self.count = count
         self.matched = matched
-        self.baseSpirit = baseSpirit
         self.cocktails = cocktails
     }
 }
 
+
+struct CocktailsAndMissingIngredients {
+    
+    let id = UUID()
+    var missingIngredients: [String]
+    var cocktail: Cocktail
+
+    
+}
