@@ -17,20 +17,7 @@ struct BuildOrderView: View {
         VStack(alignment: .center) {
             
             HStack(alignment: .center) {
-                
-//                Button {
-////                    viewModel.flipCard()
-//                    print("----- BUTTON")
-//                } label: {
-//                    Image(systemName: "chevron.left")
-//                        .font(Layout.header)
-//                        .foregroundStyle(.cyan)
-//                }
-//                .padding(.leading, 7)
-                
-                Button("Hello") {
-                    print("----- BUTTON")
-                }
+
 
                 Spacer()
                 
@@ -38,6 +25,7 @@ struct BuildOrderView: View {
                     .font(Layout.header)
                 
                 Spacer()
+                
             }
             .padding(.bottom, 10)
             
@@ -67,19 +55,16 @@ struct RecipeViewBack: View {
     var viewModel: RecipeViewModel
     let geometry: GeometryProxy
     
-    @Binding var degree: Double
-    @Binding var isFlipped: Bool
-    var durationAndDelay: CGFloat
-    
     var body: some View {
         
-        ZStack {
-            Border()
-            
-            BuildOrderView(buildOrder: viewModel.cocktail.buildOrder ?? ramosGinFizzBuild, viewModel: viewModel)
-                .frame(width: geometry.size.width * 0.85)
-                .padding(.top, 60)
-        }
+            ZStack {
+                
+                Border()
+                
+                BuildOrderView(buildOrder: viewModel.cocktail.buildOrder ?? ramosGinFizzBuild, viewModel: viewModel)
+                    .frame(width: geometry.size.width * 0.85)
+                    .padding(.top, 60)
+            }
     }
 }
 
@@ -99,7 +84,7 @@ struct RecipeView: View {
                     
                     ZStack {
                         
-                        RecipeViewBack(viewModel: viewModel, geometry: geo, degree: $viewModel.backDegree, isFlipped: $viewModel.isFlipped, durationAndDelay: viewModel.durationAndDelay)
+                        RecipeViewBack(viewModel: viewModel, geometry: geo)
                             .rotation3DEffect(Angle(degrees: viewModel.backDegree), axis: (x: 0, y: 1, z: 0))
                             .id(topID)
                         
@@ -112,12 +97,7 @@ struct RecipeView: View {
                                 
                                 VStack(alignment: .leading, spacing: 20) {
                                     
-//                                    Button("Hello") {
-//                                        print("----- BUTTON")
-//                                        viewModel.flipCard()
-//                                    }
 
-                                    
                                     GlasswareView(cocktail: viewModel.cocktail)
                                     
                                     SpecView(cocktail: viewModel.cocktail)
@@ -133,11 +113,10 @@ struct RecipeView: View {
                                             withAnimation(.easeOut(duration: viewModel.durationAndDelay)) {
                                                 scrollReader.scrollTo(topID, anchor: .top)
                                             }
-                                            
-                                            
                                         }
                                         .buttonStyle(.custom)
-//                                        .disabled(viewModel.isFlipped)
+                                        .tint(.cyan)
+                                        .disabled(viewModel.isFlipped)
                                     }
                                     
                                     if viewModel.cocktail.author != nil {
@@ -154,9 +133,10 @@ struct RecipeView: View {
                         }
                         .frame(minHeight: geo.size.height)
                         .rotation3DEffect(Angle(degrees: viewModel.frontDegree), axis: (x: 0, y: 1, z: 0))
+                        
+                        backToRecipeViewButton(viewModel: viewModel)
                     }
                 }
-//                .scrollDisabled(viewModel.isFlipped)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .principal) {
@@ -168,15 +148,39 @@ struct RecipeView: View {
                 }
                 .task {
                     prepItems = viewModel.findPrepItems()
-//                    viewModel.flipCard()
                 }
-                
             }
         }
     }
 }
 
+private struct backToRecipeViewButton: View {
+    var viewModel: RecipeViewModel
+    var body: some View {
+        VStack {
+            
+            HStack {
+
+                if viewModel.backDegree == 0 {
+                    Button("", systemImage: "arrowshape.turn.up.left.fill") {
+                        viewModel.flipCard()
+                    }
+                    .foregroundStyle(.cyan)
+                    .padding(.leading, 40)
+                    .padding(.top, 60)
+                }
+                
+                Spacer()
+            }
+            
+            Spacer()
+        }
+    }
+}
+
+
 private struct BorderTop: View {
+    var color: Color
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .top) {
@@ -189,7 +193,7 @@ private struct BorderTop: View {
                 Image(.borderTop)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(.brandPrimaryGold)
+                    .foregroundStyle(color)
                     .background(.clear)
             }
         }
@@ -199,6 +203,7 @@ private struct BorderTop: View {
 
 
 private struct BorderSides: View {
+    var color: Color
     var body: some View {
         GeometryReader { geo in
             VStack {
@@ -212,7 +217,7 @@ private struct BorderSides: View {
                     
                     Image(.borderSides)
                         .resizable()
-                        .foregroundStyle(.brandPrimaryGold)
+                        .foregroundStyle(color)
                         .background(.clear)
                         .frame(height: geo.size.height * 0.8)
                 }
@@ -224,7 +229,7 @@ private struct BorderSides: View {
 }
 
 struct Border: View {
-    /// Main Border View, containing 3 elements
+    var color: Color = .brandPrimaryGold
     var body: some View {
         GeometryReader { geo in
             
@@ -232,14 +237,14 @@ struct Border: View {
                 Spacer()
                 
                 ZStack {
-                    BorderSides()
+                    BorderSides(color: color)
                     
                     VStack(alignment: .leading) {
-                        BorderTop()
+                        BorderTop(color: color)
                         
                         Spacer()
                         
-                        BorderTop()
+                        BorderTop(color: color)
                             .rotationEffect(.degrees(180))
                     }
                 }
@@ -263,7 +268,7 @@ public struct CustomButtonStyle: ButtonStyle {
         configuration.label
             .fontWeight(.medium)
             .padding(.vertical, 12)
-            .foregroundStyle(.white)
+            .foregroundStyle(.darkGrey)
             .frame(maxWidth: .infinity)
             .background(.tint, in: .rect(cornerRadius: 14, style: .continuous))
             .opacity(configuration.isPressed ? 0.4 : 1.0)
@@ -501,18 +506,6 @@ struct GarnishView: View {
                 Text("None")
                     .font(Layout.body)
             }
-        }
-    }
-}
-
-private struct BuildOrderButton: View {
-    var viewModel: RecipeViewModel
-    var body: some View {
-        if let buildOrder = viewModel.cocktail.buildOrder {
-            NavigationLink("Build Order") {
-                BuildOrderView(buildOrder: buildOrder, viewModel: viewModel)
-            }
-            .buttonStyle(defaultButton())
         }
     }
 }

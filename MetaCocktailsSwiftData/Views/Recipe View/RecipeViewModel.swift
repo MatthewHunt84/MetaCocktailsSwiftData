@@ -29,14 +29,14 @@ import Observation
             withAnimation(.easeIn(duration: durationAndDelay)) {
                 frontDegree = 90
             }
-            withAnimation(.bouncy(duration: durationAndDelay, extraBounce: 0.1).delay(durationAndDelay)) {
+            withAnimation(.snappy(duration: durationAndDelay).delay(durationAndDelay)) {
                 backDegree = 0
             }
         } else {
             withAnimation(.easeIn(duration: durationAndDelay)) {
                 backDegree = -90
             }
-            withAnimation(.bouncy(duration: durationAndDelay, extraBounce:  0.1).delay(durationAndDelay)) {
+            withAnimation(.snappy(duration: durationAndDelay).delay(durationAndDelay)) {
                 frontDegree = 0
             }
         }

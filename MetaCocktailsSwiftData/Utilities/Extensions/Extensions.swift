@@ -27,7 +27,6 @@ struct whiteButton: ButtonStyle {
 struct defaultButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-        .background(Color.blue)
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .foregroundColor(Color(UIColor.white))
         .font(.system(size: 16, weight: .bold))
