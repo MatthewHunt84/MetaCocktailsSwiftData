@@ -352,9 +352,21 @@ struct SpecView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             
-            Text("Cocktail Spec:")
-                .font(Layout.header)
-                .padding(.bottom, 5)
+            HStack {
+                Text("Cocktail Spec:")
+                    .font(Layout.header)
+                
+                Spacer()
+                Button(action: { print("I don't work yet") }, label: {
+                    HStack {
+                        Text("Batch")
+                        Image(systemName: "chevron.forward")
+                    }
+                    .foregroundStyle(.cyan)
+                    .font(Layout.header)
+                })
+            }
+            .padding(.bottom, 5)
             
             ForEach(orderSpec(), id: \.id) { ingredient in
                 let number = NSNumber(value: ingredient.value)
