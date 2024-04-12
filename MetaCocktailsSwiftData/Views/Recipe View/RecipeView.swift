@@ -34,11 +34,10 @@ struct BuildOrderView: View {
                 ForEach(buildOrder.instructions) { build in
                     HStack(alignment: .top) {
                         Text("\(build.step)")
-                            .font(Layout.buildStep)
+                            .font(calculateFontSize(numberOfSteps: buildOrder.instructions.count, body: false))
                         Text("\(build.method)")
-                            .font(Layout.buildBody)
+                            .font(calculateFontSize(numberOfSteps: buildOrder.instructions.count, body: true))
                     }
-                    .font(Layout.buildBody)
                     .listRowBackground(Color.darkGrey)
                     
                     Divider()
@@ -48,6 +47,19 @@ struct BuildOrderView: View {
             
             Spacer()
         }
+    }
+    
+    func calculateFontSize(numberOfSteps: Int, body: Bool) -> Font {
+        let weight: Font.Weight = body ? .regular : .bold
+        let size: CGFloat = {
+            switch numberOfSteps {
+            case 0...5: 16
+            case 6...8: 14
+            default: 11
+            }
+        }()
+        
+        return .system(size: size, weight: weight)
     }
 }
 
@@ -115,7 +127,7 @@ struct RecipeView: View {
                                             }
                                         }
                                         .buttonStyle(.custom)
-                                        .tint(.cyan)
+                                        .tint(.blueTint)
                                         .disabled(viewModel.isFlipped)
                                     }
                                     
@@ -165,7 +177,7 @@ private struct backToRecipeViewButton: View {
                     Button("", systemImage: "arrowshape.turn.up.left.fill") {
                         viewModel.flipCard()
                     }
-                    .foregroundStyle(.cyan)
+                    .foregroundStyle(.blueTint)
                     .padding(.leading, 40)
                     .padding(.top, 60)
                 }
@@ -283,8 +295,8 @@ private struct Layout {
     static var header: Font = .system(size: 18, weight: .bold)
     static var specMeasurement: Font = .system(size: 16, weight: .bold)
     static var body: Font = .system(size: 16, weight: .regular)
-    static var buildBody: Font = .system(size: 12, weight: .light)
-    static var buildStep: Font = .system(size: 12, weight: .bold)
+    static var buildBodySmall: Font = .system(size: 10, weight: .light)
+    static var buildStepSmall: Font = .system(size: 10, weight: .bold)
 }
 
 struct RecipeTitleView: View {
@@ -357,14 +369,14 @@ struct SpecView: View {
                     .font(Layout.header)
                 
                 Spacer()
-                Button(action: { print("I don't work yet") }, label: {
-                    HStack {
-                        Text("Batch")
-                        Image(systemName: "chevron.forward")
-                    }
-                    .foregroundStyle(.cyan)
-                    .font(Layout.header)
-                })
+                
+                NavigationLink { CBCLoadedCocktailView(cocktail: cocktail)
+                } label: {
+                    Text("Batch")
+                    Image(systemName: "chevron.forward")
+                }
+                .foregroundStyle(.blueTint)
+                .font(Layout.header)
             }
             .padding(.bottom, 5)
             
@@ -569,6 +581,6 @@ struct AuthorView: View {
 
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    return RecipeView(viewModel: RecipeViewModel(cocktail: ramosGinFizz))
+    return RecipeView(viewModel: RecipeViewModel(cocktail: mintJulep))
         .modelContainer(preview.container)
 }

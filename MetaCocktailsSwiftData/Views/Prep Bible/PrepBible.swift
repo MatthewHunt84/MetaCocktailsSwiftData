@@ -34,7 +34,7 @@ final class PrepBible{
                                                                         Instruction(step: 6, method: "Remove from heat and cover. Let sit for up to 6 hours."),
                                                                         Instruction(step: 7, method: "Transfer the syrup to a jelly bag or nut bag and strain into a spouted measuring cup."),
                                                                         Instruction(step: 8, method: "Add 1 oz.(30ml) vodka and 1 teaspoon orange flower water and stir to combine."),
-                                                                        Instruction(step: 7, method: "Cover and refrigerate. Keeps for about a month.")])
+                                                                        Instruction(step: 9, method: "Cover and refrigerate. Keeps for about a month.")])
     
     static let grapefruitShrub = Prep(prepIngredientName: "Grapefruit Shrub", prepRecipe: [Instruction(step: 1, method:  "For 500ml: Add 250ml white sugar to 150g grapefruit peels."),
                                                                                            Instruction(step: 2, method: "Let sit in a mason jar for 24 hours in a semi-warm place."),
