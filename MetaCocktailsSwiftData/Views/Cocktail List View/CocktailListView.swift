@@ -22,12 +22,13 @@ struct CocktailListView: View {
         if cocktailListSearchText == "" {
             return cocktails
         }
-        let filteredCocktails = cocktails.compactMap { cocktail in
-            let nameContainsQuery = cocktail.cocktailName.range(of: cocktailListSearchText, options: .caseInsensitive) != nil
-            return nameContainsQuery ? cocktail : nil
-        }
-        
-       return filteredCocktails
+//        let filteredCocktails = cocktails.compactMap { cocktail in
+//            let nameContainsQuery = cocktail.cocktailName.range(of: cocktailListSearchText, options: .literal) != nil
+//            return nameContainsQuery ? cocktail : nil
+//        }
+        return cocktails.filter({ $0.cocktailName.localizedCaseInsensitiveContains(cocktailListSearchText)}).sorted(by: { $0.cocktailName < $1.cocktailName })
+
+        //return filteredCocktails.sorted(by: { $0.cocktailName < $1.cocktailName })
     }
     
     var body: some View {
