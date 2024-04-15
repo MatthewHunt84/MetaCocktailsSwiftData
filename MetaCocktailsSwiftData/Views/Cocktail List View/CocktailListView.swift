@@ -18,18 +18,7 @@ struct CocktailListView: View {
     @Query(filter: #Predicate { $0.collectionName.contains("Milk")}, sort: \Cocktail.cocktailName) var milkAndHoneyCocktials: [Cocktail]
     @Query(filter: #Predicate { $0.collectionName.contains("Original")}, sort: \Cocktail.cocktailName) var originalCocktials: [Cocktail]
     @Query(filter: #Predicate { $0.collectionName.contains("Death & Co.")}, sort: \Cocktail.cocktailName) var deathAndCoCocktails: [Cocktail]
-    var filteredCocktails: [Cocktail] {
-        if cocktailListSearchText == "" {
-            return cocktails
-        }
-//        let filteredCocktails = cocktails.compactMap { cocktail in
-//            let nameContainsQuery = cocktail.cocktailName.range(of: cocktailListSearchText, options: .literal) != nil
-//            return nameContainsQuery ? cocktail : nil
-//        }
-        return cocktails.filter({ $0.cocktailName.localizedCaseInsensitiveContains(cocktailListSearchText)}).sorted(by: { $0.cocktailName < $1.cocktailName })
-
-        //return filteredCocktails.sorted(by: { $0.cocktailName < $1.cocktailName })
-    }
+    
     
     var body: some View {
         
@@ -53,7 +42,7 @@ struct CocktailListView: View {
                                     List{
                                         switch viewModel.cocktailCollection {
                                         case .all:
-                                            AllCocktailsListView(cocktails: filteredCocktails, cocktailListSearchText: $cocktailListSearchText)
+                                            AllCocktailsListView(cocktails: cocktails, cocktailListSearchText: $cocktailListSearchText)
                                         case .deathAndCo:
                                             SpecifiedListView(viewModel: viewModel, cocktails: deathAndCoCocktails )
                                         case .williamsAndGraham:
@@ -63,40 +52,42 @@ struct CocktailListView: View {
                                         case .milkAndHoney:
                                             SpecifiedListView(viewModel: viewModel, cocktails: milkAndHoneyCocktials)
                                         case .custom:
-                                            AllCocktailsListView(cocktails: filteredCocktails, cocktailListSearchText: $cocktailListSearchText)
+                                            AllCocktailsListView(cocktails: cocktails, cocktailListSearchText: $cocktailListSearchText)
                                             
                                         }
                                     }
                                     .listStyle(.plain)
                                     .frame(width: listGeo.size.width * 0.9, height: listGeo.size.height)
-                                    VStack {
-                                        
-                                        ForEach(0..<viewModel.cocktailListAlphabet.count, id: \.self) { i in
-                                            Button(action: {
-                                                withAnimation {
-                                                    value.scrollTo(viewModel.cocktailListAlphabet[i], anchor: .top)
-                                                }
-                                            }, label: {
-                                                if i == 0 {
-                                                    if viewModel.cocktailCollection == .all {
-                                                        Image(systemName: viewModel.cocktailListAlphabet[i] )
-                                                            .resizable()
-                                                            .frame(width: 15, height: 15, alignment: .center)
-                                                            .tint(.white)
+                                    if cocktailListSearchText == "" {
+                                        VStack {
+                                            
+                                            ForEach(0..<viewModel.cocktailListAlphabet.count, id: \.self) { i in
+                                                Button(action: {
+                                                    withAnimation {
+                                                        value.scrollTo(viewModel.cocktailListAlphabet[i], anchor: .top)
                                                     }
-                                                } else {
-                                                    Text("\(viewModel.cocktailListAlphabet[i])")
-                                                        .font(.headline).bold()
-                                                        .frame(width: 17, height: 13, alignment: .center)
-                                                }
-                                                
-                                            })
-                                            .buttonStyle(ScaleButtonStyle())
+                                                }, label: {
+                                                    if i == 0 {
+                                                        if viewModel.cocktailCollection == .all {
+                                                            Image(systemName: viewModel.cocktailListAlphabet[i] )
+                                                                .resizable()
+                                                                .frame(width: 15, height: 15, alignment: .center)
+                                                                .tint(.white)
+                                                        }
+                                                    } else {
+                                                        Text("\(viewModel.cocktailListAlphabet[i])")
+                                                            .font(.headline).bold()
+                                                            .frame(width: 17, height: 13, alignment: .center)
+                                                    }
+                                                    
+                                                })
+                                                .buttonStyle(ScaleButtonStyle())
+                                            }
                                         }
+                                        .frame(width: listGeo.size.width * 0.1, height: listGeo.size.height)
+                                        .scaledToFit()
+                                        .offset(x: -10, y: 5)
                                     }
-                                    .frame(width: listGeo.size.width * 0.1, height: listGeo.size.height)
-                                    .scaledToFit()
-                                    .offset(x: -10, y: 5)
                                 }
                             }
                         }

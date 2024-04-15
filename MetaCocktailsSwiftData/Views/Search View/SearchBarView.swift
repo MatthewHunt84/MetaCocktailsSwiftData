@@ -19,6 +19,7 @@ struct SearchBarView: View {
                 .foregroundColor(Color.gray)
 
             TextField("Lookup...", text: $searchText)
+                
                 .autocorrectionDisabled()
                 .overlay(
                     Image(systemName: "xmark.circle.fill")
@@ -32,6 +33,7 @@ struct SearchBarView: View {
                         }
                     ,alignment: .trailing
                 )
+                
         }
         .padding(8)
         .background(

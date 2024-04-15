@@ -11,7 +11,13 @@ struct AllCocktailsListView: View {
     @Bindable var viewModel = CocktailListViewModel()
     var cocktails: [Cocktail]
     @Environment(\.modelContext) private var modelContext
-    @Binding var cocktailListSearchText: String 
+    @Binding var cocktailListSearchText: String
+    var filteredCocktails: [Cocktail] {
+        let startsWith = cocktails.filter ({ $0.cocktailName.lowercased().hasPrefix(cocktailListSearchText.lowercased())})
+        let contains = cocktails.filter { $0.cocktailName.lowercased().contains(cocktailListSearchText.lowercased()) && !$0.cocktailName.lowercased().hasPrefix(cocktailListSearchText.lowercased()) }
+        return startsWith + contains
+    }
+    
     func selectedCocktailVariations(for cocktail: Cocktail) -> [Cocktail] {
         if let variation = cocktail.variation {
             let variationsWithSelectedCocktailFirst = cocktails.filter({$0.variation == variation}).sorted {
@@ -26,104 +32,121 @@ struct AllCocktailsListView: View {
     }
     
     var body: some View {
-        ForEach(viewModel.cocktailListAlphabet, id: \.self) { letter in
-            Section{
-                if letter == CocktailListViewModel.sfSymbolForCustomCocktails {
-                    ForEach(cocktails) { cocktail in
-                        if cocktail.collection == .custom {
-                            NavigationLinkWithoutIndicator {
-                                HStack{
-                                    Text(cocktail.cocktailName)
-                                    Spacer()
+        if cocktailListSearchText == "" {
+            ForEach(viewModel.cocktailListAlphabet, id: \.self) { letter in
+                
+                Section{
+                    if letter == CocktailListViewModel.sfSymbolForCustomCocktails {
+                        ForEach(cocktails) { cocktail in
+                            if cocktail.collection == .custom {
+                                NavigationLinkWithoutIndicator {
+                                    HStack{
+                                        Text(cocktail.cocktailName)
+                                        Spacer()
+                                    }
+                                } destination: {
+                                    RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                                        .navigationBarBackButtonHidden(true)
                                 }
-                            } destination: {
-                                RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                                    .navigationBarBackButtonHidden(true)
+                            }
+                        }
+                        .onDelete { indexSet in
+                            for index in indexSet {
+                                modelContext.delete(cocktails[index])
                             }
                         }
                     }
-                    .onDelete { indexSet in
-                        for index in indexSet {
-                            modelContext.delete(cocktails[index])
-                        }
-                    }
-                }
-                ForEach(cocktails.filter({$0.cocktailName.hasPrefix(letter)}) , id: \.self) { cocktail in
-                    
-                    
-                    if cocktail.variation == nil  {
+                    ForEach(cocktails.filter({$0.cocktailName.hasPrefix(letter)}), id: \.self) { cocktail in
                         
-                        if cocktail.collection == .custom {
-                            NavigationLinkWithoutIndicator {
-                                HStack{
-                                    Text(cocktail.cocktailName)
-                                    Spacer()
-                                    Text("Custom")
-                                        .foregroundStyle(Color.brandPrimaryGold)
-                                        .font(.subheadline)
+                        
+                        if cocktail.variation == nil  {
+                            
+                            if cocktail.collection == .custom {
+                                NavigationLinkWithoutIndicator {
+                                    HStack{
+                                        Text(cocktail.cocktailName)
+                                        Spacer()
+                                        Text("Custom")
+                                            .foregroundStyle(Color.brandPrimaryGold)
+                                            .font(.subheadline)
+                                    }
+                                } destination: {
+                                    RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                                        .navigationBarBackButtonHidden(true)
                                 }
-                            } destination: {
-                                RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                                    .navigationBarBackButtonHidden(true)
+                            } else {
+                                
+                                NavigationLinkWithoutIndicator {
+                                    HStack{
+                                        Text(cocktail.cocktailName)
+                                        Spacer()
+                                    }
+                                } destination: {
+                                    RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                                        .navigationBarBackButtonHidden(true)
+                                }
                             }
                         } else {
-                            
-                            NavigationLinkWithoutIndicator {
-                                HStack{
-                                    Text(cocktail.cocktailName)
-                                    Spacer()
-                                }
-                            } destination: {
-                                RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                                    .navigationBarBackButtonHidden(true)
-                            }
-                        }
-                    } else {
-                        if cocktail.titleCocktail == true {
-                            let variations = cocktails.filter({$0.variation == cocktail.variation})
-                            DisclosureGroup {
-                                ForEach(variations, id: \.cocktailName) { variationCocktail in
-                                    
-                                    NavigationLinkWithoutIndicator {
-                                        HStack{
-                                            Text(variationCocktail.cocktailName)
-                                            Spacer()
+                            if cocktail.titleCocktail == true {
+                                let variations = cocktails.filter({$0.variation == cocktail.variation})
+                                DisclosureGroup {
+                                    ForEach(variations, id: \.cocktailName) { variationCocktail in
+                                        
+                                        NavigationLinkWithoutIndicator {
+                                            HStack{
+                                                Text(variationCocktail.cocktailName)
+                                                Spacer()
+                                            }
+                                            
+                                        } destination: {
+                                            SwipeRecipeView(variations: selectedCocktailVariations(for: variationCocktail))
+                                                .navigationBarBackButtonHidden(true)
                                         }
                                         
-                                    } destination: {
-                                        SwipeRecipeView(variations: selectedCocktailVariations(for: variationCocktail))
-                                            .navigationBarBackButtonHidden(true)
                                     }
-                                    
+                                } label: {
+                                    if let variationName = cocktail.variation {
+                                        Text(variationName.rawValue)
+                                    } else {
+                                        Text(cocktail.cocktailName)
+                                    }
                                 }
-                            } label: {
-                                if let variationName = cocktail.variation {
-                                    Text(variationName.rawValue)
-                                } else {
-                                    Text(cocktail.cocktailName)
-                                } 
+                                .disclosureGroupStyle(InlineDisclosureGroupStyle())
                             }
-                            .disclosureGroupStyle(InlineDisclosureGroupStyle())
                         }
                     }
-                }
-               
-            } header: {
-                if cocktailListSearchText == "" {
-                    if letter == CocktailListViewModel.sfSymbolForCustomCocktails {
-                        Text("Custom")
-                            .fontWeight(.bold)
-                            .font(.title)
-                    } else {
-                        Text("\(letter)")
-                            .fontWeight(.bold)
-                            .font(.title)
-                    }
-                } else {
                     
+                } header: {
+                    if cocktailListSearchText == "" {
+                        if letter == CocktailListViewModel.sfSymbolForCustomCocktails {
+                            Text("Custom")
+                                .fontWeight(.bold)
+                                .font(.title)
+                        } else {
+                            Text("\(letter)")
+                                .fontWeight(.bold)
+                                .font(.title)
+                        }
+                    } else {
+                        
+                    }
+                    
+                }.id(letter)
+            }
+        } else {
+            ForEach(filteredCocktails, id: \.self) { cocktail in
+                
+                NavigationLinkWithoutIndicator {
+                    HStack{
+                        Text(cocktail.cocktailName)
+                        Spacer()
+                    }
+                } destination: {
+                    RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                        .navigationBarBackButtonHidden(true)
                 }
                 
-            }.id(letter)
+            }
         }
     }
 }
