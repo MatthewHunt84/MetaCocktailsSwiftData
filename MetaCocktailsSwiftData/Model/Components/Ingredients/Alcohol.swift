@@ -947,51 +947,54 @@ enum Bitters: String, Codable, CaseIterable {
     case orangeBitters         = "Regans Orange Bitters"
     case peychauds             = "Peychaud's Bitters"
     case pimentoBitters        = "Pimento Bitters (Dale Degroff's)"
+    case bitters               = "Bitters"
     
     var tags: Tags {
         switch self {
         case .blackWalnut:
-            Tags(flavors: [.walnut], booze: [Booze(.bitters(self))])
+            Tags(flavors: [.walnut], booze: [Booze(.bitters(self)),Booze(.bitters(.bitters))])
         case .orangeBitters:
-            Tags(flavors: [.orange], booze: [Booze(.bitters(self))])
+            Tags(flavors: [.orange], booze: [Booze(.bitters(self)),Booze(.bitters(.bitters))])
         case .angosturaBitters:
-            Tags(flavors: [.bakingSpices], booze: [Booze(.bitters(self)), Booze(.bitters(.aromaticBitters))])
+            Tags(flavors: [.bakingSpices], booze: [Booze(.bitters(self)), Booze(.bitters(.aromaticBitters)),Booze(.bitters(.bitters))])
         case .peychauds:
-            Tags(flavors: [.tarragon, .cherry], booze: [Booze(.bitters(self)), Booze(.bitters(.aromaticBitters))])
+            Tags(booze: [Booze(.bitters(self)), Booze(.bitters(.aromaticBitters)), Booze(.bitters(.bitters))])
         case .pimentoBitters:
-            Tags(flavors: [.pimento], booze: [Booze(.bitters(self)), Booze(.bitters(.aromaticBitters))])
+            Tags(flavors: [.pimento], booze: [Booze(.bitters(self)), Booze(.bitters(.aromaticBitters)),Booze(.bitters(.bitters))])
         case .hellfireBitters:
-            Tags(profiles: [.spicy], booze: [Booze(.bitters(self))])
+            Tags(profiles: [.spicy], booze: [Booze(.bitters(self)),Booze(.bitters(.bitters))])
         case .celeryBitters:
-            Tags(flavors: [.celery], booze: [Booze(.bitters(self))])
+            Tags(flavors: [.celery], booze: [Booze(.bitters(self)),Booze(.bitters(.bitters))])
         case .chocolateMole:
-            Tags(flavors: [.chocolate, .molé], booze: [Booze(.bitters(self))])
+            Tags(flavors: [.chocolate, .molé], booze: [Booze(.bitters(self)),Booze(.bitters(.bitters))])
         case .aromaticBitters:
-            Tags(booze: [Booze(.bitters(self))])
+            Tags(booze: [Booze(.bitters(self)),Booze(.bitters(.bitters))])
         case .appleBitters:
-            Tags(flavors: [.apple], booze: [Booze(.bitters(self))])
+            Tags(flavors: [.apple], booze: [Booze(.bitters(self)),Booze(.bitters(.bitters))])
         case .hoppedGrapefruit:
-            Tags(flavors: [.grapefruit], booze: [Booze(.bitters(self))])
+            Tags(flavors: [.grapefruit], booze: [Booze(.bitters(self)),Booze(.bitters(.bitters))])
         case .lemonBitters:
-            Tags(flavors: [.grapefruit], booze: [Booze(.bitters(self))])
+            Tags(flavors: [.grapefruit], booze: [Booze(.bitters(self)),Booze(.bitters(.bitters))])
         case .tikiBitters:
-            Tags(flavors: [.cinnamon, .bakingSpices], booze: [Booze(.bitters(self))])
+            Tags(flavors: [.cinnamon, .bakingSpices], booze: [Booze(.bitters(self)),Booze(.bitters(.bitters))])
         case .grapefruitBitters:
-            Tags(flavors: [.grapefruit], booze: [Booze(.bitters(self))])
+            Tags(flavors: [.grapefruit], booze: [Booze(.bitters(self)),Booze(.bitters(.bitters))])
         case .bolivarBitters:
-            Tags(booze: [Booze(.bitters(self))])
+            Tags(booze: [Booze(.bitters(self)),Booze(.bitters(.bitters))])
         case .blackstrapBitters:
-            Tags(flavors: [.molasses], booze: [Booze(.bitters(self))])
+            Tags(flavors: [.molasses], booze: [Booze(.bitters(self)),Booze(.bitters(.bitters))])
         case .bittercubeJamaican1:
-            Tags(booze: [Booze(.bitters(self))])
+            Tags(booze: [Booze(.bitters(self)),Booze(.bitters(.bitters))])
         case .bitterTruthJTDecanter:
-            Tags(booze: [Booze(.bitters(self)), Booze(.bitters(.aromaticBitters))])
+            Tags(booze: [Booze(.bitters(self)), Booze(.bitters(.aromaticBitters)),Booze(.bitters(.bitters))])
         case .bittermansChocolate:
-            Tags(flavors: [.chocolate], booze: [Booze(.bitters(self))])
+            Tags(flavors: [.chocolate], booze: [Booze(.bitters(self)),Booze(.bitters(.bitters))])
         case .aPPBitters:
-            Tags(booze: [Booze(.bitters(self)), Booze(.bitters(.aromaticBitters))])
+            Tags(booze: [Booze(.bitters(self)), Booze(.bitters(.aromaticBitters)),Booze(.bitters(.bitters))])
         case .houseOrangeBitters:
-            Tags(flavors: [.orange], booze: [Booze(.bitters(self))])
+            Tags(flavors: [.orange], booze: [Booze(.bitters(self)),Booze(.bitters(.bitters))])
+        case .bitters:
+            Tags(booze: [Booze(.bitters(self)),Booze(.bitters(.bitters))])
         }
     }
     

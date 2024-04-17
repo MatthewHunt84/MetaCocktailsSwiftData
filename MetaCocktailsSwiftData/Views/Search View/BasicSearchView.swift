@@ -33,12 +33,6 @@ struct BasicSearchView: View {
                                 .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
                             Spacer()
                             Menu("", systemImage: "gearshape") {
-                                Button("Filter All Cocktails") {
-                                    viewModel.showWilliamsAndGrahamCocktails = false
-                                }
-                                Button("Filter Williams and Graham Cocktails") {
-                                    viewModel.showWilliamsAndGrahamCocktails = true
-                                }
                                 Button("Search by flavor.", action: {
                                     isShowingFlavors = true
                                 })
