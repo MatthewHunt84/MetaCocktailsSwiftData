@@ -116,7 +116,7 @@ struct RecipeView: View {
                                     
                                     GarnishView(cocktail: viewModel.cocktail)
                                     
-                                    MethodIceView(cocktail: viewModel.cocktail)
+                                    MethodIceView(cocktail: viewModel.cocktail, methodText: viewModel.methodString)
                                     
                                     if viewModel.cocktail.buildOrder != nil {
                                         
@@ -465,41 +465,23 @@ private struct IceView: View {
 }
 
 struct MethodIceView: View {
+    
     var cocktail: Cocktail
+    var methodText: String?
     var body: some View {
         
-//        if let methodText = getMethodText() {
+        if let methodText {
             HStack {
-                MethodView(methodText: "methodText")
+                MethodView(methodText: methodText)
                 Spacer()
                 IceView(cocktail: cocktail)
             }
-//        } else {
-//            HStack {
-//                IceView(cocktail: cocktail)
-//            }
-//        }
+        } else {
+            HStack {
+                IceView(cocktail: cocktail)
+            }
+        }
     }
-    
-//    func getMethodText() -> String? {
-//        if let stirShakeBuild = cocktail.compiledTags.styles {
-//            if stirShakeBuild.contains(.built) {
-//                return "Shake or Blend"
-//            }
-//            if stirShakeBuild.contains(.shaken) && stirShakeBuild.contains(.blended) {
-//                return "Build in glass"
-//            } else if stirShakeBuild.contains(.shaken) && !stirShakeBuild.contains(.blended) {
-//                return"Shake"
-//            }
-//            if stirShakeBuild.contains(.stirred) {
-//                return"Stir"
-//            }
-//            if stirShakeBuild.contains(.swizzle) {
-//                return"Swizzle"
-//            }
-//        }
-//        return nil
-//    }
 }
 
 struct GarnishView: View {

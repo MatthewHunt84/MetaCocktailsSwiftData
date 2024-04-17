@@ -7,7 +7,11 @@
 
 import Foundation
 
-enum Style: String, Codable, CaseIterable {
+enum Style: String, Codable, CaseIterable, Comparable {
+    static func < (lhs: Style, rhs: Style) -> Bool {
+        lhs.rawValue < rhs.rawValue
+    }
+    
     
     case shaken        = "Shaken"
     case stirred       = "Stirred"
