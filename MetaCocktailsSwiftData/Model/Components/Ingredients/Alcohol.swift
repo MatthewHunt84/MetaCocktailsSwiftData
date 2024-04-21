@@ -497,6 +497,7 @@ enum Whiskey: String, Codable, CaseIterable {
     
     case stagJr                = "Stag Jr. Bourbon"
     case straightRye           = "Straight Rye"
+    case straightBourbon       = "Straight Bourbon"
     case straightRyeOrBourbon  = "Straight Rye or Bourbon (100 proof)"
     case scotchAny             = "Scotch"
     case scotchBlended         = "Scotch (Blended)"
@@ -616,6 +617,8 @@ enum Whiskey: String, Codable, CaseIterable {
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny))])
         case .monongahelaRye:
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)), Booze(.whiskies(.ryeWhiskeyAny))])
+        case .straightBourbon:
+            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)),Booze(.whiskies(.bourbonAny))])
         }
     }
     

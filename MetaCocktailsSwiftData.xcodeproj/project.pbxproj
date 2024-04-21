@@ -134,6 +134,7 @@
 		4D5DA0BC2BA1345B00C14F1F /* Saladito.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5DA0BB2BA1345B00C14F1F /* Saladito.swift */; };
 		4D5DA0BE2BA145A600C14F1F /* TheSeaplane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5DA0BD2BA145A600C14F1F /* TheSeaplane.swift */; };
 		4D6DF47F2BCB578B00D48C30 /* Jasmine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6DF47E2BCB578B00D48C30 /* Jasmine.swift */; };
+		4D6DF4832BCDB18300D48C30 /* TalentScout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6DF4822BCDB18300D48C30 /* TalentScout.swift */; };
 		4D7439892B9D277F0020C3B8 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7439882B9D277F0020C3B8 /* BackButton.swift */; };
 		4D74398B2B9E581A0020C3B8 /* LoadSampleCocktailsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D74398A2B9E581A0020C3B8 /* LoadSampleCocktailsButton.swift */; };
 		4D74398E2B9E58820020C3B8 /* CocktailCollectionPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D74398D2B9E58820020C3B8 /* CocktailCollectionPicker.swift */; };
@@ -624,6 +625,7 @@
 		4D5DA0BB2BA1345B00C14F1F /* Saladito.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saladito.swift; sourceTree = "<group>"; };
 		4D5DA0BD2BA145A600C14F1F /* TheSeaplane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheSeaplane.swift; sourceTree = "<group>"; };
 		4D6DF47E2BCB578B00D48C30 /* Jasmine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jasmine.swift; sourceTree = "<group>"; };
+		4D6DF4822BCDB18300D48C30 /* TalentScout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalentScout.swift; sourceTree = "<group>"; };
 		4D7439882B9D277F0020C3B8 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		4D74398A2B9E581A0020C3B8 /* LoadSampleCocktailsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSampleCocktailsButton.swift; sourceTree = "<group>"; };
 		4D74398D2B9E58820020C3B8 /* CocktailCollectionPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailCollectionPicker.swift; sourceTree = "<group>"; };
@@ -1175,6 +1177,7 @@
 				4DA5673D2B6AF4A4003F6F04 /* SingaporeSling(1910).swift */,
 				4DA567432B6AF84D003F6F04 /* SloeGinFizz.swift */,
 				4DCB16FD2BA3AA5C0002D7D9 /* SouthSideFizz.swift */,
+				4D6DF4822BCDB18300D48C30 /* TalentScout.swift */,
 				4DA5674B2B6C384A003F6F04 /* Tipperary(1916).swift */,
 				4DA5674F2B6C3AAD003F6F04 /* Tipperary(Dead Rabbit Version).swift */,
 				4D1E85DE2B5DBB6A00214BC6 /* TiPunch.swift */,
@@ -2110,6 +2113,7 @@
 				4DF408CC2B60DDC700EF9A6E /* Chrysanthemum.swift in Sources */,
 				4DBFF81F2B5FB1D70011B5B1 /* Americano.swift in Sources */,
 				4DF408DE2B6108AB00EF9A6E /* ElPresidente(W&G).swift in Sources */,
+				4D6DF4832BCDB18300D48C30 /* TalentScout.swift in Sources */,
 				1AFDB7AC2ADF22AD000A3812 /* French75Cognac.swift in Sources */,
 				4DBBA4B22B68D22E00179B8F /* OldFashioned(W&G).swift in Sources */,
 				4DBBA47C2B6877CC00179B8F /* LaLouisiane(W&G).swift in Sources */,
