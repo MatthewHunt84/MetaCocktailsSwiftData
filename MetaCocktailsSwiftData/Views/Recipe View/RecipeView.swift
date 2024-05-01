@@ -7,6 +7,39 @@
 
 import SwiftUI
 
+struct RecipeView: View {
+    
+    @Bindable var viewModel: RecipeViewModel
+    @State private var prepItems: [CocktailIngredient] = []
+    @Namespace var topID
+    
+    var body: some View {
+        
+        GeometryReader { geo in
+            
+            ScrollViewReader { scrollReader in
+                
+                ScrollView {
+                    
+                    RecipeFlipCardView(viewModel: viewModel, geo: geo, topID: topID, scrollReader: scrollReader)
+                }
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        RecipeTitleView(cocktail: viewModel.cocktail)
+                    }
+                    ToolbarItem(placement: .topBarLeading) {
+                        BackButton()
+                    }
+                }
+                .task {
+                    prepItems = viewModel.findPrepItems()
+                }
+            }
+        }
+    }
+}
+
 struct BuildOrderView: View {
     
     let buildOrder: Build
@@ -80,93 +113,7 @@ struct RecipeViewBack: View {
     }
 }
 
-struct RecipeView: View {
-    
-    @Bindable var viewModel: RecipeViewModel
-    @State private var prepItems: [CocktailIngredient] = []
-    @Namespace var topID
-    
-    var body: some View {
-        
-        GeometryReader { geo in
-            
-            ScrollViewReader { scrollReader in
-                
-                ScrollView {
-                    
-                    ZStack {
-                        
-                        RecipeViewBack(viewModel: viewModel, geometry: geo)
-                            .rotation3DEffect(Angle(degrees: viewModel.backDegree), axis: (x: 0, y: 1, z: 0))
-                            .id(topID)
-                        
-                        VStack(alignment: .center) {
-                            
-                            ZStack() {
-                                
-                                Border()
-                                    .frame(minHeight: geo.size.height)
-                                
-                                VStack(alignment: .leading, spacing: 20) {
-                                    
-
-                                    GlasswareView(cocktail: viewModel.cocktail)
-                                    
-                                    SpecView(cocktail: viewModel.cocktail)
-                                    
-                                    GarnishView(cocktail: viewModel.cocktail)
-                                    
-                                    MethodIceView(cocktail: viewModel.cocktail, methodText: viewModel.methodString)
-                                    
-                                    if viewModel.cocktail.buildOrder != nil {
-                                        
-                                        Button("Build Order") {
-                                            viewModel.flipCard()
-                                            withAnimation(.easeOut(duration: viewModel.durationAndDelay)) {
-                                                scrollReader.scrollTo(topID, anchor: .top)
-                                            }
-                                        }
-                                        .buttonStyle(.custom)
-                                        .tint(.blueTint)
-                                        .disabled(viewModel.isFlipped)
-                                    }
-                                    
-                                    if viewModel.cocktail.author != nil {
-                                        AuthorView(cocktail: viewModel.cocktail)
-                                            .frame(maxWidth: .infinity, alignment: .center)
-                                        
-                                    }
-                                }
-                                .padding(.top, 50)
-                                .padding(.bottom, 70)
-                                .frame(width: geo.size.width * 0.75)
-                            }
-                            
-                        }
-                        .frame(minHeight: geo.size.height)
-                        .rotation3DEffect(Angle(degrees: viewModel.frontDegree), axis: (x: 0, y: 1, z: 0))
-                        
-                        backToRecipeViewButton(viewModel: viewModel)
-                    }
-                }
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .principal) {
-                        RecipeTitleView(cocktail: viewModel.cocktail)
-                    }
-                    ToolbarItem(placement: .topBarLeading) {
-                        BackButton()
-                    }
-                }
-                .task {
-                    prepItems = viewModel.findPrepItems()
-                }
-            }
-        }
-    }
-}
-
-private struct backToRecipeViewButton: View {
+struct backToRecipeViewButton: View {
     var viewModel: RecipeViewModel
     var body: some View {
         VStack {
@@ -561,8 +508,8 @@ struct AuthorView: View {
     }
 }
 
-#Preview {
-    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    return RecipeView(viewModel: RecipeViewModel(cocktail: mintJulep))
-        .modelContainer(preview.container)
-}
+//#Preview {
+//    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
+//    return RecipeView(viewModel: RecipeViewModel(cocktail: mintJulep))
+//        .modelContainer(preview.container)
+//}
