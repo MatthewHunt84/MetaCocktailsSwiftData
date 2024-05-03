@@ -28,13 +28,16 @@ struct SwipeRecipeView: View {
                         HeightPreservingTabView(selection: $variations) {
                             
                             ForEach($variations, id: \.self) { cocktail in
-                                
-                                RecipeFlipCardView(viewModel: RecipeViewModel(cocktail: cocktail.wrappedValue), geo: geo, topID: topID, scrollReader: scrollReader)
-                                    .toolbar {
-                                        ToolbarItem(placement: .principal) {
-                                            RecipeTitleView(cocktail: cocktail.wrappedValue)
-                                        }
+                                VStack {
+                                    RecipeFlipCardView(viewModel: RecipeViewModel(cocktail: cocktail.wrappedValue), geo: geo, topID: topID, scrollReader: scrollReader)
+                                        .padding(.bottom, 28)
+                                    
+                                }
+                                .toolbar {
+                                    ToolbarItem(placement: .principal) {
+                                        RecipeTitleView(cocktail: cocktail.wrappedValue)
                                     }
+                                }
                             }
                         }
                     }
@@ -72,7 +75,7 @@ struct HeightPreservingTabView<SelectionValue: Hashable, Content: View>: View {
                 }
         }
         .tabViewStyle(.page)
-//        .indexViewStyle(.page(backgroundDisplayMode: .always))
+        .indexViewStyle(.page)
         .navigationBarTitleDisplayMode(.inline)
         .frame(minHeight: minHeight)
         .onPreferenceChange(TabViewMinHeightPreference.self) { minHeight in
