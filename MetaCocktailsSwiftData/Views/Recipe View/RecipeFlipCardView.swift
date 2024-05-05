@@ -74,5 +74,5 @@ struct RecipeFlipCardView: View {
 }
 
 //#Preview {
-//    RecipeFlipCardView()
+//    RecipeFlipCardView(viewModel: RecipeViewModel(cocktail: ramonaFlowers))
 //}

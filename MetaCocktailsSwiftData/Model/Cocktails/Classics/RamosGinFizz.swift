@@ -23,7 +23,7 @@ let ramosGinFizzSpec: [CocktailIngredient] = [CocktailIngredient(.gins(.ginAny),
                                               CocktailIngredient(.juices(.lemon), value: 0.5),
                                               CocktailIngredient(.syrups(.simple), value: 1.0),
                                               CocktailIngredient(.otherNonAlc(.cream), value: 1.0),
-                                              CocktailIngredient(.otherNonAlc(.eggWhites), value: 1.25),
+                                              CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.5),
                                               CocktailIngredient(.soda(.sodaWater), value: 2.0),
                                               CocktailIngredient(.otherNonAlc(.orangeFlowerWater), value: 3, unit: .drops)]
 
