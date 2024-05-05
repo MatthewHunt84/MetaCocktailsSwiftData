@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct SwipeRecipeView: View {
-    @State var variations: [Cocktail]
+    @State var variations: [Cocktail] // when this isn't state, our weird HeightPreservingTabView gets all mad. Keeping this for now, but perhaps adding binding viewModels is what we need here.
     @Environment(\.dismiss) private var dismiss
+    @Namespace var topID
+    
+//    @Bindable var viewModel: RecipeViewModel = RecipeViewModel(cocktail: ramosGinFizz)
+    @State var viewModel: RecipeViewModel = RecipeViewModel(cocktail: ramosGinFizz)
     
     var body: some View {
         
@@ -17,73 +21,29 @@ struct SwipeRecipeView: View {
             
             GeometryReader { geo in
                 
-                ScrollView {
+                ScrollViewReader { scrollReader in
                     
-                    HeightPreservingTabView(selection: $variations) {
+                    ScrollView {
                         
-                        ForEach($variations, id: \.self) { cocktail in
-
-                                ZStack {
+                        HeightPreservingTabView(selection: $variations) {
+                            
+                            ForEach($variations, id: \.self) { cocktail in
+                                VStack {
+                                    RecipeFlipCardView(viewModel: RecipeViewModel(cocktail: cocktail.wrappedValue), geo: geo, topID: topID, scrollReader: scrollReader)
+                                        .padding(.bottom, 28)
                                     
-                                    Border()
-                                        .frame(minHeight: geo.size.height)
-                                        .padding(.bottom, 25)
-                                    
-                                    VStack(alignment: .leading, spacing: 20) {
-                                        
-                                        GlasswareView(cocktail: cocktail.wrappedValue)
-                                        
-                                        CocktailProfileView(cocktail: cocktail.wrappedValue)
-                                        
-                                        SpecView(cocktail: cocktail.wrappedValue)
-                                        
-                                        GarnishView(cocktail: cocktail.wrappedValue)
-                                        
-                                        MethodIceView(cocktail: cocktail.wrappedValue)
-                                        
-                                        if let buildOrder = cocktail.buildOrder.wrappedValue {
-                                            NavigationLink("Build Order") {
-                                                BuildOrderView(buildOrder: buildOrder)
-                                                    .padding()
-                                            }
-                                            .buttonStyle(.custom)
-                                        }
-                                        
-                                        if cocktail.author.wrappedValue != nil {
-                                            AuthorView(cocktail: cocktail.wrappedValue)
-                                                .frame(maxWidth: .infinity, alignment: .center)
-//                                                .padding(.bottom, 100)
-                                        }
-                                    }
-                                    .frame(width: geo.size.width * 0.75)
-                                    .padding(.top, 50)
-                                    .padding(.bottom, 100)
-                                    .navigationBarTitleDisplayMode(.inline)
-                                    .toolbar {
-                                        ToolbarItem(placement: .principal) {
-                                            RecipeTitleView(cocktail: cocktail.wrappedValue)
-                                        }
+                                }
+                                .toolbar {
+                                    ToolbarItem(placement: .principal) {
+                                        RecipeTitleView(cocktail: cocktail.wrappedValue)
                                     }
                                 }
+                            }
                         }
                     }
-                    .tabViewStyle(.page)
-                    .indexViewStyle(.page(backgroundDisplayMode: .always))
-                }
-                .frame(minHeight: geo.size.height)
-                .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
-                        VStack(alignment: .leading) {
-                            Button{
-                                dismiss()
-                            } label: {
-                                Image(systemName: "chevron.backward")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 9)
-                                    .bold()
-                                    .tint(.cyan)
-                            }
+                    .toolbar {
+                        ToolbarItem(placement: .topBarLeading) {
+                            BackButton()
                         }
                     }
                 }
@@ -92,47 +52,51 @@ struct SwipeRecipeView: View {
     }
 }
 
-#Preview {
-    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    return SwipeRecipeView(variations: [zombie129, brandyAlexander, cloverClub, zombie, airMailWnG, peanutButterFalcon])
-        .modelContainer(preview.container)
-       
-}
-
 
 // Boilerplate code : https://bdewey.com/til/2023/03/01/swiftui-and-tabview-height/
 /// A variant of `TabView` that sets an appropriate `minHeight` on its frame.
 struct HeightPreservingTabView<SelectionValue: Hashable, Content: View>: View {
-  var selection: Binding<SelectionValue>?
-  @ViewBuilder var content: () -> Content
-
-  // `minHeight` needs to start as something non-zero or we won't measure the interior content height
-  @State private var minHeight: CGFloat = 1
-
-  var body: some View {
-    TabView(selection: selection) {
-      content()
-        .background {
-          GeometryReader { geometry in
-            Color.clear.preference(
-              key: TabViewMinHeightPreference.self,
-              value: geometry.frame(in: .local).height
-            )
-          }
+    var selection: Binding<SelectionValue>?
+    @ViewBuilder var content: () -> Content
+    
+    // `minHeight` needs to start as something non-zero or we won't measure the interior content height
+    @State private var minHeight: CGFloat = 1
+    
+    var body: some View {
+        TabView(selection: selection) {
+            content()
+                .background {
+                    GeometryReader { geometry in
+                        Color.clear.preference(
+                            key: TabViewMinHeightPreference.self,
+                            value: geometry.frame(in: .local).height
+                        )
+                    }
+                }
+        }
+        .tabViewStyle(.page)
+        .indexViewStyle(.page)
+        .navigationBarTitleDisplayMode(.inline)
+        .frame(minHeight: minHeight)
+        .onPreferenceChange(TabViewMinHeightPreference.self) { minHeight in
+            self.minHeight = minHeight
         }
     }
-    .frame(minHeight: minHeight)
-    .onPreferenceChange(TabViewMinHeightPreference.self) { minHeight in
-      self.minHeight = minHeight
-    }
-  }
 }
 
 private struct TabViewMinHeightPreference: PreferenceKey {
-  static var defaultValue: CGFloat = 0
+    static var defaultValue: CGFloat = 0
+    
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        // It took me so long to debug this line
+        value = max(value, nextValue())
+    }
+}
 
-  static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-    // It took me so long to debug this line
-    value = max(value, nextValue())
-  }
+
+#Preview {
+    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
+    return SwipeRecipeView(variations: [zombie129, brandyAlexander, cloverClub, zombie, airMailWnG, peanutButterFalcon])
+        .modelContainer(preview.container)
+    
 }

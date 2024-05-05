@@ -489,6 +489,7 @@
 		F4C74C812AD8CC3300EA3334 /* AperolSpritz.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C74C802AD8CC3300EA3334 /* AperolSpritz.swift */; };
 		F4C74C832AD8CC9600EA3334 /* Ice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C74C822AD8CC9600EA3334 /* Ice.swift */; };
 		F4DBE4C52AB8831C009A0C09 /* AnimatedSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DBE4C42AB8831C009A0C09 /* AnimatedSearchView.swift */; };
+		F4E7F1732BE2E726006B6050 /* RecipeFlipCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E7F1722BE2E726006B6050 /* RecipeFlipCardView.swift */; };
 		F4F7429E2AD6419100161A93 /* AdvancedCriteriaListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F7429D2AD6419100161A93 /* AdvancedCriteriaListView.swift */; };
 		F4F742A02AD643A500161A93 /* SearchCriteriaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F7429F2AD643A500161A93 /* SearchCriteriaViewModel.swift */; };
 		F4FBF1232AAABBB900BBF7CF /* MetaCocktailsSwiftDataApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FBF1222AAABBB900BBF7CF /* MetaCocktailsSwiftDataApp.swift */; };
@@ -978,6 +979,7 @@
 		F4C74C802AD8CC3300EA3334 /* AperolSpritz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AperolSpritz.swift; sourceTree = "<group>"; };
 		F4C74C822AD8CC9600EA3334 /* Ice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ice.swift; sourceTree = "<group>"; };
 		F4DBE4C42AB8831C009A0C09 /* AnimatedSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedSearchView.swift; sourceTree = "<group>"; };
+		F4E7F1722BE2E726006B6050 /* RecipeFlipCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeFlipCardView.swift; sourceTree = "<group>"; };
 		F4F7429D2AD6419100161A93 /* AdvancedCriteriaListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedCriteriaListView.swift; sourceTree = "<group>"; };
 		F4F7429F2AD643A500161A93 /* SearchCriteriaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCriteriaViewModel.swift; sourceTree = "<group>"; };
 		F4FBF11F2AAABBB900BBF7CF /* MetaCocktailsSwiftData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetaCocktailsSwiftData.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1266,6 +1268,7 @@
 				4D088FC92B62E3640047B056 /* RecipeViewModel.swift */,
 				1AC3869D2AAABED00064F52A /* RecipeView.swift */,
 				4DDC116B2B857EF0009EF5C4 /* SwipeRecipeView.swift */,
+				F4E7F1722BE2E726006B6050 /* RecipeFlipCardView.swift */,
 				1AC386992AAABED00064F52A /* SubViews */,
 			);
 			path = "Recipe View";
@@ -1946,6 +1949,7 @@
 				4DA567BC2B6DAA3E003F6F04 /* FarewellRide.swift in Sources */,
 				4DBFF8312B5FC6750011B5B1 /* Bijou(W&G).swift in Sources */,
 				4DCB17102BA4CFCC0002D7D9 /* TurnPike.swift in Sources */,
+				F4E7F1732BE2E726006B6050 /* RecipeFlipCardView.swift in Sources */,
 				4D5DA0BE2BA145A600C14F1F /* TheSeaplane.swift in Sources */,
 				4DCB172E2BA4EB450002D7D9 /* TritterRickey.swift in Sources */,
 				4DA567622B6C6F06003F6F04 /* Vesper(W&G).swift in Sources */,

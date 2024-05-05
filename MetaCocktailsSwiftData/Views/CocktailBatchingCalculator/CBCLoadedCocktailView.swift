@@ -11,7 +11,7 @@ struct CBCLoadedCocktailView: View {
     @ObservedObject var viewModel = CBCViewModel()
     @EnvironmentObject var criteria: SearchCriteriaViewModel
     @State var cocktailCount = 100.0
-    @State var cocktail = aFlightSouthOfTheBorder
+    @State var cocktail: Cocktail
     
     
     var body: some View {
