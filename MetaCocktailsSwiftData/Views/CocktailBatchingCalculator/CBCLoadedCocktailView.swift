@@ -9,9 +9,7 @@ import SwiftUI
 
 struct CBCLoadedCocktailView: View {
     @ObservedObject var viewModel = CBCViewModel()
-    @EnvironmentObject var criteria: SearchCriteriaViewModel
-    @State var cocktailCount = 100.0
-    @State var cocktail: Cocktail
+    var cocktail: Cocktail
     
     
     var body: some View {
@@ -36,10 +34,10 @@ struct CBCLoadedCocktailView: View {
                             .autocorrectionDisabled()
                         HStack{
                             Text("Cocktail Count:")
-                            TextField("#", value:  $cocktailCount, formatter: viewModel.formatter).cBCTextField()
-                                .onSubmit {
-                                    viewModel.numberOfCocktailsText = cocktailCount
-                                }
+                            TextField("#", value:  $viewModel.numberOfCocktailsText, formatter: viewModel.formatter).cBCTextField()
+//                                .onSubmit {
+//                                    viewModel.numberOfCocktailsText = cocktailCount
+//                                }
                                 .autocorrectionDisabled()
                             
                                 .frame(maxWidth: 75)
@@ -73,7 +71,7 @@ struct CBCLoadedCocktailView: View {
                         .stroke(.gray.gradient, lineWidth: 2))
                     VStack {
                             NavigationLink{
-                                MainBatchView(quantifiedBatchedIngredients: $viewModel.quantifiedBatchedIngredients, cocktailCount: $cocktailCount)
+                                MainBatchView(quantifiedBatchedIngredients: $viewModel.quantifiedBatchedIngredients, cocktailCount: $viewModel.numberOfCocktailsText)
                                     .environmentObject(viewModel)
                             } label: {
                                 Text("Batch")
@@ -86,6 +84,7 @@ struct CBCLoadedCocktailView: View {
                 
             }
             .task {
+                print("The cocktail on CBCLoadedCocktailView is \(cocktail.cocktailName)")
                 viewModel.convertLoadedCocktail(for: cocktail)
             }
         }

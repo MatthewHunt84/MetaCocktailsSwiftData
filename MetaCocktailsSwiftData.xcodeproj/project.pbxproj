@@ -446,6 +446,8 @@
 		4DE33E1D2B91A8D500312EC3 /* TheBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE33E1C2B91A8D500312EC3 /* TheBusiness.swift */; };
 		4DE33E1F2B91B5DA00312EC3 /* Calvados75.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE33E1E2B91B5DA00312EC3 /* Calvados75.swift */; };
 		4DE33E212B91B82E00312EC3 /* Cosmonaut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE33E202B91B82E00312EC3 /* Cosmonaut.swift */; };
+		4DED94462BE70A34002305C2 /* NumberOfCocktailsModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DED94452BE70A34002305C2 /* NumberOfCocktailsModal.swift */; };
+		4DED94482BE73889002305C2 /* FloatingPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DED94472BE73889002305C2 /* FloatingPromptView.swift */; };
 		4DF408C22B60D0F100EF9A6E /* Caucasian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF408C12B60D0F100EF9A6E /* Caucasian.swift */; };
 		4DF408C62B60D4A100EF9A6E /* ChampsElysees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF408C52B60D4A100EF9A6E /* ChampsElysees.swift */; };
 		4DF408C82B60D71400EF9A6E /* ChampagnCocktail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF408C72B60D71400EF9A6E /* ChampagnCocktail.swift */; };
@@ -936,6 +938,8 @@
 		4DE33E1C2B91A8D500312EC3 /* TheBusiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheBusiness.swift; sourceTree = "<group>"; };
 		4DE33E1E2B91B5DA00312EC3 /* Calvados75.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calvados75.swift; sourceTree = "<group>"; };
 		4DE33E202B91B82E00312EC3 /* Cosmonaut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cosmonaut.swift; sourceTree = "<group>"; };
+		4DED94452BE70A34002305C2 /* NumberOfCocktailsModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberOfCocktailsModal.swift; sourceTree = "<group>"; };
+		4DED94472BE73889002305C2 /* FloatingPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPromptView.swift; sourceTree = "<group>"; };
 		4DF408C12B60D0F100EF9A6E /* Caucasian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caucasian.swift; sourceTree = "<group>"; };
 		4DF408C52B60D4A100EF9A6E /* ChampsElysees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampsElysees.swift; sourceTree = "<group>"; };
 		4DF408C72B60D71400EF9A6E /* ChampagnCocktail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampagnCocktail.swift; sourceTree = "<group>"; };
@@ -1485,9 +1489,11 @@
 			children = (
 				4DA568652B70AF07003F6F04 /* CBCViewModel.swift */,
 				4D7B01742B72BF0A0026FE34 /* MainBatchView.swift */,
+				4DED94452BE70A34002305C2 /* NumberOfCocktailsModal.swift */,
 				4D54F7382B7AFC1200D046D9 /* CBCLoadedCocktailView.swift */,
 				4D54F7312B795AA100D046D9 /* SplitBatchView.swift */,
 				4D54F7372B79FD5B00D046D9 /* Sub Views */,
+				4DED94472BE73889002305C2 /* FloatingPromptView.swift */,
 			);
 			path = CocktailBatchingCalculator;
 			sourceTree = "<group>";
@@ -1951,6 +1957,7 @@
 				4DCB17102BA4CFCC0002D7D9 /* TurnPike.swift in Sources */,
 				F4E7F1732BE2E726006B6050 /* RecipeFlipCardView.swift in Sources */,
 				4D5DA0BE2BA145A600C14F1F /* TheSeaplane.swift in Sources */,
+				4DED94462BE70A34002305C2 /* NumberOfCocktailsModal.swift in Sources */,
 				4DCB172E2BA4EB450002D7D9 /* TritterRickey.swift in Sources */,
 				4DA567622B6C6F06003F6F04 /* Vesper(W&G).swift in Sources */,
 				4DBBA4A22B68C11100179B8F /* NewYorkSour.swift in Sources */,
@@ -2107,6 +2114,7 @@
 				4DCB17522BA54AD00002D7D9 /* WeddingPunch.swift in Sources */,
 				4DCB171A2BA4D9220002D7D9 /* French75(M&H).swift in Sources */,
 				4DA567AF2B6CF101003F6F04 /* EightySixCheckListCell.swift in Sources */,
+				4DED94482BE73889002305C2 /* FloatingPromptView.swift in Sources */,
 				4DBFF83B2B6063AC0011B5B1 /* BlueBlazer.swift in Sources */,
 				4DF408CC2B60DDC700EF9A6E /* Chrysanthemum.swift in Sources */,
 				4DBFF81F2B5FB1D70011B5B1 /* Americano.swift in Sources */,

@@ -9,28 +9,27 @@ import SwiftUI
 import SwiftData
 import Combine
 
-
 final class CBCViewModel: ObservableObject {
     
  
     
     ///CBCMainView variables
-    @Published var cocktailNameText = ""
-    @Published var dilutionPercentage = 25.0
-    @Published var numberOfCocktailsText = 100.0
+    var cocktailNameText = ""
+    var dilutionPercentage = 25.0
+    var numberOfCocktailsText = 100.0
     //@Published var totalCocktailABVPercentage = 0.0
-    @Published var loadedCocktailData: CBCLoadedCocktailData = CBCLoadedCocktailData(cocktailName: "Test", ingredients: [])
+    var loadedCocktailData: CBCLoadedCocktailData = CBCLoadedCocktailData(cocktailName: "Test", ingredients: [])
   
     ///Main batch view variables
-    @Published var totalDilutionVolume = 0.0
-    @Published var totalBatchVolume = 0.0
-    @Published var quantifiedBatchedIngredients: [BatchedCellData] = []
-    @Published var chosenCocktail: Cocktail = aFlightSouthOfTheBorder
+    var totalDilutionVolume = 0.0
+    var totalBatchVolume = 0.0
+    var quantifiedBatchedIngredients: [BatchedCellData] = []
+    var chosenCocktail: Cocktail = aFlightSouthOfTheBorder
     
     ///Split Batch View
-    @Published var containerSize =  4000
-    @Published var numberOfContainers = 2
-    @Published var splitBatchData: [SplitBatchCellData] = []
+    var containerSize =  4000
+    var numberOfContainers = 2
+    var splitBatchData: [SplitBatchCellData] = []
     
     
     var  formatter: NumberFormatter = {

@@ -95,9 +95,13 @@ struct CustomAlertView: View {
 }
 
 #Preview {
-    CustomAlertView(isActive: .constant(true), title: "Title", message: "Message", buttonTitle: "Custom Button") {
+    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
+    return CustomAlertView(isActive: .constant(true), title: "Title", message: "Message", buttonTitle: "Custom Button") {
         
     }
+    .modelContainer(preview.container)
+    
 }
+
 
 var heardChef = "Heard, Chef."
