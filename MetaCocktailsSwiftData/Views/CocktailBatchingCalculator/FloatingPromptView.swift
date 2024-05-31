@@ -9,9 +9,10 @@ import SwiftUI
 
 struct FloatingPromptView: View {
     @Binding var isActive: Bool
-    @ObservedObject var viewModel = CBCViewModel()
+    @Binding var viewModel: CBCViewModel
     @FocusState private var cocktailNumberFocus: Bool
-    var viewModelCocktail: Cocktail
+    @State private var cocktailCount: Double = 100.0
+    
    
     @State private var offset: CGFloat = 1000
     
@@ -24,24 +25,24 @@ struct FloatingPromptView: View {
                         close()
                     }
                 VStack {
-                    Text("Number of Cocktails?")
+                    Text("Number of Cocktails:")
                         .font(.title2)
                         .bold()
                         .padding()
                         .foregroundStyle(.white)
                         .multilineTextAlignment(.center)
-                    TextField("Amount", value: $viewModel.numberOfCocktailsText, formatter: viewModel.formatter).cBCTextField()
+                    TextField("Amount", value: $cocktailCount, formatter: viewModel.formatter).cBCTextField()
                         .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                         .keyboardType(.numberPad)
                         .focused($cocktailNumberFocus)
                     
-                    Text("You can always change this later")
+                    Text("*You can modify this later.")
                         .font(.body)
                         .foregroundStyle(.white)
                         .multilineTextAlignment(.center)
                     
                     NavigationLink {
-                        CBCLoadedCocktailView(viewModel: viewModel, cocktail: viewModelCocktail)
+                        CBCLoadedCocktailView(viewModel: $viewModel, cocktailCount: $cocktailCount)
                     } label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
@@ -50,10 +51,16 @@ struct FloatingPromptView: View {
                                 .font(.system(size: 16, weight: .bold))
                                 .foregroundStyle(.black)
                                 .padding()
+                                
                         }
                         .padding()
-                    }
-                }
+                    }.simultaneousGesture(TapGesture().onEnded {
+                        viewModel.numberOfCocktailsText = cocktailCount
+                        viewModel.convertIngredientsToBatchCellData()
+                    })
+                    
+                 
+            }
                 .fixedSize(horizontal: false, vertical: true)
                 .padding()
                 .background(.black)
@@ -87,7 +94,9 @@ struct FloatingPromptView: View {
                 }
                 .task {
                     cocktailNumberFocus = true
+                    viewModel.convertLoadedCocktail(for: viewModel.chosenCocktail)
                 }
+                
             }
             
         }
@@ -105,7 +114,7 @@ struct FloatingPromptView: View {
 
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    return FloatingPromptView(isActive: .constant(true), viewModelCocktail: aFlightSouthOfTheBorder)
+    return FloatingPromptView(isActive: .constant(true),viewModel: .constant(CBCViewModel()))
     .environmentObject(CBCViewModel())
     .modelContainer(preview.container)
     

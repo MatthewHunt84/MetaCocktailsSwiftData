@@ -21,7 +21,7 @@ struct BatchButton: View {
             
             VStack {
                 NavigationLink{
-                    CBCLoadedCocktailView(cocktail: cocktail)
+                   //CBCLoadedCocktailView(viewModel: <#T##Binding<CBCViewModel>#>, numberOfCocktails: <#T##Binding<Double>#>)
                 } label: {
                     ZStack {
                         VStack{
