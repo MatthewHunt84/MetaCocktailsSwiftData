@@ -449,6 +449,7 @@
 		4DED94462BE70A34002305C2 /* NumberOfCocktailsModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DED94452BE70A34002305C2 /* NumberOfCocktailsModal.swift */; };
 		4DED94482BE73889002305C2 /* FloatingPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DED94472BE73889002305C2 /* FloatingPromptView.swift */; };
 		4DED944E2C098DBF002305C2 /* SimpleBatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DED944D2C098DBF002305C2 /* SimpleBatchCell.swift */; };
+		4DED94502C0E38BC002305C2 /* EditBatchModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DED944F2C0E38BC002305C2 /* EditBatchModalView.swift */; };
 		4DF408C22B60D0F100EF9A6E /* Caucasian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF408C12B60D0F100EF9A6E /* Caucasian.swift */; };
 		4DF408C62B60D4A100EF9A6E /* ChampsElysees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF408C52B60D4A100EF9A6E /* ChampsElysees.swift */; };
 		4DF408C82B60D71400EF9A6E /* ChampagnCocktail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF408C72B60D71400EF9A6E /* ChampagnCocktail.swift */; };
@@ -942,6 +943,7 @@
 		4DED94452BE70A34002305C2 /* NumberOfCocktailsModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberOfCocktailsModal.swift; sourceTree = "<group>"; };
 		4DED94472BE73889002305C2 /* FloatingPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPromptView.swift; sourceTree = "<group>"; };
 		4DED944D2C098DBF002305C2 /* SimpleBatchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleBatchCell.swift; sourceTree = "<group>"; };
+		4DED944F2C0E38BC002305C2 /* EditBatchModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBatchModalView.swift; sourceTree = "<group>"; };
 		4DF408C12B60D0F100EF9A6E /* Caucasian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caucasian.swift; sourceTree = "<group>"; };
 		4DF408C52B60D4A100EF9A6E /* ChampsElysees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampsElysees.swift; sourceTree = "<group>"; };
 		4DF408C72B60D71400EF9A6E /* ChampagnCocktail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampagnCocktail.swift; sourceTree = "<group>"; };
@@ -1497,6 +1499,7 @@
 				4D54F7312B795AA100D046D9 /* SplitBatchView.swift */,
 				4D54F7372B79FD5B00D046D9 /* Sub Views */,
 				4DED94472BE73889002305C2 /* FloatingPromptView.swift */,
+				4DED944F2C0E38BC002305C2 /* EditBatchModalView.swift */,
 			);
 			path = CocktailBatchingCalculator;
 			sourceTree = "<group>";
@@ -1957,6 +1960,7 @@
 				4DBBA4602B676F4800179B8F /* Hurricane(W&G).swift in Sources */,
 				4DA567BC2B6DAA3E003F6F04 /* FarewellRide.swift in Sources */,
 				4DBFF8312B5FC6750011B5B1 /* Bijou(W&G).swift in Sources */,
+				4DED94502C0E38BC002305C2 /* EditBatchModalView.swift in Sources */,
 				4DCB17102BA4CFCC0002D7D9 /* TurnPike.swift in Sources */,
 				F4E7F1732BE2E726006B6050 /* RecipeFlipCardView.swift in Sources */,
 				4D5DA0BE2BA145A600C14F1F /* TheSeaplane.swift in Sources */,

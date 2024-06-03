@@ -15,22 +15,23 @@ final class CBCViewModel: ObservableObject {
  
     
     ///CBCMainView variables
-    var cocktailNameText = ""
-    var dilutionPercentage = 25.0
-    var numberOfCocktailsText: Double = 100.0
-    //@Published var totalCocktailABVPercentage = 0.0
+    @Published var cocktailNameText = ""
+    @Published var dilutionPercentage = 25.0
+    @Published var numberOfCocktailsText: Double = 100.0
+    @Published var isShowingBottleMathMode: Bool = false 
+    @Published //@Published var totalCocktailABVPercentage = 0.0
     var loadedCocktailData: CBCLoadedCocktailData = CBCLoadedCocktailData(cocktailName: "Test", ingredients: [])
-  
+ 
     ///Main batch view variables
-    var totalDilutionVolume = 0.0
-    var totalBatchVolume = 0.0
-    var quantifiedBatchedIngredients: [BottleBatchedCellData] = []
-    var chosenCocktail: Cocktail = aFlightSouthOfTheBorder
-    
+    @Published var totalDilutionVolume = 0.0
+    @Published var totalBatchVolume = 0.0
+    @Published var quantifiedBatchedIngredients: [BottleBatchedCellData] = []
+    @Published var chosenCocktail: Cocktail = aFlightSouthOfTheBorder
+ 
     ///Split Batch View
-    var containerSize =  4000
-    var numberOfContainers = 2
-    var splitBatchData: [SplitBatchCellData] = []
+    @Published var containerSize =  4000
+    @Published var numberOfContainers = 2
+    @Published var splitBatchData: [SplitBatchCellData] = []
     
     
     var  formatter: NumberFormatter = {

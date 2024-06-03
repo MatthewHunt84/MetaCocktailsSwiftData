@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RecipeFlipCardView: View {
     @State private var isShowingFloatingPrompt = false
-    @State private var cBCViewModel = CBCViewModel()
+    @EnvironmentObject var cBCViewModel: CBCViewModel
     @Bindable var viewModel: RecipeViewModel
     let geo: GeometryProxy // seems like a constant
     var topID: Namespace.ID // isn't going to change, but is it bound?
@@ -76,7 +76,7 @@ struct RecipeFlipCardView: View {
             
             if isShowingFloatingPrompt {
                 
-                FloatingPromptView(isActive: $isShowingFloatingPrompt, viewModel: $cBCViewModel)
+                FloatingPromptView(isActive: $isShowingFloatingPrompt)
             }
         }
         

@@ -17,23 +17,16 @@ struct LoadedCocktailIngredientCell: View {
     var body: some View {
         HStack {
             
-            Text("\(NSNumber(value:  ingredient.ingredient.value)) \(ingredient.ingredient.unit.rawValue) \(ingredient.ingredient.ingredient.name)")
+            Text("\(ingredient.ingredient.ingredient.name)")
             
             Spacer()
-            
             
             Toggle(isOn: $ingredient.isIncluded) {}
                 .tint(.brandPrimaryGreen)
                 .frame(maxWidth: 60)
             
             
-            
-            
-            
         }
-
-        
-        
     }
 }
 

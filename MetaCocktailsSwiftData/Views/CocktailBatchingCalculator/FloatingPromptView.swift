@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FloatingPromptView: View {
     @Binding var isActive: Bool
-    @Binding var viewModel: CBCViewModel
+    @EnvironmentObject var viewModel: CBCViewModel
     @FocusState private var cocktailNumberFocus: Bool
     @State private var cocktailCount: Double = 100.0
     
@@ -42,7 +42,7 @@ struct FloatingPromptView: View {
                         .multilineTextAlignment(.center)
                     
                     NavigationLink {
-                        CBCLoadedCocktailView(viewModel: $viewModel, cocktailCount: $cocktailCount)
+                        CBCLoadedCocktailView(cocktailCount: $cocktailCount)
                     } label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
@@ -114,7 +114,7 @@ struct FloatingPromptView: View {
 
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    return FloatingPromptView(isActive: .constant(true),viewModel: .constant(CBCViewModel()))
+    return FloatingPromptView(isActive: .constant(true))
     .environmentObject(CBCViewModel())
     .modelContainer(preview.container)
     
