@@ -17,7 +17,7 @@ struct CBCLoadedCocktailView: View {
     
     var body: some View {
         ZStack{
-            Border()
+           
                 
             NavigationStack {
                 VStack {
