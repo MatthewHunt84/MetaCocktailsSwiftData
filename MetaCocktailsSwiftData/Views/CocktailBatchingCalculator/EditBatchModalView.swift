@@ -29,10 +29,12 @@ struct EditBatchModalView: View {
             }
             .padding(.bottom, 20)
             Toggle("Divide ingredient volume into bottles", isOn: $viewModel.isShowingBottleMathMode)
+                .bold()
                 .padding(.bottom, 20)
             VStack{
                 HStack{
                     Text("Included Ingredients:")
+                        .bold()
                     Spacer()
                 }
                 List {
@@ -41,9 +43,10 @@ struct EditBatchModalView: View {
                         LoadedCocktailIngredientCell(ingredient: ingredient)
                         
                     }
+                    .listRowBackground(Color.black)
                 }
                 .listStyle(.plain)
-                .listRowBackground(Color.black)
+                
             }
             //.padding(.bottom, 20)
             HStack{

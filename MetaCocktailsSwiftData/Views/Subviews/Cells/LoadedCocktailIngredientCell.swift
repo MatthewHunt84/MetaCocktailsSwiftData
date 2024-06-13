@@ -18,6 +18,7 @@ struct LoadedCocktailIngredientCell: View {
         HStack {
             
             Text("\(ingredient.ingredient.ingredient.name)")
+                
             
             Spacer()
             
@@ -27,6 +28,7 @@ struct LoadedCocktailIngredientCell: View {
             
             
         }
+     
     }
 }
 

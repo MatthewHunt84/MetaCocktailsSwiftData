@@ -29,7 +29,8 @@ struct CBCLoadedCocktailView: View {
                     VStack {
                         HStack{
                             Text(viewModel.loadedCocktailData.cocktailName)
-                                .dynamicTypeSize(.xxLarge)
+                                .dynamicTypeSize(.xxxLarge)
+                                .bold()
                             Spacer()
                         }
                         
