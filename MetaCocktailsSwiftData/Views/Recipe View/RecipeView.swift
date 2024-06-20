@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct RecipeView: View {
-    
     @Bindable var viewModel: RecipeViewModel
     @State private var prepItems: [CocktailIngredient] = []
     @Namespace var topID
@@ -32,6 +31,7 @@ struct RecipeView: View {
                         BackButton()
                     }
                 }
+               
                 .task {
                     prepItems = viewModel.findPrepItems()
                 }
@@ -308,41 +308,64 @@ struct GlasswareView: View {
 
 struct SpecView: View {
     var cocktail: Cocktail
+    @State private var isShowingSheet = false
+    @State private var isShowingBatchView = false 
+    @Binding var isShowingPrompt: Bool
+    
     var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            
-            HStack {
-                Text("Cocktail Spec:")
-                    .font(Layout.header)
+        NavigationStack{
+            ZStack{
                 
-                Spacer()
-                
-                NavigationLink { CBCLoadedCocktailView(cocktail: cocktail)
-                } label: {
-                    Text("Batch")
-                    Image(systemName: "chevron.forward")
-                }
-                .foregroundStyle(.blueTint)
-                .font(Layout.header)
-            }
-            .padding(.bottom, 5)
-            
-            ForEach(orderSpec(), id: \.id) { ingredient in
-                let number = NSNumber(value: ingredient.value)
-                HStack {
-                    Text("\(number) \(ingredient.unit.rawValue)")
-                        .font(Layout.specMeasurement)
-                    if ingredient.prep != nil {
-                        NavigationLink {
-                            PrepRecipeView(prep: ingredient.prep!)
+                VStack(alignment: .leading, spacing: 6) {
+                    
+                    HStack {
+                        Text("Cocktail Spec:")
+                            .font(Layout.header)
+                        
+                        Spacer()
+                        
+                        Button {
+                            isShowingPrompt.toggle()
                         } label: {
-                            Text(ingredient.ingredient.name)
-                                .font(Layout.body)
-                                .tint(.cyan)
+                            Text("Batch")
+                            Image(systemName: "chevron.forward")
                         }
-                    } else {
-                        Text("\(ingredient.ingredient.name)")
-                            .font(Layout.body)
+                        .foregroundStyle(.blueTint)
+                        .font(Layout.header)
+//                        .sheet(isPresented: $isShowingSheet, content: {
+//                            NumberOfCocktailsModal(cocktail: cocktail, isShowingBatchView: $isShowingBatchView, isPresented: $isShowingSheet)
+//                                .presentationDetents([.medium, .large])
+//                                .presentationBackgroundInteraction(.automatic)
+//                                .presentationBackground(.thinMaterial)
+//                        })
+                        
+                       
+                   
+//                        .fullScreenCover(isPresented: $isShowingBatchView) {
+//                            CBCLoadedCocktailView(cocktail: cocktail)
+//                        }
+                        
+                    }
+                    .padding(.bottom, 5)
+                    
+                    ForEach(orderSpec(), id: \.id) { ingredient in
+                        let number = NSNumber(value: ingredient.value)
+                        HStack {
+                            Text("\(number) \(ingredient.unit.rawValue)")
+                                .font(Layout.specMeasurement)
+                            if ingredient.prep != nil {
+                                NavigationLink {
+                                    PrepRecipeView(prep: ingredient.prep!)
+                                } label: {
+                                    Text(ingredient.ingredient.name)
+                                        .font(Layout.body)
+                                        .tint(.cyan)
+                                }
+                            } else {
+                                Text("\(ingredient.ingredient.name)")
+                                    .font(Layout.body)
+                            }
+                        }
                     }
                 }
             }
@@ -513,3 +536,4 @@ struct AuthorView: View {
 //    return RecipeView(viewModel: RecipeViewModel(cocktail: mintJulep))
 //        .modelContainer(preview.container)
 //}
+

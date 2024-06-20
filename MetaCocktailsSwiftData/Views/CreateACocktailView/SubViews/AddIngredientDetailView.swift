@@ -56,8 +56,10 @@ struct AddIngredientDetailView: View {
                             }
                         
                     }
+                    
                     .listStyle(.plain)
                     .listRowBackground(Color.black)
+                    
                 }
                 .scrollContentBackground(.hidden)
                 

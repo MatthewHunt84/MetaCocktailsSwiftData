@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MainBatchView: View {
     @EnvironmentObject var viewModel: CBCViewModel
-    @Binding var quantifiedBatchedIngredients: [BatchedCellData]
     @Binding var cocktailCount: Double
 
     
@@ -51,7 +50,7 @@ struct MainBatchView: View {
             }
             List {
                 ForEach($viewModel.quantifiedBatchedIngredients, id: \.self){ ingredient in
-                    BatchCell(quantifiedBatchedIngredient: ingredient)
+                    BottleBatchCell(quantifiedBatchedIngredient: ingredient)
                 }
             }
             .listStyle(.plain)
@@ -78,7 +77,7 @@ struct MainBatchView: View {
 
 #Preview {
     let previewContainer = PreviewContainer([Cocktail.self])
-    return MainBatchView(quantifiedBatchedIngredients: .constant([]), cocktailCount: .constant(20.0))
+    return MainBatchView( cocktailCount: .constant(20.0))
         .environmentObject(CBCViewModel())
         .modelContainer(previewContainer.container)
 }

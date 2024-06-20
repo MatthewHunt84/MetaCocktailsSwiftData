@@ -20,5 +20,6 @@ struct MetaCocktailsSwiftDataApp: App {
                 //.environmentObject(ViewRouter())
         }
         .modelContainer(CocktailContainer.preload(&shouldPreload))
+        .environmentObject(CBCViewModel())
     }
 }

@@ -139,7 +139,7 @@
 		4D7439902B9E59EA0020C3B8 /* SpecifiedListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D74398F2B9E59EA0020C3B8 /* SpecifiedListView.swift */; };
 		4D7439922B9E5A2A0020C3B8 /* AllCocktailsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7439912B9E5A2A0020C3B8 /* AllCocktailsListView.swift */; };
 		4D7B01752B72BF0A0026FE34 /* MainBatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7B01742B72BF0A0026FE34 /* MainBatchView.swift */; };
-		4D7B01772B72C2260026FE34 /* BatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7B01762B72C2260026FE34 /* BatchCell.swift */; };
+		4D7B01772B72C2260026FE34 /* BottleBatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7B01762B72C2260026FE34 /* BottleBatchCell.swift */; };
 		4D90259C2B6456C0005F44F6 /* French75(WnG).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D90259B2B6456C0005F44F6 /* French75(WnG).swift */; };
 		4D9025A02B645868005F44F6 /* Gibson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D90259F2B645868005F44F6 /* Gibson.swift */; };
 		4D9025A22B6459C0005F44F6 /* GinFizz(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9025A12B6459C0005F44F6 /* GinFizz(W&G).swift */; };
@@ -446,6 +446,10 @@
 		4DE33E1D2B91A8D500312EC3 /* TheBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE33E1C2B91A8D500312EC3 /* TheBusiness.swift */; };
 		4DE33E1F2B91B5DA00312EC3 /* Calvados75.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE33E1E2B91B5DA00312EC3 /* Calvados75.swift */; };
 		4DE33E212B91B82E00312EC3 /* Cosmonaut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE33E202B91B82E00312EC3 /* Cosmonaut.swift */; };
+		4DED94462BE70A34002305C2 /* NumberOfCocktailsModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DED94452BE70A34002305C2 /* NumberOfCocktailsModal.swift */; };
+		4DED94482BE73889002305C2 /* FloatingPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DED94472BE73889002305C2 /* FloatingPromptView.swift */; };
+		4DED944E2C098DBF002305C2 /* SimpleBatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DED944D2C098DBF002305C2 /* SimpleBatchCell.swift */; };
+		4DED94502C0E38BC002305C2 /* EditBatchModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DED944F2C0E38BC002305C2 /* EditBatchModalView.swift */; };
 		4DF408C22B60D0F100EF9A6E /* Caucasian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF408C12B60D0F100EF9A6E /* Caucasian.swift */; };
 		4DF408C62B60D4A100EF9A6E /* ChampsElysees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF408C52B60D4A100EF9A6E /* ChampsElysees.swift */; };
 		4DF408C82B60D71400EF9A6E /* ChampagnCocktail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF408C72B60D71400EF9A6E /* ChampagnCocktail.swift */; };
@@ -629,7 +633,7 @@
 		4D74398F2B9E59EA0020C3B8 /* SpecifiedListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecifiedListView.swift; sourceTree = "<group>"; };
 		4D7439912B9E5A2A0020C3B8 /* AllCocktailsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCocktailsListView.swift; sourceTree = "<group>"; };
 		4D7B01742B72BF0A0026FE34 /* MainBatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBatchView.swift; sourceTree = "<group>"; };
-		4D7B01762B72C2260026FE34 /* BatchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchCell.swift; sourceTree = "<group>"; };
+		4D7B01762B72C2260026FE34 /* BottleBatchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleBatchCell.swift; sourceTree = "<group>"; };
 		4D90259B2B6456C0005F44F6 /* French75(WnG).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "French75(WnG).swift"; sourceTree = "<group>"; };
 		4D90259F2B645868005F44F6 /* Gibson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gibson.swift; sourceTree = "<group>"; };
 		4D9025A12B6459C0005F44F6 /* GinFizz(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GinFizz(W&G).swift"; sourceTree = "<group>"; };
@@ -750,6 +754,7 @@
 		4DA568652B70AF07003F6F04 /* CBCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBCViewModel.swift; sourceTree = "<group>"; };
 		4DA568692B70BC4F003F6F04 /* BlackNWhiteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackNWhiteButton.swift; sourceTree = "<group>"; };
 		4DAF57C22B99365C00FEA72F /* Daiquiri(M&H).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Daiquiri(M&H).swift"; sourceTree = "<group>"; };
+		4DB09A382C23B44A00610C75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4DB1C0B82B46D4E600943C69 /* CocktailComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailComponent.swift; sourceTree = "<group>"; };
 		4DB1C0BB2B46D63300943C69 /* CocktailResultListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailResultListView.swift; sourceTree = "<group>"; };
 		4DB1C0BD2B46D74B00943C69 /* ResultViewSectionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewSectionData.swift; sourceTree = "<group>"; };
@@ -936,6 +941,10 @@
 		4DE33E1C2B91A8D500312EC3 /* TheBusiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheBusiness.swift; sourceTree = "<group>"; };
 		4DE33E1E2B91B5DA00312EC3 /* Calvados75.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calvados75.swift; sourceTree = "<group>"; };
 		4DE33E202B91B82E00312EC3 /* Cosmonaut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cosmonaut.swift; sourceTree = "<group>"; };
+		4DED94452BE70A34002305C2 /* NumberOfCocktailsModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberOfCocktailsModal.swift; sourceTree = "<group>"; };
+		4DED94472BE73889002305C2 /* FloatingPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPromptView.swift; sourceTree = "<group>"; };
+		4DED944D2C098DBF002305C2 /* SimpleBatchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleBatchCell.swift; sourceTree = "<group>"; };
+		4DED944F2C0E38BC002305C2 /* EditBatchModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBatchModalView.swift; sourceTree = "<group>"; };
 		4DF408C12B60D0F100EF9A6E /* Caucasian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caucasian.swift; sourceTree = "<group>"; };
 		4DF408C52B60D4A100EF9A6E /* ChampsElysees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampsElysees.swift; sourceTree = "<group>"; };
 		4DF408C72B60D71400EF9A6E /* ChampagnCocktail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampagnCocktail.swift; sourceTree = "<group>"; };
@@ -1003,7 +1012,8 @@
 			children = (
 				1AC386782AAABED00064F52A /* PreferencesCheckListCell.swift */,
 				4DA567AE2B6CF101003F6F04 /* EightySixCheckListCell.swift */,
-				4D7B01762B72C2260026FE34 /* BatchCell.swift */,
+				4D7B01762B72C2260026FE34 /* BottleBatchCell.swift */,
+				4DED944D2C098DBF002305C2 /* SimpleBatchCell.swift */,
 				4D54F73D2B7B053800D046D9 /* LoadedCocktailIngredientCell.swift */,
 				4D54F7332B795E2700D046D9 /* SplitBatchCell.swift */,
 			);
@@ -1485,9 +1495,12 @@
 			children = (
 				4DA568652B70AF07003F6F04 /* CBCViewModel.swift */,
 				4D7B01742B72BF0A0026FE34 /* MainBatchView.swift */,
+				4DED94452BE70A34002305C2 /* NumberOfCocktailsModal.swift */,
 				4D54F7382B7AFC1200D046D9 /* CBCLoadedCocktailView.swift */,
 				4D54F7312B795AA100D046D9 /* SplitBatchView.swift */,
 				4D54F7372B79FD5B00D046D9 /* Sub Views */,
+				4DED94472BE73889002305C2 /* FloatingPromptView.swift */,
+				4DED944F2C0E38BC002305C2 /* EditBatchModalView.swift */,
 			);
 			path = CocktailBatchingCalculator;
 			sourceTree = "<group>";
@@ -1802,6 +1815,7 @@
 		F4FBF1212AAABBB900BBF7CF /* MetaCocktailsSwiftData */ = {
 			isa = PBXGroup;
 			children = (
+				4DB09A382C23B44A00610C75 /* Info.plist */,
 				1AC3867C2AAABED00064F52A /* Assets.xcassets */,
 				1AC386852AAABED00064F52A /* EntryPoint */,
 				1AC386962AAABED00064F52A /* Views */,
@@ -1948,9 +1962,11 @@
 				4DBBA4602B676F4800179B8F /* Hurricane(W&G).swift in Sources */,
 				4DA567BC2B6DAA3E003F6F04 /* FarewellRide.swift in Sources */,
 				4DBFF8312B5FC6750011B5B1 /* Bijou(W&G).swift in Sources */,
+				4DED94502C0E38BC002305C2 /* EditBatchModalView.swift in Sources */,
 				4DCB17102BA4CFCC0002D7D9 /* TurnPike.swift in Sources */,
 				F4E7F1732BE2E726006B6050 /* RecipeFlipCardView.swift in Sources */,
 				4D5DA0BE2BA145A600C14F1F /* TheSeaplane.swift in Sources */,
+				4DED94462BE70A34002305C2 /* NumberOfCocktailsModal.swift in Sources */,
 				4DCB172E2BA4EB450002D7D9 /* TritterRickey.swift in Sources */,
 				4DA567622B6C6F06003F6F04 /* Vesper(W&G).swift in Sources */,
 				4DBBA4A22B68C11100179B8F /* NewYorkSour.swift in Sources */,
@@ -2107,6 +2123,7 @@
 				4DCB17522BA54AD00002D7D9 /* WeddingPunch.swift in Sources */,
 				4DCB171A2BA4D9220002D7D9 /* French75(M&H).swift in Sources */,
 				4DA567AF2B6CF101003F6F04 /* EightySixCheckListCell.swift in Sources */,
+				4DED94482BE73889002305C2 /* FloatingPromptView.swift in Sources */,
 				4DBFF83B2B6063AC0011B5B1 /* BlueBlazer.swift in Sources */,
 				4DF408CC2B60DDC700EF9A6E /* Chrysanthemum.swift in Sources */,
 				4DBFF81F2B5FB1D70011B5B1 /* Americano.swift in Sources */,
@@ -2231,7 +2248,7 @@
 				4DBBA49C2B68B20200179B8F /* MorningGloryFizz(W&G).swift in Sources */,
 				4DBBA46C2B6796C200179B8F /* JungleBird(WnG).swift in Sources */,
 				1AC386C62AAABED10064F52A /* PrepRecipeView.swift in Sources */,
-				4D7B01772B72C2260026FE34 /* BatchCell.swift in Sources */,
+				4D7B01772B72C2260026FE34 /* BottleBatchCell.swift in Sources */,
 				4DA5679C2B6CD371003F6F04 /* WhatsYourFavorite.swift in Sources */,
 				4DA5677C2B6C928F003F6F04 /* EasyStreet.swift in Sources */,
 				4DA5681C2B6E2819003F6F04 /* Yeen.swift in Sources */,
@@ -2260,6 +2277,7 @@
 				4DBFF8332B6057F60011B5B1 /* BlackManhattan.swift in Sources */,
 				4D1E85CB2B5CA28C00214BC6 /* HeartOfGold.swift in Sources */,
 				4D1E85ED2B5F71B200214BC6 /* AirMail(WilliamsAndGraham).swift in Sources */,
+				4DED944E2C098DBF002305C2 /* SimpleBatchCell.swift in Sources */,
 				4DA567B82B6DA8FD003F6F04 /* EasternDiplomat.swift in Sources */,
 				4D1E85BB2B5C845400214BC6 /* SmokingMonkey.swift in Sources */,
 				4D1E85CF2B5CAB8D00214BC6 /* JeredLetosPrettyFace.swift in Sources */,
@@ -2511,9 +2529,9 @@
 				DEVELOPMENT_TEAM = WK23NQPJ9R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MetaCocktailsSwiftData/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2540,9 +2558,9 @@
 				DEVELOPMENT_TEAM = WK23NQPJ9R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MetaCocktailsSwiftData/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

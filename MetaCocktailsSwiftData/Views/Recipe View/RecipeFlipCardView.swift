@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct RecipeFlipCardView: View {
-    
+    @State private var isShowingFloatingPrompt = false
+    @EnvironmentObject var cBCViewModel: CBCViewModel
     @Bindable var viewModel: RecipeViewModel
     let geo: GeometryProxy // seems like a constant
     var topID: Namespace.ID // isn't going to change, but is it bound?
@@ -33,7 +34,7 @@ struct RecipeFlipCardView: View {
                         
                         GlasswareView(cocktail: viewModel.cocktail)
                         
-                        SpecView(cocktail: viewModel.cocktail)
+                        SpecView(cocktail: viewModel.cocktail, isShowingPrompt: $isShowingFloatingPrompt)
                         
                         GarnishView(cocktail: viewModel.cocktail)
                         
@@ -64,10 +65,19 @@ struct RecipeFlipCardView: View {
                 }
                 
             }
+            .onAppear {
+                print("View model cocktail is \(viewModel.cocktail.cocktailName)")
+                cBCViewModel.chosenCocktail = viewModel.cocktail
+            }
             .frame(minHeight: geo.size.height)
             .rotation3DEffect(Angle(degrees: viewModel.frontDegree), axis: (x: 0, y: 1, z: 0))
             
             backToRecipeViewButton(viewModel: viewModel)
+            
+            if isShowingFloatingPrompt {
+                
+                FloatingPromptView(isActive: $isShowingFloatingPrompt)
+            }
         }
         
     }

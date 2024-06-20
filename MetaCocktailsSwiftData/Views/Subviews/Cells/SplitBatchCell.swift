@@ -16,7 +16,7 @@ struct SplitBatchCell: View {
             Text("\(quantifiedSpiltBatches.ingredientName)")
             Text("\(quantifiedSpiltBatches.splitIngredientAmount)ml")
         }
-        .padding()
+        .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 10))
     }
 }
 
