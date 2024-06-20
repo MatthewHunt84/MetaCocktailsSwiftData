@@ -8,6 +8,7 @@
 import SwiftData
 import SwiftUI
 
+@available(iOS 18, *)
 @Model
 class Cocktail: Equatable, Hashable {
     static func == (lhs: Cocktail, rhs: Cocktail) -> Bool {
@@ -16,6 +17,7 @@ class Cocktail: Equatable, Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(cocktailName)
     }
+    #Index<Cocktail>([\.cocktailName], [\.collectionName], [\.cocktailName, \.collectionName])
     
     var id = UUID()
     @Attribute(.unique) var cocktailName: String
