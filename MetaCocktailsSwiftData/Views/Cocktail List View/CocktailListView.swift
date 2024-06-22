@@ -13,10 +13,6 @@ struct CocktailListView: View {
     
     @Bindable var viewModel = CocktailListViewModel()
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
-    @Query(filter: #Predicate { $0.collectionName.contains("Williams")}, sort: \Cocktail.cocktailName) var williamsAndGrahamCocktials: [Cocktail]
-    @Query(filter: #Predicate { $0.collectionName.contains("Milk")}, sort: \Cocktail.cocktailName) var milkAndHoneyCocktials: [Cocktail]
-    @Query(filter: #Predicate { $0.collectionName.contains("Original")}, sort: \Cocktail.cocktailName) var originalCocktials: [Cocktail]
-    @Query(filter: #Predicate { $0.collectionName.contains("Death & Co.")}, sort: \Cocktail.cocktailName) var deathAndCoCocktails: [Cocktail]
     
     var body: some View {
         
@@ -42,16 +38,20 @@ struct CocktailListView: View {
                                         case .all:
                                             AllCocktailsListView(cocktails: cocktails)
                                         case .deathAndCo:
+                                            let deathAndCoCocktails = cocktails.filter( {$0.collection == .deathAndCo })
                                             SpecifiedListView(viewModel: viewModel, cocktails: deathAndCoCocktails )
                                         case .williamsAndGraham:
-                                            SpecifiedListView(viewModel: viewModel, cocktails: williamsAndGrahamCocktials)
+                                            let williamsAndGrahamCocktails = cocktails.filter( {$0.collection == .williamsAndGraham })
+                                            SpecifiedListView(viewModel: viewModel, cocktails: williamsAndGrahamCocktails)
                                         case .originals:
-                                            SpecifiedListView(viewModel: viewModel, cocktails: originalCocktials)
+                                            let originalCocktails = cocktails.filter( {$0.collection == .originals })
+                                            SpecifiedListView(viewModel: viewModel, cocktails: originalCocktails)
                                         case .milkAndHoney:
-                                            SpecifiedListView(viewModel: viewModel, cocktails: milkAndHoneyCocktials)
+                                            let milkAndHoneyCocktails = cocktails.filter( {$0.collection == .milkAndHoney })
+                                            SpecifiedListView(viewModel: viewModel, cocktails: milkAndHoneyCocktails)
                                         case .custom:
-                                            AllCocktailsListView(cocktails: cocktails)
-                                            
+                                            let customCocktails = cocktails.filter( {$0.collection == .custom })
+                                            AllCocktailsListView(cocktails: customCocktails)
                                         }
                                     }
                                     .listStyle(.plain)
