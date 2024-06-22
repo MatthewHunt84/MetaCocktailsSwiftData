@@ -26,7 +26,6 @@ class Cocktail: Equatable, Hashable {
     var garnish: [Garnish]?
     var ice: Ice?
     var author: Author?
-    //var spec: [CocktailIngredient]
     @Relationship(deleteRule: .cascade) var spec: [CocktailIngredient]
     var buildOrder: Build?
     @Transient var tags: Tags = Tags()
