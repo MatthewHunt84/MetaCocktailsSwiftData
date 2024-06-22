@@ -63,13 +63,7 @@ struct AddIngredientDetailView: View {
                     
                     .listStyle(.plain)
                     .listRowBackground(Color.black)
-                    
-//                    NavigationLink {
-//                        <#code#>
-//                    } label: {
-//                        Text("Create a custom ingredient")
-//                    }
-
+    
                     
                 }
                 .scrollContentBackground(.hidden)
