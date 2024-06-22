@@ -49,8 +49,10 @@ struct SearchResultsView: View {
                             TagView(selectedIngredient.name, .green , "xmark")
                                 .onTapGesture {
                                     withAnimation(.snappy) {
-                                        removePreference(for: selectedIngredient)
+                                        viewModel.removePreference(for: selectedIngredient)
+                                        
                                     }
+                                    viewModel.getFilteredCocktailsSwiftData(for: cocktails)
                                 }
                         }
                     }
@@ -70,9 +72,9 @@ struct SearchResultsView: View {
                             TagView(selectedIngredient.name, .red, "xmark")
                                 .onTapGesture {
                                     withAnimation(.snappy) {
-                                       removeUnwanted(for: selectedIngredient)
+                                        viewModel.removeUnwanted(for: selectedIngredient)
                                     }
-                                    
+                                    viewModel.getFilteredCocktailsSwiftData(for: cocktails)
                                 }
                         }
                     }
@@ -89,7 +91,7 @@ struct SearchResultsView: View {
         .navigationBarTitleDisplayMode(.inline)
         .onAppear() {
             if viewModel.willLoadOnAppear == true {
-                getFilteredCocktailsSwiftData()
+                viewModel.getFilteredCocktailsSwiftData(for: cocktails)
                 
             }
             viewModel.willLoadOnAppear = false
