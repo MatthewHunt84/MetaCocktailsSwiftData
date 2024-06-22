@@ -68,7 +68,7 @@ final class SearchCriteriaViewModel: ObservableObject {
         
         return array.sorted(by: { $0.name < $1.name })
     }()
- 
+
     var searchText: String = ""
     var preferredCount = 0
     var willLoadOnAppear = true
@@ -194,35 +194,30 @@ final class SearchCriteriaViewModel: ObservableObject {
         }
         return matches
     }
-}
-
-// MARK: VIEW MODEL MIGRATION
-
-extension SearchResultsView {
     
-    func getFilteredCocktailsSwiftData()  {
+    func getFilteredCocktailsSwiftData(for cocktails: [Cocktail])  {
         var startingCocktails: [Cocktail] = []
-        viewModel.isLoading = true
-        viewModel.resetSearchCriteria()
-        if viewModel.returnPreferredBaseSpirits().count > 1 {
-            viewModel.multipleBaseSpiritsSelectedToEnableMenu = true
+        isLoading = true
+        resetSearchCriteria()
+        if returnPreferredBaseSpirits().count > 1 {
+            multipleBaseSpiritsSelectedToEnableMenu = true
         } else {
-            viewModel.multipleBaseSpiritsSelectedToEnableMenu = false
+            multipleBaseSpiritsSelectedToEnableMenu = false
         }
         /** First, loop over every cocktail and add any cocktails that don't match any unwanted preferences to create the StartingCocktails array. */
         /// Start with the appropriate set of cocktails for the corresponding mode
         
-        startingCocktails = filterUnwantedCocktails(cocktailComponentArray: viewModel.selectedUnwantedIngredients(), cocktails: cocktails)
+        startingCocktails = filterUnwantedCocktails(cocktailComponentArray: selectedUnwantedIngredients(), cocktails: cocktails)
 
         
         /**loop over the number of preferredCount / 2 and create ResultViewSectionData objects with count and matched numbers filled in but empty cocktail arrays.
          Let's say the preferred count is 5. make one object for 5 matches with the count being 5 and the matched being 5 but and empty cocktail array, one object for 4 matches with the count being 5 and the matched being 4 but and empty cocktail array. Finally, an object for 3 matches with the count being 5 but the matched being 3. No more objects will be made for 2 or 1 because those are less than a 50% match. This means we have the possibility for 3 total sections in the returned ResultViewSectionData. */
         let finalMatchContainers: [ResultViewSectionData] = {
             var dataShells = [ResultViewSectionData]()
-            viewModel.preferredCount = viewModel.selectedPreferredIngredients().count
-            for i in 0...Int(viewModel.preferredCount / 2) {
-                let numberOfMatches = (viewModel.preferredCount - i)
-                dataShells.append(ResultViewSectionData(count: viewModel.preferredCount, matched: numberOfMatches, cocktails: []))
+            preferredCount = selectedPreferredIngredients().count
+            for i in 0...Int(preferredCount / 2) {
+                let numberOfMatches = (preferredCount - i)
+                dataShells.append(ResultViewSectionData(count: preferredCount, matched: numberOfMatches, cocktails: []))
             }
             return dataShells
             
@@ -236,44 +231,50 @@ extension SearchResultsView {
             let _ = finalMatchContainers.map { resultViewSectionData in
                 
                 /** Then we want to match cocktails to sections by calculating the number of components that match the preferred array. */
-                let selectedIngredients = viewModel.preferredIngredients
+                let selectedIngredients = preferredIngredients
 
-                let matches = selectedIngredients.reduce(0, { viewModel.countMatches(currentCount: $0, preferredComponent: $1, cocktailTagsAsStrings: cocktailTagsAsStrings)}) // we hijack this reduce function to make a missing component array
+                let matches = selectedIngredients.reduce(0, { countMatches(currentCount: $0, preferredComponent: $1, cocktailTagsAsStrings: cocktailTagsAsStrings)}) // we hijack this reduce function to make a missing component array
 
                 if resultViewSectionData.matched == matches {
-                    resultViewSectionData.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: viewModel.missingIngredients, cocktail: cocktail))
+                    resultViewSectionData.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: missingIngredients, cocktail: cocktail))
                 }
                 
-                viewModel.missingIngredients.removeAll()
+                missingIngredients.removeAll()
             }
         }
         /** Finally, we then return an array of matching cocktails as an array of ResultSectionViewData objects, checking to make sure the sections aren't empty. */
-        viewModel.sections.append(contentsOf: finalMatchContainers.filter({ !$0.cocktails.isEmpty}))
+        sections.append(contentsOf: finalMatchContainers.filter({ !$0.cocktails.isEmpty}))
         
         /** (alternatively we do the same thing with compactMap and just cast the non-matches as optionals and compactMap will remove them for us)
          i.e.
          sections = finalMatchContainers.compactMap { resultSectionData in
          return resultSectionData.cocktails.isEmpty ? nil : resultSectionData } */
-        viewModel.isLoading = false
+        isLoading = false
     }
-
     
-    // we had to move this into the view because it calls getFilteredCocktailsSwiftData() which can't be a static var.
     func removePreference(for component: CocktailComponent) {
         // When we click a green bubble to remove a preferred tag, we change the data and the UI updates.
         
-        viewModel.preferredCount -= 1
-        let cocktailComponent = viewModel.cocktailComponents.filter ({ $0.id == component.id })
+        preferredCount -= 1
+        let cocktailComponent = cocktailComponents.filter ({ $0.id == component.id })
         cocktailComponent.first?.isPreferred = false
-        getFilteredCocktailsSwiftData()
+        
     }
     
     // we had to move this into the view because it calls getFilteredCocktailsSwiftData() which can't be a static var.
     func removeUnwanted(for component: CocktailComponent) {
         // When we click a red bubble to remove an unwanted tag, we change the data and the UI updates.
-        let cocktailComponent = viewModel.cocktailComponents.filter ({ $0.id == component.id })
+        let cocktailComponent = cocktailComponents.filter ({ $0.id == component.id })
         cocktailComponent.first?.isUnwanted = false
-        getFilteredCocktailsSwiftData()
+        
+    }
+    
+    func filterUnwantedCocktails(cocktailComponentArray: [CocktailComponent], cocktails: [Cocktail]) -> [Cocktail] {
+        cocktails.filter { cocktail in
+            cocktailComponentArray.allSatisfy { unwantedComponent in
+                !convertTagsAndSpecToStrings(for: cocktail).contains(unwantedComponent.name)
+            }
+        }
     }
     
     func convertTagsAndSpecToStrings(for cocktail: Cocktail) -> [String] {
@@ -296,12 +297,5 @@ extension SearchResultsView {
         }
         return Array(Set(strings))
     }
-    
-    func filterUnwantedCocktails(cocktailComponentArray: [CocktailComponent], cocktails: [Cocktail]) -> [Cocktail] {
-        cocktails.filter { cocktail in
-            cocktailComponentArray.allSatisfy { unwantedComponent in
-                !convertTagsAndSpecToStrings(for: cocktail).contains(unwantedComponent.name)
-            }
-        }
-    }
 }
+
