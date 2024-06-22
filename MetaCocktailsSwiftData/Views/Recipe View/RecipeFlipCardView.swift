@@ -66,7 +66,6 @@ struct RecipeFlipCardView: View {
                 
             }
             .onAppear {
-                print("View model cocktail is \(viewModel.cocktail.cocktailName)")
                 cBCViewModel.chosenCocktail = viewModel.cocktail
             }
             .frame(minHeight: geo.size.height)
