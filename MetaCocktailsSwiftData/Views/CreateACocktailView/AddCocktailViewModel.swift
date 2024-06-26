@@ -14,6 +14,7 @@ import Observation
     //AddIngredientView
     var isShowingingredientAlert: Bool = false
     var ingredientName = ""
+    var customIngredientName = ""
     var ingredientAmount = 0.0
     var ingredientType: IngredientType = IngredientType.agaves(.tequilaAny)
     var selectedMeasurementUnit = MeasurementUnit.fluidOunces
@@ -71,6 +72,7 @@ import Observation
     }
     func clearIngredientData() {
         ingredientName = ""
+        customIngredientName = ""
         ingredientAmount = 0
         selectedMeasurementUnit = .fluidOunces
     }
@@ -90,7 +92,7 @@ import Observation
             }
         }
         
-        return IngredientType.seasoning(.nutmeg)
+        return IngredientType.customIngredients(.customIngredient)
     }
     
     
@@ -101,6 +103,10 @@ import Observation
     func ingredientIsValid() -> Bool {
         
         return ingredientAmount != 0.0 && ingredientName != ""
+    }
+    
+    func customIngredientIsValid() -> Bool {
+        return ingredientAmount != 0.0 && customIngredientName != ""
     }
     // Can't add cocktail alert
     

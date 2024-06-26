@@ -372,6 +372,7 @@
 		4DBFF8572B60AAFB0011B5B1 /* CableCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8562B60AAFB0011B5B1 /* CableCar.swift */; };
 		4DBFF8592B60AD800011B5B1 /* CableCar(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8582B60AD800011B5B1 /* CableCar(W&G).swift */; };
 		4DBFF85B2B60AFE60011B5B1 /* Carajillo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF85A2B60AFE60011B5B1 /* Carajillo.swift */; };
+		4DC420202C28C26500B0F88E /* CustomIngredientModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4201F2C28C26500B0F88E /* CustomIngredientModalView.swift */; };
 		4DCB16F62BA239D60002D7D9 /* StreetAndFlynnSpecial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB16F52BA239D60002D7D9 /* StreetAndFlynnSpecial.swift */; };
 		4DCB16F82BA249800002D7D9 /* SugarPlum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB16F72BA249800002D7D9 /* SugarPlum.swift */; };
 		4DCB16FA2BA24A620002D7D9 /* SuttersMill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB16F92BA24A620002D7D9 /* SuttersMill.swift */; };
@@ -866,6 +867,7 @@
 		4DBFF8562B60AAFB0011B5B1 /* CableCar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CableCar.swift; sourceTree = "<group>"; };
 		4DBFF8582B60AD800011B5B1 /* CableCar(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CableCar(W&G).swift"; sourceTree = "<group>"; };
 		4DBFF85A2B60AFE60011B5B1 /* Carajillo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carajillo.swift; sourceTree = "<group>"; };
+		4DC4201F2C28C26500B0F88E /* CustomIngredientModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomIngredientModalView.swift; sourceTree = "<group>"; };
 		4DCB16F52BA239D60002D7D9 /* StreetAndFlynnSpecial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetAndFlynnSpecial.swift; sourceTree = "<group>"; };
 		4DCB16F72BA249800002D7D9 /* SugarPlum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SugarPlum.swift; sourceTree = "<group>"; };
 		4DCB16F92BA24A620002D7D9 /* SuttersMill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuttersMill.swift; sourceTree = "<group>"; };
@@ -1465,6 +1467,7 @@
 				4D5DA08D2B9E8E6A00C14F1F /* AddBuildStepDetailView.swift */,
 				4D5DA0952B9EB43600C14F1F /* AddedIngredientView.swift */,
 				4D5DA0972B9EB46E00C14F1F /* AddBuildStepView.swift */,
+				4DC4201F2C28C26500B0F88E /* CustomIngredientModalView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -2006,6 +2009,7 @@
 				4DF408C62B60D4A100EF9A6E /* ChampsElysees.swift in Sources */,
 				F4C5C3E12B3B3F2E005B2261 /* IngredientType.swift in Sources */,
 				4DE33E072B915E5C00312EC3 /* Bensonhurst.swift in Sources */,
+				4DC420202C28C26500B0F88E /* CustomIngredientModalView.swift in Sources */,
 				4DA567E82B6DD90A003F6F04 /* MadusasFang.swift in Sources */,
 				4DBBA48E2B68963200179B8F /* Mezcalero.swift in Sources */,
 				4DBFF8232B5FB71E0011B5B1 /* ArmyNavy.swift in Sources */,

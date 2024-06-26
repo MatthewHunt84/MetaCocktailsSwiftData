@@ -30,6 +30,8 @@ enum IngredientType: Codable{
     case bitters(Bitters)
     case amari(Amaro)
     
+    case customIngredients(CustomIngredient)
+    
 
     
     var tags: Tags {
@@ -73,7 +75,11 @@ enum IngredientType: Codable{
             return bitters.tags
         case .amari(let amaro):
             return amaro.tags
+        case .customIngredients(let customIngredient):
+            return customIngredient.tags
         }
+ 
+  
     }
     
     var name: String {
@@ -116,6 +122,8 @@ enum IngredientType: Codable{
             return bitters.rawValue
         case .amari(let amaro):
             return amaro.rawValue
+        case .customIngredients(let customIngredient):
+            return customIngredient.rawValue
         }
     }
     
@@ -160,8 +168,38 @@ enum IngredientType: Codable{
             return "Bitters"
         case .amari:
             return "Amari"
+        case .customIngredients:
+            return "Custom Ingredient"
         }
+    
     }
+}
+
+enum IngredientCategory: String, Codable, CaseIterable  {
+    
+    case syrups            = "Syrup"
+    case juices            = "Juice"
+    case herbs             = "Herbs"
+    case fruit             = "Fruit"
+    case seasoning         = "Seasoning"
+    case soda              = "Sodas"
+    case otherNonAlc       = "Other N/A"
+    case agaves            = "Agave"
+    case brandies          = "Brandy"
+    case gins              = "Gin"
+    case otherAlcohol      = "Other Alcohol"
+    case rums              = "Rum"
+    case vodkas            = "Vodka"
+    case whiskies          = "Whiskies"
+    case liqueurs          = "Liqueurs"
+    case fortifiedWines    = "Fortified Wine"
+    case wines             = "Wine"
+    case bitters           = "Bitters"
+    case amari             = "Amari"
+    case customIngredients = "Custom Ingredient"
+    
+    
+    
 }
 
 enum MeasurementUnit: String, Codable, CaseIterable {

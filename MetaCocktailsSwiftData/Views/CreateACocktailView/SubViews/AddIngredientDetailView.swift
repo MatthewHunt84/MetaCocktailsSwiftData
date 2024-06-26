@@ -11,8 +11,12 @@ struct AddIngredientDetailView: View {
     
     @Bindable var viewModel: AddCocktailViewModel
     @FocusState private var keyboardFocused: Bool
+    @FocusState private var customIngredientKeyboardFocused: Bool
     @FocusState private var amountKeyboardFocus: Bool
     @Environment(\.dismiss) private var dismiss
+    @State private var isShowingCustomIngredientModal = false
+    @State private var isShowingCustomIngredientTextField = false
+    
     
     var body: some View {
         ZStack{
@@ -63,7 +67,21 @@ struct AddIngredientDetailView: View {
                     
                     .listStyle(.plain)
                     .listRowBackground(Color.black)
-    
+                    if viewModel.ingredientName != "" {
+                        Button {
+                            isShowingCustomIngredientTextField.toggle()
+                        } label: {
+                            Text("Create Custom Ingredient")
+                        }
+                        .buttonStyle(BlackNWhiteButton())
+                        
+                        .listRowBackground(Color.black)
+                    }
+                    if isShowingCustomIngredientTextField {
+                        
+                        TextField("Enter Ingredient Name", text: $viewModel.customIngredientName)
+                    }
+
                     
                 }
                 .scrollContentBackground(.hidden)
@@ -91,14 +109,26 @@ struct AddIngredientDetailView: View {
                 }
                 
                 Button {
-                    if viewModel.ingredientIsValid() {
-                        viewModel.addedIngredients.append(CocktailIngredient(viewModel.validateCurrentSelectedComponent(for: viewModel.currentSelectedComponent),
-                                                                             value: viewModel.ingredientAmount, 
-                                                                             unit: viewModel.selectedMeasurementUnit))
-                        viewModel.clearIngredientData()
-                        dismiss()
+                    if viewModel.customIngredientName == "" {
+                        if viewModel.ingredientIsValid() {
+                            viewModel.addedIngredients.append(CocktailIngredient(viewModel.validateCurrentSelectedComponent(
+                                for: viewModel.currentSelectedComponent),
+                                                                                 value: viewModel.ingredientAmount,
+                                                                                 unit: viewModel.selectedMeasurementUnit))
+                            viewModel.clearIngredientData()
+                            dismiss()
+                        } else {
+                            viewModel.isShowingingredientAlert.toggle()
+                        }
                     } else {
-                        viewModel.isShowingingredientAlert.toggle()
+                        if viewModel.customIngredientIsValid() {
+                            viewModel.addedIngredients.append(CocktailIngredient(IngredientType.customIngredients(.customIngredient), value: viewModel.ingredientAmount, unit: viewModel.selectedMeasurementUnit, name: viewModel.customIngredientName))
+                            
+                            viewModel.clearIngredientData()
+                            dismiss()
+                        } else {
+                            viewModel.isShowingingredientAlert.toggle()
+                        }
                     }
                     
                 } label: {
