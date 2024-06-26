@@ -23,7 +23,7 @@ struct AddedIngredientView: View {
                     if ingredient.ingredient.name != "Custom Ingredient" {
                         Text("\(NSNumber(value: ingredient.value)) \(ingredient.unit.rawValue) \(ingredient.ingredient.name)")
                     } else {
-                        Text("\(NSNumber(value: ingredient.value)) \(ingredient.unit.rawValue) \(ingredient.name!)")
+                        Text("\(NSNumber(value: ingredient.value)) \(ingredient.unit.rawValue) \(ingredient.customIngredientName!)")
                     }
                     
                 }

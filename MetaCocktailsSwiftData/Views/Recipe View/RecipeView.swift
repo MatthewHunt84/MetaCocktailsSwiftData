@@ -373,7 +373,7 @@ struct SpecView: View {
                             HStack {
                                 Text("\(number) \(ingredient.unit.rawValue)")
                                     .font(Layout.specMeasurement)
-                                if let name = ingredient.name {
+                                if let name = ingredient.customIngredientName {
                                     Text("\(name)")
                                         .font(Layout.body)
                                 }

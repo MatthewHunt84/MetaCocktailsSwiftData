@@ -61,8 +61,8 @@ final class CBCViewModel: ObservableObject {
         for ingredient in loadedCocktailData.ingredients {
             
             if ingredient.isIncluded {
-                var ingredientName = {
-                    if let name = ingredient.ingredient.name {
+                let ingredientName = {
+                    if let name = ingredient.ingredient.customIngredientName {
                         return name
                     }
                     return ingredient.ingredient.ingredient.name

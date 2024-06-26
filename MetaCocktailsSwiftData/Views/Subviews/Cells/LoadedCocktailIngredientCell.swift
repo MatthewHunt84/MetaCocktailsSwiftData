@@ -16,10 +16,10 @@ struct LoadedCocktailIngredientCell: View {
     
     var body: some View {
         HStack {
-            if ingredient.ingredient.name == nil {
+            if ingredient.ingredient.customIngredientName == nil {
                 Text("\(ingredient.ingredient.ingredient.name)")
             } else {
-                if let name = ingredient.ingredient.name {
+                if let name = ingredient.ingredient.customIngredientName {
                     Text("\(name)")
                 }
             }

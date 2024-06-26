@@ -17,7 +17,7 @@ class CocktailIngredient: Codable, Hashable {
     let value: Double
     let unit: MeasurementUnit
     let prep: Prep?
-    let name: String?
+    let customIngredientName: String?
     
     
     init(_ ingredient: IngredientType, value: Double, unit: MeasurementUnit = .fluidOunces, prep: Prep? = nil, name: String? = nil) {
@@ -26,7 +26,7 @@ class CocktailIngredient: Codable, Hashable {
         self.unit = unit
         self.id = UUID()
         self.prep = prep
-        self.name = {
+        self.customIngredientName = {
             if ingredient.name != CustomIngredient.customIngredient.rawValue{
                 return ingredient.name
             } else {
