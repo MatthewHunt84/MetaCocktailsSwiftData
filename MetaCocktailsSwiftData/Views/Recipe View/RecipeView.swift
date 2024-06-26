@@ -350,20 +350,33 @@ struct SpecView: View {
                     
                     ForEach(orderSpec(), id: \.id) { ingredient in
                         let number = NSNumber(value: ingredient.value)
-                        HStack {
-                            Text("\(number) \(ingredient.unit.rawValue)")
-                                .font(Layout.specMeasurement)
-                            if ingredient.prep != nil {
-                                NavigationLink {
-                                    PrepRecipeView(prep: ingredient.prep!)
-                                } label: {
-                                    Text(ingredient.ingredient.name)
+                        
+                        if ingredient.ingredient.name != "Custom Ingredient" {
+                            HStack {
+                                Text("\(number) \(ingredient.unit.rawValue)")
+                                    .font(Layout.specMeasurement)
+                                
+                                if ingredient.prep != nil {
+                                    NavigationLink {
+                                        PrepRecipeView(prep: ingredient.prep!)
+                                    } label: {
+                                        Text(ingredient.ingredient.name)
+                                            .font(Layout.body)
+                                            .tint(.cyan)
+                                    }
+                                } else {
+                                    Text("\(ingredient.ingredient.name)")
                                         .font(Layout.body)
-                                        .tint(.cyan)
                                 }
-                            } else {
-                                Text("\(ingredient.ingredient.name)")
-                                    .font(Layout.body)
+                            }
+                        } else {
+                            HStack {
+                                Text("\(number) \(ingredient.unit.rawValue)")
+                                    .font(Layout.specMeasurement)
+                                if let name = ingredient.name {
+                                    Text("\(name)")
+                                        .font(Layout.body)
+                                }
                             }
                         }
                     }
@@ -395,6 +408,7 @@ struct SpecView: View {
         orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredient.category == "Other Alcohol"}))
         orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredient.category == "Sodas"}))
         orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredient.category == "Wine"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredient.category == "Custom Ingredient"}))
         
         return orderedSpec
     }

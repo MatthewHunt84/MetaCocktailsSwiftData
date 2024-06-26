@@ -13,6 +13,7 @@ struct SimpleBatchCell: View {
     
     var body: some View {
         HStack{
+            
             Text(quantifiedBatchedIngredient.ingredientName)
             Spacer()
             Text("\(quantifiedBatchedIngredient.totalMls)ml")

@@ -53,13 +53,20 @@ final class CBCViewModel: ObservableObject {
     
     
     func convertIngredientsToBatchCellData()  {
+    
+        
         var quantifiableIngredients = [BottleBatchedCellData]()
         var totalVolume = 0.0
         var ingredientVolume = 0.0
         for ingredient in loadedCocktailData.ingredients {
             
             if ingredient.isIncluded {
-                
+                var ingredientName = {
+                    if let name = ingredient.ingredient.name {
+                        return name
+                    }
+                    return ingredient.ingredient.ingredient.name
+                }()
                 var modifiedMeasurement = 0.0
                 /// go through all the modified measurement units and calculate the difference to oz conversion to later be converted into mls.
                 
@@ -80,7 +87,7 @@ final class CBCViewModel: ObservableObject {
                 }
                 
                 totalVolume += ingredientVolume
-                quantifiableIngredients.append(BottleBatchedCellData(ingredientName: ingredient.ingredient.ingredient.name,
+                quantifiableIngredients.append(BottleBatchedCellData(ingredientName: ingredientName,
                                                                whole1LBottles: (ingredientVolume / 1000).rounded(.down),
                                                                remaining1LMls: Int(ingredientVolume.truncatingRemainder(dividingBy: 1000)),
                                                                whole750mlBottles: (ingredientVolume / 750).rounded(.down),
