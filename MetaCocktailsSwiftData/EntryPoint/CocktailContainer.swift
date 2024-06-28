@@ -26,7 +26,7 @@ actor CocktailContainer {
                 let _ = Preload.allCases.map { $0.cocktails }
                                         .flatMap { $0 }
                                         .map { container.mainContext.insert($0) }
-
+// let newModelArray = createNewModelArray()
                 shouldPreload = false
             } else {
                 print("✅✅✅ COCKTAILS LOADED FROM DATABASE ✅✅✅")
@@ -36,7 +36,27 @@ actor CocktailContainer {
         } catch {
             fatalError("💀💀💀 MODEL CONTAINER FAILED TO INITIALIZE 💀💀💀")
         }
+        // MARK: FUNCTION FOR COCKTAIL CONVERSION
+        
         
 
+    }
+    
+    func createNewModelArray() {
+        // return an array of new model objects, but only for the first case just to make sure it works 
+        // get all the cocktails (line 26)
+        let allCocktails = Preload.allCases.map { $0.cocktails }
+                                .flatMap { $0 }
+                       
+        let ingredientsForCocktail = allCocktails.map { $0.spec }
+        
+        for oldIngredient in ingredientsForCocktail {
+            //ForEach map
+            //let name = name
+            // let measurement unit = measurement unit
+            // let value = value
+            // let category = Switch ingredient type to get category and name. The switch will only have one case
+        }
+        
     }
 }
