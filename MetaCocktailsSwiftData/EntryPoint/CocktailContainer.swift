@@ -15,6 +15,8 @@ actor CocktailContainer {
     static func preload(_ shouldPreload: inout Bool) -> ModelContainer {
         let schema = Schema([Cocktail.self])
         let config = ModelConfiguration()
+        var newIngredients: [Ingredient] = []
+        
         do {
             let container = try ModelContainer(for: schema, configurations: config)
             
@@ -31,32 +33,19 @@ actor CocktailContainer {
                 let allCocktails = Preload.allCases.map { $0.cocktails }
                     .flatMap { $0 }
                 
-                
-                
-                var newIngredients: [Ingredient] = []
                 for cocktail in allCocktails {
-                    
                     for ingredient in cocktail.spec {
-                        
                         if ingredient.ingredient.category == "Vodka"{
-                            
                             //                let category = Switch ingredient type to get category and name. The switch will only have one case
                             // I couldn't figure out how to do the switch statement on IngredientType. 😔
-                            
-                            
-                            
                             newIngredients.append(Ingredient(ingredient.ingredient.name,
                                                              ingredientCategory: IngredientCategory.vodkas,
                                                              tagsWithSubcategories: ingredient.ingredient.tags,
                                                              value: ingredient.value,
                                                              unit: ingredient.unit,
                                                              prep: ingredient.prep))
-                            
                         }
                     }
-                    
-                    
-                    
                 }
                 for ingredient in newIngredients {
                     print("Ingredient is \(ingredient.name), value is \(ingredient.value)")
