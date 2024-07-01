@@ -65,39 +65,27 @@ actor CocktailContainer {
         
         
     }
-    
+    // MARK: We can't reference this function within the preload function.
     func createNewModelArray() -> [Ingredient]{
         // return an array of new model objects, but only for the first case just to make sure it works
         // get all the cocktails (line 26)
         let allCocktails = Preload.allCases.map { $0.cocktails }
             .flatMap { $0 }
-        
-        
-        
         var newIngredients: [Ingredient] = []
         for cocktail in allCocktails {
-            
             for ingredient in cocktail.spec {
-                
                 if ingredient.ingredient.category == "Vodka"{
                     
                     //                let category = Switch ingredient type to get category and name. The switch will only have one case
                     // I couldn't figure out how to do the switch statement on IngredientType. 😔
-                    
-                    
-                    
                     newIngredients.append(Ingredient(ingredient.ingredient.name,
                                                      ingredientCategory: IngredientCategory.vodkas,
                                                      tagsWithSubcategories: ingredient.ingredient.tags,
                                                      value: ingredient.value,
                                                      unit: ingredient.unit,
                                                      prep: ingredient.prep))
-                    
                 }
             }
-            
-            
-            
         }
         for ingredient in newIngredients {
             print("Ingredient is \(ingredient.name), value is \(ingredient.value)")
