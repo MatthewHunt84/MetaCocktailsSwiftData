@@ -27,7 +27,7 @@ actor CocktailContainer {
                     .flatMap { $0 }
                     .map { container.mainContext.insert($0) }
                 
-                let arrayOfNewIngredientsThatOnlyMatchesVodkaAndLabelsEverythingElseAsSyrup = CocktailContainer.createNewModelArray()
+                let arrayOfNewIngredients = CocktailContainer.createNewModelArray()
                 
                 shouldPreload = false
             } else {
@@ -59,9 +59,128 @@ actor CocktailContainer {
                                value: $0.value,
                                unit: $0.unit,
                                prep: $0.prep)
-                default:
+                case .syrups:
                     Ingredient($0.ingredient.name,
                                ingredientCategory: Category.syrups,
+                               tagsWithSubcategories: $0.ingredient.tags,
+                               value: $0.value,
+                               unit: $0.unit,
+                               prep: $0.prep)
+                case .juices:
+                    Ingredient($0.ingredient.name,
+                               ingredientCategory: Category.juices,
+                               tagsWithSubcategories: $0.ingredient.tags,
+                               value: $0.value,
+                               unit: $0.unit,
+                               prep: $0.prep)
+                case .herbs:
+                    Ingredient($0.ingredient.name,
+                               ingredientCategory: Category.herbs,
+                               tagsWithSubcategories: $0.ingredient.tags,
+                               value: $0.value,
+                               unit: $0.unit,
+                               prep: $0.prep)
+                case .fruit:
+                    Ingredient($0.ingredient.name,
+                               ingredientCategory: Category.fruit,
+                               tagsWithSubcategories: $0.ingredient.tags,
+                               value: $0.value,
+                               unit: $0.unit,
+                               prep: $0.prep)
+                case .seasoning:
+                    Ingredient($0.ingredient.name,
+                               ingredientCategory: Category.seasoning,
+                               tagsWithSubcategories: $0.ingredient.tags,
+                               value: $0.value,
+                               unit: $0.unit,
+                               prep: $0.prep)
+                case .soda:
+                    Ingredient($0.ingredient.name,
+                               ingredientCategory: Category.soda,
+                               tagsWithSubcategories: $0.ingredient.tags,
+                               value: $0.value,
+                               unit: $0.unit,
+                               prep: $0.prep)
+                case .otherNonAlc:
+                    Ingredient($0.ingredient.name,
+                               ingredientCategory: Category.otherNonAlc,
+                               tagsWithSubcategories: $0.ingredient.tags,
+                               value: $0.value,
+                               unit: $0.unit,
+                               prep: $0.prep)
+                case .agaves:
+                    Ingredient($0.ingredient.name,
+                               ingredientCategory: Category.agaves,
+                               tagsWithSubcategories: $0.ingredient.tags,
+                               value: $0.value,
+                               unit: $0.unit,
+                               prep: $0.prep)
+                case .brandies:
+                    Ingredient($0.ingredient.name,
+                               ingredientCategory: Category.brandies,
+                               tagsWithSubcategories: $0.ingredient.tags,
+                               value: $0.value,
+                               unit: $0.unit,
+                               prep: $0.prep)
+                case .gins:
+                    Ingredient($0.ingredient.name,
+                               ingredientCategory: Category.gins,
+                               tagsWithSubcategories: $0.ingredient.tags,
+                               value: $0.value,
+                               unit: $0.unit,
+                               prep: $0.prep)
+                case .otherAlcohol:
+                    Ingredient($0.ingredient.name,
+                               ingredientCategory: Category.otherAlcohol,
+                               tagsWithSubcategories: $0.ingredient.tags,
+                               value: $0.value,
+                               unit: $0.unit,
+                               prep: $0.prep)
+                case .rums:
+                    Ingredient($0.ingredient.name,
+                               ingredientCategory: Category.rums,
+                               tagsWithSubcategories: $0.ingredient.tags,
+                               value: $0.value,
+                               unit: $0.unit,
+                               prep: $0.prep)
+                case .whiskies:
+                    Ingredient($0.ingredient.name,
+                               ingredientCategory: Category.whiskies,
+                               tagsWithSubcategories: $0.ingredient.tags,
+                               value: $0.value,
+                               unit: $0.unit,
+                               prep: $0.prep)
+                case .liqueurs:
+                    Ingredient($0.ingredient.name,
+                               ingredientCategory: Category.liqueurs,
+                               tagsWithSubcategories: $0.ingredient.tags,
+                               value: $0.value,
+                               unit: $0.unit,
+                               prep: $0.prep)
+                case .fortifiedWines:
+                    Ingredient($0.ingredient.name,
+                               ingredientCategory: Category.fortifiedWines,
+                               tagsWithSubcategories: $0.ingredient.tags,
+                               value: $0.value,
+                               unit: $0.unit,
+                               prep: $0.prep)
+                case .wines:
+                    Ingredient($0.ingredient.name,
+                               ingredientCategory: Category.wines,
+                               tagsWithSubcategories: $0.ingredient.tags,
+                               value: $0.value,
+                               unit: $0.unit,
+                               prep: $0.prep)
+                case .bitters:
+                    Ingredient($0.ingredient.name,
+                               ingredientCategory: Category.bitters,
+                               tagsWithSubcategories: $0.ingredient.tags,
+                               value: $0.value,
+                               unit: $0.unit,
+                               prep: $0.prep)
+                case .amari:
+                    Ingredient($0.ingredient.name,
+                               ingredientCategory: Category.amari,
                                tagsWithSubcategories: $0.ingredient.tags,
                                value: $0.value,
                                unit: $0.unit,
@@ -69,7 +188,7 @@ actor CocktailContainer {
                 }
             }
     
-        for ingredient in newIngredients where ingredient.category == .vodkas {
+        for ingredient in newIngredients  {
             print("Ingredient is \(ingredient.name), category is \(ingredient.category)")
         }
         
