@@ -26,7 +26,7 @@ class Cocktail: Equatable, Hashable {
     var garnish: [Garnish]?
     var ice: Ice?
     var author: Author?
-    @Relationship(deleteRule: .cascade) var spec: [CocktailIngredient]
+    @Relationship(deleteRule: .cascade) var spec: [Ingredient]
     var buildOrder: Build?
     @Transient var tags: Tags = Tags()
     var compiledTags: Tags = Tags()
@@ -45,7 +45,7 @@ class Cocktail: Equatable, Hashable {
         self.garnish = garnish
         self.ice = ice
         self.author = author
-        self.spec = spec
+        self.spec = spec.map { Ingredient(oldIngredient: $0) }
         self.buildOrder = buildOrder
         self.tags = tags
         self.variation = variation

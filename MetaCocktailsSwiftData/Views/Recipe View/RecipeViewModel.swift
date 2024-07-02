@@ -44,10 +44,10 @@ import Observation
         }
     }
     
-    func findPrepItems() -> [CocktailIngredient] {
-        var prepItems: [CocktailIngredient] = []
+    func findPrepItems() -> [Ingredient] {
+        var prepItems: [Ingredient] = []
         for ingredient in cocktail.spec {
-            if ingredient.ingredient.name == Syrup.honeySyrup.rawValue || ingredient.ingredient.name == Syrup.agaveSyrup.rawValue || ingredient.ingredient.name == Syrup.cinnamonSyrup.rawValue || ingredient.ingredient.name == Syrup.cucumberSyrup.rawValue || ingredient.ingredient.name == Syrup.gingerSyrup.rawValue || ingredient.ingredient.name == Syrup.grapefruitShrub.rawValue || ingredient.ingredient.name == Syrup.grenadine.rawValue || ingredient.ingredient.name == Syrup.morenthalersGingerSyrup.rawValue || ingredient.ingredient.name == Syrup.orgeat.rawValue || ingredient.ingredient.name == Syrup.passionfruitSyrup.rawValue || ingredient.ingredient.name == Syrup.raspberrySyrup.rawValue || ingredient.ingredient.name == Syrup.richDem.rawValue || ingredient.ingredient.name == Syrup.richSimple.rawValue || ingredient.ingredient.name == Syrup.vanilla.rawValue || ingredient.ingredient.name == Vodka.peanutButterVodka.rawValue {
+            if ingredient.name == Syrup.honeySyrup.rawValue || ingredient.name == Syrup.agaveSyrup.rawValue || ingredient.name == Syrup.cinnamonSyrup.rawValue || ingredient.name == Syrup.cucumberSyrup.rawValue || ingredient.name == Syrup.gingerSyrup.rawValue || ingredient.name == Syrup.grapefruitShrub.rawValue || ingredient.name == Syrup.grenadine.rawValue || ingredient.name == Syrup.morenthalersGingerSyrup.rawValue || ingredient.name == Syrup.orgeat.rawValue || ingredient.name == Syrup.passionfruitSyrup.rawValue || ingredient.name == Syrup.raspberrySyrup.rawValue || ingredient.name == Syrup.richDem.rawValue || ingredient.name == Syrup.richSimple.rawValue || ingredient.name == Syrup.vanilla.rawValue || ingredient.name == Vodka.peanutButterVodka.rawValue {
                 prepItems.append(ingredient)
             }
     }
