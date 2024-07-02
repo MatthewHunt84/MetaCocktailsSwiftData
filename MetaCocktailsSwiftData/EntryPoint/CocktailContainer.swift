@@ -15,7 +15,6 @@ actor CocktailContainer {
     static func preload(_ shouldPreload: inout Bool) -> ModelContainer {
         let schema = Schema([Cocktail.self])
         let config = ModelConfiguration()
-        var newIngredients: [Ingredient] = []
         
         do {
             let container = try ModelContainer(for: schema, configurations: config)
@@ -23,33 +22,12 @@ actor CocktailContainer {
             if shouldPreload {
                 print("🕔🕔🕔 PRELOADING COCKTAILS FOR FIRST TIME LAUNCH 🕔🕔🕔")
                 
-                    // container.mainContext.insert(aloeForThatBurn)
                 
                 let _ = Preload.allCases.map { $0.cocktails }
                     .flatMap { $0 }
                     .map { container.mainContext.insert($0) }
-//                let newModelArray: [Ingredient] = createNewModelArray()
                 
-                let allCocktails = Preload.allCases.map { $0.cocktails }
-                    .flatMap { $0 }
-                
-                for cocktail in allCocktails {
-                    for ingredient in cocktail.spec {
-                        if ingredient.ingredient.category == "Vodka"{
-                            //                let category = Switch ingredient type to get category and name. The switch will only have one case
-                            // I couldn't figure out how to do the switch statement on IngredientType. 😔
-                            newIngredients.append(Ingredient(ingredient.ingredient.name,
-                                                             ingredientCategory: IngredientCategory.vodkas,
-                                                             tagsWithSubcategories: ingredient.ingredient.tags,
-                                                             value: ingredient.value,
-                                                             unit: ingredient.unit,
-                                                             prep: ingredient.prep))
-                        }
-                    }
-                }
-                for ingredient in newIngredients {
-                    print("Ingredient is \(ingredient.name), value is \(ingredient.value)")
-                }
+                let arrayOfNewIngredientsThatOnlyMatchesVodkaAndLabelsEverythingElseAsSyrup = CocktailContainer.createNewModelArray()
                 
                 shouldPreload = false
             } else {
@@ -65,30 +43,34 @@ actor CocktailContainer {
         
         
     }
-    // MARK: We can't reference this function within the preload function.
-    func createNewModelArray() -> [Ingredient]{
-        // return an array of new model objects, but only for the first case just to make sure it works
-        // get all the cocktails (line 26)
-        let allCocktails = Preload.allCases.map { $0.cocktails }
+
+    static func createNewModelArray() -> [Ingredient] {
+        let newIngredients: [Ingredient] = Preload.allCases
+            .map { $0.cocktails }
             .flatMap { $0 }
-        var newIngredients: [Ingredient] = []
-        for cocktail in allCocktails {
-            for ingredient in cocktail.spec {
-                if ingredient.ingredient.category == "Vodka"{
-                    
-                    //                let category = Switch ingredient type to get category and name. The switch will only have one case
-                    // I couldn't figure out how to do the switch statement on IngredientType. 😔
-                    newIngredients.append(Ingredient(ingredient.ingredient.name,
-                                                     ingredientCategory: IngredientCategory.vodkas,
-                                                     tagsWithSubcategories: ingredient.ingredient.tags,
-                                                     value: ingredient.value,
-                                                     unit: ingredient.unit,
-                                                     prep: ingredient.prep))
+            .map { $0.spec }
+            .flatMap { $0 }
+            .map {
+                switch $0.ingredient {
+                case .vodkas:
+                    Ingredient($0.ingredient.name,
+                               ingredientCategory: Category.vodkas,
+                               tagsWithSubcategories: $0.ingredient.tags,
+                               value: $0.value,
+                               unit: $0.unit,
+                               prep: $0.prep)
+                default:
+                    Ingredient($0.ingredient.name,
+                               ingredientCategory: Category.syrups,
+                               tagsWithSubcategories: $0.ingredient.tags,
+                               value: $0.value,
+                               unit: $0.unit,
+                               prep: $0.prep)
                 }
             }
-        }
-        for ingredient in newIngredients {
-            print("Ingredient is \(ingredient.name), value is \(ingredient.value)")
+    
+        for ingredient in newIngredients where ingredient.category == .vodkas {
+            print("Ingredient is \(ingredient.name), category is \(ingredient.category)")
         }
         
         return newIngredients

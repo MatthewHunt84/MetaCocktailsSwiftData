@@ -77,17 +77,17 @@ class Ingredient: Codable, Hashable {
 
     let id: UUID
     let name: String
-    let ingredientCategory: IngredientCategory
-    let tagsWithSubcategories: Tags?
+    let category: Category
+    let tags: Tags?
     let value: Double
     let unit: MeasurementUnit
     let prep: Prep?
     
     
-    init(_ name: String, ingredientCategory: IngredientCategory, tagsWithSubcategories: Tags? = Tags(), value: Double, unit: MeasurementUnit = .fluidOunces, prep: Prep? = nil) {
+    init(_ name: String, ingredientCategory: Category, tagsWithSubcategories: Tags? = Tags(), value: Double, unit: MeasurementUnit = .fluidOunces, prep: Prep? = nil) {
         self.name = name
-        self.ingredientCategory = ingredientCategory
-        self.tagsWithSubcategories = tagsWithSubcategories
+        self.category = ingredientCategory
+        self.tags = tagsWithSubcategories
         self.value = value
         self.unit = unit
         self.id = UUID()
@@ -123,8 +123,8 @@ class Ingredient: Codable, Hashable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(UUID.self, forKey: .id)
         self.name = try container.decode(String.self, forKey: .name)
-        self.ingredientCategory = try container.decode(IngredientCategory.self, forKey: .ingredientCategory)
-        self.tagsWithSubcategories = try container.decode(Tags.self, forKey: .tagsWithSubcategories)
+        self.category = try container.decode(Category.self, forKey: .ingredientCategory)
+        self.tags = try container.decode(Tags.self, forKey: .tagsWithSubcategories)
         self.value = try container.decode(Double.self, forKey: .value)
         self.unit = try container.decode(MeasurementUnit.self, forKey: .unit)
         self.prep = try container.decode(Prep.self, forKey: .prep)
@@ -135,8 +135,8 @@ class Ingredient: Codable, Hashable {
         try container.encode(id, forKey: .id)
         try container.encode(value, forKey: .value)
         try container.encode(name, forKey: .name)
-        try container.encode(ingredientCategory, forKey: .ingredientCategory)
-        try container.encode(tagsWithSubcategories, forKey: .tagsWithSubcategories)
+        try container.encode(category, forKey: .ingredientCategory)
+        try container.encode(tags, forKey: .tagsWithSubcategories)
         try container.encode(unit, forKey: .unit)
         try container.encode(prep, forKey: .prep
         )
@@ -145,7 +145,7 @@ class Ingredient: Codable, Hashable {
 
 
 
-enum IngredientCategory: String, Codable, CaseIterable  {
+enum Category: String, Codable, CaseIterable  {
     
     case syrups            = "Syrup"
     case juices            = "Juice"
