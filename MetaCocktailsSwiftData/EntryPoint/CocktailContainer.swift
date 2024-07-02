@@ -52,43 +52,7 @@ actor CocktailContainer {
             .flatMap { $0 }
             .map {
                 switch $0.ingredient {
-                case .vodkas:
-                    Ingredient(oldIngredient: $0)
-                case .syrups:
-                    Ingredient(oldIngredient: $0)
-                case .juices:
-                    Ingredient(oldIngredient: $0)
-                case .herbs:
-                    Ingredient(oldIngredient: $0)
-                case .fruit:
-                    Ingredient(oldIngredient: $0)
-                case .seasoning:
-                    Ingredient(oldIngredient: $0)
-                case .soda:
-                    Ingredient(oldIngredient: $0)
-                case .otherNonAlc:
-                    Ingredient(oldIngredient: $0)
-                case .agaves:
-                    Ingredient(oldIngredient: $0)
-                case .brandies:
-                    Ingredient(oldIngredient: $0)
-                case .gins:
-                    Ingredient(oldIngredient: $0)
-                case .otherAlcohol:
-                    Ingredient(oldIngredient: $0)
-                case .rums:
-                    Ingredient(oldIngredient: $0)
-                case .whiskies:
-                    Ingredient(oldIngredient: $0)
-                case .liqueurs:
-                    Ingredient(oldIngredient: $0)
-                case .fortifiedWines:
-                    Ingredient(oldIngredient: $0)
-                case .wines:
-                    Ingredient(oldIngredient: $0)
-                case .bitters:
-                    Ingredient(oldIngredient: $0)
-                case .amari:
+                default :
                     Ingredient(oldIngredient: $0)
                 }
             }
