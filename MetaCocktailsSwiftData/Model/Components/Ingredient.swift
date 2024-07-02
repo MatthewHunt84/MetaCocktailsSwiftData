@@ -93,7 +93,24 @@ class Ingredient: Codable, Hashable {
         self.id = UUID()
         self.prep = prep
     }
-    
+    init(oldIngredient: CocktailIngredient) {
+        self.id = UUID()
+        self.name = oldIngredient.ingredient.name
+        self.category = {
+            var newCategory: Category = .agaves
+            for category in Category.allCases {
+                if oldIngredient.ingredient.category == category.rawValue {
+                    newCategory = category
+                    return newCategory
+                }
+            }
+            return newCategory
+        }()
+        self.tags = oldIngredient.ingredient.tags
+        self.value = oldIngredient.value
+        self.unit = oldIngredient.unit
+        self.prep = prep
+    }
     func localizedVolumetricString(location: Location) -> String {
         switch location {
         case .usa:
@@ -147,7 +164,7 @@ class Ingredient: Codable, Hashable {
 
 enum Category: String, Codable, CaseIterable  {
     
-    case syrups            = "Syrup"
+    case syrups            = "Syrups"
     case juices            = "Juice"
     case herbs             = "Herbs"
     case fruit             = "Fruit"

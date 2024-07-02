@@ -53,138 +53,43 @@ actor CocktailContainer {
             .map {
                 switch $0.ingredient {
                 case .vodkas:
-                    Ingredient($0.ingredient.name,
-                               ingredientCategory: Category.vodkas,
-                               tagsWithSubcategories: $0.ingredient.tags,
-                               value: $0.value,
-                               unit: $0.unit,
-                               prep: $0.prep)
+                    Ingredient(oldIngredient: $0)
                 case .syrups:
-                    Ingredient($0.ingredient.name,
-                               ingredientCategory: Category.syrups,
-                               tagsWithSubcategories: $0.ingredient.tags,
-                               value: $0.value,
-                               unit: $0.unit,
-                               prep: $0.prep)
+                    Ingredient(oldIngredient: $0)
                 case .juices:
-                    Ingredient($0.ingredient.name,
-                               ingredientCategory: Category.juices,
-                               tagsWithSubcategories: $0.ingredient.tags,
-                               value: $0.value,
-                               unit: $0.unit,
-                               prep: $0.prep)
+                    Ingredient(oldIngredient: $0)
                 case .herbs:
-                    Ingredient($0.ingredient.name,
-                               ingredientCategory: Category.herbs,
-                               tagsWithSubcategories: $0.ingredient.tags,
-                               value: $0.value,
-                               unit: $0.unit,
-                               prep: $0.prep)
+                    Ingredient(oldIngredient: $0)
                 case .fruit:
-                    Ingredient($0.ingredient.name,
-                               ingredientCategory: Category.fruit,
-                               tagsWithSubcategories: $0.ingredient.tags,
-                               value: $0.value,
-                               unit: $0.unit,
-                               prep: $0.prep)
+                    Ingredient(oldIngredient: $0)
                 case .seasoning:
-                    Ingredient($0.ingredient.name,
-                               ingredientCategory: Category.seasoning,
-                               tagsWithSubcategories: $0.ingredient.tags,
-                               value: $0.value,
-                               unit: $0.unit,
-                               prep: $0.prep)
+                    Ingredient(oldIngredient: $0)
                 case .soda:
-                    Ingredient($0.ingredient.name,
-                               ingredientCategory: Category.soda,
-                               tagsWithSubcategories: $0.ingredient.tags,
-                               value: $0.value,
-                               unit: $0.unit,
-                               prep: $0.prep)
+                    Ingredient(oldIngredient: $0)
                 case .otherNonAlc:
-                    Ingredient($0.ingredient.name,
-                               ingredientCategory: Category.otherNonAlc,
-                               tagsWithSubcategories: $0.ingredient.tags,
-                               value: $0.value,
-                               unit: $0.unit,
-                               prep: $0.prep)
+                    Ingredient(oldIngredient: $0)
                 case .agaves:
-                    Ingredient($0.ingredient.name,
-                               ingredientCategory: Category.agaves,
-                               tagsWithSubcategories: $0.ingredient.tags,
-                               value: $0.value,
-                               unit: $0.unit,
-                               prep: $0.prep)
+                    Ingredient(oldIngredient: $0)
                 case .brandies:
-                    Ingredient($0.ingredient.name,
-                               ingredientCategory: Category.brandies,
-                               tagsWithSubcategories: $0.ingredient.tags,
-                               value: $0.value,
-                               unit: $0.unit,
-                               prep: $0.prep)
+                    Ingredient(oldIngredient: $0)
                 case .gins:
-                    Ingredient($0.ingredient.name,
-                               ingredientCategory: Category.gins,
-                               tagsWithSubcategories: $0.ingredient.tags,
-                               value: $0.value,
-                               unit: $0.unit,
-                               prep: $0.prep)
+                    Ingredient(oldIngredient: $0)
                 case .otherAlcohol:
-                    Ingredient($0.ingredient.name,
-                               ingredientCategory: Category.otherAlcohol,
-                               tagsWithSubcategories: $0.ingredient.tags,
-                               value: $0.value,
-                               unit: $0.unit,
-                               prep: $0.prep)
+                    Ingredient(oldIngredient: $0)
                 case .rums:
-                    Ingredient($0.ingredient.name,
-                               ingredientCategory: Category.rums,
-                               tagsWithSubcategories: $0.ingredient.tags,
-                               value: $0.value,
-                               unit: $0.unit,
-                               prep: $0.prep)
+                    Ingredient(oldIngredient: $0)
                 case .whiskies:
-                    Ingredient($0.ingredient.name,
-                               ingredientCategory: Category.whiskies,
-                               tagsWithSubcategories: $0.ingredient.tags,
-                               value: $0.value,
-                               unit: $0.unit,
-                               prep: $0.prep)
+                    Ingredient(oldIngredient: $0)
                 case .liqueurs:
-                    Ingredient($0.ingredient.name,
-                               ingredientCategory: Category.liqueurs,
-                               tagsWithSubcategories: $0.ingredient.tags,
-                               value: $0.value,
-                               unit: $0.unit,
-                               prep: $0.prep)
+                    Ingredient(oldIngredient: $0)
                 case .fortifiedWines:
-                    Ingredient($0.ingredient.name,
-                               ingredientCategory: Category.fortifiedWines,
-                               tagsWithSubcategories: $0.ingredient.tags,
-                               value: $0.value,
-                               unit: $0.unit,
-                               prep: $0.prep)
+                    Ingredient(oldIngredient: $0)
                 case .wines:
-                    Ingredient($0.ingredient.name,
-                               ingredientCategory: Category.wines,
-                               tagsWithSubcategories: $0.ingredient.tags,
-                               value: $0.value,
-                               unit: $0.unit,
-                               prep: $0.prep)
+                    Ingredient(oldIngredient: $0)
                 case .bitters:
-                    Ingredient($0.ingredient.name,
-                               ingredientCategory: Category.bitters,
-                               tagsWithSubcategories: $0.ingredient.tags,
-                               value: $0.value,
-                               unit: $0.unit,
-                               prep: $0.prep)
+                    Ingredient(oldIngredient: $0)
                 case .amari:
-                    Ingredient($0.ingredient.name,
-                               ingredientCategory: Category.amari,
-                               tagsWithSubcategories: $0.ingredient.tags,
-                               value: $0.value,
-                               unit: $0.unit,
-                               prep: $0.prep)
+                    Ingredient(oldIngredient: $0)
                 }
             }
     
