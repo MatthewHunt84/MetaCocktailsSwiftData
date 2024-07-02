@@ -45,10 +45,7 @@ class Cocktail: Equatable, Hashable {
         self.garnish = garnish
         self.ice = ice
         self.author = author
-        self.spec = {
-            let newSpec: [Ingredient] = spec.map { Ingredient(oldIngredient: $0)}
-            return newSpec
-        }()
+        self.spec = spec.map { Ingredient(oldIngredient: $0) }
         self.buildOrder = buildOrder
         self.tags = tags
         self.variation = variation
