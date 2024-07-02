@@ -50,12 +50,7 @@ actor CocktailContainer {
             .flatMap { $0 }
             .map { $0.spec }
             .flatMap { $0 }
-            .map {
-                switch $0.ingredient {
-                default :
-                    Ingredient(oldIngredient: $0)
-                }
-            }
+            .map { Ingredient(oldIngredient: $0) }
     
         for ingredient in newIngredients  {
             print("Ingredient is \(ingredient.name), category is \(ingredient.category)")
