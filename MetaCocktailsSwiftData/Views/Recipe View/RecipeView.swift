@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RecipeView: View {
     @Bindable var viewModel: RecipeViewModel
-    @State private var prepItems: [CocktailIngredient] = []
+    @State private var prepItems: [Ingredient] = []
     @Namespace var topID
     
     var body: some View {
@@ -357,12 +357,12 @@ struct SpecView: View {
                                 NavigationLink {
                                     PrepRecipeView(prep: ingredient.prep!)
                                 } label: {
-                                    Text(ingredient.ingredient.name)
+                                    Text(ingredient.name)
                                         .font(Layout.body)
                                         .tint(.cyan)
                                 }
                             } else {
-                                Text("\(ingredient.ingredient.name)")
+                                Text("\(ingredient.name)")
                                     .font(Layout.body)
                             }
                         }
@@ -373,28 +373,28 @@ struct SpecView: View {
     }
     
     //TODO: REFACTOR THIS
-    func orderSpec() -> [CocktailIngredient] {
-        var orderedSpec: [CocktailIngredient] = []
+    func orderSpec() -> [Ingredient] {
+        var orderedSpec: [Ingredient] = []
         
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredient.category == "Herbs"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredient.category == "Fruit"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredient.category == "Bitters"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredient.category == "Other N/A"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredient.category == "Seasoning"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredient.category == "Syrups"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredient.category == "Juice"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredient.category == "Liqueurs"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredient.category == "Fortified Wine"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredient.category == "Amari"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredient.category == "Whiskies"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredient.category == "Rum"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredient.category == "Gin"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredient.category == "Brandy"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredient.category == "Agave"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredient.category == "Vodka"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredient.category == "Other Alcohol"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredient.category == "Sodas"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredient.category == "Wine"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Herbs"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Fruit"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Bitters"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Other N/A"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Seasoning"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Syrups"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Juice"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Liqueurs"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Fortified Wine"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Amari"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Whiskies"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Rum"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Gin"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Brandy"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Agave"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Vodka"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Other Alcohol"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Sodas"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Wine"}))
         
         return orderedSpec
     }

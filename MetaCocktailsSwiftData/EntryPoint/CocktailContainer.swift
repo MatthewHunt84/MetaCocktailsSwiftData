@@ -27,7 +27,7 @@ actor CocktailContainer {
                     .flatMap { $0 }
                     .map { container.mainContext.insert($0) }
                 
-                let arrayOfNewIngredients = CocktailContainer.createNewModelArray()
+//                let arrayOfNewIngredients = CocktailContainer.createNewModelArray()
                 
                 shouldPreload = false
             } else {
@@ -43,19 +43,19 @@ actor CocktailContainer {
         
         
     }
-
-    static func createNewModelArray() -> [Ingredient] {
-        let newIngredients: [Ingredient] = Preload.allCases
-            .map { $0.cocktails }
-            .flatMap { $0 }
-            .map { $0.spec }
-            .flatMap { $0 }
-            .map { Ingredient(oldIngredient: $0) }
-    
-        for ingredient in newIngredients  {
-            print("Ingredient is \(ingredient.name), category is \(ingredient.category)")
-        }
-        
-        return newIngredients
-    }
+//
+//    static func createNewModelArray() -> [Ingredient] {
+//        let newIngredients: [Ingredient] = Preload.allCases
+//            .map { $0.cocktails }
+//            .flatMap { $0 }
+//            .map { $0.spec }
+//            .flatMap { $0 }
+//            .map { Ingredient(oldIngredient: $0) }
+//    
+//        for ingredient in newIngredients  {
+//            print("Ingredient is \(ingredient.name), category is \(ingredient.category)")
+//        }
+//        
+//        return newIngredients
+//    }
 }
