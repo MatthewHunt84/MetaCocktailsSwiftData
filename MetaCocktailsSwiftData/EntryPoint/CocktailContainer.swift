@@ -5,7 +5,7 @@
 //  Created by Matt Hunt on 2/17/24.
 //
 
-import Foundation
+import SwiftUI
 import SwiftData
 
 
@@ -15,18 +15,20 @@ actor CocktailContainer {
     static func preload(_ shouldPreload: inout Bool) -> ModelContainer {
         let schema = Schema([Cocktail.self])
         let config = ModelConfiguration()
+        
         do {
             let container = try ModelContainer(for: schema, configurations: config)
             
             if shouldPreload {
                 print("🕔🕔🕔 PRELOADING COCKTAILS FOR FIRST TIME LAUNCH 🕔🕔🕔")
                 
-//                container.mainContext.insert(aloeForThatBurn)
-
+                
                 let _ = Preload.allCases.map { $0.cocktails }
-                                        .flatMap { $0 }
-                                        .map { container.mainContext.insert($0) }
-
+                    .flatMap { $0 }
+                    .map { container.mainContext.insert($0) }
+                
+                let arrayOfNewIngredients = CocktailContainer.createNewModelArray()
+                
                 shouldPreload = false
             } else {
                 print("✅✅✅ COCKTAILS LOADED FROM DATABASE ✅✅✅")
@@ -36,7 +38,24 @@ actor CocktailContainer {
         } catch {
             fatalError("💀💀💀 MODEL CONTAINER FAILED TO INITIALIZE 💀💀💀")
         }
+        // MARK: FUNCTION FOR COCKTAIL CONVERSION
         
+        
+        
+    }
 
+    static func createNewModelArray() -> [Ingredient] {
+        let newIngredients: [Ingredient] = Preload.allCases
+            .map { $0.cocktails }
+            .flatMap { $0 }
+            .map { $0.spec }
+            .flatMap { $0 }
+            .map { Ingredient(oldIngredient: $0) }
+    
+        for ingredient in newIngredients  {
+            print("Ingredient is \(ingredient.name), category is \(ingredient.category)")
+        }
+        
+        return newIngredients
     }
 }
