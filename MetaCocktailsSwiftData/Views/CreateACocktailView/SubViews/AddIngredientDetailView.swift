@@ -131,13 +131,18 @@ struct AddIngredientDetailView: View {
                             }
                         }
                         Section("Recipe (Optional)") {
-                            
+                            IngredeientRecipeView(viewModel: viewModel)
                         }
                     }
                     .toolbar {
                         ToolbarItem(placement: .bottomBar) {
                             Button {
                                 if viewModel.ingredientIsValid() {
+                                    if viewModel.prepIngredientRecipe.count > 0 {
+                                        viewModel.prep = Prep(prepIngredientName: viewModel.ingredientName, prepRecipe: viewModel.prepIngredientRecipe)
+                                    }
+                                    
+                                    
                                     viewModel.addedIngredients.append(Ingredient(viewModel.ingredientName,
                                                                                  ingredientCategory: viewModel.category,
                                                                                  tagsWithSubcategories: viewModel.ingredientTags,

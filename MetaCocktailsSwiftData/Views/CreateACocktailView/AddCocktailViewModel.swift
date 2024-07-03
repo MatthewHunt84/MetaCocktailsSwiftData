@@ -45,6 +45,9 @@ import Observation
     var garnish: [Garnish]? = []
     var variation: Variation? = Variation.none
     
+    //Ingredient recipe
+    var prepIngredientRecipe: [Instruction] = []
+    
     // Author
     var authorName: String = ""
     var authorPlace: String = ""
@@ -79,6 +82,8 @@ import Observation
         ingredientName = ""
         ingredientAmount = 0
         selectedMeasurementUnit = .fluidOunces
+        prep = nil
+        prepIngredientRecipe = []
     }
     
     func validateCurrentSelectedComponent(for component: CocktailComponent) -> IngredientType {

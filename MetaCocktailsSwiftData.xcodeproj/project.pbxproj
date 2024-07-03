@@ -372,6 +372,8 @@
 		4DBFF8572B60AAFB0011B5B1 /* CableCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8562B60AAFB0011B5B1 /* CableCar.swift */; };
 		4DBFF8592B60AD800011B5B1 /* CableCar(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8582B60AD800011B5B1 /* CableCar(W&G).swift */; };
 		4DBFF85B2B60AFE60011B5B1 /* Carajillo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF85A2B60AFE60011B5B1 /* Carajillo.swift */; };
+		4DCAA7A52C35E77200FBC4FE /* IngredeientRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAA7A42C35E77200FBC4FE /* IngredeientRecipeView.swift */; };
+		4DCAA7A72C35E83F00FBC4FE /* AddRecipeStepDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAA7A62C35E83F00FBC4FE /* AddRecipeStepDetailView.swift */; };
 		4DCB16F62BA239D60002D7D9 /* StreetAndFlynnSpecial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB16F52BA239D60002D7D9 /* StreetAndFlynnSpecial.swift */; };
 		4DCB16F82BA249800002D7D9 /* SugarPlum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB16F72BA249800002D7D9 /* SugarPlum.swift */; };
 		4DCB16FA2BA24A620002D7D9 /* SuttersMill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB16F92BA24A620002D7D9 /* SuttersMill.swift */; };
@@ -866,6 +868,8 @@
 		4DBFF8562B60AAFB0011B5B1 /* CableCar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CableCar.swift; sourceTree = "<group>"; };
 		4DBFF8582B60AD800011B5B1 /* CableCar(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CableCar(W&G).swift"; sourceTree = "<group>"; };
 		4DBFF85A2B60AFE60011B5B1 /* Carajillo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carajillo.swift; sourceTree = "<group>"; };
+		4DCAA7A42C35E77200FBC4FE /* IngredeientRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredeientRecipeView.swift; sourceTree = "<group>"; };
+		4DCAA7A62C35E83F00FBC4FE /* AddRecipeStepDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeStepDetailView.swift; sourceTree = "<group>"; };
 		4DCB16F52BA239D60002D7D9 /* StreetAndFlynnSpecial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetAndFlynnSpecial.swift; sourceTree = "<group>"; };
 		4DCB16F72BA249800002D7D9 /* SugarPlum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SugarPlum.swift; sourceTree = "<group>"; };
 		4DCB16F92BA24A620002D7D9 /* SuttersMill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuttersMill.swift; sourceTree = "<group>"; };
@@ -1461,10 +1465,12 @@
 		4D5DA08C2B9E8E4A00C14F1F /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
-				4DE33DF62B8D933700312EC3 /* AddIngredientDetailView.swift */,
-				4D5DA08D2B9E8E6A00C14F1F /* AddBuildStepDetailView.swift */,
 				4D5DA0952B9EB43600C14F1F /* AddedIngredientView.swift */,
+				4DE33DF62B8D933700312EC3 /* AddIngredientDetailView.swift */,
 				4D5DA0972B9EB46E00C14F1F /* AddBuildStepView.swift */,
+				4D5DA08D2B9E8E6A00C14F1F /* AddBuildStepDetailView.swift */,
+				4DCAA7A42C35E77200FBC4FE /* IngredeientRecipeView.swift */,
+				4DCAA7A62C35E83F00FBC4FE /* AddRecipeStepDetailView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -1921,6 +1927,7 @@
 				4DBBA4CF2B6A3B7100179B8F /* QueensParkSwizzle(W&G).swift in Sources */,
 				4DE33E012B91559C00312EC3 /* SiGuey.swift in Sources */,
 				4DBFF81B2B5FAE030011B5B1 /* GeneralInstructions.swift in Sources */,
+				4DCAA7A52C35E77200FBC4FE /* IngredeientRecipeView.swift in Sources */,
 				4DBFF83F2B6082E40011B5B1 /* Boulevardier(W&G).swift in Sources */,
 				4D5DA08E2B9E8E6A00C14F1F /* AddBuildStepDetailView.swift in Sources */,
 				4DF408D02B60EBDE00EF9A6E /* CloverClub(W&G).swift in Sources */,
@@ -2044,6 +2051,7 @@
 				4DBBA44A2B673DC600179B8F /* HollandHouseKappelers.swift in Sources */,
 				4DA567FA2B6DF1BC003F6F04 /* SloeWalker.swift in Sources */,
 				4DCB173E2BA5220C0002D7D9 /* StrawberryFix.swift in Sources */,
+				4DCAA7A72C35E83F00FBC4FE /* AddRecipeStepDetailView.swift in Sources */,
 				1AC386BB2AAABED10064F52A /* Glassware.swift in Sources */,
 				4DA567462B6AFAC8003F6F04 /* SloeGinFizz(W&G).swift in Sources */,
 				4DCB170E2BA4CC460002D7D9 /* TooSoon.swift in Sources */,
