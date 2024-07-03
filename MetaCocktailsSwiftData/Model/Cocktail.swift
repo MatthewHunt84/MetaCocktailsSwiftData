@@ -70,6 +70,40 @@ class Cocktail: Equatable, Hashable {
         }()
         
     }
+    
+    init(cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [Garnish]? = nil, ice: Ice? = nil, author: Author? = nil, spec: [Ingredient], buildOrder: Build? = nil, tags: Tags, variation: Variation? = nil, collection: CocktailCollection? = nil, titleCocktail: Bool = false) {
+        self.id = UUID()
+        self.cocktailName = cocktailName
+        self.imageAsset = imageAsset
+        self.glasswareType = glasswareType
+        self.garnish = garnish
+        self.ice = ice
+        self.author = author
+        self.spec = spec
+        self.buildOrder = buildOrder
+        self.tags = tags
+        self.variation = variation
+        self.collection = collection
+        self.collectionName = {
+            var name = "None"
+            if let collection = collection {
+                name = collection.collectionName
+                return name
+            }
+            return name
+        }()
+        self.titleCocktail = titleCocktail
+        self.compiledTags = {
+            // when we initialize each cocktail we immediately make a stored property of it's combined cocktail + ingredient tags
+            var newCompiledTags = Tags()
+            for cocktailIngredient in spec {
+                let currentCocktailIngredientMergedTags = tags.merge(with: cocktailIngredient.tags ?? Tags())
+                newCompiledTags = newCompiledTags.merge(with: currentCocktailIngredientMergedTags)
+            }
+            return newCompiledTags
+        }()
+        
+    }
 }
 
 

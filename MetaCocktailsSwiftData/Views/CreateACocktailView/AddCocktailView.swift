@@ -8,6 +8,8 @@ struct AddCocktailView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.currentTab) private var selectedTab
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
+    @FocusState private var yearKeyboardFocused: Bool
+    
     
     var body: some View {
         
@@ -25,6 +27,7 @@ struct AddCocktailView: View {
                     Form {
                         Section(header: Text("Name")) {
                             TextField("Cocktail Name", text: $viewModel.cocktailName)
+                                .focused($yearKeyboardFocused)
                         }
                         
                         AddedIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
@@ -33,24 +36,20 @@ struct AddCocktailView: View {
                         Section(header: Text("Extras")) {
                            
                             GlassPickerButton(viewModel: viewModel)
-                            
                             IcePicker(ice: $viewModel.ice)
-                            
                             VariationPicker(variation: $viewModel.variation)
                         }
                     
                             GarnishPicker(viewModel: viewModel)
-                            
-                        
-                        
-                        
                         Section(header: Text("Credit (optional)")) {
                             TextField("Author", text: $viewModel.authorName)
-                            
+                                .focused($yearKeyboardFocused)
                             TextField("Origin", text: $viewModel.authorPlace)
-                            
+                                .focused($yearKeyboardFocused)
                             TextField("Year", text: $viewModel.authorYear)
                                 .keyboardType(.numberPad)
+                                .focused($yearKeyboardFocused)
+                                
                         }
                         
                         Section(header: Text("Build steps (optional)")) {
@@ -71,6 +70,8 @@ struct AddCocktailView: View {
                             .padding()
                         }
                         .frame(width: 380, height: 40,  alignment: .center)
+                        
+                       
                     }
                     .toolbar {
                         ToolbarItem(placement: .bottomBar) {
@@ -94,13 +95,14 @@ struct AddCocktailView: View {
                                                             author: viewModel.author,
                                                             spec: viewModel.addedIngredients,
                                                             buildOrder: viewModel.buildOption,
-                                                            tags: Tags(flavors: [], profiles: [], styles: [], booze: [], nA: []),
+                                                            tags: viewModel.ingredientTags,
                                                             variation: viewModel.variation,
                                                             collection: .custom)
                                     
                                     modelContext.insert(cocktail)
                                     viewModel.clearData()
                                     selectedTab.wrappedValue = .cocktailListView
+                         
                                     
                                 } else {
                                     
@@ -117,6 +119,15 @@ struct AddCocktailView: View {
                                 .foregroundStyle(viewModel.isValid() ? .brandPrimaryGold : .secondary)
                             }
                         }
+                        ToolbarItemGroup(placement: .keyboard) {
+                            Spacer()
+                            Button("Done") {
+                                yearKeyboardFocused = false
+                            }
+                            .tint(Color.brandPrimaryGold)
+                            
+                        }
+                        
                     }
                     
                 }
@@ -137,7 +148,9 @@ struct AddCocktailView: View {
                 }
                 
             }
+            
         }
+        
     }
 }
 private struct GlassPickerButton: View {
@@ -206,7 +219,6 @@ private struct IcePicker: View {
     
     var body: some View {
         Picker("Ice", selection: $ice) {
-            Text("none").tag(Optional<String>(nil))
             
             ForEach(Ice.allCases, id: \.rawValue)  { ice in
                 Text(ice.rawValue)
@@ -280,8 +292,6 @@ private struct VariationPicker: View {
     var body: some View {
         VStack {
             Picker(selection: $variation) {
-                Text("none").tag(Optional<String>(nil))
-                
                 ForEach(Variation.allCases, id: \.rawValue)  { variation in
                     Text(variation.rawValue)
                         .tag(Optional(variation))
@@ -308,6 +318,7 @@ private struct VariationPicker: View {
         }
     }
 }
+
 
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)

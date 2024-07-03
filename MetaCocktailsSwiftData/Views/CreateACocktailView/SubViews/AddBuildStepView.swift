@@ -29,7 +29,7 @@ struct AddBuildStepView: View {
                 ZStack{
                     Color.black.ignoresSafeArea()
                     AddBuildStepDetailView(viewModel: viewModel, isShowingBuildSheet: $isShowingBuildSheet)
-                        .presentationDetents([.height(300)])
+                        .backgroundStyle(.black)
                 }
             })
             ForEach(viewModel.build.instructions, id: \.id) { buildStep in

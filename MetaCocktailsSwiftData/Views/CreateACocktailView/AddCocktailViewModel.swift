@@ -14,14 +14,16 @@ import Observation
     //AddIngredientView
     var isShowingingredientAlert: Bool = false
     var ingredientName = ""
+    var category: Category = Category.agaves
     var ingredientAmount = 0.0
-    var ingredientType: IngredientType = IngredientType.agaves(.tequilaAny)
+    var ingredientTags = Tags()
+    var prep: Prep? 
     var selectedMeasurementUnit = MeasurementUnit.fluidOunces
     var currentSelectedComponent = CocktailComponent(name: "Placeholder")
-    var addedIngredients: [CocktailIngredient] = []
+    var addedIngredients: [Ingredient] = []
     var addedGarnish: [Garnish] = []
     var allPhysicalCocktailComponents: [CocktailComponent] = getAllPhysicalComponents()
-    
+    var isShowingAlert: Bool = false
     var dateAdded = Date()
     var defaultName = "Add Cocktail"
     
@@ -39,9 +41,9 @@ import Observation
     
     // Extras
     var uniqueGlasswareName: Glassware?
-    var ice: Ice? = .none
-    var garnish: [Garnish]?
-    var variation: Variation?
+    var ice: Ice? = Ice.none
+    var garnish: [Garnish]? = []
+    var variation: Variation? = Variation.none
     
     // Author
     var authorName: String = ""
@@ -51,7 +53,11 @@ import Observation
     // Build
     var build: Build = Build(instructions: [])
     var buildOption: Build?
-    var isShowingAlert: Bool = false
+    func validateBuildInstructions() {
+        if build.instructions != [] {
+            buildOption = build
+        }
+    }
     
     func clearData() {
         cocktailName = ""
@@ -59,7 +65,7 @@ import Observation
         authorPlace = ""
         authorYear = ""
         uniqueGlasswareName = .blueBlazerMugs
-        ice = .none
+        ice = Ice.none
         garnish = nil 
         addedGarnish = []
         variation = nil
@@ -103,7 +109,20 @@ import Observation
         return ingredientAmount != 0.0 && ingredientName != ""
     }
     // Can't add cocktail alert
-    
+    func ingredientNameIsUnique() -> Bool {
+//        
+//        let cocktailNames: [String] = {
+//            allCocktail
+//        }()
+//        
+//        if cocktailNames.allSatisfy({ $0 != viewModel.cocktailName}) {
+//            print("\(viewModel.cocktailName) in not in cocktail names.")
+//            return true
+//        } else {
+//            return false
+//        }
+        return false
+    }
    
     
     func cantAddCocktailMessage() -> String {
@@ -152,7 +171,7 @@ import Observation
 
     }
      func dynamicallyChangeMeasurementUnit() {
-            switch ingredientType {
+         switch category {
             case .herbs:
                 selectedMeasurementUnit = MeasurementUnit.gentlyMuddled
             case .fruit:
@@ -199,11 +218,7 @@ import Observation
         return cocktailComponentArray
         
     }
-    func validateBuildInstructions() {
-        if build.instructions != [] {
-            buildOption = build
-        }
-    }
+    
     func validateAuthor() {
         if authorName != "" && authorYear != "" && authorPlace != "" {
             author = Author(person: authorName, place: authorYear, year: authorPlace)

@@ -92,5 +92,6 @@ enum Variation: String, Codable, CaseIterable {
     case ultimaPalabra = "Ultima Palabra"
     case vesper = "Vesper"
     case zombie = "Zombie"
+    case none = "None"
 }
 
