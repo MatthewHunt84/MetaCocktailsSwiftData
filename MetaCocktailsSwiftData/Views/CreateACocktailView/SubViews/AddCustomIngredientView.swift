@@ -18,9 +18,7 @@ struct AddCustomIngredientView: View {
     var body: some View {
         NavigationStack{
             ZStack{
-                
                 VStack {
-                    
                     HStack{
                         BackButton()
                         Spacer()
@@ -37,103 +35,17 @@ struct AddCustomIngredientView: View {
                             TextField("Ingredient Name", text: $viewModel.ingredientName)
                                 .focused($keyboardFocused)
                         }
-                        Section("Category") {
-                            HStack{
-                                Menu {
-                                    ForEach(Category.allCases, id: \.self) { category in
-                                        
-                                        Button("\(category.rawValue)") {
-                                            viewModel.category = category
-                                            viewModel.dynamicallyChangeMeasurementUnit()
-                                        }
-                                    }
-                                } label: {
-                                    HStack{
-                                        Text(viewModel.category.rawValue)
-                                        Image(systemName: "chevron.down")
-                                            .foregroundStyle(.gray)
-                                        Spacer()
-                                        
-                                    }
-                                }
-                                .tint(.white)
-                            }
-                        }
-                        Section("Amount") {
-                            HStack {
-                                TextField("Amount", value: $viewModel.ingredientAmount, formatter: viewModel.formatter)
-                                    .keyboardType(.decimalPad)
-                                    .focused($amountKeyboardFocus)
-                                    
-                                Menu {
-                                    ForEach(MeasurementUnit.allCases, id: \.self) { unit in
-                                        Button {
-                                            viewModel.selectedMeasurementUnit = unit
-                                        } label: {
-                                            HStack{
-                                                Text(unit.rawValue)
-                                            }
-                                            
-                                        }
-                                        
-                                    }
-                                } label: {
-                                    HStack{
-                                        Text(viewModel.selectedMeasurementUnit.rawValue)
-                                            .tint(.white)
-                                        Image(systemName: "chevron.down")
-                                            .foregroundStyle(.gray)
-                                    }
-                                }
-                            }
-                        }
-                        Section("Recipe (Optional)") {
-                            IngredeientRecipeView(viewModel: viewModel)
-                        }
-                        
-                        Button{
-                            if viewModel.customIngredientIsValid() {
-                                viewModel.prep = Prep(prepIngredientName: viewModel.ingredientName, prepRecipe: viewModel.prepIngredientRecipe)
-                                viewModel.addedIngredients.append(Ingredient(viewModel.ingredientName,
-                                                                             ingredientCategory: viewModel.category,
-                                                                             tagsWithSubcategories: viewModel.ingredientTags,
-                                                                             value: viewModel.ingredientAmount,
-                                                                             unit: viewModel.selectedMeasurementUnit,
-                                                                             prep: viewModel.prep))
-                                viewModel.clearIngredientData()
-                                viewModel.isCustomIngredient = true
-                                dismiss()
-                            } else {
-                                viewModel.isShowingingredientAlert.toggle()
-                            }
-                            
-                        } label: {
-                            
-                            HStack {
-                                Image(systemName: "plus.circle.fill")
-                                    .font(.footnote).bold()
-                                Text("Add to spec")
-                                    .font(.footnote).bold()
-                            }
-                            .tint(.brandPrimaryGold)
-                            .padding()
-                        }
-                        .frame(width: 380, height: 40,  alignment: .center)
+                        CategoryPickerView(viewModel: viewModel)
+                        AddMeasurementView(viewModel: viewModel, amountKeyboardFocus: _amountKeyboardFocus)
+                        IngredeientRecipeView(viewModel: viewModel)
+                        AddCustomIngredientToCocktailButton(viewModel: viewModel)
                     }
                     .toolbar {
-                        ToolbarItemGroup(placement: .keyboard) {
-                            Spacer()
-                            Button("Done") {
-                                amountKeyboardFocus = false
-                                keyboardFocused = false
-                            }
-                            .tint(Color.brandPrimaryGold)
+                        ToolbarItemGroup(placement: .keyboard) { 
+                            KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocus: _amountKeyboardFocus)
                         }
                     }
-                    
                     .task {
-                        
-                        viewModel.matchAllPhysicalCocktailComponents()
                         keyboardFocused = true
                     }
                 }
@@ -146,11 +58,8 @@ struct AddCustomIngredientView: View {
                                     action: {})
                     .zIndex(2)
                 }
-                
             }
-            
         }
-        
     }
 }
 
@@ -160,4 +69,67 @@ struct AddCustomIngredientView: View {
     return AddCustomIngredientView(viewModel: AddCocktailViewModel())
         .modelContainer(preview.container)
     
+}
+struct CategoryPickerView: View {
+    @Bindable var viewModel: AddCocktailViewModel
+    var body: some View {
+        Section("Category") {
+            HStack{
+                Menu {
+                    ForEach(Category.allCases, id: \.self) { category in
+                        
+                        Button("\(category.rawValue)") {
+                            viewModel.category = category
+                            viewModel.dynamicallyChangeMeasurementUnit()
+                        }
+                    }
+                } label: {
+                    HStack{
+                        Text(viewModel.category.rawValue)
+                        Image(systemName: "chevron.down")
+                            .foregroundStyle(.gray)
+                        Spacer()
+                        
+                    }
+                }
+                .tint(.white)
+            }
+        }
+    }
+}
+struct AddCustomIngredientToCocktailButton: View {
+    @Bindable var viewModel: AddCocktailViewModel
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var modelContext
+    
+    var body: some View {
+        Button{
+            if viewModel.customIngredientIsValid() {
+                viewModel.prep = Prep(prepIngredientName: viewModel.ingredientName, prepRecipe: viewModel.prepIngredientRecipe)
+                viewModel.addedIngredients.append(Ingredient(viewModel.ingredientName,
+                                                             ingredientCategory: viewModel.category,
+                                                             tagsWithSubcategories: viewModel.ingredientTags,
+                                                             value: viewModel.ingredientAmount,
+                                                             unit: viewModel.selectedMeasurementUnit,
+                                                             prep: viewModel.prep))
+                viewModel.clearIngredientData()
+                viewModel.isCustomIngredient = true
+                dismiss()
+            } else {
+                viewModel.isShowingingredientAlert.toggle()
+            }
+            
+        } label: {
+            
+            HStack {
+                Image(systemName: "plus.circle.fill")
+                    .font(.footnote).bold()
+                Text("Add to spec")
+                    .font(.footnote).bold()
+            }
+            .tint(.brandPrimaryGold)
+            .padding()
+        }
+        .frame(width: 380, height: 40,  alignment: .center)
+    }
 }

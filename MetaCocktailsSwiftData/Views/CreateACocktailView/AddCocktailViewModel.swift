@@ -16,7 +16,7 @@ import Observation
     var ingredientName = ""
     var category: Category = Category.agaves
     var ingredientAmount = 0.0
-    var timesInitialIngredientsHaveLoaded: Int = 0
+    var startingIngredientsHaveLoaded: Bool = false
     var ingredientTags = Tags()
     var prep: Prep? 
     var selectedMeasurementUnit = MeasurementUnit.fluidOunces
@@ -80,7 +80,7 @@ import Observation
         defaultName = "Add Cocktail"
         build = Build(instructions: [])
         buildOption = nil 
-        timesInitialIngredientsHaveLoaded = 0
+        startingIngredientsHaveLoaded = false
        
     }
     func clearIngredientData() {
