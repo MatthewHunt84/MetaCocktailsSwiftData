@@ -242,10 +242,6 @@ import Observation
     func dynamicallyChangeMeasurementOptionsBasedOnChosenCategory() -> [MeasurementUnit] {
         
         switch category {
-        case .syrups:
-            return [.fluidOunces, .barSpoon, .bottles, .dashes, .grams, .ml, .none, .teaspoon, .tablespoon]
-        case .juices:
-            return [.fluidOunces, .barSpoon, .dashes, .grams, .ml, .splash, .teaspoon, .tablespoon, .none,]
         case .herbs:
             return [.gentlyMuddled, .muddled, .nitroMuddled, .grams, .none]
         case .fruit:
@@ -255,7 +251,7 @@ import Observation
         case .otherNonAlc:
             return MeasurementUnit.allCases
         default:
-            return [.fluidOunces, .barSpoon, .dashes, .grams, .ml,  .sprays, .teaspoon, .tablespoon, .bottles, .none]
+            return [.fluidOunces, .barSpoon, .dashes, .drops, .grams, .ml,  .sprays, .teaspoon, .tablespoon, .bottles, .none]
         }
     }
     
