@@ -82,9 +82,11 @@ class Ingredient: Codable, Hashable {
     let value: Double
     let unit: MeasurementUnit
     let prep: Prep?
+    let isCustom: Bool? 
+    var matchesCurrentSearch: Bool
     
     
-    init(_ name: String, ingredientCategory: Category, tagsWithSubcategories: Tags? = Tags(), value: Double, unit: MeasurementUnit = .fluidOunces, prep: Prep? = nil) {
+    init(_ name: String, ingredientCategory: Category, tagsWithSubcategories: Tags? = Tags(), value: Double, unit: MeasurementUnit = .fluidOunces, prep: Prep? = nil, isCustom: Bool? = false) {
         self.name = name
         self.category = ingredientCategory
         self.tags = tagsWithSubcategories
@@ -92,6 +94,8 @@ class Ingredient: Codable, Hashable {
         self.unit = unit
         self.id = UUID()
         self.prep = prep
+        self.isCustom = isCustom
+        self.matchesCurrentSearch = false
     }
     init(oldIngredient: CocktailIngredient) {
         self.id = UUID()
@@ -109,7 +113,9 @@ class Ingredient: Codable, Hashable {
         self.tags = oldIngredient.ingredient.tags
         self.value = oldIngredient.value
         self.unit = oldIngredient.unit
-        self.prep = prep
+        self.prep = oldIngredient.prep
+        self.isCustom = false
+        self.matchesCurrentSearch = false
     }
     func localizedVolumetricString(location: Location) -> String {
         switch location {
@@ -133,7 +139,7 @@ class Ingredient: Codable, Hashable {
     // MARK: - @Model codable conformance
 
     enum CodingKeys: CodingKey {
-        case id, name, ingredientCategory, tagsWithSubcategories, value, unit, prep
+        case id, name, ingredientCategory, tagsWithSubcategories, value, unit, prep, matchesCurrentSearch
     }
 
     required init(from decoder: Decoder) throws {
@@ -145,6 +151,7 @@ class Ingredient: Codable, Hashable {
         self.value = try container.decode(Double.self, forKey: .value)
         self.unit = try container.decode(MeasurementUnit.self, forKey: .unit)
         self.prep = try container.decode(Prep.self, forKey: .prep)
+        self.matchesCurrentSearch = try container.decode(Bool.self, forKey: .matchesCurrentSearch)
     }
 
     func encode(to encoder: Encoder) throws {
@@ -155,8 +162,8 @@ class Ingredient: Codable, Hashable {
         try container.encode(category, forKey: .ingredientCategory)
         try container.encode(tags, forKey: .tagsWithSubcategories)
         try container.encode(unit, forKey: .unit)
-        try container.encode(prep, forKey: .prep
-        )
+        try container.encode(prep, forKey: .prep)
+        try container.encode(matchesCurrentSearch, forKey: .matchesCurrentSearch)
     }
 }
 

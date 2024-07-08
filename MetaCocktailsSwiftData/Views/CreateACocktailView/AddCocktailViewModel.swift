@@ -16,16 +16,20 @@ import Observation
     var ingredientName = ""
     var category: Category = Category.agaves
     var ingredientAmount = 0.0
+    var timesInitialIngredientsHaveLoaded: Int = 0
     var ingredientTags = Tags()
     var prep: Prep? 
     var selectedMeasurementUnit = MeasurementUnit.fluidOunces
     var currentSelectedComponent = CocktailComponent(name: "Placeholder")
+    var startingIngredients: [Ingredient] = []
     var addedIngredients: [Ingredient] = []
     var addedGarnish: [Garnish] = []
     var allPhysicalCocktailComponents: [CocktailComponent] = getAllPhysicalComponents()
     var isShowingAlert: Bool = false
     var dateAdded = Date()
     var defaultName = "Add Cocktail"
+    var didChooseExistingIngredient: Bool = false
+    var isCustomIngredient: Bool = false 
     
     // Required
     var cocktailName: String = ""
@@ -76,14 +80,18 @@ import Observation
         defaultName = "Add Cocktail"
         build = Build(instructions: [])
         buildOption = nil 
+        timesInitialIngredientsHaveLoaded = 0
        
     }
     func clearIngredientData() {
         ingredientName = ""
         ingredientAmount = 0
+        prep = nil
         selectedMeasurementUnit = .fluidOunces
         prep = nil
         prepIngredientRecipe = []
+        didChooseExistingIngredient = false 
+        isCustomIngredient = false
     }
     
     func validateCurrentSelectedComponent(for component: CocktailComponent) -> IngredientType {
@@ -109,24 +117,19 @@ import Observation
         return cocktailName != "" && ((addedIngredients.count) > 1) && uniqueGlasswareName != nil
     }
     
-    func ingredientIsValid() -> Bool {
+    func existingIngredientIsValid() -> Bool {
         
-        return ingredientAmount != 0.0 && ingredientName != ""
+        return ingredientAmount != 0.0 && ingredientNameDoesExist() && didChooseExistingIngredient == true
+    }
+    func customIngredientIsValid() -> Bool {
+        
+        return ingredientName != "" && !ingredientNameDoesExist() && ingredientAmount != 0.0
     }
     // Can't add cocktail alert
-    func ingredientNameIsUnique() -> Bool {
-//        
-//        let cocktailNames: [String] = {
-//            allCocktail
-//        }()
-//        
-//        if cocktailNames.allSatisfy({ $0 != viewModel.cocktailName}) {
-//            print("\(viewModel.cocktailName) in not in cocktail names.")
-//            return true
-//        } else {
-//            return false
-//        }
-        return false
+    func ingredientNameDoesExist() -> Bool {
+        let componentStrings = startingIngredients.map({$0.name})
+
+        return componentStrings.contains(ingredientName)
     }
    
     
@@ -151,7 +154,20 @@ import Observation
         return text
     }
     
-   
+    func customIngredientIsSpirit() -> Bool {
+        if category == .agaves || category == .amari || category == .bitters || category == .brandies || category == .fortifiedWines || category == .gins || category == .liqueurs || category == .otherAlcohol || category == .rums || category == .vodkas || category == .whiskies || category == .wines {
+            return true
+        }
+        
+        return false
+    }
+    func customIngredientIsNA() -> Bool {
+        if customIngredientIsSpirit() {
+            return false
+        }
+        
+        return true
+    }
    
 
     func matchAllPhysicalCocktailComponents() {
@@ -174,6 +190,38 @@ import Observation
             }
         }
 
+    }
+    
+    func matchAllIngredients(ingredients: [Ingredient]) -> [Ingredient] {
+        for ingredient in ingredients {
+            if ingredient.name.localizedCaseInsensitiveContains(ingredientName) && ingredientName != "" {
+                ingredient.matchesCurrentSearch = true
+            } else {
+                ingredient.matchesCurrentSearch = false
+            }
+        }
+        return ingredients.filter({ $0.matchesCurrentSearch == true})
+    }
+    func getAllCocktailIngredients(cocktails: [Cocktail]) -> [Ingredient] {
+       
+        
+        let listOfIngredients = cocktails.map({$0.spec}).flatMap({$0}).sorted(by: {$0.name < $1.name})
+        let filteredList: [Ingredient] = {
+            var ingredients: [Ingredient] = []
+            var ingredientNamesOnly: [String] = []
+            for ingredient in listOfIngredients {
+                if !ingredientNamesOnly.contains(ingredient.name) {
+                    ingredients.append(ingredient)
+                    ingredientNamesOnly.append(ingredient.name)
+                }
+            }
+            return ingredients
+        }()
+        
+        
+       
+     
+        return filteredList
     }
      func dynamicallyChangeMeasurementUnit() {
          switch category {
@@ -223,6 +271,8 @@ import Observation
         return cocktailComponentArray
         
     }
+    
+ 
     
     func validateAuthor() {
         if authorName != "" && authorYear != "" && authorPlace != "" {

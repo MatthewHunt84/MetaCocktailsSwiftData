@@ -35,7 +35,7 @@ struct AddedIngredientView: View {
                         .foregroundStyle(.brandPrimaryGold)
                 }
             } destination: {
-                AddIngredientDetailView(viewModel: viewModel)
+                AddExistingIngredientDetailView(viewModel: viewModel)
                     .navigationBarBackButtonHidden(true)
             }
         }
