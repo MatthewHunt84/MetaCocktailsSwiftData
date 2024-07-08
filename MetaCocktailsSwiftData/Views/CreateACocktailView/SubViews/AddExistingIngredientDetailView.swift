@@ -11,7 +11,7 @@ import SwiftData
 struct AddExistingIngredientDetailView: View {
     @Bindable var viewModel: AddCocktailViewModel
     @FocusState private var keyboardFocused: Bool
-    @FocusState private var amountKeyboardFocus: Bool
+    @FocusState private var amountKeyboardFocused: Bool
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
@@ -36,21 +36,23 @@ struct AddExistingIngredientDetailView: View {
                     }
                     .padding(.horizontal)
                     Form {
-                        AddIngredientSearchView(viewModel: viewModel, filteredIngredients: $filteredIngredients, keyboardFocused: _keyboardFocused, amountKeyboardFocus: _amountKeyboardFocus)
-                        AddMeasurementView(viewModel: viewModel, amountKeyboardFocus: _amountKeyboardFocus)
+                        AddIngredientSearchView(viewModel: viewModel, filteredIngredients: $filteredIngredients, keyboardFocused: _keyboardFocused)
+                        AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
                         AddExistingIngredientToCocktailButton(viewModel: viewModel)
                         
                     }
                     .toolbar {
                         ToolbarItem(placement: .bottomBar) { CreateNewIngredientButton(viewModel: viewModel) }
-                        ToolbarItemGroup(placement: .keyboard) { KeyboardDoneButton(keyboardFocused: _amountKeyboardFocus, amountKeyboardFocus: _amountKeyboardFocus) }
+                        ToolbarItemGroup(placement: .keyboard) {
+                            KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
+                        }
                     }
                     .task {
                         if !viewModel.startingIngredientsHaveLoaded  {
                             viewModel.startingIngredients = viewModel.getAllCocktailIngredients(cocktails: cocktails)
-                            keyboardFocused = true
                             viewModel.startingIngredientsHaveLoaded = true
                         }
+                        keyboardFocused = true
                     }
                 }
                 
@@ -79,7 +81,6 @@ struct AddIngredientSearchView: View {
     @Bindable var viewModel: AddCocktailViewModel
     @Binding var filteredIngredients: [Ingredient]
     @FocusState var keyboardFocused: Bool
-    @FocusState var amountKeyboardFocus: Bool
     var body: some View {
         Section("Name") {
             VStack{
@@ -88,9 +89,8 @@ struct AddIngredientSearchView: View {
                     .onChange(of: viewModel.ingredientName, initial: true) { old, new in
                         viewModel.ingredientName = new
                         filteredIngredients = viewModel.matchAllIngredients(ingredients: viewModel.startingIngredients)
-                        //
+                    
                     }
-                
             }
             
             List {
@@ -101,7 +101,7 @@ struct AddIngredientSearchView: View {
                         viewModel.category = ingredient.category
                         viewModel.ingredientTags = ingredient.tags ?? Tags()
                         viewModel.dynamicallyChangeMeasurementUnit()
-                        amountKeyboardFocus = true
+                        keyboardFocused = false
                         viewModel.didChooseExistingIngredient = true
                     } label: {
                         Text(ingredient.name)
@@ -120,14 +120,14 @@ struct AddIngredientSearchView: View {
 }
 struct AddMeasurementView: View {
     @Bindable var viewModel: AddCocktailViewModel
-    @FocusState var amountKeyboardFocus: Bool
-    
+    @FocusState var amountKeyboardFocused: Bool
     var body: some View {
         Section("Amount") {
             HStack {
                 TextField("Amount", value: $viewModel.ingredientAmount, formatter: viewModel.formatter)
                     .keyboardType(.decimalPad)
-                    .focused($amountKeyboardFocus)
+                    .focused($amountKeyboardFocused)
+                    
                     
                 Menu {
                     ForEach(MeasurementUnit.allCases, id: \.self) { unit in
@@ -219,20 +219,16 @@ struct CreateNewIngredientButton: View {
 
 struct KeyboardDoneButton: View {
     @FocusState var keyboardFocused: Bool
-    @FocusState var amountKeyboardFocus: Bool
-    
-    
+    @FocusState var amountKeyboardFocused: Bool
     var body: some View {
-        
         HStack{
             Spacer()
             Button("Done") {
-                amountKeyboardFocus = false
                 keyboardFocused = false
+                amountKeyboardFocused = false
             }
             .tint(Color.brandPrimaryGold)
         }
-        
     }
 }
 

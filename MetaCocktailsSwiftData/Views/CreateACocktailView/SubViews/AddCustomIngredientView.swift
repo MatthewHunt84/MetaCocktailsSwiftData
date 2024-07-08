@@ -11,9 +11,8 @@ struct AddCustomIngredientView: View {
     
     @Bindable var viewModel: AddCocktailViewModel
     @FocusState private var keyboardFocused: Bool
-    @FocusState private var amountKeyboardFocus: Bool
-    @Environment(\.dismiss) private var dismiss 
-   
+    @FocusState private var amountKeyboardFocused: Bool
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         NavigationStack{
@@ -36,13 +35,13 @@ struct AddCustomIngredientView: View {
                                 .focused($keyboardFocused)
                         }
                         CategoryPickerView(viewModel: viewModel)
-                        AddMeasurementView(viewModel: viewModel, amountKeyboardFocus: _amountKeyboardFocus)
+                        AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
                         IngredeientRecipeView(viewModel: viewModel)
                         AddCustomIngredientToCocktailButton(viewModel: viewModel)
                     }
                     .toolbar {
-                        ToolbarItemGroup(placement: .keyboard) { 
-                            KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocus: _amountKeyboardFocus)
+                        ToolbarItemGroup(placement: .keyboard) {
+                            KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
                         }
                     }
                     .task {
