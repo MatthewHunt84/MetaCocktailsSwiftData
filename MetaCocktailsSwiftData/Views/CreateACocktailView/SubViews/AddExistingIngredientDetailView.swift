@@ -130,7 +130,7 @@ struct AddMeasurementView: View {
                     
                     
                 Menu {
-                    ForEach(MeasurementUnit.allCases, id: \.self) { unit in
+                    ForEach(viewModel.dynamicallyChangeMeasurementOptionsBasedOnChosenCategory(), id: \.self) { unit in
                         Button {
                             viewModel.selectedMeasurementUnit = unit
                         } label: {
