@@ -185,10 +185,8 @@ struct AddExistingIngredientToCocktailButton: View {
                 dismiss()
             } else {
                 viewModel.isShowingingredientAlert.toggle()
+                viewModel.didChooseExistingIngredient = false
             }
-            
-            
-            viewModel.didChooseExistingIngredient = false
         } label: {
             
             HStack {
