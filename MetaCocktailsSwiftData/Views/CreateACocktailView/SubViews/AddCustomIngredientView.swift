@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AddCustomIngredientView: View {
     
@@ -100,10 +101,11 @@ struct AddCustomIngredientToCocktailButton: View {
     @Bindable var viewModel: AddCocktailViewModel
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
+    @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]
     
     var body: some View {
         Button{
-            if viewModel.customIngredientIsValid() {
+            if viewModel.customIngredientIsValid(allIngredients: ingredients) {
                 viewModel.prep = Prep(prepIngredientName: viewModel.ingredientName, prepRecipe: viewModel.prepIngredientRecipe)
                 viewModel.addedIngredients.append(Ingredient(viewModel.ingredientName,
                                                              ingredientCategory: viewModel.category,

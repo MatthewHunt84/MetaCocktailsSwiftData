@@ -95,28 +95,33 @@ struct AddIngredientSearchView: View {
                     }
             }
             
-            List {
-                ForEach(filteredIngredients2a, id: \.name) { ingredient in
-                    
-                    Button {
-                        viewModel.ingredientName = ingredient.name
-                        viewModel.category = ingredient.category
-                        viewModel.ingredientTags = ingredient.tags ?? Tags()
-                        viewModel.dynamicallyChangeMeasurementUnit()
-                        keyboardFocused = false
-                        viewModel.didChooseExistingIngredient = true
-                    } label: {
-                        Text(ingredient.name)
+            if keyboardFocused {
+                List {
+                    ForEach(filteredIngredients2a, id: \.name) { ingredient in
+                        
+                        Button {
+                            viewModel.ingredientName = ingredient.name
+                            viewModel.category = ingredient.category
+                            viewModel.ingredientTags = ingredient.tags ?? Tags()
+                            viewModel.dynamicallyChangeMeasurementUnit()
+                            keyboardFocused = false
+                            viewModel.didChooseExistingIngredient = true
+                        } label: {
+                            Text(ingredient.name)
+                        }
+                        .tint(.white)
+                        
+                        
                     }
-                    .tint(.white)
-                    
+                    .listStyle(.plain)
+                    .listRowBackground(Color.black)
                     
                 }
-                .listStyle(.plain)
-                .listRowBackground(Color.black)
-                
+                .scrollContentBackground(.hidden)
+            } else {
+                EmptyView()
             }
-            .scrollContentBackground(.hidden)
+
         }
     }
 }
@@ -133,15 +138,14 @@ struct AddMeasurementView: View {
                     
                 Menu {
                     ForEach(viewModel.dynamicallyChangeMeasurementOptionsBasedOnChosenCategory(), id: \.self) { unit in
+                        
                         Button {
                             viewModel.selectedMeasurementUnit = unit
                         } label: {
                             HStack{
                                 Text(unit.rawValue)
                             }
-                            
                         }
-                        
                     }
                 } label: {
                     HStack{
@@ -159,10 +163,11 @@ struct AddExistingIngredientToCocktailButton: View {
     @Bindable var viewModel: AddCocktailViewModel
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
+    @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]
     
     var body: some View {
         Button{
-            if viewModel.existingIngredientIsValid() {
+            if viewModel.existingIngredientIsValid(allIngredients: ingredients) {
                 
                 let ingredient = Ingredient(viewModel.ingredientName,
                                             ingredientCategory: viewModel.category,

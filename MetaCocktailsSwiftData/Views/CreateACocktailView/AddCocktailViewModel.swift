@@ -116,21 +116,18 @@ import Observation
         return cocktailName != "" && ((addedIngredients.count) > 1) && uniqueGlasswareName != nil
     }
     
-    func existingIngredientIsValid() -> Bool {
+    func existingIngredientIsValid(allIngredients: [IngredientBase]) -> Bool {
         
-        return ingredientAmount != 0.0 && ingredientNameDoesExist() && didChooseExistingIngredient == true
+        return ingredientAmount != 0.0 &&
+        didChooseExistingIngredient == true &&
+        allIngredients.contains(where: { $0.name == ingredientName } )
     }
-    func customIngredientIsValid() -> Bool {
+    func customIngredientIsValid(allIngredients: [IngredientBase]) -> Bool {
         
-        return ingredientName != "" && !ingredientNameDoesExist() && ingredientAmount != 0.0
+        return ingredientName != "" &&
+        ingredientAmount != 0.0 &&
+        allIngredients.contains(where: { $0.name == ingredientName } )
     }
-    // Can't add cocktail alert
-    func ingredientNameDoesExist() -> Bool {
-        let componentStrings = startingIngredients.map({$0.name})
-
-        return componentStrings.contains(ingredientName)
-    }
-   
     
     func cantAddCocktailMessage() -> String {
         var text = ""
@@ -205,7 +202,7 @@ import Observation
     func matchAllIngredients2(ingredients: [IngredientBase]) -> [IngredientBase] {
         
         guard !ingredientName.isEmpty else {
-             return ingredients // Return all ingredients if search text is empty
+             return [] // Return all ingredients if search text is empty
          }
         
         let lowercasedSearchText = ingredientName.lowercased()
@@ -333,10 +330,6 @@ import Observation
             garnish = addedGarnish
         }
     }
-    
-    
-    
-
 }
 
 extension AddCocktailView {
