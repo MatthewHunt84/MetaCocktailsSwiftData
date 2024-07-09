@@ -17,9 +17,7 @@ struct AddExistingIngredientDetailView: View {
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
     @State private var filteredIngredients: [Ingredient] = []
     
-    
-    
-  
+
     var body: some View {
         NavigationStack{
             ZStack{
@@ -48,10 +46,10 @@ struct AddExistingIngredientDetailView: View {
                         }
                     }
                     .task {
-                        if !viewModel.startingIngredientsHaveLoaded  {
-                            viewModel.startingIngredients = viewModel.getAllCocktailIngredients(cocktails: cocktails)
-                            viewModel.startingIngredientsHaveLoaded = true
-                        }
+//                        if !viewModel.startingIngredientsHaveLoaded  {
+//                            viewModel.startingIngredients = ingredients
+//                            viewModel.startingIngredientsHaveLoaded = true
+//                        }
                         keyboardFocused = true
                     }
                 }
@@ -81,6 +79,10 @@ struct AddIngredientSearchView: View {
     @Bindable var viewModel: AddCocktailViewModel
     @Binding var filteredIngredients: [Ingredient]
     @FocusState var keyboardFocused: Bool
+
+    @Query(sort: \IngredientModel.name) var ingredients: [IngredientModel]
+    @State var filteredIngredients2: [IngredientModel] = []
+    
     var body: some View {
         Section("Name") {
             VStack{
@@ -88,13 +90,13 @@ struct AddIngredientSearchView: View {
                     .focused($keyboardFocused)
                     .onChange(of: viewModel.ingredientName, initial: true) { old, new in
                         viewModel.ingredientName = new
-                        filteredIngredients = viewModel.matchAllIngredients(ingredients: viewModel.startingIngredients)
+                        filteredIngredients2 = viewModel.matchAllIngredients2(ingredients: ingredients)
                     
                     }
             }
             
             List {
-                ForEach(filteredIngredients, id: \.id) { ingredient in
+                ForEach(filteredIngredients2, id: \.name) { ingredient in
                     
                     Button {
                         viewModel.ingredientName = ingredient.name

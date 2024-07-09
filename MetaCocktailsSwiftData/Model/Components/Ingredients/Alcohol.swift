@@ -932,7 +932,7 @@ enum Bitters: String, Codable, CaseIterable {
     case aPPBitters            = "A.P.P. Bitters"
     case bittermansChocolate   = "Bitterman's Chocolate Bitters"
     case bittercubeJamaican1   = "Bittercube Jamaican No.1 Bitters"
-    case bitterTruthJTDecanter = "erry Thomas Decanter Bitters"
+    case bitterTruthJTDecanter = "Jerry Thomas Decanter Bitters"
     case blackstrapBitters     = "Bittercube Blackstrap Bitters"
     case tikiBitters           = "Bitterman's Tiki Bitters"
     case blackWalnut           = "Black Walnut Bitters"

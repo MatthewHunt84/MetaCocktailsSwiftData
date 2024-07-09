@@ -191,6 +191,7 @@ class Ingredient: Codable, Hashable {
     let isCustom: Bool? 
     var matchesCurrentSearch: Bool
     var info: String?
+    @Relationship(deleteRule: .cascade) let ingredientModel: IngredientModel
     
     
     init(_ name: String, ingredientCategory: Category, tagsWithSubcategories: Tags? = Tags(), value: Double, unit: MeasurementUnit = .fluidOunces, prep: Prep? = nil, isCustom: Bool? = false, info: String? = nil) {
@@ -204,11 +205,11 @@ class Ingredient: Codable, Hashable {
         self.isCustom = isCustom
         self.matchesCurrentSearch = false
         self.info = info
+        self.ingredientModel = IngredientModel(name: name, category: ingredientCategory, tags: tagsWithSubcategories, prep: prep)
     }
+    
     init(oldIngredient: CocktailIngredient) {
-        self.id = UUID()
-        self.name = oldIngredient.ingredient.name
-        self.category = {
+        let newCategory = {
             var newCategory: Category = .agaves
             for category in Category.allCases {
                 if oldIngredient.ingredient.category == category.rawValue {
@@ -218,6 +219,10 @@ class Ingredient: Codable, Hashable {
             }
             return newCategory
         }()
+        
+        self.id = UUID()
+        self.name = oldIngredient.ingredient.name
+        self.category = newCategory
         self.tags = oldIngredient.ingredient.tags
         self.value = oldIngredient.value
         self.unit = oldIngredient.unit
@@ -225,6 +230,7 @@ class Ingredient: Codable, Hashable {
         self.isCustom = false
         self.matchesCurrentSearch = false
         self.info = oldIngredient.info
+        self.ingredientModel = IngredientModel(name: oldIngredient.ingredient.name, category: newCategory, tags: oldIngredient.ingredient.tags, prep: oldIngredient.prep)
     }
     func localizedVolumetricString(location: Location) -> String {
         switch location {
@@ -248,7 +254,7 @@ class Ingredient: Codable, Hashable {
     // MARK: - @Model codable conformance
 
     enum CodingKeys: CodingKey {
-        case id, name, ingredientCategory, tagsWithSubcategories, value, unit, prep, matchesCurrentSearch
+        case id, name, ingredientCategory, tagsWithSubcategories, value, unit, prep, matchesCurrentSearch, info, ingredientModel
     }
 
     required init(from decoder: Decoder) throws {
@@ -261,6 +267,8 @@ class Ingredient: Codable, Hashable {
         self.unit = try container.decode(MeasurementUnit.self, forKey: .unit)
         self.prep = try container.decode(Prep.self, forKey: .prep)
         self.matchesCurrentSearch = try container.decode(Bool.self, forKey: .matchesCurrentSearch)
+        self.info = try container.decode(String.self, forKey: .info)
+        self.ingredientModel = try container.decode(IngredientModel.self, forKey: .ingredientModel)
     }
 
     func encode(to encoder: Encoder) throws {
@@ -273,6 +281,8 @@ class Ingredient: Codable, Hashable {
         try container.encode(unit, forKey: .unit)
         try container.encode(prep, forKey: .prep)
         try container.encode(matchesCurrentSearch, forKey: .matchesCurrentSearch)
+        try container.encode(info, forKey: .info)
+        try container.encode(ingredientModel, forKey: .ingredientModel)
     }
 }
 
@@ -299,9 +309,70 @@ enum Category: String, Codable, CaseIterable  {
     case wines             = "Wine"
     case bitters           = "Bitters"
     case amari             = "Amari"
+}
+
+
+
+@Model
+class IngredientModel: Codable, Hashable {
+//    #Unique<IngredientModel>([\.name])
+    let name: String
+    let category: Category
+    let tags: Tags?
+    let prep: Prep?
     
+    init(name: String, category: Category, tags: Tags? = Tags(), prep: Prep?) {
+        self.name = name
+        self.category = category
+        self.tags = tags
+        self.prep = prep
+    }
     
+    // MARK: Equatable + Hashable Conformance
     
+    static func == (lhs: IngredientModel, rhs: IngredientModel) -> Bool {
+        lhs.name > rhs.name
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+    }
+    
+    enum CodingKeys: CodingKey {
+        case name, category, tags, prep
+    }
+    
+    required init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.name = try container.decode(String.self, forKey: .name)
+        self.category = try container.decode(Category.self, forKey: .category)
+        self.tags = try container.decode(Tags.self, forKey: .tags)
+        self.prep = try container.decode(Prep.self, forKey: .prep)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encode(category, forKey: .category)
+        try container.encode(tags, forKey: .tags)
+        try container.encode(prep, forKey: .prep)
+    }
+    
+    static func removeDuplicates(in context: ModelContext) throws {
+        let descriptor = FetchDescriptor<IngredientModel>()
+        let allObjects = try context.fetch(descriptor)
+        
+        let groupedObjects = Dictionary(grouping: allObjects, by: { $0.name })
+        
+        for (_, objects) in groupedObjects where objects.count > 1 {
+            // Keep the first object, delete the rest
+            for object in objects.dropFirst() {
+                context.delete(object)
+            }
+        }
+        
+        try context.save()
+    }
 }
 
 

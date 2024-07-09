@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TabBarView: View {
     
-    @State private var selectedTab: TabBarComponents = .cocktailListView
+    @State private var selectedTab: TabBarComponents = .addCocktailView
     
     var body: some View {
         

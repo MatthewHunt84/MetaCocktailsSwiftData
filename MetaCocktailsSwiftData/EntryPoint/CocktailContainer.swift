@@ -29,6 +29,7 @@ actor CocktailContainer {
                 
                 shouldPreload = false
             } else {
+                try IngredientModel.removeDuplicates(in: container.mainContext)
                 print("✅✅✅ COCKTAILS LOADED FROM DATABASE ✅✅✅")
             }
             return container

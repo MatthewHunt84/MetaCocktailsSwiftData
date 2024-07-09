@@ -10,7 +10,6 @@ import Observation
 
 @Observable final class AddCocktailViewModel {
 
-    
     //AddIngredientView
     var isShowingingredientAlert: Bool = false
     var ingredientName = ""
@@ -202,27 +201,64 @@ import Observation
         }
         return ingredients.filter({ $0.matchesCurrentSearch == true})
     }
-    func getAllCocktailIngredients(cocktails: [Cocktail]) -> [Ingredient] {
-       
+    
+    func matchAllIngredients2(ingredients: [IngredientModel]) -> [IngredientModel] {
         
-        let listOfIngredients = cocktails.map({$0.spec}).flatMap({$0}).sorted(by: {$0.name < $1.name})
-        let filteredList: [Ingredient] = {
-            var ingredients: [Ingredient] = []
-            var ingredientNamesOnly: [String] = []
-            for ingredient in listOfIngredients {
-                if !ingredientNamesOnly.contains(ingredient.name) {
-                    ingredients.append(ingredient)
-                    ingredientNamesOnly.append(ingredient.name)
+        guard !ingredientName.isEmpty else {
+             return ingredients // Return all ingredients if search text is empty
+         }
+        
+        let lowercasedSearchText = ingredientName.lowercased()
+        
+        return ingredients.filter { $0.name.lowercased().contains(lowercasedSearchText) }
+            .sorted { lhs, rhs in
+                let lhsLowercased = lhs.name.lowercased()
+                let rhsLowercased = rhs.name.lowercased()
+                
+                // prioritize ingredients that start with the search text
+                let lhsStartsWith = lhsLowercased.hasPrefix(ingredientName.lowercased())
+                let rhsStartsWith = rhsLowercased.hasPrefix(ingredientName.lowercased())
+                
+                if lhsStartsWith && !rhsStartsWith {
+                    return true
+                } else if !lhsStartsWith && rhsStartsWith {
+                    return false
                 }
+                
+                // if two ingredients start with the same search text, prioritize the shortest one
+                if lhsStartsWith && rhsStartsWith {
+                    return lhs.name.count < rhs.name.count
+                }
+                
+                // If neither starts with the search text, prioritize the one with the search text appearing first in the word
+                let lhsRange = lhsLowercased.range(of: ingredientName.lowercased())
+                let rhsRange = rhsLowercased.range(of: ingredientName.lowercased())
+                
+                let matchedArray = (lhsRange?.lowerBound ?? lhsLowercased.endIndex) < (rhsRange?.lowerBound ?? rhsLowercased.endIndex)
+                
+                return matchedArray
             }
-            return ingredients
-        }()
-        
-        
-       
-     
-        return filteredList
     }
+    
+//    func getAllCocktailIngredients(cocktails: [Cocktail]) -> [Ingredient] {
+//       
+//        
+//        let listOfIngredients = cocktails.map({$0.spec}).flatMap({$0}).sorted(by: {$0.name < $1.name})
+//        let filteredList: [Ingredient] = {
+//            var ingredients: [Ingredient] = []
+//            var ingredientNamesOnly: [String] = []
+//            for ingredient in listOfIngredients {
+//                if !ingredientNamesOnly.contains(ingredient.name) {
+//                    ingredients.append(ingredient)
+//                    ingredientNamesOnly.append(ingredient.name)
+//                }
+//            }
+//            return ingredients
+//        }()
+//        
+//        return filteredList
+//    }
+    
      func dynamicallyChangeMeasurementUnit() {
          switch category {
             case .herbs:
