@@ -16,7 +16,7 @@ var hereBeDragons = Cocktail(cocktailName: "Here Be Dragons",
                              tags: hereBeDragonsTags,
                              collection: .williamsAndGraham)
 
-let hereBeDragonsSpec: [CocktailIngredient] = [CocktailIngredient(.syrups(.grenadine), value: 0.25),
+let hereBeDragonsSpec: [CocktailIngredient] = [CocktailIngredient(.syrups(.grenadine), value: 0.25, info: Syrup.grenadine.grenadineInfo),
                                                CocktailIngredient(.juices(.grapefruit), value: 0.5),
                                                CocktailIngredient(.juices(.lime), value: 1),
                                                CocktailIngredient(.syrups(.passionfruitSyrup), value: 0.75),

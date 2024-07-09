@@ -16,14 +16,117 @@ class CocktailIngredient: Codable, Hashable {
     let value: Double
     let unit: MeasurementUnit
     let prep: Prep?
+    let info: String?
     
     
-    init(_ ingredient: IngredientType, value: Double, unit: MeasurementUnit = .fluidOunces, prep: Prep? = nil) {
+    init(_ ingredient: IngredientType, value: Double, unit: MeasurementUnit = .fluidOunces, prep: Prep? = nil, info: String? = nil) {
         self.ingredient = ingredient
         self.value = value
         self.unit = unit
         self.id = UUID()
         self.prep = prep
+        self.info = {
+            if ingredient.name == Whiskey.aberlourAbundah.rawValue {
+                return "High Proof Single Malt"
+            }
+            if ingredient.name == Syrup.richDem.rawValue || ingredient.name == Syrup.richCinnamonAndVanill.rawValue {
+                return "Rich 2:1 by weight syrup."
+            }
+            if ingredient.name == Juice.carrotJuice.rawValue || ingredient.name == Juice.grapefruit.rawValue || ingredient.name == Juice.lemon.rawValue || ingredient.name == Juice.lime.rawValue || ingredient.name == Juice.orange.rawValue || ingredient.name == Juice.pineappleJuice.rawValue {
+                return "Fresh juiced and utilized within 48 hours."
+            }
+            if ingredient.name == Fruit.grapefruitPeel.rawValue {
+                return "Shaken in"
+            }
+            if ingredient.name == Seasoning.pepper.rawValue {
+                return "Fresh Ground"
+            }
+            if ingredient.name == OtherNA.bloodyMarryMixWnG.rawValue {
+                return "Williams and Graham's recipe"
+            }
+            if ingredient.name == OtherNA.bloodyMarryMix.rawValue {
+                return "Home Made"
+            }
+            if ingredient.name == OtherNA.celeryStrip.rawValue {
+                return "Matchstick-size"
+            }
+            if ingredient.name == OtherNA.jalapenoSlice.rawValue {
+                return "1/4 inch thick"
+            }
+            if ingredient.name == OtherNA.raspberryPreserves.rawValue {
+                return "Preferably Bonne Maman"
+            }
+            if ingredient.name == OtherNA.springOnion.rawValue {
+                return "or a ramp"
+            }
+            if ingredient.name == OtherNA.vanillaExtract.rawValue {
+                return "Get the real stuff"
+            }
+            if ingredient.name == Agave.mezcalDelMagueyChichicapa.rawValue || ingredient.name == Agave.mezcalDelMagueyJabali.rawValue || ingredient.name == Agave.mezcalDelMagueyVida.rawValue || ingredient.name == Agave.mezcalDelMagueySanLuis.rawValue {
+                return "Mezcal by Del Maguey"
+            }
+            if ingredient.name == Agave.puebloViejoBlanco104.rawValue {
+                return "Pueblo Viejo Tequila"
+            }
+            if ingredient.name == Gin.leopoldNavy.rawValue || ingredient.name == Gin.leopoldAmericanSBGin.rawValue || ingredient.name == Liqueur.lopoldsApple.rawValue || ingredient.name == Liqueur.leopoldCherry.rawValue {
+                return "By Leopold Bros"
+            }
+            if ingredient.name == Rum.uruapanAnejo.rawValue {
+                return "Single Blended Rum"
+            }
+            if ingredient.name == Whiskey.portCharlotte.rawValue || ingredient.name == Whiskey.Ardbeg.rawValue {
+                return "10 Yr Peated Scotch"
+            }
+            if ingredient.name == Whiskey.compassBoxOakCross.rawValue || ingredient.name == Whiskey.monkeyShoulder.rawValue{
+                return "Blended Scotch"
+            }
+            if ingredient.name == Whiskey.elijahCraigSmallBatch.rawValue {
+                return "Bourbon"
+            }
+            if ingredient.name == Whiskey.hibikiHarmony.rawValue {
+                return "Blended Malt Whisky"
+            }
+            if ingredient.name == Whiskey.oGD114.rawValue {
+                return "114 proof Bourbon"
+            }
+            if ingredient.name == Whiskey.straightRyeOrBourbon.rawValue {
+                return "100 proof"
+            }
+            if ingredient.name == Whiskey.talisker10.rawValue {
+                return "Single Malt Scotch"
+            }
+            if ingredient.name == Whiskey.tullamoreDew.rawValue || ingredient.name == Whiskey.tullamoreDew12.rawValue {
+                return "Irish Whiskey"
+            }
+            if ingredient.name == Liqueur.anchoRayesAncho.rawValue || ingredient.name == Liqueur.anchoVerde.rawValue {
+                return "By Ancho Reyes"
+            }
+            if ingredient.name == FortifiedWine.kinaLillet.rawValue {
+                return "Stopped Production in 1986"
+            }
+            if ingredient.name == FortifiedWine.aeDorPineauDeCharantes.rawValue {
+                return "By A.E. Dor "
+            }
+            if ingredient.name == FortifiedWine.cocchiDeTorino.rawValue {
+                return "Sweet Vermouth"
+            }
+            if ingredient.name == FortifiedWine.byrrh.rawValue {
+                return "French bitter apertif"
+            }
+            if ingredient.name == Bitters.bitterTruthJTDecanter.rawValue {
+                return "By Bitter Truth"
+            }
+            if ingredient.name == Bitters.blackWalnut.rawValue {
+                return "By Fee Brothers"
+            }
+            if ingredient.name == Bitters.blackWalnut.rawValue {
+                return "Dale Degroff's"
+            }
+            if ingredient.name == Amaro.amereNouvelle.rawValue {
+                return "By Bittermans"
+            }
+            return info
+        }()
     }
     
     func localizedVolumetricString(location: Location) -> String {
@@ -84,9 +187,10 @@ class Ingredient: Codable, Hashable {
     let prep: Prep?
     let isCustom: Bool? 
     var matchesCurrentSearch: Bool
+    var info: String?
     
     
-    init(_ name: String, ingredientCategory: Category, tagsWithSubcategories: Tags? = Tags(), value: Double, unit: MeasurementUnit = .fluidOunces, prep: Prep? = nil, isCustom: Bool? = false) {
+    init(_ name: String, ingredientCategory: Category, tagsWithSubcategories: Tags? = Tags(), value: Double, unit: MeasurementUnit = .fluidOunces, prep: Prep? = nil, isCustom: Bool? = false, info: String? = nil) {
         self.name = name
         self.category = ingredientCategory
         self.tags = tagsWithSubcategories
@@ -96,6 +200,7 @@ class Ingredient: Codable, Hashable {
         self.prep = prep
         self.isCustom = isCustom
         self.matchesCurrentSearch = false
+        self.info = info
     }
     init(oldIngredient: CocktailIngredient) {
         self.id = UUID()
@@ -116,6 +221,7 @@ class Ingredient: Codable, Hashable {
         self.prep = oldIngredient.prep
         self.isCustom = false
         self.matchesCurrentSearch = false
+        self.info = oldIngredient.info
     }
     func localizedVolumetricString(location: Location) -> String {
         switch location {

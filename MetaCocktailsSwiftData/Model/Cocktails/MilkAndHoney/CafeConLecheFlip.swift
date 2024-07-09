@@ -14,10 +14,10 @@ var cafeConLecheFlip = Cocktail(cocktailName: "Café con Leche Flip",
                                 author: Author(person: AuthorNames.samRoss.rawValue,
                                                place: AuthorPlaces.milkAndHoney.rawValue,
                                                year: "Early 2000s"),
-                                spec: beckyWithTheGoodHairSpec,
-                                buildOrder: beckyWithTheGoodHairBuild,
-                                tags: beckyWithTheGoodHairTags,
-                                collection: .williamsAndGraham)
+                                spec: cafeConLecheFlipSpec,
+                                buildOrder: cafeConLecheFlipBuild,
+                                tags: cafeConLecheFlipTags,
+                                collection: .milkAndHoney)
 
 var cafeConLecheFlipSpec  = [CocktailIngredient(.otherNonAlc(.cream), value: 0.75),
                              CocktailIngredient(.syrups(.simple), value: 0.75),

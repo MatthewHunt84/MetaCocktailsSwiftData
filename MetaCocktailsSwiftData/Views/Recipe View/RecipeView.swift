@@ -304,7 +304,52 @@ struct GlasswareView: View {
         }
     }
 }
-
+struct SpecIngredientView: View {
+    var ingredient: Ingredient
+    @State private var isShowingIngredientInfo : Bool = false
+    
+    var body: some View {
+        let number = NSNumber(value: ingredient.value)
+        VStack{
+            HStack {
+                Text("\(number) \(ingredient.unit.rawValue)")
+                    .font(Layout.specMeasurement)
+                if ingredient.prep != nil {
+                    NavigationLink {
+                        PrepRecipeView(prep: ingredient.prep!)
+                    } label: {
+                        Text(ingredient.name)
+                            .font(Layout.body)
+                            .tint(.cyan)
+                    }
+                } else {
+                    Text("\(ingredient.name)")
+                        .font(Layout.body)
+                        
+                }
+                if ingredient.info != nil {
+                    Image(systemName: "questionmark.circle.fill")
+                        .foregroundStyle(.blue)
+                        .onTapGesture {
+                            withAnimation(.easeInOut(duration: 0.5)) {
+                                isShowingIngredientInfo.toggle()
+                            }
+                            
+                        }
+                        
+                       
+                }
+            }
+            if isShowingIngredientInfo {
+                Text(ingredient.info!)
+                    .font(.footnote)
+                    .foregroundStyle(.brandPrimaryGold)
+                
+                    
+            }
+        }
+    }
+}
 
 struct SpecView: View {
     var cocktail: Cocktail
@@ -349,23 +394,7 @@ struct SpecView: View {
                     .padding(.bottom, 5)
                     
                     ForEach(orderSpec(), id: \.id) { ingredient in
-                        let number = NSNumber(value: ingredient.value)
-                        HStack {
-                            Text("\(number) \(ingredient.unit.rawValue)")
-                                .font(Layout.specMeasurement)
-                            if ingredient.prep != nil {
-                                NavigationLink {
-                                    PrepRecipeView(prep: ingredient.prep!)
-                                } label: {
-                                    Text(ingredient.name)
-                                        .font(Layout.body)
-                                        .tint(.cyan)
-                                }
-                            } else {
-                                Text("\(ingredient.name)")
-                                    .font(Layout.body)
-                            }
-                        }
+                        SpecIngredientView(ingredient: ingredient)
                     }
                 }
             }

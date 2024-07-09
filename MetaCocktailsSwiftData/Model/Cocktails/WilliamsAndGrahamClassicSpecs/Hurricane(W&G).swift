@@ -20,7 +20,7 @@ var hurricaneWnG = Cocktail(cocktailName: "Hurricane (W&G Version)",
 
 let hurricaneSpecWnG: [CocktailIngredient] =  [CocktailIngredient(.juices(.lime), value: 1),
                                                CocktailIngredient(.juices(.orange), value: 1),
-                                               CocktailIngredient(.syrups(.grenadine), value: 1, unit: .barSpoon),
+                                               CocktailIngredient(.syrups(.grenadine), value: 1, unit: .barSpoon, info: Syrup.grenadine.grenadineInfo),
                                                CocktailIngredient(.syrups(.simple), value: 0.5),
                                                CocktailIngredient(.syrups(.passionfruitSyrup), value: 0.5),
                                                CocktailIngredient(.rums(.plantation3Star), value: 1.5),

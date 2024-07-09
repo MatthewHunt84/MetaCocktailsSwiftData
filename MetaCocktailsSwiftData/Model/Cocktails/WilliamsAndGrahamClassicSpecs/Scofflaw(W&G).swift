@@ -19,7 +19,7 @@ var scofflawWnG = Cocktail(cocktailName: "Scofflaw (W&G Version)",
                            collection: .williamsAndGraham)
 
 var scofflawSpecWnG  = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                        CocktailIngredient(.syrups(.grenadine), value: 0.75),
+                        CocktailIngredient(.syrups(.grenadine), value: 0.75, info: Syrup.grenadine.grenadineInfo),
                         CocktailIngredient(.fortifiedWines(.dolinDry), value: 1),
                         CocktailIngredient(.whiskies(.pendletonRye), value: 2)]
 

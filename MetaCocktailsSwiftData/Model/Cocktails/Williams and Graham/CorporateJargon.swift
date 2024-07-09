@@ -17,7 +17,7 @@ var corporateJargon = Cocktail(cocktailName: "Corporate Jargon",
                                collection: .williamsAndGraham)
 
 let corporateJargonSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.bolivarBitters), value: 3, unit: .dashes),
-                                                 CocktailIngredient(.syrups(.richCinnamonAndVanilla), value: 1, unit: .barSpoon),
+                                                 CocktailIngredient(.syrups(.richCinnamonAndVanill), value: 1, unit: .barSpoon),
                                                  CocktailIngredient(.fortifiedWines(.lustauRojoVermouth), value: 0.75),
                                                  CocktailIngredient(.brandies(.domCafoBrandy), value: 0.5),
                                                  CocktailIngredient(.whiskies(.eagleRare10), value: 1.5)]
