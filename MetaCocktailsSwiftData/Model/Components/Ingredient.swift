@@ -26,6 +26,9 @@ class CocktailIngredient: Codable, Hashable {
         self.id = UUID()
         self.prep = prep
         self.info = {
+            if ingredient.name == Syrup.grenadine.rawValue {
+                return "Pomegranate syrup"
+            }
             if ingredient.name == Whiskey.aberlourAbundah.rawValue {
                 return "High Proof Single Malt"
             }
@@ -33,7 +36,7 @@ class CocktailIngredient: Codable, Hashable {
                 return "Rich 2:1 by weight syrup."
             }
             if ingredient.name == Juice.carrotJuice.rawValue || ingredient.name == Juice.grapefruit.rawValue || ingredient.name == Juice.lemon.rawValue || ingredient.name == Juice.lime.rawValue || ingredient.name == Juice.orange.rawValue || ingredient.name == Juice.pineappleJuice.rawValue {
-                return "Fresh juiced and utilized within 48 hours."
+                return "Juiced fresh"
             }
             if ingredient.name == Fruit.grapefruitPeel.rawValue {
                 return "Shaken in"

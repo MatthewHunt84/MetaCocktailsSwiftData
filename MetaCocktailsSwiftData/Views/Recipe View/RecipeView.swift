@@ -331,7 +331,7 @@ struct SpecIngredientView: View {
                     Image(systemName: "questionmark.circle.fill")
                         .foregroundStyle(.blue)
                         .onTapGesture {
-                            withAnimation(.easeInOut(duration: 0.5)) {
+                            withAnimation(.easeInOut(duration: 0.25)) {
                                 isShowingIngredientInfo.toggle()
                             }
                             
@@ -340,6 +340,7 @@ struct SpecIngredientView: View {
                        
                 }
             }
+            .multilineTextAlignment(.leading)
             if isShowingIngredientInfo {
                 Text(ingredient.info!)
                     .font(.footnote)

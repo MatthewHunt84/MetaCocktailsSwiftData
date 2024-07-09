@@ -18,7 +18,7 @@ var pinkLady = Cocktail(cocktailName: "Pink Lady",
                         collection: .originals)
 
 var pinkLadySpec  = [CocktailIngredient(.juices(.lime), value: 0.5),
-                     CocktailIngredient(.syrups(.grenadine), value: 0.5, info: Syrup.grenadine.grenadineInfo),
+                     CocktailIngredient(.syrups(.grenadine), value: 0.5),
                      CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.5),
                      CocktailIngredient(.brandies(.bondedApple), value: 1),
                      CocktailIngredient(.gins(.ginAny), value: 1)]

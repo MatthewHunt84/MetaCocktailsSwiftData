@@ -19,7 +19,7 @@ var fakerFace  = Cocktail(cocktailName: "Faker Face",
                           collection: .milkAndHoney)
 
 var fakerFaceSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
-                      CocktailIngredient(.syrups(.grenadine), value: 0.75, info: Syrup.grenadine.grenadineInfo),
+                      CocktailIngredient(.syrups(.grenadine), value: 0.75),
                       CocktailIngredient(.juices(.orange), value: 1),
                       CocktailIngredient(.soda(.sodaWater) , value: 2)]
 

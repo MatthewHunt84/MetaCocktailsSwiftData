@@ -20,7 +20,7 @@ var mexicanFiringSquad = Cocktail(cocktailName: "Mexican Firing Squad",
 
 var mexicanFiringSquadSpec = [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
                               CocktailIngredient(.juices(.lime), value: 1),
-                              CocktailIngredient(.syrups(.grenadine), value: 2, unit: .barSpoon, info: Syrup.grenadine.grenadineInfo),
+                              CocktailIngredient(.syrups(.grenadine), value: 2, unit: .barSpoon),
                               CocktailIngredient(.agaves(.tequilaBlanco), value: 2)]
 
 var mexicanFiringSquadTags = Tags( profiles: [.citrusy, .punchy, .tart],

@@ -22,7 +22,7 @@ var zombie = Cocktail(cocktailName: "Zombie",
 
 let zombieSpec: [CocktailIngredient] = [CocktailIngredient(.juices(.lime), value: 0.75),
                                         CocktailIngredient(.juices(.donsMix), value: 0.5),
-                                        CocktailIngredient(.syrups(.grenadine), value: 1, unit: .teaspoon, info: Syrup.grenadine.grenadineInfo),
+                                        CocktailIngredient(.syrups(.grenadine), value: 1, unit: .teaspoon),
                                         CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
                                         CocktailIngredient(.liqueurs(.falernum), value: 0.5),
                                         CocktailIngredient(.otherAlcohol(.pernod), value: 6, unit: .drops),
