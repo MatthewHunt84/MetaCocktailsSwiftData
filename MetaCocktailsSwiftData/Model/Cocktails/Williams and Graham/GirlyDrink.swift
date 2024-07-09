@@ -17,11 +17,11 @@ var girlyDrink = Cocktail(cocktailName: "Girly Drink",
                             tags: girlyDrinkTags,
                           collection: .williamsAndGraham)
 
-var girlyDrinkSpec  = [CocktailIngredient(.bitters(.bittercubeJamaican1), value: 2, unit: .dashes),
-                       CocktailIngredient(.amari(.campari), value: 0.5),
-                      CocktailIngredient(.liqueurs(.strega), value: 0.5),
-                      CocktailIngredient(.fortifiedWines(.dolinBlanc), value: 0.5),
-                      CocktailIngredient(.whiskies(.oGD114), value: 1.5)]
+var girlyDrinkSpec  = [OldCocktailIngredient(.bitters(.bittercubeJamaican1), value: 2, unit: .dashes),
+                       OldCocktailIngredient(.amari(.campari), value: 0.5),
+                       OldCocktailIngredient(.liqueurs(.strega), value: 0.5),
+                       OldCocktailIngredient(.fortifiedWines(.dolinBlanc), value: 0.5),
+                       OldCocktailIngredient(.whiskies(.oGD114), value: 1.5)]
 
 var girlyDrinkTags = Tags(profiles: [.rich, .punchy, .bittersweet, .spiritForward],
                          styles: [.negroni, .stirred])

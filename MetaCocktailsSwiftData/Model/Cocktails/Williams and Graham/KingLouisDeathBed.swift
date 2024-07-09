@@ -20,11 +20,11 @@ var kingLouisDeathBed = Cocktail(cocktailName: "King Louis Death Bed",
                                  tags: kingLouisDeathBedTags,
                                  collection: .williamsAndGraham)
 
-let kingLouisDeathBedSpec: [CocktailIngredient] = [CocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.25),
-                                                   CocktailIngredient(.liqueurs(.traderVicsChestnut), value: 0.5),
-                                                   CocktailIngredient(.fortifiedWines(.cocchiAmericano), value: 0.5),
-                                                   CocktailIngredient(.vodkas(.zubrowka), value: 1),
-                                                   CocktailIngredient(.brandies(.clearCreekPearBrandy), value: 1.5)]
+let kingLouisDeathBedSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.25),
+                                                      OldCocktailIngredient(.liqueurs(.traderVicsChestnut), value: 0.5),
+                                                      OldCocktailIngredient(.fortifiedWines(.cocchiAmericano), value: 0.5),
+                                                      OldCocktailIngredient(.vodkas(.zubrowka), value: 1),
+                                                      OldCocktailIngredient(.brandies(.clearCreekPearBrandy), value: 1.5)]
 
 
 let kingLouisDeathBedTags = Tags(profiles: [.bright, .spiritForward, .complex, .fruity],

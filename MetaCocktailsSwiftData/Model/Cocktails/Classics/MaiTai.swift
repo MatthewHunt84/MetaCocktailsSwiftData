@@ -19,11 +19,11 @@ var maiTai  = Cocktail(cocktailName: "Mai Tai",
                        collection: .originals,
                        titleCocktail: true)
 
-var maiTaiSpec    = [CocktailIngredient(.juices(.lime), value: 1),
-                     CocktailIngredient(.syrups(.richDem), value: 1, unit: .teaspoon, prep: PrepBible.richDem),
-                     CocktailIngredient(.syrups(.orgeat), value: 0.25, prep: PrepBible.orgeat),
-                     CocktailIngredient(.liqueurs(.orangeCuracao), value: 0.25),
-                     CocktailIngredient(.rums(.wrayAndNephew17), value: 2)]
+var maiTaiSpec    = [OldCocktailIngredient(.juices(.lime), value: 1),
+                     OldCocktailIngredient(.syrups(.richDem), value: 1, unit: .teaspoon, prep: PrepBible.richDem),
+                     OldCocktailIngredient(.syrups(.orgeat), value: 0.25, prep: PrepBible.orgeat),
+                     OldCocktailIngredient(.liqueurs(.orangeCuracao), value: 0.25),
+                     OldCocktailIngredient(.rums(.wrayAndNephew17), value: 2)]
 
 var maiTaiTags     = Tags(profiles: [.fruity, .refreshing, .citrusy], 
                           styles: [.sour, .shaken])

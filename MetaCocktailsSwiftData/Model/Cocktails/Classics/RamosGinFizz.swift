@@ -18,14 +18,14 @@ var ramosGinFizz = Cocktail(cocktailName: "Ramos Gin Fizz",
                             tags: ramosTags,
                             collection: .originals)
 
-let ramosGinFizzSpec: [CocktailIngredient] = [CocktailIngredient(.gins(.ginAny), value: 2.0),
-                                              CocktailIngredient(.juices(.lime), value: 0.5),
-                                              CocktailIngredient(.juices(.lemon), value: 0.5),
-                                              CocktailIngredient(.syrups(.simple), value: 1.0),
-                                              CocktailIngredient(.otherNonAlc(.cream), value: 1.0),
-                                              CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.5),
-                                              CocktailIngredient(.soda(.sodaWater), value: 2.0),
-                                              CocktailIngredient(.otherNonAlc(.orangeFlowerWater), value: 3, unit: .drops)]
+let ramosGinFizzSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.gins(.ginAny), value: 2.0),
+                                                 OldCocktailIngredient(.juices(.lime), value: 0.5),
+                                                 OldCocktailIngredient(.juices(.lemon), value: 0.5),
+                                                 OldCocktailIngredient(.syrups(.simple), value: 1.0),
+                                                 OldCocktailIngredient(.otherNonAlc(.cream), value: 1.0),
+                                                 OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 0.5),
+                                                 OldCocktailIngredient(.soda(.sodaWater), value: 2.0),
+                                                 OldCocktailIngredient(.otherNonAlc(.orangeFlowerWater), value: 3, unit: .drops)]
 
 var ramosTags = Tags(flavors: [.lemon, .lime],
                      profiles: [.floral, .citrusy, .creamy],

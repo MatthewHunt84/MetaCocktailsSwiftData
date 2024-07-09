@@ -18,12 +18,12 @@ var laCoa = Cocktail(cocktailName: "La Coa",
                      tags: laCoaTags,
                      collection: .williamsAndGraham)
 
-let laCoaSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.chocolateMole), value: 2, unit: .dashes),
-                                       CocktailIngredient(.rums(.cruzanBlackstrap), value: 2, unit: .barSpoon),
-                                       CocktailIngredient(.liqueurs(.giffardPassion), value: 0.25),
-                                       CocktailIngredient(.amari(.angosturaAmaro), value: 0.5),
-                                       CocktailIngredient(.brandies(.boulardCalvados), value: 0.5),
-                                       CocktailIngredient(.agaves(.mezcalDelMagueyJabali), value: 1, unit: .whole)]
+let laCoaSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.bitters(.chocolateMole), value: 2, unit: .dashes),
+                                          OldCocktailIngredient(.rums(.cruzanBlackstrap), value: 2, unit: .barSpoon),
+                                          OldCocktailIngredient(.liqueurs(.giffardPassion), value: 0.25),
+                                          OldCocktailIngredient(.amari(.angosturaAmaro), value: 0.5),
+                                          OldCocktailIngredient(.brandies(.boulardCalvados), value: 0.5),
+                                          OldCocktailIngredient(.agaves(.mezcalDelMagueyJabali), value: 1, unit: .whole)]
 
 
 let laCoaTags = Tags(profiles: [.punchy, .spiritForward, .complex, .fruity, .smokey],

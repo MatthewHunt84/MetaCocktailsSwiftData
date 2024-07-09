@@ -18,11 +18,11 @@ var acquitYourQuest = Cocktail(cocktailName: "Acquit Your Quest",
                                tags: acquitYourQuestTags,
                                collection: .williamsAndGraham)
 
-var acquitYourQuestSpec  = [CocktailIngredient(.bitters(.peychauds), value: 2, unit: .dashes),
-                            CocktailIngredient(.amari(.amaroNonino), value: 0.5),
-                            CocktailIngredient(.amari(.amaroMontenegro), value: 0.5),
-                            CocktailIngredient(.brandies(.lairdsBonded), value: 0.5),
-                            CocktailIngredient(.brandies(.boulardCalvados), value: 1.5)]
+var acquitYourQuestSpec  = [OldCocktailIngredient(.bitters(.peychauds), value: 2, unit: .dashes),
+                            OldCocktailIngredient(.amari(.amaroNonino), value: 0.5),
+                            OldCocktailIngredient(.amari(.amaroMontenegro), value: 0.5),
+                            OldCocktailIngredient(.brandies(.lairdsBonded), value: 0.5),
+                            OldCocktailIngredient(.brandies(.boulardCalvados), value: 1.5)]
 
 var acquitYourQuestTags = Tags(profiles: [.bittersweet, .complex, .punchy, .fruity],
                                styles: [.manhattan, .stirred])

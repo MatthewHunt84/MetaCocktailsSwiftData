@@ -20,12 +20,12 @@ var holeInTheCup = Cocktail(cocktailName: "Hole in the Cup",
                             tags: holeInTheCupTags,
                             collection: .milkAndHoney)
 
-var holeInTheCupSpec     =  [CocktailIngredient(.fruit(.cucumberSlices), value: 2, unit: .gentlyMuddled),
-                             CocktailIngredient(.juices(.lime), value: 0.5),
-                             CocktailIngredient(.syrups(.simple), value: 0.75),
-                             CocktailIngredient(.juices(.pineappleJuice), value: 1),
-                             CocktailIngredient(.otherAlcohol(.absinthe), value: 0.25),
-                             CocktailIngredient(.agaves(.tequilaBlanco), value: 1.5)]
+var holeInTheCupSpec     =  [OldCocktailIngredient(.fruit(.cucumberSlices), value: 2, unit: .gentlyMuddled),
+                             OldCocktailIngredient(.juices(.lime), value: 0.5),
+                             OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                             OldCocktailIngredient(.juices(.pineappleJuice), value: 1),
+                             OldCocktailIngredient(.otherAlcohol(.absinthe), value: 0.25),
+                             OldCocktailIngredient(.agaves(.tequilaBlanco), value: 1.5)]
 
 var holeInTheCupTags     = Tags(profiles: [.savory, .refreshing, .citrusy, .complex, .spicy, .restorative],
                                 styles: [.sour, .shaken])

@@ -19,11 +19,11 @@ var yeen = Cocktail(cocktailName: "Yeen.",
                     tags: yeenTags,
                     collection: .williamsAndGraham)
 
-let yeenSpec: [CocktailIngredient] = [CocktailIngredient(.rums(.rumFire), value: 0.25),
-                                      CocktailIngredient(.rums(.plantationOFTD), value: 0.75),
-                                      CocktailIngredient(.fortifiedWines(.bonal), value: 0.75),
-                                      CocktailIngredient(.liqueurs(.giffardPassion), value: 0.75),
-                                      CocktailIngredient(.amari(.sfumato), value: 0.75)]
+let yeenSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.rums(.rumFire), value: 0.25),
+                                         OldCocktailIngredient(.rums(.plantationOFTD), value: 0.75),
+                                         OldCocktailIngredient(.fortifiedWines(.bonal), value: 0.75),
+                                         OldCocktailIngredient(.liqueurs(.giffardPassion), value: 0.75),
+                                         OldCocktailIngredient(.amari(.sfumato), value: 0.75)]
 
 
 let yeenTags = Tags(profiles: [.herbal, .fruity, .punchy, .spiritForward],

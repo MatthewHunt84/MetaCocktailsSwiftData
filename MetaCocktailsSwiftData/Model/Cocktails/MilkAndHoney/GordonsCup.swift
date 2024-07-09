@@ -18,10 +18,10 @@ var gordonsCup = Cocktail(cocktailName: "Gordon's Cup",
                           tags: gordonsCupTags,
                           collection: .milkAndHoney)
 
-var gordonsCupSpec     =  [CocktailIngredient(.fruit(.cucumberSlices), value: 4, unit: .gentlyMuddled),
-                           CocktailIngredient(.fruit(.limeWedges), value: 8, unit: .gentlyMuddled),
-                           CocktailIngredient(.syrups(.simple), value: 0.75),
-                           CocktailIngredient(.gins(.ginLondonDry), value: 2),]
+var gordonsCupSpec     =  [OldCocktailIngredient(.fruit(.cucumberSlices), value: 4, unit: .gentlyMuddled),
+                           OldCocktailIngredient(.fruit(.limeWedges), value: 8, unit: .gentlyMuddled),
+                           OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                           OldCocktailIngredient(.gins(.ginLondonDry), value: 2),]
 
 var gordonsCupTags     = Tags(profiles: [.savory, .refreshing, .citrusy, .complex, .spicy, .restorative],
                               styles: [.sour, .shaken])
