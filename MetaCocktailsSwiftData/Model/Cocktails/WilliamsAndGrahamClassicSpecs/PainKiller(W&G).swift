@@ -17,10 +17,10 @@ var painKillerWnG  = Cocktail(cocktailName: "Pain Killer (W&G Version)",
                               variation: .painKiller,
                               collection: .williamsAndGraham)
 
-var painKillerWnGSpec  = [CocktailIngredient(.juices(.orange), value: 0.75),
-                          CocktailIngredient(.syrups(.cocoLopez), value: 0.75),
-                          CocktailIngredient(.juices(.pineappleJuice), value: 1.5),
-                          CocktailIngredient(.rums(.plantationBarbados) , value: 1.5)]
+var painKillerWnGSpec  = [OldCocktailIngredient(.juices(.orange), value: 0.75),
+                          OldCocktailIngredient(.syrups(.cocoLopez), value: 0.75),
+                          OldCocktailIngredient(.juices(.pineappleJuice), value: 1.5),
+                          OldCocktailIngredient(.rums(.plantationBarbados) , value: 1.5)]
 
 
 var painKillerWnGTags   = Tags(profiles: [.fruity, .sweet, .tropical, .refreshing],

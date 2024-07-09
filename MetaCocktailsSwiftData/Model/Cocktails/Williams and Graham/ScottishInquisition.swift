@@ -17,11 +17,11 @@ var scottishInquisition = Cocktail(cocktailName: "The Scottish Inquisition",
                                     tags: scottishInquisitionTags,
                                    collection: .williamsAndGraham)
 
-var scottishInquisitionSpec  = [CocktailIngredient(.bitters(.chocolateMole), value: 1, unit: .dashes),
-                                 CocktailIngredient(.amari(.averna), value: 0.75),
-                                 CocktailIngredient(.fortifiedWines(.cocchiDeTorino), value: 0.75),
-                                 CocktailIngredient(.rums(.avuaAmburana), value: 0.5),
-                                 CocktailIngredient(.whiskies(.talisker10), value: 1.5)]
+var scottishInquisitionSpec  = [OldCocktailIngredient(.bitters(.chocolateMole), value: 1, unit: .dashes),
+                                 OldCocktailIngredient(.amari(.averna), value: 0.75),
+                                 OldCocktailIngredient(.fortifiedWines(.cocchiDeTorino), value: 0.75),
+                                 OldCocktailIngredient(.rums(.avuaAmburana), value: 0.5),
+                                 OldCocktailIngredient(.whiskies(.talisker10), value: 1.5)]
 
 var scottishInquisitionTags = Tags(profiles: [.herbal, .spiritForward, .complex],
                                     styles: [.stirred, .manhattan])

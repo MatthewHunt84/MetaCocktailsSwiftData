@@ -16,9 +16,9 @@ var alaskaWnG  = Cocktail(cocktailName: "Alaska Cocktail (W&G Version)",
                           variation: .alaska,
                           collection: .williamsAndGraham)
 
-var alaskaWnGSpec  = [CocktailIngredient(.bitters(.orangeBitters), value: 2, unit: .dashes),
-                      CocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.75),
-                      CocktailIngredient(.gins(.fordsGin), value: 2.25)]
+var alaskaWnGSpec  = [OldCocktailIngredient(.bitters(.orangeBitters), value: 2, unit: .dashes),
+                      OldCocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.75),
+                      OldCocktailIngredient(.gins(.fordsGin), value: 2.25)]
 
 
 

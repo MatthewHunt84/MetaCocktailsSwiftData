@@ -18,9 +18,9 @@ var japaneseCocktail  = Cocktail(cocktailName: "Japanese Cocktail",
                                  collection: .originals,
                                  titleCocktail: true)
 
-var japaneseCocktailSpec  = [CocktailIngredient(.bitters(.aromaticBitters), value: 2, unit: .dashes),
-                             CocktailIngredient(.syrups(.orgeat), value: 1, prep: PrepBible.orgeat),
-                             CocktailIngredient(.brandies(.brandyAny) , value: 2)]
+var japaneseCocktailSpec  = [OldCocktailIngredient(.bitters(.aromaticBitters), value: 2, unit: .dashes),
+                             OldCocktailIngredient(.syrups(.orgeat), value: 1, prep: PrepBible.orgeat),
+                             OldCocktailIngredient(.brandies(.brandyAny) , value: 2)]
 
 
 var japaneseCocktailTags   = Tags(profiles: [.nutty, .sweet, .spiritForward],

@@ -19,9 +19,9 @@ var grasshopper = Cocktail(cocktailName: "Grasshopper",
                            collection: .originals,
                            titleCocktail: true)
 
-var grasshopperSpec = [CocktailIngredient(.otherNonAlc(.cream), value: 1),
-                       CocktailIngredient(.liqueurs(.cremeDeCacao), value: 1),
-                       CocktailIngredient(.liqueurs(.cremeDeMenthe), value: 1)]
+var grasshopperSpec = [OldCocktailIngredient(.otherNonAlc(.cream), value: 1),
+                       OldCocktailIngredient(.liqueurs(.cremeDeCacao), value: 1),
+                       OldCocktailIngredient(.liqueurs(.cremeDeMenthe), value: 1)]
 
 var grasshopperTags = Tags(profiles: [.sweet, .rich, .savory],
                            styles: [ .shaken])

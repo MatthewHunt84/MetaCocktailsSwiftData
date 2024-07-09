@@ -17,12 +17,12 @@ var switchbladeRomance = Cocktail(cocktailName: "Switchblade Romance",
                                   tags: switchbladeRomanceTags,
                                   collection: .williamsAndGraham)
 
-let switchbladeRomanceSpec: [CocktailIngredient] = [CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
-                                                    CocktailIngredient(.juices(.lemon), value: 0.5),
-                                                    CocktailIngredient(.syrups(.orgeat), value: 0.75, prep: PrepBible.orgeat),
-                                                    CocktailIngredient(.fortifiedWines(.byrrh), value: 0.5),
-                                                    CocktailIngredient(.bitters(.angosturaBitters), value: 0.25),
-                                                    CocktailIngredient(.rums(.plantationPineapple), value: 2)]
+let switchbladeRomanceSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
+                                                    OldCocktailIngredient(.juices(.lemon), value: 0.5),
+                                                    OldCocktailIngredient(.syrups(.orgeat), value: 0.75, prep: PrepBible.orgeat),
+                                                    OldCocktailIngredient(.fortifiedWines(.byrrh), value: 0.5),
+                                                    OldCocktailIngredient(.bitters(.angosturaBitters), value: 0.25),
+                                                    OldCocktailIngredient(.rums(.plantationPineapple), value: 2)]
 
 
 let switchbladeRomanceTags = Tags(profiles: [.nutty, .refreshing, .silky, .complex],

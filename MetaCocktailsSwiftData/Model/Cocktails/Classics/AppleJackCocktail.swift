@@ -19,9 +19,9 @@ var appleJackCocktail = Cocktail(cocktailName: "Apple Jack Cocktail",
                                  collection: .originals,
                                  titleCocktail: true)
 
-var appleJackCocktailSpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
-                                  CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1.5),
-                                  CocktailIngredient(.brandies(.boulardCalvados), value: 1.5)]
+var appleJackCocktailSpec     =  [OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
+                                  OldCocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1.5),
+                                  OldCocktailIngredient(.brandies(.boulardCalvados), value: 1.5)]
 
 var appleJackCocktailTags     = Tags(profiles: [.fruity, .spiritForward, .bittersweet],
                                      styles: [.martini, .shaken])

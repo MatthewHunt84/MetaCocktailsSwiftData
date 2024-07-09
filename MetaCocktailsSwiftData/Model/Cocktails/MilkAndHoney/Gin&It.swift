@@ -16,8 +16,8 @@ var ginAndIt  = Cocktail(cocktailName: "Gin & It (Milk & Honey)",
                          tags: ginAndItTags,
                          collection: .milkAndHoney)
 
-var ginAndItSpec  = [CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),
-                     CocktailIngredient(.gins(.ginAny) , value: 2)]
+var ginAndItSpec  = [OldCocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),
+                     OldCocktailIngredient(.gins(.ginAny) , value: 2)]
 
 
 var ginAndItTags   = Tags(profiles: [.spiritForward, .botanical],

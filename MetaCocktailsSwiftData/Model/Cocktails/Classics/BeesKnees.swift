@@ -17,9 +17,9 @@ var beesKnees  = Cocktail(cocktailName: "Bee's Knees",
                           collection: .originals,
                           titleCocktail: true)
 
-var beesKneesSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                      CocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup),
-                      CocktailIngredient(.gins(.fordsGin) , value: 2)]
+var beesKneesSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                      OldCocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup),
+                      OldCocktailIngredient(.gins(.fordsGin) , value: 2)]
 
 
 var beesKneesTags   = Tags(profiles: [.citrusy, .refreshing, .light],

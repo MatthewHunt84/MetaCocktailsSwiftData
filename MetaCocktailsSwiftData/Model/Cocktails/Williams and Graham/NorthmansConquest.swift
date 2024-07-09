@@ -17,10 +17,10 @@ var northmansConquest  =  Cocktail(cocktailName: "Northmans Conquest",
                                    tags: northmansConquestTags,
                                    collection: .williamsAndGraham)
 
-var northmansConquestSpec = [CocktailIngredient(.fortifiedWines(.lustauPX), value: 0.25),
-                             CocktailIngredient(.fortifiedWines(.carpanoAntica), value: 0.75),
-                             CocktailIngredient(.brandies(.boulardCalvados), value: 1),
-                             CocktailIngredient(.rums(.plantationBarbadosXO), value: 1)]
+var northmansConquestSpec = [OldCocktailIngredient(.fortifiedWines(.lustauPX), value: 0.25),
+                             OldCocktailIngredient(.fortifiedWines(.carpanoAntica), value: 0.75),
+                             OldCocktailIngredient(.brandies(.boulardCalvados), value: 1),
+                             OldCocktailIngredient(.rums(.plantationBarbadosXO), value: 1)]
 
 var northmansConquestTags = Tags(profiles: [.rich, .bittersweet, .punchy, .fruity, .spiritForward],
                                  styles: [.martini, .stirred])

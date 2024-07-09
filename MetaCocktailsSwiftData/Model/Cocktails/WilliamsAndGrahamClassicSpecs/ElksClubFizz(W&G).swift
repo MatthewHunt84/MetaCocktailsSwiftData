@@ -16,12 +16,12 @@ var elksClubWnG = Cocktail(cocktailName: "Elk's Club Fizz (W&G Version)",
                            tags: elksClubTags,
                            collection: .williamsAndGraham)
 
-var elksClubSpecWnG  = [CocktailIngredient(.soda(.sodaWater), value: 2),
-                        CocktailIngredient(.juices(.lemon), value: 0.75),
-                        CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
-                        CocktailIngredient(.syrups(.simple), value: 0.75),
-                        CocktailIngredient(.fortifiedWines(.sandemanPort), value: 1),
-                        CocktailIngredient(.whiskies(.jimBeamRye), value: 1)]
+var elksClubSpecWnG  = [OldCocktailIngredient(.soda(.sodaWater), value: 2),
+                        OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                        OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
+                        OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                        OldCocktailIngredient(.fortifiedWines(.sandemanPort), value: 1),
+                        OldCocktailIngredient(.whiskies(.jimBeamRye), value: 1)]
 
 var elksClubBuildWnG = Build(instructions: [Instruction(step: 1, method: "Add all ingredients except the soda water and dry shake."),
                                             Instruction(step: 2, method: "Add a few Kold Draft cubes and shake until cold."),

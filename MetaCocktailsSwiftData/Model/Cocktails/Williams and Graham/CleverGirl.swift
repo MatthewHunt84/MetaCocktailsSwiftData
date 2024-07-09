@@ -17,11 +17,11 @@ var cleverGirl = Cocktail(cocktailName: "Clever Girl",
                           tags: cleverGirlTags,
                           collection: .williamsAndGraham)
 
-let cleverGirlSpec = [CocktailIngredient(.bitters(.hoppedGrapefruit), value: 3, unit: .dashes),
-                      CocktailIngredient(.liqueurs(.velvetFalernum), value: 0.25),
-                      CocktailIngredient(.amari(.luxardoBitterBianco), value: 0.5),
-                      CocktailIngredient(.gins(.hendricks), value: 0.75),
-                      CocktailIngredient(.gins(.stGeorgeTerroir), value: 1.25)]
+let cleverGirlSpec = [OldCocktailIngredient(.bitters(.hoppedGrapefruit), value: 3, unit: .dashes),
+                      OldCocktailIngredient(.liqueurs(.velvetFalernum), value: 0.25),
+                      OldCocktailIngredient(.amari(.luxardoBitterBianco), value: 0.5),
+                      OldCocktailIngredient(.gins(.hendricks), value: 0.75),
+                      OldCocktailIngredient(.gins(.stGeorgeTerroir), value: 1.25)]
 
 
 let cleverGirlTags = Tags(profiles: [.botanical, .complex, .spiritForward, .bright],

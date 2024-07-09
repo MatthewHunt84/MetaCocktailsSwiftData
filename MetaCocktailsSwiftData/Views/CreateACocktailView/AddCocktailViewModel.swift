@@ -202,7 +202,7 @@ import Observation
         return ingredients.filter({ $0.matchesCurrentSearch == true})
     }
     
-    func matchAllIngredients2(ingredients: [IngredientModel]) -> [IngredientModel] {
+    func matchAllIngredients2(ingredients: [IngredientBase]) -> [IngredientBase] {
         
         guard !ingredientName.isEmpty else {
              return ingredients // Return all ingredients if search text is empty

@@ -16,9 +16,9 @@ var theBusiness  = Cocktail(cocktailName: "The Business",
                             variation: nil,
                             collection: .milkAndHoney)
 
-var theBusinessSpec  = [CocktailIngredient(.juices(.lime), value: 1),
-                        CocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup),
-                        CocktailIngredient(.gins(.ginAny) , value: 2)]
+var theBusinessSpec  = [OldCocktailIngredient(.juices(.lime), value: 1),
+                        OldCocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup),
+                        OldCocktailIngredient(.gins(.ginAny) , value: 2)]
 
 
 var theBusinessTags   = Tags(profiles: [.citrusy, .refreshing, .light],

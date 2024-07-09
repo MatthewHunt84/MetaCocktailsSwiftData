@@ -20,11 +20,11 @@ var theMedicinaLatina = Cocktail(cocktailName: "The Medicina Latina",
                                  collection: .milkAndHoney,
                                  titleCocktail: false)
 
-var theMedicinaLatinaSpec = [CocktailIngredient(.juices(.lime), value: 0.75, unit: .fluidOunces),
-                             CocktailIngredient(.syrups(.honeySyrup), value: 0.375, prep: PrepBible.honeySyrup),
-                             CocktailIngredient(.syrups(.gingerSyrup), value: 0.25, prep: PrepBible.gingerSyrup),
-                             CocktailIngredient(.agaves(.tequilaBlanco), value: 2),
-                             CocktailIngredient(.agaves(.mezcalSmokeyAny), value: 0.15)]
+var theMedicinaLatinaSpec = [OldCocktailIngredient(.juices(.lime), value: 0.75, unit: .fluidOunces),
+                             OldCocktailIngredient(.syrups(.honeySyrup), value: 0.375, prep: PrepBible.honeySyrup),
+                             OldCocktailIngredient(.syrups(.gingerSyrup), value: 0.25, prep: PrepBible.gingerSyrup),
+                             OldCocktailIngredient(.agaves(.tequilaBlanco), value: 2),
+                             OldCocktailIngredient(.agaves(.mezcalSmokeyAny), value: 0.15)]
 
 var theMedicinaLatinaTags = Tags(flavors: [.lemon, .honey, .ginger],
                                  profiles: [.citrusy, .smokey, .light, .complex],

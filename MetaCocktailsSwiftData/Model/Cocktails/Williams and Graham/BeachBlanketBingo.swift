@@ -17,13 +17,13 @@ var beachBlanketBingo = Cocktail(cocktailName: "Beach Blanket Bingo",
                                  tags: beachBlanketBingoTags,
                                  collection: .williamsAndGraham)
 
-let beachBlanketBingoSpec: [CocktailIngredient] = [CocktailIngredient(.wines(.prosecco), value: 2),
-                                                   CocktailIngredient(.fruit(.raspberries), value: 2, unit: .muddled),
-                                                   CocktailIngredient(.juices(.lemon), value: 0.5),
-                                                   CocktailIngredient(.syrups(.honeySyrup), value: 0.5, prep: PrepBible.honeySyrup),
-                                                   CocktailIngredient(.liqueurs(.giffardPamplemousse), value: 0.5),
-                                                   CocktailIngredient(.rums(.plantationPineapple), value: 1),
-                                                   CocktailIngredient(.liqueurs(.anchoRayesAncho), value: 1.5)]
+let beachBlanketBingoSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.wines(.prosecco), value: 2),
+                                                   OldCocktailIngredient(.fruit(.raspberries), value: 2, unit: .muddled),
+                                                   OldCocktailIngredient(.juices(.lemon), value: 0.5),
+                                                   OldCocktailIngredient(.syrups(.honeySyrup), value: 0.5, prep: PrepBible.honeySyrup),
+                                                   OldCocktailIngredient(.liqueurs(.giffardPamplemousse), value: 0.5),
+                                                   OldCocktailIngredient(.rums(.plantationPineapple), value: 1),
+                                                   OldCocktailIngredient(.liqueurs(.anchoRayesAncho), value: 1.5)]
 
 
 let beachBlanketBingoTags = Tags(profiles: [.refreshing, .spicy, .fruity],

@@ -22,11 +22,11 @@ var eastSideCocktail = Cocktail(cocktailName: "East Side Cocktail",
                                 collection: .milkAndHoney,
                                 titleCocktail: false)
 
-let eastSideCocktailSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
-                                                  CocktailIngredient(.fruit(.cucumberSlices), value: 2, unit: .muddled),
-                                                  CocktailIngredient(.juices(.lime), value: 1),
-                                                  CocktailIngredient(.syrups(.simple), value: 0.75),
-                                                  CocktailIngredient(.gins(.ginAny), value: 2)]
+let eastSideCocktailSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
+                                                  OldCocktailIngredient(.fruit(.cucumberSlices), value: 2, unit: .muddled),
+                                                  OldCocktailIngredient(.juices(.lime), value: 1),
+                                                  OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                                                  OldCocktailIngredient(.gins(.ginAny), value: 2)]
 
 let eastSideCocktailTags = Tags(profiles: [.herbal, .refreshing, .light],
                                 styles: [.sour, .shaken])

@@ -19,9 +19,9 @@ var boulevardier  =  Cocktail(cocktailName: "Boulevardier",
                               collection: .originals,
                               titleCocktail: true)
 
-var boulevardierSpec = [CocktailIngredient(.whiskies(.straightRyeOrBourbon), value: 1.25),
-                        CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),
-                        CocktailIngredient(.amari(.campari), value: 1)]
+var boulevardierSpec = [OldCocktailIngredient(.whiskies(.straightRyeOrBourbon), value: 1.25),
+                        OldCocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),
+                        OldCocktailIngredient(.amari(.campari), value: 1)]
 
 var boulevardierTags = Tags(flavors: [.orange, .bakingSpices],
                             profiles: [.bittersweet, .spiritForward, .rich],

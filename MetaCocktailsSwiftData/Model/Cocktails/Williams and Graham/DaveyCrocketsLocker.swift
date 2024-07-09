@@ -17,11 +17,11 @@ var daveyCrocketsLocker = Cocktail(cocktailName: "Davey Crocket's Locker",
                                    tags: daveyCrocketsLockerTags,
                                    collection: .williamsAndGraham)
 
-let daveyCrocketsLockerSpec = [CocktailIngredient(.liqueurs(.allspiceDram), value: 1, unit: .barSpoon),
-                               CocktailIngredient(.fortifiedWines(.sandemanPort), value: 0.5),
-                               CocktailIngredient(.amari(.amereNouvelle), value: 0.5),
-                               CocktailIngredient(.amari(.averna), value: 0.5),
-                               CocktailIngredient(.rums(.plantationJamaicaRum), value: 1.5)]
+let daveyCrocketsLockerSpec = [OldCocktailIngredient(.liqueurs(.allspiceDram), value: 1, unit: .barSpoon),
+                               OldCocktailIngredient(.fortifiedWines(.sandemanPort), value: 0.5),
+                               OldCocktailIngredient(.amari(.amereNouvelle), value: 0.5),
+                               OldCocktailIngredient(.amari(.averna), value: 0.5),
+                               OldCocktailIngredient(.rums(.plantationJamaicaRum), value: 1.5)]
 
 
 let daveyCrocketsLockerTags = Tags(profiles: [.punchy, .complex, .rich, .spiritForward],

@@ -19,6 +19,6 @@ var mintJulepWnG = Cocktail(cocktailName: "Mint Julep (W&G Version)",
                             variation: .mintJulep,
                             collection: .williamsAndGraham)
 
-let mintJulepSpecWnG: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
-                                              CocktailIngredient(.syrups(.simple), value: 0.5),
-                                              CocktailIngredient(.whiskies(.fourRosesYellowLabel), value: 2.5)]
+let mintJulepSpecWnG: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
+                                              OldCocktailIngredient(.syrups(.simple), value: 0.5),
+                                              OldCocktailIngredient(.whiskies(.fourRosesYellowLabel), value: 2.5)]

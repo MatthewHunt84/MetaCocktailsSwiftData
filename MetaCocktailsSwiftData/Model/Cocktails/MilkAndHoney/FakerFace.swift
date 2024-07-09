@@ -18,10 +18,10 @@ var fakerFace  = Cocktail(cocktailName: "Faker Face",
                           variation: nil,
                           collection: .milkAndHoney)
 
-var fakerFaceSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
-                      CocktailIngredient(.syrups(.grenadine), value: 0.75),
-                      CocktailIngredient(.juices(.orange), value: 1),
-                      CocktailIngredient(.soda(.sodaWater) , value: 2)]
+var fakerFaceSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.75),
+                      OldCocktailIngredient(.syrups(.grenadine), value: 0.75),
+                      OldCocktailIngredient(.juices(.orange), value: 1),
+                      OldCocktailIngredient(.soda(.sodaWater) , value: 2)]
 
 var fakerFaceTags   = Tags(profiles: [.citrusy, .fruity, .effervescent, .light],
                            styles: [.nonAlcoholic, .shaken, .sour])

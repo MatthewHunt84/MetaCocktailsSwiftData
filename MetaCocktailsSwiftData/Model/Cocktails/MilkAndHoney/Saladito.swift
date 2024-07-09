@@ -19,9 +19,9 @@ var saladito  = Cocktail(cocktailName: "Saladito",
                          variation: nil,
                          collection: .milkAndHoney)
 
-var saladitoSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
-                     CocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup),
-                     CocktailIngredient(.agaves(.mezcalEspadin) , value: 2)]
+var saladitoSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.75),
+                     OldCocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup),
+                     OldCocktailIngredient(.agaves(.mezcalEspadin) , value: 2)]
 
 
 var saladitoTags   = Tags(profiles: [.citrusy, .refreshing, .complex],

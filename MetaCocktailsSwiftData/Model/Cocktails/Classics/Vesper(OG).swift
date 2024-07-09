@@ -18,9 +18,9 @@ var vesper = Cocktail(cocktailName: "Vesper",
                       collection: .originals,
                       titleCocktail: true)
 
-var vesperSpec     =  [CocktailIngredient(.fortifiedWines(.kinaLillet), value: 0.25),
-                       CocktailIngredient(.vodkas(.vodkaAny), value: 0.5),
-                       CocktailIngredient(.gins(.ginAny), value: 1.5)]
+var vesperSpec     =  [OldCocktailIngredient(.fortifiedWines(.kinaLillet), value: 0.25),
+                       OldCocktailIngredient(.vodkas(.vodkaAny), value: 0.5),
+                       OldCocktailIngredient(.gins(.ginAny), value: 1.5)]
 
 var vesperTags    = Tags(profiles: [.spiritForward, .dry, .botanical],
                          styles: [.martini, .shaken])

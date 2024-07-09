@@ -18,11 +18,11 @@ var hayesFizz  = Cocktail(cocktailName: "Hayes Fizz",
                           variation: nil,
                           collection: .milkAndHoney)
 
-var hayesFizzSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                      CocktailIngredient(.otherAlcohol(.absinthe), value: 5, unit: .sprays),
-                      CocktailIngredient(.syrups(.simple), value: 0.75),
-                      CocktailIngredient(.gins(.ginAny), value: 2),
-                      CocktailIngredient(.soda(.sodaWater) , value: 2)]
+var hayesFizzSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                      OldCocktailIngredient(.otherAlcohol(.absinthe), value: 5, unit: .sprays),
+                      OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                      OldCocktailIngredient(.gins(.ginAny), value: 2),
+                      OldCocktailIngredient(.soda(.sodaWater) , value: 2)]
 
 var hayesFizzBuild  = Build(instructions: [Instruction(step: 1, method: "Combine the lemon juice, simple syrup, and gin in a cocktail shaker, add 1 large ice cube, and shake vigorously until the drink is sufficiently chilled."),
                                            Instruction(step: 2, method: "Put a large Collins ice cube in a chilled Collins glass and rinse with absinthe."),

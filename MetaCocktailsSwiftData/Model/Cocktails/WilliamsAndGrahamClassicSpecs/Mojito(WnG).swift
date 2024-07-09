@@ -19,10 +19,10 @@ var mojitoWnG = Cocktail(cocktailName: "Mojito (W&G Version)",
                          variation: .mojito,
                          collection: .williamsAndGraham)
 
-let mojitoSpecWnG: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 6, unit: .gentlyMuddled),
-                                           CocktailIngredient(.juices(.lime), value: 0.75),
-                                           CocktailIngredient(.syrups(.simple), value: 0.75),
-                                           CocktailIngredient(.rums(.rumWhite), value: 2),
-                                           CocktailIngredient(.soda(.sparklingWater), value: 2)]
+let mojitoSpecWnG: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint), value: 6, unit: .gentlyMuddled),
+                                           OldCocktailIngredient(.juices(.lime), value: 0.75),
+                                           OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                                           OldCocktailIngredient(.rums(.rumWhite), value: 2),
+                                           OldCocktailIngredient(.soda(.sparklingWater), value: 2)]
 
 

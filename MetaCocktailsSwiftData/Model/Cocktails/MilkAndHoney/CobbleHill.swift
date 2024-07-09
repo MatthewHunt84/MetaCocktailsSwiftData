@@ -17,10 +17,10 @@ var cobbleHill = Cocktail(cocktailName: "Cobble Hill",
                           tags: cobbleHillTags,
                           collection: .milkAndHoney)
 
-var cobbleHillSpec     =  [CocktailIngredient(.fruit(.cucumberSlices), value: 2, unit: .gentlyMuddled),
-                           CocktailIngredient(.fortifiedWines(.dolinDry), value: 0.5),
-                           CocktailIngredient(.amari(.amaroMontenegro), value: 0.5),
-                           CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 2)]
+var cobbleHillSpec     =  [OldCocktailIngredient(.fruit(.cucumberSlices), value: 2, unit: .gentlyMuddled),
+                           OldCocktailIngredient(.fortifiedWines(.dolinDry), value: 0.5),
+                           OldCocktailIngredient(.amari(.amaroMontenegro), value: 0.5),
+                           OldCocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 2)]
 
 var cobbleHillTags     = Tags(profiles: [.spiritForward, .floral, .dry],
                               styles: [.manhattan, .stirred])

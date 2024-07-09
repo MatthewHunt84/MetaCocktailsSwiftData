@@ -17,9 +17,9 @@ var springForward = Cocktail(cocktailName: "Spring Forward",
                              tags: springForwardTags,
                              collection: .milkAndHoney)
 
-var springForwardSpec     =  [CocktailIngredient(.fortifiedWines(.dolinDry), value: 1),
-                              CocktailIngredient(.gins(.ginAny), value: 2),
-                              CocktailIngredient(.otherNonAlc(.springOnion), value: 1, unit: .gentlyMuddled)]
+var springForwardSpec     =  [OldCocktailIngredient(.fortifiedWines(.dolinDry), value: 1),
+                              OldCocktailIngredient(.gins(.ginAny), value: 2),
+                              OldCocktailIngredient(.otherNonAlc(.springOnion), value: 1, unit: .gentlyMuddled)]
 
 var springForwardTags     = Tags(profiles: [.spiritForward, .dry, .vegetal],
                                  styles: [.martini, .stirred])

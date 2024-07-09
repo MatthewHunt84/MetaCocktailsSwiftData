@@ -19,12 +19,12 @@ var unusualSuspect = Cocktail(cocktailName: "Unusual Suspect",
                               tags: unusualSuspectTags,
                               collection: .williamsAndGraham)
 
-let unusualSuspectSpec: [CocktailIngredient] = [CocktailIngredient(.seasoning(.saline), value: 4, unit: .drops),
-                                                CocktailIngredient(.otherNonAlc(.coconutWater), value: 1),
-                                                CocktailIngredient(.otherAlcohol(.burdockRootTincture), value:1, unit: .dashes),
-                                                CocktailIngredient(.liqueurs(.giffardBanane), value: 0.75),
-                                                CocktailIngredient(.fortifiedWines(.cocchiDeTorino), value: 0.75),
-                                                CocktailIngredient(.whiskies(.tullamoreDew), value: 1)]
+let unusualSuspectSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.seasoning(.saline), value: 4, unit: .drops),
+                                                OldCocktailIngredient(.otherNonAlc(.coconutWater), value: 1),
+                                                OldCocktailIngredient(.otherAlcohol(.burdockRootTincture), value:1, unit: .dashes),
+                                                OldCocktailIngredient(.liqueurs(.giffardBanane), value: 0.75),
+                                                OldCocktailIngredient(.fortifiedWines(.cocchiDeTorino), value: 0.75),
+                                                OldCocktailIngredient(.whiskies(.tullamoreDew), value: 1)]
 
 
 let unusualSuspectTags = Tags(profiles: [.tropical, .nutty, .complex, .silky],

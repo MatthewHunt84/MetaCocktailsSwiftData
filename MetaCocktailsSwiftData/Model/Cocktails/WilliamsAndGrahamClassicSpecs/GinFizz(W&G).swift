@@ -18,8 +18,8 @@ var ginFizzWnG  = Cocktail(cocktailName: "Gin Fizz (W&G Version)",
                            variation: .ginFizz,
                            collection: .williamsAndGraham)
 
-var ginFizzSpecWnG  = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                       CocktailIngredient(.syrups(.simple), value: 0.75),
-                       CocktailIngredient(.gins(.fordsGin), value: 2),
-                       CocktailIngredient(.soda(.sparklingWater), value: 2)]
+var ginFizzSpecWnG  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                       OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                       OldCocktailIngredient(.gins(.fordsGin), value: 2),
+                       OldCocktailIngredient(.soda(.sparklingWater), value: 2)]
 

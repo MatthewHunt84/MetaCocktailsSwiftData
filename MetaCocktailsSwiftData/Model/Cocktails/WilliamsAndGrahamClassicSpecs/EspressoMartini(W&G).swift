@@ -16,11 +16,11 @@ var espressoMartiniWnG = Cocktail(cocktailName: "Espresso Martini (W&G Version)"
                                   tags: espressoMartiniTagsWnG,
                                   collection: .williamsAndGraham)
 
-var espressoMartiniSpecWnG  = [CocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.25),
-                               CocktailIngredient(.liqueurs(.borghetti), value: 0.5),
-                               CocktailIngredient(.otherNonAlc(.coldBrew), value: 1.5),
-                               CocktailIngredient(.vodkas(.roaringForkVodka), value: 1.5),
-                               CocktailIngredient(.otherNonAlc(.angosturaCream), value: 1, prep: PrepBible.angoCream),]
+var espressoMartiniSpecWnG  = [OldCocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.25),
+                               OldCocktailIngredient(.liqueurs(.borghetti), value: 0.5),
+                               OldCocktailIngredient(.otherNonAlc(.coldBrew), value: 1.5),
+                               OldCocktailIngredient(.vodkas(.roaringForkVodka), value: 1.5),
+                               OldCocktailIngredient(.otherNonAlc(.angosturaCream), value: 1, prep: PrepBible.angoCream),]
 
 var espressoMartiniTagsWnG = Tags(profiles: [.creamy, .light],
                                   styles: [.shaken])

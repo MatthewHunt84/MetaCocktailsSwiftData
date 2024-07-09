@@ -17,11 +17,11 @@ var frescaPlatino = Cocktail(cocktailName: "Fresca Platino",
                              tags: frescaPlatinoTags,
                              collection: .milkAndHoney)
 
-var frescaPlatinoSpec     =  [CocktailIngredient(.fruit(.cucumberSlices), value: 3, unit: .muddled),
-                              CocktailIngredient(.herbs(.mint), value: 2, unit: .gentlyMuddled),
-                              CocktailIngredient(.juices(.lime), value: 0.75),
-                              CocktailIngredient(.seasoning(.mineralSaline), value: 0.75, prep: PrepBible.mineralSaline),
-                              CocktailIngredient(.agaves(.tapatioTequilaBlanco), value: 2)]
+var frescaPlatinoSpec     =  [OldCocktailIngredient(.fruit(.cucumberSlices), value: 3, unit: .muddled),
+                              OldCocktailIngredient(.herbs(.mint), value: 2, unit: .gentlyMuddled),
+                              OldCocktailIngredient(.juices(.lime), value: 0.75),
+                              OldCocktailIngredient(.seasoning(.mineralSaline), value: 0.75, prep: PrepBible.mineralSaline),
+                              OldCocktailIngredient(.agaves(.tapatioTequilaBlanco), value: 2)]
 
 var frescaPlatinoTags     = Tags(profiles: [.light, .refreshing, .citrusy, .tart],
                                  styles: [.sour, .shaken])

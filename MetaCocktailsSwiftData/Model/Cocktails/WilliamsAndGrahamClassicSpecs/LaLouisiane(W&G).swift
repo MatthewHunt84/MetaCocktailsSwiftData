@@ -17,11 +17,11 @@ var laLouisianeWnG = Cocktail(cocktailName: "La Louisiane (W&G Version)",
                               variation: .laLouisiane,
                               collection: .williamsAndGraham)
 
-var laLouisianeWnGSpec     =  [CocktailIngredient(.otherAlcohol(.absinthe), value: 6, unit: .dashes),
-                               CocktailIngredient(.bitters(.peychauds), value: 2, unit: .dashes),
-                               CocktailIngredient(.liqueurs(.benedictine), value: 0.25),
-                               CocktailIngredient(.fortifiedWines(.carpanoAntica), value: 0.75),
-                               CocktailIngredient(.whiskies(.jimBeamRye), value: 2)]
+var laLouisianeWnGSpec     =  [OldCocktailIngredient(.otherAlcohol(.absinthe), value: 6, unit: .dashes),
+                               OldCocktailIngredient(.bitters(.peychauds), value: 2, unit: .dashes),
+                               OldCocktailIngredient(.liqueurs(.benedictine), value: 0.25),
+                               OldCocktailIngredient(.fortifiedWines(.carpanoAntica), value: 0.75),
+                               OldCocktailIngredient(.whiskies(.jimBeamRye), value: 2)]
 
 var laLouisianeWnGTags     = Tags(profiles: [.spiritForward, .rich, .punchy, .bittersweet, .aromatic],
                                   styles: [.manhattan, .stirred])

@@ -37,7 +37,7 @@ class Cocktail: Equatable, Hashable {
   
     
     
-    init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [Garnish]? = nil, ice: Ice? = nil, author: Author? = nil, spec: [CocktailIngredient], buildOrder: Build? = nil, tags: Tags, variation: Variation? = nil, collection: CocktailCollection? = nil, titleCocktail: Bool = false) {
+    init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [Garnish]? = nil, ice: Ice? = nil, author: Author? = nil, spec: [OldCocktailIngredient], buildOrder: Build? = nil, tags: Tags, variation: Variation? = nil, collection: CocktailCollection? = nil, titleCocktail: Bool = false) {
         self.id = id
         self.cocktailName = cocktailName
         self.imageAsset = imageAsset
@@ -62,8 +62,8 @@ class Cocktail: Equatable, Hashable {
         self.compiledTags = {
             // when we initialize each cocktail we immediately make a stored property of it's combined cocktail + ingredient tags
             var newCompiledTags = Tags()
-            for cocktailIngredient in spec {
-                let currentCocktailIngredientMergedTags = tags.merge(with: cocktailIngredient.ingredient.tags)
+            for oldCocktailIngredient in spec {
+                let currentCocktailIngredientMergedTags = tags.merge(with: oldCocktailIngredient.ingredient.tags)
                 newCompiledTags = newCompiledTags.merge(with: currentCocktailIngredientMergedTags)
             }
             return newCompiledTags
@@ -96,8 +96,8 @@ class Cocktail: Equatable, Hashable {
         self.compiledTags = {
             // when we initialize each cocktail we immediately make a stored property of it's combined cocktail + ingredient tags
             var newCompiledTags = Tags()
-            for cocktailIngredient in spec {
-                let currentCocktailIngredientMergedTags = tags.merge(with: cocktailIngredient.tags ?? Tags())
+            for oldCocktailIngredient in spec {
+                let currentCocktailIngredientMergedTags = tags.merge(with: oldCocktailIngredient.tags ?? Tags())
                 newCompiledTags = newCompiledTags.merge(with: currentCocktailIngredientMergedTags)
             }
             return newCompiledTags

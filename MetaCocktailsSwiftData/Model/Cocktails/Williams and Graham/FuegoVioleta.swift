@@ -16,10 +16,10 @@ var fuegoVioleta = Cocktail(cocktailName: "Fuego Violeta",
                             tags: fuegoVioletaTags,
                             collection: .williamsAndGraham)
 
-var fuegoVioletaSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
-                         CocktailIngredient(.gins(.ginLondonDry), value: 0.75),
-                         CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.75),
-                         CocktailIngredient(.liqueurs(.greenChartreuse), value: 0.75)]
+var fuegoVioletaSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.75),
+                         OldCocktailIngredient(.gins(.ginLondonDry), value: 0.75),
+                         OldCocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.75),
+                         OldCocktailIngredient(.liqueurs(.greenChartreuse), value: 0.75)]
 
 var fuegoVioletaTags = Tags(profiles: [.light, .floral, .herbal, .fruity],
                             styles: [.sour, .shaken])

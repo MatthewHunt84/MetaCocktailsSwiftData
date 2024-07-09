@@ -18,10 +18,10 @@ var sloeWalker = Cocktail(cocktailName: "Sloe Walker",
                           tags: sloeWalkerTags,
                           collection: .williamsAndGraham)
 
-var sloeWalkerSpec  = [CocktailIngredient(.amari(.amargoVallet), value: 0.25),
-                       CocktailIngredient(.liqueurs(.plymouthSloeGin), value: 0.25),
-                       CocktailIngredient(.fortifiedWines(.cocchiAmericano), value: 1.5),
-                       CocktailIngredient(.liqueurs(.dolinGenepy), value: 0.75)]
+var sloeWalkerSpec  = [OldCocktailIngredient(.amari(.amargoVallet), value: 0.25),
+                       OldCocktailIngredient(.liqueurs(.plymouthSloeGin), value: 0.25),
+                       OldCocktailIngredient(.fortifiedWines(.cocchiAmericano), value: 1.5),
+                       OldCocktailIngredient(.liqueurs(.dolinGenepy), value: 0.75)]
 
 var sloeWalkerTags = Tags(profiles: [.herbal, .complex],
                           styles: [.stirred, .martini])

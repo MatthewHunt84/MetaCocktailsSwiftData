@@ -23,11 +23,11 @@ var eskimosKiss = Cocktail(cocktailName: "Eskimo's Kiss",
                            collection: .milkAndHoney,
                            titleCocktail: true)
 
-let eskimosKissSpec: [CocktailIngredient] = [CocktailIngredient(.otherNonAlc(.demeraraSugarCube), value: 2, unit: .muddled),
-                                             CocktailIngredient(.herbs(.mint), value: 12, unit: .gentlyMuddled),
-                                             CocktailIngredient(.juices(.lime), value: 2),
-                                             CocktailIngredient(.syrups(.simple), value: 1.5),
-                                             CocktailIngredient(.rums(.rumWhite), value: 4)]
+let eskimosKissSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.otherNonAlc(.demeraraSugarCube), value: 2, unit: .muddled),
+                                             OldCocktailIngredient(.herbs(.mint), value: 12, unit: .gentlyMuddled),
+                                             OldCocktailIngredient(.juices(.lime), value: 2),
+                                             OldCocktailIngredient(.syrups(.simple), value: 1.5),
+                                             OldCocktailIngredient(.rums(.rumWhite), value: 4)]
 
 let eskimosKissTags = Tags(profiles: [.herbal, .refreshing, .light, .effervescent],
                            styles: [.fizz, .shaken])

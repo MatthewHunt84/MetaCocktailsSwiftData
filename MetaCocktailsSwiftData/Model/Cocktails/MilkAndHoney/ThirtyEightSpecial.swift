@@ -17,9 +17,9 @@ var thirtyEightSpecial = Cocktail(cocktailName: ".38 Special",
                                   tags: thirtyEightSpecialTags,
                                   collection: .milkAndHoney)
 
-var thirtyEightSpecialSpec     =  [CocktailIngredient(.amari(.cioCiaroAmaro), value: 0.375),
-                                   CocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.375),
-                                   CocktailIngredient(.whiskies(.scotchBlended), value: 2.375)]
+var thirtyEightSpecialSpec     =  [OldCocktailIngredient(.amari(.cioCiaroAmaro), value: 0.375),
+                                   OldCocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.375),
+                                   OldCocktailIngredient(.whiskies(.scotchBlended), value: 2.375)]
 
 var thirtyEightSpecialTags     = Tags(profiles: [.spiritForward, .bittersweet, .herbal, .complex],
                                       styles: [.manhattan, .stirred])

@@ -21,11 +21,11 @@ var jungleBird = Cocktail(cocktailName: "JungleBird",
                           collection: .originals,
                           titleCocktail: true)
 
-var jungleBirdSpec  =  [CocktailIngredient(.juices(.lime), value: 0.5),
-                        CocktailIngredient(.juices(.pineappleJuice), value: 4),
-                        CocktailIngredient(.syrups(.simple), value: 0.5),
-                        CocktailIngredient(.amari(.campari), value: 0.75),
-                        CocktailIngredient(.rums(.rumDark), value: 1.5)]
+var jungleBirdSpec  =  [OldCocktailIngredient(.juices(.lime), value: 0.5),
+                        OldCocktailIngredient(.juices(.pineappleJuice), value: 4),
+                        OldCocktailIngredient(.syrups(.simple), value: 0.5),
+                        OldCocktailIngredient(.amari(.campari), value: 0.75),
+                        OldCocktailIngredient(.rums(.rumDark), value: 1.5)]
                         
 var jungleBirdTags = Tags(flavors: [.pineapple, .lime],
                           profiles: [.aromatic, .citrusy, .fruity],

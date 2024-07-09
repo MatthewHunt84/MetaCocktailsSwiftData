@@ -18,15 +18,15 @@ var zombieWnG = Cocktail(cocktailName: "Zombie (W&G Version)",
                          variation: .zombie,
                          collection: .williamsAndGraham)
 
-let zombieSpecWnG  = [CocktailIngredient(.juices(.lime), value: 0.75),
-                      CocktailIngredient(.juices(.grapefruit), value: 0.5),
-                      CocktailIngredient(.syrups(.cinnamonSyrup), value: 0.25),
-                      CocktailIngredient(.syrups(.grenadine), value: 1, unit: .barSpoon),
-                      CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
-                      CocktailIngredient(.otherAlcohol(.absinthe), value: 2, unit: .sprays),
-                      CocktailIngredient(.rums(.havanaClubAnjeo), value: 1.5),
-                      CocktailIngredient(.rums(.appletonEstateSignatureBlend), value: 1.5),
-                      CocktailIngredient(.rums(.lemonHeart151), value: 1)]
+let zombieSpecWnG  = [OldCocktailIngredient(.juices(.lime), value: 0.75),
+                      OldCocktailIngredient(.juices(.grapefruit), value: 0.5),
+                      OldCocktailIngredient(.syrups(.cinnamonSyrup), value: 0.25),
+                      OldCocktailIngredient(.syrups(.grenadine), value: 1, unit: .barSpoon),
+                      OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
+                      OldCocktailIngredient(.otherAlcohol(.absinthe), value: 2, unit: .sprays),
+                      OldCocktailIngredient(.rums(.havanaClubAnjeo), value: 1.5),
+                      OldCocktailIngredient(.rums(.appletonEstateSignatureBlend), value: 1.5),
+                      OldCocktailIngredient(.rums(.lemonHeart151), value: 1)]
 
 
 let zombieTagsWnG = Tags(profiles: [.complex, .fruity, .punchy],

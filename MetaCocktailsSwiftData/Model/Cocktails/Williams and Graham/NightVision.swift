@@ -17,11 +17,11 @@ var nightVision  =  Cocktail(cocktailName: "Night Vision",
                              tags: nightVisionTags,
                              collection: .williamsAndGraham)
 
-var nightVisionSpec = [CocktailIngredient(.juices(.lemon), value: 0.25),
-                       CocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBible.orgeat),
-                       CocktailIngredient(.juices(.carrotJuice), value: 1),
-                       CocktailIngredient(.amari(.becherovka), value: 0.5),
-                       CocktailIngredient(.rums(.avuaPrata), value: 1.5)]
+var nightVisionSpec = [OldCocktailIngredient(.juices(.lemon), value: 0.25),
+                       OldCocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBible.orgeat),
+                       OldCocktailIngredient(.juices(.carrotJuice), value: 1),
+                       OldCocktailIngredient(.amari(.becherovka), value: 0.5),
+                       OldCocktailIngredient(.rums(.avuaPrata), value: 1.5)]
 
 var nightVisionTags = Tags(profiles: [.savory, .refreshing, .funky],
                            styles: [.sour, .shaken])

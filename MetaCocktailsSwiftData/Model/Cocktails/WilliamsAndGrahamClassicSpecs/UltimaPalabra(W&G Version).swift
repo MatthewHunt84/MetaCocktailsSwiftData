@@ -16,11 +16,11 @@ var ultimaPalabraWnG = Cocktail(cocktailName: "Ultima Palabra (W&G Version)",
                                 variation: .ultimaPalabra,
                                 collection: .williamsAndGraham)
 
-var ultimaPalabraSpecWnG  = [CocktailIngredient(.juices(.lime), value: 0.75),
-                             CocktailIngredient(.syrups(.simple), value: 0.25),
-                             CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.5),
-                             CocktailIngredient(.liqueurs(.greenChartreuse), value: 0.75),
-                             CocktailIngredient(.agaves(.mezcalDelMagueyVida), value: 1)]
+var ultimaPalabraSpecWnG  = [OldCocktailIngredient(.juices(.lime), value: 0.75),
+                             OldCocktailIngredient(.syrups(.simple), value: 0.25),
+                             OldCocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.5),
+                             OldCocktailIngredient(.liqueurs(.greenChartreuse), value: 0.75),
+                             OldCocktailIngredient(.agaves(.mezcalDelMagueyVida), value: 1)]
 
 var ultimaPalabraTagsWnG = Tags(profiles: [.punchy, .herbal, .citrusy],
                                 styles: [.sour, .daisy, .shaken])

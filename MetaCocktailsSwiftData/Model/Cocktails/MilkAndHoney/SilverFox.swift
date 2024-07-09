@@ -20,12 +20,12 @@ var silverFox  = Cocktail(cocktailName: "Silver Fox",
                           variation: nil,
                           collection: .milkAndHoney)
 
-var silverFoxSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                      CocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBible.orgeat),
-                      CocktailIngredient(.otherNonAlc(.eggWhites), value: 1, unit: .whole),
-                      CocktailIngredient(.gins(.ginAny), value: 1.5),
-                      CocktailIngredient(.liqueurs(.amaretto), value: 0.5),
-                      CocktailIngredient(.soda(.sodaWater) , value: 1.5)]
+var silverFoxSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                      OldCocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBible.orgeat),
+                      OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 1, unit: .whole),
+                      OldCocktailIngredient(.gins(.ginAny), value: 1.5),
+                      OldCocktailIngredient(.liqueurs(.amaretto), value: 0.5),
+                      OldCocktailIngredient(.soda(.sodaWater) , value: 1.5)]
 
 var silverFoxBuild  = Build(instructions: [Instruction(step: 1, method: "Combine the egg white, orgeat syrup, lemon juice, and gin in a cocktail shaker and shake to emulsify the mixture."),
                                            Instruction(step: 2, method: "Add one large ice cube and shake vigorously until the drink is sufficiently chilled."),

@@ -109,8 +109,8 @@ class CocktailComponent: Identifiable, ObservableObject, Hashable{
         return hasher.combine(id)
     }
     
-    func isEqualTo(_ cocktailIngredient: CocktailIngredient) -> Bool {
-        return self.name == cocktailIngredient.ingredient.name
+    func isEqualTo(_ oldCocktailIngredient: OldCocktailIngredient) -> Bool {
+        return self.name == oldCocktailIngredient.ingredient.name
 
     }
         

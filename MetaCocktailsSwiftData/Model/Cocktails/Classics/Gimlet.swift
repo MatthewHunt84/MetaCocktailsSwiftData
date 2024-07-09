@@ -15,9 +15,9 @@ var gimlet = Cocktail(cocktailName: "Gimlet",
                       buildOrder: nil,
                       tags: gimletTags)
 
-var gimletSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
-                       CocktailIngredient(.syrups(.simple), value: 0.75),
-                       CocktailIngredient(.gins(.ginAny), value: 2),]
+var gimletSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.75),
+                       OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                       OldCocktailIngredient(.gins(.ginAny), value: 2),]
 
 var gimletTags = Tags(profiles: [.citrusy, .refreshing, .light],
                         styles: [.sour, .shaken])

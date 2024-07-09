@@ -16,10 +16,10 @@ var martinezWnG = Cocktail(cocktailName: "Martinez (W&G Version)",
                            variation: .martinez,
                            collection: .williamsAndGraham)
 
-var martinezSpecWnG     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
-                            CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 1, unit: .barSpoon),
-                            CocktailIngredient(.fortifiedWines(.cocchiDeTorino), value: 1),
-                            CocktailIngredient(.gins(.ransomOldTom), value: 2)]
+var martinezSpecWnG     =  [OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
+                            OldCocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 1, unit: .barSpoon),
+                            OldCocktailIngredient(.fortifiedWines(.cocchiDeTorino), value: 1),
+                            OldCocktailIngredient(.gins(.ransomOldTom), value: 2)]
 
 var martinezTagsWnG    = Tags(profiles: [.spiritForward, .rich, .complex, .bittersweet],
                               styles: [.martini, .stirred])

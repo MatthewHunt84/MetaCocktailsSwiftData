@@ -16,11 +16,11 @@ var whiskeySour = Cocktail(cocktailName: "Whiskey Sour",
                            buildOrder: whiskeySourBuild,
                            tags: whiskeySourTags)
 
-var whiskeySourSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                        CocktailIngredient(.syrups(.simple), value: 0.75),
-                        CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
-                        CocktailIngredient(.whiskies(.straightRyeOrBourbon), value: 0.75),
-                        CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes)]
+var whiskeySourSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                        OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                        OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
+                        OldCocktailIngredient(.whiskies(.straightRyeOrBourbon), value: 0.75),
+                        OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes)]
 
 var whiskeySourTags = Tags(profiles: [.citrusy, .refreshing, .light, .silky],
                            styles: [.sour, .shaken])

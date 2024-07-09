@@ -19,12 +19,12 @@ var houseGingerBeer  = Cocktail(cocktailName: "House Ginger Beer (Milk & Honey)"
                                 variation: nil,
                                 collection: .milkAndHoney)
 
-var houseGingerBeerSpec  = [CocktailIngredient(.juices(.lemon), value: 1),
-                            CocktailIngredient(.juices(.pineappleJuice), value: 1),
-                            CocktailIngredient(.syrups(.gingerSyrup), value: 1),
-                            CocktailIngredient(.syrups(.mapleSyrup), value: 1, unit: .barSpoon),
-                            CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
-                            CocktailIngredient(.soda(.sodaWater) , value: 3)]
+var houseGingerBeerSpec  = [OldCocktailIngredient(.juices(.lemon), value: 1),
+                            OldCocktailIngredient(.juices(.pineappleJuice), value: 1),
+                            OldCocktailIngredient(.syrups(.gingerSyrup), value: 1),
+                            OldCocktailIngredient(.syrups(.mapleSyrup), value: 1, unit: .barSpoon),
+                            OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
+                            OldCocktailIngredient(.soda(.sodaWater) , value: 3)]
 
 var houseGingerBeerTags   = Tags(profiles: [.citrusy, .effervescent, .sharp],
                                  styles: [.nonAlcoholic, .shaken, .fizz])

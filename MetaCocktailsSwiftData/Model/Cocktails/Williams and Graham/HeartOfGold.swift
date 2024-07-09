@@ -17,12 +17,12 @@ var heartOfGold = Cocktail(cocktailName: "Heart of Gold",
                            tags: heartOfGoldTags,
                            collection: .williamsAndGraham)
 
-let heartOfGoldSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.pimentoBitters), value: 2, unit: .dashes),
-                                             CocktailIngredient(.amari(.angosturaAmaro), value: 0.75),
-                                             CocktailIngredient(.amari(.amaroNonino), value: 0.75),
-                                             CocktailIngredient(.agaves(.mezcalDelMagueyVida), value: 0.75),
-                                             CocktailIngredient(.agaves(.tequilaFortalezaRepo), value: 0.75),
-                                             CocktailIngredient(.whiskies(.Ardbeg), value: 3, unit: .sprays)]
+let heartOfGoldSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.bitters(.pimentoBitters), value: 2, unit: .dashes),
+                                             OldCocktailIngredient(.amari(.angosturaAmaro), value: 0.75),
+                                             OldCocktailIngredient(.amari(.amaroNonino), value: 0.75),
+                                             OldCocktailIngredient(.agaves(.mezcalDelMagueyVida), value: 0.75),
+                                             OldCocktailIngredient(.agaves(.tequilaFortalezaRepo), value: 0.75),
+                                             OldCocktailIngredient(.whiskies(.Ardbeg), value: 3, unit: .sprays)]
 
 
 let heartOfGoldTags = Tags(profiles: [.rich],

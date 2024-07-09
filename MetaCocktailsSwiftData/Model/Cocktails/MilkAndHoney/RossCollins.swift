@@ -20,12 +20,12 @@ var rossCollins  = Cocktail(cocktailName: "Ross Collins",
                             variation: nil,
                             collection: .milkAndHoney)
 
-var rossCollinsSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                        CocktailIngredient(.syrups(.simple), value: 0.75),
-                        CocktailIngredient(.fruit(.orangeMoons), value: 2, unit: .muddled),
-                        CocktailIngredient(.bitters(.angosturaBitters), value: 3, unit: .dashes),
-                        CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 2),
-                        CocktailIngredient(.soda(.sodaWater) , value: 1.5)]
+var rossCollinsSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                        OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                        OldCocktailIngredient(.fruit(.orangeMoons), value: 2, unit: .muddled),
+                        OldCocktailIngredient(.bitters(.angosturaBitters), value: 3, unit: .dashes),
+                        OldCocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 2),
+                        OldCocktailIngredient(.soda(.sodaWater) , value: 1.5)]
 
 var rossCollinsBuild  = Build(instructions: [Instruction(step: 1, method: "Combine the whiskey, lemon juice, simple syrup, 2 orange slices, and bitters in a cocktail shaker, fill with ice, and shake vigorously until the drink is sufficiently chilled."),
                                              Instruction(step: 2, method: "Strain into a Collins glass, top off with club soda."),

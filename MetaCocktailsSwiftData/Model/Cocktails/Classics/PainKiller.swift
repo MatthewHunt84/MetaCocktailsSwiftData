@@ -18,10 +18,10 @@ var painKiller  = Cocktail(cocktailName: "Pain Killer",
                            collection: .originals,
                            titleCocktail: true)
 
-var painKillerSpec  = [CocktailIngredient(.juices(.orange), value: 0.5),
-                       CocktailIngredient(.syrups(.cocoLopez), value: 0.75),
-                       CocktailIngredient(.juices(.pineappleJuice), value: 1.5),
-                       CocktailIngredient(.rums(.pussersRum) , value: 1.5)]
+var painKillerSpec  = [OldCocktailIngredient(.juices(.orange), value: 0.5),
+                       OldCocktailIngredient(.syrups(.cocoLopez), value: 0.75),
+                       OldCocktailIngredient(.juices(.pineappleJuice), value: 1.5),
+                       OldCocktailIngredient(.rums(.pussersRum) , value: 1.5)]
 
 
 var painKillerTags   = Tags(profiles: [.fruity, .sweet, .tropical, .refreshing],

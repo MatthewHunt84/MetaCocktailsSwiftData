@@ -16,12 +16,12 @@ var hereBeDragons = Cocktail(cocktailName: "Here Be Dragons",
                              tags: hereBeDragonsTags,
                              collection: .williamsAndGraham)
 
-let hereBeDragonsSpec: [CocktailIngredient] = [CocktailIngredient(.syrups(.grenadine), value: 0.25),
-                                               CocktailIngredient(.juices(.grapefruit), value: 0.5),
-                                               CocktailIngredient(.juices(.lime), value: 1),
-                                               CocktailIngredient(.syrups(.passionfruitSyrup), value: 0.75),
-                                               CocktailIngredient(.liqueurs(.anchoVerde), value: 0.5),
-                                               CocktailIngredient(.agaves(.mezcalDelMagueyVida), value: 1.5)]
+let hereBeDragonsSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.syrups(.grenadine), value: 0.25),
+                                               OldCocktailIngredient(.juices(.grapefruit), value: 0.5),
+                                               OldCocktailIngredient(.juices(.lime), value: 1),
+                                               OldCocktailIngredient(.syrups(.passionfruitSyrup), value: 0.75),
+                                               OldCocktailIngredient(.liqueurs(.anchoVerde), value: 0.5),
+                                               OldCocktailIngredient(.agaves(.mezcalDelMagueyVida), value: 1.5)]
 
 
 let hereBeDragonsTags = Tags(profiles: [.light, .fruity, .spicy],

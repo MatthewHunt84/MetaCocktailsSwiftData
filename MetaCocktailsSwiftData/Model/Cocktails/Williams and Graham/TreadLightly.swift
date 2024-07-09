@@ -19,12 +19,12 @@ var treadLightly = Cocktail(cocktailName: "Tread Lightly",
                            tags: treadLightlyTags,
                             collection: .williamsAndGraham)
 
-let treadLightlySpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
-                                             CocktailIngredient(.bitters(.peychauds), value: 3, unit: .dashes),
-                                             CocktailIngredient(.liqueurs(.cremeDeCacao), value: 0.25),
-                                             CocktailIngredient(.amari(.amaroMontenegro), value: 1),
-                                             CocktailIngredient(.brandies(.pFAmber), value: 1),
-                                             CocktailIngredient(.whiskies(.oGD114), value: 1)]
+let treadLightlySpec: [OldCocktailIngredient] = [OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
+                                             OldCocktailIngredient(.bitters(.peychauds), value: 3, unit: .dashes),
+                                             OldCocktailIngredient(.liqueurs(.cremeDeCacao), value: 0.25),
+                                             OldCocktailIngredient(.amari(.amaroMontenegro), value: 1),
+                                             OldCocktailIngredient(.brandies(.pFAmber), value: 1),
+                                             OldCocktailIngredient(.whiskies(.oGD114), value: 1)]
 
 
 let treadLightlyTags = Tags(profiles: [.bittersweet, .spiritForward, .complex],

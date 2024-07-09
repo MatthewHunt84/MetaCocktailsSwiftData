@@ -17,11 +17,11 @@ var tooSoon = Cocktail(cocktailName: "Too Soon?",
                        tags: tooSoonTags,
                        collection: .milkAndHoney)
 
-var tooSoonSpec     =  [CocktailIngredient(.fruit(.orangeMoons), value: 2, unit: .muddled),
-                        CocktailIngredient(.syrups(.simple), value: 0.5),
-                        CocktailIngredient(.juices(.lemon), value: 0.75),
-                        CocktailIngredient(.amari(.cynar), value: 1),
-                        CocktailIngredient(.gins(.ginAny), value: 1)]
+var tooSoonSpec     =  [OldCocktailIngredient(.fruit(.orangeMoons), value: 2, unit: .muddled),
+                        OldCocktailIngredient(.syrups(.simple), value: 0.5),
+                        OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                        OldCocktailIngredient(.amari(.cynar), value: 1),
+                        OldCocktailIngredient(.gins(.ginAny), value: 1)]
 
 var tooSoonTags     = Tags(profiles: [.light, .refreshing, .citrusy, .complex],
                            styles: [.sour, .shaken])

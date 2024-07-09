@@ -18,9 +18,9 @@ var shokunin = Cocktail(cocktailName: "Shokunin",
                         tags: shokuninTags,
                         collection: .williamsAndGraham)
 
-let shokuninSpec: [CocktailIngredient] = [CocktailIngredient(.fortifiedWines(.carpanoBianco), value: 1),
-                                          CocktailIngredient(.amari(.campari), value: 1),
-                                          CocktailIngredient(.wines(.junmeiSake), value: 1.5)]
+let shokuninSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.fortifiedWines(.carpanoBianco), value: 1),
+                                          OldCocktailIngredient(.amari(.campari), value: 1),
+                                          OldCocktailIngredient(.wines(.junmeiSake), value: 1.5)]
 
 
 let shokuninTags = Tags(profiles: [.light, .complex, .bittersweet],

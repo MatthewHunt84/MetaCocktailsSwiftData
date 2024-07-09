@@ -18,11 +18,11 @@ var silverGinFizz  = Cocktail(cocktailName: "Silver Gin Fizz",
                               variation: .ginFizz,
                               collection: .originals)
 
-var silverGinFizzSpec  = [CocktailIngredient(.juices(.lemon), value: 1),
-                          CocktailIngredient(.syrups(.simple), value: 1),
-                          CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
-                          CocktailIngredient(.gins(.ginAny), value: 1.5),
-                          CocktailIngredient(.soda(.sparklingWater), value: 2)]
+var silverGinFizzSpec  = [OldCocktailIngredient(.juices(.lemon), value: 1),
+                          OldCocktailIngredient(.syrups(.simple), value: 1),
+                          OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
+                          OldCocktailIngredient(.gins(.ginAny), value: 1.5),
+                          OldCocktailIngredient(.soda(.sparklingWater), value: 2)]
 
 var silverGinFizzBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the sparkling water, into a tin and dry shake"),
                                                Instruction(step: 2, method: "Then shake with ice."),

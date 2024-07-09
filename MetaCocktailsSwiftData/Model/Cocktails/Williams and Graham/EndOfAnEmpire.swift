@@ -17,9 +17,9 @@ var endOfAnEmpire = Cocktail(cocktailName: "End of an Empire",
                              tags: endOfAnEmpireTags,
                              collection: .williamsAndGraham)
 
-let endOfAnEmpireSpec: [CocktailIngredient] = [CocktailIngredient(.fortifiedWines(.sherryEastIndia), value: 0.75),
-                                               CocktailIngredient(.amari(.braulio), value: 0.75),
-                                               CocktailIngredient(.whiskies(.balvinieDW), value: 1.5)]
+let endOfAnEmpireSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.fortifiedWines(.sherryEastIndia), value: 0.75),
+                                               OldCocktailIngredient(.amari(.braulio), value: 0.75),
+                                               OldCocktailIngredient(.whiskies(.balvinieDW), value: 1.5)]
 
 
 let endOfAnEmpireTags = Tags(profiles: [.bittersweet, .spiritForward, .complex, .fruity],

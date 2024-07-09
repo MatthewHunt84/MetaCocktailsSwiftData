@@ -18,10 +18,10 @@ var kittenWithAWhip = Cocktail(cocktailName: "Kitten with a Whip",
                                tags: kittenWithAWhipTags,
                                collection: .williamsAndGraham)
 
-let kittenWithAWhipSpec = [CocktailIngredient(.liqueurs(.tempusFugitKina), value: 3, unit: .drops),
-                           CocktailIngredient(.amari(.cynar), value: 0.5),
-                           CocktailIngredient(.liqueurs(.amaretto), value: 0.5),
-                           CocktailIngredient(.gins(.hendricks), value: 1.5)]
+let kittenWithAWhipSpec = [OldCocktailIngredient(.liqueurs(.tempusFugitKina), value: 3, unit: .drops),
+                           OldCocktailIngredient(.amari(.cynar), value: 0.5),
+                           OldCocktailIngredient(.liqueurs(.amaretto), value: 0.5),
+                           OldCocktailIngredient(.gins(.hendricks), value: 1.5)]
 
 
 let kittenWithAWhipTags = Tags(profiles: [.nutty, .punchy, .rich, .bittersweet],

@@ -16,9 +16,9 @@ var robRoyWnG = Cocktail(cocktailName: "Rob Roy (W&G Version)",
                          variation: .robRoy,
                          collection: .williamsAndGraham)
 
-var robRoySpecWnG     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
-                          CocktailIngredient(.fortifiedWines(.cocchiDeTorino), value: 1),
-                          CocktailIngredient(.whiskies(.glenfiddich12), value: 2)]
+var robRoySpecWnG     =  [OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
+                          OldCocktailIngredient(.fortifiedWines(.cocchiDeTorino), value: 1),
+                          OldCocktailIngredient(.whiskies(.glenfiddich12), value: 2)]
 
 var robRoyTagsWnG     = Tags(profiles: [.spiritForward, .punchy, .fruity],
                              styles: [.manhattan, .stirred])

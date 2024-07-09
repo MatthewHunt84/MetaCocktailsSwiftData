@@ -18,10 +18,10 @@ var honeymoonCocktail1st = Cocktail(cocktailName: "Honeymoon Cocktail",
                                     collection: .originals,
                                     titleCocktail: true)
 
-var honeymoonCocktailSpec1st =  [CocktailIngredient(.juices(.lemon), value: 0.5),
-                                 CocktailIngredient(.liqueurs(.orangeCuracao), value: 3, unit: .dashes),
-                                 CocktailIngredient(.liqueurs(.benedictine), value: 1),
-                                 CocktailIngredient(.brandies(.appleBrandy), value: 1)]
+var honeymoonCocktailSpec1st =  [OldCocktailIngredient(.juices(.lemon), value: 0.5),
+                                 OldCocktailIngredient(.liqueurs(.orangeCuracao), value: 3, unit: .dashes),
+                                 OldCocktailIngredient(.liqueurs(.benedictine), value: 1),
+                                 OldCocktailIngredient(.brandies(.appleBrandy), value: 1)]
 
 
 var honeymoonCocktailTags1st = Tags( profiles: [.fruity, .citrusy],

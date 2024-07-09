@@ -19,12 +19,12 @@ var oldCubanWnG = Cocktail(cocktailName: "Old Cuban (W&G Version)",
                            variation: .oldCuban,
                            collection: .williamsAndGraham)
 
-let oldCubanSpecWnG: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
-                                             CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
-                                             CocktailIngredient(.juices(.lime), value: 0.75),
-                                             CocktailIngredient(.syrups(.simple), value: 1),
-                                             CocktailIngredient(.rums(.plantationBarbados), value: 1.5),
-                                             CocktailIngredient(.wines(.prosecco), value: 2)]
+let oldCubanSpecWnG: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
+                                             OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
+                                             OldCocktailIngredient(.juices(.lime), value: 0.75),
+                                             OldCocktailIngredient(.syrups(.simple), value: 1),
+                                             OldCocktailIngredient(.rums(.plantationBarbados), value: 1.5),
+                                             OldCocktailIngredient(.wines(.prosecco), value: 2)]
 
 
 let oldCubanWnGBuild =  Build(instructions: [Instruction(step: 1, method: "Shake all of the ingredients, except for the sparkling wine, in a tin. Use Kold draft of Hoshizake cubes and the mint will the muddled while you're shaking."),

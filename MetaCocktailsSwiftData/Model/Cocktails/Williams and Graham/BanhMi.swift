@@ -18,13 +18,13 @@ var banhMi  =  Cocktail(cocktailName: "Banh Mi",
                         tags: banhMiTags,
                         collection: .williamsAndGraham)
 
-var banhMiSpec = [CocktailIngredient(.herbs(.mint), value: 5, unit: .gentlyMuddled),
-                  CocktailIngredient(.herbs(.cilantro), value: 5, unit: .gentlyMuddled),
-                  CocktailIngredient(.juices(.lime), value: 0.75),
-                  CocktailIngredient(.syrups(.cucumberSyrup), value: 0.75, prep: PrepBible.cucumberSyrup),
-                  CocktailIngredient(.juices(.carrotJuice), value: 0.5),
-                  CocktailIngredient(.rums(.plantation3Star), value: 1),
-                  CocktailIngredient(.otherAlcohol(.bataviaArrack), value: 1)]
+var banhMiSpec = [OldCocktailIngredient(.herbs(.mint), value: 5, unit: .gentlyMuddled),
+                  OldCocktailIngredient(.herbs(.cilantro), value: 5, unit: .gentlyMuddled),
+                  OldCocktailIngredient(.juices(.lime), value: 0.75),
+                  OldCocktailIngredient(.syrups(.cucumberSyrup), value: 0.75, prep: PrepBible.cucumberSyrup),
+                  OldCocktailIngredient(.juices(.carrotJuice), value: 0.5),
+                  OldCocktailIngredient(.rums(.plantation3Star), value: 1),
+                  OldCocktailIngredient(.otherAlcohol(.bataviaArrack), value: 1)]
 
 var banhMiTags = Tags(profiles: [.savory, .refreshing, .funky, .restorative],
                       styles: [.sour, .shaken])

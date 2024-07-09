@@ -18,9 +18,9 @@ var americanoWnG  = Cocktail(cocktailName: "Americano (W&G Version)",
                              variation: .americano,
                              collection: .williamsAndGraham)
 
-var americanoWnGSpec  = [CocktailIngredient(.soda(.sodaWater), value: 2),
-                         CocktailIngredient(.fortifiedWines(.carpanoAntica), value: 1.5),
-                         CocktailIngredient(.amari(.campari), value: 1.5)]
+var americanoWnGSpec  = [OldCocktailIngredient(.soda(.sodaWater), value: 2),
+                         OldCocktailIngredient(.fortifiedWines(.carpanoAntica), value: 1.5),
+                         OldCocktailIngredient(.amari(.campari), value: 1.5)]
 
 
 

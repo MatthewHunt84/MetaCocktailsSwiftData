@@ -18,10 +18,10 @@ var hotToddyWnG = Cocktail(cocktailName: "Hot Toddy (W&G Version)",
                            collection: .williamsAndGraham,
                            titleCocktail: true)
 
-var hotToddyWnGSpec  = [CocktailIngredient(.otherNonAlc(.hotWater), value: 2),
-                        CocktailIngredient(.syrups(.honeySyrup), value: 0.5, prep: PrepBible.honeySyrup),
-                        CocktailIngredient(.juices(.lemon), value: 0.25),
-                        CocktailIngredient(.whiskies(.larcenyBourbon), value: 2)]
+var hotToddyWnGSpec  = [OldCocktailIngredient(.otherNonAlc(.hotWater), value: 2),
+                        OldCocktailIngredient(.syrups(.honeySyrup), value: 0.5, prep: PrepBible.honeySyrup),
+                        OldCocktailIngredient(.juices(.lemon), value: 0.25),
+                        OldCocktailIngredient(.whiskies(.larcenyBourbon), value: 2)]
 
 var hotToddyWnGTags = Tags(flavors: [.lemon, .tea],
                            profiles: [.hot, .comforting],

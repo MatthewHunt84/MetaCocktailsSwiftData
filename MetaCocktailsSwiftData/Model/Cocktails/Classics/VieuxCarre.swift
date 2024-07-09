@@ -18,12 +18,12 @@ var vieuxCarre = Cocktail(cocktailName: "Vieux Carre",
                           tags: vieuxCarreTags,
                           collection: .originals)
 
-var vieuxCarreSpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
-                           CocktailIngredient(.bitters(.peychauds), value: 2, unit: .dashes),
-                           CocktailIngredient(.liqueurs(.benedictine), value: 1, unit: .teaspoon),
-                           CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),
-                           CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 1),
-                           CocktailIngredient(.brandies(.cognacVSOP), value: 1)]
+var vieuxCarreSpec     =  [OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
+                           OldCocktailIngredient(.bitters(.peychauds), value: 2, unit: .dashes),
+                           OldCocktailIngredient(.liqueurs(.benedictine), value: 1, unit: .teaspoon),
+                           OldCocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),
+                           OldCocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 1),
+                           OldCocktailIngredient(.brandies(.cognacVSOP), value: 1)]
 
 var vieuxCarreTags     = Tags(profiles: [.spiritForward, .rich, .punchy, .bittersweet],
                               styles: [.manhattan, .stirred])

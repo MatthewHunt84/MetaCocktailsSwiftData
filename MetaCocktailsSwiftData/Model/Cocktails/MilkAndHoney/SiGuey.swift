@@ -16,10 +16,10 @@ var siGuey = Cocktail(cocktailName: "Si-Guey",
                       tags: siGueyTags,
                       collection: .milkAndHoney)
 
-var siGueySpec     =  [CocktailIngredient(.bitters(.orangeBitters), value: 3, unit: .dashes),
-                       CocktailIngredient(.liqueurs(.dryCuracao), value: 0.25),
-                       CocktailIngredient(.agaves(.tequilaReposado), value: 2),
-                       CocktailIngredient(.whiskies(.scotchIsla), value: 0.25)]
+var siGueySpec     =  [OldCocktailIngredient(.bitters(.orangeBitters), value: 3, unit: .dashes),
+                       OldCocktailIngredient(.liqueurs(.dryCuracao), value: 0.25),
+                       OldCocktailIngredient(.agaves(.tequilaReposado), value: 2),
+                       OldCocktailIngredient(.whiskies(.scotchIsla), value: 0.25)]
 
 var siGueyTags     = Tags(profiles: [.spiritForward, .bittersweet, .fruity, .smokey, .complex],
                           styles: [.oldFashioned, .stirred])

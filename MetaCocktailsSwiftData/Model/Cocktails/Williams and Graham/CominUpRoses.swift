@@ -18,10 +18,10 @@ var cominUpRoses = Cocktail(cocktailName: "Comin' Up Roses",
                             tags: cominUpRosesTags,
                             collection: .williamsAndGraham)
 
-var cominUpRosesSpec  = [CocktailIngredient(.juices(.lemon), value: 0.5),
-                         CocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.5),
-                         CocktailIngredient(.amari(.amaroMontenegro), value: 1.5),
-                         CocktailIngredient(.whiskies(.bourbon120), value: 0.75)]
+var cominUpRosesSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.5),
+                         OldCocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.5),
+                         OldCocktailIngredient(.amari(.amaroMontenegro), value: 1.5),
+                         OldCocktailIngredient(.whiskies(.bourbon120), value: 0.75)]
 
 var cominUpRosesTags = Tags(profiles: [.herbal, .punchy, .floral, .citrusy],
                             styles: [.sour, .shaken])

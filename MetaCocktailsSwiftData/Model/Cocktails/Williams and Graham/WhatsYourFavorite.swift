@@ -17,11 +17,11 @@ var whatsYourFavorite  =  Cocktail(cocktailName: "What's Your Favorite",
                                    tags: whatsYourFavoriteTags,
                                    collection: .williamsAndGraham)
 
-var whatsYourFavoriteSpec = [CocktailIngredient(.bitters(.peychauds), value: 2, unit: .dashes),
-                             CocktailIngredient(.fortifiedWines(.amontillado), value: 0.25),
-                             CocktailIngredient(.fortifiedWines(.lustauPX), value: 0.25),
-                             CocktailIngredient(.amari(.cardamaro), value: 0.5),
-                             CocktailIngredient(.rums(.appleton12), value: 2)]
+var whatsYourFavoriteSpec = [OldCocktailIngredient(.bitters(.peychauds), value: 2, unit: .dashes),
+                             OldCocktailIngredient(.fortifiedWines(.amontillado), value: 0.25),
+                             OldCocktailIngredient(.fortifiedWines(.lustauPX), value: 0.25),
+                             OldCocktailIngredient(.amari(.cardamaro), value: 0.5),
+                             OldCocktailIngredient(.rums(.appleton12), value: 2)]
 
 var whatsYourFavoriteTags = Tags(profiles: [.fruity, .spiritForward],
                                  styles: [.manhattan, .stirred])

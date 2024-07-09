@@ -16,11 +16,11 @@ var ultimaPalabraLondon = Cocktail(cocktailName: "Ultima Palabra(London Version)
                                    tags: ultimaPalabraLondonTags,
                                    variation: .ultimaPalabra)
 
-var ultimaPalabraLondonSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
-                                CocktailIngredient(.juices(.pineappleJuice), value: 0.75),
-                                CocktailIngredient(.agaves(.mezcalSmokeyAny), value: 0.75),
-                                CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.75),
-                                CocktailIngredient(.liqueurs(.greenChartreuse), value: 0.75)]
+var ultimaPalabraLondonSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.75),
+                                OldCocktailIngredient(.juices(.pineappleJuice), value: 0.75),
+                                OldCocktailIngredient(.agaves(.mezcalSmokeyAny), value: 0.75),
+                                OldCocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.75),
+                                OldCocktailIngredient(.liqueurs(.greenChartreuse), value: 0.75)]
 
 var ultimaPalabraLondonTags = Tags(profiles: [.herbal, .citrusy, .fruity],
                                    styles: [.daisy, .shaken, .sour])

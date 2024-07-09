@@ -16,7 +16,7 @@ var bijouWnG = Cocktail(cocktailName: "Bijou (W&G Version)",
                         variation: .bijou,
                         collection: .williamsAndGraham)
 
-var bijouWnGSpec     =  [CocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dashes),
-                         CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),
-                         CocktailIngredient(.liqueurs(.greenChartreuse), value: 1),
-                         CocktailIngredient(.gins(.fordsGin), value: 1)]
+var bijouWnGSpec     =  [OldCocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dashes),
+                         OldCocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),
+                         OldCocktailIngredient(.liqueurs(.greenChartreuse), value: 1),
+                         OldCocktailIngredient(.gins(.fordsGin), value: 1)]

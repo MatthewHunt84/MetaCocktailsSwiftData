@@ -17,11 +17,11 @@ var amarettoSourWnG  = Cocktail(cocktailName: "Amaretto Sour (W&G Version)",
                                 variation: .amarettoSour,
                                 collection: .williamsAndGraham)
 
-var amarettoSourWnGSpec  = [CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
-                            CocktailIngredient(.juices(.lemon), value: 0.75),
-                            CocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.25),
-                            CocktailIngredient(.liqueurs(.amaretto) , value: 2),
-                            CocktailIngredient(.bitters(.angosturaBitters) , value: 10, unit: .drops)]
+var amarettoSourWnGSpec  = [OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
+                            OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                            OldCocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.25),
+                            OldCocktailIngredient(.liqueurs(.amaretto) , value: 2),
+                            OldCocktailIngredient(.bitters(.angosturaBitters) , value: 10, unit: .drops)]
 
 
 

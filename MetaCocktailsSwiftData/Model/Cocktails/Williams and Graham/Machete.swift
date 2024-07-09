@@ -18,11 +18,11 @@ var machete  =  Cocktail(cocktailName: "Machete",
                          tags: macheteTags,
                          collection: .williamsAndGraham)
 
-var macheteSpec = [CocktailIngredient(.bitters(.hellfireBitters), value: 12, unit: .drops),
-                   CocktailIngredient(.amari(.fernetBranca), value: 0.5),
-                   CocktailIngredient(.liqueurs(.clementCreole), value: 0.5),
-                   CocktailIngredient(.fortifiedWines(.lilletBlanc), value: 1),
-                   CocktailIngredient(.agaves(.mezcalDelMagueyVida), value: 1)]
+var macheteSpec = [OldCocktailIngredient(.bitters(.hellfireBitters), value: 12, unit: .drops),
+                   OldCocktailIngredient(.amari(.fernetBranca), value: 0.5),
+                   OldCocktailIngredient(.liqueurs(.clementCreole), value: 0.5),
+                   OldCocktailIngredient(.fortifiedWines(.lilletBlanc), value: 1),
+                   OldCocktailIngredient(.agaves(.mezcalDelMagueyVida), value: 1)]
 
 var macheteTags = Tags(profiles: [.rich, .bittersweet, .spicy, .spiritForward],
                        styles: [.negroni, .stirred])

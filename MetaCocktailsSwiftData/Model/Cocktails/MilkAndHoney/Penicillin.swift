@@ -20,11 +20,11 @@ var penicillin = Cocktail(cocktailName: "Penicillin",
                           collection: .milkAndHoney,
                           titleCocktail: true)
 
-var penicillinSpec = [CocktailIngredient(.juices(.lemon), value: 0.75, unit: .fluidOunces),
-                      CocktailIngredient(.syrups(.honeySyrup), value: 0.375, prep: PrepBible.honeySyrup),
-                      CocktailIngredient(.syrups(.gingerSyrup), value: 0.375, prep: PrepBible.gingerSyrup),
-                      CocktailIngredient(.whiskies(.scotchBlended), value: 2),
-                      CocktailIngredient(.whiskies(.scotchIsla), value: 0.25)]
+var penicillinSpec = [OldCocktailIngredient(.juices(.lemon), value: 0.75, unit: .fluidOunces),
+                      OldCocktailIngredient(.syrups(.honeySyrup), value: 0.375, prep: PrepBible.honeySyrup),
+                      OldCocktailIngredient(.syrups(.gingerSyrup), value: 0.375, prep: PrepBible.gingerSyrup),
+                      OldCocktailIngredient(.whiskies(.scotchBlended), value: 2),
+                      OldCocktailIngredient(.whiskies(.scotchIsla), value: 0.25)]
 
 var penicillinTags = Tags(flavors: [.lemon, .honey, .ginger, .peat],
                           profiles: [.citrusy, .smokey, .light, .complex],

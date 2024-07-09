@@ -20,11 +20,11 @@ var tritterRickey  = Cocktail(cocktailName: "Tritter Rickey",
                               variation: nil,
                               collection: .milkAndHoney)
 
-var tritterRickeySpec  = [CocktailIngredient(.juices(.lime), value: 1),
-                          CocktailIngredient(.syrups(.simple), value: 0.75),
-                          CocktailIngredient(.otherAlcohol(.absinthe), value: 5, unit: .sprays),
-                          CocktailIngredient(.gins(.ginAny), value: 2),
-                          CocktailIngredient(.soda(.sodaWater) , value: 1)]
+var tritterRickeySpec  = [OldCocktailIngredient(.juices(.lime), value: 1),
+                          OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                          OldCocktailIngredient(.otherAlcohol(.absinthe), value: 5, unit: .sprays),
+                          OldCocktailIngredient(.gins(.ginAny), value: 2),
+                          OldCocktailIngredient(.soda(.sodaWater) , value: 1)]
 
 
 

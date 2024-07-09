@@ -21,11 +21,11 @@ var queensParkSwizzle = Cocktail(cocktailName: "Queens Park Swizzle",
                                  collection: .originals,
                                  titleCocktail: true)
 
-var queensParkSpec = [CocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
-                      CocktailIngredient(.juices(.lime), value: 0.75),
-                      CocktailIngredient(.syrups(.richDem), value: 0.5, prep: PrepBible.richDem),
-                      CocktailIngredient(.rums(.rumDemerara), value: 3),
-                      CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes) ]
+var queensParkSpec = [OldCocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
+                      OldCocktailIngredient(.juices(.lime), value: 0.75),
+                      OldCocktailIngredient(.syrups(.richDem), value: 0.5, prep: PrepBible.richDem),
+                      OldCocktailIngredient(.rums(.rumDemerara), value: 3),
+                      OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes) ]
 
 var queensParkTags = Tags(flavors: [.lime, .mint, .bakingSpices],
                           profiles: [.aromatic, .refreshing, .citrusy, .light],

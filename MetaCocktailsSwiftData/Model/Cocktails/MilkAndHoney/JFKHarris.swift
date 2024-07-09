@@ -20,11 +20,11 @@ var jFKHarris = Cocktail(cocktailName: "JFK Harris",
                          variation: nil ,
                          collection: .milkAndHoney)
 
-var jFKHarrisSpec     =  [CocktailIngredient(.herbs(.mint), value: 11, unit: .gentlyMuddled),
-                          CocktailIngredient(.syrups(.simple), value: 0.75),
-                          CocktailIngredient(.juices(.lemon), value: 0.75),
-                          CocktailIngredient(.rums(.rumWhite), value: 2),
-                          CocktailIngredient(.wines(.dryRedWine), value: 0.5)]
+var jFKHarrisSpec     =  [OldCocktailIngredient(.herbs(.mint), value: 11, unit: .gentlyMuddled),
+                          OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                          OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                          OldCocktailIngredient(.rums(.rumWhite), value: 2),
+                          OldCocktailIngredient(.wines(.dryRedWine), value: 0.5)]
 
 var jFKHarrisTags     = Tags(profiles: [.savory, .refreshing, .citrusy, .complex],
                              styles: [.sour, .shaken])

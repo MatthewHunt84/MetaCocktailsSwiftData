@@ -19,10 +19,10 @@ var french75  = Cocktail(cocktailName: "French 75",
                          collection: .originals,
                          titleCocktail: true)
 
-var french75Spec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                     CocktailIngredient(.syrups(.simple), value: 0.75),
-                     CocktailIngredient(.gins(.ginAny), value: 1.5),
-                     CocktailIngredient(.wines(.champagne) , value: 2)]
+var french75Spec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                     OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                     OldCocktailIngredient(.gins(.ginAny), value: 1.5),
+                     OldCocktailIngredient(.wines(.champagne) , value: 2)]
 
 var french75Build  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the Champagne, into a tin and shake with ice"), 
                                           Instruction(step: 2, method: "strain over cracked ice and top with Champagne"),

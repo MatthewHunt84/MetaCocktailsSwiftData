@@ -18,11 +18,11 @@ var richGirl  =  Cocktail(cocktailName: "Rich Girl",
                           tags: richGirlTags,
                           collection: .williamsAndGraham)
 
-var richGirlSpec = [CocktailIngredient(.seasoning(.saline), value: 2, unit: .drops),
-                    CocktailIngredient(.bitters(.bolivarBitters), value: 2, unit: .dashes),
-                    CocktailIngredient(.liqueurs(.nuxAlpina), value: 0.5),
-                    CocktailIngredient(.fortifiedWines(.capaletti), value: 1),
-                    CocktailIngredient(.rums(.banks5), value: 2)]
+var richGirlSpec = [OldCocktailIngredient(.seasoning(.saline), value: 2, unit: .drops),
+                    OldCocktailIngredient(.bitters(.bolivarBitters), value: 2, unit: .dashes),
+                    OldCocktailIngredient(.liqueurs(.nuxAlpina), value: 0.5),
+                    OldCocktailIngredient(.fortifiedWines(.capaletti), value: 1),
+                    OldCocktailIngredient(.rums(.banks5), value: 2)]
 
 var richGirlTags = Tags(profiles: [.rich, .bittersweet, .spiritForward, .complex],
                         styles: [.martini, .stirred])

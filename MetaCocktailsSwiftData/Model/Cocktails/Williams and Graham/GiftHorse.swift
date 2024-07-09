@@ -17,11 +17,11 @@ var giftHorse = Cocktail(cocktailName: "Gift Horse",
                             tags: giftHorseTags,
                          collection: .williamsAndGraham)
 
-var giftHorseSpec  = [CocktailIngredient(.syrups(.honeySyrup), value: 0.25, prep: PrepBible.honeySyrup),
-                      CocktailIngredient(.liqueurs(.drambuie), value: 1, unit: .teaspoon),
-                      CocktailIngredient(.fortifiedWines(.byrrh), value: 0.5),
-                      CocktailIngredient(.amari(.DellErborista), value: 0.75),
-                      CocktailIngredient(.agaves(.tequilaSieteLeguasRepo), value: 1.5)]
+var giftHorseSpec  = [OldCocktailIngredient(.syrups(.honeySyrup), value: 0.25, prep: PrepBible.honeySyrup),
+                      OldCocktailIngredient(.liqueurs(.drambuie), value: 1, unit: .teaspoon),
+                      OldCocktailIngredient(.fortifiedWines(.byrrh), value: 0.5),
+                      OldCocktailIngredient(.amari(.DellErborista), value: 0.75),
+                      OldCocktailIngredient(.agaves(.tequilaSieteLeguasRepo), value: 1.5)]
 
 var giftHorseTags = Tags(profiles: [.rich, .bittersweet],
                          styles: [.martini, .stirred])

@@ -80,8 +80,8 @@ struct AddIngredientSearchView: View {
     @Binding var filteredIngredients: [Ingredient]
     @FocusState var keyboardFocused: Bool
 
-    @Query(sort: \IngredientModel.name) var ingredients: [IngredientModel]
-    @State var filteredIngredients2: [IngredientModel] = []
+    @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]
+    @State var filteredIngredients2: [IngredientBase] = []
     
     var body: some View {
         Section("Name") {

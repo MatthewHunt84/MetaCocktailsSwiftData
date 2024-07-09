@@ -15,10 +15,10 @@ var chocolateCocktail  = Cocktail(cocktailName: "Chocolate Cocktail",
                                   buildOrder: eggWhiteInstructionsNoBitters,
                                   tags: chocolateCocktailTags)
 
-var chocolateCocktailSpec  = [CocktailIngredient(.otherNonAlc(.eggWhole), value: 1),
-                              CocktailIngredient(.liqueurs(.cremeDeCacao), value: 0.75),
-                              CocktailIngredient(.liqueurs(.yellowChartreuse), value: 1),
-                              CocktailIngredient(.fortifiedWines(.sandemanPort) , value: 1)]
+var chocolateCocktailSpec  = [OldCocktailIngredient(.otherNonAlc(.eggWhole), value: 1),
+                              OldCocktailIngredient(.liqueurs(.cremeDeCacao), value: 0.75),
+                              OldCocktailIngredient(.liqueurs(.yellowChartreuse), value: 1),
+                              OldCocktailIngredient(.fortifiedWines(.sandemanPort) , value: 1)]
 
 var chocolateCocktailTags   = Tags(profiles: [.sweet, .rich],
                                    styles: [.shaken, .flip])

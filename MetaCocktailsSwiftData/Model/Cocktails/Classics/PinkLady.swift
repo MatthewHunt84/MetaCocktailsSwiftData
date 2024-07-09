@@ -17,11 +17,11 @@ var pinkLady = Cocktail(cocktailName: "Pink Lady",
                         tags: pinkLadyTags,
                         collection: .originals)
 
-var pinkLadySpec  = [CocktailIngredient(.juices(.lime), value: 0.5),
-                     CocktailIngredient(.syrups(.grenadine), value: 0.5),
-                     CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.5),
-                     CocktailIngredient(.brandies(.bondedApple), value: 1),
-                     CocktailIngredient(.gins(.ginAny), value: 1)]
+var pinkLadySpec  = [OldCocktailIngredient(.juices(.lime), value: 0.5),
+                     OldCocktailIngredient(.syrups(.grenadine), value: 0.5),
+                     OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 0.5),
+                     OldCocktailIngredient(.brandies(.bondedApple), value: 1),
+                     OldCocktailIngredient(.gins(.ginAny), value: 1)]
 
 
 var pinkLadyTags = Tags(profiles: [.citrusy, .fruity, .light, .silky],

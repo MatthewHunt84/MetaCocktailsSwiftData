@@ -13,9 +13,9 @@ var diamondBack = Cocktail(cocktailName: "Diamondback",
                               spec: diamondBackSpec,
                               tags: diamondBackTags)
 
-var diamondBackSpec     =  [CocktailIngredient(.liqueurs(.yellowChartreuse), value: 1),
-                               CocktailIngredient(.brandies(.lairdsApplejack), value: 1),
-                               CocktailIngredient(.whiskies(.rittenhouseRye), value: 1)]
+var diamondBackSpec     =  [OldCocktailIngredient(.liqueurs(.yellowChartreuse), value: 1),
+                               OldCocktailIngredient(.brandies(.lairdsApplejack), value: 1),
+                               OldCocktailIngredient(.whiskies(.rittenhouseRye), value: 1)]
 
 var diamondBackTags     = Tags(profiles: [.spiritForward, .rich],
                                   styles: [.martini, .stirred])

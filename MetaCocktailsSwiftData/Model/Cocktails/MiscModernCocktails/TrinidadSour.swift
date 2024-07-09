@@ -16,10 +16,10 @@ var trinidadSour = Cocktail(cocktailName: "Trinidad Sour",
                             buildOrder: nil,
                             tags: trinidadSourTags)
 
-var trinidadSourSpec = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                        CocktailIngredient(.syrups(.orgeat), value: 1, prep: PrepBible.orgeat),
-                        CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 0.5),
-                        CocktailIngredient(.bitters(.angosturaBitters), value: 1.5)]
+var trinidadSourSpec = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                        OldCocktailIngredient(.syrups(.orgeat), value: 1, prep: PrepBible.orgeat),
+                        OldCocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 0.5),
+                        OldCocktailIngredient(.bitters(.angosturaBitters), value: 1.5)]
                         
 var trinidadSourTags = Tags(flavors: [.almond, .lemon, .bakingSpices],
                             profiles: [.aromatic, .bitter, .silky, .complex],

@@ -17,10 +17,10 @@ var betweenTheSheets  = Cocktail(cocktailName: "Between the Sheets",
                                  collection: .originals,
                                  titleCocktail: true)
 
-var betweenTheSheetsSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                             CocktailIngredient(.rums(.rumWhite), value: 0.75),
-                             CocktailIngredient(.brandies(.cognacVSOP), value: 0.75),
-                             CocktailIngredient(.liqueurs(.cointreau) , value: 0.75)]
+var betweenTheSheetsSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                             OldCocktailIngredient(.rums(.rumWhite), value: 0.75),
+                             OldCocktailIngredient(.brandies(.cognacVSOP), value: 0.75),
+                             OldCocktailIngredient(.liqueurs(.cointreau) , value: 0.75)]
 
 
 var betweenTheSheetsTags   = Tags(profiles: [.citrusy, .tart, .light],

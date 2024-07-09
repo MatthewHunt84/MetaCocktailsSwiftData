@@ -17,11 +17,11 @@ var brandyCrusta = Cocktail(cocktailName: "Brandy Crusta",
                             collection: .originals,
                             titleCocktail: true)
 
-var brandyCrustaSpec    = [CocktailIngredient(.juices(.lemon), value: 1, unit: .dashes),
-                           CocktailIngredient(.liqueurs(.orangeCuracao), value: 2, unit: .dashes),
-                           CocktailIngredient(.syrups(.gommeSyrup), value: 4, unit: .dashes, prep: PrepBible.gommeSyrup),
-                           CocktailIngredient(.bitters(.angosturaBitters), value:1, unit: .dashes),
-                           CocktailIngredient(.brandies(.brandyAny), value:2)]
+var brandyCrustaSpec    = [OldCocktailIngredient(.juices(.lemon), value: 1, unit: .dashes),
+                           OldCocktailIngredient(.liqueurs(.orangeCuracao), value: 2, unit: .dashes),
+                           OldCocktailIngredient(.syrups(.gommeSyrup), value: 4, unit: .dashes, prep: PrepBible.gommeSyrup),
+                           OldCocktailIngredient(.bitters(.angosturaBitters), value:1, unit: .dashes),
+                           OldCocktailIngredient(.brandies(.brandyAny), value:2)]
 
 var brandyCrustaTags     = Tags(profiles: [.spiritForward, .rich, .fruity],
                                 styles: [.sour, .stirred])

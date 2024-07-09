@@ -19,10 +19,10 @@ var cosmopolitan  = Cocktail(cocktailName: "Cosmopolitan",
                              buildOrder: nil,
                              tags: cosmoTags)
 
-var cosmoSpec  = [CocktailIngredient(.juices(.lime), value: 0.25),
-                  CocktailIngredient(.juices(.cranberryJuice), value: 1),
-                  CocktailIngredient(.liqueurs(.cointreau), value: 0.75),
-                  CocktailIngredient(.vodkas(.vodkaCitrus), value: 1.5)]
+var cosmoSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.25),
+                  OldCocktailIngredient(.juices(.cranberryJuice), value: 1),
+                  OldCocktailIngredient(.liqueurs(.cointreau), value: 0.75),
+                  OldCocktailIngredient(.vodkas(.vodkaCitrus), value: 1.5)]
 
 var cosmoTags  = Tags(flavors: [.orange, .cranberry, .lime],
                       profiles: [.fruity, .citrusy, .light],

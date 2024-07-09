@@ -19,11 +19,11 @@ var nocheBuena = Cocktail(cocktailName: "Noche Buena",
                           tags: nocheBuenaTags,
                           collection: .milkAndHoney)
 
-var nocheBuenaSpec  = [CocktailIngredient(.juices(.lemon), value: 0.5),
-                       CocktailIngredient(.syrups(.simple), value: 0.75),
-                       CocktailIngredient(.otherNonAlc(.eggYolk), value: 1),
-                       CocktailIngredient(.fortifiedWines(.tawnyPort), value: 1.5),
-                       CocktailIngredient(.wines(.champagne), value: 1)]
+var nocheBuenaSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.5),
+                       OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                       OldCocktailIngredient(.otherNonAlc(.eggYolk), value: 1),
+                       OldCocktailIngredient(.fortifiedWines(.tawnyPort), value: 1.5),
+                       OldCocktailIngredient(.wines(.champagne), value: 1)]
 
 var nocheBuenaTags = Tags( profiles: [.rich, .silky, .fruity, .sweet],
                           styles: [.flip, .shaken])

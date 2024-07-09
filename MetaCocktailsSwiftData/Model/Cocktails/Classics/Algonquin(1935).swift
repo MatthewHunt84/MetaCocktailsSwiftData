@@ -17,9 +17,9 @@ var algonquin  = Cocktail(cocktailName: "Algonquin",
                           collection: .originals,
                           titleCocktail: true)
 
-var algonquinSpec  = [CocktailIngredient(.juices(.pineappleJuice), value: 1),
-                      CocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 1),
-                      CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 2)]
+var algonquinSpec  = [OldCocktailIngredient(.juices(.pineappleJuice), value: 1),
+                      OldCocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 1),
+                      OldCocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 2)]
 
 
 

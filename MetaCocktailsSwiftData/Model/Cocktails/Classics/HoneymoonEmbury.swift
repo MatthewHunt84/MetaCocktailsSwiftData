@@ -16,10 +16,10 @@ var honeymoonCocktailEmbury = Cocktail(cocktailName: "Honeymoon Cocktail(Embury)
                                        tags: honeymoonCocktailTagsEmbury,
                                        variation: .honeymoon)
 
-var honeymoonCocktailSpecEmbury =  [CocktailIngredient(.juices(.lime), value: 0.5),
-                                    CocktailIngredient(.liqueurs(.orangeCuracao), value: 0.125),
-                                    CocktailIngredient(.liqueurs(.benedictine), value: 0.125),
-                                    CocktailIngredient(.brandies(.lairdsApplejack), value: 2)]
+var honeymoonCocktailSpecEmbury =  [OldCocktailIngredient(.juices(.lime), value: 0.5),
+                                    OldCocktailIngredient(.liqueurs(.orangeCuracao), value: 0.125),
+                                    OldCocktailIngredient(.liqueurs(.benedictine), value: 0.125),
+                                    OldCocktailIngredient(.brandies(.lairdsApplejack), value: 2)]
 
 var honeymoonCocktailTagsEmbury = Tags( profiles: [.fruity, .citrusy, .dry, .tart],
                                         styles: [.daisy, .shaken, .sour])

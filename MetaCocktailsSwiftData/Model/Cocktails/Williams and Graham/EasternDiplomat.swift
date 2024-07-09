@@ -18,11 +18,11 @@ var easternDiplomat = Cocktail(cocktailName: "Eastern Diplomat",
                                tags: easternDiplomatTags,
                                collection: .williamsAndGraham)
 
-var easternDiplomatSpec  = [CocktailIngredient(.otherAlcohol(.absinthe), value: 5, unit: .sprays),
-                            CocktailIngredient(.amari(.amaroMontenegro), value: 0.75),
-                            CocktailIngredient(.amari(.nardiniAmaro), value: 0.75),
-                            CocktailIngredient(.rums(.diplomaticoExclusivaRum), value: 0.75),
-                            CocktailIngredient(.whiskies(.rittenhouseRye), value: 0.75)]
+var easternDiplomatSpec  = [OldCocktailIngredient(.otherAlcohol(.absinthe), value: 5, unit: .sprays),
+                            OldCocktailIngredient(.amari(.amaroMontenegro), value: 0.75),
+                            OldCocktailIngredient(.amari(.nardiniAmaro), value: 0.75),
+                            OldCocktailIngredient(.rums(.diplomaticoExclusivaRum), value: 0.75),
+                            OldCocktailIngredient(.whiskies(.rittenhouseRye), value: 0.75)]
 
 var easternDiplomatTags = Tags(profiles: [.rich, .bittersweet, .punchy, .spiritForward],
                                styles: [.martini, .stirred])

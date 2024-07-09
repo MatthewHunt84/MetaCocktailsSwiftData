@@ -22,10 +22,10 @@ var bramble = Cocktail(cocktailName: "Bramble",
                        collection: .originals,
                        titleCocktail: true)
 
-let brambleSpec: [CocktailIngredient] = [CocktailIngredient(.juices(.lemon), value: 1),
-                                         CocktailIngredient(.syrups(.richSimple), value: 0.5, prep: PrepBible.richSimple),
-                                         CocktailIngredient(.liqueurs(.cremeDeMure), value: 0.5),
-                                         CocktailIngredient(.gins(.ginLondonDry), value: 2)]
+let brambleSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.juices(.lemon), value: 1),
+                                         OldCocktailIngredient(.syrups(.richSimple), value: 0.5, prep: PrepBible.richSimple),
+                                         OldCocktailIngredient(.liqueurs(.cremeDeMure), value: 0.5),
+                                         OldCocktailIngredient(.gins(.ginLondonDry), value: 2)]
 
 let brambleTags = Tags(flavors: [.lemon],
                        profiles: [.fruity, .floral, .light],

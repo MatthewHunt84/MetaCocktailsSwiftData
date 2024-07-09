@@ -18,10 +18,10 @@ var temperanceIrishCoffee = Cocktail(cocktailName: "Temperance Irish Coffee",
                                      collection: .milkAndHoney,
                                      titleCocktail: false)
 
-var temperanceIrishCoffeeSpec  = [CocktailIngredient(.otherNonAlc(.stiffCream), value: 1.5),
-                                  CocktailIngredient(.otherNonAlc(.espressoShot), value: 2, unit: .none),
-                                  CocktailIngredient(.otherNonAlc(.demeraraSugarCube), value: 2, unit: .none),
-                                  CocktailIngredient(.otherNonAlc(.hotWater), value: 4)]
+var temperanceIrishCoffeeSpec  = [OldCocktailIngredient(.otherNonAlc(.stiffCream), value: 1.5),
+                                  OldCocktailIngredient(.otherNonAlc(.espressoShot), value: 2, unit: .none),
+                                  OldCocktailIngredient(.otherNonAlc(.demeraraSugarCube), value: 2, unit: .none),
+                                  OldCocktailIngredient(.otherNonAlc(.hotWater), value: 4)]
 
 var temperanceIrishCoffeeTags = Tags(flavors: [.coffee],
                                      profiles: [.hot],

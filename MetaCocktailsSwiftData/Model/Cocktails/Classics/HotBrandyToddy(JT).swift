@@ -17,9 +17,9 @@ var hotBrandyToddy = Cocktail(cocktailName: "Hot Brandy Toddy(1862)",
                               variation: .hotToddy,
                               collection: .originals)
 
-var hotBrandyToddySpec  = [CocktailIngredient(.otherNonAlc(.granulatedSugar), value: 1, unit: .teaspoon),
-                           CocktailIngredient(.otherNonAlc(.hotWater), value: 3),
-                           CocktailIngredient(.brandies(.brandyAny), value: 2)]
+var hotBrandyToddySpec  = [OldCocktailIngredient(.otherNonAlc(.granulatedSugar), value: 1, unit: .teaspoon),
+                           OldCocktailIngredient(.otherNonAlc(.hotWater), value: 3),
+                           OldCocktailIngredient(.brandies(.brandyAny), value: 2)]
 
 var hotBrandyToddyTags = Tags(flavors: [.tea],
                               profiles: [.hot],

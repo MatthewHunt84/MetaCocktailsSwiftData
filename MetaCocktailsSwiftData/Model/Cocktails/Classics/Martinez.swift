@@ -17,10 +17,10 @@ var martinez = Cocktail(cocktailName: "Martinez",
                         collection: .originals,
                         titleCocktail: true)
 
-var martinezSpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
-                         CocktailIngredient(.liqueurs(.dryCuracao), value: 2, unit: .dashes),
-                         CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1.5),
-                         CocktailIngredient(.gins(.ginAny), value: 1.5)]
+var martinezSpec     =  [OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
+                         OldCocktailIngredient(.liqueurs(.dryCuracao), value: 2, unit: .dashes),
+                         OldCocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1.5),
+                         OldCocktailIngredient(.gins(.ginAny), value: 1.5)]
 
 var martinezTags    = Tags(profiles: [.spiritForward, .rich, .complex, .bittersweet],
                            styles: [.martini, .stirred])

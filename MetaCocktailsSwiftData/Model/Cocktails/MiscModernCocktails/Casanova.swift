@@ -17,12 +17,12 @@ var casanovaCocktail  =  Cocktail(cocktailName: "Casanova Cocktail",
                                   buildOrder: nil,
                                   tags: casanovaCocktailTags)
 
-var casanovaCocktailSpec = [CocktailIngredient(.herbs(.cilantro), value: 10, unit: .gentlyMuddled),
-                            CocktailIngredient(.juices(.lime), value: 0.75),
-                            CocktailIngredient(.syrups(.agaveSyrup), value: 0.75, prep: PrepBible.agaveSyrup),
-                            CocktailIngredient(.otherNonAlc(.vanillaExtract), value: 4, unit: .drops),
-                            CocktailIngredient(.otherAlcohol(.jalapeñoTincture), value: 2, unit: .dashes),
-                            CocktailIngredient(.agaves(.tequilaFortalezaRepo), value: 2)]
+var casanovaCocktailSpec = [OldCocktailIngredient(.herbs(.cilantro), value: 10, unit: .gentlyMuddled),
+                            OldCocktailIngredient(.juices(.lime), value: 0.75),
+                            OldCocktailIngredient(.syrups(.agaveSyrup), value: 0.75, prep: PrepBible.agaveSyrup),
+                            OldCocktailIngredient(.otherNonAlc(.vanillaExtract), value: 4, unit: .drops),
+                            OldCocktailIngredient(.otherAlcohol(.jalapeñoTincture), value: 2, unit: .dashes),
+                            OldCocktailIngredient(.agaves(.tequilaFortalezaRepo), value: 2)]
 
 var casanovaCocktailTags = Tags(profiles: [.refreshing, .herbal, .restorative, .spicy],
                                 styles: [.sour, .shaken])

@@ -18,11 +18,11 @@ var gabriella = Cocktail(cocktailName: "Gabriella",
                          tags: gabriellaTags,
                          collection: .milkAndHoney)
 
-var gabriellaSpec     =  [CocktailIngredient(.fruit(.strawberryHalf), value: 1, unit: .muddled),
-                          CocktailIngredient(.juices(.lemon), value: 0.73),
-                          CocktailIngredient(.syrups(.simple), value: 0.75),
-                          CocktailIngredient(.seasoning(.salt), value: 1, unit: .pinch),
-                          CocktailIngredient(.brandies(.pisco), value: 2)]
+var gabriellaSpec     =  [OldCocktailIngredient(.fruit(.strawberryHalf), value: 1, unit: .muddled),
+                          OldCocktailIngredient(.juices(.lemon), value: 0.73),
+                          OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                          OldCocktailIngredient(.seasoning(.salt), value: 1, unit: .pinch),
+                          OldCocktailIngredient(.brandies(.pisco), value: 2)]
 
 var gabriellaTags     = Tags(profiles: [.light, .refreshing, .citrusy, .tart],
                              styles: [.sour, .shaken])

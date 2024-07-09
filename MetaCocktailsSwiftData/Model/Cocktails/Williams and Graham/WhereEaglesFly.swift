@@ -17,12 +17,12 @@ var whereEaglesFly = Cocktail(cocktailName: "Where Eagles Fly",
                               tags: whereEaglesFlyTags,
                               collection: .williamsAndGraham)
 
-var whereEaglesFlySpec  = [CocktailIngredient(.wines(.prosecco), value: 2),
-                           CocktailIngredient(.herbs(.basil), value: 3, unit: .gentlyMuddled),
-                           CocktailIngredient(.juices(.lemon), value: 0.75),
-                           CocktailIngredient(.syrups(.passionfruitSyrup), value: 0.75),
-                           CocktailIngredient(.amari(.cynar), value: 0.5),
-                           CocktailIngredient(.whiskies(.eagleRare10), value: 1.5)]
+var whereEaglesFlySpec  = [OldCocktailIngredient(.wines(.prosecco), value: 2),
+                           OldCocktailIngredient(.herbs(.basil), value: 3, unit: .gentlyMuddled),
+                           OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                           OldCocktailIngredient(.syrups(.passionfruitSyrup), value: 0.75),
+                           OldCocktailIngredient(.amari(.cynar), value: 0.5),
+                           OldCocktailIngredient(.whiskies(.eagleRare10), value: 1.5)]
 
 var whereEaglesFlyTags = Tags(profiles: [.refreshing, .fruity, .bright],
                               styles: [.sour, .shaken])

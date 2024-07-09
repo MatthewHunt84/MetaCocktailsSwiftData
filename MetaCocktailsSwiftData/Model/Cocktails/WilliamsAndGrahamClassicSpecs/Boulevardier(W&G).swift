@@ -16,6 +16,6 @@ var boulevardierWnG  =  Cocktail(cocktailName: "Boulevardier (W&G Version)",
                                  variation: .boulevardier,
                                  collection: .williamsAndGraham)
 
-var boulevardierWnGSpec = [CocktailIngredient(.whiskies(.straightRyeOrBourbon), value: 1.5),
-                           CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 0.75),
-                           CocktailIngredient(.amari(.campari), value: 0.75)]
+var boulevardierWnGSpec = [OldCocktailIngredient(.whiskies(.straightRyeOrBourbon), value: 1.5),
+                           OldCocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 0.75),
+                           OldCocktailIngredient(.amari(.campari), value: 0.75)]

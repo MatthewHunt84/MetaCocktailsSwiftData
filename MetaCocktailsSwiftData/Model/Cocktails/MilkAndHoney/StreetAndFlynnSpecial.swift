@@ -20,11 +20,11 @@ var streetAndFlynnSpecial = Cocktail(cocktailName: "Street & Flynn Special",
                                      variation: nil ,
                                      collection: .milkAndHoney)
 
-var streetAndFlynnSpecialSpec     =  [CocktailIngredient(.soda(.sodaWater), value: 2),
-                                      CocktailIngredient(.syrups(.gingerSyrup), value: 0.5),
-                                      CocktailIngredient(.juices(.lime), value: 0.5),
-                                      CocktailIngredient(.liqueurs(.pimentoDram), value: 0.5),
-                                      CocktailIngredient(.rums(.corubaDark), value: 1.5)]
+var streetAndFlynnSpecialSpec     =  [OldCocktailIngredient(.soda(.sodaWater), value: 2),
+                                      OldCocktailIngredient(.syrups(.gingerSyrup), value: 0.5),
+                                      OldCocktailIngredient(.juices(.lime), value: 0.5),
+                                      OldCocktailIngredient(.liqueurs(.pimentoDram), value: 0.5),
+                                      OldCocktailIngredient(.rums(.corubaDark), value: 1.5)]
 
 var streetAndFlynnSpecialTags     = Tags(profiles: [.savory, .refreshing, .sharp, .complex],
                                          styles: [.fizz, .shaken])

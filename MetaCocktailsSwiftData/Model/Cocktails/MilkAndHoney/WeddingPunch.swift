@@ -21,9 +21,9 @@ var weddingPunch = Cocktail(cocktailName: "Wedding Punch",
                             collection: .milkAndHoney,
                             titleCocktail: false)
 
-var weddingPunchSpec = [CocktailIngredient(.wines(.prosecco), value: 8, unit: .bottles),
-                        CocktailIngredient(.fortifiedWines(.martiniBianco), value: 4, unit: .bottles),
-                        CocktailIngredient(.liqueurs(.giffardElderflour), value: 1, unit: .bottles) ]
+var weddingPunchSpec = [OldCocktailIngredient(.wines(.prosecco), value: 8, unit: .bottles),
+                        OldCocktailIngredient(.fortifiedWines(.martiniBianco), value: 4, unit: .bottles),
+                        OldCocktailIngredient(.liqueurs(.giffardElderflour), value: 1, unit: .bottles) ]
 
 var weddingPunchTags = Tags(profiles: [.aromatic, .refreshing, .citrusy, .effervescent],
                             styles: [.punch, .built])

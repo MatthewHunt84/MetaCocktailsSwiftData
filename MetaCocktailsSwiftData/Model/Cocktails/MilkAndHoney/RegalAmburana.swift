@@ -19,10 +19,10 @@ var regalAmburana = Cocktail(cocktailName: "Regal Amburana",
                              variation: nil,
                              collection: .milkAndHoney)
 
-var regalAmburanaSpec  = [CocktailIngredient(.juices(.lime), value: 0.875),
-                          CocktailIngredient(.syrups(.honeySyrup), value: 0.75),
-                          CocktailIngredient(.fruit(.grapefruitPeel), value: 1, unit: .none),
-                          CocktailIngredient(.rums(.avuaAmburana), value: 2)]
+var regalAmburanaSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.875),
+                          OldCocktailIngredient(.syrups(.honeySyrup), value: 0.75),
+                          OldCocktailIngredient(.fruit(.grapefruitPeel), value: 1, unit: .none),
+                          OldCocktailIngredient(.rums(.avuaAmburana), value: 2)]
 
 var regalAmburanaTags = Tags(profiles: [.light, .fruity, .refreshing],
                              styles: [.sour, .shaken])

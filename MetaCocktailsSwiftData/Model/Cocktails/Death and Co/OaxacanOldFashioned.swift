@@ -18,10 +18,10 @@ var oaxacaOldFashioned = Cocktail(cocktailName: "Oaxaca Old Fashioned",
                                   collection: .deathAndCo,
                                   titleCocktail: true)
 
-var oaxacaOldFashionedSpec  = [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
-                               CocktailIngredient(.syrups(.agaveNectar), value: 1, unit: .teaspoon),
-                               CocktailIngredient(.agaves(.mezcalDelMagueySanLuis), value: 0.5),
-                               CocktailIngredient(.agaves(.elTesoroRepo), value: 1.5)]
+var oaxacaOldFashionedSpec  = [OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
+                               OldCocktailIngredient(.syrups(.agaveNectar), value: 1, unit: .teaspoon),
+                               OldCocktailIngredient(.agaves(.mezcalDelMagueySanLuis), value: 0.5),
+                               OldCocktailIngredient(.agaves(.elTesoroRepo), value: 1.5)]
 
 var oaxacaOldFashionedTags = Tags(profiles: [.spiritForward, .punchy, .complex],
                                   styles: [.oldFashioned, .stirred])

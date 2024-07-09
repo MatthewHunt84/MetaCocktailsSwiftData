@@ -16,10 +16,10 @@ var farewellRide = Cocktail(cocktailName: "Farewell Ride",
                                tags: farewellRideTags,
                             collection: .williamsAndGraham)
 
-var farewellRideSpec  = [CocktailIngredient(.bitters(.blackstrapBitters), value: 2, unit: .dashes),
-                            CocktailIngredient(.amari(.amaroNonino), value: 0.5),
-                            CocktailIngredient(.amari(.becherovka), value: 0.75),
-                            CocktailIngredient(.whiskies(.knob120), value: 2)]
+var farewellRideSpec  = [OldCocktailIngredient(.bitters(.blackstrapBitters), value: 2, unit: .dashes),
+                            OldCocktailIngredient(.amari(.amaroNonino), value: 0.5),
+                            OldCocktailIngredient(.amari(.becherovka), value: 0.75),
+                            OldCocktailIngredient(.whiskies(.knob120), value: 2)]
 
 var farewellRideTags = Tags(profiles: [.dry, .bittersweet, .punchy, .spiritForward],
                                styles: [.manhattan, .stirred])

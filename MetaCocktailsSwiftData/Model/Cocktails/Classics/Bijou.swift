@@ -17,10 +17,10 @@ var bijou = Cocktail(cocktailName: "Bijou",
                      collection: .originals,
                      titleCocktail: true)
 
-var bijouSpec     =  [CocktailIngredient(.bitters(.orangeBitters), value: 2, unit: .dashes),
-                      CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),
-                      CocktailIngredient(.liqueurs(.greenChartreuse), value: 1),
-                      CocktailIngredient(.gins(.plymouth), value: 1)]
+var bijouSpec     =  [OldCocktailIngredient(.bitters(.orangeBitters), value: 2, unit: .dashes),
+                      OldCocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),
+                      OldCocktailIngredient(.liqueurs(.greenChartreuse), value: 1),
+                      OldCocktailIngredient(.gins(.plymouth), value: 1)]
 
 var bijouTags     = Tags(profiles: [.spiritForward, .complex,  .rich],
                          styles: [.martini, .stirred])

@@ -20,12 +20,12 @@ var oaxacanite = Cocktail(cocktailName: "Oaxacanite",
                           variation: nil,
                           collection: .milkAndHoney)
 
-var oaxacaniteSpec = [CocktailIngredient(.juices(.lime), value: 0.75, unit: .fluidOunces),
-                      CocktailIngredient(.bitters(.angosturaBitters), value: 0.5, unit: .teaspoon),
-                      CocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup),
-                      CocktailIngredient(.fruit(.grapefruitPeel), value: 1),
-                      CocktailIngredient(.agaves(.tequilaBlanco), value: 1),
-                      CocktailIngredient(.agaves(.mezcalDelMagueyVida), value: 1)]
+var oaxacaniteSpec = [OldCocktailIngredient(.juices(.lime), value: 0.75, unit: .fluidOunces),
+                      OldCocktailIngredient(.bitters(.angosturaBitters), value: 0.5, unit: .teaspoon),
+                      OldCocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup),
+                      OldCocktailIngredient(.fruit(.grapefruitPeel), value: 1),
+                      OldCocktailIngredient(.agaves(.tequilaBlanco), value: 1),
+                      OldCocktailIngredient(.agaves(.mezcalDelMagueyVida), value: 1)]
 
 var oaxacaniteTags = Tags(profiles: [.citrusy, .smokey, .light, .complex],
                           styles: [.sour, .shaken])

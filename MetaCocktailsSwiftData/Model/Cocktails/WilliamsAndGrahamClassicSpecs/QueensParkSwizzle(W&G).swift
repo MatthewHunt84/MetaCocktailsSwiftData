@@ -19,11 +19,11 @@ var queensParkSwizzleWnG = Cocktail(cocktailName: "Queens Park Swizzle (W&G Vers
                                     variation: .queensParkSwizzle,
                                     collection: .williamsAndGraham)
 
-var queensParkSpecWnG = [CocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
-                         CocktailIngredient(.juices(.lime), value: 0.75),
-                         CocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.75),
-                         CocktailIngredient(.rums(.plantationBarbados), value: 2.25),
-                         CocktailIngredient(.bitters(.angosturaBitters), value: 5, unit: .dashes) ]
+var queensParkSpecWnG = [OldCocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
+                         OldCocktailIngredient(.juices(.lime), value: 0.75),
+                         OldCocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.75),
+                         OldCocktailIngredient(.rums(.plantationBarbados), value: 2.25),
+                         OldCocktailIngredient(.bitters(.angosturaBitters), value: 5, unit: .dashes) ]
 
 var queensParkTagsWnG = Tags(flavors: [.lime, .mint, .bakingSpices],
                              profiles: [.aromatic, .refreshing, .citrusy, .light],

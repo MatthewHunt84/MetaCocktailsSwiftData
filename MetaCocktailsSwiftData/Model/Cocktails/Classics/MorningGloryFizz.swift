@@ -19,13 +19,13 @@ var morningGloryFizz = Cocktail(cocktailName: "Morning Glory Fizz",
                                 collection: .originals,
                                 titleCocktail: true)
 
-var morningGloryFizzSpec = [CocktailIngredient(.soda(.sodaWater), value: 2),
-                            CocktailIngredient(.juices(.lemon), value: 5, unit: .dashes),
-                            CocktailIngredient(.juices(.lime), value: 3, unit: .dashes),
-                            CocktailIngredient(.otherAlcohol(.absinthe), value: 4, unit: .dashes),
-                            CocktailIngredient(.otherNonAlc(.granulatedSugar), value: 1, unit: .tablespoon),
-                            CocktailIngredient(.otherNonAlc(.eggWhites), value: 1.25),
-                            CocktailIngredient(.whiskies(.scotchAny), value: 2)]
+var morningGloryFizzSpec = [OldCocktailIngredient(.soda(.sodaWater), value: 2),
+                            OldCocktailIngredient(.juices(.lemon), value: 5, unit: .dashes),
+                            OldCocktailIngredient(.juices(.lime), value: 3, unit: .dashes),
+                            OldCocktailIngredient(.otherAlcohol(.absinthe), value: 4, unit: .dashes),
+                            OldCocktailIngredient(.otherNonAlc(.granulatedSugar), value: 1, unit: .tablespoon),
+                            OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 1.25),
+                            OldCocktailIngredient(.whiskies(.scotchAny), value: 2)]
 
 var morningGloryFizzTags = Tags(profiles: [.citrusy, .light, .silky, .refreshing, .fruity, .restorative],
                                 styles: [.sour, .shaken])

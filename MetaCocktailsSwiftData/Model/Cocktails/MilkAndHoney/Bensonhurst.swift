@@ -15,10 +15,10 @@ var bensonhurst = Cocktail(cocktailName: "Bensonhurst",
                            tags: bensonhurstTags,
                            collection: .milkAndHoney)
 
-var bensonhurstSpec     =  [CocktailIngredient(.amari(.cynar), value: 1, unit: .teaspoon),
-                            CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 2, unit: .teaspoon),
-                            CocktailIngredient(.fortifiedWines(.dolinDry), value: 1),
-                            CocktailIngredient(.whiskies(.rittenhouseRye), value: 2)]
+var bensonhurstSpec     =  [OldCocktailIngredient(.amari(.cynar), value: 1, unit: .teaspoon),
+                            OldCocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 2, unit: .teaspoon),
+                            OldCocktailIngredient(.fortifiedWines(.dolinDry), value: 1),
+                            OldCocktailIngredient(.whiskies(.rittenhouseRye), value: 2)]
 
 var bensonhurstTags     = Tags(profiles: [.spiritForward, .dry, .complex],
                                styles: [.manhattan, .stirred])

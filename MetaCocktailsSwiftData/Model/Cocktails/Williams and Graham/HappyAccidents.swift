@@ -17,12 +17,12 @@ var happyAccidents = Cocktail(cocktailName: "Happy Accidents",
                               tags: happyAccidentsTags,
                               collection: .williamsAndGraham)
 
-let happyAccidentsSpec: [CocktailIngredient] = [CocktailIngredient(.soda(.sodaWater), value: 2),
-                                                CocktailIngredient(.fruit(.cucumberSlices), value: 2, unit: .muddled),
-                                                CocktailIngredient(.juices(.lemon), value: 1),
-                                                CocktailIngredient(.otherAlcohol(.absinthe), value: 0.23),
-                                                CocktailIngredient(.amari(.amaroMontenegro), value: 1),
-                                                CocktailIngredient(.liqueurs(.italicus), value: 1, unit: .whole)]
+let happyAccidentsSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.soda(.sodaWater), value: 2),
+                                                OldCocktailIngredient(.fruit(.cucumberSlices), value: 2, unit: .muddled),
+                                                OldCocktailIngredient(.juices(.lemon), value: 1),
+                                                OldCocktailIngredient(.otherAlcohol(.absinthe), value: 0.23),
+                                                OldCocktailIngredient(.amari(.amaroMontenegro), value: 1),
+                                                OldCocktailIngredient(.liqueurs(.italicus), value: 1, unit: .whole)]
 
 
 let happyAccidentsTags = Tags(profiles: [.refreshing, .light, .bright, .restorative],

@@ -15,10 +15,10 @@ var princeEdward = Cocktail(cocktailName: "Prince Edward (W&G Version)",
                             tags: princeEdwardTags,
                             collection: .williamsAndGraham)
 
-var princeEdwardSpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
-                             CocktailIngredient(.liqueurs(.drambuie), value: 0.25),
-                             CocktailIngredient(.fortifiedWines(.lilletBlanc), value: 0.75),
-                             CocktailIngredient(.whiskies(.compassBoxOrchard), value: 1.5)]
+var princeEdwardSpec     =  [OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
+                             OldCocktailIngredient(.liqueurs(.drambuie), value: 0.25),
+                             OldCocktailIngredient(.fortifiedWines(.lilletBlanc), value: 0.75),
+                             OldCocktailIngredient(.whiskies(.compassBoxOrchard), value: 1.5)]
 
 var princeEdwardTags    = Tags(profiles: [.spiritForward],
                                styles: [.martini, .stirred])

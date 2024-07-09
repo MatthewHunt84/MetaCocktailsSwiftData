@@ -16,11 +16,11 @@ var autumnRainbows = Cocktail(cocktailName: "Autumn Rainbows",
                               tags: autumnRainbowsTags,
                               collection: .williamsAndGraham)
 
-let autumnRainbowsSpec: [CocktailIngredient] = [CocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.25),
-                                                CocktailIngredient(.juices(.lemon), value: 0.5),
-                                                CocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.75),
-                                                CocktailIngredient(.amari(.nardiniAmaro), value: 0.75),
-                                                CocktailIngredient(.whiskies(.eagleRare10), value: 0.75)]
+let autumnRainbowsSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.25),
+                                                OldCocktailIngredient(.juices(.lemon), value: 0.5),
+                                                OldCocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.75),
+                                                OldCocktailIngredient(.amari(.nardiniAmaro), value: 0.75),
+                                                OldCocktailIngredient(.whiskies(.eagleRare10), value: 0.75)]
 
 
 let autumnRainbowsTags = Tags(profiles: [.light, .fruity, .herbal, .punchy],

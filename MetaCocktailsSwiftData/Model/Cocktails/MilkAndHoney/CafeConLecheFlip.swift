@@ -19,11 +19,11 @@ var cafeConLecheFlip = Cocktail(cocktailName: "Café con Leche Flip",
                                 tags: cafeConLecheFlipTags,
                                 collection: .milkAndHoney)
 
-var cafeConLecheFlipSpec  = [CocktailIngredient(.otherNonAlc(.cream), value: 0.75),
-                             CocktailIngredient(.syrups(.simple), value: 0.75),
-                             CocktailIngredient(.liqueurs(.lolita), value: 1),
-                             CocktailIngredient(.rums(.cruzanBlackstrap), value: 1),
-                             CocktailIngredient(.otherNonAlc(.eggWhole), value: 1, unit: .whole)]
+var cafeConLecheFlipSpec  = [OldCocktailIngredient(.otherNonAlc(.cream), value: 0.75),
+                             OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                             OldCocktailIngredient(.liqueurs(.lolita), value: 1),
+                             OldCocktailIngredient(.rums(.cruzanBlackstrap), value: 1),
+                             OldCocktailIngredient(.otherNonAlc(.eggWhole), value: 1, unit: .whole)]
 
 var cafeConLecheFlipTags = Tags(flavors: [.nutmeg],
                                 profiles: [.rich, .silky, .savory],

@@ -19,11 +19,11 @@ var laLouisiane = Cocktail(cocktailName: "La Louisiane",
                            collection: .originals,
                            titleCocktail: true)
 
-var laLouisianeSpec     =  [CocktailIngredient(.otherAlcohol(.absinthe), value: 3, unit: .dashes),
-                            CocktailIngredient(.bitters(.peychauds), value: 3, unit: .dashes),
-                            CocktailIngredient(.liqueurs(.benedictine), value: 1),
-                            CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),
-                            CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 1)]
+var laLouisianeSpec     =  [OldCocktailIngredient(.otherAlcohol(.absinthe), value: 3, unit: .dashes),
+                            OldCocktailIngredient(.bitters(.peychauds), value: 3, unit: .dashes),
+                            OldCocktailIngredient(.liqueurs(.benedictine), value: 1),
+                            OldCocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),
+                            OldCocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 1)]
 
 var laLouisianeTags     = Tags(profiles: [.spiritForward, .rich, .punchy, .bittersweet, .aromatic],
                                styles: [.manhattan, .stirred])

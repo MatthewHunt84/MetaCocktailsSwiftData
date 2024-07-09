@@ -17,12 +17,12 @@ var somethingAboutPrague = Cocktail(cocktailName: "Something About Prague",
                                     tags: somethingAboutPragueTags,
                                     collection: .williamsAndGraham)
 
-let somethingAboutPragueSpec: [CocktailIngredient] = [CocktailIngredient(.fruit(.orangeMoons), value: 2, unit: .muddled),
-                                                      CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
-                                                      CocktailIngredient(.juices(.lemon), value: 0.5),
-                                                      CocktailIngredient(.syrups(.orgeat), value: 0.75, prep: PrepBible.orgeat),
-                                                      CocktailIngredient(.amari(.becherovka), value: 0.75),
-                                                      CocktailIngredient(.whiskies(.eagleRare10), value: 1.5)]
+let somethingAboutPragueSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.fruit(.orangeMoons), value: 2, unit: .muddled),
+                                                      OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
+                                                      OldCocktailIngredient(.juices(.lemon), value: 0.5),
+                                                      OldCocktailIngredient(.syrups(.orgeat), value: 0.75, prep: PrepBible.orgeat),
+                                                      OldCocktailIngredient(.amari(.becherovka), value: 0.75),
+                                                      OldCocktailIngredient(.whiskies(.eagleRare10), value: 1.5)]
 
 
 let somethingAboutPragueTags = Tags(profiles: [.refreshing, .complex, .nutty, .fruity],

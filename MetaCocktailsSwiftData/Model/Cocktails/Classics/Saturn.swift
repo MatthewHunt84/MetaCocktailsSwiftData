@@ -19,11 +19,11 @@ var saturn = Cocktail(cocktailName: "Saturn",
                       collection: .originals,
                       titleCocktail: true)
 
-var saturnSpec  =  [CocktailIngredient(.juices(.lemon), value: 0.5),
-                    CocktailIngredient(.syrups(.passionfruitSyrup), value: 0.5),
-                    CocktailIngredient(.syrups(.orgeat), value: 0.25, prep: PrepBible.orgeat),
-                    CocktailIngredient(.liqueurs(.velvetFalernum), value: 0.25),
-                    CocktailIngredient(.gins(.ginAny), value: 1.5)]
+var saturnSpec  =  [OldCocktailIngredient(.juices(.lemon), value: 0.5),
+                    OldCocktailIngredient(.syrups(.passionfruitSyrup), value: 0.5),
+                    OldCocktailIngredient(.syrups(.orgeat), value: 0.25, prep: PrepBible.orgeat),
+                    OldCocktailIngredient(.liqueurs(.velvetFalernum), value: 0.25),
+                    OldCocktailIngredient(.gins(.ginAny), value: 1.5)]
 
 var saturnTags = Tags( profiles: [.citrusy, .fruity, .tropical, .sweet, .refreshing, .floral, .light],
                        styles: [.tiki, .shaken, .sour, .blended])

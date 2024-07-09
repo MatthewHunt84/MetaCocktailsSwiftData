@@ -14,10 +14,10 @@ var blackManhattan = Cocktail(cocktailName: "Black Manhattan",
                               spec: blackManhattanSpec,
                               tags: blackManhattanTags)
 
-var blackManhattanSpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
-                               CocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dashes),
-                               CocktailIngredient(.amari(.averna), value: 1),
-                               CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 2)]
+var blackManhattanSpec     =  [OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
+                               OldCocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dashes),
+                               OldCocktailIngredient(.amari(.averna), value: 1),
+                               OldCocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 2)]
 
 var blackManhattanTags     = Tags(profiles: [.spiritForward, .bittersweet, .punchy],
                                   styles: [.manhattan, .stirred])

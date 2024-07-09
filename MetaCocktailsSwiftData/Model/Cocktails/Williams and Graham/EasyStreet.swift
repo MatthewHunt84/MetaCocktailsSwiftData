@@ -18,14 +18,14 @@ var easyStreet = Cocktail(cocktailName: "Easy Street",
                           tags: easyStreetTags,
                           collection: .williamsAndGraham)
 
-let easyStreetSpec: [CocktailIngredient] = [CocktailIngredient(.syrups(.simple), value: 0.5),
-                                            CocktailIngredient(.juices(.lemon), value: 0.75),
-                                            CocktailIngredient(.fruit(.blackBerry), value: 1, unit: .muddled),
-                                            CocktailIngredient(.fruit(.raspberries), value: 1, unit: .muddled),
-                                            CocktailIngredient(.fortifiedWines(.byrrh), value: 0.75),
-                                            CocktailIngredient(.gins(.woodyCreekGin), value: 1.5),
-                                            CocktailIngredient(.bitters(.peychauds), value: 2, unit: .dashes),
-                                            CocktailIngredient(.fortifiedWines(.sandemanPort), value: 0.25)]
+let easyStreetSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.syrups(.simple), value: 0.5),
+                                            OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                                            OldCocktailIngredient(.fruit(.blackBerry), value: 1, unit: .muddled),
+                                            OldCocktailIngredient(.fruit(.raspberries), value: 1, unit: .muddled),
+                                            OldCocktailIngredient(.fortifiedWines(.byrrh), value: 0.75),
+                                            OldCocktailIngredient(.gins(.woodyCreekGin), value: 1.5),
+                                            OldCocktailIngredient(.bitters(.peychauds), value: 2, unit: .dashes),
+                                            OldCocktailIngredient(.fortifiedWines(.sandemanPort), value: 0.25)]
 
 let easyStreetTags = Tags(flavors: [.lemon],
                           profiles: [.fruity, .light, .herbal],

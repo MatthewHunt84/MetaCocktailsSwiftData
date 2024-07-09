@@ -15,10 +15,10 @@ var elDiablo  = Cocktail(cocktailName: "El Diablo",
                          spec: elDiabloSpec,
                          tags: elDiabloTags)
 
-var elDiabloSpec  = [CocktailIngredient(.soda(.gingerBeer), value: 3),
-                     CocktailIngredient(.juices(.lime), value: 0.5),
-                     CocktailIngredient(.liqueurs(.cremeDeCassis), value: 0.25),
-                     CocktailIngredient(.agaves(.tequilaFortalezaRepo), value: 1.5)]
+var elDiabloSpec  = [OldCocktailIngredient(.soda(.gingerBeer), value: 3),
+                     OldCocktailIngredient(.juices(.lime), value: 0.5),
+                     OldCocktailIngredient(.liqueurs(.cremeDeCassis), value: 0.25),
+                     OldCocktailIngredient(.agaves(.tequilaFortalezaRepo), value: 1.5)]
 
 
 

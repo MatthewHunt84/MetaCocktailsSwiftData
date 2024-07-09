@@ -16,7 +16,7 @@ var betweenTheSheetsWnG  = Cocktail(cocktailName: "Between the Sheets (W&G Versi
                                     variation: .betweenTheSheets,
                                     collection: .williamsAndGraham)
 
-var betweenTheSheetsWnGSpec  = [CocktailIngredient(.juices(.lemon), value: 0.25),
-                                CocktailIngredient(.rums(.rumWhite), value: 1),
-                                CocktailIngredient(.brandies(.pFAmber), value: 1),
-                                CocktailIngredient(.rums(.plantationBarbados) , value: 1)]
+var betweenTheSheetsWnGSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.25),
+                                OldCocktailIngredient(.rums(.rumWhite), value: 1),
+                                OldCocktailIngredient(.brandies(.pFAmber), value: 1),
+                                OldCocktailIngredient(.rums(.plantationBarbados) , value: 1)]

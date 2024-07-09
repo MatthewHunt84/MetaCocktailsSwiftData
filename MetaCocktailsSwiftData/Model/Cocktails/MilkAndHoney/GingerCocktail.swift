@@ -18,9 +18,9 @@ var gingerCocktail = Cocktail(cocktailName: "Ginger Cocktail",
                               tags: gingerCocktailTags,
                               collection: .milkAndHoney)
 
-var gingerCocktailSpec     =  [CocktailIngredient(.juices(.lime), value: 0.5),
-                               CocktailIngredient(.syrups(.gingerSyrup), value: 0.75, prep: PrepBible.gingerSyrup),
-                               CocktailIngredient(.gins(.ginAny), value: 2)]
+var gingerCocktailSpec     =  [OldCocktailIngredient(.juices(.lime), value: 0.5),
+                               OldCocktailIngredient(.syrups(.gingerSyrup), value: 0.75, prep: PrepBible.gingerSyrup),
+                               OldCocktailIngredient(.gins(.ginAny), value: 2)]
 
 var gingerCocktailTags     = Tags(profiles: [.citrusy, .tart, .sharp],
                                   styles: [.sour, .shaken])

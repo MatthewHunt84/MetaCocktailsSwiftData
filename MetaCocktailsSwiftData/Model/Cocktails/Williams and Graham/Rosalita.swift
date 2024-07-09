@@ -17,10 +17,10 @@ var rosalita = Cocktail(cocktailName: "Rosalita",
                         tags: rosalitaTags,
                         collection: .williamsAndGraham)
 
-let rosalitaSpec = [CocktailIngredient(.soda(.feverTreeAromatic), value: 2),
-                    CocktailIngredient(.amari(.ramazzottiRosato), value: 1),
-                    CocktailIngredient(.gins(.leopoldAmericanSBGin), value: 1),
-                    CocktailIngredient(.fortifiedWines(.cocchiRosa), value: 1)]
+let rosalitaSpec = [OldCocktailIngredient(.soda(.feverTreeAromatic), value: 2),
+                    OldCocktailIngredient(.amari(.ramazzottiRosato), value: 1),
+                    OldCocktailIngredient(.gins(.leopoldAmericanSBGin), value: 1),
+                    OldCocktailIngredient(.fortifiedWines(.cocchiRosa), value: 1)]
 
 
 let rosalitaTags = Tags(profiles: [.fruity, .refreshing, .light],

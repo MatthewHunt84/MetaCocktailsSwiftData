@@ -18,12 +18,12 @@ var singaporeSlingWnG = Cocktail(cocktailName: "Singapore Sling (W&G Version)",
                                  variation: .singaporeSling,
                                  collection: .williamsAndGraham)
 
-var singaporeSlingSpecWnG  = [CocktailIngredient(.soda(.sparklingWater), value: 2),
-                             CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
-                             CocktailIngredient(.juices(.lime), value: 0.75),
-                             CocktailIngredient(.liqueurs(.luxardoCherry), value: 0.75),
-                             CocktailIngredient(.liqueurs(.benedictine), value: 0.75),
-                             CocktailIngredient(.gins(.fordsGin), value: 0.75)]
+var singaporeSlingSpecWnG  = [OldCocktailIngredient(.soda(.sparklingWater), value: 2),
+                             OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
+                             OldCocktailIngredient(.juices(.lime), value: 0.75),
+                             OldCocktailIngredient(.liqueurs(.luxardoCherry), value: 0.75),
+                             OldCocktailIngredient(.liqueurs(.benedictine), value: 0.75),
+                             OldCocktailIngredient(.gins(.fordsGin), value: 0.75)]
 
 var singaporeSlingTagsWnG = Tags(profiles: [.herbal, .refreshing, .light, .dry],
                                 styles: [.sour, .built])

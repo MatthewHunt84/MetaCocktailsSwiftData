@@ -15,10 +15,10 @@ var cableCar = Cocktail(cocktailName: "Cable Car",
                         spec: cableCarSpec,
                         tags: cableCarTags)
 
-var cableCarSpec  = [CocktailIngredient(.juices(.lemon), value: 1),
-                     CocktailIngredient(.liqueurs(.orangeCuracao), value: 0.75),
-                     CocktailIngredient(.syrups(.simple), value: 0.5),
-                     CocktailIngredient(.rums(.captainMorgan), value:1.5)]
+var cableCarSpec  = [OldCocktailIngredient(.juices(.lemon), value: 1),
+                     OldCocktailIngredient(.liqueurs(.orangeCuracao), value: 0.75),
+                     OldCocktailIngredient(.syrups(.simple), value: 0.5),
+                     OldCocktailIngredient(.rums(.captainMorgan), value:1.5)]
 
 var cableCarTags = Tags(flavors: [.cinnamon],
                         profiles: [.citrusy, .fruity, .light],

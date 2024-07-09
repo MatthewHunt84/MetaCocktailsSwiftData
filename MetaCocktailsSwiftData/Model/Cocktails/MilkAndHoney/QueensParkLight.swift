@@ -21,11 +21,11 @@ var queensParkLightMnH = Cocktail(cocktailName: "Queen's Park Swizzle(Light)",
                                   collection: .milkAndHoney,
                                   titleCocktail: false)
 
-var queensParkLightMnHSpec = [CocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
-                              CocktailIngredient(.juices(.lime), value: 1),
-                              CocktailIngredient(.syrups(.simple), value: 0.75),
-                              CocktailIngredient(.rums(.rumWhite), value: 2),
-                              CocktailIngredient(.bitters(.peychauds), value: 5, unit: .dashes) ]
+var queensParkLightMnHSpec = [OldCocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
+                              OldCocktailIngredient(.juices(.lime), value: 1),
+                              OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                              OldCocktailIngredient(.rums(.rumWhite), value: 2),
+                              OldCocktailIngredient(.bitters(.peychauds), value: 5, unit: .dashes) ]
 
 var queensParkLightMnHTags = Tags(flavors: [.lime, .mint, .bakingSpices],
                                   profiles: [.aromatic, .refreshing, .citrusy, .light],
