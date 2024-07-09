@@ -81,7 +81,7 @@ struct AddIngredientSearchView: View {
     @FocusState var keyboardFocused: Bool
 
     @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]
-    @State var filteredIngredients2: [IngredientBase] = []
+    @State var filteredIngredients2a: [IngredientBase] = []
     
     var body: some View {
         Section("Name") {
@@ -90,13 +90,13 @@ struct AddIngredientSearchView: View {
                     .focused($keyboardFocused)
                     .onChange(of: viewModel.ingredientName, initial: true) { old, new in
                         viewModel.ingredientName = new
-                        filteredIngredients2 = viewModel.matchAllIngredients2(ingredients: ingredients)
+                        filteredIngredients2a = viewModel.matchAllIngredients2(ingredients: ingredients)
                     
                     }
             }
             
             List {
-                ForEach(filteredIngredients2, id: \.name) { ingredient in
+                ForEach(filteredIngredients2a, id: \.name) { ingredient in
                     
                     Button {
                         viewModel.ingredientName = ingredient.name
