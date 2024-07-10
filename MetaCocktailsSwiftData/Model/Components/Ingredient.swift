@@ -181,19 +181,17 @@ class OldCocktailIngredient: Codable, Hashable { // This old guy needs to be rem
 @Model
 class Ingredient: Codable, Hashable {
     
-    @Relationship(deleteRule: .cascade) var ingredientBase: IngredientBase // NEW: This will hold the ingredient info
+    var ingredientBase: IngredientBase // NEW: This will hold the ingredient info
 
     var id: UUID
     var value: Double
     var unit: MeasurementUnit
-    var isCustom: Bool?
 
-    init(ingredientBase: IngredientBase, value: Double, unit: MeasurementUnit = .fluidOunces, isCustom: Bool? = false, info: String? = nil) {
-        self.ingredientBase = IngredientBase(name: ingredientBase.name, info: ingredientBase.info, category: ingredientBase.category, tags: ingredientBase.tags, prep: ingredientBase.prep)
+    init(ingredientBase: IngredientBase, value: Double, unit: MeasurementUnit = .fluidOunces) {
+        self.ingredientBase = IngredientBase(name: ingredientBase.name, info: ingredientBase.info, category: ingredientBase.category, tags: ingredientBase.tags, prep: ingredientBase.prep, isCustom: ingredientBase.isCustom)
         self.value = value
         self.unit = unit
         self.id = UUID()
-        self.isCustom = isCustom
     }
     
     init(oldIngredient: OldCocktailIngredient) {
@@ -205,12 +203,10 @@ class Ingredient: Codable, Hashable {
                     newCategory = category
                 }
             }
-           return IngredientBase(name: oldIngredient.ingredient.name, info: oldIngredient.info, category: newCategory, tags: oldIngredient.ingredient.tags, prep: oldIngredient.prep)
+            return IngredientBase(name: oldIngredient.ingredient.name, info: oldIngredient.info, category: newCategory, tags: oldIngredient.ingredient.tags, prep: oldIngredient.prep)
         }()
         self.value = oldIngredient.value
         self.unit = oldIngredient.unit
-        self.isCustom = false
-       
     }
     func localizedVolumetricString(location: Location) -> String {
         switch location {
@@ -282,19 +278,20 @@ enum Category: String, Codable, CaseIterable  {
 
 @Model
 class IngredientBase: Codable, Hashable {
-//    #Unique<IngredientModel>([\.name])
     var name: String
     var info: String?
     var category: Category
     var tags: Tags?
     var prep: Prep?
+    var isCustom: Bool
     
-    init(name: String, info: String? = nil, category: Category, tags: Tags? = Tags(), prep: Prep?) {
+    init(name: String, info: String? = nil, category: Category, tags: Tags? = Tags(), prep: Prep?, isCustom: Bool = false) {
         self.name = name
         self.info = info
         self.category = category
         self.tags = tags
         self.prep = prep
+        self.isCustom = isCustom
     }
     
     // MARK: Equatable + Hashable Conformance
@@ -308,7 +305,7 @@ class IngredientBase: Codable, Hashable {
     }
     
     enum CodingKeys: CodingKey {
-        case name, category, tags, prep
+        case name, category, tags, prep, info, isCustom
     }
     
     required init(from decoder: any Decoder) throws {
@@ -317,6 +314,8 @@ class IngredientBase: Codable, Hashable {
         self.category = try container.decode(Category.self, forKey: .category)
         self.tags = try container.decode(Tags.self, forKey: .tags)
         self.prep = try container.decode(Prep.self, forKey: .prep)
+        self.info = try container.decode(String.self, forKey: .info)
+        self.isCustom = try container.decode(Bool.self, forKey: .isCustom)
     }
     
     func encode(to encoder: Encoder) throws {
@@ -325,6 +324,8 @@ class IngredientBase: Codable, Hashable {
         try container.encode(category, forKey: .category)
         try container.encode(tags, forKey: .tags)
         try container.encode(prep, forKey: .prep)
+        try container.encode(info, forKey: .info)
+        try container.encode(isCustom, forKey: .isCustom)
     }
     
     static func removeDuplicates(in context: ModelContext) throws {

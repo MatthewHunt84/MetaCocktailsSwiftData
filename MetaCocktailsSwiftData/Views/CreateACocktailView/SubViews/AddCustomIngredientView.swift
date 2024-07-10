@@ -111,9 +111,7 @@ struct AddCustomIngredientToCocktailButton: View {
                                                                                             category: viewModel.category,
                                                                                             prep: viewModel.prep),
                                                              value: viewModel.ingredientAmount,
-                                                             unit: viewModel.selectedMeasurementUnit,
-                                                             isCustom: viewModel.isCustomIngredient,
-                                                             info: nil))
+                                                             unit: viewModel.selectedMeasurementUnit))
                                                   
                 viewModel.clearIngredientData()
                 viewModel.isCustomIngredient = true

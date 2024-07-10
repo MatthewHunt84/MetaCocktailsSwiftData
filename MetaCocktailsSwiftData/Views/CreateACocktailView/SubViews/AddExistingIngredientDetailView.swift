@@ -76,6 +76,7 @@ struct AddExistingIngredientDetailView: View {
 }
 
 struct AddIngredientSearchView: View {
+    
     @Bindable var viewModel: AddCocktailViewModel
     @Binding var filteredIngredients: [Ingredient]
     @FocusState var keyboardFocused: Bool
@@ -90,7 +91,7 @@ struct AddIngredientSearchView: View {
                     .focused($keyboardFocused)
                     .onChange(of: viewModel.ingredientName, initial: true) { old, new in
                         viewModel.ingredientName = new
-                        filteredIngredients2a = viewModel.matchAllIngredients2(ingredients: ingredients)
+                        filteredIngredients2a = viewModel.matchAllIngredients2(ingredients: ingredients.uniqueIngredientBases())
                     
                     }
             }
@@ -174,15 +175,9 @@ struct AddExistingIngredientToCocktailButton: View {
                                                                            category: viewModel.category,
                                                                            prep: viewModel.prep),
                                             value: viewModel.ingredientAmount,
-                                            unit: viewModel.selectedMeasurementUnit,
-                                            isCustom: viewModel.isCustomIngredient,
-                                            info: viewModel.info)
+                                            unit: viewModel.selectedMeasurementUnit)
                
                 viewModel.addedIngredients.append(ingredient)
-                
-                if ingredient.isCustom == true {
-                    modelContext.insert(ingredient)
-                }
                 
                 viewModel.clearIngredientData()
                 dismiss()
@@ -237,6 +232,18 @@ struct KeyboardDoneButton: View {
             }
             .tint(Color.brandPrimaryGold)
         }
+    }
+}
+
+extension Array where Element == IngredientBase {
+    func uniqueIngredientBases() -> [IngredientBase] {
+        var uniqueDictionary = [String: IngredientBase]()
+        
+        for ingredientBase in self {
+            uniqueDictionary[ingredientBase.name] = ingredientBase
+        }
+        
+        return Array(uniqueDictionary.values)
     }
 }
 
