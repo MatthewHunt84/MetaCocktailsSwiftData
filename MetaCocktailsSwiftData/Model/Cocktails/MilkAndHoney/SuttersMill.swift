@@ -21,10 +21,10 @@ var suttersMill = Cocktail(cocktailName: "Sutter's Mill",
                            collection: .milkAndHoney,
                            titleCocktail: false)
 
-var suttersMillSpec = [CocktailIngredient(.fruit(.pineapple), value: 1, unit: .muddled),
-                       CocktailIngredient(.juices(.lemon), value: 0.75, unit: .fluidOunces),
-                       CocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup),
-                       CocktailIngredient(.whiskies(.bourbonAny), value: 2)]
+var suttersMillSpec = [OldCocktailIngredient(.fruit(.pineapple), value: 1, unit: .muddled),
+                       OldCocktailIngredient(.juices(.lemon), value: 0.75, unit: .fluidOunces),
+                       OldCocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup),
+                       OldCocktailIngredient(.whiskies(.bourbonAny), value: 2)]
 
 var suttersMillTags = Tags(profiles: [.citrusy, .refreshing, .fruity],
                            styles: [.sour, .shaken])

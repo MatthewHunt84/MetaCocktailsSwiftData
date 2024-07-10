@@ -18,10 +18,10 @@ var airMail  = Cocktail(cocktailName: "Air Mail",
                         collection: .originals, 
                         titleCocktail: true)
 
-var airMailSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
-                    CocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup),
-                    CocktailIngredient(.rums(.rumAgedCuban), value: 1.5),
-                    CocktailIngredient(.wines(.champagne) , value: 2)]
+var airMailSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.75),
+                    OldCocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup),
+                    OldCocktailIngredient(.rums(.rumAgedCuban), value: 1.5),
+                    OldCocktailIngredient(.wines(.champagne) , value: 2)]
 
 var airMailBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the Champagne, into a tin and shake with ice"),
                                          Instruction(step: 2, method: "Add Champagne to the glass first!"),

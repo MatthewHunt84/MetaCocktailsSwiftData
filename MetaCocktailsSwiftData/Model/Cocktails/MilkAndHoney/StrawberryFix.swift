@@ -21,10 +21,10 @@ var strawberryFix = Cocktail(cocktailName: "Strawberry Fix",
                              collection: .milkAndHoney,
                              titleCocktail: false)
 
-var strawberryFixSpec = [CocktailIngredient(.fruit(.strawberryHalf), value: 4,  unit: .gentlyMuddled),
-                         CocktailIngredient(.juices(.lemon), value: 0.75),
-                         CocktailIngredient(.syrups(.simple), value: 0.75),
-                         CocktailIngredient(.whiskies(.bourbonAny), value: 2)]
+var strawberryFixSpec = [OldCocktailIngredient(.fruit(.strawberryHalf), value: 4,  unit: .gentlyMuddled),
+                         OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                         OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                         OldCocktailIngredient(.whiskies(.bourbonAny), value: 2)]
 
 var strawberryFixTags = Tags(profiles: [.fruity, .refreshing, .citrusy, .light],
                              styles: [.shaken, .sour])

@@ -19,15 +19,15 @@ var zombie129 = Cocktail(cocktailName: "Zombie 129",
                          variation: nil,
                          collection: .williamsAndGraham)
 
-let zombie129Spec  = [CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
-                      CocktailIngredient(.juices(.lemon), value: 0.5),
-                      CocktailIngredient(.syrups(.simple), value: 0.25),
-                      CocktailIngredient(.syrups(.passionfruitSyrup), value: 0.5),
-                      CocktailIngredient(.otherAlcohol(.absinthe), value: 5, unit: .sprays),
-                      CocktailIngredient(.otherNonAlc(.cream), value: 0.5),
-                      CocktailIngredient(.rums(.rumBlackStrap), value: 0.25),
-                      CocktailIngredient(.rums(.plantationPineapple), value: 2),
-                      CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .sprays),]
+let zombie129Spec  = [OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
+                      OldCocktailIngredient(.juices(.lemon), value: 0.5),
+                      OldCocktailIngredient(.syrups(.simple), value: 0.25),
+                      OldCocktailIngredient(.syrups(.passionfruitSyrup), value: 0.5),
+                      OldCocktailIngredient(.otherAlcohol(.absinthe), value: 5, unit: .sprays),
+                      OldCocktailIngredient(.otherNonAlc(.cream), value: 0.5),
+                      OldCocktailIngredient(.rums(.rumBlackStrap), value: 0.25),
+                      OldCocktailIngredient(.rums(.plantationPineapple), value: 2),
+                      OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .sprays),]
 
 
 let zombie129Tags = Tags(profiles: [.complex, .fruity, .punchy],

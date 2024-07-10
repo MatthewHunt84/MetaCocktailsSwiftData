@@ -17,9 +17,9 @@ var redHookCocktail = Cocktail(cocktailName: "Red Hook Cocktail",
                                tags: redHookCocktailTags,
                                collection: .milkAndHoney)
 
-var redHookCocktailSpec     =  [CocktailIngredient(.fortifiedWines(.puntEMes), value: 0.5),
-                                CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.5),
-                                CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 2)]
+var redHookCocktailSpec     =  [OldCocktailIngredient(.fortifiedWines(.puntEMes), value: 0.5),
+                                OldCocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.5),
+                                OldCocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 2)]
 
 var redHookCocktailTags     = Tags(profiles: [.spiritForward, .bittersweet, .fruity],
                                    styles: [.manhattan, .stirred])

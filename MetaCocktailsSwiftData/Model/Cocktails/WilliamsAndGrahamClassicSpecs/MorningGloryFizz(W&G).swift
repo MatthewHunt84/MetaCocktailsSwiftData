@@ -18,10 +18,10 @@ var morningGloryFizzWnG = Cocktail(cocktailName: "Morning Glory Fizz (W&G Versio
                                    variation: .morningGloryFizz,
                                    collection: .williamsAndGraham)
 
-var morningGloryFizzSpecWnG = [CocktailIngredient(.soda(.sodaWater), value: 2),
-                               CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
-                               CocktailIngredient(.syrups(.simple), value: 0.75),
-                               CocktailIngredient(.juices(.lemon), value: 5),
-                               CocktailIngredient(.juices(.lime), value: 3),
-                               CocktailIngredient(.otherAlcohol(.absinthe), value: 4, unit: .dashes),
-                               CocktailIngredient(.whiskies(.glenfiddich12), value: 2)]
+var morningGloryFizzSpecWnG = [OldCocktailIngredient(.soda(.sodaWater), value: 2),
+                               OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
+                               OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                               OldCocktailIngredient(.juices(.lemon), value: 5),
+                               OldCocktailIngredient(.juices(.lime), value: 3),
+                               OldCocktailIngredient(.otherAlcohol(.absinthe), value: 4, unit: .dashes),
+                               OldCocktailIngredient(.whiskies(.glenfiddich12), value: 2)]

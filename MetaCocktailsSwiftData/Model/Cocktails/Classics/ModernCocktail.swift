@@ -20,12 +20,12 @@ var modernCocktail = Cocktail(cocktailName: "Modern Cocktail",
                               collection: .originals,
                               titleCocktail: true)
 
-var modernCocktailSpec = [CocktailIngredient(.juices(.lemon), value: 3, unit: .dashes),
-                          CocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dashes),
-                          CocktailIngredient(.otherAlcohol(.absinthe), value:1, unit: .dashes),
-                          CocktailIngredient(.syrups(.simple), value: 4, unit: .dashes),
-                          CocktailIngredient(.whiskies(.scotchAny), value: 1),
-                          CocktailIngredient(.liqueurs(.plymouthSloeGin), value: 1)]
+var modernCocktailSpec = [OldCocktailIngredient(.juices(.lemon), value: 3, unit: .dashes),
+                          OldCocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dashes),
+                          OldCocktailIngredient(.otherAlcohol(.absinthe), value:1, unit: .dashes),
+                          OldCocktailIngredient(.syrups(.simple), value: 4, unit: .dashes),
+                          OldCocktailIngredient(.whiskies(.scotchAny), value: 1),
+                          OldCocktailIngredient(.liqueurs(.plymouthSloeGin), value: 1)]
 
 var modernCocktailTags = Tags(profiles: [.citrusy, .fruity, .light, .complex, .refreshing],
                               styles: [.sour, .shaken])

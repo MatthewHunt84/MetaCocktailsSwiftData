@@ -13,9 +13,9 @@ let brandyAlexander = Cocktail(cocktailName: "Brandy Alexander",
                                spec: brandyAlexanderSpec,
                                tags: brandyAlexanderTags)
 
-var brandyAlexanderSpec: [CocktailIngredient] = [CocktailIngredient(.otherNonAlc(.cream), value: 1),
-                                                 CocktailIngredient(.liqueurs(.cremeDeCacao), value:1),
-                                                 CocktailIngredient(.brandies(.pFAmber), value: 1)]
+var brandyAlexanderSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.otherNonAlc(.cream), value: 1),
+                                                 OldCocktailIngredient(.liqueurs(.cremeDeCacao), value:1),
+                                                 OldCocktailIngredient(.brandies(.pFAmber), value: 1)]
 
 var brandyAlexanderTags = Tags(profiles: [.sweet, .rich],
                                styles: [.shaken])

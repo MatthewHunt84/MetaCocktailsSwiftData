@@ -18,12 +18,12 @@ var tritterCollins  = Cocktail(cocktailName: "Tritter Collins",
                                variation: nil,
                                collection: .milkAndHoney)
 
-var tritterCollinsSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                           CocktailIngredient(.juices(.grapefruit), value: 1),
-                           CocktailIngredient(.syrups(.simple), value: 0.75),
-                           CocktailIngredient(.otherAlcohol(.absinthe), value: 0.25),
-                           CocktailIngredient(.gins(.ginAny), value: 2),
-                           CocktailIngredient(.soda(.sodaWater) , value: 0.5)]
+var tritterCollinsSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                           OldCocktailIngredient(.juices(.grapefruit), value: 1),
+                           OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                           OldCocktailIngredient(.otherAlcohol(.absinthe), value: 0.25),
+                           OldCocktailIngredient(.gins(.ginAny), value: 2),
+                           OldCocktailIngredient(.soda(.sodaWater) , value: 0.5)]
 
 var tritterCollinsBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the soda, into a tin and shake with ice"),
                                                 Instruction(step: 2, method: "Strain over column ice and top with soda"),

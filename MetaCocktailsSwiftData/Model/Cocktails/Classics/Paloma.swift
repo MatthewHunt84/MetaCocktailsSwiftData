@@ -15,10 +15,10 @@ var paloma  = Cocktail(cocktailName: "Paloma",
                        spec: palomaSpec,
                        tags: palomaTags)
 
-var palomaSpec  = [CocktailIngredient(.juices(.lime), value: 0.5),
-                   CocktailIngredient(.seasoning(.saline), value: 4, unit: .drops),
-                   CocktailIngredient(.soda(.grapefruitSoda), value: 3),
-                   CocktailIngredient(.agaves(.tequilaBlanco), value: 1.5)]
+var palomaSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.5),
+                   OldCocktailIngredient(.seasoning(.saline), value: 4, unit: .drops),
+                   OldCocktailIngredient(.soda(.grapefruitSoda), value: 3),
+                   OldCocktailIngredient(.agaves(.tequilaBlanco), value: 1.5)]
 
 var palomaTags  =  Tags(profiles: [.fruity, .refreshing, .light, .effervescent],
                         styles: [.built, .sour, .fizz])

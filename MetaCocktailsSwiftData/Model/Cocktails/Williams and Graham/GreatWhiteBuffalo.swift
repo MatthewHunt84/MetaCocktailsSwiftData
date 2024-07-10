@@ -18,11 +18,11 @@ var greatWhiteBuffalo = Cocktail(cocktailName: "Great White Buffalo",
                                  tags: greatWhiteBuffaloTags,
                                  collection: .williamsAndGraham)
 
-let greatWhiteBuffaloSpec: [CocktailIngredient] = [CocktailIngredient(.juices(.lemon), value: 0.25),
-                                                   CocktailIngredient(.syrups(.grapefruitShrub), value: 1.25, prep: PrepBible.grapefruitShrub),
-                                                   CocktailIngredient(.liqueurs(.licor43), value: 0.5),
-                                                   CocktailIngredient(.seasoning(.saline), value: 5, unit: .drops),
-                                                   CocktailIngredient(.vodkas(.zubrowka), value: 1.5)]
+let greatWhiteBuffaloSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.juices(.lemon), value: 0.25),
+                                                   OldCocktailIngredient(.syrups(.grapefruitShrub), value: 1.25, prep: PrepBible.grapefruitShrub),
+                                                   OldCocktailIngredient(.liqueurs(.licor43), value: 0.5),
+                                                   OldCocktailIngredient(.seasoning(.saline), value: 5, unit: .drops),
+                                                   OldCocktailIngredient(.vodkas(.zubrowka), value: 1.5)]
 
 
 let greatWhiteBuffaloTags = Tags(profiles: [.fruity, .refreshing, .light],

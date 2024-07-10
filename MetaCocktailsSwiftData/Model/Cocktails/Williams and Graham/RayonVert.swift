@@ -20,11 +20,11 @@ var reyonVert = Cocktail(cocktailName: "Rayon Vert",
                          tags: reyonVertTags,
                          collection: .williamsAndGraham)
 
-let reyonVertSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.basil), value: 7, unit: .nitroMuddled),
-                                           CocktailIngredient(.juices(.lime), value: 0.5),
-                                           CocktailIngredient(.syrups(.cucumberSyrup), value: 0.5, prep: PrepBible.cucumberSyrup),
-                                           CocktailIngredient(.gins(.juinipero), value: 2),
-                                           CocktailIngredient(.otherAlcohol(.absinthe), value: 5, unit: .sprays)]
+let reyonVertSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.basil), value: 7, unit: .nitroMuddled),
+                                           OldCocktailIngredient(.juices(.lime), value: 0.5),
+                                           OldCocktailIngredient(.syrups(.cucumberSyrup), value: 0.5, prep: PrepBible.cucumberSyrup),
+                                           OldCocktailIngredient(.gins(.juinipero), value: 2),
+                                           OldCocktailIngredient(.otherAlcohol(.absinthe), value: 5, unit: .sprays)]
                                         
 
 let reyonVertTags = Tags(profiles: [.herbal, .refreshing, .light, .restorative],

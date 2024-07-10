@@ -17,11 +17,11 @@ var hotelNacional = Cocktail(cocktailName: "Hotel Nacional",
                              variation: .hotelNacional,
                              collection: .originals)
 
-var hotelNacionalSpec = [CocktailIngredient(.syrups(.simple), value: 0.5),
-                         CocktailIngredient(.juices(.lime), value: 0.5),
-                         CocktailIngredient(.juices(.pineappleJuice), value: 1),
-                         CocktailIngredient(.liqueurs(.apricotLiqueur), value: 0.25),
-                         CocktailIngredient(.rums(.rumWhite), value: 1.5) ]
+var hotelNacionalSpec = [OldCocktailIngredient(.syrups(.simple), value: 0.5),
+                         OldCocktailIngredient(.juices(.lime), value: 0.5),
+                         OldCocktailIngredient(.juices(.pineappleJuice), value: 1),
+                         OldCocktailIngredient(.liqueurs(.apricotLiqueur), value: 0.25),
+                         OldCocktailIngredient(.rums(.rumWhite), value: 1.5) ]
 
 var hotelNacionalTags = Tags(profiles: [.fruity, .refreshing, .citrusy, .light, .tropical],
                              styles: [.shaken, .sour])

@@ -15,9 +15,9 @@ var moscowMule  = Cocktail(cocktailName: "Moscow Mule",
                            spec: moscowMuleSpec,
                            tags: moscowMuleTags)
 
-var moscowMuleSpec  = [CocktailIngredient(.juices(.lime), value: 0.5),
-                       CocktailIngredient(.soda(.gingerBeer), value: 3),
-                       CocktailIngredient(.vodkas(.vodkaAny), value: 2)]
+var moscowMuleSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.5),
+                       OldCocktailIngredient(.soda(.gingerBeer), value: 3),
+                       OldCocktailIngredient(.vodkas(.vodkaAny), value: 2)]
 
 
 var moscowMuleTags   = Tags(profiles: [.citrusy, .effervescent, .light, .refreshing],

@@ -24,10 +24,10 @@ var binAndGitters = Cocktail(cocktailName: "Bin & Gitters",
                              collection: .milkAndHoney,
                              titleCocktail: false)
 
-let binAndGittersSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
-                                               CocktailIngredient(.juices(.lime), value: 1),
-                                               CocktailIngredient(.syrups(.simple), value: 0.75),
-                                               CocktailIngredient(.gins(.ginAny), value: 2)]
+let binAndGittersSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
+                                                  OldCocktailIngredient(.juices(.lime), value: 1),
+                                                  OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                                                  OldCocktailIngredient(.gins(.ginAny), value: 2)]
 
 let binAndGittersTags = Tags(profiles: [.refreshing, .light],
                              styles: [.sour, .shaken])

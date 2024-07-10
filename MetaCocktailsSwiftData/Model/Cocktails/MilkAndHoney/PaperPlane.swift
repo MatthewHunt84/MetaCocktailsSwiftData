@@ -17,10 +17,10 @@ var paperPlane = Cocktail(cocktailName: "Paper Plane",
                           variation: nil,
                           collection: .milkAndHoney)
 
-var paperPlaneSpec = [CocktailIngredient(.whiskies(.bourbonAny) , value: 0.75),
-                      CocktailIngredient(.amari(.amaroNonino), value: 0.75),
-                      CocktailIngredient(.amari(.aperol), value: 0.75),
-                      CocktailIngredient(.juices(.lemon), value: 0.75)]
+var paperPlaneSpec = [OldCocktailIngredient(.whiskies(.bourbonAny) , value: 0.75),
+                      OldCocktailIngredient(.amari(.amaroNonino), value: 0.75),
+                      OldCocktailIngredient(.amari(.aperol), value: 0.75),
+                      OldCocktailIngredient(.juices(.lemon), value: 0.75)]
 
 var paperPlaneTags =  Tags(flavors: [.lemon, .orange, .rhubarb, .grapefruit, .bakingSpices], 
                            profiles: [.citrusy, .tart, .light, .dry],

@@ -19,10 +19,10 @@ var scofflaw = Cocktail(cocktailName: "Scofflaw",
                         collection: .originals,
                         titleCocktail: true)
 
-var scofflawSpec  = [CocktailIngredient(.juices(.lemon), value: 1, unit: .dashes),
-                     CocktailIngredient(.syrups(.grenadine), value: 1, unit: .dashes),
-                     CocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 1),
-                     CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 1.5)]
+var scofflawSpec  = [OldCocktailIngredient(.juices(.lemon), value: 1, unit: .dashes),
+                     OldCocktailIngredient(.syrups(.grenadine), value: 1, unit: .dashes),
+                     OldCocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 1),
+                     OldCocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 1.5)]
 
 var scofflawTags = Tags(profiles: [.fruity, .dry, .punchy],
                         styles: [.sour, .shaken])

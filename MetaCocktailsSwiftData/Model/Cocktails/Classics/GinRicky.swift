@@ -15,8 +15,8 @@ var ginRickey  = Cocktail(cocktailName: "Gin Rickey",
                           spec: ginRickeySpec,
                           tags: ginRickeyTags)
 
-var ginRickeySpec  = [CocktailIngredient(.gins(.ginAny), value: 1.5),
-                      CocktailIngredient(.soda(.sparklingWater), value: 4)]
+var ginRickeySpec  = [OldCocktailIngredient(.gins(.ginAny), value: 1.5),
+                      OldCocktailIngredient(.soda(.sparklingWater), value: 4)]
 
 var ginRickeyTags   = Tags(profiles: [.citrusy, .effervescent, .light, .refreshing, .dry],
                            styles: [.fizz, .built])

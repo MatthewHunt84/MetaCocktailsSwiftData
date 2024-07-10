@@ -17,8 +17,8 @@ var bloodyMaryWnG  = Cocktail(cocktailName: "Bloody Mary (W&G Version)",
                                variation: .bloodyMary,
                               collection: .williamsAndGraham)
 
-var bloodyMarryWnGSpec  = [CocktailIngredient(.otherNonAlc(.bloodyMarryMixWnG), value: 4),
-                           CocktailIngredient(.vodkas(.vodkaAny), value: 2)]
+var bloodyMarryWnGSpec  = [OldCocktailIngredient(.otherNonAlc(.bloodyMarryMixWnG), value: 4),
+                           OldCocktailIngredient(.vodkas(.vodkaAny), value: 2)]
 
 var bloodyMarryWnGBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients along with the ice and toss from tin to tin."),
                                                 Instruction(step: 2, method: "Dirty dump")])

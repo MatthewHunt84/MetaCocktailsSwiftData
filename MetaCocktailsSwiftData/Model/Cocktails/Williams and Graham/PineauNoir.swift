@@ -17,10 +17,10 @@ var pineauNoir = Cocktail(cocktailName: "Pineau Noir",
                           tags: pineauNoirTags,
                           collection: .williamsAndGraham)
 
-var pineauNoirSpec  = [CocktailIngredient(.bitters(.angosturaBitters), value: 2),
-                       CocktailIngredient(.fortifiedWines(.bonal), value: 0.75),
-                       CocktailIngredient(.fortifiedWines(.aeDorPineauDeCharantes), value: 0.75),
-                       CocktailIngredient(.whiskies(.wildTurkeyRye), value: 1.5)]
+var pineauNoirSpec  = [OldCocktailIngredient(.bitters(.angosturaBitters), value: 2),
+                       OldCocktailIngredient(.fortifiedWines(.bonal), value: 0.75),
+                       OldCocktailIngredient(.fortifiedWines(.aeDorPineauDeCharantes), value: 0.75),
+                       OldCocktailIngredient(.whiskies(.wildTurkeyRye), value: 1.5)]
 
 var pineauNoirTags = Tags(profiles: [.herbal, .punchy, .spiritForward, .complex],
                           styles: [.stirred, .manhattan])

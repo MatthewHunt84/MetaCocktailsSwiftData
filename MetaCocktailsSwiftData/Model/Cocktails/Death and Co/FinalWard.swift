@@ -16,10 +16,10 @@ var finalWard = Cocktail(cocktailName: "Final Ward",
                          tags: finalWardTags,
                          collection: .deathAndCo)
 
-var finalWardSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                      CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 0.75),
-                      CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.75),
-                      CocktailIngredient(.liqueurs(.greenChartreuse), value: 0.75)]
+var finalWardSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                      OldCocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 0.75),
+                      OldCocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.75),
+                      OldCocktailIngredient(.liqueurs(.greenChartreuse), value: 0.75)]
 
 var finalWardTags = Tags(profiles: [.light],
                          styles: [.sour, .shaken])

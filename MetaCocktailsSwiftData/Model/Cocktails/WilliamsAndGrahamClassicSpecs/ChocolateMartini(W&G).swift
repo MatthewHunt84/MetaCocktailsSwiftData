@@ -16,14 +16,14 @@ var chocolateMartiniWnG = Cocktail(cocktailName: "Chocolate Martini (W&G Version
                                    tags: chocolateMatiniTags,
                                    collection: .williamsAndGraham)
 
-let chocolateMatiniSpec: [CocktailIngredient] = [CocktailIngredient(.seasoning(.saline), value: 2, unit: .drops),
-                                                 CocktailIngredient(.bitters(.chocolateMole), value: 2, unit: .dashes),
-                                                 CocktailIngredient(.otherNonAlc(.cocoaPowder), value: 1, unit: .barSpoon),
-                                                 CocktailIngredient(.syrups(.vanilla), value: 0.25),
-                                                 CocktailIngredient(.otherNonAlc(.cream), value: 0.5),
-                                                 CocktailIngredient(.liqueurs(.cremeDeCacao), value: 0.75),
-                                                 CocktailIngredient(.amari(.averna), value: 0.5),
-                                                 CocktailIngredient(.vodkas(.roaringForkVodka), value: 1)]
+let chocolateMatiniSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.seasoning(.saline), value: 2, unit: .drops),
+                                                 OldCocktailIngredient(.bitters(.chocolateMole), value: 2, unit: .dashes),
+                                                 OldCocktailIngredient(.otherNonAlc(.cocoaPowder), value: 1, unit: .barSpoon),
+                                                 OldCocktailIngredient(.syrups(.vanilla), value: 0.25),
+                                                 OldCocktailIngredient(.otherNonAlc(.cream), value: 0.5),
+                                                 OldCocktailIngredient(.liqueurs(.cremeDeCacao), value: 0.75),
+                                                 OldCocktailIngredient(.amari(.averna), value: 0.5),
+                                                 OldCocktailIngredient(.vodkas(.roaringForkVodka), value: 1)]
 
 
 let chocolateMatiniTags = Tags(profiles: [.sweet, .rich],

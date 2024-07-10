@@ -20,11 +20,11 @@ var harvestOldFashioned = Cocktail(cocktailName: "Harvest Old Fashioned",
                                    variation: nil,
                                    collection: .milkAndHoney)
 
-var harvestOldFashionedSpec     =  [CocktailIngredient(.otherNonAlc(.sugarCube), value: 1, unit: .muddled),
-                                    CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
-                                    CocktailIngredient(.bitters(.peychauds), value: 1, unit: .dashes),
-                                    CocktailIngredient(.brandies(.lairdsApplejack), value: 1),
-                                    CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 1)]
+var harvestOldFashionedSpec     =  [OldCocktailIngredient(.otherNonAlc(.sugarCube), value: 1, unit: .muddled),
+                                    OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
+                                    OldCocktailIngredient(.bitters(.peychauds), value: 1, unit: .dashes),
+                                    OldCocktailIngredient(.brandies(.lairdsApplejack), value: 1),
+                                    OldCocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 1)]
 
 var harvestOldFashionedTags     = Tags(profiles: [.spiritForward, .bittersweet],
                                        styles: [.oldFashioned, .stirred])

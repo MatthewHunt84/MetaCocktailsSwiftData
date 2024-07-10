@@ -18,10 +18,10 @@ var elOchoRosado  =  Cocktail(cocktailName: "El Ocho Rosado",
                               tags: elOchoRosadoTags,
                               collection: .williamsAndGraham)
 
-var elOchoRosadoSpec = [CocktailIngredient(.bitters(.lemonBitters), value: 2, unit: .dashes),
-                        CocktailIngredient(.fortifiedWines(.hidalgoManzanilla), value: 0.5),
-                        CocktailIngredient(.fortifiedWines(.lilletRose), value: 1),
-                        CocktailIngredient(.agaves(.tequilaOchoBlanco), value: 1.5)]
+var elOchoRosadoSpec = [OldCocktailIngredient(.bitters(.lemonBitters), value: 2, unit: .dashes),
+                        OldCocktailIngredient(.fortifiedWines(.hidalgoManzanilla), value: 0.5),
+                        OldCocktailIngredient(.fortifiedWines(.lilletRose), value: 1),
+                        OldCocktailIngredient(.agaves(.tequilaOchoBlanco), value: 1.5)]
 
 var elOchoRosadoTags = Tags(profiles: [.complex, .dry, .punchy],
                             styles: [.martini, .stirred])

@@ -17,11 +17,11 @@ var bloodAndSandWnG  = Cocktail(cocktailName: "Blood & Sand (W&G Version)",
                                 variation: .bloodAndSand,
                                 collection: .williamsAndGraham)
 
-var bloodAndSandWnGSpec  = [CocktailIngredient(.juices(.lemon), value: 0.25),
-                            CocktailIngredient(.juices(.orange), value: 0.75),
-                            CocktailIngredient(.fortifiedWines(.carpanoAntica), value: 0.75),
-                            CocktailIngredient(.liqueurs(.luxardoCherry), value: 0.75),
-                            CocktailIngredient(.whiskies(.glenfiddich12), value: 0.75)]
+var bloodAndSandWnGSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.25),
+                            OldCocktailIngredient(.juices(.orange), value: 0.75),
+                            OldCocktailIngredient(.fortifiedWines(.carpanoAntica), value: 0.75),
+                            OldCocktailIngredient(.liqueurs(.luxardoCherry), value: 0.75),
+                            OldCocktailIngredient(.whiskies(.glenfiddich12), value: 0.75)]
 
 
 

@@ -16,11 +16,11 @@ var williamsCross  =  Cocktail(cocktailName: "William's Cross",
                                tags: williamsCrossTags,
                                collection: .williamsAndGraham)
 
-var williamsCrossSpec = [CocktailIngredient(.bitters(.orangeBitters), value: 2, unit: .dashes),
-                         CocktailIngredient(.amari(.amaroNonino), value: 0.25),
-                         CocktailIngredient(.fortifiedWines(.lustauPX), value: 0.25),
-                         CocktailIngredient(.fortifiedWines(.dolinRouge), value: 0.5),
-                         CocktailIngredient(.whiskies(.tullamoreDew12), value: 2)]
+var williamsCrossSpec = [OldCocktailIngredient(.bitters(.orangeBitters), value: 2, unit: .dashes),
+                         OldCocktailIngredient(.amari(.amaroNonino), value: 0.25),
+                         OldCocktailIngredient(.fortifiedWines(.lustauPX), value: 0.25),
+                         OldCocktailIngredient(.fortifiedWines(.dolinRouge), value: 0.5),
+                         OldCocktailIngredient(.whiskies(.tullamoreDew12), value: 2)]
 
 var williamsCrossTags = Tags(profiles: [.rich, .bittersweet, .punchy, .complex],
                              styles: [.manhattan, .stirred])

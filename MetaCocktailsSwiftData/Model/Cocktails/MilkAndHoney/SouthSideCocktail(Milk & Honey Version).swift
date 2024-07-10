@@ -20,10 +20,10 @@ var southSideCocktail = Cocktail(cocktailName: "South Side Cocktail(Milk & Honey
                                  collection: .milkAndHoney,
                                  titleCocktail: false)
 
-let southSideCocktailSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
-                                                   CocktailIngredient(.juices(.lime), value: 1),
-                                                   CocktailIngredient(.syrups(.simple), value: 0.75),
-                                                   CocktailIngredient(.gins(.ginAny), value: 1.5)]
+let southSideCocktailSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
+                                                   OldCocktailIngredient(.juices(.lime), value: 1),
+                                                   OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                                                   OldCocktailIngredient(.gins(.ginAny), value: 1.5)]
 
 let southSideCocktailTags = Tags(profiles: [.herbal, .refreshing, .light],
                                  styles: [.sour, .shaken])

@@ -14,8 +14,8 @@ let carajillo = Cocktail(cocktailName: "Carajillo",
                         spec: carajilloSpec,
                         tags: carajilloTags)
 
-var carajilloSpec: [CocktailIngredient] = [CocktailIngredient(.otherNonAlc(.coldBrew), value: 1.5),
-                                           CocktailIngredient(.liqueurs(.licor43), value: 1.5)]
+var carajilloSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.otherNonAlc(.coldBrew), value: 1.5),
+                                           OldCocktailIngredient(.liqueurs(.licor43), value: 1.5)]
 
 var carajilloTags = Tags(profiles: [.punchy, .bittersweet],
                         styles: [.shaken])

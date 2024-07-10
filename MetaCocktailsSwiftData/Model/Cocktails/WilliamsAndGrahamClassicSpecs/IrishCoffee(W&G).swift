@@ -17,10 +17,10 @@ var irishCoffeeWnG = Cocktail(cocktailName: "Irish Coffee (W&G Version)",
                               variation: .irishCoffee,
                               collection: .williamsAndGraham)
 
-var irishCoffeeWnGSpec  = [CocktailIngredient(.otherNonAlc(.stiffCream), value: 1),
-                           CocktailIngredient(.otherNonAlc(.coffee), value: 3),
-                           CocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.5),
-                           CocktailIngredient(.whiskies(.bushmills12), value: 2)]
+var irishCoffeeWnGSpec  = [OldCocktailIngredient(.otherNonAlc(.stiffCream), value: 1),
+                           OldCocktailIngredient(.otherNonAlc(.coffee), value: 3),
+                           OldCocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.5),
+                           OldCocktailIngredient(.whiskies(.bushmills12), value: 2)]
 
 var irishCoffeeWnGTags = Tags(flavors: [.coffee],
                               profiles: [.hot, .punchy],

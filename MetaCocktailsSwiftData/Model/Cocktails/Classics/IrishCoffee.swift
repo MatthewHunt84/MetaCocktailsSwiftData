@@ -18,10 +18,10 @@ var irishCoffee = Cocktail(cocktailName: "Irish Coffee",
                            collection: .originals,
                            titleCocktail: true)
 
-var irishCoffeeSpec  = [CocktailIngredient(.otherNonAlc(.stiffCream), value: 30, unit: .ml),
-                        CocktailIngredient(.otherNonAlc(.coffee), value: 75, unit: .ml),
-                        CocktailIngredient(.otherNonAlc(.sugarCube), value: 2, unit: .whole),
-                        CocktailIngredient(.whiskies(.irishWhiskeyAny), value: 45, unit: .ml)]
+var irishCoffeeSpec  = [OldCocktailIngredient(.otherNonAlc(.stiffCream), value: 30, unit: .ml),
+                        OldCocktailIngredient(.otherNonAlc(.coffee), value: 75, unit: .ml),
+                        OldCocktailIngredient(.otherNonAlc(.sugarCube), value: 2, unit: .whole),
+                        OldCocktailIngredient(.whiskies(.irishWhiskeyAny), value: 45, unit: .ml)]
 
 var irishCoffeeTags = Tags(flavors: [.coffee],
                            profiles: [.hot, .punchy],

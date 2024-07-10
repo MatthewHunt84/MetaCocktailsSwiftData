@@ -21,11 +21,11 @@ var maloneyParkSwizzle = Cocktail(cocktailName: "Maloney Park Swizzle",
                                  collection: .milkAndHoney,
                                  titleCocktail: false)
 
-var maloneyParkSpec = [CocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
-                      CocktailIngredient(.juices(.lime), value: 0.75),
-                      CocktailIngredient(.syrups(.simple), value: 0.75),
-                      CocktailIngredient(.rums(.ronMutusalemRumClassico), value: 2),
-                      CocktailIngredient(.bitters(.peychauds), value: 5, unit: .dashes) ]
+var maloneyParkSpec = [OldCocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
+                      OldCocktailIngredient(.juices(.lime), value: 0.75),
+                      OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                      OldCocktailIngredient(.rums(.ronMutusalemRumClassico), value: 2),
+                      OldCocktailIngredient(.bitters(.peychauds), value: 5, unit: .dashes) ]
 
 var maloneyParkTags = Tags(flavors: [.lime, .mint, .bakingSpices],
                           profiles: [.aromatic, .refreshing, .citrusy, .light],

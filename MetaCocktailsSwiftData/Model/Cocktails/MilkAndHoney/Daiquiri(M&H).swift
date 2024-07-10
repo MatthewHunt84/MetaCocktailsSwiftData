@@ -16,9 +16,9 @@ let daiquiriMnH = Cocktail(cocktailName: "Daiquiri(Milk and Honey version)",
                            variation: .daiquiri,
                            collection: .milkAndHoney)
 
-var daiquiriMnHSpec: [CocktailIngredient] = [CocktailIngredient(.rums(.rumWhite), value: 2.0),
-                                             CocktailIngredient(.juices(.lime), value: 0.875),
-                                             CocktailIngredient(.syrups(.simple), value: 0.75)]
+var daiquiriMnHSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.rums(.rumWhite), value: 2.0),
+                                             OldCocktailIngredient(.juices(.lime), value: 0.875),
+                                             OldCocktailIngredient(.syrups(.simple), value: 0.75)]
 
 var daiquiriMnHTags = Tags(profiles: [.citrusy, .refreshing, .light],
                            styles: [.sour, .shaken])

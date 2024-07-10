@@ -17,14 +17,14 @@ var gordonsBreakfast = Cocktail(cocktailName: "Gordon's Breakfast",
                                 tags: gordonsBreakfastTags,
                                 collection: .milkAndHoney)
 
-var gordonsBreakfastSpec     =  [CocktailIngredient(.seasoning(.salt), value: 1, unit: .pinch),
-                                 CocktailIngredient(.seasoning(.pepper), value: 1, unit: .pinch),
-                                 CocktailIngredient(.otherNonAlc(.worcestershire), value: 2, unit: .dashes),
-                                 CocktailIngredient(.otherNonAlc(.cholula), value: 4, unit: .dashes),
-                                 CocktailIngredient(.fruit(.cucumberSlices), value: 3, unit: .muddled),
-                                 CocktailIngredient(.fruit(.limeWedges), value: 6, unit: .muddled),
-                                 CocktailIngredient(.syrups(.simple), value: 0.75),
-                                 CocktailIngredient(.gins(.ginLondonDry), value: 2),]
+var gordonsBreakfastSpec     =  [OldCocktailIngredient(.seasoning(.salt), value: 1, unit: .pinch),
+                                 OldCocktailIngredient(.seasoning(.pepper), value: 1, unit: .pinch),
+                                 OldCocktailIngredient(.otherNonAlc(.worcestershire), value: 2, unit: .dashes),
+                                 OldCocktailIngredient(.otherNonAlc(.cholula), value: 4, unit: .dashes),
+                                 OldCocktailIngredient(.fruit(.cucumberSlices), value: 3, unit: .muddled),
+                                 OldCocktailIngredient(.fruit(.limeWedges), value: 6, unit: .muddled),
+                                 OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                                 OldCocktailIngredient(.gins(.ginLondonDry), value: 2),]
 
 var gordonsBreakfastTags     = Tags(profiles: [.savory, .refreshing, .citrusy, .complex, .spicy, .restorative],
                                     styles: [.sour, .shaken])

@@ -19,11 +19,11 @@ var beckyWithTheGoodHair = Cocktail(cocktailName: "Becky With The Good Hair",
                                     tags: beckyWithTheGoodHairTags,
                                     collection: .williamsAndGraham)
 
-var beckyWithTheGoodHairSpec  = [CocktailIngredient(.brandies(.cognacVSOP), value: 0.75),
-                                 CocktailIngredient(.amari(.becherovka), value: 0.75),
-                                 CocktailIngredient(.amari(.fernetBrancaMenta), value: 0.75),
-                                 CocktailIngredient(.liqueurs(.cremeDeCacao), value: 0.75),
-                                 CocktailIngredient(.otherNonAlc(.eggWhole), value: 1, unit: .whole)]
+var beckyWithTheGoodHairSpec  = [OldCocktailIngredient(.brandies(.cognacVSOP), value: 0.75),
+                                 OldCocktailIngredient(.amari(.becherovka), value: 0.75),
+                                 OldCocktailIngredient(.amari(.fernetBrancaMenta), value: 0.75),
+                                 OldCocktailIngredient(.liqueurs(.cremeDeCacao), value: 0.75),
+                                 OldCocktailIngredient(.otherNonAlc(.eggWhole), value: 1, unit: .whole)]
 
 var beckyWithTheGoodHairTags = Tags(flavors: [.nutmeg],
                                     profiles: [.rich, .silky, .savory],

@@ -14,9 +14,9 @@ var bobbyBurns = Cocktail(cocktailName: "Bobby Burns",
                          spec: bobbyBurnsSpec,
                          tags: bobbyBurnsTags)
 
-var bobbyBurnsSpec     =  [CocktailIngredient(.liqueurs(.benedictine), value: 0.75),
-                           CocktailIngredient(.fortifiedWines(.dolinRouge), value: 1.5),
-                           CocktailIngredient(.whiskies(.glenfiddich12), value: 1.5)]
+var bobbyBurnsSpec     =  [OldCocktailIngredient(.liqueurs(.benedictine), value: 0.75),
+                           OldCocktailIngredient(.fortifiedWines(.dolinRouge), value: 1.5),
+                           OldCocktailIngredient(.whiskies(.glenfiddich12), value: 1.5)]
 
 var bobbyBurnsTags     = Tags(profiles: [.spiritForward,  .rich],
                           styles: [.manhattan, .stirred])

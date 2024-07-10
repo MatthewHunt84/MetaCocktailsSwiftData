@@ -23,13 +23,13 @@ var silverMonk = Cocktail(cocktailName: "Silver Monk",
                           collection: .deathAndCo,
                           titleCocktail: false)
 
-let silverMonkSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
-                                            CocktailIngredient(.fruit(.cucumberSlices), value: 2, unit: .muddled),
-                                            CocktailIngredient(.seasoning(.salt), value: 1, unit: .pinch),
-                                            CocktailIngredient(.juices(.lime), value: 0.75),
-                                            CocktailIngredient(.syrups(.simple), value: 0.5),
-                                            CocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.75),
-                                            CocktailIngredient(.agaves(.tequilaBlanco), value: 2)]
+let silverMonkSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
+                                            OldCocktailIngredient(.fruit(.cucumberSlices), value: 2, unit: .muddled),
+                                            OldCocktailIngredient(.seasoning(.salt), value: 1, unit: .pinch),
+                                            OldCocktailIngredient(.juices(.lime), value: 0.75),
+                                            OldCocktailIngredient(.syrups(.simple), value: 0.5),
+                                            OldCocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.75),
+                                            OldCocktailIngredient(.agaves(.tequilaBlanco), value: 2)]
 
 let silverMonkTags = Tags(profiles: [.herbal, .refreshing, .light, .restorative],
                           styles: [.sour, .shaken])

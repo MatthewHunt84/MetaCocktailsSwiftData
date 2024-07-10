@@ -17,11 +17,11 @@ var prettyInParadox = Cocktail(cocktailName: "Pretty In Paradox",
                                tags: prettyInParadoxTags,
                                collection: .williamsAndGraham)
 
-let prettyInParadoxSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
-                                                 CocktailIngredient(.amari(.cynar), value: 0.25),
-                                                 CocktailIngredient(.fortifiedWines(.lustauPX), value: 0.25),
-                                                 CocktailIngredient(.amari(.amaroNonino), value: 0.5),
-                                                 CocktailIngredient(.whiskies(.russels6yearRye), value: 1.5)]
+let prettyInParadoxSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
+                                                 OldCocktailIngredient(.amari(.cynar), value: 0.25),
+                                                 OldCocktailIngredient(.fortifiedWines(.lustauPX), value: 0.25),
+                                                 OldCocktailIngredient(.amari(.amaroNonino), value: 0.5),
+                                                 OldCocktailIngredient(.whiskies(.russels6yearRye), value: 1.5)]
 
 
 let prettyInParadoxTags = Tags(profiles: [.punchy, .complex, .herbal, .spiritForward],

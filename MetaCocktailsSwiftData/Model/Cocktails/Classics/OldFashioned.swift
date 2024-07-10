@@ -17,9 +17,9 @@ let oldFashioned = Cocktail(cocktailName: "Old Fashioned",
                             variation: .oldFashioned,
                             titleCocktail: true)
 
-let oldFashionedSpec  =  [CocktailIngredient(.syrups(.richDem), value: 2, unit: .teaspoon, prep: PrepBible.richDem),
-                          CocktailIngredient(.bitters(.angosturaBitters), value: 3, unit: .dashes),
-                          CocktailIngredient(.whiskies(.straightRyeOrBourbon), value: 2)]
+let oldFashionedSpec  =  [OldCocktailIngredient(.syrups(.richDem), value: 2, unit: .teaspoon, prep: PrepBible.richDem),
+                          OldCocktailIngredient(.bitters(.angosturaBitters), value: 3, unit: .dashes),
+                          OldCocktailIngredient(.whiskies(.straightRyeOrBourbon), value: 2)]
 
 let oldFashionedTags = Tags( profiles: [.bittersweet, .spiritForward],
                              styles: [.oldFashioned, .stirred])

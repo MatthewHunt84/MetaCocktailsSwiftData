@@ -17,13 +17,13 @@ var victoryLap = Cocktail(cocktailName: "Victory Lap",
                           tags: victoryLapTags,
                           collection: .williamsAndGraham)
 
-let victoryLapSpec: [CocktailIngredient] = [CocktailIngredient(.juices(.lime), value: 0.25),
-                                            CocktailIngredient(.otherAlcohol(.notSpicyJalapeñoTincture), value: 1, unit: .dashes),
-                                            CocktailIngredient(.syrups(.agaveSyrup), value: 0.25, prep: PrepBible.agaveSyrup),
-                                            CocktailIngredient(.syrups(.clementineShrub), value: 0.5),
-                                            CocktailIngredient(.fruit(.guavaPure), value: 0.75),
-                                            CocktailIngredient(.liqueurs(.anchoVerde), value: 0.5),
-                                            CocktailIngredient(.agaves(.tequilaSieteLeguasBlanco), value: 1.5)]
+let victoryLapSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.juices(.lime), value: 0.25),
+                                            OldCocktailIngredient(.otherAlcohol(.notSpicyJalapeñoTincture), value: 1, unit: .dashes),
+                                            OldCocktailIngredient(.syrups(.agaveSyrup), value: 0.25, prep: PrepBible.agaveSyrup),
+                                            OldCocktailIngredient(.syrups(.clementineShrub), value: 0.5),
+                                            OldCocktailIngredient(.fruit(.guavaPure), value: 0.75),
+                                            OldCocktailIngredient(.liqueurs(.anchoVerde), value: 0.5),
+                                            OldCocktailIngredient(.agaves(.tequilaSieteLeguasBlanco), value: 1.5)]
 
 
 let victoryLapTags = Tags(profiles: [.refreshing, .complex, .fruity],

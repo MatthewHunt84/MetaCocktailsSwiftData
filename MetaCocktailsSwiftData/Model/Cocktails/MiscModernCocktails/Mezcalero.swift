@@ -16,9 +16,9 @@ var mezcalero  =  Cocktail(cocktailName: "Mezcalero",
                          buildOrder: nil,
                          tags: mezcaleroTags)
 
-var mezcaleroSpec = [CocktailIngredient(.amari(.aperol), value: 1),
-                        CocktailIngredient(.fortifiedWines(.dolinBlanc), value: 1),
-                        CocktailIngredient(.agaves(.mezcalDelMagueyVida), value: 1)]
+var mezcaleroSpec = [OldCocktailIngredient(.amari(.aperol), value: 1),
+                        OldCocktailIngredient(.fortifiedWines(.dolinBlanc), value: 1),
+                        OldCocktailIngredient(.agaves(.mezcalDelMagueyVida), value: 1)]
 
 var mezcaleroTags = Tags(profiles: [.bittersweet, .smokey, .fruity],
                             styles: [.negroni, .shaken])

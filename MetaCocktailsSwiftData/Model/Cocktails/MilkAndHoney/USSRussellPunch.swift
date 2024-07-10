@@ -21,13 +21,13 @@ var uSSRussellPunch = Cocktail(cocktailName: "U.S.S. Russell Punch",
                                collection: .milkAndHoney,
                                titleCocktail: false)
 
-var uSSRussellPunchSpec = [CocktailIngredient(.fruit(.lemons), value: 50, unit: .whole),
-                           CocktailIngredient(.otherNonAlc(.granulatedSugar), value: 1360, unit: .grams),
-                           CocktailIngredient(.otherNonAlc(.nutmegGrated), value: 1, unit: .tablespoon),
-                           CocktailIngredient(.rums(.appletonEstateSignatureBlend), value: 3, unit: .bottles),
-                           CocktailIngredient(.rums(.rumDark), value: 3, unit: .bottles),
-                           CocktailIngredient(.rums(.rumWhite), value: 3, unit: .bottles),
-                           CocktailIngredient(.wines(.prosecco), value: 6, unit: .bottles) ]
+var uSSRussellPunchSpec = [OldCocktailIngredient(.fruit(.lemons), value: 50, unit: .whole),
+                           OldCocktailIngredient(.otherNonAlc(.granulatedSugar), value: 1360, unit: .grams),
+                           OldCocktailIngredient(.otherNonAlc(.nutmegGrated), value: 1, unit: .tablespoon),
+                           OldCocktailIngredient(.rums(.appletonEstateSignatureBlend), value: 3, unit: .bottles),
+                           OldCocktailIngredient(.rums(.rumDark), value: 3, unit: .bottles),
+                           OldCocktailIngredient(.rums(.rumWhite), value: 3, unit: .bottles),
+                           OldCocktailIngredient(.wines(.prosecco), value: 6, unit: .bottles) ]
 
 var uSSRussellPunchTags = Tags(profiles: [.aromatic, .refreshing, .citrusy, .effervescent],
                                styles: [.punch, .built])

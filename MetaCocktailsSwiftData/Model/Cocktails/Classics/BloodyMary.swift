@@ -17,11 +17,11 @@ var bloodyMary  = Cocktail(cocktailName: "Bloody Mary",
                            variation: .bloodyMary,
                            titleCocktail: true)
 
-var bloodyMarrySpec  = [CocktailIngredient(.otherNonAlc(.tomatoJuice), value: 4.5),
-                        CocktailIngredient(.otherNonAlc(.worcestershire), value: 3, unit: .dashes),
-                        CocktailIngredient(.juices(.lemon), value: 0.5),
-                        CocktailIngredient(.otherNonAlc(.tobasco), value: 3, unit: .dashes),
-                        CocktailIngredient(.vodkas(.vodkaAny), value: 1.5)]
+var bloodyMarrySpec  = [OldCocktailIngredient(.otherNonAlc(.tomatoJuice), value: 4.5),
+                        OldCocktailIngredient(.otherNonAlc(.worcestershire), value: 3, unit: .dashes),
+                        OldCocktailIngredient(.juices(.lemon), value: 0.5),
+                        OldCocktailIngredient(.otherNonAlc(.tobasco), value: 3, unit: .dashes),
+                        OldCocktailIngredient(.vodkas(.vodkaAny), value: 1.5)]
 
 var bloodyMarryBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients along with the ice and toss from tin to tin or shake gently."),
                                              Instruction(step: 2, method: "Dirty dump."),

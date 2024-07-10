@@ -17,10 +17,10 @@ var hollandHouseCocktailWnG = Cocktail(cocktailName: "Holland House (W&G Version
                                        variation: .hollandHouse,
                                        collection: .williamsAndGraham)
 
-var hollandHouseCocktailSpecWnG  =  [CocktailIngredient(.juices(.lemon), value: 0.5),
-                                     CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.25),
-                                     CocktailIngredient(.fortifiedWines(.dolinDry), value: 0.75),
-                                     CocktailIngredient(.gins(.geneverBols), value: 1.5)]
+var hollandHouseCocktailSpecWnG  =  [OldCocktailIngredient(.juices(.lemon), value: 0.5),
+                                     OldCocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.25),
+                                     OldCocktailIngredient(.fortifiedWines(.dolinDry), value: 0.75),
+                                     OldCocktailIngredient(.gins(.geneverBols), value: 1.5)]
 
 var hollandHouseCocktailTagsWnG = Tags( profiles: [.fruity, .citrusy, .dry],
                                         styles: [.sour, .shaken])

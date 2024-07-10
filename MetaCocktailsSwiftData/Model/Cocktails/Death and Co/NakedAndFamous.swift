@@ -18,10 +18,10 @@ var nakedAndFamous = Cocktail(cocktailName: "Naked and Famous",
                               tags: cropTopTags,
                               collection: .deathAndCo)
 
-var nakedAndFamousSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
-                           CocktailIngredient(.amari(.aperol), value: 0.75),
-                           CocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.75),
-                           CocktailIngredient(.agaves(.mezcalDelMagueyChichicapa), value: 0.75)]
+var nakedAndFamousSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.75),
+                           OldCocktailIngredient(.amari(.aperol), value: 0.75),
+                           OldCocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.75),
+                           OldCocktailIngredient(.agaves(.mezcalDelMagueyChichicapa), value: 0.75)]
 
 
 var nakedAndFamousTags = Tags(profiles: [.refreshing, .smokey, .herbal, .punchy, .fruity],

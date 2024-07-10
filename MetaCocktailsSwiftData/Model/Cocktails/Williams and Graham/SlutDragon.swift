@@ -19,12 +19,12 @@ var slutDragon = Cocktail(cocktailName: "Slut Dragon(AKA: Soul Bond)",
                          tags: slutDragonTags,
                           collection: .williamsAndGraham)
 
-let slutDragonSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.celeryBitters), value: 2, unit: .dashes),
-                                           CocktailIngredient(.juices(.lime), value: 0.75),
-                                           CocktailIngredient(.syrups(.agaveSyrup), value: 0.5, prep: PrepBible.agaveSyrup),
-                                           CocktailIngredient(.syrups(.gingerSyrup), value: 0.25, prep: PrepBible.gingerSyrup),
-                                           CocktailIngredient(.liqueurs(.salersAperitif), value: 0.5),
-                                           CocktailIngredient(.agaves(.tequilaOchoBlanco), value: 1.5)]
+let slutDragonSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.bitters(.celeryBitters), value: 2, unit: .dashes),
+                                           OldCocktailIngredient(.juices(.lime), value: 0.75),
+                                           OldCocktailIngredient(.syrups(.agaveSyrup), value: 0.5, prep: PrepBible.agaveSyrup),
+                                           OldCocktailIngredient(.syrups(.gingerSyrup), value: 0.25, prep: PrepBible.gingerSyrup),
+                                           OldCocktailIngredient(.liqueurs(.salersAperitif), value: 0.5),
+                                           OldCocktailIngredient(.agaves(.tequilaOchoBlanco), value: 1.5)]
                                         
 
 let slutDragonTags = Tags(profiles: [.herbal, .refreshing, .vegetal, .savory, .light],

@@ -19,10 +19,10 @@ var bloodAndSand  = Cocktail(cocktailName: "Blood and Sand",
                              collection: .originals,
                              titleCocktail: true)
 
-var bloodAndSandSpec  = [CocktailIngredient(.juices(.orange), value: 0.75),
-                         CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 0.75),
-                         CocktailIngredient(.liqueurs(.cherryHeering), value: 0.75),
-                         CocktailIngredient(.whiskies(.scotchBlended), value: 0.75)]
+var bloodAndSandSpec  = [OldCocktailIngredient(.juices(.orange), value: 0.75),
+                         OldCocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 0.75),
+                         OldCocktailIngredient(.liqueurs(.cherryHeering), value: 0.75),
+                         OldCocktailIngredient(.whiskies(.scotchBlended), value: 0.75)]
 
 var bloodAndSandBuild  = Build(instructions: [Instruction(step: 1, method: "Gross")])
 

@@ -19,10 +19,10 @@ var waterLily = Cocktail(cocktailName: "Water Lily",
                          tags: waterLilyTags,
                          collection: .milkAndHoney)
 
-var waterLilySpec     =  [CocktailIngredient(.syrups(.violetteSyrup), value: 0.75, prep: PrepBible.violetteSyrup),
-                          CocktailIngredient(.juices(.lemon), value: 0.75),
-                          CocktailIngredient(.liqueurs(.cointreau), value: 0.75),
-                          CocktailIngredient(.gins(.ginAny), value: 0.75)]
+var waterLilySpec     =  [OldCocktailIngredient(.syrups(.violetteSyrup), value: 0.75, prep: PrepBible.violetteSyrup),
+                          OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                          OldCocktailIngredient(.liqueurs(.cointreau), value: 0.75),
+                          OldCocktailIngredient(.gins(.ginAny), value: 0.75)]
 
 var waterLilyTags     = Tags(profiles: [.light, .floral, .fruity, .citrusy],
                              styles: [.sour, .shaken])

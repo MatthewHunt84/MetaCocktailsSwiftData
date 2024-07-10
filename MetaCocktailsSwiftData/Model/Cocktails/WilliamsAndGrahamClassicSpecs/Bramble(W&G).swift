@@ -19,10 +19,10 @@ var brambleWng = Cocktail(cocktailName: "Bramble (W&G Version)",
                           variation: .bramble,
                           collection: .williamsAndGraham)
 
-let brambleWnGSpec: [CocktailIngredient] = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                                            CocktailIngredient(.syrups(.simple), value: 0.75),
-                                            CocktailIngredient(.liqueurs(.cremeDeCassis), value: 0.5),
-                                            CocktailIngredient(.gins(.fordsGin), value: 1.5)]
+let brambleWnGSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                                            OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                                            OldCocktailIngredient(.liqueurs(.cremeDeCassis), value: 0.5),
+                                            OldCocktailIngredient(.gins(.fordsGin), value: 1.5)]
 
 let brambleWGBuild =  Build(instructions: [Instruction(step: 1, method: "Shake all ingredinents, except for the creme de cassis, in a tin with ice."),
                                            Instruction(step: 2, method: "Strain into a double old fashioned glass and add pebble ice."),

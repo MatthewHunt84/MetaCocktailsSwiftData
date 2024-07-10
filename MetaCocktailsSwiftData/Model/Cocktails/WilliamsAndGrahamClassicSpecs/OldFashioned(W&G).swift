@@ -18,10 +18,10 @@ var oldFashionedWnG = Cocktail(cocktailName: "Old Fashioned (W&G Version)",
                                variation: .oldFashioned,
                                collection: .williamsAndGraham)
 
-var oldFashionedSpecWnG  =  [CocktailIngredient(.otherNonAlc(.sugarCube), value: 1, unit: .muddled),
-                             CocktailIngredient(.soda(.sodaWater), value: 1, unit: .splash),
-                             CocktailIngredient(.bitters(.angosturaBitters), value: 3, unit: .dashes),
-                             CocktailIngredient(.whiskies(.jimBeamRye), value: 2)]
+var oldFashionedSpecWnG  =  [OldCocktailIngredient(.otherNonAlc(.sugarCube), value: 1, unit: .muddled),
+                             OldCocktailIngredient(.soda(.sodaWater), value: 1, unit: .splash),
+                             OldCocktailIngredient(.bitters(.angosturaBitters), value: 3, unit: .dashes),
+                             OldCocktailIngredient(.whiskies(.jimBeamRye), value: 2)]
 
 var oldFashionedTagsWnG = Tags( profiles: [.bittersweet, .spiritForward],
                                 styles: [.oldFashioned, .stirred])

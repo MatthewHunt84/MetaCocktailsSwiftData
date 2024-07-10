@@ -16,11 +16,11 @@ let papaDobleWnG = Cocktail(cocktailName: "Hemingway Daiquiri (W&G Version)",
                             variation: .hemingwayDaiquiri,
                             collection: .williamsAndGraham)
 
-var papaDobleSpec: [CocktailIngredient] = [CocktailIngredient(.syrups(.simple), value: 0.25),
-                                           CocktailIngredient(.juices(.lime), value: 0.5),
-                                           CocktailIngredient(.juices(.grapefruit), value: 0.75),
-                                           CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.5),
-                                           CocktailIngredient(.rums(.plantation3Star), value: 2.0)]
+var papaDobleSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.syrups(.simple), value: 0.25),
+                                           OldCocktailIngredient(.juices(.lime), value: 0.5),
+                                           OldCocktailIngredient(.juices(.grapefruit), value: 0.75),
+                                           OldCocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.5),
+                                           OldCocktailIngredient(.rums(.plantation3Star), value: 2.0)]
 
 var papaDobleTags = Tags(profiles: [.citrusy, .refreshing, .light],
                          styles: [.sour, .shaken])

@@ -19,10 +19,10 @@ var tomCollins  = Cocktail(cocktailName: "Tom Collins",
                            collection: .originals,
                            titleCocktail: true)
 
-var tomCollinsSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                       CocktailIngredient(.syrups(.simple), value: 1),
-                       CocktailIngredient(.gins(.fordsGin), value: 1.5),
-                       CocktailIngredient(.soda(.sodaWater) , value: 2)]
+var tomCollinsSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                       OldCocktailIngredient(.syrups(.simple), value: 1),
+                       OldCocktailIngredient(.gins(.fordsGin), value: 1.5),
+                       OldCocktailIngredient(.soda(.sodaWater) , value: 2)]
 
 var tomCollinsBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the soda, into a tin and shake with ice"),
                                             Instruction(step: 2, method: "strain over cracked ice and top with soda"),

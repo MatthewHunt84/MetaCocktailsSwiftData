@@ -20,11 +20,11 @@ var silverLining  = Cocktail(cocktailName: "Silver Lining",
                              variation: nil,
                              collection: .milkAndHoney)
 
-var silverLiningSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                         CocktailIngredient(.otherNonAlc(.eggWhites), value: 1, unit: .whole),
-                         CocktailIngredient(.liqueurs(.licor43), value: 0.75),
-                         CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 1.5),
-                         CocktailIngredient(.soda(.sodaWater) , value: 6)]
+var silverLiningSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                         OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 1, unit: .whole),
+                         OldCocktailIngredient(.liqueurs(.licor43), value: 0.75),
+                         OldCocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 1.5),
+                         OldCocktailIngredient(.soda(.sodaWater) , value: 6)]
 
 var silverLiningBuild  = Build(instructions: [Instruction(step: 1, method: "Combine the whiskey, egg white, lemon juice, and Licor 43 in a cocktail shaker and shake to emulsify the mixture."),
                                               Instruction(step: 2, method: "Add 1 large ice cube and shake vigorously until the drink is sufficiently chilled."),

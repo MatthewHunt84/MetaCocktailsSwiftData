@@ -20,12 +20,12 @@ var oldCuban = Cocktail(cocktailName: "Old Cuban",
                         variation: .oldCuban,
                         titleCocktail: true)
 
-let oldCubanSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 6, unit: .gentlyMuddled),
-                                          CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
-                                          CocktailIngredient(.juices(.lime), value: 0.75),
-                                          CocktailIngredient(.syrups(.simple), value: 1),
-                                          CocktailIngredient(.rums(.rumAged), value: 1.5),
-                                          CocktailIngredient(.wines(.champagne), value: 2)]
+let oldCubanSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint), value: 6, unit: .gentlyMuddled),
+                                          OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
+                                          OldCocktailIngredient(.juices(.lime), value: 0.75),
+                                          OldCocktailIngredient(.syrups(.simple), value: 1),
+                                          OldCocktailIngredient(.rums(.rumAged), value: 1.5),
+                                          OldCocktailIngredient(.wines(.champagne), value: 2)]
 
 
 let oldCubanBuild =  Build(instructions: [Instruction(step: 1, method: "Shake all of the ingredients, except for the champagne, in a tin. Use Kold draft of Hoshizake cubes and the mint will the muddled while you're shaking."),

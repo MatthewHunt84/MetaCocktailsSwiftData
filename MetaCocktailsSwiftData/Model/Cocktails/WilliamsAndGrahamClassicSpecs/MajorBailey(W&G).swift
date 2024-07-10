@@ -19,11 +19,11 @@ var majorBaileyWnG = Cocktail(cocktailName: "Major Bailey (W&G Version)",
                               variation: .majorBailey,
                               collection: .williamsAndGraham)
 
-let majorBaileySpecWnG: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
-                                                CocktailIngredient(.juices(.lime), value: 0.5),
-                                                CocktailIngredient(.juices(.lime), value: 0.5),
-                                                CocktailIngredient(.syrups(.simple), value: 0.75),
-                                                CocktailIngredient(.gins(.fordsGin), value: 2)]
+let majorBaileySpecWnG: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
+                                                OldCocktailIngredient(.juices(.lime), value: 0.5),
+                                                OldCocktailIngredient(.juices(.lime), value: 0.5),
+                                                OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                                                OldCocktailIngredient(.gins(.fordsGin), value: 2)]
 
 
 let majorBaileyTagsWnG = Tags(profiles: [.herbal, .refreshing, .light, .restorative],

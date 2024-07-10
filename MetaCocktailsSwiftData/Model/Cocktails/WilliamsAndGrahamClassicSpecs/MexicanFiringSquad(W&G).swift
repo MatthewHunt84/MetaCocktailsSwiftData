@@ -18,10 +18,10 @@ var mexicanFiringSquadWnG = Cocktail(cocktailName: "Mexican Firing Squad (W&G Ve
                                      variation: .mexicanFiringSquad,
                                      collection: .williamsAndGraham)
 
-var mexicanFiringSquadSpecWnG = [CocktailIngredient(.bitters(.angosturaBitters), value: 4, unit: .dashes),
-                                 CocktailIngredient(.juices(.lime), value: 0.75),
-                                 CocktailIngredient(.syrups(.grenadine), value: 0.75),
-                                 CocktailIngredient(.agaves(.tequilaOchoBlanco), value: 2)]
+var mexicanFiringSquadSpecWnG = [OldCocktailIngredient(.bitters(.angosturaBitters), value: 4, unit: .dashes),
+                                 OldCocktailIngredient(.juices(.lime), value: 0.75),
+                                 OldCocktailIngredient(.syrups(.grenadine), value: 0.75),
+                                 OldCocktailIngredient(.agaves(.tequilaOchoBlanco), value: 2)]
 
 var mexicanFiringSquadTagsWnG = Tags( profiles: [.citrusy, .punchy, .fruity],
                                       styles: [.sour, .shaken])

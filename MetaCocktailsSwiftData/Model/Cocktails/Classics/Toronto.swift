@@ -17,10 +17,10 @@ var toronto = Cocktail(cocktailName: "Toronto",
                        variation: nil,
                        titleCocktail: true)
 
-var torontoSpec  =  [CocktailIngredient(.syrups(.simple), value: 0.25),
-                     CocktailIngredient(.amari(.fernetBranca), value: 0.5),
-                     CocktailIngredient(.whiskies(.canadianWhiskeyAny), value: 1.5), 
-                     CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes)]
+var torontoSpec  =  [OldCocktailIngredient(.syrups(.simple), value: 0.25),
+                     OldCocktailIngredient(.amari(.fernetBranca), value: 0.5),
+                     OldCocktailIngredient(.whiskies(.canadianWhiskeyAny), value: 1.5), 
+                     OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes)]
 
 var torontoTags = Tags( profiles: [.bittersweet, .spiritForward],
                         styles: [.oldFashioned, .stirred])

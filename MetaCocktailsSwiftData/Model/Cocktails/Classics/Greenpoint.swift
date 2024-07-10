@@ -18,11 +18,11 @@ var greenpoint = Cocktail(cocktailName: "Greenpoint",
                           variation: .greenpoint,
                           titleCocktail: true)
 
-var greenpointSpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
-                           CocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dashes),
-                           CocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.5),
-                           CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 0.5),
-                           CocktailIngredient(.whiskies(.straightRye), value: 2)]
+var greenpointSpec     =  [OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
+                           OldCocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dashes),
+                           OldCocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.5),
+                           OldCocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 0.5),
+                           OldCocktailIngredient(.whiskies(.straightRye), value: 2)]
 
 var greenpointTags     = Tags(profiles: [.spiritForward, .rich, .complex, .bittersweet],
                               styles: [.manhattan, .stirred])

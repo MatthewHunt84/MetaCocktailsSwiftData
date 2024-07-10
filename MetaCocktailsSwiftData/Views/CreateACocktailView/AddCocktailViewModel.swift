@@ -10,20 +10,26 @@ import Observation
 
 @Observable final class AddCocktailViewModel {
 
-    
     //AddIngredientView
     var isShowingingredientAlert: Bool = false
     var ingredientName = ""
+    var info: String?
+    var category: Category = Category.agaves
     var ingredientAmount = 0.0
-    var ingredientType: IngredientType = IngredientType.agaves(.tequilaAny)
+    var startingIngredientsHaveLoaded: Bool = false
+    var ingredientTags = Tags()
+    var prep: Prep? 
     var selectedMeasurementUnit = MeasurementUnit.fluidOunces
     var currentSelectedComponent = CocktailComponent(name: "Placeholder")
-    var addedIngredients: [CocktailIngredient] = []
+    var startingIngredients: [Ingredient] = []
+    var addedIngredients: [Ingredient] = []
     var addedGarnish: [Garnish] = []
     var allPhysicalCocktailComponents: [CocktailComponent] = getAllPhysicalComponents()
-    
+    var isShowingAlert: Bool = false
     var dateAdded = Date()
     var defaultName = "Add Cocktail"
+    var didChooseExistingIngredient: Bool = false
+    var isCustomIngredient: Bool = false 
     
     // Required
     var cocktailName: String = ""
@@ -39,9 +45,12 @@ import Observation
     
     // Extras
     var uniqueGlasswareName: Glassware?
-    var ice: Ice? = .none
-    var garnish: [Garnish]?
-    var variation: Variation?
+    var ice: Ice? = Ice.none
+    var garnish: [Garnish]? = []
+    var variation: Variation? = Variation.none
+    
+    //Ingredient recipe
+    var prepIngredientRecipe: [Instruction] = []
     
     // Author
     var authorName: String = ""
@@ -51,7 +60,11 @@ import Observation
     // Build
     var build: Build = Build(instructions: [])
     var buildOption: Build?
-    var isShowingAlert: Bool = false
+    func validateBuildInstructions() {
+        if build.instructions != [] {
+            buildOption = build
+        }
+    }
     
     func clearData() {
         cocktailName = ""
@@ -59,7 +72,7 @@ import Observation
         authorPlace = ""
         authorYear = ""
         uniqueGlasswareName = .blueBlazerMugs
-        ice = .none
+        ice = Ice.none
         garnish = nil 
         addedGarnish = []
         variation = nil
@@ -67,12 +80,18 @@ import Observation
         defaultName = "Add Cocktail"
         build = Build(instructions: [])
         buildOption = nil 
+        startingIngredientsHaveLoaded = false
        
     }
     func clearIngredientData() {
         ingredientName = ""
         ingredientAmount = 0
+        prep = nil
         selectedMeasurementUnit = .fluidOunces
+        prep = nil
+        prepIngredientRecipe = []
+        didChooseExistingIngredient = false 
+        isCustomIngredient = false
     }
     
     func validateCurrentSelectedComponent(for component: CocktailComponent) -> IngredientType {
@@ -98,13 +117,18 @@ import Observation
         return cocktailName != "" && ((addedIngredients.count) > 1) && uniqueGlasswareName != nil
     }
     
-    func ingredientIsValid() -> Bool {
+    func existingIngredientIsValid(allIngredients: [IngredientBase]) -> Bool {
         
-        return ingredientAmount != 0.0 && ingredientName != ""
+        return ingredientAmount != 0.0 &&
+        didChooseExistingIngredient == true &&
+        allIngredients.contains(where: { $0.name == ingredientName } )
     }
-    // Can't add cocktail alert
-    
-   
+    func customIngredientIsValid(allIngredients: [IngredientBase]) -> Bool {
+        
+        return ingredientName != "" &&
+        ingredientAmount != 0.0 &&
+        allIngredients.contains(where: { $0.name == ingredientName } )
+    }
     
     func cantAddCocktailMessage() -> String {
         var text = ""
@@ -127,7 +151,20 @@ import Observation
         return text
     }
     
-   
+    func customIngredientIsSpirit() -> Bool {
+        if category == .agaves || category == .amari || category == .bitters || category == .brandies || category == .fortifiedWines || category == .gins || category == .liqueurs || category == .otherAlcohol || category == .rums || category == .vodkas || category == .whiskies || category == .wines {
+            return true
+        }
+        
+        return false
+    }
+    func customIngredientIsNA() -> Bool {
+        if customIngredientIsSpirit() {
+            return false
+        }
+        
+        return true
+    }
    
 
     func matchAllPhysicalCocktailComponents() {
@@ -151,8 +188,68 @@ import Observation
         }
 
     }
+    
+   
+    
+    func matchAllIngredients2(ingredients: [IngredientBase]) -> [IngredientBase] {
+        
+        guard !ingredientName.isEmpty else {
+             return [] // Return all ingredients if search text is empty
+         }
+        
+        let lowercasedSearchText = ingredientName.lowercased()
+        
+        return ingredients.filter { $0.name.lowercased().contains(lowercasedSearchText) }
+            .sorted { lhs, rhs in
+                let lhsLowercased = lhs.name.lowercased()
+                let rhsLowercased = rhs.name.lowercased()
+                
+                // prioritize ingredients that start with the search text
+                let lhsStartsWith = lhsLowercased.hasPrefix(ingredientName.lowercased())
+                let rhsStartsWith = rhsLowercased.hasPrefix(ingredientName.lowercased())
+                
+                if lhsStartsWith && !rhsStartsWith {
+                    return true
+                } else if !lhsStartsWith && rhsStartsWith {
+                    return false
+                }
+                
+                // if two ingredients start with the same search text, prioritize the shortest one
+                if lhsStartsWith && rhsStartsWith {
+                    return lhs.name.count < rhs.name.count
+                }
+                
+                // If neither starts with the search text, prioritize the one with the search text appearing first in the word
+                let lhsRange = lhsLowercased.range(of: ingredientName.lowercased())
+                let rhsRange = rhsLowercased.range(of: ingredientName.lowercased())
+                
+                let matchedArray = (lhsRange?.lowerBound ?? lhsLowercased.endIndex) < (rhsRange?.lowerBound ?? rhsLowercased.endIndex)
+                
+                return matchedArray
+            }
+    }
+    
+//    func getAllCocktailIngredients(cocktails: [Cocktail]) -> [Ingredient] {
+//       
+//        
+//        let listOfIngredients = cocktails.map({$0.spec}).flatMap({$0}).sorted(by: {$0.name < $1.name})
+//        let filteredList: [Ingredient] = {
+//            var ingredients: [Ingredient] = []
+//            var ingredientNamesOnly: [String] = []
+//            for ingredient in listOfIngredients {
+//                if !ingredientNamesOnly.contains(ingredient.name) {
+//                    ingredients.append(ingredient)
+//                    ingredientNamesOnly.append(ingredient.name)
+//                }
+//            }
+//            return ingredients
+//        }()
+//        
+//        return filteredList
+//    }
+    
      func dynamicallyChangeMeasurementUnit() {
-            switch ingredientType {
+         switch category {
             case .herbs:
                 selectedMeasurementUnit = MeasurementUnit.gentlyMuddled
             case .fruit:
@@ -167,8 +264,21 @@ import Observation
                 selectedMeasurementUnit = MeasurementUnit.fluidOunces
             }
         }
-
-
+    func dynamicallyChangeMeasurementOptionsBasedOnChosenCategory() -> [MeasurementUnit] {
+        
+        switch category {
+        case .herbs:
+            return [.gentlyMuddled, .muddled, .nitroMuddled, .grams, .none]
+        case .fruit:
+            return [.gentlyMuddled, .muddled, .grams, .sliceOf, .whole, .nitroMuddled, .none]
+        case .seasoning:
+            return [.pinch, .drops, .grams, .dashes, .barSpoon, .teaspoon, .tablespoon, .none]
+        case .otherNonAlc:
+            return MeasurementUnit.allCases
+        default:
+            return [.fluidOunces, .barSpoon, .dashes, .drops, .grams, .ml,  .sprays, .teaspoon, .tablespoon, .bottles, .none]
+        }
+    }
     
     static func getAllPhysicalComponents() -> [CocktailComponent] {
         var cocktailComponentArray = [CocktailComponent]()
@@ -199,11 +309,9 @@ import Observation
         return cocktailComponentArray
         
     }
-    func validateBuildInstructions() {
-        if build.instructions != [] {
-            buildOption = build
-        }
-    }
+    
+ 
+    
     func validateAuthor() {
         if authorName != "" && authorYear != "" && authorPlace != "" {
             author = Author(person: authorName, place: authorYear, year: authorPlace)
@@ -214,10 +322,6 @@ import Observation
             garnish = addedGarnish
         }
     }
-    
-    
-    
-
 }
 
 extension AddCocktailView {

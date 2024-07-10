@@ -18,10 +18,10 @@ var homeOnTheRange = Cocktail(cocktailName: "Home on the Range",
                               collection: .originals,
                               titleCocktail: true)
 
-var homeOnTheRangeSpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
-                               CocktailIngredient(.liqueurs(.cointreau), value: 3, unit: .dashes),
-                               CocktailIngredient(.fortifiedWines(.dubonnet), value: 1.5),
-                               CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 1.5)]
+var homeOnTheRangeSpec     =  [OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
+                               OldCocktailIngredient(.liqueurs(.cointreau), value: 3, unit: .dashes),
+                               OldCocktailIngredient(.fortifiedWines(.dubonnet), value: 1.5),
+                               OldCocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 1.5)]
 
 var homeOnTheRangeTags     = Tags(profiles: [.spiritForward, .bittersweet, .fruity],
                                   styles: [.manhattan, .stirred])

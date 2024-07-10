@@ -16,9 +16,9 @@ var caucasian = Cocktail(cocktailName: "Caucasian",
                          buildOrder: caucasianBuild,
                          tags: caucasianTags)
 
-var caucasianSpec  = [CocktailIngredient(.liqueurs(.borghetti), value: 1),
-                      CocktailIngredient(.vodkas(.vodkaAny), value: 2),
-                      CocktailIngredient(.otherNonAlc(.cream), value: 0.5)]
+var caucasianSpec  = [OldCocktailIngredient(.liqueurs(.borghetti), value: 1),
+                      OldCocktailIngredient(.vodkas(.vodkaAny), value: 2),
+                      OldCocktailIngredient(.otherNonAlc(.cream), value: 0.5)]
 
 var caucasianTags = Tags(profiles: [.sweet, .creamy, .rich],
                          styles: [.built])

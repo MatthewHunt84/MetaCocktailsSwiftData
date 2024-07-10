@@ -18,11 +18,11 @@ var piscoSourWnG = Cocktail(cocktailName: "Pisco Sour (W&G Version)",
                             variation: .piscoSour,
                             collection: .williamsAndGraham)
 
-var piscoSourSpecWnG  = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                         CocktailIngredient(.syrups(.simple), value: 0.75),
-                         CocktailIngredient(.otherNonAlc(.eggWhites), value: 1, unit: .whole),
-                         CocktailIngredient(.brandies(.peruvianMustoVerde), value: 1.5),
-                         CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes)]
+var piscoSourSpecWnG  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                         OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                         OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 1, unit: .whole),
+                         OldCocktailIngredient(.brandies(.peruvianMustoVerde), value: 1.5),
+                         OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes)]
 
 var piscoSourTagsWnG = Tags(profiles: [.light, .silky, .fruity, .refreshing],
                             styles: [.sour, .shaken])

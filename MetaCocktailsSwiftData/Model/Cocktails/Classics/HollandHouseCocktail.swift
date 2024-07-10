@@ -18,11 +18,11 @@ var hollandHouseCocktail = Cocktail(cocktailName: "Holland House Cocktail",
                                     collection: .originals,
                                     titleCocktail: true)
 
-var hollandHouseCocktailSpec  =  [CocktailIngredient(.juices(.lemon), value: 0.25),
-                                  CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 4, unit: .dashes),
-                                  CocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 1),
-                                  CocktailIngredient(.fruit(.pineapple), value: 1, unit: .sliceOf),
-                                  CocktailIngredient(.gins(.ginLondonDry), value: 2)]
+var hollandHouseCocktailSpec  =  [OldCocktailIngredient(.juices(.lemon), value: 0.25),
+                                  OldCocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 4, unit: .dashes),
+                                  OldCocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 1),
+                                  OldCocktailIngredient(.fruit(.pineapple), value: 1, unit: .sliceOf),
+                                  OldCocktailIngredient(.gins(.ginLondonDry), value: 2)]
 
 var hollandHouseCocktailTags = Tags( profiles: [.fruity, .citrusy, .dry],
                                      styles: [.daisy, .shaken, .sour])

@@ -18,11 +18,11 @@ var stagParty  =  Cocktail(cocktailName: "Stag Party",
                            tags: stagPartyTags,
                            collection: .williamsAndGraham)
 
-var stagPartySpec = [CocktailIngredient(.otherNonAlc(.stiffCream), value: 1),
-                     CocktailIngredient(.liqueurs(.licor43), value: 0.5),
-                     CocktailIngredient(.amari(.sfumato), value: 0.25),
-                     CocktailIngredient(.amari(.jagerColdBrew), value: 1),
-                     CocktailIngredient(.whiskies(.stagJr), value: 1.5)]
+var stagPartySpec = [OldCocktailIngredient(.otherNonAlc(.stiffCream), value: 1),
+                     OldCocktailIngredient(.liqueurs(.licor43), value: 0.5),
+                     OldCocktailIngredient(.amari(.sfumato), value: 0.25),
+                     OldCocktailIngredient(.amari(.jagerColdBrew), value: 1),
+                     OldCocktailIngredient(.whiskies(.stagJr), value: 1.5)]
 
 var stagPartyTags = Tags(profiles: [.rich, .bittersweet, .punchy, .spiritForward],
                          styles: [.negroni, .stirred])

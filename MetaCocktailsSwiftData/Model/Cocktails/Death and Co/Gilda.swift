@@ -18,10 +18,10 @@ var gilda = Cocktail(cocktailName: "Gilda",
                      tags: gildaTags,
                      collection: .deathAndCo)
 
-var gildaSpec  = [CocktailIngredient(.juices(.lime), value: 0.5),
-                  CocktailIngredient(.syrups(.cinnamonSyrup), value: 0.5),
-                  CocktailIngredient(.juices(.pineappleJuice), value: 0.5),
-                  CocktailIngredient(.agaves(.tequilaBlanco), value: 2)]
+var gildaSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.5),
+                  OldCocktailIngredient(.syrups(.cinnamonSyrup), value: 0.5),
+                  OldCocktailIngredient(.juices(.pineappleJuice), value: 0.5),
+                  OldCocktailIngredient(.agaves(.tequilaBlanco), value: 2)]
 
 
 var gildaTags = Tags(profiles: [.refreshing, .fruity, .light],

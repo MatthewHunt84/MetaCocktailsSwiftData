@@ -19,10 +19,10 @@ var temperanceGrapefruitCollins  = Cocktail(cocktailName: "Temperance Grapefruit
                                             variation: .tomCollins,
                                             collection: .milkAndHoney)
 
-var temperanceGrapefruitCollinsSpec  = [CocktailIngredient(.juices(.lime), value: 1),
-                                        CocktailIngredient(.juices(.grapefruit), value: 2),
-                                        CocktailIngredient(.syrups(.simple), value: 0.5),
-                                        CocktailIngredient(.soda(.sodaWater) , value: 1)]
+var temperanceGrapefruitCollinsSpec  = [OldCocktailIngredient(.juices(.lime), value: 1),
+                                        OldCocktailIngredient(.juices(.grapefruit), value: 2),
+                                        OldCocktailIngredient(.syrups(.simple), value: 0.5),
+                                        OldCocktailIngredient(.soda(.sodaWater) , value: 1)]
 
 var temperanceGrapefruitCollinsBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the soda, into a tin and shake with ice"),
                                                              Instruction(step: 2, method: "Strain over column ice and top with soda"),

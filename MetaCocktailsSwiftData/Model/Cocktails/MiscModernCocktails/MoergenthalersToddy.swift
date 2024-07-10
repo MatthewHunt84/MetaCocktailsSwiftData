@@ -16,11 +16,11 @@ var morgenthalersToddy = Cocktail(cocktailName: "Hot Toddy(Morgenthaler’s)",
                                   tags: morgenthalersToddyTags,
                                   variation: .hotToddy)
 
-var morgenthalersToddySpec  = [CocktailIngredient(.otherNonAlc(.hotWater), value: 3),
-                               CocktailIngredient(.juices(.lemon), value: 0.75),
-                               CocktailIngredient(.syrups(.morenthalersGingerSyrup), value: 1, prep: PrepBible.morgenthalersGingerSyrup),
-                               CocktailIngredient(.liqueurs(.allspiceDram), value: 1, unit: .teaspoon),
-                               CocktailIngredient(.whiskies(.bourbonAny), value: 1.5)]
+var morgenthalersToddySpec  = [OldCocktailIngredient(.otherNonAlc(.hotWater), value: 3),
+                               OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                               OldCocktailIngredient(.syrups(.morenthalersGingerSyrup), value: 1, prep: PrepBible.morgenthalersGingerSyrup),
+                               OldCocktailIngredient(.liqueurs(.allspiceDram), value: 1, unit: .teaspoon),
+                               OldCocktailIngredient(.whiskies(.bourbonAny), value: 1.5)]
 
 var morgenthalersToddyTags = Tags(flavors: [.tea],
                                   profiles: [.hot, .aromatic, .comforting],

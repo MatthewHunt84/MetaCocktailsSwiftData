@@ -17,10 +17,10 @@ var brooklyn = Cocktail(cocktailName: "Brooklyn Cocktail",
                         collection: .originals,
                         titleCocktail: true)
 
-var brooklynSpec     =  [CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 1, unit: .teaspoon),
-                         CocktailIngredient(.amari(.amerPicon), value: 1, unit: .teaspoon),
-                         CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1.5),
-                         CocktailIngredient(.whiskies(.straightRye), value: 1.5)]
+var brooklynSpec     =  [OldCocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 1, unit: .teaspoon),
+                         OldCocktailIngredient(.amari(.amerPicon), value: 1, unit: .teaspoon),
+                         OldCocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1.5),
+                         OldCocktailIngredient(.whiskies(.straightRye), value: 1.5)]
 
 var brooklynTags     = Tags(profiles: [.spiritForward, .rich, .complex, .bittersweet],
                              styles: [.manhattan, .stirred])

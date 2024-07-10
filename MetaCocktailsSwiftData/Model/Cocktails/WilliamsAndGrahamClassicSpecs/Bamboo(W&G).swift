@@ -19,7 +19,7 @@ var bambooWnG = Cocktail(cocktailName: "Bamboo (W&G Version)",
                          variation: .bamboo,
                          collection: .williamsAndGraham)
 
-var bambooWnGSpec = [CocktailIngredient(.fortifiedWines(.amontillado), value: 1.5),
-                     CocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 1.5),
-                     CocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dashes),
-                     CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes)]
+var bambooWnGSpec = [OldCocktailIngredient(.fortifiedWines(.amontillado), value: 1.5),
+                     OldCocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 1.5),
+                     OldCocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dashes),
+                     OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes)]

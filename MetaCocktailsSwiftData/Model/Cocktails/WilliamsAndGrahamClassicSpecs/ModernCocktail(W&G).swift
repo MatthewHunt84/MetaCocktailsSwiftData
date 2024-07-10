@@ -17,12 +17,12 @@ var modernCocktailWnG = Cocktail(cocktailName: "Modern Cocktail(WnG Version)",
                                  variation: .modernCocktail,
                                  collection: .williamsAndGraham)
 
-var modernCocktailSpecWnG = [CocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dashes),
-                             CocktailIngredient(.juices(.lemon), value: 0.75),
-                             CocktailIngredient(.syrups(.simple), value: 0.75),
-                             CocktailIngredient(.otherAlcohol(.absinthe), value: 4, unit: .sprays),
-                             CocktailIngredient(.whiskies(.glenfiddich12), value: 1),
-                             CocktailIngredient(.liqueurs(.plymouthSloeGin), value: 1)]
+var modernCocktailSpecWnG = [OldCocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dashes),
+                             OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                             OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                             OldCocktailIngredient(.otherAlcohol(.absinthe), value: 4, unit: .sprays),
+                             OldCocktailIngredient(.whiskies(.glenfiddich12), value: 1),
+                             OldCocktailIngredient(.liqueurs(.plymouthSloeGin), value: 1)]
 
 var modernCocktailTagsWnG = Tags(profiles: [.citrusy, .fruity, .light, .complex, .refreshing],
                                  styles: [.sour, .shaken])

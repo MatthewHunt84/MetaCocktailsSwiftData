@@ -18,14 +18,14 @@ var highlandLass = Cocktail(cocktailName: "Highland Lass",
                             tags: highlandLassTags,
                             collection: .williamsAndGraham)
 
-let highlandLassSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
-                                              CocktailIngredient(.bitters(.peychauds), value: 2, unit: .dashes),
-                                              CocktailIngredient(.juices(.lemon), value: 0.75),
-                                              CocktailIngredient(.syrups(.honeySyrup), value: 0.25, prep: PrepBible.honeySyrup),
-                                              CocktailIngredient(.syrups(.gingerSyrup), value: 0.25, prep: PrepBible.gingerSyrup),
-                                              CocktailIngredient(.syrups(.cucumberSyrup), value: 0.5, prep: PrepBible.cucumberSyrup),
-                                              CocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.5),
-                                              CocktailIngredient(.whiskies(.compassBoxOakCross), value: 1.5)]
+let highlandLassSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
+                                              OldCocktailIngredient(.bitters(.peychauds), value: 2, unit: .dashes),
+                                              OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                                              OldCocktailIngredient(.syrups(.honeySyrup), value: 0.25, prep: PrepBible.honeySyrup),
+                                              OldCocktailIngredient(.syrups(.gingerSyrup), value: 0.25, prep: PrepBible.gingerSyrup),
+                                              OldCocktailIngredient(.syrups(.cucumberSyrup), value: 0.5, prep: PrepBible.cucumberSyrup),
+                                              OldCocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.5),
+                                              OldCocktailIngredient(.whiskies(.compassBoxOakCross), value: 1.5)]
 
 
 let highlandLassTags = Tags(profiles: [.refreshing, .complex, .fruity, .herbal],

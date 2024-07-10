@@ -21,7 +21,7 @@ struct IngredientView: View {
         let ingredients = cocktail.spec
         
         for ingredient in ingredients.reversed() {
-            self.ingredientsString += " \(ingredient.name),"
+            self.ingredientsString += " \(ingredient.ingredientBase.name),"
         }
         
         if let profiles = cocktail.compiledTags.profiles {

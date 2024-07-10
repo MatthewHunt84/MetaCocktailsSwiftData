@@ -17,10 +17,10 @@ var cellarDoor = Cocktail(cocktailName: "Cellar Door(W&G)",
                           tags: cellarDoorTags,
                           collection: .williamsAndGraham)
 
-var cellarDoorSpec  = [CocktailIngredient(.otherNonAlc(.butter), value: 0.25),
-                       CocktailIngredient(.syrups(.orgeat), value: 0.75, prep: PrepBible.orgeat),
-                       CocktailIngredient(.liqueurs(.stGeorgeSpicesPear), value: 0.5),
-                       CocktailIngredient(.fortifiedWines(.oloroso), value: 2)]
+var cellarDoorSpec  = [OldCocktailIngredient(.otherNonAlc(.butter), value: 0.25),
+                       OldCocktailIngredient(.syrups(.orgeat), value: 0.75, prep: PrepBible.orgeat),
+                       OldCocktailIngredient(.liqueurs(.stGeorgeSpicesPear), value: 0.5),
+                       OldCocktailIngredient(.fortifiedWines(.oloroso), value: 2)]
 
 var cellarDoorTags = Tags(flavors: [.tea],
                           profiles: [.hot, .aromatic, .nutty, .comforting],

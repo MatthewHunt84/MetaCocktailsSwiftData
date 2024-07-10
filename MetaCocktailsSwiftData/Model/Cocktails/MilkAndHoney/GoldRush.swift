@@ -16,9 +16,9 @@ var goldRush  = Cocktail(cocktailName: "Gold Rush",
                          tags: goldRushTags,
                          collection: .milkAndHoney)
 
-var goldRushSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                     CocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup),
-                     CocktailIngredient(.whiskies(.bourbonAny) , value: 2)]
+var goldRushSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                     OldCocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup),
+                     OldCocktailIngredient(.whiskies(.bourbonAny) , value: 2)]
 
 
 var goldRushTags   = Tags(profiles: [.citrusy, .refreshing, .light],

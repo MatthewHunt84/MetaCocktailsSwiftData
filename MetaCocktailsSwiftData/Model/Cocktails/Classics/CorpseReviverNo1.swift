@@ -14,9 +14,9 @@ var corpseReviver1 = Cocktail(cocktailName: "Corpse Reviver No.1",
                               tags: corpseReviver1Tags,
                               variation: .corpseReviver)
 
-var corpseReviver1Spec     =  [CocktailIngredient(.fortifiedWines(.dolinRouge), value: 1),
-                               CocktailIngredient(.brandies(.pFAmber), value: 1),
-                               CocktailIngredient(.brandies(.boulardCalvados), value: 1)]
+var corpseReviver1Spec     =  [OldCocktailIngredient(.fortifiedWines(.dolinRouge), value: 1),
+                               OldCocktailIngredient(.brandies(.pFAmber), value: 1),
+                               OldCocktailIngredient(.brandies(.boulardCalvados), value: 1)]
 
 var corpseReviver1Tags     = Tags(profiles: [.spiritForward, .fruity, .rich],
                                   styles: [.martini, .stirred])

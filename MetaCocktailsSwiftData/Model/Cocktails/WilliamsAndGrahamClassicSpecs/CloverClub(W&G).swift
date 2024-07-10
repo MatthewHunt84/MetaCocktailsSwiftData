@@ -17,12 +17,12 @@ var cloverClubWnG = Cocktail(cocktailName: "Clover Club (W&G Version)",
                              variation: .cloverClub,
                              collection: .williamsAndGraham)
 
-var cloverClubSpecWnG  = [CocktailIngredient(.fruit(.raspberries), value: 6, unit: .whole),
-                          CocktailIngredient(.juices(.lemon), value: 0.5),
-                          CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
-                          CocktailIngredient(.fortifiedWines(.dolinDry), value: 0.5),
-                          CocktailIngredient(.gins(.fordsGin), value: 1.5),
-                          CocktailIngredient(.bitters(.peychauds), value: 6, unit: .drops)]
+var cloverClubSpecWnG  = [OldCocktailIngredient(.fruit(.raspberries), value: 6, unit: .whole),
+                          OldCocktailIngredient(.juices(.lemon), value: 0.5),
+                          OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
+                          OldCocktailIngredient(.fortifiedWines(.dolinDry), value: 0.5),
+                          OldCocktailIngredient(.gins(.fordsGin), value: 1.5),
+                          OldCocktailIngredient(.bitters(.peychauds), value: 6, unit: .drops)]
 
 var cloverClubBuildWnG = Build(instructions: [Instruction(step: 1, method: "Muddle the raspberries then add the rest of the ingredients, except for the bitters, and dry shake."),
                                               Instruction(step: 2, method: "Add a few Kold Draft cubes and shake until cold. Do not over dilute"),

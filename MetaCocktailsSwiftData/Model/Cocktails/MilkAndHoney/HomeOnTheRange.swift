@@ -19,10 +19,10 @@ var homeOnTheRangeMnH = Cocktail(cocktailName: "Home on the Range (Milk and Hone
                                  variation: .homeOnTheRange,
                                  collection: .milkAndHoney)
 
-var homeOnTheRangeSpecMnH     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 3, unit: .dashes),
-                                  CocktailIngredient(.fortifiedWines(.cocchiDeTorino), value: 0.25),
-                                  CocktailIngredient(.liqueurs(.cointreau), value: 0.25),
-                                  CocktailIngredient(.whiskies(.bourbonAny), value: 2)]
+var homeOnTheRangeSpecMnH     =  [OldCocktailIngredient(.bitters(.angosturaBitters), value: 3, unit: .dashes),
+                                  OldCocktailIngredient(.fortifiedWines(.cocchiDeTorino), value: 0.25),
+                                  OldCocktailIngredient(.liqueurs(.cointreau), value: 0.25),
+                                  OldCocktailIngredient(.whiskies(.bourbonAny), value: 2)]
 
 var homeOnTheRangeTagsMnH     = Tags(profiles: [.spiritForward, .bittersweet, .fruity],
                                      styles: [.manhattan, .stirred])

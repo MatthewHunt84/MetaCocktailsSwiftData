@@ -19,11 +19,11 @@ var penicillinWnG = Cocktail(cocktailName: "Penicillin (W&G Version)",
                              variation: .penicillin,
                              collection: .williamsAndGraham)
 
-var penicillinSpecWnG = [CocktailIngredient(.juices(.lemon), value: 0.75, unit: .fluidOunces),
-                         CocktailIngredient(.syrups(.honeySyrup), value: 0.5, prep: PrepBible.honeySyrup),
-                         CocktailIngredient(.syrups(.gingerSyrup), value: 0.25, prep: PrepBible.gingerSyrup),
-                         CocktailIngredient(.whiskies(.monkeyShoulder), value: 1.5),
-                         CocktailIngredient(.whiskies(.laphroaig10), value: 0.25)]
+var penicillinSpecWnG = [OldCocktailIngredient(.juices(.lemon), value: 0.75, unit: .fluidOunces),
+                         OldCocktailIngredient(.syrups(.honeySyrup), value: 0.5, prep: PrepBible.honeySyrup),
+                         OldCocktailIngredient(.syrups(.gingerSyrup), value: 0.25, prep: PrepBible.gingerSyrup),
+                         OldCocktailIngredient(.whiskies(.monkeyShoulder), value: 1.5),
+                         OldCocktailIngredient(.whiskies(.laphroaig10), value: 0.25)]
 
 var penicillinTagsWnG = Tags(flavors: [.lemon, .honey, .ginger, .peat],
                              profiles: [.citrusy, .smokey, .light, .complex],

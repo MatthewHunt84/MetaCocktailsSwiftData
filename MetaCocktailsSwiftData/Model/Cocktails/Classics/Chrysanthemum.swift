@@ -15,9 +15,9 @@ var chrysanthemum = Cocktail(cocktailName: "Chrysanthemum",
                              spec:chrysanthemumSpec,
                              tags: chrysanthemumTags)
 
-var chrysanthemumSpec  = [CocktailIngredient(.otherAlcohol(.absinthe), value: 3, unit: .dashes),
-                          CocktailIngredient(.liqueurs(.benedictine), value: 1),
-                          CocktailIngredient(.fortifiedWines(.dolinDry), value: 2)]
+var chrysanthemumSpec  = [OldCocktailIngredient(.otherAlcohol(.absinthe), value: 3, unit: .dashes),
+                          OldCocktailIngredient(.liqueurs(.benedictine), value: 1),
+                          OldCocktailIngredient(.fortifiedWines(.dolinDry), value: 2)]
 
 
 

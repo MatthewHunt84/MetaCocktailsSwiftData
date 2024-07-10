@@ -14,8 +14,8 @@ var gibson   = Cocktail(cocktailName: "Gibson",
                         tags: gibsonTags,
                         variation: .martini)
 
-var gibsonSpec     =  [CocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 0.5),
-                       CocktailIngredient(.gins(.tanqueray), value: 2.5)]
+var gibsonSpec     =  [OldCocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 0.5),
+                       OldCocktailIngredient(.gins(.tanqueray), value: 2.5)]
 
 var gibsonTags     = Tags(profiles: [.spiritForward, .dry],
                           styles: [.martini, .stirred])

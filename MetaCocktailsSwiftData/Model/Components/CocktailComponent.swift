@@ -30,9 +30,10 @@ class CocktailComponent: Identifiable, ObservableObject, Hashable{
     var nACategory: IngredientType?
     var nACategoryName: String = ""
     var spiritCategoryName: String = ""
+    var info: String?
     
     
-    init(name: String, isFlavor: Bool = false, isProfile: Bool = false, isStyle: Bool = false, is86d: Bool = false, isSpirit: Bool = false, isNA: Bool = false, matchesCurrentSearch: Bool = true) {
+    init(name: String, isFlavor: Bool = false, isProfile: Bool = false, isStyle: Bool = false, is86d: Bool = false, isSpirit: Bool = false, isNA: Bool = false, matchesCurrentSearch: Bool = true, info: String? = nil) {
         self.name = name
         self.isSpirit = isSpirit
         self.isNA = isNA
@@ -41,7 +42,15 @@ class CocktailComponent: Identifiable, ObservableObject, Hashable{
         self.is86d = is86d
         self.isProfile = isProfile
         self.matchesCurrentSearch = matchesCurrentSearch
-        
+        self.info = {
+            if name == Whiskey.aberlourAbundah.rawValue {
+                return "High Proof Single Malt"
+            }
+            if name == Syrup.richDem.rawValue || name == Syrup.richSimple.rawValue || name == Syrup.richCinnamonAndVanill.rawValue {
+                return "Rich 2:1 by weight syrup."
+            }
+            return info
+        }()
         if isFlavor {
             preferenceType = .flavors
         } else if isStyle {
@@ -100,8 +109,8 @@ class CocktailComponent: Identifiable, ObservableObject, Hashable{
         return hasher.combine(id)
     }
     
-    func isEqualTo(_ cocktailIngredient: CocktailIngredient) -> Bool {
-        return self.name == cocktailIngredient.ingredient.name
+    func isEqualTo(_ oldCocktailIngredient: OldCocktailIngredient) -> Bool {
+        return self.name == oldCocktailIngredient.ingredient.name
 
     }
         

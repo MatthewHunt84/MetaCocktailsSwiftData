@@ -19,9 +19,9 @@ var oldPal  =  Cocktail(cocktailName: "Old Pal",
                         collection: .originals,
                         titleCocktail: true)
 
-var oldPalSpec = [CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 1),
-                  CocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 1),
-                  CocktailIngredient(.amari(.campari), value: 1)]
+var oldPalSpec = [OldCocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 1),
+                  OldCocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 1),
+                  OldCocktailIngredient(.amari(.campari), value: 1)]
 
 var oldPalTags = Tags(flavors: [.orange, .bakingSpices],
                       profiles: [.bittersweet, .spiritForward, .rich],

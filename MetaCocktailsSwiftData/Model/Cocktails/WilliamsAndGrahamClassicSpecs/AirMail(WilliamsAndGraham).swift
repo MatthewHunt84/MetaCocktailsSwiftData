@@ -18,10 +18,10 @@ var airMailWnG  = Cocktail(cocktailName: "Air Mail (W&G Version)",
                            variation: .airMail,
                            collection: .williamsAndGraham)
 
-var airMailWnGSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
-                       CocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup),
-                       CocktailIngredient(.rums(.plantationBarbados), value: 1.5),
-                       CocktailIngredient(.wines(.prosecco) , value: 2)]
+var airMailWnGSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.75),
+                       OldCocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup),
+                       OldCocktailIngredient(.rums(.plantationBarbados), value: 1.5),
+                       OldCocktailIngredient(.wines(.prosecco) , value: 2)]
 
 var airMailWnGBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the Champagne, into a tin and shake with ice"),
                                             Instruction(step: 2, method: "Add Champagne to the flute first!"),

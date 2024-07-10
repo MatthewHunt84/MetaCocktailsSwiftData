@@ -17,9 +17,9 @@ var hollandHouseKappeler = Cocktail(cocktailName: "Holland House",
                                     variation: .hollandHouse,
                                     collection: .originals)
 
-var hollandHouseKappelerSpec  =  [CocktailIngredient(.bitters(.peychauds), value: 2, unit: .dashes),
-                                  CocktailIngredient(.liqueurs(.orangeCuracao), value: 0.5),
-                                  CocktailIngredient(.whiskies(.straightRye), value: 2)]
+var hollandHouseKappelerSpec  =  [OldCocktailIngredient(.bitters(.peychauds), value: 2, unit: .dashes),
+                                  OldCocktailIngredient(.liqueurs(.orangeCuracao), value: 0.5),
+                                  OldCocktailIngredient(.whiskies(.straightRye), value: 2)]
 
 var hollandHouseKappelerTags = Tags( profiles: [.fruity, .spiritForward],
                                      styles: [.oldFashioned, .stirred])

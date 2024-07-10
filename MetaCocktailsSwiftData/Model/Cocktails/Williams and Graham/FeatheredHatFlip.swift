@@ -21,13 +21,13 @@ var featheredHatFlipNo1 = Cocktail(cocktailName: "Feathered Hat Flip No. 1",
                                    collection: .williamsAndGraham,
                                    titleCocktail: true)
 
-var featheredHatFlipSpec  = [CocktailIngredient(.bitters(.angosturaBitters), value: 8, unit: .drops),
-                             CocktailIngredient(.otherAlcohol(.leftHandMilkStout), value: 0.5),
-                             CocktailIngredient(.liqueurs(.velvetFalernum), value: 0.5),
-                             CocktailIngredient(.liqueurs(.giffardBanane), value: 0.5),
-                             CocktailIngredient(.rums(.cruzanBlackstrap), value: 0.5),
-                             CocktailIngredient(.whiskies(.russels6yearRye), value: 0.75),
-                             CocktailIngredient(.otherNonAlc(.eggWhole), value: 1, unit: .whole)]
+var featheredHatFlipSpec  = [OldCocktailIngredient(.bitters(.angosturaBitters), value: 8, unit: .drops),
+                             OldCocktailIngredient(.otherAlcohol(.leftHandMilkStout), value: 0.5),
+                             OldCocktailIngredient(.liqueurs(.velvetFalernum), value: 0.5),
+                             OldCocktailIngredient(.liqueurs(.giffardBanane), value: 0.5),
+                             OldCocktailIngredient(.rums(.cruzanBlackstrap), value: 0.5),
+                             OldCocktailIngredient(.whiskies(.russels6yearRye), value: 0.75),
+                             OldCocktailIngredient(.otherNonAlc(.eggWhole), value: 1, unit: .whole)]
 
 var featheredHatFlipTags = Tags(flavors: [.nutmeg],
                                 profiles: [.rich, .silky, .savory],

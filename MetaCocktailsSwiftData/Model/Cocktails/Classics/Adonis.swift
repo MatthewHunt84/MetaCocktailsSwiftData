@@ -17,10 +17,10 @@ var adonis = Cocktail(cocktailName: "Adonis",
                       buildOrder: nil,
                       tags: adonisTags)
 
-var adonisSpec = [CocktailIngredient(.fortifiedWines(.fino), value: 1.5),
-                  CocktailIngredient(.fortifiedWines(.dolinRouge), value: 1.5),
-                  CocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dashes),
-                  CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),]
+var adonisSpec = [OldCocktailIngredient(.fortifiedWines(.fino), value: 1.5),
+                  OldCocktailIngredient(.fortifiedWines(.dolinRouge), value: 1.5),
+                  OldCocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dashes),
+                  OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),]
 
 var adonisTags = Tags(profiles: [ .light, .complex, .bittersweet ],
                       styles: [.martini, .stirred])

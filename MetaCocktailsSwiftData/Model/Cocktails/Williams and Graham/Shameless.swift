@@ -17,12 +17,12 @@ var shameless = Cocktail(cocktailName: "Shameless",
                          tags: shamelessTags,
                          collection: .williamsAndGraham)
 
-let shamelessSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.orangeBitters), value: 3, unit: .dashes),
-                                           CocktailIngredient(.syrups(.honeySyrup), value: 1, unit: .barSpoon, prep: PrepBible.honeySyrup),
-                                           CocktailIngredient(.amari(.suze), value: 0.25),
-                                           CocktailIngredient(.liqueurs(.benedictine), value: 0.5),
-                                           CocktailIngredient(.amari(.cynar), value: 0.75),
-                                           CocktailIngredient(.whiskies(.balconesRye), value: 1.5)]
+let shamelessSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.bitters(.orangeBitters), value: 3, unit: .dashes),
+                                           OldCocktailIngredient(.syrups(.honeySyrup), value: 1, unit: .barSpoon, prep: PrepBible.honeySyrup),
+                                           OldCocktailIngredient(.amari(.suze), value: 0.25),
+                                           OldCocktailIngredient(.liqueurs(.benedictine), value: 0.5),
+                                           OldCocktailIngredient(.amari(.cynar), value: 0.75),
+                                           OldCocktailIngredient(.whiskies(.balconesRye), value: 1.5)]
 
 
 let shamelessTags = Tags(profiles: [.punchy, .herbal, .spiritForward, .bittersweet],

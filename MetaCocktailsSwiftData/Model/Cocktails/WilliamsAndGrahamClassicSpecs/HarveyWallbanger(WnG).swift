@@ -18,9 +18,9 @@ var harveyWallbangerWnG = Cocktail(cocktailName: "Harvey Wallbanger(WnG Version)
                                    variation: .harveyWallbanger,
                                    collection: .williamsAndGraham)
 
-var harveyWallbangerSpecWnG    =  [CocktailIngredient(.liqueurs(.galliano), value: 0.5),
-                                   CocktailIngredient(.juices(.orange), value: 2),
-                                   CocktailIngredient(.vodkas(.vodkaAny), value: 1.5)]
+var harveyWallbangerSpecWnG    =  [OldCocktailIngredient(.liqueurs(.galliano), value: 0.5),
+                                   OldCocktailIngredient(.juices(.orange), value: 2),
+                                   OldCocktailIngredient(.vodkas(.vodkaAny), value: 1.5)]
 
 var harveyWallbangerTagsWnG     = Tags(profiles: [.fruity, .sweet, .gross],
                                        styles: [.sour, .shaken])

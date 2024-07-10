@@ -16,11 +16,11 @@ var algonquinWnG  = Cocktail(cocktailName: "Algonquin (W&G Version)",
                              variation: .algonquin,
                              collection: .williamsAndGraham)
 
-var algonquinWnGSpec  = [CocktailIngredient(.bitters(.peychauds), value: 2, unit: .dashes),
-                         CocktailIngredient(.juices(.pineappleJuice), value: 0.75),
-                         CocktailIngredient(.fortifiedWines(.dolinBlanc), value: 0.25),
-                         CocktailIngredient(.fortifiedWines(.dolinDry), value: 0.5),
-                         CocktailIngredient(.whiskies(.rittenhouseRye), value: 1.5)]
+var algonquinWnGSpec  = [OldCocktailIngredient(.bitters(.peychauds), value: 2, unit: .dashes),
+                         OldCocktailIngredient(.juices(.pineappleJuice), value: 0.75),
+                         OldCocktailIngredient(.fortifiedWines(.dolinBlanc), value: 0.25),
+                         OldCocktailIngredient(.fortifiedWines(.dolinDry), value: 0.5),
+                         OldCocktailIngredient(.whiskies(.rittenhouseRye), value: 1.5)]
 
 
 

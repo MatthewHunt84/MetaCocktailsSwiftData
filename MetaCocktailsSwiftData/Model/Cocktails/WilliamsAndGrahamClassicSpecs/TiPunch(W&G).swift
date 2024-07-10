@@ -18,8 +18,8 @@ var tiPunchWnG = Cocktail(cocktailName: "Ti' Punch (W&G Version)",
                           variation: .tiPunch,
                           collection: .williamsAndGraham)
 
-var tiPunchSpecWnG  =  [CocktailIngredient(.syrups(.simple), value: 1, unit: .barSpoon),
-                        CocktailIngredient(.rums(.clementBleue), value: 2)]
+var tiPunchSpecWnG  =  [OldCocktailIngredient(.syrups(.simple), value: 1, unit: .barSpoon),
+                        OldCocktailIngredient(.rums(.clementBleue), value: 2)]
 
 var tiPunchTagsWnG = Tags( profiles: [.sweet, .spiritForward, .funky],
                            styles: [.oldFashioned, .stirred])

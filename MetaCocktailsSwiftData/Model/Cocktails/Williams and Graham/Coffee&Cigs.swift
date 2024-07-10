@@ -17,10 +17,10 @@ var coffeeAndCigs = Cocktail(cocktailName: "Coffee & Cigs",
                              tags: coffeeAndCigsTags,
                              collection: .williamsAndGraham)
 
-var coffeeAndCigsSpec  = [CocktailIngredient(.otherNonAlc(.stiffCream), value: 1),
-                          CocktailIngredient(.liqueurs(.borghetti), value: 1),
-                          CocktailIngredient(.amari(.averna), value: 0.5),
-                          CocktailIngredient(.whiskies(.buffaloTrace), value: 1.5)]
+var coffeeAndCigsSpec  = [OldCocktailIngredient(.otherNonAlc(.stiffCream), value: 1),
+                          OldCocktailIngredient(.liqueurs(.borghetti), value: 1),
+                          OldCocktailIngredient(.amari(.averna), value: 0.5),
+                          OldCocktailIngredient(.whiskies(.buffaloTrace), value: 1.5)]
 
 var coffeeAndCigsTags = Tags(profiles: [.punchy, .rich, .bittersweet],
                              styles: [.oldFashioned, .stirred, .built])

@@ -20,12 +20,12 @@ var sunnySide = Cocktail(cocktailName: "Sunny Side",
                          tags: sunnySideTags,
                          collection: .williamsAndGraham)
 
-let sunnySideSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
-                                           CocktailIngredient(.juices(.lime), value: 0.75),
-                                           CocktailIngredient(.syrups(.cucumberSyrup), value: 0.5, prep: PrepBible.cucumberSyrup),
-                                           CocktailIngredient(.syrups(.gingerSyrup), value: 0.25, prep: PrepBible.gingerSyrup),
-                                           CocktailIngredient(.fortifiedWines(.cocchiAmericano), value: 0.5),
-                                           CocktailIngredient(.gins(.ginAny), value: 1.5)]
+let sunnySideSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
+                                           OldCocktailIngredient(.juices(.lime), value: 0.75),
+                                           OldCocktailIngredient(.syrups(.cucumberSyrup), value: 0.5, prep: PrepBible.cucumberSyrup),
+                                           OldCocktailIngredient(.syrups(.gingerSyrup), value: 0.25, prep: PrepBible.gingerSyrup),
+                                           OldCocktailIngredient(.fortifiedWines(.cocchiAmericano), value: 0.5),
+                                           OldCocktailIngredient(.gins(.ginAny), value: 1.5)]
                                         
 
 let sunnySideTags = Tags(profiles: [.herbal, .refreshing, .light, .restorative],

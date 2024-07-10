@@ -21,9 +21,9 @@ var harveyWallbanger = Cocktail(cocktailName: "Harvey Wallbanger",
                                 collection: .originals,
                                 titleCocktail: true)
 
-var harveyWallbangerSpec     =  [CocktailIngredient(.liqueurs(.galliano), value: 0.75),
-                                CocktailIngredient(.juices(.orange), value: 2),
-                                CocktailIngredient(.vodkas(.vodkaAny), value: 1.5)]
+var harveyWallbangerSpec     =  [OldCocktailIngredient(.liqueurs(.galliano), value: 0.75),
+                                OldCocktailIngredient(.juices(.orange), value: 2),
+                                OldCocktailIngredient(.vodkas(.vodkaAny), value: 1.5)]
 
 var harveyWallbangerTags     = Tags(profiles: [.fruity, .sweet, .gross],
                                    styles: [.sour, .built])

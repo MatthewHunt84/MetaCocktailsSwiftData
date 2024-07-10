@@ -18,7 +18,7 @@ var kentuckyMaidWnG = Cocktail(cocktailName: "Kentucky Maid (W&G Version)",
                                variation: .kentuckyMaid,
                                collection: .williamsAndGraham)
 
-let kentuckyMaidSpecWnG : [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
-                                                  CocktailIngredient(.juices(.lime), value: 1),
-                                                  CocktailIngredient(.syrups(.cucumberSyrup), value: 0.75, prep: PrepBible.cucumberSyrup),
-                                                  CocktailIngredient(.whiskies(.fourRosesYellowLabel), value: 2)]
+let kentuckyMaidSpecWnG : [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
+                                                  OldCocktailIngredient(.juices(.lime), value: 1),
+                                                  OldCocktailIngredient(.syrups(.cucumberSyrup), value: 0.75, prep: PrepBible.cucumberSyrup),
+                                                  OldCocktailIngredient(.whiskies(.fourRosesYellowLabel), value: 2)]

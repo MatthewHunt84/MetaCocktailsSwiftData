@@ -17,14 +17,14 @@ var aFlightSouthOfTheBorder = Cocktail(cocktailName: "A Flight South of the Bord
                                        tags: aFlightSouthOfTheBorderTags,
                                        collection: .williamsAndGraham)
 
-let aFlightSouthOfTheBorderSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 9, unit: .gentlyMuddled),
-                                                         CocktailIngredient(.fruit(.grapefruitPeel), value: 2, unit: .none),
-                                                         CocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup),
-                                                         CocktailIngredient(.juices(.lemon), value: 0.75),
-                                                         CocktailIngredient(.amari(.suze), value: 0.25),
-                                                         CocktailIngredient(.liqueurs(.giffardPamplemousse), value: 0.5),
-                                                         CocktailIngredient(.amari(.amaroNonino), value: 0.75),
-                                                         CocktailIngredient(.agaves(.tequilaOchoBlanco), value: 0.75)]
+let aFlightSouthOfTheBorderSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint), value: 9, unit: .gentlyMuddled),
+                                                         OldCocktailIngredient(.fruit(.grapefruitPeel), value: 2, unit: .none),
+                                                         OldCocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup),
+                                                         OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                                                         OldCocktailIngredient(.amari(.suze), value: 0.25),
+                                                         OldCocktailIngredient(.liqueurs(.giffardPamplemousse), value: 0.5),
+                                                         OldCocktailIngredient(.amari(.amaroNonino), value: 0.75),
+                                                         OldCocktailIngredient(.agaves(.tequilaOchoBlanco), value: 0.75)]
 
 
 let aFlightSouthOfTheBorderTags = Tags(profiles: [.refreshing, .complex, .fruity],

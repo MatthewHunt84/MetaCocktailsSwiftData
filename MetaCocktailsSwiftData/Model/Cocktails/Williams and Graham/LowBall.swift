@@ -19,10 +19,10 @@ var lowBall  =  Cocktail(cocktailName: "Low Ball",
                          tags: lowBallTags,
                          collection: .williamsAndGraham)
 
-var lowBallSpec = [CocktailIngredient(.agaves(.tanteoJalepeno), value: 0.25, unit: .dashes),
-                   CocktailIngredient(.amari(.suze), value: 0.5),
-                   CocktailIngredient(.fortifiedWines(.cocchiAmericano), value: 0.75),
-                   CocktailIngredient(.whiskies(.toki), value: 1.5)]
+var lowBallSpec = [OldCocktailIngredient(.agaves(.tanteoJalepeno), value: 0.25, unit: .dashes),
+                   OldCocktailIngredient(.amari(.suze), value: 0.5),
+                   OldCocktailIngredient(.fortifiedWines(.cocchiAmericano), value: 0.75),
+                   OldCocktailIngredient(.whiskies(.toki), value: 1.5)]
 
 var lowBallTags = Tags(profiles: [.spiritForward, .herbal, .punchy, .vegetal],
                        styles: [.manhattan, .stirred])

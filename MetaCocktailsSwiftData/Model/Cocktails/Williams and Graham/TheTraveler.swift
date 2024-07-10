@@ -19,13 +19,13 @@ var theTraveler = Cocktail(cocktailName: "The Traveler",
                            tags: theTravelerTags,
                            collection: .williamsAndGraham)
 
-let theTravelerSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.angosturaBitters), value: 3, unit: .dashes),
-                                             CocktailIngredient(.syrups(.vanilla), value: 1, unit: .barSpoon),
-                                             CocktailIngredient(.rums(.smithAndCross), value: 0.25),
-                                             CocktailIngredient(.whiskies(.bowmore12), value: 0.25),
-                                             CocktailIngredient(.amari(.cioCiaroAmaro), value: 0.5),
-                                             CocktailIngredient(.rums(.plantationPineapple), value: 0.5),
-                                             CocktailIngredient(.whiskies(.johnnyDrum), value: 0.5)]
+let theTravelerSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.bitters(.angosturaBitters), value: 3, unit: .dashes),
+                                             OldCocktailIngredient(.syrups(.vanilla), value: 1, unit: .barSpoon),
+                                             OldCocktailIngredient(.rums(.smithAndCross), value: 0.25),
+                                             OldCocktailIngredient(.whiskies(.bowmore12), value: 0.25),
+                                             OldCocktailIngredient(.amari(.cioCiaroAmaro), value: 0.5),
+                                             OldCocktailIngredient(.rums(.plantationPineapple), value: 0.5),
+                                             OldCocktailIngredient(.whiskies(.johnnyDrum), value: 0.5)]
 
 
 let theTravelerTags = Tags(profiles: [.bittersweet, .spiritForward, .complex, .fruity],

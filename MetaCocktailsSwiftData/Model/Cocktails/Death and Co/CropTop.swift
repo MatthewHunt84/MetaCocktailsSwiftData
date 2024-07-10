@@ -18,10 +18,10 @@ var cropTop = Cocktail(cocktailName: "Crop Top",
                        tags: cropTopTags,
                        collection: .deathAndCo)
 
-var cropTopSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                    CocktailIngredient(.gins(.ginLondonDry), value: 0.75),
-                    CocktailIngredient(.amari(.amaroMontenegro), value: 0.75),
-                    CocktailIngredient(.liqueurs(.giffardPamplemousse), value: 0.75)]
+var cropTopSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                    OldCocktailIngredient(.gins(.ginLondonDry), value: 0.75),
+                    OldCocktailIngredient(.amari(.amaroMontenegro), value: 0.75),
+                    OldCocktailIngredient(.liqueurs(.giffardPamplemousse), value: 0.75)]
 
 
 var cropTopTags = Tags(profiles: [.refreshing, .floral, .herbal, .light],

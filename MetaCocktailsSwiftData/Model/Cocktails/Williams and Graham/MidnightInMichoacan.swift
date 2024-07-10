@@ -16,9 +16,9 @@ var midnightInMichoacan = Cocktail(cocktailName: "Midnight In Michoacan",
                                    tags: midnightInMichoacanTags,
                                    collection: .williamsAndGraham)
 
-var midnightInMichoacanSpec  = [CocktailIngredient(.amari(.amaroMontenegro), value: 0.5),
-                                CocktailIngredient(.liqueurs(.nocino), value: 1),
-                                CocktailIngredient(.rums(.uruapanAnejo), value: 1.5)]
+var midnightInMichoacanSpec  = [OldCocktailIngredient(.amari(.amaroMontenegro), value: 0.5),
+                                OldCocktailIngredient(.liqueurs(.nocino), value: 1),
+                                OldCocktailIngredient(.rums(.uruapanAnejo), value: 1.5)]
 
 var midnightInMichoacanTags = Tags(profiles: [.complex, .punchy, .funky],
                                    styles: [.martini, .stirred])

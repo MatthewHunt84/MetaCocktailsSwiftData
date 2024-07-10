@@ -17,10 +17,10 @@ var oneNightInKyoto  =  Cocktail(cocktailName: "One Night In Kyoto",
                                  tags: oneNightInKyotoTags,
                                  collection: .williamsAndGraham)
 
-var oneNightInKyotoSpec = [CocktailIngredient(.bitters(.bitterTruthJTDecanter), value: 2, unit: .dashes),
-                           CocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.25),
-                           CocktailIngredient(.fortifiedWines(.cocchiBaroloChinato), value: 2),
-                           CocktailIngredient(.whiskies(.hibikiHarmony), value: 2)]
+var oneNightInKyotoSpec = [OldCocktailIngredient(.bitters(.bitterTruthJTDecanter), value: 2, unit: .dashes),
+                           OldCocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.25),
+                           OldCocktailIngredient(.fortifiedWines(.cocchiBaroloChinato), value: 2),
+                           OldCocktailIngredient(.whiskies(.hibikiHarmony), value: 2)]
 
 var oneNightInKyotoTags = Tags(profiles: [.rich, .herbal, .punchy],
                                styles: [.manhattan, .stirred])

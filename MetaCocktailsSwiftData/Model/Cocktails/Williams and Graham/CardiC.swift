@@ -19,10 +19,10 @@ var cardiC = Cocktail(cocktailName: "Cardi C",
                       tags: cardiCTags,
                       collection: .williamsAndGraham)
 
-let cardiCSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.chocolateMole), value: 8, unit: .drops),
-                                        CocktailIngredient(.amari(.sfumato), value: 0.25),
-                                        CocktailIngredient(.amari(.cardamaro), value: 1.5),
-                                        CocktailIngredient(.agaves(.mezcalDelMagueyChichicapa), value: 1.5)]
+let cardiCSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.bitters(.chocolateMole), value: 8, unit: .drops),
+                                        OldCocktailIngredient(.amari(.sfumato), value: 0.25),
+                                        OldCocktailIngredient(.amari(.cardamaro), value: 1.5),
+                                        OldCocktailIngredient(.agaves(.mezcalDelMagueyChichicapa), value: 1.5)]
 
 
 let cardiCTags = Tags(profiles: [.spiritForward, .rich, .smokey, .bittersweet],

@@ -17,11 +17,11 @@ var madusasFang = Cocktail(cocktailName: "Madusa's Fang",
                            tags: madusasFangTags,
                            collection: .williamsAndGraham)
 
-let madusasFangSpec: [CocktailIngredient] = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                                             CocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBible.orgeat),
-                                             CocktailIngredient(.liqueurs(.dryCuracao), value: 0.5),
-                                             CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.5),
-                                             CocktailIngredient(.otherAlcohol(.stGeorgeAbsinthe), value: 1)]
+let madusasFangSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                                             OldCocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBible.orgeat),
+                                             OldCocktailIngredient(.liqueurs(.dryCuracao), value: 0.5),
+                                             OldCocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.5),
+                                             OldCocktailIngredient(.otherAlcohol(.stGeorgeAbsinthe), value: 1)]
 
 
 let madusasFangTags = Tags(profiles: [.herbal, .nutty, .fruity, .refreshing, .citrusy],

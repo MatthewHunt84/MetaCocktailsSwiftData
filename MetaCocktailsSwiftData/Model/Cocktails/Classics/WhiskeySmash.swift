@@ -18,10 +18,10 @@ var whiskeySmash = Cocktail(cocktailName: "Whiskey Smash",
                             spec: whiskeySmashSpec,
                             buildOrder: whiskeySmashBuild,
                             tags: whiskeySmashTags)
-let whiskeySmashSpec: [CocktailIngredient] = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                                              CocktailIngredient(.syrups(.simple), value: 0.75),
-                                              CocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
-                                              CocktailIngredient(.whiskies(.bourbonAny), value: 2)]
+let whiskeySmashSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                                              OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                                              OldCocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
+                                              OldCocktailIngredient(.whiskies(.bourbonAny), value: 2)]
 let whiskeySmashTags = Tags(profiles: [.light, .herbal, .refreshing, .restorative],
                             styles: [.sour, .shaken])
 let whiskeySmashBuild =  Build(instructions: [Instruction(step: 1, method: "In a tin, gently muddle the mint if you don't have sizable ice cubes to do the muddling for you while shaking."),

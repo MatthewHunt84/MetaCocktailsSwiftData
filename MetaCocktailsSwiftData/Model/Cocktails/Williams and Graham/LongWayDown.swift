@@ -19,13 +19,13 @@ var longWayDown = Cocktail(cocktailName: "Long Way Down",
                            tags: longWayDownTags,
                            collection: .williamsAndGraham)
 
-let longWayDownSpec: [CocktailIngredient] = [CocktailIngredient(.juices(.lime), value: 0.75),
-                                             CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
-                                             CocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBible.orgeat),
-                                             CocktailIngredient(.liqueurs(.allspiceDram), value: 1, unit: .barSpoon),
-                                             CocktailIngredient(.liqueurs(.velvetFalernum), value: 0.75),
-                                             CocktailIngredient(.rums(.appleton12), value: 1),
-                                             CocktailIngredient(.rums(.smithAndCross), value: 1)]
+let longWayDownSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.juices(.lime), value: 0.75),
+                                             OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
+                                             OldCocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBible.orgeat),
+                                             OldCocktailIngredient(.liqueurs(.allspiceDram), value: 1, unit: .barSpoon),
+                                             OldCocktailIngredient(.liqueurs(.velvetFalernum), value: 0.75),
+                                             OldCocktailIngredient(.rums(.appleton12), value: 1),
+                                             OldCocktailIngredient(.rums(.smithAndCross), value: 1)]
 
 
 let longWayDownTags = Tags(profiles: [.complex, .nutty, .citrusy, .refreshing],

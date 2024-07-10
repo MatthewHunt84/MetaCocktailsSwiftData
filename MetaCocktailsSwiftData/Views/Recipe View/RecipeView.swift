@@ -304,7 +304,53 @@ struct GlasswareView: View {
         }
     }
 }
-
+struct SpecIngredientView: View {
+    var ingredient: Ingredient
+    @State private var isShowingIngredientInfo : Bool = false
+    
+    var body: some View {
+        let number = NSNumber(value: ingredient.value)
+        VStack{
+            HStack {
+                Text("\(number) \(ingredient.unit.rawValue)")
+                    .font(Layout.specMeasurement)
+                if ingredient.ingredientBase.prep != nil {
+                    NavigationLink {
+                        PrepRecipeView(prep: ingredient.ingredientBase.prep!)
+                    } label: {
+                        Text(ingredient.ingredientBase.name)
+                            .font(Layout.body)
+                            .tint(.cyan)
+                    }
+                } else {
+                    Text("\(ingredient.ingredientBase.name)")
+                        .font(Layout.body)
+                        
+                }
+                if ingredient.ingredientBase.info != nil {
+                    Image(systemName: "questionmark.circle.fill")
+                        .foregroundStyle(.blue)
+                        .onTapGesture {
+                            withAnimation(.easeInOut(duration: 0.25)) {
+                                isShowingIngredientInfo.toggle()
+                            }
+                            
+                        }
+                        
+                       
+                }
+            }
+            .multilineTextAlignment(.leading)
+            if isShowingIngredientInfo {
+                Text(ingredient.ingredientBase.info!)
+                    .font(.footnote)
+                    .foregroundStyle(.brandPrimaryGold)
+                
+                    
+            }
+        }
+    }
+}
 
 struct SpecView: View {
     var cocktail: Cocktail
@@ -349,23 +395,7 @@ struct SpecView: View {
                     .padding(.bottom, 5)
                     
                     ForEach(orderSpec(), id: \.id) { ingredient in
-                        let number = NSNumber(value: ingredient.value)
-                        HStack {
-                            Text("\(number) \(ingredient.unit.rawValue)")
-                                .font(Layout.specMeasurement)
-                            if ingredient.prep != nil {
-                                NavigationLink {
-                                    PrepRecipeView(prep: ingredient.prep!)
-                                } label: {
-                                    Text(ingredient.name)
-                                        .font(Layout.body)
-                                        .tint(.cyan)
-                                }
-                            } else {
-                                Text("\(ingredient.name)")
-                                    .font(Layout.body)
-                            }
-                        }
+                        SpecIngredientView(ingredient: ingredient)
                     }
                 }
             }
@@ -376,26 +406,25 @@ struct SpecView: View {
     func orderSpec() -> [Ingredient] {
         var orderedSpec: [Ingredient] = []
         
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Herbs"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Fruit"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Bitters"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Other N/A"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Seasoning"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Syrups"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Juice"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Liqueurs"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Fortified Wine"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Amari"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Whiskies"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Rum"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Gin"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Brandy"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Agave"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Vodka"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Other Alcohol"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Sodas"}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.category.rawValue == "Wine"}))
-        
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.category.rawValue == "Herbs"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.category.rawValue == "Fruit"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.category.rawValue == "Bitters"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.category.rawValue == "Other N/A"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.category.rawValue == "Seasoning"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.category.rawValue == "Syrups"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.category.rawValue == "Juice"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.category.rawValue == "Liqueurs"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.category.rawValue == "Fortified Wine"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.category.rawValue == "Amari"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.category.rawValue == "Whiskies"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.category.rawValue == "Rum"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.category.rawValue == "Gin"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.category.rawValue == "Brandy"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.category.rawValue == "Agave"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.category.rawValue == "Vodka"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.category.rawValue == "Other Alcohol"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.category.rawValue == "Sodas"}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.category.rawValue == "Wine"}))
         return orderedSpec
     }
 }

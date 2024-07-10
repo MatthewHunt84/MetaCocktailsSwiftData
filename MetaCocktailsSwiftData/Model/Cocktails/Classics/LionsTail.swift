@@ -17,10 +17,10 @@ var lionsTail  = Cocktail(cocktailName: "Lion's Tail",
                           collection: .originals,
                           titleCocktail: true)
 
-var lionsTailSpec  = [CocktailIngredient(.juices(.lime), value: 0.5),
-                      CocktailIngredient(.liqueurs(.allspiceDram), value: 0.5),
-                      CocktailIngredient(.syrups(.gommeSyrup), value: 1, unit: .teaspoon, prep: PrepBible.gommeSyrup),
-                      CocktailIngredient(.whiskies(.bourbonAny) , value: 2)]
+var lionsTailSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.5),
+                      OldCocktailIngredient(.liqueurs(.allspiceDram), value: 0.5),
+                      OldCocktailIngredient(.syrups(.gommeSyrup), value: 1, unit: .teaspoon, prep: PrepBible.gommeSyrup),
+                      OldCocktailIngredient(.whiskies(.bourbonAny) , value: 2)]
 
 
 var lionsTailTags   = Tags(profiles: [.citrusy, .tart, .punchy],

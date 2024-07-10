@@ -15,10 +15,10 @@ var ultimaPalabra = Cocktail(cocktailName: "Ultima Palabra",
                              variation: .ultimaPalabra,
                              titleCocktail: true)
 
-var ultimaPalabraSpec  = [CocktailIngredient(.juices(.lime), value: 0.75),
-                          CocktailIngredient(.agaves(.mezcalSmokeyAny), value: 0.75),
-                          CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.75),
-                          CocktailIngredient(.liqueurs(.greenChartreuse), value: 0.75)]
+var ultimaPalabraSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.75),
+                          OldCocktailIngredient(.agaves(.mezcalSmokeyAny), value: 0.75),
+                          OldCocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.75),
+                          OldCocktailIngredient(.liqueurs(.greenChartreuse), value: 0.75)]
 
 var ultimaPalabraTags = Tags(profiles: [.punchy, .herbal, .citrusy],
                              styles: [.daisy, .shaken, .sour])

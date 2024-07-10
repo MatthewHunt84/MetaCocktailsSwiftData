@@ -17,10 +17,10 @@ var lemonDropWnG = Cocktail(cocktailName: "Lemon Drop (W&G Version)",
                             variation: .lemonDrop,
                             collection: .williamsAndGraham)
 
-var lemonDropSpecWnG  = [CocktailIngredient(.juices(.lemon), value: 1),
-                         CocktailIngredient(.syrups(.simple), value: 0.75),
-                         CocktailIngredient(.syrups(.vanilla), value: 0.25),
-                         CocktailIngredient(.vodkas(.vodkaAny), value: 2)]
+var lemonDropSpecWnG  = [OldCocktailIngredient(.juices(.lemon), value: 1),
+                         OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                         OldCocktailIngredient(.syrups(.vanilla), value: 0.25),
+                         OldCocktailIngredient(.vodkas(.vodkaAny), value: 2)]
 
 var lemonDropTagsWnG = Tags(profiles: [.refreshing, .citrusy, .light],
                        styles: [.sour, .shaken])

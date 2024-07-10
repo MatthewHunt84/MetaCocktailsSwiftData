@@ -18,11 +18,11 @@ var americanTrilogy = Cocktail(cocktailName: "American Trilogy",
                                variation: nil,
                                collection: .milkAndHoney)
 
-var americanTrilogySpec  =  [CocktailIngredient(.otherNonAlc(.sugarCube), value: 1, unit: .muddled),
-                             CocktailIngredient(.soda(.sodaWater), value: 1, unit: .splash),
-                             CocktailIngredient(.bitters(.orangeBitters), value: 3, unit: .dashes),
-                             CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 1),
-                             CocktailIngredient(.brandies(.lairdsBonded), value: 1)]
+var americanTrilogySpec  =  [OldCocktailIngredient(.otherNonAlc(.sugarCube), value: 1, unit: .muddled),
+                             OldCocktailIngredient(.soda(.sodaWater), value: 1, unit: .splash),
+                             OldCocktailIngredient(.bitters(.orangeBitters), value: 3, unit: .dashes),
+                             OldCocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 1),
+                             OldCocktailIngredient(.brandies(.lairdsBonded), value: 1)]
 
 var americanTrilogyTags = Tags( profiles: [.bittersweet, .spiritForward],
                                 styles: [.oldFashioned, .stirred])

@@ -18,10 +18,10 @@ var nobodysPerfect = Cocktail(cocktailName: "Nobody's Perfect",
                               tags: nobodysPerfectTags,
                               collection: .williamsAndGraham)
 
-var nobodysPerfectSpec  = [CocktailIngredient(.amari(.braulio), value: 0.5),
-                           CocktailIngredient(.fortifiedWines(.lustauBlancVermouth), value: 0.75),
-                           CocktailIngredient(.fortifiedWines(.lustauRojoVermouth), value: 0.75),
-                           CocktailIngredient(.whiskies(.rittenhouseRye), value: 1)]
+var nobodysPerfectSpec  = [OldCocktailIngredient(.amari(.braulio), value: 0.5),
+                           OldCocktailIngredient(.fortifiedWines(.lustauBlancVermouth), value: 0.75),
+                           OldCocktailIngredient(.fortifiedWines(.lustauRojoVermouth), value: 0.75),
+                           OldCocktailIngredient(.whiskies(.rittenhouseRye), value: 1)]
 
 var nobodysPerfectTags = Tags(profiles: [.herbal, .punchy, .spiritForward, .complex],
                               styles: [.stirred, .manhattan])

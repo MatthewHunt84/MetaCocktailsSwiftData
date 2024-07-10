@@ -16,11 +16,11 @@ var corporateJargon = Cocktail(cocktailName: "Corporate Jargon",
                                tags: corporateJargonTags,
                                collection: .williamsAndGraham)
 
-let corporateJargonSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.bolivarBitters), value: 3, unit: .dashes),
-                                                 CocktailIngredient(.syrups(.richCinnamonAndVanilla), value: 1, unit: .barSpoon),
-                                                 CocktailIngredient(.fortifiedWines(.lustauRojoVermouth), value: 0.75),
-                                                 CocktailIngredient(.brandies(.domCafoBrandy), value: 0.5),
-                                                 CocktailIngredient(.whiskies(.eagleRare10), value: 1.5)]
+let corporateJargonSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.bitters(.bolivarBitters), value: 3, unit: .dashes),
+                                                 OldCocktailIngredient(.syrups(.richCinnamonAndVanill), value: 1, unit: .barSpoon),
+                                                 OldCocktailIngredient(.fortifiedWines(.lustauRojoVermouth), value: 0.75),
+                                                 OldCocktailIngredient(.brandies(.domCafoBrandy), value: 0.5),
+                                                 OldCocktailIngredient(.whiskies(.eagleRare10), value: 1.5)]
 
 
 let corporateJargonTags = Tags(profiles: [.rich],

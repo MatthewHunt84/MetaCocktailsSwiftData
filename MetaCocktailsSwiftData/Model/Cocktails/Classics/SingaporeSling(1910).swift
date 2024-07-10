@@ -18,12 +18,12 @@ var singaporeSling = Cocktail(cocktailName: "Singapore Sling",
                               collection: .originals,
                               titleCocktail: true)
 
-var singaporeSlingSpec  = [CocktailIngredient(.soda(.sparklingWater), value: 2),
-                          CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
-                          CocktailIngredient(.juices(.lime), value: 0.5),
-                          CocktailIngredient(.liqueurs(.cherryHeering), value: 0.5),
-                          CocktailIngredient(.liqueurs(.benedictine), value: 0.5),
-                          CocktailIngredient(.gins(.ginAny), value: 1.5)]
+var singaporeSlingSpec  = [OldCocktailIngredient(.soda(.sparklingWater), value: 2),
+                          OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
+                          OldCocktailIngredient(.juices(.lime), value: 0.5),
+                          OldCocktailIngredient(.liqueurs(.cherryHeering), value: 0.5),
+                          OldCocktailIngredient(.liqueurs(.benedictine), value: 0.5),
+                          OldCocktailIngredient(.gins(.ginAny), value: 1.5)]
 
 var singaporeSlingTags = Tags(profiles: [.herbal, .refreshing, .light, .dry],
                              styles: [.sour, .built])

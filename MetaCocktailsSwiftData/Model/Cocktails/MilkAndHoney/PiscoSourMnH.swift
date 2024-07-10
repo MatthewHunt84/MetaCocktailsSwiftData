@@ -18,11 +18,11 @@ var piscoSourMnH = Cocktail(cocktailName: "Pisco Sour(Milk & Honey Version)",
                             variation: .piscoSour,
                             collection: .milkAndHoney)
 
-var piscoSourSpecMnH  = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                         CocktailIngredient(.syrups(.simple), value: 0.75),
-                         CocktailIngredient(.otherNonAlc(.eggWhites), value: 1, unit: .whole),
-                         CocktailIngredient(.brandies(.pisco), value: 2),
-                         CocktailIngredient(.bitters(.angosturaBitters), value: 3, unit: .dashes)]
+var piscoSourSpecMnH  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                         OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                         OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 1, unit: .whole),
+                         OldCocktailIngredient(.brandies(.pisco), value: 2),
+                         OldCocktailIngredient(.bitters(.angosturaBitters), value: 3, unit: .dashes)]
 
 var piscoSourTagsMnH = Tags(profiles: [.light, .silky, .fruity, .refreshing],
                             styles: [.sour, .shaken])

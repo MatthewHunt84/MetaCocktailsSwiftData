@@ -18,11 +18,11 @@ var somethingBitter  =  Cocktail(cocktailName: "Something Bitter This Way Comes"
                                  tags: somethingBitterTags,
                                  collection: .williamsAndGraham)
 
-var somethingBitterSpec = [CocktailIngredient(.bitters(.chocolateMole), value: 8, unit: .drops),
-                           CocktailIngredient(.liqueurs(.clementCreole), value: 0.25),
-                           CocktailIngredient(.amari(.fernetVallet), value: 0.25),
-                           CocktailIngredient(.amari(.campari), value: 0.5),
-                           CocktailIngredient(.brandies(.pFAmber), value: 1.5)]
+var somethingBitterSpec = [OldCocktailIngredient(.bitters(.chocolateMole), value: 8, unit: .drops),
+                           OldCocktailIngredient(.liqueurs(.clementCreole), value: 0.25),
+                           OldCocktailIngredient(.amari(.fernetVallet), value: 0.25),
+                           OldCocktailIngredient(.amari(.campari), value: 0.5),
+                           OldCocktailIngredient(.brandies(.pFAmber), value: 1.5)]
 
 var somethingBitterTags = Tags(profiles: [.rich, .bittersweet, .punchy, .spiritForward],
                                styles: [.negroni, .stirred])

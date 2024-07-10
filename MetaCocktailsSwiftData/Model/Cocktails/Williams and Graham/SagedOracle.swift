@@ -18,12 +18,12 @@ var sagedOracle = Cocktail(cocktailName: "Saged Oracle",
                            tags: sagedOracleTags,
                            collection: .williamsAndGraham)
 
-let sagedOracleSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.sage), value: 5, unit: .gentlyMuddled),
-                                             CocktailIngredient(.syrups(.simple), value: 0.75),
-                                             CocktailIngredient(.juices(.lemon), value: 0.5),
-                                             CocktailIngredient(.juices(.grapefruit), value: 0.75),
-                                             CocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.25),
-                                             CocktailIngredient(.gins(.juniperJones), value: 2)]
+let sagedOracleSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.sage), value: 5, unit: .gentlyMuddled),
+                                             OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                                             OldCocktailIngredient(.juices(.lemon), value: 0.5),
+                                             OldCocktailIngredient(.juices(.grapefruit), value: 0.75),
+                                             OldCocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.25),
+                                             OldCocktailIngredient(.gins(.juniperJones), value: 2)]
 
 
 let sagedOracleTags = Tags(profiles: [.herbal, .refreshing, .floral, .light],

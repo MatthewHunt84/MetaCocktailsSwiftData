@@ -14,10 +14,10 @@ var cornNOil  = Cocktail(cocktailName: "Corn 'n' Oil",
                         spec: cornNOilSpec,
                         tags: cornNOilTags)
 
-var cornNOilSpec  = [CocktailIngredient(.bitters(.angosturaBitters), value: 3, unit: .dashes),
-                     CocktailIngredient(.juices(.lime), value: 0.5),
-                     CocktailIngredient(.liqueurs(.falernum), value: 0.5),
-                    CocktailIngredient(.rums(.rumBlackStrap), value: 2)]
+var cornNOilSpec  = [OldCocktailIngredient(.bitters(.angosturaBitters), value: 3, unit: .dashes),
+                     OldCocktailIngredient(.juices(.lime), value: 0.5),
+                     OldCocktailIngredient(.liqueurs(.falernum), value: 0.5),
+                    OldCocktailIngredient(.rums(.rumBlackStrap), value: 2)]
 
 
 var cornNOilTags   = Tags(profiles: [.citrusy, .rich],

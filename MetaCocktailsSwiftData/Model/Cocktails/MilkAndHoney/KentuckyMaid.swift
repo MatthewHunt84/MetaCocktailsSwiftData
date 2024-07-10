@@ -22,11 +22,11 @@ var kentuckyMaid = Cocktail(cocktailName: "Kentucky Maid",
                             collection: .milkAndHoney,
                             titleCocktail: true)
 
-let kentuckyMaidSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
-                                              CocktailIngredient(.fruit(.cucumberSlices), value: 2, unit: .gentlyMuddled),
-                                              CocktailIngredient(.juices(.lime), value: 1),
-                                              CocktailIngredient(.syrups(.simple), value: 0.75),
-                                              CocktailIngredient(.whiskies(.elijahCraigSmallBatch), value: 2)]
+let kentuckyMaidSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
+                                              OldCocktailIngredient(.fruit(.cucumberSlices), value: 2, unit: .gentlyMuddled),
+                                              OldCocktailIngredient(.juices(.lime), value: 1),
+                                              OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                                              OldCocktailIngredient(.whiskies(.elijahCraigSmallBatch), value: 2)]
 
 let kentuckyMaidTags = Tags(profiles: [.herbal, .refreshing, .light, .restorative],
                             styles: [.sour, .shaken])

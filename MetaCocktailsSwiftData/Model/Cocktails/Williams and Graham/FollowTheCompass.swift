@@ -17,12 +17,12 @@ var followTheCompass = Cocktail(cocktailName: "Follow The Compass",
                                 tags: followTheCompassTags,
                                 collection: .williamsAndGraham)
 
-let followTheCompassSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
-                                                  CocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.25),
-                                                  CocktailIngredient(.fortifiedWines(.amontillado), value: 0.25),
-                                                  CocktailIngredient(.amari(.amaroMontenegro), value: 0.25),
-                                                  CocktailIngredient(.fortifiedWines(.cocchiAmericano), value: 0.5),
-                                                  CocktailIngredient(.whiskies(.compassBoxOakCross), value: 1.25)]
+let followTheCompassSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
+                                                  OldCocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.25),
+                                                  OldCocktailIngredient(.fortifiedWines(.amontillado), value: 0.25),
+                                                  OldCocktailIngredient(.amari(.amaroMontenegro), value: 0.25),
+                                                  OldCocktailIngredient(.fortifiedWines(.cocchiAmericano), value: 0.5),
+                                                  OldCocktailIngredient(.whiskies(.compassBoxOakCross), value: 1.25)]
 
 
 let followTheCompassTags = Tags(profiles: [.floral, .spiritForward, .herbal],

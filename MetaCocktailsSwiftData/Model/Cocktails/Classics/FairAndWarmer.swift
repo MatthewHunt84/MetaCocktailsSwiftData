@@ -17,9 +17,9 @@ var fairAndWarmer = Cocktail(cocktailName: "Fair & Warmer",
                              collection: .originals,
                              titleCocktail: true)
 
-var fairAndWarmerSpec     =  [CocktailIngredient(.liqueurs(.orangeCuracao), value: 2, unit: .dashes),
-                              CocktailIngredient(.fortifiedWines(.dolinRouge), value: 1),
-                              CocktailIngredient(.rums(.rumWhite), value: 2)]
+var fairAndWarmerSpec     =  [OldCocktailIngredient(.liqueurs(.orangeCuracao), value: 2, unit: .dashes),
+                              OldCocktailIngredient(.fortifiedWines(.dolinRouge), value: 1),
+                              OldCocktailIngredient(.rums(.rumWhite), value: 2)]
 
 var fairAndWarmerTags     = Tags(profiles: [.spiritForward, .fruity],
                                  styles: [.martini, .stirred])

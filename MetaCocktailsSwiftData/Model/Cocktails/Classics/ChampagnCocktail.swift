@@ -15,8 +15,8 @@ var champagneCocktail = Cocktail(cocktailName: "Champagne Cocktail",
                          spec: champagneCocktailSpec,
                          tags: champagneCocktailTags)
 
-var champagneCocktailSpec  = [CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
-                      CocktailIngredient(.wines(.champagne), value: 5)]
+var champagneCocktailSpec  = [OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
+                      OldCocktailIngredient(.wines(.champagne), value: 5)]
 
 var champagneCocktailTags = Tags(profiles: [.dry, .effervescent, .bitter],
                          styles: [.built])

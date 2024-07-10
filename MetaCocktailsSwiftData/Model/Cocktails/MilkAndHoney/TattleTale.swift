@@ -17,10 +17,10 @@ var tattletale = Cocktail(cocktailName: "Tattletale",
                           tags: tattletaleTags,
                           collection: .milkAndHoney)
 
-var tattletaleSpec     =  [CocktailIngredient(.bitters(.angosturaBitters), value: 3, unit: .dashes),
-                           CocktailIngredient(.syrups(.honey), value: 1, unit: .barSpoon),
-                           CocktailIngredient(.whiskies(.scotchHighland), value: 1.25),
-                           CocktailIngredient(.whiskies(.scotchIsla), value: 0.75)]
+var tattletaleSpec     =  [OldCocktailIngredient(.bitters(.angosturaBitters), value: 3, unit: .dashes),
+                           OldCocktailIngredient(.syrups(.honey), value: 1, unit: .barSpoon),
+                           OldCocktailIngredient(.whiskies(.scotchHighland), value: 1.25),
+                           OldCocktailIngredient(.whiskies(.scotchIsla), value: 0.75)]
 
 var tattletaleTags     = Tags(profiles: [.spiritForward, .bittersweet, .smokey],
                               styles: [.oldFashioned, .stirred])

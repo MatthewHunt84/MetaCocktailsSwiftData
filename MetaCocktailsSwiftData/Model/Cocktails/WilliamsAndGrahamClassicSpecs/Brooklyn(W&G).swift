@@ -16,8 +16,8 @@ var brooklynWnG = Cocktail(cocktailName: "Brooklyn Cocktail (W&G Version)",
                            variation: .brooklyn,
                            collection: .williamsAndGraham)
 
-var brooklynWnGSpec     =  [CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.25),
-                            CocktailIngredient(.amari(.chinaChina), value: 0.25),
-                            CocktailIngredient(.fortifiedWines(.dolinDry), value: 1),
-                            CocktailIngredient(.whiskies(.jimBeamRye), value: 2)]
+var brooklynWnGSpec     =  [OldCocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.25),
+                            OldCocktailIngredient(.amari(.chinaChina), value: 0.25),
+                            OldCocktailIngredient(.fortifiedWines(.dolinDry), value: 1),
+                            OldCocktailIngredient(.whiskies(.jimBeamRye), value: 2)]
 

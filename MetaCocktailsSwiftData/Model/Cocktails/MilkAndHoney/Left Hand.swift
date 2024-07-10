@@ -17,10 +17,10 @@ var leftHand = Cocktail(cocktailName: "Left Hand",
                           tags: leftHandTags,
                           collection: .milkAndHoney)
 
-var leftHandSpec     =  [CocktailIngredient(.bitters(.bittermansChocolate), value: 3, unit: .dashes),
-                         CocktailIngredient(.amari(.campari), value: 0.75, unit: .barSpoon),
-                         CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 0.75),
-                         CocktailIngredient(.whiskies(.bourbonAny), value: 1.5)]
+var leftHandSpec     =  [OldCocktailIngredient(.bitters(.bittermansChocolate), value: 3, unit: .dashes),
+                         OldCocktailIngredient(.amari(.campari), value: 0.75, unit: .barSpoon),
+                         OldCocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 0.75),
+                         OldCocktailIngredient(.whiskies(.bourbonAny), value: 1.5)]
 
 var leftHandTags     = Tags(profiles: [.spiritForward, .bittersweet, .complex],
                               styles: [.negroni, .stirred])

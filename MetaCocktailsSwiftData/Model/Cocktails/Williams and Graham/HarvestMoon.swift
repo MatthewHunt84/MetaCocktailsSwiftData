@@ -17,14 +17,14 @@ var harvestMoon = Cocktail(cocktailName: "Harvest Moon",
                            tags: harvestMoonTags,
                            collection: .williamsAndGraham)
 
-let harvestMoonSpec = [CocktailIngredient(.juices(.lemon), value: 0.5),
-                       CocktailIngredient(.syrups(.honeySyrup), value: 0.5, prep: PrepBible.honeySyrup),
-                       CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
-                       CocktailIngredient(.bitters(.appleBitters), value: 1, unit: .dashes),
-                       CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.5),
-                       CocktailIngredient(.liqueurs(.lopoldsApple), value: 0.75),
-                       CocktailIngredient(.amari(.becherovka), value: 0.75),
-                       CocktailIngredient(.vodkas(.woodyCreekVodka), value: 1.5)]
+let harvestMoonSpec = [OldCocktailIngredient(.juices(.lemon), value: 0.5),
+                       OldCocktailIngredient(.syrups(.honeySyrup), value: 0.5, prep: PrepBible.honeySyrup),
+                       OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
+                       OldCocktailIngredient(.bitters(.appleBitters), value: 1, unit: .dashes),
+                       OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 0.5),
+                       OldCocktailIngredient(.liqueurs(.lopoldsApple), value: 0.75),
+                       OldCocktailIngredient(.amari(.becherovka), value: 0.75),
+                       OldCocktailIngredient(.vodkas(.woodyCreekVodka), value: 1.5)]
 
 
 let harvestMoonTags = Tags(profiles: [.fruity, .refreshing, .light],

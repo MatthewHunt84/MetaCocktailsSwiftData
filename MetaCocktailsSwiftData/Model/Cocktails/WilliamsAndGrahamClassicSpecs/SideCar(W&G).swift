@@ -16,9 +16,9 @@ var sidecarWnG = Cocktail(cocktailName: "Sidecar (W&G Version)",
                           variation: .sidecar,
                           collection: .williamsAndGraham)
 
-var sidecarSpecWnG  = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                       CocktailIngredient(.liqueurs(.dryCuracao), value: 0.75),
-                       CocktailIngredient(.brandies(.pFAmber), value: 2)]
+var sidecarSpecWnG  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                       OldCocktailIngredient(.liqueurs(.dryCuracao), value: 0.75),
+                       OldCocktailIngredient(.brandies(.pFAmber), value: 2)]
 
 var sidecarTagsWnG = Tags(profiles: [.citrusy, .fruity, .tart, .light],
                           styles: [.sour, .shaken])

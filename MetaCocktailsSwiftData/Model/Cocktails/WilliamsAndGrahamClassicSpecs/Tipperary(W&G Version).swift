@@ -16,9 +16,9 @@ var tipperaryWnG = Cocktail(cocktailName: "Tipperary (W&G Version)",
                             variation: .tipperary,
                             collection: .williamsAndGraham)
 
-var tipperarySpecWnG     =  [CocktailIngredient(.fortifiedWines(.puntEMes), value: 0.5),
-                             CocktailIngredient(.liqueurs(.greenChartreuse), value: 0.5),
-                             CocktailIngredient(.whiskies(.bushmills12), value: 2)]
+var tipperarySpecWnG     =  [OldCocktailIngredient(.fortifiedWines(.puntEMes), value: 0.5),
+                             OldCocktailIngredient(.liqueurs(.greenChartreuse), value: 0.5),
+                             OldCocktailIngredient(.whiskies(.bushmills12), value: 2)]
 
 var tipperaryTagsWnG     = Tags(profiles: [.spiritForward, .bittersweet, .herbal],
                                 styles: [.manhattan, .stirred])

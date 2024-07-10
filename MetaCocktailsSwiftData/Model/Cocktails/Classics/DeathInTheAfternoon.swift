@@ -14,8 +14,8 @@ var deathInTheAfternoon  = Cocktail(cocktailName: "Death in the Afternoon",
                                     spec: deathInTheAfternoonSpec,
                                     tags: deathInTheAfternoonTags)
 
-var deathInTheAfternoonSpec  = [CocktailIngredient(.wines(.champagne), value: 4),
-                                CocktailIngredient(.otherAlcohol(.absinthe), value: 1.5)]
+var deathInTheAfternoonSpec  = [OldCocktailIngredient(.wines(.champagne), value: 4),
+                                OldCocktailIngredient(.otherAlcohol(.absinthe), value: 1.5)]
 
 
 

@@ -18,11 +18,11 @@ var hotelNacionalWnG = Cocktail(cocktailName: "Hotel Nacional (W&G Version)",
                                 variation: .hotelNacional,
                                 collection: .williamsAndGraham)
 
-var hotelNacionalSpecWnG = [CocktailIngredient(.syrups(.simple), value: 0.25),
-                            CocktailIngredient(.juices(.lime), value: 0.5),
-                            CocktailIngredient(.juices(.pineappleJuice), value: 1),
-                            CocktailIngredient(.liqueurs(.giffardAbricot), value: 0.25),
-                            CocktailIngredient(.rums(.plantation3Star), value: 2) ]
+var hotelNacionalSpecWnG = [OldCocktailIngredient(.syrups(.simple), value: 0.25),
+                            OldCocktailIngredient(.juices(.lime), value: 0.5),
+                            OldCocktailIngredient(.juices(.pineappleJuice), value: 1),
+                            OldCocktailIngredient(.liqueurs(.giffardAbricot), value: 0.25),
+                            OldCocktailIngredient(.rums(.plantation3Star), value: 2) ]
 
 var hotelNacionalTagsWnG = Tags(profiles: [.fruity, .refreshing, .citrusy, .light, .tropical],
                                 styles: [.shaken, .sour])

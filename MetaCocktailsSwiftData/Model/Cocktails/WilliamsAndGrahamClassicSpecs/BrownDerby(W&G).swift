@@ -17,9 +17,9 @@ let brownDerbyWnG = Cocktail(cocktailName: "Brown Derby (W&G Version)",
                              variation: .brownDerby,
                              collection: .williamsAndGraham)
 
-var brownDerbyWnGSpec: [CocktailIngredient] = [CocktailIngredient(.whiskies(.fourRosesYellowLabel), value: 2),
-                                               CocktailIngredient(.juices(.grapefruit), value: 0.75),
-                                               CocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup)]
+var brownDerbyWnGSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.whiskies(.fourRosesYellowLabel), value: 2),
+                                               OldCocktailIngredient(.juices(.grapefruit), value: 0.75),
+                                               OldCocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup)]
 
 
 

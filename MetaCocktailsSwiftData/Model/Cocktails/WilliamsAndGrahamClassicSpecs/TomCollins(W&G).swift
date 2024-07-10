@@ -18,10 +18,10 @@ var tomCollinsWnG  = Cocktail(cocktailName: "Tom Collins (W&G Version)",
                               variation: .tomCollins,
                               collection: .williamsAndGraham)
 
-var tomCollinsWnGSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                          CocktailIngredient(.syrups(.simple), value: 0.75),
-                          CocktailIngredient(.gins(.fordsGin), value: 2),
-                          CocktailIngredient(.soda(.sodaWater) , value: 2)]
+var tomCollinsWnGSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                          OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                          OldCocktailIngredient(.gins(.fordsGin), value: 2),
+                          OldCocktailIngredient(.soda(.sodaWater) , value: 2)]
 
 var tomCollinsWnGBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the soda, into a tin and shake with ice"),
                                                Instruction(step: 2, method: "strain over cracked ice and top with soda"),

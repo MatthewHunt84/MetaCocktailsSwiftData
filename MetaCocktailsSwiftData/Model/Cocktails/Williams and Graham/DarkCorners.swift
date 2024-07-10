@@ -18,12 +18,12 @@ var darkCorners  =  Cocktail(cocktailName: "Dark Corners",
                              tags: darkCornersTags,
                              collection: .williamsAndGraham)
 
-var darkCornersSpec = [CocktailIngredient(.seasoning(.saline), value: 3, unit: .drops),
-                       CocktailIngredient(.amari(.fernetBranca), value: 1, unit: .barSpoon),
-                       CocktailIngredient(.liqueurs(.licor43), value: 0.25),
-                       CocktailIngredient(.amari(.campari), value: 0.5),
-                       CocktailIngredient(.amari(.cynar), value: 0.5),
-                       CocktailIngredient(.whiskies(.hirschBourbon), value: 1.5)]
+var darkCornersSpec = [OldCocktailIngredient(.seasoning(.saline), value: 3, unit: .drops),
+                       OldCocktailIngredient(.amari(.fernetBranca), value: 1, unit: .barSpoon),
+                       OldCocktailIngredient(.liqueurs(.licor43), value: 0.25),
+                       OldCocktailIngredient(.amari(.campari), value: 0.5),
+                       OldCocktailIngredient(.amari(.cynar), value: 0.5),
+                       OldCocktailIngredient(.whiskies(.hirschBourbon), value: 1.5)]
 
 var darkCornersTags = Tags(profiles: [.punchy, .bittersweet, .complex, .spiritForward],
                            styles: [.negroni, .stirred])

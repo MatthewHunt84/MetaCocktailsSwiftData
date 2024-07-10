@@ -17,10 +17,10 @@ var theRuralJuror  =  Cocktail(cocktailName: "The Rural Juror",
                                tags: theRuralJurorTags,
                                collection: .williamsAndGraham)
 
-var theRuralJurorSpec = [CocktailIngredient(.liqueurs(.velvetFalernum), value: 0.25),
-                         CocktailIngredient(.fortifiedWines(.cocchiDeTorino), value: 0.5),
-                         CocktailIngredient(.amari(.angosturaAmaro), value: 0.5),
-                         CocktailIngredient(.brandies(.armagnac), value: 2)]
+var theRuralJurorSpec = [OldCocktailIngredient(.liqueurs(.velvetFalernum), value: 0.25),
+                         OldCocktailIngredient(.fortifiedWines(.cocchiDeTorino), value: 0.5),
+                         OldCocktailIngredient(.amari(.angosturaAmaro), value: 0.5),
+                         OldCocktailIngredient(.brandies(.armagnac), value: 2)]
 
 var theRuralJurorTags = Tags(profiles: [.rich, .bittersweet, .punchy, .spiritForward],
                              styles: [.martini, .stirred])

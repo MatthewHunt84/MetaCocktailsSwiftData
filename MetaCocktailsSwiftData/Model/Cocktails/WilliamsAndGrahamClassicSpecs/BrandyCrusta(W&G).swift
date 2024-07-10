@@ -15,9 +15,9 @@ var brandyCrustaWnG = Cocktail(cocktailName: "Brandy Crusta (W&G Version)",
                                variation: .brandyCrusta,
                                collection: .williamsAndGraham)
 
-var brandyCrustaSpecWnG    = [CocktailIngredient(.juices(.lemon), value: 1, unit: .barSpoon),
-                              CocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 1, unit: .barSpoon),
-                              CocktailIngredient(.syrups(.demSyrupOneToOne), value: 1, unit: .barSpoon),
-                              CocktailIngredient(.bitters(.angosturaBitters), value:2, unit: .dashes),
-                              CocktailIngredient(.brandies(.pF1840), value:2)]
+var brandyCrustaSpecWnG    = [OldCocktailIngredient(.juices(.lemon), value: 1, unit: .barSpoon),
+                              OldCocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 1, unit: .barSpoon),
+                              OldCocktailIngredient(.syrups(.demSyrupOneToOne), value: 1, unit: .barSpoon),
+                              OldCocktailIngredient(.bitters(.angosturaBitters), value:2, unit: .dashes),
+                              OldCocktailIngredient(.brandies(.pF1840), value:2)]
 

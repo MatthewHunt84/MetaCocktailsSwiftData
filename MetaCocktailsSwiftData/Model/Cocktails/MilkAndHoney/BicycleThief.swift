@@ -20,12 +20,12 @@ var bicycleThief  = Cocktail(cocktailName: "Bicycle Thief",
                              variation: nil,
                              collection: .milkAndHoney)
 
-var bicycleThiefSpec  = [CocktailIngredient(.juices(.lemon), value: 0.5),
-                         CocktailIngredient(.soda(.sodaWater), value: 1.5),
-                         CocktailIngredient(.syrups(.simple), value: 0.5),
-                         CocktailIngredient(.juices(.grapefruit), value: 1.5),
-                         CocktailIngredient(.amari(.campari), value: 1),
-                         CocktailIngredient(.gins(.ginAny) , value: 1)]
+var bicycleThiefSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.5),
+                         OldCocktailIngredient(.soda(.sodaWater), value: 1.5),
+                         OldCocktailIngredient(.syrups(.simple), value: 0.5),
+                         OldCocktailIngredient(.juices(.grapefruit), value: 1.5),
+                         OldCocktailIngredient(.amari(.campari), value: 1),
+                         OldCocktailIngredient(.gins(.ginAny) , value: 1)]
 
 var bicycleThiefBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the soda, into a tin and shake with ice"),
                                               Instruction(step: 2, method: "Strain into a collins glass over ice and top with soda"),

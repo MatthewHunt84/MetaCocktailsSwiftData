@@ -18,10 +18,10 @@ var americanGothic = Cocktail(cocktailName: "American Gothic",
                               tags: americanGothicTags,
                               collection: .williamsAndGraham)
 
-let americanGothicSpec: [CocktailIngredient] = [CocktailIngredient(.otherAlcohol(.absinthe), value: 5 , unit: .sprays),
-                                                CocktailIngredient(.amari(.leopold3Pins), value: 0.75),
-                                                CocktailIngredient(.liqueurs(.leopoldCherry), value: 0.5),
-                                                CocktailIngredient(.whiskies(.eagleRare10), value: 2)]
+let americanGothicSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.otherAlcohol(.absinthe), value: 5 , unit: .sprays),
+                                                OldCocktailIngredient(.amari(.leopold3Pins), value: 0.75),
+                                                OldCocktailIngredient(.liqueurs(.leopoldCherry), value: 0.5),
+                                                OldCocktailIngredient(.whiskies(.eagleRare10), value: 2)]
 
 
 let americanGothicTags = Tags(profiles: [.rich, .punchy, .spiritForward],

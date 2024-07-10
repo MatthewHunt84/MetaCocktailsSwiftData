@@ -47,7 +47,21 @@ import Observation
     func findPrepItems() -> [Ingredient] {
         var prepItems: [Ingredient] = []
         for ingredient in cocktail.spec {
-            if ingredient.name == Syrup.honeySyrup.rawValue || ingredient.name == Syrup.agaveSyrup.rawValue || ingredient.name == Syrup.cinnamonSyrup.rawValue || ingredient.name == Syrup.cucumberSyrup.rawValue || ingredient.name == Syrup.gingerSyrup.rawValue || ingredient.name == Syrup.grapefruitShrub.rawValue || ingredient.name == Syrup.grenadine.rawValue || ingredient.name == Syrup.morenthalersGingerSyrup.rawValue || ingredient.name == Syrup.orgeat.rawValue || ingredient.name == Syrup.passionfruitSyrup.rawValue || ingredient.name == Syrup.raspberrySyrup.rawValue || ingredient.name == Syrup.richDem.rawValue || ingredient.name == Syrup.richSimple.rawValue || ingredient.name == Syrup.vanilla.rawValue || ingredient.name == Vodka.peanutButterVodka.rawValue {
+            if ingredient.ingredientBase.name == Syrup.honeySyrup.rawValue ||
+               ingredient.ingredientBase.name == Syrup.agaveSyrup.rawValue ||
+               ingredient.ingredientBase.name == Syrup.cinnamonSyrup.rawValue ||
+               ingredient.ingredientBase.name == Syrup.cucumberSyrup.rawValue ||
+               ingredient.ingredientBase.name == Syrup.gingerSyrup.rawValue ||
+               ingredient.ingredientBase.name == Syrup.grapefruitShrub.rawValue ||
+               ingredient.ingredientBase.name == Syrup.grenadine.rawValue ||
+               ingredient.ingredientBase.name == Syrup.morenthalersGingerSyrup.rawValue ||
+               ingredient.ingredientBase.name == Syrup.orgeat.rawValue ||
+               ingredient.ingredientBase.name == Syrup.passionfruitSyrup.rawValue ||
+               ingredient.ingredientBase.name == Syrup.raspberrySyrup.rawValue ||
+               ingredient.ingredientBase.name == Syrup.richDem.rawValue ||
+               ingredient.ingredientBase.name == Syrup.richSimple.rawValue ||
+               ingredient.ingredientBase.name == Syrup.vanilla.rawValue ||
+               ingredient.ingredientBase.name == Vodka.peanutButterVodka.rawValue {
                 prepItems.append(ingredient)
             }
     }

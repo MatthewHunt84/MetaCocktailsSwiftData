@@ -20,11 +20,11 @@ var blackberrySageSmash = Cocktail(cocktailName: "Blackberry Sage Smash",
                                    tags: blackberrySageSmashTags,
                                    collection: .williamsAndGraham)
 
-let blackberrySageSmashSpec: [CocktailIngredient] = [CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 2),
-                                                     CocktailIngredient(.juices(.lemon), value: 0.75),
-                                                     CocktailIngredient(.syrups(.simple), value: 0.75),
-                                                     CocktailIngredient(.fruit(.blackBerry), value: 4, unit: .muddled),
-                                                     CocktailIngredient(.herbs(.sage), value: 4, unit: .gentlyMuddled)]
+let blackberrySageSmashSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 2),
+                                                     OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                                                     OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                                                     OldCocktailIngredient(.fruit(.blackBerry), value: 4, unit: .muddled),
+                                                     OldCocktailIngredient(.herbs(.sage), value: 4, unit: .gentlyMuddled)]
 
 let blackberrySageSmashTags = Tags(flavors: [.lemon],
                                    profiles: [.fruity, .light, .herbal],

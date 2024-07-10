@@ -19,11 +19,11 @@ var sazerac = Cocktail(cocktailName: "Sazerac",
                        collection: .originals,
                        titleCocktail: true)
 
-var sazeracSpec  = [CocktailIngredient(.syrups(.richDem), value: 2, unit: .teaspoon, prep: PrepBible.richDem),
-                    CocktailIngredient(.brandies(.cognacVSOP), value: 2),
-                    CocktailIngredient(.bitters(.peychauds), value: 4, unit: .dashes),
-                    CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
-                    CocktailIngredient(.otherAlcohol(.absinthe), value: 5, unit: .sprays),]
+var sazeracSpec  = [OldCocktailIngredient(.syrups(.richDem), value: 2, unit: .teaspoon, prep: PrepBible.richDem),
+                    OldCocktailIngredient(.brandies(.cognacVSOP), value: 2),
+                    OldCocktailIngredient(.bitters(.peychauds), value: 4, unit: .dashes),
+                    OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
+                    OldCocktailIngredient(.otherAlcohol(.absinthe), value: 5, unit: .sprays),]
 
 var sazeracTags = Tags(profiles: [.spiritForward, .punchy],
                        styles: [.oldFashioned, .stirred])

@@ -21,11 +21,11 @@ var theStark = Cocktail(cocktailName: "The Stark",
                         collection: .milkAndHoney,
                         titleCocktail: false)
 
-var theStarkSpec = [CocktailIngredient(.bitters(.angosturaBitters), value: 4, unit: .dashes),
-                    CocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.75),
-                    CocktailIngredient(.juices(.lemon), value: 0.5, unit: .fluidOunces),
-                    CocktailIngredient(.syrups(.honeySyrup), value: 0.5, prep: PrepBible.honeySyrup),
-                    CocktailIngredient(.whiskies(.bourbonAny), value: 1.5)]
+var theStarkSpec = [OldCocktailIngredient(.bitters(.angosturaBitters), value: 4, unit: .dashes),
+                    OldCocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.75),
+                    OldCocktailIngredient(.juices(.lemon), value: 0.5, unit: .fluidOunces),
+                    OldCocktailIngredient(.syrups(.honeySyrup), value: 0.5, prep: PrepBible.honeySyrup),
+                    OldCocktailIngredient(.whiskies(.bourbonAny), value: 1.5)]
 
 var theStarkTags = Tags(profiles: [.citrusy, .refreshing, .herbal, .complex],
                         styles: [.sour, .shaken])

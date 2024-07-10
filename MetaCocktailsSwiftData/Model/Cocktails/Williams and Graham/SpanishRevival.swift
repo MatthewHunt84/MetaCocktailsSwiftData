@@ -18,11 +18,11 @@ var spanishRevival = Cocktail(cocktailName: "Spanish Revival",
                               tags: spanishRevivalTags,
                               collection: .williamsAndGraham)
 
-var spanishRevivalSpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                           CocktailIngredient(.agaves(.tequilaOchoBlanco), value: 0.75),
-                           CocktailIngredient(.liqueurs(.cointreau), value: 0.75),
-                           CocktailIngredient(.liqueurs(.giffardPamplemousse), value: 0.75),
-                           CocktailIngredient(.otherAlcohol(.absinthe), value: 5, unit: .sprays)]
+var spanishRevivalSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                           OldCocktailIngredient(.agaves(.tequilaOchoBlanco), value: 0.75),
+                           OldCocktailIngredient(.liqueurs(.cointreau), value: 0.75),
+                           OldCocktailIngredient(.liqueurs(.giffardPamplemousse), value: 0.75),
+                           OldCocktailIngredient(.otherAlcohol(.absinthe), value: 5, unit: .sprays)]
 
 var spanishRevivalTags = Tags(profiles: [.light, .fruity, .refreshing],
                               styles: [.sour, .shaken])

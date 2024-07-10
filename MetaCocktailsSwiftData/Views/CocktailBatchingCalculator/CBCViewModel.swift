@@ -80,7 +80,7 @@ final class CBCViewModel: ObservableObject {
                 }
                 
                 totalVolume += ingredientVolume
-                quantifiableIngredients.append(BottleBatchedCellData(ingredientName: ingredient.ingredient.name,
+                quantifiableIngredients.append(BottleBatchedCellData(ingredientName: ingredient.ingredient.ingredientBase.name,
                                                                whole1LBottles: (ingredientVolume / 1000).rounded(.down),
                                                                remaining1LMls: Int(ingredientVolume.truncatingRemainder(dividingBy: 1000)),
                                                                whole750mlBottles: (ingredientVolume / 750).rounded(.down),
@@ -142,7 +142,7 @@ final class CBCViewModel: ObservableObject {
     func convertLoadedCocktail(for cocktail: Cocktail) {
         var newLoadedCocktailData = CBCLoadedCocktailData(cocktailName: cocktail.cocktailName, ingredients: [])
         for spec in cocktail.spec {
-            if spec.category != .herbs && spec.category != .fruit && spec.unit != .whole {
+            if spec.ingredientBase.category != .herbs && spec.ingredientBase.category != .fruit && spec.unit != .whole {
                 newLoadedCocktailData.ingredients.append(CBCLoadedIngredient(ingredient: spec, isIncluded: true))
             }
         }

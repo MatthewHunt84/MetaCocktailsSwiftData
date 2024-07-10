@@ -17,10 +17,10 @@ var rememberTheMaine = Cocktail(cocktailName: "Remember The Maine",
                                 collection: .originals,
                                 titleCocktail: true)
 
-var rememberTheMaineOGSpec     =  [CocktailIngredient(.otherAlcohol(.absinthe), value: 0.5, unit: .teaspoon),
-                                   CocktailIngredient(.liqueurs(.cherryHeering), value: 2, unit: .teaspoon),
-                                   CocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 0.75),
-                                   CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 2)]
+var rememberTheMaineOGSpec     =  [OldCocktailIngredient(.otherAlcohol(.absinthe), value: 0.5, unit: .teaspoon),
+                                   OldCocktailIngredient(.liqueurs(.cherryHeering), value: 2, unit: .teaspoon),
+                                   OldCocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 0.75),
+                                   OldCocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 2)]
 
 var rememberTheMaineOGTags     = Tags(profiles: [.spiritForward, .bittersweet, .complex],
                                       styles: [.manhattan, .stirred])

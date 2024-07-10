@@ -16,12 +16,12 @@ var northernDuchess = Cocktail(cocktailName: "Northern Duchess",
                                tags: northernDuchessTags,
                                collection: .williamsAndGraham)
 
-var northernDuchessSpec  = [CocktailIngredient(.syrups(.demSyrupOneToOne), value: 1, unit: .barSpoon),
-                            CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
-                            CocktailIngredient(.liqueurs(.strega), value: 0.25),
-                            CocktailIngredient(.otherAlcohol(.linieAquavit), value: 0.5),
-                            CocktailIngredient(.otherAlcohol(.trakal), value: 0.25),
-                            CocktailIngredient(.gins(.agedBolsGenever), value: 1.5)]
+var northernDuchessSpec  = [OldCocktailIngredient(.syrups(.demSyrupOneToOne), value: 1, unit: .barSpoon),
+                            OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
+                            OldCocktailIngredient(.liqueurs(.strega), value: 0.25),
+                            OldCocktailIngredient(.otherAlcohol(.linieAquavit), value: 0.5),
+                            OldCocktailIngredient(.otherAlcohol(.trakal), value: 0.25),
+                            OldCocktailIngredient(.gins(.agedBolsGenever), value: 1.5)]
 
 var northernDuchessTags = Tags(profiles: [.complex, .punchy],
                                styles: [.oldFashioned, .stirred])

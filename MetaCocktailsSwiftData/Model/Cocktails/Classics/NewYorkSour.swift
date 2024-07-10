@@ -20,11 +20,11 @@ var NewYorkSour = Cocktail(cocktailName: "New York Sour",
                            collection: .originals,
                            titleCocktail: true)
 
-var NewYorkSourSpec = [CocktailIngredient(.juices(.lemon), value: 0.25),
-                       CocktailIngredient(.syrups(.simple), value: 0.25),
-                       CocktailIngredient(.juices(.orange), value: 0.125),
-                       CocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 2),
-                       CocktailIngredient(.wines(.dryRedWine), value: 0.5)]
+var NewYorkSourSpec = [OldCocktailIngredient(.juices(.lemon), value: 0.25),
+                       OldCocktailIngredient(.syrups(.simple), value: 0.25),
+                       OldCocktailIngredient(.juices(.orange), value: 0.125),
+                       OldCocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 2),
+                       OldCocktailIngredient(.wines(.dryRedWine), value: 0.5)]
 
 var NewYorkSourTags = Tags(profiles: [.citrusy, .light, .refreshing],
                            styles: [.sour, .shaken])

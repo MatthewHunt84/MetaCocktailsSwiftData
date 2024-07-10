@@ -16,10 +16,10 @@ var blueBlazer = Cocktail(cocktailName: "Blue Blazer",
                           tags: blueBlazerTags,
                           collection: .originals)
 
-var blueBlazerSpec  = [CocktailIngredient(.otherNonAlc(.hotWater), value: 2),
-                       CocktailIngredient(.otherNonAlc(.sugarCube), value: 2, unit: .whole),
-                       CocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
-                       CocktailIngredient(.whiskies(.aberlourAbundah), value: 2)]
+var blueBlazerSpec  = [OldCocktailIngredient(.otherNonAlc(.hotWater), value: 2),
+                       OldCocktailIngredient(.otherNonAlc(.sugarCube), value: 2, unit: .whole),
+                       OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
+                       OldCocktailIngredient(.whiskies(.aberlourAbundah), value: 2)]
 
 var blueBlazerTags = Tags(flavors: [.lemon, .tea],
                           profiles: [.hot],

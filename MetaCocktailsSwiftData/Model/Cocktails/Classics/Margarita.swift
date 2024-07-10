@@ -16,9 +16,9 @@ var margarita = Cocktail(cocktailName: "Margarita",
                          variation: .margarita,
                          titleCocktail: true)
 
-var margaritaSpec = [CocktailIngredient(.juices(.lime), value: 0.75),
-                     CocktailIngredient(.liqueurs(.cointreau), value: 0.75),
-                     CocktailIngredient(.agaves(.tequilaBlanco), value: 1.5)]
+var margaritaSpec = [OldCocktailIngredient(.juices(.lime), value: 0.75),
+                     OldCocktailIngredient(.liqueurs(.cointreau), value: 0.75),
+                     OldCocktailIngredient(.agaves(.tequilaBlanco), value: 1.5)]
 
 var margaritaTags = Tags( profiles: [.citrusy, .tart, .punchy],
                           styles: [.daisy, .shaken, .sour])

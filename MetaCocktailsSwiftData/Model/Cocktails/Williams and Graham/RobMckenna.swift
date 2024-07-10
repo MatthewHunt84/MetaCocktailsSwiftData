@@ -18,12 +18,12 @@ var robMcKenna = Cocktail(cocktailName: "Rob McKenna",
                           tags: robMcKennaTags,
                           collection: .williamsAndGraham)
 
-let robMcKennaSpec: [CocktailIngredient] = [CocktailIngredient(.seasoning(.saline), value: 15, unit: .drops),
-                                            CocktailIngredient(.bitters(.orangeBitters), value: 2, unit: .dashes),
-                                            CocktailIngredient(.syrups(.cinnamonSyrup), value: 0.23),
-                                            CocktailIngredient(.amari(.fernetBranca), value: 0.5),
-                                            CocktailIngredient(.liqueurs(.borghetti), value: 0.5),
-                                            CocktailIngredient(.whiskies(.portCharlotte), value: 1)]
+let robMcKennaSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.seasoning(.saline), value: 15, unit: .drops),
+                                            OldCocktailIngredient(.bitters(.orangeBitters), value: 2, unit: .dashes),
+                                            OldCocktailIngredient(.syrups(.cinnamonSyrup), value: 0.23),
+                                            OldCocktailIngredient(.amari(.fernetBranca), value: 0.5),
+                                            OldCocktailIngredient(.liqueurs(.borghetti), value: 0.5),
+                                            OldCocktailIngredient(.whiskies(.portCharlotte), value: 1)]
 
 
 let robMcKennaTags = Tags(profiles: [.rich, .complex, .punchy, .herbal, .spiritForward],

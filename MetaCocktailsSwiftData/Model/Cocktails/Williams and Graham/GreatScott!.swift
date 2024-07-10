@@ -16,10 +16,10 @@ var greatScott = Cocktail(cocktailName: "Great Scott!",
                           tags: greatScottTags,
                           collection: .williamsAndGraham)
 
-var greatScottSpec  = [CocktailIngredient(.soda(.lemonMintSoda), value: 2),
-                       CocktailIngredient(.juices(.lemon), value: 0.5),
-                       CocktailIngredient(.amari(.cardamaro), value: 0.5),
-                       CocktailIngredient(.whiskies(.monkeyShoulder), value: 1.5)]
+var greatScottSpec  = [OldCocktailIngredient(.soda(.lemonMintSoda), value: 2),
+                       OldCocktailIngredient(.juices(.lemon), value: 0.5),
+                       OldCocktailIngredient(.amari(.cardamaro), value: 0.5),
+                       OldCocktailIngredient(.whiskies(.monkeyShoulder), value: 1.5)]
 
 var greatScottTags = Tags(profiles: [.refreshing, .herbal, .bright],
                           styles: [.fizz, .shaken])

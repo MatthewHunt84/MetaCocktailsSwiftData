@@ -20,11 +20,11 @@ var mojito = Cocktail(cocktailName: "Mojito",
                       collection: .originals,
                       titleCocktail: true)
 
-let mojitoSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
-                                        CocktailIngredient(.juices(.lime), value: 1),
-                                        CocktailIngredient(.syrups(.simple), value: 1),
-                                        CocktailIngredient(.rums(.rumWhite), value: 1.5),
-                                        CocktailIngredient(.soda(.sparklingWater), value: 2)]
+let mojitoSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
+                                        OldCocktailIngredient(.juices(.lime), value: 1),
+                                        OldCocktailIngredient(.syrups(.simple), value: 1),
+                                        OldCocktailIngredient(.rums(.rumWhite), value: 1.5),
+                                        OldCocktailIngredient(.soda(.sparklingWater), value: 2)]
 
 let mojitoTags = Tags(profiles: [.herbal, .refreshing, .light, .effervescent],
                       styles: [.fizz, .shaken, .built])

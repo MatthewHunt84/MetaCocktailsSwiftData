@@ -19,10 +19,10 @@ var theSeventhSon  =  Cocktail(cocktailName: "The Seventh Son",
                                tags: theSeventhSonTags,
                                collection: .williamsAndGraham)
 
-var theSeventhSonSpec = [CocktailIngredient(.bitters(.grapefruitBitters), value: 2, unit: .dashes),
-                         CocktailIngredient(.amari(.amaroMontenegro), value: 0.5),
-                         CocktailIngredient(.fortifiedWines(.dolinBlanc), value: 1),
-                         CocktailIngredient(.agaves(.tequilaSieteLeguasBlanco), value: 1.5)]
+var theSeventhSonSpec = [OldCocktailIngredient(.bitters(.grapefruitBitters), value: 2, unit: .dashes),
+                         OldCocktailIngredient(.amari(.amaroMontenegro), value: 0.5),
+                         OldCocktailIngredient(.fortifiedWines(.dolinBlanc), value: 1),
+                         OldCocktailIngredient(.agaves(.tequilaSieteLeguasBlanco), value: 1.5)]
 
 var theSeventhSonTags = Tags(profiles: [.rich, .bittersweet, .punchy, .spiritForward],
                              styles: [.negroni, .stirred])

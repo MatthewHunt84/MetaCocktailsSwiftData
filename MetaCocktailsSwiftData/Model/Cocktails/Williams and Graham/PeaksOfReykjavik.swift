@@ -18,13 +18,13 @@ var peaksOfReykjavic = Cocktail(cocktailName: "Peaks of Reykjavic",
                                 tags: peaksOfReykjavicTags,
                                 collection: .williamsAndGraham)
 
-let peaksOfReykjavicSpec = [CocktailIngredient(.bitters(.peychauds), value: 4, unit: .dashes),
-                            CocktailIngredient(.juices(.lime), value: 0.75),
-                            CocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
-                            CocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.5),
-                            CocktailIngredient(.liqueurs(.licor43), value: 0.25),
-                            CocktailIngredient(.liqueurs(.greenChartreuse), value: 0.5),
-                            CocktailIngredient(.vodkas(.reyka), value: 0.75)]
+let peaksOfReykjavicSpec = [OldCocktailIngredient(.bitters(.peychauds), value: 4, unit: .dashes),
+                            OldCocktailIngredient(.juices(.lime), value: 0.75),
+                            OldCocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
+                            OldCocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.5),
+                            OldCocktailIngredient(.liqueurs(.licor43), value: 0.25),
+                            OldCocktailIngredient(.liqueurs(.greenChartreuse), value: 0.5),
+                            OldCocktailIngredient(.vodkas(.reyka), value: 0.75)]
 
 
 let peaksOfReykjavicTags = Tags(profiles: [.fruity, .refreshing, .light],

@@ -20,12 +20,12 @@ var southSideFizz = Cocktail(cocktailName: "South Side Fizz",
                              collection: .originals,
                              titleCocktail: true)
 
-let southSideFizzSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
-                                               CocktailIngredient(.juices(.lime), value: 0.5),
-                                               CocktailIngredient(.juices(.lemon), value: 0.5),
-                                               CocktailIngredient(.otherNonAlc(.powderedSugar), value: 1, unit: .tablespoon),
-                                               CocktailIngredient(.gins(.ginAny), value: 1.5),
-                                               CocktailIngredient(.soda(.sparklingWater), value: 2)]
+let southSideFizzSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
+                                               OldCocktailIngredient(.juices(.lime), value: 0.5),
+                                               OldCocktailIngredient(.juices(.lemon), value: 0.5),
+                                               OldCocktailIngredient(.otherNonAlc(.powderedSugar), value: 1, unit: .tablespoon),
+                                               OldCocktailIngredient(.gins(.ginAny), value: 1.5),
+                                               OldCocktailIngredient(.soda(.sparklingWater), value: 2)]
 
 let southSideFizzTags = Tags(profiles: [.herbal, .refreshing, .light, .effervescent],
                              styles: [.fizz, .shaken])

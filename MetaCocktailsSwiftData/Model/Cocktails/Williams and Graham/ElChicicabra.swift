@@ -19,11 +19,11 @@ var elChicicabra = Cocktail(cocktailName: "El Chicicabra",
                             tags: elChicicabraTags,
                             collection: .williamsAndGraham)
 
-let elChicicabraSpec: [CocktailIngredient] = [CocktailIngredient(.liqueurs(.anchoVerde), value: 0.25),
-                                              CocktailIngredient(.amari(.suze), value: 0.25),
-                                              CocktailIngredient(.liqueurs(.velvetFalernum), value: 0.25),
-                                              CocktailIngredient(.amari(.aperol), value: 0.25),
-                                              CocktailIngredient(.agaves(.mezcalDelMagueyChichicapa), value: 1.5)]
+let elChicicabraSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.liqueurs(.anchoVerde), value: 0.25),
+                                              OldCocktailIngredient(.amari(.suze), value: 0.25),
+                                              OldCocktailIngredient(.liqueurs(.velvetFalernum), value: 0.25),
+                                              OldCocktailIngredient(.amari(.aperol), value: 0.25),
+                                              OldCocktailIngredient(.agaves(.mezcalDelMagueyChichicapa), value: 1.5)]
 
 
 let elChicicabraTags = Tags(profiles: [.spiritForward, .rich, .smokey, .bittersweet],

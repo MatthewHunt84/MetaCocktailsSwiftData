@@ -17,9 +17,9 @@ var dominicana = Cocktail(cocktailName: "Dominicana",
                           variation: nil,
                           collection: .milkAndHoney)
 
-var dominicanaSpec  = [CocktailIngredient(.otherNonAlc(.stiffCream), value: 1.5),
-                       CocktailIngredient(.liqueurs(.lolita), value: 1.5),
-                       CocktailIngredient(.rums(.rumDominican), value: 1.5)]
+var dominicanaSpec  = [OldCocktailIngredient(.otherNonAlc(.stiffCream), value: 1.5),
+                       OldCocktailIngredient(.liqueurs(.lolita), value: 1.5),
+                       OldCocktailIngredient(.rums(.rumDominican), value: 1.5)]
 
 var dominicanaTags = Tags(flavors: [.coffee],
                           profiles: [.bittersweet, .punchy],

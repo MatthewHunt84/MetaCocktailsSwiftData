@@ -18,11 +18,11 @@ var sherryCobblerWnG = Cocktail(cocktailName: "Sherry Cobbler (W&G Version)",
                                 variation: .sherryCobbler,
                                 collection: .williamsAndGraham)
 
-let sherryCobblerWnGSpec: [CocktailIngredient] = [CocktailIngredient(.fruit(.seasonalBerries), value: 5, unit: .muddled),
-                                                  CocktailIngredient(.fruit(.orangeMoons), value: 2, unit: .muddled),
-                                                  CocktailIngredient(.juices(.lemon), value: 0.25),
-                                                  CocktailIngredient(.fortifiedWines(.lustauAmontillado), value: 2.5),
-                                                  CocktailIngredient(.fortifiedWines(.lustauPX), value: 0.5)]
+let sherryCobblerWnGSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.fruit(.seasonalBerries), value: 5, unit: .muddled),
+                                                  OldCocktailIngredient(.fruit(.orangeMoons), value: 2, unit: .muddled),
+                                                  OldCocktailIngredient(.juices(.lemon), value: 0.25),
+                                                  OldCocktailIngredient(.fortifiedWines(.lustauAmontillado), value: 2.5),
+                                                  OldCocktailIngredient(.fortifiedWines(.lustauPX), value: 0.5)]
 
 let sherryCobblerWnGBuild = Build(instructions: [Instruction(step: 1, method: "Muddle 4-6 seasonal berries and 2 orange moons."),
                                                  Instruction(step: 2, method: "Add the rest of your ingredients and shake."),

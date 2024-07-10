@@ -18,11 +18,11 @@ var NewYorkSourWnG = Cocktail(cocktailName: "New York Sour (W&G Version)",
                               variation: .newYorkSour,
                               collection: .williamsAndGraham)
 
-var NewYorkSourSpecWnG = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                          CocktailIngredient(.syrups(.simple), value: 0.75),
-                          CocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
-                          CocktailIngredient(.whiskies(.fourRosesYellowLabel), value: 1.5),
-                          CocktailIngredient(.wines(.dryRedWine), value: 0.5)]
+var NewYorkSourSpecWnG = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                          OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                          OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
+                          OldCocktailIngredient(.whiskies(.fourRosesYellowLabel), value: 1.5),
+                          OldCocktailIngredient(.wines(.dryRedWine), value: 0.5)]
 
 var NewYorkSourTagsWnG = Tags(profiles: [.citrusy, .light, .refreshing, .silky],
                               styles: [.sour, .shaken])

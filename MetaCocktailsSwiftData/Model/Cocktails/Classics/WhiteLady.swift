@@ -14,9 +14,9 @@ var whiteLady = Cocktail(cocktailName: "White Lady",
                          spec: whiteLadySpec,
                          tags: whiteLadyTags)
 
-var whiteLadySpec  = [CocktailIngredient(.juices(.lemon), value: 0.75),
-                      CocktailIngredient(.liqueurs(.cointreau), value: 0.75),
-                      CocktailIngredient(.gins(.fordsGin), value: 1.5)]
+var whiteLadySpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                      OldCocktailIngredient(.liqueurs(.cointreau), value: 0.75),
+                      OldCocktailIngredient(.gins(.fordsGin), value: 1.5)]
 
 
 var whiteLadyTags = Tags(profiles: [.citrusy, .fruity, .light, .dry],

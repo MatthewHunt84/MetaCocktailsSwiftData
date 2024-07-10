@@ -16,26 +16,51 @@ struct AddBuildStepDetailView: View {
     
     var body: some View {
         NavigationStack{
-            Form {
-                Text("Step \(viewModel.build.instructions.count + 1)")
-                TextEditor(text: $textEditor)
-                    .focused($keyboardFocused)
-                    .padding(.horizontal)
-                    .navigationTitle("Add a build step.")
+            ZStack{
+                Color.black
+                VStack{
+                    Form{
+                        Section("Add a build step") {
+                            Text("Step \(viewModel.build.instructions.count + 1)")
+                            //                            TextEditor(text: $textEditor)
+                            TextField("Add Step", text: $textEditor)
+                                .focused($keyboardFocused)
+                                .onChange(of: keyboardFocused) { oldValue, newValue in
+                                    print("Keyboard focus changed: \(newValue)")
+                                }
+                        }
+                        
+                    }
+                    .toolbar {
+                        ToolbarItem(placement: .bottomBar) {
+                            Button {
+                                viewModel.build.instructions.append(Instruction(step: viewModel.build.instructions.count + 1, method: textEditor))
+                                isShowingBuildSheet = false
+                            } label: {
+                                HStack {
+                                    Text("Add Step").font(.headline)
+                                    Image(systemName: "plus")
+                                }
+                                .foregroundStyle(textEditor != "" ? .brandPrimaryGold : .secondary)
+                            }
+                        }
+                        ToolbarItemGroup(placement: .keyboard) {
+                            Spacer()
+                            Button("Done") {
+                                keyboardFocused = false
+                            }
+                            .tint(Color.brandPrimaryGold)
+                        }
+                    }
+                    
+                }
+                
             }
-            Button {
-                viewModel.build.instructions.append(Instruction(step: viewModel.build.instructions.count + 1, method: textEditor))
-                isShowingBuildSheet = false
-            } label: {
-                Text("Add Step")
+            
+            .task {
+                keyboardFocused = true
             }
-            .buttonStyle(BlackNWhiteButton())
-
         }
-        .task {
-            keyboardFocused = true 
-        }
-        
     }
 }
 
@@ -46,3 +71,4 @@ struct AddBuildStepDetailView: View {
         .modelContainer(preview.container)
     
 }
+

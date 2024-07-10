@@ -16,12 +16,12 @@ var jupiter = Cocktail(cocktailName: "Jupiter(W&G)",
                        tags: jupiterTags,
                        collection: .williamsAndGraham)
 
-var jupiterSpec  =  [CocktailIngredient(.bitters(.tikiBitters), value: 1, unit: .dashes),
-                     CocktailIngredient(.juices(.lemon), value: 0.5),
-                     CocktailIngredient(.syrups(.passionfruitSyrup), value: 0.5),
-                     CocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBible.orgeat),
-                     CocktailIngredient(.otherNonAlc(.coconutMilk), value: 0.5),
-                     CocktailIngredient(.brandies(.pF1840), value: 2)]
+var jupiterSpec  =  [OldCocktailIngredient(.bitters(.tikiBitters), value: 1, unit: .dashes),
+                     OldCocktailIngredient(.juices(.lemon), value: 0.5),
+                     OldCocktailIngredient(.syrups(.passionfruitSyrup), value: 0.5),
+                     OldCocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBible.orgeat),
+                     OldCocktailIngredient(.otherNonAlc(.coconutMilk), value: 0.5),
+                     OldCocktailIngredient(.brandies(.pF1840), value: 2)]
 
 var jupiterTags = Tags( profiles: [.citrusy, .fruity, .nutty, .tropical, .sweet, .refreshing],
                         styles: [.tiki, .shaken, .sour])

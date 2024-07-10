@@ -22,14 +22,14 @@ var asburyParkSwizzle = Cocktail(cocktailName: "Asbury Park Swizzle",
                                  collection: .milkAndHoney,
                                  titleCocktail: false)
 
-let asburyParkSwizzleSpec: [CocktailIngredient] = [CocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
-                                                   CocktailIngredient(.seasoning(.mineralSaline), value: 2, unit: .drops, prep: PrepBible.mineralSaline),
-                                                   CocktailIngredient(.bitters(.aPPBitters), value: 5, unit: .dashes, prep: PrepBible.aPPBitters),
-                                                   CocktailIngredient(.bitters(.houseOrangeBitters), value: 1, unit: .dashes, prep: PrepBible.houseOrangeBitters),
-                                                   CocktailIngredient(.juices(.lemon), value: 0.75),
-                                                   CocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup),
-                                                   CocktailIngredient(.liqueurs(.berentzenApple), value: 0.25),
-                                                   CocktailIngredient(.brandies(.lairdsJersey), value: 2)]
+let asburyParkSwizzleSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
+                                                   OldCocktailIngredient(.seasoning(.mineralSaline), value: 2, unit: .drops, prep: PrepBible.mineralSaline),
+                                                   OldCocktailIngredient(.bitters(.aPPBitters), value: 5, unit: .dashes, prep: PrepBible.aPPBitters),
+                                                   OldCocktailIngredient(.bitters(.houseOrangeBitters), value: 1, unit: .dashes, prep: PrepBible.houseOrangeBitters),
+                                                   OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                                                   OldCocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup),
+                                                   OldCocktailIngredient(.liqueurs(.berentzenApple), value: 0.25),
+                                                   OldCocktailIngredient(.brandies(.lairdsJersey), value: 2)]
 
 let asburyParkSwizzleTags = Tags(profiles: [.herbal, .refreshing, .light],
                                  styles: [.sour, .shaken])

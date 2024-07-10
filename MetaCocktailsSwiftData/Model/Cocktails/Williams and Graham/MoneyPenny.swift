@@ -17,11 +17,11 @@ var moneyPenny = Cocktail(cocktailName: "Money Penny",
                           tags: moneyPennyTags,
                           collection: .williamsAndGraham)
 
-let moneyPennySpec = [CocktailIngredient(.bitters(.hoppedGrapefruit), value: 3, unit: .drops),
-                      CocktailIngredient(.liqueurs(.giffardElderflour), value: 0.25),
-                      CocktailIngredient(.fortifiedWines(.tioPepe), value: 0.25),
-                      CocktailIngredient(.gins(.hendricksOrbium), value: 1),
-                      CocktailIngredient(.vodkas(.reyka), value: 1)]
+let moneyPennySpec = [OldCocktailIngredient(.bitters(.hoppedGrapefruit), value: 3, unit: .drops),
+                      OldCocktailIngredient(.liqueurs(.giffardElderflour), value: 0.25),
+                      OldCocktailIngredient(.fortifiedWines(.tioPepe), value: 0.25),
+                      OldCocktailIngredient(.gins(.hendricksOrbium), value: 1),
+                      OldCocktailIngredient(.vodkas(.reyka), value: 1)]
 
 
 let moneyPennyTags = Tags(profiles: [.fruity, .refreshing, .light],

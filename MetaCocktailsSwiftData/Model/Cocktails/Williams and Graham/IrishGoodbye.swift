@@ -17,11 +17,11 @@ var irishGoodbye = Cocktail(cocktailName: "Irish Goodbye",
                             tags: heartOfGoldTags,
                             collection: .williamsAndGraham)
 
-let irishGoodbyeSpec: [CocktailIngredient] = [CocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
-                                              CocktailIngredient(.otherAlcohol(.absinthe), value: 5, unit: .sprays),
-                                              CocktailIngredient(.amari(.chinaChina), value: 0.5),
-                                              CocktailIngredient(.liqueurs(.dolinGenepy), value: 0.75),
-                                              CocktailIngredient(.whiskies(.powersIrish), value: 1.5)]
+let irishGoodbyeSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
+                                              OldCocktailIngredient(.otherAlcohol(.absinthe), value: 5, unit: .sprays),
+                                              OldCocktailIngredient(.amari(.chinaChina), value: 0.5),
+                                              OldCocktailIngredient(.liqueurs(.dolinGenepy), value: 0.75),
+                                              OldCocktailIngredient(.whiskies(.powersIrish), value: 1.5)]
 
 
 let irishGoodbyeTags = Tags(profiles: [.rich],

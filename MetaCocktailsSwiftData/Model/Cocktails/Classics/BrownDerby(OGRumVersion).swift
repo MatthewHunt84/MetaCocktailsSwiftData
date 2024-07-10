@@ -15,9 +15,9 @@ let brownDerbyRum = Cocktail(cocktailName: "Brown Derby (Rum)",
                              variation: .brownDerby,
                              collection: .originals)
 
-var brownDerbyRumSpec: [CocktailIngredient] = [CocktailIngredient(.rums(.rumDark), value: 2),
-                                               CocktailIngredient(.juices(.lime), value: 1),
-                                               CocktailIngredient(.otherNonAlc(.mapleSugar), value: 1, unit: .teaspoon)]
+var brownDerbyRumSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.rums(.rumDark), value: 2),
+                                               OldCocktailIngredient(.juices(.lime), value: 1),
+                                               OldCocktailIngredient(.otherNonAlc(.mapleSugar), value: 1, unit: .teaspoon)]
 
 var brownDerbyRumTags = Tags(profiles: [.citrusy, .refreshing, .light],
                              styles: [.sour, .shaken])
