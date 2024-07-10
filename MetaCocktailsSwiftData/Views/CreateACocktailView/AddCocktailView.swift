@@ -85,12 +85,11 @@ struct AddCocktailView: View {
                                 if viewModel.isValid() {
                                     
                                     viewModel.validateAuthor()
-                                    viewModel.validateGarnish()
                                     viewModel.validateBuildInstructions()
                                     
                                     let cocktail = Cocktail(cocktailName: viewModel.cocktailName,
                                                             glasswareType: viewModel.uniqueGlasswareName!,
-                                                            garnish: viewModel.garnish,
+                                                            garnish: viewModel.addedGarnish,
                                                             ice: viewModel.ice,
                                                             author: viewModel.author,
                                                             spec: viewModel.addedIngredients,
@@ -238,8 +237,8 @@ private struct GarnishPicker: View {
         Section {
            
                 List{
-                    ForEach(viewModel.addedGarnish, id: \.self) { garnish in
-                        Text("\(garnish.rawValue)")
+                    ForEach(viewModel.addedGarnish, id: \.name) { garnish in
+                        Text(garnish.name)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     .onDelete(perform: { indexSet in
@@ -262,25 +261,6 @@ private struct GarnishPicker: View {
             
         } header: {
             Text("Garnish")
-        }
-    }
-}
-private struct GarnishDetailView: View {
-    
-    @Bindable var viewModel: AddCocktailViewModel
-    @Environment(\.dismiss) private var dismiss
-    var body: some View {
-        BackButton()
-        List{
-            ForEach(Garnish.allCases, id: \.rawValue) { garnish in
-                Button {
-                    viewModel.addedGarnish.append(garnish)
-                    dismiss()
-                } label: {
-                    Text(garnish.rawValue)
-                        .tint(.white)
-                }
-            }
         }
     }
 }

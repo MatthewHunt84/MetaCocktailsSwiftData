@@ -6,11 +6,42 @@
 //
 
 import SwiftUI
+import SwiftData
+
+
+@Model
+class Garnish: Codable, Hashable {
+    
+    var name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    static func == (lhs: Garnish, rhs: Garnish) -> Bool {
+        lhs.name > rhs.name
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+    }
+    enum CodingKeys: CodingKey {
+        case garnish
+    }
+    
+    required init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.name = try container.decode(String.self, forKey: .garnish)
+    }
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(name, forKey: .garnish)
+    }
+}
 
 
 // This is where we store all our garnishes
-
-enum Garnish: String, Codable, CaseIterable {
+enum GarnishList: String, Codable, CaseIterable {
     
     case angoDeco                  = "Angostura bitters design over egg whites"
     case almonds                   = "Almonds"

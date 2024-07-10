@@ -23,7 +23,7 @@ class Cocktail: Equatable, Hashable {
     @Attribute(.unique) var cocktailName: String
     var imageAsset: CocktailImage?
     var glasswareType: Glassware
-    var garnish: [Garnish]?
+    @Relationship(deleteRule: .cascade) var garnish: [Garnish]
     var ice: Ice?
     var author: Author?
     @Relationship(deleteRule: .cascade) var spec: [Ingredient]
@@ -37,12 +37,22 @@ class Cocktail: Equatable, Hashable {
   
     
     
-    init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [Garnish]? = nil, ice: Ice? = nil, author: Author? = nil, spec: [OldCocktailIngredient], buildOrder: Build? = nil, tags: Tags, variation: Variation? = nil, collection: CocktailCollection? = nil, titleCocktail: Bool = false) {
+    init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [GarnishList]? = nil, ice: Ice? = nil, author: Author? = nil, spec: [OldCocktailIngredient], buildOrder: Build? = nil, tags: Tags, variation: Variation? = nil, collection: CocktailCollection? = nil, titleCocktail: Bool = false) {
         self.id = id
         self.cocktailName = cocktailName
         self.imageAsset = imageAsset
         self.glasswareType = glasswareType
-        self.garnish = garnish
+        self.garnish = {
+            var newGarnishes: [Garnish] = []
+            if let garnishes = garnish {
+                for item in garnishes {
+                    newGarnishes.append(Garnish(name: item.rawValue))
+                }
+            } else {
+                return newGarnishes
+            }
+            return newGarnishes
+        }()
         self.ice = ice
         self.author = author
         self.spec = spec.map { Ingredient(oldIngredient: $0) }
@@ -71,7 +81,7 @@ class Cocktail: Equatable, Hashable {
         
     }
     
-    init(cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [Garnish]? = nil, ice: Ice? = nil, author: Author? = nil, spec: [Ingredient], buildOrder: Build? = nil, tags: Tags, variation: Variation? = nil, collection: CocktailCollection? = nil, titleCocktail: Bool = false) {
+    init(cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [Garnish] = [], ice: Ice? = nil, author: Author? = nil, spec: [Ingredient], buildOrder: Build? = nil, tags: Tags, variation: Variation? = nil, collection: CocktailCollection? = nil, titleCocktail: Bool = false) {
         self.id = UUID()
         self.cocktailName = cocktailName
         self.imageAsset = imageAsset
@@ -121,3 +131,4 @@ struct PreviewContainer {
         
     }
 }
+

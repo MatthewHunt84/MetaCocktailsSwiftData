@@ -14,8 +14,8 @@ struct AddExistingIngredientDetailView: View {
     @FocusState private var amountKeyboardFocused: Bool
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
-    @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
-    @State private var filteredIngredients: [Ingredient] = []
+    
+   
     
 
     var body: some View {
@@ -34,7 +34,7 @@ struct AddExistingIngredientDetailView: View {
                     }
                     .padding(.horizontal)
                     Form {
-                        AddIngredientSearchView(viewModel: viewModel, filteredIngredients: $filteredIngredients, keyboardFocused: _keyboardFocused)
+                        AddIngredientSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
                         AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
                         AddExistingIngredientToCocktailButton(viewModel: viewModel)
                         
@@ -78,7 +78,6 @@ struct AddExistingIngredientDetailView: View {
 struct AddIngredientSearchView: View {
     
     @Bindable var viewModel: AddCocktailViewModel
-    @Binding var filteredIngredients: [Ingredient]
     @FocusState var keyboardFocused: Bool
 
     @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]
@@ -211,6 +210,24 @@ struct CreateNewIngredientButton: View {
         } label: {
             HStack{
                 Text("Create Custom Ingredient").font(.headline)
+                Image(systemName: "plus")
+            }
+            .foregroundStyle(.brandPrimaryGold)
+        }
+        
+        
+    }
+}
+struct CreateNewGarnishButton: View {
+    @Bindable var viewModel: AddCocktailViewModel
+    
+    var body: some View {
+        NavigationLink {
+            AddCustomGarnishView(viewModel: viewModel)
+                .navigationBarBackButtonHidden(true)
+        } label: {
+            HStack{
+                Text("Create Custom Garnish").font(.headline)
                 Image(systemName: "plus")
             }
             .foregroundStyle(.brandPrimaryGold)

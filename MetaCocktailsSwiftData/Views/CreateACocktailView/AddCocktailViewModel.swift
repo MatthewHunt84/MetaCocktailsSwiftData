@@ -11,31 +11,17 @@ import Observation
 @Observable final class AddCocktailViewModel {
 
     //AddIngredientView
-    var isShowingingredientAlert: Bool = false
-    var ingredientName = ""
-    var info: String?
     var category: Category = Category.agaves
     var ingredientAmount = 0.0
-    var startingIngredientsHaveLoaded: Bool = false
     var ingredientTags = Tags()
     var prep: Prep? 
     var selectedMeasurementUnit = MeasurementUnit.fluidOunces
     var currentSelectedComponent = CocktailComponent(name: "Placeholder")
-    var startingIngredients: [Ingredient] = []
-    var addedIngredients: [Ingredient] = []
-    var addedGarnish: [Garnish] = []
-    var allPhysicalCocktailComponents: [CocktailComponent] = getAllPhysicalComponents()
+
     var isShowingAlert: Bool = false
     var dateAdded = Date()
     var defaultName = "Add Cocktail"
-    var didChooseExistingIngredient: Bool = false
-    var isCustomIngredient: Bool = false 
     
-    // Required
-    var cocktailName: String = ""
-    var isShowingUniqueNameAlert: Bool = false
-    
-    // Ingredients
     var  formatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -43,10 +29,26 @@ import Observation
         return formatter
     }()
     
+    // Required
+    var cocktailName: String = ""
+    var isShowingUniqueNameAlert: Bool = false
+    
+    // Ingredients
+    var ingredientName = ""
+    var info: String?
+    var addedIngredients: [Ingredient] = []
+    var didChooseExistingIngredient: Bool = false
+    var isCustomIngredient: Bool = false
+    var isShowingingredientAlert: Bool = false
+ 
+    //Garnish
+    var addedGarnish: [Garnish] = []
+    var currentGarnishName: String = ""
+    var didChooseExistingGarnish: Bool = false
+    
     // Extras
     var uniqueGlasswareName: Glassware?
     var ice: Ice? = Ice.none
-    var garnish: [Garnish]? = []
     var variation: Variation? = Variation.none
     
     //Ingredient recipe
@@ -57,6 +59,7 @@ import Observation
     var authorPlace: String = ""
     var authorYear: String = ""
     var author: Author?
+    
     // Build
     var build: Build = Build(instructions: [])
     var buildOption: Build?
@@ -71,45 +74,27 @@ import Observation
         authorName = ""
         authorPlace = ""
         authorYear = ""
+        currentGarnishName = ""
         uniqueGlasswareName = .blueBlazerMugs
         ice = Ice.none
-        garnish = nil 
         addedGarnish = []
         variation = nil
         addedIngredients = []
         defaultName = "Add Cocktail"
         build = Build(instructions: [])
-        buildOption = nil 
-        startingIngredientsHaveLoaded = false
+        buildOption = nil
        
     }
     func clearIngredientData() {
         ingredientName = ""
+        currentGarnishName = ""
         ingredientAmount = 0
         prep = nil
         selectedMeasurementUnit = .fluidOunces
-        prep = nil
         prepIngredientRecipe = []
-        didChooseExistingIngredient = false 
+        didChooseExistingIngredient = false
+        didChooseExistingGarnish = false 
         isCustomIngredient = false
-    }
-    
-    func validateCurrentSelectedComponent(for component: CocktailComponent) -> IngredientType {
-       
-        
-        if component != CocktailComponent(name: "Placeholder") {
-            if component.isSpirit {
-                if let spirit = currentSelectedComponent.spiritCategory {
-                    return spirit
-                }
-            } else if component.isNA {
-                if let nA = currentSelectedComponent.nACategory {
-                   return  nA
-                }
-            }
-        }
-        
-        return IngredientType.seasoning(.nutmeg)
     }
     
     
@@ -123,11 +108,25 @@ import Observation
         didChooseExistingIngredient == true &&
         allIngredients.contains(where: { $0.name == ingredientName } )
     }
+    
+    func existingGarnishIsValid(allGarnishes: [Garnish]) -> Bool {
+        
+        return currentGarnishName != "" &&
+        didChooseExistingGarnish == true &&
+        allGarnishes.contains(where: { $0.name == currentGarnishName })
+   
+    }
+    
     func customIngredientIsValid(allIngredients: [IngredientBase]) -> Bool {
         
         return ingredientName != "" &&
         ingredientAmount != 0.0 &&
         allIngredients.contains(where: { $0.name == ingredientName } )
+    }
+    
+    func customGarnishIsValid(allGarnishes: [Garnish]) -> Bool {
+        return currentGarnishName != "" &&
+        !allGarnishes.contains(where: { $0.name == currentGarnishName })
     }
     
     func cantAddCocktailMessage() -> String {
@@ -167,28 +166,6 @@ import Observation
     }
    
 
-    func matchAllPhysicalCocktailComponents() {
-        // if searchText is empty, don't show any results
-        
-        if ingredientName == "" {
-            for component in allPhysicalCocktailComponents {
-                component.matchesCurrentSearch = false
-            }
-            //self.objectWillChange.send()
-            return
-        }
-        
-        // if searchText has text, match it and set the viewModel properties accordingly
-        for component in allPhysicalCocktailComponents {
-            if component.name.localizedCaseInsensitiveContains(ingredientName) && ingredientName != "" {
-                component.matchesCurrentSearch = true
-            } else {
-                component.matchesCurrentSearch = false
-            }
-        }
-
-    }
-    
    
     
     func matchAllIngredients2(ingredients: [IngredientBase]) -> [IngredientBase] {
@@ -228,26 +205,43 @@ import Observation
                 return matchedArray
             }
     }
-    
-//    func getAllCocktailIngredients(cocktails: [Cocktail]) -> [Ingredient] {
-//       
-//        
-//        let listOfIngredients = cocktails.map({$0.spec}).flatMap({$0}).sorted(by: {$0.name < $1.name})
-//        let filteredList: [Ingredient] = {
-//            var ingredients: [Ingredient] = []
-//            var ingredientNamesOnly: [String] = []
-//            for ingredient in listOfIngredients {
-//                if !ingredientNamesOnly.contains(ingredient.name) {
-//                    ingredients.append(ingredient)
-//                    ingredientNamesOnly.append(ingredient.name)
-//                }
-//            }
-//            return ingredients
-//        }()
-//        
-//        return filteredList
-//    }
-    
+    func matchAllGarnish(garnishes: [Garnish]) -> [String] {
+        guard !currentGarnishName.isEmpty else {
+            return []
+        }
+        let filteredGarnishes = Array(Set(garnishes.map({$0.name}))).sorted(by: {$0 < $1 })
+        let lowercasedSearchText = currentGarnishName.lowercased()
+
+        return filteredGarnishes.filter { $0.lowercased().contains(lowercasedSearchText)}
+            .sorted { lhs, rhs in
+                let lhsLowercased = lhs.lowercased()
+                let rhsLowercased = rhs.lowercased()
+                
+                // prioritize ingredients that start with the search text
+                let lhsStartsWith = lhsLowercased.hasPrefix(lowercasedSearchText)
+                let rhsStartsWith = rhsLowercased.hasPrefix(lowercasedSearchText)
+                
+                if lhsStartsWith && !rhsStartsWith {
+                    return true
+                } else if !lhsStartsWith && rhsStartsWith {
+                    return false
+                }
+                
+                // if two garnishes start with the same search text, prioritize the shortest one
+                if lhsStartsWith && rhsStartsWith {
+                    return lhs.count < rhs.count
+                }
+                
+                // If neither starts with the search text, prioritize the one with the search text appearing first in the word
+                let lhsRange = lhsLowercased.range(of: lowercasedSearchText)
+                let rhsRange = rhsLowercased.range(of: lowercasedSearchText)
+                
+                let matchedArray = (lhsRange?.lowerBound ?? lhsLowercased.endIndex) < (rhsRange?.lowerBound ?? rhsLowercased.endIndex)
+                
+                return matchedArray
+            }
+    }
+
      func dynamicallyChangeMeasurementUnit() {
          switch category {
             case .herbs:
@@ -317,11 +311,7 @@ import Observation
             author = Author(person: authorName, place: authorYear, year: authorPlace)
         }
     }
-    func validateGarnish() {
-        if addedGarnish.count > 0 {
-            garnish = addedGarnish
-        }
-    }
+    
 }
 
 extension AddCocktailView {
