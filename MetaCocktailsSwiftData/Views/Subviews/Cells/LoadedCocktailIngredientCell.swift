@@ -17,7 +17,7 @@ struct LoadedCocktailIngredientCell: View {
     var body: some View {
         HStack {
             
-            Text("\(ingredient.ingredient.name)")
+            Text("\(ingredient.ingredient.ingredientBase.name)")
                 
             
             Spacer()
@@ -33,5 +33,5 @@ struct LoadedCocktailIngredientCell: View {
 }
 
 #Preview {
-    LoadedCocktailIngredientCell(ingredient: .constant(CBCLoadedIngredient(ingredient: Ingredient("Lemon Juice", ingredientCategory: .juices, value: 0.75), isIncluded: true)))
+    LoadedCocktailIngredientCell(ingredient: .constant(CBCLoadedIngredient(ingredient: Ingredient(ingredientBase: IngredientBase(name: "Lemon Juice", category: .juices, prep: nil), value: 0.75, unit: .fluidOunces), isIncluded: true)))
 }

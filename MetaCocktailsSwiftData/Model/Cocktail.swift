@@ -97,7 +97,7 @@ class Cocktail: Equatable, Hashable {
             // when we initialize each cocktail we immediately make a stored property of it's combined cocktail + ingredient tags
             var newCompiledTags = Tags()
             for oldCocktailIngredient in spec {
-                let currentCocktailIngredientMergedTags = tags.merge(with: oldCocktailIngredient.tags ?? Tags())
+                let currentCocktailIngredientMergedTags = tags.merge(with: oldCocktailIngredient.ingredientBase.tags ?? Tags())
                 newCompiledTags = newCompiledTags.merge(with: currentCocktailIngredientMergedTags)
             }
             return newCompiledTags

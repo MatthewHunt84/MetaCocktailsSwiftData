@@ -38,7 +38,7 @@ struct EditBatchModalView: View {
                     Spacer()
                 }
                 List {
-                    ForEach($viewModel.loadedCocktailData.ingredients, id: \.ingredient.name) { ingredient in
+                    ForEach($viewModel.loadedCocktailData.ingredients, id: \.ingredient.ingredientBase.name) { ingredient in
                         
                         LoadedCocktailIngredientCell(ingredient: ingredient)
                         

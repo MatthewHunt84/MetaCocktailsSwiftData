@@ -103,9 +103,11 @@ struct AddIngredientSearchView: View {
                             viewModel.ingredientName = ingredient.name
                             viewModel.category = ingredient.category
                             viewModel.ingredientTags = ingredient.tags ?? Tags()
+                            viewModel.info = ingredient.info
                             viewModel.dynamicallyChangeMeasurementUnit()
                             keyboardFocused = false
                             viewModel.didChooseExistingIngredient = true
+                             
                         } label: {
                             Text(ingredient.name)
                         }
@@ -168,13 +170,14 @@ struct AddExistingIngredientToCocktailButton: View {
     var body: some View {
         Button{
             if viewModel.existingIngredientIsValid(allIngredients: ingredients) {
-                
-                let ingredient = Ingredient(viewModel.ingredientName,
-                                            ingredientCategory: viewModel.category,
-                                            tagsWithSubcategories: viewModel.ingredientTags,
+                let ingredient = Ingredient(ingredientBase: IngredientBase(name: viewModel.ingredientName,
+                                                                           category: viewModel.category,
+                                                                           prep: viewModel.prep),
                                             value: viewModel.ingredientAmount,
                                             unit: viewModel.selectedMeasurementUnit,
-                                            prep: viewModel.prep, isCustom: viewModel.isCustomIngredient)
+                                            isCustom: viewModel.isCustomIngredient,
+                                            info: viewModel.info)
+               
                 viewModel.addedIngredients.append(ingredient)
                 
                 if ingredient.isCustom == true {

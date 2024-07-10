@@ -19,8 +19,8 @@ struct AddedIngredientView: View {
         Section(header: Text("Ingredients")) {
             
             List{
-                ForEach(viewModel.addedIngredients, id: \.name) { ingredient in
-                    Text("\(NSNumber(value: ingredient.value)) \(ingredient.unit.rawValue) \(ingredient.name)")
+                ForEach(viewModel.addedIngredients, id: \.ingredientBase.name) { ingredient in
+                    Text("\(NSNumber(value: ingredient.value)) \(ingredient.unit.rawValue) \(ingredient.ingredientBase.name)")
                 }
                 .onDelete(perform: { indexSet in
                     viewModel.addedIngredients.remove(atOffsets: indexSet)

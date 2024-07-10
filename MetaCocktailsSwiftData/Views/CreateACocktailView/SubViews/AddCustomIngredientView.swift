@@ -107,12 +107,14 @@ struct AddCustomIngredientToCocktailButton: View {
         Button{
             if viewModel.customIngredientIsValid(allIngredients: ingredients) {
                 viewModel.prep = Prep(prepIngredientName: viewModel.ingredientName, prepRecipe: viewModel.prepIngredientRecipe)
-                viewModel.addedIngredients.append(Ingredient(viewModel.ingredientName,
-                                                             ingredientCategory: viewModel.category,
-                                                             tagsWithSubcategories: viewModel.ingredientTags,
+                viewModel.addedIngredients.append(Ingredient(ingredientBase: IngredientBase(name: viewModel.ingredientName,
+                                                                                            category: viewModel.category,
+                                                                                            prep: viewModel.prep),
                                                              value: viewModel.ingredientAmount,
                                                              unit: viewModel.selectedMeasurementUnit,
-                                                             prep: viewModel.prep))
+                                                             isCustom: viewModel.isCustomIngredient,
+                                                             info: nil))
+                                                  
                 viewModel.clearIngredientData()
                 viewModel.isCustomIngredient = true
                 dismiss()

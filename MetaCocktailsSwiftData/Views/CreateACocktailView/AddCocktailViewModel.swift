@@ -13,6 +13,7 @@ import Observation
     //AddIngredientView
     var isShowingingredientAlert: Bool = false
     var ingredientName = ""
+    var info: String?
     var category: Category = Category.agaves
     var ingredientAmount = 0.0
     var startingIngredientsHaveLoaded: Bool = false
@@ -188,16 +189,7 @@ import Observation
 
     }
     
-    func matchAllIngredients(ingredients: [Ingredient]) -> [Ingredient] {
-        for ingredient in ingredients {
-            if ingredient.name.localizedCaseInsensitiveContains(ingredientName) && ingredientName != "" {
-                ingredient.matchesCurrentSearch = true
-            } else {
-                ingredient.matchesCurrentSearch = false
-            }
-        }
-        return ingredients.filter({ $0.matchesCurrentSearch == true})
-    }
+   
     
     func matchAllIngredients2(ingredients: [IngredientBase]) -> [IngredientBase] {
         

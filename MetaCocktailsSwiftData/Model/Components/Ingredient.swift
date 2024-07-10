@@ -11,12 +11,12 @@ import SwiftData
 @Model
 class OldCocktailIngredient: Codable, Hashable { // This old guy needs to be removed entirely, but I know that will break a bunch of stuff so we'll refactor it out piece by piece
 
-    let id: UUID
-    let ingredient: IngredientType
-    let value: Double
-    let unit: MeasurementUnit
-    let prep: Prep?
-    let info: String?
+    var id: UUID
+    var ingredient: IngredientType
+    var value: Double
+    var unit: MeasurementUnit
+    var prep: Prep?
+    var info: String?
     
     
     init(_ ingredient: IngredientType, value: Double, unit: MeasurementUnit = .fluidOunces, prep: Prep? = nil, info: String? = nil) {
@@ -181,31 +181,19 @@ class OldCocktailIngredient: Codable, Hashable { // This old guy needs to be rem
 @Model
 class Ingredient: Codable, Hashable {
     
-    @Relationship(deleteRule: .cascade) let ingredientBase: IngredientBase // NEW: This will hold the ingredient info
+    @Relationship(deleteRule: .cascade) var ingredientBase: IngredientBase // NEW: This will hold the ingredient info
 
-    let id: UUID
-    let name: String // to be removed (this is now stored in the new ingredientBase model above)
-    let category: Category // to be removed (this is now stored in the new ingredientBase model above)
-    let tags: Tags? // to be removed (this is now stored in the new ingredientBase model above)
-    let value: Double
-    let unit: MeasurementUnit
-    let prep: Prep? // to be removed (this is now stored in the new ingredientBase model above)
-    let isCustom: Bool?
-    var matchesCurrentSearch: Bool // to be removed (our new improved matchAllIngredients2 search doesn't need this. Generally it's a bad idea to add flags to models like this anyways)
-    var info: String?
+    var id: UUID
+    var value: Double
+    var unit: MeasurementUnit
+    var isCustom: Bool?
 
-    init(_ name: String, ingredientCategory: Category, tagsWithSubcategories: Tags? = Tags(), value: Double, unit: MeasurementUnit = .fluidOunces, prep: Prep? = nil, isCustom: Bool? = false, info: String? = nil) {
-        self.name = name
-        self.category = ingredientCategory
-        self.tags = tagsWithSubcategories
+    init(ingredientBase: IngredientBase, value: Double, unit: MeasurementUnit = .fluidOunces, isCustom: Bool? = false, info: String? = nil) {
+        self.ingredientBase = IngredientBase(name: ingredientBase.name, info: ingredientBase.info, category: ingredientBase.category, tags: ingredientBase.tags, prep: ingredientBase.prep)
         self.value = value
         self.unit = unit
         self.id = UUID()
-        self.prep = prep
         self.isCustom = isCustom
-        self.matchesCurrentSearch = false
-        self.info = info
-        self.ingredientBase = IngredientBase(name: name, category: ingredientCategory, tags: tagsWithSubcategories, prep: prep)
     }
     
     init(oldIngredient: OldCocktailIngredient) {
@@ -221,16 +209,11 @@ class Ingredient: Codable, Hashable {
         }()
         
         self.id = UUID()
-        self.name = oldIngredient.ingredient.name
-        self.category = newCategory
-        self.tags = oldIngredient.ingredient.tags
+        self.ingredientBase = IngredientBase(name: oldIngredient.ingredient.name, info: oldIngredient.info, category: newCategory, tags: oldIngredient.ingredient.tags, prep: oldIngredient.prep)
         self.value = oldIngredient.value
         self.unit = oldIngredient.unit
-        self.prep = oldIngredient.prep
         self.isCustom = false
-        self.matchesCurrentSearch = false
-        self.info = oldIngredient.info
-        self.ingredientBase = IngredientBase(name: oldIngredient.ingredient.name, category: newCategory, tags: oldIngredient.ingredient.tags, prep: oldIngredient.prep)
+       
     }
     func localizedVolumetricString(location: Location) -> String {
         switch location {
@@ -260,14 +243,8 @@ class Ingredient: Codable, Hashable {
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(UUID.self, forKey: .id)
-        self.name = try container.decode(String.self, forKey: .name)
-        self.category = try container.decode(Category.self, forKey: .ingredientCategory)
-        self.tags = try container.decode(Tags.self, forKey: .tagsWithSubcategories)
         self.value = try container.decode(Double.self, forKey: .value)
         self.unit = try container.decode(MeasurementUnit.self, forKey: .unit)
-        self.prep = try container.decode(Prep.self, forKey: .prep)
-        self.matchesCurrentSearch = try container.decode(Bool.self, forKey: .matchesCurrentSearch)
-        self.info = try container.decode(String.self, forKey: .info)
         self.ingredientBase = try container.decode(IngredientBase.self, forKey: .ingredientModel)
     }
 
@@ -275,13 +252,7 @@ class Ingredient: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
         try container.encode(value, forKey: .value)
-        try container.encode(name, forKey: .name)
-        try container.encode(category, forKey: .ingredientCategory)
-        try container.encode(tags, forKey: .tagsWithSubcategories)
         try container.encode(unit, forKey: .unit)
-        try container.encode(prep, forKey: .prep)
-        try container.encode(matchesCurrentSearch, forKey: .matchesCurrentSearch)
-        try container.encode(info, forKey: .info)
         try container.encode(ingredientBase, forKey: .ingredientModel)
     }
 }
@@ -315,13 +286,15 @@ enum Category: String, Codable, CaseIterable  {
 @Model
 class IngredientBase: Codable, Hashable {
 //    #Unique<IngredientModel>([\.name])
-    let name: String
-    let category: Category
-    let tags: Tags?
-    let prep: Prep?
+    var name: String
+    var info: String?
+    var category: Category
+    var tags: Tags?
+    var prep: Prep?
     
-    init(name: String, category: Category, tags: Tags? = Tags(), prep: Prep?) {
+    init(name: String, info: String? = nil, category: Category, tags: Tags? = Tags(), prep: Prep?) {
         self.name = name
+        self.info = info
         self.category = category
         self.tags = tags
         self.prep = prep

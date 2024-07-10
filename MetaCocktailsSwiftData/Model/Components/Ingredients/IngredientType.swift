@@ -123,7 +123,7 @@ enum IngredientType: Codable{
     var category: String {
         switch self {
         case .syrups:
-            return "Syrups"
+            return Category.syrups.rawValue
         case .juices:
             return "Juice"
         case .herbs:
