@@ -71,7 +71,12 @@ class OldCocktailIngredient: Codable, Hashable { // This old guy needs to be rem
             if ingredient.name == Agave.puebloViejoBlanco104.rawValue {
                 return "Pueblo Viejo Tequila"
             }
-            if ingredient.name == Gin.leopoldNavy.rawValue || ingredient.name == Gin.leopoldAmericanSBGin.rawValue || ingredient.name == Liqueur.lopoldsApple.rawValue || ingredient.name == Liqueur.leopoldCherry.rawValue {
+            if ingredient.name == Gin.leopoldNavy.rawValue ||
+                ingredient.name == Gin.leopoldAmericanSBGin.rawValue ||
+                ingredient.name == Liqueur.lopoldsApple.rawValue ||
+                ingredient.name == Liqueur.leopoldCherry.rawValue ||
+                ingredient.name == Amaro.leopold3Pins.rawValue
+            {
                 return "By Leopold Bros"
             }
             if ingredient.name == Rum.uruapanAnejo.rawValue {

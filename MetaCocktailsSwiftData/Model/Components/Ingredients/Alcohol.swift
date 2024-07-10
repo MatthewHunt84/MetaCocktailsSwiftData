@@ -1028,7 +1028,7 @@ enum Amaro: String, Codable, CaseIterable {
     case fernetVallet         = "Fernet-Vallet"
     case jagerColdBrew        = "Jagermeister Cold Brew"
     case jagerManifest        = "Jagermeister Manifest Amaro"
-    case leopold3Pins         = "Leopold Bros Three Pins Amaro"
+    case leopold3Pins         = "Three Pins Amaro"
     case luxardoBitterBianco  = "Luxard Bitter Bianco"
     case nardiniAmaro         = "Nardini Amaro"
     case ramazzotti           = "Ramazzotti Amaro"
