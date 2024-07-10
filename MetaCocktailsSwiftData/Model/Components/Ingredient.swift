@@ -197,19 +197,16 @@ class Ingredient: Codable, Hashable {
     }
     
     init(oldIngredient: OldCocktailIngredient) {
-        let newCategory = {
+        self.id = UUID()
+        self.ingredientBase = {
             var newCategory: Category = .agaves
             for category in Category.allCases {
                 if oldIngredient.ingredient.category == category.rawValue {
                     newCategory = category
-                    return newCategory
                 }
             }
-            return newCategory
+           return IngredientBase(name: oldIngredient.ingredient.name, info: oldIngredient.info, category: newCategory, tags: oldIngredient.ingredient.tags, prep: oldIngredient.prep)
         }()
-        
-        self.id = UUID()
-        self.ingredientBase = IngredientBase(name: oldIngredient.ingredient.name, info: oldIngredient.info, category: newCategory, tags: oldIngredient.ingredient.tags, prep: oldIngredient.prep)
         self.value = oldIngredient.value
         self.unit = oldIngredient.unit
         self.isCustom = false
