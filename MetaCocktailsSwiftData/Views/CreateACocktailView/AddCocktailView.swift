@@ -41,7 +41,7 @@ struct AddCocktailView: View {
                             VariationPicker(variation: $viewModel.variation)
                         }
                     
-                        GarnishPicker(viewModel: viewModel, rootIsActive: $isActive)
+                        GarnishPicker(viewModel: viewModel)
                         Section(header: Text("Credit (optional)")) {
                             TextField("Author", text: $viewModel.authorName)
                                 .focused($yearKeyboardFocused)
@@ -240,7 +240,7 @@ private struct IcePicker: View {
 private struct GarnishPicker: View {
 
     @Bindable var viewModel: AddCocktailViewModel
-    @Binding var rootIsActive: Bool
+    
     var body: some View {
         
         Section {
