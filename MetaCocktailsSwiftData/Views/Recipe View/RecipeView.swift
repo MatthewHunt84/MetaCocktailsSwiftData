@@ -494,12 +494,12 @@ struct GarnishView: View {
                 
                 if cocktail.garnish.count == 2 {
                     HStack(alignment: .top) {
-                        Text("\(cocktail.garnish.first!)")
+                        Text("\(cocktail.garnish[0].name)")
                         
                         Text("+")
                             .bold()
                         
-                        Text("\(cocktail.garnish.last!)")
+                        Text("\(cocktail.garnish[1].name)")
                     }
                 } else {
                     ForEach(cocktail.garnish, id: \.self) { garnish in
