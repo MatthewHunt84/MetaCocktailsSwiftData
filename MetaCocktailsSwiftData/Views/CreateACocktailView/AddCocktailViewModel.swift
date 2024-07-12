@@ -40,11 +40,13 @@ import Observation
     var didChooseExistingIngredient: Bool = false
     var isCustomIngredient: Bool = false
     var isShowingingredientAlert: Bool = false
+    var addIngredientDetailViewIsActive = false 
  
     //Garnish
     var addedGarnish: [Garnish] = []
     var currentGarnishName: String = ""
     var didChooseExistingGarnish: Bool = false
+    var addExistingGarnishViewIsActive: Bool = false
     
     // Extras
     var uniqueGlasswareName: Glassware?
@@ -121,7 +123,7 @@ import Observation
         
         return ingredientName != "" &&
         ingredientAmount != 0.0 &&
-        allIngredients.contains(where: { $0.name == ingredientName } )
+        !allIngredients.contains(where: { $0.name == ingredientName } )
     }
     
     func customGarnishIsValid(allGarnishes: [Garnish]) -> Bool {

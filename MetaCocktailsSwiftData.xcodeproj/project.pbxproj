@@ -1471,15 +1471,9 @@
 		4D5DA08C2B9E8E4A00C14F1F /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
-				4D5DA0952B9EB43600C14F1F /* AddedIngredientView.swift */,
-				4DCAA7A82C373D1700FBC4FE /* AddExistingIngredientDetailView.swift */,
-				4DE33DF62B8D933700312EC3 /* AddCustomIngredientView.swift */,
-				4D5DA0972B9EB46E00C14F1F /* AddBuildStepView.swift */,
-				4D5DA08D2B9E8E6A00C14F1F /* AddBuildStepDetailView.swift */,
-				4DCAA7A42C35E77200FBC4FE /* IngredeientRecipeView.swift */,
-				4DCAA7A62C35E83F00FBC4FE /* AddRecipeStepDetailView.swift */,
-				4D67612D2C3EE46A00A5939C /* GarnishDetailView.swift */,
-				4D67612F2C3F317D00A5939C /* AddCustomGarnishView.swift */,
+				4D6761332C41C51B00A5939C /* Garnish */,
+				4D6761322C41C4F700A5939C /* CocktailBuildSteps */,
+				4D6761312C41C4B000A5939C /* AddIngredient */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -1490,6 +1484,52 @@
 				4D5DA0992B9EBEB900C14F1F /* CustomAlertView.swift */,
 			);
 			path = CustomAlertView;
+			sourceTree = "<group>";
+		};
+		4D6761312C41C4B000A5939C /* AddIngredient */ = {
+			isa = PBXGroup;
+			children = (
+				4D5DA0952B9EB43600C14F1F /* AddedIngredientView.swift */,
+				4D6761342C41C54300A5939C /* ExistingIngredient */,
+				4D6761352C41C59D00A5939C /* CustomIngredient */,
+			);
+			path = AddIngredient;
+			sourceTree = "<group>";
+		};
+		4D6761322C41C4F700A5939C /* CocktailBuildSteps */ = {
+			isa = PBXGroup;
+			children = (
+				4D5DA0972B9EB46E00C14F1F /* AddBuildStepView.swift */,
+				4D5DA08D2B9E8E6A00C14F1F /* AddBuildStepDetailView.swift */,
+			);
+			path = CocktailBuildSteps;
+			sourceTree = "<group>";
+		};
+		4D6761332C41C51B00A5939C /* Garnish */ = {
+			isa = PBXGroup;
+			children = (
+				4D67612D2C3EE46A00A5939C /* GarnishDetailView.swift */,
+				4D67612F2C3F317D00A5939C /* AddCustomGarnishView.swift */,
+			);
+			path = Garnish;
+			sourceTree = "<group>";
+		};
+		4D6761342C41C54300A5939C /* ExistingIngredient */ = {
+			isa = PBXGroup;
+			children = (
+				4DCAA7A82C373D1700FBC4FE /* AddExistingIngredientDetailView.swift */,
+			);
+			path = ExistingIngredient;
+			sourceTree = "<group>";
+		};
+		4D6761352C41C59D00A5939C /* CustomIngredient */ = {
+			isa = PBXGroup;
+			children = (
+				4DCAA7A62C35E83F00FBC4FE /* AddRecipeStepDetailView.swift */,
+				4DE33DF62B8D933700312EC3 /* AddCustomIngredientView.swift */,
+				4DCAA7A42C35E77200FBC4FE /* IngredeientRecipeView.swift */,
+			);
+			path = CustomIngredient;
 			sourceTree = "<group>";
 		};
 		4D74398C2B9E586D0020C3B8 /* SubViews */ = {

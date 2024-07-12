@@ -9,6 +9,7 @@ struct AddCocktailView: View {
     @Environment(\.currentTab) private var selectedTab
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
     @FocusState private var yearKeyboardFocused: Bool
+    @State private var isActive: Bool = false
     
     
     var body: some View {
@@ -40,7 +41,7 @@ struct AddCocktailView: View {
                             VariationPicker(variation: $viewModel.variation)
                         }
                     
-                            GarnishPicker(viewModel: viewModel)
+                        GarnishPicker(viewModel: viewModel, rootIsActive: $isActive)
                         Section(header: Text("Credit (optional)")) {
                             TextField("Author", text: $viewModel.authorName)
                                 .focused($yearKeyboardFocused)
@@ -129,6 +130,14 @@ struct AddCocktailView: View {
                         
                     }
                     
+                }
+                .navigationDestination(isPresented: $viewModel.addExistingGarnishViewIsActive) {
+                    GarnishDetailView(viewModel: viewModel)
+                        .navigationBarBackButtonHidden(true)
+                }
+                .navigationDestination(isPresented: $viewModel.addIngredientDetailViewIsActive) {
+                    AddExistingIngredientDetailView(viewModel: viewModel)
+                        .navigationBarBackButtonHidden(true)
                 }
                 
                 if viewModel.isShowingAlert {
@@ -229,9 +238,9 @@ private struct IcePicker: View {
 
 
 private struct GarnishPicker: View {
-    
+
     @Bindable var viewModel: AddCocktailViewModel
-    
+    @Binding var rootIsActive: Bool
     var body: some View {
         
         Section {
@@ -245,9 +254,8 @@ private struct GarnishPicker: View {
                         viewModel.addedGarnish.remove(atOffsets: indexSet)
                     })
                 }
-                NavigationLink {
-                    GarnishDetailView(viewModel: viewModel)
-                        .navigationBarBackButtonHidden(true)
+                Button {
+                    viewModel.addExistingGarnishViewIsActive = true
                         
                 } label: {
                     HStack {
@@ -262,6 +270,7 @@ private struct GarnishPicker: View {
         } header: {
             Text("Garnish")
         }
+       
     }
 }
 

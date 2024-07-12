@@ -23,7 +23,7 @@ class Cocktail: Equatable, Hashable {
     @Attribute(.unique) var cocktailName: String
     var imageAsset: CocktailImage?
     var glasswareType: Glassware
-    @Relationship(deleteRule: .cascade) var garnish: [Garnish]
+    @Relationship(deleteRule: .nullify) var garnish: [Garnish]
     var ice: Ice?
     var author: Author?
     @Relationship(deleteRule: .cascade) var spec: [Ingredient]
