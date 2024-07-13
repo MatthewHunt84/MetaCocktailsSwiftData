@@ -82,6 +82,7 @@
 		F4872FE42C4307C70092F8FF /* default.store in Resources */ = {isa = PBXBuildFile; fileRef = F4872FE12C4307C70092F8FF /* default.store */; };
 		F4872FE52C4307C70092F8FF /* default.store-wal in Resources */ = {isa = PBXBuildFile; fileRef = F4872FE32C4307C70092F8FF /* default.store-wal */; };
 		F4872FE62C4307C70092F8FF /* default.store-shm in Resources */ = {isa = PBXBuildFile; fileRef = F4872FE22C4307C70092F8FF /* default.store-shm */; };
+		F4872FEB2C4319C90092F8FF /* PreviewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4872FEA2C4319C90092F8FF /* PreviewContainer.swift */; };
 		F4A628E22B7E31BF0084FD80 /* Variation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A628E12B7E31BF0084FD80 /* Variation.swift */; };
 		F4AA50482B93A54E00A05F54 /* AddCocktailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA50472B93A54E00A05F54 /* AddCocktailView.swift */; };
 		F4AA6ADC2B84F10D003DBB80 /* Preload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA6ADB2B84F10D003DBB80 /* Preload.swift */; };
@@ -181,6 +182,7 @@
 		F4872FE12C4307C70092F8FF /* default.store */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.store; sourceTree = "<group>"; };
 		F4872FE22C4307C70092F8FF /* default.store-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "default.store-shm"; sourceTree = "<group>"; };
 		F4872FE32C4307C70092F8FF /* default.store-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "default.store-wal"; sourceTree = "<group>"; };
+		F4872FEA2C4319C90092F8FF /* PreviewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewContainer.swift; sourceTree = "<group>"; };
 		F4A628E12B7E31BF0084FD80 /* Variation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variation.swift; sourceTree = "<group>"; };
 		F4AA50472B93A54E00A05F54 /* AddCocktailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCocktailView.swift; sourceTree = "<group>"; };
 		F4AA6ADB2B84F10D003DBB80 /* Preload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preload.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 		1AC386812AAABED00064F52A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				F4872FE92C4319AE0092F8FF /* PreviewContainer */,
 				1AC3867F2AAABED00064F52A /* Extensions */,
 			);
 			path = Utilities;
@@ -540,6 +543,14 @@
 			path = DummyCocktails;
 			sourceTree = "<group>";
 		};
+		F4872FE92C4319AE0092F8FF /* PreviewContainer */ = {
+			isa = PBXGroup;
+			children = (
+				F4872FEA2C4319C90092F8FF /* PreviewContainer.swift */,
+			);
+			path = PreviewContainer;
+			sourceTree = "<group>";
+		};
 		F4C5C3E22B3B4061005B2261 /* Ingredients */ = {
 			isa = PBXGroup;
 			children = (
@@ -708,6 +719,7 @@
 				4D54F7362B79F1E500D046D9 /* ContainerMenuView.swift in Sources */,
 				F41045072AD4FD42000CA913 /* CocktailImageView.swift in Sources */,
 				4DD0DE992B97E020008EF203 /* TabBarComponents.swift in Sources */,
+				F4872FEB2C4319C90092F8FF /* PreviewContainer.swift in Sources */,
 				4DCAA7A52C35E77200FBC4FE /* IngredeientRecipeView.swift in Sources */,
 				4D5DA08E2B9E8E6A00C14F1F /* AddBuildStepDetailView.swift in Sources */,
 				4D74398B2B9E581A0020C3B8 /* LoadSampleCocktailsButton.swift in Sources */,

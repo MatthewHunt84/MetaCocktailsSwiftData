@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct SwipeRecipeView: View {
     @State var variations: [Cocktail] // when this isn't state, our weird HeightPreservingTabView gets all mad. Keeping this for now, but perhaps adding binding viewModels is what we need here.
@@ -93,10 +94,8 @@ private struct TabViewMinHeightPreference: PreferenceKey {
     }
 }
 
-
-#Preview {
-    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    SwipeRecipeView(variations: DummyCocktails.shared.cocktails)
-        .modelContainer(preview.container)
-    
+#Preview(traits: .sampleData) {
+    @Previewable @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
+    SwipeRecipeView(variations: cocktails)
+        .environmentObject(CBCViewModel())
 }

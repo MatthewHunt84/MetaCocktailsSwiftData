@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct BatchButton: View {
     
@@ -41,6 +42,7 @@ struct BatchButton: View {
     }
 }
 
-#Preview {
-    BatchButton(cocktail: DummyCocktails.shared.cocktail)
+#Preview(traits: .sampleData) {
+    @Previewable @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
+    BatchButton(cocktail: cocktails.first!)
 }
