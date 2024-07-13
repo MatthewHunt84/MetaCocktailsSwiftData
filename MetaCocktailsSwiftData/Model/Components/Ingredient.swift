@@ -32,10 +32,16 @@ class OldCocktailIngredient: Codable, Hashable { // This old guy needs to be rem
             if ingredient.name == Whiskey.aberlourAbundah.rawValue {
                 return "High Proof Single Malt"
             }
-            if ingredient.name == Syrup.richDem.rawValue || ingredient.name == Syrup.richCinnamonAndVanill.rawValue {
+            if ingredient.name == Syrup.richDem.rawValue ||
+                ingredient.name == Syrup.richCinnamonAndVanill.rawValue {
                 return "Rich 2:1 by weight syrup."
             }
-            if ingredient.name == Juice.carrotJuice.rawValue || ingredient.name == Juice.grapefruit.rawValue || ingredient.name == Juice.lemon.rawValue || ingredient.name == Juice.lime.rawValue || ingredient.name == Juice.orange.rawValue || ingredient.name == Juice.pineappleJuice.rawValue {
+            if ingredient.name == Juice.carrotJuice.rawValue ||
+                ingredient.name == Juice.grapefruit.rawValue ||
+                ingredient.name == Juice.lemon.rawValue ||
+                ingredient.name == Juice.lime.rawValue ||
+                ingredient.name == Juice.orange.rawValue ||
+                ingredient.name == Juice.pineappleJuice.rawValue {
                 return "Juiced fresh"
             }
             if ingredient.name == Fruit.grapefruitPeel.rawValue {
@@ -65,7 +71,10 @@ class OldCocktailIngredient: Codable, Hashable { // This old guy needs to be rem
             if ingredient.name == OtherNA.vanillaExtract.rawValue {
                 return "Get the real stuff"
             }
-            if ingredient.name == Agave.mezcalDelMagueyChichicapa.rawValue || ingredient.name == Agave.mezcalDelMagueyJabali.rawValue || ingredient.name == Agave.mezcalDelMagueyVida.rawValue || ingredient.name == Agave.mezcalDelMagueySanLuis.rawValue {
+            if ingredient.name == Agave.mezcalDelMagueyChichicapa.rawValue ||
+                ingredient.name == Agave.mezcalDelMagueyJabali.rawValue ||
+                ingredient.name == Agave.mezcalDelMagueyVida.rawValue ||
+                ingredient.name == Agave.mezcalDelMagueySanLuis.rawValue {
                 return "Mezcal by Del Maguey"
             }
             if ingredient.name == Agave.puebloViejoBlanco104.rawValue {
@@ -82,10 +91,12 @@ class OldCocktailIngredient: Codable, Hashable { // This old guy needs to be rem
             if ingredient.name == Rum.uruapanAnejo.rawValue {
                 return "Single Blended Rum"
             }
-            if ingredient.name == Whiskey.portCharlotte.rawValue || ingredient.name == Whiskey.Ardbeg.rawValue {
+            if ingredient.name == Whiskey.portCharlotte.rawValue ||
+                ingredient.name == Whiskey.Ardbeg.rawValue {
                 return "10 Yr Peated Scotch"
             }
-            if ingredient.name == Whiskey.compassBoxOakCross.rawValue || ingredient.name == Whiskey.monkeyShoulder.rawValue{
+            if ingredient.name == Whiskey.compassBoxOakCross.rawValue ||
+                ingredient.name == Whiskey.monkeyShoulder.rawValue{
                 return "Blended Scotch"
             }
             if ingredient.name == Whiskey.elijahCraigSmallBatch.rawValue {
@@ -103,10 +114,12 @@ class OldCocktailIngredient: Codable, Hashable { // This old guy needs to be rem
             if ingredient.name == Whiskey.talisker10.rawValue {
                 return "Single Malt Scotch"
             }
-            if ingredient.name == Whiskey.tullamoreDew.rawValue || ingredient.name == Whiskey.tullamoreDew12.rawValue {
+            if ingredient.name == Whiskey.tullamoreDew.rawValue ||
+                ingredient.name == Whiskey.tullamoreDew12.rawValue {
                 return "Irish Whiskey"
             }
-            if ingredient.name == Liqueur.anchoRayesAncho.rawValue || ingredient.name == Liqueur.anchoVerde.rawValue {
+            if ingredient.name == Liqueur.anchoRayesAncho.rawValue ||
+                ingredient.name == Liqueur.anchoVerde.rawValue {
                 return "By Ancho Reyes"
             }
             if ingredient.name == FortifiedWine.kinaLillet.rawValue {

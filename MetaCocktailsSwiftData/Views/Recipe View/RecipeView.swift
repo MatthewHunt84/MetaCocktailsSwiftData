@@ -490,20 +490,22 @@ struct GarnishView: View {
             Text("Garnish")
                 .font(Layout.header)
             
-            if let garnishes = cocktail.garnish {
+            if cocktail.garnish != []{
                 
-                if garnishes.count == 2 {
+                if cocktail.garnish.count == 2, 
+                    let firstGarnishName = cocktail.garnish.first?.name,
+                    let secondGarnishName = cocktail.garnish.last?.name {
                     HStack(alignment: .top) {
-                        Text("\(garnishes.first!.rawValue)")
+                        Text("\(firstGarnishName)")
                         
                         Text("+")
                             .bold()
                         
-                        Text("\(garnishes.last!.rawValue)")
+                        Text("\(secondGarnishName)")
                     }
                 } else {
-                    ForEach(garnishes, id: \.self) { garnish in
-                        Text("\(garnish.rawValue)")
+                    ForEach(cocktail.garnish, id: \.self) { garnish in
+                        Text("\(garnish.name)")
                             .font(Layout.body)
                     }
                 }

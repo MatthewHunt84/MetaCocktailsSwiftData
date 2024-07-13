@@ -13,7 +13,6 @@ struct AddCustomIngredientView: View {
     @Bindable var viewModel: AddCocktailViewModel
     @FocusState private var keyboardFocused: Bool
     @FocusState private var amountKeyboardFocused: Bool
-    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         NavigationStack{
@@ -99,7 +98,6 @@ struct CategoryPickerView: View {
 }
 struct AddCustomIngredientToCocktailButton: View {
     @Bindable var viewModel: AddCocktailViewModel
-    @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]
     
@@ -115,7 +113,7 @@ struct AddCustomIngredientToCocktailButton: View {
                                                   
                 viewModel.clearIngredientData()
                 viewModel.isCustomIngredient = true
-                dismiss()
+                viewModel.addIngredientDetailViewIsActive = false
             } else {
                 viewModel.isShowingingredientAlert.toggle()
             }

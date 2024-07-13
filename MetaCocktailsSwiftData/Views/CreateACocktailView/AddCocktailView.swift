@@ -9,6 +9,7 @@ struct AddCocktailView: View {
     @Environment(\.currentTab) private var selectedTab
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
     @FocusState private var yearKeyboardFocused: Bool
+    @State private var isActive: Bool = false
     
     
     var body: some View {
@@ -40,7 +41,7 @@ struct AddCocktailView: View {
                             VariationPicker(variation: $viewModel.variation)
                         }
                     
-                            GarnishPicker(viewModel: viewModel)
+                        GarnishPicker(viewModel: viewModel)
                         Section(header: Text("Credit (optional)")) {
                             TextField("Author", text: $viewModel.authorName)
                                 .focused($yearKeyboardFocused)
@@ -85,12 +86,11 @@ struct AddCocktailView: View {
                                 if viewModel.isValid() {
                                     
                                     viewModel.validateAuthor()
-                                    viewModel.validateGarnish()
                                     viewModel.validateBuildInstructions()
                                     
                                     let cocktail = Cocktail(cocktailName: viewModel.cocktailName,
                                                             glasswareType: viewModel.uniqueGlasswareName!,
-                                                            garnish: viewModel.garnish,
+                                                            garnish: viewModel.addedGarnish,
                                                             ice: viewModel.ice,
                                                             author: viewModel.author,
                                                             spec: viewModel.addedIngredients,
@@ -130,6 +130,14 @@ struct AddCocktailView: View {
                         
                     }
                     
+                }
+                .navigationDestination(isPresented: $viewModel.addExistingGarnishViewIsActive) {
+                    GarnishDetailView(viewModel: viewModel)
+                        .navigationBarBackButtonHidden(true)
+                }
+                .navigationDestination(isPresented: $viewModel.addIngredientDetailViewIsActive) {
+                    AddExistingIngredientDetailView(viewModel: viewModel)
+                        .navigationBarBackButtonHidden(true)
                 }
                 
                 if viewModel.isShowingAlert {
@@ -230,7 +238,7 @@ private struct IcePicker: View {
 
 
 private struct GarnishPicker: View {
-    
+
     @Bindable var viewModel: AddCocktailViewModel
     
     var body: some View {
@@ -238,17 +246,16 @@ private struct GarnishPicker: View {
         Section {
            
                 List{
-                    ForEach(viewModel.addedGarnish, id: \.self) { garnish in
-                        Text("\(garnish.rawValue)")
+                    ForEach(viewModel.addedGarnish, id: \.name) { garnish in
+                        Text(garnish.name)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     .onDelete(perform: { indexSet in
                         viewModel.addedGarnish.remove(atOffsets: indexSet)
                     })
                 }
-                NavigationLink {
-                    GarnishDetailView(viewModel: viewModel)
-                        .navigationBarBackButtonHidden(true)
+                Button {
+                    viewModel.addExistingGarnishViewIsActive = true
                         
                 } label: {
                     HStack {
@@ -263,25 +270,7 @@ private struct GarnishPicker: View {
         } header: {
             Text("Garnish")
         }
-    }
-}
-private struct GarnishDetailView: View {
-    
-    @Bindable var viewModel: AddCocktailViewModel
-    @Environment(\.dismiss) private var dismiss
-    var body: some View {
-        BackButton()
-        List{
-            ForEach(Garnish.allCases, id: \.rawValue) { garnish in
-                Button {
-                    viewModel.addedGarnish.append(garnish)
-                    dismiss()
-                } label: {
-                    Text(garnish.rawValue)
-                        .tint(.white)
-                }
-            }
-        }
+       
     }
 }
 

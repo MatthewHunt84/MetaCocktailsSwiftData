@@ -14,8 +14,8 @@ struct AddExistingIngredientDetailView: View {
     @FocusState private var amountKeyboardFocused: Bool
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
-    @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
-    @State private var filteredIngredients: [Ingredient] = []
+    
+   
     
 
     var body: some View {
@@ -34,7 +34,7 @@ struct AddExistingIngredientDetailView: View {
                     }
                     .padding(.horizontal)
                     Form {
-                        AddIngredientSearchView(viewModel: viewModel, filteredIngredients: $filteredIngredients, keyboardFocused: _keyboardFocused)
+                        AddIngredientSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
                         AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
                         AddExistingIngredientToCocktailButton(viewModel: viewModel)
                         
@@ -46,10 +46,6 @@ struct AddExistingIngredientDetailView: View {
                         }
                     }
                     .task {
-//                        if !viewModel.startingIngredientsHaveLoaded  {
-//                            viewModel.startingIngredients = ingredients
-//                            viewModel.startingIngredientsHaveLoaded = true
-//                        }
                         keyboardFocused = true
                     }
                 }
@@ -78,7 +74,6 @@ struct AddExistingIngredientDetailView: View {
 struct AddIngredientSearchView: View {
     
     @Bindable var viewModel: AddCocktailViewModel
-    @Binding var filteredIngredients: [Ingredient]
     @FocusState var keyboardFocused: Bool
 
     @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]
@@ -164,8 +159,6 @@ struct AddMeasurementView: View {
 }
 struct AddExistingIngredientToCocktailButton: View {
     @Bindable var viewModel: AddCocktailViewModel
-    @Environment(\.dismiss) private var dismiss
-    @Environment(\.modelContext) private var modelContext
     @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]
     
     var body: some View {
@@ -180,7 +173,8 @@ struct AddExistingIngredientToCocktailButton: View {
                 viewModel.addedIngredients.append(ingredient)
                 
                 viewModel.clearIngredientData()
-                dismiss()
+                viewModel.addIngredientDetailViewIsActive = false 
+                
             } else {
                 viewModel.isShowingingredientAlert.toggle()
                 viewModel.didChooseExistingIngredient = false
