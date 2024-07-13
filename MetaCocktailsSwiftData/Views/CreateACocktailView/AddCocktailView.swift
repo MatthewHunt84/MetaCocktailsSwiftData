@@ -85,22 +85,7 @@ struct AddCocktailView: View {
                                 
                                 if viewModel.isValid() {
                                     
-                                    viewModel.validateAuthor()
-                                    viewModel.validateBuildInstructions()
-                                    
-                                    let cocktail = Cocktail(cocktailName: viewModel.cocktailName,
-                                                            glasswareType: viewModel.uniqueGlasswareName!,
-                                                            garnish: viewModel.addedGarnish,
-                                                            ice: viewModel.ice,
-                                                            author: viewModel.author,
-                                                            spec: viewModel.addedIngredients,
-                                                            buildOrder: viewModel.buildOption,
-                                                            tags: viewModel.ingredientTags,
-                                                            variation: viewModel.variation,
-                                                            collection: .custom)
-                                    
-                                    modelContext.insert(cocktail)
-                                    viewModel.clearData()
+                                    viewModel.addCocktailToModel(context: modelContext)
                                     selectedTab.wrappedValue = .cocktailListView
                          
                                     
