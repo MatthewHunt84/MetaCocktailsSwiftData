@@ -26,7 +26,9 @@ struct AddedIngredientView: View {
                     viewModel.addedIngredients.remove(atOffsets: indexSet)
                 })
             }
-            NavigationLinkWithoutIndicator {
+            Button {
+                viewModel.addIngredientDetailViewIsActive = true
+            } label: {
                 HStack{
                     Text(viewModel.addedIngredients.count < 2 ? "Add Ingredient" : "Add another ingredient")
                         .tint(viewModel.addedIngredients.count < 2 ? .white : .secondary)
@@ -34,9 +36,6 @@ struct AddedIngredientView: View {
                     Image(systemName: "plus.circle.fill")
                         .foregroundStyle(.brandPrimaryGold)
                 }
-            } destination: {
-                AddExistingIngredientDetailView(viewModel: viewModel)
-                    .navigationBarBackButtonHidden(true)
             }
         }
     }

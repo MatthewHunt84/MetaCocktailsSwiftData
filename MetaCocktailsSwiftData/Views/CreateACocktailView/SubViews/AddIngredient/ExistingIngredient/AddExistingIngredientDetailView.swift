@@ -46,10 +46,6 @@ struct AddExistingIngredientDetailView: View {
                         }
                     }
                     .task {
-//                        if !viewModel.startingIngredientsHaveLoaded  {
-//                            viewModel.startingIngredients = ingredients
-//                            viewModel.startingIngredientsHaveLoaded = true
-//                        }
                         keyboardFocused = true
                     }
                 }
@@ -163,8 +159,6 @@ struct AddMeasurementView: View {
 }
 struct AddExistingIngredientToCocktailButton: View {
     @Bindable var viewModel: AddCocktailViewModel
-    @Environment(\.dismiss) private var dismiss
-    @Environment(\.modelContext) private var modelContext
     @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]
     
     var body: some View {
@@ -179,7 +173,8 @@ struct AddExistingIngredientToCocktailButton: View {
                 viewModel.addedIngredients.append(ingredient)
                 
                 viewModel.clearIngredientData()
-                dismiss()
+                viewModel.addIngredientDetailViewIsActive = false 
+                
             } else {
                 viewModel.isShowingingredientAlert.toggle()
                 viewModel.didChooseExistingIngredient = false
@@ -210,24 +205,6 @@ struct CreateNewIngredientButton: View {
         } label: {
             HStack{
                 Text("Create Custom Ingredient").font(.headline)
-                Image(systemName: "plus")
-            }
-            .foregroundStyle(.brandPrimaryGold)
-        }
-        
-        
-    }
-}
-struct CreateNewGarnishButton: View {
-    @Bindable var viewModel: AddCocktailViewModel
-    
-    var body: some View {
-        NavigationLink {
-            AddCustomGarnishView(viewModel: viewModel)
-                .navigationBarBackButtonHidden(true)
-        } label: {
-            HStack{
-                Text("Create Custom Garnish").font(.headline)
                 Image(systemName: "plus")
             }
             .foregroundStyle(.brandPrimaryGold)

@@ -38,7 +38,7 @@ struct GarnishDetailView: View {
                         
                     }
                     .toolbar {
-                        ToolbarItem(placement: .bottomBar) { CreateNewGarnishButton(viewModel: viewModel) }
+                        ToolbarItem(placement: .bottomBar) { CreateCustomGarnishButton(viewModel: viewModel) }
                         ToolbarItemGroup(placement: .keyboard) {
                             KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
                         }
@@ -47,6 +47,7 @@ struct GarnishDetailView: View {
                         keyboardFocused = true
                     }
                 }
+                
                 
                 if viewModel.isShowingingredientAlert {
                     CustomAlertView(isActive: $viewModel.isShowingingredientAlert,
@@ -57,6 +58,7 @@ struct GarnishDetailView: View {
                     .zIndex(2)
                 }
             }
+
         }
     }
 }
@@ -122,7 +124,7 @@ struct AddExistingGarnishToCocktailButton: View {
             if viewModel.existingGarnishIsValid(allGarnishes: garnish) {
                 viewModel.addedGarnish.append(Garnish(name: viewModel.currentGarnishName))
                 viewModel.clearIngredientData()
-                dismiss()
+                viewModel.addExistingGarnishViewIsActive = false 
             } else {
                 viewModel.isShowingingredientAlert.toggle()
                 viewModel.didChooseExistingIngredient = false
@@ -139,5 +141,22 @@ struct AddExistingGarnishToCocktailButton: View {
             .padding()
         }
         .frame(width: 380, height: 40,  alignment: .center)
+    }
+}
+
+struct CreateCustomGarnishButton: View {
+    @Bindable var viewModel: AddCocktailViewModel
+    
+    var body: some View {
+        NavigationLink{
+            AddCustomGarnishView(viewModel: viewModel)
+                .navigationBarBackButtonHidden(true)
+        } label: {
+            HStack{
+                Text("Create Custom Garnish").font(.headline)
+                Image(systemName: "plus")
+            }
+            .foregroundStyle(.brandPrimaryGold)
+        }
     }
 }
