@@ -199,7 +199,7 @@ class OldCocktailIngredient: Codable, Hashable { // This old guy needs to be rem
 @Model
 class Ingredient: Codable, Hashable {
     
-    var ingredientBase: IngredientBase // NEW: This will hold the ingredient info
+    var ingredientBase: IngredientBase
 
     var id: UUID
     var value: Double
@@ -296,6 +296,7 @@ enum Category: String, Codable, CaseIterable  {
 
 @Model
 class IngredientBase: Codable, Hashable {
+    #Unique<IngredientBase>([\.name])
     var name: String
     var info: String?
     var category: Category

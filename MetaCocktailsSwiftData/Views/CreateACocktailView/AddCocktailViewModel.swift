@@ -211,7 +211,7 @@ import Observation
         guard !currentGarnishName.isEmpty else {
             return []
         }
-        let filteredGarnishes = Array(Set(garnishes.map({$0.name}))).sorted(by: {$0 < $1 })
+        let filteredGarnishes = garnishes.map {$0.name}.sorted(by: {$0 < $1 })
         let lowercasedSearchText = currentGarnishName.lowercased()
 
         return filteredGarnishes.filter { $0.lowercased().contains(lowercasedSearchText)}

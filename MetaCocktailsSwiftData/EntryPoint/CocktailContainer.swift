@@ -22,10 +22,7 @@ actor CocktailContainer {
             if shouldPreload {
                 print("🕔🕔🕔 PRELOADING COCKTAILS FOR FIRST TIME LAUNCH 🕔🕔🕔")
                 
-                
-                let _ = Preload.allCases.map { $0.cocktails }
-                    .flatMap { $0 }
-                    .map { container.mainContext.insert($0) }
+                insertCocktailsIntoModel(container: container)
                 
                 shouldPreload = false
             } else {
@@ -36,5 +33,35 @@ actor CocktailContainer {
         } catch {
             fatalError("💀💀💀 MODEL CONTAINER FAILED TO INITIALIZE 💀💀💀")
         }
+        
+        func insertCocktailsIntoModel(container: ModelContainer) {
+            // loop over cocktails
+            
+            let _ = Preload.allCases.map { $0.cocktails }
+                .flatMap { $0 }
+                .map { cocktail in
+            
+            // look at each cocktail's spec (array of ingredients)
+                    cocktail.spec.forEach { ingredient in
+
+                        let fetchDescriptor = FetchDescriptor<IngredientBase>(predicate: #Predicate { $0.name == ingredient.ingredientBase.name } )
+                        let existingBase = try? container.mainContext.fetch(fetchDescriptor).first
+                        // see if ingredientbase exists in model
+                        
+                        if let base = existingBase {
+                            // if yes - use existing ingredientbase
+                            ingredient.ingredientBase = base
+                        }
+                        // if no - add base as usual
+                    }
+            
+            // Add cocktail to context
+                    
+                    container.mainContext.insert(cocktail) }
+            
+            // Save context to container
+        }
+        
+        
     }
 }
