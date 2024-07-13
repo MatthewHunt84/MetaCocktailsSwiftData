@@ -96,7 +96,7 @@ private struct TabViewMinHeightPreference: PreferenceKey {
 
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    return SwipeRecipeView(variations: [zombie129, brandyAlexander, cloverClub, zombie, airMailWnG, peanutButterFalcon])
+    SwipeRecipeView(variations: DummyCocktails.shared.cocktails)
         .modelContainer(preview.container)
     
 }

@@ -42,5 +42,5 @@ struct BatchButton: View {
 }
 
 #Preview {
-    BatchButton(cocktail: aFlightSouthOfTheBorder)
+    BatchButton(cocktail: DummyCocktails.shared.cocktail)
 }

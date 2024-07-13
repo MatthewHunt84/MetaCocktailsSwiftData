@@ -44,7 +44,7 @@ struct NumberOfCocktailsModal: View {
 
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    return NumberOfCocktailsModal(cocktail: aFlightSouthOfTheBorder, isShowingBatchView: .constant(false), isPresented: .constant(true))
+    return NumberOfCocktailsModal(cocktail: DummyCocktails.shared.cocktail, isShowingBatchView: .constant(false), isPresented: .constant(true))
         .environmentObject(CBCViewModel())
         .modelContainer(preview.container)
 }
