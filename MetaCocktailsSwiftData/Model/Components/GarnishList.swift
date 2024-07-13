@@ -12,7 +12,9 @@ import SwiftData
 @Model
 class Garnish: Codable, Hashable {
     
+    #Unique<Garnish>([\.name])
     var name: String
+    var cocktails: [Cocktail]?
     
     init(name: String) {
         self.name = name
