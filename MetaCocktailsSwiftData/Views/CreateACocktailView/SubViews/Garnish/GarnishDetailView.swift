@@ -15,8 +15,6 @@ struct GarnishDetailView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
    
-    
-
     var body: some View {
         NavigationStack{
             ZStack{
@@ -118,13 +116,13 @@ struct AddExistingGarnishToCocktailButton: View {
     @Bindable var viewModel: AddCocktailViewModel
     @Environment(\.dismiss) private var dismiss
     @Query(sort: \Garnish.name) var garnish: [Garnish]
+    @Environment(\.modelContext) private var modelContext
     
     var body: some View {
         Button{
             if viewModel.existingGarnishIsValid(allGarnishes: garnish) {
-                viewModel.addedGarnish.append(Garnish(name: viewModel.currentGarnishName))
-                viewModel.clearIngredientData()
-                viewModel.addExistingGarnishViewIsActive = false 
+                viewModel.addExistingGarnishToCocktail(context: modelContext)
+                viewModel.addExistingGarnishViewIsActive = false
             } else {
                 viewModel.isShowingingredientAlert.toggle()
                 viewModel.didChooseExistingIngredient = false

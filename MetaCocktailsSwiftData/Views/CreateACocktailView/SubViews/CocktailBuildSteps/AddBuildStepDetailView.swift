@@ -26,7 +26,10 @@ struct AddBuildStepDetailView: View {
                             TextField("Add Step", text: $textEditor)
                                 .focused($keyboardFocused)
                                 .onChange(of: keyboardFocused) { oldValue, newValue in
+                                    guard !newValue else { return }
                                     print("Keyboard focus changed: \(newValue)")
+                                    viewModel.build.instructions.append(Instruction(step: viewModel.build.instructions.count + 1, method: textEditor))
+                                    isShowingBuildSheet = false
                                 }
                         }
                         
@@ -64,11 +67,6 @@ struct AddBuildStepDetailView: View {
     }
 }
 
-#Preview {
-    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    
+#Preview(traits: .sampleData) {
     return AddBuildStepDetailView(viewModel: AddCocktailViewModel(), isShowingBuildSheet: .constant(true))
-        .modelContainer(preview.container)
-    
 }
-

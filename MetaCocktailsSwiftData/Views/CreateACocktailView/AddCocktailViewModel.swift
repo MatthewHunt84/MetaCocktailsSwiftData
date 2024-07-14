@@ -5,16 +5,23 @@
 //  Created by James Menkal on 2/26/24.
 //
 
+
 import SwiftUI
-import Observation
+import SwiftData
 
 @Observable final class AddCocktailViewModel {
+    
+    init(context: ModelContext? = nil) {
+        self.context = context
+    }
+    
+    var context: ModelContext?
 
     //AddIngredientView
     var category: Category = Category.agaves
     var ingredientAmount = 0.0
     var ingredientTags = Tags()
-    var prep: Prep? 
+    var prep: Prep?
     var selectedMeasurementUnit = MeasurementUnit.fluidOunces
     var currentSelectedComponent = CocktailComponent(name: "Placeholder")
 
@@ -40,7 +47,7 @@ import Observation
     var didChooseExistingIngredient: Bool = false
     var isCustomIngredient: Bool = false
     var isShowingingredientAlert: Bool = false
-    var addIngredientDetailViewIsActive = false 
+    var addIngredientDetailViewIsActive = false
  
     //Garnish
     var addedGarnish: [Garnish] = []
@@ -95,7 +102,7 @@ import Observation
         selectedMeasurementUnit = .fluidOunces
         prepIngredientRecipe = []
         didChooseExistingIngredient = false
-        didChooseExistingGarnish = false 
+        didChooseExistingGarnish = false
         isCustomIngredient = false
     }
     
@@ -116,7 +123,55 @@ import Observation
         return currentGarnishName != "" &&
         didChooseExistingGarnish == true &&
         allGarnishes.contains(where: { $0.name == currentGarnishName })
-   
+        
+    }
+    
+    @MainActor
+    func addExistingGarnishToCocktail(context: ModelContext) {
+        Task {
+            
+            let fetchDescriptor = FetchDescriptor<Garnish>(predicate: #Predicate { $0.name == currentGarnishName })
+            
+            await MainActor.run {
+                let existingGarnish = try? context.fetch(fetchDescriptor).first
+                if let foundGarnish =  existingGarnish {
+                    addedGarnish.append(foundGarnish)
+                } else {
+                    isShowingingredientAlert.toggle()
+                }
+            }
+            clearIngredientData()
+        }
+    }
+    
+    @MainActor
+    func addCocktailToModel(context: ModelContext) {
+        validateAuthor()
+        validateBuildInstructions()
+        
+        var cocktail = Cocktail(cocktailName: cocktailName,
+                                glasswareType: uniqueGlasswareName!,
+                                garnish: addedGarnish,
+                                ice: ice,
+                                author: author,
+                                spec: addedIngredients,
+                                buildOrder: buildOption,
+                                tags: ingredientTags,
+                                variation: variation,
+                                collection: .custom)
+        
+        cocktail.spec.forEach { ingredient in
+            
+            let fetch = FetchDescriptor<IngredientBase>(predicate: #Predicate { $0.name == ingredient.ingredientBase.name })
+            let existingBase = try? context.fetch(fetch).first
+            
+            if let base = existingBase {
+                ingredient.ingredientBase = base
+            }
+        }
+        
+        context.insert(cocktail)
+        clearData()
     }
     
     func customIngredientIsValid(allIngredients: [IngredientBase]) -> Bool {
