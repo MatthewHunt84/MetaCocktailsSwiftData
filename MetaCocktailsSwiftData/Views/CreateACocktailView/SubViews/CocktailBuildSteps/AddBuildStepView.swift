@@ -26,12 +26,11 @@ struct AddBuildStepView: View {
                 }
             }
             .sheet(isPresented: $isShowingBuildSheet, content: {
-                ZStack{
-                    Color.black.ignoresSafeArea()
+
                     AddBuildStepDetailView(viewModel: viewModel, isShowingBuildSheet: $isShowingBuildSheet)
-                        .backgroundStyle(.black)
-                }
+                    .presentationBackground(.clear)
             })
+            
             ForEach(viewModel.build.instructions, id: \.id) { buildStep in
                 VStack{
                     Text("Step \(buildStep.step)")

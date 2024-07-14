@@ -483,6 +483,7 @@
 		F44A28F72AC26A6A0083C04D /* TagLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44A28F62AC26A6A0083C04D /* TagLayout.swift */; };
 		F4872FEE2C4353E10092F8FF /* DummyCocktails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4872FED2C4353E10092F8FF /* DummyCocktails.swift */; };
 		F4872FF02C4355320092F8FF /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4872FEF2C4355320092F8FF /* SampleData.swift */; };
+		F4872FF32C4374580092F8FF /* BlackGlassBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4872FF22C4374580092F8FF /* BlackGlassBackgroundView.swift */; };
 		F4A628E22B7E31BF0084FD80 /* Variation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A628E12B7E31BF0084FD80 /* Variation.swift */; };
 		F4AA50482B93A54E00A05F54 /* AddCocktailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA50472B93A54E00A05F54 /* AddCocktailView.swift */; };
 		F4AA6ADA2B84F049003DBB80 /* CocktailContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA6AD92B84F049003DBB80 /* CocktailContainer.swift */; };
@@ -985,6 +986,7 @@
 		F473FFD22C2716C4008689D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4872FED2C4353E10092F8FF /* DummyCocktails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyCocktails.swift; sourceTree = "<group>"; };
 		F4872FEF2C4355320092F8FF /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		F4872FF22C4374580092F8FF /* BlackGlassBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackGlassBackgroundView.swift; sourceTree = "<group>"; };
 		F4A628E12B7E31BF0084FD80 /* Variation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variation.swift; sourceTree = "<group>"; };
 		F4AA50472B93A54E00A05F54 /* AddCocktailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCocktailView.swift; sourceTree = "<group>"; };
 		F4AA6AD92B84F049003DBB80 /* CocktailContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailContainer.swift; sourceTree = "<group>"; };
@@ -1251,6 +1253,7 @@
 		1AC386962AAABED00064F52A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F4872FF12C4374410092F8FF /* Backgrounds */,
 				4D5DA09C2B9ED43300C14F1F /* CustomAlertView */,
 				4DE33DF52B8D931500312EC3 /* CreateACocktailView */,
 				4DA567B02B6D9524003F6F04 /* CocktailBatchingCalculator */,
@@ -1801,6 +1804,14 @@
 			path = DummyCocktails;
 			sourceTree = "<group>";
 		};
+		F4872FF12C4374410092F8FF /* Backgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				F4872FF22C4374580092F8FF /* BlackGlassBackgroundView.swift */,
+			);
+			path = Backgrounds;
+			sourceTree = "<group>";
+		};
 		F4C5C3E22B3B4061005B2261 /* Ingredients */ = {
 			isa = PBXGroup;
 			children = (
@@ -2259,6 +2270,7 @@
 				4DCB17222BA4E0640002D7D9 /* PalmaFizz.swift in Sources */,
 				4DA567A62B6CDDE2003F6F04 /* TheRuralJuror.swift in Sources */,
 				4DB1C0BE2B46D74B00943C69 /* ResultViewSectionData.swift in Sources */,
+				F4872FF32C4374580092F8FF /* BlackGlassBackgroundView.swift in Sources */,
 				4DBBA49A2B68AE7C00179B8F /* MorningGloryFizz.swift in Sources */,
 				4DA568102B6E19E2003F6F04 /* PipeDream.swift in Sources */,
 				4DF408DC2B6104B800EF9A6E /* ElDiablo.swift in Sources */,

@@ -27,11 +27,8 @@ struct IngredeientRecipeView: View {
                     }
                 }
                 .sheet(isPresented: $isShowingBuildSheet, content: {
-                    ZStack{
-                        Color.black.ignoresSafeArea()
                         AddRecipeStepDetailView(viewModel: viewModel, isShowingBuildSheet: $isShowingBuildSheet)
-                            .backgroundStyle(.black)
-                    }
+                        .presentationBackground(.clear)
                 })
                 ForEach(viewModel.prepIngredientRecipe, id: \.id) { buildStep in
                     VStack{

@@ -14,22 +14,26 @@ struct AddRecipeStepDetailView: View {
     @Binding var isShowingBuildSheet: Bool
     
     var body: some View {
-        NavigationStack{
-            ZStack{
-                Color.black
-                VStack{
-                    Form{
+
+                VStack {
+                    
+                    Form {
                         Section("Add a recipe step") {
                             Text("Step \(viewModel.prepIngredientRecipe.count + 1)")
-                            //                            TextEditor(text: $textEditor)
                             TextField("Add Step", text: $textEditor)
                                 .focused($keyboardFocused)
                                 .onChange(of: keyboardFocused) { oldValue, newValue in
                                     print("Keyboard focus changed: \(newValue)")
+                                    if !newValue {
+                                        viewModel.prepIngredientRecipe.append(Instruction(step: viewModel.build.instructions.count + 1, method: textEditor))
+                                        isShowingBuildSheet = false
+                                    }
                                 }
                         }
                         
                     }
+                    .scrollContentBackground(.hidden)
+                    .background(BlackGlassBackgroundView())
                     .toolbar {
                         ToolbarItem(placement: .bottomBar) {
                             Button {
@@ -51,11 +55,6 @@ struct AddRecipeStepDetailView: View {
                             .tint(Color.brandPrimaryGold)
                         }
                     }
-                    
-                }
-                
-            }
-            
             .task {
                 keyboardFocused = true
             }
@@ -63,6 +62,3 @@ struct AddRecipeStepDetailView: View {
     }
 }
 
-//#Preview {
-//    AddRecipeStepDetailView()
-//}
