@@ -98,6 +98,8 @@ struct CocktailListView: View {
                     //zIndex is how the ZStack orders views. Without setting the zIndex to anything but 0, the animation won't transition out of view on the top of the stack.
                 }
             }
+            .blur(radius: 2)
+            .overlay { LoadingAnimation().frame(width: 150, height: 150) }
         }
     }
 }

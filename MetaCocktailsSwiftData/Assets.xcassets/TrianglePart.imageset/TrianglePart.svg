@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Circle_Burst" data-name="Circle Burst" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #000;
+      }
+
+      .cls-1, .cls-2 {
+        stroke-width: 4.07px;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        stroke: #ffb803;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-2, .cls-3 {
+        fill: none;
+      }
+
+      .cls-3 {
+        stroke-width: 10.17px;
+      }
+    </style>
+  </defs>
+  <polygon class="cls-1" points="177.76 683.66 511.65 140.48 845.55 683.66 177.76 683.66"/>
+  <polygon class="cls-3" points="223.79 657.93 511.65 189.62 799.52 657.93 223.79 657.93"/>
+  <polygon class="cls-2" points="254.47 640.77 511.65 222.38 768.83 640.77 254.47 640.77"/>
+</svg>
