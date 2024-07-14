@@ -15,29 +15,18 @@ struct MetaCocktailsSwiftDataApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ZStack {
-                TabBarView()
-                    .preferredColorScheme(.dark)
-                    .opacity(appState.showMainContent ? 1 : 0)
-                
-                LoadingView()
-                    .preferredColorScheme(.dark)
-                    .opacity(appState.showMainContent ? 0 : 1)
-            }
-            .animation(.easeInOut(duration: 0.8), value: appState.showMainContent)
+            ContentView()
+                .preferredColorScheme(.dark)
+                .modelContainer(CocktailContainer.preload(&shouldPreload))
+                .environmentObject(CBCViewModel())
+                .environmentObject(appState)
         }
-        .modelContainer(CocktailContainer.preload(&shouldPreload))
-        .environmentObject(CBCViewModel())
-        .environmentObject(appState)
     }
 }
 
-@MainActor class AppState: ObservableObject {
-    @Published var isDataReady = false {
-        didSet {
-            updateShowMainContent()
-        }
-    }
+@MainActor
+class AppState: ObservableObject {
+    @Published var isDataReady = false
     @Published var showMainContent = false
     private var loadingStartTime: Date?
     
@@ -45,70 +34,37 @@ struct MetaCocktailsSwiftDataApp: App {
         loadingStartTime = Date()
     }
     
-    private func updateShowMainContent() {
-        guard isDataReady else { return }
-        
+    func setDataReady() {
+        isDataReady = true
         let elapsedTime = Date().timeIntervalSince(loadingStartTime ?? Date())
-        if elapsedTime >= 2.0 {
-            withAnimation {
-                showMainContent = true
-            }
-        } else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + (2.0 - elapsedTime)) {
-                withAnimation {
-                    self.showMainContent = true
-                }
-            }
-        }
-    }
-}
-
-struct LoadingView: View {
-    @EnvironmentObject var appState: AppState
-    @Environment(\.modelContext) private var modelContext
-    
-    var body: some View {
-        VStack {
-            LoadingAnimation()
-                .frame(width: 150, height: 150)
-        }
-        .onAppear {
-            Task {
-                await prepareData()
-            }
-        }
-    }
-    
-    @MainActor
-    private func prepareData() async {
-        // Perform a simple query to ensure the store is ready
-        let _ = try? modelContext.fetch(FetchDescriptor<Cocktail>())
+        let remainingTime = max(2.0 - elapsedTime, 0)
         
-        // If we get here without crashing, the store is ready
-        appState.isDataReady = true
+        Task {
+            try? await Task.sleep(for: .seconds(remainingTime))
+            showMainContent = true
+        }
     }
 }
 
-struct LoadingAnimation: View {
-    @State private var rotationCircle = 0.0
-    @State private var rotationTriangle = 0.0
+struct ContentView: View {
+    @EnvironmentObject var appState: AppState
+    @State private var animationTrigger = false
     
     var body: some View {
         ZStack {
-            Image("CirclePart")
-                .resizable()
-                .rotationEffect(.degrees(rotationCircle))
-                .animation(Animation.linear(duration: 4).repeatForever(autoreverses: false), value: rotationCircle)
+            TabBarView()
+                .opacity(animationTrigger ? 1 : 0)
             
-            Image("TrianglePart")
-                .resizable()
-            
-            Image("GlassPart")
-                .resizable()
+            LoadingView()
+                .opacity(animationTrigger ? 0 : 1)
+                .scaleEffect(animationTrigger ? 2.0 : 1)
         }
-        .onAppear {
-            rotationCircle = 360
-            rotationTriangle = -360
+        .onChange(of: appState.showMainContent) { _, newValue in
+            if newValue {
+                withAnimation(.easeInOut(duration: 0.5)) {
+                    animationTrigger = true
+                }
+            }
         }
     }
 }
