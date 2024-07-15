@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct NumberOfCocktailsModal: View {
     var cocktail: Cocktail
@@ -41,10 +42,10 @@ struct NumberOfCocktailsModal: View {
     }
 }
 
-
-#Preview {
-    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    return NumberOfCocktailsModal(cocktail: aFlightSouthOfTheBorder, isShowingBatchView: .constant(false), isPresented: .constant(true))
-        .environmentObject(CBCViewModel())
-        .modelContainer(preview.container)
+#Preview(traits: .sampleData) {
+    @Previewable @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
+    return NumberOfCocktailsModal(cocktail: cocktails.first ?? DummyCocktails.randomCocktail(),
+                                  isShowingBatchView: .constant(false),
+                                  isPresented: .constant(true))
+    .environmentObject(CBCViewModel())
 }
