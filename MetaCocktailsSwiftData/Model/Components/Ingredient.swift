@@ -303,6 +303,7 @@ class IngredientBase: Codable, Hashable {
     var tags: Tags?
     var prep: Prep?
     var isCustom: Bool
+
     
     init(name: String, info: String? = nil, category: Category, tags: Tags? = Tags(), prep: Prep?, isCustom: Bool = false) {
         self.name = name
