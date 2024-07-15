@@ -147,7 +147,7 @@ struct AddCocktailView: View {
 }
 private struct GlassPickerButton: View {
    @Bindable var viewModel: AddCocktailViewModel
-   @State private var glasswareName = "none"
+   @State private var glasswareName = "None"
     var body: some View {
         NavigationLink {
             GlassPickerDetailView(glasswareName: $glasswareName, viewModel: viewModel)

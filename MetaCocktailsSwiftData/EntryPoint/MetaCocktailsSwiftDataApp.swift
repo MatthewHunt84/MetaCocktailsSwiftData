@@ -15,47 +15,56 @@ struct MetaCocktailsSwiftDataApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if appState.isDataReady {
-                TabBarView()
-                    .preferredColorScheme(.dark)
-            } else {
-                LoadingView()
-                    .preferredColorScheme(.dark)
-            }
+            ContentView()
+                .preferredColorScheme(.dark)
+                .modelContainer(CocktailContainer.preload(&shouldPreload))
+                .environmentObject(CBCViewModel())
+                .environmentObject(appState)
         }
-        .modelContainer(CocktailContainer.preload(&shouldPreload))
-        .environmentObject(CBCViewModel())
-        .environmentObject(appState)
     }
 }
 
-@MainActor class AppState: ObservableObject {
+@MainActor
+class AppState: ObservableObject {
     @Published var isDataReady = false
+    @Published var showMainContent = false
+    private var loadingStartTime: Date?
+    
+    init() {
+        loadingStartTime = Date()
+    }
+    
+    func setDataReady() {
+        isDataReady = true
+        let elapsedTime = Date().timeIntervalSince(loadingStartTime ?? Date())
+        let remainingTime = max(2.0 - elapsedTime, 0)
+        
+        Task {
+            try? await Task.sleep(for: .seconds(remainingTime))
+            showMainContent = true
+        }
+    }
 }
 
-
-struct LoadingView: View {
+struct ContentView: View {
     @EnvironmentObject var appState: AppState
-    @Environment(\.modelContext) private var modelContext
+    @State private var animationTrigger = false
     
     var body: some View {
-        VStack {
-            ProgressView()
-            Text("Pretend there's a cool loading indicator here..")
+        ZStack {
+            TabBarView()
+                .opacity(animationTrigger ? 1 : 0)
+            
+            LoadingView()
+                .opacity(animationTrigger ? 0 : 1)
+                .scaleEffect(animationTrigger ? 2.0 : 1)
         }
-        .onAppear {
-            Task {
-                await prepareData()
+        .onChange(of: appState.showMainContent) { _, newValue in
+            if newValue {
+                withAnimation(.easeInOut(duration: 0.5)) {
+                    animationTrigger = true
+                }
             }
         }
-    }
-    
-    @MainActor
-    private func prepareData() async {
-        // Perform a simple query to ensure the store is ready
-        let _ = try? modelContext.fetch(FetchDescriptor<Cocktail>())
-        
-        // If we get here without crashing, the store is ready
-        appState.isDataReady = true
     }
 }
