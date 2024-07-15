@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Observation
+import SwiftData
 
 
 @Observable
@@ -15,8 +16,8 @@ final class SearchViewModel: ObservableObject {
     
     var currentComponentSearchName: String = ""
     var filteredIngredients: [IngredientBase] = []
-    var includedIngredients: [IngredientBase] = []
-    var excludedIngredients: [IngredientBase] = []
+//    var preferedIngredients: [IngredientBase] = []
+//    var unwantedIngredients: [IngredientBase] = []
     
     var isLoading = true
     var preferredCount = 0
@@ -28,42 +29,78 @@ final class SearchViewModel: ObservableObject {
     
     func clearData() {
         filteredIngredients = []
-        includedIngredients = []
-        excludedIngredients = []
+//        includedIngredients = []
+//        excludedIngredients = []
         currentComponentSearchName = ""
+        missingIngredients = []
+        sections = []
         
     }
+    @MainActor
+    func findPreferedIngredients(modelContext: ModelContext) -> [IngredientBase] {
+        var preferedIngredients: [IngredientBase] = []
+        let fetchDescriptor = FetchDescriptor<IngredientBase>(predicate: #Predicate { ingredient in
+            ingredient.isPrefered == true
+        })
+        do {
+            preferedIngredients = try modelContext.fetch(fetchDescriptor)
+        } catch {
+            print(error.localizedDescription)
+        }
+        return preferedIngredients
+    }
+    @MainActor
+    func findUnwantedIngredients(modelContext: ModelContext) -> [IngredientBase] {
+        var unwantedIngredients: [IngredientBase] = []
+        let fetchDescriptor = FetchDescriptor<IngredientBase>(predicate: #Predicate { ingredient in
+            ingredient.isUnwanted == true
+        })
+        do {
+            unwantedIngredients = try modelContext.fetch(fetchDescriptor)
+        } catch {
+            print(error.localizedDescription)
+        }
+        return unwantedIngredients
+    }
     
-    
-    
-    func findCocktails(startingCocktails: [Cocktail]) {
+    @MainActor
+    func findCocktails(modelContext: ModelContext) {
         isLoading = true
+        clearData()
+        var startingCocktails: [Cocktail] = []
+        var includedIngredientBases: [IngredientBase] = []
+        let fetchDescriptor = FetchDescriptor<Cocktail>(sortBy: [SortDescriptor(\.cocktailName)])
+        do {
+            startingCocktails = try modelContext.fetch(fetchDescriptor)
+        } catch {
+            print(error.localizedDescription)
+        }
+        let preferedIngredientsFetchDescriptor = FetchDescriptor<IngredientBase>(predicate: #Predicate{$0.isPrefered == true })
+        do {
+            includedIngredientBases = try modelContext.fetch(preferedIngredientsFetchDescriptor)
+        } catch {
+            print(error.localizedDescription)
+        }
         
-        let refinedCocktails: [Cocktail] = filterUnwantedCocktails(unwantedIngredients: excludedIngredients, cocktails: startingCocktails)
+        let refinedCocktails: [Cocktail] = filterUnwantedCocktails(cocktails: startingCocktails)
         
         let finalMatchContainers: [ResultViewSectionData] = {
             var dataShells = [ResultViewSectionData]()
-            preferredCount = includedIngredients.count
             for i in 0...Int(preferredCount / 2) {
                 let numberOfMatches = (preferredCount - i)
+                print("a data shell with \(numberOfMatches) is being created")
                 dataShells.append(ResultViewSectionData(count: preferredCount, matched: numberOfMatches, cocktails: []))
             }
             return dataShells
         }()
         for cocktail in refinedCocktails {
-            
-            //let cocktailTagsAsStrings = convertTagsAndSpecToStrings(for: cocktail)
-            
             /** We use let _ = ... to loop over finalMatchContainers to append cocktails that match preferred components to the right section without creating a new array in the process */
             let _ = finalMatchContainers.map { resultViewSectionData in
-                
                 /** Then we want to match cocktails to sections by calculating the number of components that match the preferred array. */
-               
-
-                let matches = includedIngredients.reduce(0, { countMatches(currentCount: $0, preferredComponent: $1, cocktailIngredients: cocktail.spec)}) // we hijack this reduce function to make a missing component array
-
+                let matches = includedIngredientBases.reduce(0, { countMatches(currentCount: $0, preferredComponent: $1, cocktailIngredients: cocktail.spec)}) // we hijack this reduce function to make a missing component array
                 if resultViewSectionData.matched == matches {
                     resultViewSectionData.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: missingIngredients, cocktail: cocktail))
+                    print("🎉🎉🎉  \(cocktail.cocktailName) made it into the selected list")
                 }
                 
                 missingIngredients.removeAll()
@@ -77,14 +114,14 @@ final class SearchViewModel: ObservableObject {
          sections = finalMatchContainers.compactMap { resultSectionData in
          return resultSectionData.cocktails.isEmpty ? nil : resultSectionData } */
         isLoading = false
-        
+        print("All of find cocktails got fired")
         
     }
     func countMatches(currentCount: Int, preferredComponent: IngredientBase, cocktailIngredients: [Ingredient]) -> Int {
         // compare preferredComponent against current cocktail of loop, then return number of matches.
         var matches = currentCount
-        var nameStrings = cocktailIngredients.map({$0.ingredientBase.name})
-        if nameStrings.contains(preferredComponent.name) {
+        let ingredientBases = cocktailIngredients.map({$0.ingredientBase.name})
+        if ingredientBases.contains(preferredComponent.name) {
             matches += 1
         } else {
             missingIngredients.append(preferredComponent.name)
@@ -92,24 +129,35 @@ final class SearchViewModel: ObservableObject {
         return matches
     }
     
-    func filterUnwantedCocktails(unwantedIngredients: [IngredientBase], cocktails: [Cocktail]) -> [Cocktail] {
-      return  cocktails.filter { cocktail in
-            unwantedIngredients.allSatisfy { unwantedComponent in
-                !cocktail.spec.map({ $0.ingredientBase.name}).contains(unwantedComponent.name)
-            }
+    func filterUnwantedCocktails(cocktails: [Cocktail]) -> [Cocktail] {
+        let unwantedCocktails = cocktails.filter { $0.spec.contains(where: { $0.ingredientBase.isUnwanted == true}) }
+        for cocktail in unwantedCocktails {
+            print("❌ ❌ ❌ \(cocktail.cocktailName) didn't make it!")
         }
+        return  cocktails.filter { !$0.spec.contains(where: { $0.ingredientBase.isUnwanted == true}) }
+        
     }
+//    func filterUnwantedCocktails(cocktails: [Cocktail]) -> [Cocktail] {
+//      return  cocktails.filter { cocktail in
+//            unwantedIngredients.allSatisfy { unwantedComponent in
+////                !cocktail.spec.map({ $0.ingredientBase.name}).contains(unwantedComponent.name)
+//                !cocktail.spec.contains(where: { $0.ingredientBase.isUnwanted == true})
+//            }
+//        }
+//    }
     
     
     func removePreference(for component: IngredientBase) {
         // When we click a green bubble to remove a preferred tag, we change the data and the UI updates.
         preferredCount -= 1
-        includedIngredients.removeAll(where: { $0.name == component.name})
+        component.isPrefered = false
+//        includedIngredients.removeAll(where: { $0.name == component.name})
         
     }
     func removeUnwanted(for component: IngredientBase) {
         // When we click a red bubble to remove an unwanted tag, we change the data and the UI updates.
-        excludedIngredients.removeAll(where: { $0.name == component.name})
+//        excludedIngredients.removeAll(where: { $0.name == component.name})
+        component.isUnwanted = false
         
     }
     

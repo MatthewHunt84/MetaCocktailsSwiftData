@@ -9,9 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct SearchResultsViewDataQueries: View {
-    @ObservedObject var viewModel: SearchViewModel
+    @Bindable var viewModel: SearchViewModel
     @Environment(\.modelContext) private var modelContext
-    @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
     @Environment(\.dismiss) var dismiss
     
     
@@ -40,18 +39,18 @@ struct SearchResultsViewDataQueries: View {
                     .padding(.top, 25)
             }
             
-            if !viewModel.includedIngredients.isEmpty {
+            if !viewModel.findPreferedIngredients(modelContext: modelContext).isEmpty {
                 ScrollView(.horizontal) {
                     
                     HStack(spacing: 12) {
-                        ForEach($viewModel.includedIngredients, id: \.name) { $selectedIngredient in
+                        ForEach(viewModel.findPreferedIngredients(modelContext: modelContext), id: \.name) { selectedIngredient in
                             TagView(selectedIngredient.name, .green , "xmark")
                                 .onTapGesture {
                                     withAnimation(.snappy) {
                                         viewModel.removePreference(for: selectedIngredient)
                                         
                                     }
-                                    viewModel.findCocktails(startingCocktails: cocktails)
+                                    viewModel.findCocktails(modelContext: modelContext)
                                 }
                         }
                     }
@@ -63,17 +62,17 @@ struct SearchResultsViewDataQueries: View {
                 .scrollIndicators(.hidden)
             }
             
-            if !viewModel.excludedIngredients.isEmpty {
+            if !viewModel.findUnwantedIngredients(modelContext: modelContext).isEmpty {
                 ScrollView(.horizontal) {
                     
                     HStack(spacing: 12) {
-                        ForEach($viewModel.excludedIngredients, id: \.name) { $selectedIngredient in
+                        ForEach(viewModel.findUnwantedIngredients(modelContext: modelContext), id: \.name) { selectedIngredient in
                             TagView(selectedIngredient.name, .red, "xmark")
                                 .onTapGesture {
                                     withAnimation(.snappy) {
                                         viewModel.removeUnwanted(for: selectedIngredient)
                                     }
-                                    viewModel.findCocktails(startingCocktails: cocktails)
+                                    viewModel.findCocktails(modelContext: modelContext)
                                 }
                         }
                     }
@@ -90,7 +89,7 @@ struct SearchResultsViewDataQueries: View {
         .navigationBarTitleDisplayMode(.inline)
         .onAppear() {
             if viewModel.willLoadOnAppear == true {
-                viewModel.findCocktails(startingCocktails: cocktails)
+                viewModel.findCocktails(modelContext: modelContext)
                 
             }
             viewModel.willLoadOnAppear = false

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct CocktailResultListDataQueries: View {
     @Bindable var viewModel: SearchViewModel
@@ -37,11 +38,8 @@ struct CocktailResultListDataQueries: View {
                                             FilterMatchesMenuViewDataQueries(viewModel: viewModel, resultViewSectionData: result, nonmatchSearchPreference: $nonmatchSearchPreference)
                                             
                                             if nonmatchSearchPreference == "none" {
-                                                
                                                 PartialMatchWithNoPreferenceViewDataQueries(viewModel: viewModel, resultViewSectionData: result)
-                                                
                                             } else {
-                                                
                                                 ForEach(result.cocktails.filter({$0.missingIngredients.contains(nonmatchSearchPreference)}), id: \.self.id) { cocktail in
                                                     NavigationLink {
                                                         
@@ -104,10 +102,10 @@ struct FilterMatchesMenuViewDataQueries: View {
     @Bindable var viewModel: SearchViewModel
     var resultViewSectionData: ResultViewSectionData
     @Binding var nonmatchSearchPreference: String
-    
+    @Query(filter: #Predicate<IngredientBase> { $0.isPrefered == true}) var preferedIngredients: [IngredientBase]
     var body: some View {
         Menu("Filter Matches") {
-            ForEach(viewModel.includedIngredients, id: \.id) { preference in
+            ForEach(preferedIngredients, id: \.id) { preference in
                 
                 Button("- \(preference.name)") {
                     nonmatchSearchPreference = preference.name

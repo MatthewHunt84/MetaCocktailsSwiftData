@@ -12,6 +12,7 @@ struct BasicSearchViewWithDataQuery: View {
     
     @Bindable var viewModel = SearchViewModel()
     @FocusState var keyboardFocused: Bool
+    @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]
     
     var body: some View {
         NavigationStack {
@@ -31,6 +32,11 @@ struct BasicSearchViewWithDataQuery: View {
                     
                 }
                 .task {
+                    for ingredient in ingredients {
+                        ingredient.isPrefered = false
+                        ingredient.isUnwanted = false
+                    }
+                    viewModel.preferredCount = 0
                     keyboardFocused = true
                 }
             }
@@ -45,7 +51,6 @@ struct BasicSearchViewWithDataQuery: View {
 
 struct ThumbsUpOrDownIngredientSearchList: View {
     @Bindable var viewModel: SearchViewModel
-    @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
     @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]
     @FocusState var keyboardFocused: Bool
     
@@ -116,10 +121,15 @@ struct SearchForCocktailsButton: View {
 }
 struct ResetButton: View {
     @Bindable var viewModel: SearchViewModel
+    @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]
     
     var body: some View {
         Section{
             Button{
+                for ingredient in ingredients {
+                    ingredient.isPrefered = false
+                    ingredient.isUnwanted = false 
+                }
                 viewModel.clearData()
             } label: {
                 
