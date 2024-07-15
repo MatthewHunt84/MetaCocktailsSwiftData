@@ -16,8 +16,6 @@ final class SearchViewModel: ObservableObject {
     
     var currentComponentSearchName: String = ""
     var filteredIngredients: [IngredientBase] = []
-//    var preferedIngredients: [IngredientBase] = []
-//    var unwantedIngredients: [IngredientBase] = []
     
     var isLoading = true
     var preferredCount = 0
@@ -29,8 +27,6 @@ final class SearchViewModel: ObservableObject {
     
     func clearData() {
         filteredIngredients = []
-//        includedIngredients = []
-//        excludedIngredients = []
         currentComponentSearchName = ""
         missingIngredients = []
         sections = []
@@ -88,7 +84,6 @@ final class SearchViewModel: ObservableObject {
             var dataShells = [ResultViewSectionData]()
             for i in 0...Int(preferredCount / 2) {
                 let numberOfMatches = (preferredCount - i)
-                print("a data shell with \(numberOfMatches) is being created")
                 dataShells.append(ResultViewSectionData(count: preferredCount, matched: numberOfMatches, cocktails: []))
             }
             return dataShells
@@ -100,7 +95,6 @@ final class SearchViewModel: ObservableObject {
                 let matches = includedIngredientBases.reduce(0, { countMatches(currentCount: $0, preferredComponent: $1, cocktailIngredients: cocktail.spec)}) // we hijack this reduce function to make a missing component array
                 if resultViewSectionData.matched == matches {
                     resultViewSectionData.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: missingIngredients, cocktail: cocktail))
-                    print("🎉🎉🎉  \(cocktail.cocktailName) made it into the selected list")
                 }
                 
                 missingIngredients.removeAll()
@@ -113,10 +107,7 @@ final class SearchViewModel: ObservableObject {
          i.e.
          sections = finalMatchContainers.compactMap { resultSectionData in
          return resultSectionData.cocktails.isEmpty ? nil : resultSectionData } */
-        isLoading = false
-        print("All of find cocktails got fired")
-        
-    }
+        isLoading = false    }
     func countMatches(currentCount: Int, preferredComponent: IngredientBase, cocktailIngredients: [Ingredient]) -> Int {
         // compare preferredComponent against current cocktail of loop, then return number of matches.
         var matches = currentCount
@@ -130,10 +121,6 @@ final class SearchViewModel: ObservableObject {
     }
     
     func filterUnwantedCocktails(cocktails: [Cocktail]) -> [Cocktail] {
-        let unwantedCocktails = cocktails.filter { $0.spec.contains(where: { $0.ingredientBase.isUnwanted == true}) }
-        for cocktail in unwantedCocktails {
-            print("❌ ❌ ❌ \(cocktail.cocktailName) didn't make it!")
-        }
         return  cocktails.filter { !$0.spec.contains(where: { $0.ingredientBase.isUnwanted == true}) }
         
     }

@@ -117,8 +117,8 @@ struct SearchResultsViewDataQueries: View {
     }
 }
 
-//#Preview {
-//    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-//    return SearchResultsViewDataQueries(viewModel: SearchCriteriaViewModel())
-//        .modelContainer(preview.container)
-//}
+#Preview {
+    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
+    return SearchResultsViewDataQueries(viewModel: SearchViewModel())
+        .modelContainer(preview.container)
+}
