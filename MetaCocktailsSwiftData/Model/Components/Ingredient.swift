@@ -298,6 +298,7 @@ enum Category: String, Codable, CaseIterable  {
 class IngredientBase: Codable, Hashable {
     #Unique<IngredientBase>([\.name])
     #Index<IngredientBase>([\.name], [\.isPreferred], [\.isUnwanted], [\.name, \.isPreferred, \.isUnwanted])
+
     var name: String
     var info: String?
     var category: Category
@@ -309,6 +310,7 @@ class IngredientBase: Codable, Hashable {
 
     
     init(name: String, info: String? = nil, category: Category, tags: Tags? = Tags(), prep: Prep?, isCustom: Bool = false, isPreferred: Bool = false, isUnwanted: Bool = false) {
+     
         self.name = name
         self.info = info
         self.category = category

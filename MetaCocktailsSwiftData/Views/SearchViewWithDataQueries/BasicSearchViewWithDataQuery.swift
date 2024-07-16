@@ -160,12 +160,12 @@ public struct preferencesListView: View {
                 ScrollView(.horizontal) {
                     
                     HStack(spacing: 12) {
-                        ForEach(preferredIngredients) { selectedIngredient in
-                            viewModel.viewModelTagView(selectedIngredient.name, .green , "xmark")
+                        ForEach(preferredIngredients, id: \.name) { preferredIngredient in
+                            viewModel.viewModelTagView(preferredIngredient.name, .green , "xmark")
                                 .onTapGesture {
                                     withAnimation(.snappy) {
-                                        selectedIngredient.isPreferred = false
-                                        viewModel.hack.toggle()
+                                        preferredIngredient.isPreferred = false
+                                      
                                     }
                                     if !viewModel.onBasisSearchView {
                                         viewModel.findCocktails(modelContext: modelContext)
@@ -184,12 +184,11 @@ public struct preferencesListView: View {
                 ScrollView(.horizontal) {
                     
                     HStack(spacing: 12) {
-                        ForEach(unwantedIngredients, id: \.name) { selectedIngredient in
-                            viewModel.viewModelTagView(selectedIngredient.name, .red, "xmark")
+                        ForEach(unwantedIngredients, id: \.name) { unwantedIngredient in
+                            viewModel.viewModelTagView(unwantedIngredient.name, .red, "xmark")
                                 .onTapGesture {
                                     withAnimation(.snappy) {
-                                        selectedIngredient.isUnwanted = false
-                                        viewModel.hack.toggle()
+                                        unwantedIngredient.isUnwanted = false
                                     }
                                     if !viewModel.onBasisSearchView {
                                         viewModel.findCocktails(modelContext: modelContext)
