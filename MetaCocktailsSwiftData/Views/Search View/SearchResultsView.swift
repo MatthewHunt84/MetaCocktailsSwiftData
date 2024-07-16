@@ -81,6 +81,7 @@ struct SearchResultsView: View {
                     .padding(.horizontal, 15)
                     .frame(height: 35)
                 }
+                .mask(LinearGradient(stops: [.init(color: .clear, location: 0), .init(color: .white, location: 0.05), .init(color: .white, location: 0.95), .init(color: .clear, location: 1)], startPoint: .leading, endPoint: .trailing))
                 .scrollClipDisabled(true)
                 .scrollIndicators(.hidden)
             }

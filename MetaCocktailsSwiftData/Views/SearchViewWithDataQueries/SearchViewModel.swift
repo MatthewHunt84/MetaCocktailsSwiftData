@@ -34,7 +34,8 @@ final class SearchViewModel: ObservableObject {
         missingIngredients = []
         unwantedIngredients = []
         preferredIngredients = []
-        sections = []
+        sections.removeAll()
+        preferredCount = 0
         
     }
     @MainActor
@@ -67,7 +68,7 @@ final class SearchViewModel: ObservableObject {
     @MainActor
     func findCocktails(modelContext: ModelContext) {
         isLoading = true
-        clearData()
+        sections.removeAll()
         var startingCocktails: [Cocktail] = []
         var includedIngredientBases: [IngredientBase] = []
         let fetchDescriptor = FetchDescriptor<Cocktail>(sortBy: [SortDescriptor(\.cocktailName)])
@@ -79,6 +80,8 @@ final class SearchViewModel: ObservableObject {
         let preferedIngredientsFetchDescriptor = FetchDescriptor<IngredientBase>(predicate: #Predicate{$0.isPrefered == true })
         do {
             includedIngredientBases = try modelContext.fetch(preferedIngredientsFetchDescriptor)
+            preferredCount = includedIngredientBases.count
+            preferredIngredients = includedIngredientBases
         } catch {
             print(error.localizedDescription)
         }
@@ -90,18 +93,24 @@ final class SearchViewModel: ObservableObject {
             for i in 0...Int(preferredCount / 2) {
                 let numberOfMatches = (preferredCount - i)
                 dataShells.append(ResultViewSectionData(count: preferredCount, matched: numberOfMatches, cocktails: []))
+                
+            }
+            for section in dataShells {
+                print("A Section got created with a count of \(section.count) and a matched of \(section.matched) ")
             }
             return dataShells
         }()
+        
         for cocktail in refinedCocktails {
             /** We use let _ = ... to loop over finalMatchContainers to append cocktails that match preferred components to the right section without creating a new array in the process */
             let _ = finalMatchContainers.map { resultViewSectionData in
                 /** Then we want to match cocktails to sections by calculating the number of components that match the preferred array. */
-              
+                
                 
                 let matches = includedIngredientBases.reduce(0, { countMatches(currentCount: $0, preferredComponent: $1, cocktailIngredients: cocktail.spec)}) // we hijack this reduce function to make a missing component array
                 if resultViewSectionData.matched == matches {
                     resultViewSectionData.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: missingIngredients, cocktail: cocktail))
+                    print("\(cocktail.cocktailName) is being added!! 🎉🎉🎉🎉")
                 }
                 
                 missingIngredients.removeAll()
@@ -114,7 +123,13 @@ final class SearchViewModel: ObservableObject {
          i.e.
          sections = finalMatchContainers.compactMap { resultSectionData in
          return resultSectionData.cocktails.isEmpty ? nil : resultSectionData } */
-        isLoading = false    }
+        isLoading = false
+        for section in sections {
+            for cocktail in section.cocktails {
+                print("\(cocktail.cocktail.cocktailName) is matched with  \(section.matched) while the count is \(section.count)")
+            }
+        }
+    }
     func countMatches(currentCount: Int, preferredComponent: IngredientBase, cocktailIngredients: [Ingredient]) -> Int {
         // compare preferredComponent against current cocktail of loop, then return number of matches.
         var matches = currentCount
@@ -131,15 +146,6 @@ final class SearchViewModel: ObservableObject {
         return  cocktails.filter { !$0.spec.contains(where: { $0.ingredientBase.isUnwanted == true}) }
         
     }
-//    func filterUnwantedCocktails(cocktails: [Cocktail]) -> [Cocktail] {
-//      return  cocktails.filter { cocktail in
-//            unwantedIngredients.allSatisfy { unwantedComponent in
-////                !cocktail.spec.map({ $0.ingredientBase.name}).contains(unwantedComponent.name)
-//                !cocktail.spec.contains(where: { $0.ingredientBase.isUnwanted == true})
-//            }
-//        }
-//    }
-    
     
     func removePreference(for component: IngredientBase) {
         // When we click a green bubble to remove a preferred tag, we change the data and the UI updates.
@@ -155,7 +161,7 @@ final class SearchViewModel: ObservableObject {
         
     }
     @ViewBuilder
-    func TagView(_ tag: String, _ color: Color, _ icon: String) -> some View {
+    func viewModelTagView(_ tag: String, _ color: Color, _ icon: String) -> some View {
         HStack(spacing: 10) {
             Text(tag)
                 .font(.callout)

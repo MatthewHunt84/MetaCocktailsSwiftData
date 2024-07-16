@@ -24,25 +24,13 @@ struct BasicSearchViewWithDataQuery: View {
             }
             preferencesListView(viewModel: viewModel)
             VStack{
-                
                 Form{
                     ThumbsUpOrDownIngredientSearchList(viewModel: viewModel, keyboardFocused: _keyboardFocused)
                     SearchForCocktailsButton(viewModel: viewModel)
                     ResetButton(viewModel: viewModel)
-                    
                 }
-                
-                
             }
-            
-            
             .onAppear() {
-                for ingredient in ingredients {
-                    ingredient.isPrefered = false
-                    ingredient.isUnwanted = false
-                }
-                viewModel.clearData()
-                viewModel.preferredCount = 0
                 keyboardFocused = true
             }
         }
@@ -155,6 +143,7 @@ struct ResetButton: View {
 struct preferencesListView: View {
     @Bindable var viewModel: SearchViewModel
     @Environment(\.modelContext) var modelContext
+    @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]
     var body: some View {
         VStack{
             if viewModel.preferredCount > 0 {
@@ -169,10 +158,15 @@ struct preferencesListView: View {
                     
                     HStack(spacing: 12) {
                         ForEach(viewModel.preferredIngredients, id: \.name) { selectedIngredient in
-                            viewModel.TagView(selectedIngredient.name, .green , "xmark")
+                            viewModel.viewModelTagView(selectedIngredient.name, .green , "xmark")
                                 .onTapGesture {
                                     withAnimation(.snappy) {
                                         viewModel.preferredIngredients.removeAll(where: { $0.name == selectedIngredient.name})
+                                        for ingredient in ingredients {
+                                            if ingredient.name == selectedIngredient.name {
+                                                ingredient.isPrefered = false
+                                            }
+                                        }
                                     }
                                 }
                         }
@@ -189,11 +183,16 @@ struct preferencesListView: View {
                 ScrollView(.horizontal) {
                     
                     HStack(spacing: 12) {
-                        ForEach(viewModel.findUnwantedIngredients(modelContext: modelContext), id: \.name) { selectedIngredient in
-                            viewModel.TagView(selectedIngredient.name, .red, "xmark")
+                        ForEach(viewModel.unwantedIngredients, id: \.name) { selectedIngredient in
+                            viewModel.viewModelTagView(selectedIngredient.name, .red, "xmark")
                                 .onTapGesture {
                                     withAnimation(.snappy) {
                                         viewModel.unwantedIngredients.removeAll(where: { $0.name == selectedIngredient.name})
+                                        for ingredient in ingredients {
+                                            if ingredient.name == selectedIngredient.name {
+                                                ingredient.isUnwanted = false
+                                            }
+                                        }
                                     }
                                 }
                         }
@@ -201,6 +200,7 @@ struct preferencesListView: View {
                     .padding(.horizontal, 15)
                     .frame(height: 35)
                 }
+                .mask(LinearGradient(stops: [.init(color: .clear, location: 0), .init(color: .white, location: 0.05), .init(color: .white, location: 0.95), .init(color: .clear, location: 1)], startPoint: .leading, endPoint: .trailing))
                 .scrollClipDisabled(true)
                 .scrollIndicators(.hidden)
             }

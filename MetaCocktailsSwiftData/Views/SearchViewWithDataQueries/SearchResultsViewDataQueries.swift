@@ -44,10 +44,13 @@ struct SearchResultsViewDataQueries: View {
                     
                     HStack(spacing: 12) {
                         ForEach(viewModel.findPreferedIngredients(modelContext: modelContext), id: \.name) { selectedIngredient in
-                            viewModel.TagView(selectedIngredient.name, .green , "xmark")
+                            SearchResultsTagView(selectedIngredient.name, .green , "xmark")
                                 .onTapGesture {
                                     withAnimation(.snappy) {
                                         viewModel.removePreference(for: selectedIngredient)
+                                        viewModel.preferredCount = viewModel.findPreferedIngredients(modelContext: modelContext).count
+                                        print("the count is now \(viewModel.preferredCount)")
+                                        viewModel.sections.removeAll()
                                         
                                     }
                                     viewModel.findCocktails(modelContext: modelContext)
@@ -67,7 +70,7 @@ struct SearchResultsViewDataQueries: View {
                     
                     HStack(spacing: 12) {
                         ForEach(viewModel.findUnwantedIngredients(modelContext: modelContext), id: \.name) { selectedIngredient in
-                            viewModel.TagView(selectedIngredient.name, .red, "xmark")
+                            SearchResultsTagView(selectedIngredient.name, .red, "xmark")
                                 .onTapGesture {
                                     withAnimation(.snappy) {
                                         viewModel.removeUnwanted(for: selectedIngredient)
@@ -89,14 +92,34 @@ struct SearchResultsViewDataQueries: View {
         .navigationBarTitleDisplayMode(.inline)
         .onAppear() {
             if viewModel.willLoadOnAppear == true {
+                
                 viewModel.findCocktails(modelContext: modelContext)
                 
             }
             viewModel.willLoadOnAppear = false
+            viewModel.findCocktails(modelContext: modelContext)
         }
     }
     
-    
+    @ViewBuilder func SearchResultsTagView(_ tag: String, _ color: Color, _ icon: String) -> some View {
+        HStack(spacing: 10) {
+            Text(tag)
+                .font(.callout)
+                .fontWeight(.semibold)
+                .foregroundColor(.white)
+            
+            Image(systemName: icon)
+                .fontWeight(.heavy)
+                .foregroundColor(.white)
+        }
+        .frame(height: 35)
+        .foregroundStyle(.black)
+        .padding(.horizontal, 15)
+        .background {
+            Capsule()
+                .fill(color.gradient)
+        }
+    }
 }
 
 #Preview {
