@@ -16,29 +16,34 @@ struct BasicSearchViewWithDataQuery: View {
     
     var body: some View {
         NavigationStack {
-            GeometryReader { geometry in
-                VStack{
-                    HStack {
-                        Text("Search Ingredients")
-                            .font(.largeTitle).bold()
-                            .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
-                       Spacer()
-                    }
-                    Form{
-                        ThumbsUpOrDownIngredientSearchList(viewModel: viewModel, keyboardFocused: _keyboardFocused)
-                        SearchForCocktailsButton(viewModel: viewModel)
-                        ResetButton(viewModel: viewModel)
-                    }
+            HStack {
+                Text("Search Ingredients")
+                    .font(.largeTitle).bold()
+                    .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
+                Spacer()
+            }
+            preferencesListView(viewModel: viewModel)
+            VStack{
+                
+                Form{
+                    ThumbsUpOrDownIngredientSearchList(viewModel: viewModel, keyboardFocused: _keyboardFocused)
+                    SearchForCocktailsButton(viewModel: viewModel)
+                    ResetButton(viewModel: viewModel)
                     
                 }
-                .task {
-                    for ingredient in ingredients {
-                        ingredient.isPrefered = false
-                        ingredient.isUnwanted = false
-                    }
-                    viewModel.preferredCount = 0
-                    keyboardFocused = true
+                
+                
+            }
+            
+            
+            .onAppear() {
+                for ingredient in ingredients {
+                    ingredient.isPrefered = false
+                    ingredient.isUnwanted = false
                 }
+                viewModel.clearData()
+                viewModel.preferredCount = 0
+                keyboardFocused = true
             }
         }
     }
@@ -145,5 +150,60 @@ struct ResetButton: View {
             .frame(width: 380, height: 40,  alignment: .center)
         }
 
+    }
+}
+struct preferencesListView: View {
+    @Bindable var viewModel: SearchViewModel
+    @Environment(\.modelContext) var modelContext
+    var body: some View {
+        VStack{
+            if viewModel.preferredCount > 0 {
+                Text("Your Selections (tap to remove)")
+                    .font(.footnote)
+                    .foregroundStyle(.gray)
+                    .padding(.leading, 20)
+                    .padding(.top, 25)
+            }
+            if !viewModel.preferredIngredients.isEmpty {
+                ScrollView(.horizontal) {
+                    
+                    HStack(spacing: 12) {
+                        ForEach(viewModel.preferredIngredients, id: \.name) { selectedIngredient in
+                            viewModel.TagView(selectedIngredient.name, .green , "xmark")
+                                .onTapGesture {
+                                    withAnimation(.snappy) {
+                                        viewModel.preferredIngredients.removeAll(where: { $0.name == selectedIngredient.name})
+                                    }
+                                }
+                        }
+                    }
+                    .padding(.horizontal, 15)
+                    .frame(height: 35)
+                }
+                .mask(LinearGradient(stops: [.init(color: .clear, location: 0), .init(color: .white, location: 0.05), .init(color: .white, location: 0.95), .init(color: .clear, location: 1)], startPoint: .leading, endPoint: .trailing))
+                .scrollClipDisabled(true)
+                .scrollIndicators(.hidden)
+            }
+            
+            if !viewModel.unwantedIngredients.isEmpty {
+                ScrollView(.horizontal) {
+                    
+                    HStack(spacing: 12) {
+                        ForEach(viewModel.findUnwantedIngredients(modelContext: modelContext), id: \.name) { selectedIngredient in
+                            viewModel.TagView(selectedIngredient.name, .red, "xmark")
+                                .onTapGesture {
+                                    withAnimation(.snappy) {
+                                        viewModel.unwantedIngredients.removeAll(where: { $0.name == selectedIngredient.name})
+                                    }
+                                }
+                        }
+                    }
+                    .padding(.horizontal, 15)
+                    .frame(height: 35)
+                }
+                .scrollClipDisabled(true)
+                .scrollIndicators(.hidden)
+            }
+        }
     }
 }

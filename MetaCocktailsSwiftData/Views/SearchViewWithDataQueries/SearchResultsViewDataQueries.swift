@@ -44,7 +44,7 @@ struct SearchResultsViewDataQueries: View {
                     
                     HStack(spacing: 12) {
                         ForEach(viewModel.findPreferedIngredients(modelContext: modelContext), id: \.name) { selectedIngredient in
-                            TagView(selectedIngredient.name, .green , "xmark")
+                            viewModel.TagView(selectedIngredient.name, .green , "xmark")
                                 .onTapGesture {
                                     withAnimation(.snappy) {
                                         viewModel.removePreference(for: selectedIngredient)
@@ -67,7 +67,7 @@ struct SearchResultsViewDataQueries: View {
                     
                     HStack(spacing: 12) {
                         ForEach(viewModel.findUnwantedIngredients(modelContext: modelContext), id: \.name) { selectedIngredient in
-                            TagView(selectedIngredient.name, .red, "xmark")
+                            viewModel.TagView(selectedIngredient.name, .red, "xmark")
                                 .onTapGesture {
                                     withAnimation(.snappy) {
                                         viewModel.removeUnwanted(for: selectedIngredient)
@@ -96,25 +96,7 @@ struct SearchResultsViewDataQueries: View {
         }
     }
     
-    @ViewBuilder func TagView(_ tag: String, _ color: Color, _ icon: String) -> some View {
-        HStack(spacing: 10) {
-            Text(tag)
-                .font(.callout)
-                .fontWeight(.semibold)
-                .foregroundColor(.white)
-            
-            Image(systemName: icon)
-                .fontWeight(.heavy)
-                .foregroundColor(.white)
-        }
-        .frame(height: 35)
-        .foregroundStyle(.black)
-        .padding(.horizontal, 15)
-        .background {
-            Capsule()
-                .fill(color.gradient)
-        }
-    }
+    
 }
 
 #Preview {
@@ -122,3 +104,4 @@ struct SearchResultsViewDataQueries: View {
     return SearchResultsViewDataQueries(viewModel: SearchViewModel())
         .modelContainer(preview.container)
 }
+

@@ -17,6 +17,9 @@ final class SearchViewModel: ObservableObject {
     var currentComponentSearchName: String = ""
     var filteredIngredients: [IngredientBase] = []
     
+    var unwantedIngredients: [IngredientBase] = []
+    var preferredIngredients: [IngredientBase] = []
+    
     var isLoading = true
     var preferredCount = 0
     var missingIngredients: [String] = []
@@ -29,6 +32,8 @@ final class SearchViewModel: ObservableObject {
         filteredIngredients = []
         currentComponentSearchName = ""
         missingIngredients = []
+        unwantedIngredients = []
+        preferredIngredients = []
         sections = []
         
     }
@@ -92,6 +97,8 @@ final class SearchViewModel: ObservableObject {
             /** We use let _ = ... to loop over finalMatchContainers to append cocktails that match preferred components to the right section without creating a new array in the process */
             let _ = finalMatchContainers.map { resultViewSectionData in
                 /** Then we want to match cocktails to sections by calculating the number of components that match the preferred array. */
+              
+                
                 let matches = includedIngredientBases.reduce(0, { countMatches(currentCount: $0, preferredComponent: $1, cocktailIngredients: cocktail.spec)}) // we hijack this reduce function to make a missing component array
                 if resultViewSectionData.matched == matches {
                     resultViewSectionData.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: missingIngredients, cocktail: cocktail))
@@ -147,7 +154,26 @@ final class SearchViewModel: ObservableObject {
         component.isUnwanted = false
         
     }
-    
+    @ViewBuilder
+    func TagView(_ tag: String, _ color: Color, _ icon: String) -> some View {
+        HStack(spacing: 10) {
+            Text(tag)
+                .font(.callout)
+                .fontWeight(.semibold)
+                .foregroundColor(.white)
+            
+            Image(systemName: icon)
+                .fontWeight(.heavy)
+                .foregroundColor(.white)
+        }
+        .frame(height: 35)
+        .foregroundStyle(.black)
+        .padding(.horizontal, 15)
+        .background {
+            Capsule()
+                .fill(color.gradient)
+        }
+    }
     
     func matchAllIngredients(ingredients: [IngredientBase]) -> [IngredientBase] {
         

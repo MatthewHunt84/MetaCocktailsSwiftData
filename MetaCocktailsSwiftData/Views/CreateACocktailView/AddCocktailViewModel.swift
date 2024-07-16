@@ -149,7 +149,7 @@ import SwiftData
         validateAuthor()
         validateBuildInstructions()
         
-        var cocktail = Cocktail(cocktailName: cocktailName,
+        let cocktail = Cocktail(cocktailName: cocktailName,
                                 glasswareType: uniqueGlasswareName!,
                                 garnish: addedGarnish,
                                 ice: ice,

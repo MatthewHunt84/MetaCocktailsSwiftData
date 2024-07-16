@@ -297,6 +297,7 @@ enum Category: String, Codable, CaseIterable  {
 @Model
 class IngredientBase: Codable, Hashable {
     #Unique<IngredientBase>([\.name])
+    #Index<IngredientBase>([\.name], [\.isPrefered], [\.isUnwanted], [\.name, \.isPrefered, \.isUnwanted])
     var name: String
     var info: String?
     var category: Category
