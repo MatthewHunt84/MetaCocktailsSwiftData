@@ -23,7 +23,6 @@ struct PreferencesThumbsCell: View {
                 .onTapGesture {
                     if !isPrefered {
                         ingredient.isPrefered = true
-                        print("We added 1. The perfered count is now \(viewModel.preferredCount)")
                         viewModel.preferredIngredients.append(ingredient)
                         if ingredient.isUnwanted{
                             ingredient.isUnwanted = false
@@ -32,7 +31,6 @@ struct PreferencesThumbsCell: View {
                     } else {
                         viewModel.preferredIngredients.removeAll(where: { $0.name == ingredient.name } )
                         ingredient.isPrefered = false
-                        print("We took away 1. The perfered count is now \(viewModel.preferredCount)")
                     }
                 }
                 .font(.system(size: 20))
@@ -45,7 +43,6 @@ struct PreferencesThumbsCell: View {
                         if ingredient.isPrefered {
                             ingredient.isPrefered = false
                             viewModel.preferredIngredients.removeAll(where: { $0.name == ingredient.name } )
-                            print("We took away 1. The perfered count is now \(viewModel.preferredCount)")
                         }
                     } else {
                         viewModel.unwantedIngredients.removeAll(where: { $0.name == ingredient.name })

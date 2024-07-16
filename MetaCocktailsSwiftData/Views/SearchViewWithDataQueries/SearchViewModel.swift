@@ -95,9 +95,6 @@ final class SearchViewModel: ObservableObject {
                 dataShells.append(ResultViewSectionData(count: preferredCount, matched: numberOfMatches, cocktails: []))
                 
             }
-            for section in dataShells {
-                print("A Section got created with a count of \(section.count) and a matched of \(section.matched) ")
-            }
             return dataShells
         }()
         
@@ -110,7 +107,6 @@ final class SearchViewModel: ObservableObject {
                 let matches = includedIngredientBases.reduce(0, { countMatches(currentCount: $0, preferredComponent: $1, cocktailIngredients: cocktail.spec)}) // we hijack this reduce function to make a missing component array
                 if resultViewSectionData.matched == matches {
                     resultViewSectionData.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: missingIngredients, cocktail: cocktail))
-                    print("\(cocktail.cocktailName) is being added!! 🎉🎉🎉🎉")
                 }
                 
                 missingIngredients.removeAll()
@@ -124,11 +120,7 @@ final class SearchViewModel: ObservableObject {
          sections = finalMatchContainers.compactMap { resultSectionData in
          return resultSectionData.cocktails.isEmpty ? nil : resultSectionData } */
         isLoading = false
-        for section in sections {
-            for cocktail in section.cocktails {
-                print("\(cocktail.cocktail.cocktailName) is matched with  \(section.matched) while the count is \(section.count)")
-            }
-        }
+        
     }
     func countMatches(currentCount: Int, preferredComponent: IngredientBase, cocktailIngredients: [Ingredient]) -> Int {
         // compare preferredComponent against current cocktail of loop, then return number of matches.
@@ -151,13 +143,14 @@ final class SearchViewModel: ObservableObject {
         // When we click a green bubble to remove a preferred tag, we change the data and the UI updates.
         preferredCount -= 1
         component.isPrefered = false
-//        includedIngredients.removeAll(where: { $0.name == component.name})
+        preferredIngredients.removeAll(where: { $0.name == component.name})
         
     }
     func removeUnwanted(for component: IngredientBase) {
         // When we click a red bubble to remove an unwanted tag, we change the data and the UI updates.
 //        excludedIngredients.removeAll(where: { $0.name == component.name})
         component.isUnwanted = false
+        unwantedIngredients.removeAll(where:{ $0 == component })
         
     }
     @ViewBuilder

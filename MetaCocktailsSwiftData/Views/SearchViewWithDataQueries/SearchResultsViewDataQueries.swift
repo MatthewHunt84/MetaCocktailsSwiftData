@@ -49,7 +49,6 @@ struct SearchResultsViewDataQueries: View {
                                     withAnimation(.snappy) {
                                         viewModel.removePreference(for: selectedIngredient)
                                         viewModel.preferredCount = viewModel.findPreferedIngredients(modelContext: modelContext).count
-                                        print("the count is now \(viewModel.preferredCount)")
                                         viewModel.sections.removeAll()
                                         
                                     }
