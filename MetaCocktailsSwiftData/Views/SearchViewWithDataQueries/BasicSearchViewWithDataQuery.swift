@@ -191,7 +191,9 @@ public struct preferencesListView: View {
                                         selectedIngredient.isUnwanted = false
                                         viewModel.hack.toggle()
                                     }
-                                    viewModel.findCocktails(modelContext: modelContext)
+                                    if !viewModel.onBasisSearchView {
+                                        viewModel.findCocktails(modelContext: modelContext)
+                                    }
                                 }
                         }
                     }
