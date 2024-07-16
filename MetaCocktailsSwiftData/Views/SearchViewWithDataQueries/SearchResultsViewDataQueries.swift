@@ -12,13 +12,15 @@ struct SearchResultsViewDataQueries: View {
     @Bindable var viewModel: SearchViewModel
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) var dismiss
-    
+
     
     var body: some View {
         HStack{
             Button{
-                dismiss()
+                viewModel.onBasisSearchView = true
                 viewModel.willLoadOnAppear = true
+                dismiss()
+                
             } label: {
                 Image(systemName: "chevron.backward")
                     .resizable()
@@ -30,61 +32,8 @@ struct SearchResultsViewDataQueries: View {
             Spacer()
         }
         VStack(alignment: .leading) {
-            
-            if viewModel.preferredCount > 0 {
-                Text("Your Selections (tap to remove)")
-                    .font(.footnote)
-                    .foregroundStyle(.gray)
-                    .padding(.leading, 20)
-                    .padding(.top, 25)
-            }
-            
-            if !viewModel.findPreferedIngredients(modelContext: modelContext).isEmpty {
-                ScrollView(.horizontal) {
-                    
-                    HStack(spacing: 12) {
-                        ForEach(viewModel.findPreferedIngredients(modelContext: modelContext), id: \.name) { selectedIngredient in
-                            SearchResultsTagView(selectedIngredient.name, .green , "xmark")
-                                .onTapGesture {
-                                    withAnimation(.snappy) {
-                                        viewModel.removePreference(for: selectedIngredient)
-                                        viewModel.preferredCount = viewModel.findPreferedIngredients(modelContext: modelContext).count
-                                        viewModel.sections.removeAll()
-                                        
-                                    }
-                                    viewModel.findCocktails(modelContext: modelContext)
-                                }
-                        }
-                    }
-                    .padding(.horizontal, 15)
-                    .frame(height: 35)
-                }
-                .mask(LinearGradient(stops: [.init(color: .clear, location: 0), .init(color: .white, location: 0.05), .init(color: .white, location: 0.95), .init(color: .clear, location: 1)], startPoint: .leading, endPoint: .trailing))
-                .scrollClipDisabled(true)
-                .scrollIndicators(.hidden)
-            }
-            
-            if !viewModel.findUnwantedIngredients(modelContext: modelContext).isEmpty {
-                ScrollView(.horizontal) {
-                    
-                    HStack(spacing: 12) {
-                        ForEach(viewModel.findUnwantedIngredients(modelContext: modelContext), id: \.name) { selectedIngredient in
-                            SearchResultsTagView(selectedIngredient.name, .red, "xmark")
-                                .onTapGesture {
-                                    withAnimation(.snappy) {
-                                        viewModel.removeUnwanted(for: selectedIngredient)
-                                    }
-                                    viewModel.findCocktails(modelContext: modelContext)
-                                }
-                        }
-                    }
-                    .padding(.horizontal, 15)
-                    .frame(height: 35)
-                }
-                .scrollClipDisabled(true)
-                .scrollIndicators(.hidden)
-            }
-           
+
+            preferencesListView(viewModel: viewModel)
             CocktailResultListDataQueries(viewModel: viewModel, isLoading: $viewModel.isLoading)
                 .navigationBarBackButtonHidden(true)
         }
@@ -95,8 +44,8 @@ struct SearchResultsViewDataQueries: View {
                 viewModel.findCocktails(modelContext: modelContext)
                 
             }
+            viewModel.onBasisSearchView = false
             viewModel.willLoadOnAppear = false
-            viewModel.findCocktails(modelContext: modelContext)
         }
     }
     

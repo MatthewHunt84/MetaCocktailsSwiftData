@@ -17,14 +17,15 @@ final class SearchViewModel: ObservableObject {
     var currentComponentSearchName: String = ""
     var filteredIngredients: [IngredientBase] = []
     
-    var unwantedIngredients: [IngredientBase] = []
-    var preferredIngredients: [IngredientBase] = []
+//    var unwantedIngredients: [IngredientBase] = []
+//    var preferredIngredients: [IngredientBase] = []
     
     var isLoading = true
     var preferredCount = 0
     var missingIngredients: [String] = []
     var sections = [ResultViewSectionData]()
     var willLoadOnAppear = true
+    var onBasisSearchView: Bool = true
     
     
     
@@ -32,24 +33,24 @@ final class SearchViewModel: ObservableObject {
         filteredIngredients = []
         currentComponentSearchName = ""
         missingIngredients = []
-        unwantedIngredients = []
-        preferredIngredients = []
+//        unwantedIngredients = []
+//        preferredIngredients = []
         sections.removeAll()
         preferredCount = 0
         
     }
     @MainActor
-    func findPreferedIngredients(modelContext: ModelContext) -> [IngredientBase] {
-        var preferedIngredients: [IngredientBase] = []
+    func findPreferredIngredients(modelContext: ModelContext) -> [IngredientBase] {
+        var preferredIngredients: [IngredientBase] = []
         let fetchDescriptor = FetchDescriptor<IngredientBase>(predicate: #Predicate { ingredient in
-            ingredient.isPrefered == true
+            ingredient.isPreferred == true
         })
         do {
-            preferedIngredients = try modelContext.fetch(fetchDescriptor)
+            preferredIngredients = try modelContext.fetch(fetchDescriptor)
         } catch {
             print(error.localizedDescription)
         }
-        return preferedIngredients
+        return preferredIngredients
     }
     @MainActor
     func findUnwantedIngredients(modelContext: ModelContext) -> [IngredientBase] {
@@ -77,11 +78,11 @@ final class SearchViewModel: ObservableObject {
         } catch {
             print(error.localizedDescription)
         }
-        let preferedIngredientsFetchDescriptor = FetchDescriptor<IngredientBase>(predicate: #Predicate{$0.isPrefered == true })
+        let preferedIngredientsFetchDescriptor = FetchDescriptor<IngredientBase>(predicate: #Predicate{$0.isPreferred == true })
         do {
             includedIngredientBases = try modelContext.fetch(preferedIngredientsFetchDescriptor)
             preferredCount = includedIngredientBases.count
-            preferredIngredients = includedIngredientBases
+
         } catch {
             print(error.localizedDescription)
         }
@@ -142,15 +143,15 @@ final class SearchViewModel: ObservableObject {
     func removePreference(for component: IngredientBase) {
         // When we click a green bubble to remove a preferred tag, we change the data and the UI updates.
         preferredCount -= 1
-        component.isPrefered = false
-        preferredIngredients.removeAll(where: { $0.name == component.name})
+        component.isPreferred = false
+//        preferredIngredients.removeAll(where: { $0.name == component.name})
         
     }
     func removeUnwanted(for component: IngredientBase) {
         // When we click a red bubble to remove an unwanted tag, we change the data and the UI updates.
 //        excludedIngredients.removeAll(where: { $0.name == component.name})
         component.isUnwanted = false
-        unwantedIngredients.removeAll(where:{ $0 == component })
+//        unwantedIngredients.removeAll(where:{ $0 == component })
         
     }
     @ViewBuilder

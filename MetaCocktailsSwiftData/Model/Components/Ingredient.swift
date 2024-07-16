@@ -297,25 +297,25 @@ enum Category: String, Codable, CaseIterable  {
 @Model
 class IngredientBase: Codable, Hashable {
     #Unique<IngredientBase>([\.name])
-    #Index<IngredientBase>([\.name], [\.isPrefered], [\.isUnwanted], [\.name, \.isPrefered, \.isUnwanted])
+    #Index<IngredientBase>([\.name], [\.isPreferred], [\.isUnwanted], [\.name, \.isPreferred, \.isUnwanted])
     var name: String
     var info: String?
     var category: Category
     var tags: Tags?
     var prep: Prep?
     var isCustom: Bool
-    var isPrefered: Bool
+    var isPreferred: Bool
     var isUnwanted: Bool
 
     
-    init(name: String, info: String? = nil, category: Category, tags: Tags? = Tags(), prep: Prep?, isCustom: Bool = false, isPrefered: Bool = false, isUnwanted: Bool = false) {
+    init(name: String, info: String? = nil, category: Category, tags: Tags? = Tags(), prep: Prep?, isCustom: Bool = false, isPreferred: Bool = false, isUnwanted: Bool = false) {
         self.name = name
         self.info = info
         self.category = category
         self.tags = tags
         self.prep = prep
         self.isCustom = isCustom
-        self.isPrefered = isPrefered
+        self.isPreferred = isPreferred
         self.isUnwanted = isUnwanted
     }
     
@@ -330,7 +330,7 @@ class IngredientBase: Codable, Hashable {
     }
     
     enum CodingKeys: CodingKey {
-        case name, category, tags, prep, info, isCustom, isPrefered, isUnwanted
+        case name, category, tags, prep, info, isCustom, isPreferred, isUnwanted
     }
     
     required init(from decoder: any Decoder) throws {
@@ -341,7 +341,7 @@ class IngredientBase: Codable, Hashable {
         self.prep = try container.decode(Prep.self, forKey: .prep)
         self.info = try container.decode(String.self, forKey: .info)
         self.isCustom = try container.decode(Bool.self, forKey: .isCustom)
-        self.isPrefered = try container.decode(Bool.self, forKey: .isPrefered)
+        self.isPreferred = try container.decode(Bool.self, forKey: .isPreferred)
         self.isUnwanted = try container.decode(Bool.self, forKey: .isUnwanted)
     }
     
@@ -353,7 +353,7 @@ class IngredientBase: Codable, Hashable {
         try container.encode(prep, forKey: .prep)
         try container.encode(info, forKey: .info)
         try container.encode(isCustom, forKey: .isCustom)
-        try container.encode(isPrefered, forKey: .isPrefered)
+        try container.encode(isPreferred, forKey: .isPreferred)
         try container.encode(isUnwanted, forKey: .isUnwanted)
     }
     

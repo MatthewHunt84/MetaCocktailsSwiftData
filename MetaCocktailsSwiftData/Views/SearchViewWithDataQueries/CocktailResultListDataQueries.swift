@@ -102,7 +102,7 @@ struct FilterMatchesMenuViewDataQueries: View {
     @Bindable var viewModel: SearchViewModel
     var resultViewSectionData: ResultViewSectionData
     @Binding var nonmatchSearchPreference: String
-    @Query(filter: #Predicate<IngredientBase> { $0.isPrefered == true}) var preferedIngredients: [IngredientBase]
+    @Query(filter: #Predicate<IngredientBase> { $0.isPreferred == true}) var preferedIngredients: [IngredientBase]
     var body: some View {
         Menu("Filter Matches") {
             ForEach(preferedIngredients, id: \.id) { preference in

@@ -11,26 +11,22 @@ struct PreferencesThumbsCell: View {
    
     @Bindable var viewModel: SearchViewModel
     @Binding var ingredient: IngredientBase
-    @State private var isPrefered: Bool = false
+    @State private var isPreferred: Bool = false
     @State private var isUnwanted: Bool = false
     
     var body: some View {
         HStack{
             Text(ingredient.name)
             Spacer()
-            Image(systemName:ingredient.isPrefered ? "hand.thumbsup.fill" : "hand.thumbsup")
-                .foregroundStyle(ingredient.isPrefered ? .brandPrimaryGreen : .white)
+            Image(systemName:ingredient.isPreferred ? "hand.thumbsup.fill" : "hand.thumbsup")
+                .foregroundStyle(ingredient.isPreferred ? .brandPrimaryGreen : .white)
                 .onTapGesture {
-                    if !isPrefered {
-                        ingredient.isPrefered = true
-                        viewModel.preferredIngredients.append(ingredient)
+                    if !isPreferred {
+                        ingredient.isPreferred = true
                         if ingredient.isUnwanted{
-                            ingredient.isUnwanted = false
-                            viewModel.unwantedIngredients.removeAll(where: { $0.name == ingredient.name })
-                        }
+                            ingredient.isUnwanted = false                        }
                     } else {
-                        viewModel.preferredIngredients.removeAll(where: { $0.name == ingredient.name } )
-                        ingredient.isPrefered = false
+                        ingredient.isPreferred = false
                     }
                 }
                 .font(.system(size: 20))
@@ -39,13 +35,10 @@ struct PreferencesThumbsCell: View {
                 .onTapGesture {
                     if !isUnwanted {
                         ingredient.isUnwanted = true
-                        viewModel.unwantedIngredients.append(ingredient)
-                        if ingredient.isPrefered {
-                            ingredient.isPrefered = false
-                            viewModel.preferredIngredients.removeAll(where: { $0.name == ingredient.name } )
+                        if ingredient.isPreferred {
+                            ingredient.isPreferred = false
                         }
                     } else {
-                        viewModel.unwantedIngredients.removeAll(where: { $0.name == ingredient.name })
                         ingredient.isUnwanted = false
                     }
                 }
