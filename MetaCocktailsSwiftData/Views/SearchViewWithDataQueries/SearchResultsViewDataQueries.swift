@@ -10,7 +10,7 @@ import SwiftData
 
 struct SearchResultsViewDataQueries: View {
     @Bindable var viewModel: SearchViewModel
-    @Environment(\.modelContext) private var modelContext
+    @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
 
     
@@ -33,15 +33,15 @@ struct SearchResultsViewDataQueries: View {
         }
         VStack(alignment: .leading) {
 
-            preferencesListView(viewModel: viewModel)
-            CocktailResultListDataQueries(viewModel: viewModel, isLoading: $viewModel.isLoading)
+//            preferencesListView(viewModel: viewModel)
+            CocktailResultListDataQueries(preferredIngredients: viewModel.preferredIngredients, notPreferredIngredients: viewModel.unwantedIngredients, passedViewModel: viewModel)
                 .navigationBarBackButtonHidden(true)
         }
         .navigationBarTitleDisplayMode(.inline)
         .onAppear() {
             if viewModel.willLoadOnAppear == true {
                 
-                viewModel.findCocktails(modelContext: modelContext)
+//                viewModel.findCocktails(modelContext: modelContext)
                 
             }
             viewModel.onBasisSearchView = false

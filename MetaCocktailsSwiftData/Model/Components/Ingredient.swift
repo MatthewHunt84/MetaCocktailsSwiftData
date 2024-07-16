@@ -297,7 +297,6 @@ enum Category: String, Codable, CaseIterable  {
 @Model
 class IngredientBase: Codable, Hashable {
     #Unique<IngredientBase>([\.name])
-    #Index<IngredientBase>([\.name], [\.isPreferred], [\.isUnwanted], [\.name, \.isPreferred, \.isUnwanted])
 
     var name: String
     var info: String?
@@ -305,11 +304,9 @@ class IngredientBase: Codable, Hashable {
     var tags: Tags?
     var prep: Prep?
     var isCustom: Bool
-    var isPreferred: Bool
-    var isUnwanted: Bool
 
     
-    init(name: String, info: String? = nil, category: Category, tags: Tags? = Tags(), prep: Prep?, isCustom: Bool = false, isPreferred: Bool = false, isUnwanted: Bool = false) {
+    init(name: String, info: String? = nil, category: Category, tags: Tags? = Tags(), prep: Prep?, isCustom: Bool = false) {
      
         self.name = name
         self.info = info
@@ -317,8 +314,6 @@ class IngredientBase: Codable, Hashable {
         self.tags = tags
         self.prep = prep
         self.isCustom = isCustom
-        self.isPreferred = isPreferred
-        self.isUnwanted = isUnwanted
     }
     
     // MARK: Equatable + Hashable Conformance
@@ -332,7 +327,7 @@ class IngredientBase: Codable, Hashable {
     }
     
     enum CodingKeys: CodingKey {
-        case name, category, tags, prep, info, isCustom, isPreferred, isUnwanted
+        case name, category, tags, prep, info, isCustom
     }
     
     required init(from decoder: any Decoder) throws {
@@ -343,8 +338,6 @@ class IngredientBase: Codable, Hashable {
         self.prep = try container.decode(Prep.self, forKey: .prep)
         self.info = try container.decode(String.self, forKey: .info)
         self.isCustom = try container.decode(Bool.self, forKey: .isCustom)
-        self.isPreferred = try container.decode(Bool.self, forKey: .isPreferred)
-        self.isUnwanted = try container.decode(Bool.self, forKey: .isUnwanted)
     }
     
     func encode(to encoder: Encoder) throws {
@@ -355,25 +348,23 @@ class IngredientBase: Codable, Hashable {
         try container.encode(prep, forKey: .prep)
         try container.encode(info, forKey: .info)
         try container.encode(isCustom, forKey: .isCustom)
-        try container.encode(isPreferred, forKey: .isPreferred)
-        try container.encode(isUnwanted, forKey: .isUnwanted)
     }
     
-    static func removeDuplicates(in context: ModelContext) throws {
-        let descriptor = FetchDescriptor<IngredientBase>()
-        let allObjects = try context.fetch(descriptor)
-        
-        let groupedObjects = Dictionary(grouping: allObjects, by: { $0.name })
-        
-        for (_, objects) in groupedObjects where objects.count > 1 {
-            // Keep the first object, delete the rest
-            for object in objects.dropFirst() {
-                context.delete(object)
-            }
-        }
-        
-        try context.save()
-    }
+//    static func removeDuplicates(in context: ModelContext) throws {
+//        let descriptor = FetchDescriptor<IngredientBase>()
+//        let allObjects = try context.fetch(descriptor)
+//        
+//        let groupedObjects = Dictionary(grouping: allObjects, by: { $0.name })
+//        
+//        for (_, objects) in groupedObjects where objects.count > 1 {
+//            // Keep the first object, delete the rest
+//            for object in objects.dropFirst() {
+//                context.delete(object)
+//            }
+//        }
+//        
+//        try context.save()
+//    }
 }
 
 

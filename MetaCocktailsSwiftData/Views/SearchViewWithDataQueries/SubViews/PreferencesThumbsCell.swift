@@ -18,28 +18,43 @@ struct PreferencesThumbsCell: View {
         HStack{
             Text(ingredient.name)
             Spacer()
-            Image(systemName:ingredient.isPreferred ? "hand.thumbsup.fill" : "hand.thumbsup")
-                .foregroundStyle(ingredient.isPreferred ? .brandPrimaryGreen : .white)
+            Image(systemName:isPreferred ? "hand.thumbsup.fill" : "hand.thumbsup")
+                .foregroundStyle(isPreferred ? .brandPrimaryGreen : .white)
                 .onTapGesture {
                     if !isPreferred {
-                        ingredient.isPreferred = true
-                        if ingredient.isUnwanted{
-                            ingredient.isUnwanted = false                        }
+                        isPreferred = true
+                        viewModel.preferredIngredients.append(ingredient)
+                        viewModel.preferredCount += 1
+                        
+                        if isUnwanted{
+                            isUnwanted = false
+                            viewModel.unwantedIngredients.removeAll(where: {$0 == ingredient})
+                            
+                        }
                     } else {
-                        ingredient.isPreferred = false
+                        isPreferred = false
+                        viewModel.preferredIngredients.removeAll(where: {$0 == ingredient})
+                        viewModel.preferredCount -= 1
+                        
                     }
                 }
                 .font(.system(size: 20))
-            Image(systemName:ingredient.isUnwanted ? "hand.thumbsdown.fill" : "hand.thumbsdown")
-                .foregroundStyle(ingredient.isUnwanted ? .brandPrimaryRed : .white)
+            Image(systemName:isUnwanted ? "hand.thumbsdown.fill" : "hand.thumbsdown")
+                .foregroundStyle(isUnwanted ? .brandPrimaryRed : .white)
                 .onTapGesture {
                     if !isUnwanted {
-                        ingredient.isUnwanted = true
-                        if ingredient.isPreferred {
-                            ingredient.isPreferred = false
+                        isUnwanted = true
+                        viewModel.unwantedIngredients.append(ingredient)
+                        if isPreferred {
+                            isPreferred = false
+                            viewModel.preferredIngredients.removeAll(where: {$0 == ingredient})
+                            viewModel.preferredCount -= 1
+                           
                         }
                     } else {
-                        ingredient.isUnwanted = false
+                        isUnwanted = false
+                        viewModel.unwantedIngredients.removeAll(where: {$0 == ingredient})
+                       
                     }
                 }
                 .padding(.horizontal, 10)
