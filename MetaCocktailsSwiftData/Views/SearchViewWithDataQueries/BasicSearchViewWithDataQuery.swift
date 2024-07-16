@@ -160,14 +160,16 @@ public struct preferencesListView: View {
                 ScrollView(.horizontal) {
                     
                     HStack(spacing: 12) {
-                        ForEach(preferredIngredients, id: \.name) { selectedIngredient in
+                        ForEach(preferredIngredients) { selectedIngredient in
                             viewModel.viewModelTagView(selectedIngredient.name, .green , "xmark")
                                 .onTapGesture {
                                     withAnimation(.snappy) {
                                         selectedIngredient.isPreferred = false
                                         viewModel.hack.toggle()
                                     }
-                                    viewModel.findCocktails(modelContext: modelContext)
+                                    if !viewModel.onBasisSearchView {
+                                        viewModel.findCocktails(modelContext: modelContext)
+                                    }
                                 }
                         }
                     }
