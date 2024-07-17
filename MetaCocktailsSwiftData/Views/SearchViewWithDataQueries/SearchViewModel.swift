@@ -39,20 +39,20 @@ final class SearchViewModel: ObservableObject {
             if section.matched == preferredCount {
                 for cocktail in perfectMatch {
                     section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: [], cocktail: cocktail))
-                    print("💯💯💯 \(cocktail.cocktailName) just got added with a preferred count of \(preferredCount) and a match of \(section.matched)")
+                    
                 }
             }
             if section.matched == (preferredCount - 1) {
                 for cocktail in minusOne {
                     
                     section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
-                    print("1️⃣1️⃣1️⃣ \(cocktail.cocktailName) just got added with a preferred count of \(preferredCount) and a match of \(section.matched)")
+                    
                 }
             }
             if section.matched == (preferredCount - 2) {
                 for cocktail in minusTwo{
                     section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
-                    print("2️⃣2️⃣2️⃣ \(cocktail.cocktailName) just got added with a preferred count of \(preferredCount) and a match of \(section.matched)")
+                   
                 }
                 
             }
@@ -111,15 +111,12 @@ final class SearchViewModel: ObservableObject {
             return dataShells
         
     }
+    
     func findMissingIngredients(cocktail: Cocktail) -> [String] {
-        var cocktailMissingIngredients: [String] = []
-        var cocktailIngredientStrings: [String] = cocktail.spec.map({ $0.ingredientBase.name })
-        for ingredient in preferredIngredients {
-            if !cocktailIngredientStrings.contains(ingredient) {
-                cocktailMissingIngredients.append(ingredient)            }
-        }
-        return cocktailMissingIngredients
+
+        preferredIngredients.filter({ !cocktail.spec.map({ $0.ingredientBase.name }).contains($0) })
     }
+    
     @ViewBuilder
     func viewModelTagView(_ tag: String, _ color: Color, _ icon: String) -> some View {
         HStack(spacing: 10) {
