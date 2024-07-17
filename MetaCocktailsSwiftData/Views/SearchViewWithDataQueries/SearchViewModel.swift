@@ -25,9 +25,7 @@ final class SearchViewModel: ObservableObject {
     var sections: [ResultViewSectionData] = []
     var willLoadOnAppear = true
     var onBasisSearchView: Bool = true
-    
-    
-    
+
     func clearData() {
         currentComponentSearchName = ""
         unwantedIngredients = []
@@ -36,35 +34,69 @@ final class SearchViewModel: ObservableObject {
         preferredCount = 0
     }
 
-    func createResultsForSectionData(perfectMatch: [Cocktail], minusOne: [Cocktail], minusTwo: [Cocktail], minusThree: [Cocktail], minusFour: [Cocktail]) {
+//    func createResultsForSectionData(perfectMatch: [Cocktail], minusOne: [Cocktail], minusTwo: [Cocktail], minusThree: [Cocktail], minusFour: [Cocktail]) {
+//        for section in sections {
+//            if section.sectionsPreferredCount == preferredCount {
+//                for cocktail in perfectMatch {
+//                    section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: [], cocktail: cocktail))
+//                    print("💯💯💯 \(cocktail.cocktailName) just got added with a preferred count of \(preferredCount) and a match of \(section.matched)")
+//                }
+//            }
+//            if section.sectionsPreferredCount == (preferredCount - 1) {
+//                for cocktail in minusOne {
+//                    
+//                    section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
+//                    print("1️⃣1️⃣1️⃣ \(cocktail.cocktailName) just got added with a preferred count of \(preferredCount) and a match of \(section.matched)")
+//                }
+//            }
+//            if section.sectionsPreferredCount == (preferredCount - 2) {
+//                for cocktail in minusTwo{
+//                    section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
+//                    print("2️⃣2️⃣2️⃣ \(cocktail.cocktailName) just got added with a preferred count of \(preferredCount) and a match of \(section.matched)")
+//                }
+//                
+//            }
+//            if section.sectionsPreferredCount == (preferredCount - 3) {
+//                for cocktail in minusThree{
+//                    section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
+//                }
+//            }
+//            if section.sectionsPreferredCount == (preferredCount - 4) {
+//                for cocktail in minusThree{
+//                    section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
+//                }
+//            }
+//        }
+//    }
+    func perfectMatch(perfectMatch: [Cocktail]) {
         for section in sections {
             if section.sectionsPreferredCount == preferredCount {
                 for cocktail in perfectMatch {
                     section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: [], cocktail: cocktail))
-                   // print("\(cocktail.cocktailName) just got added with a preferred count of \(preferredCount) and a match of \(section.matched)")
+                    print("💯💯💯 \(cocktail.cocktailName) just got added with a preferred count of \(preferredCount) and a match of \(section.matched)")
                 }
             }
+        }
+    }
+    func minusOne(minusOne: [Cocktail]) {
+        for section in sections {
             if section.sectionsPreferredCount == (preferredCount - 1) {
                 for cocktail in minusOne {
                     
                     section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
-                    //print("\(cocktail.cocktailName) just got added with a preferred count of \(preferredCount) and a match of \(section.matched)")
+                    print("1️⃣1️⃣1️⃣ \(cocktail.cocktailName) just got added with a preferred count of \(preferredCount) and a match of \(section.matched)")
                 }
             }
+        }
+    }
+    func minusTwo(minusTwo: [Cocktail]) {
+        for section in sections {
             if section.sectionsPreferredCount == (preferredCount - 2) {
                 for cocktail in minusTwo{
                     section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
+                    print("2️⃣2️⃣2️⃣ \(cocktail.cocktailName) just got added with a preferred count of \(preferredCount) and a match of \(section.matched)")
                 }
-            }
-            if section.sectionsPreferredCount == (preferredCount - 3) {
-                for cocktail in minusThree{
-                    section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
-                }
-            }
-            if section.sectionsPreferredCount == (preferredCount - 4) {
-                for cocktail in minusThree{
-                    section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
-                }
+                
             }
         }
     }
