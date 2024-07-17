@@ -14,13 +14,6 @@ struct BasicSearchView: View {
     @State var selectedFlavorsOrIngredients: FlavorsOrIngredient = .flavors
     @State var isShowingFlavors: Bool = true
     
-    
-    //    init() {
-    //
-    ////        UISegmentedControl.appearance().selectedSegmentTintColor = .brandPrimaryYellow
-    ////        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor : UIColor.black], for: .selected)
-    //
-    //    }
     var body: some View {
         NavigationStack {
             GeometryReader { geometry in

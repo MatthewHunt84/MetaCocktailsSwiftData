@@ -28,8 +28,8 @@ struct CocktailResultList: View {
                         VStack{
                             List {
                                 ForEach(viewModel.sections, id: \.self.id) { result in
-                                    Section(header: SearchedCocktailTitleHeader(searched: result.count, matched: result.matched)) {
-                                        if result.matched == result.count {
+                                    Section(header: SearchedCocktailTitleHeader(searched: result.sectionsPreferredCount, matched: result.matched)) {
+                                        if result.matched == result.sectionsPreferredCount {
                                             
                                             TotalMatchView(resultViewSectionData: result)
                                             

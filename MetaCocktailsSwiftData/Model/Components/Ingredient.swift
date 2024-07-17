@@ -297,14 +297,17 @@ enum Category: String, Codable, CaseIterable  {
 @Model
 class IngredientBase: Codable, Hashable {
     #Unique<IngredientBase>([\.name])
+
     var name: String
     var info: String?
     var category: Category
     var tags: Tags?
     var prep: Prep?
     var isCustom: Bool
+
     
     init(name: String, info: String? = nil, category: Category, tags: Tags? = Tags(), prep: Prep?, isCustom: Bool = false) {
+     
         self.name = name
         self.info = info
         self.category = category
@@ -347,21 +350,21 @@ class IngredientBase: Codable, Hashable {
         try container.encode(isCustom, forKey: .isCustom)
     }
     
-    static func removeDuplicates(in context: ModelContext) throws {
-        let descriptor = FetchDescriptor<IngredientBase>()
-        let allObjects = try context.fetch(descriptor)
-        
-        let groupedObjects = Dictionary(grouping: allObjects, by: { $0.name })
-        
-        for (_, objects) in groupedObjects where objects.count > 1 {
-            // Keep the first object, delete the rest
-            for object in objects.dropFirst() {
-                context.delete(object)
-            }
-        }
-        
-        try context.save()
-    }
+//    static func removeDuplicates(in context: ModelContext) throws {
+//        let descriptor = FetchDescriptor<IngredientBase>()
+//        let allObjects = try context.fetch(descriptor)
+//        
+//        let groupedObjects = Dictionary(grouping: allObjects, by: { $0.name })
+//        
+//        for (_, objects) in groupedObjects where objects.count > 1 {
+//            // Keep the first object, delete the rest
+//            for object in objects.dropFirst() {
+//                context.delete(object)
+//            }
+//        }
+//        
+//        try context.save()
+//    }
 }
 
 

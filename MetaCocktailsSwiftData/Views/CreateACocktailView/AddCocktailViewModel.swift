@@ -129,7 +129,7 @@ import SwiftData
     @MainActor
     func addExistingGarnishToCocktail(context: ModelContext) {
         Task {
-            
+         
             let fetchDescriptor = FetchDescriptor<Garnish>(predicate: #Predicate { $0.name == currentGarnishName })
             
             await MainActor.run {
@@ -149,7 +149,7 @@ import SwiftData
         validateAuthor()
         validateBuildInstructions()
         
-        var cocktail = Cocktail(cocktailName: cocktailName,
+        let cocktail = Cocktail(cocktailName: cocktailName,
                                 glasswareType: uniqueGlasswareName!,
                                 garnish: addedGarnish,
                                 ice: ice,
