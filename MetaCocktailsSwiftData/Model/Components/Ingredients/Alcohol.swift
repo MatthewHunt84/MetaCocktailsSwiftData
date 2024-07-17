@@ -479,7 +479,7 @@ enum Whiskey: String, Codable, CaseIterable {
     case eagleRare10           = "Eagle Rare 10 year Bourbon"
     case elijahCraigSmallBatch = "Elijah Craig Small Batch"
     case fourRosesYellowLabel  = "Four Roses Yellow Label"
-    case glenfiddich12         = "Glanfiddich 12 year"
+    case glenfiddich12         = "Glenfiddich 12 year"
     case hibikiHarmony         = "Hibiki Japanese Harmony"
     case hirschBourbon         = "Hirsch Horizon Bourbon"
     case irishWhiskeyAny       = "Irish Whiskey"

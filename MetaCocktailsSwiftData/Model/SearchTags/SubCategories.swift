@@ -66,6 +66,7 @@ enum SubCategories: String, Codable, CaseIterable {
     case scotchAny                    = "Scotch"
     case scotchBlended                = "Scotch (Blended)"
     case scotchHighland               = "Scotch (Highland)"
+    case scotchSpeyside               = "Scotch (Speyside)"
     case scotchIsla                   = "Scotch (Peated, From Isla)"
     case whiskeyAny                   = "Whisk(e)y"
     
