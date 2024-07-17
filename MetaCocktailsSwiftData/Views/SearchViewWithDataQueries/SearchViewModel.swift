@@ -36,32 +36,32 @@ final class SearchViewModel: ObservableObject {
 
     func createResultsForSectionData(perfectMatch: [Cocktail], minusOne: [Cocktail], minusTwo: [Cocktail], minusThree: [Cocktail], minusFour: [Cocktail]) {
         for section in sections {
-            if section.sectionsPreferredCount == preferredCount {
+            if section.matched == preferredCount {
                 for cocktail in perfectMatch {
                     section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: [], cocktail: cocktail))
                     print("💯💯💯 \(cocktail.cocktailName) just got added with a preferred count of \(preferredCount) and a match of \(section.matched)")
                 }
             }
-            if section.sectionsPreferredCount == (preferredCount - 1) {
+            if section.matched == (preferredCount - 1) {
                 for cocktail in minusOne {
                     
                     section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
                     print("1️⃣1️⃣1️⃣ \(cocktail.cocktailName) just got added with a preferred count of \(preferredCount) and a match of \(section.matched)")
                 }
             }
-            if section.sectionsPreferredCount == (preferredCount - 2) {
+            if section.matched == (preferredCount - 2) {
                 for cocktail in minusTwo{
                     section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
                     print("2️⃣2️⃣2️⃣ \(cocktail.cocktailName) just got added with a preferred count of \(preferredCount) and a match of \(section.matched)")
                 }
                 
             }
-            if section.sectionsPreferredCount == (preferredCount - 3) {
+            if section.matched == (preferredCount - 3) {
                 for cocktail in minusThree{
                     section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
                 }
             }
-            if section.sectionsPreferredCount == (preferredCount - 4) {
+            if section.matched == (preferredCount - 4) {
                 for cocktail in minusThree{
                     section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
                 }

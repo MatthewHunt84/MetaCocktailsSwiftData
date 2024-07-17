@@ -72,7 +72,7 @@ struct CocktailResultListDataQueries: View {
             matchesAllButFourPreferredIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredients.evaluate(cocktail.spec)
         }
         
-        _fullMatchCocktails = Query(filter: fullMatchPredicate, sort: \Cocktail.cocktailName)
+//        _fullMatchCocktails = Query(filter: fullMatchPredicate, sort: \Cocktail.cocktailName)
         _minusOneMatchCocktails = Query(filter: minusOneMatchPredicate, sort: \Cocktail.cocktailName)
         _minusTwoMatchCocktails = Query(filter: minusTwoMatchPredicate, sort: \Cocktail.cocktailName)
         _minusThreeMatchCocktails = Query(filter: minusThreeMatchPredicate, sort: \Cocktail.cocktailName)
