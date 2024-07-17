@@ -10,12 +10,12 @@ import SwiftUI
 class ResultViewSectionData {
     
     let id = UUID()
-    let count: Int
+    let sectionsPreferredCount: Int
     let matched: Int
     var cocktails: [CocktailsAndMissingIngredients]
     
     init(count: Int, matched: Int, cocktails: [CocktailsAndMissingIngredients]) {
-        self.count = count
+        self.sectionsPreferredCount = count
         self.matched = matched
         self.cocktails = cocktails
     }

@@ -38,15 +38,7 @@ struct SearchResultsViewDataQueries: View {
                 .navigationBarBackButtonHidden(true)
         }
         .navigationBarTitleDisplayMode(.inline)
-        .onAppear() {
-            if viewModel.willLoadOnAppear == true {
-                
-//                viewModel.findCocktails(modelContext: modelContext)
-                
-            }
-            viewModel.onBasisSearchView = false
-            viewModel.willLoadOnAppear = false
-        }
+        
     }
     
     @ViewBuilder func SearchResultsTagView(_ tag: String, _ color: Color, _ icon: String) -> some View {

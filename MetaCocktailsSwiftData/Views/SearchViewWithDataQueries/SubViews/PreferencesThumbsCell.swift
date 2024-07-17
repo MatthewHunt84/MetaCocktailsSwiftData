@@ -11,50 +11,37 @@ struct PreferencesThumbsCell: View {
    
     @Bindable var viewModel: SearchViewModel
     @Binding var ingredient: IngredientBase
-    @State private var isPreferred: Bool = false
-    @State private var isUnwanted: Bool = false
     
     var body: some View {
         HStack{
             Text(ingredient.name)
             Spacer()
-            Image(systemName:isPreferred ? "hand.thumbsup.fill" : "hand.thumbsup")
-                .foregroundStyle(isPreferred ? .brandPrimaryGreen : .white)
+            Image(systemName:viewModel.preferredIngredients.contains(ingredient.name) ? "hand.thumbsup.fill" : "hand.thumbsup")
+                .foregroundStyle(viewModel.preferredIngredients.contains(ingredient.name) ? .brandPrimaryGreen : .white)
                 .onTapGesture {
-                    if !isPreferred {
-                        isPreferred = true
-                        viewModel.preferredIngredients.append(ingredient)
+                    if !viewModel.preferredIngredients.contains(ingredient.name) {
+                        viewModel.preferredIngredients.append(ingredient.name)
                         viewModel.preferredCount += 1
-                        
-                        if isUnwanted{
-                            isUnwanted = false
-                            viewModel.unwantedIngredients.removeAll(where: {$0 == ingredient})
-                            
+                        if viewModel.unwantedIngredients.contains(ingredient.name){
+                            viewModel.unwantedIngredients.removeAll(where: {$0 == ingredient.name})
                         }
                     } else {
-                        isPreferred = false
-                        viewModel.preferredIngredients.removeAll(where: {$0 == ingredient})
+                        viewModel.preferredIngredients.removeAll(where: {$0 == ingredient.name})
                         viewModel.preferredCount -= 1
-                        
                     }
                 }
                 .font(.system(size: 20))
-            Image(systemName:isUnwanted ? "hand.thumbsdown.fill" : "hand.thumbsdown")
-                .foregroundStyle(isUnwanted ? .brandPrimaryRed : .white)
+            Image(systemName:viewModel.unwantedIngredients.contains(ingredient.name) ? "hand.thumbsdown.fill" : "hand.thumbsdown")
+                .foregroundStyle(viewModel.unwantedIngredients.contains(ingredient.name) ? .brandPrimaryRed : .white)
                 .onTapGesture {
-                    if !isUnwanted {
-                        isUnwanted = true
-                        viewModel.unwantedIngredients.append(ingredient)
-                        if isPreferred {
-                            isPreferred = false
-                            viewModel.preferredIngredients.removeAll(where: {$0 == ingredient})
+                    if !viewModel.unwantedIngredients.contains(ingredient.name) {
+                        viewModel.unwantedIngredients.append(ingredient.name)
+                        if viewModel.preferredIngredients.contains(ingredient.name) {
+                            viewModel.preferredIngredients.removeAll(where: {$0 == ingredient.name})
                             viewModel.preferredCount -= 1
-                           
                         }
                     } else {
-                        isUnwanted = false
-                        viewModel.unwantedIngredients.removeAll(where: {$0 == ingredient})
-                       
+                        viewModel.unwantedIngredients.removeAll(where: {$0 == ingredient.name})
                     }
                 }
                 .padding(.horizontal, 10)

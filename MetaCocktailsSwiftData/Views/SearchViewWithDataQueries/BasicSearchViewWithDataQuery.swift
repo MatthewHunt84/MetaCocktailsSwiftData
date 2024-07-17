@@ -23,7 +23,7 @@ struct BasicSearchViewWithDataQuery: View {
                     .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
                 Spacer()
             }
-//            preferencesListView(viewModel: viewModel)
+            preferencesListView(viewModel: viewModel)
             VStack{
                 Form{
                     ThumbsUpOrDownIngredientSearchList(viewModel: viewModel, keyboardFocused: _keyboardFocused)
@@ -139,70 +139,60 @@ struct ResetButton: View {
 
     }
 }
-//public struct preferencesListView: View {
-//    @Bindable var viewModel: SearchViewModel
-//    @Environment(\.modelContext) var modelContext
-//    @Query(filter: #Predicate<IngredientBase> { ingredient in
-//        ingredient.isPreferred == true } ) var preferredIngredients: [IngredientBase]
-//    @Query(filter: #Predicate<IngredientBase> { ingredient in
-//        ingredient.notPreferred == true } ) var unwantedIngredients: [IngredientBase]
-//    
-//    public var body: some View {
-//        VStack{
-//            HStack {
-//                Text("Your selections show up here. Tap to remove them.")
-//                    .font(.footnote)
-//                    .foregroundStyle(.gray)
-//                    .padding(.leading, 12)
-//                    .padding(.top, 25)
-//                Spacer()
-//            }
-//                ScrollView(.horizontal) {
-//                    
-//                    HStack(spacing: 12) {
-//                        ForEach(preferredIngredients, id: \.name) { preferredIngredient in
-//                            viewModel.viewModelTagView(preferredIngredient.name, .green , "xmark")
-//                                .onTapGesture {
-//                                    withAnimation(.snappy) {
-//                                        preferredIngredient.isPreferred = false
-//                                      
-//                                    }
-//                                    if !viewModel.onBasisSearchView {
-//                                        viewModel.findCocktails(modelContext: modelContext)
-//                                    }
-//                                }
-//                        }
-//                    }
-//                    .padding(.horizontal, 15)
-//                    .frame(height: 35)
-//                }
-//                .mask(LinearGradient(stops: [.init(color: .clear, location: 0), .init(color: .white, location: 0.05), .init(color: .white, location: 0.95), .init(color: .clear, location: 1)], startPoint: .leading, endPoint: .trailing))
-//                .scrollClipDisabled(true)
-//                .scrollIndicators(.hidden)
-//         
-//            
-//                ScrollView(.horizontal) {
-//                    
-//                    HStack(spacing: 12) {
-//                        ForEach(unwantedIngredients, id: \.name) { unwantedIngredient in
-//                            viewModel.viewModelTagView(unwantedIngredient.name, .red, "xmark")
-//                                .onTapGesture {
-//                                    withAnimation(.snappy) {
-//                                        unwantedIngredient.notPreferred = false
-//                                    }
-//                                    if !viewModel.onBasisSearchView {
-//                                        viewModel.findCocktails(modelContext: modelContext)
-//                                    }
-//                                }
-//                        }
-//                    }
-//                    .padding(.horizontal, 15)
-//                    .frame(height: 35)
-//                }
-//                .mask(LinearGradient(stops: [.init(color: .clear, location: 0), .init(color: .white, location: 0.05), .init(color: .white, location: 0.95), .init(color: .clear, location: 1)], startPoint: .leading, endPoint: .trailing))
-//                .scrollClipDisabled(true)
-//                .scrollIndicators(.hidden)
-//            
-//        }
-//    }
-//}
+public struct preferencesListView: View {
+    @Bindable var viewModel: SearchViewModel
+    @Environment(\.modelContext) var modelContext
+    
+    public var body: some View {
+        VStack{
+            HStack {
+                Text("Your selections show up here. Tap to remove them.")
+                    .font(.footnote)
+                    .foregroundStyle(.gray)
+                    .padding(.leading, 12)
+                    .padding(.top, 25)
+                Spacer()
+            }
+                ScrollView(.horizontal) {
+                    
+                    HStack(spacing: 12) {
+                        ForEach(viewModel.preferredIngredients, id: \.self) { preferredIngredient in
+                            viewModel.viewModelTagView(preferredIngredient, .green , "xmark")
+                                .onTapGesture {
+                                    withAnimation(.snappy) {
+                                        viewModel.preferredCount -= 1
+                                        viewModel.preferredIngredients.removeAll(where: { $0 == preferredIngredient})
+                                    }
+                                }
+                        }
+                    }
+                    .padding(.horizontal, 15)
+                    .frame(height: 35)
+                }
+                .mask(LinearGradient(stops: [.init(color: .clear, location: 0), .init(color: .white, location: 0.05), .init(color: .white, location: 0.95), .init(color: .clear, location: 1)], startPoint: .leading, endPoint: .trailing))
+                .scrollClipDisabled(true)
+                .scrollIndicators(.hidden)
+         
+            
+                ScrollView(.horizontal) {
+                    
+                    HStack(spacing: 12) {
+                        ForEach(viewModel.unwantedIngredients, id: \.self) { unwantedIngredient in
+                            viewModel.viewModelTagView(unwantedIngredient, .red, "xmark")
+                                .onTapGesture {
+                                    withAnimation(.snappy) {
+                                        viewModel.unwantedIngredients.removeAll(where:{ $0 == unwantedIngredient })
+                                    }
+                                }
+                        }
+                    }
+                    .padding(.horizontal, 15)
+                    .frame(height: 35)
+                }
+                .mask(LinearGradient(stops: [.init(color: .clear, location: 0), .init(color: .white, location: 0.05), .init(color: .white, location: 0.95), .init(color: .clear, location: 1)], startPoint: .leading, endPoint: .trailing))
+                .scrollClipDisabled(true)
+                .scrollIndicators(.hidden)
+            
+        }
+    }
+}
