@@ -112,13 +112,11 @@ final class SearchViewModel: ObservableObject {
         
     }
     func findMissingIngredients(cocktail: Cocktail) -> [String] {
-       print("This got fired")
         var cocktailMissingIngredients: [String] = []
-        for spec in cocktail.spec {
-            if !preferredIngredients.contains(spec.ingredientBase.name) {
-                print("\(spec.ingredientBase.name) is being added to missing ingredients")
-                cocktailMissingIngredients.append(spec.ingredientBase.name)
-            }
+        var cocktailIngredientStrings: [String] = cocktail.spec.map({ $0.ingredientBase.name })
+        for ingredient in preferredIngredients {
+            if !cocktailIngredientStrings.contains(ingredient) {
+                cocktailMissingIngredients.append(ingredient)            }
         }
         return cocktailMissingIngredients
     }

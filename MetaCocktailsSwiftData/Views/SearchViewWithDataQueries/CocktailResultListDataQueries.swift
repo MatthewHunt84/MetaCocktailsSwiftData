@@ -72,7 +72,7 @@ struct CocktailResultListDataQueries: View {
             matchesAllButFourPreferredIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredients.evaluate(cocktail.spec)
         }
         
-//        _fullMatchCocktails = Query(filter: fullMatchPredicate, sort: \Cocktail.cocktailName)
+        _fullMatchCocktails = Query(filter: fullMatchPredicate, sort: \Cocktail.cocktailName)
         _minusOneMatchCocktails = Query(filter: minusOneMatchPredicate, sort: \Cocktail.cocktailName)
         _minusTwoMatchCocktails = Query(filter: minusTwoMatchPredicate, sort: \Cocktail.cocktailName)
         _minusThreeMatchCocktails = Query(filter: minusThreeMatchPredicate, sort: \Cocktail.cocktailName)
@@ -223,23 +223,22 @@ struct TotalMatchViewDataQueries: View {
 //        
 //    }
     var body: some View {
-        VStack{
-           
-                ForEach(resultViewSectionData.cocktails, id: \.self.id) { cocktail in
-                    NavigationLink {
-                        RecipeView(viewModel: RecipeViewModel(cocktail: cocktail.cocktail))
-                            .navigationBarBackButtonHidden(true)
-                    } label: {
-                        HStack {
-                            Text(cocktail.cocktail.cocktailName)
-                        }
-                    }
+        
+        ForEach(resultViewSectionData.cocktails, id: \.self.id) { cocktail in
+            NavigationLink {
+                RecipeView(viewModel: RecipeViewModel(cocktail: cocktail.cocktail))
+                    .navigationBarBackButtonHidden(true)
+            } label: {
+                HStack {
+                    Text(cocktail.cocktail.cocktailName)
                 }
-           
+            }
         }
-//        .onAppear() {
-//            viewModel.perfectMatch(perfectMatch: fullMatchCocktails)
-//        }
+        
+        
+        //        .onAppear() {
+        //            viewModel.perfectMatch(perfectMatch: fullMatchCocktails)
+        //        }
     }
 }
 struct MinusOneMatchView: View {
