@@ -80,13 +80,15 @@ class OldCocktailIngredient: Codable, Hashable { // This old guy needs to be rem
             if ingredient.name == Agave.puebloViejoBlanco104.rawValue {
                 return "Pueblo Viejo Tequila"
             }
-            if ingredient.name == Gin.leopoldNavy.rawValue ||
-                ingredient.name == Gin.leopoldAmericanSBGin.rawValue ||
+            if  ingredient.name == Gin.leopoldAmericanSBGin.rawValue ||
                 ingredient.name == Liqueur.lopoldsApple.rawValue ||
                 ingredient.name == Liqueur.leopoldCherry.rawValue ||
                 ingredient.name == Amaro.leopold3Pins.rawValue
             {
                 return "By Leopold Bros"
+            }
+            if ingredient.name == Gin.leopoldNavy.rawValue {
+                return "Leopold Bros Navy Strength Gin"
             }
             if ingredient.name == Rum.uruapanAnejo.rawValue {
                 return "Single Blended Rum"
@@ -304,9 +306,10 @@ class IngredientBase: Codable, Hashable {
     var tags: Tags?
     var prep: Prep?
     var isCustom: Bool
+    var subCategories: [SubCategories]
 
     
-    init(name: String, info: String? = nil, category: Category, tags: Tags? = Tags(), prep: Prep?, isCustom: Bool = false) {
+    init(name: String, info: String? = nil, category: Category, tags: Tags? = Tags(), prep: Prep?, isCustom: Bool = false, subCategory: [SubCategories] = []) {
      
         self.name = name
         self.info = info
@@ -314,6 +317,20 @@ class IngredientBase: Codable, Hashable {
         self.tags = tags
         self.prep = prep
         self.isCustom = isCustom
+        self.subCategories = {
+            var subCategories: [SubCategories] = []
+            let subCategoryStrings: [String] = SubCategories.allCases.map({$0.rawValue})
+            if let tags = tags {
+                if let booze = tags.booze {
+                    for alcohol in booze {
+                        if subCategoryStrings.contains(alcohol.name) {
+                            subCategories.append(contentsOf: SubCategories.allCases.filter({ $0.rawValue == alcohol.name}))
+                        }
+                    }
+                }
+            }
+            return subCategories
+        }()
     }
     
     // MARK: Equatable + Hashable Conformance
@@ -327,7 +344,7 @@ class IngredientBase: Codable, Hashable {
     }
     
     enum CodingKeys: CodingKey {
-        case name, category, tags, prep, info, isCustom
+        case name, category, tags, prep, info, isCustom, subCategories
     }
     
     required init(from decoder: any Decoder) throws {
@@ -338,6 +355,7 @@ class IngredientBase: Codable, Hashable {
         self.prep = try container.decode(Prep.self, forKey: .prep)
         self.info = try container.decode(String.self, forKey: .info)
         self.isCustom = try container.decode(Bool.self, forKey: .isCustom)
+        self.subCategories = try container.decode([SubCategories].self, forKey: .subCategories)
     }
     
     func encode(to encoder: Encoder) throws {
@@ -348,23 +366,24 @@ class IngredientBase: Codable, Hashable {
         try container.encode(prep, forKey: .prep)
         try container.encode(info, forKey: .info)
         try container.encode(isCustom, forKey: .isCustom)
+        try container.encode(subCategories, forKey: .subCategories)
     }
     
-//    static func removeDuplicates(in context: ModelContext) throws {
-//        let descriptor = FetchDescriptor<IngredientBase>()
-//        let allObjects = try context.fetch(descriptor)
-//        
-//        let groupedObjects = Dictionary(grouping: allObjects, by: { $0.name })
-//        
-//        for (_, objects) in groupedObjects where objects.count > 1 {
-//            // Keep the first object, delete the rest
-//            for object in objects.dropFirst() {
-//                context.delete(object)
-//            }
-//        }
-//        
-//        try context.save()
-//    }
+    static func removeDuplicates(in context: ModelContext) throws {
+        let descriptor = FetchDescriptor<IngredientBase>()
+        let allObjects = try context.fetch(descriptor)
+        
+        let groupedObjects = Dictionary(grouping: allObjects, by: { $0.name })
+        
+        for (_, objects) in groupedObjects where objects.count > 1 {
+            // Keep the first object, delete the rest
+            for object in objects.dropFirst() {
+                context.delete(object)
+            }
+        }
+        
+        try context.save()
+    }
 }
 
 

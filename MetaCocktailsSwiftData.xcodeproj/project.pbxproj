@@ -432,6 +432,7 @@
 		4DD0DE992B97E020008EF203 /* TabBarComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD0DE982B97E020008EF203 /* TabBarComponents.swift */; };
 		4DD0DE9E2B97F5E1008EF203 /* TestCocktails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD0DE9D2B97F5E1008EF203 /* TestCocktails.swift */; };
 		4DD0DEA02B981EC3008EF203 /* Debbie, Don't.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD0DE9F2B981EC3008EF203 /* Debbie, Don't.swift */; };
+		4DD2AC312C487B5000550114 /* SubCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD2AC302C487B5000550114 /* SubCategories.swift */; };
 		4DDC116C2B857EF0009EF5C4 /* SwipeRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDC116B2B857EF0009EF5C4 /* SwipeRecipeView.swift */; };
 		4DDC116E2B861576009EF5C4 /* InlineDisclosureGroupStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDC116D2B861576009EF5C4 /* InlineDisclosureGroupStyle.swift */; };
 		4DE33DF72B8D933700312EC3 /* AddCustomIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE33DF62B8D933700312EC3 /* AddCustomIngredientView.swift */; };
@@ -940,6 +941,7 @@
 		4DD0DE982B97E020008EF203 /* TabBarComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarComponents.swift; sourceTree = "<group>"; };
 		4DD0DE9D2B97F5E1008EF203 /* TestCocktails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCocktails.swift; sourceTree = "<group>"; };
 		4DD0DE9F2B981EC3008EF203 /* Debbie, Don't.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Debbie, Don't.swift"; sourceTree = "<group>"; };
+		4DD2AC302C487B5000550114 /* SubCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategories.swift; sourceTree = "<group>"; };
 		4DDC116B2B857EF0009EF5C4 /* SwipeRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeRecipeView.swift; sourceTree = "<group>"; };
 		4DDC116D2B861576009EF5C4 /* InlineDisclosureGroupStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineDisclosureGroupStyle.swift; sourceTree = "<group>"; };
 		4DE33DF62B8D933700312EC3 /* AddCustomIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomIngredientView.swift; sourceTree = "<group>"; };
@@ -1863,6 +1865,7 @@
 				F4C6A8F62AB0145800BB0AD0 /* Profiles.swift */,
 				F4C6A8E72AAFFC6B00BB0AD0 /* Styles.swift */,
 				4D1E85C62B5C97DB00214BC6 /* AuthorNames.swift */,
+				4DD2AC302C487B5000550114 /* SubCategories.swift */,
 			);
 			path = SearchTags;
 			sourceTree = "<group>";
@@ -2448,6 +2451,7 @@
 				4DE33E052B915BAB00312EC3 /* ThirtyEightSpecial.swift in Sources */,
 				4DA567D02B6DBE6A003F6F04 /* TheTraveler.swift in Sources */,
 				4DBFF8252B5FB9DF0011B5B1 /* Aviation.swift in Sources */,
+				4DD2AC312C487B5000550114 /* SubCategories.swift in Sources */,
 				1AFDB7DE2AE37207000A3812 /* Boulevardier.swift in Sources */,
 				4DA5678A2B6CBC3B003F6F04 /* BanhMi.swift in Sources */,
 				4DE33DFD2B8ED01C00312EC3 /* HomeOnTheRange.swift in Sources */,
