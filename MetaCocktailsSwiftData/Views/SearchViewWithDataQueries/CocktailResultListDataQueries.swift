@@ -19,10 +19,12 @@ struct CocktailResultListDataQueries: View {
     @Query var minusFourMatchCocktails: [Cocktail]
 
     
-    init(preferredIngredients: [String], notPreferredIngredients: [String], passedViewModel: SearchViewModel) {
+    init(preferredIngredients: [String], preferredSubCategories: [String], notPreferredIngredients: [String], notPreferredSubCategories: [String], passedViewModel: SearchViewModel) {
         self.viewModel = passedViewModel
         let explicitPreferredCount = viewModel.preferredCount
    
+        
+        
         let matchesAllPreferredIngredients = #Expression<[Ingredient], Bool> { ingredients in
             ingredients.filter { ingredient in
                 preferredIngredients.contains(ingredient.ingredientBase.name)

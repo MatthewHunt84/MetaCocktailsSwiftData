@@ -50,15 +50,16 @@ struct ThumbsUpOrDownIngredientSearchList: View {
     @FocusState var keyboardFocused: Bool
     
     var body: some View {
-        Section("Name") {
+        Section("Component Name:") {
             VStack{
                 HStack{
-                    TextField("Flavor or Ingredient", text: $viewModel.currentComponentSearchName)
+                    TextField("Flavor, Ingredient, Style, or Profile...", text: $viewModel.currentComponentSearchName)
                         .focused($keyboardFocused)
                         .autocorrectionDisabled(true)
                         .onChange(of: viewModel.currentComponentSearchName, initial: true) { old, new in
                             viewModel.currentComponentSearchName = new
                             viewModel.filteredIngredients = viewModel.matchAllIngredients(ingredients: ingredients)
+                            viewModel.filteredSubCategories = viewModel.matchAllSubCategories()
                         }
                     if !viewModel.currentComponentSearchName.isEmpty {
                         Button {
@@ -73,15 +74,21 @@ struct ThumbsUpOrDownIngredientSearchList: View {
             }
             if keyboardFocused {
                 List {
-                    ForEach($viewModel.filteredIngredients, id: \.name) { ingredient in
-                        
-                        PreferencesThumbsCell(viewModel: viewModel, ingredient: ingredient)
-                        
-                        
+                    ForEach($viewModel.filteredSubCategories, id: \.self) { subCategory in
+                        PreferencesThumbsCellForSubCategories(viewModel: viewModel, subCategory: subCategory)
                     }
                     .listStyle(.plain)
                     .listRowBackground(Color.black)
-                    
+                }
+                .scrollContentBackground(.hidden)
+                List {
+                    ForEach($viewModel.filteredIngredients, id: \.name) { ingredient in
+                        if !viewModel.subCategoryStrings.contains(ingredient.name.wrappedValue){
+                            PreferencesThumbsCell(viewModel: viewModel, ingredient: ingredient)
+                        }
+                    }
+                    .listStyle(.plain)
+                    .listRowBackground(Color.black)
                 }
                 .scrollContentBackground(.hidden)
             } else {
@@ -165,6 +172,15 @@ public struct preferencesListView: View {
                                     }
                                 }
                         }
+                        ForEach(viewModel.preferredSubCategories, id: \.self) { preferredSubCategory in
+                            viewModel.viewModelTagView(preferredSubCategory, .green , "xmark")
+                                .onTapGesture {
+                                    withAnimation(.snappy) {
+                                        viewModel.preferredCount -= 1
+                                        viewModel.preferredSubCategories.removeAll(where: { $0 == preferredSubCategory})
+                                    }
+                                }
+                        }
                     }
                     .padding(.horizontal, 15)
                     .frame(height: 35)
@@ -182,6 +198,14 @@ public struct preferencesListView: View {
                                 .onTapGesture {
                                     withAnimation(.snappy) {
                                         viewModel.unwantedIngredients.removeAll(where:{ $0 == unwantedIngredient })
+                                    }
+                                }
+                        }
+                        ForEach(viewModel.unwantedSubCategories, id: \.self) { unwantedSubCategory in
+                            viewModel.viewModelTagView(unwantedSubCategory, .red, "xmark")
+                                .onTapGesture {
+                                    withAnimation(.snappy) {
+                                        viewModel.unwantedSubCategories.removeAll(where:{ $0 == unwantedSubCategory })
                                     }
                                 }
                         }
