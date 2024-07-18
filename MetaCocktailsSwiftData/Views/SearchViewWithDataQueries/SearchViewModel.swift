@@ -15,11 +15,8 @@ final class SearchViewModel: ObservableObject {
     
     
     var currentComponentSearchName: String = ""
-    var filteredIngredients: [IngredientBase] = []
-    var filteredSubCategories: [SubCategories] = []
+    var filteredIngredients: [String] = []
     var subCategoryStrings: [String] = SubCategories.allCases.map({$0.rawValue})
-    var unwantedSubCategories: [String] = []
-    var preferredSubCategories: [String] = []
     var unwantedIngredients: [String] = []
     var preferredIngredients: [String] = []
     
@@ -37,6 +34,97 @@ final class SearchViewModel: ObservableObject {
         preferredCount = 0
     }
 
+//    func findUnwantedIngredientNamesForCorrespondingSubCategories()  {
+//        
+//        for category in unwantedSubCategories {
+//           
+//            for booze in Agave.allCases {
+//                if let boozeTags = booze.tags.booze {
+//                    for boozeTag in boozeTags {
+//                        if boozeTag.name == category {
+//                            unwantedIngredients.append(booze.rawValue)
+//                        }
+//                    }
+//                }
+//            }
+//            for booze in Brandy.allCases {
+//                if let boozeTags = booze.tags.booze {
+//                    for boozeTag in boozeTags {
+//                        if boozeTag.name == category {
+//                            unwantedIngredients.append(booze.rawValue)
+//                        }
+//                    }
+//                }
+//            }
+//            for booze in Gin.allCases {
+//                if let boozeTags = booze.tags.booze {
+//                    for boozeTag in boozeTags {
+//                        if boozeTag.name == category {
+//                            unwantedIngredients.append(booze.rawValue)
+//                        }
+//                    }
+//                }
+//            }
+//            for booze in Rum.allCases {
+//                if let boozeTags = booze.tags.booze {
+//                    for boozeTag in boozeTags {
+//                        if boozeTag.name == category {
+//                            unwantedIngredients.append(booze.rawValue)
+//                        }
+//                    }
+//                }
+//            }
+//            for booze in Vodka.allCases {
+//                if let boozeTags = booze.tags.booze {
+//                    for boozeTag in boozeTags {
+//                        if boozeTag.name == category {
+//                            unwantedIngredients.append(booze.rawValue)
+//                        }
+//                    }
+//                }
+//            }
+//            for booze in Whiskey.allCases {
+//                if let boozeTags = booze.tags.booze {
+//                    for boozeTag in boozeTags {
+//                        if boozeTag.name == category {
+//                            unwantedIngredients.append(booze.rawValue)
+//                        }
+//                    }
+//                }
+//            }
+//            for booze in FortifiedWine.allCases {
+//                if let boozeTags = booze.tags.booze {
+//                    for boozeTag in boozeTags {
+//                        if boozeTag.name == category {
+//                            unwantedIngredients.append(booze.rawValue)
+//                        }
+//                    }
+//                }
+//            }
+//            for booze in Bitters.allCases {
+//                if let boozeTags = booze.tags.booze {
+//                    for boozeTag in boozeTags {
+//                        if boozeTag.name == category {
+//                            unwantedIngredients.append(booze.rawValue)
+//                        }
+//                    }
+//                }
+//            }
+//            for booze in Amaro.allCases {
+//                if let boozeTags = booze.tags.booze {
+//                    for boozeTag in boozeTags {
+//                        if boozeTag.name == category {
+//                            unwantedIngredients.append(booze.rawValue)
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//        for ingredient in unwantedIngredients {
+//            print(ingredient)
+//        }
+//    }
+    
     func createResultsForSectionData(perfectMatch: [Cocktail], minusOne: [Cocktail], minusTwo: [Cocktail], minusThree: [Cocktail], minusFour: [Cocktail]) {
         for section in sections {
             if section.matched == preferredCount {
@@ -129,17 +217,18 @@ final class SearchViewModel: ObservableObject {
         }
     }
 
-    func matchAllIngredients(ingredients: [IngredientBase]) -> [IngredientBase] {
+    func matchAllIngredients(ingredients: [String], subCategories: [String]) -> [String] {
         
         guard !currentComponentSearchName.isEmpty else {
              return [] // Return all ingredients if search text is empty
          }
         let lowercasedSearchText = currentComponentSearchName.lowercased()
-        
-        return ingredients.filter { $0.name.lowercased().contains(lowercasedSearchText) }
+        let combinedArrays = ingredients + subCategories
+        let combinedArraysWithoutDuplicates = Array(Set(combinedArrays))
+        return combinedArraysWithoutDuplicates.filter { $0.lowercased().contains(lowercasedSearchText) }
             .sorted { lhs, rhs in
-                let lhsLowercased = lhs.name.lowercased()
-                let rhsLowercased = rhs.name.lowercased()
+                let lhsLowercased = lhs.lowercased()
+                let rhsLowercased = rhs.lowercased()
                 // prioritize ingredients that start with the search text
                 let lhsStartsWith = lhsLowercased.hasPrefix(currentComponentSearchName.lowercased())
                 let rhsStartsWith = rhsLowercased.hasPrefix(currentComponentSearchName.lowercased())
@@ -150,7 +239,7 @@ final class SearchViewModel: ObservableObject {
                 }
                 // if two ingredients start with the same search text, prioritize the shortest one
                 if lhsStartsWith && rhsStartsWith {
-                    return lhs.name.count < rhs.name.count
+                    return lhs.count < rhs.count
                 }
                 // If neither starts with the search text, prioritize the one with the search text appearing first in the word
                 let lhsRange = lhsLowercased.range(of: currentComponentSearchName.lowercased())
@@ -159,34 +248,34 @@ final class SearchViewModel: ObservableObject {
                 return matchedArray
             }
     }
-    func matchAllSubCategories() -> [SubCategories] {
-        
-        guard !currentComponentSearchName.isEmpty else {
-             return [] // Return all ingredients if search text is empty
-         }
-        let lowercasedSearchText = currentComponentSearchName.lowercased()
-        
-        return SubCategories.allCases.filter { $0.rawValue.lowercased().contains(lowercasedSearchText) }
-            .sorted { lhs, rhs in
-                let lhsLowercased = lhs.rawValue.lowercased()
-                let rhsLowercased = rhs.rawValue.lowercased()
-                // prioritize ingredients that start with the search text
-                let lhsStartsWith = lhsLowercased.hasPrefix(currentComponentSearchName.lowercased())
-                let rhsStartsWith = rhsLowercased.hasPrefix(currentComponentSearchName.lowercased())
-                if lhsStartsWith && !rhsStartsWith {
-                    return true
-                } else if !lhsStartsWith && rhsStartsWith {
-                    return false
-                }
-                // if two ingredients start with the same search text, prioritize the shortest one
-                if lhsStartsWith && rhsStartsWith {
-                    return lhs.rawValue.count < rhs.rawValue.count
-                }
-                // If neither starts with the search text, prioritize the one with the search text appearing first in the word
-                let lhsRange = lhsLowercased.range(of: currentComponentSearchName.lowercased())
-                let rhsRange = rhsLowercased.range(of: currentComponentSearchName.lowercased())
-                let matchedArray = (lhsRange?.lowerBound ?? lhsLowercased.endIndex) < (rhsRange?.lowerBound ?? rhsLowercased.endIndex)
-                return matchedArray
-            }
-    }
+//    func matchAllSubCategories() -> [String] {
+//        
+//        guard !currentComponentSearchName.isEmpty else {
+//             return [] // Return all ingredients if search text is empty
+//         }
+//        let lowercasedSearchText = currentComponentSearchName.lowercased()
+//        
+//        return SubCategories.allCases.filter { $0.rawValue.lowercased().contains(lowercasedSearchText) }
+//            .sorted { lhs, rhs in
+//                let lhsLowercased = lhs.rawValue.lowercased()
+//                let rhsLowercased = rhs.rawValue.lowercased()
+//                // prioritize ingredients that start with the search text
+//                let lhsStartsWith = lhsLowercased.hasPrefix(currentComponentSearchName.lowercased())
+//                let rhsStartsWith = rhsLowercased.hasPrefix(currentComponentSearchName.lowercased())
+//                if lhsStartsWith && !rhsStartsWith {
+//                    return true
+//                } else if !lhsStartsWith && rhsStartsWith {
+//                    return false
+//                }
+//                // if two ingredients start with the same search text, prioritize the shortest one
+//                if lhsStartsWith && rhsStartsWith {
+//                    return lhs.rawValue.count < rhs.rawValue.count
+//                }
+//                // If neither starts with the search text, prioritize the one with the search text appearing first in the word
+//                let lhsRange = lhsLowercased.range(of: currentComponentSearchName.lowercased())
+//                let rhsRange = rhsLowercased.range(of: currentComponentSearchName.lowercased())
+//                let matchedArray = (lhsRange?.lowerBound ?? lhsLowercased.endIndex) < (rhsRange?.lowerBound ?? rhsLowercased.endIndex)
+//                return matchedArray
+//            }
+//    }
 }

@@ -12,6 +12,8 @@ struct CocktailResultListDataQueries: View {
     @Bindable var viewModel: SearchViewModel
     @Environment(\.modelContext) var modelContext
     @State private var nonmatchSearchPreference: String = "none"
+    @State var unwantedSubCategories: [String]
+    @State var preferredSubCategories: [String]
     @Query var fullMatchCocktails: [Cocktail]
     @Query var minusOneMatchCocktails: [Cocktail]
     @Query var minusTwoMatchCocktails: [Cocktail]
@@ -19,20 +21,29 @@ struct CocktailResultListDataQueries: View {
     @Query var minusFourMatchCocktails: [Cocktail]
 
     
-    init(preferredIngredients: [String], preferredSubCategories: [String], notPreferredIngredients: [String], notPreferredSubCategories: [String], passedViewModel: SearchViewModel) {
+    init(preferredIngredients: [String], notPreferredIngredients: [String], passedViewModel: SearchViewModel) {
         self.viewModel = passedViewModel
-        let explicitPreferredCount = viewModel.preferredCount
-   
         
+        self.unwantedSubCategories = {
+            return notPreferredIngredients.filter({ passedViewModel.subCategoryStrings.contains($0)})
+        }()
+        self.preferredSubCategories = {
+           return preferredIngredients.filter({ passedViewModel.subCategoryStrings.contains($0)})
+            
+        }()
+        
+        let explicitPreferredCount = viewModel.preferredCount
+        let preferredIngredientsWithoutSubCategories = preferredIngredients.filter({ !passedViewModel.subCategoryStrings.contains($0)})
+        let unwantedIngredientsWithoutSubCategories = notPreferredIngredients.filter({ !passedViewModel.subCategoryStrings.contains($0)})
         
         let matchesAllPreferredIngredients = #Expression<[Ingredient], Bool> { ingredients in
             ingredients.filter { ingredient in
-                preferredIngredients.contains(ingredient.ingredientBase.name)
+                preferredIngredientsWithoutSubCategories.contains(ingredient.ingredientBase.name)
             }.count == explicitPreferredCount
         }
         let matchesAllButOnePreferredIngredients = #Expression<[Ingredient], Bool> { ingredients in
             ingredients.filter { ingredient in
-                preferredIngredients.contains(ingredient.ingredientBase.name)
+                preferredIngredientsWithoutSubCategories.contains(ingredient.ingredientBase.name)
                 
             }.count == (explicitPreferredCount - 1)
         }
@@ -40,24 +51,29 @@ struct CocktailResultListDataQueries: View {
         
         let matchesAllButTwoPreferredIngredients = #Expression<[Ingredient], Bool> { ingredients in
             ingredients.filter { ingredient in
-                preferredIngredients.contains(ingredient.ingredientBase.name)
+                preferredIngredientsWithoutSubCategories.contains(ingredient.ingredientBase.name)
             }.count == (explicitPreferredCount - 2)
         }
         let matchesAllButThreePreferredIngredients = #Expression<[Ingredient], Bool> { ingredients in
             ingredients.filter { ingredient in
-                preferredIngredients.contains(ingredient.ingredientBase.name)
+                preferredIngredientsWithoutSubCategories.contains(ingredient.ingredientBase.name)
             }.count == (explicitPreferredCount - 3)
         }
         let matchesAllButFourPreferredIngredients = #Expression<[Ingredient], Bool> { ingredients in
             ingredients.filter { ingredient in
-                preferredIngredients.contains(ingredient.ingredientBase.name)
+                preferredIngredientsWithoutSubCategories.contains(ingredient.ingredientBase.name)
             }.count == (explicitPreferredCount - 4)
         }
         let includesUnwantedIngredients = #Expression<[Ingredient], Bool> { ingredients in
             ingredients.filter { ingredient in
-                notPreferredIngredients.contains(ingredient.ingredientBase.name)
+                unwantedIngredientsWithoutSubCategories.contains(ingredient.ingredientBase.name)
             }.count > 0
         }
+//        let includesUnwantedCategory = #Expression<[Ingredient], Bool> { ingredients in
+//            ingredients.filter { ingredient in
+//                notPreferredSubCategories.contains(ingredient.ingredientBase.name)
+//            }.count > 0
+//        }
         let fullMatchPredicate = #Predicate<Cocktail> { cocktail in
             matchesAllPreferredIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredients.evaluate(cocktail.spec)
         }
@@ -71,7 +87,7 @@ struct CocktailResultListDataQueries: View {
             matchesAllButThreePreferredIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredients.evaluate(cocktail.spec)
         }
         let minusFourMatchPredicate = #Predicate<Cocktail> { cocktail in
-            matchesAllButFourPreferredIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredients.evaluate(cocktail.spec)
+            matchesAllButFourPreferredIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredients.evaluate(cocktail.spec) 
         }
         
         _fullMatchCocktails = Query(filter: fullMatchPredicate, sort: \Cocktail.cocktailName)
@@ -162,6 +178,28 @@ struct CocktailResultListDataQueries: View {
                     viewModel.sections.removeAll()
                     viewModel.sections = viewModel.createMatchContainers()
                     viewModel.createResultsForSectionData(perfectMatch: fullMatchCocktails, minusOne: minusOneMatchCocktails, minusTwo: minusTwoMatchCocktails, minusThree: minusThreeMatchCocktails, minusFour: minusFourMatchCocktails)
+                    print("OOOOO            preferred ingredients")
+                    for ingredient in viewModel.preferredIngredients {
+//                        if !viewModel.subCategoryStrings.contains(ingredient){
+//                            print(ingredient)
+//                        }
+                        print(ingredient)
+                    }
+                    print("XXXXX            unwanted ingredients")
+                    for ingredient in viewModel.unwantedIngredients {
+//                        if !viewModel.subCategoryStrings.contains(ingredient){
+//                            print(ingredient)
+//                        }
+                        print(ingredient)
+                    }
+                    print("---------      preferred Sub Categories")
+                    for ingredient in preferredSubCategories {
+                        print(ingredient)
+                    }
+                    print("XXXXXXX       unwanted Sub Categories")
+                    for ingredient in unwantedSubCategories {
+                        print(ingredient)
+                    }
                 }
                 viewModel.willLoadOnAppear = false
             }
