@@ -39,22 +39,17 @@ final class SearchViewModel: ObservableObject {
             if section.matched == preferredCount {
                 for cocktail in perfectMatch {
                     section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: [], cocktail: cocktail))
-                    
                 }
             }
             if section.matched == (preferredCount - 1) {
                 for cocktail in minusOne {
-                    
                     section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
-                    
                 }
             }
             if section.matched == (preferredCount - 2) {
                 for cocktail in minusTwo{
                     section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
-                   
                 }
-                
             }
             if section.matched == (preferredCount - 3) {
                 for cocktail in minusThree{
@@ -74,7 +69,7 @@ final class SearchViewModel: ObservableObject {
             if section.sectionsPreferredCount == preferredCount {
                 for cocktail in perfectMatch {
                     section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: [], cocktail: cocktail))
-                    print("💯💯💯 \(cocktail.cocktailName) just got added with a preferred count of \(preferredCount) and a match of \(section.matched)")
+                    
                 }
             }
         }
@@ -83,9 +78,7 @@ final class SearchViewModel: ObservableObject {
         for section in sections {
             if section.sectionsPreferredCount == (preferredCount - 1) {
                 for cocktail in minusOne {
-                    
                     section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
-                    print("1️⃣1️⃣1️⃣ \(cocktail.cocktailName) just got added with a preferred count of \(preferredCount) and a match of \(section.matched)")
                 }
             }
         }
@@ -95,25 +88,20 @@ final class SearchViewModel: ObservableObject {
             if section.sectionsPreferredCount == (preferredCount - 2) {
                 for cocktail in minusTwo{
                     section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
-                    print("2️⃣2️⃣2️⃣ \(cocktail.cocktailName) just got added with a preferred count of \(preferredCount) and a match of \(section.matched)")
                 }
-                
             }
         }
     }
     func createMatchContainers() -> [ResultViewSectionData] {
-        print("preferred count = \(preferredCount)")
             var dataShells = [ResultViewSectionData]()
             for i in 0...Int(preferredCount / 2) {
                 let numberOfMatches = (preferredCount - i)
                 dataShells.append(ResultViewSectionData(count: preferredCount, matched: numberOfMatches, cocktails: []))
             }
             return dataShells
-        
     }
     
     func findMissingIngredients(cocktail: Cocktail) -> [String] {
-
         preferredIngredients.filter({ !cocktail.spec.map({ $0.ingredientBase.name }).contains($0) })
     }
     

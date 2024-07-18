@@ -225,6 +225,7 @@ struct TotalMatchViewDataQueries: View {
     var body: some View {
         
         ForEach(resultViewSectionData.cocktails, id: \.self.id) { cocktail in
+            
             NavigationLink {
                 RecipeView(viewModel: RecipeViewModel(cocktail: cocktail.cocktail))
                     .navigationBarBackButtonHidden(true)
