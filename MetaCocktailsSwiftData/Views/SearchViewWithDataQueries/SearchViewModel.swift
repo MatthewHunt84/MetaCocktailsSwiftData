@@ -83,7 +83,7 @@ final class SearchViewModel: ObservableObject {
         appendPreferredIngredients(for: Liqueur.self)
     }
     
-    func createResultsForSectionData(perfectMatch: [Cocktail], minusOne: [Cocktail], minusTwo: [Cocktail], minusThree: [Cocktail], minusFour: [Cocktail]) {
+    func createResultsForSectionData(perfectMatch: [Cocktail], minusOne: [Cocktail], minusTwo: [Cocktail]) {
         for section in sections {
             if section.matched == preferredCount {
                 for cocktail in perfectMatch {
@@ -97,16 +97,6 @@ final class SearchViewModel: ObservableObject {
             }
             if section.matched == (preferredCount - 2) {
                 for cocktail in minusTwo{
-                    section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
-                }
-            }
-            if section.matched == (preferredCount - 3) {
-                for cocktail in minusThree{
-                    section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
-                }
-            }
-            if section.matched == (preferredCount - 4) {
-                for cocktail in minusThree{
                     section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
                 }
             }

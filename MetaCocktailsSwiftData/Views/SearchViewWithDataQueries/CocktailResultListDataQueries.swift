@@ -14,8 +14,6 @@ struct CocktailResultListDataQueries: View {
     @Query var fullMatchCocktails: [Cocktail]
     @Query var minusOneMatchCocktails: [Cocktail]
     @Query var minusTwoMatchCocktails: [Cocktail]
-    @Query var minusThreeMatchCocktails: [Cocktail]
-    @Query var minusFourMatchCocktails: [Cocktail]
 
     
     init(preferredIngredients: [String], notPreferredIngredients: [String], passedViewModel: SearchViewModel) {
@@ -41,39 +39,25 @@ struct CocktailResultListDataQueries: View {
                 
             }.count == (explicitPreferredCount - 1)
         }
-       
-        
         let matchesAllButTwoPreferredIngredients = #Expression<[Ingredient], Bool> { ingredients in
             ingredients.filter { ingredient in
                 preferredIngredientsWithoutSubCategories.contains(ingredient.ingredientBase.name)
             }.count == (explicitPreferredCount - 2)
         }
-        let matchesAllButThreePreferredIngredients = #Expression<[Ingredient], Bool> { ingredients in
-            ingredients.filter { ingredient in
-                preferredIngredientsWithoutSubCategories.contains(ingredient.ingredientBase.name)
-            }.count == (explicitPreferredCount - 3)
-        }
-        let matchesAllButFourPreferredIngredients = #Expression<[Ingredient], Bool> { ingredients in
-            ingredients.filter { ingredient in
-                preferredIngredientsWithoutSubCategories.contains(ingredient.ingredientBase.name)
-            }.count == (explicitPreferredCount - 4)
-        }
+      
+        // Exclude all cocktails with unwanted ingredients
         let includesUnwantedIngredients = #Expression<[Ingredient], Bool> { ingredients in
             ingredients.filter { ingredient in
                 unwantedIngredientsWithoutSubCategories.contains(ingredient.ingredientBase.name)
             }.count > 0
         }
+        // Exclude all cocktails with ingredients from unwanted sub categories
         let includesUnwantedIngredientsFromSubCategories = #Expression<[Ingredient], Bool> { ingredients in
             ingredients.filter { ingredient in
                 unwantedIngredientsFromSubCategories.contains(ingredient.ingredientBase.name)
             }.count > 0
         }
         
-        let includesPreferredIngredientsFromSubCategories = #Expression<[Ingredient], Bool> { ingredients in
-            ingredients.filter { ingredient in
-                preferredIngredientsFromSubCategories.contains(ingredient.ingredientBase.name)
-            }.count > 0
-        }
         
         let fullMatchPredicate = #Predicate<Cocktail> { cocktail in
             matchesAllPreferredIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredientsFromSubCategories.evaluate(cocktail.spec)
@@ -84,18 +68,12 @@ struct CocktailResultListDataQueries: View {
         let minusTwoMatchPredicate = #Predicate<Cocktail> { cocktail in
             matchesAllButTwoPreferredIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredientsFromSubCategories.evaluate(cocktail.spec)
         }
-        let minusThreeMatchPredicate = #Predicate<Cocktail> { cocktail in
-            matchesAllButThreePreferredIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredientsFromSubCategories.evaluate(cocktail.spec)
-        }
-        let minusFourMatchPredicate = #Predicate<Cocktail> { cocktail in
-            matchesAllButFourPreferredIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredientsFromSubCategories.evaluate(cocktail.spec)
-        }
+      
         
         _fullMatchCocktails = Query(filter: fullMatchPredicate, sort: \Cocktail.cocktailName)
         _minusOneMatchCocktails = Query(filter: minusOneMatchPredicate, sort: \Cocktail.cocktailName)
         _minusTwoMatchCocktails = Query(filter: minusTwoMatchPredicate, sort: \Cocktail.cocktailName)
-        _minusThreeMatchCocktails = Query(filter: minusThreeMatchPredicate, sort: \Cocktail.cocktailName)
-        _minusFourMatchCocktails = Query(filter: minusFourMatchPredicate, sort: \Cocktail.cocktailName)
+        
         
         
     }
@@ -186,7 +164,7 @@ struct CocktailResultListDataQueries: View {
                     
                     viewModel.sections.removeAll()
                     viewModel.sections = viewModel.createMatchContainers()
-                    viewModel.createResultsForSectionData(perfectMatch: fullMatchCocktails, minusOne: minusOneMatchCocktails, minusTwo: minusTwoMatchCocktails, minusThree: minusThreeMatchCocktails, minusFour: minusFourMatchCocktails)
+                    viewModel.createResultsForSectionData(perfectMatch: fullMatchCocktails, minusOne: minusOneMatchCocktails, minusTwo: minusTwoMatchCocktails)
                 }
                 viewModel.willLoadOnAppear = false
             }
