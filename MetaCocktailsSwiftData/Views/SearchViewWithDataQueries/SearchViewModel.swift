@@ -10,6 +10,7 @@ import Observation
 import SwiftData
 
 
+
 @Observable
 final class SearchViewModel: ObservableObject {
     
@@ -19,111 +20,46 @@ final class SearchViewModel: ObservableObject {
     var subCategoryStrings: [String] = SubCategories.allCases.map({$0.rawValue})
     var unwantedIngredients: [String] = []
     var preferredIngredients: [String] = []
-    
+    var unwantedIngredientsFromSubCategories: [String] = []
     var isLoading = true
     var preferredCount = 0
     var sections: [ResultViewSectionData] = []
     var willLoadOnAppear = true
     var onBasisSearchView: Bool = true
 
+
+
     func clearData() {
         currentComponentSearchName = ""
         unwantedIngredients = []
+        unwantedIngredientsFromSubCategories = []
         preferredIngredients = []
         sections.removeAll()
         preferredCount = 0
     }
 
-//    func findUnwantedIngredientNamesForCorrespondingSubCategories()  {
-//        
-//        for category in unwantedSubCategories {
-//           
-//            for booze in Agave.allCases {
-//                if let boozeTags = booze.tags.booze {
-//                    for boozeTag in boozeTags {
-//                        if boozeTag.name == category {
-//                            unwantedIngredients.append(booze.rawValue)
-//                        }
-//                    }
-//                }
-//            }
-//            for booze in Brandy.allCases {
-//                if let boozeTags = booze.tags.booze {
-//                    for boozeTag in boozeTags {
-//                        if boozeTag.name == category {
-//                            unwantedIngredients.append(booze.rawValue)
-//                        }
-//                    }
-//                }
-//            }
-//            for booze in Gin.allCases {
-//                if let boozeTags = booze.tags.booze {
-//                    for boozeTag in boozeTags {
-//                        if boozeTag.name == category {
-//                            unwantedIngredients.append(booze.rawValue)
-//                        }
-//                    }
-//                }
-//            }
-//            for booze in Rum.allCases {
-//                if let boozeTags = booze.tags.booze {
-//                    for boozeTag in boozeTags {
-//                        if boozeTag.name == category {
-//                            unwantedIngredients.append(booze.rawValue)
-//                        }
-//                    }
-//                }
-//            }
-//            for booze in Vodka.allCases {
-//                if let boozeTags = booze.tags.booze {
-//                    for boozeTag in boozeTags {
-//                        if boozeTag.name == category {
-//                            unwantedIngredients.append(booze.rawValue)
-//                        }
-//                    }
-//                }
-//            }
-//            for booze in Whiskey.allCases {
-//                if let boozeTags = booze.tags.booze {
-//                    for boozeTag in boozeTags {
-//                        if boozeTag.name == category {
-//                            unwantedIngredients.append(booze.rawValue)
-//                        }
-//                    }
-//                }
-//            }
-//            for booze in FortifiedWine.allCases {
-//                if let boozeTags = booze.tags.booze {
-//                    for boozeTag in boozeTags {
-//                        if boozeTag.name == category {
-//                            unwantedIngredients.append(booze.rawValue)
-//                        }
-//                    }
-//                }
-//            }
-//            for booze in Bitters.allCases {
-//                if let boozeTags = booze.tags.booze {
-//                    for boozeTag in boozeTags {
-//                        if boozeTag.name == category {
-//                            unwantedIngredients.append(booze.rawValue)
-//                        }
-//                    }
-//                }
-//            }
-//            for booze in Amaro.allCases {
-//                if let boozeTags = booze.tags.booze {
-//                    for boozeTag in boozeTags {
-//                        if boozeTag.name == category {
-//                            unwantedIngredients.append(booze.rawValue)
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//        for ingredient in unwantedIngredients {
-//            print(ingredient)
-//        }
-//    }
+    func findUnwantedIngredientNamesForCorrespondingSubCategories() {
+        unwantedIngredientsFromSubCategories = []
+        let unwantedSubCategories = unwantedIngredients.filter { subCategoryStrings.contains($0) }
+        
+        func appendUnwantedIngredients<T: CaseIterable & RawRepresentable>(for type: T.Type) where T.AllCases: RandomAccessCollection, T.RawValue == String {
+            for booze in type.allCases {
+                if let boozeTags = (booze as? BoozeTagsProtocol)?.tags.booze,
+                   boozeTags.map({ $0.name }).contains(where: { unwantedSubCategories.contains($0) }),
+                   !unwantedIngredients.contains(booze.rawValue) {
+                    unwantedIngredientsFromSubCategories.append(booze.rawValue)
+                }
+            }
+        }
+        appendUnwantedIngredients(for: Agave.self)
+        appendUnwantedIngredients(for: Brandy.self)
+        appendUnwantedIngredients(for: Gin.self)
+        appendUnwantedIngredients(for: Rum.self)
+        appendUnwantedIngredients(for: Vodka.self)
+        appendUnwantedIngredients(for: Whiskey.self)
+        appendUnwantedIngredients(for: Wine.self)
+        appendUnwantedIngredients(for: Liqueur.self)
+    }
     
     func createResultsForSectionData(perfectMatch: [Cocktail], minusOne: [Cocktail], minusTwo: [Cocktail], minusThree: [Cocktail], minusFour: [Cocktail]) {
         for section in sections {
@@ -217,7 +153,7 @@ final class SearchViewModel: ObservableObject {
         }
     }
 
-    func matchAllIngredients(ingredients: [String], subCategories: [String]) -> [String] {
+    func matchAllIngredientsAndSubcategories(ingredients: [String], subCategories: [String]) -> [String] {
         
         guard !currentComponentSearchName.isEmpty else {
              return [] // Return all ingredients if search text is empty
@@ -248,34 +184,10 @@ final class SearchViewModel: ObservableObject {
                 return matchedArray
             }
     }
-//    func matchAllSubCategories() -> [String] {
-//        
-//        guard !currentComponentSearchName.isEmpty else {
-//             return [] // Return all ingredients if search text is empty
-//         }
-//        let lowercasedSearchText = currentComponentSearchName.lowercased()
-//        
-//        return SubCategories.allCases.filter { $0.rawValue.lowercased().contains(lowercasedSearchText) }
-//            .sorted { lhs, rhs in
-//                let lhsLowercased = lhs.rawValue.lowercased()
-//                let rhsLowercased = rhs.rawValue.lowercased()
-//                // prioritize ingredients that start with the search text
-//                let lhsStartsWith = lhsLowercased.hasPrefix(currentComponentSearchName.lowercased())
-//                let rhsStartsWith = rhsLowercased.hasPrefix(currentComponentSearchName.lowercased())
-//                if lhsStartsWith && !rhsStartsWith {
-//                    return true
-//                } else if !lhsStartsWith && rhsStartsWith {
-//                    return false
-//                }
-//                // if two ingredients start with the same search text, prioritize the shortest one
-//                if lhsStartsWith && rhsStartsWith {
-//                    return lhs.rawValue.count < rhs.rawValue.count
-//                }
-//                // If neither starts with the search text, prioritize the one with the search text appearing first in the word
-//                let lhsRange = lhsLowercased.range(of: currentComponentSearchName.lowercased())
-//                let rhsRange = rhsLowercased.range(of: currentComponentSearchName.lowercased())
-//                let matchedArray = (lhsRange?.lowerBound ?? lhsLowercased.endIndex) < (rhsRange?.lowerBound ?? rhsLowercased.endIndex)
-//                return matchedArray
-//            }
-//    }
+
+}
+
+
+class AppStateRefresh: ObservableObject {
+    @Published var refreshCocktailList = false
 }

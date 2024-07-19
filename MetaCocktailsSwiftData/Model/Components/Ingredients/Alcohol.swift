@@ -26,7 +26,12 @@ struct Booze: Codable, Hashable, Equatable {
     }
 }
 
-enum Agave: String, Codable, CaseIterable {
+protocol BoozeTagsProtocol {
+    var tags: Tags { get }
+}
+
+
+enum Agave: String, Codable, CaseIterable, BoozeTagsProtocol {
     
     case elTesoroRepo              = "El Tesoro Reposado"
     case mezcalAny                 = "Mezcal"
@@ -103,7 +108,7 @@ enum Agave: String, Codable, CaseIterable {
 }
 
 
-enum Brandy: String, Codable, CaseIterable {
+enum Brandy: String, Codable, CaseIterable, BoozeTagsProtocol {
     case appleBrandy          = "Apple Brandy"
     case armagnac             = "Armagnac"
     case cognacVSOP           = "Cognac (VSOP)"
@@ -161,7 +166,7 @@ enum Brandy: String, Codable, CaseIterable {
     }
 }
 
-enum Gin: String, Codable, CaseIterable {
+enum Gin: String, Codable, CaseIterable, BoozeTagsProtocol {
     
     case agedBolsGenever      = "Bols Genever Barrel Aged"
     case fordsGin             = "Fords Gin"
@@ -237,7 +242,7 @@ enum Gin: String, Codable, CaseIterable {
 }
 
 // Other can be Aquavit, Malort, Absinthe etc.
-enum OtherAlcohol: String, Codable, CaseIterable {
+enum OtherAlcohol: String, Codable, CaseIterable, BoozeTagsProtocol {
     case absinthe                 = "Absinthe"
     case bataviaArrack            = "Batavia Arrack"
     case burdockRootTincture      = "Burdock Root Tincture"
@@ -287,7 +292,7 @@ enum OtherAlcohol: String, Codable, CaseIterable {
     }
 }
 
-enum Rum: String, Codable, CaseIterable {
+enum Rum: String, Codable, CaseIterable, BoozeTagsProtocol {
     case appletonEstateSignatureBlend = "Appleton Estate Signature Blend"
     case appleton12                   = "Appleton 12 year"
     case avuaPrata                    = "Avua Prata Cachaca"
@@ -420,7 +425,7 @@ enum Rum: String, Codable, CaseIterable {
     }
 }
 
-enum Vodka: String, Codable, CaseIterable {
+enum Vodka: String, Codable, CaseIterable, BoozeTagsProtocol {
     case peanutButterVodka       = "Vodka (Peanut Butter Infused)"
     case roaringForkVodka        = "Roaring Fork Vodka"
     case stGeorgeGreenChileVodka = "St. George Green Chile Vodka"
@@ -460,7 +465,7 @@ enum Vodka: String, Codable, CaseIterable {
     }
 }
 
-enum Whiskey: String, Codable, CaseIterable {
+enum Whiskey: String, Codable, CaseIterable, BoozeTagsProtocol {
     case aberlourAbundah       = "Aberlour Abundah"
     case Ardbeg                = "Ardbeg 10"
     case americanWhiskeyAny    = "American Whiskey"
@@ -629,7 +634,7 @@ enum Whiskey: String, Codable, CaseIterable {
         return CocktailComponent(for: Booze(.whiskies(self)))
     }
 }
-enum Liqueur: String, Codable, CaseIterable {
+enum Liqueur: String, Codable, CaseIterable, BoozeTagsProtocol {
     case allspiceDram         = "Allspice Dram"
     case aelredMelonApertif   = "Aelred Melon Aperitif"
     case amaretto             = "Amaretto"
@@ -792,7 +797,7 @@ enum Liqueur: String, Codable, CaseIterable {
     }
 
 }
-enum FortifiedWine: String, Codable, CaseIterable {
+enum FortifiedWine: String, Codable, CaseIterable, BoozeTagsProtocol {
     case aeDorPineauDeCharantes = "Pineau des Charentes Blanc"
     case amontillado            = "Amontillado Sherry"
     case blancVermouth          = "Blanc Vermouth"
@@ -915,7 +920,7 @@ enum FortifiedWine: String, Codable, CaseIterable {
     }
 }
 
-enum Wine: String, Codable, CaseIterable {
+enum Wine: String, Codable, CaseIterable, BoozeTagsProtocol {
     case bourgogneAligote     = "Bourgogne Aligote"
     case champagne            = "Champagne"
     case dryRedWine           = "Dry Red Wine"
@@ -931,7 +936,7 @@ enum Wine: String, Codable, CaseIterable {
     }
 
 }
-enum Bitters: String, Codable, CaseIterable {
+enum Bitters: String, Codable, CaseIterable, BoozeTagsProtocol {
     case aromaticBitters       = "Aromatic Bitters"
     case angosturaBitters      = "Angostura Bitters"
     case appleBitters          = "Apple Bitters"
@@ -1009,7 +1014,7 @@ enum Bitters: String, Codable, CaseIterable {
     }
 }
 
-enum Amaro: String, Codable, CaseIterable {
+enum Amaro: String, Codable, CaseIterable, BoozeTagsProtocol {
     
     case amargoVallet         = "Amargo-Vallet"
     case amaroAny             = "Amaro"
