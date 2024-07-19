@@ -21,6 +21,7 @@ final class SearchViewModel: ObservableObject {
     var unwantedIngredients: [String] = []
     var preferredIngredients: [String] = []
     var unwantedIngredientsFromSubCategories: [String] = []
+    var preferredIngredientsFromSubCategories: [String] = []
     var isLoading = true
     var preferredCount = 0
     var sections: [ResultViewSectionData] = []
@@ -33,14 +34,17 @@ final class SearchViewModel: ObservableObject {
         currentComponentSearchName = ""
         unwantedIngredients = []
         unwantedIngredientsFromSubCategories = []
+        preferredIngredientsFromSubCategories = []
         preferredIngredients = []
         sections.removeAll()
         preferredCount = 0
     }
 
-    func findUnwantedIngredientNamesForCorrespondingSubCategories() {
+    func findIngredientNamesForCorrespondingSubCategories() {
         unwantedIngredientsFromSubCategories = []
+        preferredIngredientsFromSubCategories = []
         let unwantedSubCategories = unwantedIngredients.filter { subCategoryStrings.contains($0) }
+        let preferredSubCategories = preferredIngredients.filter { subCategoryStrings.contains($0) }
         
         func appendUnwantedIngredients<T: CaseIterable & RawRepresentable>(for type: T.Type) where T.AllCases: RandomAccessCollection, T.RawValue == String {
             for booze in type.allCases {
@@ -48,6 +52,15 @@ final class SearchViewModel: ObservableObject {
                    boozeTags.map({ $0.name }).contains(where: { unwantedSubCategories.contains($0) }),
                    !unwantedIngredients.contains(booze.rawValue) {
                     unwantedIngredientsFromSubCategories.append(booze.rawValue)
+                }
+            }
+        }
+        func appendPreferredIngredients<T: CaseIterable & RawRepresentable>(for type: T.Type) where T.AllCases: RandomAccessCollection, T.RawValue == String {
+            for booze in type.allCases {
+                if let boozeTags = (booze as? BoozeTagsProtocol)?.tags.booze,
+                   boozeTags.map({ $0.name }).contains(where: { preferredSubCategories.contains($0) }),
+                   !preferredIngredients.contains(booze.rawValue) {
+                    preferredIngredientsFromSubCategories.append(booze.rawValue)
                 }
             }
         }
@@ -59,6 +72,15 @@ final class SearchViewModel: ObservableObject {
         appendUnwantedIngredients(for: Whiskey.self)
         appendUnwantedIngredients(for: Wine.self)
         appendUnwantedIngredients(for: Liqueur.self)
+        
+        appendPreferredIngredients(for: Agave.self)
+        appendPreferredIngredients(for: Brandy.self)
+        appendPreferredIngredients(for: Gin.self)
+        appendPreferredIngredients(for: Rum.self)
+        appendPreferredIngredients(for: Vodka.self)
+        appendPreferredIngredients(for: Whiskey.self)
+        appendPreferredIngredients(for: Wine.self)
+        appendPreferredIngredients(for: Liqueur.self)
     }
     
     func createResultsForSectionData(perfectMatch: [Cocktail], minusOne: [Cocktail], minusTwo: [Cocktail], minusThree: [Cocktail], minusFour: [Cocktail]) {
