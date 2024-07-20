@@ -90,7 +90,10 @@ struct CocktailResultListDataQueries: View {
                                     Section(header: SearchedCocktailTitleHeader(searched: result.sectionsPreferredCount, matched: result.matched)) {
                                         if result.matched == result.sectionsPreferredCount {
                                             
-                                            TotalMatchViewDataQueries(viewModel: viewModel, resultViewSectionData: result)
+                                            // NEW: This is how things should be.
+                                            // The perfect match section is a subview initialized with published data - in this case the viewModel which is observable.
+                                            // The queries happen on the subview initializer, so that when the viewModel changes the subview gets re-drawn.
+                                            PerfectMatchCocktailView(passedViewModel: viewModel)
                                             
                                        
 //                                        if result.matched == (result.sectionsPreferredCount - 1) {
@@ -330,6 +333,57 @@ struct PartialMatchWithNoPreferenceViewDataQueries: View {
                         }
                         Spacer()
                     }
+                }
+            }
+        }
+    }
+}
+
+
+struct PerfectMatchCocktailView: View {
+
+    @Query var fullMatchCocktails: [Cocktail]
+
+    init(passedViewModel: SearchViewModel) {
+        
+        
+        // First we grab explicitly what we need from the viewModel to pass it to the expressions
+        // The expressions can only use primitive types directly, which you've already learned.
+        let explicitPreferredCount = passedViewModel.preferredCount
+        let preferredIngredients = passedViewModel.preferredIngredients
+        let notPreferredIngredients = passedViewModel.unwantedIngredients
+        
+        print("Hi James! Preferred count is now: \(preferredIngredients.count) and unwanted count is now: \(notPreferredIngredients.count)")
+        print("Time to draw the view (which will run these predicates on the new arrays")
+        
+        let matchesAllPreferredIngredients = #Expression<[Ingredient], Bool> { ingredients in
+            ingredients.filter { ingredient in
+                preferredIngredients.contains(ingredient.ingredientBase.name)
+            }.count == explicitPreferredCount
+        }
+        let includesUnwantedIngredients = #Expression<[Ingredient], Bool> { ingredients in
+            ingredients.filter { ingredient in
+                notPreferredIngredients.contains(ingredient.ingredientBase.name)
+            }.count > 0
+        }
+        let fullMatchPredicate = #Predicate<Cocktail> { cocktail in
+            matchesAllPreferredIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredients.evaluate(cocktail.spec)
+        }
+        
+        _fullMatchCocktails = Query(filter: fullMatchPredicate, sort: \Cocktail.cocktailName)
+        
+    }
+
+    var body: some View {
+        
+        ForEach(fullMatchCocktails, id: \.self) { cocktail in
+            
+            NavigationLink {
+                RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                    .navigationBarBackButtonHidden(true)
+            } label: {
+                HStack {
+                    Text(cocktail.cocktailName)
                 }
             }
         }
