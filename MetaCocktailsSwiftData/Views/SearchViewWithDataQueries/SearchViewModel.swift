@@ -84,16 +84,7 @@ final class SearchViewModel: ObservableObject {
         appendPreferredIngredients(for: Liqueur.self)
     }
     
-    
-    func findCocktailsAndMissingIngredients(cocktails: [Cocktail]) -> [CocktailsAndMissingIngredients] {
-       
-        var cocktailsAndMissingIngredients: [CocktailsAndMissingIngredients] = []
-        for cocktail in cocktails {
-            cocktailsAndMissingIngredients.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
-        }
-       return cocktailsAndMissingIngredients
-    }
-    
+
     
     func combinedPreferredIngredientsAndSubCategories() {
         
@@ -106,9 +97,7 @@ final class SearchViewModel: ObservableObject {
         }
     }
     
-    func findMissingIngredients(cocktail: Cocktail) -> [String] {
-        preferredIngredients.filter({ !cocktail.spec.map({ $0.ingredientBase.name }).contains($0) })
-    }
+
     
     @ViewBuilder
     func viewModelTagView(_ tag: String, _ color: Color, _ icon: String) -> some View {
