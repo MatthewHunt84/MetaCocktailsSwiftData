@@ -10,100 +10,94 @@ import Observation
 import SwiftData
 
 
+
 @Observable
 final class SearchViewModel: ObservableObject {
     
-    
+    var nonmatchSearchPreference: String = "none"
     var currentComponentSearchName: String = ""
-    var filteredIngredients: [IngredientBase] = []
-    
+    var filteredIngredients: [String] = []
+    var subCategoryStrings: [String] = SubCategories.allCases.map({$0.rawValue})
     var unwantedIngredients: [String] = []
     var preferredIngredients: [String] = []
-    
+    var unwantedIngredientsFromSubCategories: [String] = []
+    var preferredIngredientsFromSubCategories: [String] = []
     var isLoading = true
     var preferredCount = 0
     var sections: [ResultViewSectionData] = []
     var willLoadOnAppear = true
     var onBasisSearchView: Bool = true
 
+    var cocktailsAndMissingIngredientsForMinusOne: [CocktailsAndMissingIngredients] = []
+    var cocktailsAndMissingIngredientsForMinusTwo: [CocktailsAndMissingIngredients] = []
+
     func clearData() {
         currentComponentSearchName = ""
         unwantedIngredients = []
+        unwantedIngredientsFromSubCategories = []
+        preferredIngredientsFromSubCategories = []
         preferredIngredients = []
         sections.removeAll()
         preferredCount = 0
     }
 
-    func createResultsForSectionData(perfectMatch: [Cocktail], minusOne: [Cocktail], minusTwo: [Cocktail], minusThree: [Cocktail], minusFour: [Cocktail]) {
-        for section in sections {
-            if section.matched == preferredCount {
-                for cocktail in perfectMatch {
-                    section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: [], cocktail: cocktail))
-                }
-            }
-            if section.matched == (preferredCount - 1) {
-                for cocktail in minusOne {
-                    section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
-                }
-            }
-            if section.matched == (preferredCount - 2) {
-                for cocktail in minusTwo{
-                    section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
-                }
-            }
-            if section.matched == (preferredCount - 3) {
-                for cocktail in minusThree{
-                    section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
-                }
-            }
-            if section.matched == (preferredCount - 4) {
-                for cocktail in minusThree{
-                    section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
+    func findIngredientNamesForCorrespondingSubCategories() {
+        unwantedIngredientsFromSubCategories = []
+        preferredIngredientsFromSubCategories = []
+        let unwantedSubCategories = unwantedIngredients.filter { subCategoryStrings.contains($0) }
+        let preferredSubCategories = preferredIngredients.filter { subCategoryStrings.contains($0) }
+        
+        func appendUnwantedIngredients<T: CaseIterable & RawRepresentable>(for type: T.Type) where T.AllCases: RandomAccessCollection, T.RawValue == String {
+            for booze in type.allCases {
+                if let boozeTags = (booze as? BoozeTagsProtocol)?.tags.booze,
+                   boozeTags.map({ $0.name }).contains(where: { unwantedSubCategories.contains($0) }),
+                   !unwantedIngredients.contains(booze.rawValue) {
+                    unwantedIngredientsFromSubCategories.append(booze.rawValue)
                 }
             }
         }
-    }
-    func perfectMatch(perfectMatch: [Cocktail]) {
-       
-        for section in sections {
-            if section.sectionsPreferredCount == preferredCount {
-                for cocktail in perfectMatch {
-                    section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: [], cocktail: cocktail))
-                    
+        func appendPreferredIngredients<T: CaseIterable & RawRepresentable>(for type: T.Type) where T.AllCases: RandomAccessCollection, T.RawValue == String {
+            for booze in type.allCases {
+                if let boozeTags = (booze as? BoozeTagsProtocol)?.tags.booze,
+                   boozeTags.map({ $0.name }).contains(where: { preferredSubCategories.contains($0) }),
+                   !preferredIngredients.contains(booze.rawValue) {
+                    preferredIngredientsFromSubCategories.append(booze.rawValue)
                 }
             }
         }
-    }
-    func minusOne(minusOne: [Cocktail]) {
-        for section in sections {
-            if section.sectionsPreferredCount == (preferredCount - 1) {
-                for cocktail in minusOne {
-                    section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
-                }
-            }
-        }
-    }
-    func minusTwo(minusTwo: [Cocktail]) {
-        for section in sections {
-            if section.sectionsPreferredCount == (preferredCount - 2) {
-                for cocktail in minusTwo{
-                    section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
-                }
-            }
-        }
-    }
-    func createMatchContainers() -> [ResultViewSectionData] {
-            var dataShells = [ResultViewSectionData]()
-            for i in 0...Int(preferredCount / 2) {
-                let numberOfMatches = (preferredCount - i)
-                dataShells.append(ResultViewSectionData(count: preferredCount, matched: numberOfMatches, cocktails: []))
-            }
-            return dataShells
+        appendUnwantedIngredients(for: Agave.self)
+        appendUnwantedIngredients(for: Brandy.self)
+        appendUnwantedIngredients(for: Gin.self)
+        appendUnwantedIngredients(for: Rum.self)
+        appendUnwantedIngredients(for: Vodka.self)
+        appendUnwantedIngredients(for: Whiskey.self)
+        appendUnwantedIngredients(for: Wine.self)
+        appendUnwantedIngredients(for: Liqueur.self)
+        
+        appendPreferredIngredients(for: Agave.self)
+        appendPreferredIngredients(for: Brandy.self)
+        appendPreferredIngredients(for: Gin.self)
+        appendPreferredIngredients(for: Rum.self)
+        appendPreferredIngredients(for: Vodka.self)
+        appendPreferredIngredients(for: Whiskey.self)
+        appendPreferredIngredients(for: Wine.self)
+        appendPreferredIngredients(for: Liqueur.self)
     }
     
-    func findMissingIngredients(cocktail: Cocktail) -> [String] {
-        preferredIngredients.filter({ !cocktail.spec.map({ $0.ingredientBase.name }).contains($0) })
+
+    
+    func combinedPreferredIngredientsAndSubCategories() {
+        
     }
+    func createMatchContainers()  {
+        sections = []
+        for i in 0...Int(preferredCount / 2) {
+            let numberOfMatches = (preferredCount - i)
+            sections.append(ResultViewSectionData(count: preferredCount, matched: numberOfMatches, cocktails: []))
+        }
+    }
+    
+
     
     @ViewBuilder
     func viewModelTagView(_ tag: String, _ color: Color, _ icon: String) -> some View {
@@ -126,16 +120,18 @@ final class SearchViewModel: ObservableObject {
         }
     }
 
-    func matchAllIngredients(ingredients: [IngredientBase]) -> [IngredientBase] {
+    func matchAllIngredientsAndSubcategories(ingredients: [String], subCategories: [String]) -> [String] {
         
         guard !currentComponentSearchName.isEmpty else {
              return [] // Return all ingredients if search text is empty
          }
         let lowercasedSearchText = currentComponentSearchName.lowercased()
-        return ingredients.filter { $0.name.lowercased().contains(lowercasedSearchText) }
+        let combinedArrays = ingredients + subCategories
+        let combinedArraysWithoutDuplicates = Array(Set(combinedArrays))
+        return combinedArraysWithoutDuplicates.filter { $0.lowercased().contains(lowercasedSearchText) }
             .sorted { lhs, rhs in
-                let lhsLowercased = lhs.name.lowercased()
-                let rhsLowercased = rhs.name.lowercased()
+                let lhsLowercased = lhs.lowercased()
+                let rhsLowercased = rhs.lowercased()
                 // prioritize ingredients that start with the search text
                 let lhsStartsWith = lhsLowercased.hasPrefix(currentComponentSearchName.lowercased())
                 let rhsStartsWith = rhsLowercased.hasPrefix(currentComponentSearchName.lowercased())
@@ -146,7 +142,7 @@ final class SearchViewModel: ObservableObject {
                 }
                 // if two ingredients start with the same search text, prioritize the shortest one
                 if lhsStartsWith && rhsStartsWith {
-                    return lhs.name.count < rhs.name.count
+                    return lhs.count < rhs.count
                 }
                 // If neither starts with the search text, prioritize the one with the search text appearing first in the word
                 let lhsRange = lhsLowercased.range(of: currentComponentSearchName.lowercased())
@@ -155,4 +151,10 @@ final class SearchViewModel: ObservableObject {
                 return matchedArray
             }
     }
+
+}
+
+
+class AppStateRefresh: ObservableObject {
+    @Published var refreshCocktailList = false
 }

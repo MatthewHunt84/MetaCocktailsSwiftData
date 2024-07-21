@@ -15,30 +15,39 @@ struct SearchResultsViewDataQueries: View {
 
     
     var body: some View {
-        HStack{
-            Button{
-                viewModel.onBasisSearchView = true
-                viewModel.willLoadOnAppear = true
-                dismiss()
-                
-            } label: {
-                Image(systemName: "chevron.backward")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 9)
-                    .bold()
-                    .tint(.cyan)
+        NavigationStack{
+            HStack{
+                Button{
+                    viewModel.onBasisSearchView = true
+                    viewModel.willLoadOnAppear = true
+                    dismiss()
+                    
+                } label: {
+                    Image(systemName: "chevron.backward")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 9)
+                        .bold()
+                        .tint(.cyan)
+                }
+                Spacer()
             }
-            Spacer()
-        }
-        VStack(alignment: .leading) {
-
-//            preferencesListView(viewModel: viewModel)
-            CocktailResultListDataQueries(preferredIngredients: viewModel.preferredIngredients, notPreferredIngredients: viewModel.unwantedIngredients, passedViewModel: viewModel)
+            HStack {
+                Text("Matched Cocktails")
+                    .font(.largeTitle).bold()
+                    .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
+                Spacer()
+            }
+            
+            VStack(alignment: .leading) {
+                preferencesListView(viewModel: viewModel)
+                CocktailResultListDataQueries(viewModel: viewModel)
                 .navigationBarBackButtonHidden(true)
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            
+            
         }
-        .navigationBarTitleDisplayMode(.inline)
-        
     }
     
     @ViewBuilder func SearchResultsTagView(_ tag: String, _ color: Color, _ icon: String) -> some View {
@@ -64,7 +73,7 @@ struct SearchResultsViewDataQueries: View {
 
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    return SearchResultsViewDataQueries(viewModel: SearchViewModel())
+    SearchResultsViewDataQueries(viewModel: SearchViewModel())
         .modelContainer(preview.container)
 }
 

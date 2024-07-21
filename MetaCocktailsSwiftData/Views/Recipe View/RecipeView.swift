@@ -34,13 +34,7 @@ struct RecipeView: View {
                
                 .task {
                     prepItems = viewModel.findPrepItems()
-                    for spec in viewModel.cocktail.spec {
-                        if !spec.ingredientBase.subCategories.isEmpty {
-                            for s in spec.ingredientBase.subCategories {
-                                print("\(spec.ingredientBase.name) has a sub category of \(s.rawValue)")
-                            }
-                        }
-                    }
+                    
                 }
             }
         }

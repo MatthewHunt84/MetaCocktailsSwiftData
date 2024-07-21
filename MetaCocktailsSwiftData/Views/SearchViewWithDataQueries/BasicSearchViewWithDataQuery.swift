@@ -15,6 +15,7 @@ struct BasicSearchViewWithDataQuery: View {
     @Query var cocktails: [Cocktail]
     @Environment(\.modelContext) var modelContext
    
+   
     var body: some View {
         NavigationStack {
             HStack {
@@ -50,15 +51,15 @@ struct ThumbsUpOrDownIngredientSearchList: View {
     @FocusState var keyboardFocused: Bool
     
     var body: some View {
-        Section("Name") {
+        Section("Component Name:") {
             VStack{
                 HStack{
-                    TextField("Flavor or Ingredient", text: $viewModel.currentComponentSearchName)
+                    TextField("Flavor, Ingredient, Style, or Profile...", text: $viewModel.currentComponentSearchName)
                         .focused($keyboardFocused)
                         .autocorrectionDisabled(true)
                         .onChange(of: viewModel.currentComponentSearchName, initial: true) { old, new in
                             viewModel.currentComponentSearchName = new
-                            viewModel.filteredIngredients = viewModel.matchAllIngredients(ingredients: ingredients)
+                            viewModel.filteredIngredients = viewModel.matchAllIngredientsAndSubcategories(ingredients: ingredients.map({$0.name}), subCategories: viewModel.subCategoryStrings)
                         }
                     if !viewModel.currentComponentSearchName.isEmpty {
                         Button {
@@ -72,16 +73,15 @@ struct ThumbsUpOrDownIngredientSearchList: View {
                 }
             }
             if keyboardFocused {
+               
                 List {
-                    ForEach($viewModel.filteredIngredients, id: \.name) { ingredient in
-                        
-                        PreferencesThumbsCell(viewModel: viewModel, ingredient: ingredient)
-                        
+                    ForEach($viewModel.filteredIngredients, id: \.self) { ingredient in
+                       
+                            PreferencesThumbsCell(viewModel: viewModel, ingredient: ingredient)
                         
                     }
                     .listStyle(.plain)
                     .listRowBackground(Color.black)
-                    
                 }
                 .scrollContentBackground(.hidden)
             } else {
@@ -95,6 +95,7 @@ struct ThumbsUpOrDownIngredientSearchList: View {
 struct SearchForCocktailsButton: View {
     @Bindable var viewModel: SearchViewModel
     @Environment(\.modelContext) var modelContext
+   
     var body: some View {
         NavigationLink {
             SearchResultsViewDataQueries(viewModel: viewModel)
@@ -142,15 +143,23 @@ struct ResetButton: View {
 public struct preferencesListView: View {
     @Bindable var viewModel: SearchViewModel
     @Environment(\.modelContext) var modelContext
+
     
     public var body: some View {
         VStack{
+            HStack{
+                Text("Selected Preferences:")
+                    .padding(.top, 25)
+                    .padding(.leading, 12)
+                    .font(.headline).bold()
+                Spacer()
+            }
             HStack {
-                Text("Your selections show up here. Tap to remove them.")
+                Text("Tap to remove")
                     .font(.footnote)
                     .foregroundStyle(.gray)
                     .padding(.leading, 12)
-                    .padding(.top, 25)
+                    
                 Spacer()
             }
                 ScrollView(.horizontal) {
@@ -162,6 +171,8 @@ public struct preferencesListView: View {
                                     withAnimation(.snappy) {
                                         viewModel.preferredCount -= 1
                                         viewModel.preferredIngredients.removeAll(where: { $0 == preferredIngredient})
+                                 
+                                
                                     }
                                 }
                         }
@@ -182,6 +193,7 @@ public struct preferencesListView: View {
                                 .onTapGesture {
                                     withAnimation(.snappy) {
                                         viewModel.unwantedIngredients.removeAll(where:{ $0 == unwantedIngredient })
+                                    
                                     }
                                 }
                         }

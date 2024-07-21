@@ -306,10 +306,10 @@ class IngredientBase: Codable, Hashable {
     var tags: Tags?
     var prep: Prep?
     var isCustom: Bool
-    var subCategories: [SubCategories]
+    var subCategories: [String]
 
     
-    init(name: String, info: String? = nil, category: Category, tags: Tags? = Tags(), prep: Prep?, isCustom: Bool = false, subCategory: [SubCategories] = []) {
+    init(name: String, info: String? = nil, category: Category, tags: Tags? = Tags(), prep: Prep?, isCustom: Bool = false, subCategory: [String] = []) {
      
         self.name = name
         self.info = info
@@ -318,18 +318,18 @@ class IngredientBase: Codable, Hashable {
         self.prep = prep
         self.isCustom = isCustom
         self.subCategories = {
-            var subCategories: [SubCategories] = []
+            var tempSubCategories: [String] = []
             let subCategoryStrings: [String] = SubCategories.allCases.map({$0.rawValue})
             if let tags = tags {
                 if let booze = tags.booze {
                     for alcohol in booze {
                         if subCategoryStrings.contains(alcohol.name) {
-                            subCategories.append(contentsOf: SubCategories.allCases.filter({ $0.rawValue == alcohol.name}))
+                            tempSubCategories.append(alcohol.name)
                         }
                     }
                 }
             }
-            return subCategories
+            return tempSubCategories
         }()
     }
     
@@ -355,7 +355,7 @@ class IngredientBase: Codable, Hashable {
         self.prep = try container.decode(Prep.self, forKey: .prep)
         self.info = try container.decode(String.self, forKey: .info)
         self.isCustom = try container.decode(Bool.self, forKey: .isCustom)
-        self.subCategories = try container.decode([SubCategories].self, forKey: .subCategories)
+        self.subCategories = try container.decode([String].self, forKey: .subCategories)
     }
     
     func encode(to encoder: Encoder) throws {

@@ -9,159 +9,40 @@ import SwiftUI
 import SwiftData
 
 struct CocktailResultListDataQueries: View {
-    @Bindable var viewModel: SearchViewModel
-    @Environment(\.modelContext) var modelContext
-    @State private var nonmatchSearchPreference: String = "none"
-    @Query var fullMatchCocktails: [Cocktail]
-    @Query var minusOneMatchCocktails: [Cocktail]
-    @Query var minusTwoMatchCocktails: [Cocktail]
-    @Query var minusThreeMatchCocktails: [Cocktail]
-    @Query var minusFourMatchCocktails: [Cocktail]
-
     
-    init(preferredIngredients: [String], notPreferredIngredients: [String], passedViewModel: SearchViewModel) {
-        self.viewModel = passedViewModel
-        let explicitPreferredCount = viewModel.preferredCount
-   
-        let matchesAllPreferredIngredients = #Expression<[Ingredient], Bool> { ingredients in
-            ingredients.filter { ingredient in
-                preferredIngredients.contains(ingredient.ingredientBase.name)
-            }.count == explicitPreferredCount
-        }
-        let matchesAllButOnePreferredIngredients = #Expression<[Ingredient], Bool> { ingredients in
-            ingredients.filter { ingredient in
-                preferredIngredients.contains(ingredient.ingredientBase.name)
-                
-            }.count == (explicitPreferredCount - 1)
-        }
-       
-        
-        let matchesAllButTwoPreferredIngredients = #Expression<[Ingredient], Bool> { ingredients in
-            ingredients.filter { ingredient in
-                preferredIngredients.contains(ingredient.ingredientBase.name)
-            }.count == (explicitPreferredCount - 2)
-        }
-        let matchesAllButThreePreferredIngredients = #Expression<[Ingredient], Bool> { ingredients in
-            ingredients.filter { ingredient in
-                preferredIngredients.contains(ingredient.ingredientBase.name)
-            }.count == (explicitPreferredCount - 3)
-        }
-        let matchesAllButFourPreferredIngredients = #Expression<[Ingredient], Bool> { ingredients in
-            ingredients.filter { ingredient in
-                preferredIngredients.contains(ingredient.ingredientBase.name)
-            }.count == (explicitPreferredCount - 4)
-        }
-        let includesUnwantedIngredients = #Expression<[Ingredient], Bool> { ingredients in
-            ingredients.filter { ingredient in
-                notPreferredIngredients.contains(ingredient.ingredientBase.name)
-            }.count > 0
-        }
-        let fullMatchPredicate = #Predicate<Cocktail> { cocktail in
-            matchesAllPreferredIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredients.evaluate(cocktail.spec)
-        }
-        let minusOneMatchPredicate = #Predicate<Cocktail> { cocktail in
-            matchesAllButOnePreferredIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredients.evaluate(cocktail.spec)
-        }
-        let minusTwoMatchPredicate = #Predicate<Cocktail> { cocktail in
-            matchesAllButTwoPreferredIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredients.evaluate(cocktail.spec)
-        }
-        let minusThreeMatchPredicate = #Predicate<Cocktail> { cocktail in
-            matchesAllButThreePreferredIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredients.evaluate(cocktail.spec)
-        }
-        let minusFourMatchPredicate = #Predicate<Cocktail> { cocktail in
-            matchesAllButFourPreferredIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredients.evaluate(cocktail.spec)
-        }
-        
-        _fullMatchCocktails = Query(filter: fullMatchPredicate, sort: \Cocktail.cocktailName)
-        _minusOneMatchCocktails = Query(filter: minusOneMatchPredicate, sort: \Cocktail.cocktailName)
-        _minusTwoMatchCocktails = Query(filter: minusTwoMatchPredicate, sort: \Cocktail.cocktailName)
-        _minusThreeMatchCocktails = Query(filter: minusThreeMatchPredicate, sort: \Cocktail.cocktailName)
-        _minusFourMatchCocktails = Query(filter: minusFourMatchPredicate, sort: \Cocktail.cocktailName)
-        
-        
-    }
+    @Bindable var viewModel: SearchViewModel
     
     var body: some View {
         NavigationStack {
             VStack {
-
-                    if viewModel.preferredCount > 0 {
-                        VStack{
-                            List {
-                               
-                                ForEach(viewModel.sections, id: \.self.id) { result in
-                                    Section(header: SearchedCocktailTitleHeader(searched: result.sectionsPreferredCount, matched: result.matched)) {
-                                        if result.matched == result.sectionsPreferredCount {
-                                            
-                                            TotalMatchViewDataQueries(viewModel: viewModel, resultViewSectionData: result)
-                                            
-                                       
-//                                        if result.matched == (result.sectionsPreferredCount - 1) {
-//                                            MinusOneMatchView(preferredIngredients: viewModel.preferredIngredients, notPreferredIngredients: viewModel.unwantedIngredients, passedViewModel: viewModel, resultData: result)
-//                                        }
-                                        }  else {
-                                            
-                                            FilterMatchesMenuViewDataQueries(viewModel: viewModel, resultViewSectionData: result, nonmatchSearchPreference: $nonmatchSearchPreference)
-                                            
-                                            if nonmatchSearchPreference == "none" {
-                                                PartialMatchWithNoPreferenceViewDataQueries(viewModel: viewModel, resultViewSectionData: result)
-                                            } else {
-                                                ForEach(result.cocktails.filter({$0.missingIngredients.contains(nonmatchSearchPreference)}), id: \.self.id) { cocktail in
-                                                    NavigationLink {
-                                                        
-                                                        RecipeView(viewModel: RecipeViewModel(cocktail: cocktail.cocktail))
-                                                        
-                                                            .navigationBarBackButtonHidden(true)
-                                                    } label: {
-                                                        VStack {
-                                                            HStack{
-                                                                Text(cocktail.cocktail.cocktailName)
-                                                                Spacer()
-                                                            }
-                                                            HStack{
-                                                                ForEach(cocktail.missingIngredients, id: \.self) { nonMatch in
-                                                                    Text("-\(nonMatch) ")
-                                                                        .foregroundStyle(.brandPrimaryRed)
-                                                                        .font(.caption)
-                                                                }
-                                                                Spacer()
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                                
-                            }
-                            .listStyle(.plain)
-                            .backgroundStyle(Color(.black))
+                if viewModel.preferredCount > 0 {
+                    VStack{
+                        List {
+                            PerfectMatchCocktailView(passedViewModel: viewModel)
+                            MinusOneMatchView(passedViewModel: viewModel)
+                            MinusTwoMatchView(passedViewModel: viewModel)
                         }
-                    } else  {
-                        ZStack(alignment: .center) {
-                            Color.black
-                            
-                            VStack {
-                                Text("Add more preferences to continue")
-                                    .font(.title).bold()
-                                    .multilineTextAlignment(.center)
-                                Image("Urkel")
-                                    .resizable()
+                        .listStyle(.plain)
+                        .backgroundStyle(Color(.black))
+                    }
+                } else  {
+                    ZStack(alignment: .center) {
+                        Color.black
+                        
+                        VStack {
+                            Text("Add more preferences to continue")
+                                .font(.title).bold()
+                                .multilineTextAlignment(.center)
+                            Image("Urkel")
+                                .resizable()
                                     .scaledToFit()
                             }
                         }
                     }
-//                }
                 Spacer()
             }
-            .task {
-                if viewModel.willLoadOnAppear == true {
-                    viewModel.sections.removeAll()
-                    viewModel.sections = viewModel.createMatchContainers()
-                    viewModel.createResultsForSectionData(perfectMatch: fullMatchCocktails, minusOne: minusOneMatchCocktails, minusTwo: minusTwoMatchCocktails, minusThree: minusThreeMatchCocktails, minusFour: minusFourMatchCocktails)
-                }
-                viewModel.willLoadOnAppear = false
+            .onAppear {
+                viewModel.findIngredientNamesForCorrespondingSubCategories()
             }
         }
     }
@@ -172,10 +53,253 @@ struct CocktailResultListDataQueries: View {
 //     
 //}
 
+
+struct PerfectMatchCocktailView: View {
+    
+    @Bindable var viewModel: SearchViewModel
+    @Query var fullMatchCocktails: [Cocktail]
+
+    init(passedViewModel: SearchViewModel) {
+        
+        self.viewModel = passedViewModel
+        
+        let explicitPreferredCount = passedViewModel.preferredCount
+        let preferredIngredientsWithoutSubCategories = passedViewModel.preferredIngredients.filter({ !passedViewModel.subCategoryStrings.contains($0)})
+        let unwantedIngredientsWithoutSubCategories: [String] = passedViewModel.unwantedIngredients.filter({ !passedViewModel.subCategoryStrings.contains($0)})
+        
+        let unwantedIngredientsFromSubCategories = passedViewModel.unwantedIngredientsFromSubCategories
+        //let preferredIngredientsFromSubCategories = passedViewModel.preferredIngredientsFromSubCategories
+        
+        let matchesAllPreferredIngredients = #Expression<[Ingredient], Bool> { ingredients in
+            ingredients.filter { ingredient in
+                preferredIngredientsWithoutSubCategories.contains(ingredient.ingredientBase.name)
+            }.count == explicitPreferredCount
+        }
+        let includesUnwantedIngredients = #Expression<[Ingredient], Bool> { ingredients in
+            ingredients.filter { ingredient in
+                unwantedIngredientsWithoutSubCategories.contains(ingredient.ingredientBase.name)
+            }.count > 0
+        }
+        let includesUnwantedIngredientsFromSubCategories = #Expression<[Ingredient], Bool> { ingredients in
+            ingredients.filter { ingredient in
+                unwantedIngredientsFromSubCategories.contains(ingredient.ingredientBase.name)
+            }.count > 0
+        }
+        let fullMatchPredicate = #Predicate<Cocktail> { cocktail in
+            matchesAllPreferredIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredientsFromSubCategories.evaluate(cocktail.spec)
+        }
+        
+        _fullMatchCocktails = Query(filter: fullMatchPredicate, sort: \Cocktail.cocktailName)
+        
+    }
+    
+    var body: some View {
+        // If there are no cocktails in this predicate, we hide it
+        if fullMatchCocktails.isEmpty {
+            EmptyView()
+        } else {
+            Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: viewModel.preferredCount)) {
+                ForEach(fullMatchCocktails, id: \.self) { cocktail in
+                    
+                    NavigationLink {
+                        RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                            .navigationBarBackButtonHidden(true)
+                    } label: {
+                        HStack {
+                            Text(cocktail.cocktailName)
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+struct MinusOneMatchView: View {
+    
+    @Bindable var viewModel: SearchViewModel
+    @Query var minusOneMatchCocktails: [Cocktail]
+    @State var nonmatchSearchPreference = "none" 
+    
+    init(passedViewModel: SearchViewModel) {
+        
+        self.viewModel = passedViewModel
+        
+        let explicitPreferredCount = passedViewModel.preferredCount
+        let preferredIngredientsWithoutSubCategories = passedViewModel.preferredIngredients.filter({ !passedViewModel.subCategoryStrings.contains($0)})
+        let unwantedIngredientsWithoutSubCategories: [String] = passedViewModel.unwantedIngredients.filter({ !passedViewModel.subCategoryStrings.contains($0)})
+        
+        let unwantedIngredientsFromSubCategories = passedViewModel.unwantedIngredientsFromSubCategories
+        
+        let matchesAllButOnePreferredIngredients = #Expression<[Ingredient], Bool> { ingredients in
+            ingredients.filter { ingredient in
+                preferredIngredientsWithoutSubCategories.contains(ingredient.ingredientBase.name)
+            }.count == (explicitPreferredCount - 1)
+        }
+        let includesUnwantedIngredients = #Expression<[Ingredient], Bool> { ingredients in
+            ingredients.filter { ingredient in
+                unwantedIngredientsWithoutSubCategories.contains(ingredient.ingredientBase.name)
+            }.count > 0
+        }
+        let includesUnwantedIngredientsFromSubCategories = #Expression<[Ingredient], Bool> { ingredients in
+            ingredients.filter { ingredient in
+                unwantedIngredientsFromSubCategories.contains(ingredient.ingredientBase.name)
+            }.count > 0
+        }
+        let minusOneMatchPredicate = #Predicate<Cocktail> { cocktail in
+            matchesAllButOnePreferredIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredientsFromSubCategories.evaluate(cocktail.spec)
+        }
+        
+        _minusOneMatchCocktails = Query(filter: minusOneMatchPredicate, sort: \Cocktail.cocktailName)
+        
+        
+    }
+    var body: some View {
+        
+        if minusOneMatchCocktails.isEmpty {
+            EmptyView()
+        } else {
+            Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 1))) {
+                VStack{
+                    HStack{
+                        FilterMatchesMenuViewDataQueries(viewModel: viewModel, nonmatchSearchPreference: $nonmatchSearchPreference)
+                        Spacer()
+                    }
+                    ForEach(filtered(minusOneMatchCocktails), id: \.self) { cocktail in
+                        NavigationLink {
+                            RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                                .navigationBarBackButtonHidden(true)
+                        } label: {
+                            VStack {
+                                HStack {
+                                    Text(cocktail.cocktailName)
+                                    Spacer()
+                                }
+                                MissingIngredientsView(for: cocktail, in: viewModel)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    func filtered(_ cocktails: [Cocktail]) -> [Cocktail] {
+        guard nonmatchSearchPreference != "none" else { return cocktails }
+        return cocktails.filter { cocktail in
+            cocktail.spec.filter { ingredient in
+                ingredient.ingredientBase.name == nonmatchSearchPreference
+            }.count > 0
+        }
+    }
+}
+
+struct MinusTwoMatchView: View {
+    @State var nonmatchSearchPreference = "none"
+    @Bindable var viewModel: SearchViewModel
+    @Query var minusTwoMatchCocktails: [Cocktail]
+    
+    init(passedViewModel: SearchViewModel) {
+        
+        self.viewModel = passedViewModel
+        
+        let explicitPreferredCount = passedViewModel.preferredCount
+        let preferredIngredientsWithoutSubCategories = passedViewModel.preferredIngredients.filter({ !passedViewModel.subCategoryStrings.contains($0)})
+        let unwantedIngredientsWithoutSubCategories: [String] = passedViewModel.unwantedIngredients.filter({ !passedViewModel.subCategoryStrings.contains($0)})
+        
+        let unwantedIngredientsFromSubCategories = passedViewModel.unwantedIngredientsFromSubCategories
+     
+        let matchesAllButOnePreferredIngredients = #Expression<[Ingredient], Bool> { ingredients in
+            ingredients.filter { ingredient in
+                preferredIngredientsWithoutSubCategories.contains(ingredient.ingredientBase.name)
+            }.count == (explicitPreferredCount - 2)
+        }
+        let includesUnwantedIngredients = #Expression<[Ingredient], Bool> { ingredients in
+            ingredients.filter { ingredient in
+                unwantedIngredientsWithoutSubCategories.contains(ingredient.ingredientBase.name)
+            }.count > 0
+        }
+        let includesUnwantedIngredientsFromSubCategories = #Expression<[Ingredient], Bool> { ingredients in
+            ingredients.filter { ingredient in
+                unwantedIngredientsFromSubCategories.contains(ingredient.ingredientBase.name)
+            }.count > 0
+        }
+        let minusOneMatchPredicate = #Predicate<Cocktail> { cocktail in
+            matchesAllButOnePreferredIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredientsFromSubCategories.evaluate(cocktail.spec)
+        }
+        
+        _minusTwoMatchCocktails = Query(filter: minusOneMatchPredicate, sort: \Cocktail.cocktailName)
+        
+        
+    }
+    var body: some View {
+        if minusTwoMatchCocktails.isEmpty {
+            EmptyView()
+        } else {
+            
+            Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 2))) {
+                VStack{
+                    HStack{
+                        FilterMatchesMenuViewDataQueries(viewModel: viewModel, nonmatchSearchPreference: $nonmatchSearchPreference)
+                        Spacer()
+                    }
+                    ForEach(filtered(minusTwoMatchCocktails), id: \.self) { cocktail in
+                        
+                        NavigationLink {
+                            RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                                .navigationBarBackButtonHidden(true)
+                        } label: {
+                            VStack {
+                                HStack {
+                                    Text(cocktail.cocktailName)
+                                    Spacer()
+                                }
+                                MissingIngredientsView(for: cocktail, in: viewModel)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    func filtered(_ cocktails: [Cocktail]) -> [Cocktail] {
+        guard nonmatchSearchPreference != "none" else { return cocktails }
+        return cocktails.filter { cocktail in
+            cocktail.spec.filter { ingredient in
+                ingredient.ingredientBase.name == nonmatchSearchPreference
+            }.count > 0
+        }
+    }
+}
+
+struct MissingIngredientsView: View {
+    
+    var missingIngredientArray: [String]
+    
+    init(for cocktail: Cocktail, in viewModel: SearchViewModel) {
+        let preferredIngredientArray = viewModel.preferredIngredients
+        let cocktailIngredientBases = cocktail.spec.map { $0.ingredientBase.name }
+        let missingIngredientsArray = preferredIngredientArray
+            .filter { cocktailIngredientBases.contains($0) }
+        self.missingIngredientArray = missingIngredientsArray
+    }
+   
+    var body: some View {
+        HStack{
+            ForEach(missingIngredientArray, id: \.self) { nonMatch in
+                Text("-\(nonMatch) ")
+                    .foregroundStyle(.brandPrimaryRed)
+                    .font(.caption)
+            }
+            Spacer()
+        }
+    }
+}
+
 struct FilterMatchesMenuViewDataQueries: View {
     
     @Bindable var viewModel: SearchViewModel
-    var resultViewSectionData: ResultViewSectionData
     @Binding var nonmatchSearchPreference: String
     
     var body: some View {
@@ -191,143 +315,6 @@ struct FilterMatchesMenuViewDataQueries: View {
                 nonmatchSearchPreference = "none"
             } label: {
                 Text("Show all")
-            }
-        }
-    }
-}
-
-struct TotalMatchViewDataQueries: View {
-    @Bindable var viewModel: SearchViewModel
-    var resultViewSectionData: ResultViewSectionData
-//    @Query var fullMatchCocktails: [Cocktail]
-//    
-//    init(preferredIngredients: [String], notPreferredIngredients: [String], passedViewModel: SearchViewModel, resultData: ResultViewSectionData) {
-//        self.viewModel = passedViewModel
-//        self.resultViewSectionData = resultData
-//        let explicitPreferredCount = viewModel.preferredCount
-//   
-//        let matchesAllPreferredIngredients = #Expression<[Ingredient], Bool> { ingredients in
-//            ingredients.filter { ingredient in
-//                preferredIngredients.contains(ingredient.ingredientBase.name)
-//            }.count == explicitPreferredCount
-//        }
-//        let includesUnwantedIngredients = #Expression<[Ingredient], Bool> { ingredients in
-//            ingredients.filter { ingredient in
-//                notPreferredIngredients.contains(ingredient.ingredientBase.name)
-//            }.count > 0
-//        }
-//        let fullMatchPredicate = #Predicate<Cocktail> { cocktail in
-//            matchesAllPreferredIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredients.evaluate(cocktail.spec)
-//        }
-//        _fullMatchCocktails = Query(filter: fullMatchPredicate, sort: \Cocktail.cocktailName)
-//        
-//    }
-    var body: some View {
-        
-        ForEach(resultViewSectionData.cocktails, id: \.self.id) { cocktail in
-            
-            NavigationLink {
-                RecipeView(viewModel: RecipeViewModel(cocktail: cocktail.cocktail))
-                    .navigationBarBackButtonHidden(true)
-            } label: {
-                HStack {
-                    Text(cocktail.cocktail.cocktailName)
-                }
-            }
-        }
-        
-        
-        //        .onAppear() {
-        //            viewModel.perfectMatch(perfectMatch: fullMatchCocktails)
-        //        }
-    }
-}
-struct MinusOneMatchView: View {
-    @Environment(\.modelContext) var modelContext
-    @Bindable var viewModel: SearchViewModel
-    var resultViewSectionData: ResultViewSectionData
-    @Query var minusOneMatchCocktails: [Cocktail]
-    
-    init(preferredIngredients: [String], notPreferredIngredients: [String], passedViewModel: SearchViewModel, resultData: ResultViewSectionData) {
-        self.viewModel = passedViewModel
-        self.resultViewSectionData = resultData
-        let explicitPreferredCount = viewModel.preferredCount
-   
-        let matchesAllButOnePreferredIngredients = #Expression<[Ingredient], Bool> { ingredients in
-            ingredients.filter { ingredient in
-                preferredIngredients.contains(ingredient.ingredientBase.name)
-                
-            }.count == (explicitPreferredCount - 1)
-        }
-        let includesUnwantedIngredients = #Expression<[Ingredient], Bool> { ingredients in
-            ingredients.filter { ingredient in
-                notPreferredIngredients.contains(ingredient.ingredientBase.name)
-            }.count > 0
-        }
-        let minusOneMatchPredicate = #Predicate<Cocktail> { cocktail in
-            matchesAllButOnePreferredIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredients.evaluate(cocktail.spec)
-        }
-
-        _minusOneMatchCocktails = Query(filter: minusOneMatchPredicate, sort: \Cocktail.cocktailName)
-        
-    }
-    var body: some View {
-        VStack{
-            List{
-                ForEach(resultViewSectionData.cocktails, id: \.self.id) { cocktail in
-                    NavigationLink {
-                        RecipeView(viewModel: RecipeViewModel(cocktail: cocktail.cocktail))
-                            .navigationBarBackButtonHidden(true)
-                    } label: {
-                        VStack {
-                            HStack{
-                                Text(cocktail.cocktail.cocktailName)
-                                Spacer()
-                            }
-                            HStack{
-                                ForEach(cocktail.missingIngredients, id: \.self) { nonMatch in
-                                    Text("-\(nonMatch) ")
-                                        .foregroundStyle(.brandPrimaryRed)
-                                        .font(.caption)
-                                }
-                                Spacer()
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        .onAppear() {
-            viewModel.minusOne(minusOne: minusOneMatchCocktails)
-        }
-    }
-}
-
-struct PartialMatchWithNoPreferenceViewDataQueries: View {
-    
-    @Bindable var viewModel: SearchViewModel
-    var resultViewSectionData: ResultViewSectionData
-    
-    var body: some View {
-        ForEach(resultViewSectionData.cocktails, id: \.cocktail.cocktailName) { cocktail in
-            NavigationLink {
-                RecipeView(viewModel: RecipeViewModel(cocktail: cocktail.cocktail))
-                    .navigationBarBackButtonHidden(true)
-            } label: {
-                VStack {
-                    HStack{
-                        Text(cocktail.cocktail.cocktailName)
-                        Spacer()
-                    }
-                    HStack{
-                        ForEach(cocktail.missingIngredients, id: \.self) { nonMatch in
-                            Text("-\(nonMatch) ")
-                                .foregroundStyle(.brandPrimaryRed)
-                                .font(.caption)
-                        }
-                        Spacer()
-                    }
-                }
             }
         }
     }
