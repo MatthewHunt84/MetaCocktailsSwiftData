@@ -19,7 +19,7 @@ struct CocktailResultListDataQueries: View {
                     VStack{
                         List {
                             PerfectMatchCocktailView(passedViewModel: viewModel)
-                            MinusOneMatchView(passedViewModel: viewModel)
+                            MinusOneMatchView_improved(passedViewModel: viewModel)
                             MinusTwoMatchView(passedViewModel: viewModel)
                         }
                         .listStyle(.plain)
@@ -101,15 +101,20 @@ struct PerfectMatchCocktailView: View {
     }
     
     var body: some View {
-        Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: viewModel.preferredCount)) {
-            ForEach(fullMatchCocktails, id: \.self) { cocktail in
-                
-                NavigationLink {
-                    RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                        .navigationBarBackButtonHidden(true)
-                } label: {
-                    HStack {
-                        Text(cocktail.cocktailName)
+        // If there are no cocktails in this predicate, we hide it
+        if fullMatchCocktails.isEmpty {
+            EmptyView()
+        } else {
+            Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: viewModel.preferredCount)) {
+                ForEach(fullMatchCocktails, id: \.self) { cocktail in
+                    
+                    NavigationLink {
+                        RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                            .navigationBarBackButtonHidden(true)
+                    } label: {
+                        HStack {
+                            Text(cocktail.cocktailName)
+                        }
                     }
                 }
             }
@@ -176,9 +181,9 @@ struct MinusOneMatchView: View {
                 viewModel.cocktailsAndMissingIngredientsForMinusOne =  viewModel.findCocktailsAndMissingIngredients(cocktails: minusOneMatchCocktails)
             }
         }
-        
     }
 }
+
 struct MinusTwoMatchView: View {
    
     @Bindable var viewModel: SearchViewModel
@@ -322,6 +327,140 @@ struct PartialMatchWithPreferenceViewDataQueries: View {
                         Spacer()
                     }
                 }
+            }
+        }
+    }
+}
+
+// Take a look at these improvements, and see if you can match them in MinusTwoMatchView
+
+struct MinusOneMatchView_improved: View {
+    
+    @Bindable var viewModel: SearchViewModel
+    @Query var minusOneMatchCocktails: [Cocktail]
+    @State var nonmatchSearchPreference = "none" // This is on the view, not the viewmodel so filtering only affects this subview instead of all of them (removing global mutable state)
+    
+    init(passedViewModel: SearchViewModel) {
+        
+        self.viewModel = passedViewModel
+        
+        let explicitPreferredCount = passedViewModel.preferredCount
+        let preferredIngredientsWithoutSubCategories = passedViewModel.preferredIngredients.filter({ !passedViewModel.subCategoryStrings.contains($0)})
+        let unwantedIngredientsWithoutSubCategories: [String] = passedViewModel.unwantedIngredients.filter({ !passedViewModel.subCategoryStrings.contains($0)})
+        
+        let unwantedIngredientsFromSubCategories = passedViewModel.unwantedIngredientsFromSubCategories
+        
+        let matchesAllButOnePreferredIngredients = #Expression<[Ingredient], Bool> { ingredients in
+            ingredients.filter { ingredient in
+                preferredIngredientsWithoutSubCategories.contains(ingredient.ingredientBase.name)
+            }.count == (explicitPreferredCount - 1)
+        }
+        let includesUnwantedIngredients = #Expression<[Ingredient], Bool> { ingredients in
+            ingredients.filter { ingredient in
+                unwantedIngredientsWithoutSubCategories.contains(ingredient.ingredientBase.name)
+            }.count > 0
+        }
+        let includesUnwantedIngredientsFromSubCategories = #Expression<[Ingredient], Bool> { ingredients in
+            ingredients.filter { ingredient in
+                unwantedIngredientsFromSubCategories.contains(ingredient.ingredientBase.name)
+            }.count > 0
+        }
+        let minusOneMatchPredicate = #Predicate<Cocktail> { cocktail in
+            matchesAllButOnePreferredIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredientsFromSubCategories.evaluate(cocktail.spec)
+        }
+        
+        _minusOneMatchCocktails = Query(filter: minusOneMatchPredicate, sort: \Cocktail.cocktailName)
+        
+        
+    }
+    var body: some View {
+        
+        // If there are no cocktails in this predicate, we hide it
+        if minusOneMatchCocktails.isEmpty {
+            EmptyView()
+        } else {
+            Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 1))) {
+                VStack{
+                    HStack{
+                        FilterMatchesMenuViewDataQueries_improved(viewModel: viewModel, nonmatchSearchPreference: $nonmatchSearchPreference)
+                        Spacer()
+                    }
+                    
+                    // Instead of showing different view, we just do the same thing as in PerfectMatchCocktailView filtering for missing ingredients before passing to the forEach
+                    ForEach(filtered(minusOneMatchCocktails), id: \.self) { cocktail in
+                        
+                        NavigationLink {
+                            RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                                .navigationBarBackButtonHidden(true)
+                        } label: {
+                            VStack {
+                                HStack {
+                                    Text(cocktail.cocktailName)
+                                    Spacer()
+                                }
+                                // Moved the missing ingredients piece to its own view, which figures out its own missing ingredients on initialization
+                                // This removes the need for a task
+                                MissingIngredientsView(for: cocktail, in: viewModel)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    // This function filters out ingredients for this view only when filters are active
+    func filtered(_ cocktails: [Cocktail]) -> [Cocktail] {
+        guard nonmatchSearchPreference != "none" else { return cocktails }
+        return cocktails.filter { cocktail in
+            cocktail.spec.filter { ingredient in
+                ingredient.ingredientBase.name == nonmatchSearchPreference
+            }.count > 0
+        }
+    }
+}
+
+
+struct MissingIngredientsView: View {
+    
+    init(for cocktail: Cocktail, in viewModel: SearchViewModel) {
+        let preferredIngredientArray = viewModel.preferredIngredients
+        let cocktailIngredientBases = cocktail.spec.map { $0.ingredientBase.name }
+        var missingIngredientsArray = preferredIngredientArray
+            .filter { cocktailIngredientBases.contains($0) }
+        self.missingIngredientArray = missingIngredientsArray
+    }
+    var missingIngredientArray: [String]
+    var body: some View {
+        HStack{
+            ForEach(missingIngredientArray, id: \.self) { nonMatch in
+                Text("-\(nonMatch) ")
+                    .foregroundStyle(.brandPrimaryRed)
+                    .font(.caption)
+            }
+            Spacer()
+        }
+    }
+}
+
+struct FilterMatchesMenuViewDataQueries_improved: View {
+    
+    @Bindable var viewModel: SearchViewModel
+    @Binding var nonmatchSearchPreference: String
+    
+    var body: some View {
+        Menu("Filter Matches") {
+            ForEach(viewModel.preferredIngredients, id: \.self) { preference in
+                
+                Button("- \(preference)") {
+                    nonmatchSearchPreference = preference
+                }
+                .foregroundStyle(.brandPrimaryRed)
+            }
+            Button {
+                nonmatchSearchPreference = "none"
+            } label: {
+                Text("Show all")
             }
         }
     }
