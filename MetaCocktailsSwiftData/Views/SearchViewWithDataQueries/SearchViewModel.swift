@@ -28,7 +28,8 @@ final class SearchViewModel: ObservableObject {
     var willLoadOnAppear = true
     var onBasisSearchView: Bool = true
 
-
+    var cocktailsAndMissingIngredientsForMinusOne: [CocktailsAndMissingIngredients] = []
+    var cocktailsAndMissingIngredientsForMinusTwo: [CocktailsAndMissingIngredients] = []
 
     func clearData() {
         currentComponentSearchName = ""
@@ -83,54 +84,17 @@ final class SearchViewModel: ObservableObject {
         appendPreferredIngredients(for: Liqueur.self)
     }
     
-    func createResultsForSectionData(perfectMatch: [Cocktail], minusOne: [Cocktail], minusTwo: [Cocktail]) {
-        for section in sections {
-            if section.matched == preferredCount {
-                for cocktail in perfectMatch {
-                    section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: [], cocktail: cocktail))
-                }
-            }
-            if section.matched == (preferredCount - 1) {
-                for cocktail in minusOne {
-                    section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
-                }
-            }
-            if section.matched == (preferredCount - 2) {
-                for cocktail in minusTwo{
-                    section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
-                }
-            }
+    
+    func findCocktailsAndMissingIngredients(cocktails: [Cocktail]) -> [CocktailsAndMissingIngredients] {
+       
+        var cocktailsAndMissingIngredients: [CocktailsAndMissingIngredients] = []
+        for cocktail in cocktails {
+            cocktailsAndMissingIngredients.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
         }
+       return cocktailsAndMissingIngredients
     }
     
-    func perfectMatch(perfectMatch: [Cocktail]) {
-       
-        for section in sections {
-            if section.sectionsPreferredCount == preferredCount {
-                for cocktail in perfectMatch {
-                    section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: [], cocktail: cocktail))
-                    
-                }
-            }
-        }
-    }
-    func minusOneCocktailsAndMissingIngredients(minusOne: [Cocktail]) -> [CocktailsAndMissingIngredients] {
-       
-        var minusOneSectionCocktails: [CocktailsAndMissingIngredients] = []
-        for cocktail in minusOne {
-            minusOneSectionCocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
-        }
-       return minusOneSectionCocktails
-    }
-    func minusTwo(minusTwo: [Cocktail]) {
-        for section in sections {
-            if section.sectionsPreferredCount == (preferredCount - 2) {
-                for cocktail in minusTwo{
-                    section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
-                }
-            }
-        }
-    }
+    
     func combinedPreferredIngredientsAndSubCategories() {
         
     }
