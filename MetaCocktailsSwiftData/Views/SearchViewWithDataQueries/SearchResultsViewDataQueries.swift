@@ -41,9 +41,7 @@ struct SearchResultsViewDataQueries: View {
             
             VStack(alignment: .leading) {
                 preferencesListView(viewModel: viewModel)
-                CocktailResultListDataQueries(preferredIngredients: viewModel.preferredIngredients,
-                                              notPreferredIngredients: viewModel.unwantedIngredients,
-                                              passedViewModel: viewModel)
+                CocktailResultListDataQueries(viewModel: viewModel)
                 .navigationBarBackButtonHidden(true)
             }
             .navigationBarTitleDisplayMode(.inline)

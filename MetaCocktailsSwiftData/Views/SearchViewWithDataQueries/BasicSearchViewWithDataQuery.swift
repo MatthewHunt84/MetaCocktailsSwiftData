@@ -171,6 +171,7 @@ public struct preferencesListView: View {
                                     withAnimation(.snappy) {
                                         viewModel.preferredCount -= 1
                                         viewModel.preferredIngredients.removeAll(where: { $0 == preferredIngredient})
+                                        viewModel.createMatchContainers()
                                 
                                     }
                                 }
@@ -192,7 +193,7 @@ public struct preferencesListView: View {
                                 .onTapGesture {
                                     withAnimation(.snappy) {
                                         viewModel.unwantedIngredients.removeAll(where:{ $0 == unwantedIngredient })
-                                      
+                                        viewModel.createMatchContainers()
                                     }
                                 }
                         }

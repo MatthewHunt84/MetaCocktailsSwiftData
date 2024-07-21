@@ -14,7 +14,7 @@ import SwiftData
 @Observable
 final class SearchViewModel: ObservableObject {
     
-    
+    var nonmatchSearchPreference: String = "none"
     var currentComponentSearchName: String = ""
     var filteredIngredients: [String] = []
     var subCategoryStrings: [String] = SubCategories.allCases.map({$0.rawValue})
@@ -102,6 +102,7 @@ final class SearchViewModel: ObservableObject {
             }
         }
     }
+    
     func perfectMatch(perfectMatch: [Cocktail]) {
        
         for section in sections {
@@ -113,14 +114,13 @@ final class SearchViewModel: ObservableObject {
             }
         }
     }
-    func minusOne(minusOne: [Cocktail]) {
-        for section in sections {
-            if section.sectionsPreferredCount == (preferredCount - 1) {
-                for cocktail in minusOne {
-                    section.cocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
-                }
-            }
+    func minusOneCocktailsAndMissingIngredients(minusOne: [Cocktail]) -> [CocktailsAndMissingIngredients] {
+       
+        var minusOneSectionCocktails: [CocktailsAndMissingIngredients] = []
+        for cocktail in minusOne {
+            minusOneSectionCocktails.append(CocktailsAndMissingIngredients(missingIngredients: findMissingIngredients(cocktail: cocktail), cocktail: cocktail))
         }
+       return minusOneSectionCocktails
     }
     func minusTwo(minusTwo: [Cocktail]) {
         for section in sections {
@@ -131,13 +131,15 @@ final class SearchViewModel: ObservableObject {
             }
         }
     }
-    func createMatchContainers() -> [ResultViewSectionData] {
-            var dataShells = [ResultViewSectionData]()
-            for i in 0...Int(preferredCount / 2) {
-                let numberOfMatches = (preferredCount - i)
-                dataShells.append(ResultViewSectionData(count: preferredCount, matched: numberOfMatches, cocktails: []))
-            }
-            return dataShells
+    func combinedPreferredIngredientsAndSubCategories() {
+        
+    }
+    func createMatchContainers()  {
+        sections = []
+        for i in 0...Int(preferredCount / 2) {
+            let numberOfMatches = (preferredCount - i)
+            sections.append(ResultViewSectionData(count: preferredCount, matched: numberOfMatches, cocktails: []))
+        }
     }
     
     func findMissingIngredients(cocktail: Cocktail) -> [String] {
