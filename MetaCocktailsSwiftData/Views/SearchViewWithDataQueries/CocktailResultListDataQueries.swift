@@ -41,9 +41,6 @@ struct CocktailResultListDataQueries: View {
                     }
                 Spacer()
             }
-            .onAppear {
-                viewModel.findIngredientNamesForCorrespondingSubCategories()
-            }
         }
     }
 }
@@ -62,7 +59,7 @@ struct PerfectMatchCocktailView: View {
     init(passedViewModel: SearchViewModel) {
         
         self.viewModel = passedViewModel
-        
+        passedViewModel.findIngredientNamesForCorrespondingSubCategories()
         let explicitPreferredCount = passedViewModel.preferredCount
         let preferredIngredientsWithoutSubCategories = passedViewModel.preferredIngredients.filter({ !passedViewModel.subCategoryStrings.contains($0)})
         let unwantedIngredientsWithoutSubCategories: [String] = passedViewModel.unwantedIngredients.filter({ !passedViewModel.subCategoryStrings.contains($0)})
@@ -88,13 +85,12 @@ struct PerfectMatchCocktailView: View {
         let fullMatchPredicate = #Predicate<Cocktail> { cocktail in
             matchesAllPreferredIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredients.evaluate(cocktail.spec) && !includesUnwantedIngredientsFromSubCategories.evaluate(cocktail.spec)
         }
-        
         _fullMatchCocktails = Query(filter: fullMatchPredicate, sort: \Cocktail.cocktailName)
         
     }
     
     var body: some View {
-        // If there are no cocktails in this predicate, we hide it
+        
         if fullMatchCocktails.isEmpty {
             EmptyView()
         } else {
@@ -111,7 +107,7 @@ struct PerfectMatchCocktailView: View {
                     }
                 }
             }
-        }
+        } 
     }
 }
 
@@ -126,7 +122,6 @@ struct MinusOneMatchView: View {
     init(passedViewModel: SearchViewModel) {
         
         self.viewModel = passedViewModel
-        
         let explicitPreferredCount = passedViewModel.preferredCount
         let preferredIngredientsWithoutSubCategories = passedViewModel.preferredIngredients.filter({ !passedViewModel.subCategoryStrings.contains($0)})
         let unwantedIngredientsWithoutSubCategories: [String] = passedViewModel.unwantedIngredients.filter({ !passedViewModel.subCategoryStrings.contains($0)})
@@ -158,27 +153,26 @@ struct MinusOneMatchView: View {
     }
     var body: some View {
         
-        if minusOneMatchCocktails.isEmpty {
+        if minusOneMatchCocktails.isEmpty || viewModel.preferredIngredients.count < 2 {
             EmptyView()
         } else {
             Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 1))) {
-                VStack{
-                    HStack{
-                        FilterMatchesMenuViewDataQueries(viewModel: viewModel, nonmatchSearchPreference: $nonmatchSearchPreference)
-                        Spacer()
-                    }
-                    ForEach(filtered(minusOneMatchCocktails), id: \.self) { cocktail in
-                        NavigationLink {
-                            RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                                .navigationBarBackButtonHidden(true)
-                        } label: {
-                            VStack {
-                                HStack {
-                                    Text(cocktail.cocktailName)
-                                    Spacer()
-                                }
-                                MissingIngredientsView(for: cocktail, in: viewModel)
+                
+                HStack{
+                    FilterMatchesMenuViewDataQueries(viewModel: viewModel, nonmatchSearchPreference: $nonmatchSearchPreference)
+                    Spacer()
+                }
+                ForEach(filtered(minusOneMatchCocktails), id: \.self) { cocktail in
+                    NavigationLink {
+                        RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                            .navigationBarBackButtonHidden(true)
+                    } label: {
+                        VStack {
+                            HStack {
+                                Text(cocktail.cocktailName)
+                                Spacer()
                             }
+                            MissingIngredientsView(for: cocktail, in: viewModel)
                         }
                     }
                 }
@@ -234,29 +228,28 @@ struct MinusTwoMatchView: View {
         
     }
     var body: some View {
-        if minusTwoMatchCocktails.isEmpty {
+        if minusTwoMatchCocktails.isEmpty  || viewModel.preferredIngredients.count < 4{
             EmptyView()
         } else {
             
             Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 2))) {
-                VStack{
-                    HStack{
-                        FilterMatchesMenuViewDataQueries(viewModel: viewModel, nonmatchSearchPreference: $nonmatchSearchPreference)
-                        Spacer()
-                    }
-                    ForEach(filtered(minusTwoMatchCocktails), id: \.self) { cocktail in
-                        
-                        NavigationLink {
-                            RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                                .navigationBarBackButtonHidden(true)
-                        } label: {
-                            VStack {
-                                HStack {
-                                    Text(cocktail.cocktailName)
-                                    Spacer()
-                                }
-                                MissingIngredientsView(for: cocktail, in: viewModel)
+                
+                HStack{
+                    FilterMatchesMenuViewDataQueries(viewModel: viewModel, nonmatchSearchPreference: $nonmatchSearchPreference)
+                    Spacer()
+                }
+                ForEach(filtered(minusTwoMatchCocktails), id: \.self) { cocktail in
+                    
+                    NavigationLink {
+                        RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                            .navigationBarBackButtonHidden(true)
+                    } label: {
+                        VStack {
+                            HStack {
+                                Text(cocktail.cocktailName)
+                                Spacer()
                             }
+                            MissingIngredientsView(for: cocktail, in: viewModel)
                         }
                     }
                 }
@@ -280,8 +273,7 @@ struct MissingIngredientsView: View {
     init(for cocktail: Cocktail, in viewModel: SearchViewModel) {
         let preferredIngredientArray = viewModel.preferredIngredients
         let cocktailIngredientBases = cocktail.spec.map { $0.ingredientBase.name }
-        let missingIngredientsArray = preferredIngredientArray
-            .filter { cocktailIngredientBases.contains($0) }
+        let missingIngredientsArray = preferredIngredientArray.filter { cocktailIngredientBases.contains($0) }
         self.missingIngredientArray = missingIngredientsArray
     }
    
