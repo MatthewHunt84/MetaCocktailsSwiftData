@@ -55,6 +55,7 @@ final class SearchViewModel: ObservableObject {
                     unwantedIngredientsFromSubCategories.append(booze.rawValue)
                 }
             }
+            
         }
         func appendPreferredIngredients<T: CaseIterable & RawRepresentable>(for type: T.Type) where T.AllCases: RandomAccessCollection, T.RawValue == String {
             for booze in type.allCases {
@@ -86,7 +87,7 @@ final class SearchViewModel: ObservableObject {
     
 
     
-    func combinedPreferredIngredientsAndSubCategories() {
+    func createDynamicSubCategoryPreferedCounts() {
         
     }
     func createMatchContainers()  {
