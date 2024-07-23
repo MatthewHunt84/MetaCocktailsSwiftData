@@ -250,7 +250,6 @@ private struct GarnishPicker: View {
                             .foregroundStyle(.brandPrimaryGold)
                     }
                 }
-            
         } header: {
             Text("Garnish")
         }

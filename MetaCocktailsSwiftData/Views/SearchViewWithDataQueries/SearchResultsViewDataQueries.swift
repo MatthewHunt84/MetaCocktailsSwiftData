@@ -18,7 +18,6 @@ struct SearchResultsViewDataQueries: View {
         NavigationStack{
             HStack{
                 Button{
-                    viewModel.onBasisSearchView = true
                     viewModel.willLoadOnAppear = true
                     dismiss()
                     
@@ -41,7 +40,7 @@ struct SearchResultsViewDataQueries: View {
             
             VStack(alignment: .leading) {
                 preferencesListView(viewModel: viewModel)
-                CocktailResultListDataQueries(viewModel: viewModel)
+                CocktailResultListDataQueriesView(viewModel: viewModel)
                 .navigationBarBackButtonHidden(true)
             }
             .navigationBarTitleDisplayMode(.inline)

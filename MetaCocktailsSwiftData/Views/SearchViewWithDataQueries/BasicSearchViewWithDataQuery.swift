@@ -18,22 +18,29 @@ struct BasicSearchViewWithDataQuery: View {
    
     var body: some View {
         NavigationStack {
-            HStack {
-                Text("Search Ingredients")
-                    .font(.largeTitle).bold()
-                    .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
-                Spacer()
-            }
-            preferencesListView(viewModel: viewModel)
+            
             VStack{
-                Form{
-                    ThumbsUpOrDownIngredientSearchList(viewModel: viewModel, keyboardFocused: _keyboardFocused)
-                    SearchForCocktailsButton(viewModel: viewModel)
-                    ResetButton(viewModel: viewModel)
+                HStack {
+                    Text("Search Ingredients")
+                        .font(.largeTitle).bold()
+                        .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
+                    Spacer()
+                }
+                preferencesListView(viewModel: viewModel)
+                VStack{
+                    Form{
+                        ThumbsUpOrDownIngredientSearchList(viewModel: viewModel, keyboardFocused: _keyboardFocused)
+                        SearchForCocktailsButton(viewModel: viewModel)
+                        ResetButton(viewModel: viewModel)
+                    }
                 }
             }
             .onAppear() {
                 keyboardFocused = true
+            }
+            .navigationDestination(isPresented: $viewModel.basicSearchViewIsActive) {
+                SearchResultsViewDataQueries(viewModel: viewModel)
+                    .navigationBarBackButtonHidden(true)
             }
         }
     }
@@ -97,8 +104,8 @@ struct SearchForCocktailsButton: View {
     @Environment(\.modelContext) var modelContext
    
     var body: some View {
-        NavigationLink {
-            SearchResultsViewDataQueries(viewModel: viewModel)
+        Button {
+            viewModel.basicSearchViewIsActive = true
         } label: {
             
             HStack {
@@ -159,29 +166,30 @@ public struct preferencesListView: View {
                     .font(.footnote)
                     .foregroundStyle(.gray)
                     .padding(.leading, 12)
-                    
+                
                 Spacer()
             }
-                ScrollView(.horizontal) {
-                    
-                    HStack(spacing: 12) {
-                        ForEach(viewModel.preferredIngredients, id: \.self) { preferredIngredient in
-                            viewModel.viewModelTagView(preferredIngredient, .green , "xmark")
-                                .onTapGesture {
-                                    withAnimation(.snappy) {
-                                        viewModel.preferredCount -= 1
-                                        viewModel.preferredIngredients.removeAll(where: { $0 == preferredIngredient})
-                                 
-                                
+            ScrollView(.horizontal) {
+                
+                HStack(spacing: 12) {
+                    ForEach(viewModel.preferredIngredients, id: \.self) { preferredIngredient in
+                        viewModel.viewModelTagView(preferredIngredient, .green , "xmark")
+                            .onTapGesture {
+                                withAnimation(.snappy) {
+                                    viewModel.preferredCount -= 1
+                                    viewModel.preferredIngredients.removeAll(where: { $0 == preferredIngredient})
+                                    if viewModel.preferredCount == 0 {
+                                        viewModel.basicSearchViewIsActive = false
                                     }
                                 }
-                        }
+                            }
                     }
-                    .padding(.horizontal, 15)
-                    .frame(height: 35)
                 }
-                .mask(LinearGradient(stops: [.init(color: .clear, location: 0), .init(color: .white, location: 0.05), .init(color: .white, location: 0.95), .init(color: .clear, location: 1)], startPoint: .leading, endPoint: .trailing))
-                .scrollClipDisabled(true)
+                .padding(.horizontal, 15)
+                .frame(height: 35)
+            }
+            .mask(LinearGradient(stops: [.init(color: .clear, location: 0), .init(color: .white, location: 0.05), .init(color: .white, location: 0.95), .init(color: .clear, location: 1)], startPoint: .leading, endPoint: .trailing))
+            .scrollClipDisabled(true)
                 .scrollIndicators(.hidden)
          
             

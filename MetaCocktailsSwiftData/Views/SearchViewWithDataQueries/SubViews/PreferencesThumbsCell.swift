@@ -28,6 +28,7 @@ struct PreferencesThumbsCell: View {
                     } else {
                         viewModel.preferredIngredients.removeAll(where: {$0 == ingredient})
                         viewModel.preferredCount -= 1
+                        
                     }
                 }
                 .font(.system(size: 20))
@@ -40,6 +41,7 @@ struct PreferencesThumbsCell: View {
                             viewModel.preferredIngredients.removeAll(where: {$0 == ingredient})
                             viewModel.preferredCount -= 1
                         }
+                        
                     } else {
                         viewModel.unwantedIngredients.removeAll(where: {$0 == ingredient})
                     }
