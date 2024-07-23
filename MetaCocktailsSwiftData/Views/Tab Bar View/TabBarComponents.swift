@@ -34,7 +34,7 @@ enum TabBarComponents: Hashable, Identifiable, CaseIterable {
         case .cocktailListView:
             CocktailListView()
         case .searchView:
-            BasicSearchViewWithDataQuery()
+            BasicSearchWithDataQueryView()
         case .addCocktailView:
             AddCocktailView()
         }

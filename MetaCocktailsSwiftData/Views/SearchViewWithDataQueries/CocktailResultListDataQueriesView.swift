@@ -180,7 +180,7 @@ struct MinusOneMatchView: View {
             Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 1))) {
                 
                 HStack{
-                    FilterMatchesMenuViewDataQueries(viewModel: viewModel, nonmatchSearchPreference: $nonmatchSearchPreference)
+                    FilterMatchesMenuDataQueriesView(viewModel: viewModel, nonmatchSearchPreference: $nonmatchSearchPreference)
                     Spacer()
                 }
                 ForEach(filtered(minusOneMatchCocktails), id: \.self) { cocktail in
@@ -272,7 +272,7 @@ struct MinusTwoMatchView: View {
             Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 2))) {
                 
                 HStack{
-                    FilterMatchesMenuViewDataQueries(viewModel: viewModel, nonmatchSearchPreference: $nonmatchSearchPreference)
+                    FilterMatchesMenuDataQueriesView(viewModel: viewModel, nonmatchSearchPreference: $nonmatchSearchPreference)
                     Spacer()
                 }
                 ForEach(filtered(minusTwoMatchCocktails), id: \.self) { cocktail in
@@ -326,7 +326,7 @@ struct MissingIngredientsView: View {
     }
 }
 
-struct FilterMatchesMenuViewDataQueries: View {
+struct FilterMatchesMenuDataQueriesView: View {
     
     @Bindable var viewModel: SearchViewModel
     @Binding var nonmatchSearchPreference: String

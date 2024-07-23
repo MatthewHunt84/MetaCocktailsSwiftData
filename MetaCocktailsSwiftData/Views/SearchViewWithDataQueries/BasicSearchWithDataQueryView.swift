@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct BasicSearchViewWithDataQuery: View {
+struct BasicSearchWithDataQueryView: View {
     
     @Bindable var viewModel = SearchViewModel()
     @FocusState var keyboardFocused: Bool
@@ -29,7 +29,7 @@ struct BasicSearchViewWithDataQuery: View {
                 preferencesListView(viewModel: viewModel)
                 VStack{
                     Form{
-                        ThumbsUpOrDownIngredientSearchList(viewModel: viewModel, keyboardFocused: _keyboardFocused)
+                        ThumbsUpOrDownIngredientSearchListView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
                         SearchForCocktailsButton(viewModel: viewModel)
                         ResetButton(viewModel: viewModel)
                     }
@@ -39,7 +39,7 @@ struct BasicSearchViewWithDataQuery: View {
                 keyboardFocused = true
             }
             .navigationDestination(isPresented: $viewModel.basicSearchViewIsActive) {
-                SearchResultsViewDataQueries(viewModel: viewModel)
+                SearchResultsDataQueriesView(viewModel: viewModel)
                     .navigationBarBackButtonHidden(true)
             }
         }
@@ -47,11 +47,11 @@ struct BasicSearchViewWithDataQuery: View {
 }
 
 #Preview {
-    BasicSearchViewWithDataQuery()
+    BasicSearchWithDataQueryView()
         .environmentObject(SearchCriteriaViewModel())
 }
 
-struct ThumbsUpOrDownIngredientSearchList: View {
+struct ThumbsUpOrDownIngredientSearchListView: View {
     @Bindable var viewModel: SearchViewModel
     @Environment(\.modelContext) var modelContext
     @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]

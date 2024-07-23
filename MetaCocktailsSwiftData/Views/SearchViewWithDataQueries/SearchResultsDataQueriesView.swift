@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct SearchResultsViewDataQueries: View {
+struct SearchResultsDataQueriesView: View {
     @Bindable var viewModel: SearchViewModel
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
@@ -72,7 +72,7 @@ struct SearchResultsViewDataQueries: View {
 
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    SearchResultsViewDataQueries(viewModel: SearchViewModel())
+    SearchResultsDataQueriesView(viewModel: SearchViewModel())
         .modelContainer(preview.container)
 }
 
