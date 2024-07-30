@@ -137,7 +137,7 @@ enum IngredientType: Codable{
         case .otherNonAlc:
             return "Other N/A"
         case .agaves:
-            return "Agave"
+            return "Agave Spirits"
         case .brandies:
             return "Brandy"
         case .gins:

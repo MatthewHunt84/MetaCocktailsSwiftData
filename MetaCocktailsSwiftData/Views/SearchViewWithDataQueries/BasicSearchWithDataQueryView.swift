@@ -66,7 +66,7 @@ struct ThumbsUpOrDownIngredientSearchListView: View {
                         .autocorrectionDisabled(true)
                         .onChange(of: viewModel.currentComponentSearchName, initial: true) { old, new in
                             viewModel.currentComponentSearchName = new
-                            viewModel.filteredIngredients = viewModel.matchAllIngredientsAndSubcategories(ingredients: ingredients.map({$0.name}), subCategories: viewModel.subCategoryStrings)
+                            viewModel.filteredIngredients = viewModel.matchAllIngredientsAndSubcategories(ingredients: ingredients.map({$0.name}))
                         }
                     if !viewModel.currentComponentSearchName.isEmpty {
                         Button {

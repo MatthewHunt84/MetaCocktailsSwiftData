@@ -157,7 +157,7 @@ enum Brandy: String, Codable, CaseIterable, BoozeTagsProtocol {
         case .peruvianMustoVerde:
             Tags(booze: [Booze(.brandies(self)), Booze(.brandies(.brandyAny)), Booze(.brandies(.pisco))])
         case .lairdsJersey:
-            Tags(flavors: [.apple], booze: [Booze(.brandies(self)), Booze(.brandies(.brandyAny))])
+            Tags(flavors: [.apple], booze: [Booze(.brandies(self)), Booze(.brandies(.brandyAny)), Booze(.brandies(.brandyAny))])
         }
     }
     
@@ -346,75 +346,75 @@ enum Rum: String, Codable, CaseIterable, BoozeTagsProtocol {
         case .rumDemerara:
             Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
         case .rumJamaicanAged:
-            Tags(profiles: [.funky], booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
+            Tags(profiles: [.funky], booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumAged))])
         case .rumWhite:
             Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
         case .rumAny:
             Tags(booze: [Booze(.rums(self))])
         case .rumWhiteAgricole:
-            Tags(profiles: [.funky], booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
+            Tags(profiles: [.funky], booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumWhite))])
         case .rumAgedCuban:
-            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
+            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumAged))])
         case .plantationBarbados:
-            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
+            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumAged))])
         case .rumDark:
             Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
         case .sailorJerry:
-            Tags(flavors: [.bakingSpices], booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
+            Tags(flavors: [.bakingSpices], booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumAged))])
         case .captainMorgan:
-            Tags(flavors: [.bakingSpices], booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
+            Tags(flavors: [.bakingSpices], booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumAged))])
         case .goslingsBlackSeal:
-            Tags(flavors: [.molasses, .malt], booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumBlackStrap))])
+            Tags(flavors: [.molasses, .malt], booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumBlackStrap)), Booze(.rums(.rumAged))])
         case .plantation3Star:
-            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
+            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumWhite))])
         case .rumPuertoRican:
             Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
         case .appletonEstateSignatureBlend:
-            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumJamaicanAged))])
+            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumJamaicanAged)), Booze(.rums(.rumAged))])
         case .cruzanBlackstrap:
-            Tags(flavors: [.molasses, .malt], booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumBlackStrap))])
+            Tags(flavors: [.molasses, .malt], booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumBlackStrap)), Booze(.rums(.rumAged))])
         case .wrayAndNephew17:
-            Tags(profiles: [.funky], booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumJamaicanAged)),])
+            Tags(profiles: [.funky], booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumJamaicanAged)), Booze(.rums(.rumAged))])
         case .smithAndCross:
-            Tags(profiles: [.funky], booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumJamaicanAged)),])
+            Tags(profiles: [.funky], booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumJamaicanAged)), Booze(.rums(.rumAged))])
         case .pussersRum:
-            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
+            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumAged))])
         case .clementBleue:
-            Tags(profiles: [.funky], booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
+            Tags(profiles: [.funky], booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumWhite))])
         case .lemonHeart151:
-            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
+            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumAged))])
         case .goldPuertoRicanRum:
-            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
+            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumAged))])
         case .goldJamaicanRum:
-            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
+            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumAged))])
         case .havanaClubAnjeo:
-            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
+            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumAged))])
         case .plantationJamaicaRum:
-            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
+            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumAged))])
         case .appleton12:
-            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumJamaicanAged))])
+            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumJamaicanAged)), Booze(.rums(.rumAged))])
         case .avuaPrata:
             Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.cachaca))])
         case .plantationBarbadosXO:
-            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
+            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumAged))])
         case .banks5:
             Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
         case .plantationPineapple:
-            Tags(flavors: [.pineapple], booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
+            Tags(flavors: [.pineapple], booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumAged))])
         case .diplomaticoExclusivaRum:
-            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
+            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumAged))])
         case .avuaAmburana:
             Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.cachaca))])
         case .plantationOFTD:
-            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
+            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumAged))])
         case .rumFire:
-            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
+            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumWhite))])
         case .uruapanAnejo:
-            Tags(profiles: [.funky], booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
+            Tags(profiles: [.funky], booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumAged))])
         case .corubaDark:
-            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumJamaicanAged))])
+            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumJamaicanAged)), Booze(.rums(.rumAged))])
         case .ronMutusalemRumClassico:
-            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
+            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumAged))])
         case .rumDominican:
             Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
         }
@@ -529,7 +529,7 @@ enum Whiskey: String, Codable, CaseIterable, BoozeTagsProtocol {
         case .ryeWhiskeyAny:
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny))])
         case .straightRyeOrBourbon:
-            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)), Booze(.whiskies(.bourbonAny)), Booze(.whiskies(.ryeWhiskeyAny))])
+            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny))])
         case .scotchBlended:
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.scotchAny))])
         case .scotchIsla:
@@ -563,7 +563,7 @@ enum Whiskey: String, Codable, CaseIterable, BoozeTagsProtocol {
         case .elijahCraigSmallBatch:
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)),Booze(.whiskies(.bourbonAny))])
         case .pendletonRye:
-            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.ryeWhiskeyAny)), Booze(.whiskies(.canadianWhiskeyAny))])
+            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.canadianWhiskeyAny))])
         case .laphroaig10:
             Tags(flavors: [.peat], profiles: [.smokey], booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.scotchAny)), Booze(.whiskies(.scotchIsla))])
         case .monkeyShoulder:

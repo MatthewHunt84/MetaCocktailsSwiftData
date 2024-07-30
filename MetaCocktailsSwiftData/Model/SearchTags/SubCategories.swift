@@ -88,3 +88,83 @@ enum SubCategories: String, Codable, CaseIterable {
     //Amaro
     case amaroAny                     = "Amaro"
 }
+
+
+enum BaseCategories: String, Codable, CaseIterable {
+    //Agave
+    case mezcalAny                    = "Mezcal"
+    case tequilaAny                   = "Tequila"
+
+    //Brandy
+    case appleBrandy                  = "Apple Brandy"
+    case armagnac                     = "Armagnac"
+    case cognacVSOP                   = "Cognac"
+    case pisco                        = "Pisco"
+    
+    //Gin
+    case ginLondonDry                 = "Gin (London Dry)"
+    case navyStrengthGin              = "Navy Strength Gin"
+    
+    //Rum
+    case cachaca                      = "Cachaca"
+    case rumAged                      = "Rum (Aged)"
+    case rumDemerara                  = "Rum (Demerara)"
+    case rumDominican                 = "Rum (Dominican)"
+    case rumPuertoRican               = "Rum (Puerto Rican)"
+    case rumWhite                     = "Rum (White)"
+    case rumDark                      = "Rum (Dark)"
+    
+    
+    //Whisk(e)y
+    case americanWhiskeyAny           = "American Whiskey"
+    case canadianWhiskeyAny           = "Canadian Whiskey"
+    case irishWhiskeyAny              = "Irish Whiskey"
+    case japaneseWhiskeyAny           = "Japanese Whiskey"
+    case scotchAny                    = "Scotch"
+    
+    //Fortified Wine
+
+    case vermouthAny                  = "Vermouth"
+    case sherryAny                    = "Sherry"
+
+}
+
+enum SpecialtyCategories: String, Codable, CaseIterable {
+    //Agave
+    case mezcalEspadin                = "Mezcal Espadine"
+    case mezcalSmokeyAny              = "Mezcal (Smokey)"
+    case mezcalNotSmokeyAny           = "Mezcal (Not Smokey)"
+    case tequilaAnejo                 = "Tequila Anejo"
+    case tequilaBlanco                = "Tequila Blanco"
+    case tequilaReposado              = "Tequila Reposado"
+    
+
+    
+    case goldJamaicanRum              = "Gold Jamaican Rum"
+    case goldPuertoRicanRum           = "Gold Puerto Rican Rum"
+    case rumAgedCuban                 = "Rum (Aged Cuban Style)"
+    case rumBlackStrap                = "Rum (Black Strap)"
+    case rumJamaicanAged              = "Rum (Jamaican, Aged)"
+    case rumWhiteAgricole             = "Rum (White Agricole)"
+    
+
+    //Whisk(e)y
+    case bourbonAny                   = "Bourbon"
+    case ryeWhiskeyAny                = "Rye Whiskey"
+    case straightRyeOrBourbon         = "Straight Rye or Bourbon"
+    case scotchBlended                = "Scotch (Blended)"
+    case scotchHighland               = "Scotch (Highland)"
+    case scotchIsla                   = "Scotch (Peated, From Isla)"
+
+    
+    //Fortified Wine
+    case amontillado                  = "Amontillado Sherry"
+    case blancVermouth                = "Blanc Vermouth"
+    case dryVermouthAny               = "Dry Vermouth (French)"
+    case fino                         = "Fino Sherry"
+    case oloroso                      = "Oloroso Sherry"
+    case sweetVermouthAny             = "Sweet Vermouth"
+    case tawnyPort                    = "Tawny Port"
+    
+
+}
