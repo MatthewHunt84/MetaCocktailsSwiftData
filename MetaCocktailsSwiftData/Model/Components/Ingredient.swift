@@ -208,7 +208,7 @@ class Ingredient: Codable, Hashable {
     var unit: MeasurementUnit
 
     init(ingredientBase: IngredientBase, value: Double, unit: MeasurementUnit = .fluidOunces) {
-        self.ingredientBase = IngredientBase(name: ingredientBase.name, info: ingredientBase.info, category: ingredientBase.category, tags: ingredientBase.tags, prep: ingredientBase.prep, isCustom: ingredientBase.isCustom)
+        self.ingredientBase = IngredientBase(name: ingredientBase.name, info: ingredientBase.info, category: ingredientBase.umbrellaCategory, tags: ingredientBase.tags, prep: ingredientBase.prep, isCustom: ingredientBase.isCustom)
         self.value = value
         self.unit = unit
         self.id = UUID()
@@ -320,7 +320,7 @@ class IngredientBase: Codable, Hashable {
     var tags: Tags?
     var prep: Prep?
     var isCustom: Bool
-    var category: UmbrellaCategory
+    var umbrellaCategory: UmbrellaCategory
     var baseCategory: String
     var specialtyCategory: String
 
@@ -329,17 +329,16 @@ class IngredientBase: Codable, Hashable {
      
         self.name = name
         self.info = info
-        self.category = category
+        self.umbrellaCategory = category
         self.tags = tags
         self.prep = prep
         self.isCustom = isCustom
         self.baseCategory = {
             var tempBaseCategory: String = ""
-            let baseCategoryStrings: [String] = BaseCategories.allCases.map({$0.rawValue})
             if let tags = tags {
                 if let booze = tags.booze {
                     for alcohol in booze {
-                        if baseCategoryStrings.contains(alcohol.name) {
+                        if BaseCategory.allCases.map({$0.rawValue}).contains(alcohol.name) {
                             tempBaseCategory = alcohol.name
                         }
                     }
@@ -349,11 +348,10 @@ class IngredientBase: Codable, Hashable {
         }()
         self.specialtyCategory = {
             var specialtyCategory: String = ""
-            let specialtyCategoryStrings: [String] = SpecialtyCategories.allCases.map({$0.rawValue})
             if let tags = tags {
                 if let booze = tags.booze {
                     for alcohol in booze {
-                        if specialtyCategoryStrings.contains(alcohol.name) {
+                        if SpecialtyCategory.allCases.map({$0.rawValue}).contains(alcohol.name) {
                             specialtyCategory = alcohol.name
                         }
                     }
@@ -380,7 +378,7 @@ class IngredientBase: Codable, Hashable {
     required init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.name = try container.decode(String.self, forKey: .name)
-        self.category = try container.decode(UmbrellaCategory.self, forKey: .category)
+        self.umbrellaCategory = try container.decode(UmbrellaCategory.self, forKey: .category)
         self.tags = try container.decode(Tags.self, forKey: .tags)
         self.prep = try container.decode(Prep.self, forKey: .prep)
         self.info = try container.decode(String.self, forKey: .info)
@@ -392,7 +390,7 @@ class IngredientBase: Codable, Hashable {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name, forKey: .name)
-        try container.encode(category, forKey: .category)
+        try container.encode(umbrellaCategory, forKey: .category)
         try container.encode(tags, forKey: .tags)
         try container.encode(prep, forKey: .prep)
         try container.encode(info, forKey: .info)

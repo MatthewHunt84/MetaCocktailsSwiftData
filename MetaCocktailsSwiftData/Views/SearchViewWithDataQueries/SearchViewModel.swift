@@ -19,8 +19,8 @@ final class SearchViewModel: ObservableObject {
     var filteredIngredients: [String] = []
     var subCategoryStrings: [String] = SubCategories.allCases.map({$0.rawValue})
     var umbrellaCategoryStrings: [String] = SpiritsUmbrellaCategory.allCases.map{ $0.rawValue }
-    var baseCategoryStrings: [String] = BaseCategories.allCases.map({$0.rawValue})
-    var specialtyCategoryStrings: [String] = SpecialtyCategories.allCases.map({$0.rawValue})
+    var baseCategoryStrings: [String] = BaseCategory.allCases.map({$0.rawValue})
+    var specialtyCategoryStrings: [String] = SpecialtyCategory.allCases.map({$0.rawValue})
     var unwantedIngredients: [String] = []
     var preferredIngredients: [String] = []
     var isLoading = true

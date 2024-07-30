@@ -90,7 +90,7 @@ enum SubCategories: String, Codable, CaseIterable {
 }
 
 
-enum BaseCategories: String, Codable, CaseIterable {
+enum BaseCategory: String, Codable, CaseIterable {
     //Agave
     case mezcalAny                    = "Mezcal"
     case tequilaAny                   = "Tequila"
@@ -129,7 +129,7 @@ enum BaseCategories: String, Codable, CaseIterable {
 
 }
 
-enum SpecialtyCategories: String, Codable, CaseIterable {
+enum SpecialtyCategory: String, Codable, CaseIterable {
     //Agave
     case mezcalEspadin                = "Mezcal Espadine"
     case mezcalSmokeyAny              = "Mezcal (Smokey)"
