@@ -18,6 +18,9 @@ final class SearchViewModel: ObservableObject {
     var currentComponentSearchName: String = ""
     var filteredIngredients: [String] = []
     var subCategoryStrings: [String] = SubCategories.allCases.map({$0.rawValue})
+    var umbrellaCategoryStrings: [String] = SpiritsUmbrellaCategory.allCases.map{ $0.rawValue }
+    var baseCategoryStrings: [String] = BaseCategory.allCases.map({$0.rawValue})
+    var specialtyCategoryStrings: [String] = SpecialtyCategory.allCases.map({$0.rawValue})
     var unwantedIngredients: [String] = []
     var preferredIngredients: [String] = []
     var isLoading = true
@@ -120,7 +123,7 @@ final class SearchViewModel: ObservableObject {
              return [] // Return all ingredients if search text is empty
          }
         let lowercasedSearchText = currentComponentSearchName.lowercased()
-        let combinedArrays = ingredients + subCategoryStrings
+        let combinedArrays = ingredients + umbrellaCategoryStrings + baseCategoryStrings + specialtyCategoryStrings
         let combinedArraysWithoutDuplicates = Array(Set(combinedArrays))
         return combinedArraysWithoutDuplicates.filter { $0.lowercased().contains(lowercasedSearchText) }
             .sorted { lhs, rhs in
