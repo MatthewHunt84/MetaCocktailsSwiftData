@@ -20,13 +20,11 @@ final class SearchViewModel: ObservableObject {
     var subCategoryStrings: [String] = SubCategories.allCases.map({$0.rawValue})
     var unwantedIngredients: [String] = []
     var preferredIngredients: [String] = []
-    var unwantedIngredientsFromSubCategories: [String] = []
-    var preferredIngredientsFromSubCategories: [String] = []
     var isLoading = true
     var preferredCount = 0
     var sections: [ResultViewSectionData] = []
     var willLoadOnAppear = true
-    var onBasisSearchView: Bool = true
+    var basicSearchViewIsActive: Bool = false
 
     var cocktailsAndMissingIngredientsForMinusOne: [CocktailsAndMissingIngredients] = []
     var cocktailsAndMissingIngredientsForMinusTwo: [CocktailsAndMissingIngredients] = []
@@ -34,16 +32,15 @@ final class SearchViewModel: ObservableObject {
     func clearData() {
         currentComponentSearchName = ""
         unwantedIngredients = []
-        unwantedIngredientsFromSubCategories = []
-        preferredIngredientsFromSubCategories = []
         preferredIngredients = []
         sections.removeAll()
         preferredCount = 0
     }
-
-    func findIngredientNamesForCorrespondingSubCategories() {
-        unwantedIngredientsFromSubCategories = []
-        preferredIngredientsFromSubCategories = []
+    
+    func findIngredientNamesForCorrespondingSubCategories() -> (preferred: [String],unwanted: [String]) {
+        
+        var unwantedIngredientsFromSubCategories: [String] = []
+        var preferredIngredientsFromSubCategories: [String] = []
         let unwantedSubCategories = unwantedIngredients.filter { subCategoryStrings.contains($0) }
         let preferredSubCategories = preferredIngredients.filter { subCategoryStrings.contains($0) }
         
@@ -83,13 +80,9 @@ final class SearchViewModel: ObservableObject {
         appendPreferredIngredients(for: Whiskey.self)
         appendPreferredIngredients(for: Wine.self)
         appendPreferredIngredients(for: Liqueur.self)
+        return (preferred: preferredIngredientsFromSubCategories, unwanted: unwantedIngredientsFromSubCategories)
     }
     
-
-    
-    func createDynamicSubCategoryPreferedCounts() {
-        
-    }
     func createMatchContainers()  {
         sections = []
         for i in 0...Int(preferredCount / 2) {
@@ -121,13 +114,13 @@ final class SearchViewModel: ObservableObject {
         }
     }
 
-    func matchAllIngredientsAndSubcategories(ingredients: [String], subCategories: [String]) -> [String] {
+    func matchAllIngredientsAndSubcategories(ingredients: [String]) -> [String] {
         
         guard !currentComponentSearchName.isEmpty else {
              return [] // Return all ingredients if search text is empty
          }
         let lowercasedSearchText = currentComponentSearchName.lowercased()
-        let combinedArrays = ingredients + subCategories
+        let combinedArrays = ingredients + subCategoryStrings
         let combinedArraysWithoutDuplicates = Array(Set(combinedArrays))
         return combinedArraysWithoutDuplicates.filter { $0.lowercased().contains(lowercasedSearchText) }
             .sorted { lhs, rhs in

@@ -15,25 +15,31 @@ struct BasicSearchViewWithDataQuery: View {
     @Query var cocktails: [Cocktail]
     @Environment(\.modelContext) var modelContext
    
-   
+    
     var body: some View {
         NavigationStack {
-            HStack {
-                Text("Search Ingredients")
-                    .font(.largeTitle).bold()
-                    .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
-                Spacer()
-            }
-            preferencesListView(viewModel: viewModel)
             VStack{
-                Form{
-                    ThumbsUpOrDownIngredientSearchList(viewModel: viewModel, keyboardFocused: _keyboardFocused)
-                    SearchForCocktailsButton(viewModel: viewModel)
-                    ResetButton(viewModel: viewModel)
+                HStack {
+                    Text("Search Ingredients")
+                        .font(.largeTitle).bold()
+                        .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
+                    Spacer()
+                }
+                preferencesListView(viewModel: viewModel)
+                VStack{
+                    Form{
+                        ThumbsUpOrDownIngredientSearchListView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
+                        SearchForCocktailsButton(viewModel: viewModel)
+                        ResetButton(viewModel: viewModel)
+                    }
                 }
             }
             .onAppear() {
                 keyboardFocused = true
+            }
+            .navigationDestination(isPresented: $viewModel.basicSearchViewIsActive) {
+                SearchResultsDataQueriesView(viewModel: viewModel)
+                    .navigationBarBackButtonHidden(true)
             }
         }
     }
@@ -44,7 +50,7 @@ struct BasicSearchViewWithDataQuery: View {
         .environmentObject(SearchCriteriaViewModel())
 }
 
-struct ThumbsUpOrDownIngredientSearchList: View {
+struct ThumbsUpOrDownIngredientSearchListView: View {
     @Bindable var viewModel: SearchViewModel
     @Environment(\.modelContext) var modelContext
     @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]
@@ -59,7 +65,7 @@ struct ThumbsUpOrDownIngredientSearchList: View {
                         .autocorrectionDisabled(true)
                         .onChange(of: viewModel.currentComponentSearchName, initial: true) { old, new in
                             viewModel.currentComponentSearchName = new
-                            viewModel.filteredIngredients = viewModel.matchAllIngredientsAndSubcategories(ingredients: ingredients.map({$0.name}), subCategories: viewModel.subCategoryStrings)
+                            viewModel.filteredIngredients = viewModel.matchAllIngredientsAndSubcategories(ingredients: ingredients.map({$0.name}))
                         }
                     if !viewModel.currentComponentSearchName.isEmpty {
                         Button {
@@ -95,10 +101,10 @@ struct ThumbsUpOrDownIngredientSearchList: View {
 struct SearchForCocktailsButton: View {
     @Bindable var viewModel: SearchViewModel
     @Environment(\.modelContext) var modelContext
-   
+    
     var body: some View {
-        NavigationLink {
-            SearchResultsViewDataQueries(viewModel: viewModel)
+        Button {
+            viewModel.basicSearchViewIsActive = true
         } label: {
             
             HStack {
@@ -159,33 +165,35 @@ public struct preferencesListView: View {
                     .font(.footnote)
                     .foregroundStyle(.gray)
                     .padding(.leading, 12)
-                    
+                
                 Spacer()
             }
-                ScrollView(.horizontal) {
-                    
-                    HStack(spacing: 12) {
-                        ForEach(viewModel.preferredIngredients, id: \.self) { preferredIngredient in
-                            viewModel.viewModelTagView(preferredIngredient, .green , "xmark")
-                                .onTapGesture {
-                                    withAnimation(.snappy) {
-                                        viewModel.preferredCount -= 1
-                                        viewModel.preferredIngredients.removeAll(where: { $0 == preferredIngredient})
-                                 
-                                
+            ScrollView(.horizontal) {
+                
+                HStack(spacing: 12) {
+                    ForEach(viewModel.preferredIngredients, id: \.self) { preferredIngredient in
+                        viewModel.viewModelTagView(preferredIngredient, .green , "xmark")
+                            .onTapGesture {
+                                withAnimation(.snappy) {
+                                    viewModel.preferredCount -= 1
+                                    viewModel.preferredIngredients.removeAll(where: { $0 == preferredIngredient})
+                                    if viewModel.preferredCount == 0 {
+                                        viewModel.basicSearchViewIsActive = false
                                     }
+                                    
                                 }
-                        }
+                            }
                     }
-                    .padding(.horizontal, 15)
-                    .frame(height: 35)
                 }
-                .mask(LinearGradient(stops: [.init(color: .clear, location: 0), .init(color: .white, location: 0.05), .init(color: .white, location: 0.95), .init(color: .clear, location: 1)], startPoint: .leading, endPoint: .trailing))
-                .scrollClipDisabled(true)
-                .scrollIndicators(.hidden)
-         
+                .padding(.horizontal, 15)
+                .frame(height: 35)
+            }
+            .mask(LinearGradient(stops: [.init(color: .clear, location: 0), .init(color: .white, location: 0.05), .init(color: .white, location: 0.95), .init(color: .clear, location: 1)], startPoint: .leading, endPoint: .trailing))
+            .scrollClipDisabled(true)
+            .scrollIndicators(.hidden)
             
-                ScrollView(.horizontal) {
+            
+            ScrollView(.horizontal) {
                     
                     HStack(spacing: 12) {
                         ForEach(viewModel.unwantedIngredients, id: \.self) { unwantedIngredient in

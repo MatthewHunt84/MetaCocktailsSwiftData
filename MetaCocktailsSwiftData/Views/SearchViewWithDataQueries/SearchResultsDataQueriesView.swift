@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct SearchResultsViewDataQueries: View {
+struct SearchResultsDataQueriesView: View {
     @Bindable var viewModel: SearchViewModel
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
@@ -18,7 +18,7 @@ struct SearchResultsViewDataQueries: View {
         NavigationStack{
             HStack{
                 Button{
-                    viewModel.onBasisSearchView = true
+                    viewModel.basicSearchViewIsActive = false
                     viewModel.willLoadOnAppear = true
                     dismiss()
                     
@@ -41,7 +41,7 @@ struct SearchResultsViewDataQueries: View {
             
             VStack(alignment: .leading) {
                 preferencesListView(viewModel: viewModel)
-                CocktailResultListDataQueries(viewModel: viewModel)
+                CocktailResultListDataQueriesView(viewModel: viewModel)
                 .navigationBarBackButtonHidden(true)
             }
             .navigationBarTitleDisplayMode(.inline)
@@ -73,7 +73,7 @@ struct SearchResultsViewDataQueries: View {
 
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    SearchResultsViewDataQueries(viewModel: SearchViewModel())
+    SearchResultsDataQueriesView(viewModel: SearchViewModel())
         .modelContainer(preview.container)
 }
 
