@@ -18,7 +18,7 @@ import SwiftData
     var context: ModelContext?
 
     //AddIngredientView
-    var category: Category = Category.agaves
+    var category: UmbrellaCategory = UmbrellaCategory.agaves
     var ingredientAmount = 0.0
     var ingredientTags = Tags()
     var prep: Prep?

@@ -142,7 +142,7 @@ final class CBCViewModel: ObservableObject {
     func convertLoadedCocktail(for cocktail: Cocktail) {
         var newLoadedCocktailData = CBCLoadedCocktailData(cocktailName: cocktail.cocktailName, ingredients: [])
         for spec in cocktail.spec {
-            if spec.ingredientBase.category != .herbs && spec.ingredientBase.category != .fruit && spec.unit != .whole {
+            if spec.ingredientBase.umbrellaCategory != .herbs && spec.ingredientBase.umbrellaCategory != .fruit && spec.unit != .whole {
                 newLoadedCocktailData.ingredients.append(CBCLoadedIngredient(ingredient: spec, isIncluded: true))
             }
         }

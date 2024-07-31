@@ -202,13 +202,11 @@ class OldCocktailIngredient: Codable, Hashable { // This old guy needs to be rem
 class Ingredient: Codable, Hashable {
     
     var ingredientBase: IngredientBase
-
     var id: UUID
     var value: Double
     var unit: MeasurementUnit
-
     init(ingredientBase: IngredientBase, value: Double, unit: MeasurementUnit = .fluidOunces) {
-        self.ingredientBase = IngredientBase(name: ingredientBase.name, info: ingredientBase.info, category: ingredientBase.category, tags: ingredientBase.tags, prep: ingredientBase.prep, isCustom: ingredientBase.isCustom)
+        self.ingredientBase = IngredientBase(name: ingredientBase.name, info: ingredientBase.info, category: ingredientBase.umbrellaCategory, tags: ingredientBase.tags, prep: ingredientBase.prep, isCustom: ingredientBase.isCustom)
         self.value = value
         self.unit = unit
         self.id = UUID()
@@ -217,8 +215,8 @@ class Ingredient: Codable, Hashable {
     init(oldIngredient: OldCocktailIngredient) {
         self.id = UUID()
         self.ingredientBase = {
-            var newCategory: Category = .agaves
-            for category in Category.allCases {
+            var newCategory: UmbrellaCategory = .agaves
+            for category in UmbrellaCategory.allCases {
                 if oldIngredient.ingredient.category == category.rawValue {
                     newCategory = category
                 }
@@ -248,11 +246,9 @@ class Ingredient: Codable, Hashable {
     }
     
     // MARK: - @Model codable conformance
-
     enum CodingKeys: CodingKey {
         case id, name, ingredientCategory, tagsWithSubcategories, value, unit, prep, matchesCurrentSearch, info, ingredientModel
     }
-
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(UUID.self, forKey: .id)
@@ -260,7 +256,6 @@ class Ingredient: Codable, Hashable {
         self.unit = try container.decode(MeasurementUnit.self, forKey: .unit)
         self.ingredientBase = try container.decode(IngredientBase.self, forKey: .ingredientModel)
     }
-
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
@@ -269,10 +264,7 @@ class Ingredient: Codable, Hashable {
         try container.encode(ingredientBase, forKey: .ingredientModel)
     }
 }
-
-
-
-enum Category: String, Codable, CaseIterable  {
+enum UmbrellaCategory: String, Codable, CaseIterable  {
     
     case syrups            = "Syrups"
     case juices            = "Juice"
@@ -281,7 +273,7 @@ enum Category: String, Codable, CaseIterable  {
     case seasoning         = "Seasoning"
     case soda              = "Sodas"
     case otherNonAlc       = "Other N/A"
-    case agaves            = "Agave"
+    case agaves            = "Agave Spirits"
     case brandies          = "Brandy"
     case gins              = "Gin"
     case otherAlcohol      = "Other Alcohol"
@@ -294,42 +286,65 @@ enum Category: String, Codable, CaseIterable  {
     case bitters           = "Bitters"
     case amari             = "Amari"
 }
-
-
+enum SpiritsUmbrellaCategory: String, Codable, CaseIterable  {
+    
+    case agaves            = "Agave Spirits"
+    case brandies          = "Brandy"
+    case gins              = "Gin"
+    case rums              = "Rum"
+    case vodkas            = "Vodka"
+    case whiskies          = "Whiskies"
+    case liqueurs          = "Liqueurs"
+    case fortifiedWines    = "Fortified Wine"
+    case wines             = "Wine"
+    case bitters           = "Bitters"
+    case amari             = "Amari"
+}
 @Model
 class IngredientBase: Codable, Hashable {
     #Unique<IngredientBase>([\.name])
-
     var name: String
     var info: String?
-    var category: Category
     var tags: Tags?
     var prep: Prep?
     var isCustom: Bool
-    var subCategories: [String]
-
+    var umbrellaCategory: UmbrellaCategory
+    var baseCategory: String?
+    var specialtyCategory: String?
     
-    init(name: String, info: String? = nil, category: Category, tags: Tags? = Tags(), prep: Prep?, isCustom: Bool = false, subCategory: [String] = []) {
-     
+    init(name: String, info: String? = nil, category: UmbrellaCategory, tags: Tags? = Tags(), prep: Prep?, isCustom: Bool = false, baseCategory: String? = nil, specialtyCategory: String? = nil) {
+        
         self.name = name
         self.info = info
-        self.category = category
+        self.umbrellaCategory = category
         self.tags = tags
         self.prep = prep
         self.isCustom = isCustom
-        self.subCategories = {
-            var tempSubCategories: [String] = []
-            let subCategoryStrings: [String] = SubCategories.allCases.map({$0.rawValue})
+        self.baseCategory = {
+            var tempBaseCategory: String = ""
             if let tags = tags {
                 if let booze = tags.booze {
                     for alcohol in booze {
-                        if subCategoryStrings.contains(alcohol.name) {
-                            tempSubCategories.append(alcohol.name)
+                        if BaseCategory.allCases.map({$0.rawValue}).contains(alcohol.name) {
+                            tempBaseCategory = alcohol.name
                         }
                     }
                 }
             }
-            return tempSubCategories
+            return tempBaseCategory
+        }()
+        self.specialtyCategory = {
+            var specialtyCategory: String = ""
+            if let tags = tags {
+                if let booze = tags.booze {
+                    for alcohol in booze {
+                        if SpecialtyCategory.allCases.map({$0.rawValue}).contains(alcohol.name) {
+                            specialtyCategory = alcohol.name
+                        }
+                    }
+                }
+            }
+            return specialtyCategory
         }()
     }
     
@@ -344,29 +359,31 @@ class IngredientBase: Codable, Hashable {
     }
     
     enum CodingKeys: CodingKey {
-        case name, category, tags, prep, info, isCustom, subCategories
+        case name, category, tags, prep, info, isCustom, baseCategory, specialtyCategory
     }
     
     required init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.name = try container.decode(String.self, forKey: .name)
-        self.category = try container.decode(Category.self, forKey: .category)
+        self.umbrellaCategory = try container.decode(UmbrellaCategory.self, forKey: .category)
         self.tags = try container.decode(Tags.self, forKey: .tags)
         self.prep = try container.decode(Prep.self, forKey: .prep)
         self.info = try container.decode(String.self, forKey: .info)
         self.isCustom = try container.decode(Bool.self, forKey: .isCustom)
-        self.subCategories = try container.decode([String].self, forKey: .subCategories)
+        self.baseCategory = try container.decode(String.self, forKey: .baseCategory)
+        self.specialtyCategory = try container.decode(String.self, forKey: .specialtyCategory)
     }
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name, forKey: .name)
-        try container.encode(category, forKey: .category)
+        try container.encode(umbrellaCategory, forKey: .category)
         try container.encode(tags, forKey: .tags)
         try container.encode(prep, forKey: .prep)
         try container.encode(info, forKey: .info)
         try container.encode(isCustom, forKey: .isCustom)
-        try container.encode(subCategories, forKey: .subCategories)
+        try container.encode(baseCategory, forKey: .baseCategory)
+        try container.encode(specialtyCategory, forKey: .specialtyCategory)
     }
     
     static func removeDuplicates(in context: ModelContext) throws {
@@ -385,5 +402,3 @@ class IngredientBase: Codable, Hashable {
         try context.save()
     }
 }
-
-

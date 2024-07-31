@@ -97,7 +97,7 @@ struct AddIngredientSearchView: View {
                         
                         Button {
                             viewModel.ingredientName = ingredient.name
-                            viewModel.category = ingredient.category
+                            viewModel.category = ingredient.umbrellaCategory
                             viewModel.ingredientTags = ingredient.tags ?? Tags()
                             viewModel.info = ingredient.info
                             viewModel.dynamicallyChangeMeasurementUnit()
