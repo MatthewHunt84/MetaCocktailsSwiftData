@@ -51,6 +51,8 @@ struct PerfectMatchCocktailView: View {
         let unwantedIngredientsFromSubCategories = passedViewModel.findIngredientNamesForCorrespondingSubCategories().unwanted
         let preferredIngredientsFromSubCategories = passedViewModel.findIngredientNamesForCorrespondingSubCategories().preferred
         
+        let allUnwantedIngredients = unwantedIngredientsFromSubCategories + unwantedIngredientsWithoutSubCategories
+        
 //        let matchesAllPreferredIngredients = #Expression<[Ingredient], Bool> { ingredients in
 //            ingredients.filter { ingredient in
 //                preferredIngredientsWithoutSubCategories.contains(ingredient.ingredientBase.name)
@@ -58,14 +60,10 @@ struct PerfectMatchCocktailView: View {
 //        }
         let includesUnwantedIngredients = #Expression<[Ingredient], Bool> { ingredients in
             ingredients.filter { ingredient in
-                unwantedIngredientsWithoutSubCategories.contains(ingredient.ingredientBase.name)
+                allUnwantedIngredients.contains(ingredient.ingredientBase.name)
             }.count > 0
         }
-        let includesUnwantedIngredientsFromSubCategories = #Expression<[Ingredient], Bool> { ingredients in
-            ingredients.filter { ingredient in
-                unwantedIngredientsFromSubCategories.contains(ingredient.ingredientBase.name)
-            }.count > 0
-        }
+       
         
 //        let fullMatchPredicate = #Predicate<Cocktail> { cocktail in
 //            matchesAllPreferredIngredients.evaluate(cocktail.spec)
@@ -87,7 +85,6 @@ struct PerfectMatchCocktailView: View {
         let fullMatchPredicate2 = #Predicate<Cocktail> { cocktail in
             (preferredIngredientsTotalCount.evaluate(cocktail.spec) + preferredIngredientsFromSubCategoriesTotalCount.evaluate(cocktail.spec) == explicitPreferredCount)
             && !includesUnwantedIngredients.evaluate(cocktail.spec)
-            && !includesUnwantedIngredientsFromSubCategories.evaluate(cocktail.spec)
         }
         _fullMatchCocktails = Query(filter: fullMatchPredicate2, sort: \Cocktail.cocktailName)
         
@@ -107,6 +104,15 @@ struct PerfectMatchCocktailView: View {
                     } label: {
                         HStack {
                             Text(cocktail.cocktailName)
+                        }
+                    }
+                }
+                .task {
+                    for cocktail in fullMatchCocktails {
+                        for spec in cocktail.spec {
+                            if let base = spec.ingredientBase.baseCategory {
+                                print("\(cocktail.cocktailName) has an umbrella of \(spec.ingredientBase.umbrellaCategory) and a base cat of \(base)")
+                            }
                         }
                     }
                 }

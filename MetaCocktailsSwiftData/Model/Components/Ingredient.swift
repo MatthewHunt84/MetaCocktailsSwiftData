@@ -321,11 +321,11 @@ class IngredientBase: Codable, Hashable {
     var prep: Prep?
     var isCustom: Bool
     var umbrellaCategory: UmbrellaCategory
-    var baseCategory: String
-    var specialtyCategory: String
+    var baseCategory: String?
+    var specialtyCategory: String?
 
     
-    init(name: String, info: String? = nil, category: UmbrellaCategory, tags: Tags? = Tags(), prep: Prep?, isCustom: Bool = false, baseCategory: String = "", specialtyCategory: String = "") {
+    init(name: String, info: String? = nil, category: UmbrellaCategory, tags: Tags? = Tags(), prep: Prep?, isCustom: Bool = false, baseCategory: String? = nil, specialtyCategory: String? = nil) {
      
         self.name = name
         self.info = info
