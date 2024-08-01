@@ -215,13 +215,14 @@ class Ingredient: Codable, Hashable {
     init(oldIngredient: OldCocktailIngredient) {
         self.id = UUID()
         self.ingredientBase = {
-            var newCategory: UmbrellaCategory = .agaves
-            for category in UmbrellaCategory.allCases {
-                if oldIngredient.ingredient.category == category.rawValue {
-                    newCategory = category
-                }
-            }
-            return IngredientBase(name: oldIngredient.ingredient.name, info: oldIngredient.info, category: newCategory, tags: oldIngredient.ingredient.tags, prep: oldIngredient.prep)
+            let newCategory = UmbrellaCategory(rawValue: oldIngredient.ingredient.category) ?? .otherAlcohol
+            return IngredientBase(
+                name: oldIngredient.ingredient.name,
+                info: oldIngredient.info,
+                category: newCategory,
+                tags: oldIngredient.ingredient.tags,
+                prep: oldIngredient.prep
+            )
         }()
         self.value = oldIngredient.value
         self.unit = oldIngredient.unit
