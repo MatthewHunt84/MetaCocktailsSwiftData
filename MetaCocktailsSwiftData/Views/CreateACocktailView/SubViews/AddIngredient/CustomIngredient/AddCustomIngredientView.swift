@@ -75,7 +75,7 @@ struct CategoryPickerView: View {
         Section("Category") {
             HStack{
                 Menu {
-                    ForEach(Category.allCases, id: \.self) { category in
+                    ForEach(UmbrellaCategory.allCases, id: \.self) { category in
                         
                         Button("\(category.rawValue)") {
                             viewModel.category = category
