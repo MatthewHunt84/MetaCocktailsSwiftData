@@ -9,13 +9,16 @@ import SwiftUI
 
 struct PreferencesThumbsCell: View {
    
-    @Bindable var viewModel: SearchViewModel
+    @EnvironmentObject var viewModel: SearchViewModel
     @Binding var ingredient: String
     
     var body: some View {
         HStack{
+            
             Text(ingredient)
+            
             Spacer()
+            
             Image(systemName:viewModel.preferredIngredients.contains(ingredient)  ? "hand.thumbsup.fill" : "hand.thumbsup")
                 .foregroundStyle(viewModel.preferredIngredients.contains(ingredient)  ? .brandPrimaryGreen : .white)
                 .onTapGesture {
@@ -31,6 +34,7 @@ struct PreferencesThumbsCell: View {
                     }
                 }
                 .font(.system(size: 20))
+            
             Image(systemName:viewModel.unwantedIngredients.contains(ingredient)  ? "hand.thumbsdown.fill" : "hand.thumbsdown")
                 .foregroundStyle(viewModel.unwantedIngredients.contains(ingredient)  ? .brandPrimaryRed : .white)
                 .onTapGesture {
@@ -52,7 +56,8 @@ struct PreferencesThumbsCell: View {
 
 #Preview {
     @Previewable @State var mockIngredient = "Fun Ingredient"
-    PreferencesThumbsCell(viewModel: SearchViewModel(), ingredient: $mockIngredient)
+    PreferencesThumbsCell(ingredient: $mockIngredient)
+        .environmentObject(SearchViewModel())
 }
 
 //struct PreferencesThumbsCellForSubCategories: View {

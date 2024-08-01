@@ -8,41 +8,29 @@
 import SwiftUI
 import SwiftData
 
-struct CocktailResultListDataQueriesView: View {
+struct IngredientSearchMatchedCocktailsView: View {
     
-    @Bindable var viewModel: SearchViewModel
+    @EnvironmentObject var viewModel: SearchViewModel
     
     var body: some View {
-        NavigationStack {
-            VStack {
-                VStack{
-                    List {
-                        PerfectMatchCocktailView(passedViewModel: viewModel)
-                        MinusOneMatchView(passedViewModel: viewModel)
-                        MinusTwoMatchView(passedViewModel: viewModel)
-                    }
-                    .listStyle(.plain)
-                    .backgroundStyle(Color(.black))
-                }
-            }
+        
+        List {
+            PerfectMatchCocktailView(passedViewModel: viewModel)
+            MinusOneMatchView(passedViewModel: viewModel)
+            MinusTwoMatchView(passedViewModel: viewModel)
         }
+        .listStyle(.plain)
+        .backgroundStyle(.black)
     }
 }
 
-//#Preview {
-//    CocktailResultListDataQueries(preferredIngredients: [], notPreferredIngredients: [], passedViewModel: SearchViewModel())
-//     
-//}
-
-
 struct PerfectMatchCocktailView: View {
     
-    @Bindable var viewModel: SearchViewModel
+    @EnvironmentObject var viewModel: SearchViewModel
     @Query var fullMatchCocktails: [Cocktail]
     
     init(passedViewModel: SearchViewModel) {
-        
-        self.viewModel = passedViewModel
+
         let explicitPreferredCount = passedViewModel.preferredCount
         let preferredIngredientsWithoutSubCategories = passedViewModel.preferredIngredients.filter({ !passedViewModel.subCategoryStrings.contains($0)})
         let totalUnwantedIngredients: [String] = passedViewModel.unwantedIngredients.filter({ !passedViewModel.subCategoryStrings.contains($0)}) + passedViewModel.findIngredientNamesForCorrespondingSubCategories().unwanted
@@ -113,13 +101,12 @@ struct PerfectMatchCocktailView: View {
 
 struct MinusOneMatchView: View {
     
-    @Bindable var viewModel: SearchViewModel
+    @EnvironmentObject var viewModel: SearchViewModel
     @Query var minusOneMatchCocktails: [Cocktail]
     @State var nonmatchSearchPreference = "none" 
     
     init(passedViewModel: SearchViewModel) {
-        
-        self.viewModel = passedViewModel
+
         let explicitPreferredCount = passedViewModel.preferredCount
         let preferredIngredientsWithoutSubCategories = passedViewModel.preferredIngredients.filter({ !passedViewModel.subCategoryStrings.contains($0)})
         let totalUnwantedIngredients: [String] = passedViewModel.unwantedIngredients.filter({ !passedViewModel.subCategoryStrings.contains($0)}) + passedViewModel.findIngredientNamesForCorrespondingSubCategories().unwanted
@@ -163,7 +150,7 @@ struct MinusOneMatchView: View {
             Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 1))) {
                 
                 HStack{
-                    FilterMatchesMenuDataQueriesView(viewModel: viewModel, nonmatchSearchPreference: $nonmatchSearchPreference)
+                    FilterMatchesMenuDataQueriesView(nonmatchSearchPreference: $nonmatchSearchPreference)
                     Spacer()
                 }
                 ForEach(filtered(minusOneMatchCocktails), id: \.self) { cocktail in
@@ -195,13 +182,10 @@ struct MinusOneMatchView: View {
 
 struct MinusTwoMatchView: View {
     @State var nonmatchSearchPreference = "none"
-    @Bindable var viewModel: SearchViewModel
+    @EnvironmentObject var viewModel: SearchViewModel
     @Query var minusTwoMatchCocktails: [Cocktail]
     
     init(passedViewModel: SearchViewModel) {
-        
-        self.viewModel = passedViewModel
-        
         let explicitPreferredCount = passedViewModel.preferredCount
         let preferredIngredientsWithoutSubCategories = passedViewModel.preferredIngredients.filter({ !passedViewModel.subCategoryStrings.contains($0)})
         let unwantedIngredientsWithoutSubCategories: [String] = passedViewModel.unwantedIngredients.filter({ !passedViewModel.subCategoryStrings.contains($0)})
@@ -240,7 +224,7 @@ struct MinusTwoMatchView: View {
             Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 2))) {
                 
                 HStack{
-                    FilterMatchesMenuDataQueriesView(viewModel: viewModel, nonmatchSearchPreference: $nonmatchSearchPreference)
+                    FilterMatchesMenuDataQueriesView(nonmatchSearchPreference: $nonmatchSearchPreference)
                     Spacer()
                 }
                 ForEach(filtered(minusTwoMatchCocktails), id: \.self) { cocktail in
@@ -278,7 +262,7 @@ struct MissingIngredientsView: View {
     init(for cocktail: Cocktail, in viewModel: SearchViewModel) {
         let preferredIngredientArray = viewModel.preferredIngredients
         let cocktailIngredientBases = cocktail.spec.map { $0.ingredientBase.name }
-        let missingIngredientsArray = preferredIngredientArray.filter { cocktailIngredientBases.contains($0) }
+        let missingIngredientsArray = preferredIngredientArray.filter { !cocktailIngredientBases.contains($0) }
         self.missingIngredientArray = missingIngredientsArray
     }
    
@@ -296,7 +280,7 @@ struct MissingIngredientsView: View {
 
 struct FilterMatchesMenuDataQueriesView: View {
     
-    @Bindable var viewModel: SearchViewModel
+    @EnvironmentObject var viewModel: SearchViewModel
     @Binding var nonmatchSearchPreference: String
     
     var body: some View {
