@@ -830,6 +830,7 @@ enum FortifiedWine: String, Codable, CaseIterable, BoozeTagsProtocol {
     case sandemanPort           = "Sandeman Port"
     case sweetVermouthAny       = "Sweet Vermouth"
     case tawnyPort              = "Tawny Port"
+    case portWine               = "Port"
     case vermouthAny            = "Vermouth"
     case sherryAny              = "Sherry"
     case sherryEastIndia        = "Sherry (East India Lustau)"
@@ -873,7 +874,7 @@ enum FortifiedWine: String, Codable, CaseIterable, BoozeTagsProtocol {
         case .carpanoAntica:
             Tags(booze: [Booze(.fortifiedWines(self)), Booze(.fortifiedWines(.vermouthAny)), Booze(.fortifiedWines(.fortifiedWineAny)), Booze(.fortifiedWines(.sweetVermouthAny))])
         case .sandemanPort:
-            Tags(booze: [Booze(.fortifiedWines(self)), Booze(.fortifiedWines(.fortifiedWineAny)), Booze(.fortifiedWines(.tawnyPort))])
+            Tags(booze: [Booze(.fortifiedWines(self)), Booze(.fortifiedWines(.fortifiedWineAny)), Booze(.fortifiedWines(.portWine)), Booze(.fortifiedWines(.tawnyPort))])
         case .sherryEastIndia:
             Tags(profiles: [.fruity], booze: [Booze(.fortifiedWines(self)), Booze(.fortifiedWines(.sherryAny)), Booze(.fortifiedWines(.fortifiedWineAny))])
         case .lustauAmontillado:
@@ -909,9 +910,11 @@ enum FortifiedWine: String, Codable, CaseIterable, BoozeTagsProtocol {
         case .dubonnet:
             Tags(booze: [Booze(.fortifiedWines(self)), Booze(.fortifiedWines(.fortifiedWineAny))])
         case .tawnyPort:
-            Tags(profiles: [.fruity], booze: [Booze(.fortifiedWines(self)), Booze(.fortifiedWines(.fortifiedWineAny))])
+            Tags(profiles: [.fruity], booze: [Booze(.fortifiedWines(self)), Booze(.fortifiedWines(.fortifiedWineAny)), Booze(.fortifiedWines(.portWine)), Booze(.fortifiedWines(.tawnyPort))])
         case .martiniBianco:
             Tags(booze: [Booze(.fortifiedWines(self)), Booze(.fortifiedWines(.vermouthAny)), Booze(.fortifiedWines(.fortifiedWineAny))])
+        case .portWine:
+            Tags(profiles: [.fruity], booze: [Booze(.fortifiedWines(self)), Booze(.fortifiedWines(.fortifiedWineAny))])
         }
     }
     
