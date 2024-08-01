@@ -265,42 +265,7 @@ class Ingredient: Codable, Hashable {
         try container.encode(ingredientBase, forKey: .ingredientModel)
     }
 }
-enum UmbrellaCategory: String, Codable, CaseIterable  {
-    
-    case syrups            = "Syrups"
-    case juices            = "Juice"
-    case herbs             = "Herbs"
-    case fruit             = "Fruit"
-    case seasoning         = "Seasoning"
-    case soda              = "Sodas"
-    case otherNonAlc       = "Other N/A"
-    case agaves            = "Agave Spirits"
-    case brandies          = "Brandy"
-    case gins              = "Gin"
-    case otherAlcohol      = "Other Alcohol"
-    case rums              = "Rum"
-    case vodkas            = "Vodka"
-    case whiskies          = "Whiskies"
-    case liqueurs          = "Liqueurs"
-    case fortifiedWines    = "Fortified Wine"
-    case wines             = "Wine"
-    case bitters           = "Bitters"
-    case amari             = "Amari"
-}
-enum SpiritsUmbrellaCategory: String, Codable, CaseIterable  {
-    
-    case agaves            = "Agave Spirits"
-    case brandies          = "Brandy"
-    case gins              = "Gin"
-    case rums              = "Rum"
-    case vodkas            = "Vodka"
-    case whiskies          = "Whiskies"
-    case liqueurs          = "Liqueurs"
-    case fortifiedWines    = "Fortified Wine"
-    case wines             = "Wine"
-    case bitters           = "Bitters"
-    case amari             = "Amari"
-}
+
 @Model
 class IngredientBase: Codable, Hashable {
     #Unique<IngredientBase>([\.name])
