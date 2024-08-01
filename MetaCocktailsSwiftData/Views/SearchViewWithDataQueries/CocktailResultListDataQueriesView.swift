@@ -97,8 +97,15 @@ struct PerfectMatchCocktailView: View {
                         }
                     }
                 }
+                .task {
+                    for cocktail in fullMatchCocktails {
+                        for spec in cocktail.spec {
+                            print("\(spec.ingredientBase.name) has an umbrella of \(spec.ingredientBase.umbrellaCategory.rawValue) and a base category of \(String(describing: spec.ingredientBase.baseCategory)) and a specialty of \(String(describing: spec.ingredientBase.specialtyCategory))")
+                        }
+                    }
+                }
             }
-        } 
+        }
     }
 }
 

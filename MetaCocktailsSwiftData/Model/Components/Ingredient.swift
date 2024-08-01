@@ -309,10 +309,10 @@ class IngredientBase: Codable, Hashable {
     var prep: Prep?
     var isCustom: Bool
     var umbrellaCategory: UmbrellaCategory
-    var baseCategory: String?
-    var specialtyCategory: String?
+    var baseCategory: BaseCategory?
+    var specialtyCategory: SpecialtyCategory?
     
-    init(name: String, info: String? = nil, category: UmbrellaCategory, tags: Tags? = Tags(), prep: Prep?, isCustom: Bool = false, baseCategory: String? = nil, specialtyCategory: String? = nil) {
+    init(name: String, info: String? = nil, category: UmbrellaCategory, tags: Tags? = Tags(), prep: Prep?, isCustom: Bool = false, baseCategory: BaseCategory? = nil, specialtyCategory: SpecialtyCategory? = nil) {
         
         self.name = name
         self.info = info
@@ -321,30 +321,26 @@ class IngredientBase: Codable, Hashable {
         self.prep = prep
         self.isCustom = isCustom
         self.baseCategory = {
-            var tempBaseCategory: String = ""
-            if let tags = tags {
-                if let booze = tags.booze {
-                    for alcohol in booze {
-                        if BaseCategory.allCases.map({$0.rawValue}).contains(alcohol.name) {
-                            tempBaseCategory = alcohol.name
-                        }
-                    }
+            guard let tags = tags, let booze = tags.booze else {
+                return nil
+            }
+            for alcohol in booze {
+                if let base = BaseCategory(rawValue: alcohol.name) {
+                    return base
                 }
             }
-            return tempBaseCategory
+            return nil
         }()
         self.specialtyCategory = {
-            var specialtyCategory: String = ""
-            if let tags = tags {
-                if let booze = tags.booze {
-                    for alcohol in booze {
-                        if SpecialtyCategory.allCases.map({$0.rawValue}).contains(alcohol.name) {
-                            specialtyCategory = alcohol.name
-                        }
-                    }
+            guard let tags = tags, let booze = tags.booze else {
+                return nil
+            }
+            for alcohol in booze {
+                if let specialty = SpecialtyCategory(rawValue: alcohol.name) {
+                    return specialty
                 }
             }
-            return specialtyCategory
+            return nil
         }()
     }
     
@@ -370,8 +366,8 @@ class IngredientBase: Codable, Hashable {
         self.prep = try container.decode(Prep.self, forKey: .prep)
         self.info = try container.decode(String.self, forKey: .info)
         self.isCustom = try container.decode(Bool.self, forKey: .isCustom)
-        self.baseCategory = try container.decode(String.self, forKey: .baseCategory)
-        self.specialtyCategory = try container.decode(String.self, forKey: .specialtyCategory)
+        self.baseCategory = try container.decode(BaseCategory.self, forKey: .baseCategory)
+        self.specialtyCategory = try container.decode(SpecialtyCategory.self, forKey: .specialtyCategory)
     }
     
     func encode(to encoder: Encoder) throws {
