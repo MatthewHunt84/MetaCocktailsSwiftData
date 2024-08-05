@@ -67,6 +67,8 @@
 		1AFDB7DC2AE36E0A000A3812 /* Mojito.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFDB7DB2AE36E0A000A3812 /* Mojito.swift */; };
 		1AFDB7DE2AE37207000A3812 /* Boulevardier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFDB7DD2AE37207000A3812 /* Boulevardier.swift */; };
 		1AFDB7E02AE37417000A3812 /* WhiteNegroni.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFDB7DF2AE37417000A3812 /* WhiteNegroni.swift */; };
+		4D08602C2C60599E000AB17A /* PreferencesIncludedLimitedThumbCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D08602B2C60599E000AB17A /* PreferencesIncludedLimitedThumbCell.swift */; };
+		4D08602E2C60C0F4000AB17A /* PreferencesExcludedLimitedThumbCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D08602D2C60C0F4000AB17A /* PreferencesExcludedLimitedThumbCell.swift */; };
 		4D088FCA2B62E3640047B056 /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D088FC92B62E3640047B056 /* RecipeViewModel.swift */; };
 		4D09E65F2B146B9500D38C35 /* Saturn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D09E65E2B146B9500D38C35 /* Saturn.swift */; };
 		4D1E85B12B5C6AEA00214BC6 /* GreatWhiteBuffalo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E85B02B5C6AEA00214BC6 /* GreatWhiteBuffalo.swift */; };
@@ -576,6 +578,8 @@
 		1AFDB7DB2AE36E0A000A3812 /* Mojito.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mojito.swift; sourceTree = "<group>"; };
 		1AFDB7DD2AE37207000A3812 /* Boulevardier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boulevardier.swift; sourceTree = "<group>"; };
 		1AFDB7DF2AE37417000A3812 /* WhiteNegroni.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteNegroni.swift; sourceTree = "<group>"; };
+		4D08602B2C60599E000AB17A /* PreferencesIncludedLimitedThumbCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesIncludedLimitedThumbCell.swift; sourceTree = "<group>"; };
+		4D08602D2C60C0F4000AB17A /* PreferencesExcludedLimitedThumbCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesExcludedLimitedThumbCell.swift; sourceTree = "<group>"; };
 		4D088FC92B62E3640047B056 /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
 		4D09E65E2B146B9500D38C35 /* Saturn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saturn.swift; sourceTree = "<group>"; };
 		4D1E85B02B5C6AEA00214BC6 /* GreatWhiteBuffalo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreatWhiteBuffalo.swift; sourceTree = "<group>"; };
@@ -1568,6 +1572,8 @@
 			isa = PBXGroup;
 			children = (
 				4D6761382C44902C00A5939C /* PreferencesThumbsCell.swift */,
+				4D08602B2C60599E000AB17A /* PreferencesIncludedLimitedThumbCell.swift */,
+				4D08602D2C60C0F4000AB17A /* PreferencesExcludedLimitedThumbCell.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -2239,6 +2245,7 @@
 				4DA567C42B6DB48C003F6F04 /* NobodysPerfect.swift in Sources */,
 				4D6761412C44E61F00A5939C /* IngredientSearchResultsView.swift in Sources */,
 				4DD0DEA02B981EC3008EF203 /* Debbie, Don't.swift in Sources */,
+				4D08602E2C60C0F4000AB17A /* PreferencesExcludedLimitedThumbCell.swift in Sources */,
 				4DA567862B6CB742003F6F04 /* LordReyesTheVIII.swift in Sources */,
 				4DA5678C2B6CBFE3003F6F04 /* DaveyCrocketsLocker.swift in Sources */,
 				4DA568182B6E24A7003F6F04 /* HappyAccidents.swift in Sources */,
@@ -2424,6 +2431,7 @@
 				4D1E85C12B5C8F4500214BC6 /* AFlightSouthOfTheBorder.swift in Sources */,
 				4DA567D82B6DC65B003F6F04 /* UnusualSuspect.swift in Sources */,
 				4D1E85D32B5CD8E700214BC6 /* RedWedding.swift in Sources */,
+				4D08602C2C60599E000AB17A /* PreferencesIncludedLimitedThumbCell.swift in Sources */,
 				4DE33E212B91B82E00312EC3 /* Cosmonaut.swift in Sources */,
 				4DA567782B6C8AAC003F6F04 /* PeaksOfReykjavik.swift in Sources */,
 				4D5DA0B82BA12B3E00C14F1F /* RegalAmburana.swift in Sources */,
@@ -2658,7 +2666,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MetaCocktailsSwiftData/Preview Content\"";
-				DEVELOPMENT_TEAM = "WK23NQPJ9R";
+				DEVELOPMENT_TEAM = WK23NQPJ9R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MetaCocktailsSwiftData/Info.plist;
@@ -2688,7 +2696,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MetaCocktailsSwiftData/Preview Content\"";
-				DEVELOPMENT_TEAM = "WK23NQPJ9R";
+				DEVELOPMENT_TEAM = WK23NQPJ9R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MetaCocktailsSwiftData/Info.plist;

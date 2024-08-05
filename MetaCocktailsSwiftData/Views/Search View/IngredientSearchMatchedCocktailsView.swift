@@ -31,9 +31,10 @@ struct PerfectMatchCocktailView: View {
     
     init(passedViewModel: SearchViewModel) {
 
-        let explicitPreferredCount = passedViewModel.preferredCount
-        let preferredIngredientsWithoutSubCategories = passedViewModel.preferredIngredients.filter({ !passedViewModel.subCategoryStrings.contains($0)})
-        let totalUnwantedIngredients: [String] = passedViewModel.unwantedIngredients.filter({ !passedViewModel.subCategoryStrings.contains($0)}) + passedViewModel.findIngredientNamesForCorrespondingSubCategories().unwanted
+        var explicitPreferredCount = passedViewModel.preferredCount
+        let preferredIngredientsWithoutSubCategories = passedViewModel.preferredIngredients.filter({ !passedViewModel.baseCategoryStrings.contains($0)})
+        let preferredBaseCategories = passedViewModel.preferredIngredients.filter({ passedViewModel.baseCategoryStrings.contains($0)})
+        let totalUnwantedIngredients: [String] = passedViewModel.unwantedIngredients.filter({ !passedViewModel.baseCategoryStrings.contains($0)}) + passedViewModel.findIngredientNamesForCorrespondingSubCategories().unwanted
         
         let preferredIngredientsFromSubCategories = passedViewModel.findIngredientNamesForCorrespondingSubCategories().preferred
 
@@ -53,18 +54,34 @@ struct PerfectMatchCocktailView: View {
             }.count
         }
         
+        
         let preferredIngredientsFromSubCategoriesTotalCount = #Expression<[Ingredient], Int> { ingredients in
             ingredients.filter { ingredient in
                 preferredIngredientsFromSubCategories.contains(ingredient.ingredientBase.name)
             }.count
         }
-
-        let fullMatchPredicate = #Predicate<Cocktail> { cocktail in
-            (preferredIngredientsTotalCount.evaluate(cocktail.spec) + preferredIngredientsFromSubCategoriesTotalCount.evaluate(cocktail.spec) == explicitPreferredCount)
+        if preferredIngredientsFromSubCategories.count > 0 {
+            explicitPreferredCount -= passedViewModel.preferredIngredients.filter({ passedViewModel.baseCategoryStrings.contains($0)}).count 
+        }
+        
+    
+        let fullMatchPredicateWithBaseCategories = #Predicate<Cocktail> { cocktail in
+            
+            (preferredIngredientsTotalCount.evaluate(cocktail.spec) == explicitPreferredCount)
             && !includesUnwantedIngredients.evaluate(cocktail.spec)
+            && preferredIngredientsFromSubCategoriesTotalCount.evaluate(cocktail.spec) > 0
           
         }
-        _fullMatchCocktails = Query(filter: fullMatchPredicate, sort: \Cocktail.cocktailName)
+        let fullMatchPredicateWithoutBaseCategories = #Predicate<Cocktail> { cocktail in
+            
+            (preferredIngredientsTotalCount.evaluate(cocktail.spec) == explicitPreferredCount)
+            && !includesUnwantedIngredients.evaluate(cocktail.spec)
+        }
+        if preferredIngredientsFromSubCategories.count > 0 {
+            _fullMatchCocktails = Query(filter: fullMatchPredicateWithBaseCategories, sort: \Cocktail.cocktailName)
+        } else {
+            _fullMatchCocktails = Query(filter: fullMatchPredicateWithoutBaseCategories, sort: \Cocktail.cocktailName)
+        }
         
     }
     
@@ -82,13 +99,6 @@ struct PerfectMatchCocktailView: View {
                     } label: {
                         HStack {
                             Text(cocktail.cocktailName)
-                        }
-                    }
-                }
-                .task {
-                    for cocktail in fullMatchCocktails {
-                        for spec in cocktail.spec {
-                            print("\(spec.ingredientBase.name) has an umbrella of \(spec.ingredientBase.umbrellaCategory.rawValue) and a base category of \(String(describing: spec.ingredientBase.baseCategory)) and a specialty of \(String(describing: spec.ingredientBase.specialtyCategory))")
                         }
                     }
                 }

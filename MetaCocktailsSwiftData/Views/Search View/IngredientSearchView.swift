@@ -140,7 +140,7 @@ struct ThumbsUpOrDownIngredientSearchListView: View {
                 List {
                     
                     ForEach($viewModel.filteredIngredients, id: \.self) { ingredient in
-                        PreferencesThumbsCell(ingredient: ingredient)
+                        viewModel.returnPreferencesThumbCell(ingredient: ingredient)
                     }
                     .listStyle(.plain)
                     .listRowBackground(Color.black)
