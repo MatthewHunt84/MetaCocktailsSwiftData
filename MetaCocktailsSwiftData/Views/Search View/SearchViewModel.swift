@@ -24,6 +24,8 @@ final class SearchViewModel: ObservableObject {
     var allWhiskies: [String] = Whiskey.allCases.map({ $0.rawValue })
     var unwantedIngredients: [String] = []
     var preferredIngredients: [String] = []
+    var preferredBases: [IngredientBase] = [] // Adding these two arrays to differentiate between user's selections and bases. We'll keep all user's selections in preferredIngredients/unwantedIngredients regardless if they are an ingredient or an umbrella category etc.
+    var unwantedBases: [IngredientBase] = [] // but lets put the actual ingredient bases the user selects here. So these arrays will hold only real ingredients (lemon juice, raspberries etc)
     var preferredUmbrellaCategories: [UmbrellaCategory] = []
     var unwantedUmbrellaCategories: [UmbrellaCategory] = []
     var preferredBaseCategories: [BaseCategory] = []
@@ -124,6 +126,10 @@ final class SearchViewModel: ObservableObject {
         }
     }
     // I'm using the bang operator here. I know we aren't supposed to use them in coding but I don't see why we can't use it here.
+    
+    // This is so close!
+    // Think about this: if the UmbrellaCategory(rawValue: unwantedIngredient) cast fails we'll get a nil value, but if it works we'll get an umbrella category
+    // So how can we use that behavior to our advantage? (hint: what if we use an if let instead of a contains?)
     func fillUnwantedCategoryArrays() {
 
          unwantedUmbrellaCategories = []
