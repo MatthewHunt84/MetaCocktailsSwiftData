@@ -21,19 +21,19 @@ struct PreferencesIncludedLimitedThumbCell: View {
              
              Text("Included")
                  .font(.caption)
-                 .foregroundStyle(!viewModel.unwantedIngredients.contains(ingredient) ? .brandPrimaryGreen : .black)
+                 .foregroundStyle(!viewModel.unwantedSelections.contains(ingredient) ? .brandPrimaryGreen : .black)
              
-             Image(systemName:viewModel.unwantedIngredients.contains(ingredient)  ? "hand.thumbsdown.fill" : "hand.thumbsdown")
-                 .foregroundStyle(viewModel.unwantedIngredients.contains(ingredient)  ? .brandPrimaryRed : .white)
+             Image(systemName:viewModel.unwantedSelections.contains(ingredient)  ? "hand.thumbsdown.fill" : "hand.thumbsdown")
+                 .foregroundStyle(viewModel.unwantedSelections.contains(ingredient)  ? .brandPrimaryRed : .white)
                  .onTapGesture {
-                     if !viewModel.unwantedIngredients.contains(ingredient) {
-                         viewModel.unwantedIngredients.append(ingredient)
-                         if viewModel.preferredIngredients.contains(ingredient) {
-                             viewModel.preferredIngredients.removeAll(where: {$0 == ingredient})
+                     if !viewModel.unwantedSelections.contains(ingredient) {
+                         viewModel.unwantedSelections.append(ingredient)
+                         if viewModel.preferredSelections.contains(ingredient) {
+                             viewModel.preferredSelections.removeAll(where: {$0 == ingredient})
                              viewModel.preferredCount -= 1
                          }
                      } else {
-                         viewModel.unwantedIngredients.removeAll(where: {$0 == ingredient})
+                         viewModel.unwantedSelections.removeAll(where: {$0 == ingredient})
                      }
                      viewModel.fillUnwantedCategoryArrays()
                      

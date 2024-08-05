@@ -20,7 +20,7 @@ struct PreferencesExcludedLimitedThumbCell: View {
             
             Text("Excluded")
                 .font(.caption)
-                .foregroundStyle(!viewModel.unwantedIngredients.contains(ingredient) ? .brandPrimaryRed : .black)
+                .foregroundStyle(!viewModel.unwantedSelections.contains(ingredient) ? .brandPrimaryRed : .black)
                 .padding(.horizontal, 10)
                 
         }

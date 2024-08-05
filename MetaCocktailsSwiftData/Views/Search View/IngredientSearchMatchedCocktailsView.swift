@@ -32,9 +32,9 @@ struct PerfectMatchCocktailView: View {
     init(passedViewModel: SearchViewModel) {
 
         var explicitPreferredCount = passedViewModel.preferredCount
-        let preferredIngredientsWithoutSubCategories = passedViewModel.preferredIngredients.filter({ !passedViewModel.baseCategoryStrings.contains($0)})
-        let preferredBaseCategories = passedViewModel.preferredIngredients.filter({ passedViewModel.baseCategoryStrings.contains($0)})
-        let totalUnwantedIngredients: [String] = passedViewModel.unwantedIngredients.filter({ !passedViewModel.baseCategoryStrings.contains($0)}) + passedViewModel.findIngredientNamesForCorrespondingSubCategories().unwanted
+        let preferredIngredientsWithoutSubCategories = passedViewModel.preferredSelections.filter({ !passedViewModel.baseCategoryStrings.contains($0)})
+        let preferredBaseCategories = passedViewModel.preferredSelections.filter({ passedViewModel.baseCategoryStrings.contains($0)})
+        let totalUnwantedIngredients: [String] = passedViewModel.unwantedSelections.filter({ !passedViewModel.baseCategoryStrings.contains($0)}) + passedViewModel.findIngredientNamesForCorrespondingSubCategories().unwanted
         
         let preferredIngredientsFromSubCategories = passedViewModel.findIngredientNamesForCorrespondingSubCategories().preferred
 
@@ -61,7 +61,7 @@ struct PerfectMatchCocktailView: View {
             }.count
         }
         if preferredIngredientsFromSubCategories.count > 0 {
-            explicitPreferredCount -= passedViewModel.preferredIngredients.filter({ passedViewModel.baseCategoryStrings.contains($0)}).count 
+            explicitPreferredCount -= passedViewModel.preferredSelections.filter({ passedViewModel.baseCategoryStrings.contains($0)}).count 
         }
         
     
@@ -118,8 +118,8 @@ struct MinusOneMatchView: View {
     init(passedViewModel: SearchViewModel) {
 
         let explicitPreferredCount = passedViewModel.preferredCount
-        let preferredIngredientsWithoutSubCategories = passedViewModel.preferredIngredients.filter({ !passedViewModel.subCategoryStrings.contains($0)})
-        let totalUnwantedIngredients: [String] = passedViewModel.unwantedIngredients.filter({ !passedViewModel.subCategoryStrings.contains($0)}) + passedViewModel.findIngredientNamesForCorrespondingSubCategories().unwanted
+        let preferredIngredientsWithoutSubCategories = passedViewModel.preferredSelections.filter({ !passedViewModel.subCategoryStrings.contains($0)})
+        let totalUnwantedIngredients: [String] = passedViewModel.unwantedSelections.filter({ !passedViewModel.subCategoryStrings.contains($0)}) + passedViewModel.findIngredientNamesForCorrespondingSubCategories().unwanted
         
         
         let preferredIngredientsFromSubCategories = passedViewModel.findIngredientNamesForCorrespondingSubCategories().preferred
@@ -154,7 +154,7 @@ struct MinusOneMatchView: View {
     }
     var body: some View {
         
-        if minusOneMatchCocktails.isEmpty || viewModel.preferredIngredients.count < 2 {
+        if minusOneMatchCocktails.isEmpty || viewModel.preferredSelections.count < 2 {
             EmptyView()
         } else {
             Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 1))) {
@@ -197,8 +197,8 @@ struct MinusTwoMatchView: View {
     
     init(passedViewModel: SearchViewModel) {
         let explicitPreferredCount = passedViewModel.preferredCount
-        let preferredIngredientsWithoutSubCategories = passedViewModel.preferredIngredients.filter({ !passedViewModel.subCategoryStrings.contains($0)})
-        let unwantedIngredientsWithoutSubCategories: [String] = passedViewModel.unwantedIngredients.filter({ !passedViewModel.subCategoryStrings.contains($0)})
+        let preferredIngredientsWithoutSubCategories = passedViewModel.preferredSelections.filter({ !passedViewModel.subCategoryStrings.contains($0)})
+        let unwantedIngredientsWithoutSubCategories: [String] = passedViewModel.unwantedSelections.filter({ !passedViewModel.subCategoryStrings.contains($0)})
         
         let unwantedIngredientsFromSubCategories = passedViewModel.findIngredientNamesForCorrespondingSubCategories().unwanted
         let preferredIngredientsFromSubCategories = passedViewModel.findIngredientNamesForCorrespondingSubCategories().preferred
@@ -227,7 +227,7 @@ struct MinusTwoMatchView: View {
         
     }
     var body: some View {
-        if minusTwoMatchCocktails.isEmpty  || viewModel.preferredIngredients.count < 4{
+        if minusTwoMatchCocktails.isEmpty  || viewModel.preferredSelections.count < 4{
             EmptyView()
         } else {
             
@@ -270,7 +270,7 @@ struct MissingIngredientsView: View {
     var missingIngredientArray: [String]
     
     init(for cocktail: Cocktail, in viewModel: SearchViewModel) {
-        let preferredIngredientArray = viewModel.preferredIngredients
+        let preferredIngredientArray = viewModel.preferredSelections
         let cocktailIngredientBases = cocktail.spec.map { $0.ingredientBase.name }
         let missingIngredientsArray = preferredIngredientArray.filter { !cocktailIngredientBases.contains($0) }
         self.missingIngredientArray = missingIngredientsArray
@@ -295,7 +295,7 @@ struct FilterMatchesMenuDataQueriesView: View {
     
     var body: some View {
         Menu("Filter Matches") {
-            ForEach(viewModel.preferredIngredients, id: \.self) { preference in
+            ForEach(viewModel.preferredSelections, id: \.self) { preference in
                 
                 Button("- \(preference)") {
                     nonmatchSearchPreference = preference

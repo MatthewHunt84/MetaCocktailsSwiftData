@@ -184,12 +184,12 @@ public struct preferencesListView: View {
                 
                 HStack(spacing: 12) {
                     
-                    ForEach(viewModel.preferredIngredients, id: \.self) { preferredIngredient in
+                    ForEach(viewModel.preferredSelections, id: \.self) { preferredIngredient in
                         viewModel.viewModelTagView(preferredIngredient, .green , "xmark")
                             .onTapGesture {
                                 withAnimation(.snappy) {
                                     viewModel.preferredCount -= 1
-                                    viewModel.preferredIngredients.removeAll(where: { $0 == preferredIngredient})
+                                    viewModel.preferredSelections.removeAll(where: { $0 == preferredIngredient})
                                     if viewModel.preferredCount == 0 {
                                         dismiss()
                                     }
@@ -208,11 +208,11 @@ public struct preferencesListView: View {
                 
                 HStack(spacing: 12) {
                     
-                    ForEach(viewModel.unwantedIngredients, id: \.self) { unwantedIngredient in
+                    ForEach(viewModel.unwantedSelections, id: \.self) { unwantedIngredient in
                         viewModel.viewModelTagView(unwantedIngredient, .red, "xmark")
                             .onTapGesture {
                                 withAnimation(.snappy) {
-                                    viewModel.unwantedIngredients.removeAll(where:{ $0 == unwantedIngredient })
+                                    viewModel.unwantedSelections.removeAll(where:{ $0 == unwantedIngredient })
                                     
                                 }
                             }

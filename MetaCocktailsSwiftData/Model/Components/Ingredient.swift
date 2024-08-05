@@ -205,8 +205,9 @@ class Ingredient: Codable, Hashable {
     var id: UUID
     var value: Double
     var unit: MeasurementUnit
+    
     init(ingredientBase: IngredientBase, value: Double, unit: MeasurementUnit = .fluidOunces) {
-        self.ingredientBase = IngredientBase(name: ingredientBase.name, info: ingredientBase.info, category: ingredientBase.umbrellaCategory, tags: ingredientBase.tags, prep: ingredientBase.prep, isCustom: ingredientBase.isCustom)
+        self.ingredientBase = ingredientBase
         self.value = value
         self.unit = unit
         self.id = UUID()
@@ -274,39 +275,39 @@ class IngredientBase: Codable, Hashable {
     var tags: Tags?
     var prep: Prep?
     var isCustom: Bool
-    var umbrellaCategory: UmbrellaCategory
-    var baseCategory: BaseCategory?
-    var specialtyCategory: SpecialtyCategory?
+    var umbrellaCategory: String
+    var baseCategory: String
+    var specialtyCategory: String
     
     init(name: String, info: String? = nil, category: UmbrellaCategory, tags: Tags? = Tags(), prep: Prep?, isCustom: Bool = false, baseCategory: BaseCategory? = nil, specialtyCategory: SpecialtyCategory? = nil) {
         
         self.name = name
         self.info = info
-        self.umbrellaCategory = category
+        self.umbrellaCategory = category.rawValue
         self.tags = tags
         self.prep = prep
         self.isCustom = isCustom
         self.baseCategory = {
             guard let tags = tags, let booze = tags.booze else {
-                return nil
+                return ""
             }
             for alcohol in booze {
                 if let base = BaseCategory(rawValue: alcohol.name) {
-                    return base
+                    return alcohol.name
                 }
             }
-            return nil
+            return ""
         }()
         self.specialtyCategory = {
             guard let tags = tags, let booze = tags.booze else {
-                return nil
+                return ""
             }
             for alcohol in booze {
                 if let specialty = SpecialtyCategory(rawValue: alcohol.name) {
-                    return specialty
+                    return alcohol.name
                 }
             }
-            return nil
+            return ""
         }()
     }
     
@@ -327,13 +328,13 @@ class IngredientBase: Codable, Hashable {
     required init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.name = try container.decode(String.self, forKey: .name)
-        self.umbrellaCategory = try container.decode(UmbrellaCategory.self, forKey: .category)
+        self.umbrellaCategory = try container.decode(String.self, forKey: .category)
         self.tags = try container.decode(Tags.self, forKey: .tags)
         self.prep = try container.decode(Prep.self, forKey: .prep)
         self.info = try container.decode(String.self, forKey: .info)
         self.isCustom = try container.decode(Bool.self, forKey: .isCustom)
-        self.baseCategory = try container.decode(BaseCategory.self, forKey: .baseCategory)
-        self.specialtyCategory = try container.decode(SpecialtyCategory.self, forKey: .specialtyCategory)
+        self.baseCategory = try container.decode(String.self, forKey: .baseCategory)
+        self.specialtyCategory = try container.decode(String.self, forKey: .specialtyCategory)
     }
     
     func encode(to encoder: Encoder) throws {

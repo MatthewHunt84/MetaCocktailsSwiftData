@@ -22,16 +22,16 @@ final class SearchViewModel: ObservableObject {
     var baseCategoryStrings: [String] = BaseCategory.allCases.map({$0.rawValue})
     var specialtyCategoryStrings: [String] = SpecialtyCategory.allCases.map({$0.rawValue})
     var allWhiskies: [String] = Whiskey.allCases.map({ $0.rawValue })
-    var unwantedIngredients: [String] = []
+    var unwantedSelections: [String] = []
+    var preferredSelections: [String] = []
     var preferredIngredients: [String] = []
-    var preferredBases: [IngredientBase] = [] // Adding these two arrays to differentiate between user's selections and bases. We'll keep all user's selections in preferredIngredients/unwantedIngredients regardless if they are an ingredient or an umbrella category etc.
-    var unwantedBases: [IngredientBase] = [] // but lets put the actual ingredient bases the user selects here. So these arrays will hold only real ingredients (lemon juice, raspberries etc)
-    var preferredUmbrellaCategories: [UmbrellaCategory] = []
-    var unwantedUmbrellaCategories: [UmbrellaCategory] = []
-    var preferredBaseCategories: [BaseCategory] = []
-    var unwantedBaseCategories: [BaseCategory] = []
-    var preferredSpecialtyCategories: [SpecialtyCategory] = []
-    var unwantedSpecialtyCategories: [SpecialtyCategory] = []
+    var unwantedIngredients: [String] = []
+    var preferredUmbrellaCategories: [String] = []
+    var unwantedUmbrellaCategories: [String] = []
+    var preferredBaseCategories: [String] = []
+    var unwantedBaseCategories: [String] = []
+    var preferredSpecialtyCategories: [String] = []
+    var unwantedSpecialtyCategories: [String] = []
     var isLoading = true
     var preferredCount = 0
     var sections: [ResultViewSectionData] = []
@@ -105,76 +105,71 @@ final class SearchViewModel: ObservableObject {
         .sweetVermouthAny: SpecialtyCategory.sweetVermouthAny.specialtyCategoryIngredients,
         .tawnyPort: SpecialtyCategory.tawnyPort.specialtyCategoryIngredients]
     
-    // I'm using nested loops here to fill the corresponding categories. In fillUnwantedCategoryArrays(), I'm using a quicker method with the bang operator. But is it wrong?!
     func fillPreferredCategoryArrays() {
         
-         preferredUmbrellaCategories = []
-         preferredBaseCategories = []
-         preferredSpecialtyCategories = []
+        preferredUmbrellaCategories = []
+        preferredBaseCategories = []
+        preferredSpecialtyCategories = []
+        preferredIngredients = []
         
-        
-        for preferredIngredient in preferredIngredients {
-            for umbrella in UmbrellaCategory.allCases {
-                if UmbrellaCategory(rawValue: preferredIngredient) == umbrella { preferredUmbrellaCategories.append(umbrella) }
-            }
-            for base in BaseCategory.allCases {
-                if BaseCategory(rawValue: preferredIngredient) == base { preferredBaseCategories.append(base) }
-            }
-            for specialty in SpecialtyCategory.allCases {
-                if SpecialtyCategory(rawValue: preferredIngredient) == specialty { preferredSpecialtyCategories.append(specialty) }
+        for selection in preferredSelections {
+            if umbrellaCategoryStrings.contains(selection) {
+                preferredUmbrellaCategories.append(selection)
+            } else if baseCategoryStrings.contains(selection) {
+                preferredBaseCategories.append(selection)
+            } else if specialtyCategoryStrings.contains(selection) {
+                preferredSpecialtyCategories.append(selection)
+            } else {
+                preferredIngredients.append(selection)
             }
         }
     }
-    // I'm using the bang operator here. I know we aren't supposed to use them in coding but I don't see why we can't use it here.
     
-    // This is so close!
-    // Think about this: if the UmbrellaCategory(rawValue: unwantedIngredient) cast fails we'll get a nil value, but if it works we'll get an umbrella category
-    // So how can we use that behavior to our advantage? (hint: what if we use an if let instead of a contains?)
     func fillUnwantedCategoryArrays() {
-
-         unwantedUmbrellaCategories = []
-         unwantedBaseCategories = []
-         unwantedSpecialtyCategories = []
-   
-        for unwantedIngredient in unwantedIngredients {
-            if umbrellaCategoryStrings.contains(unwantedIngredient) {
-                unwantedUmbrellaCategories.append(UmbrellaCategory(rawValue: unwantedIngredient)!)
-            }
-            if baseCategoryStrings.contains(unwantedIngredient) {
-                unwantedBaseCategories.append(BaseCategory(rawValue: unwantedIngredient)!)
-            }
-            if specialtyCategoryStrings.contains(unwantedIngredient) {
-                unwantedSpecialtyCategories.append(SpecialtyCategory(rawValue: unwantedIngredient)!)
+        
+        unwantedUmbrellaCategories = []
+        unwantedBaseCategories = []
+        unwantedSpecialtyCategories = []
+        unwantedIngredients = []
+        
+        for selection in unwantedSelections {
+            if let _ = UmbrellaCategory(rawValue: selection) {
+                unwantedUmbrellaCategories.append(selection)
+            } else if let _ = BaseCategory(rawValue: selection) {
+                unwantedBaseCategories.append(selection)
+            } else if let _ = SpecialtyCategory(rawValue: selection) {
+                unwantedSpecialtyCategories.append(selection)
+            } else {
+                unwantedIngredients.append(selection)
             }
         }
     }
-    
     
     func findAllCategoryIngredients() -> (included: [String], excluded: [String]) {
         var includedIngredients: [String] = []
         var excludedIngredients: [String] = []
         
         for (category, ingredients) in umbrellaCategoryMap {
-            if preferredIngredients.contains(category.rawValue) {
+            if preferredSelections.contains(category.rawValue) {
                 includedIngredients.append(contentsOf: ingredients)
             }
-            if unwantedIngredients.contains(category.rawValue) {
+            if unwantedSelections.contains(category.rawValue) {
                 excludedIngredients.append(contentsOf: ingredients)
             }
         }
         for (category, ingredients) in baseCategoryMap {
-            if preferredIngredients.contains(category.rawValue) {
+            if preferredSelections.contains(category.rawValue) {
                 includedIngredients.append(contentsOf: ingredients)
             }
-            if unwantedIngredients.contains(category.rawValue) {
+            if unwantedSelections.contains(category.rawValue) {
                 excludedIngredients.append(contentsOf: ingredients)
             }
         }
         for (category, ingredients) in specialtyCategoryMap {
-            if preferredIngredients.contains(category.rawValue) {
+            if preferredSelections.contains(category.rawValue) {
                 includedIngredients.append(contentsOf: ingredients)
             }
-            if unwantedIngredients.contains(category.rawValue) {
+            if unwantedSelections.contains(category.rawValue) {
                 excludedIngredients.append(contentsOf: ingredients)
             }
         }
@@ -193,8 +188,8 @@ final class SearchViewModel: ObservableObject {
 
     func clearData() {
         currentComponentSearchName = ""
-        unwantedIngredients = []
-        preferredIngredients = []
+        unwantedSelections = []
+        preferredSelections = []
         sections.removeAll()
         preferredCount = 0
     }
@@ -203,14 +198,14 @@ final class SearchViewModel: ObservableObject {
         
         var unwantedIngredientsFromSubCategories: [String] = []
         var preferredIngredientsFromSubCategories: [String] = []
-        let unwantedSubCategories = unwantedIngredients.filter { baseCategoryStrings.contains($0) }
-        let preferredSubCategories = preferredIngredients.filter { baseCategoryStrings.contains($0) }
+        let unwantedSubCategories = unwantedSelections.filter { baseCategoryStrings.contains($0) }
+        let preferredSubCategories = preferredSelections.filter { baseCategoryStrings.contains($0) }
         
         func appendUnwantedIngredients<T: CaseIterable & RawRepresentable>(for type: T.Type) where T.AllCases: RandomAccessCollection, T.RawValue == String {
             for booze in type.allCases {
                 if let boozeTags = (booze as? BoozeTagsProtocol)?.tags.booze,
                    boozeTags.map({ $0.name }).contains(where: { unwantedSubCategories.contains($0) }),
-                   !unwantedIngredients.contains(booze.rawValue) {
+                   !unwantedSelections.contains(booze.rawValue) {
                     unwantedIngredientsFromSubCategories.append(booze.rawValue)
                 }
             }
@@ -220,7 +215,7 @@ final class SearchViewModel: ObservableObject {
             for booze in type.allCases {
                 if let boozeTags = (booze as? BoozeTagsProtocol)?.tags.booze,
                    boozeTags.map({ $0.name }).contains(where: { preferredSubCategories.contains($0) }),
-                   !preferredIngredients.contains(booze.rawValue) {
+                   !preferredSelections.contains(booze.rawValue) {
                     preferredIngredientsFromSubCategories.append(booze.rawValue)
                 }
             }
