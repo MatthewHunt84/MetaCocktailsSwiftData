@@ -15,7 +15,7 @@ struct IngredientSearchMatchedCocktailsView: View {
     var body: some View {
         
         List {
-            PerfectMatchCocktailView(passedViewModel: viewModel)
+            PerfectMatchCocktailView_Improved(passedViewModel: viewModel)
             MinusOneMatchView(passedViewModel: viewModel)
             MinusTwoMatchView(passedViewModel: viewModel)
         }
@@ -82,7 +82,6 @@ struct PerfectMatchCocktailView: View {
         } else {
             _fullMatchCocktails = Query(filter: fullMatchPredicateWithoutBaseCategories, sort: \Cocktail.cocktailName)
         }
-        
     }
     
     var body: some View {
@@ -306,6 +305,41 @@ struct FilterMatchesMenuDataQueriesView: View {
                 nonmatchSearchPreference = "none"
             } label: {
                 Text("Show all")
+            }
+        }
+    }
+}
+
+
+
+
+struct PerfectMatchCocktailView_Improved: View {
+    
+    @EnvironmentObject var viewModel: SearchViewModel
+    @Query var fullMatchCocktails: [Cocktail]
+    
+    init(passedViewModel: SearchViewModel) {
+        let predicate = passedViewModel.predicateFactory(for: viewModel.preferredCount)
+        _fullMatchCocktails = Query(filter: predicate, sort: \Cocktail.cocktailName)
+    }
+    
+    var body: some View {
+        
+        if fullMatchCocktails.isEmpty {
+            EmptyView()
+        } else {
+            Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: viewModel.preferredCount)) {
+                ForEach(fullMatchCocktails, id: \.self) { cocktail in
+                    
+                    NavigationLink {
+                        RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                            .navigationBarBackButtonHidden(true)
+                    } label: {
+                        HStack {
+                            Text(cocktail.cocktailName)
+                        }
+                    }
+                }
             }
         }
     }

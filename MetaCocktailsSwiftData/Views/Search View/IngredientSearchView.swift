@@ -190,6 +190,7 @@ public struct preferencesListView: View {
                                 withAnimation(.snappy) {
                                     viewModel.preferredCount -= 1
                                     viewModel.preferredSelections.removeAll(where: { $0 == preferredIngredient})
+                                    viewModel.preferredIngredients = viewModel.preferredSelections 
                                     if viewModel.preferredCount == 0 {
                                         dismiss()
                                     }

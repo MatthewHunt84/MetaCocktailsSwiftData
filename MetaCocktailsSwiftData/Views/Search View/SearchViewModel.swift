@@ -314,7 +314,78 @@ final class SearchViewModel: ObservableObject {
 
 }
 
-
 class AppStateRefresh: ObservableObject {
     @Published var refreshCocktailList = false
+}
+
+extension SearchViewModel {
+    
+    enum searchTermCategory {
+        case justIngredients
+        case ingredientsAndUmbrella
+        case ingredientsAndUmbrellaAndBases
+    }
+    
+    func predicateFactory(for matchCount: Int) -> Predicate<Cocktail> {
+        
+        if preferredUmbrellaCategories.count > 1 ||
+            preferredBaseCategories.count > 1 ||
+            preferredSpecialtyCategories.count > 1 {
+            return complicatedPredicateSearch()
+        }
+        
+        let countPreferredIngredients = countPrefIngredients()
+        let hasUmbrella = hasUmbrella()
+        let hasBase = hasBaseCategory()
+        let hasSpecialty = hasSpecialty()
+      
+        return #Predicate<Cocktail> { cocktail in
+            countPreferredIngredients.evaluate(cocktail.spec) +
+            hasUmbrella.evaluate(cocktail.spec) +
+            hasBase.evaluate(cocktail.spec) +
+            hasSpecialty.evaluate(cocktail.spec) == matchCount
+        }
+    }
+    
+    func complicatedPredicateSearch() -> Predicate<Cocktail>{
+        return #Predicate<Cocktail> { cocktail in
+            cocktail.cocktailName == "Daiquiri"
+        }
+    }
+    
+    //build expression for preferred ingredients
+    func countPrefIngredients() -> Expression<[Ingredient], Int> {
+        return #Expression<[Ingredient], Int> { ingredients in
+            ingredients.filter { ingredient in
+                preferredIngredients.contains(ingredient.ingredientBase.name)
+            }.count
+        }
+    }
+    
+    //build expression for umbrella
+    func hasUmbrella() -> Expression<[Ingredient], Int> {
+        return #Expression<[Ingredient], Int> { ingredients in
+            ingredients.filter { ingredient in
+                preferredUmbrellaCategories.contains(ingredient.ingredientBase.umbrellaCategory)
+            }.count > 0 ? 1 : 0
+        }
+    }
+
+    //build expression for baseCategory
+    func hasBaseCategory() -> Expression<[Ingredient], Int> {
+        return #Expression<[Ingredient], Int> { ingredients in
+            ingredients.filter { ingredient in
+                preferredBaseCategories.contains(ingredient.ingredientBase.baseCategory)
+            }.count > 0 ? 1 : 0
+        }
+    }
+    
+    //build expression for specialty
+    func hasSpecialty() -> Expression<[Ingredient], Int> {
+        return #Expression<[Ingredient], Int> { ingredients in
+            ingredients.filter { ingredient in
+                preferredSpecialtyCategories.contains(ingredient.ingredientBase.specialtyCategory)
+            }.count > 0 ? 1 : 0
+        }
+    }
 }
