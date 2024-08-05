@@ -180,8 +180,6 @@ final class SearchViewModel: ObservableObject {
         
         if findAllCategoryIngredients().included.contains(ingredient.wrappedValue)  {
             PreferencesIncludedLimitedThumbCell(ingredient: ingredient)
-        } else if findAllCategoryIngredients().excluded.contains(ingredient.wrappedValue) {
-            PreferencesExcludedLimitedThumbCell(ingredient: ingredient)
         } else {
             PreferencesThumbsCell(ingredient: ingredient)
         }
