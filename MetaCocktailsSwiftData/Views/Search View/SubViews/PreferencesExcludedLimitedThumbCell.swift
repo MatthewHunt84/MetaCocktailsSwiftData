@@ -13,16 +13,12 @@ struct PreferencesExcludedLimitedThumbCell: View {
     
     var body: some View {
         HStack{
-            
             Text(ingredient)
-            
             Spacer()
-            
             Text("Excluded")
                 .font(.caption)
                 .foregroundStyle(!viewModel.unwantedSelections.contains(ingredient) ? .brandPrimaryRed : .black)
                 .padding(.horizontal, 10)
-                
         }
     }
 }
