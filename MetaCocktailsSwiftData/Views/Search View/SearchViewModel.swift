@@ -156,6 +156,7 @@ final class SearchViewModel: ObservableObject {
             if unwantedSelections.contains(category.rawValue) {
                 excludedIngredients.append(contentsOf: ingredients)
             }
+            includedIngredients.removeAll(where: { excludedIngredients.contains($0) })
         }
         for (category, ingredients) in baseCategoryMap {
             if preferredSelections.contains(category.rawValue) {
@@ -164,6 +165,7 @@ final class SearchViewModel: ObservableObject {
             if unwantedSelections.contains(category.rawValue) {
                 excludedIngredients.append(contentsOf: ingredients)
             }
+            includedIngredients.removeAll(where: { excludedIngredients.contains($0) })
         }
         for (category, ingredients) in specialtyCategoryMap {
             if preferredSelections.contains(category.rawValue) {
@@ -172,6 +174,7 @@ final class SearchViewModel: ObservableObject {
             if unwantedSelections.contains(category.rawValue) {
                 excludedIngredients.append(contentsOf: ingredients)
             }
+            includedIngredients.removeAll(where: { excludedIngredients.contains($0) })
         }
         return (includedIngredients, excludedIngredients)
     }
@@ -181,6 +184,8 @@ final class SearchViewModel: ObservableObject {
         
         if findAllCategoryIngredients().included.contains(ingredient.wrappedValue)  {
             PreferencesIncludedLimitedThumbCell(ingredient: ingredient)
+        } else if findAllCategoryIngredients().excluded.contains(ingredient.wrappedValue) {
+            PreferencesExcludedLimitedThumbCell(ingredient: ingredient)
         } else {
             PreferencesThumbsCell(ingredient: ingredient)
         }
