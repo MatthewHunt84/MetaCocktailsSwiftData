@@ -197,12 +197,12 @@ final class SearchViewModel: ObservableObject {
     }
     
     func findIngredientNamesForUnwantedSubcategories() -> [String] {
-        
+        // Since we no longer use this for preferred categories, that tuple can be removed
+        // We also usually want to have something like the line below so we're not looping over a bunch of things for no reason:
         guard !unwantedSelections.isEmpty else { return [] }
         
         var unwantedIngredientsFromSubCategories: [String] = []
         let unwantedSubCategories = unwantedSelections.filter { baseCategoryStrings.contains($0) }.filter { umbrellaCategoryStrings.contains($0) }.filter { specialtyCategoryStrings.contains($0) }
-        let preferredSubCategories = preferredSelections.filter { baseCategoryStrings.contains($0) }
         
         func appendUnwantedIngredients<T: CaseIterable & RawRepresentable>(for type: T.Type) where T.AllCases: RandomAccessCollection, T.RawValue == String {
             for booze in type.allCases {
