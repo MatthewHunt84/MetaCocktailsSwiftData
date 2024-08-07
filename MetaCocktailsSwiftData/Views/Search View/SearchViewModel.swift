@@ -195,45 +195,7 @@ final class SearchViewModel: ObservableObject {
         sections.removeAll()
         preferredCount = 0
     }
-    
-    func findIngredientNamesForUnwantedSubcategories() -> [String] {
-        // Since we no longer use this for preferred categories, that tuple can be removed
-        // We also usually want to have something like the line below so we're not looping over a bunch of things for no reason:
-        guard !unwantedSelections.isEmpty else { return [] }
-        
-        var unwantedIngredientsFromSubCategories: [String] = []
-        let unwantedSubCategories = unwantedSelections.filter { baseCategoryStrings.contains($0) }.filter { umbrellaCategoryStrings.contains($0) }.filter { specialtyCategoryStrings.contains($0) }
-        
-        func appendUnwantedIngredients<T: CaseIterable & RawRepresentable>(for type: T.Type) where T.AllCases: RandomAccessCollection, T.RawValue == String {
-            for booze in type.allCases {
-                if let boozeTags = (booze as? BoozeTagsProtocol)?.tags.booze,
-                   boozeTags.map({ $0.name }).contains(where: { unwantedSubCategories.contains($0) }),
-                   !unwantedSelections.contains(booze.rawValue) {
-                    unwantedIngredientsFromSubCategories.append(booze.rawValue)
-                }
-            }
-            
-        }
 
-        appendUnwantedIngredients(for: Agave.self)
-        appendUnwantedIngredients(for: Brandy.self)
-        appendUnwantedIngredients(for: Gin.self)
-        appendUnwantedIngredients(for: Rum.self)
-        appendUnwantedIngredients(for: Vodka.self)
-        appendUnwantedIngredients(for: Whiskey.self)
-        appendUnwantedIngredients(for: Wine.self)
-        appendUnwantedIngredients(for: Liqueur.self)
-
-        return unwantedIngredientsFromSubCategories
-    }
-    
-    func createMatchContainers()  {
-        sections = []
-        for i in 0...Int(preferredCount / 2) {
-            let numberOfMatches = (preferredCount - i)
-            sections.append(ResultViewSectionData(count: preferredCount, matched: numberOfMatches, cocktails: []))
-        }
-    }
     
     @ViewBuilder
     func viewModelTagView(_ tag: String, _ color: Color, _ icon: String) -> some View {
