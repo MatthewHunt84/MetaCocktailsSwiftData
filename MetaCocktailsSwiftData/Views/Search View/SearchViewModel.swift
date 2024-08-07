@@ -383,7 +383,8 @@ extension SearchViewModel {
         matchCount: Int) -> Predicate<Cocktail> {
         
         let predicate: Predicate<Cocktail>
-        
+            
+        // I learned so much about switch statements. I didn't know you could switch on the values directly like this.
         switch (preferredUmbrellaCategories.count, preferredBaseCategories.count, preferredSpecialtyCategories.count, preferredIngredients.count) {
         case (1, 1, 0, 0):
             // One umbrella and one base category
@@ -408,7 +409,7 @@ extension SearchViewModel {
             predicate = #Predicate<Cocktail> { cocktail in
                 hasUmbrella.evaluate(cocktail.spec) + hasBase.evaluate(cocktail.spec) + hasSpecialty.evaluate(cocktail.spec) == matchCount
             }
-
+        //This part matches a tuple where the first three elements are 0 and the fourth element is captured in a constant named ingredientCount. where ingredientCount > 0: This condition specifies that the case should only match if ingredientCount is greater than 0. This is the first time I've used this syntax. Super neat!!
         case (0, 0, 0, let ingredientCount) where ingredientCount > 0:
             // Only preferred ingredients
             predicate = #Predicate<Cocktail> { cocktail in
