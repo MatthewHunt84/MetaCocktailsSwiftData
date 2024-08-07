@@ -6,10 +6,7 @@
 //
 
 import SwiftUI
-import Observation
 import SwiftData
-
-
 
 @Observable
 final class SearchViewModel: ObservableObject {
@@ -21,8 +18,17 @@ final class SearchViewModel: ObservableObject {
     var umbrellaCategoryStrings: [String] = SpiritsUmbrellaCategory.allCases.map{ $0.rawValue }
     var baseCategoryStrings: [String] = BaseCategory.allCases.map({$0.rawValue})
     var specialtyCategoryStrings: [String] = SpecialtyCategory.allCases.map({$0.rawValue})
-    var unwantedIngredients: [String] = []
+    var allWhiskies: [String] = Whiskey.allCases.map({ $0.rawValue })
+    var unwantedSelections: [String] = []
+    var preferredSelections: [String] = []
     var preferredIngredients: [String] = []
+    var unwantedIngredients: [String] = []
+    var preferredUmbrellaCategories: [String] = []
+    var unwantedUmbrellaCategories: [String] = []
+    var preferredBaseCategories: [String] = []
+    var unwantedBaseCategories: [String] = []
+    var preferredSpecialtyCategories: [String] = []
+    var unwantedSpecialtyCategories: [String] = []
     var isLoading = true
     var preferredCount = 0
     var sections: [ResultViewSectionData] = []
@@ -30,69 +36,165 @@ final class SearchViewModel: ObservableObject {
 
     var cocktailsAndMissingIngredientsForMinusOne: [CocktailsAndMissingIngredients] = []
     var cocktailsAndMissingIngredientsForMinusTwo: [CocktailsAndMissingIngredients] = []
+    
+    let umbrellaCategoryMap: [SpiritsUmbrellaCategory: [String]] = [
+        .agaves: Agave.allCases.map { $0.rawValue },
+        .brandies: Brandy.allCases.map { $0.rawValue },
+        .gins: Gin.allCases.map { $0.rawValue },
+        .rums: Rum.allCases.map { $0.rawValue },
+        .vodkas: Vodka.allCases.map { $0.rawValue },
+        .whiskies: Whiskey.allCases.map { $0.rawValue },
+        .liqueurs: Liqueur.allCases.map { $0.rawValue },
+        .fortifiedWines: FortifiedWine.allCases.map { $0.rawValue },
+        .wines: Wine.allCases.map { $0.rawValue },
+        .bitters: Bitters.allCases.map { $0.rawValue },
+        .amari: Amaro.allCases.map { $0.rawValue }]
+    
+    let baseCategoryMap: [BaseCategory: [String]] = [
+        .mezcalAny: BaseCategory.mezcalAny.baseCategoryIngredients,
+        .tequilaAny: BaseCategory.tequilaAny.baseCategoryIngredients,
+        .appleBrandy: BaseCategory.appleBrandy.baseCategoryIngredients,
+        .armagnac: BaseCategory.armagnac.baseCategoryIngredients,
+        .cognac: BaseCategory.cognac.baseCategoryIngredients,
+        .pisco: BaseCategory.pisco.baseCategoryIngredients,
+        .ginLondonDry: BaseCategory.ginLondonDry.baseCategoryIngredients,
+        .navyStrengthGin: BaseCategory.navyStrengthGin.baseCategoryIngredients,
+        .cachaca: BaseCategory.cachaca.baseCategoryIngredients,
+        .rumAged: BaseCategory.rumAged.baseCategoryIngredients,
+        .rumDemerara: BaseCategory.rumDemerara.baseCategoryIngredients,
+        .rumDominican: BaseCategory.rumDominican.baseCategoryIngredients,
+        .rumPuertoRican: BaseCategory.rumPuertoRican.baseCategoryIngredients,
+        .rumWhite: BaseCategory.rumWhite.baseCategoryIngredients,
+        .rumDark: BaseCategory.rumDark.baseCategoryIngredients,
+        .americanWhiskeyAny: BaseCategory.americanWhiskeyAny.baseCategoryIngredients,
+        .canadianWhiskeyAny: BaseCategory.canadianWhiskeyAny.baseCategoryIngredients,
+        .irishWhiskeyAny: BaseCategory.irishWhiskeyAny.baseCategoryIngredients,
+        .japaneseWhiskeyAny: BaseCategory.japaneseWhiskeyAny.baseCategoryIngredients,
+        .scotchAny: BaseCategory.scotchAny.baseCategoryIngredients,
+        .vermouthAny: BaseCategory.vermouthAny.baseCategoryIngredients,
+        .sherryAny: BaseCategory.sherryAny.baseCategoryIngredients,
+        .port: BaseCategory.port.baseCategoryIngredients]
+    
+    let specialtyCategoryMap: [SpecialtyCategory: [String]] = [
+        .mezcalEspadin: SpecialtyCategory.mezcalEspadin.specialtyCategoryIngredients,
+        .mezcalSmokeyAny: SpecialtyCategory.mezcalSmokeyAny.specialtyCategoryIngredients,
+        .mezcalNotSmokeyAny: SpecialtyCategory.mezcalNotSmokeyAny.specialtyCategoryIngredients,
+        .tequilaBlanco: SpecialtyCategory.tequilaBlanco.specialtyCategoryIngredients,
+        .tequilaReposado: SpecialtyCategory.tequilaReposado.specialtyCategoryIngredients,
+        .tequilaAnejo: SpecialtyCategory.tequilaAnejo.specialtyCategoryIngredients,
+        .goldJamaicanRum: SpecialtyCategory.goldJamaicanRum.specialtyCategoryIngredients,
+        .goldPuertoRicanRum: SpecialtyCategory.goldPuertoRicanRum.specialtyCategoryIngredients,
+        .rumAgedCuban: SpecialtyCategory.rumAgedCuban.specialtyCategoryIngredients,
+        .rumJamaicanAged: SpecialtyCategory.rumJamaicanAged.specialtyCategoryIngredients,
+        .rumBlackStrap: SpecialtyCategory.rumBlackStrap.specialtyCategoryIngredients,
+        .rumWhiteAgricole: SpecialtyCategory.rumWhiteAgricole.specialtyCategoryIngredients,
+        .bourbonAny: SpecialtyCategory.bourbonAny.specialtyCategoryIngredients,
+        .ryeWhiskeyAny: SpecialtyCategory.ryeWhiskeyAny.specialtyCategoryIngredients,
+        .straightRyeOrBourbon: SpecialtyCategory.straightRyeOrBourbon.specialtyCategoryIngredients,
+        .scotchBlended: SpecialtyCategory.scotchBlended.specialtyCategoryIngredients,
+        .scotchHighland: SpecialtyCategory.scotchHighland.specialtyCategoryIngredients,
+        .scotchIsla: SpecialtyCategory.scotchIsla.specialtyCategoryIngredients,
+        .amontillado: SpecialtyCategory.amontillado.specialtyCategoryIngredients,
+        .fino: SpecialtyCategory.fino.specialtyCategoryIngredients,
+        .oloroso: SpecialtyCategory.oloroso.specialtyCategoryIngredients,
+        .blancVermouth: SpecialtyCategory.blancVermouth.specialtyCategoryIngredients,
+        .dryVermouthAny: SpecialtyCategory.dryVermouthAny.specialtyCategoryIngredients,
+        .sweetVermouthAny: SpecialtyCategory.sweetVermouthAny.specialtyCategoryIngredients,
+        .tawnyPort: SpecialtyCategory.tawnyPort.specialtyCategoryIngredients]
+    
+    func fillPreferredCategoryArrays() {
+        
+        preferredUmbrellaCategories = []
+        preferredBaseCategories = []
+        preferredSpecialtyCategories = []
+        preferredIngredients = []
+        
+        for selection in preferredSelections {
+            if umbrellaCategoryStrings.contains(selection) {
+                preferredUmbrellaCategories.append(selection)
+            } else if baseCategoryStrings.contains(selection) {
+                preferredBaseCategories.append(selection)
+            } else if specialtyCategoryStrings.contains(selection) {
+                preferredSpecialtyCategories.append(selection)
+            } else {
+                preferredIngredients.append(selection)
+            }
+        }
+    }
+    
+    func fillUnwantedCategoryArrays() {
+        
+        unwantedUmbrellaCategories = []
+        unwantedBaseCategories = []
+        unwantedSpecialtyCategories = []
+        unwantedIngredients = []
+        
+        for selection in unwantedSelections {
+            if let _ = UmbrellaCategory(rawValue: selection) {
+                unwantedUmbrellaCategories.append(selection)
+            } else if let _ = BaseCategory(rawValue: selection) {
+                unwantedBaseCategories.append(selection)
+            } else if let _ = SpecialtyCategory(rawValue: selection) {
+                unwantedSpecialtyCategories.append(selection)
+            } else {
+                unwantedIngredients.append(selection)
+            }
+        }
+    }
+    
+    func findAllCategoryIngredients() -> (included: [String], excluded: [String]) {
+        var includedIngredients: [String] = []
+        var excludedIngredients: [String] = []
+        
+        for (category, ingredients) in umbrellaCategoryMap {
+            if preferredSelections.contains(category.rawValue) {
+                includedIngredients.append(contentsOf: ingredients)
+            }
+            if unwantedSelections.contains(category.rawValue) {
+                excludedIngredients.append(contentsOf: ingredients)
+            }
+            includedIngredients.removeAll(where: { excludedIngredients.contains($0) })
+        }
+        for (category, ingredients) in baseCategoryMap {
+            if preferredSelections.contains(category.rawValue) {
+                includedIngredients.append(contentsOf: ingredients)
+            }
+            if unwantedSelections.contains(category.rawValue) {
+                excludedIngredients.append(contentsOf: ingredients)
+            }
+            includedIngredients.removeAll(where: { excludedIngredients.contains($0) })
+        }
+        for (category, ingredients) in specialtyCategoryMap {
+            if preferredSelections.contains(category.rawValue) {
+                includedIngredients.append(contentsOf: ingredients)
+            }
+            if unwantedSelections.contains(category.rawValue) {
+                excludedIngredients.append(contentsOf: ingredients)
+            }
+            includedIngredients.removeAll(where: { excludedIngredients.contains($0) })
+        }
+        return (includedIngredients, excludedIngredients)
+    }
+    
+    @ViewBuilder
+    func returnPreferencesThumbCell(ingredient: Binding<String> ) -> some View {
+        
+        if findAllCategoryIngredients().included.contains(ingredient.wrappedValue)  {
+            PreferencesIncludedLimitedThumbCell(ingredient: ingredient)
+        } else if findAllCategoryIngredients().excluded.contains(ingredient.wrappedValue) {
+            PreferencesExcludedLimitedThumbCell(ingredient: ingredient)
+        } else {
+            PreferencesThumbsCell(ingredient: ingredient)
+        }
+    }
 
     func clearData() {
         currentComponentSearchName = ""
-        unwantedIngredients = []
-        preferredIngredients = []
+        unwantedSelections = []
+        preferredSelections = []
         sections.removeAll()
         preferredCount = 0
     }
-    
-    func findIngredientNamesForCorrespondingSubCategories() -> (preferred: [String],unwanted: [String]) {
-        
-        var unwantedIngredientsFromSubCategories: [String] = []
-        var preferredIngredientsFromSubCategories: [String] = []
-        let unwantedSubCategories = unwantedIngredients.filter { subCategoryStrings.contains($0) }
-        let preferredSubCategories = preferredIngredients.filter { subCategoryStrings.contains($0) }
-        
-        func appendUnwantedIngredients<T: CaseIterable & RawRepresentable>(for type: T.Type) where T.AllCases: RandomAccessCollection, T.RawValue == String {
-            for booze in type.allCases {
-                if let boozeTags = (booze as? BoozeTagsProtocol)?.tags.booze,
-                   boozeTags.map({ $0.name }).contains(where: { unwantedSubCategories.contains($0) }),
-                   !unwantedIngredients.contains(booze.rawValue) {
-                    unwantedIngredientsFromSubCategories.append(booze.rawValue)
-                }
-            }
-            
-        }
-        func appendPreferredIngredients<T: CaseIterable & RawRepresentable>(for type: T.Type) where T.AllCases: RandomAccessCollection, T.RawValue == String {
-            for booze in type.allCases {
-                if let boozeTags = (booze as? BoozeTagsProtocol)?.tags.booze,
-                   boozeTags.map({ $0.name }).contains(where: { preferredSubCategories.contains($0) }),
-                   !preferredIngredients.contains(booze.rawValue) {
-                    preferredIngredientsFromSubCategories.append(booze.rawValue)
-                }
-            }
-        }
-        appendUnwantedIngredients(for: Agave.self)
-        appendUnwantedIngredients(for: Brandy.self)
-        appendUnwantedIngredients(for: Gin.self)
-        appendUnwantedIngredients(for: Rum.self)
-        appendUnwantedIngredients(for: Vodka.self)
-        appendUnwantedIngredients(for: Whiskey.self)
-        appendUnwantedIngredients(for: Wine.self)
-        appendUnwantedIngredients(for: Liqueur.self)
-        
-        appendPreferredIngredients(for: Agave.self)
-        appendPreferredIngredients(for: Brandy.self)
-        appendPreferredIngredients(for: Gin.self)
-        appendPreferredIngredients(for: Rum.self)
-        appendPreferredIngredients(for: Vodka.self)
-        appendPreferredIngredients(for: Whiskey.self)
-        appendPreferredIngredients(for: Wine.self)
-        appendPreferredIngredients(for: Liqueur.self)
-        return (preferred: preferredIngredientsFromSubCategories, unwanted: unwantedIngredientsFromSubCategories)
-    }
-    
-    func createMatchContainers()  {
-        sections = []
-        for i in 0...Int(preferredCount / 2) {
-            let numberOfMatches = (preferredCount - i)
-            sections.append(ResultViewSectionData(count: preferredCount, matched: numberOfMatches, cocktails: []))
-        }
-    }
-    
 
     
     @ViewBuilder
@@ -122,7 +224,7 @@ final class SearchViewModel: ObservableObject {
              return [] // Return all ingredients if search text is empty
          }
         let lowercasedSearchText = currentComponentSearchName.lowercased()
-        let combinedArrays = ingredients + umbrellaCategoryStrings + baseCategoryStrings + specialtyCategoryStrings
+        let combinedArrays = ingredients + baseCategoryStrings + umbrellaCategoryStrings + specialtyCategoryStrings
         let combinedArraysWithoutDuplicates = Array(Set(combinedArrays))
         return combinedArraysWithoutDuplicates.filter { $0.lowercased().contains(lowercasedSearchText) }
             .sorted { lhs, rhs in
@@ -147,9 +249,7 @@ final class SearchViewModel: ObservableObject {
                 return matchedArray
             }
     }
-
 }
-
 
 class AppStateRefresh: ObservableObject {
     @Published var refreshCocktailList = false

@@ -123,43 +123,43 @@ enum IngredientType: Codable{
     var category: String {
         switch self {
         case .syrups:
-            return "Syrups"
+            return UmbrellaCategory.syrups.rawValue
         case .juices:
-            return "Juice"
+            return UmbrellaCategory.juices.rawValue
         case .herbs:
-            return "Herbs"
+            return UmbrellaCategory.herbs.rawValue
         case .fruit:
-            return "Fruit"
+            return UmbrellaCategory.fruit.rawValue
         case .seasoning:
-            return "Seasoning"
+            return UmbrellaCategory.seasoning.rawValue
         case .soda:
-            return "Sodas"
+            return UmbrellaCategory.soda.rawValue
         case .otherNonAlc:
-            return "Other N/A"
+            return UmbrellaCategory.otherNonAlc.rawValue
         case .agaves:
-            return "Agave"
+            return UmbrellaCategory.agaves.rawValue
         case .brandies:
-            return "Brandy"
+            return UmbrellaCategory.brandies.rawValue
         case .gins:
-            return "Gin"
+            return UmbrellaCategory.gins.rawValue
         case .otherAlcohol:
-            return "Other Alcohol"
+            return UmbrellaCategory.otherAlcohol.rawValue
         case .rums:
-            return "Rum"
+            return UmbrellaCategory.rums.rawValue
         case .vodkas:
-            return "Vodka"
+            return UmbrellaCategory.vodkas.rawValue
         case .whiskies:
-            return "Whiskies"
+            return UmbrellaCategory.whiskies.rawValue
         case .liqueurs:
-            return "Liqueurs"
+            return UmbrellaCategory.liqueurs.rawValue
         case .fortifiedWines:
-            return "Fortified Wine"
+            return UmbrellaCategory.fortifiedWines.rawValue
         case .wines:
-            return "Wine"
+            return UmbrellaCategory.wines.rawValue
         case .bitters:
-            return "Bitters"
+            return UmbrellaCategory.bitters.rawValue
         case .amari:
-            return "Amari"
+            return UmbrellaCategory.amari.rawValue
         }
     }
 }
