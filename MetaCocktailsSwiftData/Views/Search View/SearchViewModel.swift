@@ -384,7 +384,7 @@ extension SearchViewModel {
         
         let predicate: Predicate<Cocktail>
             
-        // I learned so much about switch statements. I didn't know you could switch on the values directly like this.
+        // I learned so much about switch statements. I didn't know you could switch on the values directly with a tuple like this.
         switch (preferredUmbrellaCategories.count, preferredBaseCategories.count, preferredSpecialtyCategories.count, preferredIngredients.count) {
         case (1, 1, 0, 0):
             // One umbrella and one base category
