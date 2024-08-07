@@ -6,10 +6,7 @@
 //
 
 import SwiftUI
-import Observation
 import SwiftData
-
-
 
 @Observable
 final class SearchViewModel: ObservableObject {
@@ -199,10 +196,11 @@ final class SearchViewModel: ObservableObject {
         preferredCount = 0
     }
     
-    func findIngredientNamesForCorrespondingSubCategories() -> (preferred: [String],unwanted: [String]) {
+    func findIngredientNamesForUnwantedSubcategories() -> [String] {
+        
+        guard !unwantedSelections.isEmpty else { return [] }
         
         var unwantedIngredientsFromSubCategories: [String] = []
-        var preferredIngredientsFromSubCategories: [String] = []
         let unwantedSubCategories = unwantedSelections.filter { baseCategoryStrings.contains($0) }.filter { umbrellaCategoryStrings.contains($0) }.filter { specialtyCategoryStrings.contains($0) }
         let preferredSubCategories = preferredSelections.filter { baseCategoryStrings.contains($0) }
         
@@ -216,15 +214,7 @@ final class SearchViewModel: ObservableObject {
             }
             
         }
-        func appendPreferredIngredients<T: CaseIterable & RawRepresentable>(for type: T.Type) where T.AllCases: RandomAccessCollection, T.RawValue == String {
-            for booze in type.allCases {
-                if let boozeTags = (booze as? BoozeTagsProtocol)?.tags.booze,
-                   boozeTags.map({ $0.name }).contains(where: { preferredSubCategories.contains($0) }),
-                   !preferredSelections.contains(booze.rawValue) {
-                    preferredIngredientsFromSubCategories.append(booze.rawValue)
-                }
-            }
-        }
+
         appendUnwantedIngredients(for: Agave.self)
         appendUnwantedIngredients(for: Brandy.self)
         appendUnwantedIngredients(for: Gin.self)
@@ -233,16 +223,8 @@ final class SearchViewModel: ObservableObject {
         appendUnwantedIngredients(for: Whiskey.self)
         appendUnwantedIngredients(for: Wine.self)
         appendUnwantedIngredients(for: Liqueur.self)
-        
-        appendPreferredIngredients(for: Agave.self)
-        appendPreferredIngredients(for: Brandy.self)
-        appendPreferredIngredients(for: Gin.self)
-        appendPreferredIngredients(for: Rum.self)
-        appendPreferredIngredients(for: Vodka.self)
-        appendPreferredIngredients(for: Whiskey.self)
-        appendPreferredIngredients(for: Wine.self)
-        appendPreferredIngredients(for: Liqueur.self)
-        return (preferred: preferredIngredientsFromSubCategories, unwanted: unwantedIngredientsFromSubCategories)
+
+        return unwantedIngredientsFromSubCategories
     }
     
     func createMatchContainers()  {
@@ -250,12 +232,6 @@ final class SearchViewModel: ObservableObject {
         for i in 0...Int(preferredCount / 2) {
             let numberOfMatches = (preferredCount - i)
             sections.append(ResultViewSectionData(count: preferredCount, matched: numberOfMatches, cocktails: []))
-        }
-    }
-    
-    func modifyPreferredCount() {
-        if findIngredientNamesForCorrespondingSubCategories().preferred.count > 0 {
-            preferredCount += (findIngredientNamesForCorrespondingSubCategories().preferred.count - 1)
         }
     }
     
@@ -311,210 +287,8 @@ final class SearchViewModel: ObservableObject {
                 return matchedArray
             }
     }
-
 }
 
 class AppStateRefresh: ObservableObject {
     @Published var refreshCocktailList = false
-}
-
-extension SearchViewModel {
-    
-    
-    func predicateFactory(for matchCount: Int) -> Predicate<Cocktail> {
-        // Early exit for complicated predicate search
-        if preferredUmbrellaCategories.count > 1 ||
-            preferredBaseCategories.count > 1 ||
-            preferredSpecialtyCategories.count > 1 {
-            return complicatedPredicateSearch()
-        }
-
-        // Prepare expressions
-        let countPreferredIngredients = countPrefIngredients()
-        let hasUmbrella = hasUmbrella()
-        let hasBase = hasBaseCategory()
-        let hasSpecialty = hasSpecialty()
-        let totalUnwanted = totalUnwantedIngredients()
-
-        // Check for preferred ingredients only
-        if preferredUmbrellaCategories.isEmpty && preferredBaseCategories.isEmpty && preferredSpecialtyCategories.isEmpty && !preferredIngredients.isEmpty {
-            return makeSimplePredicate(totalUnwanted: totalUnwanted, expression: countPreferredIngredients, matchCount: matchCount)
-        }
-
-        // Check for single umbrella category
-        if preferredUmbrellaCategories.count == 1 && preferredBaseCategories.isEmpty && preferredSpecialtyCategories.isEmpty && preferredIngredients.isEmpty {
-            return makeSimplePredicate(totalUnwanted: totalUnwanted, expression: hasUmbrella, matchCount: matchCount)
-        }
-
-        // Check for single base category
-        if preferredUmbrellaCategories.isEmpty && preferredBaseCategories.count == 1 && preferredSpecialtyCategories.isEmpty && preferredIngredients.isEmpty {
-            return makeSimplePredicate(totalUnwanted: totalUnwanted, expression: hasBase, matchCount: matchCount)
-        }
-
-        // Check for single specialty category
-        if preferredUmbrellaCategories.isEmpty && preferredBaseCategories.isEmpty && preferredSpecialtyCategories.count == 1 && preferredIngredients.isEmpty {
-            return makeSimplePredicate(totalUnwanted: totalUnwanted, expression: hasSpecialty, matchCount: matchCount)
-        }
-
-        // Check for combined categories and ingredients
-        return makeCombinedPredicate(
-            totalUnwanted: totalUnwanted,
-            hasUmbrella: hasUmbrella,
-            hasBase: hasBase,
-            hasSpecialty: hasSpecialty,
-            countPreferredIngredients: countPreferredIngredients,
-            matchCount: matchCount
-        )
-    }
-
-    private func makeSimplePredicate(totalUnwanted: Expression<[Ingredient], Bool>, expression: Expression<[Ingredient], Int>, matchCount: Int) -> Predicate<Cocktail> {
-        return #Predicate<Cocktail> { cocktail in
-            !totalUnwanted.evaluate(cocktail.spec) &&
-            expression.evaluate(cocktail.spec) == matchCount
-        }
-    }
-
-    private func makeCombinedPredicate(
-        totalUnwanted: Expression<[Ingredient], Bool>,
-        hasUmbrella: Expression<[Ingredient], Int>,
-        hasBase: Expression<[Ingredient], Int>,
-        hasSpecialty: Expression<[Ingredient], Int>,
-        countPreferredIngredients: Expression<[Ingredient], Int>,
-        matchCount: Int) -> Predicate<Cocktail> {
-        
-        let predicate: Predicate<Cocktail>
-            
-        // I learned so much about switch statements. I didn't know you could switch on the values directly with a tuple like this.
-        switch (preferredUmbrellaCategories.count, preferredBaseCategories.count, preferredSpecialtyCategories.count, preferredIngredients.count) {
-        case (1, 1, 0, 0):
-            // One umbrella and one base category
-            predicate = #Predicate<Cocktail> { cocktail in
-                hasUmbrella.evaluate(cocktail.spec) + hasBase.evaluate(cocktail.spec) == matchCount
-            }
-
-        case (1, 0, 1, 0):
-            // One umbrella and one specialty category
-            predicate = #Predicate<Cocktail> { cocktail in
-                hasUmbrella.evaluate(cocktail.spec) + hasSpecialty.evaluate(cocktail.spec) == matchCount
-            }
-
-        case (0, 1, 1, 0):
-            // One base and one specialty category
-            predicate = #Predicate<Cocktail> { cocktail in
-                hasBase.evaluate(cocktail.spec) + hasSpecialty.evaluate(cocktail.spec) == matchCount
-            }
-
-        case (1, 1, 1, 0):
-            // One umbrella, one base, and one specialty category
-            predicate = #Predicate<Cocktail> { cocktail in
-                hasUmbrella.evaluate(cocktail.spec) + hasBase.evaluate(cocktail.spec) + hasSpecialty.evaluate(cocktail.spec) == matchCount
-            }
-        //This part matches a tuple where the first three elements are 0 and the fourth element is captured in a constant named ingredientCount. where ingredientCount > 0: This condition specifies that the case should only match if ingredientCount is greater than 0. This is the first time I've used this syntax. Super neat!!
-        case (0, 0, 0, let ingredientCount) where ingredientCount > 0:
-            // Only preferred ingredients
-            predicate = #Predicate<Cocktail> { cocktail in
-                countPreferredIngredients.evaluate(cocktail.spec) == matchCount
-            }
-
-        case (1, 0, 0, let ingredientCount) where ingredientCount > 0:
-            // One umbrella and preferred ingredients
-            predicate = #Predicate<Cocktail> { cocktail in
-                hasUmbrella.evaluate(cocktail.spec) + countPreferredIngredients.evaluate(cocktail.spec) == matchCount
-            }
-
-        case (0, 1, 0, let ingredientCount) where ingredientCount > 0:
-            // One base and preferred ingredients
-            predicate = #Predicate<Cocktail> { cocktail in
-                hasBase.evaluate(cocktail.spec) + countPreferredIngredients.evaluate(cocktail.spec) == matchCount
-            }
-
-        case (0, 0, 1, let ingredientCount) where ingredientCount > 0:
-            // One specialty and preferred ingredients
-            predicate = #Predicate<Cocktail> { cocktail in
-                hasSpecialty.evaluate(cocktail.spec) + countPreferredIngredients.evaluate(cocktail.spec) == matchCount
-            }
-
-        case (1, 1, 0, let ingredientCount) where ingredientCount > 0:
-            // One umbrella, one base, and preferred ingredients
-            predicate = #Predicate<Cocktail> { cocktail in
-                hasUmbrella.evaluate(cocktail.spec) + hasBase.evaluate(cocktail.spec) + countPreferredIngredients.evaluate(cocktail.spec) == matchCount
-            }
-
-        case (1, 0, 1, let ingredientCount) where ingredientCount > 0:
-            // One umbrella, one specialty, and preferred ingredients
-            predicate = #Predicate<Cocktail> { cocktail in
-                hasUmbrella.evaluate(cocktail.spec) + hasSpecialty.evaluate(cocktail.spec) + countPreferredIngredients.evaluate(cocktail.spec) == matchCount
-            }
-
-        case (0, 1, 1, let ingredientCount) where ingredientCount > 0:
-            // One base, one specialty, and preferred ingredients
-            predicate = #Predicate<Cocktail> { cocktail in
-                hasBase.evaluate(cocktail.spec) + hasSpecialty.evaluate(cocktail.spec) + countPreferredIngredients.evaluate(cocktail.spec) == matchCount
-            }
-
-        default:
-            // Do all the checks
-            predicate = #Predicate<Cocktail> { cocktail in
-                hasUmbrella.evaluate(cocktail.spec) + hasBase.evaluate(cocktail.spec) + hasSpecialty.evaluate(cocktail.spec) + countPreferredIngredients.evaluate(cocktail.spec) == matchCount
-            }
-        }
-        // Finally, return the resulting predicate.
-        return #Predicate<Cocktail> { cocktail in
-            !totalUnwanted.evaluate(cocktail.spec) && predicate.evaluate(cocktail)
-        }
-    }
-
-        
-        func complicatedPredicateSearch() -> Predicate<Cocktail>{
-            return #Predicate<Cocktail> { cocktail in
-                cocktail.cocktailName == "Daiquiri"
-            }
-        }
-        
-        //build expression for preferred ingredients
-        func countPrefIngredients() -> Expression<[Ingredient], Int> {
-            return #Expression<[Ingredient], Int> { ingredients in
-                ingredients.filter { ingredient in
-                    preferredIngredients.contains(ingredient.ingredientBase.name)
-                }.count
-            }
-        }
-        
-        //build expression for umbrella
-        func hasUmbrella() -> Expression<[Ingredient], Int> {
-            return #Expression<[Ingredient], Int> { ingredients in
-                ingredients.filter { ingredient in
-                    preferredUmbrellaCategories.contains(ingredient.ingredientBase.umbrellaCategory)
-                }.count > 0 ? 1 : 0
-            }
-        }
-        
-        //build expression for baseCategory
-        func hasBaseCategory() -> Expression<[Ingredient], Int> {
-            return #Expression<[Ingredient], Int> { ingredients in
-                ingredients.filter { ingredient in
-                    preferredBaseCategories.contains(ingredient.ingredientBase.baseCategory)
-                }.count > 0 ? 1 : 0
-            }
-        }
-        
-        //build expression for specialty
-        func hasSpecialty() -> Expression<[Ingredient], Int> {
-            return #Expression<[Ingredient], Int> { ingredients in
-                ingredients.filter { ingredient in
-                    preferredSpecialtyCategories.contains(ingredient.ingredientBase.specialtyCategory)
-                }.count > 0 ? 1 : 0
-            }
-        }
-        
-        func totalUnwantedIngredients() -> Expression<[Ingredient], Bool> {
-            let totalUnwantedIngredients: [String] = unwantedIngredients + findIngredientNamesForCorrespondingSubCategories().unwanted
-            
-            return #Expression<[Ingredient], Bool> { ingredients in
-                ingredients.filter { ingredient in
-                    totalUnwantedIngredients.contains(ingredient.ingredientBase.name)
-                }.count > 0
-            }
-            
-        }
 }
