@@ -108,7 +108,7 @@ enum UmbrellaCategory: String, Codable, CaseIterable  {
     case fortifiedWines    = "Fortified Wine"
     case wines             = "Wine"
     case bitters           = "Bitters"
-    case amari             = "Amari"
+    case amari             = "Amaro"
     
 
 }
@@ -124,7 +124,7 @@ enum SpiritsUmbrellaCategory: String, Codable, CaseIterable  {
     case fortifiedWines    = "Fortified Wine"
     case wines             = "Wine"
     case bitters           = "Bitters"
-    case amari             = "Amari"
+    case amari             = "Amaro"
     
     var subCategories: [String] {
         switch self {
@@ -310,7 +310,6 @@ enum SpecialtyCategory: String, Codable, CaseIterable {
         
 
         guard let boozeTypes = categoryMap[self] else { return [] }
-        
         var specialtyCategoryStrings: [String] = []
         for booze in boozeTypes {
             if let tags = booze.tags.booze {

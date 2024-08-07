@@ -159,7 +159,7 @@ enum IngredientType: Codable{
         case .bitters:
             return "Bitters"
         case .amari:
-            return "Amari"
+            return "Amaro"
         }
     }
 }
