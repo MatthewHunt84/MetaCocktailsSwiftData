@@ -214,7 +214,7 @@ public struct preferencesListView: View {
                             .onTapGesture {
                                 withAnimation(.snappy) {
                                     viewModel.unwantedSelections.removeAll(where:{ $0 == unwantedIngredient })
-                                    
+                                    viewModel.unwantedIngredients.removeAll(where:{ $0 == unwantedIngredient }) 
                                 }
                             }
                     }
