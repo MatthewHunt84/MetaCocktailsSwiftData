@@ -60,7 +60,7 @@ struct FilterMatchesMenuDataQueriesView: View {
         Menu("Filter Matches") {
             ForEach(viewModel.preferredSelections, id: \.self) { preference in
                 
-                Button("Includes \(preference)") {
+                Button("- \(preference)") {
                     nonmatchSearchPreference = preference
                 }
                 .foregroundStyle(.brandPrimaryRed)
@@ -156,7 +156,7 @@ struct MinusOneMatchView: View {
                 ingredient.ingredientBase.umbrellaCategory == nonmatchSearchPreference ||
                 ingredient.ingredientBase.baseCategory == nonmatchSearchPreference ||
                 ingredient.ingredientBase.specialtyCategory == nonmatchSearchPreference
-            }.count > 0
+            }.count == 0
         }
     }
 }
@@ -208,7 +208,7 @@ struct MinusTwoMatchView: View {
                 ingredient.ingredientBase.umbrellaCategory == nonmatchSearchPreference ||
                 ingredient.ingredientBase.baseCategory == nonmatchSearchPreference ||
                 ingredient.ingredientBase.specialtyCategory == nonmatchSearchPreference
-            }.count > 0
+            }.count == 0
         }
     }
 }

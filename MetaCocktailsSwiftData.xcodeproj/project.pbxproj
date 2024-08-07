@@ -1241,8 +1241,8 @@
 				F40FB6B02B7E38DA0047D597 /* CocktailCollection.swift */,
 				4DB1C0B82B46D4E600943C69 /* CocktailComponent.swift */,
 				F4A628E12B7E31BF0084FD80 /* Variation.swift */,
-				1AC386912AAABED00064F52A /* GarnishList.swift */,
 				1AC3868E2AAABED00064F52A /* Glassware.swift */,
+				1AC386912AAABED00064F52A /* GarnishList.swift */,
 				1AC386902AAABED00064F52A /* Build.swift */,
 				F4C74C822AD8CC9600EA3334 /* Ice.swift */,
 			);
