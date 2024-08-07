@@ -292,7 +292,7 @@ class IngredientBase: Codable, Hashable {
                 return ""
             }
             for alcohol in booze {
-                if let base = BaseCategory(rawValue: alcohol.name) {
+                if BaseCategory(rawValue: alcohol.name) != nil {
                     return alcohol.name
                 }
             }
@@ -303,7 +303,7 @@ class IngredientBase: Codable, Hashable {
                 return ""
             }
             for alcohol in booze {
-                if let specialty = SpecialtyCategory(rawValue: alcohol.name) {
+                if SpecialtyCategory(rawValue: alcohol.name) != nil {
                     return alcohol.name
                 }
             }
