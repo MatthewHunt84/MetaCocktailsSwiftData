@@ -1048,8 +1048,6 @@
 			children = (
 				1AC386782AAABED00064F52A /* PreferencesCheckListCell.swift */,
 				4DA567AE2B6CF101003F6F04 /* EightySixCheckListCell.swift */,
-				4D7B01762B72C2260026FE34 /* BottleBatchCell.swift */,
-				4DED944D2C098DBF002305C2 /* SimpleBatchCell.swift */,
 				4D54F73D2B7B053800D046D9 /* LoadedCocktailIngredientCell.swift */,
 				4D54F7332B795E2700D046D9 /* SplitBatchCell.swift */,
 			);
@@ -1604,6 +1602,8 @@
 				4D54F7312B795AA100D046D9 /* SplitBatchView.swift */,
 				4D54F7372B79FD5B00D046D9 /* Sub Views */,
 				4DED94472BE73889002305C2 /* FloatingPromptView.swift */,
+				4DED944D2C098DBF002305C2 /* SimpleBatchCell.swift */,
+				4D7B01762B72C2260026FE34 /* BottleBatchCell.swift */,
 				4DED944F2C0E38BC002305C2 /* EditBatchModalView.swift */,
 			);
 			path = CocktailBatchingCalculator;

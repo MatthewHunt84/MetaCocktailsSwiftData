@@ -28,9 +28,9 @@ struct EditBatchModalView: View {
                 }
             }
             .padding(.bottom, 20)
-            Toggle("Divide ingredient volume into bottles", isOn: $viewModel.isShowingBottleMathMode)
-                .bold()
-                .padding(.bottom, 20)
+//            Toggle("Divide ingredient volume into bottles", isOn: $viewModel.isShowingBottleMathMode)
+//                .bold()
+//                .padding(.bottom, 20)
             VStack{
                 HStack{
                     Text("Included Ingredients:")

@@ -11,7 +11,7 @@ struct FloatingPromptView: View {
     @Binding var isActive: Bool
     @EnvironmentObject var viewModel: CBCViewModel
     @FocusState private var cocktailNumberFocus: Bool
-    @State private var cocktailCount: Double = 100.0
+    
     
    
     @State private var offset: CGFloat = 1000
@@ -31,7 +31,7 @@ struct FloatingPromptView: View {
                         .padding()
                         .foregroundStyle(.white)
                         .multilineTextAlignment(.center)
-                    TextField("Amount", value: $cocktailCount, formatter: viewModel.formatter).cBCTextField()
+                    TextField("Amount", value: $viewModel.numberOfCocktailsText, formatter: viewModel.formatter).cBCTextField()
                         .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                         .keyboardType(.numberPad)
                         .focused($cocktailNumberFocus)
@@ -42,7 +42,7 @@ struct FloatingPromptView: View {
                         .multilineTextAlignment(.center)
                     
                     NavigationLink {
-                        CBCLoadedCocktailView(cocktailCount: $cocktailCount)
+                        CBCLoadedCocktailView()
                     } label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
@@ -55,7 +55,6 @@ struct FloatingPromptView: View {
                         }
                         .padding()
                     }.simultaneousGesture(TapGesture().onEnded {
-                        viewModel.numberOfCocktailsText = cocktailCount
                         viewModel.convertIngredientsToBatchCellData()
                     })
                     
