@@ -10,12 +10,12 @@ import SwiftData
 
 extension SearchViewModel {
     
-    func predicateFactory(for matchCount: Int) -> Predicate<Cocktail> {
+    func predicateFactory(for matchCount: Int, cocktails: [Cocktail]) -> Predicate<Cocktail> {
         // Early exit for complicated predicate search
         if preferredUmbrellaCategories.count > 1 ||
             preferredBaseCategories.count > 1 ||
             preferredSpecialtyCategories.count > 1 {
-            return complicatedPredicateSearch()
+            return complicatedPredicateSearch(allCocktails: cocktails)
         }
         
         // Prepare expressions
@@ -161,13 +161,6 @@ extension SearchViewModel {
             }
         }
     
-    
-    private func complicatedPredicateSearch() -> Predicate<Cocktail>{
-        return #Predicate<Cocktail> { cocktail in
-            cocktail.cocktailName == "Daiquiri"
-        }
-    }
-    
     //build expression for preferred ingredients
     private func countPrefIngredients() -> Expression<[Ingredient], Int> {
         return #Expression<[Ingredient], Int> { ingredients in
@@ -212,6 +205,93 @@ extension SearchViewModel {
                 totalUnwantedIngredients.contains(ingredient.ingredientBase.name)
             }.count > 0
         }
+    }
+    
+    private func complicatedPredicateSearch(allCocktails: [Cocktail]) -> Predicate<Cocktail> {
         
+        // Should probably take this into a background thread using async.
+        
+//        let descriptor = FetchDescriptor<Cocktail>()
+//        let allCocktails = try context.fetch(descriptor)
+        let allCocktails = allCocktails
+        print("all cocktails count:  \(allCocktails.count)")
+        
+        /// Welcome to the complicated predicate search!
+        /// We'll enter this search if we have more than one subcategory (umbrella, base, or specialty)
+        ///
+        /// The reason that these cases are problematic is that our basic checks look to see if a cocktail spec contains at least one of whatever.
+        /// So if we had [Whiskies, Gin] in our umbrellas, a expressions can only return a max of one to avoid cases where a spec might have multiple whiskies.
+        /// This leaves that case where the multiple umbrellas represent selections unto themselves.
+        ///
+        /// So how do we approach this problem? Lets take a complicated example:
+        ///
+        /// Lets say we have 3 umbrellas [whiskey, ginLondonDry, agave]
+        /// and also 3 bases [cognac, rumJamaicanAged, and rum(dark)]
+        /// and also 3 specialties [tawnyPort, amontillado, sweetVermouth]
+        /// and then 3 ingredients for good measure [lemon juice, raspberries, egg white]
+        ///
+        /// The first step would be to count these up. So in this case there would be 12 selections here.
+        let selections = preferredSelections.count
+        ///
+        /// The next step would be to filter through the cocktails. I think because we can use more advanced swift functions we should be able to tackle this in a single loop.
+        ///
+        /// So first we grab all cocktails from the model, using a predicate. allCocktails = [Cocktail]
+        ///
+        let numberOfCocktailsWithUmbrellas = allCocktails.reduce(into: 0) { partialResult, cocktail in
+            var cocktailCount = 0
+            
+            cocktail.spec.forEach { ingredient in
+                 
+                if preferredUmbrellaCategories.contains(ingredient.ingredientBase.umbrellaCategory) ||
+                    preferredBaseCategories.contains(ingredient.ingredientBase.baseCategory) ||
+                    preferredSpecialtyCategories.contains(ingredient.ingredientBase.specialtyCategory) ||
+                    preferredIngredients.contains(ingredient.ingredientBase.name) {
+                    cocktailCount += 1
+                }
+
+            }
+            if cocktailCount > 1 {
+                print(" \(cocktail.cocktailName) has \(cocktailCount) matches!")
+            }
+            partialResult += cocktailCount
+        }
+        
+        print("Number of cocktails with all subcats = \(numberOfCocktailsWithUmbrellas)")
+        
+        /// then for each cocktail, we grab it's spec = [Ingredient]
+        ///
+        /// for each ingredient in the spec we grab it's base [IngredientBase]
+        ///
+        /// then we run checks on that base
+        ///
+        /// - what is your umbrella? if it matches one from our list we +1 to our count.
+        /// what if umbrella is whiskies, we can't have any bases or specialties that would match - since those will have already been filtered out by the search (can't be a bourbon for instance, but also couldn't be a jamaican rum, or lemon juice since the categories are mutually exclusive. So if we match an umbrella we would +1 and break out).
+        /// - what is your base? Similarly, if we match cognac we +1 and bail, none of the specialities or ingredients could also match in this case
+        /// - what is your specialty? This again is a +1 or 0 question.
+        /// - finally, if we are still here we'll check the ingredientName. If that matches +1 otherwise 0
+        ///
+        /// So essentially, for each ingredientBase we're going to add one to the count, or add zero.
+        /// This means we can distill this whole thing down to a reduce function!
+        /// We're reducing the cocktails array into the number of matches we find.
+        ///
+        /// Now, assuming this all works the way we expect - will the minus one cells be able to show the missing umbrellas/bases/specialties for cocktails which fall into this bucket?
+        /// Actually yeah it still does, because for each cocktail in that list it's running a filter of the cocktails ingredients vs the selected ingredients to find the missing ones. Cool.
+        ///
+        /// So at this point we'll just have a number for the cocktail. If it's 13 thats a perfect match, if it's 12 that's a minus1 match, and if it's 11 that's a minus 2 match.
+        /// I think we should catch all three cases here, because the alternative is to run this function 3 times and that's horribly inefficient.
+        /// It's probably a good idea actually to check how many selections we have and if:
+        /// selections cant be less than 2
+        /// selections == 3 we only care about perfect and minus one.
+        /// Anything above 4 selections and we run like normal
+        ///
+        /// Okay, what about unwanted things? I guess that can happen before we look for umbrellas. if somebody has 'bourbon' in their dislikes we'll need to compare each ingredient against that massive array.
+        /// I don't love this, but don't think there is a better way. That's why this is complicated.
+        /// So lets run the totalCombinedUnwantedIngredients array function once at the top, and reference it first in the loop before we do the check for umbrella/base etc.
+        
+        
+        
+        return #Predicate<Cocktail> { cocktail in
+            cocktail.cocktailName == "Daiquiri"
+        }
     }
 }

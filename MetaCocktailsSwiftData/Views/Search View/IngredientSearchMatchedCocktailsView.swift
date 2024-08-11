@@ -11,13 +11,14 @@ import SwiftData
 struct IngredientSearchMatchedCocktailsView: View {
     
     @EnvironmentObject var viewModel: SearchViewModel
+    @Query(sort: \Cocktail.cocktailName) var allCocktails: [Cocktail]
     
     var body: some View {
         
         List {
-            PerfectMatchCocktailView(passedViewModel: viewModel)
-            MinusOneMatchView(passedViewModel: viewModel)
-            MinusTwoMatchView(passedViewModel: viewModel)
+            PerfectMatchCocktailView(passedViewModel: viewModel, allCocktails: allCocktails)
+//            MinusOneMatchView(passedViewModel: viewModel, allCocktails: allCocktails)
+//            MinusTwoMatchView(passedViewModel: viewModel, allCocktails: allCocktails)
         }
         .listStyle(.plain)
         .backgroundStyle(.black)
@@ -82,8 +83,8 @@ struct PerfectMatchCocktailView: View {
     @EnvironmentObject var viewModel: SearchViewModel
     @Query var fullMatchCocktails: [Cocktail]
     
-    init(passedViewModel: SearchViewModel) {
-        let predicate = passedViewModel.predicateFactory(for: passedViewModel.preferredCount)
+    init(passedViewModel: SearchViewModel, allCocktails: [Cocktail]) {
+        let predicate = passedViewModel.predicateFactory(for: passedViewModel.preferredCount, cocktails: allCocktails)
         _fullMatchCocktails = Query(filter: predicate, sort: \Cocktail.cocktailName)
     }
     
@@ -115,8 +116,8 @@ struct MinusOneMatchView: View {
     @Query var minusOneMatchCocktails: [Cocktail]
     @State var nonmatchSearchPreference = "none"
     
-    init(passedViewModel: SearchViewModel) {
-        let predicate = passedViewModel.predicateFactory(for: passedViewModel.preferredCount - 1)
+    init(passedViewModel: SearchViewModel, allCocktails: [Cocktail]) {
+        let predicate = passedViewModel.predicateFactory(for: passedViewModel.preferredCount - 1, cocktails: allCocktails)
         _minusOneMatchCocktails = Query(filter: predicate, sort: \Cocktail.cocktailName)
     }
     
@@ -166,8 +167,8 @@ struct MinusTwoMatchView: View {
     @EnvironmentObject var viewModel: SearchViewModel
     @Query var minusTwoMatchCocktails: [Cocktail]
     
-    init(passedViewModel: SearchViewModel) {
-        let predicate = passedViewModel.predicateFactory(for: passedViewModel.preferredCount - 2)
+    init(passedViewModel: SearchViewModel, allCocktails: [Cocktail]) {
+        let predicate = passedViewModel.predicateFactory(for: passedViewModel.preferredCount - 2, cocktails: allCocktails)
         _minusTwoMatchCocktails = Query(filter: predicate, sort: \Cocktail.cocktailName)
     }
     
