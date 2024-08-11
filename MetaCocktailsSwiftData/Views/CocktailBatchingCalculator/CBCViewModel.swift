@@ -32,7 +32,7 @@ final class CBCViewModel: ObservableObject {
     @Published var containerSize =  4000
     @Published var numberOfContainers = 2
     @Published var splitBatchData: [SplitBatchCellData] = []
-    
+    @Published var containerSizeLabel = "4 Liter"
     
     var  formatter: NumberFormatter = {
         let formatter = NumberFormatter()

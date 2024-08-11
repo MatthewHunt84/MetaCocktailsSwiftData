@@ -15,8 +15,13 @@ struct SplitBatchView: View {
             HStack{
                 Text("Container Size: ")
                 ContainerMenuView()
+                Spacer()
             }
-            Text("Batch Recipe Per Container:")
+            HStack{
+                Text("Batch Recipe Per Container:")
+                Spacer()
+            }
+            
             List {
                 ForEach($viewModel.splitBatchData, id: \.self) { ingredient in
                     SplitBatchCell(quantifiedSpiltBatches: ingredient)
