@@ -9,7 +9,6 @@ import SwiftUI
 import SwiftData
 
 struct IngredientSearchResultsView: View {
-    @Environment(\.modelContext) private var modelContext
     @EnvironmentObject var viewModel: SearchViewModel
     @Environment(\.dismiss) var dismiss
     
@@ -19,7 +18,7 @@ struct IngredientSearchResultsView: View {
                 
                 preferencesListView()
                 
-                IngredientSearchMatchedCocktailsView(context: modelContext, viewModel: viewModel)
+                IngredientSearchMatchedCocktailsView()
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {

@@ -9,16 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct IngredientSearchMatchedCocktailsView: View {
-    var modelContext: ModelContext
-    var viewModel: SearchViewModel
-    
-    init(context: ModelContext, viewModel: SearchViewModel) {
-        self.modelContext = context
-        self.viewModel = viewModel
-        if viewModel.allCocktails.isEmpty {
-            viewModel.allCocktails = try! modelContext.fetch(FetchDescriptor<Cocktail>())
-        }
-    }
+
+    @EnvironmentObject var viewModel: SearchViewModel
     
     var body: some View {
         

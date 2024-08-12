@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct IngredientSearchView: View {
+    
     @EnvironmentObject var viewModel: SearchViewModel
     @State var showingResults: Bool = false
     @FocusState var keyboardFocused: Bool
@@ -30,9 +31,6 @@ struct IngredientSearchView: View {
                     }
                 }
             }
-            .onAppear() {
-                keyboardFocused = true
-            }
             .navigationDestination(isPresented: $showingResults) {
                 IngredientSearchResultsView()
                     .navigationBarBackButtonHidden(true)
@@ -42,6 +40,9 @@ struct IngredientSearchView: View {
                     Text("Search Ingredients")
                         .font(.largeTitle).bold()
                 }
+            }
+            .task {
+                keyboardFocused = true
             }
         }
     }
@@ -105,6 +106,7 @@ struct ResetButton: View {
 }
 
 struct ThumbsUpOrDownIngredientSearchListView: View {
+    @Environment(\.modelContext) var modelContext
     @EnvironmentObject var viewModel: SearchViewModel
     @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]
     @FocusState var keyboardFocused: Bool
@@ -146,8 +148,25 @@ struct ThumbsUpOrDownIngredientSearchListView: View {
                     .listRowBackground(Color.black)
                 }
                 .scrollContentBackground(.hidden)
+                .task {
+                    await generateAllCocktailList(context: modelContext)
+                }
             } else {
                 EmptyView()
+            }
+        }
+    }
+    
+    func generateAllCocktailList(context: ModelContext) async {
+        if viewModel.allCocktails.isEmpty {
+            Task {
+                do {
+                    let descriptor = FetchDescriptor<Cocktail>()
+                    let fetchedCocktails = try context.fetch(descriptor)
+                        viewModel.allCocktails = fetchedCocktails
+                } catch {
+                    print("Error fetching cocktails: \(error)")
+                }
             }
         }
     }
