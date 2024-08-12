@@ -28,14 +28,15 @@ struct SplitBatchView: View {
                 }
             }
             .listStyle(.plain)
-            .overlay( RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
-                .stroke(.gray.gradient, lineWidth: 2))
+//            .overlay( RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
+//                .stroke(.gray.gradient, lineWidth: 2))
             Text("Number of Containers: \(viewModel.numberOfContainers)")
                 .dynamicTypeSize(.large)
-            Text("At least 10% of the container's volume will be left empty for safe transportation.")
+            Text("* At least 10% of the container's volume will be left empty for safe transportation.")
                 .multilineTextAlignment(.center)
-                .dynamicTypeSize(.large).bold()
+                .dynamicTypeSize(.medium)
                 .padding(10)
+                .foregroundStyle(.blueTint)
             
         }
         .navigationTitle("Split Batch: \(viewModel.cocktailNameText)")

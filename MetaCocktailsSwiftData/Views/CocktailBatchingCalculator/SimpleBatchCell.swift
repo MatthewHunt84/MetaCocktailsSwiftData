@@ -19,26 +19,9 @@ struct SimpleBatchCell: View {
                 Spacer()
                 Text("\(quantifiedBatchedIngredient.totalMls)ml")
             }
-//            HStack{
-//                Spacer()
-//                Button(action: {
-//                    withAnimation(.easeInOut(duration: 4.0)) {
-//                        cellSizeIsBigger.toggle()
-//                    }
-//                    withAnimation(.easeInOut(duration: 1.0).delay(7.0)) {
-//                       showBottleMath.toggle()
-//                    }
-//                }) {
-//                    Text("Show bottle math")
-//                }
-//                .buttonStyle(.borderless)
-//                .font(.caption)
-//                .foregroundStyle(.brandPrimaryGold)
-//            }
-            
             
                 DisclosureGroup{
-                
+                    
                     HStack {
                         
                         Spacer()
@@ -105,6 +88,7 @@ struct SimpleBatchCell: View {
                     }
                 }
                 .disclosureGroupStyle(InlineDisclosureGroupStyle())
+          
         }
         //.frame(height: cellSizeIsBigger ? 150 : 40)
     }

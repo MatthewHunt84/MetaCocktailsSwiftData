@@ -73,8 +73,10 @@ final class CBCViewModel: ObservableObject {
                                                            remaining1LMls: Int(ingredientVolume.rounded(.up).truncatingRemainder(dividingBy: 1000)),
                                                            whole750mlBottles: (ingredientVolume.rounded(.up) / 750).rounded(.down),
                                                            remaining750mLs: Int(ingredientVolume.rounded(.up).truncatingRemainder(dividingBy: 750)),
-                                                           mlAmount: ingredient.ingredient.value.toMilliliters,
+                                                           mlAmount: modifiedMeasurement.toMilliliters,
                                                            totalMls: Int(ingredientVolume.rounded(.up))))
+            
+            
         }
         totalDilutionVolume = totalVolume * (dilutionPercentage / 100.0)
         totalBatchVolume = totalVolume + totalDilutionVolume
@@ -82,7 +84,7 @@ final class CBCViewModel: ObservableObject {
         quantifiedBatchedIngredients = quantifiableIngredients
     }
     func doMathForModified1LBottleCount(initialAmount: Double, newQuantityAmount: Double) {
-        
+    
         numberOfCocktailsText = ((newQuantityAmount * 1000) / initialAmount)
         convertIngredientsToBatchCellData()
   

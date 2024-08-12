@@ -12,7 +12,6 @@ struct CBCLoadedCocktailView: View {
     @EnvironmentObject var viewModel: CBCViewModel
     
     @FocusState var isInputActive: Bool
-    @State private var somethingHappened: Bool = false
     @State private var isShowingPreferencesModal: Bool = false
     
     
@@ -28,11 +27,8 @@ struct CBCLoadedCocktailView: View {
                             Spacer()
                             EditIngredientsButton(isShowingIngredientsModal: $isShowingPreferencesModal)
                         }
-                        .padding(EdgeInsets(top: 0, leading: 5, bottom: 5, trailing: 5))
                     }
                     QuantifiedIngredientsListView()
-                    SplitBatchNavigationButton()
-                        .padding(.horizontal, 40)
                 }
             }
             .sheet(isPresented: $isShowingPreferencesModal, content: {
@@ -83,11 +79,18 @@ struct EditIngredientsButton: View {
             isShowingIngredientsModal.toggle()
             
         } label: {
-            HStack{
-                Text("Edit")
-                Image(systemName: "pencil")
+            VStack{
+                //Text("Edit")
+//                Text("Exclude")
+//                Text("Ingredients")
+                Image(systemName: "gearshape")
                 //Text("Ingredients")
             }
+            .dynamicTypeSize(.xxLarge).bold()
+            .foregroundStyle(.brandPrimaryGold)
+            .padding(.horizontal, 15)
+
+            
         }
     }
 }
@@ -98,14 +101,20 @@ struct CocktailCountView: View {
     
     var body: some View {
         Text("Cocktail Count:")
-        TextField("#", value:  $viewModel.numberOfCocktailsText, formatter: viewModel.formatter).cBCTextField()
+            .dynamicTypeSize(.large)
+            .bold()
+        TextField("#", value:  $viewModel.numberOfCocktailsText, formatter: viewModel.formatter)
+            .padding(5)
             .autocorrectionDisabled()
-            
+            .background(Color(UIColor.systemGray5))
+            .cornerRadius(10)
             .keyboardType(.decimalPad)
             .focused($isInputActive)
             .onTapGesture {
                 viewModel.numberOfCocktailsText = 0
             }
+            .dynamicTypeSize(.large)
+         
         
             .toolbar {
                 if isInputActive {
@@ -118,7 +127,8 @@ struct CocktailCountView: View {
                             isInputActive = false
                         } label: {
                             Text("Done")
-                                .foregroundStyle(.brandPrimaryGold)
+                                .bold()
+                                .foregroundStyle(.blue)
                         }
                     }
                 }
@@ -152,31 +162,34 @@ struct QuantifiedIngredientsListView: View {
                         }
                 }
             }
+            VStack{
+                SplitBatchNavigationButton()
+                    
+            }
         }
         .listStyle(.plain)
-    
-//        .overlay( RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
-//            .stroke(.gray.gradient, lineWidth: 2))
     }
 }
 
 struct SplitBatchNavigationButton: View {
     @EnvironmentObject var viewModel: CBCViewModel
     var body: some View {
-        NavigationLink {
-            SplitBatchView()
-                .environmentObject(viewModel)
-        } label: {
+        
+        NavigationLinkWithoutIndicator {
             HStack{
-                //Image(systemName: "divide")
                 Text("Divide Total Batch")
+                    .font(.headline)
+                    .foregroundColor(.black)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.brandPrimaryGold)
+                    .cornerRadius(20)
+                    .shadow(radius: 5)
             }
             .foregroundStyle(.brandPrimaryGold)
-            
-        }.simultaneousGesture(TapGesture().onEnded {
-            viewModel.doSplitBatchMath()
-        })
-        .buttonStyle(.custom)
-        .tint(Color(UIColor.systemGray5))
+        } destination: {
+            SplitBatchView()
+                .environmentObject(viewModel)
+        }
     }
 }
