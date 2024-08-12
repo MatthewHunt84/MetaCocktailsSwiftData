@@ -82,7 +82,7 @@ struct SimpleBatchCell: View {
                 } label: {
                     HStack{
                         Spacer()
-                        Text("Show bottle math")
+                        Text("Bottle Math")
                             .font(.caption)
                             .foregroundStyle(.brandPrimaryGold)
                     }
