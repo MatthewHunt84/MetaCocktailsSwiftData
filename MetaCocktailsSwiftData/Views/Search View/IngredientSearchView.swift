@@ -188,9 +188,15 @@ public struct preferencesListView: View {
                         viewModel.viewModelTagView(preferredIngredient, .green , "xmark")
                             .onTapGesture {
                                 withAnimation(.snappy) {
-                                    viewModel.preferredCount -= 1
+                                    // REPLACE THE BELOW WITH A VIEW MODEL FUNCTION THAT REMOVES THE SELECTION FROM THE APPROPRIATE ARRAY:
+                                    
                                     viewModel.preferredSelections.removeAll(where: { $0 == preferredIngredient})
-                                    viewModel.preferredIngredients = viewModel.preferredSelections 
+                                    viewModel.preferredUmbrellaCategories.removeAll(where: { $0 == preferredIngredient})
+                                    viewModel.preferredBaseCategories.removeAll(where: { $0 == preferredIngredient})
+                                    viewModel.preferredSpecialtyCategories.removeAll(where: { $0 == preferredIngredient})
+                                    viewModel.preferredIngredients.removeAll(where: { $0 == preferredIngredient})
+                                    viewModel.preferredCount -= 1
+                                    //
                                     if viewModel.preferredCount == 0 {
                                         dismiss()
                                     }

@@ -11,6 +11,8 @@ import SwiftData
 @Observable
 final class SearchViewModel: ObservableObject {
     
+    var allCocktails: [Cocktail] = []
+    
     var nonmatchSearchPreference: String = "none"
     var currentComponentSearchName: String = ""
     var filteredIngredients: [String] = []
