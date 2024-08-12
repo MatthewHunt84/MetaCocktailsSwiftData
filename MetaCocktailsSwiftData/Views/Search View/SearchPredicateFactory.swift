@@ -210,6 +210,8 @@ extension SearchViewModel {
     private func complicatedPredicateSearch() -> Predicate<Cocktail> {
         
         // Should probably take this into a background thread using async.
+        // Once this is run, it populates three arrays: perfectCocktails, minusOneCocktails, and minusTwoCocktails.
+        // Before we continue we check to see if they are populated, if so - return the correct predicate immediately without looping repeatedly
         
         let numberOfSelections = preferredSelections.count
         var matchedCocktails = [String]()
