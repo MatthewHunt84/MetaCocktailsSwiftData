@@ -15,7 +15,6 @@ final class CBCViewModel: ObservableObject {
  
     
     ///CBCMainView variables
-    @Published var cocktailNameText = ""
     @Published var dilutionPercentage = 25.0
     @Published var numberOfCocktailsText: Double = 100.0
     @Published var isShowingBottleMathMode: Bool = false 

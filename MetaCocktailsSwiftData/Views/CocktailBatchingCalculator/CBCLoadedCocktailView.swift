@@ -10,35 +10,57 @@ import SwiftUI
 
 struct CBCLoadedCocktailView: View {
     @EnvironmentObject var viewModel: CBCViewModel
-    
     @FocusState var isInputActive: Bool
     @State private var isShowingPreferencesModal: Bool = false
-    
+    @Environment(\.dismiss) private var dismiss
     
     
     var body: some View {
-        ZStack{
-            NavigationStack {
-                VStack {
+        
+        NavigationStack {
+            VStack {
+                HStack {
                     CBCCocktailHeaderView(cocktailName: viewModel.chosenCocktail.cocktailName, totalBatchVolume: viewModel.totalBatchVolume)
-                    VStack {
-                        HStack{
-                            CocktailCountView(isInputActive: _isInputActive)
-                            Spacer()
-                            EditIngredientsButton(isShowingIngredientsModal: $isShowingPreferencesModal)
-                        }
+                    Spacer()
+                }
+                VStack {
+                    HStack{
+                        CocktailCountView(isInputActive: _isInputActive)
+                        Spacer()
+                        EditIngredientsButton(isShowingIngredientsModal: $isShowingPreferencesModal)
                     }
-                    QuantifiedIngredientsListView()
+                }
+                QuantifiedIngredientsListView()
+            }
+            .padding()
+        }
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    dismiss()
+                }) {
+                    Image(systemName: "chevron.backward")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 9)
+                        .bold()
+                        .tint(.cyan)
                 }
             }
-            .sheet(isPresented: $isShowingPreferencesModal, content: {
-                EditBatchModalView()
-                    .onDisappear(perform: {
-                        viewModel.convertIngredientsToBatchCellData()
-                        
-                    })
-            })
+            
+            ToolbarItem(placement: .navigation) {
+                Text("Batching Calculator")
+                    .font(.largeTitle).bold()
+            }
         }
+        .sheet(isPresented: $isShowingPreferencesModal, content: {
+            EditBatchModalView()
+                .onDisappear(perform: {
+                    viewModel.convertIngredientsToBatchCellData()
+                    
+                })
+        })
     }
 }
 
@@ -57,18 +79,17 @@ struct CBCCocktailHeaderView: View {
         VStack(alignment: .leading) {
             HStack {
                 Text(cocktailName)
-                    .dynamicTypeSize(.xxxLarge)
-                    .bold()
-                Spacer()
+                    .foregroundStyle(.brandPrimaryGold)
+                    .font(.title2)
             }
             HStack {
                 Text("Full Batch:")
                 Text("\(Int(ceil(totalBatchVolume)))ml")
-                Spacer()
             }
-            .dynamicTypeSize(.xxxLarge)
-            .bold()
+            .font(.title3)
+            .foregroundStyle(.secondary)
         }
+        .bold()
     }
 }
 struct EditIngredientsButton: View {
@@ -81,15 +102,15 @@ struct EditIngredientsButton: View {
         } label: {
             VStack{
                 //Text("Edit")
-//                Text("Exclude")
-//                Text("Ingredients")
+                //                Text("Exclude")
+                //                Text("Ingredients")
                 Image(systemName: "gearshape")
                 //Text("Ingredients")
             }
             .dynamicTypeSize(.xxLarge).bold()
             .foregroundStyle(.brandPrimaryGold)
             .padding(.horizontal, 15)
-
+            
             
         }
     }
@@ -114,7 +135,7 @@ struct CocktailCountView: View {
                 viewModel.numberOfCocktailsText = 0
             }
             .dynamicTypeSize(.large)
-         
+        
         
             .toolbar {
                 if isInputActive {
@@ -163,7 +184,7 @@ struct QuantifiedIngredientsListView: View {
                             }
                     }
                 }
-               
+                
                 SplitBatchNavigationButton()
                 
             }
