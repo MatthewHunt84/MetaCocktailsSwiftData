@@ -133,7 +133,7 @@ struct CocktailCountView: View {
                     }
                 }
             }
-            .frame(maxWidth: 75)
+            .frame(width: 125)
     }
 }
 
@@ -141,41 +141,43 @@ struct QuantifiedIngredientsListView: View {
     @EnvironmentObject var viewModel: CBCViewModel
     
     var body: some View {
-        List {
-            ForEach($viewModel.quantifiedBatchedIngredients, id: \.self){ ingredient in
-                SimpleBatchCell(quantifiedBatchedIngredient: ingredient)
-            }
-            VStack{
-                HStack {
-                    Text("Batch Dilution")
-                    Spacer()
-                    Text("\(Int(ceil(viewModel.totalDilutionVolume)))ml")
+        ScrollView {
+            LazyVStack {
+                ForEach($viewModel.quantifiedBatchedIngredients, id: \.self) { ingredient in
+                    BatchCellView(quantifiedBatchedIngredient: ingredient)
                 }
-                HStack{
-                    Slider(value: $viewModel.dilutionPercentage, in: 0...100, step: 1.0)
-                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-                    Text("\(viewModel.dilutionPercentage, specifier: "%.0f")%")
-                        .frame(width: 50)
-                        .onChange(of: viewModel.dilutionPercentage) { oldValue, newValue in
-                            viewModel.dilutionPercentage = newValue
-                            viewModel.convertIngredientsToBatchCellData()
-                        }
+                VStack {
+                    HStack {
+                        Text("Batch Dilution")
+                        Spacer()
+                        Text("\(Int(ceil(viewModel.totalDilutionVolume)))ml")
+                    }
+                    HStack {
+                        Slider(value: $viewModel.dilutionPercentage, in: 0...100, step: 1.0)
+                            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                        Text("\(viewModel.dilutionPercentage, specifier: "%.0f")%")
+                            .frame(width: 50)
+                            .onChange(of: viewModel.dilutionPercentage) { oldValue, newValue in
+                                viewModel.dilutionPercentage = newValue
+                                viewModel.convertIngredientsToBatchCellData()
+                            }
+                    }
                 }
-            }
-            VStack{
+               
                 SplitBatchNavigationButton()
-                    
+                
             }
         }
-        .listStyle(.plain)
     }
 }
 
 struct SplitBatchNavigationButton: View {
     @EnvironmentObject var viewModel: CBCViewModel
+    
     var body: some View {
-        
-        NavigationLinkWithoutIndicator {
+        NavigationLink {
+            SplitBatchView()
+        } label: {
             HStack{
                 Text("Divide Total Batch")
                     .font(.headline)
@@ -187,9 +189,6 @@ struct SplitBatchNavigationButton: View {
                     .shadow(radius: 5)
             }
             .foregroundStyle(.brandPrimaryGold)
-        } destination: {
-            SplitBatchView()
-                .environmentObject(viewModel)
         }
     }
 }

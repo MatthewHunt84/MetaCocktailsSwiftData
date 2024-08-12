@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SplitBatchView: View {
     @EnvironmentObject var viewModel: CBCViewModel
+    
     var body: some View {
         VStack {
             
