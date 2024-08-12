@@ -329,7 +329,6 @@ extension SearchViewModel {
             if shouldRepopulatePredicates {
                 generateComplicatedPredicates()
                 shouldRepopulatePredicates = false
-                print("--- B")
             }
             
             let expression = #Expression<Cocktail, Bool> { cocktail in
@@ -341,7 +340,6 @@ extension SearchViewModel {
             }
         case .minusTwo:
             if shouldRepopulatePredicates {
-                print("--- C")
                 generateComplicatedPredicates()
                 shouldRepopulatePredicates = false
             }
@@ -354,7 +352,7 @@ extension SearchViewModel {
                 expression.evaluate(cocktail)
             }
         case .unknown:
-            print("--- PROBLEM: We shouldn't be here")
+            print("--- PROBLEM: We shouldn't be here") // I'll remove this, just want to be sure I know if this happens
             shouldRepopulatePredicates = false
             return #Predicate<Cocktail> { cocktail in
                 cocktail.cocktailName == "SHAMALAMADINGDONG"
