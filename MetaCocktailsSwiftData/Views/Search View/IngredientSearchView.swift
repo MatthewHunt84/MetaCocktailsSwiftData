@@ -207,15 +207,8 @@ public struct preferencesListView: View {
                         viewModel.viewModelTagView(preferredIngredient, .green , "xmark")
                             .onTapGesture {
                                 withAnimation(.snappy) {
-                                    // REPLACE THE BELOW WITH A VIEW MODEL FUNCTION THAT REMOVES THE SELECTION FROM THE APPROPRIATE ARRAY:
-                                    
-                                    viewModel.preferredSelections.removeAll(where: { $0 == preferredIngredient})
-                                    viewModel.preferredUmbrellaCategories.removeAll(where: { $0 == preferredIngredient})
-                                    viewModel.preferredBaseCategories.removeAll(where: { $0 == preferredIngredient})
-                                    viewModel.preferredSpecialtyCategories.removeAll(where: { $0 == preferredIngredient})
-                                    viewModel.preferredIngredients.removeAll(where: { $0 == preferredIngredient})
+                                    viewModel.handleRemovalOf(selection: preferredIngredient)
                                     viewModel.preferredCount -= 1
-                                    //
                                     if viewModel.preferredCount == 0 {
                                         dismiss()
                                     }
@@ -234,12 +227,11 @@ public struct preferencesListView: View {
                 
                 HStack(spacing: 12) {
                     
-                    ForEach(viewModel.unwantedSelections, id: \.self) { unwantedIngredient in
-                        viewModel.viewModelTagView(unwantedIngredient, .red, "xmark")
+                    ForEach(viewModel.unwantedSelections, id: \.self) { unwantedSelection in
+                        viewModel.viewModelTagView(unwantedSelection, .red, "xmark")
                             .onTapGesture {
                                 withAnimation(.snappy) {
-                                    viewModel.unwantedSelections.removeAll(where:{ $0 == unwantedIngredient })
-                                    viewModel.unwantedIngredients.removeAll(where:{ $0 == unwantedIngredient }) 
+                                    viewModel.handleRemovalOf(selection: unwantedSelection)
                                 }
                             }
                     }

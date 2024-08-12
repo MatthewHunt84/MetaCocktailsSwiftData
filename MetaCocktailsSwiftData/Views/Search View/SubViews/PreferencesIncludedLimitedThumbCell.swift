@@ -50,7 +50,7 @@ struct PreferencesIncludedLimitedThumbCell: View {
                      } else {
                          viewModel.unwantedSelections.removeAll(where: {$0 == ingredient})
                      }
-                     viewModel.fillUnwantedCategoryArrays()
+//                     viewModel.fillUnwantedCategoryArrays()
                      
                  }
                  .padding(.horizontal, 10)

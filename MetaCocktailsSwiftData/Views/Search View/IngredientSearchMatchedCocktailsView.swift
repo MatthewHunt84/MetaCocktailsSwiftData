@@ -16,8 +16,8 @@ struct IngredientSearchMatchedCocktailsView: View {
         
         List {
             PerfectMatchCocktailView(passedViewModel: viewModel)
-//            MinusOneMatchView(passedViewModel: viewModel)
-//            MinusTwoMatchView(passedViewModel: viewModel)
+            MinusOneMatchView(passedViewModel: viewModel)
+            MinusTwoMatchView(passedViewModel: viewModel)
         }
         .listStyle(.plain)
         .backgroundStyle(.black)

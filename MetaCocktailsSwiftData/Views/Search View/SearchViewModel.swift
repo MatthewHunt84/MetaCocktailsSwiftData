@@ -12,6 +12,7 @@ import SwiftData
 final class SearchViewModel: ObservableObject {
     
     var allCocktails: [Cocktail] = []
+    var shouldRepopulatePredicates = true
     
     var nonmatchSearchPreference: String = "none"
     var currentComponentSearchName: String = ""
@@ -26,15 +27,19 @@ final class SearchViewModel: ObservableObject {
     var preferredIngredients: [String] = []
     var unwantedIngredients: [String] = []
     var preferredUmbrellaCategories: [String] = []
-    var unwantedUmbrellaCategories: [String] = []
+//    var unwantedUmbrellaCategories: [String] = []
     var preferredBaseCategories: [String] = []
-    var unwantedBaseCategories: [String] = []
+//    var unwantedBaseCategories: [String] = []
     var preferredSpecialtyCategories: [String] = []
-    var unwantedSpecialtyCategories: [String] = []
+//    var unwantedSpecialtyCategories: [String] = []
     var isLoading = true
     var preferredCount = 0
     var sections: [ResultViewSectionData] = []
     var willLoadOnAppear = true
+    
+    var perfectMatchCocktails = [String]()
+    var minusOneMatchCocktails = [String]()
+    var minusTwoMatchCocktails = [String]()
 
     var cocktailsAndMissingIngredientsForMinusOne: [CocktailsAndMissingIngredients] = []
     var cocktailsAndMissingIngredientsForMinusTwo: [CocktailsAndMissingIngredients] = []
@@ -104,6 +109,20 @@ final class SearchViewModel: ObservableObject {
         .sweetVermouthAny: SpecialtyCategory.sweetVermouthAny.specialtyCategoryIngredients,
         .tawnyPort: SpecialtyCategory.tawnyPort.specialtyCategoryIngredients]
     
+    func handleRemovalOf(selection: String) {
+        shouldRepopulatePredicates = true
+        unwantedSelections.removeAll(where: { $0 == selection})
+        unwantedIngredients.removeAll(where: { $0 == selection})
+        preferredSelections.removeAll(where: { $0 == selection})
+        preferredUmbrellaCategories.removeAll(where: { $0 == selection})
+        preferredBaseCategories.removeAll(where: { $0 == selection})
+        preferredSpecialtyCategories.removeAll(where: { $0 == selection})
+        preferredIngredients.removeAll(where: { $0 == selection})
+        perfectMatchCocktails = []
+        minusOneMatchCocktails = []
+        minusTwoMatchCocktails = []
+    }
+    
     func fillPreferredCategoryArrays() {
         
         preferredUmbrellaCategories = []
@@ -124,25 +143,25 @@ final class SearchViewModel: ObservableObject {
         }
     }
     
-    func fillUnwantedCategoryArrays() {
-        
-        unwantedUmbrellaCategories = []
-        unwantedBaseCategories = []
-        unwantedSpecialtyCategories = []
-        unwantedIngredients = []
-        
-        for selection in unwantedSelections {
-            if let _ = UmbrellaCategory(rawValue: selection) {
-                unwantedUmbrellaCategories.append(selection)
-            } else if let _ = BaseCategory(rawValue: selection) {
-                unwantedBaseCategories.append(selection)
-            } else if let _ = SpecialtyCategory(rawValue: selection) {
-                unwantedSpecialtyCategories.append(selection)
-            } else {
-                unwantedIngredients.append(selection)
-            }
-        }
-    }
+//    func fillUnwantedCategoryArrays() {
+//        
+//        unwantedUmbrellaCategories = []
+//        unwantedBaseCategories = []
+//        unwantedSpecialtyCategories = []
+//        unwantedIngredients = []
+//        
+//        for selection in unwantedSelections {
+//            if let _ = UmbrellaCategory(rawValue: selection) {
+//                unwantedUmbrellaCategories.append(selection)
+//            } else if let _ = BaseCategory(rawValue: selection) {
+//                unwantedBaseCategories.append(selection)
+//            } else if let _ = SpecialtyCategory(rawValue: selection) {
+//                unwantedSpecialtyCategories.append(selection)
+//            } else {
+//                unwantedIngredients.append(selection)
+//            }
+//        }
+//    }
     
     func findAllCategoryIngredients() -> (included: [String], excluded: [String]) {
         var includedIngredients: [String] = []
