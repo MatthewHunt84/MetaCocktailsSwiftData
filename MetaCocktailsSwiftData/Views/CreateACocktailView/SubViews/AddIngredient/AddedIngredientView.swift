@@ -27,7 +27,7 @@ struct AddedIngredientView: View {
                 })
             }
             Button {
-                viewModel.addIngredientDetailViewIsActive = true
+                viewModel.toggleShowIngredientView()
             } label: {
                 HStack{
                     Text(viewModel.addedIngredients.count < 2 ? "Add Ingredient" : "Add another ingredient")

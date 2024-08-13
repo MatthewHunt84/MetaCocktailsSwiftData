@@ -113,7 +113,7 @@ struct AddCustomIngredientToCocktailButton: View {
                                                   
                 viewModel.clearIngredientData()
                 viewModel.isCustomIngredient = true
-                viewModel.addIngredientDetailViewIsActive = false
+                viewModel.toggleShowIngredientView()
             } else {
                 viewModel.isShowingingredientAlert.toggle()
             }

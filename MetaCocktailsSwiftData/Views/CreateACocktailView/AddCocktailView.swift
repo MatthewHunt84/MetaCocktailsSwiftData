@@ -239,7 +239,7 @@ private struct GarnishPicker: View {
                     })
                 }
                 Button {
-                    viewModel.addExistingGarnishViewIsActive = true
+                    viewModel.toggleShowAddGarnishView()
                         
                 } label: {
                     HStack {

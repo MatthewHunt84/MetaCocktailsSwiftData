@@ -173,7 +173,7 @@ struct AddExistingIngredientToCocktailButton: View {
                 viewModel.addedIngredients.append(ingredient)
                 
                 viewModel.clearIngredientData()
-                viewModel.addIngredientDetailViewIsActive = false 
+                viewModel.toggleShowIngredientView()
                 
             } else {
                 viewModel.isShowingingredientAlert.toggle()
