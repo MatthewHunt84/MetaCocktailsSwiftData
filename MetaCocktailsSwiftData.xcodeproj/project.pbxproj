@@ -489,6 +489,7 @@
 		F40FB6B12B7E38DA0047D597 /* CocktailCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40FB6B02B7E38DA0047D597 /* CocktailCollection.swift */; };
 		F41045072AD4FD42000CA913 /* CocktailImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41045062AD4FD42000CA913 /* CocktailImageView.swift */; };
 		F44A28F72AC26A6A0083C04D /* TagLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44A28F62AC26A6A0083C04D /* TagLayout.swift */; };
+		F47FBF652C6BF5EB00CD599E /* BasicLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47FBF642C6BF5EB00CD599E /* BasicLoadingIndicator.swift */; };
 		F4872FEE2C4353E10092F8FF /* DummyCocktails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4872FED2C4353E10092F8FF /* DummyCocktails.swift */; };
 		F4872FF02C4355320092F8FF /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4872FEF2C4355320092F8FF /* SampleData.swift */; };
 		F4872FF32C4374580092F8FF /* BlackGlassBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4872FF22C4374580092F8FF /* BlackGlassBackgroundView.swift */; };
@@ -1002,6 +1003,7 @@
 		F41045062AD4FD42000CA913 /* CocktailImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImageView.swift; sourceTree = "<group>"; };
 		F44A28F62AC26A6A0083C04D /* TagLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLayout.swift; sourceTree = "<group>"; };
 		F473FFD22C2716C4008689D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F47FBF642C6BF5EB00CD599E /* BasicLoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicLoadingIndicator.swift; sourceTree = "<group>"; };
 		F4872FED2C4353E10092F8FF /* DummyCocktails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyCocktails.swift; sourceTree = "<group>"; };
 		F4872FEF2C4355320092F8FF /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		F4872FF22C4374580092F8FF /* BlackGlassBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackGlassBackgroundView.swift; sourceTree = "<group>"; };
@@ -1917,6 +1919,7 @@
 				F4872FF42C4395F80092F8FF /* LoadingView.swift */,
 				F44A28F52AC26A590083C04D /* Layouts */,
 				F4DBE4C42AB8831C009A0C09 /* AnimatedSearchView.swift */,
+				F47FBF642C6BF5EB00CD599E /* BasicLoadingIndicator.swift */,
 			);
 			path = AnimatedViews;
 			sourceTree = "<group>";
@@ -2229,6 +2232,7 @@
 				4D1E85D52B5CDB2E00214BC6 /* SpanishRevival.swift in Sources */,
 				4DBFF82D2B5FC2FD0011B5B1 /* BetweenTheSheets(W&G).swift in Sources */,
 				4D5DA0B42BA125DD00C14F1F /* PiscoSourMnH.swift in Sources */,
+				F47FBF652C6BF5EB00CD599E /* BasicLoadingIndicator.swift in Sources */,
 				4DA5673A2B6AEA34003F6F04 /* SherryCobbler.swift in Sources */,
 				1AFDB7A22ADC84FF000A3812 /* Bamboo.swift in Sources */,
 				1AFDB7B42ADF2659000A3812 /* QueensParkSwizzle.swift in Sources */,

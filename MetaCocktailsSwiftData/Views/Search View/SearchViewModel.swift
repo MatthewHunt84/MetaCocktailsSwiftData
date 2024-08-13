@@ -12,53 +12,6 @@ import Combine
 @Observable
 final class SearchViewModel: ObservableObject {
     
-    // complex search nonsense
-    var perfectMatchCocktails = [String]()
-    var minusOneMatchCocktails = [String]()
-    var minusTwoMatchCocktails = [String]()
-    
-    var isRunningComplexSearch = false
-    var searchCompleted = false
-    var searchType: SearchType = .simple
-    
-    var updatedUnwantedSelections = [String]()
-    
-    func toggleLoading() async {
-        await MainActor.run {
-            isRunningComplexSearch.toggle()
-        }
-    }
-    
-    func searchButtonPressed() async {
-        
-        updatedUnwantedSelections = unwantedSelections
-        
-        evaluateSearchType()
-        if searchType == .complex {
-            await generateComplicatedPredicates()
-        }
-        await MainActor.run {
-            searchCompleted = true
-        }
-        
-    }
-    
-    func evaluateSearchType() {
-        if preferredUmbrellaCategories.count > 1 ||
-            preferredBaseCategories.count > 1 ||
-            preferredSpecialtyCategories.count > 1 {
-            searchType = SearchType.complex
-        } else {
-            searchType = SearchType.simple
-        }
-    }
-    
-    func resetSearch() {
-        searchCompleted = false
-    }
-    
-    var allCocktails: [Cocktail] = []
-    
     // Any changes to these two arrays will trigger view updates and must happen on the main thread!
     var unwantedSelections: [String] = []
     var preferredSelections: [String] = []
@@ -151,6 +104,51 @@ final class SearchViewModel: ObservableObject {
         .dryVermouthAny: SpecialtyCategory.dryVermouthAny.specialtyCategoryIngredients,
         .sweetVermouthAny: SpecialtyCategory.sweetVermouthAny.specialtyCategoryIngredients,
         .tawnyPort: SpecialtyCategory.tawnyPort.specialtyCategoryIngredients]
+    
+    // complex search variables
+    var perfectMatchCocktails = [String]()
+    var minusOneMatchCocktails = [String]()
+    var minusTwoMatchCocktails = [String]()
+    var isRunningComplexSearch = false
+    var searchCompleted = false
+    var searchType: SearchType = .simple
+    var updatedUnwantedSelections = [String]()
+    var allCocktails: [Cocktail] = []
+    
+    // complex search functions
+    func toggleLoading() async {
+        await MainActor.run {
+            isRunningComplexSearch.toggle()
+        }
+    }
+    
+    func searchButtonPressed() async {
+        
+        updatedUnwantedSelections = unwantedSelections
+        
+        evaluateSearchType()
+        if searchType == .complex {
+            await generateComplicatedPredicates()
+        }
+        await MainActor.run {
+            searchCompleted = true
+        }
+        
+    }
+    
+    func evaluateSearchType() {
+        if preferredUmbrellaCategories.count > 1 ||
+            preferredBaseCategories.count > 1 ||
+            preferredSpecialtyCategories.count > 1 {
+            searchType = SearchType.complex
+        } else {
+            searchType = SearchType.simple
+        }
+    }
+    
+    func resetSearch() {
+        searchCompleted = false
+    }
     
     func handleRemovalOf(selection: String, preferred: Bool) {
         
@@ -322,7 +320,7 @@ final class SearchViewModel: ObservableObject {
     func updateSearch(_ searchText: String) {
         searchSubject.send(searchText)
     }
-
+    
     private func performSearch(_ searchText: String) {
         guard !searchText.isEmpty else {
             filteredIngredients = []

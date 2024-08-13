@@ -50,7 +50,7 @@ struct IngredientSearchView: View {
             .task {
                 keyboardFocused = true
             }
-            .customLoadingOverlay(isLoading: viewModel.isRunningComplexSearch)
+            .basicLoadingIndicator(isLoading: viewModel.isRunningComplexSearch)
         }
     }
 }
@@ -252,39 +252,6 @@ public struct preferencesListView: View {
             .scrollClipDisabled(true)
             .scrollIndicators(.hidden)
         }
-    }
-}
-
-@MainActor
-struct LoadingOverlayModifier: ViewModifier {
-    let isLoading: Bool
-    
-    func body(content: Content) -> some View {
-        content
-            .blur(radius: isLoading ? 2 : 0)
-            .overlay {
-                if isLoading {
-                    LoadingAnimation2()
-                        .frame(width: 75, height: 75)
-                        .transition(.opacity.animation(.easeOut(duration: 0.3)))
-                }
-            }
-            .animation(.easeOut(duration: 1), value: isLoading)
-    }
-}
-
-extension View {
-    func customLoadingOverlay(isLoading: Bool) -> some View {
-        self.modifier(LoadingOverlayModifier(isLoading: isLoading))
-    }
-}
-
-struct LoadingAnimation2: View {
-    var body: some View {
-        ProgressView()
-            .progressViewStyle(CircularProgressViewStyle())
-            .scaleEffect(1.5)
-            .tint(.white)
     }
 }
 
