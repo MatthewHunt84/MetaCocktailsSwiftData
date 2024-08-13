@@ -16,15 +16,20 @@ enum PredicateType {
     case unknown
 }
 
+enum SearchType {
+    case simple
+    case complex
+}
+
 extension SearchViewModel {
     
     func matchPredicateType(_ matchCount: Int) -> PredicateType {
         switch matchCount {
-        case preferredSelections.count:
+        case preferredCount:
                 .perfect
-        case preferredSelections.count - 1:
+        case preferredCount - 1:
                 .minusOne
-        case preferredSelections.count - 2:
+        case preferredCount - 2:
                 .minusTwo
         default:
                 .unknown
@@ -33,11 +38,7 @@ extension SearchViewModel {
     
     func predicateFactory(for matchCount: Int) -> Predicate<Cocktail> {
         
-        // Early exit for complicated predicate search
-        if preferredUmbrellaCategories.count > 1 ||
-            preferredBaseCategories.count > 1 ||
-            preferredSpecialtyCategories.count > 1 {
-            
+        if searchType == .complex {
             return complicatedPredicateSearch(matchPredicateType(matchCount))
         }
         
@@ -230,8 +231,11 @@ extension SearchViewModel {
         }
     }
     
-    private func generateComplicatedPredicates() {
-        let numberOfSelections = preferredSelections.count
+    func generateComplicatedPredicates() async {
+        
+        await toggleLoading()
+        
+        let numberOfSelections = preferredCount
         var perfectMatches = [String]()
         var minusOne = [String]()
         var minusTwo = [String]()
@@ -249,13 +253,9 @@ extension SearchViewModel {
             }
             
             var umbrellas = preferredUmbrellaCategories
-            print("umbrellas = \(umbrellas)")
             var bases = preferredBaseCategories
-            print("bases =\(bases)")
             var specialties = preferredSpecialtyCategories
-            print("specialties =\(specialties)")
             var ingredients = preferredIngredients
-            print("ingredients =\(ingredients)")
             
             var matchedSelections = 0
             
@@ -263,25 +263,21 @@ extension SearchViewModel {
                 
                 if !umbrellas.isEmpty && umbrellas.contains(ingredient.ingredientBase.umbrellaCategory) {
                     matchedSelections += 1
-                    print("\(cocktail.cocktailName) has \(ingredient.ingredientBase.name). count now: \(matchedSelections)")
                     if let index = umbrellas.firstIndex(of: ingredient.ingredientBase.umbrellaCategory) {
                         umbrellas.remove(at: index)
                     }
                 } else if !bases.isEmpty && bases.contains(ingredient.ingredientBase.baseCategory) {
                     matchedSelections += 1
-                    print("\(cocktail.cocktailName) has \(ingredient.ingredientBase.name). count now: \(matchedSelections)")
                     if let index = bases.firstIndex(of: ingredient.ingredientBase.baseCategory) {
                         bases.remove(at: index)
                     }
                 } else if !specialties.isEmpty && specialties.contains(ingredient.ingredientBase.specialtyCategory) {
                     matchedSelections += 1
-                    print("\(cocktail.cocktailName) has \(ingredient.ingredientBase.name). count now: \(matchedSelections)")
                     if let index = specialties.firstIndex(of: ingredient.ingredientBase.specialtyCategory) {
                         specialties.remove(at: index)
                     }
                 } else if !ingredients.isEmpty && ingredients.contains(ingredient.ingredientBase.name) {
                     matchedSelections += 1
-                    print("\(cocktail.cocktailName) has \(ingredient.ingredientBase.name). count now: \(matchedSelections)")
                     if let index = ingredients.firstIndex(of: ingredient.ingredientBase.name) {
                         ingredients.remove(at: index)
                     }
@@ -300,6 +296,8 @@ extension SearchViewModel {
         perfectMatchCocktails = perfectMatches
         minusOneMatchCocktails = minusOne
         minusTwoMatchCocktails = minusTwo
+        
+        await toggleLoading()
     }
     
     private func complicatedPredicateSearch(_ predicateType: PredicateType) -> Predicate<Cocktail> {
@@ -307,15 +305,9 @@ extension SearchViewModel {
         if predicateType == .unknown {
             print("--- FOUND UNKNOWN PREDICATE TYPE!!!!!!!")
         }
-
-        // Before we continue we check to see if they are populated, if so - return the correct predicate immediately without looping repeatedly
+        
         switch predicateType {
         case .perfect:
-            if shouldRepopulatePredicates {
-                generateComplicatedPredicates()
-                shouldRepopulatePredicates = false
-            }
-            
             let expression = #Expression<Cocktail, Bool> { cocktail in
                 perfectMatchCocktails.contains(cocktail.cocktailName)
             }
@@ -324,11 +316,6 @@ extension SearchViewModel {
                 expression.evaluate(cocktail)
             }
         case .minusOne:
-            if shouldRepopulatePredicates {
-                generateComplicatedPredicates()
-                shouldRepopulatePredicates = false
-            }
-            
             let expression = #Expression<Cocktail, Bool> { cocktail in
                 minusOneMatchCocktails.contains(cocktail.cocktailName)
             }
@@ -337,10 +324,6 @@ extension SearchViewModel {
                 expression.evaluate(cocktail)
             }
         case .minusTwo:
-            if shouldRepopulatePredicates {
-                generateComplicatedPredicates()
-                shouldRepopulatePredicates = false
-            }
             
             let expression = #Expression<Cocktail, Bool> { cocktail in
                 minusTwoMatchCocktails.contains(cocktail.cocktailName)
@@ -351,7 +334,6 @@ extension SearchViewModel {
             }
         case .unknown:
             print("--- PROBLEM: We shouldn't be here") // I'll remove this, just want to be sure I know if this happens
-            shouldRepopulatePredicates = false
             return #Predicate<Cocktail> { cocktail in
                 cocktail.cocktailName == "SHAMALAMADINGDONG"
             }

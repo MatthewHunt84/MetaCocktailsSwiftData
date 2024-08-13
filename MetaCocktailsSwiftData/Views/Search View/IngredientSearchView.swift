@@ -19,7 +19,7 @@ struct IngredientSearchView: View {
         NavigationStack {
             
             VStack{
-            
+                
                 preferencesListView()
                 
                 VStack{
@@ -35,6 +35,12 @@ struct IngredientSearchView: View {
                 IngredientSearchResultsView()
                     .navigationBarBackButtonHidden(true)
             }
+            .onChange(of: viewModel.searchCompleted) { _, newValue in
+                if newValue {
+                    showingResults = true
+                    viewModel.resetSearch()
+                }
+            }
             .toolbar {
                 ToolbarItem(placement: .navigation) {
                     Text("Search Ingredients")
@@ -44,13 +50,15 @@ struct IngredientSearchView: View {
             .task {
                 keyboardFocused = true
             }
+            .blur(radius: viewModel.isRunningComplexSearch ? 3 : 0)
+            .overlay {
+                if viewModel.isRunningComplexSearch {
+                    LoadingAnimation()
+                        .frame(width: 120, height: 120)
+                }
+            }
         }
     }
-}
-
-#Preview {
-    IngredientSearchView()
-        .environmentObject(SearchCriteriaViewModel())
 }
 
 struct SearchForCocktailsButton: View {
@@ -60,7 +68,9 @@ struct SearchForCocktailsButton: View {
     var body: some View {
         
         Button {
-            showingResults = true
+            Task {
+                await viewModel.searchButtonPressed()
+            }
         } label: {
             HStack {
                 
@@ -77,6 +87,7 @@ struct SearchForCocktailsButton: View {
             .foregroundStyle(.brandPrimaryGold)
         }
         .frame(width: 380, height: 40,  alignment: .center)
+        .disabled(viewModel.isRunningComplexSearch)
     }
 }
 
@@ -207,8 +218,8 @@ public struct preferencesListView: View {
                         viewModel.viewModelTagView(preferredIngredient, .green , "xmark")
                             .onTapGesture {
                                 withAnimation(.snappy) {
-                                    viewModel.handleRemovalOf(selection: preferredIngredient)
-                                    viewModel.preferredCount -= 1
+                                    guard !viewModel.isRunningComplexSearch else { return }
+                                    viewModel.handleRemovalOf(selection: preferredIngredient, preferred: true)
                                     if viewModel.preferredCount == 0 {
                                         dismiss()
                                     }
@@ -231,7 +242,7 @@ public struct preferencesListView: View {
                         viewModel.viewModelTagView(unwantedSelection, .red, "xmark")
                             .onTapGesture {
                                 withAnimation(.snappy) {
-                                    viewModel.handleRemovalOf(selection: unwantedSelection)
+                                    viewModel.handleRemovalOf(selection: unwantedSelection, preferred: false)
                                 }
                             }
                     }
@@ -244,4 +255,9 @@ public struct preferencesListView: View {
             .scrollIndicators(.hidden)
         }
     }
+}
+
+#Preview {
+    IngredientSearchView()
+        .environmentObject(SearchCriteriaViewModel())
 }

@@ -11,8 +11,49 @@ import SwiftData
 @Observable
 final class SearchViewModel: ObservableObject {
     
+    // complex search nonsense
+    var perfectMatchCocktails = [String]()
+    var minusOneMatchCocktails = [String]()
+    var minusTwoMatchCocktails = [String]()
+    
+    var isRunningComplexSearch = false
+    var searchCompleted = false
+    var searchType: SearchType = .simple
+    
+    func toggleLoading() async {
+          await MainActor.run {
+              isRunningComplexSearch.toggle()
+          }
+      }
+    
+    func searchButtonPressed() async {
+
+        evaluateSearchType()
+        if searchType == .complex {
+            await generateComplicatedPredicates()
+        }
+        await MainActor.run {
+            searchCompleted = true
+            print("SEARCH_COMPLETED: TRUE")
+        }
+        
+    }
+    
+    func evaluateSearchType() {
+        if preferredUmbrellaCategories.count > 1 ||
+            preferredBaseCategories.count > 1 ||
+            preferredSpecialtyCategories.count > 1 {
+            searchType = SearchType.complex
+        } else {
+            searchType = SearchType.simple
+        }
+    }
+    
+    func resetSearch() {
+        searchCompleted = false
+    }
+
     var allCocktails: [Cocktail] = []
-    var shouldRepopulatePredicates = true
     
     var nonmatchSearchPreference: String = "none"
     var currentComponentSearchName: String = ""
@@ -33,10 +74,6 @@ final class SearchViewModel: ObservableObject {
     var preferredCount = 0
     var sections: [ResultViewSectionData] = []
     var willLoadOnAppear = true
-    
-    var perfectMatchCocktails = [String]()
-    var minusOneMatchCocktails = [String]()
-    var minusTwoMatchCocktails = [String]()
 
     var cocktailsAndMissingIngredientsForMinusOne: [CocktailsAndMissingIngredients] = []
     var cocktailsAndMissingIngredientsForMinusTwo: [CocktailsAndMissingIngredients] = []
@@ -106,18 +143,47 @@ final class SearchViewModel: ObservableObject {
         .sweetVermouthAny: SpecialtyCategory.sweetVermouthAny.specialtyCategoryIngredients,
         .tawnyPort: SpecialtyCategory.tawnyPort.specialtyCategoryIngredients]
     
-    func handleRemovalOf(selection: String) {
-        shouldRepopulatePredicates = true
-        unwantedSelections.removeAll(where: { $0 == selection})
+    func handleRemovalOf(selection: String, preferred: Bool) {
+        
+        // Remove view-independant selections
         unwantedIngredients.removeAll(where: { $0 == selection})
-        preferredSelections.removeAll(where: { $0 == selection})
         preferredUmbrellaCategories.removeAll(where: { $0 == selection})
         preferredBaseCategories.removeAll(where: { $0 == selection})
         preferredSpecialtyCategories.removeAll(where: { $0 == selection})
         preferredIngredients.removeAll(where: { $0 == selection})
+        
+        // Reset arrays for generation (if complex or not they need to be reset)
         perfectMatchCocktails = []
         minusOneMatchCocktails = []
         minusTwoMatchCocktails = []
+        
+        // Drop count by one if preferred:
+        if preferred {
+            preferredCount -= 1
+        }
+        
+        // Evaluate new search type
+        evaluateSearchType()
+        
+        // If complex, do complex thing. (note: look for count somewhere in here, that's gotta be switched out)
+        Task {
+            if searchType == .complex {
+                
+                await generateComplicatedPredicates()
+                
+                await MainActor.run {
+                    searchCompleted = true
+                    preferredSelections.removeAll(where: { $0 == selection})
+                    unwantedSelections.removeAll(where: { $0 == selection})
+                }
+            } else {
+                // Trigger updates:
+                await MainActor.run {
+                    preferredSelections.removeAll(where: { $0 == selection})
+                    unwantedSelections.removeAll(where: { $0 == selection})
+                }
+            }
+        }
     }
     
     func fillPreferredCategoryArrays() {

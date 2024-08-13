@@ -13,33 +13,43 @@ struct IngredientSearchResultsView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
+        
+        VStack {
             
-            VStack {
-                
-                preferencesListView()
-                
-                IngredientSearchMatchedCocktailsView()
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        viewModel.willLoadOnAppear = true
-                        dismiss()
-                    }) {
-                        Image(systemName: "chevron.backward")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 9)
-                            .bold()
-                            .tint(.cyan)
-                    }
-                }
-                
-                ToolbarItem(placement: .navigation) {
-                    Text("Matched Cocktails")
-                        .font(.largeTitle).bold()
+            preferencesListView()
+            
+            IngredientSearchMatchedCocktailsView()
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    viewModel.willLoadOnAppear = true
+                    dismiss()
+                }) {
+                    Image(systemName: "chevron.backward")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 9)
+                        .bold()
+                        .tint(.cyan)
                 }
             }
+            
+            ToolbarItem(placement: .navigation) {
+                Text("Matched Cocktails")
+                    .font(.largeTitle).bold()
+            }
+        }
+        .blur(radius: viewModel.isRunningComplexSearch ? 3 : 0)
+        .overlay {
+            if viewModel.isRunningComplexSearch {
+                LoadingAnimation()
+                    .frame(width: 120, height: 120)
+            }
+        }
+        .onAppear {
+            print("RESULT VIEW: IS APPEARING")
+        }
     }
     
     @ViewBuilder func SearchResultsTagView(_ tag: String, _ color: Color, _ icon: String) -> some View {
