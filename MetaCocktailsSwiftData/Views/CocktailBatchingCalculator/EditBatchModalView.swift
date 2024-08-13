@@ -14,11 +14,14 @@ struct EditBatchModalView: View {
     
     var body: some View {
         VStack{
+            
             HStack{
                 Text("Batch Preferences")
                     .dynamicTypeSize(.xxxLarge)
                     .bold()
+                
                 Spacer()
+                
                 Button {
                     dismiss()
                 } label: {
@@ -28,13 +31,13 @@ struct EditBatchModalView: View {
                 }
             }
             .padding(.bottom, 20)
-//            Toggle("Divide ingredient volume into bottles", isOn: $viewModel.isShowingBottleMathMode)
-//                .bold()
-//                .padding(.bottom, 20)
+            
             VStack{
+                
                 HStack{
                     Text("Included Ingredients:")
                         .bold()
+                    
                     Spacer()
                 }
                 List {
@@ -48,15 +51,9 @@ struct EditBatchModalView: View {
                 .listStyle(.plain)
                 
             }
-            //.padding(.bottom, 20)
-            HStack{
-
-                
-            }
         }
         .padding()
         .background(Color.black)
-        
     }
 }
 

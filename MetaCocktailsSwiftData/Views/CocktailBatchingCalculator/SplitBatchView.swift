@@ -37,8 +37,6 @@ struct SplitBatchView: View {
                 }
             }
             .listStyle(.plain)
-            ////            .overlay( RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
-            ////                .stroke(.gray.gradient, lineWidth: 2))
             .dynamicTypeSize(.large)
             Text("* At least 10% of the container's volume will be left empty for safe transportation.")
                 .multilineTextAlignment(.center)

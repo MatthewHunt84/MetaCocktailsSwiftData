@@ -71,21 +71,7 @@ struct BottleBatchCell: View {
             
             
         }
-        .frame(maxHeight: 50)
-//        .toolbar {
-//            if viewModel.isShowingBottleMathMode  {
-//                ToolbarItemGroup(placement: .keyboard) {
-//                    Button {
-//                        isFocused = false // Dismiss the keyboard
-//                    } label: {
-//                       Text("Done")
-//                            .foregroundStyle(.brandPrimaryGold)
-//                    }
-//                    Spacer()
-//                }
-//            }
-//        }
-        
+        .frame(maxHeight: 50)     
     }
 }
 

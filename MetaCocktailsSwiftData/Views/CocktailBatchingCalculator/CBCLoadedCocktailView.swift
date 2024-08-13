@@ -101,11 +101,7 @@ struct EditIngredientsButton: View {
             
         } label: {
             VStack{
-                //Text("Edit")
-                //                Text("Exclude")
-                //                Text("Ingredients")
                 Image(systemName: "gearshape")
-                //Text("Ingredients")
             }
             .dynamicTypeSize(.xxLarge).bold()
             .foregroundStyle(.brandPrimaryGold)
