@@ -461,7 +461,7 @@
 		4DE33E212B91B82E00312EC3 /* Cosmonaut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE33E202B91B82E00312EC3 /* Cosmonaut.swift */; };
 		4DED94462BE70A34002305C2 /* NumberOfCocktailsModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DED94452BE70A34002305C2 /* NumberOfCocktailsModal.swift */; };
 		4DED94482BE73889002305C2 /* FloatingPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DED94472BE73889002305C2 /* FloatingPromptView.swift */; };
-		4DED944E2C098DBF002305C2 /* SimpleBatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DED944D2C098DBF002305C2 /* SimpleBatchCell.swift */; };
+		4DED944E2C098DBF002305C2 /* BatchCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DED944D2C098DBF002305C2 /* BatchCellView.swift */; };
 		4DED94502C0E38BC002305C2 /* EditBatchModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DED944F2C0E38BC002305C2 /* EditBatchModalView.swift */; };
 		4DF408C22B60D0F100EF9A6E /* Caucasian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF408C12B60D0F100EF9A6E /* Caucasian.swift */; };
 		4DF408C62B60D4A100EF9A6E /* ChampsElysees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF408C52B60D4A100EF9A6E /* ChampsElysees.swift */; };
@@ -973,7 +973,7 @@
 		4DE33E202B91B82E00312EC3 /* Cosmonaut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cosmonaut.swift; sourceTree = "<group>"; };
 		4DED94452BE70A34002305C2 /* NumberOfCocktailsModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberOfCocktailsModal.swift; sourceTree = "<group>"; };
 		4DED94472BE73889002305C2 /* FloatingPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPromptView.swift; sourceTree = "<group>"; };
-		4DED944D2C098DBF002305C2 /* SimpleBatchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleBatchCell.swift; sourceTree = "<group>"; };
+		4DED944D2C098DBF002305C2 /* BatchCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchCellView.swift; sourceTree = "<group>"; };
 		4DED944F2C0E38BC002305C2 /* EditBatchModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBatchModalView.swift; sourceTree = "<group>"; };
 		4DF408C12B60D0F100EF9A6E /* Caucasian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caucasian.swift; sourceTree = "<group>"; };
 		4DF408C52B60D4A100EF9A6E /* ChampsElysees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampsElysees.swift; sourceTree = "<group>"; };
@@ -1048,8 +1048,6 @@
 			children = (
 				1AC386782AAABED00064F52A /* PreferencesCheckListCell.swift */,
 				4DA567AE2B6CF101003F6F04 /* EightySixCheckListCell.swift */,
-				4D7B01762B72C2260026FE34 /* BottleBatchCell.swift */,
-				4DED944D2C098DBF002305C2 /* SimpleBatchCell.swift */,
 				4D54F73D2B7B053800D046D9 /* LoadedCocktailIngredientCell.swift */,
 				4D54F7332B795E2700D046D9 /* SplitBatchCell.swift */,
 			);
@@ -1604,6 +1602,8 @@
 				4D54F7312B795AA100D046D9 /* SplitBatchView.swift */,
 				4D54F7372B79FD5B00D046D9 /* Sub Views */,
 				4DED94472BE73889002305C2 /* FloatingPromptView.swift */,
+				4DED944D2C098DBF002305C2 /* BatchCellView.swift */,
+				4D7B01762B72C2260026FE34 /* BottleBatchCell.swift */,
 				4DED944F2C0E38BC002305C2 /* EditBatchModalView.swift */,
 			);
 			path = CocktailBatchingCalculator;
@@ -2415,7 +2415,7 @@
 				4DBFF8332B6057F60011B5B1 /* BlackManhattan.swift in Sources */,
 				4D1E85CB2B5CA28C00214BC6 /* HeartOfGold.swift in Sources */,
 				4D1E85ED2B5F71B200214BC6 /* AirMail(WilliamsAndGraham).swift in Sources */,
-				4DED944E2C098DBF002305C2 /* SimpleBatchCell.swift in Sources */,
+				4DED944E2C098DBF002305C2 /* BatchCellView.swift in Sources */,
 				4DA567B82B6DA8FD003F6F04 /* EasternDiplomat.swift in Sources */,
 				4D6761392C44902C00A5939C /* PreferencesThumbsCell.swift in Sources */,
 				4D1E85BB2B5C845400214BC6 /* SmokingMonkey.swift in Sources */,

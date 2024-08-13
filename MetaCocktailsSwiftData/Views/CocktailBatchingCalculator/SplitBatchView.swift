@@ -9,36 +9,68 @@ import SwiftUI
 
 struct SplitBatchView: View {
     @EnvironmentObject var viewModel: CBCViewModel
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
-        VStack {
-            
+        VStack(alignment: .leading) {
+            Text("\(viewModel.chosenCocktail.cocktailName)")
+                .font(.title2)
+                .foregroundStyle(.brandPrimaryGold)
+                .bold()
+            Text("Split into \(viewModel.numberOfContainers) containers")
+                .font(.title3)
+                .foregroundStyle(.secondary)
+                .bold()
             HStack{
                 Text("Container Size: ")
                 ContainerMenuView()
+                Spacer()
             }
-            Text("Batch Recipe Per Container:")
+            HStack{
+                Text("Batch Recipe Per Container:")
+                Spacer()
+            }
+            
             List {
                 ForEach($viewModel.splitBatchData, id: \.self) { ingredient in
                     SplitBatchCell(quantifiedSpiltBatches: ingredient)
                 }
             }
             .listStyle(.plain)
-            .overlay( RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
-                .stroke(.gray.gradient, lineWidth: 2))
-            Text("Number of Containers: \(viewModel.numberOfContainers)")
-                .dynamicTypeSize(.large)
-            Text("At least 10% of the container's volume will be left empty for safe transportation.")
+            .dynamicTypeSize(.large)
+            Text("* At least 10% of the container's volume will be left empty for safe transportation.")
                 .multilineTextAlignment(.center)
-                .dynamicTypeSize(.large).bold()
+                .dynamicTypeSize(.medium)
                 .padding(10)
+                .foregroundStyle(.blueTint)
             
         }
-        .navigationTitle("Split Batch: \(viewModel.cocktailNameText)")
+        .padding()
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    dismiss()
+                }) {
+                    Image(systemName: "chevron.backward")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 9)
+                        .bold()
+                        .tint(.cyan)
+                }
+            }
+            
+            ToolbarItem(placement: .navigation) {
+                Text("Split Batch")
+                    .font(.largeTitle).bold()
+            }
+        }
         .task {
             viewModel.doSplitBatchMath()
         }
     }
-        
+    
 }
 
 #Preview {

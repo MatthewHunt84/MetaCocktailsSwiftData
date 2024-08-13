@@ -78,6 +78,22 @@ import SwiftData
         }
     }
     
+    func toggleShowIngredientView() {
+        Task {
+            await MainActor.run {
+                addIngredientDetailViewIsActive.toggle()
+            }
+        }
+    }
+    
+    func toggleShowAddGarnishView() {
+        Task {
+            await MainActor.run {
+                addExistingGarnishViewIsActive.toggle()
+            }
+        }
+    }
+    
     func clearData() {
         cocktailName = ""
         authorName = ""

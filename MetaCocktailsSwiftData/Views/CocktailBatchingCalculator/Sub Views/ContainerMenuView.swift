@@ -9,15 +9,15 @@ import SwiftUI
 
 struct ContainerMenuView: View {
     @EnvironmentObject var viewModel: CBCViewModel
-    @State var containerSizeLabel: String = "4 Liter"
+
     var body: some View {
         VStack {
-            Menu(containerSizeLabel) {
+            Menu(viewModel.containerSizeLabel) {
                 Button{
                     viewModel.containerSize = 4000
                     viewModel.convertIngredientsToBatchCellData()
                     viewModel.doSplitBatchMath()
-                    containerSizeLabel = "4 Liter"
+                    viewModel.containerSizeLabel = "4 Liter"
                 } label: {
                     Text("4 Liter")
                     
@@ -26,7 +26,7 @@ struct ContainerMenuView: View {
                     viewModel.containerSize = 5000
                     viewModel.convertIngredientsToBatchCellData()
                     viewModel.doSplitBatchMath()
-                    containerSizeLabel = "5 Liter"
+                    viewModel.containerSizeLabel = "5 Liter"
                 } label: {
                     Text("5 Liter")
                     
@@ -35,7 +35,7 @@ struct ContainerMenuView: View {
                     viewModel.containerSize = 6000
                     viewModel.convertIngredientsToBatchCellData()
                     viewModel.doSplitBatchMath()
-                    containerSizeLabel = "6 Liter"
+                    viewModel.containerSizeLabel = "6 Liter"
                 } label: {
                     Text("6 Liter")
                     
@@ -44,7 +44,7 @@ struct ContainerMenuView: View {
                     viewModel.containerSize = 7000
                     viewModel.convertIngredientsToBatchCellData()
                     viewModel.doSplitBatchMath()
-                    containerSizeLabel = "7 Liter"
+                    viewModel.containerSizeLabel = "7 Liter"
                 } label: {
                     Text("7 Liter")
                     
@@ -53,7 +53,7 @@ struct ContainerMenuView: View {
                     viewModel.containerSize = 8000
                     viewModel.convertIngredientsToBatchCellData()
                     viewModel.doSplitBatchMath()
-                    containerSizeLabel = "8 Liter"
+                    viewModel.containerSizeLabel = "8 Liter"
                 } label: {
                     Text("8 Liter")
                     
@@ -62,7 +62,7 @@ struct ContainerMenuView: View {
                     viewModel.containerSize = 9000
                     viewModel.convertIngredientsToBatchCellData()
                     viewModel.doSplitBatchMath()
-                    containerSizeLabel = "9 Liter"
+                    viewModel.containerSizeLabel = "9 Liter"
                 } label: {
                     Text("9 Liter")
                     
@@ -71,7 +71,7 @@ struct ContainerMenuView: View {
                     viewModel.containerSize = 10000
                     viewModel.convertIngredientsToBatchCellData()
                     viewModel.doSplitBatchMath()
-                    containerSizeLabel = "10 Liter"
+                    viewModel.containerSizeLabel = "10 Liter"
                 } label: {
                     Text("10 Liter")
                     
@@ -80,7 +80,7 @@ struct ContainerMenuView: View {
                     viewModel.containerSize = 11000
                     viewModel.convertIngredientsToBatchCellData()
                     viewModel.doSplitBatchMath()
-                    containerSizeLabel = "11 Liter"
+                    viewModel.containerSizeLabel = "11 Liter"
                 } label: {
                     Text("11 Liter")
                     
@@ -89,7 +89,7 @@ struct ContainerMenuView: View {
                     viewModel.containerSize = 12000
                     viewModel.convertIngredientsToBatchCellData()
                     viewModel.doSplitBatchMath()
-                    containerSizeLabel = "12 Liter"
+                    viewModel.containerSizeLabel = "12 Liter"
                 } label: {
                     Text("12 Liter")
                     
@@ -98,7 +98,7 @@ struct ContainerMenuView: View {
                     viewModel.containerSize = 13000
                     viewModel.convertIngredientsToBatchCellData()
                     viewModel.doSplitBatchMath()
-                    containerSizeLabel = "13 Liter"
+                    viewModel.containerSizeLabel = "13 Liter"
                 } label: {
                     Text("13 Liter")
                     
@@ -107,7 +107,7 @@ struct ContainerMenuView: View {
                     viewModel.containerSize = 14000
                     viewModel.convertIngredientsToBatchCellData()
                     viewModel.doSplitBatchMath()
-                    containerSizeLabel = "14 Liter"
+                    viewModel.containerSizeLabel = "14 Liter"
                 } label: {
                     Text("14 Liter")
                     
@@ -116,7 +116,7 @@ struct ContainerMenuView: View {
                     viewModel.containerSize = 15000
                     viewModel.convertIngredientsToBatchCellData()
                     viewModel.doSplitBatchMath()
-                    containerSizeLabel = "15 Liter"
+                    viewModel.containerSizeLabel = "15 Liter"
                 } label: {
                     Text("15 Liter")
                     
@@ -125,7 +125,7 @@ struct ContainerMenuView: View {
                     viewModel.containerSize = 16000
                     viewModel.convertIngredientsToBatchCellData()
                     viewModel.doSplitBatchMath()
-                    containerSizeLabel = "16 Liter"
+                    viewModel.containerSizeLabel = "16 Liter"
                 } label: {
                     Text("16 Liter")
                     
@@ -134,7 +134,7 @@ struct ContainerMenuView: View {
                     viewModel.containerSize = 17000
                     viewModel.convertIngredientsToBatchCellData()
                     viewModel.doSplitBatchMath()
-                    containerSizeLabel = "17 Liter"
+                    viewModel.containerSizeLabel = "17 Liter"
                 } label: {
                     Text("17 Liter")
                     
@@ -143,7 +143,7 @@ struct ContainerMenuView: View {
                     viewModel.containerSize = 18000
                     viewModel.convertIngredientsToBatchCellData()
                     viewModel.doSplitBatchMath()
-                    containerSizeLabel = "18 Liter"
+                    viewModel.containerSizeLabel = "18 Liter"
                 } label: {
                     Text("18 Liter")
                     
@@ -152,7 +152,7 @@ struct ContainerMenuView: View {
                     viewModel.containerSize = 18927
                     viewModel.convertIngredientsToBatchCellData()
                     viewModel.doSplitBatchMath()
-                    containerSizeLabel = "5 Gallon Bucket"
+                    viewModel.containerSizeLabel = "5 Gallon Bucket"
                 } label: {
                     Text("5 Gallon Bucket")
                     

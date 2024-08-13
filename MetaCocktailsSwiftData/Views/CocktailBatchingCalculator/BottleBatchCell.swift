@@ -12,7 +12,7 @@ struct BottleBatchCell: View {
     @State var bottleSize: BottleSize = .oneLiter
     @Binding var quantifiedBatchedIngredient: BottleBatchedCellData
     @FocusState private var isFocused: Bool
-    
+   
   
     
     
@@ -32,12 +32,15 @@ struct BottleBatchCell: View {
                     .autocorrectionDisabled()
                     .frame(width: 60, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .focused($isFocused)
-                    .onSubmit {
-                        viewModel.doMathForModified1LBottleCount(initialAmount: Double(quantifiedBatchedIngredient.mlAmount), newQuantityAmount: quantifiedBatchedIngredient.whole1LBottles)
-                        viewModel.convertIngredientsToBatchCellData()
-                    }
-                    
-                
+                    .onChange(of: isFocused, { _, _ in
+                        if bottleSize == .oneLiter {
+                            viewModel.doMathForModified1LBottleCount(initialAmount: Double(quantifiedBatchedIngredient.mlAmount), newQuantityAmount: quantifiedBatchedIngredient.whole1LBottles)
+                            viewModel.convertIngredientsToBatchCellData()
+                        } else {
+                            viewModel.doMathForModified750mlBottleCount(initialAmount: Double(quantifiedBatchedIngredient.mlAmount), newQuantityAmount: quantifiedBatchedIngredient.whole750mlBottles)
+                            viewModel.convertIngredientsToBatchCellData()
+                        }
+                    })
                     .keyboardType(.decimalPad)
                 
                 
@@ -51,11 +54,15 @@ struct BottleBatchCell: View {
                     .autocorrectionDisabled()
                     .frame(width: 60, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .focused($isFocused)
-                    .onSubmit {
-                        viewModel.doMathForModified750mlBottleCount(initialAmount: Double(quantifiedBatchedIngredient.mlAmount), newQuantityAmount: quantifiedBatchedIngredient.whole750mlBottles)
-                        viewModel.convertIngredientsToBatchCellData()
-                    }
-                    
+                    .onChange(of: isFocused, { _, _ in
+                        if bottleSize == .oneLiter {
+                            viewModel.doMathForModified1LBottleCount(initialAmount: Double(quantifiedBatchedIngredient.mlAmount), newQuantityAmount: quantifiedBatchedIngredient.whole1LBottles)
+                            viewModel.convertIngredientsToBatchCellData()
+                        } else {
+                            viewModel.doMathForModified750mlBottleCount(initialAmount: Double(quantifiedBatchedIngredient.mlAmount), newQuantityAmount: quantifiedBatchedIngredient.whole750mlBottles)
+                            viewModel.convertIngredientsToBatchCellData()
+                        }
+                    })
                     .keyboardType(.decimalPad)
                 Text("\(quantifiedBatchedIngredient.remaining750mLs)ml")
                     .frame(width: 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
@@ -64,25 +71,7 @@ struct BottleBatchCell: View {
             
             
         }
-        .frame(maxHeight: 50)
-
-        .toolbar {
-            ToolbarItemGroup(placement: .keyboard) {
-                Button("Done") {
-                    // Run the appropriate function based on the bottle size
-                    if bottleSize == .oneLiter {
-                        viewModel.doMathForModified1LBottleCount(initialAmount: Double(quantifiedBatchedIngredient.mlAmount), newQuantityAmount: quantifiedBatchedIngredient.whole1LBottles)
-                        viewModel.convertIngredientsToBatchCellData()
-                    } else {
-                        viewModel.doMathForModified750mlBottleCount(initialAmount: Double(quantifiedBatchedIngredient.mlAmount), newQuantityAmount: quantifiedBatchedIngredient.whole750mlBottles)
-                        viewModel.convertIngredientsToBatchCellData()
-                    }
-                    isFocused = false // Dismiss the keyboard
-                }
-                Spacer()
-            }
-        }
-        
+        .frame(maxHeight: 50)     
     }
 }
 

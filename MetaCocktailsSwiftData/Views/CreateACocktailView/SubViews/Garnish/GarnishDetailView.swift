@@ -122,7 +122,7 @@ struct AddExistingGarnishToCocktailButton: View {
         Button{
             if viewModel.existingGarnishIsValid(allGarnishes: garnish) {
                 viewModel.addExistingGarnishToCocktail(context: modelContext)
-                viewModel.addExistingGarnishViewIsActive = false
+                viewModel.toggleShowAddGarnishView()
             } else {
                 viewModel.isShowingingredientAlert.toggle()
                 viewModel.didChooseExistingIngredient = false
