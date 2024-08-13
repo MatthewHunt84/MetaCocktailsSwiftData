@@ -50,13 +50,7 @@ struct IngredientSearchView: View {
             .task {
                 keyboardFocused = true
             }
-            .blur(radius: viewModel.isRunningComplexSearch ? 3 : 0)
-            .overlay {
-                if viewModel.isRunningComplexSearch {
-                    LoadingAnimation()
-                        .frame(width: 120, height: 120)
-                }
-            }
+            .customLoadingOverlay(isLoading: viewModel.isRunningComplexSearch)
         }
     }
 }
@@ -122,6 +116,8 @@ struct ThumbsUpOrDownIngredientSearchListView: View {
     @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]
     @FocusState var keyboardFocused: Bool
     
+    @State var ingredientNames = [String]()
+    
     var body: some View {
         Section("Component Name:") {
             
@@ -132,11 +128,9 @@ struct ThumbsUpOrDownIngredientSearchListView: View {
                     TextField("Flavor, Ingredient, Style, or Profile...", text: $viewModel.currentComponentSearchName)
                         .focused($keyboardFocused)
                         .autocorrectionDisabled(true)
-                        .onChange(of: viewModel.currentComponentSearchName, initial: true) { old, new in
-                            viewModel.currentComponentSearchName = new
-                            viewModel.filteredIngredients = viewModel.matchAllIngredientsAndSubcategories(ingredients: ingredients.map({$0.name}))
+                        .onChange(of: viewModel.currentComponentSearchName) { _, newValue in
+                            viewModel.updateSearch(newValue)
                         }
-                    
                     if !viewModel.currentComponentSearchName.isEmpty {
                         Button {
                             viewModel.currentComponentSearchName = ""
@@ -147,6 +141,10 @@ struct ThumbsUpOrDownIngredientSearchListView: View {
                         .padding(.trailing, 10)
                     }
                 }
+            }
+            .task {
+                viewModel.setupSearch()
+                viewModel.ingredientNames = ingredients.map({$0.name})
             }
             
             if keyboardFocused {
@@ -254,6 +252,39 @@ public struct preferencesListView: View {
             .scrollClipDisabled(true)
             .scrollIndicators(.hidden)
         }
+    }
+}
+
+@MainActor
+struct LoadingOverlayModifier: ViewModifier {
+    let isLoading: Bool
+    
+    func body(content: Content) -> some View {
+        content
+            .blur(radius: isLoading ? 2 : 0)
+            .overlay {
+                if isLoading {
+                    LoadingAnimation2()
+                        .frame(width: 75, height: 75)
+                        .transition(.opacity.animation(.easeOut(duration: 0.3)))
+                }
+            }
+            .animation(.easeOut(duration: 1), value: isLoading)
+    }
+}
+
+extension View {
+    func customLoadingOverlay(isLoading: Bool) -> some View {
+        self.modifier(LoadingOverlayModifier(isLoading: isLoading))
+    }
+}
+
+struct LoadingAnimation2: View {
+    var body: some View {
+        ProgressView()
+            .progressViewStyle(CircularProgressViewStyle())
+            .scaleEffect(1.5)
+            .tint(.white)
     }
 }
 

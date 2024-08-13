@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import Combine
 
 @Observable
 final class SearchViewModel: ObservableObject {
@@ -23,15 +24,15 @@ final class SearchViewModel: ObservableObject {
     var updatedUnwantedSelections = [String]()
     
     func toggleLoading() async {
-          await MainActor.run {
-              isRunningComplexSearch.toggle()
-          }
-      }
+        await MainActor.run {
+            isRunningComplexSearch.toggle()
+        }
+    }
     
     func searchButtonPressed() async {
         
         updatedUnwantedSelections = unwantedSelections
-
+        
         evaluateSearchType()
         if searchType == .complex {
             await generateComplicatedPredicates()
@@ -55,7 +56,7 @@ final class SearchViewModel: ObservableObject {
     func resetSearch() {
         searchCompleted = false
     }
-
+    
     var allCocktails: [Cocktail] = []
     
     // Any changes to these two arrays will trigger view updates and must happen on the main thread!
@@ -69,8 +70,10 @@ final class SearchViewModel: ObservableObject {
     var umbrellaCategoryStrings: [String] = SpiritsUmbrellaCategory.allCases.map{ $0.rawValue }
     var baseCategoryStrings: [String] = BaseCategory.allCases.map({$0.rawValue})
     var specialtyCategoryStrings: [String] = SpecialtyCategory.allCases.map({$0.rawValue})
+    
+    var ingredientNames: [String] = []
     var allWhiskies: [String] = Whiskey.allCases.map({ $0.rawValue })
-
+    
     var unwantedIngredients: [String] = []
     var preferredIngredients: [String] = []
     var preferredUmbrellaCategories: [String] = []
@@ -80,7 +83,7 @@ final class SearchViewModel: ObservableObject {
     var preferredCount = 0
     var sections: [ResultViewSectionData] = []
     var willLoadOnAppear = true
-
+    
     var cocktailsAndMissingIngredientsForMinusOne: [CocktailsAndMissingIngredients] = []
     var cocktailsAndMissingIngredientsForMinusTwo: [CocktailsAndMissingIngredients] = []
     
@@ -272,7 +275,7 @@ final class SearchViewModel: ObservableObject {
             PreferencesThumbsCell(ingredient: ingredient)
         }
     }
-
+    
     func clearData() {
         currentComponentSearchName = ""
         unwantedSelections = []
@@ -280,7 +283,7 @@ final class SearchViewModel: ObservableObject {
         sections.removeAll()
         preferredCount = 0
     }
-
+    
     
     @ViewBuilder
     func viewModelTagView(_ tag: String, _ color: Color, _ icon: String) -> some View {
@@ -302,36 +305,51 @@ final class SearchViewModel: ObservableObject {
                 .fill(color.gradient)
         }
     }
+    
+    private var cancellables = Set<AnyCancellable>()
+    private let searchSubject = PassthroughSubject<String, Never>()
+    
+    func setupSearch() {
+        searchSubject
+            .debounce(for: .milliseconds(200), scheduler: DispatchQueue.main)
+            .removeDuplicates()
+            .sink { [weak self] searchText in
+                self?.performSearch(searchText)
+            }
+            .store(in: &cancellables)
+    }
+    
+    func updateSearch(_ searchText: String) {
+        searchSubject.send(searchText)
+    }
 
-    func matchAllIngredientsAndSubcategories(ingredients: [String]) -> [String] {
+    private func performSearch(_ searchText: String) {
+        guard !searchText.isEmpty else {
+            filteredIngredients = []
+            return
+        }
         
-        guard !currentComponentSearchName.isEmpty else {
-             return [] // Return all ingredients if search text is empty
-         }
-        let lowercasedSearchText = currentComponentSearchName.lowercased()
-        let combinedArrays = ingredients + baseCategoryStrings + umbrellaCategoryStrings + specialtyCategoryStrings
+        let lowercasedSearchText = searchText.lowercased()
+        let combinedArrays = ingredientNames + baseCategoryStrings + umbrellaCategoryStrings + specialtyCategoryStrings
         let combinedArraysWithoutDuplicates = Array(Set(combinedArrays))
-        return combinedArraysWithoutDuplicates.filter { $0.lowercased().contains(lowercasedSearchText) }
+        
+        filteredIngredients = combinedArraysWithoutDuplicates.filter { $0.lowercased().contains(lowercasedSearchText) }
             .sorted { lhs, rhs in
                 let lhsLowercased = lhs.lowercased()
                 let rhsLowercased = rhs.lowercased()
-                // prioritize ingredients that start with the search text
-                let lhsStartsWith = lhsLowercased.hasPrefix(currentComponentSearchName.lowercased())
-                let rhsStartsWith = rhsLowercased.hasPrefix(currentComponentSearchName.lowercased())
-                if lhsStartsWith && !rhsStartsWith {
-                    return true
-                } else if !lhsStartsWith && rhsStartsWith {
-                    return false
+                
+                let lhsStartsWith = lhsLowercased.hasPrefix(lowercasedSearchText)
+                let rhsStartsWith = rhsLowercased.hasPrefix(lowercasedSearchText)
+                
+                if lhsStartsWith != rhsStartsWith {
+                    return lhsStartsWith
                 }
-                // if two ingredients start with the same search text, prioritize the shortest one
-                if lhsStartsWith && rhsStartsWith {
+                
+                if lhsStartsWith {
                     return lhs.count < rhs.count
                 }
-                // If neither starts with the search text, prioritize the one with the search text appearing first in the word
-                let lhsRange = lhsLowercased.range(of: currentComponentSearchName.lowercased())
-                let rhsRange = rhsLowercased.range(of: currentComponentSearchName.lowercased())
-                let matchedArray = (lhsRange?.lowerBound ?? lhsLowercased.endIndex) < (rhsRange?.lowerBound ?? rhsLowercased.endIndex)
-                return matchedArray
+                
+                return (lhsLowercased.range(of: lowercasedSearchText)?.lowerBound ?? lhsLowercased.endIndex) < (rhsLowercased.range(of: lowercasedSearchText)?.lowerBound ?? rhsLowercased.endIndex)
             }
     }
 }

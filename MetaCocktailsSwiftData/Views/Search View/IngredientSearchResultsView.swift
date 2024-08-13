@@ -40,13 +40,7 @@ struct IngredientSearchResultsView: View {
                     .font(.largeTitle).bold()
             }
         }
-        .blur(radius: viewModel.isRunningComplexSearch ? 3 : 0)
-        .overlay {
-            if viewModel.isRunningComplexSearch {
-                LoadingAnimation()
-                    .frame(width: 120, height: 120)
-            }
-        }
+        .customLoadingOverlay(isLoading: viewModel.isRunningComplexSearch)
     }
     
     @ViewBuilder func SearchResultsTagView(_ tag: String, _ color: Color, _ icon: String) -> some View {
