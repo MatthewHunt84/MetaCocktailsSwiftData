@@ -23,7 +23,6 @@ struct AddRecipeStepDetailView: View {
                             TextField("Add Step", text: $textEditor)
                                 .focused($keyboardFocused)
                                 .onChange(of: keyboardFocused) { oldValue, newValue in
-                                    print("Keyboard focus changed: \(newValue)")
                                     if !newValue {
                                         viewModel.prepIngredientRecipe.append(Instruction(step: viewModel.build.instructions.count + 1, method: textEditor))
                                         isShowingBuildSheet = false

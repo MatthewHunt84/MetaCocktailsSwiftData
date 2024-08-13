@@ -47,9 +47,6 @@ struct IngredientSearchResultsView: View {
                     .frame(width: 120, height: 120)
             }
         }
-        .onAppear {
-            print("RESULT VIEW: IS APPEARING")
-        }
     }
     
     @ViewBuilder func SearchResultsTagView(_ tag: String, _ color: Color, _ icon: String) -> some View {

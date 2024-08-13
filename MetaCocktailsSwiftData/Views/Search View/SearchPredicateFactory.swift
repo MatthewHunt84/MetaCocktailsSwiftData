@@ -222,7 +222,6 @@ extension SearchViewModel {
     }
     
     private func totalUnwantedIngredients() -> Expression<[Ingredient], Bool> {
-        print("unwantedIngredients = \(unwantedIngredients)")
         let totalUnwantedIngredients: [String] = unwantedIngredients + findAllCategoryIngredients().excluded
         
         return #Expression<[Ingredient], Bool> { ingredients in

@@ -38,7 +38,6 @@ final class SearchViewModel: ObservableObject {
         }
         await MainActor.run {
             searchCompleted = true
-            print("SEARCH_COMPLETED: TRUE")
         }
         
     }
@@ -213,6 +212,18 @@ final class SearchViewModel: ObservableObject {
             } else {
                 preferredIngredients.append(selection)
             }
+        }
+    }
+    
+    func fillUnwantedCategoryArrays() {
+        unwantedIngredients = []
+        
+        for selection in unwantedSelections {
+            guard UmbrellaCategory(rawValue: selection) == nil,
+                  BaseCategory(rawValue: selection) == nil,
+                  SpecialtyCategory(rawValue: selection) == nil
+            else { continue }
+            unwantedIngredients.append(selection)
         }
     }
     
