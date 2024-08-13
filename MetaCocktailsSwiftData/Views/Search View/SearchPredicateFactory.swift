@@ -32,6 +32,7 @@ extension SearchViewModel {
     }
     
     func predicateFactory(for matchCount: Int) -> Predicate<Cocktail> {
+        
         // Early exit for complicated predicate search
         if preferredUmbrellaCategories.count > 1 ||
             preferredBaseCategories.count > 1 ||
@@ -257,7 +258,6 @@ extension SearchViewModel {
             print("ingredients =\(ingredients)")
             
             var matchedSelections = 0
-            var containsUnwanted = false
             
             cocktail.spec.forEach { ingredient in
                 
@@ -287,8 +287,6 @@ extension SearchViewModel {
                     }
                 }
             }
-            
-            guard !containsUnwanted else { return }
             
             if matchedSelections >= numberOfSelections {
                 perfectMatches.append(cocktail.cocktailName)

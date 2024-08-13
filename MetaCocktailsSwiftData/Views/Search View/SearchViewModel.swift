@@ -27,11 +27,8 @@ final class SearchViewModel: ObservableObject {
     var preferredIngredients: [String] = []
     var unwantedIngredients: [String] = []
     var preferredUmbrellaCategories: [String] = []
-//    var unwantedUmbrellaCategories: [String] = []
     var preferredBaseCategories: [String] = []
-//    var unwantedBaseCategories: [String] = []
     var preferredSpecialtyCategories: [String] = []
-//    var unwantedSpecialtyCategories: [String] = []
     var isLoading = true
     var preferredCount = 0
     var sections: [ResultViewSectionData] = []
@@ -142,26 +139,6 @@ final class SearchViewModel: ObservableObject {
             }
         }
     }
-    
-//    func fillUnwantedCategoryArrays() {
-//        
-//        unwantedUmbrellaCategories = []
-//        unwantedBaseCategories = []
-//        unwantedSpecialtyCategories = []
-//        unwantedIngredients = []
-//        
-//        for selection in unwantedSelections {
-//            if let _ = UmbrellaCategory(rawValue: selection) {
-//                unwantedUmbrellaCategories.append(selection)
-//            } else if let _ = BaseCategory(rawValue: selection) {
-//                unwantedBaseCategories.append(selection)
-//            } else if let _ = SpecialtyCategory(rawValue: selection) {
-//                unwantedSpecialtyCategories.append(selection)
-//            } else {
-//                unwantedIngredients.append(selection)
-//            }
-//        }
-//    }
     
     func findAllCategoryIngredients() -> (included: [String], excluded: [String]) {
         var includedIngredients: [String] = []

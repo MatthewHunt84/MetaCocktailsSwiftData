@@ -23,6 +23,7 @@ struct PreferencesThumbsCell: View {
                 .foregroundStyle(viewModel.preferredSelections.contains(ingredient)  ? .brandPrimaryGreen : .white)
                 .onTapGesture {
                     if !viewModel.preferredSelections.contains(ingredient) {
+                        viewModel.shouldRepopulatePredicates = true
                         if viewModel.umbrellaCategoryStrings.contains(ingredient) {
                             if let umbrellaSpirits = SpiritsUmbrellaCategory.allCases.first(where: { $0.rawValue == ingredient }) {
                                 viewModel.preferredSelections.removeAll(where: { umbrellaSpirits.subCategories.contains($0) })
@@ -55,6 +56,7 @@ struct PreferencesThumbsCell: View {
                 .foregroundStyle(viewModel.unwantedSelections.contains(ingredient)  ? .brandPrimaryRed : .white)
                 .onTapGesture {
                     if !viewModel.unwantedSelections.contains(ingredient) {
+                        viewModel.shouldRepopulatePredicates = true
                         if viewModel.umbrellaCategoryStrings.contains(ingredient) {
                             if let umbrellaSpirits = SpiritsUmbrellaCategory.allCases.first(where: { $0.rawValue == ingredient }) {
                                 viewModel.unwantedSelections.removeAll(where: { umbrellaSpirits.subCategories.contains($0) })
@@ -78,7 +80,6 @@ struct PreferencesThumbsCell: View {
                     } else {
                         viewModel.unwantedSelections.removeAll(where: {$0 == ingredient})
                     }
-//                    viewModel.fillUnwantedCategoryArrays()
                 }
                 .padding(.horizontal, 10)
                 .font(.system(size: 20))
