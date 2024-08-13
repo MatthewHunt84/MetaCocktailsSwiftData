@@ -262,17 +262,7 @@ final class SearchViewModel: ObservableObject {
         return (includedIngredients, excludedIngredients)
     }
     
-    @ViewBuilder
-    func returnPreferencesThumbCell(ingredient: Binding<String> ) -> some View {
-        
-        if findAllCategoryIngredients().included.contains(ingredient.wrappedValue)  {
-            PreferencesIncludedLimitedThumbCell(ingredient: ingredient)
-        } else if findAllCategoryIngredients().excluded.contains(ingredient.wrappedValue) {
-            PreferencesExcludedLimitedThumbCell(ingredient: ingredient)
-        } else {
-            PreferencesThumbsCell(ingredient: ingredient)
-        }
-    }
+
     
     func clearData() {
         currentComponentSearchName = ""
@@ -303,6 +293,8 @@ final class SearchViewModel: ObservableObject {
                 .fill(color.gradient)
         }
     }
+    
+    // TextField filtering jazz
     
     private var cancellables = Set<AnyCancellable>()
     private let searchSubject = PassthroughSubject<String, Never>()
@@ -349,6 +341,18 @@ final class SearchViewModel: ObservableObject {
                 
                 return (lhsLowercased.range(of: lowercasedSearchText)?.lowerBound ?? lhsLowercased.endIndex) < (rhsLowercased.range(of: lowercasedSearchText)?.lowerBound ?? rhsLowercased.endIndex)
             }
+    }
+    
+    @ViewBuilder
+    func returnPreferencesThumbCell(ingredient: Binding<String> ) -> some View {
+        
+        if findAllCategoryIngredients().included.contains(ingredient.wrappedValue)  {
+            PreferencesIncludedLimitedThumbCell(ingredient: ingredient)
+        } else if findAllCategoryIngredients().excluded.contains(ingredient.wrappedValue) {
+            PreferencesExcludedLimitedThumbCell(ingredient: ingredient)
+        } else {
+            PreferencesThumbsCell(ingredient: ingredient)
+        }
     }
 }
 
