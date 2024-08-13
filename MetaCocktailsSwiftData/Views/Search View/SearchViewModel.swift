@@ -20,6 +20,8 @@ final class SearchViewModel: ObservableObject {
     var searchCompleted = false
     var searchType: SearchType = .simple
     
+    var updatedUnwantedSelections = [String]()
+    
     func toggleLoading() async {
           await MainActor.run {
               isRunningComplexSearch.toggle()
@@ -27,6 +29,8 @@ final class SearchViewModel: ObservableObject {
       }
     
     func searchButtonPressed() async {
+        
+        updatedUnwantedSelections = unwantedSelections
 
         evaluateSearchType()
         if searchType == .complex {
@@ -55,6 +59,10 @@ final class SearchViewModel: ObservableObject {
 
     var allCocktails: [Cocktail] = []
     
+    // Any changes to these two arrays will trigger view updates and must happen on the main thread!
+    var unwantedSelections: [String] = []
+    var preferredSelections: [String] = []
+    
     var nonmatchSearchPreference: String = "none"
     var currentComponentSearchName: String = ""
     var filteredIngredients: [String] = []
@@ -63,10 +71,9 @@ final class SearchViewModel: ObservableObject {
     var baseCategoryStrings: [String] = BaseCategory.allCases.map({$0.rawValue})
     var specialtyCategoryStrings: [String] = SpecialtyCategory.allCases.map({$0.rawValue})
     var allWhiskies: [String] = Whiskey.allCases.map({ $0.rawValue })
-    var unwantedSelections: [String] = []
-    var preferredSelections: [String] = []
-    var preferredIngredients: [String] = []
+
     var unwantedIngredients: [String] = []
+    var preferredIngredients: [String] = []
     var preferredUmbrellaCategories: [String] = []
     var preferredBaseCategories: [String] = []
     var preferredSpecialtyCategories: [String] = []
@@ -144,6 +151,9 @@ final class SearchViewModel: ObservableObject {
         .tawnyPort: SpecialtyCategory.tawnyPort.specialtyCategoryIngredients]
     
     func handleRemovalOf(selection: String, preferred: Bool) {
+        
+        updatedUnwantedSelections = unwantedSelections
+        updatedUnwantedSelections.removeAll(where: { $0 == selection})
         
         // Remove view-independant selections
         unwantedIngredients.removeAll(where: { $0 == selection})

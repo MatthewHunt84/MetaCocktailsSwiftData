@@ -222,6 +222,7 @@ extension SearchViewModel {
     }
     
     private func totalUnwantedIngredients() -> Expression<[Ingredient], Bool> {
+        print("unwantedIngredients = \(unwantedIngredients)")
         let totalUnwantedIngredients: [String] = unwantedIngredients + findAllCategoryIngredients().excluded
         
         return #Expression<[Ingredient], Bool> { ingredients in
@@ -241,12 +242,12 @@ extension SearchViewModel {
         var minusTwo = [String]()
         
         let _ = allCocktails.reduce(into: 0) { partialResult, cocktail in
-            
-            if !unwantedSelections.isEmpty {
-                if cocktail.spec.contains(where: { unwantedSelections.contains($0.ingredientBase.name)
-                    || unwantedSelections.contains($0.ingredientBase.umbrellaCategory)
-                    || unwantedSelections.contains($0.ingredientBase.baseCategory)
-                    || unwantedSelections.contains($0.ingredientBase.specialtyCategory)
+
+            if !updatedUnwantedSelections.isEmpty {
+                if cocktail.spec.contains(where: { updatedUnwantedSelections.contains($0.ingredientBase.name)
+                    || updatedUnwantedSelections.contains($0.ingredientBase.umbrellaCategory)
+                    || updatedUnwantedSelections.contains($0.ingredientBase.baseCategory)
+                    || updatedUnwantedSelections.contains($0.ingredientBase.specialtyCategory)
                 }) {
                     return // if the cocktail has an unwanted selection, bail out early.
                 }
