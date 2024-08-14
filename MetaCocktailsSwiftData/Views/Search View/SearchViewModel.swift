@@ -272,28 +272,6 @@ final class SearchViewModel: ObservableObject {
         preferredCount = 0
     }
     
-    
-    @ViewBuilder
-    func viewModelTagView(_ tag: String, _ color: Color, _ icon: String) -> some View {
-        HStack(spacing: 10) {
-            Text(tag)
-                .font(.callout)
-                .fontWeight(.semibold)
-                .foregroundColor(.white)
-            
-            Image(systemName: icon)
-                .fontWeight(.heavy)
-                .foregroundColor(.white)
-        }
-        .frame(height: 35)
-        .foregroundStyle(.black)
-        .padding(.horizontal, 15)
-        .background {
-            Capsule()
-                .fill(color.gradient)
-        }
-    }
-    
     // TextField filtering jazz
     
     private var cancellables = Set<AnyCancellable>()

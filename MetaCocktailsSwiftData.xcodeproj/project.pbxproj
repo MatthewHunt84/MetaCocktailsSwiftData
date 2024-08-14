@@ -498,6 +498,7 @@
 		F493F3A52C6CEF48006A0ADB /* SearchForCocktailsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3A42C6CEF48006A0ADB /* SearchForCocktailsButton.swift */; };
 		F493F3A72C6CEF73006A0ADB /* ResetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3A62C6CEF73006A0ADB /* ResetButton.swift */; };
 		F493F3A92C6CEFCD006A0ADB /* FilteredIngredientListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3A82C6CEFCD006A0ADB /* FilteredIngredientListView.swift */; };
+		F493F3AB2C6CF18D006A0ADB /* SelectedIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3AA2C6CF18D006A0ADB /* SelectedIngredientView.swift */; };
 		F4A233BF2C63B5300061027C /* SearchPredicateFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A233BE2C63B5300061027C /* SearchPredicateFactory.swift */; };
 		F4A628E22B7E31BF0084FD80 /* Variation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A628E12B7E31BF0084FD80 /* Variation.swift */; };
 		F4AA50482B93A54E00A05F54 /* AddCocktailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA50472B93A54E00A05F54 /* AddCocktailView.swift */; };
@@ -1016,6 +1017,7 @@
 		F493F3A42C6CEF48006A0ADB /* SearchForCocktailsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchForCocktailsButton.swift; sourceTree = "<group>"; };
 		F493F3A62C6CEF73006A0ADB /* ResetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetButton.swift; sourceTree = "<group>"; };
 		F493F3A82C6CEFCD006A0ADB /* FilteredIngredientListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredIngredientListView.swift; sourceTree = "<group>"; };
+		F493F3AA2C6CF18D006A0ADB /* SelectedIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedIngredientView.swift; sourceTree = "<group>"; };
 		F4A233BE2C63B5300061027C /* SearchPredicateFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPredicateFactory.swift; sourceTree = "<group>"; };
 		F4A628E12B7E31BF0084FD80 /* Variation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variation.swift; sourceTree = "<group>"; };
 		F4AA50472B93A54E00A05F54 /* AddCocktailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCocktailView.swift; sourceTree = "<group>"; };
@@ -1882,6 +1884,7 @@
 				F493F3A62C6CEF73006A0ADB /* ResetButton.swift */,
 				F493F3A42C6CEF48006A0ADB /* SearchForCocktailsButton.swift */,
 				F493F3A82C6CEFCD006A0ADB /* FilteredIngredientListView.swift */,
+				F493F3AA2C6CF18D006A0ADB /* SelectedIngredientView.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -2137,6 +2140,7 @@
 				4D5DA0A02B9FEAF300C14F1F /* FrescaPlatino.swift in Sources */,
 				F4C6A8F32AB003C200BB0AD0 /* Localization.swift in Sources */,
 				F4C6A8EC2AAFFE5700BB0AD0 /* Tags.swift in Sources */,
+				F493F3AB2C6CF18D006A0ADB /* SelectedIngredientView.swift in Sources */,
 				4D088FCA2B62E3640047B056 /* RecipeViewModel.swift in Sources */,
 				4DBBA46E2B67A0B700179B8F /* KentuckyMaid.swift in Sources */,
 				F4872FF52C4395FE0092F8FF /* LoadingView.swift in Sources */,

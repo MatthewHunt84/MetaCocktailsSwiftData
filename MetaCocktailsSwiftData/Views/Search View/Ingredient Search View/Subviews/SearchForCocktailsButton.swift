@@ -38,6 +38,6 @@ struct SearchForCocktailsButton: View {
 }
 
 #Preview {
-    SearchForCocktailsButton()
+    SearchForCocktailsButton(showingResults: .constant(true))
         .environmentObject(SearchCriteriaViewModel())
 }
