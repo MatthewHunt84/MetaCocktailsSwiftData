@@ -494,6 +494,10 @@
 		F4872FF02C4355320092F8FF /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4872FEF2C4355320092F8FF /* SampleData.swift */; };
 		F4872FF32C4374580092F8FF /* BlackGlassBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4872FF22C4374580092F8FF /* BlackGlassBackgroundView.swift */; };
 		F4872FF52C4395FE0092F8FF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4872FF42C4395F80092F8FF /* LoadingView.swift */; };
+		F493F3A32C6CEEF0006A0ADB /* PreferencesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3A22C6CEEF0006A0ADB /* PreferencesListView.swift */; };
+		F493F3A52C6CEF48006A0ADB /* SearchForCocktailsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3A42C6CEF48006A0ADB /* SearchForCocktailsButton.swift */; };
+		F493F3A72C6CEF73006A0ADB /* ResetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3A62C6CEF73006A0ADB /* ResetButton.swift */; };
+		F493F3A92C6CEFCD006A0ADB /* FilteredIngredientListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3A82C6CEFCD006A0ADB /* FilteredIngredientListView.swift */; };
 		F4A233BF2C63B5300061027C /* SearchPredicateFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A233BE2C63B5300061027C /* SearchPredicateFactory.swift */; };
 		F4A628E22B7E31BF0084FD80 /* Variation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A628E12B7E31BF0084FD80 /* Variation.swift */; };
 		F4AA50482B93A54E00A05F54 /* AddCocktailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA50472B93A54E00A05F54 /* AddCocktailView.swift */; };
@@ -1008,6 +1012,10 @@
 		F4872FEF2C4355320092F8FF /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		F4872FF22C4374580092F8FF /* BlackGlassBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackGlassBackgroundView.swift; sourceTree = "<group>"; };
 		F4872FF42C4395F80092F8FF /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		F493F3A22C6CEEF0006A0ADB /* PreferencesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesListView.swift; sourceTree = "<group>"; };
+		F493F3A42C6CEF48006A0ADB /* SearchForCocktailsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchForCocktailsButton.swift; sourceTree = "<group>"; };
+		F493F3A62C6CEF73006A0ADB /* ResetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetButton.swift; sourceTree = "<group>"; };
+		F493F3A82C6CEFCD006A0ADB /* FilteredIngredientListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredIngredientListView.swift; sourceTree = "<group>"; };
 		F4A233BE2C63B5300061027C /* SearchPredicateFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPredicateFactory.swift; sourceTree = "<group>"; };
 		F4A628E12B7E31BF0084FD80 /* Variation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variation.swift; sourceTree = "<group>"; };
 		F4AA50472B93A54E00A05F54 /* AddCocktailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCocktailView.swift; sourceTree = "<group>"; };
@@ -1561,8 +1569,8 @@
 		4D67613A2C44AA1300A5939C /* Search View */ = {
 			isa = PBXGroup;
 			children = (
+				F493F3A02C6CEE90006A0ADB /* Ingredient Search View */,
 				4D67613D2C44B62000A5939C /* SearchViewModel.swift */,
-				4D6761362C448E3200A5939C /* IngredientSearchView.swift */,
 				4D6761402C44E61F00A5939C /* IngredientSearchResultsView.swift */,
 				4D6761422C44EBA500A5939C /* IngredientSearchMatchedCocktailsView.swift */,
 				F4A233BE2C63B5300061027C /* SearchPredicateFactory.swift */,
@@ -1856,6 +1864,26 @@
 				F4872FF22C4374580092F8FF /* BlackGlassBackgroundView.swift */,
 			);
 			path = Backgrounds;
+			sourceTree = "<group>";
+		};
+		F493F3A02C6CEE90006A0ADB /* Ingredient Search View */ = {
+			isa = PBXGroup;
+			children = (
+				4D6761362C448E3200A5939C /* IngredientSearchView.swift */,
+				F493F3A12C6CEEC8006A0ADB /* Subviews */,
+			);
+			path = "Ingredient Search View";
+			sourceTree = "<group>";
+		};
+		F493F3A12C6CEEC8006A0ADB /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				F493F3A22C6CEEF0006A0ADB /* PreferencesListView.swift */,
+				F493F3A62C6CEF73006A0ADB /* ResetButton.swift */,
+				F493F3A42C6CEF48006A0ADB /* SearchForCocktailsButton.swift */,
+				F493F3A82C6CEFCD006A0ADB /* FilteredIngredientListView.swift */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		F4C5C3E22B3B4061005B2261 /* Ingredients */ = {
@@ -2162,6 +2190,7 @@
 				4DBBA4322B65AEBC00179B8F /* HankyPanky(W&G).swift in Sources */,
 				4DA567542B6C408B003F6F04 /* TomCollins.swift in Sources */,
 				4DBBA4A62B68C67F00179B8F /* OaxacanOldFashioned.swift in Sources */,
+				F493F3A32C6CEEF0006A0ADB /* PreferencesListView.swift in Sources */,
 				4D9025A42B645A36005F44F6 /* SilverGinFiz.swift in Sources */,
 				4DF408F22B61BCCC00EF9A6E /* FogCutter(W&G).swift in Sources */,
 				4DCB17502BA545E50002D7D9 /* USSRussellPunch.swift in Sources */,
@@ -2443,6 +2472,7 @@
 				4DA567782B6C8AAC003F6F04 /* PeaksOfReykjavik.swift in Sources */,
 				4D5DA0B82BA12B3E00C14F1F /* RegalAmburana.swift in Sources */,
 				4DA567742B6C827C003F6F04 /* LavandulaRosa.swift in Sources */,
+				F493F3A52C6CEF48006A0ADB /* SearchForCocktailsButton.swift in Sources */,
 				4D54F73E2B7B053800D046D9 /* LoadedCocktailIngredientCell.swift in Sources */,
 				4DA5677A2B6C90E9003F6F04 /* CleverGirl.swift in Sources */,
 				4DA567F22B6DE424003F6F04 /* BurisBovineBeverage.swift in Sources */,
@@ -2476,6 +2506,7 @@
 				4DA567EA2B6DDB39003F6F04 /* Shokunin.swift in Sources */,
 				4DA567E62B6DD6EF003F6F04 /* ScottishInquisition.swift in Sources */,
 				4D5DA0982B9EB46E00C14F1F /* AddBuildStepView.swift in Sources */,
+				F493F3A72C6CEF73006A0ADB /* ResetButton.swift in Sources */,
 				F4C5C3E62B3B41BA005B2261 /* Alcohol.swift in Sources */,
 				4DE33DFB2B8ECD1100312EC3 /* AmericanTrilogy.swift in Sources */,
 				4D5DA09A2B9EBEB900C14F1F /* CustomAlertView.swift in Sources */,
@@ -2498,6 +2529,7 @@
 				4DBBA49E2B68B42A00179B8F /* MoscowMule.swift in Sources */,
 				4DBBA4722B6845D700179B8F /* KirRoyale.swift in Sources */,
 				4D1E85E92B5DCDE300214BC6 /* Adonis.swift in Sources */,
+				F493F3A92C6CEFCD006A0ADB /* FilteredIngredientListView.swift in Sources */,
 				4DA5673C2B6AF3B1003F6F04 /* SideCar(W&G).swift in Sources */,
 				4DCB17062BA4004E0002D7D9 /* Toronto.swift in Sources */,
 				4DA5678E2B6CC30B003F6F04 /* LongWayDown.swift in Sources */,
