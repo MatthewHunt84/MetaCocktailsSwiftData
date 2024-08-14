@@ -20,6 +20,7 @@ struct IngredientSearchResultsView: View {
             
             IngredientSearchMatchedCocktailsView()
         }
+        .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: {

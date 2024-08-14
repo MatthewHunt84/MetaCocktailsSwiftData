@@ -41,7 +41,9 @@ class AppState: ObservableObject {
         
         Task {
             try? await Task.sleep(for: .seconds(remainingTime))
-            showMainContent = true
+            await MainActor.run {
+                showMainContent = true
+            }
         }
     }
 }

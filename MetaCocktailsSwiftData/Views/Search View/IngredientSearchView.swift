@@ -21,19 +21,15 @@ struct IngredientSearchView: View {
             VStack{
                 
                 preferencesListView()
-                
-                VStack{
                     
-                    Form{
+                    Form {
                         ThumbsUpOrDownIngredientSearchListView(keyboardFocused: _keyboardFocused)
                         SearchForCocktailsButton(showingResults: $showingResults)
                         ResetButton()
                     }
-                }
             }
             .navigationDestination(isPresented: $showingResults) {
                 IngredientSearchResultsView()
-                    .navigationBarBackButtonHidden(true)
             }
             .onChange(of: viewModel.searchCompleted) { _, newValue in
                 if newValue {
