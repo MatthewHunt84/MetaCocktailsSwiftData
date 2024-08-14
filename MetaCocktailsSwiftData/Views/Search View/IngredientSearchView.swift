@@ -182,27 +182,19 @@ public struct preferencesListView: View {
     @Environment(\.dismiss) var dismiss
     
     public var body: some View {
-        VStack{
-            
-            HStack{
-                
+        
+        VStack(alignment: .leading) {
+
                 Text("Selected Preferences:")
                     .padding(.top, 25)
                     .padding(.leading, 12)
                     .font(.headline).bold()
-                
-                Spacer()
-            }
-            
-            HStack {
-                
+
                 Text("Tap to remove")
                     .font(.footnote)
                     .foregroundStyle(.gray)
                     .padding(.leading, 12)
-                
-                Spacer()
-            }
+
             
             ScrollView(.horizontal) {
                 
