@@ -499,6 +499,8 @@
 		F493F3A72C6CEF73006A0ADB /* ResetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3A62C6CEF73006A0ADB /* ResetButton.swift */; };
 		F493F3A92C6CEFCD006A0ADB /* FilteredIngredientListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3A82C6CEFCD006A0ADB /* FilteredIngredientListView.swift */; };
 		F493F3AB2C6CF18D006A0ADB /* SelectedIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3AA2C6CF18D006A0ADB /* SelectedIngredientView.swift */; };
+		F493F3AE2C6CFBCD006A0ADB /* SelectionTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3AD2C6CFBCD006A0ADB /* SelectionTagView.swift */; };
+		F493F3B12C6CFC72006A0ADB /* SelectionTagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3B02C6CFC72006A0ADB /* SelectionTagViewModel.swift */; };
 		F4A233BF2C63B5300061027C /* SearchPredicateFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A233BE2C63B5300061027C /* SearchPredicateFactory.swift */; };
 		F4A628E22B7E31BF0084FD80 /* Variation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A628E12B7E31BF0084FD80 /* Variation.swift */; };
 		F4AA50482B93A54E00A05F54 /* AddCocktailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA50472B93A54E00A05F54 /* AddCocktailView.swift */; };
@@ -1018,6 +1020,8 @@
 		F493F3A62C6CEF73006A0ADB /* ResetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetButton.swift; sourceTree = "<group>"; };
 		F493F3A82C6CEFCD006A0ADB /* FilteredIngredientListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredIngredientListView.swift; sourceTree = "<group>"; };
 		F493F3AA2C6CF18D006A0ADB /* SelectedIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedIngredientView.swift; sourceTree = "<group>"; };
+		F493F3AD2C6CFBCD006A0ADB /* SelectionTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTagView.swift; sourceTree = "<group>"; };
+		F493F3B02C6CFC72006A0ADB /* SelectionTagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTagViewModel.swift; sourceTree = "<group>"; };
 		F4A233BE2C63B5300061027C /* SearchPredicateFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPredicateFactory.swift; sourceTree = "<group>"; };
 		F4A628E12B7E31BF0084FD80 /* Variation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variation.swift; sourceTree = "<group>"; };
 		F4AA50472B93A54E00A05F54 /* AddCocktailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCocktailView.swift; sourceTree = "<group>"; };
@@ -1880,13 +1884,31 @@
 		F493F3A12C6CEEC8006A0ADB /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
-				F493F3A22C6CEEF0006A0ADB /* PreferencesListView.swift */,
+				F493F3AC2C6CFA81006A0ADB /* Preferences List */,
 				F493F3A62C6CEF73006A0ADB /* ResetButton.swift */,
 				F493F3A42C6CEF48006A0ADB /* SearchForCocktailsButton.swift */,
 				F493F3A82C6CEFCD006A0ADB /* FilteredIngredientListView.swift */,
-				F493F3AA2C6CF18D006A0ADB /* SelectedIngredientView.swift */,
 			);
 			path = Subviews;
+			sourceTree = "<group>";
+		};
+		F493F3AC2C6CFA81006A0ADB /* Preferences List */ = {
+			isa = PBXGroup;
+			children = (
+				F493F3AF2C6CFC4D006A0ADB /* Models */,
+				F493F3A22C6CEEF0006A0ADB /* PreferencesListView.swift */,
+				F493F3AA2C6CF18D006A0ADB /* SelectedIngredientView.swift */,
+				F493F3AD2C6CFBCD006A0ADB /* SelectionTagView.swift */,
+			);
+			path = "Preferences List";
+			sourceTree = "<group>";
+		};
+		F493F3AF2C6CFC4D006A0ADB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F493F3B02C6CFC72006A0ADB /* SelectionTagViewModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		F4C5C3E22B3B4061005B2261 /* Ingredients */ = {
@@ -2447,6 +2469,7 @@
 				4DCB17422BA52A4B0002D7D9 /* CroqueMPetraske.swift in Sources */,
 				4DCB170C2BA418B00002D7D9 /* TheTieBinder.swift in Sources */,
 				4D6761302C3F317D00A5939C /* AddCustomGarnishView.swift in Sources */,
+				F493F3B12C6CFC72006A0ADB /* SelectionTagViewModel.swift in Sources */,
 				1AC386C82AAABED10064F52A /* PrepBible.swift in Sources */,
 				1AD87A2B2AE8C93A00859028 /* BeckyWithTheGoodHair.swift in Sources */,
 				4DBFF8332B6057F60011B5B1 /* BlackManhattan.swift in Sources */,
@@ -2454,6 +2477,7 @@
 				4D1E85ED2B5F71B200214BC6 /* AirMail(WilliamsAndGraham).swift in Sources */,
 				4DED944E2C098DBF002305C2 /* BatchCellView.swift in Sources */,
 				4DA567B82B6DA8FD003F6F04 /* EasternDiplomat.swift in Sources */,
+				F493F3AE2C6CFBCD006A0ADB /* SelectionTagView.swift in Sources */,
 				4D6761392C44902C00A5939C /* PreferencesThumbsCell.swift in Sources */,
 				4D1E85BB2B5C845400214BC6 /* SmokingMonkey.swift in Sources */,
 				4D1E85CF2B5CAB8D00214BC6 /* JeredLetosPrettyFace.swift in Sources */,

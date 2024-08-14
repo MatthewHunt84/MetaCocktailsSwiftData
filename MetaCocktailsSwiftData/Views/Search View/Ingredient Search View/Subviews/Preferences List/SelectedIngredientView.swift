@@ -25,7 +25,7 @@ struct SelectedIngredientView: View {
             HStack(spacing: 12) {
                 
                 ForEach(selections, id: \.self) { selectedIngredient in
-                    viewModelTagView(SelectedIngredientTagViewModel(name: selectedIngredient, isPreferred: isPreferred))
+                    SelectionTagView(viewModel: SelectionTagViewModel(name: selectedIngredient, isPreferred: isPreferred))
                         .onTapGesture {
                             withAnimation(.snappy) {
                                 guard !viewModel.isRunningComplexSearch else { return }
@@ -43,39 +43,6 @@ struct SelectedIngredientView: View {
         .mask(LinearGradient(stops: [.init(color: .clear, location: 0), .init(color: .white, location: 0.05), .init(color: .white, location: 0.95), .init(color: .clear, location: 1)], startPoint: .leading, endPoint: .trailing))
         .scrollClipDisabled(true)
         .scrollIndicators(.hidden)
-    }
-}
-
-struct SelectedIngredientTagViewModel {
-
-    init(name: String, isPreferred: Bool) {
-        self.ingredientName = name
-        self.color = isPreferred ? .green : .red
-    }
-    
-    let ingredientName: String
-    let color: Color
-}
-
-
-@ViewBuilder
-func viewModelTagView(_ viewModel: SelectedIngredientTagViewModel) -> some View {
-    HStack(spacing: 10) {
-        Text(viewModel.ingredientName)
-            .font(.callout)
-            .fontWeight(.semibold)
-            .foregroundColor(.white)
-        
-        Image(systemName: "xmark")
-            .fontWeight(.heavy)
-            .foregroundColor(.white)
-    }
-    .frame(height: 35)
-    .foregroundStyle(.black)
-    .padding(.horizontal, 15)
-    .background {
-        Capsule()
-            .fill(viewModel.color.gradient)
     }
 }
                                                
