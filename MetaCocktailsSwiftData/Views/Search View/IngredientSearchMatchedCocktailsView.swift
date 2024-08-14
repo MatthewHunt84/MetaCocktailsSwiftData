@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct IngredientSearchMatchedCocktailsView: View {
-    
+
     @EnvironmentObject var viewModel: SearchViewModel
     
     var body: some View {

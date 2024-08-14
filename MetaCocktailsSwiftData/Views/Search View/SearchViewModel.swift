@@ -7,9 +7,14 @@
 
 import SwiftUI
 import SwiftData
+import Combine
 
 @Observable
 final class SearchViewModel: ObservableObject {
+    
+    // Any changes to these two arrays will trigger view updates and must happen on the main thread!
+    var unwantedSelections: [String] = []
+    var preferredSelections: [String] = []
     
     var nonmatchSearchPreference: String = "none"
     var currentComponentSearchName: String = ""
@@ -18,22 +23,20 @@ final class SearchViewModel: ObservableObject {
     var umbrellaCategoryStrings: [String] = SpiritsUmbrellaCategory.allCases.map{ $0.rawValue }
     var baseCategoryStrings: [String] = BaseCategory.allCases.map({$0.rawValue})
     var specialtyCategoryStrings: [String] = SpecialtyCategory.allCases.map({$0.rawValue})
+    
+    var ingredientNames: [String] = []
     var allWhiskies: [String] = Whiskey.allCases.map({ $0.rawValue })
-    var unwantedSelections: [String] = []
-    var preferredSelections: [String] = []
-    var preferredIngredients: [String] = []
+    
     var unwantedIngredients: [String] = []
+    var preferredIngredients: [String] = []
     var preferredUmbrellaCategories: [String] = []
-    var unwantedUmbrellaCategories: [String] = []
     var preferredBaseCategories: [String] = []
-    var unwantedBaseCategories: [String] = []
     var preferredSpecialtyCategories: [String] = []
-    var unwantedSpecialtyCategories: [String] = []
     var isLoading = true
     var preferredCount = 0
     var sections: [ResultViewSectionData] = []
     var willLoadOnAppear = true
-
+    
     var cocktailsAndMissingIngredientsForMinusOne: [CocktailsAndMissingIngredients] = []
     var cocktailsAndMissingIngredientsForMinusTwo: [CocktailsAndMissingIngredients] = []
     
@@ -102,6 +105,97 @@ final class SearchViewModel: ObservableObject {
         .sweetVermouthAny: SpecialtyCategory.sweetVermouthAny.specialtyCategoryIngredients,
         .tawnyPort: SpecialtyCategory.tawnyPort.specialtyCategoryIngredients]
     
+    // complex search variables
+    var perfectMatchCocktails = [String]()
+    var minusOneMatchCocktails = [String]()
+    var minusTwoMatchCocktails = [String]()
+    var isRunningComplexSearch = false
+    var searchCompleted = false
+    var searchType: SearchType = .simple
+    var updatedUnwantedSelections = [String]()
+    var allCocktails: [Cocktail] = []
+    
+    // complex search functions
+    func toggleLoading() async {
+        await MainActor.run {
+            isRunningComplexSearch.toggle()
+        }
+    }
+    
+    func searchButtonPressed() async {
+        
+        updatedUnwantedSelections = unwantedSelections
+        
+        evaluateSearchType()
+        if searchType == .complex {
+            await generateComplicatedPredicates()
+        }
+        await MainActor.run {
+            searchCompleted = true
+        }
+        
+    }
+    
+    func evaluateSearchType() {
+        if preferredUmbrellaCategories.count > 1 ||
+            preferredBaseCategories.count > 1 ||
+            preferredSpecialtyCategories.count > 1 {
+            searchType = SearchType.complex
+        } else {
+            searchType = SearchType.simple
+        }
+    }
+    
+    func resetSearch() {
+        searchCompleted = false
+    }
+    
+    func handleRemovalOf(selection: String, preferred: Bool) {
+        
+        updatedUnwantedSelections = unwantedSelections
+        updatedUnwantedSelections.removeAll(where: { $0 == selection})
+        
+        // Remove view-independant selections
+        unwantedIngredients.removeAll(where: { $0 == selection})
+        preferredUmbrellaCategories.removeAll(where: { $0 == selection})
+        preferredBaseCategories.removeAll(where: { $0 == selection})
+        preferredSpecialtyCategories.removeAll(where: { $0 == selection})
+        preferredIngredients.removeAll(where: { $0 == selection})
+        
+        // Reset arrays for generation (if complex or not they need to be reset)
+        perfectMatchCocktails = []
+        minusOneMatchCocktails = []
+        minusTwoMatchCocktails = []
+        
+        // Drop count by one if preferred:
+        if preferred {
+            preferredCount -= 1
+        }
+        
+        // Evaluate new search type
+        evaluateSearchType()
+        
+        // If complex, do complex thing. (note: look for count somewhere in here, that's gotta be switched out)
+        Task {
+            if searchType == .complex {
+                
+                await generateComplicatedPredicates()
+                
+                await MainActor.run {
+                    searchCompleted = true
+                    preferredSelections.removeAll(where: { $0 == selection})
+                    unwantedSelections.removeAll(where: { $0 == selection})
+                }
+            } else {
+                // Trigger updates:
+                await MainActor.run {
+                    preferredSelections.removeAll(where: { $0 == selection})
+                    unwantedSelections.removeAll(where: { $0 == selection})
+                }
+            }
+        }
+    }
+    
     func fillPreferredCategoryArrays() {
         
         preferredUmbrellaCategories = []
@@ -123,22 +217,14 @@ final class SearchViewModel: ObservableObject {
     }
     
     func fillUnwantedCategoryArrays() {
-        
-        unwantedUmbrellaCategories = []
-        unwantedBaseCategories = []
-        unwantedSpecialtyCategories = []
         unwantedIngredients = []
         
         for selection in unwantedSelections {
-            if let _ = UmbrellaCategory(rawValue: selection) {
-                unwantedUmbrellaCategories.append(selection)
-            } else if let _ = BaseCategory(rawValue: selection) {
-                unwantedBaseCategories.append(selection)
-            } else if let _ = SpecialtyCategory(rawValue: selection) {
-                unwantedSpecialtyCategories.append(selection)
-            } else {
-                unwantedIngredients.append(selection)
-            }
+            guard UmbrellaCategory(rawValue: selection) == nil,
+                  BaseCategory(rawValue: selection) == nil,
+                  SpecialtyCategory(rawValue: selection) == nil
+            else { continue }
+            unwantedIngredients.append(selection)
         }
     }
     
@@ -176,18 +262,8 @@ final class SearchViewModel: ObservableObject {
         return (includedIngredients, excludedIngredients)
     }
     
-    @ViewBuilder
-    func returnPreferencesThumbCell(ingredient: Binding<String> ) -> some View {
-        
-        if findAllCategoryIngredients().included.contains(ingredient.wrappedValue)  {
-            PreferencesIncludedLimitedThumbCell(ingredient: ingredient)
-        } else if findAllCategoryIngredients().excluded.contains(ingredient.wrappedValue) {
-            PreferencesExcludedLimitedThumbCell(ingredient: ingredient)
-        } else {
-            PreferencesThumbsCell(ingredient: ingredient)
-        }
-    }
 
+    
     func clearData() {
         currentComponentSearchName = ""
         unwantedSelections = []
@@ -195,7 +271,7 @@ final class SearchViewModel: ObservableObject {
         sections.removeAll()
         preferredCount = 0
     }
-
+    
     
     @ViewBuilder
     func viewModelTagView(_ tag: String, _ color: Color, _ icon: String) -> some View {
@@ -217,37 +293,66 @@ final class SearchViewModel: ObservableObject {
                 .fill(color.gradient)
         }
     }
-
-    func matchAllIngredientsAndSubcategories(ingredients: [String]) -> [String] {
+    
+    // TextField filtering jazz
+    
+    private var cancellables = Set<AnyCancellable>()
+    private let searchSubject = PassthroughSubject<String, Never>()
+    
+    func setupSearch() {
+        searchSubject
+            .debounce(for: .milliseconds(200), scheduler: DispatchQueue.main)
+            .removeDuplicates()
+            .sink { [weak self] searchText in
+                self?.performSearch(searchText)
+            }
+            .store(in: &cancellables)
+    }
+    
+    func updateSearch(_ searchText: String) {
+        searchSubject.send(searchText)
+    }
+    
+    private func performSearch(_ searchText: String) {
+        guard !searchText.isEmpty else {
+            filteredIngredients = []
+            return
+        }
         
-        guard !currentComponentSearchName.isEmpty else {
-             return [] // Return all ingredients if search text is empty
-         }
-        let lowercasedSearchText = currentComponentSearchName.lowercased()
-        let combinedArrays = ingredients + baseCategoryStrings + umbrellaCategoryStrings + specialtyCategoryStrings
+        let lowercasedSearchText = searchText.lowercased()
+        let combinedArrays = ingredientNames + baseCategoryStrings + umbrellaCategoryStrings + specialtyCategoryStrings
         let combinedArraysWithoutDuplicates = Array(Set(combinedArrays))
-        return combinedArraysWithoutDuplicates.filter { $0.lowercased().contains(lowercasedSearchText) }
+        
+        filteredIngredients = combinedArraysWithoutDuplicates.filter { $0.lowercased().contains(lowercasedSearchText) }
             .sorted { lhs, rhs in
                 let lhsLowercased = lhs.lowercased()
                 let rhsLowercased = rhs.lowercased()
-                // prioritize ingredients that start with the search text
-                let lhsStartsWith = lhsLowercased.hasPrefix(currentComponentSearchName.lowercased())
-                let rhsStartsWith = rhsLowercased.hasPrefix(currentComponentSearchName.lowercased())
-                if lhsStartsWith && !rhsStartsWith {
-                    return true
-                } else if !lhsStartsWith && rhsStartsWith {
-                    return false
+                
+                let lhsStartsWith = lhsLowercased.hasPrefix(lowercasedSearchText)
+                let rhsStartsWith = rhsLowercased.hasPrefix(lowercasedSearchText)
+                
+                if lhsStartsWith != rhsStartsWith {
+                    return lhsStartsWith
                 }
-                // if two ingredients start with the same search text, prioritize the shortest one
-                if lhsStartsWith && rhsStartsWith {
+                
+                if lhsStartsWith {
                     return lhs.count < rhs.count
                 }
-                // If neither starts with the search text, prioritize the one with the search text appearing first in the word
-                let lhsRange = lhsLowercased.range(of: currentComponentSearchName.lowercased())
-                let rhsRange = rhsLowercased.range(of: currentComponentSearchName.lowercased())
-                let matchedArray = (lhsRange?.lowerBound ?? lhsLowercased.endIndex) < (rhsRange?.lowerBound ?? rhsLowercased.endIndex)
-                return matchedArray
+                
+                return (lhsLowercased.range(of: lowercasedSearchText)?.lowerBound ?? lhsLowercased.endIndex) < (rhsLowercased.range(of: lowercasedSearchText)?.lowerBound ?? rhsLowercased.endIndex)
             }
+    }
+    
+    @ViewBuilder
+    func returnPreferencesThumbCell(ingredient: Binding<String> ) -> some View {
+        
+        if findAllCategoryIngredients().included.contains(ingredient.wrappedValue)  {
+            PreferencesIncludedLimitedThumbCell(ingredient: ingredient)
+        } else if findAllCategoryIngredients().excluded.contains(ingredient.wrappedValue) {
+            PreferencesExcludedLimitedThumbCell(ingredient: ingredient)
+        } else {
+            PreferencesThumbsCell(ingredient: ingredient)
+        }
     }
 }
 

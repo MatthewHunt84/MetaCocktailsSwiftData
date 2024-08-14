@@ -8,14 +8,38 @@
 import Foundation
 import SwiftData
 
+
+enum PredicateType {
+    case perfect
+    case minusOne
+    case minusTwo
+    case unknown
+}
+
+enum SearchType {
+    case simple
+    case complex
+}
+
 extension SearchViewModel {
     
+    func matchPredicateType(_ matchCount: Int) -> PredicateType {
+        switch matchCount {
+        case preferredCount:
+                .perfect
+        case preferredCount - 1:
+                .minusOne
+        case preferredCount - 2:
+                .minusTwo
+        default:
+                .unknown
+        }
+    }
+    
     func predicateFactory(for matchCount: Int) -> Predicate<Cocktail> {
-        // Early exit for complicated predicate search
-        if preferredUmbrellaCategories.count > 1 ||
-            preferredBaseCategories.count > 1 ||
-            preferredSpecialtyCategories.count > 1 {
-            return complicatedPredicateSearch()
+        
+        if searchType == .complex {
+            return complicatedPredicateSearch(matchPredicateType(matchCount))
         }
         
         // Prepare expressions
@@ -161,13 +185,6 @@ extension SearchViewModel {
             }
         }
     
-    
-    private func complicatedPredicateSearch() -> Predicate<Cocktail>{
-        return #Predicate<Cocktail> { cocktail in
-            cocktail.cocktailName == "Daiquiri"
-        }
-    }
-    
     //build expression for preferred ingredients
     private func countPrefIngredients() -> Expression<[Ingredient], Int> {
         return #Expression<[Ingredient], Int> { ingredients in
@@ -212,6 +229,114 @@ extension SearchViewModel {
                 totalUnwantedIngredients.contains(ingredient.ingredientBase.name)
             }.count > 0
         }
+    }
+    
+    func generateComplicatedPredicates() async {
         
+        await toggleLoading()
+        
+        let numberOfSelections = preferredCount
+        var perfectMatches = [String]()
+        var minusOne = [String]()
+        var minusTwo = [String]()
+        
+        let _ = allCocktails.reduce(into: 0) { partialResult, cocktail in
+
+            if !updatedUnwantedSelections.isEmpty {
+                if cocktail.spec.contains(where: { updatedUnwantedSelections.contains($0.ingredientBase.name)
+                    || updatedUnwantedSelections.contains($0.ingredientBase.umbrellaCategory)
+                    || updatedUnwantedSelections.contains($0.ingredientBase.baseCategory)
+                    || updatedUnwantedSelections.contains($0.ingredientBase.specialtyCategory)
+                }) {
+                    return // if the cocktail has an unwanted selection, bail out early.
+                }
+            }
+            
+            var umbrellas = preferredUmbrellaCategories
+            var bases = preferredBaseCategories
+            var specialties = preferredSpecialtyCategories
+            var ingredients = preferredIngredients
+            
+            var matchedSelections = 0
+            
+            cocktail.spec.forEach { ingredient in
+                
+                if !umbrellas.isEmpty && umbrellas.contains(ingredient.ingredientBase.umbrellaCategory) {
+                    matchedSelections += 1
+                    if let index = umbrellas.firstIndex(of: ingredient.ingredientBase.umbrellaCategory) {
+                        umbrellas.remove(at: index)
+                    }
+                } else if !bases.isEmpty && bases.contains(ingredient.ingredientBase.baseCategory) {
+                    matchedSelections += 1
+                    if let index = bases.firstIndex(of: ingredient.ingredientBase.baseCategory) {
+                        bases.remove(at: index)
+                    }
+                } else if !specialties.isEmpty && specialties.contains(ingredient.ingredientBase.specialtyCategory) {
+                    matchedSelections += 1
+                    if let index = specialties.firstIndex(of: ingredient.ingredientBase.specialtyCategory) {
+                        specialties.remove(at: index)
+                    }
+                } else if !ingredients.isEmpty && ingredients.contains(ingredient.ingredientBase.name) {
+                    matchedSelections += 1
+                    if let index = ingredients.firstIndex(of: ingredient.ingredientBase.name) {
+                        ingredients.remove(at: index)
+                    }
+                }
+            }
+            
+            if matchedSelections >= numberOfSelections {
+                perfectMatches.append(cocktail.cocktailName)
+                partialResult += 1
+            } else if matchedSelections == numberOfSelections - 1 {
+                minusOne.append(cocktail.cocktailName)
+            } else if matchedSelections == numberOfSelections - 2 {
+                minusTwo.append(cocktail.cocktailName)
+            }
+        }
+        perfectMatchCocktails = perfectMatches
+        minusOneMatchCocktails = minusOne
+        minusTwoMatchCocktails = minusTwo
+        
+        await toggleLoading()
+    }
+    
+    private func complicatedPredicateSearch(_ predicateType: PredicateType) -> Predicate<Cocktail> {
+        
+        if predicateType == .unknown {
+            print("--- FOUND UNKNOWN PREDICATE TYPE!!!!!!!")
+        }
+        
+        switch predicateType {
+        case .perfect:
+            let expression = #Expression<Cocktail, Bool> { cocktail in
+                perfectMatchCocktails.contains(cocktail.cocktailName)
+            }
+            
+            return #Predicate<Cocktail> { cocktail in
+                expression.evaluate(cocktail)
+            }
+        case .minusOne:
+            let expression = #Expression<Cocktail, Bool> { cocktail in
+                minusOneMatchCocktails.contains(cocktail.cocktailName)
+            }
+            
+            return #Predicate<Cocktail> { cocktail in
+                expression.evaluate(cocktail)
+            }
+        case .minusTwo:
+            
+            let expression = #Expression<Cocktail, Bool> { cocktail in
+                minusTwoMatchCocktails.contains(cocktail.cocktailName)
+            }
+            
+            return #Predicate<Cocktail> { cocktail in
+                expression.evaluate(cocktail)
+            }
+        case .unknown:
+            print("--- PROBLEM: We shouldn't be here") // I'll remove this, just want to be sure I know if this happens
+            return #Predicate<Cocktail> { cocktail in
+                cocktail.cocktailName == "SHAMALAMADINGDONG"
+            }
+        }
     }
 }

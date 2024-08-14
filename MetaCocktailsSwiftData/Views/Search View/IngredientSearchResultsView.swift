@@ -13,33 +13,34 @@ struct IngredientSearchResultsView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
+        
+        VStack {
             
-            VStack {
-                
-                preferencesListView()
-                
-                IngredientSearchMatchedCocktailsView()
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        viewModel.willLoadOnAppear = true
-                        dismiss()
-                    }) {
-                        Image(systemName: "chevron.backward")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 9)
-                            .bold()
-                            .tint(.cyan)
-                    }
-                }
-                
-                ToolbarItem(placement: .navigation) {
-                    Text("Matched Cocktails")
-                        .font(.largeTitle).bold()
+            preferencesListView()
+            
+            IngredientSearchMatchedCocktailsView()
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    viewModel.willLoadOnAppear = true
+                    dismiss()
+                }) {
+                    Image(systemName: "chevron.backward")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 9)
+                        .bold()
+                        .tint(.cyan)
                 }
             }
+            
+            ToolbarItem(placement: .navigation) {
+                Text("Matched Cocktails")
+                    .font(.largeTitle).bold()
+            }
+        }
+        .basicLoadingIndicator(isLoading: viewModel.isRunningComplexSearch)
     }
     
     @ViewBuilder func SearchResultsTagView(_ tag: String, _ color: Color, _ icon: String) -> some View {

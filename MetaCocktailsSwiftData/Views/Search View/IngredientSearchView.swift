@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct IngredientSearchView: View {
+    
     @EnvironmentObject var viewModel: SearchViewModel
     @State var showingResults: Bool = false
     @FocusState var keyboardFocused: Bool
@@ -18,7 +19,7 @@ struct IngredientSearchView: View {
         NavigationStack {
             
             VStack{
-            
+                
                 preferencesListView()
                 
                 VStack{
@@ -30,12 +31,15 @@ struct IngredientSearchView: View {
                     }
                 }
             }
-            .onAppear() {
-                keyboardFocused = true
-            }
             .navigationDestination(isPresented: $showingResults) {
                 IngredientSearchResultsView()
                     .navigationBarBackButtonHidden(true)
+            }
+            .onChange(of: viewModel.searchCompleted) { _, newValue in
+                if newValue {
+                    showingResults = true
+                    viewModel.resetSearch()
+                }
             }
             .toolbar {
                 ToolbarItem(placement: .navigation) {
@@ -43,13 +47,12 @@ struct IngredientSearchView: View {
                         .font(.largeTitle).bold()
                 }
             }
+            .task {
+                keyboardFocused = true
+            }
+            .basicLoadingIndicator(isLoading: viewModel.isRunningComplexSearch)
         }
     }
-}
-
-#Preview {
-    IngredientSearchView()
-        .environmentObject(SearchCriteriaViewModel())
 }
 
 struct SearchForCocktailsButton: View {
@@ -59,7 +62,9 @@ struct SearchForCocktailsButton: View {
     var body: some View {
         
         Button {
-            showingResults = true
+            Task {
+                await viewModel.searchButtonPressed()
+            }
         } label: {
             HStack {
                 
@@ -76,6 +81,7 @@ struct SearchForCocktailsButton: View {
             .foregroundStyle(.brandPrimaryGold)
         }
         .frame(width: 380, height: 40,  alignment: .center)
+        .disabled(viewModel.isRunningComplexSearch)
     }
 }
 
@@ -105,9 +111,12 @@ struct ResetButton: View {
 }
 
 struct ThumbsUpOrDownIngredientSearchListView: View {
+    @Environment(\.modelContext) var modelContext
     @EnvironmentObject var viewModel: SearchViewModel
     @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]
     @FocusState var keyboardFocused: Bool
+    
+    @State var ingredientNames = [String]()
     
     var body: some View {
         Section("Component Name:") {
@@ -119,11 +128,9 @@ struct ThumbsUpOrDownIngredientSearchListView: View {
                     TextField("Flavor, Ingredient, Style, or Profile...", text: $viewModel.currentComponentSearchName)
                         .focused($keyboardFocused)
                         .autocorrectionDisabled(true)
-                        .onChange(of: viewModel.currentComponentSearchName, initial: true) { old, new in
-                            viewModel.currentComponentSearchName = new
-                            viewModel.filteredIngredients = viewModel.matchAllIngredientsAndSubcategories(ingredients: ingredients.map({$0.name}))
+                        .onChange(of: viewModel.currentComponentSearchName) { _, newValue in
+                            viewModel.updateSearch(newValue)
                         }
-                    
                     if !viewModel.currentComponentSearchName.isEmpty {
                         Button {
                             viewModel.currentComponentSearchName = ""
@@ -134,6 +141,10 @@ struct ThumbsUpOrDownIngredientSearchListView: View {
                         .padding(.trailing, 10)
                     }
                 }
+            }
+            .task {
+                viewModel.setupSearch()
+                viewModel.ingredientNames = ingredients.map({$0.name})
             }
             
             if keyboardFocused {
@@ -146,8 +157,25 @@ struct ThumbsUpOrDownIngredientSearchListView: View {
                     .listRowBackground(Color.black)
                 }
                 .scrollContentBackground(.hidden)
+                .task {
+                    await generateAllCocktailList(context: modelContext)
+                }
             } else {
                 EmptyView()
+            }
+        }
+    }
+    
+    func generateAllCocktailList(context: ModelContext) async {
+        if viewModel.allCocktails.isEmpty {
+            Task {
+                do {
+                    let descriptor = FetchDescriptor<Cocktail>()
+                    let fetchedCocktails = try context.fetch(descriptor)
+                        viewModel.allCocktails = fetchedCocktails
+                } catch {
+                    print("Error fetching cocktails: \(error)")
+                }
             }
         }
     }
@@ -188,9 +216,8 @@ public struct preferencesListView: View {
                         viewModel.viewModelTagView(preferredIngredient, .green , "xmark")
                             .onTapGesture {
                                 withAnimation(.snappy) {
-                                    viewModel.preferredCount -= 1
-                                    viewModel.preferredSelections.removeAll(where: { $0 == preferredIngredient})
-                                    viewModel.preferredIngredients = viewModel.preferredSelections 
+                                    guard !viewModel.isRunningComplexSearch else { return }
+                                    viewModel.handleRemovalOf(selection: preferredIngredient, preferred: true)
                                     if viewModel.preferredCount == 0 {
                                         dismiss()
                                     }
@@ -209,12 +236,11 @@ public struct preferencesListView: View {
                 
                 HStack(spacing: 12) {
                     
-                    ForEach(viewModel.unwantedSelections, id: \.self) { unwantedIngredient in
-                        viewModel.viewModelTagView(unwantedIngredient, .red, "xmark")
+                    ForEach(viewModel.unwantedSelections, id: \.self) { unwantedSelection in
+                        viewModel.viewModelTagView(unwantedSelection, .red, "xmark")
                             .onTapGesture {
                                 withAnimation(.snappy) {
-                                    viewModel.unwantedSelections.removeAll(where:{ $0 == unwantedIngredient })
-                                    viewModel.unwantedIngredients.removeAll(where:{ $0 == unwantedIngredient }) 
+                                    viewModel.handleRemovalOf(selection: unwantedSelection, preferred: false)
                                 }
                             }
                     }
@@ -227,4 +253,9 @@ public struct preferencesListView: View {
             .scrollIndicators(.hidden)
         }
     }
+}
+
+#Preview {
+    IngredientSearchView()
+        .environmentObject(SearchCriteriaViewModel())
 }
