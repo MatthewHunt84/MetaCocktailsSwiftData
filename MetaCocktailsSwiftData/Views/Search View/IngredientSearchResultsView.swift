@@ -16,7 +16,7 @@ struct IngredientSearchResultsView: View {
         
         VStack {
             
-            preferencesListView()
+            PreferencesListView()
             
             IngredientSearchMatchedCocktailsView()
         }

@@ -20,7 +20,7 @@ struct IngredientSearchView: View {
             
             VStack{
                 
-                preferencesListView()
+                PreferencesListView()
                     
                     Form {
                         ThumbsUpOrDownIngredientSearchListView(keyboardFocused: _keyboardFocused)
@@ -177,7 +177,7 @@ struct ThumbsUpOrDownIngredientSearchListView: View {
     }
 }
 
-public struct preferencesListView: View {
+public struct PreferencesListView: View {
     @EnvironmentObject var viewModel: SearchViewModel
     @Environment(\.dismiss) var dismiss
     
