@@ -64,13 +64,13 @@ struct AddCustomGarnishToCocktailButton: View {
             if viewModel.customGarnishIsValid(allGarnishes: garnish){
                 viewModel.addedGarnish.append(Garnish(name: viewModel.currentGarnishName))
                 viewModel.clearIngredientData()
-                viewModel.addExistingGarnishViewIsActive = false
+                viewModel.toggleShowAddGarnishView()
             } else {
                 for name in garnish {
                     if name.name == viewModel.currentGarnishName {
                         viewModel.addedGarnish.append(name)
                         viewModel.clearIngredientData()
-                        viewModel.addExistingGarnishViewIsActive = false
+                        viewModel.toggleShowAddGarnishView()
                     }
                 }
             }
