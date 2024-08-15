@@ -34,8 +34,8 @@ struct SearchForCocktailsButton: View {
         }
         .buttonStyle(.bordered)
         .frame(height: 44)
-        .padding(.leading, 40)
-        .padding(.trailing, 40)
+        .padding(.leading, 35)
+        .padding(.trailing, 35)
         .padding(.bottom, 20)
         .disabled(viewModel.isRunningComplexSearch)
     }

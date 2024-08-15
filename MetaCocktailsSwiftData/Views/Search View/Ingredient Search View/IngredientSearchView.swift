@@ -24,15 +24,16 @@ struct IngredientSearchView: View {
                         
                     FilteredIngredientListView(keyboardFocused: _keyboardFocused)
 
-                    
+                    Spacer()
                     PreferencesListView()
                         .zIndex(10)
 
+                    
 //                    ResetButton()
                     
                     SearchForCocktailsButton()
 
-                    Spacer()
+                    
                     
                 }
             }

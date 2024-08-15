@@ -42,7 +42,6 @@ struct FilteredIngredientListView: View {
             .zIndex(10)
             .task {
                 viewModel.setupSearch()
-                print("Mapping.....")
                 viewModel.ingredientNames = ingredients.map { $0.name }
             }
             

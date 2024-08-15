@@ -141,4 +141,6 @@ struct MeshGradients {
     static let blackGreyBackground = LinearGradient(gradient: Gradient(colors: [Color.black.opacity(1), Color.white.opacity(0.3)]),
                                                     startPoint: .topLeading,
                                                     endPoint: .bottomTrailing)
+    
+    static let whiteToGreyFade = LinearGradient(gradient: Gradient(colors: [.white, .gray]), startPoint: .leading, endPoint: .trailing)
 }

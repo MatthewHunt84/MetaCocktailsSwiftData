@@ -17,24 +17,24 @@ public struct PreferencesListView: View {
             Color.clear
                 .frame(height: 20)
         } else {
-            VStack(alignment: .leading) {
-                HStack {
-                    VStack {
-                        Text("Selected Preferences")
+            VStack {
+                MeshGradients.whiteToGreyFade.mask {
+                    HStack {
+                        Text("Selections")
                             .font(.headline).bold()
-                            .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.white, .gray]),
-                                                            startPoint: .leading,
-                                                            endPoint: .trailing))
+                        Text("(tap to remove)")
+                            .font(.subheadline)
+                        Spacer()
                     }
-                    
-                    Spacer()
                 }
-                .padding(.leading, 15)
+                .frame(maxHeight: 15)
+                .padding(.leading, 25)
                 
                 SelectedIngredientView(isPreferred: true, selections: viewModel.preferredSelections)
                 SelectedIngredientView(isPreferred: false, selections: viewModel.unwantedSelections)
+                
             }
-            .padding()
+            .padding(.leading, 10)
         }
     }
 }

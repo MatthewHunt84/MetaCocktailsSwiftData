@@ -27,7 +27,11 @@ struct SelectedIngredientView: View {
             
             ScrollView(.horizontal) {
                 
-                HStack(spacing: 12) {
+                HStack(spacing: 10) {
+                    
+                    Image(systemName: isPreferred ? "checkmark" : "xmark")
+                        .fontWeight(.semibold)
+                        .foregroundStyle(isPreferred ? MeshGradients.staticPreferredSelection : MeshGradients.staticUnwantedSelection)
                     
                     ForEach(selections, id: \.self) { selectedIngredient in
                         SelectionTagView(viewModel: SelectionTagViewModel(name: selectedIngredient, isPreferred: isPreferred))
@@ -43,8 +47,8 @@ struct SelectedIngredientView: View {
                             }
                     }
                 }
-                .padding(.horizontal, 15)
-                .frame(height: 35)
+//                .padding(.horizontal, 15)
+                .frame(height: 15)
             }
             .scrollClipDisabled(true)
             .scrollIndicators(.hidden)
