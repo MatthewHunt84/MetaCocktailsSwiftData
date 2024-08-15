@@ -144,3 +144,43 @@ struct MeshGradients {
     
     static let whiteToGreyFade = LinearGradient(gradient: Gradient(colors: [.white, .gray]), startPoint: .leading, endPoint: .trailing)
 }
+
+struct RoundedTextFieldStyle: TextFieldStyle {
+    func _body(configuration: TextField<Self._Label>) -> some View {
+        configuration
+            .padding(.vertical)
+            .padding(.horizontal, 24)
+            .background(
+                Color(UIColor.systemGray6)
+            )
+            .clipShape(Capsule(style: .continuous))
+    }
+}
+
+struct RoundedButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .background(
+                Color(UIColor.systemGray6)
+                    .opacity(configuration.isPressed ? 0.7 : 1) // Darken when pressed
+            )
+            .clipShape(Capsule(style: .continuous))
+            .overlay(
+                 Capsule(style: .continuous)
+                     .stroke(
+                        !configuration.isPressed ?
+                         LinearGradient(
+                            gradient: Gradient(colors: [.brandPrimaryGold, .brandPrimaryGold, .red]),
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                         ) :                          LinearGradient(
+                            gradient: Gradient(colors: [.red, .red, .brandPrimaryGold]),
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                         ),
+                        lineWidth: 2
+                     )
+             )
+            .scaleEffect(configuration.isPressed ? 0.95 : 1) // Slight scale effect when pressed
+    }
+}

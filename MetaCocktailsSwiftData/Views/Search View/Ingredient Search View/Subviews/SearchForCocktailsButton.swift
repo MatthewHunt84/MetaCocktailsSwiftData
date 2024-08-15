@@ -32,7 +32,7 @@ struct SearchForCocktailsButton: View {
                 }
             }
         }
-        .buttonStyle(.bordered)
+        .buttonStyle(RoundedButtonStyle())
         .frame(height: 44)
         .padding(.leading, 35)
         .padding(.trailing, 35)

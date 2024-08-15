@@ -18,9 +18,6 @@ public struct PreferencesListView: View {
                 Text("Selections")
                     .font(.headline).bold()
                     .foregroundStyle(.white)
-                Text("(tap to remove)")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
                 Spacer()
             }
             .padding(.leading, 25)

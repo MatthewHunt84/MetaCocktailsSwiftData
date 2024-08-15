@@ -23,8 +23,7 @@ struct FilteredIngredientListView: View {
                 
                 TextField("Flavor, Ingredient, Style, or Profile...", text: $viewModel.currentComponentSearchName)
                     .focused($keyboardFocused)
-                    .textFieldStyle(.roundedBorder)
-                    .frame(height: 30)
+                    .textFieldStyle(RoundedTextFieldStyle())
                     .autocorrectionDisabled(true)
                     .onChange(of: viewModel.currentComponentSearchName) { _, newValue in
                         viewModel.updateSearch(newValue)

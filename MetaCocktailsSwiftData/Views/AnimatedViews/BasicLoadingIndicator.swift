@@ -37,3 +37,25 @@ struct LoadingAnimation2: View {
             .tint(.white)
     }
 }
+
+extension View {
+    func funLoadingIndicator(isLoading: Bool) -> some View {
+        self.modifier(LoadingOverlayModifier2(isLoading: isLoading))
+    }
+}
+
+struct LoadingOverlayModifier2: ViewModifier {
+    let isLoading: Bool
+    
+    func body(content: Content) -> some View {
+        content
+            .overlay {
+                if isLoading {
+                    LoadingAnimation()
+                        .frame(width: 110, height: 110)
+                        .transition(.opacity.animation(.easeOut(duration: 0.3)))
+                }
+            }
+            .animation(.easeOut(duration: 1), value: isLoading)
+    }
+}

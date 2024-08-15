@@ -16,6 +16,7 @@ struct IngredientSearchView: View {
     var body: some View {
         
         NavigationStack {
+            
             ZStack {
                 
                 MeshGradients.blackGreyBackground.ignoresSafeArea()
@@ -50,7 +51,7 @@ struct IngredientSearchView: View {
             .task {
                 keyboardFocused = true
             }
-            .basicLoadingIndicator(isLoading: viewModel.isRunningComplexSearch)
+            .funLoadingIndicator(isLoading: viewModel.isRunningComplexSearch)
         }
     }
 }

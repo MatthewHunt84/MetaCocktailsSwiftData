@@ -46,6 +46,12 @@ struct SelectedIngredientView: View {
                                 }
                             }
                     }
+                    
+                    if isPreferred {
+                        Text("(tap to remove)")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    }
                 }
 //                .padding(.horizontal, 15)
                 .frame(height: 15)
