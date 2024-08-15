@@ -25,6 +25,9 @@ struct FilteredIngredientListView: View {
                     .autocorrectionDisabled(true)
                     .onChange(of: viewModel.currentComponentSearchName) { _, newValue in
                         viewModel.updateSearch(newValue)
+                        Task {
+                            await generateAllCocktailList(context: modelContext)
+                        }
                     }
                 if !viewModel.currentComponentSearchName.isEmpty {
                     Button {
@@ -51,9 +54,6 @@ struct FilteredIngredientListView: View {
                     .listRowBackground(Color.clear)
                 }
                 .scrollContentBackground(.hidden)
-                .task {
-                    await generateAllCocktailList(context: modelContext)
-                }
             } else {
                 EmptyView()
             }
