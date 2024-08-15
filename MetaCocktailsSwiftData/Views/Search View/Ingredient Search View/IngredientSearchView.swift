@@ -17,18 +17,22 @@ struct IngredientSearchView: View {
         
         NavigationStack {
             ZStack {
+                
                 MeshGradients.blackGreyBackground.ignoresSafeArea()
+                
                 VStack(alignment: .leading) {
+                        
+                    FilteredIngredientListView(keyboardFocused: _keyboardFocused)
+
                     
                     PreferencesListView()
-                    
-//                    Form {
-                        FilteredIngredientListView(keyboardFocused: _keyboardFocused)
-//                    }
-//                    .background(.purple)
-//                    .scrollDisabled(true)
-                    SearchForCocktailsButton()
+                        .zIndex(10)
+
 //                    ResetButton()
+                    
+                    SearchForCocktailsButton()
+
+                    Spacer()
                     
                 }
             }
@@ -42,24 +46,11 @@ struct IngredientSearchView: View {
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                        Text("Search Ingredients")
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                            .foregroundStyle(
-                                LinearGradient(gradient: Gradient(colors: [.blue, .purple, .red]),
-                                                                              startPoint: .leading,
-                                                                              endPoint: .trailing))
-
-                }
-            }
-//            .gradientNavigationTitle("Search Ingredients")
+            .gradientNavigationTitle("Search Ingredients")
             .task {
                 keyboardFocused = true
             }
             .basicLoadingIndicator(isLoading: viewModel.isRunningComplexSearch)
-//            .background(MeshGradients.blackGreyBackground).ignoresSafeArea()
         }
     }
 }

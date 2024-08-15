@@ -15,18 +15,19 @@ struct SelectionTagView: View {
             Text(viewModel.ingredientName)
                 .font(.callout)
                 .fontWeight(.semibold)
-                .foregroundColor(.white)
-            
-            Image(systemName: "xmark")
+//                .foregroundColor(.white)
+                .foregroundStyle(MeshGradients.staticPreferredSelection)
+            Image(systemName: "hand.thumbsup.fill")
+//            Image(systemName: "xmark")
                 .fontWeight(.heavy)
-                .foregroundColor(.white)
+                .foregroundStyle(MeshGradients.staticPreferredSelection)
         }
         .frame(height: 35)
         .padding(.horizontal, 15)
-        .background {
-            viewModel.isPreferred ? MeshGradients.animatedPreferredSelection : MeshGradients.animatedUnwantedSelection
-        }
-        .clipShape(Capsule())
+//        .background {
+//            viewModel.isPreferred ? MeshGradients.staticPreferredSelection : MeshGradients.staticUnwantedSelection
+//        }
+//        .clipShape(Capsule())
         
     }
 }

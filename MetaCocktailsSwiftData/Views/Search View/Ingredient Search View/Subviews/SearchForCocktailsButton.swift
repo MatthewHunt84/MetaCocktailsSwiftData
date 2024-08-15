@@ -22,7 +22,7 @@ struct SearchForCocktailsButton: View {
                     
                     Spacer()
                     
-                    Image(systemName: "plus.circle.fill")
+                    Image(systemName: "magnifyingglass.circle")
                         .font(.title2).bold()
                     
                     Text("Search For Cocktails")

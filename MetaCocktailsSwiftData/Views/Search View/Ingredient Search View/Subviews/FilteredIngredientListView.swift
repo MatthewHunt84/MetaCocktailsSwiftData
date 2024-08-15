@@ -38,10 +38,12 @@ struct FilteredIngredientListView: View {
                     }
                 }
             }
-            .padding(EdgeInsets(top: 0, leading: 25, bottom: 0, trailing: 25))
+            .padding(EdgeInsets(top: 20, leading: 25, bottom: 0, trailing: 25))
+            .zIndex(10)
             .task {
                 viewModel.setupSearch()
-                viewModel.ingredientNames = ingredients.map({$0.name})
+                print("Mapping.....")
+                viewModel.ingredientNames = ingredients.map { $0.name }
             }
             
             if keyboardFocused {
@@ -50,7 +52,6 @@ struct FilteredIngredientListView: View {
                         viewModel.returnPreferencesThumbCell(ingredient: ingredient)
                     }
                     .pinnedTopListStyle()
-//                    .listStyle(.automatic)
                     .listRowBackground(Color.clear)
                 }
                 .scrollContentBackground(.hidden)
