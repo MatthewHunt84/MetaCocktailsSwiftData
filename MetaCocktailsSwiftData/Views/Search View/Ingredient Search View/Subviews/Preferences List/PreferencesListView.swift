@@ -17,7 +17,7 @@ public struct PreferencesListView: View {
             HStack {
                 Text("Selections")
                     .font(.headline).bold()
-                    .foregroundStyle(.white)
+                    .foregroundStyle(MeshGradients.blurpleLinear)
                 Spacer()
             }
             .padding(.leading, 25)

@@ -20,7 +20,7 @@ struct PreferencesThumbsCell: View {
             Spacer()
             
             Image(systemName:viewModel.preferredSelections.contains(ingredient)  ? "hand.thumbsup.fill" : "hand.thumbsup")
-                .foregroundStyle(viewModel.preferredSelections.contains(ingredient)  ? .brandPrimaryGreen : .white)
+                .foregroundStyle(viewModel.preferredSelections.contains(ingredient)  ? MeshGradients.staticPreferredSelection : MeshGradients.greyFade)
                 .onTapGesture {
                     if !viewModel.preferredSelections.contains(ingredient) {
                         if viewModel.umbrellaCategoryStrings.contains(ingredient) {

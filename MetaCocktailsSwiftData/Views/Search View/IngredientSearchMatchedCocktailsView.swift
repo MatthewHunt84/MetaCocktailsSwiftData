@@ -44,7 +44,7 @@ struct MissingIngredientsView: View {
         HStack{
             ForEach(missingIngredientArray, id: \.self) { nonMatch in
                 Text("-\(nonMatch) ")
-                    .foregroundStyle(MeshGradients.staticUnwantedSelection)
+                    .foregroundStyle(.secondary)
                     .font(.caption)
             }
             Spacer()

@@ -17,7 +17,7 @@ struct SearchForCocktailsButton: View {
                 await viewModel.searchButtonPressed()
             }
         } label: {
-            MeshGradients.blurpleLinear.mask {
+            MeshGradients.goldAndRed.mask {
                 HStack {
                     
                     Spacer()

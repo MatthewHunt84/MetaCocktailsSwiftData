@@ -40,7 +40,6 @@ struct SelectedIngredientView: View {
                                     guard !viewModel.isRunningComplexSearch else { return }
                                     viewModel.handleRemovalOf(selection: selectedIngredient, preferred: isPreferred)
                                     if viewModel.preferredCount == 0 {
-                                        print("viewModel.preferredCount = \(viewModel.preferredCount)")
                                         dismiss()
                                     }
                                 }

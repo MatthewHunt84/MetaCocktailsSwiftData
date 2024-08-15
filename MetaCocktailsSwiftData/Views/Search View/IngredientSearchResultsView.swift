@@ -25,6 +25,7 @@ struct IngredientSearchResultsView: View {
                 
                 PreferencesListView()
                     .padding(.top, 10)
+                    .padding(.bottom, 10)
             }
             .navigationBarBackButtonHidden(true)
             .toolbar {

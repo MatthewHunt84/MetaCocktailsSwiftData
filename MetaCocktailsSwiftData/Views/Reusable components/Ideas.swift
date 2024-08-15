@@ -125,6 +125,17 @@ struct MeshGradients {
         .blue, .purple, .red
     ])
     
+    static let greyFade: MeshGradient =
+    MeshGradient(width: 3, height: 3, points: [
+        [0, 0], [0.5, 0], [1, 0],
+        [0, 0.5], [0.5, 0.5], [1, 0.5],
+        [0, 1], [0.5, 1], [1, 1]
+    ], colors: [
+        .white, .white, .white,
+        .white, .white, .white,
+        .white, .white, .white
+    ])
+    
     static let blurpleLinear = LinearGradient(gradient: Gradient(colors: [.blue, .purple, .red]),
                                               startPoint: .leading,
                                               endPoint: .trailing)
