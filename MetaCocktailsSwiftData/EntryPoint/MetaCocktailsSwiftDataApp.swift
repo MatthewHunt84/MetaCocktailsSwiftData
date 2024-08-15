@@ -62,9 +62,13 @@ struct ContentView: View {
                 .scaleEffect(animationTrigger ? 2.0 : 1)
         }
         .onChange(of: appState.showMainContent) { _, newValue in
-            if newValue {
-                withAnimation(.easeInOut(duration: 0.5)) {
-                    animationTrigger = true
+            Task {
+                if newValue {
+                    await MainActor.run {
+                        withAnimation(.easeInOut(duration: 0.5)) {
+                            animationTrigger = true
+                        }
+                    }
                 }
             }
         }

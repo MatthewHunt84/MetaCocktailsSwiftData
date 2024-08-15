@@ -16,17 +16,17 @@ struct ResetButton: View {
             Button{
                 viewModel.clearData()
             } label: {
-                HStack {
-                    
-                    Image(systemName: "arrow.triangle.2.circlepath")
-                        .font(.footnote).bold()
-                    
-                    Text("Clear Search")
-                        .font(.footnote).bold()
+                MeshGradients.blurple.mask {
+                    HStack {
+                        Image(systemName: "arrow.triangle.2.circlepath")
+                        
+                        Text("Clear Search")
+                    }
+                    .font(.title2).bold()
+                    .padding()
                 }
-                .tint(.brandPrimaryRed)
-                .padding()
             }
+            .buttonStyle(.plain)
             .frame(width: 380, height: 40,  alignment: .center)
         }
     }

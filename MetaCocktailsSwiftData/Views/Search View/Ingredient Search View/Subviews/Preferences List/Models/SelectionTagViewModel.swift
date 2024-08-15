@@ -11,9 +11,9 @@ struct SelectionTagViewModel {
 
     init(name: String, isPreferred: Bool) {
         self.ingredientName = name
-        self.color = isPreferred ? .green : .red
+        self.isPreferred = isPreferred
     }
     
     let ingredientName: String
-    let color: Color
+    let isPreferred: Bool
 }

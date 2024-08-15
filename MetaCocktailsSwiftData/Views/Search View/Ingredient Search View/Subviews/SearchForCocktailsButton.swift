@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SearchForCocktailsButton: View {
     @EnvironmentObject var viewModel: SearchViewModel
-    @Binding var showingResults: Bool
     
     var body: some View {
         
@@ -18,26 +17,31 @@ struct SearchForCocktailsButton: View {
                 await viewModel.searchButtonPressed()
             }
         } label: {
-            HStack {
-                
-                Spacer()
-                
-                Image(systemName: "plus.circle.fill")
-                    .font(.footnote).bold()
-                
-                Text("Search For Cocktails")
-                    .font(.footnote).bold()
-                
-                Spacer()
+            MeshGradients.blurpleLinear.mask {
+                HStack {
+                    
+                    Spacer()
+                    
+                    Image(systemName: "plus.circle.fill")
+                        .font(.title2).bold()
+                    
+                    Text("Search For Cocktails")
+                        .font(.title2).bold()
+                    
+                    Spacer()
+                }
             }
-            .foregroundStyle(.brandPrimaryGold)
         }
-        .frame(width: 380, height: 40,  alignment: .center)
+        .buttonStyle(.bordered)
+        .frame(height: 44)
+        .padding(.leading, 40)
+        .padding(.trailing, 40)
+        .padding(.bottom, 20)
         .disabled(viewModel.isRunningComplexSearch)
     }
 }
 
 #Preview {
-    SearchForCocktailsButton(showingResults: .constant(true))
+    SearchForCocktailsButton()
         .environmentObject(SearchCriteriaViewModel())
 }

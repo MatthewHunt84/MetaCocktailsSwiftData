@@ -17,29 +17,25 @@ struct FilteredIngredientListView: View {
     @State var ingredientNames = [String]()
     
     var body: some View {
-        Section("Component Name:") {
-            
-            VStack{
-                
-                HStack{
-                    
-                    TextField("Flavor, Ingredient, Style, or Profile...", text: $viewModel.currentComponentSearchName)
-                        .focused($keyboardFocused)
-                        .autocorrectionDisabled(true)
-                        .onChange(of: viewModel.currentComponentSearchName) { _, newValue in
-                            viewModel.updateSearch(newValue)
-                        }
-                    if !viewModel.currentComponentSearchName.isEmpty {
-                        Button {
-                            viewModel.currentComponentSearchName = ""
-                        } label: {
-                            Image(systemName: "multiply.circle.fill")
-                                .foregroundStyle(.brandPrimaryGold)
-                        }
-                        .padding(.trailing, 10)
+            HStack{
+                TextField("Flavor, Ingredient, Style, or Profile...", text: $viewModel.currentComponentSearchName)
+                    .focused($keyboardFocused)
+                    .textFieldStyle(.roundedBorder)
+                    .frame(height: 20)
+                    .autocorrectionDisabled(true)
+                    .onChange(of: viewModel.currentComponentSearchName) { _, newValue in
+                        viewModel.updateSearch(newValue)
+                    }
+                if !viewModel.currentComponentSearchName.isEmpty {
+                    Button {
+                        viewModel.currentComponentSearchName = ""
+                    } label: {
+                        Image(systemName: "multiply.circle.fill")
+                            .foregroundStyle(.brandPrimaryGold)
                     }
                 }
             }
+            .padding(EdgeInsets(top: 0, leading: 25, bottom: 0, trailing: 25))
             .task {
                 viewModel.setupSearch()
                 viewModel.ingredientNames = ingredients.map({$0.name})
@@ -47,12 +43,12 @@ struct FilteredIngredientListView: View {
             
             if keyboardFocused {
                 List {
-                    
                     ForEach($viewModel.filteredIngredients, id: \.self) { ingredient in
                         viewModel.returnPreferencesThumbCell(ingredient: ingredient)
                     }
-                    .listStyle(.plain)
-                    .listRowBackground(Color.black)
+                    .pinnedTopListStyle()
+//                    .listStyle(.automatic)
+                    .listRowBackground(Color.clear)
                 }
                 .scrollContentBackground(.hidden)
                 .task {
@@ -61,7 +57,6 @@ struct FilteredIngredientListView: View {
             } else {
                 EmptyView()
             }
-        }
     }
     
     func generateAllCocktailList(context: ModelContext) async {
@@ -76,6 +71,24 @@ struct FilteredIngredientListView: View {
                 }
             }
         }
+    }
+}
+
+struct PinnedTopListStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .listStyle(PlainListStyle())
+            .environment(\.defaultMinListRowHeight, 1)
+            .onAppear {
+                UITableView.appearance().contentInset.top = 0
+                UITableView.appearance().contentInset.bottom = 0
+            }
+    }
+}
+
+extension View {
+    func pinnedTopListStyle() -> some View {
+        self.modifier(PinnedTopListStyle())
     }
 }
 

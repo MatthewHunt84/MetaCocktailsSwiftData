@@ -37,17 +37,21 @@ struct LoadingAnimation: View {
     @State private var rotationTriangle = 0.0
     
     var body: some View {
+        
         ZStack {
-            Image("CirclePart")
-                .resizable()
-                .rotationEffect(.degrees(rotationCircle))
-                .animation(Animation.linear(duration: 4).repeatForever(autoreverses: false), value: rotationCircle)
+            MeshGradients.blurple.mask (
+                Image("CirclePart")
+                    .resizable()
+                    .rotationEffect(.degrees(rotationCircle))
+                    .animation(Animation.linear(duration: 4).repeatForever(autoreverses: false), value: rotationCircle)
+            )
             
             Image("TrianglePart")
                 .resizable()
             
             Image("GlassPart")
                 .resizable()
+            
         }
         .onAppear {
             rotationCircle = 360

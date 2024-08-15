@@ -20,32 +20,38 @@ struct SelectedIngredientView: View {
     let selections: [String]
     
     var body: some View {
-        ScrollView(.horizontal) {
+        
+        if selections.isEmpty {
+            EmptyView()
+        } else {
             
-            HStack(spacing: 12) {
+            ScrollView(.horizontal) {
                 
-                ForEach(selections, id: \.self) { selectedIngredient in
-                    SelectionTagView(viewModel: SelectionTagViewModel(name: selectedIngredient, isPreferred: isPreferred))
-                        .onTapGesture {
-                            withAnimation(.snappy) {
-                                guard !viewModel.isRunningComplexSearch else { return }
-                                viewModel.handleRemovalOf(selection: selectedIngredient, preferred: isPreferred)
-                                if viewModel.preferredCount == 0 {
-                                    dismiss()
+                HStack(spacing: 12) {
+                    
+                    ForEach(selections, id: \.self) { selectedIngredient in
+                        SelectionTagView(viewModel: SelectionTagViewModel(name: selectedIngredient, isPreferred: isPreferred))
+                            .onTapGesture {
+                                withAnimation(.snappy) {
+                                    guard !viewModel.isRunningComplexSearch else { return }
+                                    viewModel.handleRemovalOf(selection: selectedIngredient, preferred: isPreferred)
+                                    if viewModel.preferredCount == 0 {
+                                        print("viewModel.preferredCount = \(viewModel.preferredCount)")
+                                        dismiss()
+                                    }
                                 }
                             }
-                        }
+                    }
                 }
+                .padding(.horizontal, 15)
+                .frame(height: 35)
             }
-            .padding(.horizontal, 15)
-            .frame(height: 35)
+            .scrollClipDisabled(true)
+            .scrollIndicators(.hidden)
         }
-        .mask(LinearGradient(stops: [.init(color: .clear, location: 0), .init(color: .white, location: 0.05), .init(color: .white, location: 0.95), .init(color: .clear, location: 1)], startPoint: .leading, endPoint: .trailing))
-        .scrollClipDisabled(true)
-        .scrollIndicators(.hidden)
     }
 }
-                                               
+
 
 #Preview {
     SelectedIngredientView(isPreferred: true, selections: ["Awesome", "Cool", "Radical"])

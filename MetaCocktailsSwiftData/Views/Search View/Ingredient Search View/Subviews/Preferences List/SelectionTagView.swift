@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SelectionTagView: View {
     let viewModel: SelectionTagViewModel
-    
     var body: some View {
         
         HStack(spacing: 10) {
@@ -23,12 +22,12 @@ struct SelectionTagView: View {
                 .foregroundColor(.white)
         }
         .frame(height: 35)
-        .foregroundStyle(.black)
         .padding(.horizontal, 15)
         .background {
-            Capsule()
-                .fill(viewModel.color.gradient)
+            viewModel.isPreferred ? MeshGradients.animatedPreferredSelection : MeshGradients.animatedUnwantedSelection
         }
+        .clipShape(Capsule())
+        
     }
 }
 

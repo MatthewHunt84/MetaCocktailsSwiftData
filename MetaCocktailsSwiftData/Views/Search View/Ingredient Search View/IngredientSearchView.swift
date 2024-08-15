@@ -11,45 +11,60 @@ import SwiftData
 struct IngredientSearchView: View {
     
     @EnvironmentObject var viewModel: SearchViewModel
-    @State var showingResults: Bool = false
     @FocusState var keyboardFocused: Bool
     
     var body: some View {
         
         NavigationStack {
-            
-            VStack{
-                
-                PreferencesListView()
+            ZStack {
+                MeshGradients.blackGreyBackground.ignoresSafeArea()
+                VStack(alignment: .leading) {
                     
-                    Form {
+                    PreferencesListView()
+                    
+//                    Form {
                         FilteredIngredientListView(keyboardFocused: _keyboardFocused)
-                        SearchForCocktailsButton(showingResults: $showingResults)
-                        ResetButton()
-                    }
+//                    }
+//                    .background(.purple)
+//                    .scrollDisabled(true)
+                    SearchForCocktailsButton()
+//                    ResetButton()
+                    
+                }
             }
-            .navigationDestination(isPresented: $showingResults) {
+            .navigationDestination(isPresented: $viewModel.isShowingResults) {
                 IngredientSearchResultsView()
             }
             .onChange(of: viewModel.searchCompleted) { _, newValue in
                 if newValue {
-                    showingResults = true
+                    viewModel.toggleIsShowingResults()
                     viewModel.resetSearch()
                 }
             }
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigation) {
-                    Text("Search Ingredients")
-                        .font(.largeTitle).bold()
+                ToolbarItem(placement: .principal) {
+                        Text("Search Ingredients")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .foregroundStyle(
+                                LinearGradient(gradient: Gradient(colors: [.blue, .purple, .red]),
+                                                                              startPoint: .leading,
+                                                                              endPoint: .trailing))
+
                 }
             }
+//            .gradientNavigationTitle("Search Ingredients")
             .task {
                 keyboardFocused = true
             }
             .basicLoadingIndicator(isLoading: viewModel.isRunningComplexSearch)
+//            .background(MeshGradients.blackGreyBackground).ignoresSafeArea()
         }
     }
 }
+
+
 
 #Preview {
     IngredientSearchView()

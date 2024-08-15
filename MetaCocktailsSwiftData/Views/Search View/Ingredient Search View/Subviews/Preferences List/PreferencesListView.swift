@@ -13,20 +13,28 @@ public struct PreferencesListView: View {
     
     public var body: some View {
         
-        VStack(alignment: .leading) {
-
-                Text("Selected Preferences:")
-//                    .padding(.top, 25)
-                    .padding(.leading, 12)
-                    .font(.headline).bold()
-
-                Text("Tap to remove")
-                    .font(.footnote)
-                    .foregroundStyle(.gray)
-                    .padding(.leading, 12)
-
-            SelectedIngredientView(isPreferred: true, selections: viewModel.preferredSelections)
-            SelectedIngredientView(isPreferred: false, selections: viewModel.unwantedSelections)
+        if viewModel.unwantedSelections.isEmpty && viewModel.preferredSelections.isEmpty {
+            Color.clear
+                .frame(height: 20)
+        } else {
+            VStack(alignment: .leading) {
+                HStack {
+                    VStack {
+                        Text("Selected Preferences")
+                            .font(.headline).bold()
+                            .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.white, .gray]),
+                                                            startPoint: .leading,
+                                                            endPoint: .trailing))
+                    }
+                    
+                    Spacer()
+                }
+                .padding(.leading, 15)
+                
+                SelectedIngredientView(isPreferred: true, selections: viewModel.preferredSelections)
+                SelectedIngredientView(isPreferred: false, selections: viewModel.unwantedSelections)
+            }
+            .padding()
         }
     }
 }
