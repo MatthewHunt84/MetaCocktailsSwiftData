@@ -17,11 +17,14 @@ struct FilteredIngredientListView: View {
     @State var ingredientNames = [String]()
     
     var body: some View {
+        VStack {
+            
             HStack{
+                
                 TextField("Flavor, Ingredient, Style, or Profile...", text: $viewModel.currentComponentSearchName)
                     .focused($keyboardFocused)
                     .textFieldStyle(.roundedBorder)
-                    .frame(height: 20)
+                    .frame(height: 30)
                     .autocorrectionDisabled(true)
                     .onChange(of: viewModel.currentComponentSearchName) { _, newValue in
                         viewModel.updateSearch(newValue)
@@ -38,7 +41,7 @@ struct FilteredIngredientListView: View {
                     }
                 }
             }
-            .padding(EdgeInsets(top: 20, leading: 25, bottom: 0, trailing: 25))
+            .padding(EdgeInsets(top: 20, leading: 30, bottom: 0, trailing: 30))
             .zIndex(10)
             .task {
                 viewModel.setupSearch()
@@ -54,9 +57,8 @@ struct FilteredIngredientListView: View {
                     .listRowBackground(Color.clear)
                 }
                 .scrollContentBackground(.hidden)
-            } else {
-                EmptyView()
             }
+        }
     }
     
     func generateAllCocktailList(context: ModelContext) async {

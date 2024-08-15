@@ -25,18 +25,17 @@ struct IngredientSearchView: View {
                     FilteredIngredientListView(keyboardFocused: _keyboardFocused)
 
                     Spacer()
-                    PreferencesListView()
-                        .zIndex(10)
-
                     
-//                    ResetButton()
+                    if !viewModel.preferredSelections.isEmpty {
+                        PreferencesListView()
+                            .zIndex(10)
+                    }
                     
                     SearchForCocktailsButton()
-
-                    
-                    
+  
                 }
             }
+            .animation(.easeOut(duration: 0.5), value: viewModel.preferredSelections.isEmpty)
             .navigationDestination(isPresented: $viewModel.isShowingResults) {
                 IngredientSearchResultsView()
             }
