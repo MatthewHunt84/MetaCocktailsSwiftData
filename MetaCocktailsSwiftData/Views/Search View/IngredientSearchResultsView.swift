@@ -14,34 +14,42 @@ struct IngredientSearchResultsView: View {
     
     var body: some View {
         
-        VStack {
+        
+        ZStack {
             
-            PreferencesListView()
+            MeshGradients.blackGreyBackground.ignoresSafeArea()
             
-            IngredientSearchMatchedCocktailsView()
-        }
-        .navigationBarBackButtonHidden(true)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button(action: {
-                    viewModel.willLoadOnAppear = true
-                    dismiss()
-                }) {
-                    Image(systemName: "chevron.backward")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 9)
-                        .bold()
-                        .tint(.cyan)
+            VStack {
+                
+                IngredientSearchMatchedCocktailsView()
+                
+                PreferencesListView()
+                    .padding(.top, 10)
+            }
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        viewModel.willLoadOnAppear = true
+                        dismiss()
+                    }) {
+                        Image(systemName: "chevron.backward")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 9)
+                            .bold()
+                            .tint(.cyan)
+                    }
+                }
+                
+                ToolbarItem(placement: .navigation) {
+                    Text("Matched Cocktails")
+                        .font(.largeTitle).bold()
+                        .foregroundStyle(MeshGradients.blurpleLinear)
                 }
             }
-            
-            ToolbarItem(placement: .navigation) {
-                Text("Matched Cocktails")
-                    .font(.largeTitle).bold()
-            }
+            .basicLoadingIndicator(isLoading: viewModel.isRunningComplexSearch)
         }
-        .basicLoadingIndicator(isLoading: viewModel.isRunningComplexSearch)
     }
     
     @ViewBuilder func SearchResultsTagView(_ tag: String, _ color: Color, _ icon: String) -> some View {

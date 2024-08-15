@@ -20,7 +20,8 @@ struct IngredientSearchMatchedCocktailsView: View {
             MinusTwoMatchView(passedViewModel: viewModel)
         }
         .listStyle(.plain)
-        .backgroundStyle(.black)
+        .listRowBackground(Color.clear)
+        .backgroundStyle(.clear)
     }
 }
 
@@ -43,7 +44,7 @@ struct MissingIngredientsView: View {
         HStack{
             ForEach(missingIngredientArray, id: \.self) { nonMatch in
                 Text("-\(nonMatch) ")
-                    .foregroundStyle(.brandPrimaryRed)
+                    .foregroundStyle(MeshGradients.staticUnwantedSelection)
                     .font(.caption)
             }
             Spacer()
@@ -105,6 +106,8 @@ struct PerfectMatchCocktailView: View {
                     }
                 }
             }
+            .backgroundStyle(.clear)
+            .listRowBackground(Color.clear)
         }
     }
 }
@@ -146,6 +149,8 @@ struct MinusOneMatchView: View {
                     }
                 }
             }
+            .backgroundStyle(.clear)
+            .listRowBackground(Color.clear)
         }
     }
     func filtered(_ cocktails: [Cocktail]) -> [Cocktail] {
@@ -198,6 +203,8 @@ struct MinusTwoMatchView: View {
                     }
                 }
             }
+            .backgroundStyle(.clear)
+            .listRowBackground(Color.clear)
         }
     }
     func filtered(_ cocktails: [Cocktail]) -> [Cocktail] {
