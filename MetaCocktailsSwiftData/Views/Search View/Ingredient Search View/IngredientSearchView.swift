@@ -29,10 +29,6 @@ struct IngredientSearchView: View {
                         }
                     
                     Spacer()
-//                    
-//                    if !viewModel.preferredSelections.isEmpty {
-//                        PreferencesListView()
-//                    }
                     
                     if !viewModel.preferredSelections.isEmpty {
                         HStack {

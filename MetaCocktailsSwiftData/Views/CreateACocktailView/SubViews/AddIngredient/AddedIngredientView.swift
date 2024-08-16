@@ -34,7 +34,7 @@ struct AddedIngredientView: View {
                         .tint(viewModel.addedIngredients.count < 2 ? .white : .secondary)
                     Spacer()
                     Image(systemName: "plus.circle.fill")
-                        .foregroundStyle(.brandPrimaryGold)
+                        .foregroundStyle(.blueTint)
                 }
             }
         }

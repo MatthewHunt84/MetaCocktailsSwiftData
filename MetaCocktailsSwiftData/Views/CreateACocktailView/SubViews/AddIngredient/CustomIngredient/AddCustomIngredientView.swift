@@ -13,22 +13,15 @@ struct AddCustomIngredientView: View {
     @Bindable var viewModel: AddCocktailViewModel
     @FocusState private var keyboardFocused: Bool
     @FocusState private var amountKeyboardFocused: Bool
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         NavigationStack{
+            
             ZStack{
-                VStack {
-                    HStack{
-                        BackButton()
-                        Spacer()
-                    }
-                    .padding(.horizontal)
-                    HStack {
-                        Text("Custom Ingredient")
-                            .font(.largeTitle).bold()
-                        Spacer()
-                    }
-                    .padding(.horizontal)
+                
+                MeshGradients.blackGreyBackground.ignoresSafeArea()
+
                     Form {
                         Section("Name") {
                             TextField("Ingredient Name", text: $viewModel.ingredientName)
@@ -39,6 +32,8 @@ struct AddCustomIngredientView: View {
                         IngredeientRecipeView(viewModel: viewModel)
                         AddCustomIngredientToCocktailButton(viewModel: viewModel)
                     }
+                    .navigationBarTitleDisplayMode(.inline)
+                    .goldHeaderWithNavigation(title: "Custom Ingredient", dismiss: dismiss)
                     .toolbar {
                         ToolbarItemGroup(placement: .keyboard) {
                             KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
@@ -47,7 +42,6 @@ struct AddCustomIngredientView: View {
                     .task {
                         keyboardFocused = true
                     }
-                }
                 
                 if viewModel.isShowingingredientAlert {
                     CustomAlertView(isActive: $viewModel.isShowingingredientAlert,
@@ -126,7 +120,7 @@ struct AddCustomIngredientToCocktailButton: View {
                 Text("Add to spec")
                     .font(.footnote).bold()
             }
-            .tint(.brandPrimaryGold)
+            .tint(.blueTint)
             .padding()
         }
         .frame(width: 380, height: 40,  alignment: .center)

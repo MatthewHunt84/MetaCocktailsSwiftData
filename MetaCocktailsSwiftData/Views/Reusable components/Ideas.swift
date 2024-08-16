@@ -73,7 +73,7 @@ struct GradientNavigationTitleWithNavigation: ViewModifier {
                 }
                 
                 ToolbarItem(placement: .principal) {
-                    Text("Matched Cocktails")
+                    Text(title)
                         .font(.largeTitle).bold()
                         .foregroundStyle(MeshGradients.goldTitle)
                 }

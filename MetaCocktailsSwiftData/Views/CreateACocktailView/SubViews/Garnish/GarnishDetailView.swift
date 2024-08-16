@@ -16,25 +16,20 @@ struct GarnishDetailView: View {
     @Environment(\.modelContext) private var modelContext
    
     var body: some View {
+        
         NavigationStack{
+            
             ZStack{
-                VStack {
-                    HStack{
-                        BackButton()
-                        Spacer()
-                    }
-                    .padding(.horizontal)
-                    HStack {
-                        Text("Add Garnish")
-                            .font(.largeTitle).bold()
-                        Spacer()
-                    }
-                    .padding(.horizontal)
+                
+                MeshGradients.blackGreyBackground.ignoresSafeArea()
+
                     Form {
                         AddGarnishSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
                         AddExistingGarnishToCocktailButton(viewModel: viewModel)
                         
                     }
+                    .navigationBarTitleDisplayMode(.inline)
+                    .goldHeaderWithNavigation(title: "Add Ingredient", dismiss: dismiss)
                     .toolbar {
                         ToolbarItem(placement: .bottomBar) { CreateCustomGarnishButton(viewModel: viewModel) }
                         ToolbarItemGroup(placement: .keyboard) {
@@ -44,9 +39,7 @@ struct GarnishDetailView: View {
                     .task {
                         keyboardFocused = true
                     }
-                }
-                
-                
+
                 if viewModel.isShowingingredientAlert {
                     CustomAlertView(isActive: $viewModel.isShowingingredientAlert,
                                     title: "",
@@ -135,7 +128,7 @@ struct AddExistingGarnishToCocktailButton: View {
                 Text("Add to spec")
                     .font(.footnote).bold()
             }
-            .tint(.brandPrimaryGold)
+            .tint(.blueTint)
             .padding()
         }
         .frame(width: 380, height: 40,  alignment: .center)

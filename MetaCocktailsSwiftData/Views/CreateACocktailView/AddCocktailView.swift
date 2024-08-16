@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftData
 
 struct AddCocktailView: View {
- 
+    
     @Bindable var viewModel = AddCocktailViewModel()
     @State private var isShowingAddIngredients: Bool = false
     @Environment(\.modelContext) private var modelContext
@@ -10,144 +10,141 @@ struct AddCocktailView: View {
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
     @FocusState private var yearKeyboardFocused: Bool
     @State private var isActive: Bool = false
+    var sectionBackground = Color.black.opacity(0.15)
     
     
     var body: some View {
         
         NavigationStack {
+            
             ZStack {
                 
-                VStack {
-                    HStack {
-                        Text(viewModel.cocktailName == "" ? viewModel.defaultName : viewModel.cocktailName)
-                            .font(.largeTitle).bold()
-                            .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
-                        Spacer()
-                       
+                MeshGradients.blackGreyBackground.ignoresSafeArea()
+                
+                Form {
+                    Section(header: Text("Name")) {
+                        TextField("Cocktail Name", text: $viewModel.cocktailName)
+                            .focused($yearKeyboardFocused)
                     }
-                    Form {
-                        Section(header: Text("Name")) {
-                            TextField("Cocktail Name", text: $viewModel.cocktailName)
-                                .focused($yearKeyboardFocused)
-                        }
-                        
-                        AddedIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
-                        
-                        
-                        Section(header: Text("Extras")) {
-                           
-                            GlassPickerButton(viewModel: viewModel)
-                            IcePicker(ice: $viewModel.ice)
-                            VariationPicker(variation: $viewModel.variation)
-                        }
+//                    .listRowBackground(sectionBackground)
                     
-                        GarnishPicker(viewModel: viewModel)
-                        Section(header: Text("Credit (optional)")) {
-                            TextField("Author", text: $viewModel.authorName)
-                                .focused($yearKeyboardFocused)
-                            TextField("Origin", text: $viewModel.authorPlace)
-                                .focused($yearKeyboardFocused)
-                            TextField("Year", text: $viewModel.authorYear)
-                                .keyboardType(.numberPad)
-                                .focused($yearKeyboardFocused)
-                                
-                        }
+                    AddedIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
+                    
+                    Section(header: Text("Extras")) {
+                        GlassPickerButton(viewModel: viewModel)
+                        IcePicker(ice: $viewModel.ice)
+                        VariationPicker(variation: $viewModel.variation)
+                    }
+//                    .listRowBackground(sectionBackground)
+                    
+                    GarnishPicker(viewModel: viewModel)
+                    Section(header: Text("Credit (optional)")) {
+                        TextField("Author", text: $viewModel.authorName)
+                            .focused($yearKeyboardFocused)
+                        TextField("Origin", text: $viewModel.authorPlace)
+                            .focused($yearKeyboardFocused)
+                        TextField("Year", text: $viewModel.authorYear)
+                            .keyboardType(.numberPad)
+                            .focused($yearKeyboardFocused)
+                    }
+//                    .listRowBackground(sectionBackground)
+                    
+                    Section(header: Text("Build steps (optional)")) {
+                        AddBuildStepView(viewModel: viewModel)
+                    }
+//                    .listRowBackground(sectionBackground)
+                    
+                    Button{
+                        viewModel.clearData()
+                    } label: {
                         
-                        Section(header: Text("Build steps (optional)")) {
-                                AddBuildStepView(viewModel: viewModel)
-                            
+                        HStack {
+                            Image(systemName: "arrow.triangle.2.circlepath")
+                                .font(.footnote).bold()
+                            Text("Reset to Defaults")
+                                .font(.footnote).bold()
                         }
-                        Button{
-                            viewModel.clearData()
+                        .tint(Color.blueTint)
+                        .padding()
+                    }
+                    .frame(width: 380, height: 40,  alignment: .center)
+                    
+                    
+                }
+                .scrollContentBackground(.hidden)
+                .background(Color.clear)
+                .toolbar {
+                    ToolbarItem(placement: .bottomBar) {
+                        Button {
+                            if nameIsUnique() {
+                                viewModel.isShowingUniqueNameAlert = false
+                            } else {
+                                viewModel.isShowingUniqueNameAlert = true
+                            }
+                            
+                            if viewModel.isValid() {
+                                viewModel.addCocktailToModel(context: modelContext)
+                                selectedTab.wrappedValue = .cocktailListView
+                                
+                                
+                            } else {
+                                
+                                if viewModel.isShowingUniqueNameAlert == false  {
+                                    viewModel.isShowingAlert.toggle()
+                                }
+                            }
+                            
                         } label: {
-                            
                             HStack {
-                                Image(systemName: "arrow.triangle.2.circlepath")
-                                    .font(.footnote).bold()
-                                Text("Reset to Defaults")
-                                    .font(.footnote).bold()
+                                Text("Add to cocktails").font(.headline)
+                                Image(systemName: "plus")
                             }
-                            .tint(.brandPrimaryRed)
-                            .padding()
+                            .foregroundStyle(viewModel.isValid() ? .brandPrimaryGold : .secondary)
                         }
-                        .frame(width: 380, height: 40,  alignment: .center)
-                        
-                       
                     }
-                    .toolbar {
-                        ToolbarItem(placement: .bottomBar) {
-                            Button {
-                                if nameIsUnique() {
-                                    viewModel.isShowingUniqueNameAlert = false
-                                } else {
-                                    viewModel.isShowingUniqueNameAlert = true
-                                }
-                                
-                                if viewModel.isValid() {
-                                    viewModel.addCocktailToModel(context: modelContext)
-                                    selectedTab.wrappedValue = .cocktailListView
-                         
-                                    
-                                } else {
-                                    
-                                    if viewModel.isShowingUniqueNameAlert == false  {
-                                        viewModel.isShowingAlert.toggle()
-                                    }
-                                }
-                                
-                            } label: {
-                                HStack {
-                                    Text("Add to cocktails").font(.headline)
-                                    Image(systemName: "plus")
-                                }
-                                .foregroundStyle(viewModel.isValid() ? .brandPrimaryGold : .secondary)
-                            }
+                    ToolbarItemGroup(placement: .keyboard) {
+                        Spacer()
+                        Button("Done") {
+                            yearKeyboardFocused = false
                         }
-                        ToolbarItemGroup(placement: .keyboard) {
-                            Spacer()
-                            Button("Done") {
-                                yearKeyboardFocused = false
-                            }
-                            .tint(Color.brandPrimaryGold)
-                            
-                        }
+                        .tint(Color.brandPrimaryGold)
                         
                     }
                     
                 }
-                .navigationDestination(isPresented: $viewModel.addExistingGarnishViewIsActive) {
-                    GarnishDetailView(viewModel: viewModel)
-                        .navigationBarBackButtonHidden(true)
-                }
-                .navigationDestination(isPresented: $viewModel.addIngredientDetailViewIsActive) {
-                    AddExistingIngredientDetailView(viewModel: viewModel)
-                        .navigationBarBackButtonHidden(true)
-                }
-                
-                if viewModel.isShowingAlert {
-                    CustomAlertView(isActive: $viewModel.isShowingAlert,
-                                    title: "Missing Information",
-                                    message: viewModel.cantAddCocktailMessage(),
-                                    buttonTitle: heardChef, action: {})
-                    .zIndex(1)
-                }
-                if viewModel.isShowingUniqueNameAlert {
-                    CustomAlertView(isActive: $viewModel.isShowingUniqueNameAlert,
-                                    title: "Name must be unique",
-                                    message: "Please modify your cocktail name. ",
-                                    buttonTitle: heardChef, action: {})
-                    .zIndex(1)
-                }
-                
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .goldHeader(viewModel.cocktailName == "" ? viewModel.defaultName : viewModel.cocktailName)
+            .navigationDestination(isPresented: $viewModel.addExistingGarnishViewIsActive) {
+                GarnishDetailView(viewModel: viewModel)
+                    .navigationBarBackButtonHidden(true)
+            }
+            .navigationDestination(isPresented: $viewModel.addIngredientDetailViewIsActive) {
+                AddExistingIngredientDetailView(viewModel: viewModel)
+                    .navigationBarBackButtonHidden(true)
+            }
+            
+            if viewModel.isShowingAlert {
+                CustomAlertView(isActive: $viewModel.isShowingAlert,
+                                title: "Missing Information",
+                                message: viewModel.cantAddCocktailMessage(),
+                                buttonTitle: heardChef, action: {})
+                .zIndex(1)
+            }
+            if viewModel.isShowingUniqueNameAlert {
+                CustomAlertView(isActive: $viewModel.isShowingUniqueNameAlert,
+                                title: "Name must be unique",
+                                message: "Please modify your cocktail name. ",
+                                buttonTitle: heardChef, action: {})
+                .zIndex(1)
             }
             
         }
-        
     }
 }
 private struct GlassPickerButton: View {
-   @Bindable var viewModel: AddCocktailViewModel
-   @State private var glasswareName = "None"
+    @Bindable var viewModel: AddCocktailViewModel
+    @State private var glasswareName = "None"
     var body: some View {
         NavigationLink {
             GlassPickerDetailView(glasswareName: $glasswareName, viewModel: viewModel)
@@ -158,7 +155,7 @@ private struct GlassPickerButton: View {
                 Spacer()
                 Text(glasswareName)
                     .foregroundStyle(.gray)
-                    
+                
             }
         }
     }
@@ -200,7 +197,7 @@ private struct GlassPickerDetailView: View {
                 }
             }
             .listStyle(.plain)
-            .listRowBackground(Color.black)
+            .listRowBackground(Color.clear)
         }
     }
 }
@@ -222,39 +219,39 @@ private struct IcePicker: View {
 
 
 private struct GarnishPicker: View {
-
+    
     @Bindable var viewModel: AddCocktailViewModel
     
     var body: some View {
         
         Section {
-           
-                List{
-                    ForEach(viewModel.addedGarnish, id: \.name) { garnish in
-                        Text(garnish.name)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    .onDelete(perform: { indexSet in
-                        viewModel.addedGarnish.remove(atOffsets: indexSet)
-                    })
+            
+            List{
+                ForEach(viewModel.addedGarnish, id: \.name) { garnish in
+                    Text(garnish.name)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                Button {
-                    viewModel.toggleShowAddGarnishView()
-                        
-                } label: {
-                    HStack {
-                        Text(viewModel.addedGarnish.count < 1 ? "Add Garnish" : "Add another garnish")
-                            .tint(viewModel.addedGarnish.count < 1 ? .white : .secondary)
-                        Spacer()
-                        Image(systemName: "plus.circle.fill")
-                            .foregroundStyle(.brandPrimaryGold)
-                    }
+                .onDelete(perform: { indexSet in
+                    viewModel.addedGarnish.remove(atOffsets: indexSet)
+                })
+            }
+            Button {
+                viewModel.toggleShowAddGarnishView()
+                
+            } label: {
+                HStack {
+                    Text(viewModel.addedGarnish.count < 1 ? "Add Garnish" : "Add another garnish")
+                        .tint(viewModel.addedGarnish.count < 1 ? .white : .secondary)
+                    Spacer()
+                    Image(systemName: "plus.circle.fill")
+                        .foregroundStyle(.blueTint)
                 }
+            }
             
         } header: {
             Text("Garnish")
         }
-       
+        
     }
 }
 
@@ -297,5 +294,5 @@ private struct VariationPicker: View {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
     return AddCocktailView(viewModel: AddCocktailViewModel())
         .modelContainer(preview.container)
-       
+    
 }

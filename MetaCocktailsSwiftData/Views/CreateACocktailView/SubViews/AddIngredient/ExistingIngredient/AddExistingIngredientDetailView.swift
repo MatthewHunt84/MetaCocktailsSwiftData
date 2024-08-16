@@ -14,31 +14,25 @@ struct AddExistingIngredientDetailView: View {
     @FocusState private var amountKeyboardFocused: Bool
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
-    
-   
-    
 
     var body: some View {
+        
         NavigationStack{
+            
             ZStack{
-                VStack {
-                    HStack{
-                        BackButton()
-                        Spacer()
-                    }
-                    .padding(.horizontal)
-                    HStack {
-                        Text("Add Ingredient")
-                            .font(.largeTitle).bold()
-                        Spacer()
-                    }
-                    .padding(.horizontal)
+                
+                MeshGradients.blackGreyBackground.ignoresSafeArea()
+
                     Form {
                         AddIngredientSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
                         AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
                         AddExistingIngredientToCocktailButton(viewModel: viewModel)
                         
                     }
+                    .scrollContentBackground(.hidden)
+                    .background(Color.clear)
+                    .navigationBarTitleDisplayMode(.inline)
+                    .goldHeaderWithNavigation(title: "Add Ingredient", dismiss: dismiss)
                     .toolbar {
                         ToolbarItem(placement: .bottomBar) { CreateNewIngredientButton(viewModel: viewModel) }
                         ToolbarItemGroup(placement: .keyboard) {
@@ -48,7 +42,6 @@ struct AddExistingIngredientDetailView: View {
                     .task {
                         keyboardFocused = true
                     }
-                }
                 
                 if viewModel.isShowingingredientAlert {
                     CustomAlertView(isActive: $viewModel.isShowingingredientAlert,
@@ -187,7 +180,7 @@ struct AddExistingIngredientToCocktailButton: View {
                 Text("Add to spec")
                     .font(.footnote).bold()
             }
-            .tint(.brandPrimaryGold)
+            .tint(.blueTint)
             .padding()
         }
         .frame(width: 380, height: 40,  alignment: .center)
@@ -207,7 +200,7 @@ struct CreateNewIngredientButton: View {
                 Text("Create Custom Ingredient").font(.headline)
                 Image(systemName: "plus")
             }
-            .foregroundStyle(.brandPrimaryGold)
+            .foregroundStyle(.blueTint)
         }
         
         

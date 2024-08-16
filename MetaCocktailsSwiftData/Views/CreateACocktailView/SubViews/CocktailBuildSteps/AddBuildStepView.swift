@@ -22,7 +22,7 @@ struct AddBuildStepView: View {
                     Spacer()
                     
                     Image(systemName: "plus.circle.fill")
-                        .foregroundStyle(.brandPrimaryGold)
+                        .foregroundStyle(.blueTint)
                 }
             }
             .sheet(isPresented: $isShowingBuildSheet, content: {

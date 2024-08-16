@@ -83,7 +83,7 @@ struct AddCustomGarnishToCocktailButton: View {
                 Text("Add to spec")
                     .font(.footnote).bold()
             }
-            .tint(.brandPrimaryGold)
+            .tint(.blueTint)
             .padding()
         }
         .frame(width: 380, height: 40,  alignment: .center)
