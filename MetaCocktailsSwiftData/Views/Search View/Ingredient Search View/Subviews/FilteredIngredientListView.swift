@@ -27,9 +27,9 @@ struct FilteredIngredientListView: View {
                     .autocorrectionDisabled(true)
                     .onChange(of: viewModel.currentComponentSearchName) { _, newValue in
                         viewModel.updateSearch(newValue)
-                        Task {
-                            await generateAllCocktailList(context: modelContext)
-                        }
+//                        Task {
+//                            await generateAllCocktailList(context: modelContext)
+//                        }
                     }
                 if !viewModel.currentComponentSearchName.isEmpty {
                     Button {
@@ -55,20 +55,6 @@ struct FilteredIngredientListView: View {
                     .listRowBackground(Color.clear)
                 }
                 .scrollContentBackground(.hidden)
-            }
-        }
-    }
-    
-    func generateAllCocktailList(context: ModelContext) async {
-        if viewModel.allCocktails.isEmpty {
-            Task {
-                do {
-                    let descriptor = FetchDescriptor<Cocktail>()
-                    let fetchedCocktails = try context.fetch(descriptor)
-                        viewModel.allCocktails = fetchedCocktails
-                } catch {
-                    print("Error fetching cocktails: \(error)")
-                }
             }
         }
     }

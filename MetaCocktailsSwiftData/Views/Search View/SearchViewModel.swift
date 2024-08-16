@@ -109,6 +109,7 @@ final class SearchViewModel: ObservableObject {
     var minusOneMatchCocktails = [String]()
     var minusTwoMatchCocktails = [String]()
     var isRunningComplexSearch = false
+    var isGeneratingIngredientList = false
     var searchCompleted = false
     var searchType: SearchType = .simple
     var updatedUnwantedSelections = [String]()
@@ -128,6 +129,12 @@ final class SearchViewModel: ObservableObject {
     func toggleLoading() async {
         await MainActor.run {
             isRunningComplexSearch.toggle()
+        }
+    }
+    
+    func toggleGeneratingIngredients() async {
+        await MainActor.run {
+            isGeneratingIngredientList.toggle()
         }
     }
     

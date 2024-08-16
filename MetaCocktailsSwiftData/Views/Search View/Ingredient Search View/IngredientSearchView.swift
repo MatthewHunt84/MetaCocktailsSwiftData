@@ -10,6 +10,7 @@ import SwiftData
 
 struct IngredientSearchView: View {
     
+    @Environment(\.modelContext) var modelContext
     @EnvironmentObject var viewModel: SearchViewModel
     @FocusState var keyboardFocused: Bool
     
@@ -26,6 +27,11 @@ struct IngredientSearchView: View {
                     FilteredIngredientListView(keyboardFocused: _keyboardFocused)
                         .onTapGesture {
                             keyboardFocused = true
+                            if viewModel.allCocktails.isEmpty {
+                                Task {
+                                    await generateAllCocktailList(context: modelContext)
+                                }
+                            }
                         }
                     
                     Spacer()
@@ -51,6 +57,19 @@ struct IngredientSearchView: View {
             .navigationBarTitleDisplayMode(.inline)
             .goldHeader("Search Ingredients")
             .funLoadingIndicator(isLoading: viewModel.isRunningComplexSearch)
+            .basicLoadingIndicator(isLoading: viewModel.isGeneratingIngredientList)
+        }
+    }
+    
+    func generateAllCocktailList(context: ModelContext) async {
+        await viewModel.toggleGeneratingIngredients()
+        do {
+            let descriptor = FetchDescriptor<Cocktail>()
+            let fetchedCocktails = try context.fetch(descriptor)
+            viewModel.allCocktails = fetchedCocktails
+            await viewModel.toggleGeneratingIngredients()
+        } catch {
+            print("Error fetching cocktails: \(error)")
         }
     }
 }
