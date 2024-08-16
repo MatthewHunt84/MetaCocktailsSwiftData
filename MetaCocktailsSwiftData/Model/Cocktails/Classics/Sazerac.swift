@@ -25,7 +25,8 @@ var sazeracSpec  = [OldCocktailIngredient(.syrups(.richDem), value: 2, unit: .te
                     OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
                     OldCocktailIngredient(.otherAlcohol(.absinthe), value: 5, unit: .sprays),]
 
-var sazeracTags = Tags(profiles: [.spiritForward, .punchy],
+var sazeracTags = Tags(flavors: [.lemon],
+                       profiles: [.spiritForward, .punchy],
                        styles: [.oldFashioned, .stirred])
 
 var sazeracBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients accept for the absinthe into a mixing glass with ice and stir until cold."),

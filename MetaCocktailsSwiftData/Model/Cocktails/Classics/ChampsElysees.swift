@@ -16,7 +16,7 @@ var champsElysees = Cocktail(cocktailName: "Champs Elysees",
                              tags: champsElyseesTags)
 
 var champsElyseesSpec  = [OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
-                          OldCocktailIngredient(.syrups(.simple), value: 0.25),
+                          OldCocktailIngredient(.syrups(.simple), value: 0.25, prep: PrepBible.simpleSyrupPrep),
                           OldCocktailIngredient(.juices(.lemon), value: 0.75),
                           OldCocktailIngredient(.liqueurs(.greenChartreuse), value: 0.5),
                           OldCocktailIngredient(.brandies(.cognacVSOP), value: 1.5)]

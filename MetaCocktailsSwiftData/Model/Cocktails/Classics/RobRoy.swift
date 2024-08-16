@@ -21,5 +21,6 @@ var robRoySpec     =  [OldCocktailIngredient(.bitters(.angosturaBitters), value:
                        OldCocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),
                        OldCocktailIngredient(.whiskies(.scotchBlended), value: 2)]
 
-var robRoyTags     = Tags(profiles: [.spiritForward, .punchy, .fruity],
+var robRoyTags     = Tags(flavors: [.orange],
+                          profiles: [.spiritForward, .punchy, .fruity],
                           styles: [.manhattan, .stirred])

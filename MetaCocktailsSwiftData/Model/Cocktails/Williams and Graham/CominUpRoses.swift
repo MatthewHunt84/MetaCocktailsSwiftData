@@ -19,7 +19,7 @@ var cominUpRoses = Cocktail(cocktailName: "Comin' Up Roses",
                             collection: .williamsAndGraham)
 
 var cominUpRosesSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.5),
-                         OldCocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.5),
+                         OldCocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.5, prep: PrepBible.demSyrupPrep),
                          OldCocktailIngredient(.amari(.amaroMontenegro), value: 1.5),
                          OldCocktailIngredient(.whiskies(.bourbon120), value: 0.75)]
 

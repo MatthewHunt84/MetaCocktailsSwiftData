@@ -20,7 +20,7 @@ var french75  = Cocktail(cocktailName: "French 75",
                          titleCocktail: true)
 
 var french75Spec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
-                     OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                     OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                      OldCocktailIngredient(.gins(.ginAny), value: 1.5),
                      OldCocktailIngredient(.wines(.champagne) , value: 2)]
 

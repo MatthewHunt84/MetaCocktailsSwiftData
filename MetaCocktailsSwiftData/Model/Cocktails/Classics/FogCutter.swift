@@ -32,7 +32,8 @@ let fogCutterSpec     = [OldCocktailIngredient(.juices(.lemon), value: 2),
 
 
 
-let fogCutterTags = Tags(profiles: [.refreshing, .sweet, .citrusy],
+let fogCutterTags = Tags(flavors: [.mint],
+                         profiles: [.refreshing, .sweet, .citrusy],
                          styles: [.sour, .tiki, .shaken])
 
 

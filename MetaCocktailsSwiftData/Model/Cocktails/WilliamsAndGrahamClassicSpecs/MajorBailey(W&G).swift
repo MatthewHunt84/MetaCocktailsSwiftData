@@ -20,9 +20,9 @@ var majorBaileyWnG = Cocktail(cocktailName: "Major Bailey (W&G Version)",
                               collection: .williamsAndGraham)
 
 let majorBaileySpecWnG: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
+                                                OldCocktailIngredient(.juices(.lemon), value: 0.5),
                                                 OldCocktailIngredient(.juices(.lime), value: 0.5),
-                                                OldCocktailIngredient(.juices(.lime), value: 0.5),
-                                                OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                                                OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                                                 OldCocktailIngredient(.gins(.fordsGin), value: 2)]
 
 

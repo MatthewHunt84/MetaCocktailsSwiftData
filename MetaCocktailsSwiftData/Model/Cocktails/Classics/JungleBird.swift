@@ -23,7 +23,7 @@ var jungleBird = Cocktail(cocktailName: "JungleBird",
 
 var jungleBirdSpec  =  [OldCocktailIngredient(.juices(.lime), value: 0.5),
                         OldCocktailIngredient(.juices(.pineappleJuice), value: 4),
-                        OldCocktailIngredient(.syrups(.simple), value: 0.5),
+                        OldCocktailIngredient(.syrups(.simple), value: 0.5, prep: PrepBible.simpleSyrupPrep),
                         OldCocktailIngredient(.amari(.campari), value: 0.75),
                         OldCocktailIngredient(.rums(.rumDark), value: 1.5)]
                         

@@ -12,7 +12,7 @@ var daveyCrocketsLocker = Cocktail(cocktailName: "Davey Crocket's Locker",
                                    glasswareType: .doubleOld,
                                    garnish: [.orangePeel],
                                    ice: .bigRock,
-                                   author: justWnG,
+                                   author: Author(person: AuthorNames.nicoleLaurita.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue),
                                    spec: daveyCrocketsLockerSpec,
                                    tags: daveyCrocketsLockerTags,
                                    collection: .williamsAndGraham)
@@ -24,7 +24,8 @@ let daveyCrocketsLockerSpec = [OldCocktailIngredient(.liqueurs(.allspiceDram), v
                                OldCocktailIngredient(.rums(.plantationJamaicaRum), value: 1.5)]
 
 
-let daveyCrocketsLockerTags = Tags(profiles: [.punchy, .complex, .rich, .spiritForward],
+let daveyCrocketsLockerTags = Tags(flavors: [.orange],
+                                   profiles: [.punchy, .complex, .rich, .spiritForward],
                                    styles: [.manhattan, .stirred])
 
 

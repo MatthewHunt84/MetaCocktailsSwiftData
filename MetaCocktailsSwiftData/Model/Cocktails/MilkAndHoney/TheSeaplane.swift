@@ -21,7 +21,7 @@ var theSeaPlane  = Cocktail(cocktailName: "The Seaplane",
                             collection: .milkAndHoney)
 
 var theSeaPlaneSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.5),
-                        OldCocktailIngredient(.syrups(.simple), value: 0.5),
+                        OldCocktailIngredient(.syrups(.simple), value: 0.5, prep: PrepBible.simpleSyrupPrep),
                         OldCocktailIngredient(.gins(.ginAny), value: 1),
                         OldCocktailIngredient(.otherAlcohol(.absinthe), value: 5, unit: .sprays),
                         OldCocktailIngredient(.bitters(.orangeBitters), value: 2, unit: .dashes),

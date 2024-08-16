@@ -23,5 +23,6 @@ var betweenTheSheetsSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75)
                              OldCocktailIngredient(.liqueurs(.cointreau) , value: 0.75)]
 
 
-var betweenTheSheetsTags   = Tags(profiles: [.citrusy, .tart, .light],
+var betweenTheSheetsTags   = Tags(flavors: [.orange],
+                                  profiles: [.citrusy, .tart, .light],
                                   styles: [.shaken, .sour, .daisy])

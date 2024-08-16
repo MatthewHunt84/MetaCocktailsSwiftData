@@ -18,7 +18,7 @@ var french75Cognac  = Cocktail(cocktailName: "French 75 (Arnaud's French 75 Vers
                                variation: .french75)
 
 var french75CognacSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.25),
-                           OldCocktailIngredient(.syrups(.simple), value: 0.25),
+                           OldCocktailIngredient(.syrups(.simple), value: 0.25, prep: PrepBible.simpleSyrupPrep),
                            OldCocktailIngredient(.brandies(.cognacVSOP), value: 1.25),
                            OldCocktailIngredient(.wines(.champagne), value: 2.5)]
 

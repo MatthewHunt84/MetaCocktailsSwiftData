@@ -26,5 +26,5 @@ var cobbleHillTags     = Tags(profiles: [.spiritForward, .floral, .dry],
                               styles: [.manhattan, .stirred])
 
 var cobbleHillBuild = Build(instructions: [Instruction(step: 1, method: "Gently muddle two cucumber slices in a mixing glass."),
-                                           Instruction(step: 2, method: "Add the rest of the ingredients and stir."),
+                                           Instruction(step: 2, method: "Add the rest of the ingredients with ice and stir."),
                                            Instruction(step: 3, method: "Strain into a chilled coupe and garnish with a cucumber slice.")])

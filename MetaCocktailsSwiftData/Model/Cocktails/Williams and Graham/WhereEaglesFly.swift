@@ -20,7 +20,7 @@ var whereEaglesFly = Cocktail(cocktailName: "Where Eagles Fly",
 var whereEaglesFlySpec  = [OldCocktailIngredient(.wines(.prosecco), value: 2),
                            OldCocktailIngredient(.herbs(.basil), value: 3, unit: .gentlyMuddled),
                            OldCocktailIngredient(.juices(.lemon), value: 0.75),
-                           OldCocktailIngredient(.syrups(.passionfruitSyrup), value: 0.75),
+                           OldCocktailIngredient(.syrups(.passionfruitSyrup), value: 0.75, prep: PrepBible.passionfruitSyrupPrep),
                            OldCocktailIngredient(.amari(.cynar), value: 0.5),
                            OldCocktailIngredient(.whiskies(.eagleRare10), value: 1.5)]
 

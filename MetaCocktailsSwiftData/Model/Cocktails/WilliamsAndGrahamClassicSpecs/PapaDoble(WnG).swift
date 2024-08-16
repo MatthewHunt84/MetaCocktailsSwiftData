@@ -16,7 +16,7 @@ let papaDobleWnG = Cocktail(cocktailName: "Hemingway Daiquiri (W&G Version)",
                             variation: .hemingwayDaiquiri,
                             collection: .williamsAndGraham)
 
-var papaDobleSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.syrups(.simple), value: 0.25),
+var papaDobleSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.syrups(.simple), value: 0.25, prep: PrepBible.simpleSyrupPrep),
                                            OldCocktailIngredient(.juices(.lime), value: 0.5),
                                            OldCocktailIngredient(.juices(.grapefruit), value: 0.75),
                                            OldCocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.5),

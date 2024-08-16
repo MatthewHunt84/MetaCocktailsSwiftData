@@ -24,7 +24,8 @@ var stagPartySpec = [OldCocktailIngredient(.otherNonAlc(.stiffCream), value: 1),
                      OldCocktailIngredient(.amari(.jagerColdBrew), value: 1),
                      OldCocktailIngredient(.whiskies(.stagJr), value: 1.5)]
 
-var stagPartyTags = Tags(profiles: [.rich, .bittersweet, .punchy, .spiritForward],
+var stagPartyTags = Tags(flavors: [.orange],
+                         profiles: [.rich, .bittersweet, .punchy, .spiritForward],
                          styles: [.negroni, .stirred])
 
 var stagPartyBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, besides the cream, to a mixing glass and stir."),

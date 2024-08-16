@@ -21,5 +21,5 @@ var hollandHouseKappelerSpec  =  [OldCocktailIngredient(.bitters(.peychauds), va
                                   OldCocktailIngredient(.liqueurs(.orangeCuracao), value: 0.5),
                                   OldCocktailIngredient(.whiskies(.straightRye), value: 2)]
 
-var hollandHouseKappelerTags = Tags( profiles: [.fruity, .spiritForward],
-                                     styles: [.oldFashioned, .stirred])
+var hollandHouseKappelerTags = Tags(profiles: [.fruity, .spiritForward],
+                                    styles: [.oldFashioned, .stirred])

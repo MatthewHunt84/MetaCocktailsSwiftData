@@ -20,7 +20,7 @@ var hurricane = Cocktail(cocktailName: "Hurricane",
                          titleCocktail: true)
 
 let hurricaneSpec: [OldCocktailIngredient] =  [OldCocktailIngredient(.juices(.lemon), value: 2),
-                                            OldCocktailIngredient(.syrups(.passionfruitSyrup), value: 2),
+                                            OldCocktailIngredient(.syrups(.passionfruitSyrup), value: 2, prep: PrepBible.passionfruitSyrupPrep),
                                             OldCocktailIngredient(.rums(.rumJamaicanAged), value: 4)]
 
 let hurricaneTags = Tags(profiles: [.refreshing, .tropical, .fruity, .sweet, .punchy],

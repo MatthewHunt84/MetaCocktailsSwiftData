@@ -22,7 +22,7 @@ var southSideCocktail = Cocktail(cocktailName: "South Side Cocktail(Milk & Honey
 
 let southSideCocktailSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
                                                    OldCocktailIngredient(.juices(.lime), value: 1),
-                                                   OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                                                   OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                                                    OldCocktailIngredient(.gins(.ginAny), value: 1.5)]
 
 let southSideCocktailTags = Tags(profiles: [.herbal, .refreshing, .light],

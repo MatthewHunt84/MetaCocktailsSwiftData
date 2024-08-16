@@ -23,7 +23,7 @@ var elPresidente  = Cocktail(cocktailName: "El Presidente",
 var elPresidenteSpec  = [OldCocktailIngredient(.rums(.rumWhite), value: 1.5),
                          OldCocktailIngredient(.fortifiedWines(.blancVermouth), value: 1.5),
                          OldCocktailIngredient(.liqueurs(.orangeCuracao) , value: 1, unit: .teaspoon),
-                         OldCocktailIngredient(.syrups(.grenadine), value: 0.5, unit: .teaspoon)]
+                         OldCocktailIngredient(.syrups(.grenadine), value: 0.5, unit: .teaspoon, prep: PrepBible.grenadine)]
 
 var elPresidenteTags  = Tags(flavors: [.orange, .pomegranate],
                              profiles: [.aromatic, .fruity, .spiritForward],

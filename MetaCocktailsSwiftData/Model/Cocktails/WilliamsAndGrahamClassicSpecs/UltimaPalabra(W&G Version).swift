@@ -17,7 +17,7 @@ var ultimaPalabraWnG = Cocktail(cocktailName: "Ultima Palabra (W&G Version)",
                                 collection: .williamsAndGraham)
 
 var ultimaPalabraSpecWnG  = [OldCocktailIngredient(.juices(.lime), value: 0.75),
-                             OldCocktailIngredient(.syrups(.simple), value: 0.25),
+                             OldCocktailIngredient(.syrups(.simple), value: 0.25, prep: PrepBible.simpleSyrupPrep),
                              OldCocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.5),
                              OldCocktailIngredient(.liqueurs(.greenChartreuse), value: 0.75),
                              OldCocktailIngredient(.agaves(.mezcalDelMagueyVida), value: 1)]

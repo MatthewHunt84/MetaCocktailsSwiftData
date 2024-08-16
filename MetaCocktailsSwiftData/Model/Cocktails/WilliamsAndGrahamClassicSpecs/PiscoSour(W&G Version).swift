@@ -19,7 +19,7 @@ var piscoSourWnG = Cocktail(cocktailName: "Pisco Sour (W&G Version)",
                             collection: .williamsAndGraham)
 
 var piscoSourSpecWnG  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
-                         OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                         OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                          OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 1, unit: .whole),
                          OldCocktailIngredient(.brandies(.peruvianMustoVerde), value: 1.5),
                          OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes)]

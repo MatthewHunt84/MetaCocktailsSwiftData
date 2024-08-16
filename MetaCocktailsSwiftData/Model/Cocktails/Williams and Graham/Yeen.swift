@@ -26,5 +26,6 @@ let yeenSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.rums(.rumFire), 
                                          OldCocktailIngredient(.amari(.sfumato), value: 0.75)]
 
 
-let yeenTags = Tags(profiles: [.herbal, .fruity, .punchy, .spiritForward],
+let yeenTags = Tags(flavors: [.lemon],
+                    profiles: [.herbal, .fruity, .punchy, .spiritForward],
                     styles: [.stirred, .oldFashioned, .tiki])

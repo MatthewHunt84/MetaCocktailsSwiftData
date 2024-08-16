@@ -22,7 +22,7 @@ var oldCubanWnG = Cocktail(cocktailName: "Old Cuban (W&G Version)",
 let oldCubanSpecWnG: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
                                              OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
                                              OldCocktailIngredient(.juices(.lime), value: 0.75),
-                                             OldCocktailIngredient(.syrups(.simple), value: 1),
+                                             OldCocktailIngredient(.syrups(.simple), value: 1, prep: PrepBible.simpleSyrupPrep),
                                              OldCocktailIngredient(.rums(.plantationBarbados), value: 1.5),
                                              OldCocktailIngredient(.wines(.prosecco), value: 2)]
 

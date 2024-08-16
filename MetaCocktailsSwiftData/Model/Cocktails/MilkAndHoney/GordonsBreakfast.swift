@@ -23,7 +23,7 @@ var gordonsBreakfastSpec     =  [OldCocktailIngredient(.seasoning(.salt), value:
                                  OldCocktailIngredient(.otherNonAlc(.cholula), value: 4, unit: .dashes),
                                  OldCocktailIngredient(.fruit(.cucumberSlices), value: 3, unit: .muddled),
                                  OldCocktailIngredient(.fruit(.limeWedges), value: 6, unit: .muddled),
-                                 OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                                 OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                                  OldCocktailIngredient(.gins(.ginLondonDry), value: 2),]
 
 var gordonsBreakfastTags     = Tags(profiles: [.savory, .refreshing, .citrusy, .complex, .spicy, .restorative],

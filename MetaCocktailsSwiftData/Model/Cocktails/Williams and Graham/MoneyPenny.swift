@@ -24,7 +24,8 @@ let moneyPennySpec = [OldCocktailIngredient(.bitters(.hoppedGrapefruit), value: 
                       OldCocktailIngredient(.vodkas(.reyka), value: 1)]
 
 
-let moneyPennyTags = Tags(profiles: [.fruity, .refreshing, .light],
+let moneyPennyTags = Tags(flavors: [.lemon],
+                          profiles: [.fruity, .refreshing, .light],
                           styles: [.sour, .shaken])
 
 

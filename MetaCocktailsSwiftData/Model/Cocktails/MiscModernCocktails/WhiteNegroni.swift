@@ -20,5 +20,6 @@ var whiteNegroniSpec = [OldCocktailIngredient(.gins(.ginAny), value: 1),
                         OldCocktailIngredient(.fortifiedWines(.lilletBlanc), value: 1),
                         OldCocktailIngredient(.amari(.suze), value: 1)]
 
-var whiteNegroniTags = Tags(profiles: [.bittersweet, .floral, .punchy],
+var whiteNegroniTags = Tags(flavors: [.grapefruit],
+                            profiles: [.bittersweet, .floral, .punchy],
                             styles: [.negroni, .stirred])

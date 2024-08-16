@@ -23,7 +23,7 @@ var oldCuban = Cocktail(cocktailName: "Old Cuban",
 let oldCubanSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint), value: 6, unit: .gentlyMuddled),
                                           OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
                                           OldCocktailIngredient(.juices(.lime), value: 0.75),
-                                          OldCocktailIngredient(.syrups(.simple), value: 1),
+                                          OldCocktailIngredient(.syrups(.simple), value: 1, prep: PrepBible.simpleSyrupPrep),
                                           OldCocktailIngredient(.rums(.rumAged), value: 1.5),
                                           OldCocktailIngredient(.wines(.champagne), value: 2)]
 

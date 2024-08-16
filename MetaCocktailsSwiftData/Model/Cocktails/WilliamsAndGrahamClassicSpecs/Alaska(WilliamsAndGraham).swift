@@ -22,6 +22,7 @@ var alaskaWnGSpec  = [OldCocktailIngredient(.bitters(.orangeBitters), value: 2, 
 
 
 
-var alaskaWnGTags   = Tags(profiles: [.spiritForward, .rich],
+var alaskaWnGTags   = Tags(flavors: [.lemon],
+                           profiles: [.spiritForward, .rich],
                            styles: [.stirred, .martini])
 

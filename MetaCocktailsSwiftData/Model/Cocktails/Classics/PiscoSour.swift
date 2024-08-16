@@ -19,7 +19,7 @@ var piscoSour = Cocktail(cocktailName: "Pisco Sour",
                          titleCocktail: true)
 
 var piscoSourSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.75),
-                      OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                      OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                       OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
                       OldCocktailIngredient(.brandies(.pisco), value: 2),
                       OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes)]

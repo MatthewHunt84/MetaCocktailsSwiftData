@@ -22,6 +22,7 @@ let endOfAnEmpireSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.fortifi
                                                OldCocktailIngredient(.whiskies(.balvinieDW), value: 1.5)]
 
 
-let endOfAnEmpireTags = Tags(profiles: [.bittersweet, .spiritForward, .complex, .fruity],
+let endOfAnEmpireTags = Tags(flavors: [.orange],
+                             profiles: [.bittersweet, .spiritForward, .complex, .fruity],
                              styles: [.negroni, .stirred])
 

@@ -19,7 +19,7 @@ var sloeGinFizz  = Cocktail(cocktailName: "Sloe Gin Fizz",
                             titleCocktail: true)
 
 var sloeGinFizzSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
-                        OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                        OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                         OldCocktailIngredient(.liqueurs(.plymouthSloeGin), value: 1.5),
                         OldCocktailIngredient(.soda(.sparklingWater), value: 2)]
 

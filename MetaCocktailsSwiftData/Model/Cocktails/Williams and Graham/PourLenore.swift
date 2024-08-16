@@ -21,9 +21,10 @@ var pourLenore  =  Cocktail(cocktailName: "Pour Lenore",
 var pourLenoreSpec = [OldCocktailIngredient(.otherAlcohol(.burdockRootTincture), value: 1, unit: .dashes),
                       OldCocktailIngredient(.bitters(.blackWalnut), value: 1, unit: .dashes),
                       OldCocktailIngredient(.amari(.sfumato), value: 1, unit: .barSpoon),
-                      OldCocktailIngredient(.syrups(.demSyrupOneToOne), value: 2, unit: .barSpoon),
+                      OldCocktailIngredient(.syrups(.demSyrupOneToOne), value: 2, unit: .barSpoon, prep: PrepBible.demSyrupPrep),
                       OldCocktailIngredient(.liqueurs(.giffardBanane), value: 0.25),
                       OldCocktailIngredient(.whiskies(.rittenhouseRye), value: 1.5)]
 
-var pourLenoreTags = Tags(profiles: [.nutty, .bittersweet, .complex, .fruity],
+var pourLenoreTags = Tags(flavors: [.lemon],
+                          profiles: [.nutty, .bittersweet, .complex, .fruity],
                           styles: [.oldFashioned, .stirred])

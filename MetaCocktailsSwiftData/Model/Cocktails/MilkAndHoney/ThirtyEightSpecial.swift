@@ -21,5 +21,6 @@ var thirtyEightSpecialSpec     =  [OldCocktailIngredient(.amari(.cioCiaroAmaro),
                                    OldCocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.375),
                                    OldCocktailIngredient(.whiskies(.scotchBlended), value: 2.375)]
 
-var thirtyEightSpecialTags     = Tags(profiles: [.spiritForward, .bittersweet, .herbal, .complex],
+var thirtyEightSpecialTags     = Tags(flavors: [.lemon],
+                                      profiles: [.spiritForward, .bittersweet, .herbal, .complex],
                                       styles: [.manhattan, .stirred])

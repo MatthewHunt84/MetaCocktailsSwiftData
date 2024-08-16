@@ -26,6 +26,7 @@ let laCoaSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.bitters(.chocol
                                           OldCocktailIngredient(.agaves(.mezcalDelMagueyJabali), value: 1, unit: .whole)]
 
 
-let laCoaTags = Tags(profiles: [.punchy, .spiritForward, .complex, .fruity, .smokey],
+let laCoaTags = Tags(flavors: [.orange],
+                     profiles: [.punchy, .spiritForward, .complex, .fruity, .smokey],
                      styles: [.stirred, .oldFashioned, .tiki])
 

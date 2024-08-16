@@ -23,5 +23,6 @@ var sloeWalkerSpec  = [OldCocktailIngredient(.amari(.amargoVallet), value: 0.25)
                        OldCocktailIngredient(.fortifiedWines(.cocchiAmericano), value: 1.5),
                        OldCocktailIngredient(.liqueurs(.dolinGenepy), value: 0.75)]
 
-var sloeWalkerTags = Tags(profiles: [.herbal, .complex],
+var sloeWalkerTags = Tags(flavors: [.grapefruit],
+                          profiles: [.herbal, .complex],
                           styles: [.stirred, .martini])

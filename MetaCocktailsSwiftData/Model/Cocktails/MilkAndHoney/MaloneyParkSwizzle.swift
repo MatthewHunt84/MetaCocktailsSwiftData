@@ -23,7 +23,7 @@ var maloneyParkSwizzle = Cocktail(cocktailName: "Maloney Park Swizzle",
 
 var maloneyParkSpec = [OldCocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
                       OldCocktailIngredient(.juices(.lime), value: 0.75),
-                      OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                      OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                       OldCocktailIngredient(.rums(.ronMutusalemRumClassico), value: 2),
                       OldCocktailIngredient(.bitters(.peychauds), value: 5, unit: .dashes) ]
 

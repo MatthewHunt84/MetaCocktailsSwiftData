@@ -113,11 +113,11 @@ enum Agave: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
 
 
 enum Brandy: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
-    case appleBrandy          = "Apple Brandy"
+    case appleBrandy          = "Apple brandy"
     case armagnac             = "Armagnac"
     case cognac               = "Cognac"
     case cognacVSOP           = "Cognac (VSOP)"
-    case bondedApple          = "Bonded Apple Brandy"
+    case bondedApple          = "Bonded apple brandy"
     case boulardCalvados      = "Boulard Calvados V.S.O.P"
     case brandyAny            = "Brandy (Any)"
     case clearCreekPearBrandy = "Clear Creek Pear Brandy"
@@ -185,7 +185,7 @@ enum Gin: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
     case hendricksOrbium      = "Hendrick's Orbium Gin"
     case juinipero            = "Juinipero Gin"
     case juniperJones         = "Juniper Jones"
-    case leopoldNavy          = "Leopold Navy Strength"
+    case leopoldNavy          = "Leopold's Navy Strength"
     case leopoldAmericanSBGin = "American Small Batch Gin"
     case monkey47             = "Monkey 47"
     case plymouth             = "Plymouth Gin"
@@ -194,7 +194,8 @@ enum Gin: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
     case stGeorgeTerroir      = "St. George Terroir Gin"
     case tanqueray            = "Tanqueray"
     case woodyCreekGin        = "Woody Creek Gin"
-    case navyStrengthGin      = "Navy Strength Gin"
+    case woodyCreekGinJasmine = "Jasmine tea gin"
+    case navyStrengthGin      = "Navy strength Gin"
     
     
     
@@ -240,6 +241,8 @@ enum Gin: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
             Tags(flavors: [.juniper],booze: [Booze(.gins(self)), Booze(.gins(.ginAny))])
         case .navyStrengthGin:
             Tags(flavors: [.juniper],booze: [Booze(.gins(self)), Booze(.gins(.ginAny))])
+        case .woodyCreekGinJasmine:
+            Tags(flavors: [.juniper, .tea, .citrusPeel] ,booze: [Booze(.gins(self)), Booze(.gins(.ginAny))])
         }
     }
     
@@ -316,12 +319,12 @@ enum Rum: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
     case goslingsBlackSeal            = "Goslings Black Seal"
     case havanaClubAnjeo              = "Havana Club Anejo"
     case lemonHeart151                = "Lemon Heart 151 Demerara Rum"
-    case plantation3Star              = "Plantation 3 Star Rum"
-    case plantationBarbados           = "Plantation Barbados 5 Year Rum"
-    case plantationBarbadosXO         = "Plantation Barbados XO"
-    case plantationJamaicaRum         = "Plantation Jamaica Rum"
-    case plantationOFTD               = "Plantation OFTD Rum"
-    case plantationPineapple          = "Plantation Pineapple Rum"
+    case plantation3Star              = "Planteray 3 Star Rum"
+    case plantationBarbados           = "Planteray Barbados 5 Year Rum"
+    case plantationBarbadosXO         = "Planteray Barbados XO"
+    case plantationJamaicaRum         = "Planteray Jamaica Rum"
+    case plantationOFTD               = "Planteray OFTD Rum"
+    case plantationPineapple          = "Planteray Pineapple Rum"
     case pussersRum                   = "Pusser's Rum"
     case ronMutusalemRumClassico      = "Ron Matusalem Rum Classico"
     case rumWhiteAgricole             = "Rum (White Agricole)"

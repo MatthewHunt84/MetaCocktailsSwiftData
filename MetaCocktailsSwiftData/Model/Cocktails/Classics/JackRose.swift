@@ -21,7 +21,7 @@ var jackRose = Cocktail(cocktailName: "Jack Rose",
 
 var jackRoseSpecWnG  = [OldCocktailIngredient(.juices(.lime), value: 0.5),
                         OldCocktailIngredient(.syrups(.grenadine), value: 0.5),
-                        OldCocktailIngredient(.brandies(.lairdsApplejack), value: 2)]
+                        OldCocktailIngredient(.brandies(.lairdsApplejack), value: 2, prep: PrepBible.grenadine)]
 
 var jackRoseTags = Tags(profiles: [.citrusy, .light, .fruity, .refreshing],
                         styles: [.sour, .shaken])

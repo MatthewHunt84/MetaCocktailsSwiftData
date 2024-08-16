@@ -9,12 +9,12 @@ import Foundation
 
 
 var girlyDrink = Cocktail(cocktailName: "Girly Drink",
-                            glasswareType: .stemmedGlassware,
-                            garnish: [.orangePeel],
-                            ice: nil,
-                            author: Author(person: AuthorPlaces.williamsAndGraham.rawValue),
-                            spec: girlyDrinkSpec,
-                            tags: girlyDrinkTags,
+                          glasswareType: .stemmedGlassware,
+                          garnish: [.orangePeel],
+                          ice: nil,
+                          author: Author(person: AuthorPlaces.williamsAndGraham.rawValue),
+                          spec: girlyDrinkSpec,
+                          tags: girlyDrinkTags,
                           collection: .williamsAndGraham)
 
 var girlyDrinkSpec  = [OldCocktailIngredient(.bitters(.bittercubeJamaican1), value: 2, unit: .dashes),
@@ -23,5 +23,6 @@ var girlyDrinkSpec  = [OldCocktailIngredient(.bitters(.bittercubeJamaican1), val
                        OldCocktailIngredient(.fortifiedWines(.dolinBlanc), value: 0.5),
                        OldCocktailIngredient(.whiskies(.oGD114), value: 1.5)]
 
-var girlyDrinkTags = Tags(profiles: [.rich, .punchy, .bittersweet, .spiritForward],
-                         styles: [.negroni, .stirred])
+var girlyDrinkTags = Tags(flavors: [.orange],
+                          profiles: [.rich, .punchy, .bittersweet, .spiritForward],
+                          styles: [.negroni, .stirred])

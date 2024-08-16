@@ -20,7 +20,7 @@ var robMcKenna = Cocktail(cocktailName: "Rob McKenna",
 
 let robMcKennaSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.seasoning(.saline), value: 15, unit: .drops),
                                             OldCocktailIngredient(.bitters(.orangeBitters), value: 2, unit: .dashes),
-                                            OldCocktailIngredient(.syrups(.cinnamonSyrup), value: 0.23),
+                                            OldCocktailIngredient(.syrups(.cinnamonSyrup), value: 0.23, prep: PrepBible.cinnamonSyrup),
                                             OldCocktailIngredient(.amari(.fernetBranca), value: 0.5),
                                             OldCocktailIngredient(.liqueurs(.borghetti), value: 0.5),
                                             OldCocktailIngredient(.whiskies(.portCharlotte), value: 1)]

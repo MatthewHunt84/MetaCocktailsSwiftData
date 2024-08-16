@@ -20,7 +20,7 @@ var gabriella = Cocktail(cocktailName: "Gabriella",
 
 var gabriellaSpec     =  [OldCocktailIngredient(.fruit(.strawberryHalf), value: 1, unit: .muddled),
                           OldCocktailIngredient(.juices(.lemon), value: 0.73),
-                          OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                          OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                           OldCocktailIngredient(.seasoning(.salt), value: 1, unit: .pinch),
                           OldCocktailIngredient(.brandies(.pisco), value: 2)]
 

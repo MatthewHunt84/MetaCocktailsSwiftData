@@ -23,7 +23,7 @@ var kTCollins  = Cocktail(cocktailName: "KT Collins",
 var kTCollinsSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
                       OldCocktailIngredient(.otherNonAlc(.celeryStrip), value: 2, unit: .muddled),
                       OldCocktailIngredient(.seasoning(.salt), value: 1, unit: .pinch),
-                      OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                      OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                       OldCocktailIngredient(.gins(.ginAny), value: 2),
                       OldCocktailIngredient(.soda(.sodaWater) , value: 1.5)]
 

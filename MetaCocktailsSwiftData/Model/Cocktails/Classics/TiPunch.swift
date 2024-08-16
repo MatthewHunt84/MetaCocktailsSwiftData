@@ -23,7 +23,8 @@ var tiPunch = Cocktail(cocktailName: "Ti' Punch",
 var tiPunchSpec  =  [OldCocktailIngredient(.syrups(.richDem), value: 2, unit: .teaspoon, prep: PrepBible.richDem),
                      OldCocktailIngredient(.rums(.rumWhiteAgricole), value: 2)]
 
-var tiPunchTags = Tags( profiles: [.sweet, .spiritForward, .funky],
-                        styles: [.oldFashioned, .stirred])
+var tiPunchTags = Tags(flavors: [.lime],
+                       profiles: [.sweet, .spiritForward, .funky],
+                       styles: [.oldFashioned, .stirred])
 
 var tiPunchBuildOrder = Build(instructions: [Instruction(step: 1, method: "Think of this like an old-fashioned without the bitters")])

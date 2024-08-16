@@ -20,10 +20,11 @@ var gordonsCup = Cocktail(cocktailName: "Gordon's Cup",
 
 var gordonsCupSpec     =  [OldCocktailIngredient(.fruit(.cucumberSlices), value: 4, unit: .gentlyMuddled),
                            OldCocktailIngredient(.fruit(.limeWedges), value: 8, unit: .gentlyMuddled),
-                           OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                           OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                            OldCocktailIngredient(.gins(.ginLondonDry), value: 2),]
 
-var gordonsCupTags     = Tags(profiles: [.savory, .refreshing, .citrusy, .complex, .spicy, .restorative],
+var gordonsCupTags     = Tags(flavors: [.blackPepper],
+                              profiles: [.savory, .refreshing, .citrusy, .complex, .spicy, .restorative],
                               styles: [.sour, .shaken])
 
 var gordonsCupBuild = Build(instructions: [Instruction(step: 1, method: "Combine the lime wedges, cucumber, simple syrup, and gin in a cocktail shaker and muddle to extract the juice from the lime without pulverizing the fruit."),

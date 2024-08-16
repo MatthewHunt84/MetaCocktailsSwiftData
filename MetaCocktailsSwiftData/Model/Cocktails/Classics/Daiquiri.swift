@@ -18,7 +18,7 @@ let daiquiri = Cocktail(cocktailName: "Daiquiri",
 
 var daiquiriSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.rums(.rumWhite), value: 2.0),
                                           OldCocktailIngredient(.juices(.lime), value: 0.75),
-                                          OldCocktailIngredient(.syrups(.simple), value: 0.75)]
+                                          OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep)]
 
 var daiquiriTags = Tags(profiles: [.citrusy, .refreshing, .light],
                         styles: [.sour, .shaken])

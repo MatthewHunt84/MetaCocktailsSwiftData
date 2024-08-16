@@ -20,7 +20,7 @@ var hayesFizz  = Cocktail(cocktailName: "Hayes Fizz",
 
 var hayesFizzSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
                       OldCocktailIngredient(.otherAlcohol(.absinthe), value: 5, unit: .sprays),
-                      OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                      OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                       OldCocktailIngredient(.gins(.ginAny), value: 2),
                       OldCocktailIngredient(.soda(.sodaWater) , value: 2)]
 

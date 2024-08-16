@@ -22,5 +22,6 @@ var theRuralJurorSpec = [OldCocktailIngredient(.liqueurs(.velvetFalernum), value
                          OldCocktailIngredient(.amari(.angosturaAmaro), value: 0.5),
                          OldCocktailIngredient(.brandies(.armagnac), value: 2)]
 
-var theRuralJurorTags = Tags(profiles: [.rich, .bittersweet, .punchy, .spiritForward],
+var theRuralJurorTags = Tags(flavors: [.orange],
+                             profiles: [.rich, .bittersweet, .punchy, .spiritForward],
                              styles: [.martini, .stirred])

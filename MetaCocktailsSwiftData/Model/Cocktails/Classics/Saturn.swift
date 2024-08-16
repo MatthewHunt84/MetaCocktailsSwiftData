@@ -20,7 +20,7 @@ var saturn = Cocktail(cocktailName: "Saturn",
                       titleCocktail: true)
 
 var saturnSpec  =  [OldCocktailIngredient(.juices(.lemon), value: 0.5),
-                    OldCocktailIngredient(.syrups(.passionfruitSyrup), value: 0.5),
+                    OldCocktailIngredient(.syrups(.passionfruitSyrup), value: 0.5, prep: PrepBible.passionfruitSyrupPrep),
                     OldCocktailIngredient(.syrups(.orgeat), value: 0.25, prep: PrepBible.orgeat),
                     OldCocktailIngredient(.liqueurs(.velvetFalernum), value: 0.25),
                     OldCocktailIngredient(.gins(.ginAny), value: 1.5)]

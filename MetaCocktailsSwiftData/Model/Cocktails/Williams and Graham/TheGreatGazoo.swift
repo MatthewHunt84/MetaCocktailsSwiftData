@@ -18,11 +18,11 @@ var theGreatGazoo = Cocktail(cocktailName: "The Great Gazoo",
                              collection: .williamsAndGraham)
 
 let theGreatGazooSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
-                                               OldCocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.5),
-                                               OldCocktailIngredient(.juices(.lemon), value: 0.5),
-                                               OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
-                                               OldCocktailIngredient(.liqueurs(.stGeorgeSpicesPear), value: 0.5),
-                                               OldCocktailIngredient(.whiskies(.woodyCreekRye), value:1.5)]
+                                                  OldCocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.5, prep: PrepBible.demSyrupPrep),
+                                                  OldCocktailIngredient(.juices(.lemon), value: 0.5),
+                                                  OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
+                                                  OldCocktailIngredient(.liqueurs(.stGeorgeSpicesPear), value: 0.5),
+                                                  OldCocktailIngredient(.whiskies(.woodyCreekRye), value:1.5)]
 
 
 let theGreatGazooTags = Tags(profiles: [.refreshing, .fruity],

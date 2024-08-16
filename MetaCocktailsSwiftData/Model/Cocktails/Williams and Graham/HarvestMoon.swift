@@ -27,7 +27,8 @@ let harvestMoonSpec = [OldCocktailIngredient(.juices(.lemon), value: 0.5),
                        OldCocktailIngredient(.vodkas(.woodyCreekVodka), value: 1.5)]
 
 
-let harvestMoonTags = Tags(profiles: [.fruity, .refreshing, .light],
+let harvestMoonTags = Tags(flavors: [.nutmeg],
+                           profiles: [.fruity, .refreshing, .light],
                            styles: [.sour, .shaken])
 
 

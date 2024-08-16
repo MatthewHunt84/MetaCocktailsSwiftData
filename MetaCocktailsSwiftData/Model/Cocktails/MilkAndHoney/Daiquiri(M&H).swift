@@ -7,7 +7,7 @@
 
 import Foundation
 
-let daiquiriMnH = Cocktail(cocktailName: "Daiquiri(Milk and Honey version)",
+let daiquiriMnH = Cocktail(cocktailName: "Daiquiri(Milk and Honey)",
                            glasswareType: .coupe,
                            garnish: nil,
                            author: Author(place: AuthorPlaces.milkAndHoney.rawValue, year: "Early 2000s"),
@@ -17,8 +17,8 @@ let daiquiriMnH = Cocktail(cocktailName: "Daiquiri(Milk and Honey version)",
                            collection: .milkAndHoney)
 
 var daiquiriMnHSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.rums(.rumWhite), value: 2.0),
-                                             OldCocktailIngredient(.juices(.lime), value: 0.875),
-                                             OldCocktailIngredient(.syrups(.simple), value: 0.75)]
+                                                OldCocktailIngredient(.juices(.lime), value: 0.875),
+                                                OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep)]
 
 var daiquiriMnHTags = Tags(profiles: [.citrusy, .refreshing, .light],
                            styles: [.sour, .shaken])

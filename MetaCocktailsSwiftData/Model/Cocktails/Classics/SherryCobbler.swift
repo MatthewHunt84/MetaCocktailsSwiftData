@@ -30,6 +30,7 @@ let sherryCobblerBuild = Build(instructions: [Instruction(step: 1, method: "Mudd
                                               Instruction(step: 3, method: "Double strain over pebble ice and then garnish."),
                                               Instruction(step: 3, method: "NOTE: This cocktail is one of those 'too old to tell' cocktails, so it's up to interpretation. It used to be a muddle stuff and dirty dump situation.")])
 
-let sherryCobblerTags = Tags(profiles: [.refreshing, .fruity, .restorative],
+let sherryCobblerTags = Tags(flavors: [.mint],
+                             profiles: [.refreshing, .fruity, .restorative],
                              styles: [.sour, .shaken])
 

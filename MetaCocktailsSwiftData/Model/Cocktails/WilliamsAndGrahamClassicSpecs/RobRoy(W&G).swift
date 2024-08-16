@@ -20,5 +20,6 @@ var robRoySpecWnG     =  [OldCocktailIngredient(.bitters(.angosturaBitters), val
                           OldCocktailIngredient(.fortifiedWines(.cocchiDeTorino), value: 1),
                           OldCocktailIngredient(.whiskies(.glenfiddich12), value: 2)]
 
-var robRoyTagsWnG     = Tags(profiles: [.spiritForward, .punchy, .fruity],
+var robRoyTagsWnG     = Tags(flavors: [.orange],
+                             profiles: [.spiritForward, .punchy, .fruity],
                              styles: [.manhattan, .stirred])

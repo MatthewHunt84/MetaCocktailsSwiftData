@@ -23,6 +23,7 @@ var japaneseCocktailSpec  = [OldCocktailIngredient(.bitters(.aromaticBitters), v
                              OldCocktailIngredient(.brandies(.brandyAny) , value: 2)]
 
 
-var japaneseCocktailTags   = Tags(profiles: [.nutty, .sweet, .spiritForward],
+var japaneseCocktailTags   = Tags(flavors: [.lemon],
+                                  profiles: [.nutty, .sweet, .spiritForward],
                                   styles: [.stirred, .oldFashioned])
 

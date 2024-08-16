@@ -28,6 +28,7 @@ let sherryCobblerWnGBuild = Build(instructions: [Instruction(step: 1, method: "M
                                                  Instruction(step: 2, method: "Add the rest of your ingredients and shake."),
                                                  Instruction(step: 3, method: "Double strain over pebble ice and then garnish.")])
 
-let sherryCobblerWnGTags = Tags(profiles: [.refreshing, .fruity, .dry, .restorative],
+let sherryCobblerWnGTags = Tags(flavors: [.mint, .blackberry, .raspberry, .strawberry],
+                                profiles: [.refreshing, .fruity, .dry, .restorative],
                                 styles: [.sour, .shaken])
 

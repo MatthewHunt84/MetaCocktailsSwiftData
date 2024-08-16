@@ -19,7 +19,7 @@ var appleJackMnH = Cocktail(cocktailName: "Apple Jack (Milk & Honey)",
                             collection: .milkAndHoney)
 
 var appleJackMnHSpec     =  [OldCocktailIngredient(.juices(.lemon), value: 0.5),
-                             OldCocktailIngredient(.syrups(.simple), value: 0.5),
+                             OldCocktailIngredient(.syrups(.simple), value: 0.5, prep: PrepBible.simpleSyrupPrep),
                              OldCocktailIngredient(.juices(.appleCider), value: 0.5),
                              OldCocktailIngredient(.brandies(.lairdsApplejack), value: 1.5)]
 

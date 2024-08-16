@@ -21,7 +21,7 @@ var rossCollins  = Cocktail(cocktailName: "Ross Collins",
                             collection: .milkAndHoney)
 
 var rossCollinsSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
-                        OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                        OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                         OldCocktailIngredient(.fruit(.orangeMoons), value: 2, unit: .muddled),
                         OldCocktailIngredient(.bitters(.angosturaBitters), value: 3, unit: .dashes),
                         OldCocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 2),

@@ -21,14 +21,15 @@ var tritterRickey  = Cocktail(cocktailName: "Tritter Rickey",
                               collection: .milkAndHoney)
 
 var tritterRickeySpec  = [OldCocktailIngredient(.juices(.lime), value: 1),
-                          OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                          OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                           OldCocktailIngredient(.otherAlcohol(.absinthe), value: 5, unit: .sprays),
                           OldCocktailIngredient(.gins(.ginAny), value: 2),
                           OldCocktailIngredient(.soda(.sodaWater) , value: 1)]
 
 
 
-var tritterRickeyTags   = Tags(profiles: [.citrusy, .effervescent, .light, .herbal],
+var tritterRickeyTags   = Tags(flavors: [.mint],
+                               profiles: [.citrusy, .effervescent, .light, .herbal],
                                styles: [.collins, .shaken])
 
 

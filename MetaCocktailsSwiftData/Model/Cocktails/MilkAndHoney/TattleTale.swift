@@ -22,5 +22,6 @@ var tattletaleSpec     =  [OldCocktailIngredient(.bitters(.angosturaBitters), va
                            OldCocktailIngredient(.whiskies(.scotchHighland), value: 1.25),
                            OldCocktailIngredient(.whiskies(.scotchIsla), value: 0.75)]
 
-var tattletaleTags     = Tags(profiles: [.spiritForward, .bittersweet, .smokey],
+var tattletaleTags     = Tags(flavors: [.orange, .lemon],
+                              profiles: [.spiritForward, .bittersweet, .smokey],
                               styles: [.oldFashioned, .stirred])

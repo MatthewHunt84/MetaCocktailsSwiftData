@@ -27,5 +27,6 @@ let unusualSuspectSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.season
                                                 OldCocktailIngredient(.whiskies(.tullamoreDew), value: 1)]
 
 
-let unusualSuspectTags = Tags(profiles: [.tropical, .nutty, .complex, .silky],
+let unusualSuspectTags = Tags(flavors: [.orange],
+                              profiles: [.tropical, .nutty, .complex, .silky],
                               styles: [.stirred, .manhattan])

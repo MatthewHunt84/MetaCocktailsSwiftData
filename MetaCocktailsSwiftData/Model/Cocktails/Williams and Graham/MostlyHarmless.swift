@@ -18,12 +18,12 @@ var mostelyHarmless = Cocktail(cocktailName: "Mostly Harmless",
                                collection: .williamsAndGraham)
 
 let mostelyHarmlessSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.juices(.lemon), value: 0.5),
-                                                 OldCocktailIngredient(.otherNonAlc(.orangeConcentrate), value: 0.25),
-                                                 OldCocktailIngredient(.syrups(.vanilla), value: 0.25),
-                                                 OldCocktailIngredient(.liqueurs(.dryCuracao), value: 0.5),
-                                                 OldCocktailIngredient(.liqueurs(.licor43), value: 0.75),
-                                                 OldCocktailIngredient(.whiskies(.wlWeller90), value: 0.75),
-                                                 OldCocktailIngredient(.otherNonAlc(.eggWhole), value: 1, unit: .whole)]
+                                                    OldCocktailIngredient(.otherNonAlc(.orangeConcentrate), value: 0.25),
+                                                    OldCocktailIngredient(.syrups(.vanilla), value: 0.25, prep: PrepBible.vanillaSyrup),
+                                                    OldCocktailIngredient(.liqueurs(.dryCuracao), value: 0.5),
+                                                    OldCocktailIngredient(.liqueurs(.licor43), value: 0.75),
+                                                    OldCocktailIngredient(.whiskies(.wlWeller90), value: 0.75),
+                                                    OldCocktailIngredient(.otherNonAlc(.eggWhole), value: 1, unit: .whole)]
 
 
 let mostelyHarmlessTags = Tags(profiles: [.refreshing, .citrusy, .fruity, .rich],

@@ -22,7 +22,8 @@ var savoirFaireSpec     =  [OldCocktailIngredient(.amari(.aveze), value: 0.25),
                             OldCocktailIngredient(.gins(.ginAny), value: 2),
                             OldCocktailIngredient(.otherNonAlc(.orangeFlowerWater), value: 2, unit: .sprays)]
 
-var savoirFaireTags     = Tags(profiles: [.spiritForward, .bittersweet, .fruity],
+var savoirFaireTags     = Tags(flavors: [.lemon],
+                               profiles: [.spiritForward, .bittersweet, .fruity],
                                styles: [.manhattan, .stirred])
 
 var savoirFaireBuild  = Build(instructions: [Instruction(step: 1, method: "Combine everything but the orange blossom water into a mixing glass and stir with ice."),

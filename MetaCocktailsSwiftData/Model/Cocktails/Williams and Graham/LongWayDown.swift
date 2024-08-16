@@ -28,7 +28,8 @@ let longWayDownSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.juices(.l
                                              OldCocktailIngredient(.rums(.smithAndCross), value: 1)]
 
 
-let longWayDownTags = Tags(profiles: [.complex, .nutty, .citrusy, .refreshing],
+let longWayDownTags = Tags(flavors: [.mint],
+                           profiles: [.complex, .nutty, .citrusy, .refreshing],
                            styles: [.sour, .shaken, .tiki])
 
 

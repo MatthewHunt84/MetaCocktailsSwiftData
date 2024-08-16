@@ -22,7 +22,7 @@ var morgenthalersToddySpec  = [OldCocktailIngredient(.otherNonAlc(.hotWater), va
                                OldCocktailIngredient(.liqueurs(.allspiceDram), value: 1, unit: .teaspoon),
                                OldCocktailIngredient(.whiskies(.bourbonAny), value: 1.5)]
 
-var morgenthalersToddyTags = Tags(flavors: [.tea],
+var morgenthalersToddyTags = Tags(flavors: [.tea, .orange],
                                   profiles: [.hot, .aromatic, .comforting],
                                   styles: [.toddy])
 

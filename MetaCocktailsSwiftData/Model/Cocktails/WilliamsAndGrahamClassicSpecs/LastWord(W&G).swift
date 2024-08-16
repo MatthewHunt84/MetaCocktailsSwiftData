@@ -18,7 +18,7 @@ var lastWordWnG = Cocktail(cocktailName: "Last Word (W&G Version)",
                            collection: .williamsAndGraham)
 
 var lastWordSpecWnG  = [OldCocktailIngredient(.juices(.lime), value: 0.75),
-                        OldCocktailIngredient(.syrups(.simple), value: 0.25),
+                        OldCocktailIngredient(.syrups(.simple), value: 0.25, prep: PrepBible.simpleSyrupPrep),
                         OldCocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.5),
                         OldCocktailIngredient(.liqueurs(.greenChartreuse), value: 0.75),
                         OldCocktailIngredient(.gins(.fordsGin), value: 1)]

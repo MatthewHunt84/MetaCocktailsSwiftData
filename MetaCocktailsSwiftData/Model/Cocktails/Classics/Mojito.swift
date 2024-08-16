@@ -22,7 +22,7 @@ var mojito = Cocktail(cocktailName: "Mojito",
 
 let mojitoSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
                                         OldCocktailIngredient(.juices(.lime), value: 1),
-                                        OldCocktailIngredient(.syrups(.simple), value: 1),
+                                        OldCocktailIngredient(.syrups(.simple), value: 1, prep: PrepBible.simpleSyrupPrep),
                                         OldCocktailIngredient(.rums(.rumWhite), value: 1.5),
                                         OldCocktailIngredient(.soda(.sparklingWater), value: 2)]
 

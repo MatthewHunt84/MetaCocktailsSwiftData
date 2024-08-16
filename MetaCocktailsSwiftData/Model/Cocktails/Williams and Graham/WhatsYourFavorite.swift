@@ -23,5 +23,6 @@ var whatsYourFavoriteSpec = [OldCocktailIngredient(.bitters(.peychauds), value: 
                              OldCocktailIngredient(.amari(.cardamaro), value: 0.5),
                              OldCocktailIngredient(.rums(.appleton12), value: 2)]
 
-var whatsYourFavoriteTags = Tags(profiles: [.fruity, .spiritForward],
+var whatsYourFavoriteTags = Tags(flavors: [.lemon],
+                                 profiles: [.fruity, .spiritForward],
                                  styles: [.manhattan, .stirred])

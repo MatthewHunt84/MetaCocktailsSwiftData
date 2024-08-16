@@ -21,7 +21,7 @@ var temperanceGrapefruitCollins  = Cocktail(cocktailName: "Temperance Grapefruit
 
 var temperanceGrapefruitCollinsSpec  = [OldCocktailIngredient(.juices(.lime), value: 1),
                                         OldCocktailIngredient(.juices(.grapefruit), value: 2),
-                                        OldCocktailIngredient(.syrups(.simple), value: 0.5),
+                                        OldCocktailIngredient(.syrups(.simple), value: 0.5, prep: PrepBible.simpleSyrupPrep),
                                         OldCocktailIngredient(.soda(.sodaWater) , value: 1)]
 
 var temperanceGrapefruitCollinsBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the soda, into a tin and shake with ice"),

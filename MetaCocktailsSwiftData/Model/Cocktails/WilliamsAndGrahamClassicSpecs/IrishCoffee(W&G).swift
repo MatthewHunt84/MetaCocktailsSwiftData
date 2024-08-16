@@ -19,7 +19,7 @@ var irishCoffeeWnG = Cocktail(cocktailName: "Irish Coffee (W&G Version)",
 
 var irishCoffeeWnGSpec  = [OldCocktailIngredient(.otherNonAlc(.stiffCream), value: 1),
                            OldCocktailIngredient(.otherNonAlc(.coffee), value: 3),
-                           OldCocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.5),
+                           OldCocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.5, prep: PrepBible.demSyrupPrep),
                            OldCocktailIngredient(.whiskies(.bushmills12), value: 2)]
 
 var irishCoffeeWnGTags = Tags(flavors: [.coffee],

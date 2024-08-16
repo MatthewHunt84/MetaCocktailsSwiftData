@@ -17,7 +17,7 @@ var whiskeySour = Cocktail(cocktailName: "Whiskey Sour",
                            tags: whiskeySourTags)
 
 var whiskeySourSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
-                        OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                        OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                         OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
                         OldCocktailIngredient(.whiskies(.straightRyeOrBourbon), value: 0.75),
                         OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes)]

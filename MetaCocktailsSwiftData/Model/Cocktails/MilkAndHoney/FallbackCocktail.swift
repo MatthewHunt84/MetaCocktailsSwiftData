@@ -24,6 +24,6 @@ var fallbackCocktailSpec     =  [OldCocktailIngredient(.bitters(.peychauds), val
                                  OldCocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 1),
                                  OldCocktailIngredient(.brandies(.lairdsApplejack), value: 1)]
 
-var fallbackCocktailTags     = Tags(profiles: [.spiritForward, .rich, .punchy, .bittersweet],
+var fallbackCocktailTags     = Tags(flavors: [.orange], profiles: [.spiritForward, .rich, .punchy, .bittersweet],
                                     styles: [.manhattan, .stirred])
 

@@ -19,7 +19,7 @@ var french75WnG  = Cocktail(cocktailName: "French 75 (W&G Version)",
                             collection: .williamsAndGraham)
 
 var french75WnGSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
-                        OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                        OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                         OldCocktailIngredient(.brandies(.pFAmber), value: 1.5),
                         OldCocktailIngredient(.wines(.prosecco), value: 2)]
 

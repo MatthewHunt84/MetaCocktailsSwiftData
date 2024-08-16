@@ -23,7 +23,7 @@ var modernCocktail = Cocktail(cocktailName: "Modern Cocktail",
 var modernCocktailSpec = [OldCocktailIngredient(.juices(.lemon), value: 3, unit: .dashes),
                           OldCocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dashes),
                           OldCocktailIngredient(.otherAlcohol(.absinthe), value:1, unit: .dashes),
-                          OldCocktailIngredient(.syrups(.simple), value: 4, unit: .dashes),
+                          OldCocktailIngredient(.syrups(.simple), value: 4, unit: .dashes, prep: PrepBible.simpleSyrupPrep),
                           OldCocktailIngredient(.whiskies(.scotchAny), value: 1),
                           OldCocktailIngredient(.liqueurs(.plymouthSloeGin), value: 1)]
 

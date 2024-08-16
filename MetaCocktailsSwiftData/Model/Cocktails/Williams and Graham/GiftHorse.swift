@@ -23,5 +23,6 @@ var giftHorseSpec  = [OldCocktailIngredient(.syrups(.honeySyrup), value: 0.25, p
                       OldCocktailIngredient(.amari(.DellErborista), value: 0.75),
                       OldCocktailIngredient(.agaves(.tequilaSieteLeguasRepo), value: 1.5)]
 
-var giftHorseTags = Tags(profiles: [.rich, .bittersweet],
+var giftHorseTags = Tags(flavors: [.orange],
+                         profiles: [.rich, .bittersweet],
                          styles: [.martini, .stirred])
