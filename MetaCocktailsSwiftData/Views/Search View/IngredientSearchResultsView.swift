@@ -28,28 +28,8 @@ struct IngredientSearchResultsView: View {
                     .padding(.bottom, 10)
             }
             .navigationBarBackButtonHidden(true)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        viewModel.willLoadOnAppear = true
-                        dismiss()
-                    }) {
-                        Image(systemName: "chevron.backward")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 9)
-                            .bold()
-                            .tint(.cyan)
-                    }
-                }
-                
-                ToolbarItem(placement: .navigation) {
-                    Text("Matched Cocktails")
-                        .font(.largeTitle).bold()
-                        .foregroundStyle(MeshGradients.blurpleLinear)
-                }
-            }
             .basicLoadingIndicator(isLoading: viewModel.isRunningComplexSearch)
+            .goldHeaderWithNavigation(title: "Matched Cocktails", dismiss: dismiss)
         }
     }
     

@@ -21,7 +21,7 @@ struct FilteredIngredientListView: View {
             
             HStack{
                 
-                TextField("Flavor, Ingredient, Style, or Profile...", text: $viewModel.currentComponentSearchName)
+                TextField("Search for cocktails which contain..", text: $viewModel.currentComponentSearchName)
                     .focused($keyboardFocused)
                     .textFieldStyle(RoundedTextFieldStyle())
                     .autocorrectionDisabled(true)

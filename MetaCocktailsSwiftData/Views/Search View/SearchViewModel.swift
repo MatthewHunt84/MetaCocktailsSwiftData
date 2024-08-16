@@ -35,7 +35,6 @@ final class SearchViewModel: ObservableObject {
     var isLoading = true
     var preferredCount = 0
     var sections: [ResultViewSectionData] = []
-    var willLoadOnAppear = true
     
     var cocktailsAndMissingIngredientsForMinusOne: [CocktailsAndMissingIngredients] = []
     var cocktailsAndMissingIngredientsForMinusTwo: [CocktailsAndMissingIngredients] = []

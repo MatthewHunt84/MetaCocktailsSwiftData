@@ -14,7 +14,9 @@ struct SelectionTagView: View {
         Text(viewModel.ingredientName)
             .font(.callout)
             .fontWeight(.semibold)
-            .foregroundStyle(viewModel.isPreferred ? MeshGradients.staticPreferredSelection : MeshGradients.staticUnwantedSelection)
+            .foregroundStyle(Color.softWhite)
+//            .foregroundStyle(viewModel.isPreferred ? Color.primary: Color.secondary)
+//            .foregroundStyle(viewModel.isPreferred ? MeshGradients.whiteLinear : MeshGradients.disabledButton)
             .frame(height: 15)
     }
 }

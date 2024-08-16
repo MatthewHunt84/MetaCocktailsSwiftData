@@ -18,6 +18,7 @@ struct SelectedIngredientView: View {
     @Environment(\.dismiss) var dismiss
     let isPreferred: Bool
     let selections: [String]
+    @State private var isVisible = true
     
     var body: some View {
         
@@ -31,7 +32,7 @@ struct SelectedIngredientView: View {
                     
                     Image(systemName: isPreferred ? "checkmark" : "xmark")
                         .fontWeight(.semibold)
-                        .foregroundStyle(isPreferred ? MeshGradients.staticPreferredSelection : MeshGradients.staticUnwantedSelection)
+                        .foregroundStyle(isPreferred ? MeshGradients.goldTitle : MeshGradients.redAndGold)
                     
                     ForEach(selections, id: \.self) { selectedIngredient in
                         SelectionTagView(viewModel: SelectionTagViewModel(name: selectedIngredient, isPreferred: isPreferred))
@@ -46,13 +47,17 @@ struct SelectedIngredientView: View {
                             }
                     }
                     
-                    if isPreferred {
-                        Text("(tap to remove)")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                    }
+                    Text("(tap to remove)")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .opacity(isVisible ? 1 : 0)
+                        .animation(.easeOut(duration: 0.75), value: isVisible)
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                isVisible = false
+                            }
+                        }
                 }
-//                .padding(.horizontal, 15)
                 .frame(height: 15)
             }
             .scrollClipDisabled(true)
@@ -60,7 +65,6 @@ struct SelectedIngredientView: View {
         }
     }
 }
-
 
 #Preview {
     SelectedIngredientView(isPreferred: true, selections: ["Awesome", "Cool", "Radical"])

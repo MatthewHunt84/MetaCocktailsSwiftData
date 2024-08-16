@@ -17,7 +17,8 @@ struct SearchForCocktailsButton: View {
                 await viewModel.searchButtonPressed()
             }
         } label: {
-            MeshGradients.goldAndRed.mask {
+            
+            Color.blueTint.mask {
                 HStack {
                     
                     Spacer()
@@ -32,12 +33,12 @@ struct SearchForCocktailsButton: View {
                 }
             }
         }
-        .buttonStyle(RoundedButtonStyle())
+        .buttonStyle(RoundedButtonStyle(isDisabled: viewModel.preferredCount == 0))
         .frame(height: 44)
         .padding(.leading, 35)
         .padding(.trailing, 35)
         .padding(.bottom, 20)
-        .disabled(viewModel.isRunningComplexSearch)
+        .disabled(viewModel.isRunningComplexSearch || viewModel.preferredCount == 0)
     }
 }
 

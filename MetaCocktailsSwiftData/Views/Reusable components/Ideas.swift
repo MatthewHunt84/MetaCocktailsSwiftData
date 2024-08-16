@@ -10,7 +10,7 @@ import SwiftUI
 // Gradient Navigation title idea
 
 extension View {
-    func gradientNavigationTitle(_ title: String, startPoint: UnitPoint = .leading, endPoint: UnitPoint = .trailing) -> some View {
+    func goldHeader(_ title: String, startPoint: UnitPoint = .leading, endPoint: UnitPoint = .trailing) -> some View {
         self.modifier(GradientNavigationTitle(title, startPoint: startPoint, endPoint: endPoint))
     }
 }
@@ -22,7 +22,7 @@ struct GradientNavigationTitle: ViewModifier {
     let endPoint: UnitPoint
     let gradient: LinearGradient
     
-    init(_ title: String, colors: [Color] = [.blue, .purple, .red], startPoint: UnitPoint = .leading, endPoint: UnitPoint = .trailing) {
+    init(_ title: String, colors: [Color] = [Color(.redGold), Color(.brandPrimaryGold), .red], startPoint: UnitPoint = .leading, endPoint: UnitPoint = .trailing) {
         self.title = title
         self.colors = colors
         self.startPoint = startPoint
@@ -40,6 +40,42 @@ struct GradientNavigationTitle: ViewModifier {
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .foregroundStyle(gradient)
+                }
+            }
+    }
+}
+
+extension View {
+    func goldHeaderWithNavigation(title: String, dismiss: DismissAction) -> some View {
+        self.modifier(GradientNavigationTitleWithNavigation(dismiss: dismiss, title: title))
+    }
+}
+
+struct GradientNavigationTitleWithNavigation: ViewModifier {
+    
+    var dismiss: DismissAction
+    let title: String
+    
+    func body(content: Content) -> some View {
+        content
+            .toolbar {
+                ToolbarItem(placement: .navigation) {
+                    Button(action: {
+                        dismiss()
+                    }) {
+                        Image(systemName: "chevron.backward")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 9)
+                            .bold()
+                            .tint(.blueTint)
+                    }
+                }
+                
+                ToolbarItem(placement: .principal) {
+                    Text("Matched Cocktails")
+                        .font(.largeTitle).bold()
+                        .foregroundStyle(MeshGradients.goldTitle)
                 }
             }
     }
@@ -161,9 +197,9 @@ struct MeshGradients {
         [0, 0.5], [0.5, 0.5], [1, 0.5],
         [0, 1], [0.5, 1], [1, 1]
     ], colors: [
-        .white, .white, .white,
-        .white, .white, .white,
-        .white, .white, .white
+        .lightGray, .lightGray, .lightGray,
+        .lightGray, .lightGray, .darkestGray,
+        .lightGray, .darkestGray, .darkestGray
     ])
     
     static let goldMesh: MeshGradient =
@@ -173,9 +209,33 @@ struct MeshGradients {
         [0, 1], [0.5, 1], [1, 1]
     ], colors: [
         .brandPrimaryGold, .brandPrimaryGold, .brandPrimaryGold,
-        .brandPrimaryGold, .red, .brandPrimaryGold,
+        .brandPrimaryGold, .brandPrimaryGold, .redGold,
+        .brandPrimaryGold, .redGold, .redGold
+    ])
+    
+    static let redMesh: MeshGradient =
+    MeshGradient(width: 3, height: 3, points: [
+        [0, 0], [0.5, 0], [1, 0],
+        [0, 0.5], [0.5, 0.5], [1, 0.5],
+        [0, 1], [0.5, 1], [1, 1]
+    ], colors: [
+        .red, .red, .brandPrimaryGold,
+        .red, .brandPrimaryGold, .brandPrimaryGold,
         .brandPrimaryGold, .brandPrimaryGold, .brandPrimaryGold
     ])
+    
+    static let whiteMesh: MeshGradient =
+    MeshGradient(width: 3, height: 3, points: [
+        [0, 0], [0.5, 0], [1, 0],
+        [0, 0.5], [0.5, 0.5], [1, 0.5],
+        [0, 1], [0.5, 1], [1, 1]
+    ], colors: [
+        .white, .white, .white,
+        .white, .white, .white,
+        .white, .white, .white
+    ])
+    static let whiteLinear = LinearGradient(colors: [.white, .white], startPoint: .topLeading, endPoint: .bottomTrailing)
+    static let goldTitle = LinearGradient(colors: [Color(.redGold), Color(.brandPrimaryGold), .red], startPoint: .topLeading, endPoint: .bottomTrailing)
     
     static let blurpleLinear = LinearGradient(gradient: Gradient(colors: [.blue, .purple, .red]),
                                               startPoint: .leading,
@@ -186,7 +246,7 @@ struct MeshGradients {
                                            startPoint: .leading,
                                            endPoint: .bottomTrailing)
     
-    static let redAndGold = LinearGradient(gradient: Gradient(colors: [.red, Color(.brandPrimaryGold), Color(.brandPrimaryGold)]),
+    static let redAndGold = LinearGradient(gradient: Gradient(colors: [.red, Color(.redGold)]),
                                            startPoint: .topLeading,
                                            endPoint: .bottomTrailing)
     
@@ -195,6 +255,46 @@ struct MeshGradients {
                                                     endPoint: .bottomTrailing)
     
     static let whiteToGreyFade = LinearGradient(gradient: Gradient(colors: [.white, .gray]), startPoint: .leading, endPoint: .trailing)
+    static let disabledButton = LinearGradient(gradient: Gradient(colors: [Color.medGray, Color.lightGray]), startPoint: .leading, endPoint: .trailing)
+    static let disabledButton2 = LinearGradient(gradient: Gradient(colors: [Color.clear, Color.clear]), startPoint: .leading, endPoint: .trailing)
+    
+    static let activeBlue = LinearGradient(gradient: Gradient(colors: [.cyan, .blue, .blue, .blue]),
+                                              startPoint: .topLeading,
+                                              endPoint: .bottomTrailing)
+    
+    static let activatedBlue = LinearGradient(gradient: Gradient(colors: [.blue, .blue, .cyan]),
+                                              startPoint: .topLeading,
+                                              endPoint: .bottomTrailing)
+    
+    static func interactiveButton(isActive: Bool) -> LinearGradient {
+        isActive ? activeBlue : disabledButton
+    }
+    
+    
+    static let blue3 = LinearGradient(gradient: Gradient(colors: [.cyan, .blue, .purple]),
+                                              startPoint: .leading,
+                                              endPoint: .trailing)
+    
+    static let blue4 = LinearGradient(gradient: Gradient(colors: [.cyan, .cyan, .purple]),
+                                              startPoint: .leading,
+                                              endPoint: .trailing)
+    
+    static let blueA = LinearGradient(gradient: Gradient(colors: [.gray, .cyan, .blue]),
+                                              startPoint: .leading,
+                                              endPoint: .trailing)
+    
+    static let blueB = LinearGradient(gradient: Gradient(colors: [.cyan, .teal, .blue]),
+                                              startPoint: .topLeading,
+                                              endPoint: .bottomTrailing)
+    
+    static let blueC = LinearGradient(gradient: Gradient(colors: [.cyan, .blue, .purple]),
+                                              startPoint: .leading,
+                                              endPoint: .trailing)
+    
+    static let blueD = LinearGradient(gradient: Gradient(colors: [.cyan, .cyan, .purple]),
+                                              startPoint: .leading,
+                                              endPoint: .trailing)
+    
 }
 
 struct RoundedTextFieldStyle: TextFieldStyle {
@@ -210,29 +310,29 @@ struct RoundedTextFieldStyle: TextFieldStyle {
 }
 
 struct RoundedButtonStyle: ButtonStyle {
+    let isDisabled: Bool
+    
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .background(
-                Color(UIColor.systemGray6)
-                    .opacity(configuration.isPressed ? 0.7 : 1) // Darken when pressed
-            )
+            .background(Color.darkGrey.mix(with: Color.darkestGray, by: 0.4))
             .clipShape(Capsule(style: .continuous))
             .overlay(
                  Capsule(style: .continuous)
                      .stroke(
-                        !configuration.isPressed ?
-                         LinearGradient(
-                            gradient: Gradient(colors: [.brandPrimaryGold, .brandPrimaryGold, .red]),
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                         ) :                          LinearGradient(
-                            gradient: Gradient(colors: [.red, .red, .brandPrimaryGold]),
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                         ),
+                        strokeColor(for: configuration),
                         lineWidth: 2
                      )
              )
             .scaleEffect(configuration.isPressed ? 0.95 : 1) // Slight scale effect when pressed
+    }
+    
+    private func strokeColor(for configuration: Configuration) -> LinearGradient {
+        if isDisabled {
+            return MeshGradients.disabledButton2
+        } else if configuration.isPressed {
+            return MeshGradients.activatedBlue
+        } else {
+            return MeshGradients.disabledButton2//MeshGradients.activeBlue
+        }
     }
 }

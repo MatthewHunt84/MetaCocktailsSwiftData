@@ -39,7 +39,7 @@ struct LoadingAnimation: View {
     var body: some View {
         
         ZStack {
-            MeshGradients.blurple.mask (
+            MeshGradients.goldMesh.mask (
                 Image("CirclePart")
                     .resizable()
                     .rotationEffect(.degrees(rotationCircle))

@@ -32,8 +32,9 @@ struct IngredientSearchView: View {
                             .zIndex(10)
                     }
                     
-                    SearchForCocktailsButton()
-  
+                    if viewModel.preferredCount != 0 {
+                        SearchForCocktailsButton()
+                    }
                 }
             }
             .animation(.easeOut(duration: 0.5), value: viewModel.preferredSelections.isEmpty)
@@ -47,7 +48,7 @@ struct IngredientSearchView: View {
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-            .gradientNavigationTitle("Search Ingredients")
+            .goldHeader("Search Ingredients")
             .task {
                 keyboardFocused = true
             }
