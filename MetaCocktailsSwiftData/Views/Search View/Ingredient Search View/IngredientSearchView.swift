@@ -36,6 +36,7 @@ struct IngredientSearchView: View {
                             PreferencesListView()
                             SearchForCocktailsButton()
                         }
+                        .padding(.top, 5)
                     }
                 }
             }

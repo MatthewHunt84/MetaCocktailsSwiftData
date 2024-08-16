@@ -32,7 +32,7 @@ struct SearchForCocktailsButton: View {
         }
         .buttonStyle(RoundedButtonStyle(isDisabled: viewModel.preferredCount == 0))
         .frame(height: 44)
-        .padding(.bottom, 10)
+        .padding(.top, viewModel.unwantedSelections.count > 0 ? -55 : -40)
         .padding(.trailing, 15)
         .disabled(viewModel.isRunningComplexSearch || viewModel.preferredCount == 0)
     }
