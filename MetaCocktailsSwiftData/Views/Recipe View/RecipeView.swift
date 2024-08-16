@@ -275,6 +275,7 @@ struct RecipeTitleViewWithCollection: View {
                 .font(.largeTitle)
                 .lineLimit(1)
                 .minimumScaleFactor(0.4)
+                .foregroundStyle(MeshGradients.goldTitle)
             if let logo = cocktail.collection?.collectionLogo {
                     logo
                     .resizable()

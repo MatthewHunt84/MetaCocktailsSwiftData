@@ -139,9 +139,9 @@ struct MeshGradients {
             [0, 0.5], [0.5, 0.5], [1, 0.5],
             [0, 1], [Float(x), 1], [1, 1]
         ], colors: [
-            .brandPrimaryGold, .red, .brandPrimaryGold,
-            .brandPrimaryGold, .red, .brandPrimaryGold,
-            .brandPrimaryGold, .red, .brandPrimaryGold
+            .redGold, .brandPrimaryGold, .brandPrimaryGold,
+            .brandPrimaryGold, .redGold, .brandPrimaryGold,
+            .brandPrimaryGold, .brandPrimaryGold, .redGold
         ])
     }
     
