@@ -22,13 +22,11 @@ struct IngredientSearchView: View {
                 MeshGradients.blackGreyBackground.ignoresSafeArea()
                 
                 VStack(alignment: .leading) {
-                        
+                    
                     FilteredIngredientListView(keyboardFocused: _keyboardFocused)
                         .onTapGesture {
                             keyboardFocused = true
                         }
-
-                    Spacer()
                     
                     if !viewModel.preferredSelections.isEmpty {
                         PreferencesListView()
