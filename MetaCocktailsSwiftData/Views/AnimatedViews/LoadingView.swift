@@ -32,6 +32,10 @@ struct LoadingView: View {
     }
 }
 
+#Preview {
+    LoadingView()
+}
+
 struct LoadingAnimation: View {
     @State private var rotationCircle = 0.0
     @State private var rotationTriangle = 0.0

@@ -209,8 +209,8 @@ struct MeshGradients {
         [0, 1], [0.5, 1], [1, 1]
     ], colors: [
         .brandPrimaryGold, .brandPrimaryGold, .brandPrimaryGold,
-        .brandPrimaryGold, .brandPrimaryGold, .redGold,
-        .brandPrimaryGold, .redGold, .redGold
+        .brandPrimaryGold, .redGold, .brandPrimaryGold,
+        .brandPrimaryGold, .brandPrimaryGold, .brandPrimaryGold
     ])
     
     static let redMesh: MeshGradient =
