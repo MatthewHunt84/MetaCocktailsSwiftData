@@ -150,10 +150,11 @@ private struct BorderTop: View {
                     .aspectRatio(contentMode: .fit)
                     .foregroundStyle(.darkGrey)
                 
+                
                 Image(.borderTop)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(color)
+                    .foregroundStyle(.secondary)
                     .background(.clear)
             }
         }
@@ -177,10 +178,12 @@ private struct BorderSides: View {
                     
                     Image(.borderSides)
                         .resizable()
-                        .foregroundStyle(color)
+                        .foregroundStyle(.secondary)
                         .background(.clear)
+                    
                         .frame(height: geo.size.height * 0.8)
                 }
+                
                 
                 Spacer()
             }

@@ -94,6 +94,21 @@ struct MeshGradients {
         ])
     }
     
+    static let animatedGoldBackground: TimelineView<AnimationTimelineSchedule, MeshGradient> =
+    TimelineView(.animation) { timeline in
+        let x = (sin(timeline.date.timeIntervalSince1970) + 1) / 2
+        
+        MeshGradient(width: 3, height: 3, points: [
+            [0, 0], [Float(x), 0], [1, 0],
+            [0, 0.5], [0.5, 0.5], [1, 0.5],
+            [0, 1], [Float(x), 1], [1, 1]
+        ], colors: [
+            .brandPrimaryGold, .red, .brandPrimaryGold,
+            .brandPrimaryGold, .red, .brandPrimaryGold,
+            .brandPrimaryGold, .red, .brandPrimaryGold
+        ])
+    }
+    
     static let staticPreferredSelection: MeshGradient =
 
         MeshGradient(width: 3, height: 3, points: [
