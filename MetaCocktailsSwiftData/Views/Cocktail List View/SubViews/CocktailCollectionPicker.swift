@@ -21,12 +21,18 @@ struct CocktailCollectionPicker: View {
                             Text(int.collectionName)
                         }
                     }
-                } label: {}
+                } label: { }
             } label: {
-                Text("Collection: \(cocktailCollection.collectionName)")
-                    .font(.headline)
-                    .tint(.white)
+                HStack {
+//                    Text("Collection: \(cocktailCollection.collectionName)")
+                    Text(cocktailCollection == .all ? "Collection" : cocktailCollection.collectionName)
+                        .font(.headline)
+                        .tint(.white)
+                    Image(systemName: "chevron.down")
+                        .foregroundStyle(Color.blueTint)
+                }
             }
+            
             if viewModel.cocktailCollection == .originals {
                 Image(systemName: "questionmark.circle.fill")
                     .foregroundStyle(viewModel.isShowingOriginalCocktailInfo ? .brandPrimaryGold : .blue)
@@ -35,7 +41,7 @@ struct CocktailCollectionPicker: View {
                     }
             }
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0))
+        .frame(maxWidth: .infinity, alignment: .trailing)
+        .padding(EdgeInsets(top: 10, leading: 15, bottom: 0, trailing: 0))
     }
 }

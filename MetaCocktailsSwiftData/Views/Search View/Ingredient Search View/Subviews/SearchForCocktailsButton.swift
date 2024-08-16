@@ -20,24 +20,20 @@ struct SearchForCocktailsButton: View {
             
             Color.blueTint.mask {
                 HStack {
-                    
-                    Spacer()
-                    
+
                     Image(systemName: "magnifyingglass.circle")
                         .font(.title2).bold()
                     
-                    Text("Search For Cocktails")
+                    Text("Search")
                         .font(.title2).bold()
-                    
-                    Spacer()
                 }
             }
+            .frame(maxWidth: 140)
         }
         .buttonStyle(RoundedButtonStyle(isDisabled: viewModel.preferredCount == 0))
         .frame(height: 44)
-        .padding(.leading, 35)
-        .padding(.trailing, 35)
-        .padding(.bottom, 20)
+        .padding(.bottom, 10)
+        .padding(.trailing, 15)
         .disabled(viewModel.isRunningComplexSearch || viewModel.preferredCount == 0)
     }
 }

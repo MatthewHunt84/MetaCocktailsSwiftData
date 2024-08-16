@@ -28,13 +28,17 @@ struct IngredientSearchView: View {
                             keyboardFocused = true
                         }
                     
-                    if !viewModel.preferredSelections.isEmpty {
-                        PreferencesListView()
-                            .zIndex(10)
-                    }
+                    Spacer()
+//                    
+//                    if !viewModel.preferredSelections.isEmpty {
+//                        PreferencesListView()
+//                    }
                     
-                    if viewModel.preferredCount != 0 {
-                        SearchForCocktailsButton()
+                    if !viewModel.preferredSelections.isEmpty {
+                        HStack {
+                            PreferencesListView()
+                            SearchForCocktailsButton()
+                        }
                     }
                 }
             }

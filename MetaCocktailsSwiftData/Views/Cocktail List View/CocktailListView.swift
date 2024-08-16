@@ -21,15 +21,13 @@ struct CocktailListView: View {
     var body: some View {
         
         NavigationStack{
+            
             ZStack {
+                
+                MeshGradients.blackGreyBackground.ignoresSafeArea()
+                
                 VStack {
-                    HStack {
-                        Text("Cocktails")
-                            .font(.largeTitle).bold()
-                            .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
-                        Spacer()
-                        LoadSampleCocktailsButton()
-                    }
+                    
                     CocktailCollectionPicker(viewModel: viewModel, cocktailCollection: $viewModel.cocktailCollection)
                     
                     GeometryReader { listGeo in
@@ -51,7 +49,6 @@ struct CocktailListView: View {
                                             SpecifiedListView(viewModel: viewModel, cocktails: milkAndHoneyCocktials)
                                         case .custom:
                                             AllCocktailsListView(cocktails: cocktails)
-                                            
                                         }
                                     }
                                     .listStyle(.plain)
@@ -98,6 +95,8 @@ struct CocktailListView: View {
                     //zIndex is how the ZStack orders views. Without setting the zIndex to anything but 0, the animation won't transition out of view on the top of the stack.
                 }
             }
+            .navigationBarTitleDisplayMode(.inline)
+            .goldHeader("All Cocktails")
         }
     }
 }

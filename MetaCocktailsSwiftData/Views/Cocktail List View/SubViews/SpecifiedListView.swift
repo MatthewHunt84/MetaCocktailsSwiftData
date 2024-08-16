@@ -30,7 +30,9 @@ struct SpecifiedListView: View {
                         .fontWeight(.bold)
                         .font(.title)
                 }
-            }.id(letter)
+            }
+            .id(letter)
+            .listRowBackground(Color.clear)
         }
     }
 }

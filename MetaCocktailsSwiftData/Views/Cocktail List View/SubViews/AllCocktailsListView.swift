@@ -119,7 +119,9 @@ struct AllCocktailsListView: View {
                         .font(.title)
                 }
                 
-            }.id(letter)
+            }
+            .id(letter)
+            .listRowBackground(Color.clear)
         }
     }
 }

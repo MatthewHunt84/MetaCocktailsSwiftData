@@ -314,7 +314,7 @@ struct RoundedButtonStyle: ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .background(Color.darkGrey.mix(with: Color.darkestGray, by: 0.4))
+            .background(Color.clear)
             .clipShape(Capsule(style: .continuous))
             .overlay(
                  Capsule(style: .continuous)

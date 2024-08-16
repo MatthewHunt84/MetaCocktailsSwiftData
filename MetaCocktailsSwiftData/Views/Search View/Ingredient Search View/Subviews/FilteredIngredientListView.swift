@@ -41,7 +41,6 @@ struct FilteredIngredientListView: View {
                 }
             }
             .padding(EdgeInsets(top: 20, leading: 30, bottom: 0, trailing: 30))
-            .zIndex(10)
             .task {
                 viewModel.setupSearch()
                 viewModel.ingredientNames = ingredients.map { $0.name }
