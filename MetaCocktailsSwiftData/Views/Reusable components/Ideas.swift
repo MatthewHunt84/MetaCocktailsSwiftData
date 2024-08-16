@@ -79,6 +79,21 @@ struct MeshGradients {
         ])
     }
     
+    static let animatedCocktailBackground: TimelineView<AnimationTimelineSchedule, MeshGradient> =
+    TimelineView(.animation) { timeline in
+        let x = (sin(timeline.date.timeIntervalSince1970) + 1) / 2
+        
+        MeshGradient(width: 3, height: 3, points: [
+            [0, 0], [Float(x), 0], [1, 0],
+            [0, 0.5], [0.5, 0.5], [1, 0.5],
+            [0, 1], [Float(x), 1], [1, 1]
+        ], colors: [
+            .darkGrey, .darkGrey, .darkGrey,
+            .darkGrey, .brandPrimaryGold, .darkGrey,
+            .brandPrimaryGold, .darkGrey, .darkGrey
+        ])
+    }
+    
     static let staticPreferredSelection: MeshGradient =
 
         MeshGradient(width: 3, height: 3, points: [
@@ -134,6 +149,17 @@ struct MeshGradients {
         .white, .white, .white,
         .white, .white, .white,
         .white, .white, .white
+    ])
+    
+    static let goldMesh: MeshGradient =
+    MeshGradient(width: 3, height: 3, points: [
+        [0, 0], [0.5, 0], [1, 0],
+        [0, 0.5], [0.5, 0.5], [1, 0.5],
+        [0, 1], [0.5, 1], [1, 1]
+    ], colors: [
+        .brandPrimaryGold, .brandPrimaryGold, .brandPrimaryGold,
+        .brandPrimaryGold, .red, .brandPrimaryGold,
+        .brandPrimaryGold, .brandPrimaryGold, .brandPrimaryGold
     ])
     
     static let blurpleLinear = LinearGradient(gradient: Gradient(colors: [.blue, .purple, .red]),
