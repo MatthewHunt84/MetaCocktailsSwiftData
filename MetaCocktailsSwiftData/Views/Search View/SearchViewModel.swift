@@ -114,6 +114,15 @@ final class SearchViewModel: ObservableObject {
     var searchType: SearchType = .simple
     var updatedUnwantedSelections = [String]()
     var allCocktails: [Cocktail] = []
+    var isShowingResults: Bool = false
+    
+    func toggleIsShowingResults() {
+        Task {
+            await MainActor.run {
+                isShowingResults = true
+            }
+        }
+    }
     
     // complex search functions
     func toggleLoading() async {
@@ -170,6 +179,12 @@ final class SearchViewModel: ObservableObject {
         // Drop count by one if preferred:
         if preferred {
             preferredCount -= 1
+        }
+        
+        if !isShowingResults {
+            preferredSelections.removeAll(where: { $0 == selection})
+            unwantedSelections.removeAll(where: { $0 == selection})
+            return
         }
         
         // Evaluate new search type

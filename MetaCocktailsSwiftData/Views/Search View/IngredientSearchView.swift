@@ -11,7 +11,6 @@ import SwiftData
 struct IngredientSearchView: View {
     
     @EnvironmentObject var viewModel: SearchViewModel
-    @State var showingResults: Bool = false
     @FocusState var keyboardFocused: Bool
     
     var body: some View {
@@ -26,18 +25,18 @@ struct IngredientSearchView: View {
                     
                     Form{
                         ThumbsUpOrDownIngredientSearchListView(keyboardFocused: _keyboardFocused)
-                        SearchForCocktailsButton(showingResults: $showingResults)
+                        SearchForCocktailsButton()
                         ResetButton()
                     }
                 }
             }
-            .navigationDestination(isPresented: $showingResults) {
+            .navigationDestination(isPresented: $viewModel.isShowingResults) {
                 IngredientSearchResultsView()
                     .navigationBarBackButtonHidden(true)
             }
             .onChange(of: viewModel.searchCompleted) { _, newValue in
                 if newValue {
-                    showingResults = true
+                    viewModel.toggleIsShowingResults()
                     viewModel.resetSearch()
                 }
             }
@@ -57,7 +56,6 @@ struct IngredientSearchView: View {
 
 struct SearchForCocktailsButton: View {
     @EnvironmentObject var viewModel: SearchViewModel
-    @Binding var showingResults: Bool
     
     var body: some View {
         
