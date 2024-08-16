@@ -18,42 +18,28 @@ struct CBCLoadedCocktailView: View {
     var body: some View {
         
         NavigationStack {
-            VStack {
-                HStack {
-                    CBCCocktailHeaderView(cocktailName: viewModel.chosenCocktail.cocktailName, totalBatchVolume: viewModel.totalBatchVolume)
-                    Spacer()
-                }
+            
+            ZStack {
+                
+                MeshGradients.blackGreyBackground.ignoresSafeArea()
+                
                 VStack {
+                    
+                    CBCCocktailHeaderView(cocktailName: viewModel.chosenCocktail.cocktailName, totalBatchVolume: viewModel.totalBatchVolume)
+                    
                     HStack{
                         CocktailCountView(isInputActive: _isInputActive)
                         Spacer()
                         EditIngredientsButton(isShowingIngredientsModal: $isShowingPreferencesModal)
                     }
+                    QuantifiedIngredientsListView()
                 }
-                QuantifiedIngredientsListView()
+                .padding()
             }
-            .padding()
         }
         .navigationBarBackButtonHidden()
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button(action: {
-                    dismiss()
-                }) {
-                    Image(systemName: "chevron.backward")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 9)
-                        .bold()
-                        .tint(.cyan)
-                }
-            }
-            
-            ToolbarItem(placement: .navigation) {
-                Text("Batching Calculator")
-                    .font(.largeTitle).bold()
-            }
-        }
+        .navigationBarTitleDisplayMode(.inline)
+        .goldHeaderWithNavigation(title: "Batch Calculator", dismiss: dismiss)
         .sheet(isPresented: $isShowingPreferencesModal, content: {
             EditBatchModalView()
                 .onDisappear(perform: {
@@ -76,10 +62,10 @@ struct CBCCocktailHeaderView: View {
     let totalBatchVolume: Double
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .center) {
             HStack {
                 Text(cocktailName)
-                    .foregroundStyle(.brandPrimaryGold)
+                    .foregroundStyle(.softWhite)
                     .font(.title2)
             }
             HStack {
@@ -90,6 +76,7 @@ struct CBCCocktailHeaderView: View {
             .foregroundStyle(.secondary)
         }
         .bold()
+        .padding(.bottom, 25)
     }
 }
 struct EditIngredientsButton: View {
@@ -104,7 +91,7 @@ struct EditIngredientsButton: View {
                 Image(systemName: "gearshape")
             }
             .dynamicTypeSize(.xxLarge).bold()
-            .foregroundStyle(.brandPrimaryGold)
+            .foregroundStyle(.blueTint)
             .padding(.horizontal, 15)
             
             
@@ -159,19 +146,25 @@ struct QuantifiedIngredientsListView: View {
     
     var body: some View {
         ScrollView {
+            
             LazyVStack {
+                
                 ForEach($viewModel.quantifiedBatchedIngredients, id: \.self) { ingredient in
                     BatchCellView(quantifiedBatchedIngredient: ingredient)
                 }
+                
                 VStack {
+                    
                     HStack {
                         Text("Batch Dilution")
                         Spacer()
                         Text("\(Int(ceil(viewModel.totalDilutionVolume)))ml")
                     }
+                    
                     HStack {
                         Slider(value: $viewModel.dilutionPercentage, in: 0...100, step: 1.0)
                             .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                            .tint(MeshGradients.activatedBlue)
                         Text("\(viewModel.dilutionPercentage, specifier: "%.0f")%")
                             .frame(width: 50)
                             .onChange(of: viewModel.dilutionPercentage) { oldValue, newValue in
@@ -182,6 +175,7 @@ struct QuantifiedIngredientsListView: View {
                 }
                 
                 SplitBatchNavigationButton()
+                    .padding(.top, 20)
                 
             }
         }
@@ -198,10 +192,10 @@ struct SplitBatchNavigationButton: View {
             HStack{
                 Text("Divide Total Batch")
                     .font(.headline)
-                    .foregroundColor(.black)
+                    .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color.brandPrimaryGold)
+                    .background(MeshGradients.activeBlue)
                     .cornerRadius(20)
                     .shadow(radius: 5)
             }

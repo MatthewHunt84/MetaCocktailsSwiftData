@@ -11,9 +11,9 @@ struct BlackNWhiteButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding(8)
-            .background(Color.brandPrimaryGold.gradient)
+            .background(Color.blueTint)
             .clipShape(RoundedRectangle(cornerRadius: 13))
-            .foregroundColor(Color(UIColor.black))
+            .foregroundColor(Color(UIColor.white))
         
     }
 }

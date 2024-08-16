@@ -231,7 +231,7 @@ public struct CustomButtonStyle: ButtonStyle {
         configuration.label
             .fontWeight(.medium)
             .padding(.vertical, 12)
-            .foregroundStyle(.darkGrey)
+            .foregroundStyle(.white)
             .frame(maxWidth: .infinity)
             .background(.tint, in: .rect(cornerRadius: 14, style: .continuous))
             .opacity(configuration.isPressed ? 0.4 : 1.0)
@@ -326,7 +326,7 @@ struct SpecIngredientView: View {
                     } label: {
                         Text(ingredient.ingredientBase.name)
                             .font(Layout.body)
-                            .tint(.cyan)
+                            .tint(.blueTint)
                     }
                 } else {
                     Text("\(ingredient.ingredientBase.name)")
@@ -335,7 +335,7 @@ struct SpecIngredientView: View {
                 }
                 if ingredient.ingredientBase.info != nil {
                     Image(systemName: "questionmark.circle.fill")
-                        .foregroundStyle(.blue)
+                        .foregroundStyle(.blueTint)
                         .onTapGesture {
                             withAnimation(.easeInOut(duration: 0.25)) {
                                 isShowingIngredientInfo.toggle()
@@ -384,19 +384,6 @@ struct SpecView: View {
                         }
                         .foregroundStyle(.blueTint)
                         .font(Layout.header)
-//                        .sheet(isPresented: $isShowingSheet, content: {
-//                            NumberOfCocktailsModal(cocktail: cocktail, isShowingBatchView: $isShowingBatchView, isPresented: $isShowingSheet)
-//                                .presentationDetents([.medium, .large])
-//                                .presentationBackgroundInteraction(.automatic)
-//                                .presentationBackground(.thinMaterial)
-//                        })
-                        
-                       
-                   
-//                        .fullScreenCover(isPresented: $isShowingBatchView) {
-//                            CBCLoadedCocktailView(cocktail: cocktail)
-//                        }
-                        
                     }
                     .padding(.bottom, 5)
                     

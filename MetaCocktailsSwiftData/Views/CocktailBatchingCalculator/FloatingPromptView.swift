@@ -51,10 +51,10 @@ struct FloatingPromptView: View {
                     } label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
-                                .foregroundStyle(.brandPrimaryGold)
+                                .foregroundStyle(MeshGradients.activeBlue)
                             Text("Batch")
                                 .font(.system(size: 16, weight: .bold))
-                                .foregroundStyle(.black)
+                                .foregroundStyle(.white)
                                 .padding()
                                 
                         }
@@ -80,7 +80,7 @@ struct FloatingPromptView: View {
                                 Image(systemName: "x.circle.fill")
                                     .font(.title2)
                                     .fontWeight(.medium)
-                                    .tint(.brandPrimaryGold)
+                                    .tint(.blueTint)
                             }
                             .tint(.white)
                         }

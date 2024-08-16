@@ -12,62 +12,58 @@ struct SplitBatchView: View {
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("\(viewModel.chosenCocktail.cocktailName)")
-                .font(.title2)
-                .foregroundStyle(.brandPrimaryGold)
-                .bold()
-            Text("Split into \(viewModel.numberOfContainers) containers")
-                .font(.title3)
-                .foregroundStyle(.secondary)
-                .bold()
-            HStack{
-                Text("Container Size: ")
-                ContainerMenuView()
-                Spacer()
-            }
-            HStack{
-                Text("Batch Recipe Per Container:")
-                Spacer()
-            }
+        
+        ZStack{
             
-            List {
-                ForEach($viewModel.splitBatchData, id: \.self) { ingredient in
-                    SplitBatchCell(quantifiedSpiltBatches: ingredient)
-                }
-            }
-            .listStyle(.plain)
-            .dynamicTypeSize(.large)
-            Text("* At least 10% of the container's volume will be left empty for safe transportation.")
-                .multilineTextAlignment(.center)
-                .dynamicTypeSize(.medium)
-                .padding(10)
-                .foregroundStyle(.blueTint)
+            MeshGradients.blackGreyBackground.ignoresSafeArea()
             
-        }
-        .padding()
-        .navigationBarBackButtonHidden()
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button(action: {
-                    dismiss()
-                }) {
-                    Image(systemName: "chevron.backward")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 9)
+            VStack {
+                
+                VStack(alignment: .center) {
+                    Text("\(viewModel.chosenCocktail.cocktailName)")
+                        .font(.title2)
+                        .foregroundStyle(.softWhite)
                         .bold()
-                        .tint(.cyan)
+                    Text("Split into \(viewModel.numberOfContainers) containers")
+                        .font(.title3)
+                        .foregroundStyle(.secondary)
+                        .bold()
                 }
+                .padding(.bottom, 25)
+                
+                HStack {
+                    Text("Container Size: ")
+                    ContainerMenuView()
+                    Spacer()
+                }
+                
+                HStack {
+                    Text("Batch Recipe Per Container:")
+                    Spacer()
+                }
+                
+                List {
+                    ForEach($viewModel.splitBatchData, id: \.self) { ingredient in
+                        SplitBatchCell(quantifiedSpiltBatches: ingredient)
+                    }
+                }
+                .scrollContentBackground(.hidden)
+                .listRowBackground(Color.clear)
+                
+                Text("* At least 10% of the container's volume will be left empty for safe transportation.")
+                    .multilineTextAlignment(.center)
+                    .dynamicTypeSize(.medium)
+                    .padding(10)
+                    .foregroundStyle(.blueTint)
+                
             }
-            
-            ToolbarItem(placement: .navigation) {
-                Text("Split Batch")
-                    .font(.largeTitle).bold()
+            .padding()
+            .navigationBarBackButtonHidden()
+            .navigationBarTitleDisplayMode(.inline)
+            .goldHeaderWithNavigation(title: "Split Batch", dismiss: dismiss)
+            .task {
+                viewModel.doSplitBatchMath()
             }
-        }
-        .task {
-            viewModel.doSplitBatchMath()
         }
     }
     
