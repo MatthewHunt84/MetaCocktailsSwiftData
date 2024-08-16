@@ -117,13 +117,13 @@ final class SearchViewModel: ObservableObject {
     var isShowingResults: Bool = false
     
     func toggleIsShowingResults() {
-//        Task {
-//            await MainActor.run {
+
+        Task {
+            await MainActor.run {
                 isShowingResults = true
-//            }
-//        }
+            }
+        }
     }
-    
     
     // complex search functions
     func toggleLoading() async {
