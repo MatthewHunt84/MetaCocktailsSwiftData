@@ -24,6 +24,9 @@ struct IngredientSearchView: View {
                 VStack(alignment: .leading) {
                         
                     FilteredIngredientListView(keyboardFocused: _keyboardFocused)
+                        .onTapGesture {
+                            keyboardFocused = true
+                        }
 
                     Spacer()
                     
@@ -49,9 +52,6 @@ struct IngredientSearchView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
             .goldHeader("Search Ingredients")
-            .task {
-                keyboardFocused = true
-            }
             .funLoadingIndicator(isLoading: viewModel.isRunningComplexSearch)
         }
     }
