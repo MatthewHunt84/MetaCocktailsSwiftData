@@ -12,7 +12,7 @@ var madusasFang = Cocktail(cocktailName: "Madusa's Fang",
                            glasswareType: .doubleOld,
                            garnish: [.mintSprig, .pineappleFronds],
                            ice: .pebbleIce,
-                           author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
+                           author: Author(person: AuthorNames.whitneyAllen.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue),
                            spec: madusasFangSpec,
                            tags: madusasFangTags,
                            collection: .williamsAndGraham)

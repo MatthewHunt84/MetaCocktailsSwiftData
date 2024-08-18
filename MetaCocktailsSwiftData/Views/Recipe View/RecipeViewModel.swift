@@ -19,6 +19,8 @@ import Observation
     var cocktail: Cocktail
     var cocktailGlassImage: Image
     var methodString: String?
+    var currentIngredientRecipe: Prep = PrepBible.demSyrupPrep
+    var isShowingIngredientRecipe: Bool = false 
     
     var backDegree = -90.0
     var frontDegree = 0.0
@@ -40,6 +42,9 @@ import Observation
             }
             withAnimation(.snappy(duration: durationAndDelay).delay(durationAndDelay)) {
                 frontDegree = 0
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.isShowingIngredientRecipe = false
             }
         }
     }

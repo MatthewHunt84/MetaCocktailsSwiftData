@@ -12,7 +12,7 @@ var girlyDrink = Cocktail(cocktailName: "Girly Drink",
                           glasswareType: .stemmedGlassware,
                           garnish: [.orangePeel],
                           ice: nil,
-                          author: Author(person: AuthorPlaces.williamsAndGraham.rawValue),
+                          author: Author(person: AuthorNames.chadLarson.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue),
                           spec: girlyDrinkSpec,
                           tags: girlyDrinkTags,
                           collection: .williamsAndGraham)

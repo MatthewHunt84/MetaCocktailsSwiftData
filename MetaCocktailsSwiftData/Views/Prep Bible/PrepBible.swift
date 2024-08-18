@@ -53,10 +53,16 @@ final class PrepBible{
                                                                                            Instruction(step: 2, method: "Let sit in a mason jar for 24 hours in a semi-warm place."),
                                                                                            Instruction(step: 3, method: " Add 250g fresh grapefruit juice and shake until the oleo emulsifies with the grapefruit juice."),
                                                                                            Instruction(step: 4, method: "Strain the peels out. Keeps for 1 week in the fridge.")])
-    static let clementineShrub = Prep(prepIngredientName: "Clementine shrub", prepRecipe: [Instruction(step: 1, method:  "For 500ml: Add 250ml white sugar to 150g of orange peels."),
+   
+    static let clementineShrub = Prep(prepIngredientName: "Clementine shrub", prepRecipe: [Instruction(step: 1, method:  "For 500ml: Add 250g white sugar to 150g of orange peels."),
                                                                                            Instruction(step: 2, method: "Let sit in a mason jar for 24 hours in a semi-warm place."),
                                                                                            Instruction(step: 3, method: " Add 250g fresh clementine juice and shake until the oleo emulsifies with the grapefruit juice."),
                                                                                            Instruction(step: 4, method: "Strain the peels out. Keeps for 1 week in the fridge.")])
+    
+    static let limeCordial = Prep(prepIngredientName: "Lime Cordial", prepRecipe: [Instruction(step: 1, method:  "We're using Morganthaler's recipe here. For 500ml: Add 250g white sugar to 240g of hot water to a blender to make a slightly sweeter simple."),
+                                                                                           Instruction(step: 2, method: "Add 45g fresh lime juice, 25g citric acid, and 8g of fresh grated lime peel."),
+                                                                                           Instruction(step: 3, method: "Blend on medium for about 30 seconds."),
+                                                                                           Instruction(step: 4, method: "Strain and refrigerate.")])
     
     static let peanutButterVodka = Prep(prepIngredientName: "Peanut butter vodka", prepRecipe:[Instruction(step: 1, method:"Add 150g of skippy creamy peanut butter into a deli and add a 750 ml. bottle of vodka."),
                                                                                                Instruction(step: 2, method: " Then just whisk in the peanut butter until it dissolves. Keeps forever, probably.")] )
@@ -108,7 +114,7 @@ final class PrepBible{
     static let houseOrangeBitters = Prep(prepIngredientName: "House Orange Bitters", prepRecipe: [Instruction(step: 1, method: "Equal parts Fee Brothers West Indian Orange bitters and Regan's No. 6 bitters.")])
     
     
-    static let pineappleGommeSyrup = Prep(prepIngredientName: "Pineapple Gonmme Syrup", prepRecipe: [Instruction(step: 1, method: "Measure out 200g water and 50g of gum arabic powder and wisk together at room temp for a couple of minutes."),
+    static let pineappleGommeSyrup = Prep(prepIngredientName: "Pineapple Gomme Syrup", prepRecipe: [Instruction(step: 1, method: "Measure out 200g water and 50g of gum arabic powder and wisk together at room temp for a couple of minutes."),
                                                                                                      Instruction(step: 2, method: "The easier way to do this is with time, by letting it sit for 8 hours or so until the gum arabic is disolved. "),
                                                                                                      Instruction(step: 3, method: "If you're on a time crunch, you can use hot water and whisk it together for ten minutes like your life depends on it. Though, you'll still have to let it sit for a couple of hours to fully disolve. "),
                                                                                                      Instruction(step: 4, method: "Pour your gum arabic and water solution in a saucepan over very low heat and add 200g of sugar, one cup of pineapple chunks, and two tablespoons of pineapple juice."),
@@ -137,5 +143,5 @@ final class PrepBible{
                                                                                      Instruction(step: 4, method: "Bottle and keep in the fridge")])
     static let passionfruitSyrupPrep = Prep(prepIngredientName: "Passionfruit syrup", prepRecipe: [Instruction(step: 1, method: "Combine 500g each of fresh passionfruitPulp, white sugar, and water into a pot."),
                                                                                      Instruction(step: 2, method: "Heat just enough to dissolve the sugar. Do not let it boil."),
-                                                                                     Instruction(step: 3, method: "Let it cool completely and then bottle.")])
+                                                                                     Instruction(step: 3, method: "Let it cool completely then strain and bottle. Keep refrigerated.")])
 }

@@ -12,7 +12,7 @@ var theGreatGazoo = Cocktail(cocktailName: "The Great Gazoo",
                              glasswareType: .doubleOld,
                              garnish: [.angoDeco],
                              ice: .bigRock,
-                             author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
+                             author: Author(person: AuthorNames.seanKenyon.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue),
                              spec: theGreatGazooSpec,
                              tags: theGreatGazooTags,
                              collection: .williamsAndGraham)

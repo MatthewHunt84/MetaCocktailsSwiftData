@@ -12,7 +12,7 @@ var somethingAboutPrague = Cocktail(cocktailName: "Something About Prague",
                                     glasswareType: .doubleOld,
                                     garnish: [.nutmeg],
                                     ice: .koldDraft,
-                                    author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
+                                    author: Author(person: AuthorNames.samJohnson.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue),
                                     spec: somethingAboutPragueSpec,
                                     tags: somethingAboutPragueTags,
                                     collection: .williamsAndGraham)

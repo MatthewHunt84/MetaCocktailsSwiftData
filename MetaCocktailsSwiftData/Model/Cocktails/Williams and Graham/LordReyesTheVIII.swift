@@ -11,7 +11,7 @@ var lordReyesTheVIII  =  Cocktail(cocktailName: "Lord Reyes the VIII ",
                                   glasswareType: .doubleOld,
                                   garnish: [.orangePeel],
                                   ice: .bigRock,
-                                  author: justWnG,
+                                  author: Author(person: AuthorNames.nickTouch.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue),
                                   spec: elOchoRosadoSpec,
                                   tags: elOchoRosadoTags,
                                   collection: .williamsAndGraham)

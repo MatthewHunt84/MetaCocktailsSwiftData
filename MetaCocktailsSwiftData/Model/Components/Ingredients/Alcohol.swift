@@ -122,6 +122,7 @@ enum Brandy: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
     case brandyAny            = "Brandy (Any)"
     case clearCreekPearBrandy = "Clear Creek Pear Brandy"
     case domCafoBrandy        = "Caffo Brandy Domenique"
+    case hineCognac           = "Hine V.S.O.P"
     case lairdsApplejack      = "Laird's Applejack"
     case lairdsBonded         = "Laird's Bonded Apple"
     case lairdsJersey         = "Laird's Jersey Lightning"
@@ -165,6 +166,8 @@ enum Brandy: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
             Tags(flavors: [.apple], booze: [Booze(.brandies(self)), Booze(.brandies(.brandyAny)), Booze(.brandies(.brandyAny))])
         case .cognac:
             Tags(booze: [Booze(.brandies(self)), Booze(.brandies(.brandyAny))])
+        case .hineCognac:
+            Tags(booze: [Booze(.brandies(self)), Booze(.brandies(.brandyAny)), Booze(.brandies(.cognac))])
         }
     }
     
@@ -483,6 +486,7 @@ enum Whiskey: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
     case balvinieDW            = "Balvenie DoubleWood 12-year"
     case bourbon120            = "Bourbon (120 proof)"
     case bourbonAny            = "Bourbon"
+    case bourbonOverproof      = "Bourbon (Overproof)"
     case bowmore12             = "Bowmore 12 year"
     case portCharlotte         = "Bruichladdich Port Charlotte"
     case buffaloTrace          = "Buffalo Trace Bourbon"
@@ -539,13 +543,13 @@ enum Whiskey: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
         case .ryeWhiskeyAny:
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny))])
         case .straightRyeOrBourbon:
-            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny))])
+            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)), Booze(.whiskies(.bourbonOverproof))])
         case .scotchBlended:
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.scotchAny))])
         case .scotchIsla:
             Tags(flavors: [.peat], profiles: [.smokey], booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.scotchAny))])
         case .bourbon120:
-            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)), Booze(.whiskies(.bourbonAny))])
+            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)), Booze(.whiskies(.bourbonAny)), Booze(.whiskies(.bourbonOverproof))])
         case .whiskeyAny:
             Tags(booze: [Booze(.whiskies(self))])
         case .Ardbeg:
@@ -589,11 +593,11 @@ enum Whiskey: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
         case .buffaloTrace:
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)),Booze(.whiskies(.bourbonAny))])
         case .knob120:
-            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)),Booze(.whiskies(.bourbonAny)), Booze(.whiskies(.bourbon120))])
+            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)),Booze(.whiskies(.bourbonAny)), Booze(.whiskies(.bourbon120)), Booze(.whiskies(.bourbonOverproof))])
         case .russels6yearRye:
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)), Booze(.whiskies(.ryeWhiskeyAny))])
         case .oGD114:
-            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)),Booze(.whiskies(.bourbonAny))])
+            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)),Booze(.whiskies(.bourbonAny)), Booze(.whiskies(.bourbonOverproof))])
         case .wildTurkeyRye:
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)), Booze(.whiskies(.ryeWhiskeyAny))])
         case .balconesRye:
@@ -601,7 +605,7 @@ enum Whiskey: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
         case .woodyCreekRye:
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)), Booze(.whiskies(.ryeWhiskeyAny))])
         case .johnnyDrum:
-            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)),Booze(.whiskies(.bourbonAny))])
+            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)),Booze(.whiskies(.bourbonAny)), Booze(.whiskies(.bourbonOverproof))])
         case .bowmore12:
             Tags(flavors: [.peat], profiles: [.smokey], booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.scotchAny)), Booze(.whiskies(.scotchIsla))])
         case .hibikiHarmony:
@@ -619,7 +623,7 @@ enum Whiskey: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
         case .powersIrish:
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.irishWhiskeyAny))])
         case .stagJr:
-            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)),Booze(.whiskies(.bourbonAny))])
+            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)),Booze(.whiskies(.bourbonAny)), Booze(.whiskies(.bourbonOverproof))])
         case .toki:
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.japaneseWhiskeyAny))])
         case .wlWeller90:
@@ -637,6 +641,8 @@ enum Whiskey: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)), Booze(.whiskies(.ryeWhiskeyAny))])
         case .scotchSpeyside:
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.scotchAny))])
+        case .bourbonOverproof:
+            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)), Booze(.whiskies(.bourbonAny))])
         }
     }
     
@@ -673,7 +679,7 @@ enum Liqueur: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
     case giffardBanane        = "Giffard Banane Du Bresil"
     case giffardPamplemousse  = "Giffard Creme de Pamplemousse"
     case giffardPassion       = "Giffard Passion FruiT Liqueur"
-    case giffardElderflour    = "Giffard Elderflower"
+    case giffardElderflour    = "Elderflower Liqueur"
     case greenChartreuse      = "Green Chartreuse"
     case italicus             = "Italicus"
     case lopoldsApple         = "New York Sour Apple Liqueur"

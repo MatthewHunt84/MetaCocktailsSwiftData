@@ -34,7 +34,7 @@ struct RecipeFlipCardView: View {
                         
                         GlasswareView(cocktail: viewModel.cocktail)
                         
-                        SpecView(cocktail: viewModel.cocktail, isShowingPrompt: $isShowingFloatingPrompt)
+                        SpecView(cocktail: viewModel.cocktail, viewModel: viewModel, isShowingPrompt: $isShowingFloatingPrompt, geo: geo, topID: topID, scrollReader: scrollReader)
                         
                         GarnishView(cocktail: viewModel.cocktail)
                         

@@ -27,7 +27,7 @@ var cloverClubBuild = Build(instructions: [Instruction(step: 1, method: "Add all
                                            Instruction(step: 2, method: "Add a few Kold Draft cubes and shake until cold. Do not over dilute"),
                                            Instruction(step: 3, method: "Immediately after shaking (with vigor), pop the tin and double strain very carefully into a stemmed glass."),
                                            Instruction(step: 4, method: "Garnish with a raspberry."),
-                                           Instruction(step: 4, method: "The original Clover Club was a gentleman's club in Philadelphia from 1882-1920s.")])
+                                           Instruction(step: 4, method: "The original Clover Club was a gentleman's club in Philadelphia from 1882-1920s, where the cocktail originated.")])
 
 
 var cloverClubTags = Tags(profiles: [.citrusy, .fruity, .tart, .light, .silky],

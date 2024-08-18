@@ -81,6 +81,7 @@ enum Syrup: String, Codable, CaseIterable {
     case grenadine               = "Grenadine"
     case honey                   = "Honey"
     case honeySyrup              = "Honey syrup"
+    case limeCordial             = "Lime Cordial"
     case mapleSyrup              = "Maple syrup"
     case morenthalersGingerSyrup = "Morgenthaler's ginger syrup"
     case orgeat                  = "Orgeat"
@@ -158,6 +159,8 @@ enum Syrup: String, Codable, CaseIterable {
             Tags(flavors: [.maple], nA: [NAIngredients(.syrups(self))])
         case .gommeSyrup:
             Tags(nA: [NAIngredients(.syrups(self))])
+        case .limeCordial:
+            Tags(flavors: [.lime], nA: [NAIngredients(.syrups(self))])
         }
     }
     

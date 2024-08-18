@@ -12,7 +12,7 @@ var jaredLetosPrettyFace = Cocktail(cocktailName: "Jared Leto's Pretty Face",
                                     glasswareType: .collins,
                                     garnish: [.raspberry, .lemonWheel], 
                                     ice: .pebbleIce,
-                                    author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
+                                    author: Author(person: AuthorNames.nicoleLaurita.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue),
                                     spec: jaredLetosPrettyFaceSpec,
                                     tags: jaredLetosPrettyFaceTags,
                                     collection: .williamsAndGraham)
