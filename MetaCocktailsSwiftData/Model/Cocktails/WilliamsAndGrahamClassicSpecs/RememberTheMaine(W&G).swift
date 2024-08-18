@@ -11,8 +11,8 @@ var rememberTheMaineWnG = Cocktail(cocktailName: "Remember The Maine (W&G Versio
                                    glasswareType: .coupe,
                                    garnish: [.maraschinoCherry],
                                    author: williamsAndGraham,
-                                   spec: manhattanSpec,
-                                   tags: manhattanTags,
+                                   spec: rememberTheMaineSpecWnG,
+                                   tags: rememberTheMaineTagsWnG,
                                    variation: .rememberTheMaine,
                                    collection: .williamsAndGraham)
 
@@ -21,6 +21,6 @@ var rememberTheMaineSpecWnG     =  [OldCocktailIngredient(.otherAlcohol(.absinth
                                     OldCocktailIngredient(.fortifiedWines(.carpanoAntica), value: 0.75),
                                     OldCocktailIngredient(.whiskies(.jimBeamRye), value: 2)]
 
-var rememberTheMaineTagsWnG     = Tags(profiles: [.spiritForward, .bittersweet, .complex],
+var rememberTheMaineTagsWnG     = Tags(profiles: [.spiritForward, .bittersweet, .complex, .herbal],
                                        styles: [.manhattan, .stirred])
 
