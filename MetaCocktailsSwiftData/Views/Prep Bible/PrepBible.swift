@@ -11,15 +11,15 @@ import SwiftUI
 final class PrepBible{
     
     
-    static let richDem = Prep(prepIngredientName: "Rich Demerara syrup", prepRecipe:[Instruction(step: 1, method: "Weigh out two parts Demerara sugar to one part water and combine in a pot."),
+    static let richDem = Prep(prepIngredientName: "Rich Demerara syrup", prepRecipe:[Instruction(step: 1, method: "Combine two parts Demerara sugar to one part water into a pot."),
+                                                                                     Instruction(step: 2, method: "Bring the mixture to a boil and then immediately take it off heat."),
+                                                                                     Instruction(step: 3, method: "Let it cool before bottling.")]   )
+    
+    static let simpleSyrupPrep = Prep(prepIngredientName: "Simple syrup", prepRecipe:[Instruction(step: 1, method: "Combine one part sugar to one part water into a pot."),
                                                                                      Instruction(step: 2, method: "Add Bring to a boil and then immediately take off heat."),
                                                                                      Instruction(step: 3, method: "Let cool before bottling.")]   )
     
-    static let simpleSyrupPrep = Prep(prepIngredientName: "Simple syrup", prepRecipe:[Instruction(step: 1, method: "Weigh out one part  sugar to one part water and combine in a pot."),
-                                                                                     Instruction(step: 2, method: "Add Bring to a boil and then immediately take off heat."),
-                                                                                     Instruction(step: 3, method: "Let cool before bottling.")]   )
-    
-    static let demSyrupPrep = Prep(prepIngredientName: "Demerara syrup", prepRecipe:[Instruction(step: 1, method: "Weigh out one part Demerara sugar to one part water and combine in a pot."),
+    static let demSyrupPrep = Prep(prepIngredientName: "Demerara syrup", prepRecipe:[Instruction(step: 1, method: "Combine one part Demerara sugar to one part water into a pot."),
                                                                                      Instruction(step: 2, method: "Add Bring to a boil and then immediately take off heat."),
                                                                                      Instruction(step: 3, method: "Let cool before bottling.")]   )
     

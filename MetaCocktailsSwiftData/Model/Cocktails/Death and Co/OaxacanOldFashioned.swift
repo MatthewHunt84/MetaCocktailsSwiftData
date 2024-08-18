@@ -24,6 +24,6 @@ var oaxacaOldFashionedSpec  = [OldCocktailIngredient(.bitters(.angosturaBitters)
                                OldCocktailIngredient(.agaves(.elTesoroRepo), value: 1.5)]
 
 var oaxacaOldFashionedTags = Tags(flavors: [.orange],
-                                  profiles: [.spiritForward, .punchy, .complex],
+                                  profiles: [.spiritForward, .punchy, .smokey, .complex],
                                   styles: [.oldFashioned, .stirred])
 

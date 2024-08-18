@@ -282,6 +282,9 @@
 		4DBAE6F72C715E7400F3DBFD /* TalentSout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBAE6F62C715E7400F3DBFD /* TalentSout.swift */; };
 		4DBAE6F92C71647000F3DBFD /* WardEight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBAE6F82C71647000F3DBFD /* WardEight.swift */; };
 		4DBAE6FB2C716A7F00F3DBFD /* BizzyIzzyHighball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBAE6FA2C716A7F00F3DBFD /* BizzyIzzyHighball.swift */; };
+		4DBAE6FD2C71B99100F3DBFD /* PrizefighterNo1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBAE6FC2C71B99100F3DBFD /* PrizefighterNo1.swift */; };
+		4DBAE6FF2C71BDCC00F3DBFD /* FourInHand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBAE6FE2C71BDCC00F3DBFD /* FourInHand.swift */; };
+		4DBAE7012C71C04800F3DBFD /* Alabaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBAE7002C71C04800F3DBFD /* Alabaster.swift */; };
 		4DBBA4262B659EA000179B8F /* GoldRush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBBA4252B659EA000179B8F /* GoldRush.swift */; };
 		4DBBA4282B65A13600179B8F /* Grasshopper(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBBA4272B65A13600179B8F /* Grasshopper(W&G).swift */; };
 		4DBBA42A2B65A2FC00179B8F /* Grasshopper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBBA4292B65A2FC00179B8F /* Grasshopper.swift */; };
@@ -805,6 +808,9 @@
 		4DBAE6F62C715E7400F3DBFD /* TalentSout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalentSout.swift; sourceTree = "<group>"; };
 		4DBAE6F82C71647000F3DBFD /* WardEight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WardEight.swift; sourceTree = "<group>"; };
 		4DBAE6FA2C716A7F00F3DBFD /* BizzyIzzyHighball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BizzyIzzyHighball.swift; sourceTree = "<group>"; };
+		4DBAE6FC2C71B99100F3DBFD /* PrizefighterNo1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrizefighterNo1.swift; sourceTree = "<group>"; };
+		4DBAE6FE2C71BDCC00F3DBFD /* FourInHand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourInHand.swift; sourceTree = "<group>"; };
+		4DBAE7002C71C04800F3DBFD /* Alabaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alabaster.swift; sourceTree = "<group>"; };
 		4DBBA4252B659EA000179B8F /* GoldRush.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldRush.swift; sourceTree = "<group>"; };
 		4DBBA4272B65A13600179B8F /* Grasshopper(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Grasshopper(W&G).swift"; sourceTree = "<group>"; };
 		4DBBA4292B65A2FC00179B8F /* Grasshopper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grasshopper.swift; sourceTree = "<group>"; };
@@ -1289,6 +1295,7 @@
 				4DBBA48D2B68963200179B8F /* Mezcalero.swift */,
 				4DBBA4572B675ECD00179B8F /* MoergenthalersToddy.swift */,
 				4DBBA4AF2B68CD5C00179B8F /* OldCuban.swift */,
+				4DBAE6FC2C71B99100F3DBFD /* PrizefighterNo1.swift */,
 				1AFDB7B92ADF277D000A3812 /* TrinidadSour.swift */,
 				1AFDB7C72AE33287000A3812 /* UltimaPalabra.swift */,
 				4DA567572B6C43CA003F6F04 /* UltimaPalabra(London).swift */,
@@ -1504,10 +1511,12 @@
 		4D1E85B92B5C838C00214BC6 /* Death and Co */ = {
 			isa = PBXGroup;
 			children = (
+				4DBAE7002C71C04800F3DBFD /* Alabaster.swift */,
 				4DBAE6EA2C71285800F3DBFD /* Conference.swift */,
 				1AFDB7CB2AE33D13000A3812 /* CropTop.swift */,
 				1AFDB7C92AE33ACC000A3812 /* DivisionBell.swift */,
 				1AFDB7C52AE3319F000A3812 /* FinalWard.swift */,
+				4DBAE6FE2C71BDCC00F3DBFD /* FourInHand.swift */,
 				4DF408E32B619FCB00EF9A6E /* Gilda.swift */,
 				4DBBA49F2B68B95600179B8F /* NakedAndFamous.swift */,
 				4DBBA4A52B68C67F00179B8F /* OaxacanOldFashioned.swift */,
@@ -2264,6 +2273,7 @@
 				4D1E85E32B5DBF8100214BC6 /* OldFashioned.swift in Sources */,
 				4D1E85D52B5CDB2E00214BC6 /* SpanishRevival.swift in Sources */,
 				4DBFF82D2B5FC2FD0011B5B1 /* BetweenTheSheets(W&G).swift in Sources */,
+				4DBAE6FF2C71BDCC00F3DBFD /* FourInHand.swift in Sources */,
 				4D5DA0B42BA125DD00C14F1F /* PiscoSourMnH.swift in Sources */,
 				F47FBF652C6BF5EB00CD599E /* BasicLoadingIndicator.swift in Sources */,
 				4DA5673A2B6AEA34003F6F04 /* SherryCobbler.swift in Sources */,
@@ -2383,6 +2393,8 @@
 				4D7439892B9D277F0020C3B8 /* BackButton.swift in Sources */,
 				1AC386C32AAABED10064F52A /* BuildOrderView.swift in Sources */,
 				4D9025A22B6459C0005F44F6 /* GinFizz(W&G).swift in Sources */,
+				4DBAE6FD2C71B99100F3DBFD /* PrizefighterNo1.swift in Sources */,
+				4DBAE7012C71C04800F3DBFD /* Alabaster.swift in Sources */,
 				4DA568042B6E01D1003F6F04 /* Rosalita.swift in Sources */,
 				4DBFF82F2B5FC5400011B5B1 /* Bijou.swift in Sources */,
 				1AFDB7CC2AE33D13000A3812 /* CropTop.swift in Sources */,

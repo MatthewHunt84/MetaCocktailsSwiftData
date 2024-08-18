@@ -328,6 +328,7 @@ enum Rum: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
     case plantationJamaicaRum         = "Planteray Jamaica Rum"
     case plantationOFTD               = "Planteray OFTD Rum"
     case plantationPineapple          = "Planteray Pineapple Rum"
+    case probitasRum                  = "Probitas Rum"
     case pussersRum                   = "Pusser's Rum"
     case ronMutusalemRumClassico      = "Ron Matusalem Rum Classico"
     case rumWhiteAgricole             = "Rum (White Agricole)"
@@ -430,6 +431,8 @@ enum Rum: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
             Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumAged))])
         case .rumDominican:
             Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
+        case .probitasRum:
+            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumWhite))])
         }
     }
     
