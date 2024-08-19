@@ -12,7 +12,7 @@ var airMail  = Cocktail(cocktailName: "Air Mail",
                         garnish: [.noGarnish],
                         author: Author(person: "Bacardi and It's Many Uses.", place: "Santiago de Cuba", year: "1930"),
                         spec: airMailSpec,
-                        buildOrder: airMailBuild,
+                        buildOrder: topWithChampagnMethod,
                         tags: airMailTags,
                         variation: .airMail,
                         collection: .originals, 
@@ -24,7 +24,7 @@ var airMailSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.75),
                     OldCocktailIngredient(.wines(.champagne) , value: 2)]
 
 var airMailBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the Champagne, into a tin and shake with ice"),
-                                         Instruction(step: 2, method: "Add Champagne to the glass first!"),
+                                         Instruction(step: 2, method: "Add Champagne to the glass first. This seems to be the best way to preserve the carbonation. A common alternative is to add the bubbles to the tin then strain it into the glass. If you do this, make sure you aren't double straining with a tea strainer and immediately killing the carbonation."),
                                          Instruction(step: 3, method: "Then add the shaken cocktail to that.")])
 
 var airMailTags   = Tags(profiles: [.citrusy, .effervescent, .light],

@@ -11,9 +11,9 @@ var french75Cognac  = Cocktail(cocktailName: "French 75 (Arnaud's French 75 Vers
                                glasswareType: .flute,
                                garnish: [.noGarnish],
                                ice: nil,
-                               author: nil,
+                               author: Author(person: "Arnaud's French 75", place: "New Orleans"),
                                spec: french75CognacSpec,
-                               buildOrder: french75CognacBuild,
+                               buildOrder: topWithChampagnMethod,
                                tags: french75CognacTags,
                                variation: .french75)
 

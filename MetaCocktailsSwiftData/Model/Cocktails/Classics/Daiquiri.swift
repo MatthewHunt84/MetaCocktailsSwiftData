@@ -10,6 +10,7 @@ import Foundation
 let daiquiri = Cocktail(cocktailName: "Daiquiri", 
                         glasswareType: .coupe,
                         garnish: [.limeWheel],
+                        author: Author(place: "Cuba", year: "1890s"),
                         spec: daiquiriSpec,
                         tags: daiquiriTags,
                         variation: .daiquiri,

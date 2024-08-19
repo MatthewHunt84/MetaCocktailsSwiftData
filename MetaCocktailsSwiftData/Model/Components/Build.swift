@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Build: Codable {
     var instructions: [Instruction]
+
 }
 
 struct Instruction: Codable, Identifiable, Equatable {

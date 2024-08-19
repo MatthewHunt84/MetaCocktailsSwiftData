@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RecipeView: View {
     @Bindable var viewModel: RecipeViewModel
-    @State private var prepItems: [Ingredient] = []
+    //@State private var prepItems: [Ingredient] = []
     @Namespace var topID
     
     var body: some View {
@@ -31,11 +31,11 @@ struct RecipeView: View {
                         BackButton()
                     }
                 }
-               
-                .task {
-                    prepItems = viewModel.findPrepItems()
-                    
-                }
+//               
+//                .task {
+//                    prepItems = viewModel.findPrepItems()
+//                    
+//                }
             }
         }
     }
@@ -60,7 +60,7 @@ struct BuildOrderView: View {
             VStack(alignment: .leading) {
                 ForEach(buildOrder.instructions) { build in
                     HStack(alignment: .top) {
-                        Text("\(build.step)")
+                        Text("\(build.step).")
                             .font(calculateFontSize(numberOfSteps: buildOrder.instructions.count, body: false))
                         Text("\(build.method)")
                             .font(calculateFontSize(numberOfSteps: buildOrder.instructions.count, body: true))
@@ -80,8 +80,8 @@ struct BuildOrderView: View {
         let size: CGFloat = {
             switch numberOfSteps {
             case 0...5: 16
-            case 6...8: 14
-            default: 11
+            case 6...9: 14
+            default: 12
             }
         }()
         
@@ -107,7 +107,7 @@ struct IngredientRecipeView: View {
             VStack(alignment: .leading) {
                 ForEach(prep.prepRecipe) { build in
                     HStack(alignment: .top) {
-                        Text("\(build.step)")
+                        Text("\(build.step).")
                             .font(calculateFontSize(numberOfSteps: prep.prepRecipe.count, body: false))
                         Text("\(build.method)")
                             .font(calculateFontSize(numberOfSteps: prep.prepRecipe.count, body: true))
@@ -125,7 +125,7 @@ struct IngredientRecipeView: View {
         let size: CGFloat = {
             switch numberOfSteps {
             case 0...5: 16
-            case 6...8: 14
+            case 6...9: 14
             default: 11
             }
         }()
@@ -372,8 +372,6 @@ struct SpecIngredientView: View {
                 Text("\(number) \(ingredient.unit.rawValue)")
                     .font(Layout.specMeasurement)
                 if ingredient.ingredientBase.prep != nil {
-                  
-                    
                     Button{
                         viewModel.isShowingIngredientRecipe = true
                         viewModel.currentIngredientRecipe = ingredient.ingredientBase.prep ?? PrepBible.aPPBitters
@@ -387,18 +385,9 @@ struct SpecIngredientView: View {
                             .tint(.cyan)
                     }
                     .disabled(viewModel.isFlipped)
-                 
-//                    NavigationLink {
-//                        PrepRecipeView(prep: ingredient.ingredientBase.prep!)
-//                    } label: {
-//                        Text(ingredient.ingredientBase.name)
-//                            .font(Layout.body)
-//                            .tint(.cyan)
-//                    }
                 } else {
                     Text("\(ingredient.ingredientBase.name)")
                         .font(Layout.body)
-                        
                 }
                 if ingredient.ingredientBase.info != nil {
                     Image(systemName: "questionmark.circle.fill")
@@ -407,10 +396,7 @@ struct SpecIngredientView: View {
                             withAnimation(.easeInOut(duration: 0.25)) {
                                 isShowingIngredientInfo.toggle()
                             }
-                            
                         }
-                        
-                       
                 }
             }
             .multilineTextAlignment(.leading)
@@ -419,7 +405,7 @@ struct SpecIngredientView: View {
                     .font(.footnote)
                     .foregroundStyle(.brandPrimaryGold)
                 
-                    
+                
             }
         }
     }
@@ -493,13 +479,13 @@ struct SpecView: View {
         orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.umbrellaCategory == UmbrellaCategory.liqueurs.rawValue}))
         orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.umbrellaCategory == UmbrellaCategory.fortifiedWines.rawValue}))
         orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.umbrellaCategory == UmbrellaCategory.amari.rawValue}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.umbrellaCategory == UmbrellaCategory.otherAlcohol.rawValue}))
         orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.umbrellaCategory == UmbrellaCategory.whiskies.rawValue}))
         orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.umbrellaCategory == UmbrellaCategory.rums.rawValue}))
         orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.umbrellaCategory == UmbrellaCategory.gins.rawValue}))
         orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.umbrellaCategory == UmbrellaCategory.brandies.rawValue}))
         orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.umbrellaCategory == UmbrellaCategory.agaves.rawValue}))
         orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.umbrellaCategory == UmbrellaCategory.vodkas.rawValue}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.umbrellaCategory == UmbrellaCategory.otherAlcohol.rawValue}))
         orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.umbrellaCategory == UmbrellaCategory.soda.rawValue}))
         orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.umbrellaCategory == UmbrellaCategory.wines.rawValue}))
         return orderedSpec

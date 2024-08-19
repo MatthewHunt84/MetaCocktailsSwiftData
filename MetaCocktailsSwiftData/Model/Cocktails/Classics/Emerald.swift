@@ -14,7 +14,8 @@ var emerald = Cocktail(cocktailName: "Emerald",
                        garnish: [.maraschinoCherry, .lemonExpression],
                        author: nil,
                        spec: emeraldSpec,
-                       tags: emeraldTags)
+                       tags: emeraldTags,
+                       variation: .manhattan)
 
 var emeraldSpec     =  [OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
                         OldCocktailIngredient(.fortifiedWines(.dolinRouge), value: 1),

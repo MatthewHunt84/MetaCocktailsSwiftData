@@ -13,7 +13,7 @@ var french75WnG  = Cocktail(cocktailName: "French 75 (W&G Version)",
                             ice: nil,
                             author: williamsAndGraham,
                             spec: french75WnGSpec,
-                            buildOrder: french75CognacBuild,
+                            buildOrder: topWithChampagnMethod,
                             tags: french75CognacTags,
                             variation: .french75,
                             collection: .williamsAndGraham)

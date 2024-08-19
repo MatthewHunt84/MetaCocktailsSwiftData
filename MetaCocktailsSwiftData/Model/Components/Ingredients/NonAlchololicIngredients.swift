@@ -86,7 +86,7 @@ enum Syrup: String, Codable, CaseIterable {
     case morenthalersGingerSyrup = "Morgenthaler's ginger syrup"
     case orgeat                  = "Orgeat"
     case passionfruitSyrup       = "Passionfruit syrup"
-    case pineappleGumSyrup       = "Pineapple Gomme syrup"
+    case pineappleGumSyrup       = "Pineapple gomme syrup"
     case richCinnamonAndVanill   = "Cinnamon & vanilla syrup"
     case richDem                 = "Rich Demerara syrup"
     case richSimple              = "Rich simple syrup"
@@ -249,7 +249,7 @@ enum Fruit: String, Codable, CaseIterable {
 enum Seasoning: String, Codable, CaseIterable {
     case nutmeg               = "Grated nutmeg"
     case salt                 = "Kosher salt"
-    case saline               = "Saline (3:1)"
+    case saline               = "Saline (5:1)"
     case mineralSaline        = "Mineral saline"
     case pepper               = "Black pepper"
    

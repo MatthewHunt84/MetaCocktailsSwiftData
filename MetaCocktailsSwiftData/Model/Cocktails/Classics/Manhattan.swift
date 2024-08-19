@@ -14,7 +14,9 @@ var manhattan = Cocktail(cocktailName: "Manhattan",
                          garnish: [.maraschinoCherry, .lemonExpression],
                          author:Author(place: "Most likely the Manhattan Club", year: "1874"),
                          spec: manhattanSpec,
-                         tags: manhattanTags)
+                         tags: manhattanTags,
+                         variation: .manhattan,
+                         titleCocktail: true)
 
 var manhattanSpec     =  [OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
                           OldCocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),
@@ -23,4 +25,4 @@ var manhattanSpec     =  [OldCocktailIngredient(.bitters(.angosturaBitters), val
 var manhattanTags     = Tags(flavors: [.lemon],
                              profiles: [.spiritForward, .bittersweet],
                              styles: [.manhattan, .stirred])
-                        
+

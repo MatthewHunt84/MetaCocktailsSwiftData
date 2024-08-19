@@ -20,11 +20,12 @@ var redWedding  =  Cocktail(cocktailName: "Red Wedding",
                             collection: .williamsAndGraham)
 
 var redWeddingSpec = [OldCocktailIngredient(.seasoning(.saline), value: 5, unit: .drops),
-                      OldCocktailIngredient(.amari(.sfumato), value: 0.25),
+                      OldCocktailIngredient(.amari(.sfumato), value: 0.5),
                       OldCocktailIngredient(.amari(.cynar), value: 0.5),
                       OldCocktailIngredient(.amari(.aperol), value: 0.75),
-                      OldCocktailIngredient(.agaves(.mezcalDelMagueyVida), value: 1.5)]
+                      OldCocktailIngredient(.agaves(.mezcalDelMagueyVida), value: 1)]
 
 var redWeddingTags = Tags(flavors: [.orange],
                           profiles: [.rich, .bittersweet, .punchy],
                           styles: [.negroni, .stirred])
+

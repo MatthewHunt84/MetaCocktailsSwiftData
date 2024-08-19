@@ -22,7 +22,7 @@ let ramosGinFizzSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.gins(.gi
                                                  OldCocktailIngredient(.juices(.lime), value: 0.5),
                                                  OldCocktailIngredient(.juices(.lemon), value: 0.5),
                                                  OldCocktailIngredient(.syrups(.simple), value: 1.0, prep: PrepBible.simpleSyrupPrep),
-                                                 OldCocktailIngredient(.otherNonAlc(.cream), value: 1.0),
+                                                 OldCocktailIngredient(.otherNonAlc(.cream), value: 1.25),
                                                  OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 0.5),
                                                  OldCocktailIngredient(.soda(.sodaWater), value: 2.0),
                                                  OldCocktailIngredient(.otherNonAlc(.orangeFlowerWater), value: 3, unit: .drops)]
@@ -31,7 +31,8 @@ var ramosTags = Tags(flavors: [.lemon, .lime, .orange],
                      profiles: [.floral, .citrusy, .creamy],
                      styles: [.sour, .shaken])
 
-var ramosGinFizzBuild: Build = Build(instructions: [Instruction(step: 1, method: "Chill your 14oz. collins glass ahead of time"),
+var ramosGinFizzBuild: Build = Build(instructions: [Instruction(step: 1, method: "NOTE: A very important variable here is a high fat content heavy cream. If you can find something in the 40% range, it's worth it's weight in gold."),
+                                                    Instruction(step: 1, method: "Chill your 14oz. collins glass ahead of time"),
                                                     Instruction(step: 2, method: "Add all of the ingredients, except for the soda, into a tin along with two Kold Draft cubs, or their equivalent weight in alternative ice (roughly 16g)."),
                                                     Instruction(step: 3, method: "Shake vigorously until the Ice cubes completely dissolve."),
                                                     Instruction(step: 4, method: "Add the soda to the chilled glass."),

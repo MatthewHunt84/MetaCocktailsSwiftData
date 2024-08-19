@@ -12,9 +12,9 @@ var oldFashionedWnG = Cocktail(cocktailName: "Old Fashioned (W&G Version)",
                                garnish: [.lemonPeel],
                                ice: .bigRock,
                                author: williamsAndGraham,
-                               spec: oldFashionedSpec,
+                               spec: oldFashionedSpecWnG,
                                buildOrder: oldFashionedWGBuild,
-                               tags: oldFashionedTags,
+                               tags: oldFashionedTagsWnG,
                                variation: .oldFashioned,
                                collection: .williamsAndGraham)
 

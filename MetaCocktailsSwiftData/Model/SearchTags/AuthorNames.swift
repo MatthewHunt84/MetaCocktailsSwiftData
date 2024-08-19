@@ -40,7 +40,7 @@ enum AuthorNames: String, Codable, CaseIterable {
     case jamesMenkal       = "James Menkal"
     case jakePowell        = "Jake Powell"
     case jerryThomas       = "Jerry Thomas"
-    case johnShramm        = "John Shramm"
+    case johnShramm        = "John Schramm"
     case joaquinSimo       = "Joaquín Simó"
     case josephSchwartz    = "Joseph Schwartz"
     case justinJenkins     = "Justin Jenkins"
@@ -50,6 +50,7 @@ enum AuthorNames: String, Codable, CaseIterable {
     case marcosTello       = "Marcos Tello"
     case mattHunt          = "Matt Hunt"
     case michaelMadrusan   = "Michael Madrusan"
+    case ngiamTong         = "Ngiam Tong Boon"
     case nicoleLaurita     = "Nicole Laurita"
     case nicholasJarrett   = "Nicholas Jarrett"
     case nickTouch         = "Nick Touch"
@@ -141,9 +142,9 @@ enum FilterOption {
 
 
 var harryCraddock = Author(person: AuthorNames.harryCraddock.rawValue, place: AuthorPlaces.savoy.rawValue, year: "1930")
-var williamsAndGraham = Author(place: AuthorPlaces.williamsAndGraham.rawValue, year: "2023")
+var williamsAndGraham = Author(place: AuthorPlaces.williamsAndGraham.rawValue, year: "2012")
 var justWnG = Author(place: AuthorPlaces.williamsAndGraham.rawValue)
-var hugoEnsslin = Author(person: AuthorNames.hugoEnsslin.rawValue, place: AuthorPlaces.recipesForMixedDrinks.rawValue, year: "1917")
+var hugoEnsslin = Author(person: AuthorNames.hugoEnsslin.rawValue, place: AuthorPlaces.recipesForMixedDrinks.rawValue, year: "1916")
 var davidEmbury = Author(person: AuthorNames.davidEmbury.rawValue, place: AuthorPlaces.theFineArtOfMixingDrinks.rawValue, year: "1948")
 var jerryThomas = Author(person: AuthorNames.jerryThomas.rawValue, place: AuthorPlaces.howToMixDrinksJT.rawValue, year: "1862")
 var stanleyArthur = Author(person: AuthorNames.stanleyArthur.rawValue, place: AuthorPlaces.famousNewOrleansDrinks.rawValue, year: "1937")

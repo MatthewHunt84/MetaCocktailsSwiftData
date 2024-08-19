@@ -23,10 +23,10 @@ var mojitoMnH = Cocktail(cocktailName: "Mojito(Milk & Honey version)",
                          titleCocktail: false)
 
 let mojitoSpecMnH: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
-                                           OldCocktailIngredient(.otherNonAlc(.demeraraSugarCube), value: 1, unit: .gentlyMuddled),
-                                           OldCocktailIngredient(.juices(.lime), value: 1),
-                                           OldCocktailIngredient(.syrups(.simple), value: 1, prep: PrepBible.simpleSyrupPrep),
-                                           OldCocktailIngredient(.rums(.rumWhite), value: 2)]
+                                              OldCocktailIngredient(.otherNonAlc(.demeraraSugarCube), value: 1, unit: .muddled),
+                                              OldCocktailIngredient(.juices(.lime), value: 1),
+                                              OldCocktailIngredient(.syrups(.simple), value: 1, prep: PrepBible.simpleSyrupPrep),
+                                              OldCocktailIngredient(.rums(.rumWhite), value: 2)]
 
 let mojitoTagsMnH = Tags(profiles: [.herbal, .refreshing, .light],
                          styles: [.sour, .shaken, .built])

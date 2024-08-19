@@ -13,7 +13,7 @@ var robRoyWnG = Cocktail(cocktailName: "Rob Roy (W&G Version)",
                          author: williamsAndGraham,
                          spec: robRoySpecWnG,
                          tags: robRoyTagsWnG,
-                         variation: .robRoy,
+                         variation: .manhattan,
                          collection: .williamsAndGraham)
 
 var robRoySpecWnG     =  [OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),

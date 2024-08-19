@@ -17,8 +17,9 @@ var featheredHatFlipNo2 = Cocktail(cocktailName: "Feathered Hat Flip No. 2",
                                    spec: featheredHatFlip2Spec,
                                    buildOrder: featheredHatFlip2Build,
                                    tags: featheredHatFlip2Tags,
-                                   variation: nil,
-                                   collection: .williamsAndGraham)
+                                   variation: .featheredHatFlip,
+                                   collection: .williamsAndGraham,
+                                   titleCocktail: true)
 
 var featheredHatFlip2Spec  = [OldCocktailIngredient(.otherNonAlc(.sesameOil), value: 6 ,unit: .drops),
                              OldCocktailIngredient(.otherAlcohol(.leftHandMilkStout), value: 1),

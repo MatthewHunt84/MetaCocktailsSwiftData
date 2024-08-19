@@ -10,6 +10,7 @@ import Foundation
 var sidecarWnG = Cocktail(cocktailName: "Sidecar (W&G Version)",
                           glasswareType: .sugarRimStemmed,
                           ice: nil,
+                          author: williamsAndGraham,
                           spec: sidecarSpecWnG,
                           buildOrder: nil,
                           tags: sidecarTagsWnG,

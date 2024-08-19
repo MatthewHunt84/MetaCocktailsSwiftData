@@ -17,7 +17,7 @@ var zombie129 = Cocktail(cocktailName: "Zombie 129",
                          spec: zombie129Spec,
                          buildOrder: zombie129Build,
                          tags: zombie129Tags,
-                         variation: nil,
+                         variation: .zombie,
                          collection: .williamsAndGraham)
 
 let zombie129Spec  = [OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),

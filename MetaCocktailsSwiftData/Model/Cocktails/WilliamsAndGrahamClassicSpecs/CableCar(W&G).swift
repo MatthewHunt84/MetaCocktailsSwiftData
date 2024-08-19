@@ -13,6 +13,7 @@ var cableCarWnG = Cocktail(cocktailName: "Cable Car (W&G Version)",
                            author: williamsAndGraham,
                            spec: cableCarWnGSpec,
                            tags: cableCarTags,
+                           variation: .cableCar,
                            collection: .williamsAndGraham)
 
 var cableCarWnGSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),

@@ -13,7 +13,8 @@ var chrysanthemum = Cocktail(cocktailName: "Chrysanthemum",
                              ice: nil,
                              author: Author(person: AuthorNames.harryCraddock.rawValue, place: AuthorPlaces.savoy.rawValue, year: "1930"),
                              spec:chrysanthemumSpec,
-                             tags: chrysanthemumTags)
+                             tags: chrysanthemumTags,
+                             collection: .originals)
 
 var chrysanthemumSpec  = [OldCocktailIngredient(.otherAlcohol(.absinthe), value: 3, unit: .dashes),
                           OldCocktailIngredient(.liqueurs(.benedictine), value: 1),

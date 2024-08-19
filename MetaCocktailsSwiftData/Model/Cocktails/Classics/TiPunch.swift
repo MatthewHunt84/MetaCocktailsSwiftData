@@ -27,4 +27,5 @@ var tiPunchTags = Tags(flavors: [.lime],
                        profiles: [.sweet, .spiritForward, .funky],
                        styles: [.oldFashioned, .stirred])
 
-var tiPunchBuildOrder = Build(instructions: [Instruction(step: 1, method: "Think of this like an old-fashioned without the bitters")])
+var tiPunchBuildOrder = Build(instructions: [Instruction(step: 1, method: "Think of this like an old-fashioned without the bitters. The ice is optional."),
+                                             Instruction(step: 2, method: "Build in glass.")])

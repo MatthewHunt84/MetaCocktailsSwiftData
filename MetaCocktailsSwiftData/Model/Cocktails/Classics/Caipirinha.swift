@@ -13,7 +13,8 @@ var caipirinha   = Cocktail(cocktailName: "Caipirinha",
                             author:Author(place: "Brazil"),
                             spec: caipirinhaSpec,
                             buildOrder: caipirnhaBuild,
-                            tags: caipirnhaTags)
+                            tags: caipirnhaTags,
+                            collection: .originals)
 
 
 var caipirinhaSpec = [OldCocktailIngredient(.fruit(.limeHalf), value: 1, unit: .none),

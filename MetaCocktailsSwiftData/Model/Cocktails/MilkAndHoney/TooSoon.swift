@@ -8,7 +8,7 @@
 import Foundation
 
 var tooSoon = Cocktail(cocktailName: "Too Soon?",
-                       glasswareType: .doubleOld,
+                       glasswareType: .coupe,
                        garnish: nil,
                        ice: nil,
                        author:Author(person: AuthorNames.samRoss.rawValue ,place: AuthorPlaces.milkAndHoney.rawValue , year: "Early 2000s"),

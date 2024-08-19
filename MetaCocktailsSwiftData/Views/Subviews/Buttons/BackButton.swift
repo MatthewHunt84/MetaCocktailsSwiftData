@@ -15,15 +15,16 @@ struct BackButton: View {
             Button{
                 dismiss()
             } label: {
-                Image(systemName: "chevron.backward")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 9)
-                    .bold()
-                    .tint(.cyan)
-                
-//                Text("Back")
-//                    .tint(.cyan)
+                HStack{
+                    Image(systemName: "chevron.backward")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 9)
+                        .bold()
+                        .tint(.cyan)
+                    Text("Back")
+                        .tint(.cyan)
+                }
             }
         }
     }

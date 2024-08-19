@@ -8,11 +8,11 @@
 import Foundation
 
 enum Ice: String, Codable, CaseIterable {
-    case bigRock           = "Large Cube"
-    case columnIce         = "Column Ice"
-    case koldDraft         = "Kold Draft Ice"
-    case kildDraftCube     = "Kold Draft Cube"
-    case pebbleIce         = "Pebble Ice"
+    case bigRock           = "Large cube"
+    case columnIce         = "Column ice"
+    case koldDraft         = "Kold Draft ice"
+    case kildDraftCube     = "Kold Draft cube"
+    case pebbleIce         = "Pebble ice"
     case crackedIce        = "Cracked Kold Draft"
     case oneLargeBlock     = "One large block of ice"
     case none              = "None"

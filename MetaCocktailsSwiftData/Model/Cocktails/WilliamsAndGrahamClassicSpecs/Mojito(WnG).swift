@@ -13,16 +13,16 @@ var mojitoWnG = Cocktail(cocktailName: "Mojito (W&G Version)",
                          garnish: [.mintBouquet],
                          ice: .koldDraft,
                          author: williamsAndGraham,
-                         spec: mojitoSpec,
+                         spec: mojitoSpecWnG,
                          buildOrder: mojitoBuild,
                          tags: mojitoTags,
                          variation: .mojito,
                          collection: .williamsAndGraham)
 
 let mojitoSpecWnG: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint), value: 6, unit: .gentlyMuddled),
-                                           OldCocktailIngredient(.juices(.lime), value: 0.75),
-                                           OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
-                                           OldCocktailIngredient(.rums(.rumWhite), value: 2),
-                                           OldCocktailIngredient(.soda(.sparklingWater), value: 2)]
+                                              OldCocktailIngredient(.juices(.lime), value: 0.75),
+                                              OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
+                                              OldCocktailIngredient(.rums(.rumWhite), value: 2),
+                                              OldCocktailIngredient(.soda(.sparklingWater), value: 2)]
 
 
