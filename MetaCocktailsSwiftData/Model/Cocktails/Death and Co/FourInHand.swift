@@ -30,5 +30,5 @@ let fourInHandSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.syrups(.va
 
 let fourInHandTags = Tags(flavors: [.orange],
                           profiles: [.spiritForward, .complex, .herbal],
-                          styles: [.oldFashioned, .stirred, .tiki])
+                          styles: [.oldFashioned, .stirred])
 

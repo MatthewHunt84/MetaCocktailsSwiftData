@@ -12,7 +12,7 @@ var singaporeSling = Cocktail(cocktailName: "Singapore Sling",
                               ice: .koldDraft,
                               author: Author(person: AuthorNames.ngiamTong.rawValue, place: "Raffles Hotel, Singapore", year: "1899-1915"),
                               spec: singaporeSlingSpec,
-                              buildOrder: singSlingBuild,
+                              notes: singSlingNotes,
                               tags: singaporeSlingTags,
                               variation: .singaporeSling,
                               collection: .originals,
@@ -30,4 +30,4 @@ var singaporeSlingSpec  = [OldCocktailIngredient(.bitters(.angosturaBitters), va
 var singaporeSlingTags = Tags(profiles: [.refreshing, .fruity],
                               styles: [.sour, .shaken])
 
-var singSlingBuild = Build(instructions: [Instruction(step: 1, method: "There's a ton of controversy with the origional recipe here. So we're using what the Raffles hotel claims to be the original recipe.")])
+var singSlingNotes = "There's a ton of controversy with the origional recipe here. So we're using what the Raffles hotel claims to be the original recipe."

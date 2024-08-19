@@ -11,7 +11,7 @@ var alabaster = Cocktail(cocktailName: "Alabaster",
                          glasswareType: .nickAndNora,
                          author:Author(person: AuthorNames.jakePowell.rawValue,
                                        place: AuthorPlaces.deathAndCo.rawValue,
-                                       year: "Denver, 2022"),
+                                       year: "2022"),
                          spec: alabasterSpec,
                          tags: alabasterTags,
                          collection: .deathAndCo)

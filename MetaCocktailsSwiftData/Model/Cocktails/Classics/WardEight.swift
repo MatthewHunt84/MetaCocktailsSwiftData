@@ -13,10 +13,11 @@ var wardEight = Cocktail(cocktailName: "Ward Eight",
                          garnish: [.halfOrangeWheel, .seasonalBerries],
                          ice: nil,
                          author: Author(person: "The Fairbanks Cocktail Popular",
-                                        place: "Boston Herald, sec. 2, 12",
+                                        place: "Boston Herald",
                                         year: "August 4, 1907"),
                          spec: wardEightSpec,
                          buildOrder: wardEightBuild,
+                         notes: ward8Notes,
                          tags: wardEightTags,
                          collection: .originals)
 
@@ -30,6 +31,7 @@ var wardEightSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.67),
 var wardEightTags = Tags(profiles: [.citrusy, .light, .fruity, .tart],
                          styles: [.sour, .shaken])
 
-var wardEightBuild = Build(instructions: [Instruction(step: 1, method: "There's a lot of speculation as to where this cocktail comes from. Here, we're using the oldest version that we could find that seems to be in line with how modern bartenders are presenting it."),
-                                          Instruction(step: 2, method: "It says the orange juice or orange Curaçao is optional. But this seems to be a common modern through line. So, we added it to the spec."),
-                                          Instruction(step: 3, method: "However you make it, add the sparkling water last after you've shaken and strained the cocktail.")])
+var wardEightBuild = Build(instructions: [Instruction(step: 1, method: "It says the orange juice or orange Curaçao is optional. But this seems to be a common modern through line. So, we added it to the spec."),
+                                          Instruction(step: 2, method: "However you make it, add the sparkling water last after you've shaken and strained the cocktail.")])
+
+var ward8Notes = "There's a lot of speculation as to where this cocktail comes from. Here, we're using the oldest version that we could find that seems to be in line with how modern bartenders are presenting it."

@@ -16,6 +16,7 @@ var redWedding  =  Cocktail(cocktailName: "Red Wedding",
                                           place: AuthorPlaces.williamsAndGraham.rawValue, year: "2018"),
                             spec: redWeddingSpec,
                             buildOrder: nil,
+                            notes: redWeddingNotes,
                             tags: redWeddingTags,
                             collection: .williamsAndGraham)
 
@@ -29,3 +30,4 @@ var redWeddingTags = Tags(flavors: [.orange],
                           profiles: [.rich, .bittersweet, .punchy],
                           styles: [.negroni, .stirred])
 
+var redWeddingNotes = "This is a modified version of the original, which had 1.5 oz. mezcal and .25 oz. Sfumato. This updated version is the one you'll currently get from James at the bar."

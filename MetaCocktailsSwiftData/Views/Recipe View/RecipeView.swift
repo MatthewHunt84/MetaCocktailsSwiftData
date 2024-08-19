@@ -415,7 +415,8 @@ struct SpecView: View {
     var cocktail: Cocktail
     @Bindable var viewModel: RecipeViewModel
     @State private var isShowingSheet = false
-    @State private var isShowingBatchView = false 
+    @State private var isShowingBatchView = false
+    @Binding var isShowingCocktailNotes: Bool
     @Binding var isShowingPrompt: Bool
     let geo: GeometryProxy
     var topID: Namespace.ID
@@ -430,6 +431,16 @@ struct SpecView: View {
                     HStack {
                         Text("Cocktail Spec:")
                             .font(Layout.header)
+                        if cocktail.notes != nil {
+                            Button {
+                                isShowingCocktailNotes.toggle()
+                            } label: {
+                                Image(systemName: "questionmark.circle.fill")
+                                    .foregroundStyle(.blue)
+                                
+                            }
+                        }
+                        
                         
                         Spacer()
                         

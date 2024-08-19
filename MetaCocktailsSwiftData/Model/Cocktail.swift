@@ -28,6 +28,7 @@ class Cocktail: Equatable, Hashable {
     var author: Author?
     @Relationship(deleteRule: .cascade) var spec: [Ingredient]
     var buildOrder: Build?
+    var notes: String?
     @Transient var tags: Tags = Tags()
     var compiledTags: Tags = Tags()
     var variation: Variation?
@@ -37,7 +38,7 @@ class Cocktail: Equatable, Hashable {
   
     
     
-    init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [GarnishList]? = nil, ice: Ice? = nil, author: Author? = nil, spec: [OldCocktailIngredient], buildOrder: Build? = nil, tags: Tags, variation: Variation? = nil, collection: CocktailCollection? = nil, titleCocktail: Bool = false) {
+    init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [GarnishList]? = nil, ice: Ice? = nil, author: Author? = nil, spec: [OldCocktailIngredient], buildOrder: Build? = nil, notes: String? = nil, tags: Tags, variation: Variation? = nil, collection: CocktailCollection? = nil, titleCocktail: Bool = false) {
         self.id = id
         self.cocktailName = cocktailName
         self.imageAsset = imageAsset
@@ -57,6 +58,7 @@ class Cocktail: Equatable, Hashable {
         self.author = author
         self.spec = spec.map { Ingredient(oldIngredient: $0) }
         self.buildOrder = buildOrder
+        self.notes = notes 
         self.tags = tags
         self.variation = variation
         self.collection = collection
