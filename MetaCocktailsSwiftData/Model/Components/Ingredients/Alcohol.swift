@@ -1050,7 +1050,7 @@ enum Amaro: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
     case amerPicon            = "Amer Picon"
     case angosturaAmaro       = "Angostura Amaro"
     case aperol               = "Aperol"
-    case averna               = "Averna Amaroo"
+    case averna               = "Averna Amaro"
     case aveze                = "Aveze"
     case amaroMontenegro      = "Montenegro Amaro"
     case amaroNonino          = "Nonino Amaro"
