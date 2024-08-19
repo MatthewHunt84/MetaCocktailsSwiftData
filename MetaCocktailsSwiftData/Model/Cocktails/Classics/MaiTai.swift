@@ -25,7 +25,8 @@ var maiTaiSpec    = [OldCocktailIngredient(.juices(.lime), value: 1),
                      OldCocktailIngredient(.liqueurs(.orangeCuracao), value: 0.25),
                      OldCocktailIngredient(.rums(.wrayAndNephew17), value: 2)]
 
-var maiTaiTags     = Tags(profiles: [.fruity, .refreshing, .citrusy], 
+var maiTaiTags     = Tags(flavors: [.mint],
+                          profiles: [.fruity, .refreshing, .citrusy], 
                           styles: [.sour, .shaken])
                           
 

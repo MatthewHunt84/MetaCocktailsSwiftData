@@ -22,5 +22,6 @@ var williamsCrossSpec = [OldCocktailIngredient(.bitters(.orangeBitters), value: 
                          OldCocktailIngredient(.fortifiedWines(.dolinRouge), value: 0.5),
                          OldCocktailIngredient(.whiskies(.tullamoreDew12), value: 2)]
 
-var williamsCrossTags = Tags(profiles: [.rich, .bittersweet, .punchy, .complex],
+var williamsCrossTags = Tags(flavors: [.orange],
+                             profiles: [.rich, .bittersweet, .punchy, .complex],
                              styles: [.manhattan, .stirred])

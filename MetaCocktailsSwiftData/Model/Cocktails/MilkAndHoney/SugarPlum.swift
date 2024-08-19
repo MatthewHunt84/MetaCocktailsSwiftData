@@ -21,7 +21,7 @@ var sugarplum = Cocktail(cocktailName: "Sugarplum",
                          collection: .milkAndHoney)
 
 var sugarplumSpec     =  [OldCocktailIngredient(.juices(.grapefruit), value: 1),
-                          OldCocktailIngredient(.syrups(.grenadine), value: 0.5),
+                          OldCocktailIngredient(.syrups(.grenadine), value: 0.5, prep: PrepBible.grenadine),
                           OldCocktailIngredient(.gins(.ginAny), value: 2)]
 
 var sugarplumTags     = Tags(profiles: [.fruity, .refreshing],

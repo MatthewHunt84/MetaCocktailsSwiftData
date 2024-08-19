@@ -23,7 +23,8 @@ var sazeracSpecWnG  = [OldCocktailIngredient(.otherNonAlc(.demeraraSugarCube), v
                        OldCocktailIngredient(.bitters(.peychauds), value: 7, unit: .dashes),
                        OldCocktailIngredient(.otherAlcohol(.absinthe), value: 7, unit: .sprays),]
 
-var sazeracTagsWnG = Tags(profiles: [.spiritForward, .punchy],
+var sazeracTagsWnG = Tags(flavors: [.lemon],
+                          profiles: [.spiritForward, .punchy],
                           styles: [.oldFashioned, .stirred])
 
 var sazeracBuildWnG = Build(instructions: [Instruction(step: 1, method: "Muddle your sugar cube and bitters together in a mixing glass with a splash of soda water to help the sugar disolve."),

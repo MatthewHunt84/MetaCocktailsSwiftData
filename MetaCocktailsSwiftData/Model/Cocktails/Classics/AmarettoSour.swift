@@ -15,7 +15,7 @@ var amarettoSour  = Cocktail(cocktailName: "Amaretto Sour",
                              variation: .amarettoSour,
                              titleCocktail: true)
 
-var amarettoSourSpec  = [OldCocktailIngredient(.syrups(.simple), value: 0.75),
+var amarettoSourSpec  = [OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                          OldCocktailIngredient(.juices(.lemon), value: 0.75),
                          OldCocktailIngredient(.liqueurs(.amaretto) , value: 2)]
 

@@ -19,7 +19,7 @@ var tomCollinsWnG  = Cocktail(cocktailName: "Tom Collins (W&G Version)",
                               collection: .williamsAndGraham)
 
 var tomCollinsWnGSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
-                          OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                          OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                           OldCocktailIngredient(.gins(.fordsGin), value: 2),
                           OldCocktailIngredient(.soda(.sodaWater) , value: 2)]
 

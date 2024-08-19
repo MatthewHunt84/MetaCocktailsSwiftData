@@ -18,10 +18,11 @@ var jupiter = Cocktail(cocktailName: "Jupiter(W&G)",
 
 var jupiterSpec  =  [OldCocktailIngredient(.bitters(.tikiBitters), value: 1, unit: .dashes),
                      OldCocktailIngredient(.juices(.lemon), value: 0.5),
-                     OldCocktailIngredient(.syrups(.passionfruitSyrup), value: 0.5),
+                     OldCocktailIngredient(.syrups(.passionfruitSyrup), value: 0.5, prep: PrepBible.passionfruitSyrupPrep),
                      OldCocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBible.orgeat),
                      OldCocktailIngredient(.otherNonAlc(.coconutMilk), value: 0.5),
                      OldCocktailIngredient(.brandies(.pF1840), value: 2)]
 
-var jupiterTags = Tags( profiles: [.citrusy, .fruity, .nutty, .tropical, .sweet, .refreshing],
-                        styles: [.tiki, .shaken, .sour])
+var jupiterTags = Tags(flavors: [.mint],
+                       profiles: [.citrusy, .fruity, .nutty, .tropical, .sweet, .refreshing],
+                       styles: [.tiki, .shaken, .sour])

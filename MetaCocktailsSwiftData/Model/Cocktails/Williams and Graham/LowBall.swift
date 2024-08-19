@@ -24,5 +24,6 @@ var lowBallSpec = [OldCocktailIngredient(.agaves(.tanteoJalepeno), value: 0.25, 
                    OldCocktailIngredient(.fortifiedWines(.cocchiAmericano), value: 0.75),
                    OldCocktailIngredient(.whiskies(.toki), value: 1.5)]
 
-var lowBallTags = Tags(profiles: [.spiritForward, .herbal, .punchy, .vegetal],
+var lowBallTags = Tags(flavors: [.orange],
+                       profiles: [.spiritForward, .herbal, .punchy, .vegetal],
                        styles: [.manhattan, .stirred])

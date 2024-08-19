@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-var whiskeySour = Cocktail(cocktailName: "Whiskey Sour",
+var whiskeySour = Cocktail(cocktailName: "Whiskey Sour(W&G Version)",
                            glasswareType: .stemmedGlassware,
                            garnish: [.maraschinoCherry],
                            ice: nil,
@@ -17,9 +17,9 @@ var whiskeySour = Cocktail(cocktailName: "Whiskey Sour",
                            tags: whiskeySourTags)
 
 var whiskeySourSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
-                        OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                        OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                         OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
-                        OldCocktailIngredient(.whiskies(.straightRyeOrBourbon), value: 0.75),
+                        OldCocktailIngredient(.whiskies(.bourbonAny), value: 2),
                         OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes)]
 
 var whiskeySourTags = Tags(profiles: [.citrusy, .refreshing, .light, .silky],

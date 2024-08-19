@@ -20,7 +20,8 @@ var kirRoyaleWnG = Cocktail(cocktailName: "Kir Royale (W&G Version)",
 var kirRoyaleSpecWnG  = [OldCocktailIngredient(.liqueurs(.cremeDeCassis), value: 0.25),
                          OldCocktailIngredient(.wines(.prosecco), value: 4.5)]
 
-var kirRoyaleTagsWnG = Tags(profiles: [.dry, .fruity, .effervescent],
+var kirRoyaleTagsWnG = Tags(flavors: [.lemon],
+                            profiles: [.dry, .fruity, .effervescent],
                             styles: [.built])
 
 

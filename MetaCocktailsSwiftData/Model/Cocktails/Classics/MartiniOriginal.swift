@@ -22,6 +22,7 @@ var martiniSpec     =  [OldCocktailIngredient(.bitters(.orangeBitters), value: 2
                         OldCocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 1.5),
                         OldCocktailIngredient(.gins(.ginAny), value: 1.5)]
 
-var martiniTags     = Tags(profiles: [.spiritForward, .dry],
+var martiniTags     = Tags(flavors: [.lemon],
+                           profiles: [.spiritForward, .dry],
                            styles: [.martini, .stirred])
 

@@ -21,5 +21,6 @@ var deepBlueSeaSpec     =  [OldCocktailIngredient(.bitters(.orangeBitters), valu
                             OldCocktailIngredient(.fortifiedWines(.cocchiAmericano), value: 0.75),
                             OldCocktailIngredient(.gins(.ginAny), value: 2)]
 
-var deepBlueSeaTags     = Tags(profiles: [.spiritForward, .floral],
+var deepBlueSeaTags     = Tags(flavors: [.lemon],
+                               profiles: [.spiritForward, .floral],
                                styles: [.martini, .stirred])

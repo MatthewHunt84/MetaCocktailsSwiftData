@@ -21,7 +21,7 @@ var jFKHarris = Cocktail(cocktailName: "JFK Harris",
                          collection: .milkAndHoney)
 
 var jFKHarrisSpec     =  [OldCocktailIngredient(.herbs(.mint), value: 11, unit: .gentlyMuddled),
-                          OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                          OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                           OldCocktailIngredient(.juices(.lemon), value: 0.75),
                           OldCocktailIngredient(.rums(.rumWhite), value: 2),
                           OldCocktailIngredient(.wines(.dryRedWine), value: 0.5)]

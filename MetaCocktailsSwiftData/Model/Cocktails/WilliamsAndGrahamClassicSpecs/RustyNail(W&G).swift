@@ -19,5 +19,6 @@ var RustyNailWnG = Cocktail(cocktailName: "Rusty Nail (W&G Version)",
 var RustyNailSpecWnG     =  [OldCocktailIngredient(.liqueurs(.drambuie), value: 0.5),
                              OldCocktailIngredient(.whiskies(.balvinieDW), value: 2.5)]
 
-var RustyNailTagsWnG     = Tags(profiles: [.spiritForward, .punchy],
+var RustyNailTagsWnG     = Tags(flavors: [.lemon],
+                                profiles: [.spiritForward, .punchy],
                                 styles: [.oldFashioned, .stirred])

@@ -11,7 +11,7 @@ var TheRoastery = Cocktail(cocktailName: "The Roastery",
                            glasswareType: .doubleOld,
                            garnish: [.pirouette, .biscotti],
                            ice: .bigRock,
-                           author: justWnG,
+                           author: Author(person: AuthorNames.tomLagae.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue),
                            spec: TheRoasterySpec,
                            tags: TheRoasteryTags,
                            collection: .williamsAndGraham)

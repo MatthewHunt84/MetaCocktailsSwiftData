@@ -23,6 +23,6 @@ var painKillerWnGSpec  = [OldCocktailIngredient(.juices(.orange), value: 0.75),
                           OldCocktailIngredient(.rums(.plantationBarbados) , value: 1.5)]
 
 
-var painKillerWnGTags   = Tags(profiles: [.fruity, .sweet, .tropical, .refreshing],
+var painKillerWnGTags   = Tags(flavors: [.nutmeg], profiles: [.fruity, .sweet, .tropical, .refreshing],
                                styles: [.shaken, .tiki])
 

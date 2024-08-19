@@ -25,7 +25,7 @@ var beckyWithTheGoodHairSpec  = [OldCocktailIngredient(.brandies(.cognacVSOP), v
                                  OldCocktailIngredient(.liqueurs(.cremeDeCacao), value: 0.75),
                                  OldCocktailIngredient(.otherNonAlc(.eggWhole), value: 1, unit: .whole)]
 
-var beckyWithTheGoodHairTags = Tags(flavors: [.nutmeg],
+var beckyWithTheGoodHairTags = Tags(flavors: [.nutmeg, .mint, .chocolate],
                                     profiles: [.rich, .silky, .savory],
                                     styles: [.flip, .shaken])
 

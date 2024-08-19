@@ -13,15 +13,16 @@ var tiPunchWnG = Cocktail(cocktailName: "Ti' Punch (W&G Version)",
                           ice: .koldDraft,
                           author: Author(place: "Somewhere in Martinique"),
                           spec: tiPunchSpecWnG,
-                          buildOrder: tiPunchBuildOrderWnG,
+                          notes: tiPunchNotesWnG,
                           tags: tiPunchTagsWnG,
                           variation: .tiPunch,
                           collection: .williamsAndGraham)
 
-var tiPunchSpecWnG  =  [OldCocktailIngredient(.syrups(.simple), value: 1, unit: .barSpoon),
+var tiPunchSpecWnG  =  [OldCocktailIngredient(.syrups(.simple), value: 1, unit: .barSpoon, prep: PrepBible.simpleSyrupPrep),
                         OldCocktailIngredient(.rums(.clementBleue), value: 2)]
 
-var tiPunchTagsWnG = Tags( profiles: [.sweet, .spiritForward, .funky],
-                           styles: [.oldFashioned, .stirred])
+var tiPunchTagsWnG = Tags(flavors: [.lime],
+                          profiles: [.sweet, .spiritForward, .funky],
+                          styles: [.oldFashioned, .stirred])
 
-var tiPunchBuildOrderWnG = Build(instructions: [Instruction(step: 1, method: "Think of this like an old-fashioned without the bitters")])
+var tiPunchNotesWnG = "Think of this like an Old Fashioned without the bitters."

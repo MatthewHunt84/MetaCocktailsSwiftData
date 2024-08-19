@@ -20,7 +20,7 @@ var scofflaw = Cocktail(cocktailName: "Scofflaw",
                         titleCocktail: true)
 
 var scofflawSpec  = [OldCocktailIngredient(.juices(.lemon), value: 1, unit: .dashes),
-                     OldCocktailIngredient(.syrups(.grenadine), value: 1, unit: .dashes),
+                     OldCocktailIngredient(.syrups(.grenadine), value: 1, unit: .dashes, prep: PrepBible.grenadine),
                      OldCocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 1),
                      OldCocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 1.5)]
 

@@ -22,7 +22,7 @@ var cellarDoorSpec  = [OldCocktailIngredient(.otherNonAlc(.butter), value: 0.25)
                        OldCocktailIngredient(.liqueurs(.stGeorgeSpicesPear), value: 0.5),
                        OldCocktailIngredient(.fortifiedWines(.oloroso), value: 2)]
 
-var cellarDoorTags = Tags(flavors: [.tea],
+var cellarDoorTags = Tags(flavors: [.tea, .cinnamon],
                           profiles: [.hot, .aromatic, .nutty, .comforting],
                           styles: [.toddy])
 

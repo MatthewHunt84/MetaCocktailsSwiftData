@@ -23,7 +23,8 @@ var maiTaiSpecWnG    = [OldCocktailIngredient(.juices(.lime), value: 1),
                         OldCocktailIngredient(.rums(.smithAndCross), value: 0.5),
                         OldCocktailIngredient(.rums(.plantationBarbados), value: 1.5)]
 
-var maiTaiTagsWnG     = Tags(profiles: [.fruity, .refreshing, .citrusy],
+var maiTaiTagsWnG     = Tags(flavors: [.mint],
+                             profiles: [.fruity, .refreshing, .citrusy],
                              styles: [.sour, .shaken])
 
 

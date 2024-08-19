@@ -12,7 +12,7 @@ var endOfAnEmpire = Cocktail(cocktailName: "End of an Empire",
                              glasswareType: .doubleOld,
                              garnish: [.orangePeel],
                              ice: .bigRock,
-                             author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
+                             author: Author(person: AuthorNames.samJohnson.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue),
                              spec: endOfAnEmpireSpec,
                              tags: endOfAnEmpireTags,
                              collection: .williamsAndGraham)
@@ -22,6 +22,7 @@ let endOfAnEmpireSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.fortifi
                                                OldCocktailIngredient(.whiskies(.balvinieDW), value: 1.5)]
 
 
-let endOfAnEmpireTags = Tags(profiles: [.bittersweet, .spiritForward, .complex, .fruity],
+let endOfAnEmpireTags = Tags(flavors: [.orange],
+                             profiles: [.bittersweet, .spiritForward, .complex, .fruity],
                              styles: [.negroni, .stirred])
 

@@ -13,13 +13,13 @@ var saturnWnG = Cocktail(cocktailName: "Saturn (W&G Version)",
                          ice: .pebbleIce,
                          author: williamsAndGraham,
                          spec: saturnSpecWnG,
-                         buildOrder: saturnBuildOrder,
+                         notes: saturnNotes,
                          tags: saturnTagsWnG,
                          variation: .saturn,
                          collection: .williamsAndGraham)
 
 var saturnSpecWnG  =  [OldCocktailIngredient(.juices(.lemon), value: 0.75),
-                       OldCocktailIngredient(.syrups(.passionfruitSyrup), value: 0.75),
+                       OldCocktailIngredient(.syrups(.passionfruitSyrup), value: 0.75, prep: PrepBible.passionfruitSyrupPrep),
                        OldCocktailIngredient(.syrups(.orgeat), value: 0.25, prep: PrepBible.orgeat),
                        OldCocktailIngredient(.liqueurs(.velvetFalernum), value: 0.25),
                        OldCocktailIngredient(.gins(.fordsGin), value: 1.5)]

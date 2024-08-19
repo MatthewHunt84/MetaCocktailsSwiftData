@@ -12,7 +12,7 @@ var mintJulepWnG = Cocktail(cocktailName: "Mint Julep (W&G Version)",
                             glasswareType: .julep,
                             garnish: [.mintBouquet],
                             ice: .pebbleIce,
-                            author: Author(person: "Old as Fuck."),
+                            author: williamsAndGraham,
                             spec: mintJulepSpecWnG,
                             buildOrder: mintJulepBuild,
                             tags: mintJulepTags,
@@ -20,5 +20,5 @@ var mintJulepWnG = Cocktail(cocktailName: "Mint Julep (W&G Version)",
                             collection: .williamsAndGraham)
 
 let mintJulepSpecWnG: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
-                                              OldCocktailIngredient(.syrups(.simple), value: 0.5),
-                                              OldCocktailIngredient(.whiskies(.fourRosesYellowLabel), value: 2.5)]
+                                                 OldCocktailIngredient(.syrups(.simple), value: 0.5, prep: PrepBible.simpleSyrupPrep),
+                                                 OldCocktailIngredient(.whiskies(.fourRosesYellowLabel), value: 2.5)]

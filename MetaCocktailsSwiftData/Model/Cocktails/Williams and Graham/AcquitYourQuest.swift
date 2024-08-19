@@ -24,5 +24,6 @@ var acquitYourQuestSpec  = [OldCocktailIngredient(.bitters(.peychauds), value: 2
                             OldCocktailIngredient(.brandies(.lairdsBonded), value: 0.5),
                             OldCocktailIngredient(.brandies(.boulardCalvados), value: 1.5)]
 
-var acquitYourQuestTags = Tags(profiles: [.bittersweet, .complex, .punchy, .fruity],
+var acquitYourQuestTags = Tags(flavors: [.orange],
+                               profiles: [.bittersweet, .complex, .punchy, .fruity],
                                styles: [.manhattan, .stirred])

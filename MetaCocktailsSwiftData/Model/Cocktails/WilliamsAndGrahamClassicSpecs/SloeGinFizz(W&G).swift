@@ -19,7 +19,7 @@ var sloeGinFizzWnG  = Cocktail(cocktailName: "Sloe Gin Fizz (W&G Version)",
                                collection: .williamsAndGraham)
 
 var sloeGinFizzSpecWnG  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
-                           OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                           OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                            OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
                            OldCocktailIngredient(.liqueurs(.plymouthSloeGin), value: 1.5),
                            OldCocktailIngredient(.soda(.sparklingWater), value: 2)]

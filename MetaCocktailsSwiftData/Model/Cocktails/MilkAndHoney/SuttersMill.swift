@@ -26,6 +26,7 @@ var suttersMillSpec = [OldCocktailIngredient(.fruit(.pineapple), value: 1, unit:
                        OldCocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup),
                        OldCocktailIngredient(.whiskies(.bourbonAny), value: 2)]
 
-var suttersMillTags = Tags(profiles: [.citrusy, .refreshing, .fruity],
+var suttersMillTags = Tags(flavors: [.cinnamon],
+                           profiles: [.citrusy, .refreshing, .fruity],
                            styles: [.sour, .shaken])
 

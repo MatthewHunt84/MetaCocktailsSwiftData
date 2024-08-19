@@ -13,7 +13,8 @@ var chocolateCocktail  = Cocktail(cocktailName: "Chocolate Cocktail",
                                   author:Author(person: AuthorNames.harryCraddock.rawValue, place: AuthorPlaces.savoy.rawValue, year: "1930"),
                                   spec: chocolateCocktailSpec,
                                   buildOrder: eggWhiteInstructionsNoBitters,
-                                  tags: chocolateCocktailTags)
+                                  tags: chocolateCocktailTags,
+                                  collection: .originals)
 
 var chocolateCocktailSpec  = [OldCocktailIngredient(.otherNonAlc(.eggWhole), value: 1),
                               OldCocktailIngredient(.liqueurs(.cremeDeCacao), value: 0.75),

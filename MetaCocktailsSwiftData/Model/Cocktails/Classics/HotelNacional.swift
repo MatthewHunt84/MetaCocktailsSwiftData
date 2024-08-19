@@ -17,7 +17,7 @@ var hotelNacional = Cocktail(cocktailName: "Hotel Nacional",
                              variation: .hotelNacional,
                              collection: .originals)
 
-var hotelNacionalSpec = [OldCocktailIngredient(.syrups(.simple), value: 0.5),
+var hotelNacionalSpec = [OldCocktailIngredient(.syrups(.simple), value: 0.5, prep: PrepBible.simpleSyrupPrep),
                          OldCocktailIngredient(.juices(.lime), value: 0.5),
                          OldCocktailIngredient(.juices(.pineappleJuice), value: 1),
                          OldCocktailIngredient(.liqueurs(.apricotLiqueur), value: 0.25),

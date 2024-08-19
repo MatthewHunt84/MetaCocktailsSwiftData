@@ -20,6 +20,7 @@ var princeEdwardSpec     =  [OldCocktailIngredient(.bitters(.angosturaBitters), 
                              OldCocktailIngredient(.fortifiedWines(.lilletBlanc), value: 0.75),
                              OldCocktailIngredient(.whiskies(.compassBoxOrchard), value: 1.5)]
 
-var princeEdwardTags    = Tags(profiles: [.spiritForward],
+var princeEdwardTags    = Tags(flavors: [.orange],
+                               profiles: [.spiritForward],
                                styles: [.martini, .stirred])
 

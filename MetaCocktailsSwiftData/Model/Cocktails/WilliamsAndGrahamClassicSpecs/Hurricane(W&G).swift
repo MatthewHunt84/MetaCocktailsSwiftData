@@ -20,9 +20,9 @@ var hurricaneWnG = Cocktail(cocktailName: "Hurricane (W&G Version)",
 
 let hurricaneSpecWnG: [OldCocktailIngredient] =  [OldCocktailIngredient(.juices(.lime), value: 1),
                                                OldCocktailIngredient(.juices(.orange), value: 1),
-                                               OldCocktailIngredient(.syrups(.grenadine), value: 1, unit: .barSpoon),
-                                               OldCocktailIngredient(.syrups(.simple), value: 0.5),
-                                               OldCocktailIngredient(.syrups(.passionfruitSyrup), value: 0.5),
+                                               OldCocktailIngredient(.syrups(.grenadine), value: 1, unit: .barSpoon, prep: PrepBible.grenadine),
+                                               OldCocktailIngredient(.syrups(.simple), value: 0.5, prep: PrepBible.simpleSyrupPrep),
+                                                  OldCocktailIngredient(.syrups(.passionfruitSyrup), value: 0.5, prep: PrepBible.passionfruitSyrupPrep),
                                                OldCocktailIngredient(.rums(.plantation3Star), value: 1.5),
                                                OldCocktailIngredient(.rums(.appletonEstateSignatureBlend), value: 1)]
 

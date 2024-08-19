@@ -20,7 +20,7 @@ var tritterCollins  = Cocktail(cocktailName: "Tritter Collins",
 
 var tritterCollinsSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
                            OldCocktailIngredient(.juices(.grapefruit), value: 1),
-                           OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                           OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                            OldCocktailIngredient(.otherAlcohol(.absinthe), value: 0.25),
                            OldCocktailIngredient(.gins(.ginAny), value: 2),
                            OldCocktailIngredient(.soda(.sodaWater) , value: 0.5)]

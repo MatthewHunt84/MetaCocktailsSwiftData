@@ -25,6 +25,7 @@ let followTheCompassSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.bitt
                                                   OldCocktailIngredient(.whiskies(.compassBoxOakCross), value: 1.25)]
 
 
-let followTheCompassTags = Tags(profiles: [.floral, .spiritForward, .herbal],
+let followTheCompassTags = Tags(flavors: [.grapefruit],
+                                profiles: [.floral, .spiritForward, .herbal],
                                 styles: [.manhattan, .stirred])
 

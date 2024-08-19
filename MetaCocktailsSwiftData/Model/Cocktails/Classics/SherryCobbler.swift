@@ -14,6 +14,7 @@ var sherryCobbler = Cocktail(cocktailName: "Sherry Cobbler",
                              ice: .pebbleIce,
                              spec: sherryCobblerSpec,
                              buildOrder: sherryCobblerBuild,
+                             notes: sherryCobblerNotes,
                              tags: sherryCobblerTags,
                              variation: .sherryCobbler,
                              collection: .originals,
@@ -27,9 +28,11 @@ let sherryCobblerSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.fruit(.
 
 let sherryCobblerBuild = Build(instructions: [Instruction(step: 1, method: "Muddle 2 orange moons and then add your lemon peel."),
                                               Instruction(step: 2, method: "Add the rest of your ingredients and shake with cubed ice."),
-                                              Instruction(step: 3, method: "Double strain over pebble ice and then garnish."),
-                                              Instruction(step: 3, method: "NOTE: This cocktail is one of those 'too old to tell' cocktails, so it's up to interpretation. It used to be a muddle stuff and dirty dump situation.")])
+                                              Instruction(step: 3, method: "Double strain over pebble ice and then garnish.")])
 
-let sherryCobblerTags = Tags(profiles: [.refreshing, .fruity, .restorative],
+let sherryCobblerTags = Tags(flavors: [.mint],
+                             profiles: [.refreshing, .fruity, .restorative],
                              styles: [.sour, .shaken])
 
+
+let sherryCobblerNotes = "This cocktail is one of those 'too old to tell' cocktails, so it's up to interpretation. It used to be a muddle stuff and dirty dump situation."

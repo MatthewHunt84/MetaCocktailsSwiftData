@@ -17,12 +17,13 @@ var ramonaFlowers = Cocktail(cocktailName: "Ramona Flowers",
                              tags: ramonaFlowersTags,
                              collection: .williamsAndGraham)
 
-let ramonaFlowersSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.syrups(.simple), value: 0.5),
-                                               OldCocktailIngredient(.juices(.lime), value: 0.5),
-                                               OldCocktailIngredient(.liqueurs(.leopoldCherry), value: 0.25),
-                                               OldCocktailIngredient(.gins(.leopoldNavy), value: 1.5),
-                                               OldCocktailIngredient(.wines(.junmeiSake), value: 2)]
+let ramonaFlowersSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.syrups(.simple), value: 0.5, prep: PrepBible.simpleSyrupPrep),
+                                                  OldCocktailIngredient(.juices(.lime), value: 0.5),
+                                                  OldCocktailIngredient(.liqueurs(.leopoldCherry), value: 0.25),
+                                                  OldCocktailIngredient(.gins(.leopoldNavy), value: 1.5),
+                                                  OldCocktailIngredient(.wines(.junmeiSake), value: 2)]
 
 
-let ramonaFlowersTags = Tags(profiles: [.herbal, .refreshing, .floral, .light],
+let ramonaFlowersTags = Tags(flavors: [.lime],
+                             profiles: [.herbal, .refreshing, .floral, .light],
                              styles: [.sour, .shaken])

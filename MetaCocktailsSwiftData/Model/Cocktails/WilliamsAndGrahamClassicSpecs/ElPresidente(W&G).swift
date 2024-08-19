@@ -20,5 +20,5 @@ var elPresidenteWnG  = Cocktail(cocktailName: "El Presidente (W&G Version)",
 var elPresidenteSpecWnG  = [OldCocktailIngredient(.rums(.plantation3Star), value: 2),
                             OldCocktailIngredient(.fortifiedWines(.dolinDry), value: 1),
                             OldCocktailIngredient(.liqueurs(.orangeCuracao) , value: 1, unit: .barSpoon),
-                            OldCocktailIngredient(.syrups(.grenadine), value: 1, unit: .barSpoon)]
+                            OldCocktailIngredient(.syrups(.grenadine), value: 1, unit: .barSpoon, prep: PrepBible.grenadine)]
 

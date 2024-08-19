@@ -23,7 +23,7 @@ var queensParkLightMnH = Cocktail(cocktailName: "Queen's Park Swizzle(Light)",
 
 var queensParkLightMnHSpec = [OldCocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
                               OldCocktailIngredient(.juices(.lime), value: 1),
-                              OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                              OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                               OldCocktailIngredient(.rums(.rumWhite), value: 2),
                               OldCocktailIngredient(.bitters(.peychauds), value: 5, unit: .dashes) ]
 

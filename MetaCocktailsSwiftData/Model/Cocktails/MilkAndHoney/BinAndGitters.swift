@@ -26,7 +26,7 @@ var binAndGitters = Cocktail(cocktailName: "Bin & Gitters",
 
 let binAndGittersSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
                                                   OldCocktailIngredient(.juices(.lime), value: 1),
-                                                  OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                                                  OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                                                   OldCocktailIngredient(.gins(.ginAny), value: 2)]
 
 let binAndGittersTags = Tags(profiles: [.refreshing, .light],

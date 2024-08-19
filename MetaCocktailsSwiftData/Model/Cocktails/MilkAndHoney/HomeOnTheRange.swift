@@ -24,6 +24,7 @@ var homeOnTheRangeSpecMnH     =  [OldCocktailIngredient(.bitters(.angosturaBitte
                                   OldCocktailIngredient(.liqueurs(.cointreau), value: 0.25),
                                   OldCocktailIngredient(.whiskies(.bourbonAny), value: 2)]
 
-var homeOnTheRangeTagsMnH     = Tags(profiles: [.spiritForward, .bittersweet, .fruity],
+var homeOnTheRangeTagsMnH     = Tags(flavors: [.orange, .lemon],
+                                     profiles: [.spiritForward, .bittersweet, .fruity],
                                      styles: [.manhattan, .stirred])
 

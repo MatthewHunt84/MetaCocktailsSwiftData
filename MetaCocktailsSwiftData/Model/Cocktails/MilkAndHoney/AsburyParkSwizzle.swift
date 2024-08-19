@@ -34,8 +34,8 @@ let asburyParkSwizzleSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.her
 let asburyParkSwizzleTags = Tags(profiles: [.herbal, .refreshing, .light],
                                  styles: [.sour, .shaken])
 
-var asburyParkSwizzleBuild = Build(instructions: [Instruction(step: 1, method: "Combine 2 mint sprigs, lemon juice, honey syrup, and apple liqueur in a cocktail shaker and gently muddle."),
+var asburyParkSwizzleBuild = Build(instructions: [Instruction(step: 1, method: "Combine two mint sprigs, lemon juice, honey syrup, and apple liqueur in a cocktail shaker and gently muddle."),
                                                   Instruction(step: 2, method: "Add the applejack and mineral saline, then swirl to incorporate."),
-                                                  Instruction(step: 3, method: "Pour the cocktail into a Collins glass and add crushed ice to come just under the rim of the glass."),
+                                                  Instruction(step: 3, method: "Pour the cocktail into a collins glass and add crushed ice to come just under the rim of the glass."),
                                                   Instruction(step: 4, method: "Add both bitters and lightly swizzle the drops into a red layer on top of the ice."),
                                                   Instruction(step: 5, method: "Top with more ice, shaping it into a cone, and garnish with a mint sprig.")])

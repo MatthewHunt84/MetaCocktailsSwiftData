@@ -22,7 +22,7 @@ var zombie = Cocktail(cocktailName: "Zombie",
 
 let zombieSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.juices(.lime), value: 0.75),
                                         OldCocktailIngredient(.juices(.donsMix), value: 0.5),
-                                        OldCocktailIngredient(.syrups(.grenadine), value: 1, unit: .teaspoon),
+                                           OldCocktailIngredient(.syrups(.grenadine), value: 1, unit: .teaspoon, prep: PrepBible.grenadine),
                                         OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
                                         OldCocktailIngredient(.liqueurs(.falernum), value: 0.5),
                                         OldCocktailIngredient(.otherAlcohol(.pernod), value: 6, unit: .drops),
@@ -31,6 +31,7 @@ let zombieSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.juices(.lime),
                                         OldCocktailIngredient(.rums(.lemonHeart151), value: 1)]
 
 
-let zombieTags = Tags(profiles: [.complex, .fruity, .punchy],
+let zombieTags = Tags(flavors: [.mint],
+                      profiles: [.complex, .fruity, .punchy],
                       styles: [.sour, .shaken, .blended, .tiki])
 

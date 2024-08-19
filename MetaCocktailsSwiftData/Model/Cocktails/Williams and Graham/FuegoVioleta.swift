@@ -10,7 +10,7 @@ import Foundation
 var fuegoVioleta = Cocktail(cocktailName: "Fuego Violeta",
                             glasswareType: .stemmedGlassware,
                             garnish: [.lemonPeel],
-                            author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
+                            author: Author(person: AuthorNames.jasonPatz.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue),
                             spec: fuegoVioletaSpec,
                             buildOrder: nil,
                             tags: fuegoVioletaTags,
@@ -21,6 +21,7 @@ var fuegoVioletaSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.75),
                          OldCocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.75),
                          OldCocktailIngredient(.liqueurs(.greenChartreuse), value: 0.75)]
 
-var fuegoVioletaTags = Tags(profiles: [.light, .floral, .herbal, .fruity],
+var fuegoVioletaTags = Tags(flavors: [.lemon],
+                            profiles: [.light, .floral, .herbal, .fruity],
                             styles: [.sour, .shaken])
 

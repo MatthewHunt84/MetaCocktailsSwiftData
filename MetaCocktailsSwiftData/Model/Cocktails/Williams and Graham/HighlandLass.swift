@@ -11,7 +11,7 @@ import Foundation
 var highlandLass = Cocktail(cocktailName: "Highland Lass",
                             imageAsset: nil,
                             glasswareType: .doubleOld,
-                            garnish: [.dehydratedGrapefruitSlice],
+                            garnish: [.lemonPeel, .mintSprig],
                             ice: .bigRock,
                             author: Author(person: "Kenny Remster", place: AuthorPlaces.williamsAndGraham.rawValue),
                             spec: highlandLassSpec,

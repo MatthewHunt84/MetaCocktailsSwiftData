@@ -13,7 +13,7 @@ var kittenWithAWhip = Cocktail(cocktailName: "Kitten with a Whip",
                                glasswareType: .martini,
                                garnish: [.maraschinoCherry],
                                ice: nil,
-                               author: justWnG,
+                               author: Author(person: AuthorNames.christinaAndrews.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue),
                                spec: kittenWithAWhipSpec,
                                tags: kittenWithAWhipTags,
                                collection: .williamsAndGraham)

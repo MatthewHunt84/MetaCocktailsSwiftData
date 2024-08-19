@@ -22,7 +22,7 @@ var tarzanCocktail  = Cocktail(cocktailName: "Tarzan Cocktail",
 
 var tarzanCocktailSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.5),
                          OldCocktailIngredient(.soda(.sodaWater), value: 1.5),
-                         OldCocktailIngredient(.syrups(.simple), value: 0.5),
+                         OldCocktailIngredient(.syrups(.simple), value: 0.5, prep: PrepBible.simpleSyrupPrep),
                          OldCocktailIngredient(.juices(.pineappleJuice), value: 1.5),
                          OldCocktailIngredient(.amari(.campari), value: 1),
                          OldCocktailIngredient(.gins(.ginAny) , value: 1)]

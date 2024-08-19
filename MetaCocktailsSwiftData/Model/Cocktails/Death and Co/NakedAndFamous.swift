@@ -14,8 +14,8 @@ var nakedAndFamous = Cocktail(cocktailName: "Naked and Famous",
                               author: Author(person: AuthorNames.joaquinSimo.rawValue,
                                              place: AuthorPlaces.deathAndCo.rawValue,
                                              year: "2013"),
-                              spec: cropTopSpec,
-                              tags: cropTopTags,
+                              spec: nakedAndFamousSpec,
+                              tags: nakedAndFamousTags,
                               collection: .deathAndCo)
 
 var nakedAndFamousSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.75),

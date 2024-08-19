@@ -24,7 +24,7 @@ var queensParkMnH = Cocktail(cocktailName: "Queen's Park Swizzle(Dark)",
 var queensParkMnHSpec = [OldCocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
                          OldCocktailIngredient(.otherNonAlc(.demeraraSugarCube), value: 1, unit: .gentlyMuddled),
                          OldCocktailIngredient(.juices(.lime), value: 1),
-                         OldCocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.75),
+                         OldCocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.75, prep: PrepBible.demSyrupPrep),
                          OldCocktailIngredient(.rums(.rumDemerara), value: 2),
                          OldCocktailIngredient(.bitters(.angosturaBitters), value: 5, unit: .dashes) ]
 

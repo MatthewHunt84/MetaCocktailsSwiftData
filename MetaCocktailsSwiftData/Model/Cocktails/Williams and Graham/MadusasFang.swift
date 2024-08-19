@@ -12,17 +12,18 @@ var madusasFang = Cocktail(cocktailName: "Madusa's Fang",
                            glasswareType: .doubleOld,
                            garnish: [.mintSprig, .pineappleFronds],
                            ice: .pebbleIce,
-                           author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
+                           author: Author(person: AuthorNames.whitneyAllen.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue),
                            spec: madusasFangSpec,
                            tags: madusasFangTags,
                            collection: .williamsAndGraham)
 
 let madusasFangSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
-                                             OldCocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBible.orgeat),
-                                             OldCocktailIngredient(.liqueurs(.dryCuracao), value: 0.5),
-                                             OldCocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.5),
-                                             OldCocktailIngredient(.otherAlcohol(.stGeorgeAbsinthe), value: 1)]
+                                                OldCocktailIngredient(.syrups(.orgeat), value: 0.5, prep: PrepBible.orgeat),
+                                                OldCocktailIngredient(.liqueurs(.dryCuracao), value: 0.5),
+                                                OldCocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.5),
+                                                OldCocktailIngredient(.otherAlcohol(.stGeorgeAbsinthe), value: 1)]
 
 
-let madusasFangTags = Tags(profiles: [.herbal, .nutty, .fruity, .refreshing, .citrusy],
+let madusasFangTags = Tags(flavors: [.mint],
+                           profiles: [.herbal, .nutty, .fruity, .refreshing, .citrusy],
                            styles: [.sour, .shaken, .tiki])

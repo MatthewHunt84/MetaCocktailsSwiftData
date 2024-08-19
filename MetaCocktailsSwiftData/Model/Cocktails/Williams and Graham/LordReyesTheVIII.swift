@@ -11,7 +11,7 @@ var lordReyesTheVIII  =  Cocktail(cocktailName: "Lord Reyes the VIII ",
                                   glasswareType: .doubleOld,
                                   garnish: [.orangePeel],
                                   ice: .bigRock,
-                                  author: justWnG,
+                                  author: Author(person: AuthorNames.nickTouch.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue),
                                   spec: elOchoRosadoSpec,
                                   tags: elOchoRosadoTags,
                                   collection: .williamsAndGraham)
@@ -22,5 +22,6 @@ var lordReyesTheVIIISpec = [OldCocktailIngredient(.bitters(.angosturaBitters), v
                             OldCocktailIngredient(.liqueurs(.anchoRayesAncho), value: 0.75),
                             OldCocktailIngredient(.agaves(.tequilaOchoBlanco), value: 1)]
 
-var lordReyesTheVIIITags = Tags(profiles: [.complex, .spicy, .punchy],
+var lordReyesTheVIIITags = Tags(flavors: [.orange],
+                                profiles: [.complex, .spicy, .punchy],
                                 styles: [.stirred])

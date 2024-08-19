@@ -12,7 +12,7 @@ var bijouWnG = Cocktail(cocktailName: "Bijou (W&G Version)",
                         garnish: [.orangePeel],
                         author: williamsAndGraham,
                         spec: bijouWnGSpec,
-                        tags: bijouTags,
+                        tags: bijouTagsWnG,
                         variation: .bijou,
                         collection: .williamsAndGraham)
 
@@ -20,3 +20,7 @@ var bijouWnGSpec     =  [OldCocktailIngredient(.bitters(.orangeBitters), value: 
                          OldCocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),
                          OldCocktailIngredient(.liqueurs(.greenChartreuse), value: 1),
                          OldCocktailIngredient(.gins(.fordsGin), value: 1)]
+
+var bijouTagsWnG     = Tags(flavors: [.orange],
+                            profiles: [.spiritForward, .complex,  .rich],
+                            styles: [.martini, .stirred])

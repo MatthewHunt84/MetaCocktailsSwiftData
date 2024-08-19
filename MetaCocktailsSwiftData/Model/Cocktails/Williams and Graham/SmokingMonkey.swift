@@ -16,6 +16,7 @@ var smokingMonkey = Cocktail(cocktailName: "Smoking Monkey",
                                            place: AuthorPlaces.williamsAndGraham.rawValue, year: "2018"),
                              spec: smokingMonkeySpec,
                              buildOrder: smokingMonkeyBuild,
+                             notes: smokingMonkeyNotes,
                              tags: smokingMonkeyTags,
                              collection: .williamsAndGraham)
 
@@ -34,6 +35,6 @@ let smokingMonkeyTags = Tags(profiles: [.herbal, .refreshing, .complex, .silky],
 let smokingMonkeyBuild =  Build(instructions: [Instruction(step: 1, method: "Add all ingredients except the biters and dry shake."),
                                                Instruction(step: 2, method: "Shake with ice."),
                                                Instruction(step: 3, method: "Double strain the shaken cocktail into a stemmed glassware."),
-                                               Instruction(step: 4, method: "Decorate with a design of Angostura and Peychaud's bitters."),
-                                               Instruction(step: 5, method: "The original cocktail had a rice paper cut-out of a smoking monkey where the bitters were the smoke design.")])
+                                               Instruction(step: 4, method: "Decorate with a design of Angostura and Peychaud's bitters.")])
 
+let smokingMonkeyNotes = "The original cocktail had a rice paper cut-out of a smoking monkey where the bitters were the smoke design."

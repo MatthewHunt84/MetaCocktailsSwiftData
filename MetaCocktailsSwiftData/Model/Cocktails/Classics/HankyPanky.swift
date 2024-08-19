@@ -23,6 +23,7 @@ var hankyPankySpec     =  [OldCocktailIngredient(.amari(.fernetBranca), value: 2
                            OldCocktailIngredient(.gins(.ginLondonDry), value: 1.5),
                            OldCocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1.5)]
 
-var hankyPankyTags     = Tags(profiles: [.spiritForward, .complex, .bittersweet],
+var hankyPankyTags     = Tags(flavors: [.orange],
+                              profiles: [.spiritForward, .complex, .bittersweet],
                               styles: [.martini, .stirred])
 
