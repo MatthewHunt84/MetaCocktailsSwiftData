@@ -242,7 +242,7 @@ import Observation
 //                                                         "Lord Reyes the VIII ": [lordReyesTheVIII],
 //                                                         "Lord Touchingtons Delight": [lordTouchingtonsDelight],
 //                                                         "Low Ball": [lowBall],
-//                                                         "Madusa's Fang": [madusasFang],
+//                                                         "Madusa's Fang": [medusasFang],
 //                                                         "Midnight In Michoacan": [midnightInMichoacan],
 //                                                         "Money Penny": [moneyPenny],
 //                                                         "Night Vision": [nightVision],
