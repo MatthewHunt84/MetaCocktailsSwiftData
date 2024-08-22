@@ -34,7 +34,7 @@ struct CocktailListView: View {
                     .brandSecondaryBlue, .brandSecondaryBlue, .brandSecondaryBlue
                 ]).ignoresSafeArea()
                     .onAppear{
-                        withAnimation(.easeInOut(duration: 10).repeatForever(autoreverses: true)) {
+                        withAnimation(.easeInOut(duration: 3)) {
                             backgroundIsActive.toggle()
                         }
                     }
