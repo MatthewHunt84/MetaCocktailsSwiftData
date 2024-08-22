@@ -14,7 +14,7 @@ struct SelectionTagView: View {
         Text(viewModel.ingredientName)
             .font(.callout)
             .fontWeight(.semibold)
-            .foregroundStyle(.secondary)
+            .foregroundStyle(.white)
             .frame(height: 15)
     }
 }

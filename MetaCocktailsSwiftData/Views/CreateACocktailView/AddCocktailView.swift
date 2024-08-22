@@ -20,59 +20,62 @@ struct AddCocktailView: View {
             ZStack {
                 
                 MeshGradients.blackGreyBackground.ignoresSafeArea()
-                
-                Form {
-                    Section(header: Text("Name")) {
-                        TextField("Cocktail Name", text: $viewModel.cocktailName)
-                            .focused($yearKeyboardFocused)
-                    }
-//                    .listRowBackground(sectionBackground)
-                    
-                    AddedIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
-                    
-                    Section(header: Text("Extras")) {
-                        GlassPickerButton(viewModel: viewModel)
-                        IcePicker(ice: $viewModel.ice)
-                        VariationPicker(variation: $viewModel.variation)
-                    }
-//                    .listRowBackground(sectionBackground)
-                    
-                    GarnishPicker(viewModel: viewModel)
-                    Section(header: Text("Credit (optional)")) {
-                        TextField("Author", text: $viewModel.authorName)
-                            .focused($yearKeyboardFocused)
-                        TextField("Origin", text: $viewModel.authorPlace)
-                            .focused($yearKeyboardFocused)
-                        TextField("Year", text: $viewModel.authorYear)
-                            .keyboardType(.numberPad)
-                            .focused($yearKeyboardFocused)
-                    }
-//                    .listRowBackground(sectionBackground)
-                    
-                    Section(header: Text("Build steps (optional)")) {
-                        AddBuildStepView(viewModel: viewModel)
-                    }
-//                    .listRowBackground(sectionBackground)
-                    
-                    Button{
-                        viewModel.clearData()
-                    } label: {
-                        
-                        HStack {
-                            Image(systemName: "arrow.triangle.2.circlepath")
-                                .font(.footnote).bold()
-                            Text("Reset to Defaults")
-                                .font(.footnote).bold()
+                VStack {
+                    Text("Add a Cocktail")
+                        .font(.custom("AvenirNext-Regular", size: 24)).bold()
+                    Form {
+                        Section(header: Text("Name")) {
+                            TextField("Cocktail Name", text: $viewModel.cocktailName)
+                                .focused($yearKeyboardFocused)
                         }
-                        .tint(Color.blueTint)
-                        .padding()
+                        //                    .listRowBackground(sectionBackground)
+                        
+                        AddedIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
+                        
+                        Section(header: Text("Extras")) {
+                            GlassPickerButton(viewModel: viewModel)
+                            IcePicker(ice: $viewModel.ice)
+                            VariationPicker(variation: $viewModel.variation)
+                        }
+                        //                    .listRowBackground(sectionBackground)
+                        
+                        GarnishPicker(viewModel: viewModel)
+                        Section(header: Text("Credit (optional)")) {
+                            TextField("Author", text: $viewModel.authorName)
+                                .focused($yearKeyboardFocused)
+                            TextField("Origin", text: $viewModel.authorPlace)
+                                .focused($yearKeyboardFocused)
+                            TextField("Year", text: $viewModel.authorYear)
+                                .keyboardType(.numberPad)
+                                .focused($yearKeyboardFocused)
+                        }
+                        //                    .listRowBackground(sectionBackground)
+                        
+                        Section(header: Text("Build steps (optional)")) {
+                            AddBuildStepView(viewModel: viewModel)
+                        }
+                        //                    .listRowBackground(sectionBackground)
+                        
+                        Button{
+                            viewModel.clearData()
+                        } label: {
+                            
+                            HStack {
+                                Image(systemName: "arrow.triangle.2.circlepath")
+                                    .font(.footnote).bold()
+                                Text("Reset to Defaults")
+                                    .font(.footnote).bold()
+                            }
+                            .tint(Color.blueTint)
+                            .padding()
+                        }
+                        .frame(width: 380, height: 40,  alignment: .center)
+                        
+                        
                     }
-                    .frame(width: 380, height: 40,  alignment: .center)
-                    
-                    
+                    .scrollContentBackground(.hidden)
+                    .background(Color.clear)
                 }
-                .scrollContentBackground(.hidden)
-                .background(Color.clear)
                 .toolbar {
                     ToolbarItem(placement: .bottomBar) {
                         Button {
@@ -113,8 +116,8 @@ struct AddCocktailView: View {
                     
                 }
             }
-            .navigationBarTitleDisplayMode(.inline)
-            .goldHeader(viewModel.cocktailName == "" ? viewModel.defaultName : viewModel.cocktailName)
+//            .navigationBarTitleDisplayMode(.inline)
+//            .goldHeader(viewModel.cocktailName == "" ? viewModel.defaultName : viewModel.cocktailName)
             .navigationDestination(isPresented: $viewModel.addExistingGarnishViewIsActive) {
                 GarnishDetailView(viewModel: viewModel)
                     .navigationBarBackButtonHidden(true)

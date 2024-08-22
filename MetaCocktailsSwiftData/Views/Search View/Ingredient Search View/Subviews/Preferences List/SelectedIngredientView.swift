@@ -32,7 +32,7 @@ struct SelectedIngredientView: View {
                     
                     Image(systemName: isPreferred ? "checkmark" : "xmark")
                         .fontWeight(.semibold)
-                        .foregroundStyle(isPreferred ? MeshGradients.goldTitle : MeshGradients.redAndGold)
+                        .foregroundStyle(isPreferred ? .brandPrimaryGreen : .brandPrimaryRed)
                     
                     ForEach(selections, id: \.self) { selectedIngredient in
                         SelectionTagView(viewModel: SelectionTagViewModel(name: selectedIngredient, isPreferred: isPreferred))
@@ -49,11 +49,11 @@ struct SelectedIngredientView: View {
                     
                     Text("(tap to remove)")
                         .font(.subheadline)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(.brandPrimaryGold)
                         .opacity(isVisible ? 1 : 0)
                         .animation(.easeOut(duration: 0.75), value: isVisible)
                         .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                                 isVisible = false
                             }
                         }

@@ -10,7 +10,7 @@ import SwiftData
 import UIKit
 
 struct CocktailListView: View {
-    
+    @State private var backgroundIsActive: Bool = false
     @Bindable var viewModel = CocktailListViewModel()
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
     @Query(filter: #Predicate { $0.collectionName.contains("Williams")}, sort: \Cocktail.cocktailName) var williamsAndGrahamCocktials: [Cocktail]
@@ -24,10 +24,25 @@ struct CocktailListView: View {
             
             ZStack {
                 
-                MeshGradients.blackGreyBackground.ignoresSafeArea()
+                MeshGradient(width: 3, height: 3, points: [
+                    [0, 0], [0.5, 0], [1, 0],
+                    [ 0 , 0.5], [0.5, 0.5], [1, 0.5],
+                    [0 , 0.3], [backgroundIsActive ? 0.35 : 0.49 , backgroundIsActive ? 0.6 : 0.62], [1 , 1]
+                ], colors: [
+                    .black, .black,.black,
+                    .black, .black, .black,
+                    .brandSecondaryBlue, .brandSecondaryBlue, .brandSecondaryBlue
+                ]).ignoresSafeArea()
+                    .onAppear{
+                        withAnimation(.easeInOut(duration: 10).repeatForever(autoreverses: true)) {
+                            backgroundIsActive.toggle()
+                        }
+                    }
                 
                 VStack {
-                    
+                    Text("Cocktail List")
+                        .font(.custom("AvenirNext-Regular", size: 24)).bold()
+                       
                     CocktailCollectionPicker(viewModel: viewModel, cocktailCollection: $viewModel.cocktailCollection)
                     
                     GeometryReader { listGeo in
@@ -67,11 +82,15 @@ struct CocktailListView: View {
                                                             .resizable()
                                                             .frame(width: 15, height: 15, alignment: .center)
                                                             .tint(.white)
+                                                           // .foregroundStyle(backgroundIsActive ? .white : .brandSecondaryBlue)
+                                                       
                                                     }
                                                 } else {
                                                     Text("\(viewModel.cocktailListAlphabet[i])")
                                                         .font(.headline).bold()
                                                         .frame(width: 17, height: 13, alignment: .center)
+                                                        .tint(.white)
+                                                        //.foregroundStyle(backgroundIsActive ? .white : .brandSecondaryBlue)
                                                 }
                                                 
                                             })
@@ -95,8 +114,9 @@ struct CocktailListView: View {
                     //zIndex is how the ZStack orders views. Without setting the zIndex to anything but 0, the animation won't transition out of view on the top of the stack.
                 }
             }
+            
             .navigationBarTitleDisplayMode(.inline)
-            .goldHeader("All Cocktails")
+            //.goldHeader("All Cocktails")
         }
     }
 }

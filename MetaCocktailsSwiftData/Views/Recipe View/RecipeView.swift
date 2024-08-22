@@ -11,30 +11,46 @@ struct RecipeView: View {
     @Bindable var viewModel: RecipeViewModel
     @State private var prepItems: [Ingredient] = []
     @Namespace var topID
+    @State private var backgroundIsActive: Bool = false
     
     var body: some View {
-        
-        GeometryReader { geo in
-            
-            ScrollViewReader { scrollReader in
+        ZStack{
+            MeshGradient(width: 3, height: 3, points: [
+                [0, 0], [0.5, 0], [1, 0],
+                [ 0 , 0.5], [0.5, 0.5], [1, 0.5],
+                [0 , 0.3], [backgroundIsActive ? 0.35 : 0.49 , backgroundIsActive ? 0.6 : 0.62], [1 , 1]
+            ], colors: [
+                .black, .black,.black,
+                .black, .black, .black,
+                .brandSecondaryBlue, .brandSecondaryBlue, .brandSecondaryBlue
+            ]).ignoresSafeArea()
+                .onAppear{
+                    withAnimation(.easeInOut(duration: 10).repeatForever(autoreverses: true)) {
+                        backgroundIsActive.toggle()
+                    }
+                }
+            GeometryReader { geo in
                 
-                ScrollView {
+                ScrollViewReader { scrollReader in
                     
-                    RecipeFlipCardView(viewModel: viewModel, geo: geo, topID: topID, scrollReader: scrollReader)
-                }
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .principal) {
-                        RecipeTitleView(cocktail: viewModel.cocktail)
+                    ScrollView {
+                        
+                        RecipeFlipCardView(viewModel: viewModel, geo: geo, topID: topID, scrollReader: scrollReader)
                     }
-                    ToolbarItem(placement: .topBarLeading) {
-                        BackButton()
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .principal) {
+                            RecipeTitleView(cocktail: viewModel.cocktail)
+                        }
+                        ToolbarItem(placement: .topBarLeading) {
+                            BackButton()
+                        }
                     }
-                }
-               
-                .task {
-                    prepItems = viewModel.findPrepItems()
                     
+                    .task {
+                        prepItems = viewModel.findPrepItems()
+                        
+                    }
                 }
             }
         }
@@ -148,13 +164,13 @@ private struct BorderTop: View {
                 Image(.backgroundTop)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(.darkGrey)
+                    .foregroundStyle(.clear)
                 
                 
                 Image(.borderTop)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(color)
                     .background(.clear)
             }
         }
@@ -173,12 +189,12 @@ private struct BorderSides: View {
                 ZStack {
                     Image(.backgroundSides)
                         .resizable()
-                        .foregroundStyle(.darkGrey)
+                        .foregroundStyle(.clear)
                         .frame(height: geo.size.height * 0.8)
                     
                     Image(.borderSides)
                         .resizable()
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(color)
                         .background(.clear)
                     
                         .frame(height: geo.size.height * 0.8)
@@ -257,11 +273,9 @@ struct RecipeTitleView: View {
             RecipeTitleViewWithCollection(cocktail: cocktail)
         } else {
             Text(cocktail.cocktailName)
-                .fontDesign(.serif)
-                .font(.largeTitle)
+                .font(.custom("AvenirNext-Regular", size: 30))
                 .lineLimit(1)
                 .minimumScaleFactor(0.4)
-                .foregroundStyle(MeshGradients.goldTitle)
         }
     }
 }
@@ -271,11 +285,9 @@ struct RecipeTitleViewWithCollection: View {
     var body: some View {
         HStack {
             Text(cocktail.cocktailName.replacingOccurrences(of: (" (W&G Version)"), with: ""))
-                .fontDesign(.serif)
-                .font(.largeTitle)
+                .font(.custom("AvenirNext-Regular", size: 30))
                 .lineLimit(1)
                 .minimumScaleFactor(0.4)
-                .foregroundStyle(MeshGradients.goldTitle)
             if let logo = cocktail.collection?.collectionLogo {
                     logo
                     .resizable()

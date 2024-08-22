@@ -13,16 +13,38 @@ struct IngredientSearchView: View {
     @Environment(\.modelContext) var modelContext
     @EnvironmentObject var viewModel: SearchViewModel
     @FocusState var keyboardFocused: Bool
-    
+    @State private var backgroundIsActive: Bool = false
     var body: some View {
         
         NavigationStack {
             
             ZStack {
                 
-                MeshGradients.blackGreyBackground.ignoresSafeArea()
+                //Color.black.ignoresSafeArea()
+                if viewModel.preferredSelections.isEmpty {
+                    MeshGradients.blackGreyBackground.ignoresSafeArea()
+                } else {
+                    MeshGradient(width: 3, height: 3, points: [
+                        [0, 0], [0.5, 0], [1, 0],
+                        [ 0 , 0.5], [0.5, 0.5], [1, 0.5],
+                        [0 , 0.7], [backgroundIsActive ? 0.55 : 0.69 , backgroundIsActive ? 0.55 : 0.6], [1 , 0]
+                    ], colors: [
+                        .black, .black,.black,
+                        .black, .black, .black,
+                        .brandSecondaryBlue, .brandSecondaryBlue, .brandSecondaryBlue
+                    ]).ignoresSafeArea()
+                        .onAppear{
+                            withAnimation(.easeInOut(duration: 10).repeatForever(autoreverses: true)) {
+                                backgroundIsActive.toggle()
+                            }
+                        }
+                }
                 
-                VStack(alignment: .leading) {
+                VStack{
+                    
+                    Text("Search Cocktails")
+                        .font(.custom("AvenirNext-Regular", size: 24)).bold()
+                    
                     
                     FilteredIngredientListView(keyboardFocused: _keyboardFocused)
                         .onTapGesture {
@@ -32,17 +54,18 @@ struct IngredientSearchView: View {
                     Spacer()
                     
                     if !viewModel.preferredSelections.isEmpty {
-                        HStack {
-                            PreferencesListView()
-                            SearchForCocktailsButton()
-                        }
-                        .padding(.top, 5)
+                        
+                        PreferencesListView()
+                            .padding(.top, 5)
                     }
                 }
+                
+                    
             }
             .animation(.easeOut(duration: 0.5), value: viewModel.preferredSelections.isEmpty)
             .navigationDestination(isPresented: $viewModel.isShowingResults) {
                 IngredientSearchResultsView()
+                
             }
             .onChange(of: viewModel.searchCompleted) { _, newValue in
                 if newValue {
@@ -51,8 +74,11 @@ struct IngredientSearchView: View {
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-            .goldHeader("Search Ingredients")
+            //.navigationTitle("Search Ingredients")
+            
+            //.goldHeader("Search Ingredients")
             .funLoadingIndicator(isLoading: viewModel.isRunningComplexSearch)
+            
         }
     }
 }
@@ -60,6 +86,9 @@ struct IngredientSearchView: View {
 
 
 #Preview {
-    IngredientSearchView()
-        .environmentObject(SearchCriteriaViewModel())
+    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
+    return IngredientSearchView()
+        .environmentObject(SearchViewModel())
+        .modelContainer(preview.container)
+    
 }

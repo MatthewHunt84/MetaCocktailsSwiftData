@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SearchForCocktailsButton: View {
     @EnvironmentObject var viewModel: SearchViewModel
+    @State private var isGlowing = false // State variable to trigger the glowing effect
     
     var body: some View {
         
@@ -17,24 +18,26 @@ struct SearchForCocktailsButton: View {
                 await viewModel.searchButtonPressed()
             }
         } label: {
+            Image(systemName: "magnifyingglass")
+                .font(.system(size: 20)).bold()
+                .foregroundColor(viewModel.preferredSelections.isEmpty ? .brandSecondaryBlue : .blueTint) // BrandPrimaryGold for the magnifying glass
+                .padding(12)
+                .background(
+                    Circle()
+                        .fill(Color.black)
+                        .shadow(color:viewModel.preferredSelections.isEmpty ? Color.clear : Color.brandPrimaryRed,
+                                radius: isGlowing ? 15 : 5, x: 0, y: 0) // Animated shadow
+                )
             
-            Color.blueTint.mask {
-                HStack {
-
-                    Image(systemName: "magnifyingglass.circle")
-                        .font(.title2).bold()
-                    
-                    Text("Search")
-                        .font(.title2).bold()
-                }
-            }
-            .frame(maxWidth: 140)
         }
-        .buttonStyle(RoundedButtonStyle(isDisabled: viewModel.preferredCount == 0))
-        .frame(height: 44)
-        .padding(.top, viewModel.unwantedSelections.count > 0 ? -55 : -40)
-        .padding(.trailing, 15)
-        .disabled(viewModel.isRunningComplexSearch || viewModel.preferredCount == 0)
+        .onAppear {
+            
+            withAnimation(.easeInOut(duration: 1.5).repeatForever(autoreverses: true)) {
+                isGlowing = true
+            }
+            
+        }
+
     }
 }
 

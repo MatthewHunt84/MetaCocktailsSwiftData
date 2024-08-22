@@ -51,7 +51,7 @@ struct FloatingPromptView: View {
                     } label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
-                                .foregroundStyle(MeshGradients.activeBlue)
+                                .foregroundStyle(.blueTint)
                             Text("Batch")
                                 .font(.system(size: 16, weight: .bold))
                                 .foregroundStyle(.white)
@@ -69,7 +69,7 @@ struct FloatingPromptView: View {
                 .padding()
                 .background(.black)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
-                .shadow(color: .white, radius: 5)
+                .shadow(color: .brandPrimaryRed, radius: 5)
                 .overlay {
                     VStack{
                         HStack {

@@ -234,6 +234,17 @@ struct MeshGradients {
         .white, .white, .white,
         .white, .white, .white
     ])
+    
+    static let darkColorMesh: MeshGradient =
+    MeshGradient(width: 3, height: 3, points: [
+        [0, 0], [0.5, 0], [1, 0],
+        [0, 0.5], [0.5, 0.5], [1, 0.5],
+        [0, 1], [0.5, 1], [1, 1]
+    ], colors: [
+        .brandSecondaryBlue, .brandSecondaryBlue, .brandSecondaryTeal,
+        .brandSecondaryBlue, .brandSecondaryTeal, .brandSecondaryTeal,
+        .brandSecondaryTeal, .brandSecondaryBlue, .brandSecondaryBlue
+    ])
     static let whiteLinear = LinearGradient(colors: [.white, .white], startPoint: .topLeading, endPoint: .bottomTrailing)
     static let goldTitle = LinearGradient(colors: [Color(.redGold), Color(.brandPrimaryGold), .red], startPoint: .topLeading, endPoint: .bottomTrailing)
     
@@ -250,9 +261,23 @@ struct MeshGradients {
                                            startPoint: .topLeading,
                                            endPoint: .bottomTrailing)
     
-    static let blackGreyBackground = LinearGradient(gradient: Gradient(colors: [Color.black.opacity(1), Color.white.opacity(0.3)]),
-                                                    startPoint: .topLeading,
-                                                    endPoint: .bottomTrailing)
+    static let blackAndRed = LinearGradient(gradient: Gradient(colors: [ .black, .brandPrimaryRed]),
+                                           startPoint: .topLeading,
+                                           endPoint: .bottomTrailing)
+    
+    static let blackGreyBackground =
+    MeshGradient(width: 3, height: 3, points: [
+        [0, 0], [0.5, 0], [1, 0],
+        [ 0 , 0.5], [0.5, 0.5], [1, 0.5],
+        [0 , 0.7], [0.69, 0.6], [1, 0]
+    ], colors: [
+        .black, .black, .black,
+        .black, .black, .black,
+        .brandSecondaryBlue, .brandSecondaryBlue, .brandSecondaryBlue
+    ])
+//    static let blackGreyBackground = LinearGradient(gradient: Gradient(colors: [Color.black.opacity(1), Color.gray.opacity(0.3)]),
+//                                                    startPoint: .topLeading,
+//                                                    endPoint: .bottomTrailing)
     
     static let whiteToGreyFade = LinearGradient(gradient: Gradient(colors: [.white, .gray]), startPoint: .leading, endPoint: .trailing)
     static let disabledButton = LinearGradient(gradient: Gradient(colors: [Color.medGray, Color.lightGray]), startPoint: .leading, endPoint: .trailing)
@@ -303,9 +328,16 @@ struct RoundedTextFieldStyle: TextFieldStyle {
             .padding(.vertical)
             .padding(.horizontal, 24)
             .background(
-                Color(UIColor.systemGray6)
+                Capsule(style: .continuous) // Define the rounded corner
+                    .strokeBorder(Color.brandPrimaryGold, lineWidth: 1) // Add border with color and line width
+                    .background(.clear) // Set the background color inside the border
+                    //.shadow(color: .gray, radius: 10, x: 1, y: 2) // Add shadow with specific properties
             )
-            .clipShape(Capsule(style: .continuous))
+            .padding(5)
+        
+        
+        
+        
     }
 }
 
@@ -316,14 +348,16 @@ struct RoundedButtonStyle: ButtonStyle {
         configuration.label
             .background(Color.clear)
             .clipShape(Capsule(style: .continuous))
-            .overlay(
-                 Capsule(style: .continuous)
-                     .stroke(
-                        strokeColor(for: configuration),
-                        lineWidth: 2
-                     )
-             )
+//            .overlay(
+//                 Capsule(style: .continuous)
+//                     .stroke(
+//                        //strokeColor(for: configuration),
+//                   
+//                        lineWidth: 1
+//                     )
+//             )
             .scaleEffect(configuration.isPressed ? 0.95 : 1) // Slight scale effect when pressed
+            
     }
     
     private func strokeColor(for configuration: Configuration) -> LinearGradient {

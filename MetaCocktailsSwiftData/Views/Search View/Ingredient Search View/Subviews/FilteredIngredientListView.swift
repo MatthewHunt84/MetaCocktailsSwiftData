@@ -20,10 +20,25 @@ struct FilteredIngredientListView: View {
         VStack {
             
             HStack{
+                SearchForCocktailsButton()
+                    .disabled(viewModel.preferredSelections.isEmpty ? true : false)
                 
-                TextField("Search for cocktails which contain..", text: $viewModel.currentComponentSearchName)
+                
+                
+                TextField("Search for cocktails which contain...", text: $viewModel.currentComponentSearchName)
                     .focused($keyboardFocused)
-                    .textFieldStyle(RoundedTextFieldStyle())
+                    .font(.custom("AvenirNext-Regular", size: 16)) 
+                    .padding(10)
+                    .background(
+                        RoundedRectangle(cornerRadius: 25)
+                            .fill(
+                                LinearGradient(gradient: Gradient(colors: [.black, .black]), startPoint: .leading, endPoint: .trailing)
+                            )
+                            .shadow(color: Color.brandPrimaryRed.opacity(0.7), radius: 3, x: 0, y: 0)
+                            
+                            
+                    )
+                    .foregroundColor(.white)
                     .autocorrectionDisabled(true)
                     .onChange(of: viewModel.currentComponentSearchName) { _, newValue in
                         viewModel.updateSearch(newValue)
@@ -31,28 +46,29 @@ struct FilteredIngredientListView: View {
                             await generateAllCocktailList(context: modelContext)
                         }
                     }
-                if !viewModel.currentComponentSearchName.isEmpty {
-                    Button {
-                        viewModel.currentComponentSearchName = ""
-                    } label: {
-                        Image(systemName: "multiply.circle.fill")
-                            .foregroundStyle(.brandPrimaryGold)
-                    }
-                }
+                    .padding(.trailing, 8)
+                    .animation(.easeInOut(duration: 0.2), value: keyboardFocused) // Animation on focus
+                
             }
-            .padding(EdgeInsets(top: 20, leading: 30, bottom: 0, trailing: 30))
+            .padding(.horizontal)
+            .padding(.top)
+            
+            
+            
             .task {
                 viewModel.setupSearch()
                 viewModel.ingredientNames = ingredients.map { $0.name }
             }
+            
             
             if keyboardFocused {
                 List {
                     ForEach($viewModel.filteredIngredients, id: \.self) { ingredient in
                         viewModel.returnPreferencesThumbCell(ingredient: ingredient)
                     }
-                    .pinnedTopListStyle()
+                    //.pinnedTopListStyle()
                     .listRowBackground(Color.clear)
+                    
                 }
                 .scrollContentBackground(.hidden)
             }
@@ -92,5 +108,5 @@ extension View {
 
 #Preview {
     FilteredIngredientListView()
-        .environmentObject(SearchCriteriaViewModel())
+        .environmentObject(SearchViewModel())
 }

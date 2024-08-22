@@ -41,7 +41,7 @@ struct CocktailCollectionPicker: View {
                     }
             }
         }
-        .frame(maxWidth: .infinity, alignment: .trailing)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .padding(EdgeInsets(top: 10, leading: 15, bottom: 0, trailing: 0))
     }
 }
