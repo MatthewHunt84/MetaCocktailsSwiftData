@@ -12,8 +12,6 @@ struct SwipeRecipeView: View {
     @State var variations: [Cocktail] // when this isn't state, our weird HeightPreservingTabView gets all mad. Keeping this for now, but perhaps adding binding viewModels is what we need here.
     @Environment(\.dismiss) private var dismiss
     @Namespace var topID
-
-    @State var viewModel: RecipeViewModel = RecipeViewModel(cocktail: DummyCocktails.randomCocktail())
     
     var body: some View {
         
