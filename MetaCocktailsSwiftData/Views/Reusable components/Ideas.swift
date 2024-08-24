@@ -265,16 +265,49 @@ struct MeshGradients {
                                            startPoint: .topLeading,
                                            endPoint: .bottomTrailing)
     
-    static let blackGreyBackground =
+    static let meshBlueRibbonBackground =
     MeshGradient(width: 3, height: 3, points: [
         [0, 0], [0.5, 0], [1, 0],
         [ 0 , 0.5], [0.5, 0.5], [1, 0.5],
-        [0 , 0.7], [0.69, 0.6], [1, 0]
+        [0 , 0.7], [0.55 , 0.55], [1 , 0]
     ], colors: [
-        .black, .black, .black,
+        .black, .black,.black,
         .black, .black, .black,
         .brandSecondaryBlue, .brandSecondaryBlue, .brandSecondaryBlue
     ])
+    
+    static let meshRedRibbonBackground =
+    MeshGradient(width: 3, height: 3, points: [
+        [0, 0], [0.5, 0], [1, 0],
+        [ 0 , 0.5], [0.5, 0.5], [1, 0.5],
+        [0 , 0.7], [0.55 , 0.55], [1 , 0]
+    ], colors: [
+        .black, .black,.black,
+        .black, .black, .black,
+        .brandSecondaryRed, .brandSecondaryRed, .brandSecondaryRed
+    ])
+    static let meshBlueTwoRibbonBackground =
+    MeshGradient(width: 3, height: 3, points: [
+        [0, 0], [0.5, 0], [1, 0],
+        [ 0 , 0.5], [0.5, 0.5], [1, 0.5],
+        [0 , 0.3], [0.49 , 0.62], [1 , 1]
+    ], colors: [
+        .black, .black,.black,
+        .black, .black, .black,
+        .brandSecondaryBlue, .brandSecondaryBlue, .brandSecondaryBlue
+    ])
+    
+    static let meshTealRibbonBackground =
+    MeshGradient(width: 3, height: 3, points: [
+        [0, 0], [0.5, 0], [1, 0],
+        [ 0 , 0.5], [0.5, 0.5], [1, 0.5],
+        [0 , 0.7], [0.69 , 0.6], [1 , 0]
+    ], colors: [
+        .black, .black,.black,
+        .black, .black, .black,
+        .brandSecondaryTeal, .brandSecondaryTeal, .brandSecondaryTeal
+    ])
+        
 //    static let blackGreyBackground = LinearGradient(gradient: Gradient(colors: [Color.black.opacity(1), Color.gray.opacity(0.3)]),
 //                                                    startPoint: .topLeading,
 //                                                    endPoint: .bottomTrailing)

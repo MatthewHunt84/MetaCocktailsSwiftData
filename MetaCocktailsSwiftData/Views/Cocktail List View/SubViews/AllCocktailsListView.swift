@@ -33,7 +33,9 @@ struct AllCocktailsListView: View {
                         if cocktail.collection == .custom {
                             NavigationLinkWithoutIndicator {
                                 HStack{
-                                    Text(cocktail.cocktailName)
+                                    Text("Cocktail List")
+                                        .font(.custom("AvenirNext-Regular", size: 18)).bold()
+                                        .foregroundStyle(.white)
                                     Spacer()
                                 }
                             } destination: {
@@ -57,6 +59,8 @@ struct AllCocktailsListView: View {
                             NavigationLinkWithoutIndicator {
                                 HStack{
                                     Text(cocktail.cocktailName)
+                                        .font(.custom("AvenirNext-Regular", size: 18))
+                                        .foregroundStyle(.white)
                                     Spacer()
                                     Text("Custom")
                                         .foregroundStyle(Color.brandPrimaryGold)
@@ -71,6 +75,8 @@ struct AllCocktailsListView: View {
                             NavigationLinkWithoutIndicator {
                                 HStack{
                                     Text(cocktail.cocktailName)
+                                        .font(.custom("AvenirNext-Regular", size: 18))
+                                        .foregroundStyle(.white)
                                     Spacer()
                                 }
                             } destination: {
@@ -87,6 +93,8 @@ struct AllCocktailsListView: View {
                                     NavigationLinkWithoutIndicator {
                                         HStack{
                                             Text(variationCocktail.cocktailName)
+                                                .font(.custom("AvenirNext-Regular", size: 18))
+                                                .foregroundStyle(.white)
                                             Spacer()
                                         }
                                         
@@ -99,9 +107,13 @@ struct AllCocktailsListView: View {
                             } label: {
                                 if let variationName = cocktail.variation {
                                     Text(variationName.rawValue)
+                                        .font(.custom("AvenirNext-Regular", size: 18))
+                                        .foregroundStyle(.white)
                                 } else {
                                     Text(cocktail.cocktailName)
-                                } 
+                                        .font(.custom("AvenirNext-Regular", size: 18))
+                                        .foregroundStyle(.white)
+                                }
                             }
                             .disclosureGroupStyle(InlineDisclosureGroupStyle())
                         }
@@ -111,11 +123,11 @@ struct AllCocktailsListView: View {
             } header: {
                 if letter == CocktailListViewModel.sfSymbolForCustomCocktails {
                     Text("Custom")
-                        .fontWeight(.bold)
+                        .font(.custom("AvenirNext-Regular", size: 25))
                         .font(.title)
                 } else {
                     Text("\(letter)")
-                        .fontWeight(.bold)
+                        .font(.custom("AvenirNext-Regular", size: 25))
                         .font(.title)
                 }
                 

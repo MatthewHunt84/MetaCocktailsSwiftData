@@ -19,27 +19,7 @@ struct IngredientSearchView: View {
         NavigationStack {
             
             ZStack {
-                
-                //Color.black.ignoresSafeArea()
-                if viewModel.preferredSelections.isEmpty {
-                    MeshGradients.blackGreyBackground.ignoresSafeArea()
-                } else {
-                    MeshGradient(width: 3, height: 3, points: [
-                        [0, 0], [0.5, 0], [1, 0],
-                        [ 0 , 0.5], [0.5, 0.5], [1, 0.5],
-                        [0 , 0.7], [backgroundIsActive ? 0.55 : 0.69 , backgroundIsActive ? 0.55 : 0.6], [1 , 0]
-                    ], colors: [
-                        .black, .black,.black,
-                        .black, .black, .black,
-                        .brandSecondaryBlue, .brandSecondaryBlue, .brandSecondaryBlue
-                    ]).ignoresSafeArea()
-                        .onAppear{
-                            withAnimation(.easeInOut(duration: 10).repeatForever(autoreverses: true)) {
-                                backgroundIsActive.toggle()
-                            }
-                        }
-                }
-                
+                    MeshGradients.meshBlueRibbonBackground.ignoresSafeArea()
                 VStack{
                     
                     Text("Search Cocktails")

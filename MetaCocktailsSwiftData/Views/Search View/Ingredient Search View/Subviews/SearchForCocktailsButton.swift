@@ -18,16 +18,17 @@ struct SearchForCocktailsButton: View {
                 await viewModel.searchButtonPressed()
             }
         } label: {
-            Image(systemName: "magnifyingglass")
-                .font(.system(size: 20)).bold()
-                .foregroundColor(viewModel.preferredSelections.isEmpty ? .brandSecondaryBlue : .blueTint) // BrandPrimaryGold for the magnifying glass
-                .padding(12)
-                .background(
-                    Circle()
-                        .fill(Color.black)
-                        .shadow(color:viewModel.preferredSelections.isEmpty ? Color.clear : Color.brandPrimaryRed,
-                                radius: isGlowing ? 15 : 5, x: 0, y: 0) // Animated shadow
-                )
+            VStack{
+                Image(systemName: "magnifyingglass")
+                    .font(.system(size: 20)).bold()
+                    .foregroundColor(viewModel.preferredSelections.isEmpty ? .brandSecondaryGray : .blueTint)
+                 
+                
+                Text("Search")
+                    .font(.custom("AvenirNext-Regular", size: 14))
+                    .foregroundColor(viewModel.preferredSelections.isEmpty ? .brandSecondaryGray : .blueTint)
+                
+            }
             
         }
         .onAppear {

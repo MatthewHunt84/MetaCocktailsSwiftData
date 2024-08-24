@@ -27,16 +27,11 @@ struct FilteredIngredientListView: View {
                 
                 TextField("Search for cocktails which contain...", text: $viewModel.currentComponentSearchName)
                     .focused($keyboardFocused)
-                    .font(.custom("AvenirNext-Regular", size: 16)) 
+                    .font(.custom("AvenirNext-Regular", size: 16))
                     .padding(10)
                     .background(
                         RoundedRectangle(cornerRadius: 25)
-                            .fill(
-                                LinearGradient(gradient: Gradient(colors: [.black, .black]), startPoint: .leading, endPoint: .trailing)
-                            )
-                            .shadow(color: Color.brandPrimaryRed.opacity(0.7), radius: 3, x: 0, y: 0)
-                            
-                            
+                            .fill(Color.brandSecondaryGray)
                     )
                     .foregroundColor(.white)
                     .autocorrectionDisabled(true)

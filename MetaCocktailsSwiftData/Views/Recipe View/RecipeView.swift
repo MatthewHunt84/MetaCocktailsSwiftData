@@ -24,11 +24,7 @@ struct RecipeView: View {
                 .black, .black, .black,
                 .brandSecondaryBlue, .brandSecondaryBlue, .brandSecondaryBlue
             ]).ignoresSafeArea()
-                .onAppear{
-                    withAnimation(.easeInOut(duration: 10).repeatForever(autoreverses: true)) {
-                        backgroundIsActive.toggle()
-                    }
-                }
+               
             GeometryReader { geo in
                 
                 ScrollViewReader { scrollReader in
@@ -259,11 +255,11 @@ extension ButtonStyle where Self == CustomButtonStyle {
 }
 
 private struct Layout {
-    static var header: Font = .system(size: 18, weight: .bold)
-    static var specMeasurement: Font = .system(size: 16, weight: .bold)
-    static var body: Font = .system(size: 16, weight: .regular)
-    static var buildBodySmall: Font = .system(size: 10, weight: .light)
-    static var buildStepSmall: Font = .system(size: 10, weight: .bold)
+    static var header: Font = .custom("AvenirNext-Regular", size: 18).bold()
+    static var specMeasurement: Font = .custom("AvenirNext-Regular", size: 16).bold()
+    static var body: Font = .custom("AvenirNext-Regular", size: 16)
+    static var buildBodySmall: Font = .custom("AvenirNext-Regular", size: 10)
+    static var buildStepSmall: Font = .custom("AvenirNext-Regular", size: 10).bold()
 }
 
 struct RecipeTitleView: View {
@@ -524,6 +520,7 @@ struct GarnishView: View {
 
 struct AuthorView: View {
     var author = ""
+    
     var place = ""
     var year = ""
     let cocktail: Cocktail
@@ -555,12 +552,12 @@ struct AuthorView: View {
             }
             if place != "" {
                     Text(place)
-                        .dynamicTypeSize(.large)
+                        .font(.custom("AvenirNext-Regular", size: 16))
                         .multilineTextAlignment(.center)
                 }
                 if year != "" {
                     Text("\(year)")
-                        .dynamicTypeSize(.large)
+                        .font(.custom("AvenirNext-Regular", size: 16))
                 }
         }
         .fixedSize(horizontal: false, vertical: true)

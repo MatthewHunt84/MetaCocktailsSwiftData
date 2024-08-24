@@ -21,8 +21,11 @@ struct AddExistingIngredientDetailView: View {
             
             ZStack{
                 
-                MeshGradients.blackGreyBackground.ignoresSafeArea()
-
+                MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
+                VStack{
+                    Text("Add Ingredient")
+                        .font(.custom("AvenirNext-Regular", size: 24)).bold()
+                        .foregroundStyle(.white)
                     Form {
                         AddIngredientSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
                         AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
@@ -32,7 +35,6 @@ struct AddExistingIngredientDetailView: View {
                     .scrollContentBackground(.hidden)
                     .background(Color.clear)
                     .navigationBarTitleDisplayMode(.inline)
-                    .goldHeaderWithNavigation(title: "Add Ingredient", dismiss: dismiss)
                     .toolbar {
                         ToolbarItem(placement: .bottomBar) { CreateNewIngredientButton(viewModel: viewModel) }
                         ToolbarItemGroup(placement: .keyboard) {
@@ -42,14 +44,15 @@ struct AddExistingIngredientDetailView: View {
                     .task {
                         keyboardFocused = true
                     }
-                
-                if viewModel.isShowingingredientAlert {
-                    CustomAlertView(isActive: $viewModel.isShowingingredientAlert,
-                                    title: "",
-                                    message: "Please add an amount and choose from an existing ingredient. If you'd like to make your own, press 'Create Custom Ingredient'",
-                                    buttonTitle: "Heard, Chef",
-                                    action: {})
-                    .zIndex(2)
+                    
+                    if viewModel.isShowingingredientAlert {
+                        CustomAlertView(isActive: $viewModel.isShowingingredientAlert,
+                                        title: "",
+                                        message: "Please add an amount and choose from an existing ingredient. If you'd like to make your own, press 'Create Custom Ingredient'",
+                                        buttonTitle: "Heard, Chef",
+                                        action: {})
+                        .zIndex(2)
+                    }
                 }
             }
         }

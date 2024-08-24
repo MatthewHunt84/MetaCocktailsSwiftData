@@ -19,7 +19,7 @@ struct AddCocktailView: View {
             
             ZStack {
                 
-                MeshGradients.blackGreyBackground.ignoresSafeArea()
+                MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
                 VStack {
                     Text("Add a Cocktail")
                         .font(.custom("AvenirNext-Regular", size: 24)).bold()

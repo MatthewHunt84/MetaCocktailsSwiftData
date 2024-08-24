@@ -12,7 +12,7 @@ struct SelectionTagView: View {
     var body: some View {
         
         Text(viewModel.ingredientName)
-            .font(.callout)
+            .font(.custom("AvenirNext-Regular", size: 14))
             .fontWeight(.semibold)
             .foregroundStyle(.white)
             .frame(height: 15)

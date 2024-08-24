@@ -20,7 +20,7 @@ struct AddCustomIngredientView: View {
             
             ZStack{
                 
-                MeshGradients.blackGreyBackground.ignoresSafeArea()
+                MeshGradients.meshBlueRibbonBackground.ignoresSafeArea()
 
                     Form {
                         Section("Name") {

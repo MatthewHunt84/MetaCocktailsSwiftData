@@ -19,6 +19,7 @@ struct CocktailCollectionPicker: View {
                     ForEach(CocktailCollection.allCases, id: \.self) { int in
                         if int.collectionName != "Custom" && int.collectionName != "Death & Co." {
                             Text(int.collectionName)
+                                .font(.custom("AvenirNext-Regular", size: 18))
                         }
                     }
                 } label: { }
@@ -26,7 +27,8 @@ struct CocktailCollectionPicker: View {
                 HStack {
 //                    Text("Collection: \(cocktailCollection.collectionName)")
                     Text(cocktailCollection == .all ? "Collection" : cocktailCollection.collectionName)
-                        .font(.headline)
+                    
+                        .font(.custom("AvenirNext-Regular", size: 18))
                         .tint(.white)
                     Image(systemName: "chevron.down")
                         .foregroundStyle(Color.blueTint)

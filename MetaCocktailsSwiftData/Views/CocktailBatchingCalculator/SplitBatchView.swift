@@ -15,7 +15,7 @@ struct SplitBatchView: View {
         
         ZStack{
             
-            MeshGradients.blackGreyBackground.ignoresSafeArea()
+            MeshGradients.meshBlueRibbonBackground.ignoresSafeArea()
             
             VStack {
                 
