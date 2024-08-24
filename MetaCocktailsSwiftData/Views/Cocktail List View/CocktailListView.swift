@@ -26,12 +26,8 @@ struct CocktailListView: View {
                 
             
                 VStack {
-                    Text("Cocktail List")
-                        .font(.custom("AvenirNext-Regular", size: 24)).bold()
-                        .foregroundStyle(.white)
-                       
-                    
-                    
+                    FontFactory.regularText("Cocktail List", size: 30)
+
                     GeometryReader { listGeo in
                         
                         ScrollView {
@@ -61,11 +57,8 @@ struct CocktailListView: View {
                                                        
                                                     }
                                                 } else {
-                                                    Text("\(viewModel.cocktailListAlphabet[i])")
-                                                        .font(.custom("AvenirNext-Regular", size: 13)).bold()
-                                                        
+                                                    FontFactory.regularText(viewModel.cocktailListAlphabet[i], size: 13, isBold: true)
                                                         .frame(width: 17, height: 13, alignment: .center)
-                                                        .tint(.white)
                                                         //.foregroundStyle(backgroundIsActive ? .white : .brandSecondaryBlue)
                                                 }
                                                 

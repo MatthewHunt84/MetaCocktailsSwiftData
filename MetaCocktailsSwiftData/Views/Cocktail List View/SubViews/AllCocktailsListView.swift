@@ -33,9 +33,7 @@ struct AllCocktailsListView: View {
                         if cocktail.collection == .custom {
                             NavigationLinkWithoutIndicator {
                                 HStack{
-                                    Text("Cocktail List")
-                                        .font(.custom("AvenirNext-Regular", size: 18)).bold()
-                                        .foregroundStyle(.white)
+                                    FontFactory.regularText("Cocktail List", size: 18, isBold: true)
                                     Spacer()
                                 }
                             } destination: {
@@ -58,9 +56,7 @@ struct AllCocktailsListView: View {
                         if cocktail.collection == .custom {
                             NavigationLinkWithoutIndicator {
                                 HStack{
-                                    Text(cocktail.cocktailName)
-                                        .font(.custom("AvenirNext-Regular", size: 18))
-                                        .foregroundStyle(.white)
+                                    FontFactory.regularText(cocktail.cocktailName, size: 18)
                                     Spacer()
                                     Text("Custom")
                                         .foregroundStyle(Color.brandPrimaryGold)
@@ -74,9 +70,7 @@ struct AllCocktailsListView: View {
                             
                             NavigationLinkWithoutIndicator {
                                 HStack{
-                                    Text(cocktail.cocktailName)
-                                        .font(.custom("AvenirNext-Regular", size: 18))
-                                        .foregroundStyle(.white)
+                                    FontFactory.regularText(cocktail.cocktailName, size: 18)
                                     Spacer()
                                 }
                             } destination: {
@@ -92,9 +86,7 @@ struct AllCocktailsListView: View {
                                     
                                     NavigationLinkWithoutIndicator {
                                         HStack{
-                                            Text(variationCocktail.cocktailName)
-                                                .font(.custom("AvenirNext-Regular", size: 18))
-                                                .foregroundStyle(.white)
+                                            FontFactory.regularText(variationCocktail.cocktailName, size: 18)
                                             Spacer()
                                         }
                                         
@@ -106,13 +98,9 @@ struct AllCocktailsListView: View {
                                 }
                             } label: {
                                 if let variationName = cocktail.variation {
-                                    Text(variationName.rawValue)
-                                        .font(.custom("AvenirNext-Regular", size: 18))
-                                        .foregroundStyle(.white)
+                                    FontFactory.regularText(variationName.rawValue, size: 18)
                                 } else {
-                                    Text(cocktail.cocktailName)
-                                        .font(.custom("AvenirNext-Regular", size: 18))
-                                        .foregroundStyle(.white)
+                                    FontFactory.regularText(cocktail.cocktailName, size: 18)
                                 }
                             }
                             .disclosureGroupStyle(InlineDisclosureGroupStyle())
@@ -122,15 +110,10 @@ struct AllCocktailsListView: View {
                
             } header: {
                 if letter == CocktailListViewModel.sfSymbolForCustomCocktails {
-                    Text("Custom")
-                        .font(.custom("AvenirNext-Regular", size: 25))
-                        .font(.title)
+                    FontFactory.regularText("Custom", size: 25)
                 } else {
-                    Text("\(letter)")
-                        .font(.custom("AvenirNext-Regular", size: 25))
-                        .font(.title)
+                    FontFactory.regularText(letter, size: 25)
                 }
-                
             }
             .id(letter)
             .listRowBackground(Color.clear)

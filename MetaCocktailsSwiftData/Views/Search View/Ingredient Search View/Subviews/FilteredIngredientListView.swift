@@ -27,7 +27,7 @@ struct FilteredIngredientListView: View {
                 
                 TextField("Search for cocktails which contain...", text: $viewModel.currentComponentSearchName)
                     .focused($keyboardFocused)
-                    .font(.custom("AvenirNext-Regular", size: 16))
+                    .font(FontFactory.regularFont(size: 16))
                     .padding(10)
                     .background(
                         RoundedRectangle(cornerRadius: 25)

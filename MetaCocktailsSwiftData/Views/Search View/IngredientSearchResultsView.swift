@@ -33,8 +33,7 @@ struct IngredientSearchResultsView: View {
                 }
             
             VStack {
-                Text("Matched Cocktails")
-                    .font(.custom("AvenirNext-Regular", size: 24)).bold()
+                FontFactory.regularText("Matched Cocktails", size: 24, isBold: true)
                 PreferencesListView()
                     .padding(.top, 10)
                     .padding(.bottom, 10)

@@ -15,8 +15,7 @@ public struct PreferencesListView: View {
         
         VStack {
             HStack {
-                Text("Selections")
-                    .font(.custom("AvenirNext-Regular", size: 20)).bold()
+                FontFactory.regularText("Selections", size: 20, isBold: true)
                     .foregroundStyle(Color.softWhite)
                 Spacer()
             }

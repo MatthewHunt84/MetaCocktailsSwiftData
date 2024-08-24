@@ -403,3 +403,25 @@ struct RoundedButtonStyle: ButtonStyle {
         }
     }
 }
+
+struct FontFactory {
+    
+    static func regularText(_ text: String, font: String = "AvenirNext-Regular", size: CGFloat, color: Color = .white, isBold: Bool = false) -> Text {
+        return Text(text)
+            .font(.custom(font, size: size))
+            .foregroundStyle(color)
+            .bold(isBold)
+    }
+    
+    static func regularFont(size: CGFloat) -> Font {
+        Font.custom("AvenirNext-Regular", size: size)
+    }
+    
+    static var header: Font = .custom("AvenirNext-Regular", size: 18).bold()
+    static var specMeasurement: Font = .custom("AvenirNext-Regular", size: 16).bold()
+    static var body: Font = .custom("AvenirNext-Regular", size: 16)
+    static var buildBodySmall: Font = .custom("AvenirNext-Regular", size: 10)
+    static var buildStepSmall: Font = .custom("AvenirNext-Regular", size: 10).bold()
+    
+}
+

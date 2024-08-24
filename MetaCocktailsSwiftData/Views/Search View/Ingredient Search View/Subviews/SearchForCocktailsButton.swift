@@ -23,9 +23,7 @@ struct SearchForCocktailsButton: View {
                     .font(.system(size: 20)).bold()
                     .foregroundColor(viewModel.preferredSelections.isEmpty ? .brandSecondaryGray : .blueTint)
                  
-                
-                Text("Search")
-                    .font(.custom("AvenirNext-Regular", size: 14))
+                FontFactory.regularText("Search", size: 14)
                     .foregroundColor(viewModel.preferredSelections.isEmpty ? .brandSecondaryGray : .blueTint)
                 
             }

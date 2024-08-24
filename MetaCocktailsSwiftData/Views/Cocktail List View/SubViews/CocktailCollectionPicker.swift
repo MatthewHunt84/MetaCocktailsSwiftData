@@ -18,18 +18,13 @@ struct CocktailCollectionPicker: View {
                 Picker(selection: $cocktailCollection) {
                     ForEach(CocktailCollection.allCases, id: \.self) { int in
                         if int.collectionName != "Custom" && int.collectionName != "Death & Co." {
-                            Text(int.collectionName)
-                                .font(.custom("AvenirNext-Regular", size: 18))
+                            FontFactory.regularText(int.collectionName, size: 18)
                         }
                     }
                 } label: { }
             } label: {
                 HStack {
-//                    Text("Collection: \(cocktailCollection.collectionName)")
-                    Text(cocktailCollection == .all ? "Collection" : cocktailCollection.collectionName)
-                    
-                        .font(.custom("AvenirNext-Regular", size: 18))
-                        .tint(.white)
+                    FontFactory.regularText(cocktailCollection == .all ? "Collection" : cocktailCollection.collectionName, size: 18)
                     Image(systemName: "chevron.down")
                         .foregroundStyle(Color.blueTint)
                 }

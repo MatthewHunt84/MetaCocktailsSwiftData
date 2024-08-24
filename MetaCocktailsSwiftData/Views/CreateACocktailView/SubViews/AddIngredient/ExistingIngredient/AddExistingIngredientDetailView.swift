@@ -23,9 +23,7 @@ struct AddExistingIngredientDetailView: View {
                 
                 MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
                 VStack{
-                    Text("Add Ingredient")
-                        .font(.custom("AvenirNext-Regular", size: 24)).bold()
-                        .foregroundStyle(.white)
+                    FontFactory.regularText("Add Ingredient", size: 24, isBold: true)
                     Form {
                         AddIngredientSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
                         AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)

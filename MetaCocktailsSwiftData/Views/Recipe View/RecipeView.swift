@@ -68,7 +68,7 @@ struct BuildOrderView: View {
                 Spacer()
                 
                 Text("Build Order")
-                    .font(Layout.header)
+                    .font(FontFactory.header)
                 
                 Spacer()
                 
@@ -254,13 +254,6 @@ extension ButtonStyle where Self == CustomButtonStyle {
     static var custom: CustomButtonStyle { .init() }
 }
 
-private struct Layout {
-    static var header: Font = .custom("AvenirNext-Regular", size: 18).bold()
-    static var specMeasurement: Font = .custom("AvenirNext-Regular", size: 16).bold()
-    static var body: Font = .custom("AvenirNext-Regular", size: 16)
-    static var buildBodySmall: Font = .custom("AvenirNext-Regular", size: 10)
-    static var buildStepSmall: Font = .custom("AvenirNext-Regular", size: 10).bold()
-}
 
 struct RecipeTitleView: View {
     var cocktail: Cocktail
@@ -268,8 +261,7 @@ struct RecipeTitleView: View {
         if cocktail.collection?.collectionLogo != nil {
             RecipeTitleViewWithCollection(cocktail: cocktail)
         } else {
-            Text(cocktail.cocktailName)
-                .font(.custom("AvenirNext-Regular", size: 30))
+            FontFactory.regularText(cocktail.cocktailName, size: 30)
                 .lineLimit(1)
                 .minimumScaleFactor(0.4)
         }
@@ -280,8 +272,7 @@ struct RecipeTitleViewWithCollection: View {
     var cocktail: Cocktail
     var body: some View {
         HStack {
-            Text(cocktail.cocktailName.replacingOccurrences(of: (" (W&G Version)"), with: ""))
-                .font(.custom("AvenirNext-Regular", size: 30))
+            FontFactory.regularText(cocktail.cocktailName.replacingOccurrences(of: (" (W&G Version)"), with: ""), size: 30)
                 .lineLimit(1)
                 .minimumScaleFactor(0.4)
             if let logo = cocktail.collection?.collectionLogo {
@@ -302,7 +293,7 @@ struct GlasswareView: View {
         HStack(alignment: .center) {
             VStack(alignment: .leading, spacing: 5) {
                 Text("Glassware:")
-                    .font(Layout.header)
+                    .font(FontFactory.header)
                 Text(cocktail.glasswareType.rawValue)
                     .dynamicTypeSize(.large)
                     .multilineTextAlignment(.leading)
@@ -327,18 +318,18 @@ struct SpecIngredientView: View {
         VStack{
             HStack {
                 Text("\(number) \(ingredient.unit.rawValue)")
-                    .font(Layout.specMeasurement)
+                    .font(FontFactory.specMeasurement)
                 if ingredient.ingredientBase.prep != nil {
                     NavigationLink {
                         PrepRecipeView(prep: ingredient.ingredientBase.prep!)
                     } label: {
                         Text(ingredient.ingredientBase.name)
-                            .font(Layout.body)
+                            .font(FontFactory.body)
                             .tint(.blueTint)
                     }
                 } else {
                     Text("\(ingredient.ingredientBase.name)")
-                        .font(Layout.body)
+                        .font(FontFactory.body)
                         
                 }
                 if ingredient.ingredientBase.info != nil {
@@ -380,7 +371,7 @@ struct SpecView: View {
                     
                     HStack {
                         Text("Cocktail Spec:")
-                            .font(Layout.header)
+                            .font(FontFactory.header)
                         
                         Spacer()
                         
@@ -391,7 +382,7 @@ struct SpecView: View {
                             Image(systemName: "chevron.forward")
                         }
                         .foregroundStyle(.blueTint)
-                        .font(Layout.header)
+                        .font(FontFactory.header)
                     }
                     .padding(.bottom, 5)
                     
@@ -436,9 +427,9 @@ private struct MethodView: View {
         
         VStack(alignment: .leading, spacing: 5) {
             Text("Method")
-                .font(Layout.header)
+                .font(FontFactory.header)
             Text(methodText)
-                .font(Layout.body)
+                .font(FontFactory.body)
         }
     }
 }
@@ -449,16 +440,16 @@ private struct IceView: View {
         if let ice = cocktail.ice?.rawValue {
             VStack(alignment: .leading, spacing: 5) {
                 Text("Ice")
-                    .font(Layout.header)
+                    .font(FontFactory.header)
                 Text(ice)
-                    .font(Layout.body)
+                    .font(FontFactory.body)
             }
         } else {
             VStack(alignment: .leading, spacing: 5) {
                 Text("Ice")
-                    .font(Layout.header)
+                    .font(FontFactory.header)
                 Text("None")
-                    .font(Layout.body)
+                    .font(FontFactory.body)
             }
         }
     }
@@ -489,7 +480,7 @@ struct GarnishView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             Text("Garnish")
-                .font(Layout.header)
+                .font(FontFactory.header)
             
             if cocktail.garnish != []{
                 
@@ -507,12 +498,12 @@ struct GarnishView: View {
                 } else {
                     ForEach(cocktail.garnish, id: \.self) { garnish in
                         Text("\(garnish.name)")
-                            .font(Layout.body)
+                            .font(FontFactory.body)
                     }
                 }
             } else {
                 Text("None")
-                    .font(Layout.body)
+                    .font(FontFactory.body)
             }
         }
     }
@@ -545,19 +536,17 @@ struct AuthorView: View {
     var body: some View {
         VStack {
             Text("Author:")
-                .font(Layout.header)
+                .font(FontFactory.header)
             if author != "" {
                 Text(author)
-                    .font(Layout.body)
+                    .font(FontFactory.body)
             }
             if place != "" {
-                    Text(place)
-                        .font(.custom("AvenirNext-Regular", size: 16))
+                FontFactory.regularText(place, size: 16)
                         .multilineTextAlignment(.center)
                 }
                 if year != "" {
-                    Text("\(year)")
-                        .font(.custom("AvenirNext-Regular", size: 16))
+                    FontFactory.regularText(year, size: 16)
                 }
         }
         .fixedSize(horizontal: false, vertical: true)

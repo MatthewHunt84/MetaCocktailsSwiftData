@@ -27,14 +27,12 @@ struct FloatingPromptView: View {
             
                     
                     VStack {
-                        Text("Number of Cocktails:")
-                            .font(.custom("AvenirNext-Regular", size: 24))
-                            .bold()
+                        FontFactory.regularText("Number of Cocktails:", size: 24, isBold: true)
                             .padding()
                             .foregroundStyle(.white)
                             .multilineTextAlignment(.center)
                         TextField("Amount", value: $viewModel.numberOfCocktailsText, formatter: viewModel.formatter)
-                            .font(.custom("AvenirNext-Regular", size: 20))
+                            .font(FontFactory.regularFont(size: 20))
                             .padding(5)
                             .autocorrectionDisabled()
                             .background(Color(UIColor.systemGray5))
@@ -44,9 +42,7 @@ struct FloatingPromptView: View {
                             .keyboardType(.numberPad)
                             .focused($cocktailNumberFocus)
                         
-                        Text("*You can modify this later.")
-                            .font(.custom("AvenirNext-Regular", size: 16))
-                            .foregroundStyle(.white)
+                        FontFactory.regularText("*You can modify this later.", size: 16)
                             .multilineTextAlignment(.center)
                         
                         NavigationLink {
@@ -55,9 +51,7 @@ struct FloatingPromptView: View {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 20)
                                     .foregroundStyle(.blueTint)
-                                Text("Batch")
-                                    .font(.custom("AvenirNext-Regular", size: 16)).bold()
-                                    .foregroundStyle(.white)
+                                FontFactory.regularText("Batch", size: 16, isBold: true)
                                     .padding()
                                 
                             }

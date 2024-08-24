@@ -21,11 +21,8 @@ struct IngredientSearchView: View {
             ZStack {
                     MeshGradients.meshBlueRibbonBackground.ignoresSafeArea()
                 VStack{
-                    
-                    Text("Search Cocktails")
-                        .font(.custom("AvenirNext-Regular", size: 24)).bold()
-                    
-                    
+                    FontFactory.regularText("Search Cocktails", size: 24, isBold: true)
+
                     FilteredIngredientListView(keyboardFocused: _keyboardFocused)
                         .onTapGesture {
                             keyboardFocused = true

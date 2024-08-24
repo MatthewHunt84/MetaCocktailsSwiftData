@@ -21,8 +21,7 @@ struct AddCocktailView: View {
                 
                 MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
                 VStack {
-                    Text("Add a Cocktail")
-                        .font(.custom("AvenirNext-Regular", size: 24)).bold()
+                    FontFactory.regularText("Add a Cocktail", size: 24, isBold: true)
                     Form {
                         Section(header: Text("Name")) {
                             TextField("Cocktail Name", text: $viewModel.cocktailName)
