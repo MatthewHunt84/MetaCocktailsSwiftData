@@ -398,6 +398,7 @@
 		4DBFF8572B60AAFB0011B5B1 /* CableCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8562B60AAFB0011B5B1 /* CableCar.swift */; };
 		4DBFF8592B60AD800011B5B1 /* CableCar(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8582B60AD800011B5B1 /* CableCar(W&G).swift */; };
 		4DBFF85B2B60AFE60011B5B1 /* Carajillo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF85A2B60AFE60011B5B1 /* Carajillo.swift */; };
+		4DC4CCD42C7BE4AC001BF384 /* ListSearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4CCD32C7BE4AC001BF384 /* ListSearchBarView.swift */; };
 		4DCAA7A52C35E77200FBC4FE /* IngredeientRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAA7A42C35E77200FBC4FE /* IngredeientRecipeView.swift */; };
 		4DCAA7A72C35E83F00FBC4FE /* AddRecipeStepDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAA7A62C35E83F00FBC4FE /* AddRecipeStepDetailView.swift */; };
 		4DCAA7A92C373D1700FBC4FE /* AddExistingIngredientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAA7A82C373D1700FBC4FE /* AddExistingIngredientDetailView.swift */; };
@@ -928,6 +929,7 @@
 		4DBFF8562B60AAFB0011B5B1 /* CableCar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CableCar.swift; sourceTree = "<group>"; };
 		4DBFF8582B60AD800011B5B1 /* CableCar(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CableCar(W&G).swift"; sourceTree = "<group>"; };
 		4DBFF85A2B60AFE60011B5B1 /* Carajillo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carajillo.swift; sourceTree = "<group>"; };
+		4DC4CCD32C7BE4AC001BF384 /* ListSearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSearchBarView.swift; sourceTree = "<group>"; };
 		4DCAA7A42C35E77200FBC4FE /* IngredeientRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredeientRecipeView.swift; sourceTree = "<group>"; };
 		4DCAA7A62C35E83F00FBC4FE /* AddRecipeStepDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeStepDetailView.swift; sourceTree = "<group>"; };
 		4DCAA7A82C373D1700FBC4FE /* AddExistingIngredientDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExistingIngredientDetailView.swift; sourceTree = "<group>"; };
@@ -1640,6 +1642,7 @@
 				4D74398A2B9E581A0020C3B8 /* LoadSampleCocktailsButton.swift */,
 				4D74398F2B9E59EA0020C3B8 /* SpecifiedListView.swift */,
 				4D7439912B9E5A2A0020C3B8 /* AllCocktailsListView.swift */,
+				4DC4CCD32C7BE4AC001BF384 /* ListSearchBarView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -2197,6 +2200,7 @@
 				4DBFF8232B5FB71E0011B5B1 /* ArmyNavy.swift in Sources */,
 				4DA567842B6CB4E4003F6F04 /* El Ocho Rosado.swift in Sources */,
 				F4DBE4C52AB8831C009A0C09 /* AnimatedSearchView.swift in Sources */,
+				4DC4CCD42C7BE4AC001BF384 /* ListSearchBarView.swift in Sources */,
 				4DA567FC2B6DF5D0003F6F04 /* GreatScott!.swift in Sources */,
 				4DBBA4AA2B68CA4300179B8F /* OaxacanOldFashioned(WnG).swift in Sources */,
 				4DF408EA2B61A86A00EF9A6E /* FancyFree.swift in Sources */,
