@@ -127,9 +127,7 @@ struct ThumbsUpOrDownIngredientSearchListView: View {
                         .focused($keyboardFocused)
                         .autocorrectionDisabled(true)
                         .onChange(of: viewModel.currentComponentSearchName) { _, newValue in
-                           
                             viewModel.updateSearch(newValue)
-                            
                         }
                     if !viewModel.currentComponentSearchName.isEmpty {
                         Button {
