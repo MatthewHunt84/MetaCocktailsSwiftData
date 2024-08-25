@@ -13,10 +13,7 @@ struct CocktailListView: View {
     
     @Bindable var viewModel = CocktailListViewModel()
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
-    @Query(filter: #Predicate { $0.collectionName.contains("Williams")}, sort: \Cocktail.cocktailName) var williamsAndGrahamCocktials: [Cocktail]
-    @Query(filter: #Predicate { $0.collectionName.contains("Milk")}, sort: \Cocktail.cocktailName) var milkAndHoneyCocktials: [Cocktail]
-    @Query(filter: #Predicate { $0.collectionName.contains("Original")}, sort: \Cocktail.cocktailName) var originalCocktials: [Cocktail]
-    @Query(filter: #Predicate { $0.collectionName.contains("Death & Co.")}, sort: \Cocktail.cocktailName) var deathAndCoCocktails: [Cocktail]
+   
     
     var body: some View {
         
@@ -30,7 +27,6 @@ struct CocktailListView: View {
                         Spacer()
                         LoadSampleCocktailsButton()
                     }
-                    CocktailCollectionPicker(viewModel: viewModel, cocktailCollection: $viewModel.cocktailCollection)
                     
                     GeometryReader { listGeo in
                         
@@ -38,21 +34,9 @@ struct CocktailListView: View {
                             ScrollViewReader { value in
                                 HStack {
                                     List{
-                                        switch viewModel.cocktailCollection {
-                                        case .all:
-                                            AllCocktailsListView(cocktails: cocktails)
-                                        case .deathAndCo:
-                                            SpecifiedListView(viewModel: viewModel, cocktails: deathAndCoCocktails )
-                                        case .williamsAndGraham:
-                                            SpecifiedListView(viewModel: viewModel, cocktails: williamsAndGrahamCocktials)
-                                        case .originals:
-                                            SpecifiedListView(viewModel: viewModel, cocktails: originalCocktials)
-                                        case .milkAndHoney:
-                                            SpecifiedListView(viewModel: viewModel, cocktails: milkAndHoneyCocktials)
-                                        case .custom:
-                                            AllCocktailsListView(cocktails: cocktails)
-                                            
-                                        }
+                                    
+                                        AllCocktailsListView(cocktails: cocktails)
+                                    
                                     }
                                     .listStyle(.plain)
                                     .frame(width: listGeo.size.width * 0.9, height: listGeo.size.height)
@@ -65,12 +49,12 @@ struct CocktailListView: View {
                                                 }
                                             }, label: {
                                                 if i == 0 {
-                                                    if viewModel.cocktailCollection == .all {
-                                                        Image(systemName: viewModel.cocktailListAlphabet[i] )
-                                                            .resizable()
-                                                            .frame(width: 15, height: 15, alignment: .center)
-                                                            .tint(.white)
-                                                    }
+                                                    
+                                                    Image(systemName: viewModel.cocktailListAlphabet[i] )
+                                                        .resizable()
+                                                        .frame(width: 15, height: 15, alignment: .center)
+                                                        .tint(.white)
+                                                    
                                                 } else {
                                                     Text("\(viewModel.cocktailListAlphabet[i])")
                                                         .font(.headline).bold()
