@@ -7,102 +7,45 @@
 
 import Foundation
 
+
 final class TestCocktails {
+    static var textCocktail56 = Cocktail(
+        cocktailName: "Albertsons",
+        glasswareType: Glassware.buenaVistaIrish,
+        spec: [
+            Ingredient(ingredientBase: IngredientBase(name: "Test ingredient # 1", category: .amari, prep: nil), value: 1.5, unit: .barSpoon),
+            Ingredient(ingredientBase: IngredientBase(name: "Test ingredient # 2", category: .agaves, prep: nil), value: 2, unit: .fluidOunces)
+        ],
+        tags: Tags(flavors: [], profiles: [], styles: [], booze: [], nA: []),
+        collection: .custom,
+        isCustom: true
+    )
     
+    static var textCocktail25 = Cocktail(
+        cocktailName: "King Soopers",
+        glasswareType: Glassware.coupe,
+        spec: [
+            Ingredient(ingredientBase: IngredientBase(id: UUID(), name: "Fun Stuff", category: .amari, prep: nil), value: 1.5, unit: .barSpoon),
+            Ingredient(ingredientBase: IngredientBase(id: UUID(), name: "Blam!", category: .agaves, prep: nil), value: 2, unit: .fluidOunces)
+        ],
+        tags: Tags(flavors: [], profiles: [], styles: [], booze: [], nA: []),
+        collection: .custom,
+        isCustom: true
+    )
     
     static var textCocktail1 = Cocktail(cocktailName: "Reading Rainbow",
-                                        glasswareType: Glassware.buenaVistaIrish,
-                                        spec: [OldCocktailIngredient(.juices(.lemon), value: 0.25),
-                                               OldCocktailIngredient(.syrups(.grapefruitShrub), value: 1.25, prep: PrepBible.grapefruitShrub),
-                                               OldCocktailIngredient(.liqueurs(.licor43), value: 0.5),
-                                               OldCocktailIngredient(.seasoning(.saline), value: 5, unit: .drops),
-                                               OldCocktailIngredient(.vodkas(.vodkaAny), value: 1.5)] ,
-                                        tags: Tags(flavors: [], profiles: [], styles: [], booze: [], nA: []),
-                                        collection: .custom)
-    static var textCocktail4 = Cocktail(cocktailName: "I can go anywhere",
-                                        glasswareType: Glassware.crustaGlass,
-                                        spec: [OldCocktailIngredient(.juices(.lemon), value: 0.25),
-                                               OldCocktailIngredient(.syrups(.grapefruitShrub), value: 1.25, prep: PrepBible.grapefruitShrub),
-                                               OldCocktailIngredient(.liqueurs(.licor43), value: 0.5),
-                                               OldCocktailIngredient(.seasoning(.saline), value: 5, unit: .drops),
-                                               OldCocktailIngredient(.vodkas(.vodkaAny), value: 1.5)],
-                                        tags: Tags(flavors: [], profiles: [], styles: [], booze: [], nA: []),
-                                        collection: .custom)
-    
-    static var textCocktail2 = Cocktail(cocktailName: "Take a Look",
-                                        glasswareType: Glassware.collins,
-                                        spec: [OldCocktailIngredient(.juices(.lemon), value: 0.25),
-                                               OldCocktailIngredient(.syrups(.grapefruitShrub), value: 1.25, prep: PrepBible.grapefruitShrub),
-                                               OldCocktailIngredient(.liqueurs(.licor43), value: 0.5),
-                                               OldCocktailIngredient(.seasoning(.saline), value: 5, unit: .drops),
-                                               OldCocktailIngredient(.vodkas(.vodkaAny), value: 1.5)],
-                                        tags: Tags(flavors: [], profiles: [], styles: [], booze: [], nA: []), variation: .daiquiri,
-                                        collection: .custom)
-    static var textCocktail3 = Cocktail(cocktailName: "It's in a Book",
-                                        glasswareType: Glassware.copperMuleCup,
-                                        spec: [OldCocktailIngredient(.juices(.lemon), value: 0.25),
-                                               OldCocktailIngredient(.syrups(.grapefruitShrub), value: 1.25, prep: PrepBible.grapefruitShrub),
-                                               OldCocktailIngredient(.liqueurs(.licor43), value: 0.5),
-                                               OldCocktailIngredient(.seasoning(.saline), value: 5, unit: .drops),
-                                               OldCocktailIngredient(.vodkas(.vodkaAny), value: 1.5)],
-                                        tags: Tags(flavors: [], profiles: [], styles: [], booze: [], nA: []),
-                                        collection: .custom)
-   
-    static var textCocktail5 = Cocktail(cocktailName: "Reading Rainbow #2",
-                                        glasswareType: Glassware.flute,
-                                        spec: [OldCocktailIngredient(.juices(.lemon), value: 0.25),
-                                               OldCocktailIngredient(.syrups(.grapefruitShrub), value: 1.25, prep: PrepBible.grapefruitShrub),
-                                               OldCocktailIngredient(.liqueurs(.licor43), value: 0.5),
-                                               OldCocktailIngredient(.seasoning(.saline), value: 5, unit: .drops),
-                                               OldCocktailIngredient(.vodkas(.vodkaAny), value: 1.5)],
-                                        tags: Tags(flavors: [], profiles: [], styles: [], booze: [], nA: []),
-                                        collection: .custom)
-    static var textCocktail6 = Cocktail(cocktailName: "Test Cocktail #1",
-                                        glasswareType: Glassware.buenaVistaIrish,
-                                        spec: [OldCocktailIngredient(.juices(.lemon), value: 0.25),
-                                               OldCocktailIngredient(.syrups(.grapefruitShrub), value: 1.25, prep: PrepBible.grapefruitShrub),
-                                               OldCocktailIngredient(.liqueurs(.licor43), value: 0.5),
-                                               OldCocktailIngredient(.seasoning(.saline), value: 5, unit: .drops),
-                                               OldCocktailIngredient(.vodkas(.vodkaAny), value: 1.5)],
-                                        tags: Tags(flavors: [], profiles: [], styles: [], booze: [], nA: []),
-                                        collection: .custom)
-    static var textCocktail7 = Cocktail(cocktailName: "Test Cocktail #2",
-                                        glasswareType: Glassware.collins,
-                                        spec: [OldCocktailIngredient(.juices(.lemon), value: 0.25),
-                                               OldCocktailIngredient(.syrups(.grapefruitShrub), value: 1.25, prep: PrepBible.grapefruitShrub),
-                                               OldCocktailIngredient(.liqueurs(.licor43), value: 0.5),
-                                               OldCocktailIngredient(.seasoning(.saline), value: 5, unit: .drops),
-                                               OldCocktailIngredient(.vodkas(.vodkaAny), value: 1.5)],
-                                        tags: Tags(flavors: [], profiles: [], styles: [], booze: [], nA: []), variation: .daiquiri,
-                                        collection: .custom)
-    static var textCocktail8 = Cocktail(cocktailName: "Test Cocktail #3",
-                                        glasswareType: Glassware.copperMuleCup,
-                                        spec: [OldCocktailIngredient(.juices(.lemon), value: 0.25),
-                                               OldCocktailIngredient(.syrups(.grapefruitShrub), value: 1.25, prep: PrepBible.grapefruitShrub),
-                                               OldCocktailIngredient(.liqueurs(.licor43), value: 0.5),
-                                               OldCocktailIngredient(.seasoning(.saline), value: 5, unit: .drops),
-                                               OldCocktailIngredient(.vodkas(.vodkaAny), value: 1.5)],
-                                        tags: Tags(flavors: [], profiles: [], styles: [], booze: [], nA: []), variation: .saturn,
-                                        collection: .custom)
-    static var textCocktail9 = Cocktail(cocktailName: "Test Cocktail #4",
-                                        glasswareType: Glassware.crustaGlass,
-                                        spec: [OldCocktailIngredient(.juices(.lemon), value: 0.25),
-                                               OldCocktailIngredient(.syrups(.grapefruitShrub), value: 1.25, prep: PrepBible.grapefruitShrub),
-                                               OldCocktailIngredient(.liqueurs(.licor43), value: 0.5),
-                                               OldCocktailIngredient(.seasoning(.saline), value: 5, unit: .drops),
-                                               OldCocktailIngredient(.vodkas(.vodkaAny), value: 1.5)],
-                                        tags: Tags(flavors: [], profiles: [], styles: [], booze: [], nA: []), variation: .martinez,
-                                        collection: .custom)
-    static var textCocktail10 = Cocktail(cocktailName: "Test Cocktail #5",
-                                        glasswareType: Glassware.flute,
-                                        spec: [OldCocktailIngredient(.juices(.lemon), value: 0.25),
-                                               OldCocktailIngredient(.syrups(.grapefruitShrub), value: 1.25, prep: PrepBible.grapefruitShrub),
-                                               OldCocktailIngredient(.liqueurs(.licor43), value: 0.5),
-                                               OldCocktailIngredient(.seasoning(.saline), value: 5, unit: .drops),
-                                               OldCocktailIngredient(.vodkas(.vodkaAny), value: 1.5)],
-                                         tags: Tags(flavors: [], profiles: [], styles: [], booze: [], nA: []), variation: .mojito,
-                                        collection: .custom)
-    
-    
-    
+                                          glasswareType: Glassware.buenaVistaIrish,
+                                          spec: [
+                                            Ingredient(ingredientBase: IngredientBase(name: "Test ingredient # 12", category: .amari, prep: nil), value: 1.5, unit: .barSpoon),
+                                            Ingredient(ingredientBase: IngredientBase(name: "Test ingredient # 23", category: .agaves, prep: nil), value: 2, unit: .fluidOunces)
+                                          ] ,
+                                          tags: Tags(flavors: [], profiles: [], styles: [], booze: [], nA: []),
+                                          collection: .custom, isCustom: true)
+      
+      static var textCocktail2 = Cocktail(cocktailName: "I Can see colors",
+                                          glasswareType: Glassware.coupe,
+                                          spec: [Ingredient(ingredientBase: IngredientBase(name: "Test ingredient # 44", category: .amari, prep: nil), value: 1.5, unit: .barSpoon),
+                                                 Ingredient(ingredientBase: IngredientBase(name: "Test ingredient # 36", category: .agaves, prep: nil), value: 2, unit: .fluidOunces)] ,
+                                          tags: Tags(flavors: [], profiles: [], styles: [], booze: [], nA: []),
+                                          collection: .custom, isCustom: true)
 }

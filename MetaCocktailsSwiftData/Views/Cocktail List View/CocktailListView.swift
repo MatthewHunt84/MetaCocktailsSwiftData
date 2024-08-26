@@ -11,6 +11,7 @@ import SwiftData
 struct CocktailListView: View {
     @Bindable var viewModel = CocktailListViewModel()
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
+
     @FocusState private var searchBarIsFocused: Bool
     @State private var showingModal = false
 

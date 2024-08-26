@@ -270,6 +270,7 @@ class Ingredient: Codable, Hashable {
 @Model
 class IngredientBase: Codable, Hashable {
     #Unique<IngredientBase>([\.name])
+    var id: UUID
     var name: String
     var info: String?
     var tags: Tags?
@@ -279,8 +280,9 @@ class IngredientBase: Codable, Hashable {
     var baseCategory: String
     var specialtyCategory: String
     
-    init(name: String, info: String? = nil, category: UmbrellaCategory, tags: Tags? = Tags(), prep: Prep?, isCustom: Bool = false, baseCategory: BaseCategory? = nil, specialtyCategory: SpecialtyCategory? = nil) {
+    init(id: UUID = UUID(), name: String, info: String? = nil, category: UmbrellaCategory, tags: Tags? = Tags(), prep: Prep?, isCustom: Bool = false, baseCategory: BaseCategory? = nil, specialtyCategory: SpecialtyCategory? = nil) {
         
+        self.id = id
         self.name = name
         self.info = info
         self.umbrellaCategory = category.rawValue
@@ -322,11 +324,12 @@ class IngredientBase: Codable, Hashable {
     }
     
     enum CodingKeys: CodingKey {
-        case name, category, tags, prep, info, isCustom, baseCategory, specialtyCategory
+        case id, name, category, tags, prep, info, isCustom, baseCategory, specialtyCategory
     }
     
     required init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decode(UUID.self, forKey: .id)
         self.name = try container.decode(String.self, forKey: .name)
         self.umbrellaCategory = try container.decode(String.self, forKey: .category)
         self.tags = try container.decode(Tags.self, forKey: .tags)
@@ -339,6 +342,7 @@ class IngredientBase: Codable, Hashable {
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
         try container.encode(umbrellaCategory, forKey: .category)
         try container.encode(tags, forKey: .tags)
