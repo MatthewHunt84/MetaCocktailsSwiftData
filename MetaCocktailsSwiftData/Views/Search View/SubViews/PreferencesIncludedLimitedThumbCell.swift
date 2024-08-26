@@ -50,6 +50,7 @@ struct PreferencesIncludedLimitedThumbCell: View {
                      } else {
                          viewModel.unwantedSelections.removeAll(where: {$0 == ingredient})
                      }
+                     viewModel.updateCategoryIngredients()
                      viewModel.fillUnwantedCategoryArrays()
                      viewModel.currentComponentSearchName = ""
                  }

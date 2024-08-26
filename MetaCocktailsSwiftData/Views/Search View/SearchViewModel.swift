@@ -27,6 +27,9 @@ final class SearchViewModel: ObservableObject {
     var ingredientNames: [String] = []
     var allWhiskies: [String] = Whiskey.allCases.map({ $0.rawValue })
     
+    private var includedIngredientsSet: Set<String> = []
+    private var excludedIngredientsSet: Set<String> = []
+    
     var unwantedIngredients: [String] = []
     var preferredIngredients: [String] = []
     var preferredUmbrellaCategories: [String] = []
@@ -327,7 +330,7 @@ final class SearchViewModel: ObservableObject {
     func updateSearch(_ searchText: String) {
         searchSubject.send(searchText)
     }
-    
+
     private func performSearch(_ searchText: String) {
         guard !searchText.isEmpty else {
             filteredIngredients = []
@@ -357,18 +360,24 @@ final class SearchViewModel: ObservableObject {
                 return (lhsLowercased.range(of: lowercasedSearchText)?.lowerBound ?? lhsLowercased.endIndex) < (rhsLowercased.range(of: lowercasedSearchText)?.lowerBound ?? rhsLowercased.endIndex)
             }
     }
-    
-    @ViewBuilder
-    func returnPreferencesThumbCell(ingredient: Binding<String> ) -> some View {
-        
-        if findAllCategoryIngredients().included.contains(ingredient.wrappedValue)  {
-            PreferencesIncludedLimitedThumbCell(ingredient: ingredient)
-        } else if findAllCategoryIngredients().excluded.contains(ingredient.wrappedValue) {
-            PreferencesExcludedLimitedThumbCell(ingredient: ingredient)
-        } else {
-            PreferencesThumbsCell(ingredient: ingredient)
+        //Cache ingredients instead of running findAllCategoryIngredients a million times
+        func updateCategoryIngredients() {
+            let (included, excluded) = findAllCategoryIngredients()
+            includedIngredientsSet = Set(included)
+            excludedIngredientsSet = Set(excluded)
         }
-    }
+        
+        @ViewBuilder
+        func returnPreferencesThumbCell(ingredient: Binding<String>) -> some View {
+            if includedIngredientsSet.contains(ingredient.wrappedValue) {
+                PreferencesIncludedLimitedThumbCell(ingredient: ingredient)
+            } else if excludedIngredientsSet.contains(ingredient.wrappedValue) {
+                PreferencesExcludedLimitedThumbCell(ingredient: ingredient)
+            } else {
+                PreferencesThumbsCell(ingredient: ingredient)
+            }
+        }
+    
 }
 
 class AppStateRefresh: ObservableObject {
