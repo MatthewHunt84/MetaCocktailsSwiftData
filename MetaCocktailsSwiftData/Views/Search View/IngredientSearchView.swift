@@ -126,7 +126,10 @@ struct ThumbsUpOrDownIngredientSearchListView: View {
                     TextField("Flavor, Ingredient, Style, or Profile...", text: $viewModel.currentComponentSearchName)
                         .focused($keyboardFocused)
                         .autocorrectionDisabled(true)
-                        
+                        .onChange(of: viewModel.currentComponentSearchName) { _, newValue in
+                            viewModel.updateSearch(newValue)
+                        }
+                    
                     if !viewModel.currentComponentSearchName.isEmpty {
                         Button {
                             viewModel.currentComponentSearchName = ""
@@ -143,7 +146,7 @@ struct ThumbsUpOrDownIngredientSearchListView: View {
                 viewModel.ingredientNames = ingredients.map({$0.name})
             }
             
-            if keyboardFocused {
+            if !viewModel.filteredIngredients.isEmpty {
                 List {
                     
                     ForEach($viewModel.filteredIngredients, id: \.self) { ingredient in

@@ -16,10 +16,18 @@ struct AllCocktailsListView: View {
         cocktail.isCustomCocktail == true
     }, sort: \Cocktail.cocktailName) private var customCocktails: [Cocktail]
     var body: some View {
+        
         ForEach(viewModel.cocktailListAlphabet, id: \.self) { letter in
             Section {
                 if letter == CocktailListViewModel.sfSymbolForCustomCocktails {
-                    customCocktailsSection
+                    ForEach(customCocktails, id: \.id) { cocktail in
+                        CocktailListItemView(viewModel: viewModel, cocktail: cocktail, isInCustomSection: true)
+                    }
+                    .onDelete { indexSet in
+                        for index in indexSet {
+                            modelContext.delete(cocktails[index])
+                        }
+                    }
                 } else {
                     ForEach(cocktails.filter { $0.cocktailName.hasPrefix(letter) }, id: \.id) { cocktail in
                         CocktailListItemView(viewModel: viewModel, cocktail: cocktail, isInCustomSection: false)
@@ -31,17 +39,6 @@ struct AllCocktailsListView: View {
                     .font(.title)
             }
             .id(letter)
-        }
-    }
-    
-    private var customCocktailsSection: some View {
-        ForEach(customCocktails, id: \.id) { cocktail in
-            CocktailListItemView(viewModel: viewModel, cocktail: cocktail, isInCustomSection: true)
-        }
-        .onDelete { indexSet in
-            for index in indexSet {
-                modelContext.delete(cocktails[index])
-            }
         }
     }
 }
