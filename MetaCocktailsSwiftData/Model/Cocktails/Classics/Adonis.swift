@@ -12,7 +12,7 @@ var adonis = Cocktail(cocktailName: "Adonis",
                       glasswareType: Glassware.coupe,
                       garnish: [.orangeOrLemon],
                       ice: nil,
-                      author:Author(person: "Joe McKone", place: AuthorPlaces.hoffmanHouse.rawValue),
+                      author:Author(person: "Joe McKone", place: AuthorPlaces.hoffmanHouse.rawValue, year: "1880s"),
                       spec: adonisSpec,
                       buildOrder: nil,
                       tags: adonisTags)

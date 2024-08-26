@@ -398,7 +398,6 @@
 		4DBFF8572B60AAFB0011B5B1 /* CableCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8562B60AAFB0011B5B1 /* CableCar.swift */; };
 		4DBFF8592B60AD800011B5B1 /* CableCar(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8582B60AD800011B5B1 /* CableCar(W&G).swift */; };
 		4DBFF85B2B60AFE60011B5B1 /* Carajillo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF85A2B60AFE60011B5B1 /* Carajillo.swift */; };
-		4DC4CCD42C7BE4AC001BF384 /* ListSearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4CCD32C7BE4AC001BF384 /* ListSearchBarView.swift */; };
 		4DCAA7A52C35E77200FBC4FE /* IngredeientRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAA7A42C35E77200FBC4FE /* IngredeientRecipeView.swift */; };
 		4DCAA7A72C35E83F00FBC4FE /* AddRecipeStepDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAA7A62C35E83F00FBC4FE /* AddRecipeStepDetailView.swift */; };
 		4DCAA7A92C373D1700FBC4FE /* AddExistingIngredientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAA7A82C373D1700FBC4FE /* AddExistingIngredientDetailView.swift */; };
@@ -504,6 +503,7 @@
 		4DF408EC2B61A9F900EF9A6E /* FancyFree(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF408EB2B61A9F900EF9A6E /* FancyFree(W&G).swift */; };
 		4DF408EE2B61B89B00EF9A6E /* FogCutter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF408ED2B61B89B00EF9A6E /* FogCutter.swift */; };
 		4DF408F22B61BCCC00EF9A6E /* FogCutter(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF408F12B61BCCC00EF9A6E /* FogCutter(W&G).swift */; };
+		4DF637A52C7C522100B2E3BF /* HistoricalCocktailModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF637A42C7C522100B2E3BF /* HistoricalCocktailModalView.swift */; };
 		F40FB6B12B7E38DA0047D597 /* CocktailCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40FB6B02B7E38DA0047D597 /* CocktailCollection.swift */; };
 		F41045072AD4FD42000CA913 /* CocktailImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41045062AD4FD42000CA913 /* CocktailImageView.swift */; };
 		F44A28F72AC26A6A0083C04D /* TagLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44A28F62AC26A6A0083C04D /* TagLayout.swift */; };
@@ -929,7 +929,6 @@
 		4DBFF8562B60AAFB0011B5B1 /* CableCar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CableCar.swift; sourceTree = "<group>"; };
 		4DBFF8582B60AD800011B5B1 /* CableCar(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CableCar(W&G).swift"; sourceTree = "<group>"; };
 		4DBFF85A2B60AFE60011B5B1 /* Carajillo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carajillo.swift; sourceTree = "<group>"; };
-		4DC4CCD32C7BE4AC001BF384 /* ListSearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSearchBarView.swift; sourceTree = "<group>"; };
 		4DCAA7A42C35E77200FBC4FE /* IngredeientRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredeientRecipeView.swift; sourceTree = "<group>"; };
 		4DCAA7A62C35E83F00FBC4FE /* AddRecipeStepDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeStepDetailView.swift; sourceTree = "<group>"; };
 		4DCAA7A82C373D1700FBC4FE /* AddExistingIngredientDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExistingIngredientDetailView.swift; sourceTree = "<group>"; };
@@ -1035,6 +1034,7 @@
 		4DF408EB2B61A9F900EF9A6E /* FancyFree(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FancyFree(W&G).swift"; sourceTree = "<group>"; };
 		4DF408ED2B61B89B00EF9A6E /* FogCutter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FogCutter.swift; sourceTree = "<group>"; };
 		4DF408F12B61BCCC00EF9A6E /* FogCutter(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FogCutter(W&G).swift"; sourceTree = "<group>"; };
+		4DF637A42C7C522100B2E3BF /* HistoricalCocktailModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalCocktailModalView.swift; sourceTree = "<group>"; };
 		F40FB6B02B7E38DA0047D597 /* CocktailCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailCollection.swift; sourceTree = "<group>"; };
 		F41045062AD4FD42000CA913 /* CocktailImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImageView.swift; sourceTree = "<group>"; };
 		F44A28F62AC26A6A0083C04D /* TagLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLayout.swift; sourceTree = "<group>"; };
@@ -1642,7 +1642,7 @@
 				4D74398A2B9E581A0020C3B8 /* LoadSampleCocktailsButton.swift */,
 				4D74398F2B9E59EA0020C3B8 /* SpecifiedListView.swift */,
 				4D7439912B9E5A2A0020C3B8 /* AllCocktailsListView.swift */,
-				4DC4CCD32C7BE4AC001BF384 /* ListSearchBarView.swift */,
+				4DF637A42C7C522100B2E3BF /* HistoricalCocktailModalView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -2200,7 +2200,6 @@
 				4DBFF8232B5FB71E0011B5B1 /* ArmyNavy.swift in Sources */,
 				4DA567842B6CB4E4003F6F04 /* El Ocho Rosado.swift in Sources */,
 				F4DBE4C52AB8831C009A0C09 /* AnimatedSearchView.swift in Sources */,
-				4DC4CCD42C7BE4AC001BF384 /* ListSearchBarView.swift in Sources */,
 				4DA567FC2B6DF5D0003F6F04 /* GreatScott!.swift in Sources */,
 				4DBBA4AA2B68CA4300179B8F /* OaxacanOldFashioned(WnG).swift in Sources */,
 				4DF408EA2B61A86A00EF9A6E /* FancyFree.swift in Sources */,
@@ -2262,6 +2261,7 @@
 				4DA567762B6C8791003F6F04 /* MoneyPenny.swift in Sources */,
 				4D5DA0BC2BA1345B00C14F1F /* Saladito.swift in Sources */,
 				4DBFF8412B6083760011B5B1 /* Bramble.swift in Sources */,
+				4DF637A52C7C522100B2E3BF /* HistoricalCocktailModalView.swift in Sources */,
 				4DBBA4D72B6A506A00179B8F /* RobRoy(W&G).swift in Sources */,
 				4DBFF84D2B609D0C0011B5B1 /* Brooklyn(W&G).swift in Sources */,
 				4DBBA47E2B68793C00179B8F /* LaLouisiane.swift in Sources */,
