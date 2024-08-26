@@ -69,7 +69,6 @@ struct CocktailListView: View {
                 isPresented: $showingModal,
                 alertContent: HistoricalCocktailAlert.standard
             ) {
-                print("Modal dismissed")
             }
         }
     }
@@ -139,6 +138,9 @@ struct ListSearchBarView: View {
                         }
                         .padding(.horizontal, 10)
                     }
+                }
+                .onChange(of: text) { _, newValue in
+                    viewModel.updateSearch(newValue)
                 }
             if isFocused {
                 Button("Done") {
