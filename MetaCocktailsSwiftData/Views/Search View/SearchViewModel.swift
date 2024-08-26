@@ -27,6 +27,9 @@ final class SearchViewModel: ObservableObject {
     var ingredientNames: [String] = []
     var allWhiskies: [String] = Whiskey.allCases.map({ $0.rawValue })
     
+    private var includedIngredientsSet: Set<String> = []
+    private var excludedIngredientsSet: Set<String> = []
+    
     var unwantedIngredients: [String] = []
     var preferredIngredients: [String] = []
     var preferredUmbrellaCategories: [String] = []
@@ -327,22 +330,18 @@ final class SearchViewModel: ObservableObject {
     func updateSearch(_ searchText: String) {
         searchSubject.send(searchText)
     }
-    
-    func performSearch(_ searchText: String) {
+
+    private func performSearch(_ searchText: String) {
         guard !searchText.isEmpty else {
             filteredIngredients = []
             return
         }
         
         let lowercasedSearchText = searchText.lowercased()
-        var seen = Set<String>()  // We create this set to make sure we have unique criteria.
+        let combinedArrays = ingredientNames + baseCategoryStrings + umbrellaCategoryStrings + specialtyCategoryStrings
+        let combinedArraysWithoutDuplicates = Array(Set(combinedArrays))
         
-        filteredIngredients = (ingredientNames + baseCategoryStrings + umbrellaCategoryStrings + specialtyCategoryStrings).lazy //By making the arrays lazy, the combination, filtering, and sorting are done in a more efficient manner, only processing criteria as needed.
-            .filter { criteria in
-                let lowercasedCriteria = criteria.lowercased()
-                return lowercasedCriteria.contains(lowercasedSearchText) // This checks if the lowercasedSearchText is contained within lowercasedCriteria.
-                && seen.insert(lowercasedCriteria).inserted  // This checks if lowercasedCriteria was successfully inserted into the seen set (it's unique).
-            }
+        filteredIngredients = combinedArraysWithoutDuplicates.filter { $0.lowercased().contains(lowercasedSearchText) }
             .sorted { lhs, rhs in
                 let lhsLowercased = lhs.lowercased()
                 let rhsLowercased = rhs.lowercased()
@@ -360,22 +359,25 @@ final class SearchViewModel: ObservableObject {
                 
                 return (lhsLowercased.range(of: lowercasedSearchText)?.lowerBound ?? lhsLowercased.endIndex) < (rhsLowercased.range(of: lowercasedSearchText)?.lowerBound ?? rhsLowercased.endIndex)
             }
-            .prefix(25) // limits the results to the first 25 matches, which can significantly reduce the workload if you expect a large number of matches.
-            .map { $0 } // Finalize the lazy collection into an array
     }
-
-
-    @ViewBuilder
-    func returnPreferencesThumbCell(ingredient: Binding<String> ) -> some View {
-        
-        if findAllCategoryIngredients().included.contains(ingredient.wrappedValue)  {
-            PreferencesIncludedLimitedThumbCell(ingredient: ingredient)
-        } else if findAllCategoryIngredients().excluded.contains(ingredient.wrappedValue) {
-            PreferencesExcludedLimitedThumbCell(ingredient: ingredient)
-        } else {
-            PreferencesThumbsCell(ingredient: ingredient)
+        //Cache ingredients instead of running findAllCategoryIngredients a million times
+        func updateCategoryIngredients() {
+            let (included, excluded) = findAllCategoryIngredients()
+            includedIngredientsSet = Set(included)
+            excludedIngredientsSet = Set(excluded)
         }
-    }
+        
+        @ViewBuilder
+        func returnPreferencesThumbCell(ingredient: Binding<String>) -> some View {
+            if includedIngredientsSet.contains(ingredient.wrappedValue) {
+                PreferencesIncludedLimitedThumbCell(ingredient: ingredient)
+            } else if excludedIngredientsSet.contains(ingredient.wrappedValue) {
+                PreferencesExcludedLimitedThumbCell(ingredient: ingredient)
+            } else {
+                PreferencesThumbsCell(ingredient: ingredient)
+            }
+        }
+    
 }
 
 class AppStateRefresh: ObservableObject {

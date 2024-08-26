@@ -47,6 +47,7 @@ struct PreferencesThumbsCell: View {
                         viewModel.preferredSelections.removeAll(where: {$0 == ingredient})
                         viewModel.preferredCount -= 1
                     }
+                    viewModel.updateCategoryIngredients()
                     viewModel.fillPreferredCategoryArrays()
                     viewModel.currentComponentSearchName = ""
                     
@@ -80,6 +81,7 @@ struct PreferencesThumbsCell: View {
                     } else {
                         viewModel.unwantedSelections.removeAll(where: {$0 == ingredient})
                     }
+                    viewModel.updateCategoryIngredients()
                     viewModel.fillUnwantedCategoryArrays()
                     viewModel.currentComponentSearchName = ""
                 }
