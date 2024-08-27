@@ -14,11 +14,10 @@ struct IngredientSearchResultsView: View {
     @State private var backgroundIsActive: Bool = false
     var body: some View {
         
-        
         ZStack {
             
             MeshGradients.matchedCocktailBackground(backgroundIsActive: backgroundIsActive)
-            .ignoresSafeArea()
+                .ignoresSafeArea()
                 .onAppear{
                     withAnimation(.easeInOut(duration: 10).repeatForever(autoreverses: true)) {
                         backgroundIsActive.toggle()
@@ -26,7 +25,7 @@ struct IngredientSearchResultsView: View {
                 }
             
             VStack {
-
+                
                 PreferencesListView()
                     .padding(.top, 10)
                     .padding(.bottom, 10)
