@@ -25,7 +25,7 @@ struct AllCocktailsListView: View {
                     }
                     .onDelete { indexSet in
                         for index in indexSet {
-                            modelContext.delete(cocktails[index])
+                            modelContext.delete(customCocktails[index])
                         }
                     }
                     .listRowBackground(Color.clear)
