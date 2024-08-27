@@ -198,7 +198,7 @@ enum Gin: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
     case tanqueray            = "Tanqueray"
     case woodyCreekGin        = "Woody Creek Gin"
     case woodyCreekGinJasmine = "Jasmine tea gin"
-    case navyStrengthGin      = "Navy strength gin"
+    case navyStrengthGin      = "Navy Strength Gin"
     
     
     
@@ -343,7 +343,7 @@ enum Rum: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
     case rumFire                      = "Rum Fire"
     case rumJamaicanAged              = "Aged Jamaican Rum"
     case rumPuertoRican               = "Puerto Rican Rum"
-    case rumWhite                     = "White rum"
+    case rumWhite                     = "White Rum"
     case sailorJerry                  = "Sailor Jerry's Rum"
     case smithAndCross                = "Smith & Cross"
     case uruapanAnejo                 = "Charanda Uruapan Anejo"
@@ -775,7 +775,7 @@ enum Liqueur: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
         case .giffardAbricot:
             Tags(flavors: [.apricot], booze: [Booze(.liqueurs(self))])
         case .plymouthSloeGin:
-            Tags(flavors: [.sloeBerries], booze: [Booze(.liqueurs(self))])
+            Tags(flavors: [.sloeBerries], booze: [Booze(.liqueurs(self)), Booze(.gins(.ginAny))])
         case .pimms:
             Tags(profiles: [.herbal, .botanical, .bittersweet], booze: [Booze(.liqueurs(self))])
         case .lopoldsApple:
@@ -824,8 +824,8 @@ enum Liqueur: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
 }
 enum FortifiedWine: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
     case aeDorPineauDeCharantes = "Pineau des Charentes Blanc"
-    case amontillado            = "Amontillado sherry"
-    case blancVermouth          = "Blanc vermouth"
+    case amontillado            = "Amontillado Sherry"
+    case blancVermouth          = "Blanc Vermouth"
     case bonal                  = "Bonal Gentiane-Quina"
     case byrrh                  = "Byrrh Grand Quinquina"
     case carpanoAntica          = "Carpano Antica"
@@ -840,7 +840,7 @@ enum FortifiedWine: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType 
     case dolinBlanc             = "Dolin Blanc Vermouth"
     case dolinRouge             = "Dolin Rouge Vermouth"
     case dubonnet               = "Dubonnet"
-    case fino                   = "Fino sherry"
+    case fino                   = "Fino Sherry"
     case hidalgoManzanilla      = "Hildago Manzanilla Sherry"
     case kinaLillet             = "Kina Lillet"
     case lilletBlanc            = "Lillet Blanc Vermouth"
