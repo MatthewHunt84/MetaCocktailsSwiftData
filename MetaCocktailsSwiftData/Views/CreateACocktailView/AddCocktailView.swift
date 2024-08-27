@@ -21,44 +21,42 @@ struct AddCocktailView: View {
                 
                 MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
                 VStack {
-                    FontFactory.titleHeader(title: "Add a Cocktail")
+                    FontFactory.titleHeader30(title: "Add a Cocktail")
                     
                     Form {
-                        Section(header: Text("Name").font(FontFactory.sectionHeader)) {
+                        Section(header: Text("Name").font(FontFactory.sectionHeader12)) {
                             TextField("Cocktail Name", text: $viewModel.cocktailName)
                                 .focused($yearKeyboardFocused)
-                                .font(FontFactory.body)
+                                .font(FontFactory.fontBody16)
                         }
-                        //                    .listRowBackground(sectionBackground)
                         
                         AddedIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
                         
-                        Section(header: Text("Extras").font(FontFactory.sectionHeader)) {
+                        Section(header: Text("Extras").font(FontFactory.sectionHeader12)) {
                             GlassPickerButton(viewModel: viewModel)
                             IcePicker(ice: $viewModel.ice)
                             VariationPicker(variation: $viewModel.variation)
                         }
-                        //                    .listRowBackground(sectionBackground)
                         
                         GarnishPicker(viewModel: viewModel)
-                        Section(header: Text("Credit (optional)").font(FontFactory.sectionHeader)) {
+                        Section(header: Text("Credit (optional)").font(FontFactory.sectionHeader12)) {
                             TextField("Author", text: $viewModel.authorName)
                                 .focused($yearKeyboardFocused)
-                                .font(FontFactory.formLabel)
+                                .font(FontFactory.formLabel18)
                             TextField("Origin", text: $viewModel.authorPlace)
                                 .focused($yearKeyboardFocused)
-                                .font(FontFactory.formLabel)
+                                .font(FontFactory.formLabel18)
                             TextField("Year", text: $viewModel.authorYear)
                                 .keyboardType(.numberPad)
                                 .focused($yearKeyboardFocused)
-                                .font(FontFactory.formLabel)
+                                .font(FontFactory.formLabel18)
                         }
-                        //                    .listRowBackground(sectionBackground)
+                       
                         
-                        Section(header: Text("Build steps (optional)").font(FontFactory.sectionHeader)) {
+                        Section(header: Text("Build steps (optional)").font(FontFactory.sectionHeader12)) {
                             AddBuildStepView(viewModel: viewModel)
                         }
-                        //                    .listRowBackground(sectionBackground)
+                    
                         
                         Button{
                             viewModel.clearData()
@@ -68,8 +66,7 @@ struct AddCocktailView: View {
                                 Image(systemName: "arrow.triangle.2.circlepath")
                                     .font(.headline).bold()
                                 Text("Reset to Defaults")
-                                    .font(FontFactory.body)
-                                    .font(.footnote).bold()
+                                    .font(FontFactory.fontBody16)
                             }
                             .tint(Color.blueTint)
                             .padding()
@@ -105,7 +102,7 @@ struct AddCocktailView: View {
                         } label: {
                             HStack {
                                 Text("Add to Cocktails")
-                                    .font(FontFactory.bottomToolbarButton)
+                                    .font(FontFactory.bottomToolbarButton20)
                                 Image(systemName: "plus")
                             }
                             .foregroundStyle(viewModel.isValid() ? .brandPrimaryGold : .secondary)
@@ -117,7 +114,7 @@ struct AddCocktailView: View {
                             yearKeyboardFocused = false
                         } label: {
                             Text("Done")
-                                .font(FontFactory.body)
+                                .font(FontFactory.fontBody16)
                         }
                         .tint(.blueTint)
                         
@@ -125,8 +122,6 @@ struct AddCocktailView: View {
                     
                 }
             }
-//            .navigationBarTitleDisplayMode(.inline)
-//            .goldHeader(viewModel.cocktailName == "" ? viewModel.defaultName : viewModel.cocktailName)
             .navigationDestination(isPresented: $viewModel.addExistingGarnishViewIsActive) {
                 GarnishDetailView(viewModel: viewModel)
                     .navigationBarBackButtonHidden(true)
@@ -164,10 +159,10 @@ private struct GlassPickerButton: View {
         } label: {
             HStack {
                 Text("Glassware")
-                    .font(FontFactory.formLabel)
+                    .font(FontFactory.formLabel18)
                 Spacer()
                 Text(glasswareName)
-                    .font(FontFactory.formLabel)
+                    .font(FontFactory.formLabel18)
                     .foregroundStyle(.gray)
                 
             }
@@ -184,59 +179,72 @@ private struct GlassPickerDetailView: View {
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        
-        VStack{
-            BackButton()
-            List {
-                ForEach(Glassware.allCases, id: \.self) { newGlass in
-                    if newGlass != .blueBlazerMugs && newGlass != .cinnamonSugarRim && newGlass != .crustaGlass  && newGlass != .doubleOldAsparagusSaltRim  && newGlass != .doubleOldSmokedSalt  && newGlass != .doubleOldCelerySalt {
-                        
-                        
-                        Button{
-                            viewModel.uniqueGlasswareName = newGlass
-                            glasswareName = newGlass.rawValue
-                            dismiss()
-                        } label: {
-                            HStack {
-                                newGlass.findGlass(for: newGlass)
-                                    .resizable()
-                                    .frame(width: 60, height: 60, alignment: .trailing)
-                                
-                                Text(newGlass.rawValue)
-                                    .tag(Optional(newGlass))
-                                    .font(FontFactory.bottomToolbarButton)
+        ZStack {
+            MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
+            VStack{
+                ZStack {
+                    HStack{
+                        BackButton()
+                        Spacer()
+                    }
+                    FontFactory.titleHeader30(title: "Glassware Choice")
+                }
+                List {
+                    ForEach(Glassware.allCases, id: \.self) { newGlass in
+                        if newGlass != .blueBlazerMugs && newGlass != .cinnamonSugarRim && newGlass != .crustaGlass  && newGlass != .doubleOldAsparagusSaltRim  && newGlass != .doubleOldSmokedSalt  && newGlass != .doubleOldCelerySalt {
+                            
+                            
+                            Button{
+                                viewModel.uniqueGlasswareName = newGlass
+                                glasswareName = newGlass.rawValue
+                                dismiss()
+                            } label: {
+                                HStack {
+                                    newGlass.findGlass(for: newGlass)
+                                        .resizable()
+                                        .frame(width: 60, height: 60, alignment: .trailing)
+                                    
+                                    Text(newGlass.rawValue)
+                                        .tag(Optional(newGlass))
+                                        .font(FontFactory.bottomToolbarButton20)
+                                        .foregroundStyle(.white)
+                                }
                             }
                         }
-                        .padding(.horizontal)
                     }
+                    .listStyle(.plain)
+                    .listRowBackground(Color.clear)
                 }
+                .scrollContentBackground(.hidden)
+                
             }
-            .listStyle(.plain)
-            .listRowBackground(Color.clear)
         }
     }
 }
-
 
 private struct IcePicker: View {
     @Binding var ice: Ice?
     
     var body: some View {
-        
-        Picker(selection: $ice) {
-            ForEach(Ice.allCases, id: \.rawValue)  { ice in
-                Text(ice.rawValue)
-                    .font(FontFactory.formLabel)
-                    .tag(Optional(ice))
-            }
-        } label: {
+        HStack {
             Text("Ice")
-                .font(FontFactory.formLabel)
+                .font(FontFactory.formLabel18)
+            Spacer()
+            Picker(selection: $ice, label: EmptyView()) {
+                ForEach(Ice.allCases, id: \.rawValue) { ice in
+                    Text(ice.rawValue)
+                        .font(FontFactory.formLabel18)
+                        .tag(Optional(ice))
+                }
+            }
+            .pickerStyle(.menu)
+            .labelsHidden()
+            
         }
-        .pickerStyle(.navigationLink)
+        .tint(ice == Ice.none ? Color.secondary : .white)
+        .font(FontFactory.formLabel18)
     }
 }
-
 
 private struct GarnishPicker: View {
     
@@ -250,7 +258,7 @@ private struct GarnishPicker: View {
                 ForEach(viewModel.addedGarnish, id: \.name) { garnish in
                     Text(garnish.name)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .font(FontFactory.formLabel)
+                        .font(FontFactory.formLabel18)
                 }
                 .onDelete(perform: { indexSet in
                     viewModel.addedGarnish.remove(atOffsets: indexSet)
@@ -263,7 +271,7 @@ private struct GarnishPicker: View {
                 HStack {
                     Text(viewModel.addedGarnish.count < 1 ? "Add Garnish" : "Add another garnish")
                         .tint(viewModel.addedGarnish.count < 1 ? .white : .secondary)
-                        .font(FontFactory.formLabel)
+                        .font(FontFactory.formLabel18)
                     Spacer()
                     Image(systemName: "plus.circle.fill")
                         .foregroundStyle(.blueTint)
@@ -286,14 +294,14 @@ private struct VariationPicker: View {
             Picker(selection: $variation) {
                 ForEach(Variation.allCases, id: \.rawValue)  { variation in
                     Text(variation.rawValue)
-                        .font(FontFactory.formLabel)
+                        .font(FontFactory.formLabel18)
                         .tag(Optional(variation))
                 }
             } label: {
                 HStack(spacing: 15) {
                     Text("Variation")
                         .frame(alignment: .leading)
-                        .font(FontFactory.formLabel)
+                        .font(FontFactory.formLabel18)
                     
                     Image(systemName: "questionmark.circle.fill")
                         .foregroundStyle(isShowingInfo ? .brandPrimaryGold : .blue)
@@ -305,7 +313,7 @@ private struct VariationPicker: View {
             
             if isShowingInfo {
                 Text("If this cocktail is a riff on another classic, you may add it here. Variations will be grouped together in the search list")
-                    .font(FontFactory.buildBodySmall)
+                    .font(FontFactory.buildBodySmall10)
                     .foregroundStyle(.brandPrimaryGold)
                     .padding(.top, 10)
             }

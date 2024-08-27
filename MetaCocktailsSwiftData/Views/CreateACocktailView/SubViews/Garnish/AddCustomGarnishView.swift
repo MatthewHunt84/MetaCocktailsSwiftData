@@ -16,18 +16,15 @@ struct AddCustomGarnishView: View {
     var body: some View {
         NavigationStack{
             ZStack{
+                MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
                 VStack {
-                    HStack{
-                        BackButton()
-                        Spacer()
+                    ZStack {
+                        HStack{
+                            BackButton()
+                            Spacer()
+                        }
+                        FontFactory.titleHeader30(title: "Add Custom Garnish")
                     }
-                    .padding(.horizontal)
-                    HStack {
-                        Text("Custom Garnish")
-                            .font(.largeTitle).bold()
-                        Spacer()
-                    }
-                    .padding(.horizontal)
                     Form {
                         Section("Name") {
                             TextField("Garnish Name", text: $viewModel.currentGarnishName)
@@ -35,6 +32,8 @@ struct AddCustomGarnishView: View {
                         }
                         AddCustomGarnishToCocktailButton(viewModel: viewModel)
                     }
+                    .scrollContentBackground(.hidden)
+                    .background(Color.clear)
                     .toolbar {
                         ToolbarItemGroup(placement: .keyboard) {
                             KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
@@ -74,14 +73,12 @@ struct AddCustomGarnishToCocktailButton: View {
                     }
                 }
             }
-          
         } label: {
-            
             HStack {
                 Image(systemName: "plus.circle.fill")
-                    .font(.footnote).bold()
+                    .font(.headline)
                 Text("Add to spec")
-                    .font(.footnote).bold()
+                    .font(FontFactory.formLabel18)
             }
             .tint(.blueTint)
             .padding()

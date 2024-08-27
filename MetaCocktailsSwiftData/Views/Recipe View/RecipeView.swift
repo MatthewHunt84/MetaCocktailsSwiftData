@@ -65,7 +65,7 @@ struct BuildOrderView: View {
             HStack(alignment: .center) {
                 Spacer()
                 Text("Build Order")
-                    .font(FontFactory.header)
+                    .font(FontFactory.recipeCardHeader18B)
                 Spacer()
             }
             .padding(.bottom, 10)
@@ -112,7 +112,7 @@ struct IngredientRecipeView: View {
             HStack(alignment: .center) {
                 Spacer()
                 Text("\(prep.prepIngredientName) recipe:")
-                    .font(FontFactory.header)
+                    .font(FontFactory.recipeCardHeader18B)
                 Spacer()
             }
             .padding(.bottom, 10)
@@ -346,7 +346,7 @@ struct GlasswareView: View {
         HStack(alignment: .center) {
             VStack(alignment: .leading, spacing: 5) {
                 Text("Glassware:")
-                    .font(FontFactory.header)
+                    .font(FontFactory.recipeCardHeader18B)
                 Text(cocktail.glasswareType.rawValue)
                     .dynamicTypeSize(.large)
                     .multilineTextAlignment(.leading)
@@ -375,7 +375,7 @@ struct SpecIngredientView: View {
         VStack{
             HStack {
                 Text("\(number) \(ingredient.unit.rawValue)")
-                    .font(FontFactory.specMeasurement)
+                    .font(FontFactory.specMeasurement16B)
                 if ingredient.ingredientBase.prep != nil {
                     Button{
                         viewModel.isShowingIngredientRecipe = true
@@ -386,14 +386,14 @@ struct SpecIngredientView: View {
                         }
                     } label: {
                         Text(ingredient.ingredientBase.name)
-                            .font(FontFactory.body)
+                            .font(FontFactory.fontBody16)
                             .tint(.blueTint)
                     }
                     .disabled(viewModel.isFlipped)
                 } else {
                     Text("\(ingredient.ingredientBase.name)")
 
-                        .font(FontFactory.body)
+                        .font(FontFactory.fontBody16)
 
                 }
                 if ingredient.ingredientBase.info != nil {
@@ -437,7 +437,7 @@ struct SpecView: View {
                     
                     HStack {
                         Text("Cocktail Spec:")
-                            .font(FontFactory.header)
+                            .font(FontFactory.recipeCardHeader18B)
 
                         if cocktail.notes != nil {
                             Button {
@@ -457,7 +457,7 @@ struct SpecView: View {
                             Image(systemName: "chevron.forward")
                         }
                         .foregroundStyle(.blueTint)
-                        .font(FontFactory.header)
+                        .font(FontFactory.recipeCardHeader18B)
                     }
                     .padding(.bottom, 5)
                     
@@ -502,9 +502,9 @@ private struct MethodView: View {
         
         VStack(alignment: .leading, spacing: 5) {
             Text("Method")
-                .font(FontFactory.header)
+                .font(FontFactory.recipeCardHeader18B)
             Text(methodText)
-                .font(FontFactory.body)
+                .font(FontFactory.fontBody16)
         }
     }
 }
@@ -515,16 +515,16 @@ private struct IceView: View {
         if let ice = cocktail.ice?.rawValue {
             VStack(alignment: .leading, spacing: 5) {
                 Text("Ice")
-                    .font(FontFactory.header)
+                    .font(FontFactory.recipeCardHeader18B)
                 Text(ice)
-                    .font(FontFactory.body)
+                    .font(FontFactory.fontBody16)
             }
         } else {
             VStack(alignment: .leading, spacing: 5) {
                 Text("Ice")
-                    .font(FontFactory.header)
+                    .font(FontFactory.recipeCardHeader18B)
                 Text("None")
-                    .font(FontFactory.body)
+                    .font(FontFactory.fontBody16)
             }
         }
     }
@@ -555,7 +555,7 @@ struct GarnishView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             Text("Garnish")
-                .font(FontFactory.header)
+                .font(FontFactory.recipeCardHeader18B)
             
             if cocktail.garnish != []{
                 
@@ -573,13 +573,13 @@ struct GarnishView: View {
                 } else {
                     ForEach(cocktail.garnish, id: \.name) { garnish in
                         Text("\(garnish.name)")
-                            .font(FontFactory.body)
+                            .font(FontFactory.fontBody16)
                             .multilineTextAlignment(.leading)
                     }
                 }
             } else {
                 Text("None")
-                    .font(FontFactory.body)
+                    .font(FontFactory.fontBody16)
             }
         }
     }
@@ -612,10 +612,10 @@ struct AuthorView: View {
     var body: some View {
         VStack {
             Text("Author:")
-                .font(FontFactory.header)
+                .font(FontFactory.recipeCardHeader18B)
             if author != "" {
                 Text(author)
-                    .font(FontFactory.body)
+                    .font(FontFactory.fontBody16)
             }
             if place != "" {
                 FontFactory.regularText(place, size: 16)

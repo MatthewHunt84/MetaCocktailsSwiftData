@@ -31,7 +31,7 @@ struct CustomAlertView: View {
                     .multilineTextAlignment(.center)
                 
                 Text(message)
-                    .font(FontFactory.body)
+                    .font(FontFactory.fontBody16)
                     .foregroundStyle(.white)
                     .multilineTextAlignment(.center)
                 
@@ -43,7 +43,7 @@ struct CustomAlertView: View {
                         RoundedRectangle(cornerRadius: 20)
                             .foregroundStyle(MeshGradients.activeBlue)
                         Text(buttonTitle)
-                            .font(FontFactory.specMeasurement)
+                            .font(FontFactory.specMeasurement16B)
                             .foregroundStyle(.white)
                             .padding()
                     }

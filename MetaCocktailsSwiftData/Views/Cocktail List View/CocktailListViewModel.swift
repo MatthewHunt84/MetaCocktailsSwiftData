@@ -43,16 +43,35 @@ import Combine
     }
     
     private func performSearch(_ searchText: String) {
+       
+        
         self.debouncedSearchText = searchText
         updateFilteredCocktails()
-        
-        // Include variation cocktails
+        let lowercasedSearchText = debouncedSearchText.lowercased()
+        // Include variation cocktails when searching with the search bar.
+        //Otherwise, only the title cocktail shows up in the search, instead of the title cocktail and all of it's variations.
         let variationCocktails = allCocktails.filter { cocktail in
             guard let variation = cocktail.variation else { return false }
             return filteredCocktails.contains { $0.variation == variation }
         }
         filteredCocktails.append(contentsOf: variationCocktails)
-        filteredCocktails = Array(Set(filteredCocktails)).sorted { $0.cocktailName < $1.cocktailName }
+        filteredCocktails = Array(Set(filteredCocktails)).sorted { $0.cocktailName < $1.cocktailName }.sorted { (lhs: Cocktail, rhs: Cocktail) in
+            //Move the sorting to after the variations have been added.
+            let lhsLowercased = lhs.cocktailName.lowercased()
+            let rhsLowercased = rhs.cocktailName.lowercased()
+            
+            let lhsStartsWith = lhsLowercased.hasPrefix(lowercasedSearchText)
+            let rhsStartsWith = rhsLowercased.hasPrefix(lowercasedSearchText)
+            
+            if lhsStartsWith != rhsStartsWith {
+                return lhsStartsWith
+            }
+            
+            if lhsStartsWith {
+                return lhs.cocktailName.count < rhs.cocktailName.count
+            }
+            return (lhsLowercased.range(of: lowercasedSearchText)?.lowerBound ?? lhsLowercased.endIndex) < (rhsLowercased.range(of: lowercasedSearchText)?.lowerBound ?? rhsLowercased.endIndex)
+        }
     }
     
     private func updateFilteredCocktails() {
@@ -62,22 +81,6 @@ import Combine
             filteredCocktails = allCocktails
         } else {
             filteredCocktails = allCocktails.filter { $0.cocktailName.localizedCaseInsensitiveContains(lowercasedSearchText) }
-                .sorted { (lhs: Cocktail, rhs: Cocktail) in
-                    let lhsLowercased = lhs.cocktailName.lowercased()
-                    let rhsLowercased = rhs.cocktailName.lowercased()
-                    
-                    let lhsStartsWith = lhsLowercased.hasPrefix(lowercasedSearchText)
-                    let rhsStartsWith = rhsLowercased.hasPrefix(lowercasedSearchText)
-                    
-                    if lhsStartsWith != rhsStartsWith {
-                        return lhsStartsWith
-                    }
-                    
-                    if lhsStartsWith {
-                        return lhs.cocktailName.count < rhs.cocktailName.count
-                    }
-                    return (lhsLowercased.range(of: lowercasedSearchText)?.lowerBound ?? lhsLowercased.endIndex) < (rhsLowercased.range(of: lowercasedSearchText)?.lowerBound ?? rhsLowercased.endIndex)
-                }
         }
     }
     

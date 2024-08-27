@@ -51,6 +51,7 @@ struct SearchBarAllCocktailsListView: View {
 
     var body: some View {
         ForEach(cocktails, id: \.id) { cocktail in
+            //This prevents duplicate listings of variation cocktails
             if cocktail.variation == nil || cocktail.titleCocktail == true {
                 CocktailListItemView(viewModel: viewModel, cocktail: cocktail, isInCustomSection: false)
             }

@@ -20,7 +20,7 @@ struct PreferencesThumbsCell: View {
             Spacer()
             
             Image(systemName:viewModel.preferredSelections.contains(ingredient)  ? "hand.thumbsup.fill" : "hand.thumbsup")
-                .foregroundStyle(viewModel.preferredSelections.contains(ingredient)  ? MeshGradients.goldMesh : MeshGradients.whiteMesh)
+                .foregroundStyle(viewModel.preferredSelections.contains(ingredient)  ? .brandPrimaryGreen : .white)
                 .onTapGesture {
                     if !viewModel.preferredSelections.contains(ingredient) {
                         if viewModel.umbrellaCategoryStrings.contains(ingredient) {
@@ -55,7 +55,7 @@ struct PreferencesThumbsCell: View {
                 .font(.system(size: 20))
             
             Image(systemName:viewModel.unwantedSelections.contains(ingredient)  ? "hand.thumbsdown.fill" : "hand.thumbsdown")
-                .foregroundStyle(viewModel.unwantedSelections.contains(ingredient)  ? MeshGradients.redMesh : MeshGradients.whiteMesh)
+                .foregroundStyle(viewModel.unwantedSelections.contains(ingredient)  ? .brandPrimaryRed : .white)
                 .onTapGesture {
                     if !viewModel.unwantedSelections.contains(ingredient) {
                         if viewModel.umbrellaCategoryStrings.contains(ingredient) {

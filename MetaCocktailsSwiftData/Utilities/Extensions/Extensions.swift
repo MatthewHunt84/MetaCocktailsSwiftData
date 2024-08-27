@@ -51,6 +51,22 @@ extension TextField {
     }
 }
 
+
+extension TextField {
+    func SearchBarTextField() -> some View {
+        self
+            .font(FontFactory.regularFont(size: 16))
+            .padding(10)
+            .background(
+                RoundedRectangle(cornerRadius: 25)
+                    .fill(Color.brandSecondaryGray)
+            )
+            .foregroundColor(.white)
+            .autocorrectionDisabled(true)
+            .padding(.trailing, 8)
+    }
+}
+
 extension Double {
     
     var toMilliliters: Double {

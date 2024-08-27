@@ -25,23 +25,14 @@ struct FilteredIngredientListView: View {
                 
                 
                 
-                TextField("Search for cocktails which contain...", text: $viewModel.currentComponentSearchName)
+                TextField("Search for cocktails which contain...", text: $viewModel.currentComponentSearchName).SearchBarTextField()
                     .focused($keyboardFocused)
-                    .font(FontFactory.regularFont(size: 16))
-                    .padding(10)
-                    .background(
-                        RoundedRectangle(cornerRadius: 25)
-                            .fill(Color.brandSecondaryGray)
-                    )
-                    .foregroundColor(.white)
-                    .autocorrectionDisabled(true)
                     .onChange(of: viewModel.currentComponentSearchName) { _, newValue in
                         viewModel.updateSearch(newValue)
                         Task {
                             await generateAllCocktailList(context: modelContext)
                         }
                     }
-                    .padding(.trailing, 8)
                     .animation(.easeInOut(duration: 0.2), value: keyboardFocused) // Animation on focus
                 
             }

@@ -21,7 +21,7 @@ struct IngredientSearchView: View {
             ZStack {
                     MeshGradients.meshBlueRibbonBackground.ignoresSafeArea()
                 VStack{
-                    FontFactory.titleHeader(title: "Search Cocktails")
+                    FontFactory.titleHeader30(title: "Search Cocktails")
                     FilteredIngredientListView(keyboardFocused: _keyboardFocused)
                         .onTapGesture {
                             keyboardFocused = true

@@ -21,15 +21,22 @@ struct GarnishDetailView: View {
             
             ZStack{
                 
-                MeshGradients.meshBlueRibbonBackground.ignoresSafeArea()
-
+                MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
+                VStack{
+                    ZStack {
+                        HStack{
+                            BackButton()
+                            Spacer()
+                        }
+                        FontFactory.titleHeader30(title: "Add Garnish")
+                    }
                     Form {
                         AddGarnishSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
                         AddExistingGarnishToCocktailButton(viewModel: viewModel)
                         
                     }
-                    .navigationBarTitleDisplayMode(.inline)
-                    .goldHeaderWithNavigation(title: "Add Ingredient", dismiss: dismiss)
+                    .scrollContentBackground(.hidden)
+                    .background(Color.clear)
                     .toolbar {
                         ToolbarItem(placement: .bottomBar) { CreateCustomGarnishButton(viewModel: viewModel) }
                         ToolbarItemGroup(placement: .keyboard) {
@@ -39,17 +46,17 @@ struct GarnishDetailView: View {
                     .task {
                         keyboardFocused = true
                     }
-
-                if viewModel.isShowingingredientAlert {
-                    CustomAlertView(isActive: $viewModel.isShowingingredientAlert,
-                                    title: "",
-                                    message: "Please choose from an existing garnish. If you'd like to make your own, press 'Create Custom Garnish'",
-                                    buttonTitle: "Heard, Chef",
-                                    action: {})
-                    .zIndex(2)
+                    
+                    if viewModel.isShowingingredientAlert {
+                        CustomAlertView(isActive: $viewModel.isShowingingredientAlert,
+                                        title: "",
+                                        message: "Please choose from an existing garnish. If you'd like to make your own, press 'Create Custom Garnish'",
+                                        buttonTitle: "Heard, Chef",
+                                        action: {})
+                        .zIndex(2)
+                    }
                 }
             }
-
         }
     }
 }
@@ -68,16 +75,16 @@ struct AddGarnishSearchView: View {
     
     
     var body: some View {
-        Section("Name") {
+        Section(header: Text("Name").font(FontFactory.sectionHeader12)) {
             VStack{
                 TextField("Garnish Name", text: $viewModel.currentGarnishName)
                     .focused($keyboardFocused)
+                    .font(FontFactory.formLabel18)
                     .onChange(of: viewModel.currentGarnishName, initial: true) { old, new in
                         viewModel.currentGarnishName = new
                         filteredGarnish = viewModel.matchAllGarnish(garnishes: garnish)
                     }
             }
-            
             if keyboardFocused {
                 List {
                     ForEach(filteredGarnish, id: \.self) { garnish in
@@ -90,18 +97,14 @@ struct AddGarnishSearchView: View {
                             Text(garnish)
                         }
                         .tint(.white)
-                        
-                        
                     }
                     .listStyle(.plain)
-                    .listRowBackground(Color.black)
-                    
+                    .listRowBackground(Color.clear)
                 }
                 .scrollContentBackground(.hidden)
             } else {
                 EmptyView()
             }
-
         }
     }
 }
@@ -124,9 +127,9 @@ struct AddExistingGarnishToCocktailButton: View {
             
             HStack {
                 Image(systemName: "plus.circle.fill")
-                    .font(.footnote).bold()
+                    .font(.headline)
                 Text("Add to spec")
-                    .font(.footnote).bold()
+                    .font(FontFactory.formLabel18)
             }
             .tint(.blueTint)
             .padding()
@@ -144,10 +147,11 @@ struct CreateCustomGarnishButton: View {
                 .navigationBarBackButtonHidden(true)
         } label: {
             HStack{
-                Text("Create Custom Garnish").font(.headline)
+                Text("Create Custom Garnish")
+                    .font(FontFactory.bottomToolbarButton20)
                 Image(systemName: "plus")
             }
-            .foregroundStyle(.brandPrimaryGold)
+            .foregroundStyle(.blueTint)
         }
     }
 }

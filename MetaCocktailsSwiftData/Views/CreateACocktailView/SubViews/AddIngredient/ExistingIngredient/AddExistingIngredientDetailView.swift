@@ -23,7 +23,13 @@ struct AddExistingIngredientDetailView: View {
                 
                 MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
                 VStack{
-                    FontFactory.titleHeader(title: "Add Ingredient")
+                    ZStack {
+                        HStack{
+                            BackButton()
+                            Spacer()
+                        }
+                        FontFactory.titleHeader30(title: "Add Ingredient")
+                    }
                     Form {
                         AddIngredientSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
                         AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
@@ -74,17 +80,17 @@ struct AddIngredientSearchView: View {
     @State var filteredIngredients2a: [IngredientBase] = []
     
     var body: some View {
-        Section("Name") {
+        Section(header:  Text("Name").font(FontFactory.sectionHeader12)) {
             VStack{
                 TextField("Ingredient Name", text: $viewModel.ingredientName)
                     .focused($keyboardFocused)
+                    .font(FontFactory.formLabel18)
                     .onChange(of: viewModel.ingredientName, initial: true) { old, new in
                         viewModel.ingredientName = new
                         filteredIngredients2a = viewModel.matchAllIngredients2(ingredients: ingredients)
                     
                     }
             }
-            
             if keyboardFocused {
                 List {
                     ForEach(filteredIngredients2a, id: \.name) { ingredient in
@@ -97,17 +103,13 @@ struct AddIngredientSearchView: View {
                             viewModel.dynamicallyChangeMeasurementUnit()
                             keyboardFocused = false
                             viewModel.didChooseExistingIngredient = true
-                             
                         } label: {
                             Text(ingredient.name)
                         }
                         .tint(.white)
-                        
-                        
                     }
                     .listStyle(.plain)
-                    .listRowBackground(Color.black)
-                    
+                    .listRowBackground(Color.clear)
                 }
                 .scrollContentBackground(.hidden)
             } else {
@@ -121,12 +123,12 @@ struct AddMeasurementView: View {
     @Bindable var viewModel: AddCocktailViewModel
     @FocusState var amountKeyboardFocused: Bool
     var body: some View {
-        Section(header: Text("Amount").font(FontFactory.sectionHeader)) {
+        Section(header: Text("Amount").font(FontFactory.sectionHeader12)) {
             HStack {
                 TextField("Ingredient Volume", value: $viewModel.ingredientAmount, formatter: viewModel.formatter)
                     .keyboardType(.decimalPad)
                     .focused($amountKeyboardFocused)
-                    .font(FontFactory.formLabel)
+                    .font(FontFactory.formLabel18)
 
                     
                     
@@ -138,7 +140,7 @@ struct AddMeasurementView: View {
                         } label: {
                             HStack{
                                 Text(unit.rawValue)
-                                    .font(FontFactory.formLabel)
+                                    .font(FontFactory.formLabel18)
                             }
                         }
                     }
@@ -146,7 +148,7 @@ struct AddMeasurementView: View {
                     HStack{
                         Text(viewModel.selectedMeasurementUnit.rawValue)
                             .tint(.white)
-                            .font(FontFactory.formLabel)
+                            .font(FontFactory.formLabel18)
                         Image(systemName: "chevron.down")
                             .foregroundStyle(.gray)
                     }
@@ -183,7 +185,7 @@ struct AddExistingIngredientToCocktailButton: View {
                 Image(systemName: "plus.circle.fill")
                     .font(.footnote).bold()
                 Text("Add to spec")
-                    .font(FontFactory.specMeasurement)
+                    .font(FontFactory.specMeasurement16B)
             }
             .tint(.blueTint)
             .padding()
@@ -203,7 +205,7 @@ struct CreateNewIngredientButton: View {
         } label: {
             HStack{
                 Text("Create Custom Ingredient")
-                    .font(FontFactory.bottomToolbarButton)
+                    .font(FontFactory.bottomToolbarButton20)
                 Image(systemName: "plus")
             }
             .foregroundStyle(.blueTint)
@@ -224,7 +226,7 @@ struct KeyboardDoneButton: View {
                 amountKeyboardFocused = false
             } label: {
                 Text("Done")
-                    .font(FontFactory.body)
+                    .font(FontFactory.fontBody16)
             }
             .tint(.blueTint)
         }

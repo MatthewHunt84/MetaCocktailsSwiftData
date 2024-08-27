@@ -32,7 +32,7 @@ struct CocktailListView: View {
                             LoadSampleCocktailsButton()
                         }
                         HStack{
-                            FontFactory.titleHeader(title: "Cocktail List")
+                            FontFactory.titleHeader30(title: "Cocktail List")
                             Button {
                                 showingModal = true
                             } label: {
@@ -131,6 +131,7 @@ struct AlphabetNavigationView: View {
 }
 
 struct ListSearchBarView: View {
+    
     @Binding var text: String
     @FocusState.Binding var isFocused: Bool
     @Bindable var viewModel: CocktailListViewModel
@@ -138,8 +139,9 @@ struct ListSearchBarView: View {
     var body: some View {
         HStack {
             TextField("Search cocktails", text: $text)
+                .SearchBarTextField()
                 .focused($isFocused)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .animation(.easeInOut(duration: 0.2), value: isFocused)
                 .overlay(alignment: .trailing) {
                     if !text.isEmpty {
                         Button {
@@ -148,7 +150,7 @@ struct ListSearchBarView: View {
                             Image(systemName: "x.circle.fill")
                                 .tint(.blueTint)
                         }
-                        .padding(.horizontal, 10)
+                        .padding(.horizontal, 20)
                     }
                 }
                 .onChange(of: text) { _, newValue in
@@ -169,7 +171,6 @@ struct ListSearchBarView: View {
             }
         }
         .animation(.default, value: isFocused)
-        .padding(.horizontal)
     }
 }
 

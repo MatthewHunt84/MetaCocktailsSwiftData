@@ -33,8 +33,13 @@ struct IngredientSearchResultsView: View {
                 }
             
             VStack {
-                
-                FontFactory.titleHeader(title: "Matched Cocktails")
+                ZStack {
+                    HStack{
+                        BackButton()
+                        Spacer()
+                    }
+                    FontFactory.titleHeader30(title: "Matched Cocktails")
+                }
                 PreferencesListView()
                     .padding(.top, 10)
                     .padding(.bottom, 10)

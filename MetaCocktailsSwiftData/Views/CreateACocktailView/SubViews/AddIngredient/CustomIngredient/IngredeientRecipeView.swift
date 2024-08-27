@@ -11,7 +11,7 @@ struct IngredeientRecipeView: View {
     @Bindable var viewModel: AddCocktailViewModel
     @State private var isShowingBuildSheet: Bool = false
     var body: some View {
-        Section("Recipe (Optional)") {
+        Section(header: Text("Recipe (Optional)").font(FontFactory.sectionHeader12)) {
             List {
                 Button{
                     isShowingBuildSheet = true
@@ -19,11 +19,12 @@ struct IngredeientRecipeView: View {
                     HStack {
                         Text("Add recipe step")
                             .foregroundStyle(.white)
+                            .font(FontFactory.formLabel18)
                         
                         Spacer()
                         
                         Image(systemName: "plus.circle.fill")
-                            .foregroundStyle(.brandPrimaryGold)
+                            .foregroundStyle(.blueTint)
                     }
                 }
                 .sheet(isPresented: $isShowingBuildSheet, content: {
@@ -33,9 +34,11 @@ struct IngredeientRecipeView: View {
                 ForEach(viewModel.prepIngredientRecipe, id: \.id) { buildStep in
                     VStack{
                         Text("Step \(buildStep.step)")
+                            .font(FontFactory.formLabel18)
                             .foregroundStyle(.brandPrimaryGold)
                             .frame(maxWidth: .infinity, alignment: .leading)
                         Text(buildStep.method)
+                            .font(FontFactory.formLabel18)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                 }
