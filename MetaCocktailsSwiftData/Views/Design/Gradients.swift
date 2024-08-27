@@ -82,28 +82,28 @@ struct MeshGradients {
     }
     
     static let staticPreferredSelection: MeshGradient =
-
-        MeshGradient(width: 3, height: 3, points: [
-            [0, 0], [0.9, 0], [1, 0],
-            [0, 0.5], [0.9, 0.5], [1, 0.5],
-            [0, 1], [0.9, 1], [1, 1]
-        ], colors: [
-            .green, .green, .green,
-            .green, Color(.greenYellow), .green,
-            .green, .green, .green
-        ])
+    
+    MeshGradient(width: 3, height: 3, points: [
+        [0, 0], [0.9, 0], [1, 0],
+        [0, 0.5], [0.9, 0.5], [1, 0.5],
+        [0, 1], [0.9, 1], [1, 1]
+    ], colors: [
+        .green, .green, .green,
+        .green, Color(.greenYellow), .green,
+        .green, .green, .green
+    ])
     
     static let staticUnwantedSelection: MeshGradient =
-
-        MeshGradient(width: 3, height: 3, points: [
-            [0, 0], [0.8, 0], [1, 0],
-            [0, 0.5], [0.9, 0.5], [1, 0.5],
-            [0, 1], [0.8, 1], [1, 1]
-        ], colors: [
-            .red, .red, .red,
-            .red, .orange, .red,
-            .red, .red, .red
-        ])
+    
+    MeshGradient(width: 3, height: 3, points: [
+        [0, 0], [0.8, 0], [1, 0],
+        [0, 0.5], [0.9, 0.5], [1, 0.5],
+        [0, 1], [0.8, 1], [1, 1]
+    ], colors: [
+        .red, .red, .red,
+        .red, .orange, .red,
+        .red, .red, .red
+    ])
     
     static let redAndYellow: MeshGradient =
     MeshGradient(width: 3, height: 3, points: [
@@ -198,8 +198,8 @@ struct MeshGradients {
                                            endPoint: .bottomTrailing)
     
     static let blackAndRed = LinearGradient(gradient: Gradient(colors: [ .black, .brandPrimaryRed]),
-                                           startPoint: .topLeading,
-                                           endPoint: .bottomTrailing)
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing)
     
     static let meshBlueRibbonBackground =
     MeshGradient(width: 3, height: 3, points: [
@@ -243,18 +243,15 @@ struct MeshGradients {
         .black, .black, .black,
         .brandSecondaryTeal, .brandSecondaryTeal, .brandSecondaryTeal
     ])
-        
-//    static let blackGreyBackground = LinearGradient(gradient: Gradient(colors: [Color.black.opacity(1), Color.gray.opacity(0.3)]),
-//                                                    startPoint: .topLeading,
-//                                                    endPoint: .bottomTrailing)
+    
     
     static let whiteToGreyFade = LinearGradient(gradient: Gradient(colors: [.white, .gray]), startPoint: .leading, endPoint: .trailing)
     static let disabledButton = LinearGradient(gradient: Gradient(colors: [Color.medGray, Color.lightGray]), startPoint: .leading, endPoint: .trailing)
     static let disabledButton2 = LinearGradient(gradient: Gradient(colors: [Color.clear, Color.clear]), startPoint: .leading, endPoint: .trailing)
     
     static let activeBlue = LinearGradient(gradient: Gradient(colors: [.cyan, .blue, .blue, .blue]),
-                                              startPoint: .topLeading,
-                                              endPoint: .bottomTrailing)
+                                           startPoint: .topLeading,
+                                           endPoint: .bottomTrailing)
     
     static let activatedBlue = LinearGradient(gradient: Gradient(colors: [.blue, .blue, .cyan]),
                                               startPoint: .topLeading,
@@ -263,30 +260,4 @@ struct MeshGradients {
     static func interactiveButton(isActive: Bool) -> LinearGradient {
         isActive ? activeBlue : disabledButton
     }
-    
-    
-    static let blue3 = LinearGradient(gradient: Gradient(colors: [.cyan, .blue, .purple]),
-                                              startPoint: .leading,
-                                              endPoint: .trailing)
-    
-    static let blue4 = LinearGradient(gradient: Gradient(colors: [.cyan, .cyan, .purple]),
-                                              startPoint: .leading,
-                                              endPoint: .trailing)
-    
-    static let blueA = LinearGradient(gradient: Gradient(colors: [.gray, .cyan, .blue]),
-                                              startPoint: .leading,
-                                              endPoint: .trailing)
-    
-    static let blueB = LinearGradient(gradient: Gradient(colors: [.cyan, .teal, .blue]),
-                                              startPoint: .topLeading,
-                                              endPoint: .bottomTrailing)
-    
-    static let blueC = LinearGradient(gradient: Gradient(colors: [.cyan, .blue, .purple]),
-                                              startPoint: .leading,
-                                              endPoint: .trailing)
-    
-    static let blueD = LinearGradient(gradient: Gradient(colors: [.cyan, .cyan, .purple]),
-                                              startPoint: .leading,
-                                              endPoint: .trailing)
-    
 }
