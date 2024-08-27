@@ -46,7 +46,7 @@ struct IngredientSearchView: View {
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-            .funLoadingIndicator(isLoading: viewModel.isRunningComplexSearch)
+            .customLoadingIndicator(isLoading: viewModel.isRunningComplexSearch)
         }
     }
 }

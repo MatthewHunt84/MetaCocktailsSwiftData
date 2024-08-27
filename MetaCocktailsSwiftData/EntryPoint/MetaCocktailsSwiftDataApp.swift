@@ -57,7 +57,7 @@ struct ContentView: View {
             TabBarView()
                 .opacity(animationTrigger ? 1 : 0)
             
-            LoadingView()
+            FirstLaunchLoadingView()
                 .opacity(animationTrigger ? 0 : 1)
                 .scaleEffect(animationTrigger ? 2.0 : 1)
         }

@@ -502,11 +502,11 @@
 		4DF637A52C7C522100B2E3BF /* HistoricalCocktailModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF637A42C7C522100B2E3BF /* HistoricalCocktailModalView.swift */; };
 		F40FB6B12B7E38DA0047D597 /* CocktailCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40FB6B02B7E38DA0047D597 /* CocktailCollection.swift */; };
 		F41045072AD4FD42000CA913 /* CocktailImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41045062AD4FD42000CA913 /* CocktailImageView.swift */; };
-		F47FBF652C6BF5EB00CD599E /* BasicLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47FBF642C6BF5EB00CD599E /* BasicLoadingIndicator.swift */; };
+		F47FBF652C6BF5EB00CD599E /* CustomLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47FBF642C6BF5EB00CD599E /* CustomLoadingIndicator.swift */; };
 		F4872FEE2C4353E10092F8FF /* DummyCocktails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4872FED2C4353E10092F8FF /* DummyCocktails.swift */; };
 		F4872FF02C4355320092F8FF /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4872FEF2C4355320092F8FF /* SampleData.swift */; };
 		F4872FF32C4374580092F8FF /* BlackGlassBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4872FF22C4374580092F8FF /* BlackGlassBackgroundView.swift */; };
-		F4872FF52C4395FE0092F8FF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4872FF42C4395F80092F8FF /* LoadingView.swift */; };
+		F4872FF52C4395FE0092F8FF /* FirstLaunchLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4872FF42C4395F80092F8FF /* FirstLaunchLoadingView.swift */; };
 		F493F3A32C6CEEF0006A0ADB /* PreferencesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3A22C6CEEF0006A0ADB /* PreferencesListView.swift */; };
 		F493F3A52C6CEF48006A0ADB /* SearchForCocktailsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3A42C6CEF48006A0ADB /* SearchForCocktailsButton.swift */; };
 		F493F3A72C6CEF73006A0ADB /* ResetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3A62C6CEF73006A0ADB /* ResetButton.swift */; };
@@ -524,6 +524,7 @@
 		F4AA6BB02C7E12AF00610D80 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA6BAF2C7E12AA00610D80 /* Double+Extension.swift */; };
 		F4AA6BB22C7E131700610D80 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA6BB12C7E130B00610D80 /* UIApplication+Extension.swift */; };
 		F4AA6BB42C7E134D00610D80 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA6BB32C7E134900610D80 /* ButtonStyles.swift */; };
+		F4AA6BB62C7E170B00610D80 /* DefaultLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA6BB52C7E16FD00610D80 /* DefaultLoadingIndicator.swift */; };
 		F4B0ABF32B13FB2A00336D05 /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0ABF22B13FB2A00336D05 /* SearchResultsView.swift */; };
 		F4C5C3E12B3B3F2E005B2261 /* IngredientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C5C3E02B3B3F2E005B2261 /* IngredientType.swift */; };
 		F4C5C3E42B3B4086005B2261 /* NonAlchololicIngredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C5C3E32B3B4086005B2261 /* NonAlchololicIngredients.swift */; };
@@ -1040,11 +1041,11 @@
 		F40FB6B02B7E38DA0047D597 /* CocktailCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailCollection.swift; sourceTree = "<group>"; };
 		F41045062AD4FD42000CA913 /* CocktailImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImageView.swift; sourceTree = "<group>"; };
 		F473FFD22C2716C4008689D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F47FBF642C6BF5EB00CD599E /* BasicLoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicLoadingIndicator.swift; sourceTree = "<group>"; };
+		F47FBF642C6BF5EB00CD599E /* CustomLoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoadingIndicator.swift; sourceTree = "<group>"; };
 		F4872FED2C4353E10092F8FF /* DummyCocktails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyCocktails.swift; sourceTree = "<group>"; };
 		F4872FEF2C4355320092F8FF /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		F4872FF22C4374580092F8FF /* BlackGlassBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackGlassBackgroundView.swift; sourceTree = "<group>"; };
-		F4872FF42C4395F80092F8FF /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		F4872FF42C4395F80092F8FF /* FirstLaunchLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunchLoadingView.swift; sourceTree = "<group>"; };
 		F493F3A22C6CEEF0006A0ADB /* PreferencesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesListView.swift; sourceTree = "<group>"; };
 		F493F3A42C6CEF48006A0ADB /* SearchForCocktailsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchForCocktailsButton.swift; sourceTree = "<group>"; };
 		F493F3A62C6CEF73006A0ADB /* ResetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetButton.swift; sourceTree = "<group>"; };
@@ -1062,6 +1063,7 @@
 		F4AA6BAF2C7E12AA00610D80 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		F4AA6BB12C7E130B00610D80 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		F4AA6BB32C7E134900610D80 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
+		F4AA6BB52C7E16FD00610D80 /* DefaultLoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLoadingIndicator.swift; sourceTree = "<group>"; };
 		F4B0ABF22B13FB2A00336D05 /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
 		F4C5C3E02B3B3F2E005B2261 /* IngredientType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientType.swift; sourceTree = "<group>"; };
 		F4C5C3E32B3B4086005B2261 /* NonAlchololicIngredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonAlchololicIngredients.swift; sourceTree = "<group>"; };
@@ -1140,6 +1142,7 @@
 				F4FBF1222AAABBB900BBF7CF /* MetaCocktailsSwiftDataApp.swift */,
 				F4AA6AD92B84F049003DBB80 /* CocktailContainer.swift */,
 				F4AA6ADB2B84F10D003DBB80 /* Preload.swift */,
+				F4872FF42C4395F80092F8FF /* FirstLaunchLoadingView.swift */,
 			);
 			path = EntryPoint;
 			sourceTree = "<group>";
@@ -2022,8 +2025,8 @@
 		F4DBE4C32AB882FF009A0C09 /* Loading Indicators */ = {
 			isa = PBXGroup;
 			children = (
-				F4872FF42C4395F80092F8FF /* LoadingView.swift */,
-				F47FBF642C6BF5EB00CD599E /* BasicLoadingIndicator.swift */,
+				F4AA6BB52C7E16FD00610D80 /* DefaultLoadingIndicator.swift */,
+				F47FBF642C6BF5EB00CD599E /* CustomLoadingIndicator.swift */,
 			);
 			path = "Loading Indicators";
 			sourceTree = "<group>";
@@ -2218,7 +2221,7 @@
 				4D088FCA2B62E3640047B056 /* RecipeViewModel.swift in Sources */,
 				4DBBA46E2B67A0B700179B8F /* KentuckyMaid.swift in Sources */,
 				4DBAE6F72C715E7400F3DBFD /* TalentSout.swift in Sources */,
-				F4872FF52C4395FE0092F8FF /* LoadingView.swift in Sources */,
+				F4872FF52C4395FE0092F8FF /* FirstLaunchLoadingView.swift in Sources */,
 				4DDC116E2B861576009EF5C4 /* InlineDisclosureGroupStyle.swift in Sources */,
 				4DBBA4582B675ECD00179B8F /* MoergenthalersToddy.swift in Sources */,
 				4DCB172A2BA4E92E0002D7D9 /* TheStark.swift in Sources */,
@@ -2346,7 +2349,7 @@
 				4DBFF82D2B5FC2FD0011B5B1 /* BetweenTheSheets(W&G).swift in Sources */,
 				4DBAE6FF2C71BDCC00F3DBFD /* FourInHand.swift in Sources */,
 				4D5DA0B42BA125DD00C14F1F /* PiscoSourMnH.swift in Sources */,
-				F47FBF652C6BF5EB00CD599E /* BasicLoadingIndicator.swift in Sources */,
+				F47FBF652C6BF5EB00CD599E /* CustomLoadingIndicator.swift in Sources */,
 				4DA5673A2B6AEA34003F6F04 /* SherryCobbler.swift in Sources */,
 				1AFDB7A22ADC84FF000A3812 /* Bamboo.swift in Sources */,
 				4DBAE6ED2C71310200F3DBFD /* PeguClub.swift in Sources */,
@@ -2489,6 +2492,7 @@
 				1AFDB7E02AE37417000A3812 /* WhiteNegroni.swift in Sources */,
 				4DCB170A2BA40CDF0002D7D9 /* SilverMonk.swift in Sources */,
 				1AFDB7C62AE3319F000A3812 /* FinalWard.swift in Sources */,
+				F4AA6BB62C7E170B00610D80 /* DefaultLoadingIndicator.swift in Sources */,
 				4DE33E0B2B9165A100312EC3 /* DeepBlueSea.swift in Sources */,
 				4DA567702B6C7BF5003F6F04 /* Zombie(W&G).swift in Sources */,
 				4DBFF8272B5FBF370011B5B1 /* Bamboo(W&G).swift in Sources */,

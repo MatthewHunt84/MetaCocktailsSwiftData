@@ -1,42 +1,29 @@
 //
-//  LoadingView.swift
+//  BasicLoadingIndicator.swift
 //  MetaCocktailsSwiftData
 //
-//  Created by Matt Hunt on 7/13/24.
+//  Created by Matt Hunt on 8/13/24.
 //
 
 import SwiftUI
-import SwiftData
 
-struct LoadingView: View {
-    @EnvironmentObject var appState: AppState
-    @Environment(\.modelContext) private var modelContext
+struct CustomLoadingOverlayModifier: ViewModifier {
+    let isLoading: Bool
     
-    var body: some View {
-        VStack {
-            LoadingAnimation()
-                .frame(width: 150, height: 150)
-        }
-        .task {
-            await prepareData()
-        }
-    }
-    
-    @MainActor
-    private func prepareData() async {
-        // Perform a simple query to ensure the store is ready
-        let _ = try? modelContext.fetch(FetchDescriptor<Cocktail>())
-        
-        // If we get here without crashing, the store is ready
-        appState.setDataReady()
+    func body(content: Content) -> some View {
+        content
+            .overlay {
+                if isLoading {
+                    CustomLoadingAnimation()
+                        .frame(width: 110, height: 110)
+                        .transition(.opacity.animation(.easeOut(duration: 0.3)))
+                }
+            }
+            .animation(.easeOut(duration: 1), value: isLoading)
     }
 }
 
-#Preview {
-    LoadingView()
-}
-
-struct LoadingAnimation: View {
+struct CustomLoadingAnimation: View {
     @State private var rotationCircle = 0.0
     @State private var rotationTriangle = 0.0
     
@@ -61,5 +48,11 @@ struct LoadingAnimation: View {
             rotationCircle = 360
             rotationTriangle = -360
         }
+    }
+}
+
+extension View {
+    func customLoadingIndicator(isLoading: Bool) -> some View {
+        self.modifier(CustomLoadingOverlayModifier(isLoading: isLoading))
     }
 }
