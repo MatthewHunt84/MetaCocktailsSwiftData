@@ -22,7 +22,7 @@ var oldPalSpecWnG = [OldCocktailIngredient(.whiskies(.pendletonRye), value: 1),
                      OldCocktailIngredient(.fortifiedWines(.dolinDry), value: 1),
                      OldCocktailIngredient(.amari(.campari), value: 1)]
 
-var oldPalTagsWnG = Tags(flavors: [.orange, .bakingSpices],
+var oldPalTagsWnG = Tags(flavors: [.orange, .lemon],
                          profiles: [.bittersweet, .spiritForward, .rich],
                          styles: [.negroni, .stirred])
 

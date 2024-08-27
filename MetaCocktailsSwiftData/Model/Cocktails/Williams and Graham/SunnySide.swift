@@ -18,6 +18,7 @@ var sunnySide = Cocktail(cocktailName: "Sunny Side",
                          spec: sunnySideSpec,
                          buildOrder: sunnySideBuild,
                          tags: sunnySideTags,
+                         variation: .southSide,
                          collection: .williamsAndGraham)
 
 let sunnySideSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),

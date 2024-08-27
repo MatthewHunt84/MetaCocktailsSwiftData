@@ -16,14 +16,18 @@ var redWedding  =  Cocktail(cocktailName: "Red Wedding",
                                           place: AuthorPlaces.williamsAndGraham.rawValue, year: "2018"),
                             spec: redWeddingSpec,
                             buildOrder: nil,
+                            notes: redWeddingNotes,
                             tags: redWeddingTags,
                             collection: .williamsAndGraham)
 
 var redWeddingSpec = [OldCocktailIngredient(.seasoning(.saline), value: 5, unit: .drops),
-                      OldCocktailIngredient(.amari(.sfumato), value: 0.25),
+                      OldCocktailIngredient(.amari(.sfumato), value: 0.5),
                       OldCocktailIngredient(.amari(.cynar), value: 0.5),
                       OldCocktailIngredient(.amari(.aperol), value: 0.75),
-                      OldCocktailIngredient(.agaves(.mezcalDelMagueyVida), value: 1.5)]
+                      OldCocktailIngredient(.agaves(.mezcalDelMagueyVida), value: 1)]
 
-var redWeddingTags = Tags(profiles: [.rich, .bittersweet, .punchy],
+var redWeddingTags = Tags(flavors: [.orange],
+                          profiles: [.rich, .bittersweet, .punchy],
                           styles: [.negroni, .stirred])
+
+var redWeddingNotes = "This is a modified version of the original, which had 1.5 oz. mezcal and .25 oz. Sfumato. This updated version is the one you'll currently get from James at the bar."

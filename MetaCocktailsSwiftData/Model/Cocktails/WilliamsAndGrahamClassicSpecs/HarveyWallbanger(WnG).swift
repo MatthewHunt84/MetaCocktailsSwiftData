@@ -13,7 +13,7 @@ var harveyWallbangerWnG = Cocktail(cocktailName: "Harvey Wallbanger(WnG Version)
                                    ice: .koldDraft,
                                    author: williamsAndGraham,
                                    spec: harveyWallbangerSpecWnG,
-                                   buildOrder: harveyWallbangerWGBuild,
+                                   notes: harveyWalbangerNotes,
                                    tags: harveyWallbangerTagsWnG,
                                    variation: .harveyWallbanger,
                                    collection: .williamsAndGraham)
@@ -25,4 +25,3 @@ var harveyWallbangerSpecWnG    =  [OldCocktailIngredient(.liqueurs(.galliano), v
 var harveyWallbangerTagsWnG     = Tags(profiles: [.fruity, .sweet, .gross],
                                        styles: [.sour, .shaken])
 
-var harveyWallbangerWGBuild = Build(instructions: [Instruction(step: 1, method: "Build in glass, float the Galliano.")])

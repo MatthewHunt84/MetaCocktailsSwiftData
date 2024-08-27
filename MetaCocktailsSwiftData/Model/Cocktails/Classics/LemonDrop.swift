@@ -21,10 +21,11 @@ var lemonDrop = Cocktail(cocktailName: "Lemon Drop",
                          titleCocktail: true)
 
 var lemonDropSpec  = [OldCocktailIngredient(.juices(.lemon), value: 1.5),
-                      OldCocktailIngredient(.syrups(.simple), value: 1),
+                      OldCocktailIngredient(.syrups(.simple), value: 1, prep: PrepBible.simpleSyrupPrep),
                       OldCocktailIngredient(.vodkas(.vodkaAny), value: 2)]
 
 
-var lemonDropTags = Tags(profiles: [.refreshing, .citrusy],
+var lemonDropTags = Tags(flavors: [.grapefruit],
+                         profiles: [.refreshing, .citrusy],
                          styles: [.sour, .shaken])
 

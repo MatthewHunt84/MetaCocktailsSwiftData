@@ -20,7 +20,7 @@ var ginFizz  = Cocktail(cocktailName: "Gin Fizz",
                         titleCocktail: true)
 
 var ginFizzSpec  = [OldCocktailIngredient(.juices(.lemon), value: 1),
-                    OldCocktailIngredient(.syrups(.simple), value: 1),
+                    OldCocktailIngredient(.syrups(.simple), value: 1, prep: PrepBible.simpleSyrupPrep),
                     OldCocktailIngredient(.gins(.ginAny), value: 1.5),
                     OldCocktailIngredient(.soda(.sparklingWater), value: 2)]
 

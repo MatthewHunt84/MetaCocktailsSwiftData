@@ -11,7 +11,7 @@ var farewellRide = Cocktail(cocktailName: "Farewell Ride",
                                glasswareType: .coupe,
                                garnish: nil,
                                ice: nil,
-                               author: Author(person: AuthorPlaces.williamsAndGraham.rawValue),
+                               author: Author(person: AuthorNames.chadLarson.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue),
                                spec: farewellRideSpec,
                                tags: farewellRideTags,
                             collection: .williamsAndGraham)

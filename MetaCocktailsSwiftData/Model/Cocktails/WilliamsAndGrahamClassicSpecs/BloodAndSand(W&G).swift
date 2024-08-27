@@ -25,6 +25,7 @@ var bloodAndSandWnGSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.25),
 
 
 
-var bloodAndSandWnGTags   = Tags(profiles: [.fruity, .sweet],
+var bloodAndSandWnGTags   = Tags(flavors: [.orange],
+                                 profiles: [.fruity, .sweet],
                                  styles: [.daisy, .shaken])
 

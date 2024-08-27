@@ -12,7 +12,7 @@ var lordTouchingtonsDelight = Cocktail(cocktailName: "Lord Touchingtons Delight"
                                        glasswareType: .tikiMug,
                                        garnish: [.pineappleFrond, .orangeFlag],
                                        ice: .pebbleIce,
-                                       author: Author(person: "Nick Touch", place: AuthorPlaces.williamsAndGraham.rawValue, year: "2015"),
+                                       author: Author(person: AuthorNames.nickTouch.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue, year: "2015"),
                                        spec: lordTouchingtonsDelightSpec,
                                        tags: lordTouchingtonsDelightTags,
                                        collection: .williamsAndGraham)

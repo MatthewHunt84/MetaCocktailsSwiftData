@@ -23,7 +23,7 @@ var temperanceIrishCoffeeSpec  = [OldCocktailIngredient(.otherNonAlc(.stiffCream
                                   OldCocktailIngredient(.otherNonAlc(.demeraraSugarCube), value: 2, unit: .none),
                                   OldCocktailIngredient(.otherNonAlc(.hotWater), value: 4)]
 
-var temperanceIrishCoffeeTags = Tags(flavors: [.coffee],
+var temperanceIrishCoffeeTags = Tags(flavors: [.coffee, .nutmeg, .cinnamon],
                                      profiles: [.hot],
                                      styles: [.toddy, .nonAlcoholic])
 

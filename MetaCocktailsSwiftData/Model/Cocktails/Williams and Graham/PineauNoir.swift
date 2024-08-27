@@ -22,5 +22,6 @@ var pineauNoirSpec  = [OldCocktailIngredient(.bitters(.angosturaBitters), value:
                        OldCocktailIngredient(.fortifiedWines(.aeDorPineauDeCharantes), value: 0.75),
                        OldCocktailIngredient(.whiskies(.wildTurkeyRye), value: 1.5)]
 
-var pineauNoirTags = Tags(profiles: [.herbal, .punchy, .spiritForward, .complex],
+var pineauNoirTags = Tags(flavors: [.lemon],
+                          profiles: [.herbal, .punchy, .spiritForward, .complex],
                           styles: [.stirred, .manhattan])

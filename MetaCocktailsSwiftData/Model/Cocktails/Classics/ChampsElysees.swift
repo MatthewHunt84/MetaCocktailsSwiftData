@@ -13,10 +13,11 @@ var champsElysees = Cocktail(cocktailName: "Champs Elysees",
                              ice: nil,
                              author: Author(person: AuthorNames.harryCraddock.rawValue, place: AuthorPlaces.savoy.rawValue, year: "1930"),
                              spec:champsElyseesSpec,
-                             tags: champsElyseesTags)
+                             tags: champsElyseesTags,
+                             collection: .originals)
 
 var champsElyseesSpec  = [OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
-                          OldCocktailIngredient(.syrups(.simple), value: 0.25),
+                          OldCocktailIngredient(.syrups(.simple), value: 0.25, prep: PrepBible.simpleSyrupPrep),
                           OldCocktailIngredient(.juices(.lemon), value: 0.75),
                           OldCocktailIngredient(.liqueurs(.greenChartreuse), value: 0.5),
                           OldCocktailIngredient(.brandies(.cognacVSOP), value: 1.5)]

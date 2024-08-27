@@ -44,8 +44,8 @@ enum Agave: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
     case mezcalDelMagueyVida       = "Vida"
     case mezcalDelMagueySanLuis    = "San Luis Del Rio"
     case mezcalEspadin             = "Mezcal Espadine"
-    case mezcalSmokeyAny           = "Mezcal (Smokey)"
-    case mezcalNotSmokeyAny        = "Mezcal (Not Smokey)"
+    case mezcalSmokeyAny           = "Smokey Mezcal"
+    case mezcalNotSmokeyAny        = "Not Smokey Mezcal"
     case puebloViejoBlanco104      = "Blanco 104"
     case tanteoJalepeno            = "Tanteo Jalapenno Tequila"
     case tapatioTequilaBlanco      = "Tapatio Tequila Blanco"
@@ -113,15 +113,16 @@ enum Agave: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
 
 
 enum Brandy: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
-    case appleBrandy          = "Apple Brandy"
+    case appleBrandy          = "Apple brandy"
     case armagnac             = "Armagnac"
     case cognac               = "Cognac"
-    case cognacVSOP           = "Cognac (VSOP)"
-    case bondedApple          = "Bonded Apple Brandy"
+    case cognacVSOP           = "V.S.O.P. Cognac"
+    case bondedApple          = "Bonded apple brandy"
     case boulardCalvados      = "Boulard Calvados V.S.O.P"
-    case brandyAny            = "Brandy (Any)"
+    case brandyAny            = "Brandy"
     case clearCreekPearBrandy = "Clear Creek Pear Brandy"
     case domCafoBrandy        = "Caffo Brandy Domenique"
+    case hineCognac           = "Hine V.S.O.P"
     case lairdsApplejack      = "Laird's Applejack"
     case lairdsBonded         = "Laird's Bonded Apple"
     case lairdsJersey         = "Laird's Jersey Lightning"
@@ -165,6 +166,8 @@ enum Brandy: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
             Tags(flavors: [.apple], booze: [Booze(.brandies(self)), Booze(.brandies(.brandyAny)), Booze(.brandies(.brandyAny))])
         case .cognac:
             Tags(booze: [Booze(.brandies(self)), Booze(.brandies(.brandyAny))])
+        case .hineCognac:
+            Tags(booze: [Booze(.brandies(self)), Booze(.brandies(.brandyAny)), Booze(.brandies(.cognac))])
         }
     }
     
@@ -177,15 +180,15 @@ enum Gin: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
     
     case agedBolsGenever      = "Bols Genever Barrel Aged"
     case fordsGin             = "Fords Gin"
-    case ginAny               = "Gin (Neutral)"
-    case ginLondonDry         = "Gin (London Dry)"
+    case ginAny               = "Gin"
+    case ginLondonDry         = "London Dry Gin"
     case geneverBols          = "Bols Genever"
     case haymansLondonDry     = "Hayman's London Dry Gin"
     case hendricks            = "Hendrick's Gin"
     case hendricksOrbium      = "Hendrick's Orbium Gin"
     case juinipero            = "Juinipero Gin"
     case juniperJones         = "Juniper Jones"
-    case leopoldNavy          = "Leopold Navy Strength"
+    case leopoldNavy          = "Leopold's Navy Strength"
     case leopoldAmericanSBGin = "American Small Batch Gin"
     case monkey47             = "Monkey 47"
     case plymouth             = "Plymouth Gin"
@@ -194,7 +197,8 @@ enum Gin: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
     case stGeorgeTerroir      = "St. George Terroir Gin"
     case tanqueray            = "Tanqueray"
     case woodyCreekGin        = "Woody Creek Gin"
-    case navyStrengthGin      = "Navy Strength Gin"
+    case woodyCreekGinJasmine = "Jasmine tea gin"
+    case navyStrengthGin      = "Navy strength gin"
     
     
     
@@ -240,6 +244,8 @@ enum Gin: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
             Tags(flavors: [.juniper],booze: [Booze(.gins(self)), Booze(.gins(.ginAny))])
         case .navyStrengthGin:
             Tags(flavors: [.juniper],booze: [Booze(.gins(self)), Booze(.gins(.ginAny))])
+        case .woodyCreekGinJasmine:
+            Tags(flavors: [.juniper, .tea, .citrusPeel] ,booze: [Booze(.gins(self)), Booze(.gins(.ginAny))])
         }
     }
     
@@ -252,14 +258,14 @@ enum Gin: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
 enum OtherAlcohol: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
     case absinthe                 = "Absinthe"
     case bataviaArrack            = "Batavia Arrack"
-    case burdockRootTincture      = "Burdock Root Tincture"
-    case jalapeñoTincture         = "Jalapeño Tincture"
-    case lavenderTincture         = "Lavender Tincture"
+    case burdockRootTincture      = "Burdock root tincture"
+    case jalapeñoTincture         = "Jalapeño tincture"
+    case lavenderTincture         = "Lavender tincture"
     case leftHandMilkStout        = "Left Hand Nitro Milk Stout"
     case linieAquavit             = "Linie Aquavit"
-    case notSpicyJalapeñoTincture = "Not Spicy Jalapeño Tincture"
-    case pernod                   = "Pernod Anise Liquor"
-    case serranoTincture          = "Serrano Tincture"
+    case notSpicyJalapeñoTincture = "Not spicy jalapeño tincture"
+    case pernod                   = "Pernod anise liquor"
+    case serranoTincture          = "Serrano tincture"
     case stGeorgeAbsinthe         = "St. George Absinthe"
     case trakal                   = "Trakal"
    
@@ -305,6 +311,7 @@ enum Rum: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
     case avuaPrata                    = "Avua Prata Cachaca"
     case avuaAmburana                 = "Avua Amburana Cachaca"
     case banks5                       = "Banks 5 Island Rum"
+    case bacardi                      = "Bacardi Rum"
     case cachaca                      = "Cachaca"
     case captainMorgan                = "Captain Morgan"
     case corubaDark                   = "Coruba Dark Jamaican Rum"
@@ -316,26 +323,27 @@ enum Rum: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
     case goslingsBlackSeal            = "Goslings Black Seal"
     case havanaClubAnjeo              = "Havana Club Anejo"
     case lemonHeart151                = "Lemon Heart 151 Demerara Rum"
-    case plantation3Star              = "Plantation 3 Star Rum"
-    case plantationBarbados           = "Plantation Barbados 5 Year Rum"
-    case plantationBarbadosXO         = "Plantation Barbados XO"
-    case plantationJamaicaRum         = "Plantation Jamaica Rum"
-    case plantationOFTD               = "Plantation OFTD Rum"
-    case plantationPineapple          = "Plantation Pineapple Rum"
+    case plantation3Star              = "Planteray 3 Star Rum"
+    case plantationBarbados           = "Planteray Barbados 5 Year Rum"
+    case plantationBarbadosXO         = "Planteray Barbados XO"
+    case plantationJamaicaRum         = "Planteray Jamaica Rum"
+    case plantationOFTD               = "Planteray OFTD Rum"
+    case plantationPineapple          = "Planteray Pineapple Rum"
+    case probitasRum                  = "Probitas Rum"
     case pussersRum                   = "Pusser's Rum"
     case ronMutusalemRumClassico      = "Ron Matusalem Rum Classico"
-    case rumWhiteAgricole             = "Rum (White Agricole)"
-    case rumAny                       = "Rum (Any)"
-    case rumAged                      = "Rum (Aged)"
-    case rumAgedCuban                 = "Rum (Aged Cuban Style)"
-    case rumBlackStrap                = "Rum (Black Strap)"
-    case rumDark                      = "Rum (Dark)"
-    case rumDemerara                  = "Rum (Demerara)"
-    case rumDominican                 = "Rum (Dominican)"
+    case rumWhiteAgricole             = "White Agricole Rum"
+    case rumAny                       = "Rum"
+    case rumAged                      = "Aged Rum"
+    case rumAgedCuban                 = "Aged Cuban Rum"
+    case rumBlackStrap                = "Black Strap Rum"
+    case rumDark                      = "Dark Rum"
+    case rumDemerara                  = "Demerara Rum"
+    case rumDominican                 = "Dominican Rum"
     case rumFire                      = "Rum Fire"
-    case rumJamaicanAged              = "Rum (Jamaican, Aged)"
-    case rumPuertoRican               = "Rum (Puerto Rican)"
-    case rumWhite                     = "Rum (White)"
+    case rumJamaicanAged              = "Aged Jamaican Rum"
+    case rumPuertoRican               = "Puerto Rican Rum"
+    case rumWhite                     = "White rum"
     case sailorJerry                  = "Sailor Jerry's Rum"
     case smithAndCross                = "Smith & Cross"
     case uruapanAnejo                 = "Charanda Uruapan Anejo"
@@ -424,6 +432,10 @@ enum Rum: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
             Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumAged))])
         case .rumDominican:
             Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny))])
+        case .probitasRum:
+            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumWhite))])
+        case .bacardi:
+            Tags(booze: [Booze(.rums(self)), Booze(.rums(.rumAny)), Booze(.rums(.rumWhite)), Booze(.rums(.rumAgedCuban))])
         }
     }
     
@@ -433,12 +445,12 @@ enum Rum: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
 }
 
 enum Vodka: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
-    case peanutButterVodka       = "Vodka (Peanut Butter Infused)"
+    case peanutButterVodka       = "Peanut Butter Infused Vodka"
     case roaringForkVodka        = "Roaring Fork Vodka"
     case stGeorgeGreenChileVodka = "St. George Green Chile Vodka"
     case stoli100                = "Stoli 100 Vodka"
-    case vodkaAny                = "Vodka (Neutral)"
-    case vodkaCitrus             = "Vodka(Citrus Infused)"
+    case vodkaAny                = "Vodka"
+    case vodkaCitrus             = "Citrus infused vodka"
     case woodyCreekVodka         = "Woody Creek Vodka"
     case reyka                   = "Reyka Vodka"
     case zubrowka                = "Zubrowka Bison Grass Vodka"
@@ -478,8 +490,9 @@ enum Whiskey: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
     case americanWhiskeyAny    = "American Whiskey"
     case balconesRye           = "Balcones 100 Proof Rye Whisky"
     case balvinieDW            = "Balvenie DoubleWood 12-year"
-    case bourbon120            = "Bourbon (120 proof)"
+    case bourbon120            = "120 proof Bourbon"
     case bourbonAny            = "Bourbon"
+    case bourbonOverproof      = "Overproof Bourbon"
     case bowmore12             = "Bowmore 12 year"
     case portCharlotte         = "Bruichladdich Port Charlotte"
     case buffaloTrace          = "Buffalo Trace Bourbon"
@@ -514,17 +527,17 @@ enum Whiskey: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
     case straightRye           = "Straight Rye"
     case straightRyeOrBourbon  = "Straight Rye or Bourbon"
     case scotchAny             = "Scotch"
-    case scotchBlended         = "Scotch (Blended)"
-    case scotchHighland        = "Scotch (Highland)"
-    case scotchSpeyside        = "Scotch (Speyside)"
-    case scotchIsla            = "Scotch (Peated, From Isla)"
+    case scotchBlended         = "Blended Scotch"
+    case scotchHighland        = "Highland Scotch"
+    case scotchSpeyside        = "Speyside Scotch"
+    case scotchIsla            = "Peated Scotch (Islay)"
     case talisker10            = "Talisker 10 year"
     case toki                  = "Toki Blended Japanese Whiskey"
     case tullamoreDew          = "Tullamore D.E.W."
     case tullamoreDew12        = "Tullamore D.E.W. 12 year"
     case whiskeyAny            = "Whisk(e)y"
     case wildTurkeyRye         = "Wild Turkey Rye"
-    case wlWeller90            = "W.L. Weller 90 proof"
+    case wlWeller90            = "W.L. Weller 90 proof Bourbon"
     case woodyCreekRye         = "Woody Creek Rye"
     
     var tags: Tags {
@@ -536,13 +549,13 @@ enum Whiskey: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
         case .ryeWhiskeyAny:
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny))])
         case .straightRyeOrBourbon:
-            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny))])
+            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)), Booze(.whiskies(.bourbonOverproof))])
         case .scotchBlended:
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.scotchAny))])
         case .scotchIsla:
             Tags(flavors: [.peat], profiles: [.smokey], booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.scotchAny))])
         case .bourbon120:
-            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)), Booze(.whiskies(.bourbonAny))])
+            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)), Booze(.whiskies(.bourbonAny)), Booze(.whiskies(.bourbonOverproof))])
         case .whiskeyAny:
             Tags(booze: [Booze(.whiskies(self))])
         case .Ardbeg:
@@ -586,11 +599,11 @@ enum Whiskey: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
         case .buffaloTrace:
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)),Booze(.whiskies(.bourbonAny))])
         case .knob120:
-            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)),Booze(.whiskies(.bourbonAny)), Booze(.whiskies(.bourbon120))])
+            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)),Booze(.whiskies(.bourbonAny)), Booze(.whiskies(.bourbon120)), Booze(.whiskies(.bourbonOverproof))])
         case .russels6yearRye:
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)), Booze(.whiskies(.ryeWhiskeyAny))])
         case .oGD114:
-            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)),Booze(.whiskies(.bourbonAny))])
+            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)),Booze(.whiskies(.bourbonAny)), Booze(.whiskies(.bourbonOverproof))])
         case .wildTurkeyRye:
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)), Booze(.whiskies(.ryeWhiskeyAny))])
         case .balconesRye:
@@ -598,7 +611,7 @@ enum Whiskey: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
         case .woodyCreekRye:
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)), Booze(.whiskies(.ryeWhiskeyAny))])
         case .johnnyDrum:
-            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)),Booze(.whiskies(.bourbonAny))])
+            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)),Booze(.whiskies(.bourbonAny)), Booze(.whiskies(.bourbonOverproof))])
         case .bowmore12:
             Tags(flavors: [.peat], profiles: [.smokey], booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.scotchAny)), Booze(.whiskies(.scotchIsla))])
         case .hibikiHarmony:
@@ -616,7 +629,7 @@ enum Whiskey: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
         case .powersIrish:
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.irishWhiskeyAny))])
         case .stagJr:
-            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)),Booze(.whiskies(.bourbonAny))])
+            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)),Booze(.whiskies(.bourbonAny)), Booze(.whiskies(.bourbonOverproof))])
         case .toki:
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.japaneseWhiskeyAny))])
         case .wlWeller90:
@@ -634,6 +647,8 @@ enum Whiskey: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)), Booze(.whiskies(.ryeWhiskeyAny))])
         case .scotchSpeyside:
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.scotchAny))])
+        case .bourbonOverproof:
+            Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)), Booze(.whiskies(.bourbonAny))])
         }
     }
     
@@ -669,8 +684,8 @@ enum Liqueur: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
     case giffardAbricot       = "Giffard Abricot"
     case giffardBanane        = "Giffard Banane Du Bresil"
     case giffardPamplemousse  = "Giffard Creme de Pamplemousse"
-    case giffardPassion       = "Giffard Passion FruiT Liqueur"
-    case giffardElderflour    = "Giffard Elderflower"
+    case giffardPassion       = "Giffard Passion Fruit Liqueur"
+    case giffardElderflour    = "Elderflower Liqueur"
     case greenChartreuse      = "Green Chartreuse"
     case italicus             = "Italicus"
     case lopoldsApple         = "New York Sour Apple Liqueur"
@@ -687,6 +702,7 @@ enum Liqueur: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
     case plymouthSloeGin      = "Plymouth Sloe Gin"
     case salersAperitif       = "Salers Gentian Apéritif"
     case stGeorgeSpicesPear   = "St. George Spice Pear"
+    case stGermaine           = "St. Germaine"
     case strega               = "Strega"
     case tempusFugitKina      = "Tempus Fugit Kina"
     case traderVicsChestnut   = "Trader Vic's Chestnut Liquor"
@@ -796,6 +812,8 @@ enum Liqueur: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
             Tags(flavors: [.apple], booze: [Booze(.liqueurs(self))])
         case .lolita:
             Tags(flavors: [.coffee, .espresso], booze: [Booze(.liqueurs(self))])
+        case .stGermaine:
+            Tags(flavors: [.elderflower], booze: [Booze(.liqueurs(self))])
         }
     }
     
@@ -806,8 +824,8 @@ enum Liqueur: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
 }
 enum FortifiedWine: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
     case aeDorPineauDeCharantes = "Pineau des Charentes Blanc"
-    case amontillado            = "Amontillado Sherry"
-    case blancVermouth          = "Blanc Vermouth"
+    case amontillado            = "Amontillado sherry"
+    case blancVermouth          = "Blanc vermouth"
     case bonal                  = "Bonal Gentiane-Quina"
     case byrrh                  = "Byrrh Grand Quinquina"
     case carpanoAntica          = "Carpano Antica"
@@ -817,12 +835,12 @@ enum FortifiedWine: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType 
     case cocchiBaroloChinato    = "Cocchi Barolo Chinato"
     case cocchiDeTorino         = "Cocchi Di Torino"
     case cocchiRosa             = "Cocchi Rosa"
-    case dryVermouthAny         = "Dry Vermouth (French)"
+    case dryVermouthAny         = "French dry vermouth"
     case dolinDry               = "Dolin Dry Vermouth"
     case dolinBlanc             = "Dolin Blanc Vermouth"
     case dolinRouge             = "Dolin Rouge Vermouth"
     case dubonnet               = "Dubonnet"
-    case fino                   = "Fino Sherry"
+    case fino                   = "Fino sherry"
     case hidalgoManzanilla      = "Hildago Manzanilla Sherry"
     case kinaLillet             = "Kina Lillet"
     case lilletBlanc            = "Lillet Blanc Vermouth"
@@ -840,9 +858,9 @@ enum FortifiedWine: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType 
     case portWine               = "Port"
     case vermouthAny            = "Vermouth"
     case sherryAny              = "Sherry"
-    case sherryEastIndia        = "Sherry (East India Lustau)"
+    case sherryEastIndia        = "East India Lustau Sherry"
     case tioPepe                = "Tio Pepe Fino Sherry"
-    case fortifiedWineAny       = "Fortified Wine (Any)"
+    case fortifiedWineAny       = "Fortified wine"
     
     var tags: Tags {
         switch self {
@@ -1030,12 +1048,12 @@ enum Amaro: String, Codable, CaseIterable, BoozeTagsProtocol, BoozeType {
     case amaroAny             = "Amaro"
     case amereNouvelle        = "Amere Nouvelle Liqueur"
     case amerPicon            = "Amer Picon"
-    case angosturaAmaro       = "Angostura (Amaro)"
+    case angosturaAmaro       = "Angostura Amaro"
     case aperol               = "Aperol"
-    case averna               = "Averna Amaroo"
+    case averna               = "Averna Amaro"
     case aveze                = "Aveze"
-    case amaroMontenegro      = "Montenegro (Amaro)"
-    case amaroNonino          = "Nonino (Amaro)"
+    case amaroMontenegro      = "Montenegro Amaro"
+    case amaroNonino          = "Nonino Amaro"
     case braulio              = "Braulio"
     case becherovka           = "Becherovka"
     case campari              = "Campari"

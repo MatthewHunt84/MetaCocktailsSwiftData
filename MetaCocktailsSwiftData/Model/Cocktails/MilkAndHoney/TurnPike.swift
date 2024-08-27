@@ -19,7 +19,7 @@ var turnpike = Cocktail(cocktailName: "Turnpike",
                         tags: turnpikeTags,
                         collection: .milkAndHoney)
 
-var turnpikeSpec     =  [OldCocktailIngredient(.syrups(.simple), value: 0.75),
+var turnpikeSpec     =  [OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                          OldCocktailIngredient(.juices(.lemon), value: 0.75),
                          OldCocktailIngredient(.brandies(.lairdsApplejack), value: 0.75),
                          OldCocktailIngredient(.whiskies(.monongahelaRye), value: 1)]

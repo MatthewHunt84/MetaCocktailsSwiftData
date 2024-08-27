@@ -11,7 +11,7 @@ var whatsYourFavorite  =  Cocktail(cocktailName: "What's Your Favorite",
                                    glasswareType: .martini,
                                    garnish: [.lemonPeel],
                                    ice: nil,
-                                   author: justWnG,
+                                   author: Author(person: AuthorNames.chadMG.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue),
                                    spec: whatsYourFavoriteSpec,
                                    buildOrder: nil,
                                    tags: whatsYourFavoriteTags,
@@ -23,5 +23,6 @@ var whatsYourFavoriteSpec = [OldCocktailIngredient(.bitters(.peychauds), value: 
                              OldCocktailIngredient(.amari(.cardamaro), value: 0.5),
                              OldCocktailIngredient(.rums(.appleton12), value: 2)]
 
-var whatsYourFavoriteTags = Tags(profiles: [.fruity, .spiritForward],
+var whatsYourFavoriteTags = Tags(flavors: [.lemon],
+                                 profiles: [.fruity, .spiritForward],
                                  styles: [.manhattan, .stirred])

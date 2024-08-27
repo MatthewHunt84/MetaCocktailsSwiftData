@@ -27,6 +27,7 @@ let kingLouisDeathBedSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.liq
                                                       OldCocktailIngredient(.brandies(.clearCreekPearBrandy), value: 1.5)]
 
 
-let kingLouisDeathBedTags = Tags(profiles: [.bright, .spiritForward, .complex, .fruity],
+let kingLouisDeathBedTags = Tags(flavors: [.lemon],
+                                 profiles: [.bright, .spiritForward, .complex, .fruity],
                                  styles: [.martini, .stirred])
 

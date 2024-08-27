@@ -19,7 +19,7 @@ var burisBovineBev = Cocktail(cocktailName: "Buris' Bovine Beverage",
                               collection: .williamsAndGraham)
 
 var burisBovineBevSpec  = [OldCocktailIngredient(.otherNonAlc(.cream), value: 0.75),
-                           OldCocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.25),
+                           OldCocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.25, prep: PrepBible.demSyrupPrep),
                            OldCocktailIngredient(.rums(.cruzanBlackstrap), value: 0.25),
                            OldCocktailIngredient(.rums(.plantationOFTD), value: 0.5),
                            OldCocktailIngredient(.amari(.nardiniAmaro), value: 1),

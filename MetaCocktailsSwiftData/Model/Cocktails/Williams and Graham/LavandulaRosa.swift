@@ -12,7 +12,7 @@ var lavandulaRosa = Cocktail(cocktailName: "Lavandula Rosa",
                              glasswareType: .martini,
                              garnish: [.raspberry],
                              ice: nil,
-                             author: justWnG,
+                             author: Author(person: AuthorNames.jasonPatz.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue),
                              spec: lavandulaRosaSpec,
                              tags: lavandulaRosaTags,
                              collection: .williamsAndGraham)

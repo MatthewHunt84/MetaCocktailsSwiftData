@@ -12,7 +12,7 @@ var switchbladeRomance = Cocktail(cocktailName: "Switchblade Romance",
                                   glasswareType: .singleOld,
                                   garnish: [.lemonPeel],
                                   ice: nil,
-                                  author:Author(place: AuthorPlaces.williamsAndGraham.rawValue),
+                                  author:Author(person: AuthorNames.christinaAndrews.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue),
                                   spec: switchbladeRomanceSpec,
                                   tags: switchbladeRomanceTags,
                                   collection: .williamsAndGraham)

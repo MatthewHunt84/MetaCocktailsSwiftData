@@ -20,7 +20,7 @@ var cafeConLecheFlip = Cocktail(cocktailName: "Café con Leche Flip",
                                 collection: .milkAndHoney)
 
 var cafeConLecheFlipSpec  = [OldCocktailIngredient(.otherNonAlc(.cream), value: 0.75),
-                             OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                             OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                              OldCocktailIngredient(.liqueurs(.lolita), value: 1),
                              OldCocktailIngredient(.rums(.cruzanBlackstrap), value: 1),
                              OldCocktailIngredient(.otherNonAlc(.eggWhole), value: 1, unit: .whole)]

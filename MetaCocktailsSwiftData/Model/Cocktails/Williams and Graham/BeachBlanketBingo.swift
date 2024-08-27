@@ -12,7 +12,7 @@ var beachBlanketBingo = Cocktail(cocktailName: "Beach Blanket Bingo",
                                  glasswareType: .collins,
                                  garnish: [.raspberry],
                                  ice: .koldDraft,
-                                 author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
+                                 author: Author(person: AuthorNames.christinaAndrews.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue),
                                  spec: beachBlanketBingoSpec,
                                  tags: beachBlanketBingoTags,
                                  collection: .williamsAndGraham)

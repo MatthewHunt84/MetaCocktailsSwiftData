@@ -187,6 +187,11 @@ import SwiftData
         }
         
         context.insert(cocktail)
+        do {
+            try context.save()
+        } catch {
+            print("Error saving custom cocktail: \(error)")
+        }
         clearData()
     }
     

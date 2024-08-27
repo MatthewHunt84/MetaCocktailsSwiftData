@@ -11,7 +11,7 @@ var theRuralJuror  =  Cocktail(cocktailName: "The Rural Juror",
                                glasswareType: .doubleOld,
                                garnish: [.orangePeel],
                                ice: .bigRock,
-                               author:Author(place: AuthorPlaces.williamsAndGraham.rawValue),
+                               author:Author(person: AuthorNames.whitneyAllen.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue),
                                spec: theRuralJurorSpec,
                                buildOrder: nil,
                                tags: theRuralJurorTags,
@@ -22,5 +22,6 @@ var theRuralJurorSpec = [OldCocktailIngredient(.liqueurs(.velvetFalernum), value
                          OldCocktailIngredient(.amari(.angosturaAmaro), value: 0.5),
                          OldCocktailIngredient(.brandies(.armagnac), value: 2)]
 
-var theRuralJurorTags = Tags(profiles: [.rich, .bittersweet, .punchy, .spiritForward],
+var theRuralJurorTags = Tags(flavors: [.orange],
+                             profiles: [.rich, .bittersweet, .punchy, .spiritForward],
                              styles: [.martini, .stirred])

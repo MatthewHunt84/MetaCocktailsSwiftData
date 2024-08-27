@@ -13,7 +13,7 @@ var laCoa = Cocktail(cocktailName: "La Coa",
                      glasswareType: .doubleOld,
                      garnish: [.orangePeel],
                      ice: .bigRock,
-                     author: Author(person: "", place: AuthorPlaces.williamsAndGraham.rawValue, year: "Spring, 2022"),
+                     author: Author(person: AuthorNames.justinJenkins.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue, year: "Spring, 2022"),
                      spec: laCoaSpec,
                      tags: laCoaTags,
                      collection: .williamsAndGraham)
@@ -26,6 +26,7 @@ let laCoaSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.bitters(.chocol
                                           OldCocktailIngredient(.agaves(.mezcalDelMagueyJabali), value: 1, unit: .whole)]
 
 
-let laCoaTags = Tags(profiles: [.punchy, .spiritForward, .complex, .fruity, .smokey],
+let laCoaTags = Tags(flavors: [.orange],
+                     profiles: [.punchy, .spiritForward, .complex, .fruity, .smokey],
                      styles: [.stirred, .oldFashioned, .tiki])
 

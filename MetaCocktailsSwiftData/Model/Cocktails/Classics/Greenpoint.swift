@@ -24,6 +24,7 @@ var greenpointSpec     =  [OldCocktailIngredient(.bitters(.angosturaBitters), va
                            OldCocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 0.5),
                            OldCocktailIngredient(.whiskies(.straightRye), value: 2)]
 
-var greenpointTags     = Tags(profiles: [.spiritForward, .rich, .complex, .bittersweet],
+var greenpointTags     = Tags(flavors: [.lemon],
+                              profiles: [.spiritForward, .rich, .complex, .bittersweet],
                               styles: [.manhattan, .stirred])
 

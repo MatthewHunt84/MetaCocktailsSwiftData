@@ -9,11 +9,12 @@ import SwiftUI
 
 struct RecipeView: View {
     @Bindable var viewModel: RecipeViewModel
-    @State private var prepItems: [Ingredient] = []
+    //@State private var prepItems: [Ingredient] = []
     @Namespace var topID
     @State private var backgroundIsActive: Bool = false
     
     var body: some View {
+
         ZStack{
             MeshGradient(width: 3, height: 3, points: [
                 [0, 0], [0.5, 0], [1, 0],
@@ -44,7 +45,7 @@ struct RecipeView: View {
                     }
                     
                     .task {
-                        prepItems = viewModel.findPrepItems()
+                        //prepItems = viewModel.findPrepItems()
                         
                     }
                 }
@@ -61,36 +62,73 @@ struct BuildOrderView: View {
     var body: some View {
 
         VStack(alignment: .center) {
-            
             HStack(alignment: .center) {
-
-
                 Spacer()
-                
                 Text("Build Order")
                     .font(FontFactory.header)
-                
                 Spacer()
-                
             }
             .padding(.bottom, 10)
             
             VStack(alignment: .leading) {
-                
                 ForEach(buildOrder.instructions) { build in
                     HStack(alignment: .top) {
-                        Text("\(build.step)")
+                        Text("\(build.step).")
                             .font(calculateFontSize(numberOfSteps: buildOrder.instructions.count, body: false))
                         Text("\(build.method)")
                             .font(calculateFontSize(numberOfSteps: buildOrder.instructions.count, body: true))
                     }
                     .listRowBackground(Color.darkGrey)
-                    
                     Divider()
-                    
                 }
             }
+            Spacer()
+        }
+    }
+    
+    
+    
+    func calculateFontSize(numberOfSteps: Int, body: Bool) -> Font {
+        let weight: Font.Weight = body ? .regular : .bold
+        let size: CGFloat = {
+            switch numberOfSteps {
+            case 0...5: 16
+            case 6...9: 14
+            default: 12
+            }
+        }()
+        
+        return .system(size: size, weight: weight)
+    }
+}
+struct IngredientRecipeView: View {
+    
+    let prep: Prep
+    var viewModel: RecipeViewModel
+    
+    var body: some View {
+        
+        VStack(alignment: .center) {
+            HStack(alignment: .center) {
+                Spacer()
+                Text("\(prep.prepIngredientName) recipe:")
+                    .font(FontFactory.header)
+                Spacer()
+            }
+            .padding(.bottom, 10)
             
+            VStack(alignment: .leading) {
+                ForEach(prep.prepRecipe) { build in
+                    HStack(alignment: .top) {
+                        Text("\(build.step).")
+                            .font(calculateFontSize(numberOfSteps: prep.prepRecipe.count, body: false))
+                        Text("\(build.method)")
+                            .font(calculateFontSize(numberOfSteps: prep.prepRecipe.count, body: true))
+                    }
+                    .listRowBackground(Color.darkGrey)
+                    Divider()
+                }
+            }
             Spacer()
         }
     }
@@ -100,11 +138,10 @@ struct BuildOrderView: View {
         let size: CGFloat = {
             switch numberOfSteps {
             case 0...5: 16
-            case 6...8: 14
+            case 6...9: 14
             default: 11
             }
         }()
-        
         return .system(size: size, weight: weight)
     }
 }
@@ -113,21 +150,30 @@ struct RecipeViewBack: View {
     var viewModel: RecipeViewModel
     let geometry: GeometryProxy
     
+    
     var body: some View {
         
-            ZStack {
+        ZStack {
+            
+            Border()
+            if viewModel.isShowingIngredientRecipe{
+                IngredientRecipeView(prep: viewModel.currentIngredientRecipe, viewModel: viewModel)
+                    .frame(width: geometry.size.width * 0.85)
+                    .padding(.top, 80)
                 
-                Border()
-                
+            } else {
                 BuildOrderView(buildOrder: viewModel.cocktail.buildOrder ?? ramosGinFizzBuild, viewModel: viewModel)
                     .frame(width: geometry.size.width * 0.85)
                     .padding(.top, 60)
             }
+        }
     }
 }
 
 struct backToRecipeViewButton: View {
     var viewModel: RecipeViewModel
+    
+    
     var body: some View {
         VStack {
             
@@ -136,11 +182,17 @@ struct backToRecipeViewButton: View {
                 if viewModel.backDegree == 0 {
                     Button("", systemImage: "arrowshape.turn.up.left.fill") {
                         viewModel.flipCard()
+                        
+                        //viewModel.isShowingIngredientRecipe = false
+                            
+                        
+                        
                     }
                     .foregroundStyle(.blueTint)
                     .padding(.leading, 40)
                     .padding(.top, 60)
                 }
+                   
                 
                 Spacer()
             }
@@ -148,6 +200,7 @@ struct backToRecipeViewButton: View {
             Spacer()
         }
     }
+   
 }
 
 
@@ -312,6 +365,10 @@ struct GlasswareView: View {
 struct SpecIngredientView: View {
     var ingredient: Ingredient
     @State private var isShowingIngredientInfo : Bool = false
+    @Bindable var viewModel: RecipeViewModel
+    let geo: GeometryProxy
+    var topID: Namespace.ID
+    var scrollReader: ScrollViewProxy
     
     var body: some View {
         let number = NSNumber(value: ingredient.value)
@@ -320,17 +377,24 @@ struct SpecIngredientView: View {
                 Text("\(number) \(ingredient.unit.rawValue)")
                     .font(FontFactory.specMeasurement)
                 if ingredient.ingredientBase.prep != nil {
-                    NavigationLink {
-                        PrepRecipeView(prep: ingredient.ingredientBase.prep!)
+                    Button{
+                        viewModel.isShowingIngredientRecipe = true
+                        viewModel.currentIngredientRecipe = ingredient.ingredientBase.prep ?? PrepBible.aPPBitters
+                        viewModel.flipCard()
+                        withAnimation(.easeOut(duration: viewModel.durationAndDelay)) {
+                            scrollReader.scrollTo(topID, anchor: .top)
+                        }
                     } label: {
                         Text(ingredient.ingredientBase.name)
                             .font(FontFactory.body)
                             .tint(.blueTint)
                     }
+                    .disabled(viewModel.isFlipped)
                 } else {
                     Text("\(ingredient.ingredientBase.name)")
+
                         .font(FontFactory.body)
-                        
+
                 }
                 if ingredient.ingredientBase.info != nil {
                     Image(systemName: "questionmark.circle.fill")
@@ -339,10 +403,7 @@ struct SpecIngredientView: View {
                             withAnimation(.easeInOut(duration: 0.25)) {
                                 isShowingIngredientInfo.toggle()
                             }
-                            
                         }
-                        
-                       
                 }
             }
             .multilineTextAlignment(.leading)
@@ -351,7 +412,7 @@ struct SpecIngredientView: View {
                     .font(.footnote)
                     .foregroundStyle(.brandPrimaryGold)
                 
-                    
+                
             }
         }
     }
@@ -359,9 +420,14 @@ struct SpecIngredientView: View {
 
 struct SpecView: View {
     var cocktail: Cocktail
+    @Bindable var viewModel: RecipeViewModel
     @State private var isShowingSheet = false
-    @State private var isShowingBatchView = false 
+    @State private var isShowingBatchView = false
+    @Binding var isShowingCocktailNotes: Bool
     @Binding var isShowingPrompt: Bool
+    let geo: GeometryProxy
+    var topID: Namespace.ID
+    var scrollReader: ScrollViewProxy
     
     var body: some View {
         NavigationStack{
@@ -372,7 +438,16 @@ struct SpecView: View {
                     HStack {
                         Text("Cocktail Spec:")
                             .font(FontFactory.header)
-                        
+
+                        if cocktail.notes != nil {
+                            Button {
+                                isShowingCocktailNotes.toggle()
+                            } label: {
+                                Image(systemName: "questionmark.circle.fill")
+                                    .foregroundStyle(.blue)
+                            }
+                        }
+        
                         Spacer()
                         
                         Button {
@@ -387,7 +462,7 @@ struct SpecView: View {
                     .padding(.bottom, 5)
                     
                     ForEach(orderSpec(), id: \.id) { ingredient in
-                        SpecIngredientView(ingredient: ingredient)
+                        SpecIngredientView(ingredient: ingredient, viewModel: viewModel, geo: geo, topID: topID, scrollReader: scrollReader)
                     }
                 }
             }
@@ -408,13 +483,13 @@ struct SpecView: View {
         orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.umbrellaCategory == UmbrellaCategory.liqueurs.rawValue}))
         orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.umbrellaCategory == UmbrellaCategory.fortifiedWines.rawValue}))
         orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.umbrellaCategory == UmbrellaCategory.amari.rawValue}))
+        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.umbrellaCategory == UmbrellaCategory.otherAlcohol.rawValue}))
         orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.umbrellaCategory == UmbrellaCategory.whiskies.rawValue}))
         orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.umbrellaCategory == UmbrellaCategory.rums.rawValue}))
         orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.umbrellaCategory == UmbrellaCategory.gins.rawValue}))
         orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.umbrellaCategory == UmbrellaCategory.brandies.rawValue}))
         orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.umbrellaCategory == UmbrellaCategory.agaves.rawValue}))
         orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.umbrellaCategory == UmbrellaCategory.vodkas.rawValue}))
-        orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.umbrellaCategory == UmbrellaCategory.otherAlcohol.rawValue}))
         orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.umbrellaCategory == UmbrellaCategory.soda.rawValue}))
         orderedSpec.append(contentsOf: cocktail.spec.filter({ $0.ingredientBase.umbrellaCategory == UmbrellaCategory.wines.rawValue}))
         return orderedSpec
@@ -496,9 +571,10 @@ struct GarnishView: View {
                         Text("\(secondGarnishName)")
                     }
                 } else {
-                    ForEach(cocktail.garnish, id: \.self) { garnish in
+                    ForEach(cocktail.garnish, id: \.name) { garnish in
                         Text("\(garnish.name)")
                             .font(FontFactory.body)
+                            .multilineTextAlignment(.leading)
                     }
                 }
             } else {

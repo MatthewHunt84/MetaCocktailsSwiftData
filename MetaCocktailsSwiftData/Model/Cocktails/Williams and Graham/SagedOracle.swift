@@ -19,7 +19,7 @@ var sagedOracle = Cocktail(cocktailName: "Saged Oracle",
                            collection: .williamsAndGraham)
 
 let sagedOracleSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.sage), value: 5, unit: .gentlyMuddled),
-                                             OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                                             OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                                              OldCocktailIngredient(.juices(.lemon), value: 0.5),
                                              OldCocktailIngredient(.juices(.grapefruit), value: 0.75),
                                              OldCocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.25),

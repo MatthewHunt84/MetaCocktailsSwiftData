@@ -24,6 +24,7 @@ var painKillerSpec  = [OldCocktailIngredient(.juices(.orange), value: 0.5),
                        OldCocktailIngredient(.rums(.pussersRum) , value: 1.5)]
 
 
-var painKillerTags   = Tags(profiles: [.fruity, .sweet, .tropical, .refreshing],
+var painKillerTags   = Tags(flavors: [.nutmeg],
+                            profiles: [.fruity, .sweet, .tropical, .refreshing],
                             styles: [.swizzle, .tiki, .sour])
 

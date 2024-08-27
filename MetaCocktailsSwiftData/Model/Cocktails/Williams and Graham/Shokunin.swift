@@ -23,7 +23,8 @@ let shokuninSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.fortifiedWin
                                           OldCocktailIngredient(.wines(.junmeiSake), value: 1.5)]
 
 
-let shokuninTags = Tags(profiles: [.light, .complex, .bittersweet],
+let shokuninTags = Tags(flavors: [.orange],
+                        profiles: [.light, .complex, .bittersweet],
                         styles: [.stirred, .negroni])
 
 let shokuninBuild = Build(instructions: [Instruction(step: 1, method: "Stir the sake, vermouth and Campari."),

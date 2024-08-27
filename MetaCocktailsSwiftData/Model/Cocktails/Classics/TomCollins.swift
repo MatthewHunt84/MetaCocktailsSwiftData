@@ -11,7 +11,7 @@ var tomCollins  = Cocktail(cocktailName: "Tom Collins",
                            glasswareType: .collins,
                            garnish: [.lemonWheel],
                            ice: .koldDraft,
-                           author: nil,
+                           author: Author(person: "Unknown"),
                            spec: tomCollinsSpec,
                            buildOrder: tomCollinsBuild,
                            tags: tomCollinsTags,
@@ -20,7 +20,7 @@ var tomCollins  = Cocktail(cocktailName: "Tom Collins",
                            titleCocktail: true)
 
 var tomCollinsSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
-                       OldCocktailIngredient(.syrups(.simple), value: 1),
+                       OldCocktailIngredient(.syrups(.simple), value: 1, prep: PrepBible.simpleSyrupPrep),
                        OldCocktailIngredient(.gins(.fordsGin), value: 1.5),
                        OldCocktailIngredient(.soda(.sodaWater) , value: 2)]
 

@@ -24,5 +24,6 @@ var somethingBitterSpec = [OldCocktailIngredient(.bitters(.chocolateMole), value
                            OldCocktailIngredient(.amari(.campari), value: 0.5),
                            OldCocktailIngredient(.brandies(.pFAmber), value: 1.5)]
 
-var somethingBitterTags = Tags(profiles: [.rich, .bittersweet, .punchy, .spiritForward],
+var somethingBitterTags = Tags(flavors: [.orange],
+                               profiles: [.rich, .bittersweet, .punchy, .spiritForward],
                                styles: [.negroni, .stirred])

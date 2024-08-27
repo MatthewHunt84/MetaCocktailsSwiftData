@@ -11,16 +11,16 @@ var french75  = Cocktail(cocktailName: "French 75",
                          glasswareType: .collins,
                          garnish: [.lemonPeel],
                          ice: .crackedIce,
-                         author: harryCraddock,
+                         author: Author(person: AuthorNames.harryMcElhone.rawValue, place: AuthorPlaces.abcOfMixingCocktails.rawValue, year: "1919"),
                          spec: french75Spec,
-                         buildOrder: french75Build,
+                         buildOrder: topWithChampagnMethod,
                          tags: french75Tags,
                          variation: .french75,
                          collection: .originals,
                          titleCocktail: true)
 
 var french75Spec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
-                     OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                     OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                      OldCocktailIngredient(.gins(.ginAny), value: 1.5),
                      OldCocktailIngredient(.wines(.champagne) , value: 2)]
 

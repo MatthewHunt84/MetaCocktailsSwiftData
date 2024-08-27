@@ -22,5 +22,6 @@ var stirredAndBoozySpec  = [OldCocktailIngredient(.amari(.angosturaAmaro), value
                             OldCocktailIngredient(.amari(.luxardoBitterBianco), value: 0.5),
                             OldCocktailIngredient(.whiskies(.talisker10), value: 1.5)]
 
-var stirredAndBoozyTags = Tags(profiles: [.herbal, .punchy, .spiritForward, .complex],
+var stirredAndBoozyTags = Tags(flavors: [.orange],
+                               profiles: [.herbal, .punchy, .spiritForward, .complex],
                                styles: [.stirred, .negroni])

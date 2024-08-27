@@ -24,7 +24,7 @@ var bambooSpec = [OldCocktailIngredient(.fortifiedWines(.amontillado), value: 1.
                   OldCocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 1.5),
                   OldCocktailIngredient(.bitters(.orangeBitters), value: 2, unit: .dashes)]
 
-var bambooTags = Tags(flavors: [.lemon],
+var bambooTags = Tags(flavors: [.lemon, .orange],
                       profiles: [.dry, .thin, .light],
                       styles: [.martini, .stirred])
                    

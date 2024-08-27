@@ -25,6 +25,7 @@ var vieuxCarreSpec     =  [OldCocktailIngredient(.bitters(.angosturaBitters), va
                            OldCocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 1),
                            OldCocktailIngredient(.brandies(.cognacVSOP), value: 1)]
 
-var vieuxCarreTags     = Tags(profiles: [.spiritForward, .rich, .punchy, .bittersweet],
+var vieuxCarreTags     = Tags(flavors: [.lemon],
+                              profiles: [.spiritForward, .rich, .punchy, .bittersweet],
                               styles: [.manhattan, .stirred])
 

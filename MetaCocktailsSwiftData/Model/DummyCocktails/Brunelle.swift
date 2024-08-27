@@ -15,7 +15,7 @@ let brunelle = Cocktail(cocktailName: "Brunelle",
 
 var brunelleSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.otherAlcohol(.absinthe), value: 1),
                                           OldCocktailIngredient(.juices(.lemon), value: 1),
-                                          OldCocktailIngredient(.syrups(.simple), value: 1)]
+                                             OldCocktailIngredient(.syrups(.simple), value: 1, prep: PrepBible.simpleSyrupPrep)]
 
 var brunelleTags = Tags(profiles: [.citrusy, .refreshing, .light],
                         styles: [.sour, .shaken])

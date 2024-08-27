@@ -18,11 +18,12 @@ var featheredHatFlipNo2 = Cocktail(cocktailName: "Feathered Hat Flip No. 2",
                                    buildOrder: featheredHatFlip2Build,
                                    tags: featheredHatFlip2Tags,
                                    variation: .featheredHatFlip,
-                                   collection: .williamsAndGraham)
+                                   collection: .williamsAndGraham,
+                                   titleCocktail: true)
 
 var featheredHatFlip2Spec  = [OldCocktailIngredient(.otherNonAlc(.sesameOil), value: 6 ,unit: .drops),
                              OldCocktailIngredient(.otherAlcohol(.leftHandMilkStout), value: 1),
-                             OldCocktailIngredient(.syrups(.cinnamonSyrup), value: 0.75),
+                             OldCocktailIngredient(.syrups(.cinnamonSyrup), value: 0.75, prep: PrepBible.cinnamonSyrup),
                              OldCocktailIngredient(.liqueurs(.giffardBanane), value: 0.5),
                              OldCocktailIngredient(.rums(.cruzanBlackstrap), value: 0.5),
                              OldCocktailIngredient(.rums(.diplomaticoExclusivaRum), value: 0.75),

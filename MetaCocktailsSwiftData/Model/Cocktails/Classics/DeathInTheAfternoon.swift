@@ -19,6 +19,7 @@ var deathInTheAfternoonSpec  = [OldCocktailIngredient(.wines(.champagne), value:
 
 
 
-var deathInTheAfternoonTags   = Tags(profiles: [.herbal, .punchy, .effervescent],
+var deathInTheAfternoonTags   = Tags(flavors: [.lemon],
+                                     profiles: [.herbal, .punchy, .effervescent],
                                      styles: [.fizz, .built])
 

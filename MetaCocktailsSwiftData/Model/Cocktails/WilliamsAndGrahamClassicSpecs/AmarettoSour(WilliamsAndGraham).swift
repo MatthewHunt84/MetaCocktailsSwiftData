@@ -19,7 +19,7 @@ var amarettoSourWnG  = Cocktail(cocktailName: "Amaretto Sour (W&G Version)",
 
 var amarettoSourWnGSpec  = [OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
                             OldCocktailIngredient(.juices(.lemon), value: 0.75),
-                            OldCocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.25),
+                            OldCocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.25, prep: PrepBible.demSyrupPrep),
                             OldCocktailIngredient(.liqueurs(.amaretto) , value: 2),
                             OldCocktailIngredient(.bitters(.angosturaBitters) , value: 10, unit: .drops)]
 

@@ -20,6 +20,7 @@ var tipperarySpecWnG     =  [OldCocktailIngredient(.fortifiedWines(.puntEMes), v
                              OldCocktailIngredient(.liqueurs(.greenChartreuse), value: 0.5),
                              OldCocktailIngredient(.whiskies(.bushmills12), value: 2)]
 
-var tipperaryTagsWnG     = Tags(profiles: [.spiritForward, .bittersweet, .herbal],
+var tipperaryTagsWnG     = Tags(flavors: [.orange],
+                                profiles: [.spiritForward, .bittersweet, .herbal],
                                 styles: [.manhattan, .stirred])
 

@@ -23,5 +23,6 @@ var nobodysPerfectSpec  = [OldCocktailIngredient(.amari(.braulio), value: 0.5),
                            OldCocktailIngredient(.fortifiedWines(.lustauRojoVermouth), value: 0.75),
                            OldCocktailIngredient(.whiskies(.rittenhouseRye), value: 1)]
 
-var nobodysPerfectTags = Tags(profiles: [.herbal, .punchy, .spiritForward, .complex],
+var nobodysPerfectTags = Tags(flavors: [.orange],
+                              profiles: [.herbal, .punchy, .spiritForward, .complex],
                               styles: [.stirred, .manhattan])

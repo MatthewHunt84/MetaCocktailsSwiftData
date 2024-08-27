@@ -19,7 +19,7 @@ var gilda = Cocktail(cocktailName: "Gilda",
                      collection: .deathAndCo)
 
 var gildaSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.5),
-                  OldCocktailIngredient(.syrups(.cinnamonSyrup), value: 0.5),
+                  OldCocktailIngredient(.syrups(.cinnamonSyrup), value: 0.5, prep: PrepBible.cinnamonSyrup),
                   OldCocktailIngredient(.juices(.pineappleJuice), value: 0.5),
                   OldCocktailIngredient(.agaves(.tequilaBlanco), value: 2)]
 

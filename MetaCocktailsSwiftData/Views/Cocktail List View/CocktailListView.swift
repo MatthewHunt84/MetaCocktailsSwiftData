@@ -7,18 +7,18 @@
 
 import SwiftUI
 import SwiftData
-import UIKit
 
 struct CocktailListView: View {
-    @State private var backgroundIsActive: Bool = false
+
     @Bindable var viewModel = CocktailListViewModel()
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
-    
-    
+
+    @FocusState private var searchBarIsFocused: Bool
+    @State private var showingModal = false
+
     var body: some View {
-        
-        NavigationStack{
-            
+        NavigationStack {
+
             ZStack {
                 
                 MeshGradients.meshBlueTwoRibbonBackground.ignoresSafeArea()
@@ -26,73 +26,72 @@ struct CocktailListView: View {
                 
             
                 VStack {
+
                     FontFactory.regularText("Cocktail List", size: 30)
 
+
+                    HStack {
+                        Text("Cocktails")
+                            .font(.largeTitle).bold()
+                            .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
+                        Button {
+                            showingModal = true
+                        } label: {
+                            Image(systemName: "questionmark.circle.fill")
+                                .tint(.blueTint)
+                        }
+                        Spacer()
+                        LoadSampleCocktailsButton()
+                    }
                     GeometryReader { listGeo in
-                        
                         ScrollView {
                             ScrollViewReader { value in
                                 HStack {
-                                    List{
-                                        AllCocktailsListView(cocktails: cocktails)
+                                    List {
+                                        if searchBarIsFocused {
+                                            SearchBarAllCocktailsListView(viewModel: viewModel, cocktails: viewModel.filteredCocktails)
+                                        } else {
+                                            AllCocktailsListView(viewModel: viewModel, cocktails: cocktails)
+                                        }
                                     }
                                     .listStyle(.plain)
                                     .frame(width: listGeo.size.width * 0.9, height: listGeo.size.height)
-                                    VStack {
-                                        
-                                        ForEach(0..<viewModel.cocktailListAlphabet.count, id: \.self) { i in
-                                            Button(action: {
-                                                withAnimation {
-                                                    value.scrollTo(viewModel.cocktailListAlphabet[i], anchor: .top)
-                                                }
-                                            }, label: {
-                                                if i == 0 {
-                                                    if viewModel.cocktailCollection == .all {
-                                                        Image(systemName: viewModel.cocktailListAlphabet[i] )
-                                                            
-                                                            .resizable()
-                                                            .frame(width: 15, height: 15, alignment: .center)
-                                                            .tint(.white)
-                                                           // .foregroundStyle(backgroundIsActive ? .white : .brandSecondaryBlue)
-                                                       
-                                                    }
-                                                } else {
-                                                    FontFactory.regularText(viewModel.cocktailListAlphabet[i], size: 13, isBold: true)
-                                                        .frame(width: 17, height: 13, alignment: .center)
-                                                        //.foregroundStyle(backgroundIsActive ? .white : .brandSecondaryBlue)
-                                                }
-                                                
-                                            })
-                                            .buttonStyle(ScaleButtonStyle())
-                                        }
-                                    }
-                                    .frame(width: listGeo.size.width * 0.1, height: listGeo.size.height)
-                                    .scaledToFit()
-                                    .offset(x: -10, y: 5)
+                                    
+                                    AlphabetNavigationView(value: value, alphabet: viewModel.cocktailListAlphabet)
+                                        .frame(width: listGeo.size.width * 0.1, height: listGeo.size.height)
+                                        .scaledToFit()
+                                        .offset(x: searchBarIsFocused ? listGeo.size.width * 0.1 : -10, y: 5)
+                                        .opacity(searchBarIsFocused ? 0 : 1)
+                                        .animation(.easeInOut(duration: 0.8), value: searchBarIsFocused)
+
                                 }
                             }
                         }
                     }
+                    ListSearchBarView(text: $viewModel.searchText, isFocused: $searchBarIsFocused, viewModel: viewModel)
+                        .padding()
                 }
-                if viewModel.isShowingOriginalCocktailInfo {
-                    CustomAlertView(isActive: $viewModel.isShowingOriginalCocktailInfo,
-                                    title: "These cocktails are OLD old.",
-                                    message: viewModel.originalSpecExplanation,
-                                    buttonTitle: "Heard, Chef") {}
-                        .zIndex(1)
-                    //zIndex is how the ZStack orders views. Without setting the zIndex to anything but 0, the animation won't transition out of view on the top of the stack.
+                .onAppear {
+                    viewModel.setAllCocktails(cocktails)
                 }
             }
             
             .navigationBarTitleDisplayMode(.inline)
             //.goldHeader("All Cocktails")
         }
+        .fullScreenCover(isPresented: $showingModal) {
+            HistoricalCocktailModalView(
+                isPresented: $showingModal,
+                alertContent: HistoricalCocktailAlert.standard
+            ) {
+            }
+        }
     }
 }
 
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    return CocktailListView()
+    CocktailListView(viewModel: CocktailListViewModel())
         .modelContainer(preview.container)
         
 }
@@ -105,10 +104,149 @@ struct ScaleButtonStyle : ButtonStyle {
     }
 }
 
+struct AlphabetNavigationView: View {
+    let value: ScrollViewProxy
+    let alphabet: [String]
+    
+    var body: some View {
+        VStack {
+            ForEach(0..<alphabet.count, id: \.self) { i in
+                Button(action: {
+                    withAnimation {
+                        value.scrollTo(alphabet[i], anchor: .top)
+                    }
+                }, label: {
+                    if i == 0 {
+                        Image(systemName: alphabet[i])
+                            .resizable()
+                            .frame(width: 15, height: 15, alignment: .center)
+                            .tint(.white)
+                    } else {
+                        Text(alphabet[i])
+                            .font(.headline).bold()
+                            .frame(width: 17, height: 13, alignment: .center)
+                    }
+                })
+                .buttonStyle(ScaleButtonStyle())
+            }
+        }
+    }
+}
+
+struct ListSearchBarView: View {
+    @Binding var text: String
+    @FocusState.Binding var isFocused: Bool
+    @Bindable var viewModel: CocktailListViewModel
+    
+    var body: some View {
+        HStack {
+            TextField("Search cocktails", text: $text)
+                .focused($isFocused)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .overlay(alignment: .trailing) {
+                    if !text.isEmpty {
+                        Button {
+                            viewModel.searchText = ""
+                        } label: {
+                            Image(systemName: "x.circle.fill")
+                                .tint(.blueTint)
+                        }
+                        .padding(.horizontal, 10)
+                    }
+                }
+                .onChange(of: text) { _, newValue in
+                    viewModel.updateSearch(newValue)
+                }
+            if isFocused {
+                Button("Done") {
+                    withAnimation(.easeInOut(duration: 0.2)) {
+                        isFocused = false
+                    }
+                }
+                .padding(.horizontal, 8)
+                .padding(.vertical, 4)
+                .background(Color.blueTint)
+                .foregroundColor(.black)
+                .cornerRadius(8)
+                
+            }
+        }
+        .animation(.default, value: isFocused)
+        .padding(.horizontal)
+    }
+}
 
 
 
-
-
-
-
+struct CocktailRowView: View {
+    
+    let cocktail: Cocktail
+    @Environment(\.modelContext) private var modelContext
+    @Bindable var viewModel: CocktailListViewModel
+    
+    var body: some View {
+        if cocktail.variation == nil  {
+            if cocktail.collection == .custom {
+                NavigationLinkWithoutIndicator {
+                    HStack{
+                        Text(cocktail.cocktailName)
+                        Spacer()
+                    }
+                } destination: {
+                    RecipeView(viewModel: RecipeViewModel(cocktail: cocktail), body: <#some View#>)
+                        .navigationBarBackButtonHidden(true)
+                }
+            } else {
+                NavigationLinkWithoutIndicator {
+                    HStack{
+                        Text(cocktail.cocktailName)
+                        Spacer()
+                    }
+                } destination: {
+                    RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                        .navigationBarBackButtonHidden(true)
+                }
+            }
+        } else {
+            if cocktail.titleCocktail == true {
+                let variations = viewModel.selectedCocktailVariations(for: cocktail)
+                DisclosureGroup {
+                    ForEach(variations, id: \.cocktailName) { variationCocktail in
+                        
+                        if cocktail.collection == .custom {
+                            NavigationLinkWithoutIndicator {
+                                HStack{
+                                    Text(cocktail.cocktailName)
+                                    Spacer()
+                                    Text("Custom")
+                                        .foregroundStyle(Color.brandPrimaryGold)
+                                        .font(.subheadline)
+                                }
+                            } destination: {
+                                RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                                    .navigationBarBackButtonHidden(true)
+                            }
+                        } else {
+                            NavigationLinkWithoutIndicator {
+                                HStack{
+                                    Text(cocktail.cocktailName)
+                                    Spacer()
+                                }
+                            } destination: {
+                                RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                                    .navigationBarBackButtonHidden(true)
+                            }
+                        }
+                    }
+                } label: {
+                    if let variationName = cocktail.variation {
+                        Text(variationName.rawValue)
+                    } else {
+                        Text(cocktail.cocktailName)
+                    }
+                }
+                .disclosureGroupStyle(InlineDisclosureGroupStyle())
+            }
+        }
+    }
+}

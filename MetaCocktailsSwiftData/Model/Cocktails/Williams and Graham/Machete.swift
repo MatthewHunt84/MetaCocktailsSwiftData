@@ -12,7 +12,7 @@ var machete  =  Cocktail(cocktailName: "Machete",
                          glasswareType: Glassware.doubleOld,
                          garnish: [.grapefruitPeel],
                          ice: .bigRock,
-                         author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
+                         author: Author(person: AuthorNames.chadLarson.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue),
                          spec: macheteSpec,
                          buildOrder: nil,
                          tags: macheteTags,
@@ -24,5 +24,6 @@ var macheteSpec = [OldCocktailIngredient(.bitters(.hellfireBitters), value: 12, 
                    OldCocktailIngredient(.fortifiedWines(.lilletBlanc), value: 1),
                    OldCocktailIngredient(.agaves(.mezcalDelMagueyVida), value: 1)]
 
-var macheteTags = Tags(profiles: [.rich, .bittersweet, .spicy, .spiritForward],
+var macheteTags = Tags(flavors: [.grapefruit],
+                       profiles: [.rich, .bittersweet, .spicy, .spiritForward],
                        styles: [.negroni, .stirred])

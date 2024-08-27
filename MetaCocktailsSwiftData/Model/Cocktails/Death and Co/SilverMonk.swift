@@ -27,7 +27,7 @@ let silverMonkSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.min
                                             OldCocktailIngredient(.fruit(.cucumberSlices), value: 2, unit: .muddled),
                                             OldCocktailIngredient(.seasoning(.salt), value: 1, unit: .pinch),
                                             OldCocktailIngredient(.juices(.lime), value: 0.75),
-                                            OldCocktailIngredient(.syrups(.simple), value: 0.5),
+                                            OldCocktailIngredient(.syrups(.simple), value: 0.5, prep: PrepBible.simpleSyrupPrep),
                                             OldCocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.75),
                                             OldCocktailIngredient(.agaves(.tequilaBlanco), value: 2)]
 

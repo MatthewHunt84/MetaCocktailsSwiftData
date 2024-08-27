@@ -15,11 +15,12 @@ var tipperaryDR = Cocktail(cocktailName: "Tipperary(Dead Rabbit)",
                            tags: tipperaryTagsDR,
                            variation: .tipperary)
 
-var tipperarySpecDR     =  [OldCocktailIngredient(.bitters(.angosturaBitters), value: 2),
+var tipperarySpecDR     =  [OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
                             OldCocktailIngredient(.liqueurs(.greenChartreuse), value: 0.5),
                             OldCocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),
                             OldCocktailIngredient(.whiskies(.irishWhiskeyAny), value: 1.5)]
 
-var tipperaryTagsDR     = Tags(profiles: [.spiritForward, .bittersweet, .herbal],
+var tipperaryTagsDR     = Tags(flavors: [.orange],
+                               profiles: [.spiritForward, .bittersweet, .herbal],
                                styles: [.manhattan, .stirred])
 

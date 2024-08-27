@@ -23,7 +23,7 @@ var strawberryFix = Cocktail(cocktailName: "Strawberry Fix",
 
 var strawberryFixSpec = [OldCocktailIngredient(.fruit(.strawberryHalf), value: 4,  unit: .gentlyMuddled),
                          OldCocktailIngredient(.juices(.lemon), value: 0.75),
-                         OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                         OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                          OldCocktailIngredient(.whiskies(.bourbonAny), value: 2)]
 
 var strawberryFixTags = Tags(profiles: [.fruity, .refreshing, .citrusy, .light],

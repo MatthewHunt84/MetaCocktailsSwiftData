@@ -24,5 +24,6 @@ var richGirlSpec = [OldCocktailIngredient(.seasoning(.saline), value: 2, unit: .
                     OldCocktailIngredient(.fortifiedWines(.capaletti), value: 1),
                     OldCocktailIngredient(.rums(.banks5), value: 2)]
 
-var richGirlTags = Tags(profiles: [.rich, .bittersweet, .spiritForward, .complex],
+var richGirlTags = Tags(flavors: [.lemon],
+                        profiles: [.rich, .bittersweet, .spiritForward, .complex],
                         styles: [.martini, .stirred])

@@ -14,12 +14,13 @@ var robRoy = Cocktail(cocktailName: "Rob Roy",
                       author: nil,
                       spec: robRoySpec,
                       tags: robRoyTags,
-                      variation: .robRoy,
-                      titleCocktail: true)
+                      variation: .manhattan,
+                      titleCocktail: false)
 
 var robRoySpec     =  [OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
                        OldCocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1),
                        OldCocktailIngredient(.whiskies(.scotchBlended), value: 2)]
 
-var robRoyTags     = Tags(profiles: [.spiritForward, .punchy, .fruity],
+var robRoyTags     = Tags(flavors: [.orange],
+                          profiles: [.spiritForward, .punchy, .fruity],
                           styles: [.manhattan, .stirred])

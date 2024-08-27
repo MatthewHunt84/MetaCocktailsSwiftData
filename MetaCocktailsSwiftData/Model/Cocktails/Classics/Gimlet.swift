@@ -7,16 +7,17 @@
 
 import SwiftUI
 
-var gimlet = Cocktail(cocktailName: "Gimlet",
+var gimlet = Cocktail(cocktailName: "Gimlet (Modern)",
                       glasswareType: .stemmedGlassware,
                       garnish: [.limeWheel],
                       ice: nil,
                       spec: gimletSpec,
                       buildOrder: nil,
-                      tags: gimletTags)
+                      tags: gimletTags,
+                      variation: .gimlet)
 
 var gimletSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.75),
-                       OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                       OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                        OldCocktailIngredient(.gins(.ginAny), value: 2),]
 
 var gimletTags = Tags(profiles: [.citrusy, .refreshing, .light],

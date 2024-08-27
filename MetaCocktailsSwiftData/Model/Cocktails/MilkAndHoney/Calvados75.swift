@@ -19,7 +19,7 @@ var calvados75  = Cocktail(cocktailName: "Calvados 75",
                            collection: .milkAndHoney)
 
 var calvados75Spec  = [OldCocktailIngredient(.juices(.lemon), value: 0.5),
-                       OldCocktailIngredient(.syrups(.simple), value: 0.5),
+                       OldCocktailIngredient(.syrups(.simple), value: 0.5, prep: PrepBible.simpleSyrupPrep),
                        OldCocktailIngredient(.brandies(.boulardCalvados), value: 1),
                        OldCocktailIngredient(.wines(.champagne) , value: 2)]
 

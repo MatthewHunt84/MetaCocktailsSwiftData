@@ -20,8 +20,8 @@ var zombieWnG = Cocktail(cocktailName: "Zombie (W&G Version)",
 
 let zombieSpecWnG  = [OldCocktailIngredient(.juices(.lime), value: 0.75),
                       OldCocktailIngredient(.juices(.grapefruit), value: 0.5),
-                      OldCocktailIngredient(.syrups(.cinnamonSyrup), value: 0.25),
-                      OldCocktailIngredient(.syrups(.grenadine), value: 1, unit: .barSpoon),
+                      OldCocktailIngredient(.syrups(.cinnamonSyrup), value: 0.25, prep: PrepBible.cinnamonSyrup),
+                      OldCocktailIngredient(.syrups(.grenadine), value: 1, unit: .barSpoon, prep: PrepBible.grenadine),
                       OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
                       OldCocktailIngredient(.otherAlcohol(.absinthe), value: 2, unit: .sprays),
                       OldCocktailIngredient(.rums(.havanaClubAnjeo), value: 1.5),
@@ -29,6 +29,7 @@ let zombieSpecWnG  = [OldCocktailIngredient(.juices(.lime), value: 0.75),
                       OldCocktailIngredient(.rums(.lemonHeart151), value: 1)]
 
 
-let zombieTagsWnG = Tags(profiles: [.complex, .fruity, .punchy],
+let zombieTagsWnG = Tags(flavors: [.mint],
+                         profiles: [.complex, .fruity, .punchy],
                          styles: [.sour, .shaken, .tiki])
 

@@ -19,12 +19,13 @@ var dontPanic = Cocktail(cocktailName: "Don't Panic",
                          collection: .williamsAndGraham)
 
 let dontPanicSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.soda(.sodaWater), value: 1),
-                                           OldCocktailIngredient(.juices(.lemon), value: 0.5),
-                                           OldCocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.5),
-                                           OldCocktailIngredient(.liqueurs(.aelredMelonApertif), value: 1),
-                                           OldCocktailIngredient(.amari(.fernetBranca), value: 1)]
+                                              OldCocktailIngredient(.juices(.lemon), value: 0.5),
+                                              OldCocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.5, prep: PrepBible.demSyrupPrep),
+                                              OldCocktailIngredient(.liqueurs(.aelredMelonApertif), value: 1),
+                                              OldCocktailIngredient(.amari(.fernetBranca), value: 1)]
 
 
-let dontPanicTags = Tags(profiles: [.refreshing, .citrusy, .herbal, .rich, .fruity, .complex],
+let dontPanicTags = Tags(flavors: [.mint],
+                         profiles: [.refreshing, .citrusy, .herbal, .rich, .fruity, .complex],
                          styles: [.fizz, .shaken])
 

@@ -17,13 +17,13 @@ var secondSunrise = Cocktail(cocktailName: "Second Sunrise",
                              tags: secondSunriseTags,
                              collection: .williamsAndGraham)
 
-let secondSunriseSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.syrups(.cinnamonSyrup), value: 0.75),
-                                               OldCocktailIngredient(.juices(.lemon), value: 0.75),
-                                               OldCocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.25),
-                                               OldCocktailIngredient(.fortifiedWines(.cocchiAmericano), value: 0.5),
-                                               OldCocktailIngredient(.gins(.hendricks), value: 1.5),
-                                               OldCocktailIngredient(.otherAlcohol(.lavenderTincture), value: 2, unit: .dashes)]
+let secondSunriseSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.syrups(.cinnamonSyrup), value: 0.75, prep: PrepBible.cinnamonSyrup),
+                                                  OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                                                  OldCocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.25),
+                                                  OldCocktailIngredient(.fortifiedWines(.cocchiAmericano), value: 0.5),
+                                                  OldCocktailIngredient(.gins(.hendricks), value: 1.5),
+                                                  OldCocktailIngredient(.otherAlcohol(.lavenderTincture), value: 2, unit: .dashes)]
 
 
 let secondSunriseTags = Tags(profiles: [.herbal, .refreshing, .floral, .light],
-                      styles: [.sour, .shaken])
+                             styles: [.sour, .shaken])

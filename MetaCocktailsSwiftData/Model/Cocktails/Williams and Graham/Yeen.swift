@@ -12,7 +12,7 @@ var yeen = Cocktail(cocktailName: "Yeen.",
                     glasswareType: .doubleOld,
                     garnish: [.lemonPeel],
                     ice: .bigRock,
-                    author:Author(person: "",
+                    author:Author(person: AuthorNames.justinJenkins.rawValue,
                                   place: AuthorPlaces.williamsAndGraham.rawValue,
                                   year: "Spring, 2022"),
                     spec: yeenSpec,
@@ -26,5 +26,6 @@ let yeenSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.rums(.rumFire), 
                                          OldCocktailIngredient(.amari(.sfumato), value: 0.75)]
 
 
-let yeenTags = Tags(profiles: [.herbal, .fruity, .punchy, .spiritForward],
+let yeenTags = Tags(flavors: [.lemon],
+                    profiles: [.herbal, .fruity, .punchy, .spiritForward],
                     styles: [.stirred, .oldFashioned, .tiki])

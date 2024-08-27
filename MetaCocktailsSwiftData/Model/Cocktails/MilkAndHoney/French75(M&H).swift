@@ -19,7 +19,7 @@ var french75MnH  = Cocktail(cocktailName: "French 75(Milk & Honey version)",
                            collection: .milkAndHoney)
 
 var french75MnHSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.5),
-                       OldCocktailIngredient(.syrups(.simple), value: 0.5),
+                       OldCocktailIngredient(.syrups(.simple), value: 0.5, prep: PrepBible.simpleSyrupPrep),
                        OldCocktailIngredient(.brandies(.cognacVSOP), value: 1),
                        OldCocktailIngredient(.wines(.champagne) , value: 2)]
 

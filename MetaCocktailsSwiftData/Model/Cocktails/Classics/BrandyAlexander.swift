@@ -7,15 +7,17 @@
 
 import Foundation
 
-let brandyAlexander = Cocktail(cocktailName: "Brandy Alexander",
+let brandyAlexander = Cocktail(cocktailName: "Alexander Cocktail No. 2",
                                glasswareType: .coupe,
-                               garnish: [.nutmeg],
+                               garnish: nil,
+                               author: harryCraddock,
                                spec: brandyAlexanderSpec,
-                               tags: brandyAlexanderTags)
+                               tags: brandyAlexanderTags,
+                               variation: .alexander)
 
 var brandyAlexanderSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.otherNonAlc(.cream), value: 1),
-                                                 OldCocktailIngredient(.liqueurs(.cremeDeCacao), value:1),
-                                                 OldCocktailIngredient(.brandies(.pFAmber), value: 1)]
+                                                    OldCocktailIngredient(.liqueurs(.cremeDeCacao), value:1),
+                                                    OldCocktailIngredient(.brandies(.brandyAny), value: 1)]
 
 var brandyAlexanderTags = Tags(profiles: [.sweet, .rich],
                                styles: [.shaken])

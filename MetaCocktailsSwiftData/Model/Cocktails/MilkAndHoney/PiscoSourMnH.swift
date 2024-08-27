@@ -19,12 +19,13 @@ var piscoSourMnH = Cocktail(cocktailName: "Pisco Sour(Milk & Honey Version)",
                             collection: .milkAndHoney)
 
 var piscoSourSpecMnH  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
-                         OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                         OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                          OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 1, unit: .whole),
                          OldCocktailIngredient(.brandies(.pisco), value: 2),
                          OldCocktailIngredient(.bitters(.angosturaBitters), value: 3, unit: .dashes)]
 
-var piscoSourTagsMnH = Tags(profiles: [.light, .silky, .fruity, .refreshing],
+var piscoSourTagsMnH = Tags(flavors: [.cinnamon],
+                            profiles: [.light, .silky, .fruity, .refreshing],
                             styles: [.sour, .shaken])
 
 var piscoSourBuildMnH = Build(instructions: [Instruction(step: 1, method: "Add all ingredients accept for the bitters into a tin a dry shake to emulsify"),

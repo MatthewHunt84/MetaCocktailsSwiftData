@@ -12,7 +12,7 @@ var somethingAboutPrague = Cocktail(cocktailName: "Something About Prague",
                                     glasswareType: .doubleOld,
                                     garnish: [.nutmeg],
                                     ice: .koldDraft,
-                                    author: Author(place: AuthorPlaces.williamsAndGraham.rawValue),
+                                    author: Author(person: AuthorNames.samJohnson.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue),
                                     spec: somethingAboutPragueSpec,
                                     tags: somethingAboutPragueTags,
                                     collection: .williamsAndGraham)
@@ -25,6 +25,7 @@ let somethingAboutPragueSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.
                                                       OldCocktailIngredient(.whiskies(.eagleRare10), value: 1.5)]
 
 
-let somethingAboutPragueTags = Tags(profiles: [.refreshing, .complex, .nutty, .fruity],
+let somethingAboutPragueTags = Tags(flavors: [.nutmeg],
+                                    profiles: [.refreshing, .complex, .nutty, .fruity],
                                     styles: [.sour, .shaken])
 

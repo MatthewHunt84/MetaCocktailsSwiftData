@@ -22,7 +22,7 @@ var blackberrySageSmash = Cocktail(cocktailName: "Blackberry Sage Smash",
 
 let blackberrySageSmashSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 2),
                                                      OldCocktailIngredient(.juices(.lemon), value: 0.75),
-                                                     OldCocktailIngredient(.syrups(.simple), value: 0.75),
+                                                     OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                                                      OldCocktailIngredient(.fruit(.blackBerry), value: 4, unit: .muddled),
                                                      OldCocktailIngredient(.herbs(.sage), value: 4, unit: .gentlyMuddled)]
 

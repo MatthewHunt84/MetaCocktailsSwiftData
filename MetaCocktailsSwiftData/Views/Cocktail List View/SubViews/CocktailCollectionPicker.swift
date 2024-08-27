@@ -18,27 +18,24 @@ struct CocktailCollectionPicker: View {
                 Picker(selection: $cocktailCollection) {
                     ForEach(CocktailCollection.allCases, id: \.self) { int in
                         if int.collectionName != "Custom" && int.collectionName != "Death & Co." {
-                            FontFactory.regularText(int.collectionName, size: 18)
+                            Text(int.collectionName)
                         }
                     }
-                } label: { }
+                } label: {}
             } label: {
-                HStack {
-                    FontFactory.regularText(cocktailCollection == .all ? "Collection" : cocktailCollection.collectionName, size: 18)
-                    Image(systemName: "chevron.down")
-                        .foregroundStyle(Color.blueTint)
-                }
+                Text("Collection: \(cocktailCollection.collectionName)")
+                    .font(.headline)
+                    .tint(.white)
             }
-            
-            if viewModel.cocktailCollection == .originals {
-                Image(systemName: "questionmark.circle.fill")
-                    .foregroundStyle(viewModel.isShowingOriginalCocktailInfo ? .brandPrimaryGold : .blue)
-                    .onTapGesture {
-                        viewModel.isShowingOriginalCocktailInfo.toggle()
-                    }
-            }
+           // if viewModel.cocktailCollection == .originals {
+//                Image(systemName: "questionmark.circle.fill")
+//                    .foregroundStyle(viewModel.isShowingOriginalCocktailInfo ? .brandPrimaryGold : .blue)
+//                    .onTapGesture {
+//                        viewModel.isShowingOriginalCocktailInfo.toggle()
+//                    }
+          //  }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(EdgeInsets(top: 10, leading: 15, bottom: 0, trailing: 0))
+        .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0))
     }
 }

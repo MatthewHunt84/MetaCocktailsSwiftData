@@ -13,7 +13,7 @@ var longWayDown = Cocktail(cocktailName: "Long Way Down",
                            glasswareType: .collins,
                            garnish: [.mintSprig],
                            ice: .pebbleIce,
-                           author: justWnG,
+                           author: Author(person: AuthorNames.allisonWiddecombe.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue),
                            spec: longWayDownSpec,
                            buildOrder: longWayDownBuild,
                            tags: longWayDownTags,
@@ -28,7 +28,8 @@ let longWayDownSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.juices(.l
                                              OldCocktailIngredient(.rums(.smithAndCross), value: 1)]
 
 
-let longWayDownTags = Tags(profiles: [.complex, .nutty, .citrusy, .refreshing],
+let longWayDownTags = Tags(flavors: [.mint],
+                           profiles: [.complex, .nutty, .citrusy, .refreshing],
                            styles: [.sour, .shaken, .tiki])
 
 

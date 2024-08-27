@@ -19,7 +19,7 @@ var silverGinFizz  = Cocktail(cocktailName: "Silver Gin Fizz",
                               collection: .originals)
 
 var silverGinFizzSpec  = [OldCocktailIngredient(.juices(.lemon), value: 1),
-                          OldCocktailIngredient(.syrups(.simple), value: 1),
+                          OldCocktailIngredient(.syrups(.simple), value: 1, prep: PrepBible.simpleSyrupPrep),
                           OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
                           OldCocktailIngredient(.gins(.ginAny), value: 1.5),
                           OldCocktailIngredient(.soda(.sparklingWater), value: 2)]

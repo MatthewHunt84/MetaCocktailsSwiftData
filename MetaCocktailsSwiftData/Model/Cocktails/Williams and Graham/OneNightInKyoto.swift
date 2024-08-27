@@ -11,7 +11,7 @@ var oneNightInKyoto  =  Cocktail(cocktailName: "One Night In Kyoto",
                                  glasswareType: .doubleOld,
                                  garnish: [.lemonPeel],
                                  ice: .bigRock,
-                                 author:Author(place: AuthorPlaces.williamsAndGraham.rawValue),
+                                 author:Author(person: AuthorNames.samJohnson.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue),
                                  spec: oneNightInKyotoSpec,
                                  buildOrder: nil,
                                  tags: oneNightInKyotoTags,
@@ -22,5 +22,6 @@ var oneNightInKyotoSpec = [OldCocktailIngredient(.bitters(.bitterTruthJTDecanter
                            OldCocktailIngredient(.fortifiedWines(.cocchiBaroloChinato), value: 2),
                            OldCocktailIngredient(.whiskies(.hibikiHarmony), value: 2)]
 
-var oneNightInKyotoTags = Tags(profiles: [.rich, .herbal, .punchy],
+var oneNightInKyotoTags = Tags(flavors: [.lemon],
+                               profiles: [.rich, .herbal, .punchy],
                                styles: [.manhattan, .stirred])

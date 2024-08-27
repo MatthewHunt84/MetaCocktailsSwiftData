@@ -12,7 +12,7 @@ var shameless = Cocktail(cocktailName: "Shameless",
                          glasswareType: .doubleOld,
                          garnish: [.flamedOrange, .honeycomb],
                          ice: .bigRock,
-                         author: Author(person: "Lauren", place: AuthorPlaces.williamsAndGraham.rawValue, year: "2019"),
+                         author: Author(person: AuthorNames.laurneLowe.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue, year: "2019"),
                          spec: shamelessSpec,
                          tags: shamelessTags,
                          collection: .williamsAndGraham)

@@ -26,7 +26,7 @@ var harvestOldFashionedSpec     =  [OldCocktailIngredient(.otherNonAlc(.sugarCub
                                     OldCocktailIngredient(.brandies(.lairdsApplejack), value: 1),
                                     OldCocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 1)]
 
-var harvestOldFashionedTags     = Tags(profiles: [.spiritForward, .bittersweet],
+var harvestOldFashionedTags     = Tags(flavors: [.orange, .lemon], profiles: [.spiritForward, .bittersweet],
                                        styles: [.oldFashioned, .stirred])
 
 var harvestOldFashionedBuild = Build(instructions: [Instruction(step: 1, method: "Put the sugar cube in an Old Fashioned glass and soak with both bitters. Add club soda and muddle until a paste forms."),

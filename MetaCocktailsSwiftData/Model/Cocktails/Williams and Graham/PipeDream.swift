@@ -26,5 +26,6 @@ var pipeDreamSpec = [OldCocktailIngredient(.seasoning(.saline), value: 2, unit: 
                      OldCocktailIngredient(.liqueurs(.damiana), value: 1.5),
                      OldCocktailIngredient(.agaves(.mezcalDelMagueyVida), value: 1.5)]
 
-var pipeDreamTags = Tags(profiles: [.rich, .bittersweet, .punchy],
+var pipeDreamTags = Tags(flavors: [.lemon],
+                         profiles: [.rich, .bittersweet, .punchy],
                          styles: [.martini, .stirred])

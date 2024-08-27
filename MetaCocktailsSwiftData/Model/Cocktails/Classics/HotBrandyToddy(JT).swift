@@ -21,7 +21,7 @@ var hotBrandyToddySpec  = [OldCocktailIngredient(.otherNonAlc(.granulatedSugar),
                            OldCocktailIngredient(.otherNonAlc(.hotWater), value: 3),
                            OldCocktailIngredient(.brandies(.brandyAny), value: 2)]
 
-var hotBrandyToddyTags = Tags(flavors: [.tea],
+var hotBrandyToddyTags = Tags(flavors: [.tea, .nutmeg],
                               profiles: [.hot],
                               styles: [.toddy])
 

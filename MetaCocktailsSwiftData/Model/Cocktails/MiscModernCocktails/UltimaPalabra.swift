@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-var ultimaPalabra = Cocktail(cocktailName: "Ultima Palabra",
+var ultimaPalabra = Cocktail(cocktailName: "Ultima Palabra(Modern version)",
                              glasswareType: .stemmedGlassware,
                              ice: nil,
                              spec: ultimaPalabraSpec,

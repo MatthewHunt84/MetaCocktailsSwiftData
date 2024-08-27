@@ -8,18 +8,21 @@
 import Foundation
 
 var champagneCocktail = Cocktail(cocktailName: "Champagne Cocktail",
-                         glasswareType: .flute,
-                         garnish: [.noGarnish],
-                         ice: nil,
-                         author:Author(place: "Some American Bar in Panama", year: "1855"),
-                         spec: champagneCocktailSpec,
-                         tags: champagneCocktailTags)
+                                 glasswareType: .flute,
+                                 garnish: [.lemonPeel],
+                                 ice: nil,
+                                 author: harryCraddock,
+                                 spec: champagneCocktailSpec,
+                                 tags: champagneCocktailTags,
+                                 collection: .originals)
 
-var champagneCocktailSpec  = [OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
-                      OldCocktailIngredient(.wines(.champagne), value: 5)]
+var champagneCocktailSpec  = [OldCocktailIngredient(.otherNonAlc(.sugarCube), value: 1, unit: .none),
+                              OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),
+                              OldCocktailIngredient(.wines(.champagne), value: 5)]
 
-var champagneCocktailTags = Tags(profiles: [.dry, .effervescent, .bitter],
-                         styles: [.built])
+var champagneCocktailTags = Tags(flavors: [.lemon],
+                                 profiles: [.dry, .effervescent, .bitter],
+                                 styles: [.built])
 
 
 
