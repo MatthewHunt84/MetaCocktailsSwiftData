@@ -37,7 +37,7 @@ struct AllCocktailsListView: View {
                     .listRowBackground(Color.clear)
                 }
             } header: {
-                Text(letter == CocktailListViewModel.sfSymbolForCustomCocktails ? "Custom" : letter)
+                Text(letter == CocktailListViewModel.sfSymbolForCustomCocktails ? "" : letter)
                     .font(FontFactory.regularFont(size: 28))
             }
             .id(letter)
@@ -46,12 +46,14 @@ struct AllCocktailsListView: View {
 }
 
 struct SearchBarAllCocktailsListView: View {
-    @Bindable var viewModel = CocktailListViewModel()
+    @Bindable var viewModel: CocktailListViewModel
     var cocktails: [Cocktail]
-    
+
     var body: some View {
         ForEach(cocktails, id: \.id) { cocktail in
-            CocktailListItemView(viewModel: viewModel, cocktail: cocktail, isInCustomSection: false)
+            if cocktail.variation == nil || cocktail.titleCocktail == true {
+                CocktailListItemView(viewModel: viewModel, cocktail: cocktail, isInCustomSection: false)
+            }
         }
         .listRowBackground(Color.clear)
     }
@@ -70,6 +72,7 @@ struct CocktailListItemView: View {
         }
     }
 }
+
 struct SingleCocktailView: View {
     
     @Bindable var viewModel: CocktailListViewModel

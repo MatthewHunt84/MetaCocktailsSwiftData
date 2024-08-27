@@ -45,6 +45,14 @@ import Combine
     private func performSearch(_ searchText: String) {
         self.debouncedSearchText = searchText
         updateFilteredCocktails()
+        
+        // Include variation cocktails
+        let variationCocktails = allCocktails.filter { cocktail in
+            guard let variation = cocktail.variation else { return false }
+            return filteredCocktails.contains { $0.variation == variation }
+        }
+        filteredCocktails.append(contentsOf: variationCocktails)
+        filteredCocktails = Array(Set(filteredCocktails)).sorted { $0.cocktailName < $1.cocktailName }
     }
     
     private func updateFilteredCocktails() {

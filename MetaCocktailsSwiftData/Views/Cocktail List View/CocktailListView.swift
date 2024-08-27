@@ -26,9 +26,6 @@ struct CocktailListView: View {
                 
             
                 VStack {
-
-                    
-
                     ZStack{
                         HStack {
                             Spacer()
@@ -44,6 +41,8 @@ struct CocktailListView: View {
                             }
                         }
                     }
+                    ListSearchBarView(text: $viewModel.searchText, isFocused: $searchBarIsFocused, viewModel: viewModel)
+                        .padding()
                     GeometryReader { listGeo in
                         ScrollView {
                             ScrollViewReader { value in
@@ -69,8 +68,6 @@ struct CocktailListView: View {
                             }
                         }
                     }
-                    ListSearchBarView(text: $viewModel.searchText, isFocused: $searchBarIsFocused, viewModel: viewModel)
-                        .padding()
                 }
                 .onAppear {
                     viewModel.setAllCocktails(cocktails)

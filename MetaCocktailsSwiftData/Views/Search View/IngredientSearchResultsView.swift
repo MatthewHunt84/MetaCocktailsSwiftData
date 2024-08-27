@@ -33,7 +33,8 @@ struct IngredientSearchResultsView: View {
                 }
             
             VStack {
-                FontFactory.regularText("Matched Cocktails", size: 24, isBold: true)
+                
+                FontFactory.titleHeader(title: "Matched Cocktails")
                 PreferencesListView()
                     .padding(.top, 10)
                     .padding(.bottom, 10)
