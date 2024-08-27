@@ -38,7 +38,7 @@ struct FloatingPromptView: View {
                             .background(Color(UIColor.systemGray5))
                             .cornerRadius(10)
                             .multilineTextAlignment(.center)
-                            .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            .frame(width: 100, height: 40, alignment: .center)
                             .keyboardType(.numberPad)
                             .focused($cocktailNumberFocus)
                         

@@ -9,23 +9,15 @@ import SwiftUI
 
 struct RecipeView: View {
     @Bindable var viewModel: RecipeViewModel
-    //@State private var prepItems: [Ingredient] = []
     @Namespace var topID
-    @State private var backgroundIsActive: Bool = false
     
     var body: some View {
-
-        ZStack{
-            MeshGradient(width: 3, height: 3, points: [
-                [0, 0], [0.5, 0], [1, 0],
-                [ 0 , 0.5], [0.5, 0.5], [1, 0.5],
-                [0 , 0.3], [backgroundIsActive ? 0.35 : 0.49 , backgroundIsActive ? 0.6 : 0.62], [1 , 1]
-            ], colors: [
-                .black, .black,.black,
-                .black, .black, .black,
-                .brandSecondaryBlue, .brandSecondaryBlue, .brandSecondaryBlue
-            ]).ignoresSafeArea()
-               
+        
+        ZStack {
+            
+            MeshGradients.recipeMeshBackground
+                .ignoresSafeArea()
+            
             GeometryReader { geo in
                 
                 ScrollViewReader { scrollReader in
@@ -42,11 +34,6 @@ struct RecipeView: View {
                         ToolbarItem(placement: .topBarLeading) {
                             BackButton()
                         }
-                    }
-                    
-                    .task {
-                        //prepItems = viewModel.findPrepItems()
-                        
                     }
                 }
             }
