@@ -16,51 +16,45 @@ struct AddCustomIngredientView: View {
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        NavigationStack{
+        NavigationStack {
             
-            ZStack{
+            ZStack {
                 
                 MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
-                VStack {
-                    ZStack {
-                        HStack{
-                            BackButton()
-                            Spacer()
-                        }
-                        FontFactory.titleHeader30(title: "Custom Ingredient")
+                
+                Form {
+                    Section(header: Text("Name").font(FontFactory.sectionHeader12)) {
+                        TextField("Ingredient Name", text: $viewModel.ingredientName)
+                            .focused($keyboardFocused)
+                            .font(FontFactory.formLabel18)
                     }
-                    Form {
-                        Section(header: Text("Name").font(FontFactory.sectionHeader12)) {
-                            TextField("Ingredient Name", text: $viewModel.ingredientName)
-                                .focused($keyboardFocused)
-                                .font(FontFactory.formLabel18)
-                        }
-                        CategoryPickerView(viewModel: viewModel)
-                        AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
-                        IngredeientRecipeView(viewModel: viewModel)
-                        AddCustomIngredientToCocktailButton(viewModel: viewModel)
-                    }
-                    .scrollContentBackground(.hidden)
-                    .background(Color.clear)
-                    .toolbar {
-                        ToolbarItemGroup(placement: .keyboard) {
-                            KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
-                                .background(Color.clear)
-                        }
-                       
-                    }
-                    .task {
-                        keyboardFocused = true
+                    CategoryPickerView(viewModel: viewModel)
+                    AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
+                    IngredeientRecipeView(viewModel: viewModel)
+                    AddCustomIngredientToCocktailButton(viewModel: viewModel)
+                }
+                .navigationBarTitleDisplayMode(.inline)
+                .jamesHeaderWithNavigation(title: "Custom Ingredient", dismiss: dismiss)
+                .scrollContentBackground(.hidden)
+                .background(Color.clear)
+                .toolbar {
+                    ToolbarItemGroup(placement: .keyboard) {
+                        KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
+                            .background(Color.clear)
                     }
                     
-                    if viewModel.isShowingingredientAlert {
-                        CustomAlertView(isActive: $viewModel.isShowingingredientAlert,
-                                        title: "",
-                                        message: "Please choose a unique ingredient name, a category, and an amount.",
-                                        buttonTitle: "Heard, Chef",
-                                        action: {})
-                        .zIndex(2)
-                    }
+                }
+                .task {
+                    keyboardFocused = true
+                }
+                
+                if viewModel.isShowingingredientAlert {
+                    CustomAlertView(isActive: $viewModel.isShowingingredientAlert,
+                                    title: "",
+                                    message: "Please choose a unique ingredient name, a category, and an amount.",
+                                    buttonTitle: "Heard, Chef",
+                                    action: {})
+                    .zIndex(2)
                 }
             }
         }

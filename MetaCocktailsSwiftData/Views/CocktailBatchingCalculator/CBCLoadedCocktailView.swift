@@ -39,7 +39,7 @@ struct CBCLoadedCocktailView: View {
         }
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
-        .goldHeaderWithNavigation(title: "Batch Calculator", dismiss: dismiss)
+        .jamesHeaderWithNavigation(title: "Batch Calculator", dismiss: dismiss)
         .sheet(isPresented: $isShowingPreferencesModal, content: {
             EditBatchModalView()
                 .onDisappear(perform: {

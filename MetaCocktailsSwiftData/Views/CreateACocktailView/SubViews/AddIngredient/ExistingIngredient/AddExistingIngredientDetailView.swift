@@ -14,49 +14,42 @@ struct AddExistingIngredientDetailView: View {
     @FocusState private var amountKeyboardFocused: Bool
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
-
+    
     var body: some View {
         
-        NavigationStack{
+        NavigationStack {
             
             ZStack{
                 
                 MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
-                VStack{
-                    ZStack {
-                        HStack{
-                            BackButton()
-                            Spacer()
-                        }
-                        FontFactory.titleHeader30(title: "Add Ingredient")
-                    }
-                    Form {
-                        AddIngredientSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
-                        AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
-                        AddExistingIngredientToCocktailButton(viewModel: viewModel)
-                        
-                    }
-                    .scrollContentBackground(.hidden)
-                    .background(Color.clear)
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        ToolbarItem(placement: .bottomBar) { CreateNewIngredientButton(viewModel: viewModel) }
-                        ToolbarItemGroup(placement: .keyboard) {
-                            KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
-                        }
-                    }
-                    .task {
-                        keyboardFocused = true
-                    }
+                
+                Form {
+                    AddIngredientSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
+                    AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
+                    AddExistingIngredientToCocktailButton(viewModel: viewModel)
                     
-                    if viewModel.isShowingingredientAlert {
-                        CustomAlertView(isActive: $viewModel.isShowingingredientAlert,
-                                        title: "",
-                                        message: "Please add an amount and choose from an existing ingredient. If you'd like to make your own, press 'Create Custom Ingredient'",
-                                        buttonTitle: "Heard, Chef",
-                                        action: {})
-                        .zIndex(2)
+                }
+                .scrollContentBackground(.hidden)
+                .background(Color.clear)
+                .navigationBarTitleDisplayMode(.inline)
+                .jamesHeaderWithNavigation(title: "Add Ingredient", dismiss: dismiss)
+                .toolbar {
+                    ToolbarItem(placement: .bottomBar) { CreateNewIngredientButton(viewModel: viewModel) }
+                    ToolbarItemGroup(placement: .keyboard) {
+                        KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
                     }
+                }
+                .task {
+                    keyboardFocused = true
+                }
+                
+                if viewModel.isShowingingredientAlert {
+                    CustomAlertView(isActive: $viewModel.isShowingingredientAlert,
+                                    title: "",
+                                    message: "Please add an amount and choose from an existing ingredient. If you'd like to make your own, press 'Create Custom Ingredient'",
+                                    buttonTitle: "Heard, Chef",
+                                    action: {})
+                    .zIndex(2)
                 }
             }
         }
@@ -75,7 +68,7 @@ struct AddIngredientSearchView: View {
     
     @Bindable var viewModel: AddCocktailViewModel
     @FocusState var keyboardFocused: Bool
-
+    
     @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]
     @State var filteredIngredients2a: [IngredientBase] = []
     
@@ -88,7 +81,7 @@ struct AddIngredientSearchView: View {
                     .onChange(of: viewModel.ingredientName, initial: true) { old, new in
                         viewModel.ingredientName = new
                         filteredIngredients2a = viewModel.matchAllIngredients2(ingredients: ingredients)
-                    
+                        
                     }
             }
             if keyboardFocused {
@@ -115,7 +108,7 @@ struct AddIngredientSearchView: View {
             } else {
                 EmptyView()
             }
-
+            
         }
     }
 }
@@ -129,9 +122,9 @@ struct AddMeasurementView: View {
                     .keyboardType(.decimalPad)
                     .focused($amountKeyboardFocused)
                     .font(FontFactory.formLabel18)
-
-                    
-                    
+                
+                
+                
                 Menu {
                     ForEach(viewModel.dynamicallyChangeMeasurementOptionsBasedOnChosenCategory(), id: \.self) { unit in
                         
@@ -169,7 +162,7 @@ struct AddExistingIngredientToCocktailButton: View {
                                                                            prep: viewModel.prep),
                                             value: viewModel.ingredientAmount,
                                             unit: viewModel.selectedMeasurementUnit)
-               
+                
                 viewModel.addedIngredients.append(ingredient)
                 
                 viewModel.clearIngredientData()

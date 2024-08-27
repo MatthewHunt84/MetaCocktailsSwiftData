@@ -514,7 +514,6 @@
 		F493F3AB2C6CF18D006A0ADB /* SelectedIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3AA2C6CF18D006A0ADB /* SelectedIngredientView.swift */; };
 		F493F3AE2C6CFBCD006A0ADB /* SelectionTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3AD2C6CFBCD006A0ADB /* SelectionTagView.swift */; };
 		F493F3B12C6CFC72006A0ADB /* SelectionTagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3B02C6CFC72006A0ADB /* SelectionTagViewModel.swift */; };
-		F493F3B42C6D25B5006A0ADB /* Ideas.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3B32C6D25B5006A0ADB /* Ideas.swift */; };
 		F4A233BF2C63B5300061027C /* SearchPredicateFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A233BE2C63B5300061027C /* SearchPredicateFactory.swift */; };
 		F4A628E22B7E31BF0084FD80 /* Variation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A628E12B7E31BF0084FD80 /* Variation.swift */; };
 		F4AA50482B93A54E00A05F54 /* AddCocktailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA50472B93A54E00A05F54 /* AddCocktailView.swift */; };
@@ -525,6 +524,9 @@
 		F4AA6BB22C7E131700610D80 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA6BB12C7E130B00610D80 /* UIApplication+Extension.swift */; };
 		F4AA6BB42C7E134D00610D80 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA6BB32C7E134900610D80 /* ButtonStyles.swift */; };
 		F4AA6BB62C7E170B00610D80 /* DefaultLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA6BB52C7E16FD00610D80 /* DefaultLoadingIndicator.swift */; };
+		F4AA6BB82C7E2B8E00610D80 /* Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA6BB72C7E2B8600610D80 /* Headers.swift */; };
+		F4AA6BBA2C7E2C4F00610D80 /* FontFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA6BB92C7E2C4D00610D80 /* FontFactory.swift */; };
+		F4AA6BBC2C7E2C8B00610D80 /* Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA6BBB2C7E2C8200610D80 /* Gradients.swift */; };
 		F4B0ABF32B13FB2A00336D05 /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0ABF22B13FB2A00336D05 /* SearchResultsView.swift */; };
 		F4C5C3E12B3B3F2E005B2261 /* IngredientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C5C3E02B3B3F2E005B2261 /* IngredientType.swift */; };
 		F4C5C3E42B3B4086005B2261 /* NonAlchololicIngredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C5C3E32B3B4086005B2261 /* NonAlchololicIngredients.swift */; };
@@ -1053,7 +1055,6 @@
 		F493F3AA2C6CF18D006A0ADB /* SelectedIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedIngredientView.swift; sourceTree = "<group>"; };
 		F493F3AD2C6CFBCD006A0ADB /* SelectionTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTagView.swift; sourceTree = "<group>"; };
 		F493F3B02C6CFC72006A0ADB /* SelectionTagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTagViewModel.swift; sourceTree = "<group>"; };
-		F493F3B32C6D25B5006A0ADB /* Ideas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ideas.swift; sourceTree = "<group>"; };
 		F4A233BE2C63B5300061027C /* SearchPredicateFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPredicateFactory.swift; sourceTree = "<group>"; };
 		F4A628E12B7E31BF0084FD80 /* Variation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variation.swift; sourceTree = "<group>"; };
 		F4AA50472B93A54E00A05F54 /* AddCocktailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCocktailView.swift; sourceTree = "<group>"; };
@@ -1064,6 +1065,9 @@
 		F4AA6BB12C7E130B00610D80 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		F4AA6BB32C7E134900610D80 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		F4AA6BB52C7E16FD00610D80 /* DefaultLoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLoadingIndicator.swift; sourceTree = "<group>"; };
+		F4AA6BB72C7E2B8600610D80 /* Headers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headers.swift; sourceTree = "<group>"; };
+		F4AA6BB92C7E2C4D00610D80 /* FontFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontFactory.swift; sourceTree = "<group>"; };
+		F4AA6BBB2C7E2C8200610D80 /* Gradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradients.swift; sourceTree = "<group>"; };
 		F4B0ABF22B13FB2A00336D05 /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
 		F4C5C3E02B3B3F2E005B2261 /* IngredientType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientType.swift; sourceTree = "<group>"; };
 		F4C5C3E32B3B4086005B2261 /* NonAlchololicIngredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonAlchololicIngredients.swift; sourceTree = "<group>"; };
@@ -1336,7 +1340,7 @@
 		1AC386962AAABED00064F52A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F493F3B22C6D256F006A0ADB /* Reusable components */,
+				F493F3B22C6D256F006A0ADB /* Design */,
 				F4872FF12C4374410092F8FF /* Backgrounds */,
 				4D5DA09C2B9ED43300C14F1F /* CustomAlertView */,
 				4DE33DF52B8D931500312EC3 /* CreateACocktailView */,
@@ -1959,12 +1963,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		F493F3B22C6D256F006A0ADB /* Reusable components */ = {
+		F493F3B22C6D256F006A0ADB /* Design */ = {
 			isa = PBXGroup;
 			children = (
-				F493F3B32C6D25B5006A0ADB /* Ideas.swift */,
+				F4AA6BBB2C7E2C8200610D80 /* Gradients.swift */,
+				F4AA6BB92C7E2C4D00610D80 /* FontFactory.swift */,
+				F4AA6BB72C7E2B8600610D80 /* Headers.swift */,
 			);
-			path = "Reusable components";
+			path = Design;
 			sourceTree = "<group>";
 		};
 		F4C5C3E22B3B4061005B2261 /* Ingredients */ = {
@@ -2232,6 +2238,7 @@
 				4DBBA4802B687F4D00179B8F /* MaiTai(W&G).swift in Sources */,
 				4DBBA4D52B6A4A8D00179B8F /* PinkLady.swift in Sources */,
 				4D1F15482B564DB600FC3B85 /* ResultsConfigurationMenu.swift in Sources */,
+				F4AA6BB82C7E2B8E00610D80 /* Headers.swift in Sources */,
 				4DE33E1F2B91B5DA00312EC3 /* Calvados75.swift in Sources */,
 				F4F7429E2AD6419100161A93 /* AdvancedCriteriaListView.swift in Sources */,
 				4DF408E42B619FCB00EF9A6E /* Gilda.swift in Sources */,
@@ -2286,6 +2293,7 @@
 				F4C74C812AD8CC3300EA3334 /* AperolSpritz.swift in Sources */,
 				4DBFF8592B60AD800011B5B1 /* CableCar(W&G).swift in Sources */,
 				4DBBA44A2B673DC600179B8F /* HollandHouseKappelers.swift in Sources */,
+				F4AA6BBC2C7E2C8B00610D80 /* Gradients.swift in Sources */,
 				4DA567FA2B6DF1BC003F6F04 /* SloeWalker.swift in Sources */,
 				4DCB173E2BA5220C0002D7D9 /* StrawberryFix.swift in Sources */,
 				4DCAA7A72C35E83F00FBC4FE /* AddRecipeStepDetailView.swift in Sources */,
@@ -2369,7 +2377,6 @@
 				4DA567F62B6DEE90003F6F04 /* Falcor.swift in Sources */,
 				4DA567C42B6DB48C003F6F04 /* NobodysPerfect.swift in Sources */,
 				4D6761412C44E61F00A5939C /* IngredientSearchResultsView.swift in Sources */,
-				F493F3B42C6D25B5006A0ADB /* Ideas.swift in Sources */,
 				4DD0DEA02B981EC3008EF203 /* Debbie, Don't.swift in Sources */,
 				4D08602E2C60C0F4000AB17A /* PreferencesExcludedLimitedThumbCell.swift in Sources */,
 				4DA567862B6CB742003F6F04 /* LordReyesTheVIII.swift in Sources */,
@@ -2540,6 +2547,7 @@
 				4DCB17422BA52A4B0002D7D9 /* CroqueMPetraske.swift in Sources */,
 				4DCB170C2BA418B00002D7D9 /* TheTieBinder.swift in Sources */,
 				4D6761302C3F317D00A5939C /* AddCustomGarnishView.swift in Sources */,
+				F4AA6BBA2C7E2C4F00610D80 /* FontFactory.swift in Sources */,
 				F493F3B12C6CFC72006A0ADB /* SelectionTagViewModel.swift in Sources */,
 				1AC386C82AAABED10064F52A /* PrepBible.swift in Sources */,
 				1AD87A2B2AE8C93A00859028 /* BeckyWithTheGoodHair.swift in Sources */,

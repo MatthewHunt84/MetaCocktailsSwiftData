@@ -32,6 +32,7 @@ struct IngredientSearchResultsView: View {
                 IngredientSearchMatchedCocktailsView()
             }
             .navigationBarBackButtonHidden(true)
+            .navigationBarTitleDisplayMode(.inline)
             .jamesHeaderWithNavigation(title: "Matched Cocktails", dismiss: dismiss)
             .systemLoadingIndicator(isLoading: viewModel.isRunningComplexSearch)
         }

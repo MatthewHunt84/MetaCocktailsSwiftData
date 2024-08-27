@@ -20,64 +20,63 @@ struct AddCocktailView: View {
             ZStack {
                 
                 MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
-                VStack {
-                    FontFactory.titleHeader30(title: "Add a Cocktail")
+                
+                Form {
+                    Section(header: Text("Name").font(FontFactory.sectionHeader12)) {
+                        TextField("Cocktail Name", text: $viewModel.cocktailName)
+                            .focused($yearKeyboardFocused)
+                            .font(FontFactory.fontBody16)
+                    }
                     
-                    Form {
-                        Section(header: Text("Name").font(FontFactory.sectionHeader12)) {
-                            TextField("Cocktail Name", text: $viewModel.cocktailName)
-                                .focused($yearKeyboardFocused)
+                    AddedIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
+                    
+                    Section(header: Text("Extras").font(FontFactory.sectionHeader12)) {
+                        GlassPickerButton(viewModel: viewModel)
+                        IcePicker(ice: $viewModel.ice)
+                        VariationPicker(variation: $viewModel.variation)
+                    }
+                    
+                    GarnishPicker(viewModel: viewModel)
+                    Section(header: Text("Credit (optional)").font(FontFactory.sectionHeader12)) {
+                        TextField("Author", text: $viewModel.authorName)
+                            .focused($yearKeyboardFocused)
+                            .font(FontFactory.formLabel18)
+                        TextField("Origin", text: $viewModel.authorPlace)
+                            .focused($yearKeyboardFocused)
+                            .font(FontFactory.formLabel18)
+                        TextField("Year", text: $viewModel.authorYear)
+                            .keyboardType(.numberPad)
+                            .focused($yearKeyboardFocused)
+                            .font(FontFactory.formLabel18)
+                    }
+                    
+                    
+                    Section(header: Text("Build steps (optional)").font(FontFactory.sectionHeader12)) {
+                        AddBuildStepView(viewModel: viewModel)
+                    }
+                    
+                    
+                    Button{
+                        viewModel.clearData()
+                    } label: {
+                        
+                        HStack {
+                            Image(systemName: "arrow.triangle.2.circlepath")
+                                .font(.headline).bold()
+                            Text("Reset to Defaults")
                                 .font(FontFactory.fontBody16)
                         }
-                        
-                        AddedIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
-                        
-                        Section(header: Text("Extras").font(FontFactory.sectionHeader12)) {
-                            GlassPickerButton(viewModel: viewModel)
-                            IcePicker(ice: $viewModel.ice)
-                            VariationPicker(variation: $viewModel.variation)
-                        }
-                        
-                        GarnishPicker(viewModel: viewModel)
-                        Section(header: Text("Credit (optional)").font(FontFactory.sectionHeader12)) {
-                            TextField("Author", text: $viewModel.authorName)
-                                .focused($yearKeyboardFocused)
-                                .font(FontFactory.formLabel18)
-                            TextField("Origin", text: $viewModel.authorPlace)
-                                .focused($yearKeyboardFocused)
-                                .font(FontFactory.formLabel18)
-                            TextField("Year", text: $viewModel.authorYear)
-                                .keyboardType(.numberPad)
-                                .focused($yearKeyboardFocused)
-                                .font(FontFactory.formLabel18)
-                        }
-                       
-                        
-                        Section(header: Text("Build steps (optional)").font(FontFactory.sectionHeader12)) {
-                            AddBuildStepView(viewModel: viewModel)
-                        }
-                    
-                        
-                        Button{
-                            viewModel.clearData()
-                        } label: {
-                            
-                            HStack {
-                                Image(systemName: "arrow.triangle.2.circlepath")
-                                    .font(.headline).bold()
-                                Text("Reset to Defaults")
-                                    .font(FontFactory.fontBody16)
-                            }
-                            .tint(Color.blueTint)
-                            .padding()
-                        }
-                        .frame(width: 380, height: 40,  alignment: .center)
-                        
-                        
+                        .tint(Color.blueTint)
+                        .padding()
                     }
-                    .scrollContentBackground(.hidden)
-                    .background(Color.clear)
+                    .frame(width: 380, height: 40,  alignment: .center)
+                    
+                    
                 }
+                .scrollContentBackground(.hidden)
+                .background(Color.clear)
+                .navigationBarTitleDisplayMode(.inline)
+                .jamesHeader("Add A Cocktail")
                 .toolbar {
                     ToolbarItem(placement: .bottomBar) {
                         Button {
@@ -181,43 +180,35 @@ private struct GlassPickerDetailView: View {
     var body: some View {
         ZStack {
             MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
-            VStack{
-                ZStack {
-                    HStack{
-                        BackButton()
-                        Spacer()
-                    }
-                    FontFactory.titleHeader30(title: "Glassware Choice")
-                }
-                List {
-                    ForEach(Glassware.allCases, id: \.self) { newGlass in
-                        if newGlass != .blueBlazerMugs && newGlass != .cinnamonSugarRim && newGlass != .crustaGlass  && newGlass != .doubleOldAsparagusSaltRim  && newGlass != .doubleOldSmokedSalt  && newGlass != .doubleOldCelerySalt {
-                            
-                            
-                            Button{
-                                viewModel.uniqueGlasswareName = newGlass
-                                glasswareName = newGlass.rawValue
-                                dismiss()
-                            } label: {
-                                HStack {
-                                    newGlass.findGlass(for: newGlass)
-                                        .resizable()
-                                        .frame(width: 60, height: 60, alignment: .trailing)
-                                    
-                                    Text(newGlass.rawValue)
-                                        .tag(Optional(newGlass))
-                                        .font(FontFactory.bottomToolbarButton20)
-                                        .foregroundStyle(.white)
-                                }
+            
+            List {
+                ForEach(Glassware.allCases, id: \.self) { newGlass in
+                    if newGlass != .blueBlazerMugs && newGlass != .cinnamonSugarRim && newGlass != .crustaGlass  && newGlass != .doubleOldAsparagusSaltRim  && newGlass != .doubleOldSmokedSalt  && newGlass != .doubleOldCelerySalt {
+                        
+                        Button{
+                            viewModel.uniqueGlasswareName = newGlass
+                            glasswareName = newGlass.rawValue
+                            dismiss()
+                        } label: {
+                            HStack {
+                                newGlass.findGlass(for: newGlass)
+                                    .resizable()
+                                    .frame(width: 60, height: 60, alignment: .trailing)
+                                
+                                Text(newGlass.rawValue)
+                                    .tag(Optional(newGlass))
+                                    .font(FontFactory.bottomToolbarButton20)
+                                    .foregroundStyle(.white)
                             }
                         }
                     }
-                    .listStyle(.plain)
-                    .listRowBackground(Color.clear)
                 }
-                .scrollContentBackground(.hidden)
-                
+                .listStyle(.plain)
+                .listRowBackground(Color.clear)
             }
+            .navigationBarTitleDisplayMode(.inline)
+            .jamesHeaderWithNavigation(title: "Glassware Choice", dismiss: dismiss)
+            .scrollContentBackground(.hidden)
         }
     }
 }

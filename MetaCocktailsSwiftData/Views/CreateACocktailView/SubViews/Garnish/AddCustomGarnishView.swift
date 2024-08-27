@@ -12,38 +12,36 @@ struct AddCustomGarnishView: View {
     @Bindable var viewModel: AddCocktailViewModel
     @FocusState private var keyboardFocused: Bool
     @FocusState private var amountKeyboardFocused: Bool
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
+        
         NavigationStack{
-            ZStack{
+            
+            ZStack {
+                
                 MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
-                VStack {
-                    ZStack {
-                        HStack{
-                            BackButton()
-                            Spacer()
-                        }
-                        FontFactory.titleHeader30(title: "Add Custom Garnish")
+                
+                Form {
+                    Section("Name") {
+                        TextField("Garnish Name", text: $viewModel.currentGarnishName)
+                            .focused($keyboardFocused)
                     }
-                    Form {
-                        Section("Name") {
-                            TextField("Garnish Name", text: $viewModel.currentGarnishName)
-                                .focused($keyboardFocused)
-                        }
-                        AddCustomGarnishToCocktailButton(viewModel: viewModel)
-                    }
-                    .scrollContentBackground(.hidden)
-                    .background(Color.clear)
-                    .toolbar {
-                        ToolbarItemGroup(placement: .keyboard) {
-                            KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
-                        }
-                    }
-                    .task {
-                        keyboardFocused = true
+                    AddCustomGarnishToCocktailButton(viewModel: viewModel)
+                }
+                .scrollContentBackground(.hidden)
+                .background(Color.clear)
+                .toolbar {
+                    ToolbarItemGroup(placement: .keyboard) {
+                        KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
                     }
                 }
+                .task {
+                    keyboardFocused = true
+                }
             }
+            .navigationBarTitleDisplayMode(.inline)
+            .jamesHeaderWithNavigation(title: "Add Custom Garnish", dismiss: dismiss)
         }
     }
 }

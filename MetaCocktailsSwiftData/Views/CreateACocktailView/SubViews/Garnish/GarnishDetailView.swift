@@ -14,47 +14,41 @@ struct GarnishDetailView: View {
     @FocusState private var amountKeyboardFocused: Bool
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
-   
+    
     var body: some View {
         
         NavigationStack{
             
-            ZStack{
+            ZStack {
                 
                 MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
-                VStack{
-                    ZStack {
-                        HStack{
-                            BackButton()
-                            Spacer()
-                        }
-                        FontFactory.titleHeader30(title: "Add Garnish")
-                    }
-                    Form {
-                        AddGarnishSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
-                        AddExistingGarnishToCocktailButton(viewModel: viewModel)
-                        
-                    }
-                    .scrollContentBackground(.hidden)
-                    .background(Color.clear)
-                    .toolbar {
-                        ToolbarItem(placement: .bottomBar) { CreateCustomGarnishButton(viewModel: viewModel) }
-                        ToolbarItemGroup(placement: .keyboard) {
-                            KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
-                        }
-                    }
-                    .task {
-                        keyboardFocused = true
-                    }
+                
+                Form {
+                    AddGarnishSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
+                    AddExistingGarnishToCocktailButton(viewModel: viewModel)
                     
-                    if viewModel.isShowingingredientAlert {
-                        CustomAlertView(isActive: $viewModel.isShowingingredientAlert,
-                                        title: "",
-                                        message: "Please choose from an existing garnish. If you'd like to make your own, press 'Create Custom Garnish'",
-                                        buttonTitle: "Heard, Chef",
-                                        action: {})
-                        .zIndex(2)
+                }
+                .navigationBarTitleDisplayMode(.inline)
+                .jamesHeaderWithNavigation(title: "Add Garnish", dismiss: dismiss)
+                .scrollContentBackground(.hidden)
+                .background(Color.clear)
+                .toolbar {
+                    ToolbarItem(placement: .bottomBar) { CreateCustomGarnishButton(viewModel: viewModel) }
+                    ToolbarItemGroup(placement: .keyboard) {
+                        KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
                     }
+                }
+                .task {
+                    keyboardFocused = true
+                }
+                
+                if viewModel.isShowingingredientAlert {
+                    CustomAlertView(isActive: $viewModel.isShowingingredientAlert,
+                                    title: "",
+                                    message: "Please choose from an existing garnish. If you'd like to make your own, press 'Create Custom Garnish'",
+                                    buttonTitle: "Heard, Chef",
+                                    action: {})
+                    .zIndex(2)
                 }
             }
         }

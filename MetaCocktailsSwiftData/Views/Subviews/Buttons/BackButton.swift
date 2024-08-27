@@ -21,10 +21,8 @@ struct BackButton: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 9)
                         .font(.system(size: 22))
-                        .tint(.cyan)
+                        .tint(.blueTint)
                         .padding(.horizontal, 15)
-//                    Text("Back")
-//                        .tint(.cyan)
                 }
             }
         }
