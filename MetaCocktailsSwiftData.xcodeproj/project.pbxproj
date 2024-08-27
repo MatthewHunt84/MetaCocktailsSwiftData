@@ -1338,7 +1338,7 @@
 				4D5DA09C2B9ED43300C14F1F /* CustomAlertView */,
 				4DE33DF52B8D931500312EC3 /* CreateACocktailView */,
 				4DA567B02B6D9524003F6F04 /* CocktailBatchingCalculator */,
-				F4DBE4C32AB882FF009A0C09 /* AnimatedViews */,
+				F4DBE4C32AB882FF009A0C09 /* Loading Indicators */,
 				F4C6A8EF2AB0000800BB0AD0 /* Subviews */,
 				1AC386972AAABED00064F52A /* Tab Bar View */,
 				1AC3869B2AAABED00064F52A /* Recipe View */,
@@ -2019,13 +2019,13 @@
 			path = Environment;
 			sourceTree = "<group>";
 		};
-		F4DBE4C32AB882FF009A0C09 /* AnimatedViews */ = {
+		F4DBE4C32AB882FF009A0C09 /* Loading Indicators */ = {
 			isa = PBXGroup;
 			children = (
 				F4872FF42C4395F80092F8FF /* LoadingView.swift */,
 				F47FBF642C6BF5EB00CD599E /* BasicLoadingIndicator.swift */,
 			);
-			path = AnimatedViews;
+			path = "Loading Indicators";
 			sourceTree = "<group>";
 		};
 		F4FBF1162AAABBB900BBF7CF = {
