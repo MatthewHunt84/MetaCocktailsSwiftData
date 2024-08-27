@@ -82,7 +82,7 @@ struct GradientNavigationTitleWithNavigation: ViewModifier {
 }
 
 
-// Static Navigation Title
+// Title
 
 extension View {
     
@@ -95,13 +95,49 @@ struct JamesTitle: ViewModifier {
     let title: String
 
     
-    init(_ title: String, colors: [Color] = [Color(.redGold), Color(.brandPrimaryGold), .red], startPoint: UnitPoint = .leading, endPoint: UnitPoint = .trailing) {
+    init(_ title: String) {
         self.title = title
     }
     
     func body(content: Content) -> some View {
         content
             .toolbar {
+                ToolbarItem(placement: .principal) {
+                    FontFactory.titleHeader30(title: title)
+                }
+            }
+    }
+}
+
+// Title with back button
+
+extension View {
+    func jamesHeaderWithNavigation(title: String, dismiss: DismissAction) -> some View {
+        self.modifier(JamesTitleWithNavigation(dismiss: dismiss, title: title))
+    }
+}
+
+struct JamesTitleWithNavigation: ViewModifier {
+    
+    var dismiss: DismissAction
+    let title: String
+    
+    func body(content: Content) -> some View {
+        content
+            .toolbar {
+                ToolbarItem(placement: .navigation) {
+                    Button(action: {
+                        dismiss()
+                    }) {
+                        Image(systemName: "chevron.backward")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 9)
+                            .bold()
+                            .tint(.blueTint)
+                    }
+                }
+                
                 ToolbarItem(placement: .principal) {
                     FontFactory.titleHeader30(title: title)
                 }
@@ -172,6 +208,18 @@ struct MeshGradients {
             .redGold, .brandPrimaryGold, .brandPrimaryGold,
             .brandPrimaryGold, .redGold, .brandPrimaryGold,
             .brandPrimaryGold, .brandPrimaryGold, .redGold
+        ])
+    }
+    
+    static func matchedCocktailBackground(backgroundIsActive: Bool) -> MeshGradient {
+        return MeshGradient(width: 3, height: 3, points: [
+            [0, 0], [0.5, 0], [1, 0],
+            [ 0 , 0.5], [0.5, 0.5], [1, 0.5],
+            [0 , 0.3], [backgroundIsActive ? 0.35 : 0.49 , backgroundIsActive ? 0.6 : 0.62], [1 , 1]
+        ], colors: [
+            .black, .black,.black,
+            .black, .black, .black,
+            .brandSecondaryBlue, .brandSecondaryBlue, .brandSecondaryBlue
         ])
     }
     

@@ -21,7 +21,7 @@ struct IngredientSearchView: View {
             ZStack {
                     MeshGradients.meshBlueRibbonBackground.ignoresSafeArea()
                 VStack{
-                    FontFactory.titleHeader30(title: "Search Cocktails")
+//                    FontFactory.titleHeader30(title: "Search Cocktails")
                     FilteredIngredientListView(keyboardFocused: _keyboardFocused)
                         .onTapGesture {
                             keyboardFocused = true
@@ -46,6 +46,7 @@ struct IngredientSearchView: View {
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
+            .jamesHeader("Search Cocktails")
             .customLoadingIndicator(isLoading: viewModel.isRunningComplexSearch)
         }
     }

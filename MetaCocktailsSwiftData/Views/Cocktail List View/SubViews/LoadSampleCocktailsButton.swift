@@ -16,8 +16,8 @@ struct LoadSampleCocktailsButton: View {
             VStack{
                 Text("Load")
                 Text("Samples")
-                
             }
+            .font(FontFactory.regularFont(size: 15))
         }
         .alert("Error", isPresented: $showError) {
             Button("OK", role: .cancel) { }

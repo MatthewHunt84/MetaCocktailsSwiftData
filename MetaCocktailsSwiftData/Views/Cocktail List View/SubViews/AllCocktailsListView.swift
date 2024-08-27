@@ -42,7 +42,7 @@ struct AllCocktailsListView: View {
                     .listRowBackground(Color.clear)
                 }
             } header: {
-                Text(letter == CocktailListViewModel.sfSymbolForCustomCocktails ? "Custom" : letter)
+                Text(letter == CocktailListViewModel.sfSymbolForCustomCocktails ? "Added Cocktails" : letter)
                     .font(FontFactory.regularFont(size: 28))
             }
             .id(letter)

@@ -17,15 +17,8 @@ struct IngredientSearchResultsView: View {
         
         ZStack {
             
-            MeshGradient(width: 3, height: 3, points: [
-                [0, 0], [0.5, 0], [1, 0],
-                [ 0 , 0.5], [0.5, 0.5], [1, 0.5],
-                [0 , 0.3], [backgroundIsActive ? 0.35 : 0.49 , backgroundIsActive ? 0.6 : 0.62], [1 , 1]
-            ], colors: [
-                .black, .black,.black,
-                .black, .black, .black,
-                .brandSecondaryBlue, .brandSecondaryBlue, .brandSecondaryBlue
-            ]).ignoresSafeArea()
+            MeshGradients.matchedCocktailBackground(backgroundIsActive: backgroundIsActive)
+            .ignoresSafeArea()
                 .onAppear{
                     withAnimation(.easeInOut(duration: 10).repeatForever(autoreverses: true)) {
                         backgroundIsActive.toggle()
@@ -33,21 +26,14 @@ struct IngredientSearchResultsView: View {
                 }
             
             VStack {
-                ZStack {
-                    HStack{
-                        BackButton()
-                        Spacer()
-                    }
-                    FontFactory.titleHeader30(title: "Matched Cocktails")
-                }
+
                 PreferencesListView()
                     .padding(.top, 10)
                     .padding(.bottom, 10)
                 IngredientSearchMatchedCocktailsView()
-                
-                
             }
             .navigationBarBackButtonHidden(true)
+            .jamesHeaderWithNavigation(title: "Matched Cocktails", dismiss: dismiss)
             .systemLoadingIndicator(isLoading: viewModel.isRunningComplexSearch)
         }
     }
