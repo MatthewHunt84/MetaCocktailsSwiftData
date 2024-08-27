@@ -14,7 +14,7 @@ struct CocktailListView: View {
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
 
     @FocusState private var searchBarIsFocused: Bool
-    @State private var showingModal = false
+//    @State private var showingModal = false
 
     var body: some View {
         NavigationStack {
@@ -24,23 +24,22 @@ struct CocktailListView: View {
                 MeshGradients.meshBlueTwoRibbonBackground.ignoresSafeArea()
                 MeshGradients.meshTealRibbonBackground.ignoresSafeArea()
                 
-            
                 VStack {
-                    ZStack{
-                        HStack {
-                            Spacer()
-                            LoadSampleCocktailsButton()
-                        }
-                        HStack{
-                            FontFactory.titleHeader30(title: "Cocktail List")
-                            Button {
-                                showingModal = true
-                            } label: {
-                                Image(systemName: "questionmark.circle.fill")
-                                    .tint(.blueTint)
-                            }
-                        }
-                    }
+//                    ZStack{
+//                        HStack {
+//                            Spacer()
+//                            LoadSampleCocktailsButton()
+//                        }
+//                        HStack{
+//                            FontFactory.titleHeader30(title: "Cocktail List")
+//                            Button {
+//                                showingModal = true
+//                            } label: {
+//                                Image(systemName: "questionmark.circle.fill")
+//                                    .tint(.blueTint)
+//                            }
+//                        }
+//                    }
                     ListSearchBarView(text: $viewModel.searchText, isFocused: $searchBarIsFocused, viewModel: viewModel)
                         .padding()
                     GeometryReader { listGeo in
@@ -75,14 +74,21 @@ struct CocktailListView: View {
             }
             
             .navigationBarTitleDisplayMode(.inline)
-        }
-        .fullScreenCover(isPresented: $showingModal) {
-            HistoricalCocktailModalView(
-                isPresented: $showingModal,
-                alertContent: HistoricalCocktailAlert.standard
-            ) {
+            .jamesHeader("Cocktail List")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    LoadSampleCocktailsButton()
+                }
             }
+            
         }
+//        .fullScreenCover(isPresented: $showingModal) {
+//            HistoricalCocktailModalView(
+//                isPresented: $showingModal,
+//                alertContent: HistoricalCocktailAlert.standard
+//            ) {
+//            }
+//        }
     }
 }
 
@@ -113,8 +119,8 @@ struct AlphabetNavigationView: View {
                         value.scrollTo(alphabet[i], anchor: .top)
                     }
                 }, label: {
-                    if i == 0 {
-                        Image(systemName: alphabet[i])
+                    if i == alphabet.count - 1 {
+                        Image(systemName: "star.fill")
                             .resizable()
                             .frame(width: 15, height: 15, alignment: .center)
                             .tint(.white)

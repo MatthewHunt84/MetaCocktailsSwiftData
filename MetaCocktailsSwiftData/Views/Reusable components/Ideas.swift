@@ -81,6 +81,36 @@ struct GradientNavigationTitleWithNavigation: ViewModifier {
     }
 }
 
+
+// Static Navigation Title
+
+extension View {
+    
+    func jamesHeader(_ title: String) -> some View {
+        self.modifier(JamesTitle(title))
+    }
+}
+
+struct JamesTitle: ViewModifier {
+    let title: String
+
+    
+    init(_ title: String, colors: [Color] = [Color(.redGold), Color(.brandPrimaryGold), .red], startPoint: UnitPoint = .leading, endPoint: UnitPoint = .trailing) {
+        self.title = title
+    }
+    
+    func body(content: Content) -> some View {
+        content
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    FontFactory.titleHeader30(title: title)
+                }
+            }
+    }
+}
+
+
+
 // Animated Mesh gradient (for capsule? Maybe border or background)
 
 struct MeshGradients {

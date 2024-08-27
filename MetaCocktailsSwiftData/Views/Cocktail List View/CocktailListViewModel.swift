@@ -14,7 +14,7 @@ import Combine
     private var allCocktails: [Cocktail] = []
     var filteredCocktails: [Cocktail] = []
     
-    var cocktailListAlphabet = [sfSymbolForCustomCocktails, "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    var cocktailListAlphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z", sfSymbolForCustomCocktails]
     static var sfSymbolForCustomCocktails = "star.fill"
     
     
