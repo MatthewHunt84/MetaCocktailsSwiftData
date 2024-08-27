@@ -27,6 +27,11 @@ struct AllCocktailsListView: View {
                         for index in indexSet {
                             modelContext.delete(customCocktails[index])
                         }
+                        do {
+                            try modelContext.save()
+                        } catch {
+                            print("Oh oh! Couldn't save: \(error)")
+                        }
                     }
                     .listRowBackground(Color.clear)
                     
