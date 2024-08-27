@@ -28,15 +28,17 @@ struct AllCocktailsListView: View {
                             modelContext.delete(cocktails[index])
                         }
                     }
+                    .listRowBackground(Color.clear)
+                    
                 } else {
                     ForEach(cocktails.filter { $0.cocktailName.hasPrefix(letter) }, id: \.id) { cocktail in
                         CocktailListItemView(viewModel: viewModel, cocktail: cocktail, isInCustomSection: false)
                     }
+                    .listRowBackground(Color.clear)
                 }
             } header: {
                 Text(letter == CocktailListViewModel.sfSymbolForCustomCocktails ? "Custom" : letter)
-                    .fontWeight(.bold)
-                    .font(.title)
+                    .font(FontFactory.regularFont(size: 28))
             }
             .id(letter)
         }
@@ -51,6 +53,7 @@ struct SearchBarAllCocktailsListView: View {
         ForEach(cocktails, id: \.id) { cocktail in
             CocktailListItemView(viewModel: viewModel, cocktail: cocktail, isInCustomSection: false)
         }
+        .listRowBackground(Color.clear)
     }
 }
 
@@ -64,8 +67,6 @@ struct CocktailListItemView: View {
             SingleCocktailView(viewModel: viewModel, cocktail: cocktail, isInCustomSection: $isInCustomSection)
         } else if cocktail.titleCocktail == true {
             VariationCocktailView(viewModel: viewModel, cocktail: cocktail)
-        } else {
-            SingleCocktailView(viewModel: viewModel, cocktail: cocktail, isInCustomSection: $isInCustomSection)
         }
     }
 }
@@ -79,11 +80,12 @@ struct SingleCocktailView: View {
         NavigationLinkWithoutIndicator {
             HStack {
                 Text(cocktail.cocktailName)
+                    .font(FontFactory.regularFont(size: 18))
                 Spacer()
                 if cocktail.collection == .custom && !isInCustomSection {
                     Text("Custom")
                         .foregroundStyle(Color.brandPrimaryGold)
-                        .font(.subheadline)
+                        .font(FontFactory.regularFont(size: 15))
                 }
             }
         } destination: {
@@ -103,6 +105,7 @@ struct VariationCocktailView: View {
                 NavigationLinkWithoutIndicator {
                     HStack {
                         Text(variationCocktail.cocktailName)
+                            .font(FontFactory.regularFont(size: 18))
                         Spacer()
                     }
                 } destination: {
@@ -112,6 +115,7 @@ struct VariationCocktailView: View {
             }
         } label: {
             Text(cocktail.variation?.rawValue ?? cocktail.cocktailName)
+                .font(FontFactory.regularFont(size: 18))
         }
         .disclosureGroupStyle(InlineDisclosureGroupStyle())
     }

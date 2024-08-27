@@ -21,23 +21,18 @@ struct IngredientSearchView: View {
             ZStack {
                     MeshGradients.meshBlueRibbonBackground.ignoresSafeArea()
                 VStack{
-                    FontFactory.regularText("Search Cocktails", size: 24, isBold: true)
-
+                    FontFactory.titleHeader(title: "Search Cocktails")
                     FilteredIngredientListView(keyboardFocused: _keyboardFocused)
                         .onTapGesture {
                             keyboardFocused = true
                         }
                     
                     Spacer()
-                    
                     if !viewModel.preferredSelections.isEmpty {
-                        
                         PreferencesListView()
                             .padding(.top, 5)
                     }
                 }
-                
-                    
             }
             .animation(.easeOut(duration: 0.5), value: viewModel.preferredSelections.isEmpty)
             .navigationDestination(isPresented: $viewModel.isShowingResults) {
@@ -51,11 +46,7 @@ struct IngredientSearchView: View {
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-            //.navigationTitle("Search Ingredients")
-            
-            //.goldHeader("Search Ingredients")
             .funLoadingIndicator(isLoading: viewModel.isRunningComplexSearch)
-            
         }
     }
 }

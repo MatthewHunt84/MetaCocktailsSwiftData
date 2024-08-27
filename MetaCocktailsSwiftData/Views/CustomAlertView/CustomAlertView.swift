@@ -24,14 +24,14 @@ struct CustomAlertView: View {
                 }
             VStack {
                 Text(title)
-                    .font(.title2)
+                    .font(FontFactory.regularFont(size: 28))
                     .bold()
                     .padding()
                     .foregroundStyle(.white)
                     .multilineTextAlignment(.center)
                 
                 Text(message)
-                    .font(.body)
+                    .font(FontFactory.body)
                     .foregroundStyle(.white)
                     .multilineTextAlignment(.center)
                 
@@ -43,7 +43,7 @@ struct CustomAlertView: View {
                         RoundedRectangle(cornerRadius: 20)
                             .foregroundStyle(MeshGradients.activeBlue)
                         Text(buttonTitle)
-                            .font(.system(size: 16, weight: .bold))
+                            .font(FontFactory.specMeasurement)
                             .foregroundStyle(.white)
                             .padding()
                     }

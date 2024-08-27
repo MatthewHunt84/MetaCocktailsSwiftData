@@ -21,17 +21,19 @@ struct AddCocktailView: View {
                 
                 MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
                 VStack {
-                    FontFactory.regularText("Add a Cocktail", size: 24, isBold: true)
+                    FontFactory.titleHeader(title: "Add a Cocktail")
+                    
                     Form {
-                        Section(header: Text("Name")) {
+                        Section(header: Text("Name").font(FontFactory.sectionHeader)) {
                             TextField("Cocktail Name", text: $viewModel.cocktailName)
                                 .focused($yearKeyboardFocused)
+                                .font(FontFactory.body)
                         }
                         //                    .listRowBackground(sectionBackground)
                         
                         AddedIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
                         
-                        Section(header: Text("Extras")) {
+                        Section(header: Text("Extras").font(FontFactory.sectionHeader)) {
                             GlassPickerButton(viewModel: viewModel)
                             IcePicker(ice: $viewModel.ice)
                             VariationPicker(variation: $viewModel.variation)
@@ -39,18 +41,21 @@ struct AddCocktailView: View {
                         //                    .listRowBackground(sectionBackground)
                         
                         GarnishPicker(viewModel: viewModel)
-                        Section(header: Text("Credit (optional)")) {
+                        Section(header: Text("Credit (optional)").font(FontFactory.sectionHeader)) {
                             TextField("Author", text: $viewModel.authorName)
                                 .focused($yearKeyboardFocused)
+                                .font(FontFactory.formLabel)
                             TextField("Origin", text: $viewModel.authorPlace)
                                 .focused($yearKeyboardFocused)
+                                .font(FontFactory.formLabel)
                             TextField("Year", text: $viewModel.authorYear)
                                 .keyboardType(.numberPad)
                                 .focused($yearKeyboardFocused)
+                                .font(FontFactory.formLabel)
                         }
                         //                    .listRowBackground(sectionBackground)
                         
-                        Section(header: Text("Build steps (optional)")) {
+                        Section(header: Text("Build steps (optional)").font(FontFactory.sectionHeader)) {
                             AddBuildStepView(viewModel: viewModel)
                         }
                         //                    .listRowBackground(sectionBackground)
@@ -61,8 +66,9 @@ struct AddCocktailView: View {
                             
                             HStack {
                                 Image(systemName: "arrow.triangle.2.circlepath")
-                                    .font(.footnote).bold()
+                                    .font(.headline).bold()
                                 Text("Reset to Defaults")
+                                    .font(FontFactory.body)
                                     .font(.footnote).bold()
                             }
                             .tint(Color.blueTint)
@@ -98,7 +104,8 @@ struct AddCocktailView: View {
                             
                         } label: {
                             HStack {
-                                Text("Add to cocktails").font(.headline)
+                                Text("Add to Cocktails")
+                                    .font(FontFactory.bottomToolbarButton)
                                 Image(systemName: "plus")
                             }
                             .foregroundStyle(viewModel.isValid() ? .brandPrimaryGold : .secondary)
@@ -106,10 +113,13 @@ struct AddCocktailView: View {
                     }
                     ToolbarItemGroup(placement: .keyboard) {
                         Spacer()
-                        Button("Done") {
+                        Button {
                             yearKeyboardFocused = false
+                        } label: {
+                            Text("Done")
+                                .font(FontFactory.body)
                         }
-                        .tint(Color.brandPrimaryGold)
+                        .tint(.blueTint)
                         
                     }
                     
@@ -154,8 +164,10 @@ private struct GlassPickerButton: View {
         } label: {
             HStack {
                 Text("Glassware")
+                    .font(FontFactory.formLabel)
                 Spacer()
                 Text(glasswareName)
+                    .font(FontFactory.formLabel)
                     .foregroundStyle(.gray)
                 
             }
@@ -192,6 +204,7 @@ private struct GlassPickerDetailView: View {
                                 
                                 Text(newGlass.rawValue)
                                     .tag(Optional(newGlass))
+                                    .font(FontFactory.bottomToolbarButton)
                             }
                         }
                         .padding(.horizontal)
@@ -209,13 +222,18 @@ private struct IcePicker: View {
     @Binding var ice: Ice?
     
     var body: some View {
-        Picker("Ice", selection: $ice) {
-            
+        
+        Picker(selection: $ice) {
             ForEach(Ice.allCases, id: \.rawValue)  { ice in
                 Text(ice.rawValue)
+                    .font(FontFactory.formLabel)
                     .tag(Optional(ice))
             }
-        }.pickerStyle(.navigationLink)
+        } label: {
+            Text("Ice")
+                .font(FontFactory.formLabel)
+        }
+        .pickerStyle(.navigationLink)
     }
 }
 
@@ -232,6 +250,7 @@ private struct GarnishPicker: View {
                 ForEach(viewModel.addedGarnish, id: \.name) { garnish in
                     Text(garnish.name)
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .font(FontFactory.formLabel)
                 }
                 .onDelete(perform: { indexSet in
                     viewModel.addedGarnish.remove(atOffsets: indexSet)
@@ -244,6 +263,7 @@ private struct GarnishPicker: View {
                 HStack {
                     Text(viewModel.addedGarnish.count < 1 ? "Add Garnish" : "Add another garnish")
                         .tint(viewModel.addedGarnish.count < 1 ? .white : .secondary)
+                        .font(FontFactory.formLabel)
                     Spacer()
                     Image(systemName: "plus.circle.fill")
                         .foregroundStyle(.blueTint)
@@ -266,12 +286,14 @@ private struct VariationPicker: View {
             Picker(selection: $variation) {
                 ForEach(Variation.allCases, id: \.rawValue)  { variation in
                     Text(variation.rawValue)
+                        .font(FontFactory.formLabel)
                         .tag(Optional(variation))
                 }
             } label: {
                 HStack(spacing: 15) {
                     Text("Variation")
                         .frame(alignment: .leading)
+                        .font(FontFactory.formLabel)
                     
                     Image(systemName: "questionmark.circle.fill")
                         .foregroundStyle(isShowingInfo ? .brandPrimaryGold : .blue)
@@ -283,7 +305,7 @@ private struct VariationPicker: View {
             
             if isShowingInfo {
                 Text("If this cocktail is a riff on another classic, you may add it here. Variations will be grouped together in the search list")
-                    .font(.caption)
+                    .font(FontFactory.buildBodySmall)
                     .foregroundStyle(.brandPrimaryGold)
                     .padding(.top, 10)
             }

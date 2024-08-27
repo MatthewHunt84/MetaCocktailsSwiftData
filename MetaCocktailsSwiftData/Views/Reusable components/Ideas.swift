@@ -417,11 +417,19 @@ struct FontFactory {
         Font.custom("AvenirNext-Regular", size: size)
     }
     
-    static var header: Font = .custom("AvenirNext-Regular", size: 18).bold()
-    static var specMeasurement: Font = .custom("AvenirNext-Regular", size: 16).bold()
-    static var body: Font = .custom("AvenirNext-Regular", size: 16)
+    static func titleHeader(title: String) -> Text {
+        return Text(title)
+            .font(.custom("AvenirNext-Regular", size: 30))
+    }
+    
     static var buildBodySmall: Font = .custom("AvenirNext-Regular", size: 10)
     static var buildStepSmall: Font = .custom("AvenirNext-Regular", size: 10).bold()
+    static var sectionHeader: Font = .custom("AvenirNext-Regular", size: 12)
+    static var specMeasurement: Font = .custom("AvenirNext-Regular", size: 16).bold()
+    static var body: Font = .custom("AvenirNext-Regular", size: 16)
+    static var header: Font = .custom("AvenirNext-Regular", size: 18).bold()
+    static var formLabel: Font = .custom("AvenirNext-Regular", size: 18)
+    static var bottomToolbarButton: Font = .custom("AvenirNext-Regular", size: 20)
     
 }
 

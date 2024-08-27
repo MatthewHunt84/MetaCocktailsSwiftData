@@ -13,7 +13,11 @@ struct LoadSampleCocktailsButton: View {
     
     var body: some View {
         Button(action: loadSamples) {
-            Text("Load Samples")
+            VStack{
+                Text("Load")
+                Text("Samples")
+                
+            }
         }
         .alert("Error", isPresented: $showError) {
             Button("OK", role: .cancel) { }

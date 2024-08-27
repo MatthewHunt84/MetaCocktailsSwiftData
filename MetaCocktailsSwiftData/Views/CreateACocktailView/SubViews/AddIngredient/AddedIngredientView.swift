@@ -16,11 +16,12 @@ struct AddedIngredientView: View {
     
     var body: some View {
         
-        Section(header: Text("Ingredients")) {
+        Section(header: Text("Ingredients").font(FontFactory.sectionHeader)) {
             
             List{
                 ForEach(viewModel.addedIngredients, id: \.ingredientBase.name) { ingredient in
                     Text("\(NSNumber(value: ingredient.value)) \(ingredient.unit.rawValue) \(ingredient.ingredientBase.name)")
+                        .font(FontFactory.body)
                 }
                 .onDelete(perform: { indexSet in
                     viewModel.addedIngredients.remove(atOffsets: indexSet)
@@ -30,8 +31,9 @@ struct AddedIngredientView: View {
                 viewModel.toggleShowIngredientView()
             } label: {
                 HStack{
-                    Text(viewModel.addedIngredients.count < 2 ? "Add Ingredient" : "Add another ingredient")
-                        .tint(viewModel.addedIngredients.count < 2 ? .white : .secondary)
+                    Text(viewModel.addedIngredients.count < 1 ? "Add Ingredient" : "Add another ingredient")
+                        .tint(viewModel.addedIngredients.count < 1 ? .white : .secondary)
+                        .font(FontFactory.formLabel)
                     Spacer()
                     Image(systemName: "plus.circle.fill")
                         .foregroundStyle(.blueTint)

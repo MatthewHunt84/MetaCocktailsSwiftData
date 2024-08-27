@@ -27,21 +27,22 @@ struct CocktailListView: View {
             
                 VStack {
 
-                    FontFactory.regularText("Cocktail List", size: 30)
+                    
 
-
-                    HStack {
-                        Text("Cocktails")
-                            .font(.largeTitle).bold()
-                            .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
-                        Button {
-                            showingModal = true
-                        } label: {
-                            Image(systemName: "questionmark.circle.fill")
-                                .tint(.blueTint)
+                    ZStack{
+                        HStack {
+                            Spacer()
+                            LoadSampleCocktailsButton()
                         }
-                        Spacer()
-                        LoadSampleCocktailsButton()
+                        HStack{
+                            FontFactory.titleHeader(title: "Cocktail List")
+                            Button {
+                                showingModal = true
+                            } label: {
+                                Image(systemName: "questionmark.circle.fill")
+                                    .tint(.blueTint)
+                            }
+                        }
                     }
                     GeometryReader { listGeo in
                         ScrollView {
@@ -77,7 +78,6 @@ struct CocktailListView: View {
             }
             
             .navigationBarTitleDisplayMode(.inline)
-            //.goldHeader("All Cocktails")
         }
         .fullScreenCover(isPresented: $showingModal) {
             HistoricalCocktailModalView(
@@ -123,7 +123,7 @@ struct AlphabetNavigationView: View {
                             .tint(.white)
                     } else {
                         Text(alphabet[i])
-                            .font(.headline).bold()
+                            .font(FontFactory.regularFont(size: 15))
                             .frame(width: 17, height: 13, alignment: .center)
                     }
                 })
@@ -193,7 +193,7 @@ struct CocktailRowView: View {
                         Spacer()
                     }
                 } destination: {
-                    RecipeView(viewModel: RecipeViewModel(cocktail: cocktail), body: <#some View#>)
+                    RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
                         .navigationBarBackButtonHidden(true)
                 }
             } else {
