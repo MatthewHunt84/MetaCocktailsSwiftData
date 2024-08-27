@@ -23,8 +23,6 @@ struct FilteredIngredientListView: View {
                 SearchForCocktailsButton()
                     .disabled(viewModel.preferredSelections.isEmpty ? true : false)
                 
-                
-                
                 TextField("Search for cocktails which contain...", text: $viewModel.currentComponentSearchName).SearchBarTextField()
                     .focused($keyboardFocused)
                     .onChange(of: viewModel.currentComponentSearchName) { _, newValue in
@@ -38,21 +36,16 @@ struct FilteredIngredientListView: View {
             }
             .padding(.horizontal)
             .padding(.top)
-            
-            
-            
             .task {
                 viewModel.setupSearch()
                 viewModel.ingredientNames = ingredients.map { $0.name }
             }
-            
             
             if keyboardFocused {
                 List {
                     ForEach($viewModel.filteredIngredients, id: \.self) { ingredient in
                         viewModel.returnPreferencesThumbCell(ingredient: ingredient)
                     }
-                    //.pinnedTopListStyle()
                     .listRowBackground(Color.clear)
                     
                 }
@@ -71,24 +64,6 @@ struct FilteredIngredientListView: View {
                 print("Error fetching cocktails: \(error)")
             }
         }
-    }
-}
-
-struct PinnedTopListStyle: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .listStyle(PlainListStyle())
-            .environment(\.defaultMinListRowHeight, 1)
-            .onAppear {
-                UITableView.appearance().contentInset.top = 0
-                UITableView.appearance().contentInset.bottom = 0
-            }
-    }
-}
-
-extension View {
-    func pinnedTopListStyle() -> some View {
-        self.modifier(PinnedTopListStyle())
     }
 }
 
