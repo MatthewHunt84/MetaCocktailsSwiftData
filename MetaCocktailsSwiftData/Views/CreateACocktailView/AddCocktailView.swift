@@ -33,7 +33,7 @@ struct AddCocktailView: View {
                     Section(header: Text("Extras").font(FontFactory.sectionHeader12)) {
                         GlassPickerButton(viewModel: viewModel)
                         IcePicker(ice: $viewModel.ice)
-                        VariationPicker(variation: $viewModel.variation)
+                        VariationPicker(viewModel: viewModel)
                     }
                     
                     GarnishPicker(viewModel: viewModel)
@@ -150,17 +150,16 @@ struct AddCocktailView: View {
 }
 private struct GlassPickerButton: View {
     @Bindable var viewModel: AddCocktailViewModel
-    @State private var glasswareName = "None"
     var body: some View {
         NavigationLink {
-            GlassPickerDetailView(glasswareName: $glasswareName, viewModel: viewModel)
+            GlassPickerDetailView(viewModel: viewModel)
                 .navigationBarBackButtonHidden(true)
         } label: {
             HStack {
                 Text("Glassware")
                     .font(FontFactory.formLabel18)
                 Spacer()
-                Text(glasswareName)
+                Text(viewModel.glasswareName)
                     .font(FontFactory.formLabel18)
                     .foregroundStyle(.gray)
                 
@@ -173,7 +172,7 @@ private struct GlassPickerButton: View {
 
 private struct GlassPickerDetailView: View {
     
-    @Binding var glasswareName: String
+   
     @Bindable var viewModel: AddCocktailViewModel
     @Environment(\.dismiss) private var dismiss
     
@@ -187,7 +186,7 @@ private struct GlassPickerDetailView: View {
                         
                         Button{
                             viewModel.uniqueGlasswareName = newGlass
-                            glasswareName = newGlass.rawValue
+                            viewModel.glasswareName = newGlass.rawValue
                             dismiss()
                         } label: {
                             HStack {
@@ -276,41 +275,7 @@ private struct GarnishPicker: View {
     }
 }
 
-private struct VariationPicker: View {
-    @Binding var variation: Variation?
-    @State var isShowingInfo = false
-    
-    var body: some View {
-        VStack {
-            Picker(selection: $variation) {
-                ForEach(Variation.allCases, id: \.rawValue)  { variation in
-                    Text(variation.rawValue)
-                        .font(FontFactory.formLabel18)
-                        .tag(Optional(variation))
-                }
-            } label: {
-                HStack(spacing: 15) {
-                    Text("Variation")
-                        .frame(alignment: .leading)
-                        .font(FontFactory.formLabel18)
-                    
-                    Image(systemName: "questionmark.circle.fill")
-                        .foregroundStyle(isShowingInfo ? .brandPrimaryGold : .blue)
-                        .onTapGesture {
-                            isShowingInfo.toggle()
-                        }
-                }
-            }.pickerStyle(.navigationLink)
-            
-            if isShowingInfo {
-                Text("If this cocktail is a riff on another classic, you may add it here. Variations will be grouped together in the search list")
-                    .font(FontFactory.buildBodySmall10)
-                    .foregroundStyle(.brandPrimaryGold)
-                    .padding(.top, 10)
-            }
-        }
-    }
-}
+
 
 
 #Preview {

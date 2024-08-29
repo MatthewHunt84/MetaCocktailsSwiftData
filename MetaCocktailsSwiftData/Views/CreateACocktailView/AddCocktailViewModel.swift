@@ -15,6 +15,25 @@ import SwiftData
         self.context = context
     }
     
+    init(context: ModelContext? = nil, basedOn cocktail: Cocktail? = nil) {
+            self.context = context
+            if let cocktail = cocktail {
+                populateFromCocktail(cocktail)
+            }
+        }
+    
+    private func populateFromCocktail(_ cocktail: Cocktail) {
+            cocktailName = "Riff on " + cocktail.cocktailName
+            addedIngredients = cocktail.spec
+            uniqueGlasswareName = cocktail.glasswareType
+            glasswareName = cocktail.glasswareType.rawValue
+            addedGarnish = cocktail.garnish
+            ice = cocktail.ice
+            author = cocktail.author
+            buildOption = cocktail.buildOrder
+            customVariationName = cocktail.customVariation
+        }
+    
     var context: ModelContext?
 
     //AddIngredientView
@@ -57,8 +76,10 @@ import SwiftData
     
     // Extras
     var uniqueGlasswareName: Glassware?
+    var glasswareName = "None"
     var ice: Ice? = Ice.none
     var variation: Variation? = Variation.none
+    var customVariationName: String?
     
     //Ingredient recipe
     var prepIngredientRecipe: [Instruction] = []
@@ -101,6 +122,7 @@ import SwiftData
         authorYear = ""
         currentGarnishName = ""
         uniqueGlasswareName = .blueBlazerMugs
+        glasswareName = "None"
         ice = Ice.none
         addedGarnish = []
         variation = nil
@@ -108,6 +130,7 @@ import SwiftData
         defaultName = "Add Cocktail"
         build = Build(instructions: [])
         buildOption = nil
+        customVariationName = nil
        
     }
     func clearIngredientData() {
@@ -164,6 +187,7 @@ import SwiftData
     func addCocktailToModel(context: ModelContext) {
         validateAuthor()
         validateBuildInstructions()
+
         
         let cocktail = Cocktail(cocktailName: cocktailName,
                                 glasswareType: uniqueGlasswareName!,
@@ -174,7 +198,10 @@ import SwiftData
                                 buildOrder: buildOption,
                                 tags: ingredientTags,
                                 variation: variation,
-                                collection: .custom)
+                                customVariation: customVariationName,
+                                collection: .custom,
+                                isCustom: true)
+        
         
         cocktail.spec.forEach { ingredient in
             

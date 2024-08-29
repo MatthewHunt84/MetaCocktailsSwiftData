@@ -265,6 +265,8 @@
 		4DA568642B70AA41003F6F04 /* SearchButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA568632B70AA41003F6F04 /* SearchButtonView.swift */; };
 		4DA568662B70AF07003F6F04 /* CBCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA568652B70AF07003F6F04 /* CBCViewModel.swift */; };
 		4DAD6C872C802CB900860555 /* CustomCocktailsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAD6C862C802CB900860555 /* CustomCocktailsListView.swift */; };
+		4DAD6C8C2C804A2F00860555 /* VariationPickerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAD6C8B2C804A2F00860555 /* VariationPickerDetailView.swift */; };
+		4DAD6C8E2C80650500860555 /* CustomCocktailsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAD6C8D2C80650500860555 /* CustomCocktailsListViewModel.swift */; };
 		4DAF57C32B99365C00FEA72F /* Daiquiri(M&H).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAF57C22B99365C00FEA72F /* Daiquiri(M&H).swift */; };
 		4DB1C0B92B46D4E600943C69 /* CocktailComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB1C0B82B46D4E600943C69 /* CocktailComponent.swift */; };
 		4DB1C0BC2B46D63300943C69 /* CocktailResultListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB1C0BB2B46D63300943C69 /* CocktailResultListView.swift */; };
@@ -806,6 +808,8 @@
 		4DA568632B70AA41003F6F04 /* SearchButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButtonView.swift; sourceTree = "<group>"; };
 		4DA568652B70AF07003F6F04 /* CBCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBCViewModel.swift; sourceTree = "<group>"; };
 		4DAD6C862C802CB900860555 /* CustomCocktailsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCocktailsListView.swift; sourceTree = "<group>"; };
+		4DAD6C8B2C804A2F00860555 /* VariationPickerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariationPickerDetailView.swift; sourceTree = "<group>"; };
+		4DAD6C8D2C80650500860555 /* CustomCocktailsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCocktailsListViewModel.swift; sourceTree = "<group>"; };
 		4DAF57C22B99365C00FEA72F /* Daiquiri(M&H).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Daiquiri(M&H).swift"; sourceTree = "<group>"; };
 		4DB1C0B82B46D4E600943C69 /* CocktailComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailComponent.swift; sourceTree = "<group>"; };
 		4DB1C0BB2B46D63300943C69 /* CocktailResultListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailResultListView.swift; sourceTree = "<group>"; };
@@ -1405,6 +1409,7 @@
 			children = (
 				1AC386A42AAABED00064F52A /* CocktailListViewModel.swift */,
 				1AC386A32AAABED00064F52A /* CocktailListView.swift */,
+				4DAD6C8D2C80650500860555 /* CustomCocktailsListViewModel.swift */,
 				4DAD6C862C802CB900860555 /* CustomCocktailsListView.swift */,
 				4D74398C2B9E586D0020C3B8 /* SubViews */,
 			);
@@ -1572,6 +1577,7 @@
 		4D5DA08C2B9E8E4A00C14F1F /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				4DAD6C882C804A0300860555 /* VariationPicker */,
 				4D6761332C41C51B00A5939C /* Garnish */,
 				4D6761322C41C4F700A5939C /* CocktailBuildSteps */,
 				4D6761312C41C4B000A5939C /* AddIngredient */,
@@ -1685,6 +1691,14 @@
 				4DED944F2C0E38BC002305C2 /* EditBatchModalView.swift */,
 			);
 			path = CocktailBatchingCalculator;
+			sourceTree = "<group>";
+		};
+		4DAD6C882C804A0300860555 /* VariationPicker */ = {
+			isa = PBXGroup;
+			children = (
+				4DAD6C8B2C804A2F00860555 /* VariationPickerDetailView.swift */,
+			);
+			path = VariationPicker;
 			sourceTree = "<group>";
 		};
 		4DB1C08F2B2E484A00943C69 /* Prep Descriptions */ = {
@@ -2226,6 +2240,7 @@
 				4D5DA0A02B9FEAF300C14F1F /* FrescaPlatino.swift in Sources */,
 				F4C6A8F32AB003C200BB0AD0 /* Localization.swift in Sources */,
 				F4C6A8EC2AAFFE5700BB0AD0 /* Tags.swift in Sources */,
+				4DAD6C8E2C80650500860555 /* CustomCocktailsListViewModel.swift in Sources */,
 				F493F3AB2C6CF18D006A0ADB /* SelectedIngredientView.swift in Sources */,
 				4D088FCA2B62E3640047B056 /* RecipeViewModel.swift in Sources */,
 				4DBBA46E2B67A0B700179B8F /* KentuckyMaid.swift in Sources */,
@@ -2440,6 +2455,7 @@
 				F4AA50482B93A54E00A05F54 /* AddCocktailView.swift in Sources */,
 				4D1E85EF2B5F7A7800214BC6 /* Alaska(WilliamsAndGraham).swift in Sources */,
 				4D1E85DD2B5DB8A300214BC6 /* VieuxCarre.swift in Sources */,
+				4DAD6C8C2C804A2F00860555 /* VariationPickerDetailView.swift in Sources */,
 				4D1E85D12B5CD40F00214BC6 /* Machete.swift in Sources */,
 				4DBBA4702B67A35300179B8F /* KentuckyMaid(W&G).swift in Sources */,
 				4DBAE6F32C713D7400F3DBFD /* WhiteLinen.swift in Sources */,
