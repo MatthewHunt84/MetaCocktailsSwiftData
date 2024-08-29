@@ -19,6 +19,7 @@ struct MetaCocktailsSwiftDataApp: App {
                 .preferredColorScheme(.dark)
                 .modelContainer(CocktailContainer.preload(&shouldPreload))
                 .environmentObject(CBCViewModel())
+                .environmentObject(CocktailListViewModel())
                 .environmentObject(appState)
         }
     }

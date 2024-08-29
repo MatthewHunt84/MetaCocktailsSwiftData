@@ -410,6 +410,7 @@ struct SpecView: View {
     @Bindable var viewModel: RecipeViewModel
     @State private var isShowingSheet = false
     @State private var isShowingBatchView = false
+    @State private var showingModal = false
     @Binding var isShowingCocktailNotes: Bool
     @Binding var isShowingPrompt: Bool
     let geo: GeometryProxy
@@ -425,6 +426,14 @@ struct SpecView: View {
                     HStack {
                         Text("Cocktail Spec:")
                             .font(FontFactory.recipeCardHeader18B)
+                        if cocktail.collection == .originals {
+                            Button {
+                                showingModal = true
+                            } label: {
+                                Image(systemName: "questionmark.circle.fill")
+                                    .tint(.blueTint)
+                            }
+                        }
 
                         if cocktail.notes != nil {
                             Button {
@@ -434,7 +443,6 @@ struct SpecView: View {
                                     .foregroundStyle(.blue)
                             }
                         }
-        
                         Spacer()
                         
                         Button {
@@ -450,6 +458,13 @@ struct SpecView: View {
                     
                     ForEach(orderSpec(), id: \.id) { ingredient in
                         SpecIngredientView(ingredient: ingredient, viewModel: viewModel, geo: geo, topID: topID, scrollReader: scrollReader)
+                    }
+                }
+                .fullScreenCover(isPresented: $showingModal) {
+                    HistoricalCocktailModalView(
+                        isPresented: $showingModal,
+                        alertContent: HistoricalCocktailAlert.standard
+                    ) {
                     }
                 }
             }

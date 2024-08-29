@@ -9,15 +9,12 @@ import SwiftUI
 import Observation
 import Combine
 
-@Observable final class CocktailListViewModel{
+@Observable final class CocktailListViewModel: ObservableObject{
 
     private var allCocktails: [Cocktail] = []
     var filteredCocktails: [Cocktail] = []
     
-    var cocktailListAlphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z", sfSymbolForCustomCocktails]
-    static var sfSymbolForCustomCocktails = "star.fill"
-    
-    
+    var cocktailListAlphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     var searchText: String = ""
     private var debouncedSearchText: String = ""
     

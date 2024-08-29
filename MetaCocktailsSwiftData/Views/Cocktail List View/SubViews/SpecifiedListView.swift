@@ -25,11 +25,9 @@ struct SpecifiedListView: View {
                     }
                 }
             } header: {
-                if letter != CocktailListViewModel.sfSymbolForCustomCocktails {
-                    Text("\(letter)")
-                        .fontWeight(.bold)
-                        .font(.title)
-                }
+                Text("\(letter)")
+                    .fontWeight(.bold)
+                    .font(.title)
             }
             .id(letter)
             .listRowBackground(Color.clear)

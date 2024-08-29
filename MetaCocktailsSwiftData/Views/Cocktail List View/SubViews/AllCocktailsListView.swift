@@ -12,37 +12,16 @@ struct AllCocktailsListView: View {
     @Bindable var viewModel = CocktailListViewModel()
     var cocktails: [Cocktail]
     @Environment(\.modelContext) private var modelContext
-    @Query(filter: #Predicate<Cocktail> { cocktail in
-        cocktail.isCustomCocktail == true
-    }, sort: \Cocktail.cocktailName) private var customCocktails: [Cocktail]
     var body: some View {
         
         ForEach(viewModel.cocktailListAlphabet, id: \.self) { letter in
             Section {
-                if letter == CocktailListViewModel.sfSymbolForCustomCocktails {
-                    ForEach(customCocktails, id: \.id) { cocktail in
-                        CocktailListItemView(viewModel: viewModel, cocktail: cocktail, isInCustomSection: true)
-                    }
-                    .onDelete { indexSet in
-                        for index in indexSet {
-                            modelContext.delete(customCocktails[index])
-                        }
-                        do {
-                            try modelContext.save()
-                        } catch {
-                            print("Oh oh! Couldn't save: \(error)")
-                        }
-                    }
-                    .listRowBackground(Color.clear)
-                    
-                } else {
-                    ForEach(cocktails.filter { $0.cocktailName.hasPrefix(letter) }, id: \.id) { cocktail in
-                        CocktailListItemView(viewModel: viewModel, cocktail: cocktail, isInCustomSection: false)
-                    }
-                    .listRowBackground(Color.clear)
+                ForEach(cocktails.filter { $0.cocktailName.hasPrefix(letter) }, id: \.id) { cocktail in
+                    CocktailListItemView(viewModel: viewModel, cocktail: cocktail, isInCustomSection: false)
                 }
+                .listRowBackground(Color.clear)
             } header: {
-                Text(letter == CocktailListViewModel.sfSymbolForCustomCocktails ? "Added Cocktails" : letter)
+                Text(letter)
                     .font(FontFactory.regularFont(size: 28))
             }
             .id(letter)

@@ -88,7 +88,7 @@ struct AddCocktailView: View {
                             
                             if viewModel.isValid() {
                                 viewModel.addCocktailToModel(context: modelContext)
-                                selectedTab.wrappedValue = .cocktailListView
+                                selectedTab.wrappedValue = .customCocktailsView
                                 
                                 
                             } else {
