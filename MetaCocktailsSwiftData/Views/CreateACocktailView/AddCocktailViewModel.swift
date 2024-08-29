@@ -174,7 +174,9 @@ import SwiftData
                                 buildOrder: buildOption,
                                 tags: ingredientTags,
                                 variation: variation,
-                                collection: .custom)
+                                collection: .custom,
+                                isCustomCocktail: true)
+        
         
         cocktail.spec.forEach { ingredient in
             
@@ -189,6 +191,7 @@ import SwiftData
         context.insert(cocktail)
         do {
             try context.save()
+            
         } catch {
             print("Error saving custom cocktail: \(error)")
         }

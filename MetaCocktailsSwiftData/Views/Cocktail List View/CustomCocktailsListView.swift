@@ -13,7 +13,9 @@ struct CustomCocktailsListView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(filter: #Predicate<Cocktail> { cocktail in
         cocktail.isCustomCocktail == true
-    }, sort: \Cocktail.cocktailName) private var customCocktails: [Cocktail]
+    }) private var customCocktails: [Cocktail]
+    
+   
     
     var body: some View {
         NavigationStack {
@@ -22,7 +24,7 @@ struct CustomCocktailsListView: View {
                 MeshGradients.meshTealRibbonBackground.ignoresSafeArea()
                 
                 List {
-                    ForEach(customCocktails, id: \.id) { cocktail in
+                    ForEach(customCocktails, id: \.cocktailName) { cocktail in
                         CocktailListItemView(viewModel: viewModel, cocktail: cocktail, isInCustomSection: true)
                     }
                     .onDelete { indexSet in

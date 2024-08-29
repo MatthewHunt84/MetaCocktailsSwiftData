@@ -86,6 +86,8 @@ import Combine
         updateFilteredCocktails()
     }
     
+
+    
     func selectedCocktailVariations(for cocktail: Cocktail) -> [Cocktail] {
         if let variation = cocktail.variation {
             let variationsWithSelectedCocktailFirst = filteredCocktails.filter({$0.variation == variation}).sorted {
