@@ -50,7 +50,7 @@ struct CocktailListItemView: View {
     @State var isInCustomSection: Bool
     
     var body: some View {
-        if cocktail.variation == nil {
+        if cocktail.variation == nil || cocktail.isCustomCocktail == true {
             SingleCocktailView(viewModel: viewModel, cocktail: cocktail, isInCustomSection: $isInCustomSection)
         } else if cocktail.titleCocktail == true {
             VariationCocktailView(viewModel: viewModel, cocktail: cocktail)

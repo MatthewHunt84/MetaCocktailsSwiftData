@@ -200,7 +200,7 @@ import SwiftData
                                 variation: variation,
                                 customVariation: customVariationName,
                                 collection: .custom,
-                                isCustom: true)
+                                isCustomCocktail: true)
         
         
         cocktail.spec.forEach { ingredient in
