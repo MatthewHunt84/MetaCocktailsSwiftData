@@ -3,15 +3,17 @@ import SwiftData
 
 struct AddCocktailView: View {
     
-    @Bindable var viewModel = AddCocktailViewModel()
+    @Bindable var viewModel: AddCocktailViewModel
     @State private var isShowingAddIngredients: Bool = false
     @Environment(\.modelContext) private var modelContext
     @Environment(\.currentTab) private var selectedTab
+    @Environment(\.dismiss) private var dismiss
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
     @FocusState private var yearKeyboardFocused: Bool
     @State private var isActive: Bool = false
     var sectionBackground = Color.black.opacity(0.15)
     
+ 
     
     var body: some View {
         
@@ -76,7 +78,7 @@ struct AddCocktailView: View {
                 .scrollContentBackground(.hidden)
                 .background(Color.clear)
                 .navigationBarTitleDisplayMode(.inline)
-                .jamesHeader("Add A Cocktail")
+                .jamesHeaderWithNavigation(title: "Add A Cocktail", dismiss: dismiss)
                 .toolbar {
                     ToolbarItem(placement: .bottomBar) {
                         Button {

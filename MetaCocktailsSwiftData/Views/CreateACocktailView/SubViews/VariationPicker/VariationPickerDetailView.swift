@@ -12,16 +12,11 @@ struct VariationPickerDetailView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     @Bindable var viewModel: AddCocktailViewModel
-    @State private var searchText = ""
+    @Bindable var cocktailListViewModel = CocktailListViewModel()
     @FocusState private var isSearchFocused: Bool
     
     @Query(sort: \Cocktail.cocktailName) private var allCocktails: [Cocktail]
-    
-    var filteredCocktails: [String] {
-        guard !searchText.isEmpty else { return [] }
-        return allCocktails.map { $0.cocktailName }
-            .filter { $0.lowercased().contains(searchText.lowercased()) }
-    }
+
     
     var body: some View {
         NavigationStack {
@@ -29,19 +24,19 @@ struct VariationPickerDetailView: View {
                 MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
                 
                 VStack {
-                    TextField("Search cocktails", text: $searchText)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding()
-                        .focused($isSearchFocused)
-                    
+                    SearchBarForCocktailListView(isFocused: $isSearchFocused, viewModel: cocktailListViewModel)
                     List {
-                        ForEach(filteredCocktails, id: \.self) { cocktailName in
-                            Button(action: {
-                                viewModel.customVariationName = cocktailName
-                                dismiss()
-                            }) {
-                                Text(cocktailName)
-                                    .foregroundColor(.white)
+                        ForEach(cocktailListViewModel.filteredCocktails, id: \.self) { cocktail in
+                            if !cocktailListViewModel.searchText.isEmpty {
+                                Button(action: {
+                                    viewModel.customVariationName = cocktail.cocktailName
+                                    dismiss()
+                                }) {
+                                    Text(cocktail.cocktailName)
+                                        .foregroundColor(.white)
+                                }
+                            } else {
+                                EmptyView()
                             }
                         }
                         .listRowBackground(Color.clear)
@@ -53,6 +48,7 @@ struct VariationPickerDetailView: View {
             .jamesHeader("Add Variation Name")
         }
         .onAppear {
+            cocktailListViewModel.setAllCocktails(allCocktails)
             isSearchFocused = true
         }
     }

@@ -15,27 +15,40 @@ import SwiftData
         self.context = context
     }
     
-    init(context: ModelContext? = nil, basedOn cocktail: Cocktail? = nil) {
-            self.context = context
-            if let cocktail = cocktail {
-                populateFromCocktail(cocktail)
-            }
-        }
+    init(context: ModelContext? = nil, basedOn cocktail: Cocktail) {
+        self.context = context
+        populateFromCocktail(cocktail)
+       
+    }
     
     private func populateFromCocktail(_ cocktail: Cocktail) {
-            cocktailName = "Riff on " + cocktail.cocktailName
-            addedIngredients = cocktail.spec
-            uniqueGlasswareName = cocktail.glasswareType
-            glasswareName = cocktail.glasswareType.rawValue
-            addedGarnish = cocktail.garnish
-            ice = cocktail.ice
-            author = cocktail.author
-            buildOption = cocktail.buildOrder
-            customVariationName = cocktail.customVariation
+        cocktailName = "Riff on " + cocktail.cocktailName
+        // Create copies of ingredients. We can't just assign the old spec because then the spec from the original cocktail disappears. 
+        addedIngredients = cocktail.spec.map { ingredient in
+            Ingredient(
+                ingredientBase: IngredientBase(
+                    id: UUID(), // New UUID for the copy
+                    name: ingredient.ingredientBase.name,
+                    info: ingredient.ingredientBase.info,
+                    category: UmbrellaCategory(rawValue: ingredient.ingredientBase.umbrellaCategory) ?? .otherAlcohol,
+                    tags: ingredient.ingredientBase.tags,
+                    prep: ingredient.ingredientBase.prep,
+                    isCustom: true
+                ),
+                value: ingredient.value,
+                unit: ingredient.unit
+            )
         }
+        uniqueGlasswareName = cocktail.glasswareType
+        glasswareName = cocktail.glasswareType.rawValue
+        addedGarnish = cocktail.garnish.map { Garnish(name: $0.name) } // Create copies of garnishes
+        ice = cocktail.ice
+        authorYear = String(Calendar.current.component(.year, from: Date()))
+        customVariationName = cocktail.cocktailName
+    }
     
     var context: ModelContext?
-
+    
     //AddIngredientView
     var category: UmbrellaCategory = UmbrellaCategory.agaves
     var ingredientAmount = 0.0
@@ -183,17 +196,17 @@ import SwiftData
         }
     }
     
+    
     @MainActor
     func addCocktailToModel(context: ModelContext) {
         validateAuthor()
         validateBuildInstructions()
 
-        
         let cocktail = Cocktail(cocktailName: cocktailName,
                                 glasswareType: uniqueGlasswareName!,
                                 garnish: addedGarnish,
                                 ice: ice,
-                                author: author,
+                                author: Author(person: authorName, place: authorPlace, year: authorYear),
                                 spec: addedIngredients,
                                 buildOrder: buildOption,
                                 tags: ingredientTags,
@@ -201,24 +214,24 @@ import SwiftData
                                 customVariation: customVariationName,
                                 collection: .custom,
                                 isCustomCocktail: true)
-        
-        
+
         cocktail.spec.forEach { ingredient in
-            
+            // Check if an IngredientBase with the same name already exists
             let fetch = FetchDescriptor<IngredientBase>(predicate: #Predicate { $0.name == ingredient.ingredientBase.name })
-            let existingBase = try? context.fetch(fetch).first
-            
-            if let base = existingBase {
-                ingredient.ingredientBase = base
+            if let existingBase = try? context.fetch(fetch).first {
+                // If it exists, update the existing IngredientBase
+                existingBase.info = ingredient.ingredientBase.info
+                existingBase.tags = ingredient.ingredientBase.tags
+                existingBase.prep = ingredient.ingredientBase.prep
+                ingredient.ingredientBase = existingBase
+            } else {
+                // If it doesn't exist, insert the new IngredientBase
+                context.insert(ingredient.ingredientBase)
             }
         }
-        
+
         context.insert(cocktail)
-        do {
-            try context.save()
-        } catch {
-            print("Error saving custom cocktail: \(error)")
-        }
+        try? context.save()
         clearData()
     }
     

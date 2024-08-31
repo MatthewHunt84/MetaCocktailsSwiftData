@@ -459,17 +459,6 @@ struct SpecView: View {
                     ForEach(orderSpec(), id: \.id) { ingredient in
                         SpecIngredientView(ingredient: ingredient, viewModel: viewModel, geo: geo, topID: topID, scrollReader: scrollReader)
                     }
-                    HStack {
-                        Spacer()
-                        NavigationLink(destination: AddCocktailView(viewModel: AddCocktailViewModel(basedOn: viewModel.cocktail))) {
-                            HStack {
-                                Text("Riff")
-                                Image(systemName: "chevron.forward")
-                            }
-                        }
-                        .foregroundStyle(.blueTint)
-                        .font(FontFactory.recipeCardHeader18B)
-                    }
                 }
                 .fullScreenCover(isPresented: $showingModal) {
                     HistoricalCocktailModalView(

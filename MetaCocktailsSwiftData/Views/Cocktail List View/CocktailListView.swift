@@ -115,24 +115,7 @@ struct ListSearchBarView: View {
     
     var body: some View {
         HStack {
-            TextField("Search cocktails", text: $text)
-                .SearchBarTextField()
-                .focused($isFocused)
-                .animation(.easeInOut(duration: 0.2), value: isFocused)
-                .overlay(alignment: .trailing) {
-                    if !text.isEmpty {
-                        Button {
-                            viewModel.searchText = ""
-                        } label: {
-                            Image(systemName: "x.circle.fill")
-                                .tint(.blueTint)
-                        }
-                        .padding(.horizontal, 20)
-                    }
-                }
-                .onChange(of: text) { _, newValue in
-                    viewModel.updateSearch(newValue)
-                }
+            SearchBarForCocktailListView(isFocused: $isFocused, viewModel: viewModel)
             if isFocused {
                 Button("Done") {
                     withAnimation(.easeInOut(duration: 0.2)) {
@@ -151,6 +134,32 @@ struct ListSearchBarView: View {
     }
 }
 
+struct SearchBarForCocktailListView: View {
+    
+    @FocusState.Binding var isFocused: Bool
+    @Bindable var viewModel: CocktailListViewModel
+    
+    var body: some View {
+        TextField("Search cocktails", text: $viewModel.searchText)
+            .SearchBarTextField()
+            .focused($isFocused)
+            .animation(.easeInOut(duration: 0.2), value: isFocused)
+            .overlay(alignment: .trailing) {
+                if !viewModel.searchText.isEmpty {
+                    Button {
+                        viewModel.searchText = ""
+                    } label: {
+                        Image(systemName: "x.circle.fill")
+                            .tint(.blueTint)
+                    }
+                    .padding(.horizontal, 20)
+                }
+            }
+            .onChange(of: viewModel.searchText) { _, newValue in
+                viewModel.updateSearch(newValue)
+            }
+    }
+}
 
 
 struct CocktailRowView: View {
