@@ -80,7 +80,7 @@ struct AddIngredientSearchView: View {
                     .font(FontFactory.formLabel18)
                     .onChange(of: viewModel.ingredientName, initial: true) { old, new in
                         viewModel.ingredientName = new
-                        filteredIngredients2a = viewModel.matchAllIngredients2(ingredients: ingredients)
+                        filteredIngredients2a = viewModel.matchAllIngredients(ingredients: ingredients)
                         
                     }
             }
@@ -154,6 +154,7 @@ struct AddExistingIngredientToCocktailButton: View {
     @Bindable var viewModel: AddCocktailViewModel
     @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]
     
+    
     var body: some View {
         Button{
             if viewModel.existingIngredientIsValid(allIngredients: ingredients) {
@@ -167,6 +168,7 @@ struct AddExistingIngredientToCocktailButton: View {
                 
                 viewModel.clearIngredientData()
                 viewModel.toggleShowIngredientView()
+               
                 
             } else {
                 viewModel.isShowingingredientAlert.toggle()

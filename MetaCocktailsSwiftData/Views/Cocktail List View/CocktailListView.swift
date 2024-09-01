@@ -162,6 +162,9 @@ struct SearchBarForCocktailListView: View {
 }
 
 
+
+
+
 struct CocktailRowView: View {
     
     let cocktail: Cocktail

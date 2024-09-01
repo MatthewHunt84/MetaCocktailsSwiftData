@@ -12,7 +12,6 @@ struct VariationPickerDetailView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     @Bindable var viewModel: AddCocktailViewModel
-    @Bindable var cocktailListViewModel = CocktailListViewModel()
     @FocusState private var isSearchFocused: Bool
     
     @Query(sort: \Cocktail.cocktailName) private var allCocktails: [Cocktail]
@@ -24,12 +23,13 @@ struct VariationPickerDetailView: View {
                 MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
                 
                 VStack {
-                    SearchBarForCocktailListView(isFocused: $isSearchFocused, viewModel: cocktailListViewModel)
+                    SearchBarForCreateCocktailView(isFocused: $isSearchFocused, viewModel: viewModel)
                     List {
-                        ForEach(cocktailListViewModel.filteredCocktails, id: \.self) { cocktail in
-                            if !cocktailListViewModel.searchText.isEmpty {
+                        ForEach(viewModel.filteredCocktails, id: \.self) { cocktail in
+                            if !viewModel.searchText.isEmpty {
                                 Button(action: {
                                     viewModel.customVariationName = cocktail.cocktailName
+                                    viewModel.searchText = ""
                                     dismiss()
                                 }) {
                                     Text(cocktail.cocktailName)
@@ -48,7 +48,7 @@ struct VariationPickerDetailView: View {
             .jamesHeader("Add Variation Name")
         }
         .onAppear {
-            cocktailListViewModel.setAllCocktails(allCocktails)
+            viewModel.setAllCocktails(allCocktails)
             isSearchFocused = true
         }
     }

@@ -13,7 +13,6 @@ struct RiffPickerView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     @Bindable var viewModel: AddCocktailViewModel
-    @Bindable var cocktailListViewModel = CocktailListViewModel()
     @FocusState private var isSearchFocused: Bool
     
     @Query(sort: \Cocktail.cocktailName) private var allCocktails: [Cocktail]
@@ -23,10 +22,10 @@ struct RiffPickerView: View {
             ZStack {
                 MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
                 VStack {
-                    SearchBarForCocktailListView(isFocused: $isSearchFocused, viewModel: cocktailListViewModel)
+                    SearchBarForCreateCocktailView(isFocused: $isSearchFocused, viewModel: viewModel)
                     List {
-                        ForEach(cocktailListViewModel.filteredCocktails, id: \.self) { cocktail in
-                            if !cocktailListViewModel.searchText.isEmpty {
+                        ForEach(viewModel.filteredCocktails, id: \.self) { cocktail in
+                            if !viewModel.searchText.isEmpty {
                                 NavigationLinkWithoutIndicator {
                                     HStack {
                                         Text(cocktail.cocktailName)
@@ -51,9 +50,36 @@ struct RiffPickerView: View {
             .jamesHeaderWithNavigation(title: "Choose A Cocktail", dismiss: dismiss)
         }
         .onAppear {
-            cocktailListViewModel.setAllCocktails(allCocktails)
+            viewModel.setAllCocktails(allCocktails)
             isSearchFocused = true
             
         }
+    }
+}
+
+struct SearchBarForCreateCocktailView: View {
+    
+    @FocusState.Binding var isFocused: Bool
+    @Bindable var viewModel: AddCocktailViewModel
+    
+    var body: some View {
+        TextField("Search cocktails", text: $viewModel.searchText)
+            .SearchBarTextField()
+            .focused($isFocused)
+            .animation(.easeInOut(duration: 0.2), value: isFocused)
+            .overlay(alignment: .trailing) {
+                if !viewModel.searchText.isEmpty {
+                    Button {
+                        viewModel.searchText = ""
+                    } label: {
+                        Image(systemName: "x.circle.fill")
+                            .tint(.blueTint)
+                    }
+                    .padding(.horizontal, 20)
+                }
+            }
+            .onChange(of: viewModel.searchText) { _, newValue in
+                viewModel.updateSearch(newValue)
+            }
     }
 }

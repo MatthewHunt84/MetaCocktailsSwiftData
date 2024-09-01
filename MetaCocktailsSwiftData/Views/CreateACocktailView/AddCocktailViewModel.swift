@@ -8,6 +8,7 @@
 
 import SwiftUI
 import SwiftData
+import Combine
 
 @Observable final class AddCocktailViewModel {
     
@@ -112,20 +113,17 @@ import SwiftData
         }
     }
     
-    func toggleShowIngredientView() {
-        Task {
-            await MainActor.run {
-                addIngredientDetailViewIsActive.toggle()
-            }
-        }
-    }
+    var searchText = ""
+    private var debouncedSearchText: String = ""
     
+    private var cancellables = Set<AnyCancellable>()
+    private let searchSubject = PassthroughSubject<String, Never>()
+    
+    func toggleShowIngredientView() {
+        addIngredientDetailViewIsActive.toggle()
+    }
     func toggleShowAddGarnishView() {
-        Task {
-            await MainActor.run {
-                addExistingGarnishViewIsActive.toggle()
-            }
-        }
+        addExistingGarnishViewIsActive.toggle()
     }
     
     func clearData() {
@@ -286,7 +284,7 @@ import SwiftData
 
    
     
-    func matchAllIngredients2(ingredients: [IngredientBase]) -> [IngredientBase] {
+    func matchAllIngredients(ingredients: [IngredientBase]) -> [IngredientBase] {
         
         guard !ingredientName.isEmpty else {
              return [] // Return all ingredients if search text is empty
@@ -430,6 +428,76 @@ import SwiftData
         }
     }
     
+    
+    
+    
+    init() {
+        setupSearch()
+    }
+    
+    
+    //MARK: TODO: Extract to shared view model
+    
+    
+    private func setupSearch() {
+        searchSubject
+            .debounce(for: .milliseconds(400), scheduler: DispatchQueue.main)
+            .removeDuplicates()
+            .sink { [weak self] searchText in
+                self?.performSearch(searchText)
+            }
+            .store(in: &cancellables)
+    }
+    
+    func updateSearch(_ searchText: String) {
+        searchSubject.send(searchText)
+    }
+    
+    private func performSearch(_ searchText: String) {
+       
+        
+        self.debouncedSearchText = searchText
+        updateFilteredCocktails()
+        let lowercasedSearchText = debouncedSearchText.lowercased()
+        // Include variation cocktails when searching with the search bar.
+        //Otherwise, only the title cocktail shows up in the search, instead of the title cocktail and all of it's variations.
+       
+        filteredCocktails = Array(Set(filteredCocktails)).sorted { $0.cocktailName < $1.cocktailName }.sorted { (lhs: Cocktail, rhs: Cocktail) in
+            //Move the sorting to after the variations have been added.
+            let lhsLowercased = lhs.cocktailName.lowercased()
+            let rhsLowercased = rhs.cocktailName.lowercased()
+            
+            let lhsStartsWith = lhsLowercased.hasPrefix(lowercasedSearchText)
+            let rhsStartsWith = rhsLowercased.hasPrefix(lowercasedSearchText)
+            
+            if lhsStartsWith != rhsStartsWith {
+                return lhsStartsWith
+            }
+            
+            if lhsStartsWith {
+                return lhs.cocktailName.count < rhs.cocktailName.count
+            }
+            return (lhsLowercased.range(of: lowercasedSearchText)?.lowerBound ?? lhsLowercased.endIndex) < (rhsLowercased.range(of: lowercasedSearchText)?.lowerBound ?? rhsLowercased.endIndex)
+        }
+    }
+    
+    private var allCocktails: [Cocktail] = []
+    var filteredCocktails: [Cocktail] = []
+    
+    private func updateFilteredCocktails() {
+        let lowercasedSearchText = debouncedSearchText.lowercased()
+        
+        if debouncedSearchText.isEmpty {
+            filteredCocktails = allCocktails
+        } else {
+            filteredCocktails = allCocktails.filter { $0.cocktailName.localizedCaseInsensitiveContains(lowercasedSearchText) }
+        }
+    }
+    
+    func setAllCocktails(_ cocktails: [Cocktail]) {
+        self.allCocktails = cocktails
+        updateFilteredCocktails()
+    }
 }
 
 extension AddCocktailView {

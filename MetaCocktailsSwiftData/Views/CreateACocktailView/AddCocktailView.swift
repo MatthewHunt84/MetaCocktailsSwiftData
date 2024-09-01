@@ -127,11 +127,12 @@ struct AddCocktailView: View {
                     
                 }
             }
-            .navigationDestination(isPresented: $viewModel.addExistingGarnishViewIsActive) {
+            .fullScreenCover(isPresented: $viewModel.addExistingGarnishViewIsActive) {
                 GarnishDetailView(viewModel: viewModel)
                     .navigationBarBackButtonHidden(true)
             }
-            .navigationDestination(isPresented: $viewModel.addIngredientDetailViewIsActive) {
+
+            .fullScreenCover(isPresented: $viewModel.addIngredientDetailViewIsActive) {
                 AddExistingIngredientDetailView(viewModel: viewModel)
                     .navigationBarBackButtonHidden(true)
             }
