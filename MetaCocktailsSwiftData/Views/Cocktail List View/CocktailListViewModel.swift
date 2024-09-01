@@ -89,7 +89,7 @@ import Combine
     
     func selectedCocktailVariations(for cocktail: Cocktail) -> [Cocktail] {
         
-        let variationsWithSelectedCocktailFirst = allCocktails.filter { $0.customVariation == cocktail.cocktailName }.sorted {
+        let variationsWithSelectedCocktailFirst = allCocktails.filter { $0.variationName == cocktail.cocktailName }.sorted {
             $1.cocktailName == cocktail.cocktailName ? false :
             $0.cocktailName == cocktail.cocktailName ? true :
             $0.cocktailName < $1.cocktailName
@@ -99,32 +99,41 @@ import Combine
     }
     
     
-    
     func organizeCocktails(_ cocktails: [Cocktail]) -> [String: [Cocktail]] {
-        var organized: [String: [Cocktail]] = [:]
+        var organizedCocktailsDict: [String: [Cocktail]] = [:]
         
         for cocktail in cocktails {
-            if let customVariation = cocktail.customVariation {
-                // This is a variation, add it to the appropriate group
-                if organized[customVariation] != nil {
-                    organized[customVariation]?.append(cocktail)
-                } else {
-                    // If the title cocktail isn't in the search results, create a new group
-                    organized[customVariation] = [cocktail]
+            //check to see if the cocktail is a variation
+            if let variationName = cocktail.variationName {
+                // if it is a variation, check to see if it's value exists in the dict.
+                if organizedCocktailsDict[variationName] == nil {
+                    organizedCocktailsDict[variationName] = []
+                }
+                //if it does exist, it appends that cocktail to that group. But first, check it's ID so it isn't adding duplicates.
+                if !organizedCocktailsDict[variationName]!.contains(where: { $0.id == cocktail.id }) {
+                    organizedCocktailsDict[variationName]?.append(cocktail)
                 }
             } else {
-                // This is a base cocktail, create a new group
-                let variations = cocktails.filter { $0.customVariation == cocktail.cocktailName }
-                organized[cocktail.cocktailName] = [cocktail] + variations
+                // If customVariation is Nil, then it's is a base cocktail, create a new group
+                if organizedCocktailsDict[cocktail.cocktailName] == nil {
+                    organizedCocktailsDict[cocktail.cocktailName] = [cocktail]
+                }
+                let variations = cocktails.filter { $0.variationName == cocktail.cocktailName }
+                for variation in variations {
+                    // again, make sure duplicates aren't being added.
+                    if !organizedCocktailsDict[cocktail.cocktailName]!.contains(where: { $0.id == variation.id }) {
+                        organizedCocktailsDict[cocktail.cocktailName]?.append(variation)
+                    }
+                }
             }
         }
         
         // Sort each group
-        for (key, value) in organized {
-            organized[key] = value.sorted { $0.cocktailName < $1.cocktailName }
+        for (key, value) in organizedCocktailsDict {
+            organizedCocktailsDict[key] = value.sorted { $0.cocktailName < $1.cocktailName }
         }
         
-        return organized
+        return organizedCocktailsDict
     }
 }
 

@@ -32,7 +32,7 @@ class Cocktail: Equatable, Hashable, Identifiable {
     @Transient var tags: Tags = Tags()
     var compiledTags: Tags = Tags()
     var variation: Variation?
-    var customVariation: String?
+    var variationName: String?
     var collection: CocktailCollection?
     var isCustomCocktail: Bool
     var collectionName: String
@@ -63,7 +63,7 @@ class Cocktail: Equatable, Hashable, Identifiable {
         self.notes = notes 
         self.tags = tags
         self.variation = variation
-        self.customVariation = {
+        self.variationName = {
             if let variationName = variation {
                 return variationName.rawValue
             }
@@ -104,7 +104,7 @@ class Cocktail: Equatable, Hashable, Identifiable {
         self.buildOrder = buildOrder
         self.tags = tags
         self.variation = variation
-        self.customVariation = customVariation
+        self.variationName = customVariation
         self.collection = collection
         self.collectionName = {
             var name = "None"
