@@ -35,7 +35,7 @@ struct RiffPickerView: View {
                                         Spacer()
                                     }
                                 } destination: {
-                                    AddCocktailView(viewModel: AddCocktailViewModel(basedOn: cocktail))
+                                    AddCocktailView(viewModel: AddCocktailViewModel(basedOn: cocktail), isRiff: true)
                                         .navigationBarBackButtonHidden(true)
                                 }
                             } else {

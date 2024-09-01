@@ -12,8 +12,12 @@ struct AddCocktailView: View {
     @FocusState private var yearKeyboardFocused: Bool
     @State private var isActive: Bool = false
     var sectionBackground = Color.black.opacity(0.15)
+    @State private var isRiff: Bool = false
     
- 
+    init(viewModel: AddCocktailViewModel, isRiff: Bool = false) {
+        self.viewModel = viewModel
+        self._isRiff = State(initialValue: isRiff)
+    }
     
     var body: some View {
         
@@ -30,7 +34,7 @@ struct AddCocktailView: View {
                             .font(FontFactory.fontBody16)
                     }
                     
-                    AddedIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
+                    AddedIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isRiff: $isRiff)
                     
                     Section(header: Text("Extras").font(FontFactory.sectionHeader12)) {
                         GlassPickerButton(viewModel: viewModel)
