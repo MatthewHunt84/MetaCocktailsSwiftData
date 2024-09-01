@@ -34,7 +34,7 @@ struct CocktailListView: View {
                                         if searchBarIsFocused {
                                             SearchBarAllCocktailsListView(viewModel: viewModel, cocktails: viewModel.filteredCocktails)
                                         } else {
-                                            AllCocktailsListView(viewModel: viewModel, cocktails: cocktails)
+                                            AllCocktailsListView(viewModel: viewModel)
                                         }
                                     }
                                     .listStyle(.plain)

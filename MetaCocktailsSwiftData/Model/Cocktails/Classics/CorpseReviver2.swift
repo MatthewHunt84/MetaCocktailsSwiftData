@@ -12,7 +12,7 @@ var corpseReviver2 = Cocktail(cocktailName: "Corpse Reviver No.2",
                               ice: nil,
                               author:Author(person: AuthorNames.harryCraddock.rawValue, place: AuthorPlaces.savoy.rawValue, year: "1930"),
                               spec: corpseReviver2Spec,
-                              buildOrder: kinaLilletExplanation,
+                              notes: kinaLilletExplanation,
                               tags: corpseReviver2Tags,
                               variation: .corpseReviver,
                               titleCocktail: true)
@@ -26,5 +26,5 @@ var corpseReviver2Spec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
 var corpseReviver2Tags = Tags(profiles: [.citrusy, .tart, .light, .restorative],
                               styles: [.daisy, .shaken, .sour])
 
-var kinaLilletExplanation = Build(instructions: [Instruction(step: 1, method: "The original cocktail called for Kina Lillet which is a quinine bitter that stopped production in 1985. The closest thing we can find to it is Cocchi Americano, so that's why we're using it here. Lillet Blanc is nothing like Kina Lillet.")])
+var kinaLilletExplanation = "The original cocktail called for Kina Lillet which is a quinine bitter that stopped production in 1985. The closest thing we can find to it is Cocchi Americano, so that's why we're using it here. Lillet Blanc is nothing like Kina Lillet."
 

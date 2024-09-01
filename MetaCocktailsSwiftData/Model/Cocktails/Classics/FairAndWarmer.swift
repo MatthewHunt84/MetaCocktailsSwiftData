@@ -7,7 +7,7 @@
 
 import Foundation
 
-var fairAndWarmer = Cocktail(cocktailName: "Fair & Warmer",
+var fairAndWarmer = Cocktail(cocktailName: "Fair and Warmer",
                              glasswareType: .coupe,
                              garnish: [.noGarnish],
                              author: harryCraddock,

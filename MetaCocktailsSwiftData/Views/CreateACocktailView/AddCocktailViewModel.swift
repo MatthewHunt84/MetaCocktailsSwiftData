@@ -507,7 +507,6 @@ extension AddCocktailView {
         let cocktailNames: [String] = cocktails.map({$0.cocktailName})
         
         if cocktailNames.allSatisfy({ $0 != viewModel.cocktailName}) {
-            print("\(viewModel.cocktailName) in not in cocktail names.")
             return true
         } else {
             return false

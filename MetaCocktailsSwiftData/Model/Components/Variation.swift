@@ -11,7 +11,7 @@ enum Variation: String, Codable, CaseIterable {
     
     
     case airMail = "Air Mail"
-    case alaska = "Alaska"
+    case alaska = "Alaska Cocktail"
     case alexander = "Alexander Cocktail"
     case algonquin = "Algonquin"
     case amarettoSour = "Amaretto Sour"
@@ -22,7 +22,7 @@ enum Variation: String, Codable, CaseIterable {
     case bamboo = "Bamboo"
     case bijou = "Bijou"
     case bloodAndSand = "Blood & Sand"
-    case bloodyMary = "Bloody Marry"
+    case bloodyMary = "Bloody Mary"
     case boulevardier = "Boulevardier"
     case bramble = "Bramble"
     case brandyCrusta = "Brandy Crusta"
@@ -30,7 +30,7 @@ enum Variation: String, Codable, CaseIterable {
     case brooklyn = "Brooklyn"
     case cableCar = "Cable Car"
     case cloverClub = "Clover Club"
-    case corpseReviver = "Corpse Reviver"
+    case corpseReviver = "Corpse Reviver No.2"
     case daiquiri = "Daiquiri"
     case eastSide = "East Side"
     case elPresidente = "El Presidente"

@@ -10,7 +10,7 @@ import Observation
 import Combine
 
 @Observable final class CocktailListViewModel: ObservableObject{
-
+    
     private var allCocktails: [Cocktail] = []
     var filteredCocktails: [Cocktail] = []
     
@@ -40,7 +40,7 @@ import Combine
     }
     
     private func performSearch(_ searchText: String) {
-       
+        
         
         self.debouncedSearchText = searchText
         updateFilteredCocktails()
@@ -86,19 +86,46 @@ import Combine
         updateFilteredCocktails()
     }
     
+    
     func selectedCocktailVariations(for cocktail: Cocktail) -> [Cocktail] {
-        if let variation = cocktail.variation {
-            let variationsWithSelectedCocktailFirst = filteredCocktails.filter({$0.variation == variation}).sorted {
-                $1.cocktailName == cocktail.cocktailName ? false :
-                $0.cocktailName == cocktail.cocktailName ? true :
-                $0.cocktailName < $1.cocktailName
-            }
-            return variationsWithSelectedCocktailFirst
-        } else {
-            return [cocktail]
+        
+        let variationsWithSelectedCocktailFirst = allCocktails.filter { $0.customVariation == cocktail.cocktailName }.sorted {
+            $1.cocktailName == cocktail.cocktailName ? false :
+            $0.cocktailName == cocktail.cocktailName ? true :
+            $0.cocktailName < $1.cocktailName
         }
+        return variationsWithSelectedCocktailFirst
+        
     }
     
+    
+    
+    func organizeCocktails(_ cocktails: [Cocktail]) -> [String: [Cocktail]] {
+        var organized: [String: [Cocktail]] = [:]
+        
+        for cocktail in cocktails {
+            if let customVariation = cocktail.customVariation {
+                // This is a variation, add it to the appropriate group
+                if organized[customVariation] != nil {
+                    organized[customVariation]?.append(cocktail)
+                } else {
+                    // If the title cocktail isn't in the search results, create a new group
+                    organized[customVariation] = [cocktail]
+                }
+            } else {
+                // This is a base cocktail, create a new group
+                let variations = cocktails.filter { $0.customVariation == cocktail.cocktailName }
+                organized[cocktail.cocktailName] = [cocktail] + variations
+            }
+        }
+        
+        // Sort each group
+        for (key, value) in organized {
+            organized[key] = value.sorted { $0.cocktailName < $1.cocktailName }
+        }
+        
+        return organized
+    }
 }
 
 

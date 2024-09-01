@@ -40,7 +40,7 @@ class Cocktail: Equatable, Hashable, Identifiable {
   
     
     
-    init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [GarnishList]? = nil, ice: Ice? = nil, author: Author? = nil, spec: [OldCocktailIngredient], buildOrder: Build? = nil, notes: String? = nil, tags: Tags, variation: Variation? = nil, collection: CocktailCollection? = nil, isCustomCocktail: Bool = false, titleCocktail: Bool = false) {
+    init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [GarnishList]? = nil, ice: Ice? = nil, author: Author? = nil, spec: [OldCocktailIngredient], buildOrder: Build? = nil, notes: String? = nil, tags: Tags, variation: Variation? = nil, customVariation: String? = nil, collection: CocktailCollection? = nil, isCustomCocktail: Bool = false, titleCocktail: Bool = false) {
         self.id = id
         self.cocktailName = cocktailName
         self.imageAsset = imageAsset
@@ -63,7 +63,12 @@ class Cocktail: Equatable, Hashable, Identifiable {
         self.notes = notes 
         self.tags = tags
         self.variation = variation
-        self.customVariation = nil
+        self.customVariation = {
+            if let variationName = variation {
+                return variationName.rawValue
+            }
+            return nil
+        }()
         self.collection = collection
         self.isCustomCocktail = collection == .custom
         self.collectionName = {

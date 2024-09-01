@@ -7,7 +7,7 @@
 
 import Foundation
 
-var featheredHatFlipNo1 = Cocktail(cocktailName: "Feathered Hat Flip No. 1",
+var featheredHatFlipNo1 = Cocktail(cocktailName: "Feathered Hat Flip",
                                    glasswareType: .snifter,
                                    garnish: [.nutmeg],
                                    ice: nil,
@@ -19,7 +19,7 @@ var featheredHatFlipNo1 = Cocktail(cocktailName: "Feathered Hat Flip No. 1",
                                    tags: featheredHatFlipTags,
                                    variation: .featheredHatFlip,
                                    collection: .williamsAndGraham,
-                                   titleCocktail: false)
+                                   titleCocktail: true)
 
 var featheredHatFlipSpec  = [OldCocktailIngredient(.bitters(.angosturaBitters), value: 8, unit: .drops),
                              OldCocktailIngredient(.otherAlcohol(.leftHandMilkStout), value: 0.5),

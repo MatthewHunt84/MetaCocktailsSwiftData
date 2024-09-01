@@ -132,7 +132,7 @@ struct AddCocktailView: View {
                     .navigationBarBackButtonHidden(true)
             }
 
-            .fullScreenCover(isPresented: $viewModel.addIngredientDetailViewIsActive) {
+            .sheet(isPresented: $viewModel.addIngredientDetailViewIsActive) {
                 AddExistingIngredientDetailView(viewModel: viewModel)
                     .navigationBarBackButtonHidden(true)
             }

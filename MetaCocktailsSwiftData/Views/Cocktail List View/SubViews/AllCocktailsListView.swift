@@ -9,15 +9,31 @@ import SwiftUI
 import SwiftData
 
 struct AllCocktailsListView: View {
-    @Bindable var viewModel = CocktailListViewModel()
-    var cocktails: [Cocktail]
+    @Bindable var viewModel: CocktailListViewModel
     @Environment(\.modelContext) private var modelContext
+
     var body: some View {
+        let organizedCocktails = viewModel.organizeCocktails(viewModel.filteredCocktails)
         
         ForEach(viewModel.cocktailListAlphabet, id: \.self) { letter in
             Section {
-                ForEach(cocktails.filter { $0.cocktailName.hasPrefix(letter) }, id: \.id) { cocktail in
-                    CocktailListItemView(viewModel: viewModel, cocktail: cocktail, isInCustomSection: false)
+                ForEach(organizedCocktails.keys.sorted().filter { $0.hasPrefix(letter) }, id: \.self) { key in
+                    if let cocktails = organizedCocktails[key], !cocktails.isEmpty {
+                        if cocktails.count > 1 {
+                            DisclosureGroup {
+                                ForEach(cocktails, id: \.id) { cocktail in
+                                    MultipleCocktailsListView(cocktail: cocktail, cocktails: cocktails)
+                                        .padding(.leading)
+                                }
+                            } label: {
+                                Text(key)
+                                    .font(FontFactory.regularFont(size: 18))
+                            }
+                            .disclosureGroupStyle(InlineDisclosureGroupStyle())
+                        } else {
+                            SingleCocktailListView(cocktail: cocktails[0])
+                        }
+                    }
                 }
                 .listRowBackground(Color.clear)
             } header: {
@@ -29,40 +45,8 @@ struct AllCocktailsListView: View {
     }
 }
 
-struct SearchBarAllCocktailsListView: View {
-    @Bindable var viewModel: CocktailListViewModel
-    var cocktails: [Cocktail]
-
-    var body: some View {
-        ForEach(cocktails, id: \.id) { cocktail in
-            //This prevents duplicate listings of variation cocktails
-            if cocktail.variation == nil || cocktail.titleCocktail == true {
-                CocktailListItemView(viewModel: viewModel, cocktail: cocktail, isInCustomSection: false)
-            }
-        }
-        .listRowBackground(Color.clear)
-    }
-}
-
-struct CocktailListItemView: View {
-    @Bindable var viewModel: CocktailListViewModel
-    var cocktail: Cocktail
-    @State var isInCustomSection: Bool
-    
-    var body: some View {
-        if cocktail.variation == nil || cocktail.isCustomCocktail == true {
-            SingleCocktailView(viewModel: viewModel, cocktail: cocktail, isInCustomSection: $isInCustomSection)
-        } else if cocktail.titleCocktail == true {
-            VariationCocktailView(viewModel: viewModel, cocktail: cocktail)
-        }
-    }
-}
-
-struct SingleCocktailView: View {
-    
-    @Bindable var viewModel: CocktailListViewModel
+struct SingleCocktailListView: View {
     let cocktail: Cocktail
-    @Binding var isInCustomSection: Bool
     
     var body: some View {
         NavigationLinkWithoutIndicator {
@@ -70,7 +54,7 @@ struct SingleCocktailView: View {
                 Text(cocktail.cocktailName)
                     .font(FontFactory.regularFont(size: 18))
                 Spacer()
-                if cocktail.collection == .custom && !isInCustomSection {
+                if cocktail.isCustomCocktail == true {
                     Text("Custom")
                         .foregroundStyle(Color.brandPrimaryGold)
                         .font(FontFactory.regularFont(size: 15))
@@ -81,34 +65,58 @@ struct SingleCocktailView: View {
                 .navigationBarBackButtonHidden(true)
         }
     }
-    
 }
-struct VariationCocktailView: View {
-    @Bindable var viewModel: CocktailListViewModel
+struct MultipleCocktailsListView: View {
     let cocktail: Cocktail
+    let cocktails: [Cocktail]
     
     var body: some View {
-        DisclosureGroup {
-            ForEach(viewModel.selectedCocktailVariations(for: cocktail), id: \.id) { variationCocktail in
-                NavigationLinkWithoutIndicator {
-                    HStack {
-                        Text(variationCocktail.cocktailName)
-                            .font(FontFactory.regularFont(size: 18))
-                        Spacer()
-                    }
-                } destination: {
-                    SwipeRecipeView(variations: viewModel.selectedCocktailVariations(for: variationCocktail))
-                        .navigationBarBackButtonHidden(true)
+        NavigationLinkWithoutIndicator {
+            HStack {
+                Text(cocktail.cocktailName)
+                    .font(FontFactory.regularFont(size: 18))
+                Spacer()
+                if cocktail.isCustomCocktail == true {
+                    Text("Custom")
+                        .foregroundStyle(Color.brandPrimaryGold)
+                        .font(FontFactory.regularFont(size: 15))
                 }
             }
-        } label: {
-            Text(cocktail.variation?.rawValue ?? cocktail.cocktailName)
-                .font(FontFactory.regularFont(size: 18))
+        } destination: {
+            SwipeRecipeView(variations: cocktails, initialSelection: cocktail)
+                .navigationBarBackButtonHidden(true)
         }
-        .disclosureGroupStyle(InlineDisclosureGroupStyle())
     }
 }
 
+struct SearchBarAllCocktailsListView: View {
+    @Bindable var viewModel: CocktailListViewModel
+    var cocktails: [Cocktail]
+
+    var body: some View {
+        let organizedCocktails = viewModel.organizeCocktails(cocktails)
+        
+        ForEach(organizedCocktails.keys.sorted(), id: \.self) { key in
+            if let cocktails = organizedCocktails[key], !cocktails.isEmpty {
+                if cocktails.count > 1 {
+                    DisclosureGroup {
+                        ForEach(cocktails, id: \.id) { cocktail in
+                            MultipleCocktailsListView(cocktail: cocktail, cocktails: cocktails)
+                                .padding(.leading)
+                        }
+                    } label: {
+                        Text(key)
+                            .font(FontFactory.regularFont(size: 18))
+                    }
+                    .disclosureGroupStyle(InlineDisclosureGroupStyle())
+                } else {
+                    SingleCocktailListView(cocktail: cocktails[0])
+                }
+            }
+        }
+        .listRowBackground(Color.clear)
+    }
+}
 
 
 

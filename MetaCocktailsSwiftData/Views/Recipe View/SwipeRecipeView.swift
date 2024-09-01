@@ -9,33 +9,35 @@ import SwiftUI
 import SwiftData
 
 struct SwipeRecipeView: View {
-    @State var variations: [Cocktail] // when this isn't state, our weird HeightPreservingTabView gets all mad. Keeping this for now, but perhaps adding binding viewModels is what we need here.
+    @State var variations: [Cocktail]
+    @State private var selectedIndex: Int
     @Environment(\.dismiss) private var dismiss
     @Namespace var topID
     
+    init(variations: [Cocktail], initialSelection: Cocktail) {
+        //I guess you can't assign State vars so you have to set them then cast them as State.
+        self._variations = State(initialValue: variations)
+        //we find where the cocktail is in variations, then that index is the first one the user sees.
+        self._selectedIndex = State(initialValue: variations.firstIndex(of: initialSelection) ?? 0)
+    }
+    
     var body: some View {
-        
         NavigationStack {
-            
             GeometryReader { geo in
-                
                 ScrollViewReader { scrollReader in
-                    
                     ScrollView {
-                        
-                        HeightPreservingTabView(selection: $variations) {
-                            
-                            ForEach($variations, id: \.self) { cocktail in
+                        HeightPreservingTabView(selection: $selectedIndex) {
+                            ForEach(Array(variations.enumerated()), id: \.element) { index, cocktail in
                                 VStack {
-                                    RecipeFlipCardView(viewModel: RecipeViewModel(cocktail: cocktail.wrappedValue), geo: geo, topID: topID, scrollReader: scrollReader)
+                                    RecipeFlipCardView(viewModel: RecipeViewModel(cocktail: cocktail), geo: geo, topID: topID, scrollReader: scrollReader)
                                         .padding(.bottom, 28)
-                                    
                                 }
                                 .toolbar {
                                     ToolbarItem(placement: .principal) {
-                                        RecipeTitleView(cocktail: cocktail.wrappedValue)
+                                        RecipeTitleView(cocktail: cocktail)
                                     }
                                 }
+                                .tag(index)
                             }
                         }
                     }
@@ -90,8 +92,8 @@ private struct TabViewMinHeightPreference: PreferenceKey {
         value = max(value, nextValue())
     }
 }
-
-#Preview(traits: .sampleData) {
-    @Previewable @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
-    return SwipeRecipeView(variations: cocktails)
-}
+//
+//#Preview(traits: .sampleData) {
+//    @Previewable @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
+//    return SwipeRecipeView(variations: cocktails)
+//}
