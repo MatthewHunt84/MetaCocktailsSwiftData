@@ -91,10 +91,9 @@ struct MultipleCocktailsListView: View {
 
 struct SearchBarAllCocktailsListView: View {
     @Bindable var viewModel: CocktailListViewModel
-    var cocktails: [Cocktail]
 
     var body: some View {
-        let organizedCocktails = viewModel.organizeCocktails(cocktails)
+        let organizedCocktails = viewModel.organizeCocktails(viewModel.filteredCocktails)
         
         ForEach(organizedCocktails.keys.sorted(), id: \.self) { key in
             if let cocktails = organizedCocktails[key], !cocktails.isEmpty {
@@ -117,6 +116,3 @@ struct SearchBarAllCocktailsListView: View {
         .listRowBackground(Color.clear)
     }
 }
-
-
-

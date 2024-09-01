@@ -40,20 +40,24 @@ import Combine
     }
     
     private func performSearch(_ searchText: String) {
-        
-        
         self.debouncedSearchText = searchText
         updateFilteredCocktails()
+    }
+    
+    private func updateFilteredCocktails() {
         let lowercasedSearchText = debouncedSearchText.lowercased()
-        // Include variation cocktails when searching with the search bar.
-        //Otherwise, only the title cocktail shows up in the search, instead of the title cocktail and all of it's variations.
-        let variationCocktails = allCocktails.filter { cocktail in
-            guard let variation = cocktail.variation else { return false }
-            return filteredCocktails.contains { $0.variation == variation }
+        
+        if debouncedSearchText.isEmpty {
+            filteredCocktails = allCocktails
+        } else {
+            filteredCocktails = allCocktails.filter { cocktail in
+                cocktail.cocktailName.localizedCaseInsensitiveContains(lowercasedSearchText) ||
+                (cocktail.variationName?.localizedCaseInsensitiveContains(lowercasedSearchText) ?? false)
+            }
         }
-        filteredCocktails.append(contentsOf: variationCocktails)
-        filteredCocktails = Array(Set(filteredCocktails)).sorted { $0.cocktailName < $1.cocktailName }.sorted { (lhs: Cocktail, rhs: Cocktail) in
-            //Move the sorting to after the variations have been added.
+        
+        // Sort the filtered cocktails
+        filteredCocktails.sort { (lhs: Cocktail, rhs: Cocktail) in
             let lhsLowercased = lhs.cocktailName.lowercased()
             let rhsLowercased = rhs.cocktailName.lowercased()
             
@@ -68,16 +72,6 @@ import Combine
                 return lhs.cocktailName.count < rhs.cocktailName.count
             }
             return (lhsLowercased.range(of: lowercasedSearchText)?.lowerBound ?? lhsLowercased.endIndex) < (rhsLowercased.range(of: lowercasedSearchText)?.lowerBound ?? rhsLowercased.endIndex)
-        }
-    }
-    
-    private func updateFilteredCocktails() {
-        let lowercasedSearchText = debouncedSearchText.lowercased()
-        
-        if debouncedSearchText.isEmpty {
-            filteredCocktails = allCocktails
-        } else {
-            filteredCocktails = allCocktails.filter { $0.cocktailName.localizedCaseInsensitiveContains(lowercasedSearchText) }
         }
     }
     

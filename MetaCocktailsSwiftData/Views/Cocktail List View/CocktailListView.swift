@@ -32,7 +32,7 @@ struct CocktailListView: View {
                                 HStack {
                                     List {
                                         if searchBarIsFocused {
-                                            SearchBarAllCocktailsListView(viewModel: viewModel, cocktails: viewModel.filteredCocktails)
+                                            SearchBarAllCocktailsListView(viewModel: viewModel)
                                         } else {
                                             AllCocktailsListView(viewModel: viewModel)
                                         }
@@ -53,7 +53,9 @@ struct CocktailListView: View {
                     }
                 }
                 .onAppear {
+                    viewModel.searchText = ""
                     viewModel.setAllCocktails(cocktails)
+                    
                 }
             }
             
