@@ -50,7 +50,6 @@ struct UpperDiagonalButton: View {
                     path.move(to: .zero)
                         path.addLine(to: CGPoint(x: geometry.size.width + 200, y: 0))
                         path.addLine(to: CGPoint(x: 0, y: geometry.size.height + 200))
-                 
                 }
                 .fill(Color.blueTint.opacity(0.1))
                 
@@ -67,6 +66,7 @@ struct UpperDiagonalButton: View {
         }
     }
 }
+
 struct BottomDiagonalButton: View {
     let text: String
     let isUpperHalf: Bool

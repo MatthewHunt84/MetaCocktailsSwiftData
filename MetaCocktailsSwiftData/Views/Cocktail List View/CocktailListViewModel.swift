@@ -104,6 +104,7 @@ import Combine
                     organizedCocktailsDict[variationName] = []
                 }
                 //if it does exist, it appends that cocktail to that group. But first, check it's ID so it isn't adding duplicates.
+                //I was finding duplicates in CocktailListView before I added this.
                 if !organizedCocktailsDict[variationName]!.contains(where: { $0.id == cocktail.id }) {
                     organizedCocktailsDict[variationName]?.append(cocktail)
                 }

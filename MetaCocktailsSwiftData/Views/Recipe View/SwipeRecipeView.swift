@@ -23,27 +23,30 @@ struct SwipeRecipeView: View {
     
     var body: some View {
         NavigationStack {
-            GeometryReader { geo in
-                ScrollViewReader { scrollReader in
-                    ScrollView {
-                        HeightPreservingTabView(selection: $selectedIndex) {
-                            ForEach(Array(variations.enumerated()), id: \.element) { index, cocktail in
-                                VStack {
-                                    RecipeFlipCardView(viewModel: RecipeViewModel(cocktail: cocktail), geo: geo, topID: topID, scrollReader: scrollReader)
-                                        .padding(.bottom, 28)
-                                }
-                                .toolbar {
-                                    ToolbarItem(placement: .principal) {
-                                        RecipeTitleView(cocktail: cocktail)
+            ZStack {
+                MeshGradients.meshTealRibbonBackground.ignoresSafeArea()
+                GeometryReader { geo in
+                    ScrollViewReader { scrollReader in
+                        ScrollView {
+                            HeightPreservingTabView(selection: $selectedIndex) {
+                                ForEach(Array(variations.enumerated()), id: \.element) { index, cocktail in
+                                    VStack {
+                                        RecipeFlipCardView(viewModel: RecipeViewModel(cocktail: cocktail), geo: geo, topID: topID, scrollReader: scrollReader)
+                                            .padding(.bottom, 28)
                                     }
+                                    .toolbar {
+                                        ToolbarItem(placement: .principal) {
+                                            RecipeTitleView(cocktail: cocktail)
+                                        }
+                                    }
+                                    .tag(index)
                                 }
-                                .tag(index)
                             }
                         }
-                    }
-                    .toolbar {
-                        ToolbarItem(placement: .topBarLeading) {
-                            BackButton()
+                        .toolbar {
+                            ToolbarItem(placement: .topBarLeading) {
+                                BackButton()
+                            }
                         }
                     }
                 }
