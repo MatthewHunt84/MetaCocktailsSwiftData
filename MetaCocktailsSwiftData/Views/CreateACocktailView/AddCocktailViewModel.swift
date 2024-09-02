@@ -459,8 +459,6 @@ import Combine
         self.debouncedSearchText = searchText
         updateFilteredCocktails()
         let lowercasedSearchText = debouncedSearchText.lowercased()
-        // Include variation cocktails when searching with the search bar.
-        //Otherwise, only the title cocktail shows up in the search, instead of the title cocktail and all of it's variations.
        
         filteredCocktails = Array(Set(filteredCocktails)).sorted { $0.cocktailName < $1.cocktailName }.sorted { (lhs: Cocktail, rhs: Cocktail) in
             //Move the sorting to after the variations have been added.
@@ -488,7 +486,7 @@ import Combine
         let lowercasedSearchText = debouncedSearchText.lowercased()
         
         if debouncedSearchText.isEmpty {
-            filteredCocktails = allCocktails
+            filteredCocktails = []
         } else {
             filteredCocktails = allCocktails.filter { $0.cocktailName.localizedCaseInsensitiveContains(lowercasedSearchText) }
         }

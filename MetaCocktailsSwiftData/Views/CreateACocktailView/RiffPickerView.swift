@@ -25,20 +25,16 @@ struct RiffPickerView: View {
                     SearchBarForCreateCocktailView(isFocused: $isSearchFocused, viewModel: viewModel)
                     List {
                         ForEach(viewModel.filteredCocktails, id: \.self) { cocktail in
-                            if !viewModel.searchText.isEmpty {
-                                NavigationLinkWithoutIndicator {
-                                    HStack {
-                                        Text(cocktail.cocktailName)
-                                            .foregroundColor(.white)
-                                            .font(FontFactory.fontBody16)
-                                        Spacer()
-                                    }
-                                } destination: {
-                                    AddCocktailView(viewModel: AddCocktailViewModel(basedOn: cocktail), isRiff: true)
-                                        .navigationBarBackButtonHidden(true)
+                            NavigationLinkWithoutIndicator {
+                                HStack {
+                                    Text(cocktail.cocktailName)
+                                        .foregroundColor(.white)
+                                        .font(FontFactory.fontBody16)
+                                    Spacer()
                                 }
-                            } else {
-                                EmptyView()
+                            } destination: {
+                                AddCocktailView(viewModel: AddCocktailViewModel(basedOn: cocktail), isRiff: true)
+                                    .navigationBarBackButtonHidden(true)
                             }
                         }
                         .listRowBackground(Color.clear)
@@ -83,3 +79,4 @@ struct SearchBarForCreateCocktailView: View {
             }
     }
 }
+

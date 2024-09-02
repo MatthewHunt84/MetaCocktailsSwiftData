@@ -131,8 +131,7 @@ struct AddCocktailView: View {
                 GarnishDetailView(viewModel: viewModel)
                     .navigationBarBackButtonHidden(true)
             }
-
-            .sheet(isPresented: $viewModel.addIngredientDetailViewIsActive) {
+            .fullScreenCover(isPresented: $viewModel.addIngredientDetailViewIsActive) {
                 AddExistingIngredientDetailView(viewModel: viewModel)
                     .navigationBarBackButtonHidden(true)
             }

@@ -21,7 +21,7 @@ struct RecipeFlipCardView: View {
         ZStack {
             
             RecipeViewBack(viewModel: viewModel, geometry: geo)
-                .rotation3DEffect(Angle(degrees: viewModel.backDegree), axis: (x: 0, y: 1, z: 0))
+                .rotation3DEffect(Angle(degrees: viewModel.backDegree), axis: (x: 0, y: 1, z: 0), anchor: .center)
                 .id(topID)
             
             VStack(alignment: .center) {
