@@ -63,7 +63,12 @@ class Cocktail: Equatable, Hashable, Identifiable {
         self.notes = notes 
         self.tags = tags
         self.variation = variation
-        self.variationName = variationName
+        self.variationName = {
+            if let variationName = variation {
+                return variationName.rawValue
+            }
+            return nil
+        }()
         self.collection = collection
         self.isCustomCocktail = collection == .custom
         self.collectionName = {
