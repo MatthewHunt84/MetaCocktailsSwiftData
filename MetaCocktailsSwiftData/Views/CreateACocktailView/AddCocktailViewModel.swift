@@ -209,7 +209,7 @@ import Combine
                                 buildOrder: buildOption,
                                 tags: ingredientTags,
                                 variation: variation,
-                                customVariation: customVariationName,
+                                variationName: customVariationName,
                                 collection: .custom,
                                 isCustomCocktail: true)
 
