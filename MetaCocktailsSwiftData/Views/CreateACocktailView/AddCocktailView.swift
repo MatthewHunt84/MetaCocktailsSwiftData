@@ -15,7 +15,6 @@ struct AddCocktailView: View {
     @State private var isRiff: Bool = false
     @State private var isSelectingFromTemplate: Bool = false
     
-    
     var body: some View {
         
         NavigationStack {
@@ -41,6 +40,7 @@ struct AddCocktailView: View {
                     }
                     
                     GarnishPicker(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive)
+                    
                     Section(header: Text("Credit (optional)").font(FontFactory.sectionHeader12)) {
                         TextField("Author", text: $viewModel.authorName)
                             .focused($yearKeyboardFocused)
@@ -80,7 +80,7 @@ struct AddCocktailView: View {
                 .scrollContentBackground(.hidden)
                 .background(Color.clear)
                 .navigationBarTitleDisplayMode(.inline)
-                .jamesHeaderWithNavigation(title: "Add New Cocktail", dismiss: dismiss)
+                .jamesHeader("Add New Cocktail")
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button {
@@ -299,7 +299,6 @@ private struct GarnishPicker: View {
                         .foregroundStyle(.blueTint)
                 }
             }
-            
         } header: {
             Text("Garnish")
         }
