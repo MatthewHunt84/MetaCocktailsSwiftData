@@ -3,7 +3,7 @@ import SwiftData
 
 struct AddCocktailView: View {
     
-    @Bindable var viewModel: AddCocktailViewModel
+    @Bindable var viewModel = AddCocktailViewModel()
     @State private var isShowingAddIngredients: Bool = false
     @Environment(\.modelContext) private var modelContext
     @Environment(\.currentTab) private var selectedTab
@@ -11,7 +11,6 @@ struct AddCocktailView: View {
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
     @FocusState private var yearKeyboardFocused: Bool
     @State private var isActive: Bool = false
-    var sectionBackground = Color.black.opacity(0.15)
     @State private var isRiff: Bool = false
     
     init(viewModel: AddCocktailViewModel, isRiff: Bool = false) {
@@ -28,6 +27,13 @@ struct AddCocktailView: View {
                 MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
                 
                 Form {
+                    Section {
+                        NavigationLink {
+                            RiffPickerView(viewModel: viewModel)
+                        } label: {
+                            Text("Riff on an existing cocktail")
+                        }
+                    }
                     Section(header: Text("Name").font(FontFactory.sectionHeader12)) {
                         TextField("Cocktail Name", text: $viewModel.cocktailName)
                             .focused($yearKeyboardFocused)

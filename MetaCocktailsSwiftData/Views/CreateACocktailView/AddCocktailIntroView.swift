@@ -15,22 +15,22 @@ struct AddCocktailIntroView: View {
         NavigationStack {
             GeometryReader { geometry in
                 
-                VStack {
-                    NavigationLink(destination: AddCocktailView(viewModel: viewModel).navigationBarBackButtonHidden(true)) {
-                        UpperDiagonalButton(
-                            text: "Create A New Cocktail",
-                            isUpperHalf: true
-                        )
-                    }
-                    
-                    NavigationLink(destination: RiffPickerView(viewModel: viewModel).navigationBarBackButtonHidden(true)) {
-                        BottomDiagonalButton(
-                            text: "Riff On An Existing Cocktail",
-                            isUpperHalf: false
-                        )
-                    }
-                }
-                .frame(width: geometry.size.width, height: geometry.size.height)
+//                VStack {
+//                    NavigationLink(destination: AddCocktailView(viewModel: viewModel).navigationBarBackButtonHidden(true)) {
+//                        UpperDiagonalButton(
+//                            text: "Create A New Cocktail",
+//                            isUpperHalf: true
+//                        )
+//                    }
+//                    
+//                    NavigationLink(destination: RiffPickerView(viewModel: viewModel).navigationBarBackButtonHidden(true)) {
+//                        BottomDiagonalButton(
+//                            text: "Riff On An Existing Cocktail",
+//                            isUpperHalf: false
+//                        )
+//                    }
+//                }
+//                .frame(width: geometry.size.width, height: geometry.size.height)
                 
             }
             .ignoresSafeArea()
