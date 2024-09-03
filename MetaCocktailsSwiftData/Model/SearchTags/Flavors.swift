@@ -7,9 +7,13 @@
 
 import Foundation
 
+protocol IngredientTaggable: CaseIterable, RawRepresentable where RawValue == String {
+    var tags: Tags { get }
+}
+
+
+
 enum Flavor: String, Codable, CaseIterable {
-    
-    
     case agave          = "Agave Nectar"
     case almond         = "Almond"
     case aloe           = "Aloe"
@@ -94,7 +98,53 @@ enum Flavor: String, Codable, CaseIterable {
     case vinegar        = "Vinegar"
     case walnut         = "Walnut"
     case whiteFlower    = "White Flower"
-  
-   
-}
 
+    static var flavorIngredientsDictionary: [Flavor: [String]] {
+           let allIngredientTypes: [Any.Type] = [
+               Juice.self, Syrup.self, Herbs.self, Fruit.self, Seasoning.self, Soda.self, OtherNA.self,
+               Agave.self, Brandy.self, Gin.self, OtherAlcohol.self, Rum.self, Vodka.self, Whiskey.self,
+               Liqueur.self, FortifiedWine.self, Wine.self, Bitters.self, Amaro.self
+           ]
+           
+           var flavorDictionary: [Flavor: [String]] = Dictionary(uniqueKeysWithValues: allCases.map { ($0, []) })
+           
+           func addIngredientsToDictionary<T: IngredientTaggable>(_ type: T.Type) {
+               for ingredient in T.allCases {
+                   if let flavors = ingredient.tags.flavors {
+                       for flavor in flavors {
+                           if let flavorEnum = Flavor(rawValue: flavor.rawValue) {
+                               flavorDictionary[flavorEnum, default: []].append(ingredient.rawValue)
+                           }
+                       }
+                   }
+               }
+           }
+           
+           for ingredientType in allIngredientTypes {
+               switch ingredientType {
+               case is Juice.Type: addIngredientsToDictionary(Juice.self)
+               case is Syrup.Type: addIngredientsToDictionary(Syrup.self)
+               case is Herbs.Type: addIngredientsToDictionary(Herbs.self)
+               case is Fruit.Type: addIngredientsToDictionary(Fruit.self)
+               case is Seasoning.Type: addIngredientsToDictionary(Seasoning.self)
+               case is Soda.Type: addIngredientsToDictionary(Soda.self)
+               case is OtherNA.Type: addIngredientsToDictionary(OtherNA.self)
+               case is Agave.Type: addIngredientsToDictionary(Agave.self)
+               case is Brandy.Type: addIngredientsToDictionary(Brandy.self)
+               case is Gin.Type: addIngredientsToDictionary(Gin.self)
+               case is OtherAlcohol.Type: addIngredientsToDictionary(OtherAlcohol.self)
+               case is Rum.Type: addIngredientsToDictionary(Rum.self)
+               case is Vodka.Type: addIngredientsToDictionary(Vodka.self)
+               case is Whiskey.Type: addIngredientsToDictionary(Whiskey.self)
+               case is Liqueur.Type: addIngredientsToDictionary(Liqueur.self)
+               case is FortifiedWine.Type: addIngredientsToDictionary(FortifiedWine.self)
+               case is Wine.Type: addIngredientsToDictionary(Wine.self)
+               case is Bitters.Type: addIngredientsToDictionary(Bitters.self)
+               case is Amaro.Type: addIngredientsToDictionary(Amaro.self)
+               default: break
+               }
+           }
+           
+           return flavorDictionary
+       }
+}

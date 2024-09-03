@@ -22,6 +22,7 @@ final class SearchViewModel: ObservableObject {
     var umbrellaCategoryStrings: [String] = SpiritsUmbrellaCategory.allCases.map{ $0.rawValue }
     var baseCategoryStrings: [String] = BaseCategory.allCases.map({$0.rawValue})
     var specialtyCategoryStrings: [String] = SpecialtyCategory.allCases.map({$0.rawValue})
+    let flavorStrings: [String] = Flavor.allCases.map { $0.rawValue }
     
     var ingredientNames: [String] = []
     var allWhiskies: [String] = Whiskey.allCases.map({ $0.rawValue })
@@ -34,6 +35,7 @@ final class SearchViewModel: ObservableObject {
     var preferredUmbrellaCategories: [String] = []
     var preferredBaseCategories: [String] = []
     var preferredSpecialtyCategories: [String] = []
+    var preferredFlavorStrings: [String] = []
     var isLoading = true
     var preferredCount = 0
     var sections: [ResultViewSectionData] = []
@@ -106,6 +108,8 @@ final class SearchViewModel: ObservableObject {
         .sweetVermouthAny: SpecialtyCategory.sweetVermouthAny.specialtyCategoryIngredients,
         .tawnyPort: SpecialtyCategory.tawnyPort.specialtyCategoryIngredients]
     
+    
+    
     // complex search variables
     var perfectMatchCocktails = [String]()
     var minusOneMatchCocktails = [String]()
@@ -157,7 +161,8 @@ final class SearchViewModel: ObservableObject {
     func evaluateSearchType() {
         if preferredUmbrellaCategories.count > 1 ||
             preferredBaseCategories.count > 1 ||
-            preferredSpecialtyCategories.count > 1 {
+            preferredSpecialtyCategories.count > 1 ||
+            preferredFlavorStrings.count > 0 {
             searchType = SearchType.complex
         } else {
             searchType = SearchType.simple
@@ -226,6 +231,7 @@ final class SearchViewModel: ObservableObject {
         preferredBaseCategories = []
         preferredSpecialtyCategories = []
         preferredIngredients = []
+        preferredFlavorStrings = []
         
         for selection in preferredSelections {
             if umbrellaCategoryStrings.contains(selection) {
@@ -234,6 +240,8 @@ final class SearchViewModel: ObservableObject {
                 preferredBaseCategories.append(selection)
             } else if specialtyCategoryStrings.contains(selection) {
                 preferredSpecialtyCategories.append(selection)
+            } else if flavorStrings.contains(selection) {
+                preferredFlavorStrings.append(selection)
             } else {
                 preferredIngredients.append(selection)
             }
@@ -322,7 +330,7 @@ final class SearchViewModel: ObservableObject {
         }
         
         let lowercasedSearchText = searchText.lowercased()
-        let combinedArrays = ingredientNames + baseCategoryStrings + umbrellaCategoryStrings + specialtyCategoryStrings
+        let combinedArrays = ingredientNames + baseCategoryStrings + umbrellaCategoryStrings + specialtyCategoryStrings + flavorStrings
         let combinedArraysWithoutDuplicates = Array(Set(combinedArrays))
         
         filteredIngredients = combinedArraysWithoutDuplicates.filter { $0.lowercased().contains(lowercasedSearchText) }
