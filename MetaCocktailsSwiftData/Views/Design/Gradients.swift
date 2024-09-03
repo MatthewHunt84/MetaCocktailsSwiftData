@@ -204,7 +204,7 @@ struct MeshGradients {
                                            startPoint: .leading,
                                            endPoint: .bottomTrailing)
     
-    static let redAndGold = LinearGradient(gradient: Gradient(colors: [.red, Color(.redGold)]),
+    static let redAndGold = LinearGradient(gradient: Gradient(colors: [.red, .red, .redGold]),
                                            startPoint: .topLeading,
                                            endPoint: .bottomTrailing)
     
@@ -212,59 +212,60 @@ struct MeshGradients {
                                             startPoint: .topLeading,
                                             endPoint: .bottomTrailing)
     
-    static let meshBlueRibbonBackground =
-    MeshGradient(width: 3, height: 3, points: [
-        [0, 0], [0.5, 0], [1, 0],
-        [ 0 , 0.5], [0.5, 0.5], [1, 0.5],
-        [0 , 0.7], [0.55 , 0.55], [1 , 0]
-    ], colors: [
-        .black, .black,.black,
-        .black, .black, .black,
-        .brandSecondaryBlue, .brandSecondaryBlue, .brandSecondaryBlue
-    ])
+    static let meshBlueRibbonBackground = Color.black
+//    MeshGradient(width: 3, height: 3, points: [
+//        [0, 0], [0.5, 0], [1, 0],
+//        [ 0 , 0.5], [0.5, 0.5], [1, 0.5],
+//        [0 , 0.7], [0.55 , 0.55], [1 , 0]
+//    ], colors: [
+//        .black, .black,.black,
+//        .black, .black, .black,
+//        .brandSecondaryBlue, .brandSecondaryBlue, .brandSecondaryBlue
+//    ])
     
-    static let meshRedRibbonBackground =
-    MeshGradient(width: 3, height: 3, points: [
-        [0, 0], [0.5, 0], [1, 0],
-        [ 0 , 0.5], [0.5, 0.5], [1, 0.5],
-        [0 , 0.7], [0.55 , 0.55], [1 , 0]
-    ], colors: [
-        .black, .black,.black,
-        .black, .black, .black,
-        .brandSecondaryRed, .brandSecondaryRed, .brandSecondaryRed
-    ])
-    static let meshBlueTwoRibbonBackground =
-    MeshGradient(width: 3, height: 3, points: [
-        [0, 0], [0.5, 0], [1, 0],
-        [ 0 , 0.5], [0.5, 0.5], [1, 0.5],
-        [0 , 0.3], [0.49 , 0.62], [1 , 1]
-    ], colors: [
-        .black, .black,.black,
-        .black, .black, .black,
-        .brandSecondaryBlue, .brandSecondaryBlue, .brandSecondaryBlue
-    ])
+    static let meshRedRibbonBackground = Color.black
+//    MeshGradient(width: 3, height: 3, points: [
+//        [0, 0], [0.5, 0], [1, 0],
+//        [ 0 , 0.5], [0.5, 0.5], [1, 0.5],
+//        [0 , 0.7], [0.55 , 0.55], [1 , 0]
+//    ], colors: [
+//        .black, .black,.black,
+//        .black, .black, .black,
+//        .brandSecondaryRed, .brandSecondaryRed, .brandSecondaryRed
+//    ])
     
-    static let meshTealRibbonBackground =
-    MeshGradient(width: 3, height: 3, points: [
-        [0, 0], [0.5, 0], [1, 0],
-        [ 0 , 0.5], [0.5, 0.5], [1, 0.5],
-        [0 , 0.7], [0.69 , 0.6], [1 , 0]
-    ], colors: [
-        .black, .black,.black,
-        .black, .black, .black,
-        .brandSecondaryTeal, .brandSecondaryTeal, .brandSecondaryTeal
-    ])
+    static let meshBlueTwoRibbonBackground = Color.black
+//    MeshGradient(width: 3, height: 3, points: [
+//        [0, 0], [0.5, 0], [1, 0],
+//        [ 0 , 0.5], [0.5, 0.5], [1, 0.5],
+//        [0 , 0.3], [0.49 , 0.62], [1 , 1]
+//    ], colors: [
+//        .black, .black,.black,
+//        .black, .black, .black,
+//        .brandSecondaryBlue, .brandSecondaryBlue, .brandSecondaryBlue
+//    ])
+    
+    static let meshTealRibbonBackground = Color.black
+//    MeshGradient(width: 3, height: 3, points: [
+//        [0, 0], [0.5, 0], [1, 0],
+//        [ 0 , 0.5], [0.5, 0.5], [1, 0.5],
+//        [0 , 0.7], [0.69 , 0.6], [1 , 0]
+//    ], colors: [
+//        .black, .black,.black,
+//        .black, .black, .black,
+//        .brandSecondaryTeal, .brandSecondaryTeal, .brandSecondaryTeal
+//    ])
     
     
     static let whiteToGreyFade = LinearGradient(gradient: Gradient(colors: [.white, .gray]), startPoint: .leading, endPoint: .trailing)
     static let disabledButton = LinearGradient(gradient: Gradient(colors: [Color.medGray, Color.lightGray]), startPoint: .leading, endPoint: .trailing)
     static let disabledButton2 = LinearGradient(gradient: Gradient(colors: [Color.clear, Color.clear]), startPoint: .leading, endPoint: .trailing)
     
-    static let activeBlue = LinearGradient(gradient: Gradient(colors: [.cyan, .blue, .blue, .blue]),
+    static let activeBlue = LinearGradient(gradient: Gradient(colors: [.blue, .blue, .blue, .cyan]),
                                            startPoint: .topLeading,
                                            endPoint: .bottomTrailing)
     
-    static let activatedBlue = LinearGradient(gradient: Gradient(colors: [.blue, .blue, .cyan]),
+    static let activatedBlue = LinearGradient(gradient: Gradient(colors: [.cyan, .blue, .blue, .blue]),
                                               startPoint: .topLeading,
                                               endPoint: .bottomTrailing)
     

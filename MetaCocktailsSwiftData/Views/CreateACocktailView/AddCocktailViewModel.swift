@@ -11,12 +11,9 @@ import SwiftData
 import Combine
 
 @Observable final class AddCocktailViewModel {
-    
-   
-    
+
     var isRiff: Bool = false
 
-    
     //AddIngredientView
     var category: UmbrellaCategory = UmbrellaCategory.agaves
     var ingredientAmount = 0.0
@@ -85,6 +82,12 @@ import Combine
     
     private var cancellables = Set<AnyCancellable>()
     private let searchSubject = PassthroughSubject<String, Never>()
+    
+    func resetSearch() {
+        searchText = ""
+        debouncedSearchText = ""
+        filteredCocktails = []
+    }
     
 
     func clearData() {
@@ -460,8 +463,7 @@ import Combine
     }
     
     private func performSearch(_ searchText: String) {
-       
-        
+
         self.debouncedSearchText = searchText
         updateFilteredCocktails()
         let lowercasedSearchText = debouncedSearchText.lowercased()
@@ -502,19 +504,4 @@ import Combine
         self.allCocktails = cocktails
         updateFilteredCocktails()
     }
-}
-
-extension AddCocktailView {
-    
-    func nameIsUnique() -> Bool {
-        
-        let cocktailNames: [String] = cocktails.map({$0.cocktailName})
-        
-        if cocktailNames.allSatisfy({ $0 != viewModel.cocktailName}) {
-            return true
-        } else {
-            return false
-        }
-    }
-    
 }

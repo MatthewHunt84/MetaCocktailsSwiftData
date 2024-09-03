@@ -17,19 +17,7 @@ struct AddedIngredientView: View {
     var body: some View {
         
         Section(header: Text("Ingredients").font(FontFactory.sectionHeader12)) {
-            if viewModel.isRiff && !viewModel.addedIngredients.isEmpty {
-                SwipeToDeleteHint()
-                    .padding(.horizontal)
-                    .transition(.opacity)
-                    .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                            withAnimation {
-                                viewModel.isRiff = false
-                            }
-                        }
-                    }
-            }
-            List{
+            List {
                 ForEach(viewModel.addedIngredients, id: \.id) { ingredient in
                     Text("\(NSNumber(value: ingredient.value)) \(ingredient.unit.rawValue) \(ingredient.ingredientBase.name)")
                         .font(FontFactory.fontBody16)
@@ -40,6 +28,18 @@ struct AddedIngredientView: View {
                     }
                 }
             }
+            
+            if viewModel.isRiff && !viewModel.addedIngredients.isEmpty {
+                SwipeToDeleteHint()
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            withAnimation {
+                                viewModel.isRiff = false
+                            }
+                        }
+                    }
+            }
+            
             Button {
                 isShowingAddIngredients.toggle()
             } label: {
@@ -64,7 +64,7 @@ struct AddedIngredientView: View {
 }
 
 struct SwipeToDeleteHint: View {
-    @State private var offset: CGFloat = 0
+    @State private var offset: CGFloat = 30
     
     var body: some View {
         HStack {
@@ -75,12 +75,12 @@ struct SwipeToDeleteHint: View {
                 .foregroundColor(.white)
         }
         .padding(5)
-        .background(Color.brandSecondaryRed.opacity(0.3))
+        .background(.red)
         .cornerRadius(8)
         .offset(x: offset)
         .onAppear {
-            withAnimation(Animation.easeInOut(duration: 1.5).repeatForever(autoreverses: true)) {
-                offset = -30
+            withAnimation(Animation.easeInOut(duration: 0.75).repeatForever(autoreverses: true)) {
+                offset = 0
             }
         }
     }

@@ -11,7 +11,6 @@ import SwiftData
 
 struct RiffPickerView: View {
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.modelContext) private var modelContext
     @Bindable var viewModel: AddCocktailViewModel
     @FocusState private var isSearchFocused: Bool
     
@@ -21,7 +20,12 @@ struct RiffPickerView: View {
         NavigationStack {
             ZStack {
                 MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
-                VStack {
+                VStack(alignment: .leading) {
+                    Text("Select a cocktail to riff on")
+                        .font(FontFactory.regularFont(size: 18))
+                    Text("The spec will be imported into your new cocktail as a starting template")
+                        .font(FontFactory.regularFont(size: 16))
+                        .foregroundStyle(.secondary)
                     SearchBarForCreateCocktailView(isFocused: $isSearchFocused, viewModel: viewModel)
                     List {
                         ForEach(viewModel.filteredCocktails, id: \.self) { cocktail in
@@ -39,18 +43,22 @@ struct RiffPickerView: View {
                     }
                     .listStyle(.plain)
                 }
+                .padding(.top, 20)
+                .padding()
             }
             .navigationBarTitleDisplayMode(.inline)
-            .jamesHeaderWithNavigation(title: "Choose A Cocktail", dismiss: dismiss)
-        }
-        .onAppear {
-            viewModel.setAllCocktails(allCocktails)
-            isSearchFocused = true
-            
+            .jamesHeaderWithNavigation(title: "Cocktail Template", dismiss: dismiss)
+            .onAppear {
+                viewModel.setAllCocktails(allCocktails)
+                isSearchFocused = true
+            }
+            .onDisappear {
+                viewModel.resetSearch()
+            }
         }
     }
-    
 }
+
 
 struct SearchBarForCreateCocktailView: View {
     
