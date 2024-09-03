@@ -15,6 +15,7 @@ struct AddCustomIngredientView: View {
     @FocusState private var amountKeyboardFocused: Bool
     @Environment(\.dismiss) private var dismiss
     @Binding var isShowingAddIngredients: Bool
+    @Binding var isShowingCustomIngredientView: Bool 
     
     var body: some View {
         NavigationStack {
@@ -28,11 +29,12 @@ struct AddCustomIngredientView: View {
                         TextField("Ingredient Name", text: $viewModel.ingredientName)
                             .focused($keyboardFocused)
                             .font(FontFactory.formLabel18)
+                            .autocorrectionDisabled(true)
                     }
                     CategoryPickerView(viewModel: viewModel)
                     AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
                     IngredeientRecipeView(viewModel: viewModel)
-                    AddCustomIngredientToCocktailButton(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
+                    AddCustomIngredientToCocktailButton(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView)
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .jamesHeaderWithNavigation(title: "Custom Ingredient", dismiss: dismiss)
@@ -65,7 +67,7 @@ struct AddCustomIngredientView: View {
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
     
-    AddCustomIngredientView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true))
+    AddCustomIngredientView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true), isShowingCustomIngredientView: .constant(true))
         .modelContainer(preview.container)
     
 }
@@ -102,6 +104,7 @@ struct AddCustomIngredientToCocktailButton: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]
     @Binding var isShowingAddIngredients: Bool
+    @Binding var isShowingCustomIngredientView: Bool
     
     var body: some View {
         Button{
@@ -109,13 +112,14 @@ struct AddCustomIngredientToCocktailButton: View {
                 viewModel.prep = Prep(prepIngredientName: viewModel.ingredientName, prepRecipe: viewModel.prepIngredientRecipe)
                 viewModel.addedIngredients.append(Ingredient(ingredientBase: IngredientBase(name: viewModel.ingredientName,
                                                                                             category: viewModel.category,
-                                                                                            prep: viewModel.prep),
+                                                                                            prep: viewModel.prep, isCustom: true),
                                                              value: viewModel.ingredientAmount,
                                                              unit: viewModel.selectedMeasurementUnit))
                                                   
                 viewModel.clearIngredientData()
                 viewModel.isCustomIngredient = true
                 isShowingAddIngredients = false
+                isShowingCustomIngredientView = false
             } else {
                 viewModel.isShowingingredientAlert.toggle()
             }

@@ -6,6 +6,7 @@ struct AddCocktailView: View {
     @Bindable var viewModel = AddCocktailViewModel()
     @State private var isShowingAddIngredients: Bool = false
     @State private var addExistingGarnishViewIsActive: Bool = false
+    @State private var isShowingCustomIngredientView: Bool = false
     @Environment(\.modelContext) private var modelContext
     @Environment(\.currentTab) private var selectedTab
     @Environment(\.dismiss) private var dismiss
@@ -31,7 +32,7 @@ struct AddCocktailView: View {
                             .font(FontFactory.fontBody16)
                     }
                     
-                    AddedIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
+                    AddedIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView)
                     
                     Section(header: Text("Extras").font(FontFactory.sectionHeader12)) {
                         GlassPickerButton(viewModel: viewModel)
@@ -53,8 +54,6 @@ struct AddCocktailView: View {
                             .focused($yearKeyboardFocused)
                             .font(FontFactory.formLabel18)
                     }
-                    
-                    
                     Section(header: Text("Build steps (optional)").font(FontFactory.sectionHeader12)) {
                         AddBuildStepView(viewModel: viewModel)
                     }
@@ -100,6 +99,7 @@ struct AddCocktailView: View {
                             }
                             
                             if viewModel.isValid() {
+                                
                                 viewModel.addCocktailToModel(context: modelContext)
                                 selectedTab.wrappedValue = .customCocktailsView
                             } else {
@@ -135,14 +135,17 @@ struct AddCocktailView: View {
                         .navigationBarBackButtonHidden(true)
                 }
                 .fullScreenCover(isPresented: $isShowingAddIngredients) {
-                    AddExistingIngredientDetailView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
+                    AddExistingIngredientDetailView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView)
                         .navigationBarBackButtonHidden(true)
                 }
                 .fullScreenCover(isPresented: $isSelectingFromTemplate) {
                     RiffPickerView(viewModel: viewModel)
                         .navigationBarBackButtonHidden(true)
                 }
-                
+                .fullScreenCover(isPresented: $isShowingCustomIngredientView) {
+                    AddCustomIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView)
+                        .navigationBarBackButtonHidden(true)
+                }
                 if viewModel.isShowingAlert {
                     CustomAlertView(isActive: $viewModel.isShowingAlert,
                                     title: "Missing Information",

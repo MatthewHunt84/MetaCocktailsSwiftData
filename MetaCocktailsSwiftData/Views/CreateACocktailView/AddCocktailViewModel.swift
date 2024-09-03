@@ -13,6 +13,7 @@ import Combine
 @Observable final class AddCocktailViewModel {
 
     var isRiff: Bool = false
+    var isEdit: Bool = false
 
     //AddIngredientView
     var category: UmbrellaCategory = UmbrellaCategory.agaves
@@ -118,6 +119,7 @@ import Combine
         didChooseExistingIngredient = false
         didChooseExistingGarnish = false
         isCustomIngredient = false
+        isEdit = false 
     }
     
  
@@ -228,8 +230,10 @@ import Combine
                 existingBase.tags = ingredient.ingredientBase.tags
                 existingBase.prep = ingredient.ingredientBase.prep
                 ingredient.ingredientBase = existingBase
+                ingredient.ingredientBase.isCustom = false
             } else {
                 // If it doesn't exist, insert the new IngredientBase
+                ingredient.ingredientBase.isCustom = false
                 context.insert(ingredient.ingredientBase)
             }
         }
@@ -241,7 +245,14 @@ import Combine
         }
         clearData()
     }
-    
+    func populateCustomIngredient(ingredient: Ingredient) {
+        prep = ingredient.ingredientBase.prep
+        ingredientName = ingredient.ingredientBase.name
+        category = UmbrellaCategory(rawValue: ingredient.ingredientBase.umbrellaCategory) ?? UmbrellaCategory.otherAlcohol
+        prep = ingredient.ingredientBase.prep
+        ingredientAmount = ingredient.value
+        selectedMeasurementUnit = ingredient.unit
+    }
     func customIngredientIsValid(allIngredients: [IngredientBase]) -> Bool {
         
         return ingredientName != "" &&

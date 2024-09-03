@@ -12,6 +12,7 @@ struct AddedIngredientView: View {
    
     @Bindable var viewModel: AddCocktailViewModel
     @Binding var isShowingAddIngredients: Bool
+    @Binding var isShowingCustomIngredientView: Bool 
     @Environment(\.modelContext) private var modelContext
     
     var body: some View {
@@ -21,18 +22,54 @@ struct AddedIngredientView: View {
                 ForEach(viewModel.addedIngredients, id: \.id) { ingredient in
                     Text("\(NSNumber(value: ingredient.value)) \(ingredient.unit.rawValue) \(ingredient.ingredientBase.name)")
                         .font(FontFactory.fontBody16)
-                }
-                .onDelete { indexSet in
-                    withAnimation {
-                        viewModel.addedIngredients.remove(atOffsets: indexSet)
-                    }
+                        .swipeActions(edge: .trailing) {
+                            Button(role: .destructive) {
+                                withAnimation {
+                                    viewModel.removeIngredient(ingredient)
+                                }
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }
+                        }
+                        .swipeActions(edge: .leading) {
+                            if ingredient.ingredientBase.isCustom {
+                                Button(role: .destructive){
+                                    withAnimation {
+                                        viewModel.removeIngredient(ingredient)
+                                    }
+                                    viewModel.populateCustomIngredient(ingredient: ingredient)
+                                    isShowingCustomIngredientView.toggle()
+                                } label: {
+                                    Label("Edit", systemImage: "pencil")
+                                }
+                                .tint(.blueTint)
+                                
+                            } else {
+                                Button(role: .destructive){
+                                    withAnimation {
+                                        viewModel.removeIngredient(ingredient)
+                                    }
+                                    viewModel.ingredientName = ingredient.ingredientBase.name
+                                    viewModel.category = UmbrellaCategory(rawValue: ingredient.ingredientBase.umbrellaCategory) ?? UmbrellaCategory.agaves
+                                    viewModel.ingredientTags = ingredient.ingredientBase.tags ?? Tags()
+                                    viewModel.info = ingredient.ingredientBase.info
+                                    viewModel.dynamicallyChangeMeasurementUnit()
+                                    viewModel.didChooseExistingIngredient = true
+                                    viewModel.isEdit = true
+                                    isShowingAddIngredients.toggle()
+                                } label: {
+                                    Label("Edit", systemImage: "pencil")
+                                }
+                                .tint(.blueTint)
+                            }
+                        }
                 }
             }
             
             if viewModel.isRiff && !viewModel.addedIngredients.isEmpty {
                 SwipeToDeleteHint()
                     .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                             withAnimation {
                                 viewModel.isRiff = false
                             }
@@ -58,30 +95,61 @@ struct AddedIngredientView: View {
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
     
-    AddedIngredientView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true))
+    AddedIngredientView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true), isShowingCustomIngredientView: .constant(true))
         .modelContainer(preview.container)
     
 }
 
 struct SwipeToDeleteHint: View {
-    @State private var offset: CGFloat = 30
+    @State private var offsetDelete: CGFloat = 0
+    @State private var offsetEdit: CGFloat = 0
     
     var body: some View {
-        HStack {
-            Text("Swipe to delete")
-                .font(FontFactory.fontBody16)
-                .foregroundColor(.white)
-            Image(systemName: "arrowshape.left.fill")
-                .foregroundColor(.white)
-        }
-        .padding(5)
-        .background(.red)
-        .cornerRadius(8)
-        .offset(x: offset)
-        .onAppear {
-            withAnimation(Animation.easeInOut(duration: 0.75).repeatForever(autoreverses: true)) {
-                offset = 0
+        GeometryReader { geometry in
+            ZStack {
+                HStack {
+                    Spacer()
+                    HStack {
+                        Image(systemName: "arrowshape.left.fill")
+                            .foregroundColor(.white)
+                        Text("Swipe to delete")
+                            .font(FontFactory.fontBody16)
+                            .foregroundColor(.white)
+                    }
+                    .padding(5)
+                    .background(.red)
+                    .cornerRadius(8)
+                    .offset(x: geometry.size.width / 2 - offsetDelete)
+                }
+                HStack {
+                    HStack {
+                        Text("Swipe to Edit")
+                            .font(FontFactory.fontBody16)
+                            .foregroundColor(.white)
+                        Image(systemName: "arrowshape.right.fill")
+                            .foregroundColor(.white)
+                    }
+                    .padding(5)
+                    .background(.blueTint)
+                    .cornerRadius(8)
+                    .offset(x: -geometry.size.width / 2 + offsetEdit)
+                    Spacer()
+                }
             }
+            .onAppear {
+                withAnimation(Animation.easeInOut(duration: 1.75).repeatForever(autoreverses: true)) {
+                    offsetDelete = geometry.size.width / 2
+                    offsetEdit = geometry.size.width / 2
+                }
+            }
+        }
+    }
+}
+
+extension AddCocktailViewModel {
+    func removeIngredient(_ ingredient: Ingredient) {
+        if let index = addedIngredients.firstIndex(where: { $0.id == ingredient.id }) {
+            addedIngredients.remove(at: index)
         }
     }
 }
