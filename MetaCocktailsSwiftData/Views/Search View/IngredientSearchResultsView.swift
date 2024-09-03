@@ -11,55 +11,30 @@ import SwiftData
 struct IngredientSearchResultsView: View {
     @EnvironmentObject var viewModel: SearchViewModel
     @Environment(\.dismiss) var dismiss
-    
+    @State private var backgroundIsActive: Bool = false
     var body: some View {
         
-        VStack {
+        ZStack {
             
-            preferencesListView()
-            
-            IngredientSearchMatchedCocktailsView()
-        }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button(action: {
-                    viewModel.willLoadOnAppear = true
-                    dismiss()
-                }) {
-                    Image(systemName: "chevron.backward")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 9)
-                        .bold()
-                        .tint(.cyan)
+            MeshGradients.matchedCocktailBackground(backgroundIsActive: backgroundIsActive)
+                .ignoresSafeArea()
+                .onAppear{
+                    withAnimation(.easeInOut(duration: 10).repeatForever(autoreverses: true)) {
+                        backgroundIsActive.toggle()
+                    }
                 }
-            }
             
-            ToolbarItem(placement: .navigation) {
-                Text("Matched Cocktails")
-                    .font(.largeTitle).bold()
+            VStack {
+                
+                PreferencesListView()
+                    .padding(.top, 10)
+                    .padding(.bottom, 10)
+                IngredientSearchMatchedCocktailsView()
             }
-        }
-        .basicLoadingIndicator(isLoading: viewModel.isRunningComplexSearch)
-    }
-    
-    @ViewBuilder func SearchResultsTagView(_ tag: String, _ color: Color, _ icon: String) -> some View {
-        HStack(spacing: 10) {
-            Text(tag)
-                .font(.callout)
-                .fontWeight(.semibold)
-                .foregroundColor(.white)
-            
-            Image(systemName: icon)
-                .fontWeight(.heavy)
-                .foregroundColor(.white)
-        }
-        .frame(height: 35)
-        .foregroundStyle(.black)
-        .padding(.horizontal, 15)
-        .background {
-            Capsule()
-                .fill(color.gradient)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarTitleDisplayMode(.inline)
+            .jamesHeaderWithNavigation(title: "Matched Cocktails", dismiss: dismiss)
+            .systemLoadingIndicator(isLoading: viewModel.isRunningComplexSearch)
         }
     }
 }

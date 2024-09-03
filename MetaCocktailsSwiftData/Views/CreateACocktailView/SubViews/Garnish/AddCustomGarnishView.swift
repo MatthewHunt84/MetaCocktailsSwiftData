@@ -12,39 +12,36 @@ struct AddCustomGarnishView: View {
     @Bindable var viewModel: AddCocktailViewModel
     @FocusState private var keyboardFocused: Bool
     @FocusState private var amountKeyboardFocused: Bool
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
+        
         NavigationStack{
-            ZStack{
-                VStack {
-                    HStack{
-                        BackButton()
-                        Spacer()
+            
+            ZStack {
+                
+                MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
+                
+                Form {
+                    Section("Name") {
+                        TextField("Garnish Name", text: $viewModel.currentGarnishName)
+                            .focused($keyboardFocused)
                     }
-                    .padding(.horizontal)
-                    HStack {
-                        Text("Custom Garnish")
-                            .font(.largeTitle).bold()
-                        Spacer()
-                    }
-                    .padding(.horizontal)
-                    Form {
-                        Section("Name") {
-                            TextField("Garnish Name", text: $viewModel.currentGarnishName)
-                                .focused($keyboardFocused)
-                        }
-                        AddCustomGarnishToCocktailButton(viewModel: viewModel)
-                    }
-                    .toolbar {
-                        ToolbarItemGroup(placement: .keyboard) {
-                            KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
-                        }
-                    }
-                    .task {
-                        keyboardFocused = true
+                    AddCustomGarnishToCocktailButton(viewModel: viewModel)
+                }
+                .scrollContentBackground(.hidden)
+                .background(Color.clear)
+                .toolbar {
+                    ToolbarItemGroup(placement: .keyboard) {
+                        KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
                     }
                 }
+                .task {
+                    keyboardFocused = true
+                }
             }
+            .navigationBarTitleDisplayMode(.inline)
+            .jamesHeaderWithNavigation(title: "Add Custom Garnish", dismiss: dismiss)
         }
     }
 }
@@ -74,16 +71,14 @@ struct AddCustomGarnishToCocktailButton: View {
                     }
                 }
             }
-          
         } label: {
-            
             HStack {
                 Image(systemName: "plus.circle.fill")
-                    .font(.footnote).bold()
+                    .font(.headline)
                 Text("Add to spec")
-                    .font(.footnote).bold()
+                    .font(FontFactory.formLabel18)
             }
-            .tint(.brandPrimaryGold)
+            .tint(.blueTint)
             .padding()
         }
         .frame(width: 380, height: 40,  alignment: .center)

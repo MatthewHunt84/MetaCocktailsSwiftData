@@ -24,52 +24,48 @@ struct FloatingPromptView: View {
                     .onTapGesture {
                         close()
                     }
-                VStack {
-                    Text("Number of Cocktails:")
-                        .font(.title2)
-                        .bold()
-                        .padding()
-                        .foregroundStyle(.white)
-                        .multilineTextAlignment(.center)
-                    TextField("Amount", value: $viewModel.numberOfCocktailsText, formatter: viewModel.formatter)
-                        .padding(5)
-                        .autocorrectionDisabled()
-                        .background(Color(UIColor.systemGray5))
-                        .cornerRadius(10)
-                        .multilineTextAlignment(.center)
-                        .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                        .keyboardType(.numberPad)
-                        .focused($cocktailNumberFocus)
+            
                     
-                    Text("*You can modify this later.")
-                        .font(.body)
-                        .foregroundStyle(.white)
-                        .multilineTextAlignment(.center)
-                    
-                    NavigationLink {
-                        CBCLoadedCocktailView()
-                    } label: {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 20)
-                                .foregroundStyle(.brandPrimaryGold)
-                            Text("Batch")
-                                .font(.system(size: 16, weight: .bold))
-                                .foregroundStyle(.black)
-                                .padding()
+                    VStack {
+                        FontFactory.regularText("Number of Cocktails:", size: 24, isBold: true)
+                            .padding()
+                            .foregroundStyle(.white)
+                            .multilineTextAlignment(.center)
+                        TextField("Amount", value: $viewModel.numberOfCocktailsText, formatter: viewModel.formatter)
+                            .font(FontFactory.regularFont(size: 20))
+                            .padding(5)
+                            .autocorrectionDisabled()
+                            .background(Color(UIColor.systemGray5))
+                            .cornerRadius(10)
+                            .multilineTextAlignment(.center)
+                            .frame(width: 100, height: 40, alignment: .center)
+                            .keyboardType(.numberPad)
+                            .focused($cocktailNumberFocus)
+                        
+                        FontFactory.regularText("*You can modify this later.", size: 16)
+                            .multilineTextAlignment(.center)
+                        
+                        NavigationLink {
+                            CBCLoadedCocktailView()
+                        } label: {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .foregroundStyle(.blueTint)
+                                FontFactory.regularText("Batch", size: 16, isBold: true)
+                                    .padding()
                                 
-                        }
-                        .padding()
-                    }.simultaneousGesture(TapGesture().onEnded {
-                        viewModel.convertIngredientsToBatchCellData()
-                    })
-                    
-                 
+                            }
+                            .padding()
+                        }.simultaneousGesture(TapGesture().onEnded {
+                            viewModel.convertIngredientsToBatchCellData()
+                        })
+                   
             }
                 .fixedSize(horizontal: false, vertical: true)
                 .padding()
                 .background(.black)
+                .background(MeshGradients.meshRedRibbonBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
-                .shadow(color: .white, radius: 5)
                 .overlay {
                     VStack{
                         HStack {
@@ -80,7 +76,7 @@ struct FloatingPromptView: View {
                                 Image(systemName: "x.circle.fill")
                                     .font(.title2)
                                     .fontWeight(.medium)
-                                    .tint(.brandPrimaryGold)
+                                    .tint(.blueTint)
                             }
                             .tint(.white)
                         }

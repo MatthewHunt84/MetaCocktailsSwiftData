@@ -37,7 +37,6 @@ final class SearchViewModel: ObservableObject {
     var isLoading = true
     var preferredCount = 0
     var sections: [ResultViewSectionData] = []
-    var willLoadOnAppear = true
     
     var cocktailsAndMissingIngredientsForMinusOne: [CocktailsAndMissingIngredients] = []
     var cocktailsAndMissingIngredientsForMinusTwo: [CocktailsAndMissingIngredients] = []
@@ -112,6 +111,7 @@ final class SearchViewModel: ObservableObject {
     var minusOneMatchCocktails = [String]()
     var minusTwoMatchCocktails = [String]()
     var isRunningComplexSearch = false
+    var isGeneratingIngredientList = false
     var searchCompleted = false
     var searchType: SearchType = .simple
     var updatedUnwantedSelections = [String]()
@@ -119,6 +119,7 @@ final class SearchViewModel: ObservableObject {
     var isShowingResults: Bool = false
     
     func toggleIsShowingResults() {
+
         Task {
             await MainActor.run {
                 isShowingResults = true
@@ -130,6 +131,12 @@ final class SearchViewModel: ObservableObject {
     func toggleLoading() async {
         await MainActor.run {
             isRunningComplexSearch.toggle()
+        }
+    }
+    
+    func toggleGeneratingIngredients() async {
+        await MainActor.run {
+            isGeneratingIngredientList.toggle()
         }
     }
     
@@ -287,28 +294,6 @@ final class SearchViewModel: ObservableObject {
         preferredSelections = []
         sections.removeAll()
         preferredCount = 0
-    }
-    
-    
-    @ViewBuilder
-    func viewModelTagView(_ tag: String, _ color: Color, _ icon: String) -> some View {
-        HStack(spacing: 10) {
-            Text(tag)
-                .font(.callout)
-                .fontWeight(.semibold)
-                .foregroundColor(.white)
-            
-            Image(systemName: icon)
-                .fontWeight(.heavy)
-                .foregroundColor(.white)
-        }
-        .frame(height: 35)
-        .foregroundStyle(.black)
-        .padding(.horizontal, 15)
-        .background {
-            Capsule()
-                .fill(color.gradient)
-        }
     }
     
     // TextField filtering jazz

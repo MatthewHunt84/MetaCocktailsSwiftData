@@ -13,40 +13,39 @@ struct AddCustomIngredientView: View {
     @Bindable var viewModel: AddCocktailViewModel
     @FocusState private var keyboardFocused: Bool
     @FocusState private var amountKeyboardFocused: Bool
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        NavigationStack{
-            ZStack{
-                VStack {
-                    HStack{
-                        BackButton()
-                        Spacer()
+        NavigationStack {
+            
+            ZStack {
+                
+                MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
+                
+                Form {
+                    Section(header: Text("Name").font(FontFactory.sectionHeader12)) {
+                        TextField("Ingredient Name", text: $viewModel.ingredientName)
+                            .focused($keyboardFocused)
+                            .font(FontFactory.formLabel18)
                     }
-                    .padding(.horizontal)
-                    HStack {
-                        Text("Custom Ingredient")
-                            .font(.largeTitle).bold()
-                        Spacer()
+                    CategoryPickerView(viewModel: viewModel)
+                    AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
+                    IngredeientRecipeView(viewModel: viewModel)
+                    AddCustomIngredientToCocktailButton(viewModel: viewModel)
+                }
+                .navigationBarTitleDisplayMode(.inline)
+                .jamesHeaderWithNavigation(title: "Custom Ingredient", dismiss: dismiss)
+                .scrollContentBackground(.hidden)
+                .background(Color.clear)
+                .toolbar {
+                    ToolbarItemGroup(placement: .keyboard) {
+                        KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
+                            .background(Color.clear)
                     }
-                    .padding(.horizontal)
-                    Form {
-                        Section("Name") {
-                            TextField("Ingredient Name", text: $viewModel.ingredientName)
-                                .focused($keyboardFocused)
-                        }
-                        CategoryPickerView(viewModel: viewModel)
-                        AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
-                        IngredeientRecipeView(viewModel: viewModel)
-                        AddCustomIngredientToCocktailButton(viewModel: viewModel)
-                    }
-                    .toolbar {
-                        ToolbarItemGroup(placement: .keyboard) {
-                            KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
-                        }
-                    }
-                    .task {
-                        keyboardFocused = true
-                    }
+                    
+                }
+                .task {
+                    keyboardFocused = true
                 }
                 
                 if viewModel.isShowingingredientAlert {
@@ -72,7 +71,7 @@ struct AddCustomIngredientView: View {
 struct CategoryPickerView: View {
     @Bindable var viewModel: AddCocktailViewModel
     var body: some View {
-        Section("Category") {
+        Section(header: Text("Category").font(FontFactory.sectionHeader12)) {
             HStack{
                 Menu {
                     ForEach(UmbrellaCategory.allCases, id: \.self) { category in
@@ -85,6 +84,7 @@ struct CategoryPickerView: View {
                 } label: {
                     HStack{
                         Text(viewModel.category.rawValue)
+                            .font(FontFactory.formLabel18)
                         Image(systemName: "chevron.down")
                             .foregroundStyle(.gray)
                         Spacer()
@@ -122,11 +122,11 @@ struct AddCustomIngredientToCocktailButton: View {
             
             HStack {
                 Image(systemName: "plus.circle.fill")
-                    .font(.footnote).bold()
+                    .font(.headline).bold()
                 Text("Add to spec")
-                    .font(.footnote).bold()
+                    .font(FontFactory.formLabel18)
             }
-            .tint(.brandPrimaryGold)
+            .tint(.blueTint)
             .padding()
         }
         .frame(width: 380, height: 40,  alignment: .center)

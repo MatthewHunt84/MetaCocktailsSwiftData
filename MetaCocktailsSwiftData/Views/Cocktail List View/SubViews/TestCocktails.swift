@@ -18,7 +18,7 @@ final class TestCocktails {
         ],
         tags: Tags(flavors: [], profiles: [], styles: [], booze: [], nA: []),
         collection: .custom,
-        isCustom: true
+        isCustomCocktail: true
     )
     
     static var textCocktail25 = Cocktail(
@@ -30,7 +30,7 @@ final class TestCocktails {
         ],
         tags: Tags(flavors: [], profiles: [], styles: [], booze: [], nA: []),
         collection: .custom,
-        isCustom: true
+        isCustomCocktail: true
     )
     
     static var textCocktail1 = Cocktail(cocktailName: "Reading Rainbow",
@@ -40,12 +40,12 @@ final class TestCocktails {
                                             Ingredient(ingredientBase: IngredientBase(name: "Test ingredient # 23", category: .agaves, prep: nil), value: 2, unit: .fluidOunces)
                                           ] ,
                                           tags: Tags(flavors: [], profiles: [], styles: [], booze: [], nA: []),
-                                          collection: .custom, isCustom: true)
+                                          collection: .custom, isCustomCocktail: true)
       
       static var textCocktail2 = Cocktail(cocktailName: "I Can see colors",
                                           glasswareType: Glassware.coupe,
                                           spec: [Ingredient(ingredientBase: IngredientBase(name: "Test ingredient # 44", category: .amari, prep: nil), value: 1.5, unit: .barSpoon),
                                                  Ingredient(ingredientBase: IngredientBase(name: "Test ingredient # 36", category: .agaves, prep: nil), value: 2, unit: .fluidOunces)] ,
                                           tags: Tags(flavors: [], profiles: [], styles: [], booze: [], nA: []),
-                                          collection: .custom, isCustom: true)
+                                          collection: .custom, isCustomCocktail: true)
 }

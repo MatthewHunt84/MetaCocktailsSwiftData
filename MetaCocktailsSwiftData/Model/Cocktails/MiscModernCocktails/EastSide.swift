@@ -20,7 +20,6 @@ var eastSide = Cocktail(cocktailName: "East Side",
                         buildOrder: eastSideBuild,
                         tags: eastSideTags,
                         variation: .eastSide,
-                        collection: .originals,
                         titleCocktail: true)
 
 let eastSideSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.fruit(.cucumberSlices), value: 3, unit: .muddled),

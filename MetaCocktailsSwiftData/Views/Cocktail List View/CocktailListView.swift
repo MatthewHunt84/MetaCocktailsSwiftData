@@ -9,29 +9,23 @@ import SwiftUI
 import SwiftData
 
 struct CocktailListView: View {
+
     @Bindable var viewModel = CocktailListViewModel()
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
 
     @FocusState private var searchBarIsFocused: Bool
-    @State private var showingModal = false
 
     var body: some View {
         NavigationStack {
+
             ZStack {
+                
+                MeshGradients.meshBlueTwoRibbonBackground.ignoresSafeArea()
+                MeshGradients.meshTealRibbonBackground.ignoresSafeArea()
+                
                 VStack {
-                    HStack {
-                        Text("Cocktails")
-                            .font(.largeTitle).bold()
-                            .padding(EdgeInsets(top: 0, leading: 12, bottom: -7, trailing: 0))
-                        Button {
-                            showingModal = true
-                        } label: {
-                            Image(systemName: "questionmark.circle.fill")
-                                .tint(.blueTint)
-                        }
-                        Spacer()
-                        LoadSampleCocktailsButton()
-                    }
+                    ListSearchBarView(text: $viewModel.searchText, isFocused: $searchBarIsFocused, viewModel: viewModel)
+                        .padding()
                     GeometryReader { listGeo in
                         ScrollView {
                             ScrollViewReader { value in
@@ -52,24 +46,25 @@ struct CocktailListView: View {
                                         .offset(x: searchBarIsFocused ? listGeo.size.width * 0.1 : -10, y: 5)
                                         .opacity(searchBarIsFocused ? 0 : 1)
                                         .animation(.easeInOut(duration: 0.8), value: searchBarIsFocused)
+
                                 }
                             }
                         }
                     }
-                    ListSearchBarView(text: $viewModel.searchText, isFocused: $searchBarIsFocused, viewModel: viewModel)
-                        .padding()
                 }
                 .onAppear {
                     viewModel.setAllCocktails(cocktails)
                 }
             }
-        }
-        .fullScreenCover(isPresented: $showingModal) {
-            HistoricalCocktailModalView(
-                isPresented: $showingModal,
-                alertContent: HistoricalCocktailAlert.standard
-            ) {
+            
+            .navigationBarTitleDisplayMode(.inline)
+            .jamesHeader("Cocktail List")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    LoadSampleCocktailsButton()
+                }
             }
+            
         }
     }
 }
@@ -101,16 +96,10 @@ struct AlphabetNavigationView: View {
                         value.scrollTo(alphabet[i], anchor: .top)
                     }
                 }, label: {
-                    if i == 0 {
-                        Image(systemName: alphabet[i])
-                            .resizable()
-                            .frame(width: 15, height: 15, alignment: .center)
-                            .tint(.white)
-                    } else {
-                        Text(alphabet[i])
-                            .font(.headline).bold()
-                            .frame(width: 17, height: 13, alignment: .center)
-                    }
+                    Text(alphabet[i])
+                        .font(FontFactory.regularFont(size: 15))
+                        .frame(width: 17, height: 13, alignment: .center)
+                    
                 })
                 .buttonStyle(ScaleButtonStyle())
             }
@@ -119,6 +108,7 @@ struct AlphabetNavigationView: View {
 }
 
 struct ListSearchBarView: View {
+    
     @Binding var text: String
     @FocusState.Binding var isFocused: Bool
     @Bindable var viewModel: CocktailListViewModel
@@ -126,8 +116,9 @@ struct ListSearchBarView: View {
     var body: some View {
         HStack {
             TextField("Search cocktails", text: $text)
+                .SearchBarTextField()
                 .focused($isFocused)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .animation(.easeInOut(duration: 0.2), value: isFocused)
                 .overlay(alignment: .trailing) {
                     if !text.isEmpty {
                         Button {
@@ -136,7 +127,7 @@ struct ListSearchBarView: View {
                             Image(systemName: "x.circle.fill")
                                 .tint(.blueTint)
                         }
-                        .padding(.horizontal, 10)
+                        .padding(.horizontal, 20)
                     }
                 }
                 .onChange(of: text) { _, newValue in
@@ -157,7 +148,6 @@ struct ListSearchBarView: View {
             }
         }
         .animation(.default, value: isFocused)
-        .padding(.horizontal)
     }
 }
 

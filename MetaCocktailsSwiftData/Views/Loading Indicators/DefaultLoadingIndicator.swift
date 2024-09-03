@@ -1,26 +1,20 @@
 //
-//  BasicLoadingIndicator.swift
+//  DefaultLoadingIndicator.swift
 //  MetaCocktailsSwiftData
 //
-//  Created by Matt Hunt on 8/13/24.
+//  Created by Matt Hunt on 8/27/24.
 //
 
 import SwiftUI
 
-extension View {
-    func basicLoadingIndicator(isLoading: Bool) -> some View {
-        self.modifier(LoadingOverlayModifier(isLoading: isLoading))
-    }
-}
-
-struct LoadingOverlayModifier: ViewModifier {
+struct SystemLoadingOverlayModifier: ViewModifier {
     let isLoading: Bool
     
     func body(content: Content) -> some View {
         content
             .overlay {
                 if isLoading {
-                    LoadingAnimation2()
+                    systemLoadingIndicatorView()
                         .frame(width: 75, height: 75)
                         .transition(.opacity.animation(.easeOut(duration: 0.3)))
                 }
@@ -29,11 +23,17 @@ struct LoadingOverlayModifier: ViewModifier {
     }
 }
 
-struct LoadingAnimation2: View {
+struct systemLoadingIndicatorView: View {
     var body: some View {
         ProgressView()
             .progressViewStyle(CircularProgressViewStyle())
             .scaleEffect(1.5)
             .tint(.white)
+    }
+}
+
+extension View {
+    func systemLoadingIndicator(isLoading: Bool) -> some View {
+        self.modifier(SystemLoadingOverlayModifier(isLoading: isLoading))
     }
 }

@@ -15,39 +15,32 @@ struct AddExistingIngredientDetailView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     
-   
-    
-
     var body: some View {
-        NavigationStack{
+        
+        NavigationStack {
+            
             ZStack{
-                VStack {
-                    HStack{
-                        BackButton()
-                        Spacer()
+                
+                MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
+                
+                Form {
+                    AddIngredientSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
+                    AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
+                    AddExistingIngredientToCocktailButton(viewModel: viewModel)
+                    
+                }
+                .scrollContentBackground(.hidden)
+                .background(Color.clear)
+                .navigationBarTitleDisplayMode(.inline)
+                .jamesHeaderWithNavigation(title: "Add Ingredient", dismiss: dismiss)
+                .toolbar {
+                    ToolbarItem(placement: .bottomBar) { CreateNewIngredientButton(viewModel: viewModel) }
+                    ToolbarItemGroup(placement: .keyboard) {
+                        KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
                     }
-                    .padding(.horizontal)
-                    HStack {
-                        Text("Add Ingredient")
-                            .font(.largeTitle).bold()
-                        Spacer()
-                    }
-                    .padding(.horizontal)
-                    Form {
-                        AddIngredientSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
-                        AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
-                        AddExistingIngredientToCocktailButton(viewModel: viewModel)
-                        
-                    }
-                    .toolbar {
-                        ToolbarItem(placement: .bottomBar) { CreateNewIngredientButton(viewModel: viewModel) }
-                        ToolbarItemGroup(placement: .keyboard) {
-                            KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
-                        }
-                    }
-                    .task {
-                        keyboardFocused = true
-                    }
+                }
+                .task {
+                    keyboardFocused = true
                 }
                 
                 if viewModel.isShowingingredientAlert {
@@ -75,22 +68,22 @@ struct AddIngredientSearchView: View {
     
     @Bindable var viewModel: AddCocktailViewModel
     @FocusState var keyboardFocused: Bool
-
+    
     @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]
     @State var filteredIngredients2a: [IngredientBase] = []
     
     var body: some View {
-        Section("Name") {
+        Section(header:  Text("Name").font(FontFactory.sectionHeader12)) {
             VStack{
                 TextField("Ingredient Name", text: $viewModel.ingredientName)
                     .focused($keyboardFocused)
+                    .font(FontFactory.formLabel18)
                     .onChange(of: viewModel.ingredientName, initial: true) { old, new in
                         viewModel.ingredientName = new
                         filteredIngredients2a = viewModel.matchAllIngredients2(ingredients: ingredients)
-                    
+                        
                     }
             }
-            
             if keyboardFocused {
                 List {
                     ForEach(filteredIngredients2a, id: \.name) { ingredient in
@@ -103,23 +96,19 @@ struct AddIngredientSearchView: View {
                             viewModel.dynamicallyChangeMeasurementUnit()
                             keyboardFocused = false
                             viewModel.didChooseExistingIngredient = true
-                             
                         } label: {
                             Text(ingredient.name)
                         }
                         .tint(.white)
-                        
-                        
                     }
                     .listStyle(.plain)
-                    .listRowBackground(Color.black)
-                    
+                    .listRowBackground(Color.clear)
                 }
                 .scrollContentBackground(.hidden)
             } else {
                 EmptyView()
             }
-
+            
         }
     }
 }
@@ -127,13 +116,15 @@ struct AddMeasurementView: View {
     @Bindable var viewModel: AddCocktailViewModel
     @FocusState var amountKeyboardFocused: Bool
     var body: some View {
-        Section("Amount") {
+        Section(header: Text("Amount").font(FontFactory.sectionHeader12)) {
             HStack {
-                TextField("Amount", value: $viewModel.ingredientAmount, formatter: viewModel.formatter)
+                TextField("Ingredient Volume", value: $viewModel.ingredientAmount, formatter: viewModel.formatter)
                     .keyboardType(.decimalPad)
                     .focused($amountKeyboardFocused)
-                    
-                    
+                    .font(FontFactory.formLabel18)
+                
+                
+                
                 Menu {
                     ForEach(viewModel.dynamicallyChangeMeasurementOptionsBasedOnChosenCategory(), id: \.self) { unit in
                         
@@ -142,6 +133,7 @@ struct AddMeasurementView: View {
                         } label: {
                             HStack{
                                 Text(unit.rawValue)
+                                    .font(FontFactory.formLabel18)
                             }
                         }
                     }
@@ -149,6 +141,7 @@ struct AddMeasurementView: View {
                     HStack{
                         Text(viewModel.selectedMeasurementUnit.rawValue)
                             .tint(.white)
+                            .font(FontFactory.formLabel18)
                         Image(systemName: "chevron.down")
                             .foregroundStyle(.gray)
                     }
@@ -169,7 +162,7 @@ struct AddExistingIngredientToCocktailButton: View {
                                                                            prep: viewModel.prep),
                                             value: viewModel.ingredientAmount,
                                             unit: viewModel.selectedMeasurementUnit)
-               
+                
                 viewModel.addedIngredients.append(ingredient)
                 
                 viewModel.clearIngredientData()
@@ -185,9 +178,9 @@ struct AddExistingIngredientToCocktailButton: View {
                 Image(systemName: "plus.circle.fill")
                     .font(.footnote).bold()
                 Text("Add to spec")
-                    .font(.footnote).bold()
+                    .font(FontFactory.specMeasurement16B)
             }
-            .tint(.brandPrimaryGold)
+            .tint(.blueTint)
             .padding()
         }
         .frame(width: 380, height: 40,  alignment: .center)
@@ -204,10 +197,11 @@ struct CreateNewIngredientButton: View {
                 .navigationBarBackButtonHidden(true)
         } label: {
             HStack{
-                Text("Create Custom Ingredient").font(.headline)
+                Text("Create Custom Ingredient")
+                    .font(FontFactory.bottomToolbarButton20)
                 Image(systemName: "plus")
             }
-            .foregroundStyle(.brandPrimaryGold)
+            .foregroundStyle(.blueTint)
         }
         
         
@@ -220,11 +214,14 @@ struct KeyboardDoneButton: View {
     var body: some View {
         HStack{
             Spacer()
-            Button("Done") {
+            Button{
                 keyboardFocused = false
                 amountKeyboardFocused = false
+            } label: {
+                Text("Done")
+                    .font(FontFactory.fontBody16)
             }
-            .tint(Color.brandPrimaryGold)
+            .tint(.blueTint)
         }
     }
 }

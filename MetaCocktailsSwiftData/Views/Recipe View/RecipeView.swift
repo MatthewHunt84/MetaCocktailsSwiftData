@@ -9,33 +9,33 @@ import SwiftUI
 
 struct RecipeView: View {
     @Bindable var viewModel: RecipeViewModel
-    //@State private var prepItems: [Ingredient] = []
     @Namespace var topID
     
     var body: some View {
         
-        GeometryReader { geo in
+        ZStack {
             
-            ScrollViewReader { scrollReader in
+            MeshGradients.recipeMeshBackground
+                .ignoresSafeArea()
+            
+            GeometryReader { geo in
                 
-                ScrollView {
+                ScrollViewReader { scrollReader in
                     
-                    RecipeFlipCardView(viewModel: viewModel, geo: geo, topID: topID, scrollReader: scrollReader)
-                }
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .principal) {
-                        RecipeTitleView(cocktail: viewModel.cocktail)
+                    ScrollView {
+                        
+                        RecipeFlipCardView(viewModel: viewModel, geo: geo, topID: topID, scrollReader: scrollReader)
                     }
-                    ToolbarItem(placement: .topBarLeading) {
-                        BackButton()
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .principal) {
+                            RecipeTitleView(cocktail: viewModel.cocktail)
+                        }
+                        ToolbarItem(placement: .topBarLeading) {
+                            BackButton()
+                        }
                     }
                 }
-//               
-//                .task {
-//                    prepItems = viewModel.findPrepItems()
-//                    
-//                }
             }
         }
     }
@@ -52,7 +52,7 @@ struct BuildOrderView: View {
             HStack(alignment: .center) {
                 Spacer()
                 Text("Build Order")
-                    .font(Layout.header)
+                    .font(FontFactory.recipeCardHeader18B)
                 Spacer()
             }
             .padding(.bottom, 10)
@@ -99,7 +99,7 @@ struct IngredientRecipeView: View {
             HStack(alignment: .center) {
                 Spacer()
                 Text("\(prep.prepIngredientName) recipe:")
-                    .font(Layout.header)
+                    .font(FontFactory.recipeCardHeader18B)
                 Spacer()
             }
             .padding(.bottom, 10)
@@ -200,7 +200,8 @@ private struct BorderTop: View {
                 Image(.backgroundTop)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(.darkGrey)
+                    .foregroundStyle(.clear)
+                
                 
                 Image(.borderTop)
                     .resizable()
@@ -224,15 +225,17 @@ private struct BorderSides: View {
                 ZStack {
                     Image(.backgroundSides)
                         .resizable()
-                        .foregroundStyle(.darkGrey)
+                        .foregroundStyle(.clear)
                         .frame(height: geo.size.height * 0.8)
                     
                     Image(.borderSides)
                         .resizable()
                         .foregroundStyle(color)
                         .background(.clear)
+                    
                         .frame(height: geo.size.height * 0.8)
                 }
+                
                 
                 Spacer()
             }
@@ -280,7 +283,7 @@ public struct CustomButtonStyle: ButtonStyle {
         configuration.label
             .fontWeight(.medium)
             .padding(.vertical, 12)
-            .foregroundStyle(.darkGrey)
+            .foregroundStyle(.white)
             .frame(maxWidth: .infinity)
             .background(.tint, in: .rect(cornerRadius: 14, style: .continuous))
             .opacity(configuration.isPressed ? 0.4 : 1.0)
@@ -291,13 +294,6 @@ extension ButtonStyle where Self == CustomButtonStyle {
     static var custom: CustomButtonStyle { .init() }
 }
 
-private struct Layout {
-    static var header: Font = .system(size: 18, weight: .bold)
-    static var specMeasurement: Font = .system(size: 16, weight: .bold)
-    static var body: Font = .system(size: 16, weight: .regular)
-    static var buildBodySmall: Font = .system(size: 10, weight: .light)
-    static var buildStepSmall: Font = .system(size: 10, weight: .bold)
-}
 
 struct RecipeTitleView: View {
     var cocktail: Cocktail
@@ -305,9 +301,7 @@ struct RecipeTitleView: View {
         if cocktail.collection?.collectionLogo != nil {
             RecipeTitleViewWithCollection(cocktail: cocktail)
         } else {
-            Text(cocktail.cocktailName)
-                .fontDesign(.serif)
-                .font(.largeTitle)
+            FontFactory.regularText(cocktail.cocktailName, size: 30)
                 .lineLimit(1)
                 .minimumScaleFactor(0.4)
         }
@@ -318,9 +312,7 @@ struct RecipeTitleViewWithCollection: View {
     var cocktail: Cocktail
     var body: some View {
         HStack {
-            Text(cocktail.cocktailName.replacingOccurrences(of: (" (W&G Version)"), with: ""))
-                .fontDesign(.serif)
-                .font(.largeTitle)
+            FontFactory.regularText(cocktail.cocktailName.replacingOccurrences(of: (" (W&G Version)"), with: ""), size: 30)
                 .lineLimit(1)
                 .minimumScaleFactor(0.4)
             if let logo = cocktail.collection?.collectionLogo {
@@ -341,7 +333,7 @@ struct GlasswareView: View {
         HStack(alignment: .center) {
             VStack(alignment: .leading, spacing: 5) {
                 Text("Glassware:")
-                    .font(Layout.header)
+                    .font(FontFactory.recipeCardHeader18B)
                 Text(cocktail.glasswareType.rawValue)
                     .dynamicTypeSize(.large)
                     .multilineTextAlignment(.leading)
@@ -370,7 +362,7 @@ struct SpecIngredientView: View {
         VStack{
             HStack {
                 Text("\(number) \(ingredient.unit.rawValue)")
-                    .font(Layout.specMeasurement)
+                    .font(FontFactory.specMeasurement16B)
                 if ingredient.ingredientBase.prep != nil {
                     Button{
                         viewModel.isShowingIngredientRecipe = true
@@ -381,17 +373,19 @@ struct SpecIngredientView: View {
                         }
                     } label: {
                         Text(ingredient.ingredientBase.name)
-                            .font(Layout.body)
-                            .tint(.cyan)
+                            .font(FontFactory.fontBody16)
+                            .tint(.blueTint)
                     }
                     .disabled(viewModel.isFlipped)
                 } else {
                     Text("\(ingredient.ingredientBase.name)")
-                        .font(Layout.body)
+
+                        .font(FontFactory.fontBody16)
+
                 }
                 if ingredient.ingredientBase.info != nil {
                     Image(systemName: "questionmark.circle.fill")
-                        .foregroundStyle(.blue)
+                        .foregroundStyle(.blueTint)
                         .onTapGesture {
                             withAnimation(.easeInOut(duration: 0.25)) {
                                 isShowingIngredientInfo.toggle()
@@ -416,6 +410,7 @@ struct SpecView: View {
     @Bindable var viewModel: RecipeViewModel
     @State private var isShowingSheet = false
     @State private var isShowingBatchView = false
+    @State private var showingModal = false
     @Binding var isShowingCocktailNotes: Bool
     @Binding var isShowingPrompt: Bool
     let geo: GeometryProxy
@@ -430,18 +425,24 @@ struct SpecView: View {
                     
                     HStack {
                         Text("Cocktail Spec:")
-                            .font(Layout.header)
+                            .font(FontFactory.recipeCardHeader18B)
+                        if cocktail.collection == .originals {
+                            Button {
+                                showingModal = true
+                            } label: {
+                                Image(systemName: "bookmark.circle.fill")
+                                    .tint(.blueTint)
+                            }
+                        }
+
                         if cocktail.notes != nil {
                             Button {
                                 isShowingCocktailNotes.toggle()
                             } label: {
                                 Image(systemName: "questionmark.circle.fill")
-                                    .foregroundStyle(.blue)
-                                
+                                    .foregroundStyle(.blueTint)
                             }
                         }
-                        
-                        
                         Spacer()
                         
                         Button {
@@ -451,25 +452,19 @@ struct SpecView: View {
                             Image(systemName: "chevron.forward")
                         }
                         .foregroundStyle(.blueTint)
-                        .font(Layout.header)
-//                        .sheet(isPresented: $isShowingSheet, content: {
-//                            NumberOfCocktailsModal(cocktail: cocktail, isShowingBatchView: $isShowingBatchView, isPresented: $isShowingSheet)
-//                                .presentationDetents([.medium, .large])
-//                                .presentationBackgroundInteraction(.automatic)
-//                                .presentationBackground(.thinMaterial)
-//                        })
-                        
-                       
-                   
-//                        .fullScreenCover(isPresented: $isShowingBatchView) {
-//                            CBCLoadedCocktailView(cocktail: cocktail)
-//                        }
-                        
+                        .font(FontFactory.recipeCardHeader18B)
                     }
                     .padding(.bottom, 5)
                     
                     ForEach(orderSpec(), id: \.id) { ingredient in
                         SpecIngredientView(ingredient: ingredient, viewModel: viewModel, geo: geo, topID: topID, scrollReader: scrollReader)
+                    }
+                }
+                .fullScreenCover(isPresented: $showingModal) {
+                    HistoricalCocktailModalView(
+                        isPresented: $showingModal,
+                        alertContent: HistoricalCocktailAlert.standard
+                    ) {
                     }
                 }
             }
@@ -509,9 +504,9 @@ private struct MethodView: View {
         
         VStack(alignment: .leading, spacing: 5) {
             Text("Method")
-                .font(Layout.header)
+                .font(FontFactory.recipeCardHeader18B)
             Text(methodText)
-                .font(Layout.body)
+                .font(FontFactory.fontBody16)
         }
     }
 }
@@ -522,16 +517,16 @@ private struct IceView: View {
         if let ice = cocktail.ice?.rawValue {
             VStack(alignment: .leading, spacing: 5) {
                 Text("Ice")
-                    .font(Layout.header)
+                    .font(FontFactory.recipeCardHeader18B)
                 Text(ice)
-                    .font(Layout.body)
+                    .font(FontFactory.fontBody16)
             }
         } else {
             VStack(alignment: .leading, spacing: 5) {
                 Text("Ice")
-                    .font(Layout.header)
+                    .font(FontFactory.recipeCardHeader18B)
                 Text("None")
-                    .font(Layout.body)
+                    .font(FontFactory.fontBody16)
             }
         }
     }
@@ -562,7 +557,7 @@ struct GarnishView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             Text("Garnish")
-                .font(Layout.header)
+                .font(FontFactory.recipeCardHeader18B)
             
             if cocktail.garnish != []{
                 
@@ -580,13 +575,13 @@ struct GarnishView: View {
                 } else {
                     ForEach(cocktail.garnish, id: \.name) { garnish in
                         Text("\(garnish.name)")
-                            .font(Layout.body)
+                            .font(FontFactory.fontBody16)
                             .multilineTextAlignment(.leading)
                     }
                 }
             } else {
                 Text("None")
-                    .font(Layout.body)
+                    .font(FontFactory.fontBody16)
             }
         }
     }
@@ -594,6 +589,7 @@ struct GarnishView: View {
 
 struct AuthorView: View {
     var author = ""
+    
     var place = ""
     var year = ""
     let cocktail: Cocktail
@@ -618,19 +614,17 @@ struct AuthorView: View {
     var body: some View {
         VStack {
             Text("Author:")
-                .font(Layout.header)
+                .font(FontFactory.recipeCardHeader18B)
             if author != "" {
                 Text(author)
-                    .font(Layout.body)
+                    .font(FontFactory.fontBody16)
             }
             if place != "" {
-                    Text(place)
-                        .dynamicTypeSize(.large)
+                FontFactory.regularText(place, size: 16)
                         .multilineTextAlignment(.center)
                 }
                 if year != "" {
-                    Text("\(year)")
-                        .dynamicTypeSize(.large)
+                    FontFactory.regularText(year, size: 16)
                 }
         }
         .fixedSize(horizontal: false, vertical: true)

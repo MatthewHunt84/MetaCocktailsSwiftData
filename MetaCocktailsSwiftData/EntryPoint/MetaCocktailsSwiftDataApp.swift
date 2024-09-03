@@ -19,6 +19,7 @@ struct MetaCocktailsSwiftDataApp: App {
                 .preferredColorScheme(.dark)
                 .modelContainer(CocktailContainer.preload(&shouldPreload))
                 .environmentObject(CBCViewModel())
+                .environmentObject(CocktailListViewModel())
                 .environmentObject(appState)
         }
     }
@@ -41,7 +42,9 @@ class AppState: ObservableObject {
         
         Task {
             try? await Task.sleep(for: .seconds(remainingTime))
-            showMainContent = true
+            await MainActor.run {
+                showMainContent = true
+            }
         }
     }
 }
@@ -55,14 +58,18 @@ struct ContentView: View {
             TabBarView()
                 .opacity(animationTrigger ? 1 : 0)
             
-            LoadingView()
+            FirstLaunchLoadingView()
                 .opacity(animationTrigger ? 0 : 1)
                 .scaleEffect(animationTrigger ? 2.0 : 1)
         }
         .onChange(of: appState.showMainContent) { _, newValue in
-            if newValue {
-                withAnimation(.easeInOut(duration: 0.5)) {
-                    animationTrigger = true
+            Task {
+                if newValue {
+                    await MainActor.run {
+                        withAnimation(.easeInOut(duration: 0.5)) {
+                            animationTrigger = true
+                        }
+                    }
                 }
             }
         }

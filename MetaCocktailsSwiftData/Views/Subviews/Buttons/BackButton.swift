@@ -20,10 +20,9 @@ struct BackButton: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 9)
-                        .bold()
-                        .tint(.cyan)
-                    Text("Back")
-                        .tint(.cyan)
+                        .font(.system(size: 22))
+                        .tint(.blueTint)
+                        .padding(.horizontal, 15)
                 }
             }
         }

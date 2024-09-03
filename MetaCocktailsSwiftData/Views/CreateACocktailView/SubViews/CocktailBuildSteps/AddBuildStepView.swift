@@ -18,11 +18,13 @@ struct AddBuildStepView: View {
                 HStack {
                     Text("Add build step")
                         .foregroundStyle(.white)
+                        .font(FontFactory.formLabel18)
+
                     
                     Spacer()
                     
                     Image(systemName: "plus.circle.fill")
-                        .foregroundStyle(.brandPrimaryGold)
+                        .foregroundStyle(.blueTint)
                 }
             }
             .sheet(isPresented: $isShowingBuildSheet, content: {

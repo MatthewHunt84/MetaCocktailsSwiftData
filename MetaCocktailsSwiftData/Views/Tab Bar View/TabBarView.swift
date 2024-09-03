@@ -21,11 +21,8 @@ struct TabBarView: View {
             }
         }
         .environment(\.currentTab, $selectedTab)
-        .environmentObject(SearchCriteriaViewModel())
     }
 }
-
-
 
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)

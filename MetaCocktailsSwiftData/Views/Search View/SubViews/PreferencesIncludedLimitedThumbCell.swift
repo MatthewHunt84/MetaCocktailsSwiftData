@@ -21,10 +21,10 @@ struct PreferencesIncludedLimitedThumbCell: View {
              
              Text("Included")
                  .font(.caption)
-                 .foregroundStyle(!viewModel.unwantedSelections.contains(ingredient) ? .brandPrimaryGreen : .black)
+                 .foregroundStyle(!viewModel.unwantedSelections.contains(ingredient) ? Color.secondary : .clear)
              
              Image(systemName:viewModel.unwantedSelections.contains(ingredient)  ? "hand.thumbsdown.fill" : "hand.thumbsdown")
-                 .foregroundStyle(viewModel.unwantedSelections.contains(ingredient)  ? .brandPrimaryRed : .white)
+                 .foregroundStyle(viewModel.unwantedSelections.contains(ingredient)  ? MeshGradients.redMesh : MeshGradients.whiteMesh)
                  .onTapGesture {
                      if !viewModel.unwantedSelections.contains(ingredient) {
                          if viewModel.umbrellaCategoryStrings.contains(ingredient) {

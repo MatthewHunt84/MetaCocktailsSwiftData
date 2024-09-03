@@ -24,14 +24,14 @@ struct CustomAlertView: View {
                 }
             VStack {
                 Text(title)
-                    .font(.title2)
+                    .font(FontFactory.regularFont(size: 28))
                     .bold()
                     .padding()
                     .foregroundStyle(.white)
                     .multilineTextAlignment(.center)
                 
                 Text(message)
-                    .font(.body)
+                    .font(FontFactory.fontBody16)
                     .foregroundStyle(.white)
                     .multilineTextAlignment(.center)
                 
@@ -41,10 +41,10 @@ struct CustomAlertView: View {
                 } label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 20)
-                            .foregroundStyle(.brandPrimaryGold)
+                            .foregroundStyle(MeshGradients.activeBlue)
                         Text(buttonTitle)
-                            .font(.system(size: 16, weight: .bold))
-                            .foregroundStyle(.black)
+                            .font(FontFactory.specMeasurement16B)
+                            .foregroundStyle(.white)
                             .padding()
                     }
                     .padding()
@@ -65,7 +65,7 @@ struct CustomAlertView: View {
                             Image(systemName: "x.circle.fill")
                                 .font(.title2)
                                 .fontWeight(.medium)
-                                .tint(.brandPrimaryGold)
+                                .tint(.blueTint)
                         }
                         .tint(.white)
                     }

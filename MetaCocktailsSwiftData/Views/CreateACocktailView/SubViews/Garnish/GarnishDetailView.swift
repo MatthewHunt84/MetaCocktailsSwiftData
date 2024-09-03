@@ -14,38 +14,33 @@ struct GarnishDetailView: View {
     @FocusState private var amountKeyboardFocused: Bool
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
-   
+    
     var body: some View {
+        
         NavigationStack{
-            ZStack{
-                VStack {
-                    HStack{
-                        BackButton()
-                        Spacer()
-                    }
-                    .padding(.horizontal)
-                    HStack {
-                        Text("Add Garnish")
-                            .font(.largeTitle).bold()
-                        Spacer()
-                    }
-                    .padding(.horizontal)
-                    Form {
-                        AddGarnishSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
-                        AddExistingGarnishToCocktailButton(viewModel: viewModel)
-                        
-                    }
-                    .toolbar {
-                        ToolbarItem(placement: .bottomBar) { CreateCustomGarnishButton(viewModel: viewModel) }
-                        ToolbarItemGroup(placement: .keyboard) {
-                            KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
-                        }
-                    }
-                    .task {
-                        keyboardFocused = true
+            
+            ZStack {
+                
+                MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
+                
+                Form {
+                    AddGarnishSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
+                    AddExistingGarnishToCocktailButton(viewModel: viewModel)
+                    
+                }
+                .navigationBarTitleDisplayMode(.inline)
+                .jamesHeaderWithNavigation(title: "Add Garnish", dismiss: dismiss)
+                .scrollContentBackground(.hidden)
+                .background(Color.clear)
+                .toolbar {
+                    ToolbarItem(placement: .bottomBar) { CreateCustomGarnishButton(viewModel: viewModel) }
+                    ToolbarItemGroup(placement: .keyboard) {
+                        KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
                     }
                 }
-                
+                .task {
+                    keyboardFocused = true
+                }
                 
                 if viewModel.isShowingingredientAlert {
                     CustomAlertView(isActive: $viewModel.isShowingingredientAlert,
@@ -56,7 +51,6 @@ struct GarnishDetailView: View {
                     .zIndex(2)
                 }
             }
-
         }
     }
 }
@@ -75,16 +69,16 @@ struct AddGarnishSearchView: View {
     
     
     var body: some View {
-        Section("Name") {
+        Section(header: Text("Name").font(FontFactory.sectionHeader12)) {
             VStack{
                 TextField("Garnish Name", text: $viewModel.currentGarnishName)
                     .focused($keyboardFocused)
+                    .font(FontFactory.formLabel18)
                     .onChange(of: viewModel.currentGarnishName, initial: true) { old, new in
                         viewModel.currentGarnishName = new
                         filteredGarnish = viewModel.matchAllGarnish(garnishes: garnish)
                     }
             }
-            
             if keyboardFocused {
                 List {
                     ForEach(filteredGarnish, id: \.self) { garnish in
@@ -97,18 +91,14 @@ struct AddGarnishSearchView: View {
                             Text(garnish)
                         }
                         .tint(.white)
-                        
-                        
                     }
                     .listStyle(.plain)
-                    .listRowBackground(Color.black)
-                    
+                    .listRowBackground(Color.clear)
                 }
                 .scrollContentBackground(.hidden)
             } else {
                 EmptyView()
             }
-
         }
     }
 }
@@ -131,11 +121,11 @@ struct AddExistingGarnishToCocktailButton: View {
             
             HStack {
                 Image(systemName: "plus.circle.fill")
-                    .font(.footnote).bold()
+                    .font(.headline)
                 Text("Add to spec")
-                    .font(.footnote).bold()
+                    .font(FontFactory.formLabel18)
             }
-            .tint(.brandPrimaryGold)
+            .tint(.blueTint)
             .padding()
         }
         .frame(width: 380, height: 40,  alignment: .center)
@@ -151,10 +141,11 @@ struct CreateCustomGarnishButton: View {
                 .navigationBarBackButtonHidden(true)
         } label: {
             HStack{
-                Text("Create Custom Garnish").font(.headline)
+                Text("Create Custom Garnish")
+                    .font(FontFactory.bottomToolbarButton20)
                 Image(systemName: "plus")
             }
-            .foregroundStyle(.brandPrimaryGold)
+            .foregroundStyle(.blueTint)
         }
     }
 }
