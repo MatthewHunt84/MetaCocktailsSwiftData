@@ -10,6 +10,7 @@ import SwiftData
 
 struct GarnishDetailView: View {
     @Bindable var viewModel: AddCocktailViewModel
+    @Binding var addExistingGarnishViewIsActive: Bool
     @FocusState private var keyboardFocused: Bool
     @FocusState private var amountKeyboardFocused: Bool
     @Environment(\.dismiss) private var dismiss
@@ -25,7 +26,7 @@ struct GarnishDetailView: View {
                 
                 Form {
                     AddGarnishSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
-                    AddExistingGarnishToCocktailButton(viewModel: viewModel)
+                    AddExistingGarnishToCocktailButton(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive)
                     
                 }
                 .navigationBarTitleDisplayMode(.inline)
@@ -33,7 +34,7 @@ struct GarnishDetailView: View {
                 .scrollContentBackground(.hidden)
                 .background(Color.clear)
                 .toolbar {
-                    ToolbarItem(placement: .bottomBar) { CreateCustomGarnishButton(viewModel: viewModel) }
+                    ToolbarItem(placement: .bottomBar) { CreateCustomGarnishButton(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive) }
                     ToolbarItemGroup(placement: .keyboard) {
                         KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
                     }
@@ -57,7 +58,7 @@ struct GarnishDetailView: View {
 
 
 #Preview {
-    GarnishDetailView(viewModel: AddCocktailViewModel())
+    GarnishDetailView(viewModel: AddCocktailViewModel(), addExistingGarnishViewIsActive: .constant(true))
 }
 
 struct AddGarnishSearchView: View {
@@ -107,12 +108,13 @@ struct AddExistingGarnishToCocktailButton: View {
     @Environment(\.dismiss) private var dismiss
     @Query(sort: \Garnish.name) var garnish: [Garnish]
     @Environment(\.modelContext) private var modelContext
+    @Binding var addExistingGarnishViewIsActive: Bool
     
     var body: some View {
         Button{
             if viewModel.existingGarnishIsValid(allGarnishes: garnish) {
                 viewModel.addExistingGarnishToCocktail(context: modelContext)
-                viewModel.toggleShowAddGarnishView()
+                addExistingGarnishViewIsActive = false
             } else {
                 viewModel.isShowingingredientAlert.toggle()
                 viewModel.didChooseExistingIngredient = false
@@ -134,10 +136,11 @@ struct AddExistingGarnishToCocktailButton: View {
 
 struct CreateCustomGarnishButton: View {
     @Bindable var viewModel: AddCocktailViewModel
+    @Binding var addExistingGarnishViewIsActive: Bool
     
     var body: some View {
         NavigationLink{
-            AddCustomGarnishView(viewModel: viewModel)
+            AddCustomGarnishView(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive)
                 .navigationBarBackButtonHidden(true)
         } label: {
             HStack{

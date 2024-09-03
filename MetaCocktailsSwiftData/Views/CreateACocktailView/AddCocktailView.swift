@@ -5,12 +5,15 @@ struct AddCocktailView: View {
     
     @Bindable var viewModel = AddCocktailViewModel()
     @State private var isShowingAddIngredients: Bool = false
+    @State private var addExistingGarnishViewIsActive: Bool = false
     @Environment(\.modelContext) private var modelContext
     @Environment(\.currentTab) private var selectedTab
+    @Environment(\.dismiss) private var dismiss
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
     @FocusState private var yearKeyboardFocused: Bool
     @State private var isActive: Bool = false
-    var sectionBackground = Color.black.opacity(0.15)
+    @State private var isRiff: Bool = false
+    @State private var isSelectingFromTemplate: Bool = false
     
     
     var body: some View {
@@ -22,6 +25,7 @@ struct AddCocktailView: View {
                 MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
                 
                 Form {
+                    
                     Section(header: Text("Name").font(FontFactory.sectionHeader12)) {
                         TextField("Cocktail Name", text: $viewModel.cocktailName)
                             .focused($yearKeyboardFocused)
@@ -33,10 +37,10 @@ struct AddCocktailView: View {
                     Section(header: Text("Extras").font(FontFactory.sectionHeader12)) {
                         GlassPickerButton(viewModel: viewModel)
                         IcePicker(ice: $viewModel.ice)
-                        VariationPicker(variation: $viewModel.variation)
+                        VariationPicker(viewModel: viewModel)
                     }
                     
-                    GarnishPicker(viewModel: viewModel)
+                    GarnishPicker(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive)
                     Section(header: Text("Credit (optional)").font(FontFactory.sectionHeader12)) {
                         TextField("Author", text: $viewModel.authorName)
                             .focused($yearKeyboardFocused)
@@ -59,7 +63,6 @@ struct AddCocktailView: View {
                     Button{
                         viewModel.clearData()
                     } label: {
-                        
                         HStack {
                             Image(systemName: "arrow.triangle.2.circlepath")
                                 .font(.headline).bold()
@@ -73,34 +76,41 @@ struct AddCocktailView: View {
                     
                     
                 }
+                .blur(radius: (viewModel.isShowingUniqueNameAlert || viewModel.isShowingAlert) ? 3 : 0)
                 .scrollContentBackground(.hidden)
                 .background(Color.clear)
                 .navigationBarTitleDisplayMode(.inline)
-                .jamesHeader("Add A Cocktail")
+                .jamesHeaderWithNavigation(title: "Add New Cocktail", dismiss: dismiss)
                 .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button {
+                            isSelectingFromTemplate = true
+                        } label: {
+                            Image("ChooseCocktailTemplate")
+                                .resizable()
+                                .tint(.blueTint)
+                        }
+                    }
+                    
                     ToolbarItem(placement: .bottomBar) {
                         Button {
-                            if nameIsUnique() {
-                                viewModel.isShowingUniqueNameAlert = false
-                            } else {
-                                viewModel.isShowingUniqueNameAlert = true
+                            guard nameIsUnique() else {
+                                viewModel.isShowingUniqueNameAlert.toggle()
+                                return
                             }
                             
                             if viewModel.isValid() {
                                 viewModel.addCocktailToModel(context: modelContext)
                                 selectedTab.wrappedValue = .customCocktailsView
-                                
-                                
                             } else {
-                                
-                                if viewModel.isShowingUniqueNameAlert == false  {
+                                if !viewModel.isShowingUniqueNameAlert {
                                     viewModel.isShowingAlert.toggle()
                                 }
                             }
                             
                         } label: {
                             HStack {
-                                Text("Add to Cocktails")
+                                Text("Add to cocktails")
                                     .font(FontFactory.bottomToolbarButton20)
                                 Image(systemName: "plus")
                             }
@@ -120,47 +130,68 @@ struct AddCocktailView: View {
                     }
                     
                 }
+                .fullScreenCover(isPresented: $viewModel.addExistingGarnishViewIsActive) {
+                    GarnishDetailView(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive)
+                        .navigationBarBackButtonHidden(true)
+                }
+                .fullScreenCover(isPresented: $isShowingAddIngredients) {
+                    AddExistingIngredientDetailView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
+                        .navigationBarBackButtonHidden(true)
+                }
+                .fullScreenCover(isPresented: $isSelectingFromTemplate) {
+                    RiffPickerView(viewModel: viewModel)
+                        .navigationBarBackButtonHidden(true)
+                }
+                
+                if viewModel.isShowingAlert {
+                    CustomAlertView(isActive: $viewModel.isShowingAlert,
+                                    title: "Missing Information",
+                                    message: viewModel.cantAddCocktailMessage(),
+                                    buttonTitle: heardChef, action: {})
+                    .zIndex(1)
+                }
+                
+                if viewModel.isShowingUniqueNameAlert {
+                    CustomAlertView(isActive: $viewModel.isShowingUniqueNameAlert,
+                                    title: "Name must be unique",
+                                    message: "Another cocktail already exists with that name",
+                                    buttonTitle: heardChef, action: {})
+                    .zIndex(1)
+                }
             }
-            .navigationDestination(isPresented: $viewModel.addExistingGarnishViewIsActive) {
-                GarnishDetailView(viewModel: viewModel)
-                    .navigationBarBackButtonHidden(true)
-            }
-            .navigationDestination(isPresented: $viewModel.addIngredientDetailViewIsActive) {
-                AddExistingIngredientDetailView(viewModel: viewModel)
-                    .navigationBarBackButtonHidden(true)
-            }
-            
-            if viewModel.isShowingAlert {
-                CustomAlertView(isActive: $viewModel.isShowingAlert,
-                                title: "Missing Information",
-                                message: viewModel.cantAddCocktailMessage(),
-                                buttonTitle: heardChef, action: {})
-                .zIndex(1)
-            }
-            if viewModel.isShowingUniqueNameAlert {
-                CustomAlertView(isActive: $viewModel.isShowingUniqueNameAlert,
-                                title: "Name must be unique",
-                                message: "Please modify your cocktail name. ",
-                                buttonTitle: heardChef, action: {})
-                .zIndex(1)
-            }
-            
+        }
+    }
+    
+    func nameIsUnique() -> Bool {
+        // We need to do a fresh fetch every time to make sure the name is unique.
+        // Otherwise we don't include newly added cocktails in the cocktails array we check against
+        // So if the user adds a riff twice swift data will crash
+
+        do {
+            let descriptor = FetchDescriptor<Cocktail>()
+            let fetchedCocktails = try modelContext.fetch(descriptor)
+            let cocktailNames: [String] = fetchedCocktails.map({$0.cocktailName})
+            return cocktailNames.allSatisfy({ $0 != viewModel.cocktailName})
+
+        } catch {
+            print("Error fetching cocktail list: \(error)")
+            return false
         }
     }
 }
+
 private struct GlassPickerButton: View {
     @Bindable var viewModel: AddCocktailViewModel
-    @State private var glasswareName = "None"
     var body: some View {
         NavigationLink {
-            GlassPickerDetailView(glasswareName: $glasswareName, viewModel: viewModel)
+            GlassPickerDetailView(viewModel: viewModel)
                 .navigationBarBackButtonHidden(true)
         } label: {
             HStack {
                 Text("Glassware")
                     .font(FontFactory.formLabel18)
                 Spacer()
-                Text(glasswareName)
+                Text(viewModel.glasswareName)
                     .font(FontFactory.formLabel18)
                     .foregroundStyle(.gray)
                 
@@ -173,7 +204,7 @@ private struct GlassPickerButton: View {
 
 private struct GlassPickerDetailView: View {
     
-    @Binding var glasswareName: String
+    
     @Bindable var viewModel: AddCocktailViewModel
     @Environment(\.dismiss) private var dismiss
     
@@ -187,7 +218,7 @@ private struct GlassPickerDetailView: View {
                         
                         Button{
                             viewModel.uniqueGlasswareName = newGlass
-                            glasswareName = newGlass.rawValue
+                            viewModel.glasswareName = newGlass.rawValue
                             dismiss()
                         } label: {
                             HStack {
@@ -240,7 +271,7 @@ private struct IcePicker: View {
 private struct GarnishPicker: View {
     
     @Bindable var viewModel: AddCocktailViewModel
-    
+    @Binding var addExistingGarnishViewIsActive: Bool
     var body: some View {
         
         Section {
@@ -256,7 +287,7 @@ private struct GarnishPicker: View {
                 })
             }
             Button {
-                viewModel.toggleShowAddGarnishView()
+                addExistingGarnishViewIsActive.toggle()
                 
             } label: {
                 HStack {
@@ -276,41 +307,7 @@ private struct GarnishPicker: View {
     }
 }
 
-private struct VariationPicker: View {
-    @Binding var variation: Variation?
-    @State var isShowingInfo = false
-    
-    var body: some View {
-        VStack {
-            Picker(selection: $variation) {
-                ForEach(Variation.allCases, id: \.rawValue)  { variation in
-                    Text(variation.rawValue)
-                        .font(FontFactory.formLabel18)
-                        .tag(Optional(variation))
-                }
-            } label: {
-                HStack(spacing: 15) {
-                    Text("Variation")
-                        .frame(alignment: .leading)
-                        .font(FontFactory.formLabel18)
-                    
-                    Image(systemName: "questionmark.circle.fill")
-                        .foregroundStyle(isShowingInfo ? .brandPrimaryGold : .blue)
-                        .onTapGesture {
-                            isShowingInfo.toggle()
-                        }
-                }
-            }.pickerStyle(.navigationLink)
-            
-            if isShowingInfo {
-                Text("If this cocktail is a riff on another classic, you may add it here. Variations will be grouped together in the search list")
-                    .font(FontFactory.buildBodySmall10)
-                    .foregroundStyle(.brandPrimaryGold)
-                    .padding(.top, 10)
-            }
-        }
-    }
-}
+
 
 
 #Preview {

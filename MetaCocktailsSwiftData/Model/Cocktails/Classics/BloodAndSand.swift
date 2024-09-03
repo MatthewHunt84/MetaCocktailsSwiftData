@@ -7,13 +7,12 @@
 
 import Foundation
 
-var bloodAndSand  = Cocktail(cocktailName: "Blood and Sand",
+var bloodAndSand  = Cocktail(cocktailName: "Blood & Sand",
                              glasswareType: .martini,
                              garnish: [.orangePeel],
                              ice: nil,
                              author: harryCraddock,
                              spec: bloodAndSandSpec,
-                             buildOrder: bloodAndSandBuild,
                              tags: bloodAndSandTags,
                              variation: .bloodAndSand,
                              collection: .originals,
@@ -24,7 +23,7 @@ var bloodAndSandSpec  = [OldCocktailIngredient(.juices(.orange), value: 0.75),
                          OldCocktailIngredient(.liqueurs(.cherryHeering), value: 0.75),
                          OldCocktailIngredient(.whiskies(.scotchBlended), value: 0.75)]
 
-var bloodAndSandBuild  = Build(instructions: [Instruction(step: 1, method: "Gross")])
+
 
 var bloodAndSandTags   = Tags(flavors: [.orange],
                               profiles: [.fruity, .sweet],

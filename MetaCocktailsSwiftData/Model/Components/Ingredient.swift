@@ -206,11 +206,11 @@ class Ingredient: Codable, Hashable {
     var value: Double
     var unit: MeasurementUnit
     
-    init(ingredientBase: IngredientBase, value: Double, unit: MeasurementUnit = .fluidOunces) {
+    init(id: UUID = UUID(), ingredientBase: IngredientBase, value: Double, unit: MeasurementUnit = .fluidOunces) {
         self.ingredientBase = ingredientBase
         self.value = value
         self.unit = unit
-        self.id = UUID()
+        self.id = id
     }
     
     init(oldIngredient: OldCocktailIngredient) {
@@ -275,12 +275,12 @@ class IngredientBase: Codable, Hashable {
     var info: String?
     var tags: Tags?
     var prep: Prep?
-    var isCustom: Bool
-    var umbrellaCategory: String
+    var isCustom: Bool = false
+    var umbrellaCategory: String 
     var baseCategory: String
     var specialtyCategory: String
     
-    init(id: UUID = UUID(), name: String, info: String? = nil, category: UmbrellaCategory, tags: Tags? = Tags(), prep: Prep?, isCustom: Bool = false, baseCategory: BaseCategory? = nil, specialtyCategory: SpecialtyCategory? = nil) {
+    init(id: UUID = UUID(), name: String, info: String? = nil, category: UmbrellaCategory, tags: Tags? = Tags(), prep: Prep?, isCustom: Bool = false, baseCategory: String = "", specialtyCategory: String = "") {
         
         self.id = id
         self.name = name

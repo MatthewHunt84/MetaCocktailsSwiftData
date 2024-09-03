@@ -10,6 +10,7 @@ import SwiftData
 
 struct AddCustomGarnishView: View {
     @Bindable var viewModel: AddCocktailViewModel
+    @Binding var addExistingGarnishViewIsActive: Bool
     @FocusState private var keyboardFocused: Bool
     @FocusState private var amountKeyboardFocused: Bool
     @Environment(\.dismiss) private var dismiss
@@ -27,7 +28,7 @@ struct AddCustomGarnishView: View {
                         TextField("Garnish Name", text: $viewModel.currentGarnishName)
                             .focused($keyboardFocused)
                     }
-                    AddCustomGarnishToCocktailButton(viewModel: viewModel)
+                    AddCustomGarnishToCocktailButton(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive)
                 }
                 .scrollContentBackground(.hidden)
                 .background(Color.clear)
@@ -47,11 +48,12 @@ struct AddCustomGarnishView: View {
 }
 
 #Preview {
-    AddCustomGarnishView(viewModel: AddCocktailViewModel())
+    AddCustomGarnishView(viewModel: AddCocktailViewModel(), addExistingGarnishViewIsActive: .constant(true))
 }
 
 struct AddCustomGarnishToCocktailButton: View {
     @Bindable var viewModel: AddCocktailViewModel
+    @Binding var addExistingGarnishViewIsActive: Bool
     @Environment(\.dismiss) private var dismiss
     @Query(sort: \Garnish.name) var garnish: [Garnish]
 
@@ -61,13 +63,13 @@ struct AddCustomGarnishToCocktailButton: View {
             if viewModel.customGarnishIsValid(allGarnishes: garnish){
                 viewModel.addedGarnish.append(Garnish(name: viewModel.currentGarnishName))
                 viewModel.clearIngredientData()
-                viewModel.toggleShowAddGarnishView()
+                addExistingGarnishViewIsActive = false
             } else {
                 for name in garnish {
                     if name.name == viewModel.currentGarnishName {
                         viewModel.addedGarnish.append(name)
                         viewModel.clearIngredientData()
-                        viewModel.toggleShowAddGarnishView()
+                        addExistingGarnishViewIsActive = false
                     }
                 }
             }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-var cloverClub = Cocktail(cocktailName: "Clover Club(Reiner's)",
+var cloverClub = Cocktail(cocktailName: "Clover Club",
                           glasswareType: .stemmedGlassware,
                           garnish: [.raspberry],
                           author: Author(person: "Julie Reiner", place: "Clover Club", year: "2014"),

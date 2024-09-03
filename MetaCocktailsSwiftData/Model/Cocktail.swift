@@ -32,6 +32,7 @@ class Cocktail: Equatable, Hashable, Identifiable {
     @Transient var tags: Tags = Tags()
     var compiledTags: Tags = Tags()
     var variation: Variation?
+    var variationName: String?
     var collection: CocktailCollection?
     var isCustomCocktail: Bool
     var collectionName: String
@@ -39,7 +40,9 @@ class Cocktail: Equatable, Hashable, Identifiable {
   
     
     
-    init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [GarnishList]? = nil, ice: Ice? = nil, author: Author? = nil, spec: [OldCocktailIngredient], buildOrder: Build? = nil, notes: String? = nil, tags: Tags, variation: Variation? = nil, collection: CocktailCollection? = nil, isCustomCocktail: Bool = false, titleCocktail: Bool = false) {
+
+    init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [GarnishList]? = nil, ice: Ice? = nil, author: Author? = nil, spec: [OldCocktailIngredient], buildOrder: Build? = nil, notes: String? = nil, tags: Tags, variation: Variation? = nil, variationName: String? = nil, collection: CocktailCollection? = nil, isCustomCocktail: Bool = false, titleCocktail: Bool = false) {
+
         self.id = id
         self.cocktailName = cocktailName
         self.imageAsset = imageAsset
@@ -62,6 +65,12 @@ class Cocktail: Equatable, Hashable, Identifiable {
         self.notes = notes 
         self.tags = tags
         self.variation = variation
+        self.variationName = {
+            if let variationName = variation {
+                return variationName.rawValue
+            }
+            return nil
+        }()
         self.collection = collection
         self.isCustomCocktail = collection == .custom
         self.collectionName = {
@@ -85,7 +94,9 @@ class Cocktail: Equatable, Hashable, Identifiable {
         
     }
     
-    init(cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [Garnish] = [], ice: Ice? = nil, author: Author? = nil, spec: [Ingredient], buildOrder: Build? = nil, tags: Tags, variation: Variation? = nil, collection: CocktailCollection? = nil, isCustomCocktail: Bool = false, titleCocktail: Bool = false) {
+
+    init(cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [Garnish] = [], ice: Ice? = nil, author: Author? = nil, spec: [Ingredient], buildOrder: Build? = nil, tags: Tags, variation: Variation? = nil, variationName: String? = nil, collection: CocktailCollection? = nil, isCustomCocktail: Bool = false, titleCocktail: Bool = false) {
+
         self.id = UUID()
         self.cocktailName = cocktailName
         self.imageAsset = imageAsset
@@ -97,6 +108,7 @@ class Cocktail: Equatable, Hashable, Identifiable {
         self.buildOrder = buildOrder
         self.tags = tags
         self.variation = variation
+        self.variationName = variationName
         self.collection = collection
         self.collectionName = {
             var name = "None"

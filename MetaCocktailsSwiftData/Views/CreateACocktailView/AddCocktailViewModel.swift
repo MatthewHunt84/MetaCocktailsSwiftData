@@ -8,14 +8,11 @@
 
 import SwiftUI
 import SwiftData
+import Combine
 
 @Observable final class AddCocktailViewModel {
-    
-    init(context: ModelContext? = nil) {
-        self.context = context
-    }
-    
-    var context: ModelContext?
+
+    var isRiff: Bool = false
 
     //AddIngredientView
     var category: UmbrellaCategory = UmbrellaCategory.agaves
@@ -57,8 +54,10 @@ import SwiftData
     
     // Extras
     var uniqueGlasswareName: Glassware?
+    var glasswareName = "None"
     var ice: Ice? = Ice.none
     var variation: Variation? = Variation.none
+    var customVariationName: String?
     
     //Ingredient recipe
     var prepIngredientRecipe: [Instruction] = []
@@ -78,22 +77,19 @@ import SwiftData
         }
     }
     
-    func toggleShowIngredientView() {
-        Task {
-            await MainActor.run {
-                addIngredientDetailViewIsActive.toggle()
-            }
-        }
+    var searchText = ""
+    private var debouncedSearchText: String = ""
+    
+    private var cancellables = Set<AnyCancellable>()
+    private let searchSubject = PassthroughSubject<String, Never>()
+    
+    func resetSearch() {
+        searchText = ""
+        debouncedSearchText = ""
+        filteredCocktails = []
     }
     
-    func toggleShowAddGarnishView() {
-        Task {
-            await MainActor.run {
-                addExistingGarnishViewIsActive.toggle()
-            }
-        }
-    }
-    
+
     func clearData() {
         cocktailName = ""
         authorName = ""
@@ -101,6 +97,7 @@ import SwiftData
         authorYear = ""
         currentGarnishName = ""
         uniqueGlasswareName = .blueBlazerMugs
+        glasswareName = "None"
         ice = Ice.none
         addedGarnish = []
         variation = nil
@@ -108,6 +105,7 @@ import SwiftData
         defaultName = "Add Cocktail"
         build = Build(instructions: [])
         buildOption = nil
+        customVariationName = nil
        
     }
     func clearIngredientData() {
@@ -122,6 +120,48 @@ import SwiftData
         isCustomIngredient = false
     }
     
+ 
+
+    func populateFromCocktail(_ cocktail: Cocktail) {
+        cocktailName = "Riff on " + cocktail.cocktailName
+        
+        // Clear existing ingredients first
+        addedIngredients.removeAll()
+        
+        // Populate new ingredients one by one
+        //Make a copy of the spec so SwiftData doesn't reassign the spec.
+        for ingredientSpec in cocktail.spec {
+            let newIngredientBase = IngredientBase(id: UUID(),
+                                                   name: ingredientSpec.ingredientBase.name,
+                                                   info: ingredientSpec.ingredientBase.info,
+                                                   category: UmbrellaCategory(rawValue: ingredientSpec.ingredientBase.umbrellaCategory) ?? .otherAlcohol,
+                                                   tags: ingredientSpec.ingredientBase.tags,
+                                                   prep: ingredientSpec.ingredientBase.prep
+            )
+            
+            let newIngredient = Ingredient(id: UUID(),
+                                           ingredientBase: newIngredientBase,
+                                           value: ingredientSpec.value,
+                                           unit: ingredientSpec.unit
+            )
+            
+            addedIngredients.append(newIngredient)
+            
+        }
+        uniqueGlasswareName = Glassware(rawValue: cocktail.glasswareType.rawValue)
+        glasswareName = cocktail.glasswareType.rawValue
+        addedGarnish = cocktail.garnish.map { Garnish(name: $0.name) }
+        if let cocktailIce = cocktail.ice {
+            ice = Ice(rawValue: cocktailIce.rawValue)
+        }
+        authorYear = String(Calendar.current.component(.year, from: Date()))
+        customVariationName = cocktail.cocktailName
+        isRiff = true
+        
+        print("Populated from cocktail: \(cocktailName)")
+        print("Number of ingredients: \(addedIngredients.count)")
+    }
+
     
     func isValid() -> Bool {
         return cocktailName != "" && ((addedIngredients.count) > 1) && uniqueGlasswareName != nil
@@ -160,38 +200,42 @@ import SwiftData
         }
     }
     
+    
     @MainActor
     func addCocktailToModel(context: ModelContext) {
         validateAuthor()
         validateBuildInstructions()
-        
+
         let cocktail = Cocktail(cocktailName: cocktailName,
                                 glasswareType: uniqueGlasswareName!,
                                 garnish: addedGarnish,
                                 ice: ice,
-                                author: author,
+                                author: Author(person: authorName, place: authorPlace, year: authorYear),
                                 spec: addedIngredients,
                                 buildOrder: buildOption,
                                 tags: ingredientTags,
                                 variation: variation,
+                                variationName: customVariationName,
                                 collection: .custom,
                                 isCustomCocktail: true)
-        
-        
+
         cocktail.spec.forEach { ingredient in
-            
+            // Check if an IngredientBase with the same name already exists
             let fetch = FetchDescriptor<IngredientBase>(predicate: #Predicate { $0.name == ingredient.ingredientBase.name })
-            let existingBase = try? context.fetch(fetch).first
-            
-            if let base = existingBase {
-                ingredient.ingredientBase = base
+            if let existingBase = try? context.fetch(fetch).first {
+                // If it exists, update the existing IngredientBase
+                existingBase.info = ingredient.ingredientBase.info
+                existingBase.tags = ingredient.ingredientBase.tags
+                existingBase.prep = ingredient.ingredientBase.prep
+                ingredient.ingredientBase = existingBase
+            } else {
+                // If it doesn't exist, insert the new IngredientBase
+                context.insert(ingredient.ingredientBase)
             }
         }
-        
         context.insert(cocktail)
         do {
             try context.save()
-            
         } catch {
             print("Error saving custom cocktail: \(error)")
         }
@@ -249,7 +293,7 @@ import SwiftData
 
    
     
-    func matchAllIngredients2(ingredients: [IngredientBase]) -> [IngredientBase] {
+    func matchAllIngredients(ingredients: [IngredientBase]) -> [IngredientBase] {
         
         guard !ingredientName.isEmpty else {
              return [] // Return all ingredients if search text is empty
@@ -393,20 +437,71 @@ import SwiftData
         }
     }
     
-}
-
-extension AddCocktailView {
     
-    func nameIsUnique() -> Bool {
-        
-        let cocktailNames: [String] = cocktails.map({$0.cocktailName})
-        
-        if cocktailNames.allSatisfy({ $0 != viewModel.cocktailName}) {
-            print("\(viewModel.cocktailName) in not in cocktail names.")
-            return true
-        } else {
-            return false
+    
+    
+    init() {
+        setupSearch()
+    }
+    
+    
+    //MARK: TODO: Extract to shared view model
+    
+    
+    private func setupSearch() {
+        searchSubject
+            .debounce(for: .milliseconds(400), scheduler: DispatchQueue.main)
+            .removeDuplicates()
+            .sink { [weak self] searchText in
+                self?.performSearch(searchText)
+            }
+            .store(in: &cancellables)
+    }
+    
+    func updateSearch(_ searchText: String) {
+        searchSubject.send(searchText)
+    }
+    
+    private func performSearch(_ searchText: String) {
+
+        self.debouncedSearchText = searchText
+        updateFilteredCocktails()
+        let lowercasedSearchText = debouncedSearchText.lowercased()
+       
+        filteredCocktails = Array(Set(filteredCocktails)).sorted { $0.cocktailName < $1.cocktailName }.sorted { (lhs: Cocktail, rhs: Cocktail) in
+            //Move the sorting to after the variations have been added.
+            let lhsLowercased = lhs.cocktailName.lowercased()
+            let rhsLowercased = rhs.cocktailName.lowercased()
+            
+            let lhsStartsWith = lhsLowercased.hasPrefix(lowercasedSearchText)
+            let rhsStartsWith = rhsLowercased.hasPrefix(lowercasedSearchText)
+            
+            if lhsStartsWith != rhsStartsWith {
+                return lhsStartsWith
+            }
+            
+            if lhsStartsWith {
+                return lhs.cocktailName.count < rhs.cocktailName.count
+            }
+            return (lhsLowercased.range(of: lowercasedSearchText)?.lowerBound ?? lhsLowercased.endIndex) < (rhsLowercased.range(of: lowercasedSearchText)?.lowerBound ?? rhsLowercased.endIndex)
         }
     }
     
+    private var allCocktails: [Cocktail] = []
+    var filteredCocktails: [Cocktail] = []
+    
+    private func updateFilteredCocktails() {
+        let lowercasedSearchText = debouncedSearchText.lowercased()
+        
+        if debouncedSearchText.isEmpty {
+            filteredCocktails = []
+        } else {
+            filteredCocktails = allCocktails.filter { $0.cocktailName.localizedCaseInsensitiveContains(lowercasedSearchText) }
+        }
+    }
+    
+    func setAllCocktails(_ cocktails: [Cocktail]) {
+        self.allCocktails = cocktails
+        updateFilteredCocktails()
+    }
 }

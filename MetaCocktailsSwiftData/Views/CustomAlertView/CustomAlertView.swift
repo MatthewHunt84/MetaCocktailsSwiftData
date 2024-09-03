@@ -16,12 +16,6 @@ struct CustomAlertView: View {
     @State private var offset: CGFloat = 1000
     
     var body: some View {
-        ZStack {
-            Color(.black)
-                .opacity(0.1)
-                .onTapGesture {
-                    close()
-                }
             VStack {
                 Text(title)
                     .font(FontFactory.regularFont(size: 28))
@@ -52,28 +46,9 @@ struct CustomAlertView: View {
             }
             .fixedSize(horizontal: false, vertical: true)
             .padding()
-            .background(.black)
+            .background(BlackGlassBackgroundView())
             .clipShape(RoundedRectangle(cornerRadius: 20))
             .shadow(color: .white, radius: 5)
-            .overlay {
-                VStack{
-                    HStack {
-                        Spacer()
-                        Button {
-                            close()
-                        } label: {
-                            Image(systemName: "x.circle.fill")
-                                .font(.title2)
-                                .fontWeight(.medium)
-                                .tint(.blueTint)
-                        }
-                        .tint(.white)
-                    }
-                    Spacer()
-                }
-                .padding()
-            }
-            
             .padding(30)
             .offset(x: 0, y: offset)
             .onAppear {
@@ -81,9 +56,6 @@ struct CustomAlertView: View {
                     offset = 0
                 }
             }
-        }
-        .ignoresSafeArea()
-        
     }
     func close() {
         withAnimation((.easeInOut.speed(0.75))) {
