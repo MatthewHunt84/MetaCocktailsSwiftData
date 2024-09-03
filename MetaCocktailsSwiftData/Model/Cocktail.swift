@@ -26,7 +26,7 @@ class Cocktail: Equatable, Hashable, Identifiable {
     @Relationship(deleteRule: .nullify, inverse: \Garnish.cocktails) var garnish: [Garnish]
     var ice: Ice?
     var author: Author?
-    @Relationship(deleteRule: .cascade, inverse: \Ingredient.cocktails) var spec: [Ingredient]
+    @Relationship(deleteRule: .cascade) var spec: [Ingredient]
     var buildOrder: Build?
     var notes: String?
     @Transient var tags: Tags = Tags()

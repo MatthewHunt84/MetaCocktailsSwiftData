@@ -205,7 +205,6 @@ class Ingredient: Codable, Hashable {
     var id: UUID
     var value: Double
     var unit: MeasurementUnit
-    var cocktails: [Cocktail]?
     
     init(id: UUID = UUID(), ingredientBase: IngredientBase, value: Double, unit: MeasurementUnit = .fluidOunces) {
         self.ingredientBase = ingredientBase
