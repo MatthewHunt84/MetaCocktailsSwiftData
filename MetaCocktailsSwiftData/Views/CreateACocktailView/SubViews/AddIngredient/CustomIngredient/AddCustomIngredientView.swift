@@ -14,6 +14,7 @@ struct AddCustomIngredientView: View {
     @FocusState private var keyboardFocused: Bool
     @FocusState private var amountKeyboardFocused: Bool
     @Environment(\.dismiss) private var dismiss
+    @Binding var isShowingAddIngredients: Bool
     
     var body: some View {
         NavigationStack {
@@ -31,7 +32,7 @@ struct AddCustomIngredientView: View {
                     CategoryPickerView(viewModel: viewModel)
                     AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
                     IngredeientRecipeView(viewModel: viewModel)
-                    AddCustomIngredientToCocktailButton(viewModel: viewModel)
+                    AddCustomIngredientToCocktailButton(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .jamesHeaderWithNavigation(title: "Custom Ingredient", dismiss: dismiss)
@@ -64,7 +65,7 @@ struct AddCustomIngredientView: View {
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
     
-    return AddCustomIngredientView(viewModel: AddCocktailViewModel())
+    AddCustomIngredientView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true))
         .modelContainer(preview.container)
     
 }
@@ -100,6 +101,7 @@ struct AddCustomIngredientToCocktailButton: View {
     @Bindable var viewModel: AddCocktailViewModel
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]
+    @Binding var isShowingAddIngredients: Bool
     
     var body: some View {
         Button{
@@ -113,7 +115,7 @@ struct AddCustomIngredientToCocktailButton: View {
                                                   
                 viewModel.clearIngredientData()
                 viewModel.isCustomIngredient = true
-                viewModel.toggleShowIngredientView()
+                isShowingAddIngredients = false
             } else {
                 viewModel.isShowingingredientAlert.toggle()
             }

@@ -25,16 +25,14 @@ struct RiffPickerView: View {
                     SearchBarForCreateCocktailView(isFocused: $isSearchFocused, viewModel: viewModel)
                     List {
                         ForEach(viewModel.filteredCocktails, id: \.self) { cocktail in
-                            NavigationLinkWithoutIndicator {
+                            Button {
+                                viewModel.populateFromCocktail(cocktail)
+                                dismiss()
+                            } label: {
                                 HStack {
                                     Text(cocktail.cocktailName)
-                                        .foregroundColor(.white)
-                                        .font(FontFactory.fontBody16)
-                                    Spacer()
+                                        .font(FontFactory.formLabel18)
                                 }
-                            } destination: {
-                                AddCocktailView(viewModel: AddCocktailViewModel(basedOn: cocktail), isRiff: true)
-                                    .navigationBarBackButtonHidden(true)
                             }
                         }
                         .listRowBackground(Color.clear)
@@ -51,13 +49,13 @@ struct RiffPickerView: View {
             
         }
     }
+    
 }
 
 struct SearchBarForCreateCocktailView: View {
     
     @FocusState.Binding var isFocused: Bool
     @Bindable var viewModel: AddCocktailViewModel
-    
     var body: some View {
         TextField("Search cocktails", text: $viewModel.searchText)
             .SearchBarTextField()

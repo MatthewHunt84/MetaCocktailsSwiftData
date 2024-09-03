@@ -12,6 +12,7 @@ struct AddExistingIngredientDetailView: View {
     @Bindable var viewModel: AddCocktailViewModel
     @FocusState private var keyboardFocused: Bool
     @FocusState private var amountKeyboardFocused: Bool
+    @Binding var isShowingAddIngredients: Bool
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     
@@ -26,7 +27,7 @@ struct AddExistingIngredientDetailView: View {
                 Form {
                     AddIngredientSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
                     AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
-                    AddExistingIngredientToCocktailButton(viewModel: viewModel)
+                    AddExistingIngredientToCocktailButton(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
                     
                 }
                 .scrollContentBackground(.hidden)
@@ -34,7 +35,7 @@ struct AddExistingIngredientDetailView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .jamesHeaderWithNavigation(title: "Add Ingredient", dismiss: dismiss)
                 .toolbar {
-                    ToolbarItem(placement: .bottomBar) { CreateNewIngredientButton(viewModel: viewModel) }
+                    ToolbarItem(placement: .bottomBar) { CreateNewIngredientButton(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients) }
                     ToolbarItemGroup(placement: .keyboard) {
                         KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
                     }
@@ -59,7 +60,7 @@ struct AddExistingIngredientDetailView: View {
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
     
-    return AddExistingIngredientDetailView(viewModel: AddCocktailViewModel())
+    AddExistingIngredientDetailView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true))
         .modelContainer(preview.container)
     
 }
@@ -153,7 +154,7 @@ struct AddMeasurementView: View {
 struct AddExistingIngredientToCocktailButton: View {
     @Bindable var viewModel: AddCocktailViewModel
     @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]
-    
+    @Binding  var isShowingAddIngredients: Bool
     
     var body: some View {
         Button{
@@ -167,9 +168,7 @@ struct AddExistingIngredientToCocktailButton: View {
                 viewModel.addedIngredients.append(ingredient)
                 
                 viewModel.clearIngredientData()
-                viewModel.toggleShowIngredientView()
-               
-                
+                isShowingAddIngredients = false
             } else {
                 viewModel.isShowingingredientAlert.toggle()
                 viewModel.didChooseExistingIngredient = false
@@ -190,12 +189,12 @@ struct AddExistingIngredientToCocktailButton: View {
 }
 struct CreateNewIngredientButton: View {
     @Bindable var viewModel: AddCocktailViewModel
-    
+    @Binding var isShowingAddIngredients: Bool
     var body: some View {
         
         
         NavigationLink {
-            AddCustomIngredientView(viewModel: viewModel)
+            AddCustomIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
                 .navigationBarBackButtonHidden(true)
         } label: {
             HStack{

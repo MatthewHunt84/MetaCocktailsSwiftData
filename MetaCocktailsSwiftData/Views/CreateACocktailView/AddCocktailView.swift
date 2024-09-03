@@ -3,8 +3,10 @@ import SwiftData
 
 struct AddCocktailView: View {
     
+    
     @Bindable var viewModel = AddCocktailViewModel()
     @State private var isShowingAddIngredients: Bool = false
+    @State private var addExistingGarnishViewIsActive: Bool = false
     @Environment(\.modelContext) private var modelContext
     @Environment(\.currentTab) private var selectedTab
     @Environment(\.dismiss) private var dismiss
@@ -13,11 +15,7 @@ struct AddCocktailView: View {
     @State private var isActive: Bool = false
     @State private var isRiff: Bool = false
     
-    init(viewModel: AddCocktailViewModel, isRiff: Bool = false) {
-        self.viewModel = viewModel
-        self._isRiff = State(initialValue: isRiff)
-    }
-    
+
     var body: some View {
         
         NavigationStack {
@@ -25,65 +23,70 @@ struct AddCocktailView: View {
             ZStack {
                 
                 MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
-                
-                Form {
-                    Section {
+                VStack{
+                    Form {
                         NavigationLink {
                             RiffPickerView(viewModel: viewModel)
+                                .navigationBarBackButtonHidden(true)
                         } label: {
-                            Text("Riff on an existing cocktail")
+                            HStack(alignment: .center) {
+                                Image(systemName: "square.and.arrow.down")
+                                    .foregroundStyle(.brandPrimaryGold)
+                                Text("Import Spec")
+                                    .tint(.blueTint)
+                            }
                         }
-                    }
-                    Section(header: Text("Name").font(FontFactory.sectionHeader12)) {
-                        TextField("Cocktail Name", text: $viewModel.cocktailName)
-                            .focused($yearKeyboardFocused)
-                            .font(FontFactory.fontBody16)
-                    }
-                    
-                    AddedIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isRiff: $isRiff)
-                    
-                    Section(header: Text("Extras").font(FontFactory.sectionHeader12)) {
-                        GlassPickerButton(viewModel: viewModel)
-                        IcePicker(ice: $viewModel.ice)
-                        VariationPicker(viewModel: viewModel)
-                    }
-                    
-                    GarnishPicker(viewModel: viewModel)
-                    Section(header: Text("Credit (optional)").font(FontFactory.sectionHeader12)) {
-                        TextField("Author", text: $viewModel.authorName)
-                            .focused($yearKeyboardFocused)
-                            .font(FontFactory.formLabel18)
-                        TextField("Origin", text: $viewModel.authorPlace)
-                            .focused($yearKeyboardFocused)
-                            .font(FontFactory.formLabel18)
-                        TextField("Year", text: $viewModel.authorYear)
-                            .keyboardType(.numberPad)
-                            .focused($yearKeyboardFocused)
-                            .font(FontFactory.formLabel18)
-                    }
-                    
-                    
-                    Section(header: Text("Build steps (optional)").font(FontFactory.sectionHeader12)) {
-                        AddBuildStepView(viewModel: viewModel)
-                    }
-                    
-                    
-                    Button{
-                        viewModel.clearData()
-                    } label: {
                         
-                        HStack {
-                            Image(systemName: "arrow.triangle.2.circlepath")
-                                .font(.headline).bold()
-                            Text("Reset to Defaults")
+                        Section(header: Text("Name").font(FontFactory.sectionHeader12)) {
+                            TextField("Cocktail Name", text: $viewModel.cocktailName)
+                                .focused($yearKeyboardFocused)
                                 .font(FontFactory.fontBody16)
                         }
-                        .tint(Color.blueTint)
-                        .padding()
+                        
+                        AddedIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
+                        
+                        Section(header: Text("Extras").font(FontFactory.sectionHeader12)) {
+                            GlassPickerButton(viewModel: viewModel)
+                            IcePicker(ice: $viewModel.ice)
+                            VariationPicker(viewModel: viewModel)
+                        }
+                        
+                        GarnishPicker(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive)
+                        Section(header: Text("Credit (optional)").font(FontFactory.sectionHeader12)) {
+                            TextField("Author", text: $viewModel.authorName)
+                                .focused($yearKeyboardFocused)
+                                .font(FontFactory.formLabel18)
+                            TextField("Origin", text: $viewModel.authorPlace)
+                                .focused($yearKeyboardFocused)
+                                .font(FontFactory.formLabel18)
+                            TextField("Year", text: $viewModel.authorYear)
+                                .keyboardType(.numberPad)
+                                .focused($yearKeyboardFocused)
+                                .font(FontFactory.formLabel18)
+                        }
+                        
+                        
+                        Section(header: Text("Build steps (optional)").font(FontFactory.sectionHeader12)) {
+                            AddBuildStepView(viewModel: viewModel)
+                        }
+                        
+                        
+                        Button{
+                            viewModel.clearData()
+                        } label: {
+                            HStack {
+                                Image(systemName: "arrow.triangle.2.circlepath")
+                                    .font(.headline).bold()
+                                Text("Reset to Defaults")
+                                    .font(FontFactory.fontBody16)
+                            }
+                            .tint(Color.blueTint)
+                            .padding()
+                        }
+                        .frame(width: 380, height: 40,  alignment: .center)
+                        
+                        
                     }
-                    .frame(width: 380, height: 40,  alignment: .center)
-                    
-                    
                 }
                 .scrollContentBackground(.hidden)
                 .background(Color.clear)
@@ -134,11 +137,11 @@ struct AddCocktailView: View {
                 }
             }
             .fullScreenCover(isPresented: $viewModel.addExistingGarnishViewIsActive) {
-                GarnishDetailView(viewModel: viewModel)
+                GarnishDetailView(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive)
                     .navigationBarBackButtonHidden(true)
             }
-            .fullScreenCover(isPresented: $viewModel.addIngredientDetailViewIsActive) {
-                AddExistingIngredientDetailView(viewModel: viewModel)
+            .fullScreenCover(isPresented: $isShowingAddIngredients) {
+                AddExistingIngredientDetailView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
                     .navigationBarBackButtonHidden(true)
             }
             
@@ -251,7 +254,7 @@ private struct IcePicker: View {
 private struct GarnishPicker: View {
     
     @Bindable var viewModel: AddCocktailViewModel
-    
+    @Binding var addExistingGarnishViewIsActive: Bool
     var body: some View {
         
         Section {
@@ -267,7 +270,7 @@ private struct GarnishPicker: View {
                 })
             }
             Button {
-                viewModel.toggleShowAddGarnishView()
+                addExistingGarnishViewIsActive.toggle()
                 
             } label: {
                 HStack {

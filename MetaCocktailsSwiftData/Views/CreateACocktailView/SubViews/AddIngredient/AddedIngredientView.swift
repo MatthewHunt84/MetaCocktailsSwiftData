@@ -12,36 +12,36 @@ struct AddedIngredientView: View {
    
     @Bindable var viewModel: AddCocktailViewModel
     @Binding var isShowingAddIngredients: Bool
-    @Binding var isRiff: Bool
-    
+    @Environment(\.modelContext) private var modelContext
     
     var body: some View {
         
         Section(header: Text("Ingredients").font(FontFactory.sectionHeader12)) {
-            
-            List{
-                if isRiff && !viewModel.addedIngredients.isEmpty {
-                    SwipeToDeleteHint()
-                        .padding(.horizontal)
-                        .transition(.opacity)
-                        .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                                withAnimation {
-                                    isRiff = false
-                                }
+            if viewModel.isRiff && !viewModel.addedIngredients.isEmpty {
+                SwipeToDeleteHint()
+                    .padding(.horizontal)
+                    .transition(.opacity)
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                            withAnimation {
+                                viewModel.isRiff = false
                             }
                         }
-                }
-                ForEach(viewModel.addedIngredients, id: \.ingredientBase.name) { ingredient in
+                    }
+            }
+            List{
+                ForEach(viewModel.addedIngredients, id: \.id) { ingredient in
                     Text("\(NSNumber(value: ingredient.value)) \(ingredient.unit.rawValue) \(ingredient.ingredientBase.name)")
                         .font(FontFactory.fontBody16)
                 }
-                .onDelete(perform: { indexSet in
-                    viewModel.addedIngredients.remove(atOffsets: indexSet)
-                })
+                .onDelete { indexSet in
+                    withAnimation {
+                        viewModel.addedIngredients.remove(atOffsets: indexSet)
+                    }
+                }
             }
             Button {
-                viewModel.toggleShowIngredientView()
+                isShowingAddIngredients.toggle()
             } label: {
                 HStack{
                     Text(viewModel.addedIngredients.count < 1 ? "Add Ingredient" : "Add another ingredient")
@@ -58,7 +58,7 @@ struct AddedIngredientView: View {
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
     
-    AddedIngredientView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true), isRiff: .constant(true))
+    AddedIngredientView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true))
         .modelContainer(preview.container)
     
 }
@@ -71,8 +71,8 @@ struct SwipeToDeleteHint: View {
             Text("Swipe to delete")
                 .font(FontFactory.fontBody16)
                 .foregroundColor(.white)
-            Image(systemName: "arrow.left")
-                .foregroundColor(.red)
+            Image(systemName: "arrowshape.left.fill")
+                .foregroundColor(.white)
         }
         .padding(5)
         .background(Color.brandSecondaryRed.opacity(0.3))

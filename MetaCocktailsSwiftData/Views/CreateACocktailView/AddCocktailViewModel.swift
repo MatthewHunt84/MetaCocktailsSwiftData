@@ -12,43 +12,10 @@ import Combine
 
 @Observable final class AddCocktailViewModel {
     
-    init(context: ModelContext? = nil) {
-        self.context = context
-    }
+   
     
-    init(context: ModelContext? = nil, basedOn cocktail: Cocktail) {
-        self.context = context
-        populateFromCocktail(cocktail)
-       
-    }
-    
-    private func populateFromCocktail(_ cocktail: Cocktail) {
-        cocktailName = "Riff on " + cocktail.cocktailName
-        // Create copies of ingredients. We can't just assign the old spec because then the spec from the original cocktail disappears. 
-        addedIngredients = cocktail.spec.map { ingredient in
-            Ingredient(
-                ingredientBase: IngredientBase(
-                    id: UUID(), // New UUID for the copy
-                    name: ingredient.ingredientBase.name,
-                    info: ingredient.ingredientBase.info,
-                    category: UmbrellaCategory(rawValue: ingredient.ingredientBase.umbrellaCategory) ?? .otherAlcohol,
-                    tags: ingredient.ingredientBase.tags,
-                    prep: ingredient.ingredientBase.prep,
-                    isCustom: true
-                ),
-                value: ingredient.value,
-                unit: ingredient.unit
-            )
-        }
-        uniqueGlasswareName = cocktail.glasswareType
-        glasswareName = cocktail.glasswareType.rawValue
-        addedGarnish = cocktail.garnish.map { Garnish(name: $0.name) } // Create copies of garnishes
-        ice = cocktail.ice
-        authorYear = String(Calendar.current.component(.year, from: Date()))
-        customVariationName = cocktail.cocktailName
-    }
-    
-    var context: ModelContext?
+    var isRiff: Bool = false
+
     
     //AddIngredientView
     var category: UmbrellaCategory = UmbrellaCategory.agaves
@@ -119,13 +86,7 @@ import Combine
     private var cancellables = Set<AnyCancellable>()
     private let searchSubject = PassthroughSubject<String, Never>()
     
-    func toggleShowIngredientView() {
-        addIngredientDetailViewIsActive.toggle()
-    }
-    func toggleShowAddGarnishView() {
-        addExistingGarnishViewIsActive.toggle()
-    }
-    
+
     func clearData() {
         cocktailName = ""
         authorName = ""
@@ -156,6 +117,48 @@ import Combine
         isCustomIngredient = false
     }
     
+ 
+
+    func populateFromCocktail(_ cocktail: Cocktail) {
+        cocktailName = "Riff on " + cocktail.cocktailName
+        
+        // Clear existing ingredients first
+        addedIngredients.removeAll()
+        
+        // Populate new ingredients one by one
+        //Make a copy of the spec so SwiftData doesn't reassign the spec.
+        for ingredientSpec in cocktail.spec {
+            let newIngredientBase = IngredientBase(id: UUID(),
+                                                   name: ingredientSpec.ingredientBase.name,
+                                                   info: ingredientSpec.ingredientBase.info,
+                                                   category: UmbrellaCategory(rawValue: ingredientSpec.ingredientBase.umbrellaCategory) ?? .otherAlcohol,
+                                                   tags: ingredientSpec.ingredientBase.tags,
+                                                   prep: ingredientSpec.ingredientBase.prep
+            )
+            
+            let newIngredient = Ingredient(id: UUID(),
+                                           ingredientBase: newIngredientBase,
+                                           value: ingredientSpec.value,
+                                           unit: ingredientSpec.unit
+            )
+            
+            addedIngredients.append(newIngredient)
+            
+        }
+        uniqueGlasswareName = Glassware(rawValue: cocktail.glasswareType.rawValue)
+        glasswareName = cocktail.glasswareType.rawValue
+        addedGarnish = cocktail.garnish.map { Garnish(name: $0.name) }
+        if let cocktailIce = cocktail.ice {
+            ice = Ice(rawValue: cocktailIce.rawValue)
+        }
+        authorYear = String(Calendar.current.component(.year, from: Date()))
+        customVariationName = cocktail.cocktailName
+        isRiff = true
+        
+        print("Populated from cocktail: \(cocktailName)")
+        print("Number of ingredients: \(addedIngredients.count)")
+    }
+
     
     func isValid() -> Bool {
         return cocktailName != "" && ((addedIngredients.count) > 1) && uniqueGlasswareName != nil
