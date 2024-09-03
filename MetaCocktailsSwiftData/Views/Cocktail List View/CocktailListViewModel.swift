@@ -79,8 +79,7 @@ import Combine
         self.allCocktails = cocktails
         updateFilteredCocktails()
     }
-    
-    
+
     func selectedCocktailVariations(for cocktail: Cocktail) -> [Cocktail] {
         
         let variationsWithSelectedCocktailFirst = allCocktails.filter { $0.variationName == cocktail.cocktailName }.sorted {

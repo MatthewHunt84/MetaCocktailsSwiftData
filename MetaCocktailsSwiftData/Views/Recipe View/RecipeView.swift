@@ -430,7 +430,7 @@ struct SpecView: View {
                             Button {
                                 showingModal = true
                             } label: {
-                                Image(systemName: "questionmark.circle.fill")
+                                Image(systemName: "bookmark.circle.fill")
                                     .tint(.blueTint)
                             }
                         }
@@ -440,7 +440,7 @@ struct SpecView: View {
                                 isShowingCocktailNotes.toggle()
                             } label: {
                                 Image(systemName: "questionmark.circle.fill")
-                                    .foregroundStyle(.blue)
+                                    .foregroundStyle(.blueTint)
                             }
                         }
                         Spacer()

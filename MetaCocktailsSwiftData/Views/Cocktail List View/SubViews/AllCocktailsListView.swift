@@ -63,6 +63,7 @@ struct SingleCocktailListView: View {
         } destination: {
             RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
                 .navigationBarBackButtonHidden(true)
+
         }
     }
 }

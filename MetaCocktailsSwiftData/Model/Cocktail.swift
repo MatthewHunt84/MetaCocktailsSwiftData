@@ -40,7 +40,9 @@ class Cocktail: Equatable, Hashable, Identifiable {
   
     
     
+
     init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [GarnishList]? = nil, ice: Ice? = nil, author: Author? = nil, spec: [OldCocktailIngredient], buildOrder: Build? = nil, notes: String? = nil, tags: Tags, variation: Variation? = nil, variationName: String? = nil, collection: CocktailCollection? = nil, isCustomCocktail: Bool = false, titleCocktail: Bool = false) {
+
         self.id = id
         self.cocktailName = cocktailName
         self.imageAsset = imageAsset
@@ -92,7 +94,9 @@ class Cocktail: Equatable, Hashable, Identifiable {
         
     }
     
+
     init(cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [Garnish] = [], ice: Ice? = nil, author: Author? = nil, spec: [Ingredient], buildOrder: Build? = nil, tags: Tags, variation: Variation? = nil, variationName: String? = nil, collection: CocktailCollection? = nil, isCustomCocktail: Bool = false, titleCocktail: Bool = false) {
+
         self.id = UUID()
         self.cocktailName = cocktailName
         self.imageAsset = imageAsset

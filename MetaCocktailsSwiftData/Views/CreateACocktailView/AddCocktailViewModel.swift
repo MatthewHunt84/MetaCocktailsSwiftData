@@ -230,9 +230,12 @@ import Combine
                 context.insert(ingredient.ingredientBase)
             }
         }
-
         context.insert(cocktail)
-        try? context.save()
+        do {
+            try context.save()
+        } catch {
+            print("Error saving custom cocktail: \(error)")
+        }
         clearData()
     }
     
