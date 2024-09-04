@@ -68,7 +68,7 @@ struct AddedIngredientView: View {
             }
             
             if viewModel.isRiff && !viewModel.addedIngredients.isEmpty {
-                SwipeToDeleteHint()
+                SwipeToDeleteOrEditHintAnimationView()
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                             withAnimation {
@@ -101,7 +101,7 @@ struct AddedIngredientView: View {
     
 }
 
-struct SwipeToDeleteHint: View {
+struct SwipeToDeleteOrEditHintAnimationView: View {
     @State private var offsetDelete: CGFloat = 0
     @State private var offsetEdit: CGFloat = 0
     
