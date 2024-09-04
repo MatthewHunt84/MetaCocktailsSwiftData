@@ -135,8 +135,10 @@ struct AddCocktailView: View {
                         .navigationBarBackButtonHidden(true)
                 }
                 .fullScreenCover(isPresented: $isShowingAddIngredients) {
-                    AddExistingIngredientDetailView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView)
-                        .navigationBarBackButtonHidden(true)
+                    NavigationStack{
+                        AddExistingIngredientDetailView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView)
+                            .navigationBarBackButtonHidden(true)
+                    }
                 }
                 .fullScreenCover(isPresented: $isSelectingFromTemplate) {
                     RiffPickerView(viewModel: viewModel)

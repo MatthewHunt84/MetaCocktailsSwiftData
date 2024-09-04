@@ -33,7 +33,7 @@ struct AddCustomIngredientView: View {
                     }
                     CategoryPickerView(viewModel: viewModel)
                     AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
-                    IngredeientRecipeView(viewModel: viewModel)
+                    CustomIngredientRecipeView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
                     AddCustomIngredientToCocktailButton(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView)
                 }
                 .navigationBarTitleDisplayMode(.inline)
@@ -45,12 +45,14 @@ struct AddCustomIngredientView: View {
                         KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
                             .background(Color.clear)
                     }
-                    
                 }
-                .task {
-                    keyboardFocused = true
+                .onAppear {
+                    if viewModel.isEdit {
+                        amountKeyboardFocused = true
+                    } else {
+                        keyboardFocused = true
+                    }
                 }
-                
                 if viewModel.isShowingingredientAlert {
                     CustomAlertView(isActive: $viewModel.isShowingingredientAlert,
                                     title: "",
@@ -109,7 +111,9 @@ struct AddCustomIngredientToCocktailButton: View {
     var body: some View {
         Button{
             if viewModel.customIngredientIsValid(allIngredients: ingredients) {
-                viewModel.prep = Prep(prepIngredientName: viewModel.ingredientName, prepRecipe: viewModel.prepIngredientRecipe)
+                if !viewModel.prepIngredientRecipe.isEmpty {
+                    viewModel.prep = Prep(prepIngredientName: viewModel.ingredientName, prepRecipe: viewModel.prepIngredientRecipe)
+                }
                 viewModel.addedIngredients.append(Ingredient(ingredientBase: IngredientBase(name: viewModel.ingredientName,
                                                                                             category: viewModel.category,
                                                                                             prep: viewModel.prep, isCustom: true),
@@ -117,7 +121,6 @@ struct AddCustomIngredientToCocktailButton: View {
                                                              unit: viewModel.selectedMeasurementUnit))
                                                   
                 viewModel.clearIngredientData()
-                viewModel.isCustomIngredient = true
                 isShowingAddIngredients = false
                 isShowingCustomIngredientView = false
             } else {

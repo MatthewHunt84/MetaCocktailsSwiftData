@@ -20,11 +20,8 @@ struct AddExistingIngredientDetailView: View {
     var body: some View {
         
         NavigationStack {
-            
             ZStack{
-                
                 MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
-                
                 Form {
                     AddIngredientSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
                     AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
@@ -36,19 +33,17 @@ struct AddExistingIngredientDetailView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .jamesHeaderWithNavigation(title: "Add Ingredient", dismiss: dismiss)
                 .toolbar {
-                    ToolbarItem(placement: .bottomBar) { CreateNewIngredientButton(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView) }
                     ToolbarItemGroup(placement: .keyboard) {
-                        KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
+                        Spacer()
+                        Button("Done") {
+                            keyboardFocused = false
+                            amountKeyboardFocused = false
+                        }
+                        .tint(.blueTint)
+                    }
+                    ToolbarItem(placement: .bottomBar) { CreateNewIngredientButton(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView)
                     }
                 }
-                .task {
-                    if viewModel.isEdit {
-                        amountKeyboardFocused = true 
-                    } else {
-                        keyboardFocused = true
-                    }
-                }
-                
                 if viewModel.isShowingingredientAlert {
                     CustomAlertView(isActive: $viewModel.isShowingingredientAlert,
                                     title: "",
@@ -56,6 +51,13 @@ struct AddExistingIngredientDetailView: View {
                                     buttonTitle: "Heard, Chef",
                                     action: {})
                     .zIndex(2)
+                }
+            }
+            .onAppear {
+                if viewModel.isEdit {
+                    amountKeyboardFocused = true
+                } else {
+                    keyboardFocused = true
                 }
             }
         }
@@ -89,6 +91,7 @@ struct AddIngredientSearchView: View {
                         filteredIngredients2a = viewModel.matchAllIngredients(ingredients: ingredients)
                         
                     }
+                
             }
             if keyboardFocused {
                 List {
@@ -128,12 +131,8 @@ struct AddMeasurementView: View {
                     .keyboardType(.decimalPad)
                     .focused($amountKeyboardFocused)
                     .font(FontFactory.formLabel18)
-                
-                
-                
                 Menu {
                     ForEach(viewModel.dynamicallyChangeMeasurementOptionsBasedOnChosenCategory(), id: \.self) { unit in
-                        
                         Button {
                             viewModel.selectedMeasurementUnit = unit
                         } label: {

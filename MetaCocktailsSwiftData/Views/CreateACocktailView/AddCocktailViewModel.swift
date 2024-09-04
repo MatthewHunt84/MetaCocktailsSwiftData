@@ -19,7 +19,7 @@ import Combine
     var category: UmbrellaCategory = UmbrellaCategory.agaves
     var ingredientAmount = 0.0
     var ingredientTags = Tags()
-    var prep: Prep?
+    
     var selectedMeasurementUnit = MeasurementUnit.fluidOunces
     var currentSelectedComponent = CocktailComponent(name: "Placeholder")
 
@@ -43,7 +43,6 @@ import Combine
     var info: String?
     var addedIngredients: [Ingredient] = []
     var didChooseExistingIngredient: Bool = false
-    var isCustomIngredient: Bool = false
     var isShowingingredientAlert: Bool = false
     var addIngredientDetailViewIsActive = false
  
@@ -60,7 +59,8 @@ import Combine
     var variation: Variation? = Variation.none
     var customVariationName: String?
     
-    //Ingredient recipe
+    //Custom ingredient recipe prep
+    var prep: Prep?
     var prepIngredientRecipe: [Instruction] = []
     
     // Author
@@ -118,7 +118,6 @@ import Combine
         prepIngredientRecipe = []
         didChooseExistingIngredient = false
         didChooseExistingGarnish = false
-        isCustomIngredient = false
         isEdit = false 
     }
     
@@ -246,12 +245,14 @@ import Combine
         clearData()
     }
     func populateCustomIngredient(ingredient: Ingredient) {
-        prep = ingredient.ingredientBase.prep
+        if let prep = ingredient.ingredientBase.prep {
+            prepIngredientRecipe = prep.prepRecipe
+        }
         ingredientName = ingredient.ingredientBase.name
         category = UmbrellaCategory(rawValue: ingredient.ingredientBase.umbrellaCategory) ?? UmbrellaCategory.otherAlcohol
         prep = ingredient.ingredientBase.prep
         ingredientAmount = ingredient.value
-        selectedMeasurementUnit = ingredient.unit
+        selectedMeasurementUnit = MeasurementUnit(rawValue: ingredient.unit.rawValue) ?? MeasurementUnit.fluidOunces
     }
     func customIngredientIsValid(allIngredients: [IngredientBase]) -> Bool {
         

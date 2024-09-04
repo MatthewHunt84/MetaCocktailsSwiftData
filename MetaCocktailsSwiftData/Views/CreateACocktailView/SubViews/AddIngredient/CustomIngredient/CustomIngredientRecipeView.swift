@@ -1,5 +1,5 @@
 //
-//  IngredeientRecipeView.swift
+//  IngredientRecipeView.swift
 //  MetaCocktailsSwiftData
 //
 //  Created by James Menkal on 7/3/24.
@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-struct IngredeientRecipeView: View {
+struct CustomIngredientRecipeView: View {
     @Bindable var viewModel: AddCocktailViewModel
     @State private var isShowingBuildSheet: Bool = false
+    @FocusState var keyboardFocused: Bool
     var body: some View {
         Section(header: Text("Recipe (Optional)").font(FontFactory.sectionHeader12)) {
             List {
@@ -28,7 +29,7 @@ struct IngredeientRecipeView: View {
                     }
                 }
                 .sheet(isPresented: $isShowingBuildSheet, content: {
-                        AddRecipeStepDetailView(viewModel: viewModel, isShowingBuildSheet: $isShowingBuildSheet)
+                    AddRecipeStepDetailView(viewModel: viewModel, keyboardFocused: _keyboardFocused, isShowingBuildSheet: $isShowingBuildSheet)
                         .presentationBackground(.clear)
                 })
                 ForEach(viewModel.prepIngredientRecipe, id: \.id) { buildStep in
@@ -53,6 +54,6 @@ struct IngredeientRecipeView: View {
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
     
-    return IngredeientRecipeView(viewModel: AddCocktailViewModel())
+    return CustomIngredientRecipeView(viewModel: AddCocktailViewModel())
         .modelContainer(preview.container)
 }

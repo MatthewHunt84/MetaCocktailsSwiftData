@@ -38,6 +38,7 @@ struct AddedIngredientView: View {
                                         viewModel.removeIngredient(ingredient)
                                     }
                                     viewModel.populateCustomIngredient(ingredient: ingredient)
+                                    viewModel.isEdit.toggle()
                                     isShowingCustomIngredientView.toggle()
                                 } label: {
                                     Label("Edit", systemImage: "pencil")
