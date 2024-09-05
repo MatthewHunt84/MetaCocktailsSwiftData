@@ -112,7 +112,7 @@ enum BaseCategory: String, Codable, CaseIterable {
     case port                         = "Port"
     
     var baseCategoryIngredients: [String] {
-        let categoryMap: [BaseCategory: [any BoozeType]] = [
+        let categoryMap: [BaseCategory: [any IngredientTagsProtocol]] = [
             .mezcalAny: Agave.allCases,
             .tequilaAny: Agave.allCases,
             .appleBrandy: Brandy.allCases,
@@ -200,7 +200,7 @@ enum SpecialtyCategory: String, Codable, CaseIterable {
     case tawnyPort                    = "Tawny Port"
     
     var specialtyCategoryIngredients: [String] {
-        let categoryMap: [SpecialtyCategory: [any BoozeType]] = [
+        let categoryMap: [SpecialtyCategory: [any IngredientTagsProtocol]] = [
             .mezcalEspadin: Agave.allCases,
             .mezcalSmokeyAny: Agave.allCases,
             .mezcalNotSmokeyAny: Agave.allCases,

@@ -27,7 +27,7 @@ struct NAIngredients: Codable, Hashable, Equatable {
     }
     
 }
-enum Juice: String, Codable, CaseIterable, IngredientTaggable {
+enum Juice: String, IngredientTagsProtocol {
     case appleCider           = "Apple cider"
     case carrotJuice          = "Carrot juice"
     case cranberryJuice       = "Cranberry juice"
@@ -66,7 +66,7 @@ enum Juice: String, Codable, CaseIterable, IngredientTaggable {
     }
 }
 
-enum Syrup: String, Codable, CaseIterable, IngredientTaggable {
+enum Syrup: String, IngredientTagsProtocol {
     
     case agaveSyrup              = "Agave syrup"
     case agaveNectar             = "Agave nectar"
@@ -167,7 +167,7 @@ enum Syrup: String, Codable, CaseIterable, IngredientTaggable {
  
 }
 
-enum Herbs: String, Codable, CaseIterable, IngredientTaggable {
+enum Herbs: String, IngredientTagsProtocol {
     case basil                = "Basil leaves"
     case cilantro             = "Cilantro leaves"
     case mint                 = "Mint leaves"
@@ -193,7 +193,8 @@ enum Herbs: String, Codable, CaseIterable, IngredientTaggable {
     }
 }
 
-enum Fruit: String, Codable, CaseIterable, IngredientTaggable {
+enum Fruit: String, IngredientTagsProtocol {
+    
     case blackBerry           = "Blackberries"
     case cucumberSlices       = "Cucumber slice(s)"
     case grapefruitPeel       = "Grapefruit peel(s)"
@@ -246,7 +247,7 @@ enum Fruit: String, Codable, CaseIterable, IngredientTaggable {
     }
 }
 
-enum Seasoning: String, Codable, CaseIterable, IngredientTaggable {
+enum Seasoning: String, IngredientTagsProtocol {
     case nutmeg               = "Grated nutmeg"
     case salt                 = "Kosher salt"
     case saline               = "Saline (5:1)"
@@ -273,7 +274,7 @@ enum Seasoning: String, Codable, CaseIterable, IngredientTaggable {
     }
 }
 
-enum Soda: String, Codable, CaseIterable, IngredientTaggable {
+enum Soda: String, IngredientTagsProtocol {
     
     case feverTreeAromatic    = "Fever Tree aromatic tonic"
     case gingerBeer           = "Ginger beer"
@@ -305,7 +306,7 @@ enum Soda: String, Codable, CaseIterable, IngredientTaggable {
     }
 }
 
-enum OtherNA: String, Codable, CaseIterable, IngredientTaggable {
+enum OtherNA: String, IngredientTagsProtocol {
     case bloodyMarryMixWnG    = "W&G bloody marry mix"
     case bloodyMarryMix       = "Bloody marry mix"
     case butter               = "Butter"

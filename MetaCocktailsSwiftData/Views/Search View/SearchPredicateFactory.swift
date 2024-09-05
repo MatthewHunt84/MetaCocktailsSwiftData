@@ -231,76 +231,6 @@ extension SearchViewModel {
         }
     }
     
-    
-//    func generateComplicatedPredicates() async {
-//        
-//        await toggleLoading()
-//        
-//        let numberOfSelections = preferredCount
-//        var perfectMatches = [String]()
-//        var minusOne = [String]()
-//        var minusTwo = [String]()
-//        
-//        let _ = allCocktails.reduce(into: 0) { partialResult, cocktail in
-//
-//            if !updatedUnwantedSelections.isEmpty {
-//                if cocktail.spec.contains(where: { updatedUnwantedSelections.contains($0.ingredientBase.name)
-//                    || updatedUnwantedSelections.contains($0.ingredientBase.umbrellaCategory)
-//                    || updatedUnwantedSelections.contains($0.ingredientBase.baseCategory)
-//                    || updatedUnwantedSelections.contains($0.ingredientBase.specialtyCategory)
-//                }) {
-//                    return // if the cocktail has an unwanted selection, bail out early.
-//                }
-//            }
-//            
-//            var umbrellas = preferredUmbrellaCategories
-//            var bases = preferredBaseCategories
-//            var specialties = preferredSpecialtyCategories
-//            var ingredients = preferredIngredients
-//            
-//            var matchedSelections = 0
-//            
-//            cocktail.spec.forEach { ingredient in
-//                
-//                if !umbrellas.isEmpty && umbrellas.contains(ingredient.ingredientBase.umbrellaCategory) {
-//                    matchedSelections += 1
-//                    if let index = umbrellas.firstIndex(of: ingredient.ingredientBase.umbrellaCategory) {
-//                        umbrellas.remove(at: index)
-//                    }
-//                } else if !bases.isEmpty && bases.contains(ingredient.ingredientBase.baseCategory) {
-//                    matchedSelections += 1
-//                    if let index = bases.firstIndex(of: ingredient.ingredientBase.baseCategory) {
-//                        bases.remove(at: index)
-//                    }
-//                } else if !specialties.isEmpty && specialties.contains(ingredient.ingredientBase.specialtyCategory) {
-//                    matchedSelections += 1
-//                    if let index = specialties.firstIndex(of: ingredient.ingredientBase.specialtyCategory) {
-//                        specialties.remove(at: index)
-//                    }
-//                } else if !ingredients.isEmpty && ingredients.contains(ingredient.ingredientBase.name) {
-//                    matchedSelections += 1
-//                    if let index = ingredients.firstIndex(of: ingredient.ingredientBase.name) {
-//                        ingredients.remove(at: index)
-//                    }
-//                }
-//            }
-//            
-//            if matchedSelections >= numberOfSelections {
-//                perfectMatches.append(cocktail.cocktailName)
-//                partialResult += 1
-//            } else if matchedSelections == numberOfSelections - 1 {
-//                minusOne.append(cocktail.cocktailName)
-//            } else if matchedSelections == numberOfSelections - 2 {
-//                minusTwo.append(cocktail.cocktailName)
-//            }
-//        }
-//        perfectMatchCocktails = perfectMatches
-//        minusOneMatchCocktails = minusOne
-//        minusTwoMatchCocktails = minusTwo
-//        
-//        await toggleLoading()
-//    }
-    
     func generateComplicatedPredicates() async {
         await toggleLoading()
         
@@ -316,9 +246,8 @@ extension SearchViewModel {
                         updatedUnwantedSelections.contains(ingredient.ingredientBase.umbrellaCategory) ||
                         updatedUnwantedSelections.contains(ingredient.ingredientBase.baseCategory) ||
                         updatedUnwantedSelections.contains(ingredient.ingredientBase.specialtyCategory) ||
-                        (ingredient.ingredientBase.tags?.flavors?.contains { flavor in
-                            updatedUnwantedSelections.contains(flavor.rawValue)
-                        } ?? false)
+                        // check for unwanted flavors. Chain the optionals then give false as a default if their flavors array = nil.
+                        (ingredient.ingredientBase.tags?.flavors?.contains { updatedUnwantedSelections.contains($0.rawValue) } ?? false)
                     }
                     
                     if hasUnwantedIngredient {
@@ -359,9 +288,14 @@ extension SearchViewModel {
                 
                 // Check for flavors
                 if !flavors.isEmpty {
+                    // Grab all of the flavors from the ingredient as strings.
                     let ingredientFlavorStrings = ingredient.ingredientBase.tags?.flavors?.map { $0.rawValue } ?? []
+                    // .intersection finds the elements that are present in both sets. So we cast flavors as a set to make the comparison because intersection returns a set.
                     let matchedFlavors = Set(flavors).intersection(ingredientFlavorStrings)
+                    //add the matched count to matchedSelections
                     matchedSelections += matchedFlavors.count
+                    // We take the flavors that were found already and take them out of the flavors array so that we don't waste any more time search for flavors that we've already found in previous ingredients.
+                    //We cast it back into an array so we don't have to mess with changing preferredFlavorStrings into a set.
                     flavors = Array(Set(flavors).subtracting(matchedFlavors))
                 }
             }
