@@ -21,11 +21,10 @@ struct VariationPickerDetailView: View {
         NavigationStack {
             ZStack {
                 MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
-                
                 VStack {
                     SearchBarForCreateCocktailView(isFocused: $isSearchFocused, viewModel: viewModel)
                     List {
-                        ForEach(viewModel.filteredCocktails, id: \.self) { cocktail in
+                        ForEach(viewModel.filteredCocktails, id: \.id) { cocktail in
                             if !viewModel.searchText.isEmpty {
                                 Button(action: {
                                     viewModel.customVariationName = cocktail.cocktailName

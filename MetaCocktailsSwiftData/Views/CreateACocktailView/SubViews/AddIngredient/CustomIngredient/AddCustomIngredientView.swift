@@ -111,6 +111,7 @@ struct AddCustomIngredientToCocktailButton: View {
     var body: some View {
         Button{
             if viewModel.customIngredientIsValid(allIngredients: ingredients) {
+                viewModel.removeIngredient()
                 if !viewModel.prepIngredientRecipe.isEmpty {
                     viewModel.prep = Prep(prepIngredientName: viewModel.ingredientName, prepRecipe: viewModel.prepIngredientRecipe)
                 }

@@ -26,7 +26,8 @@ struct AddedIngredientView: View {
                         .swipeActions(edge: .trailing) {
                             Button(role: .none) {
                                 withAnimation {
-                                    viewModel.removeIngredient(ingredient)
+                                    viewModel.currentIngredientUUID = ingredient.id
+                                    viewModel.removeIngredient()
                                 }
                             } label: {
                                 Label("Delete", systemImage: "trash")
@@ -35,15 +36,11 @@ struct AddedIngredientView: View {
                         }
                         .onTapGesture(perform: {
                             if ingredient.ingredientBase.isCustom {
-                                withAnimation {
-                                    viewModel.removeIngredient(ingredient)
-                                }
+                                viewModel.currentIngredientUUID = ingredient.id 
                                 viewModel.populateCustomIngredient(ingredient: ingredient)
                                 isShowingCustomIngredientView.toggle()
                             } else {
-                                withAnimation {
-                                    viewModel.removeIngredient(ingredient)
-                                }
+                                viewModel.currentIngredientUUID = ingredient.id
                                 viewModel.populateExistingIngredient(ingredient: ingredient)
                                 isShowingAddIngredients.toggle()
                             }
@@ -115,10 +112,3 @@ struct SwipeToEditHintView: View {
     }
 }
 
-extension AddCocktailViewModel {
-    func removeIngredient(_ ingredient: Ingredient) {
-        if let index = addedIngredients.firstIndex(where: { $0.id == ingredient.id }) {
-            addedIngredients.remove(at: index)
-        }
-    }
-}
