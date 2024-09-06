@@ -167,7 +167,9 @@ struct AddExistingIngredientToCocktailButton: View {
     
     var body: some View {
         Button{
+           
             if viewModel.existingIngredientIsValid(allIngredients: ingredients) {
+                viewModel.removeIngredient()
                 let ingredient = Ingredient(ingredientBase: IngredientBase(name: viewModel.ingredientName,
                                                                            category: viewModel.category,
                                                                            prep: viewModel.prep),

@@ -59,6 +59,8 @@ import Combine
     var variation: Variation? = Variation.none
     var customVariationName: String?
     
+    var currentIngredientUUID: UUID = UUID()
+    
     //Custom ingredient recipe prep
     var prep: Prep?
     var prepIngredientRecipe: [Instruction] = []
@@ -107,7 +109,7 @@ import Combine
         build = Build(instructions: [])
         buildOption = nil
         customVariationName = nil
-       
+        currentIngredientUUID = UUID()
     }
     func clearIngredientData() {
         ingredientName = ""
@@ -118,7 +120,8 @@ import Combine
         prepIngredientRecipe = []
         didChooseExistingIngredient = false
         didChooseExistingGarnish = false
-        isEdit = false 
+        isEdit = false
+        
     }
     
  
@@ -269,6 +272,11 @@ import Combine
         return ingredientName != "" &&
         ingredientAmount != 0.0 &&
         !allIngredients.contains(where: { $0.name == ingredientName } )
+    }
+    func removeIngredient() {
+        if let index = addedIngredients.firstIndex(where: { $0.id == currentIngredientUUID}) {
+            addedIngredients.remove(at: index)
+        }
     }
     
     func customGarnishIsValid(allGarnishes: [Garnish]) -> Bool {
@@ -485,27 +493,16 @@ import Combine
     }
     
     private func performSearch(_ searchText: String) {
-
-        self.debouncedSearchText = searchText
-        updateFilteredCocktails()
-        let lowercasedSearchText = debouncedSearchText.lowercased()
-       
-        filteredCocktails = Array(Set(filteredCocktails)).sorted { $0.cocktailName < $1.cocktailName }.sorted { (lhs: Cocktail, rhs: Cocktail) in
-            //Move the sorting to after the variations have been added.
-            let lhsLowercased = lhs.cocktailName.lowercased()
-            let rhsLowercased = rhs.cocktailName.lowercased()
-            
-            let lhsStartsWith = lhsLowercased.hasPrefix(lowercasedSearchText)
-            let rhsStartsWith = rhsLowercased.hasPrefix(lowercasedSearchText)
-            
-            if lhsStartsWith != rhsStartsWith {
-                return lhsStartsWith
+        let lowercasedSearchText = searchText.lowercased()
+        filteredCocktails = allCocktails.filter {
+            $0.cocktailName.lowercased().contains(lowercasedSearchText)
+        }.sorted { lhs, rhs in
+            let lhsName = lhs.cocktailName.lowercased()
+            let rhsName = rhs.cocktailName.lowercased()
+            if lhsName.hasPrefix(lowercasedSearchText) != rhsName.hasPrefix(lowercasedSearchText) {
+                return lhsName.hasPrefix(lowercasedSearchText)
             }
-            
-            if lhsStartsWith {
-                return lhs.cocktailName.count < rhs.cocktailName.count
-            }
-            return (lhsLowercased.range(of: lowercasedSearchText)?.lowerBound ?? lhsLowercased.endIndex) < (rhsLowercased.range(of: lowercasedSearchText)?.lowerBound ?? rhsLowercased.endIndex)
+            return lhsName < rhsName
         }
     }
     
