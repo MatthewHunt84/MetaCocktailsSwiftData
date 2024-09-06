@@ -51,7 +51,7 @@ struct AddedIngredientView: View {
                 }
             }
             if viewModel.isRiff && !viewModel.addedIngredients.isEmpty {
-                SwipeToDeleteOrEditHintAnimationView()
+                SwipeToEditHintView()
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                             withAnimation {
@@ -84,9 +84,9 @@ struct AddedIngredientView: View {
     
 }
 
-struct SwipeToDeleteOrEditHintAnimationView: View {
+struct SwipeToEditHintView: View {
     @State private var offsetDelete: CGFloat = 0
-    @State private var offsetEdit: CGFloat = 0
+    
     
     var body: some View {
         GeometryReader { geometry in
@@ -105,25 +105,10 @@ struct SwipeToDeleteOrEditHintAnimationView: View {
                     .cornerRadius(8)
                     .offset(x: geometry.size.width / 2 - offsetDelete)
                 }
-                HStack {
-                    HStack {
-                        Text("Swipe to Edit")
-                            .font(FontFactory.fontBody16)
-                            .foregroundColor(.white)
-                        Image(systemName: "arrowshape.right.fill")
-                            .foregroundColor(.white)
-                    }
-                    .padding(5)
-                    .background(.blueTint)
-                    .cornerRadius(8)
-                    .offset(x: -geometry.size.width / 2 + offsetEdit)
-                    Spacer()
-                }
             }
             .onAppear {
                 withAnimation(Animation.easeInOut(duration: 1.75).repeatForever(autoreverses: true)) {
                     offsetDelete = geometry.size.width / 2
-                    offsetEdit = geometry.size.width / 2
                 }
             }
         }
