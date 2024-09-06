@@ -166,23 +166,32 @@ enum IngredientType: Codable{
 
 enum MeasurementUnit: String, Codable, CaseIterable {
     
-    case barSpoon           = "Bar-spoon(s)"
-    case bottles            = "Bottle(s)"
-    case dashes             = "dash(es)"
-    case drops              = "drops"
-    case fluidOunces        = "oz."
+    case barSpoon           = "Bar-spoon"
+    case bottles            = "Bottle"
+    case dashes             = "dash"
+    case drops              = "drop"
+    case fluidOunces        = "oz"
     case gentlyMuddled      = "Gently muddled"
-    case grams              = "grams"
+    case grams              = "gram"
     case ml                 = "ml"
     case muddled            = "Muddled"
     case nitroMuddled       = "Nitro muddled"
     case none               = ""
-    case peel               = "Peel(s)"
+    case peel               = "Peel"
     case pinch              = "Pinch"
-    case sliceOf            = "Slice(s) of"
+    case sliceOf            = "Slice of"
     case splash             = "Splash of"
-    case sprays             = "Spray(s)"
+    case sprays             = "Spray"
     case teaspoon           = "Tsp"
     case tablespoon         = "Tbsp"
     case whole              = "Whole"
+    
+    var canBePluralized: Bool {
+        switch self {
+        case .fluidOunces, .gentlyMuddled, .muddled, .nitroMuddled, .none, .teaspoon, .tablespoon, .whole:
+            false
+        default:
+            true
+        }
+    }
 }

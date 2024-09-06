@@ -228,6 +228,7 @@ class Ingredient: Codable, Hashable {
         self.value = oldIngredient.value
         self.unit = oldIngredient.unit
     }
+    
     func localizedVolumetricString(location: Location) -> String {
         switch location {
         case .usa:
@@ -236,7 +237,7 @@ class Ingredient: Codable, Hashable {
             return "\(self.value * 29.5735) mls"
         }
     }
-    
+
     // MARK: Equatable + Hashable Conformance
     
     static func == (lhs: Ingredient, rhs: Ingredient) -> Bool {

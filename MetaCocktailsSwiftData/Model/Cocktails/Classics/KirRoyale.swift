@@ -18,8 +18,8 @@ var kirRoyale = Cocktail(cocktailName: "Kir Royale",
                          collection: .originals,
                          titleCocktail: true)
 
-var kirRoyaleSpec  = [OldCocktailIngredient(.liqueurs(.cremeDeCassis), value: 15, unit: .ml),
-                      OldCocktailIngredient(.wines(.bourgogneAligote), value: 100, unit: .ml)]
+var kirRoyaleSpec  = [OldCocktailIngredient(.liqueurs(.cremeDeCassis), value: 0.5, unit: .fluidOunces),
+                      OldCocktailIngredient(.wines(.bourgogneAligote), value: 3.5, unit: .fluidOunces)]
 
 var kirRoyaleTags = Tags(profiles: [.dry, .fruity],
                          styles: [.built])

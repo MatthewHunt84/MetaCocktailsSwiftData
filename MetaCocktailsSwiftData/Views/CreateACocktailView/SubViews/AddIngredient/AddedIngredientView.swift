@@ -20,7 +20,8 @@ struct AddedIngredientView: View {
         Section(header: Text("Ingredients").font(FontFactory.sectionHeader12)) {
             List {
                 ForEach(viewModel.addedIngredients, id: \.id) { ingredient in
-                    Text("\(NSNumber(value: ingredient.value)) \(ingredient.unit.rawValue) \(ingredient.ingredientBase.name)")
+
+                    pluralizedIngredientText(for: ingredient)
                         .font(FontFactory.fontBody16)
                         .swipeActions(edge: .trailing) {
                             Button(role: .none) {
