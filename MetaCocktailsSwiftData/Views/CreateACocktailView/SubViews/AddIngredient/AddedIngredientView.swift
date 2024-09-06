@@ -23,7 +23,7 @@ struct AddedIngredientView: View {
                     Text("\(NSNumber(value: ingredient.value)) \(ingredient.unit.rawValue) \(ingredient.ingredientBase.name)")
                         .font(FontFactory.fontBody16)
                         .swipeActions(edge: .trailing) {
-                            Button(role: .destructive) {
+                            Button(role: .none) {
                                 withAnimation {
                                     viewModel.removeIngredient(ingredient)
                                 }
@@ -33,7 +33,7 @@ struct AddedIngredientView: View {
                         }
                         .swipeActions(edge: .leading) {
                             if ingredient.ingredientBase.isCustom {
-                                Button(role: .destructive){
+                                Button(role: .none){
                                     withAnimation {
                                         viewModel.removeIngredient(ingredient)
                                     }
@@ -46,7 +46,7 @@ struct AddedIngredientView: View {
                                 .tint(.blueTint)
                                 
                             } else {
-                                Button(role: .destructive){
+                                Button(role: .none){
                                     withAnimation {
                                         viewModel.removeIngredient(ingredient)
                                     }
