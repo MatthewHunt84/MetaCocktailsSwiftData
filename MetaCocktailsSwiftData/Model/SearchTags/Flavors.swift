@@ -7,9 +7,7 @@
 
 import Foundation
 
-//"RawRepresentable where RawValue == String" is the conformance that says "The .rawValue of any enum that conforms to IngredientTagsProtocol is going to have a .rawValue of String.
-// This allows us to access it easier in flavorIngredientsDictionary below as well as generateComplicatedPredicates later on.
-// We also were able to remove "BoozeType" protocol with this because it was the same thing. Now we just have a universal one. 
+
 protocol IngredientTagsProtocol: Codable, CaseIterable, RawRepresentable where RawValue == String {
     var tags: Tags { get }
 }
@@ -103,50 +101,44 @@ enum Flavor: String, Codable, CaseIterable {
     case whiteFlower    = "White Flower"
 
     static var flavorIngredientsDictionary: [Flavor: [String]] {
-        //create a dict filled with all keys (flavors) but empty values ( empty arrays that will later be filled with matching ingredient names as strings)
-        // Dictionary(uniqueKeysWithValues: ) is how you initialize a dictionary, but it requires uniqueKeyValues. We pass in allCases.map { ($0, []) }. allCases referring to all the cases in this enum.
+
         var flavorDictionary: [Flavor: [String]] = Dictionary(uniqueKeysWithValues: allCases.map { ($0, []) })
         
-        //This function takes in any enum with the IngredientTagsProtocol conformance
-        func addIngredientsToDict(_ ingredients: [any IngredientTagsProtocol]) {
-            //It checks all the ingredients for their flavor tags
+       
+        func addIngredientsConnectedToFlavorToDict(_ ingredients: [any IngredientTagsProtocol]) {
             for ingredient in ingredients {
                 if let flavors = ingredient.tags.flavors {
-                    //if they have flavor tags, it checks to see which flavor matches a flavor in the dict we created. If it matches it, it assigns that ingredient name to the value (ingredient name array).
                     for flavor in flavors {
                         if let flavorEnum = Flavor(rawValue: flavor.rawValue) {
                             flavorDictionary[flavorEnum, default: []].append(ingredient.rawValue)
-                            //this is where we needed the conformance "RawRepresentable where RawValue == String" in the protocol. 
-                           
                         }
                     }
                 }
             }
-            //After it checks all of the ingredients and all the flavors of the ingredients, what we're left with is a dict with flavors and associated ingredient names to check in predicateFactory.
         }
-        //Finally, take every ingredient enum and run them through addIngredientsToDict to populate with all of our ingredients.
+        
         // N/A ingredients
-        addIngredientsToDict(Juice.allCases)
-        addIngredientsToDict(Syrup.allCases)
-        addIngredientsToDict(Herbs.allCases)
-        addIngredientsToDict(Fruit.allCases)
-        addIngredientsToDict(Seasoning.allCases)
-        addIngredientsToDict(Soda.allCases)
-        addIngredientsToDict(OtherNA.allCases)
+        addIngredientsConnectedToFlavorToDict(Juice.allCases)
+        addIngredientsConnectedToFlavorToDict(Syrup.allCases)
+        addIngredientsConnectedToFlavorToDict(Herbs.allCases)
+        addIngredientsConnectedToFlavorToDict(Fruit.allCases)
+        addIngredientsConnectedToFlavorToDict(Seasoning.allCases)
+        addIngredientsConnectedToFlavorToDict(Soda.allCases)
+        addIngredientsConnectedToFlavorToDict(OtherNA.allCases)
         
         // Booze ingredients
-        addIngredientsToDict(Agave.allCases)
-        addIngredientsToDict(Brandy.allCases)
-        addIngredientsToDict(Gin.allCases)
-        addIngredientsToDict(OtherAlcohol.allCases)
-        addIngredientsToDict(Rum.allCases)
-        addIngredientsToDict(Vodka.allCases)
-        addIngredientsToDict(Whiskey.allCases)
-        addIngredientsToDict(Liqueur.allCases)
-        addIngredientsToDict(FortifiedWine.allCases)
-        addIngredientsToDict(Wine.allCases)
-        addIngredientsToDict(Bitters.allCases)
-        addIngredientsToDict(Amaro.allCases)
+        addIngredientsConnectedToFlavorToDict(Agave.allCases)
+        addIngredientsConnectedToFlavorToDict(Brandy.allCases)
+        addIngredientsConnectedToFlavorToDict(Gin.allCases)
+        addIngredientsConnectedToFlavorToDict(OtherAlcohol.allCases)
+        addIngredientsConnectedToFlavorToDict(Rum.allCases)
+        addIngredientsConnectedToFlavorToDict(Vodka.allCases)
+        addIngredientsConnectedToFlavorToDict(Whiskey.allCases)
+        addIngredientsConnectedToFlavorToDict(Liqueur.allCases)
+        addIngredientsConnectedToFlavorToDict(FortifiedWine.allCases)
+        addIngredientsConnectedToFlavorToDict(Wine.allCases)
+        addIngredientsConnectedToFlavorToDict(Bitters.allCases)
+        addIngredientsConnectedToFlavorToDict(Amaro.allCases)
         
         return flavorDictionary
     }
