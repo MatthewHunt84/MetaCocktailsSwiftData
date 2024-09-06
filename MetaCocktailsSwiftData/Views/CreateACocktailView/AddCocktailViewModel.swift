@@ -253,6 +253,16 @@ import Combine
         prep = ingredient.ingredientBase.prep
         ingredientAmount = ingredient.value
         selectedMeasurementUnit = MeasurementUnit(rawValue: ingredient.unit.rawValue) ?? MeasurementUnit.fluidOunces
+        isEdit.toggle()
+    }
+    func populateExistingIngredient(ingredient: Ingredient) {
+        ingredientName = ingredient.ingredientBase.name
+        category = UmbrellaCategory(rawValue: ingredient.ingredientBase.umbrellaCategory) ?? UmbrellaCategory.agaves
+        ingredientTags = ingredient.ingredientBase.tags ?? Tags()
+        info = ingredient.ingredientBase.info
+        dynamicallyChangeMeasurementUnit()
+        didChooseExistingIngredient = true
+        isEdit.toggle()
     }
     func customIngredientIsValid(allIngredients: [IngredientBase]) -> Bool {
         

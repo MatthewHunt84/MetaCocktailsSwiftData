@@ -31,43 +31,25 @@ struct AddedIngredientView: View {
                             } label: {
                                 Label("Delete", systemImage: "trash")
                             }
+                            .tint(.red)
                         }
-                        .swipeActions(edge: .leading) {
+                        .onTapGesture(perform: {
                             if ingredient.ingredientBase.isCustom {
-                                Button(role: .none){
-                                    withAnimation {
-                                        viewModel.removeIngredient(ingredient)
-                                    }
-                                    viewModel.populateCustomIngredient(ingredient: ingredient)
-                                    viewModel.isEdit.toggle()
-                                    isShowingCustomIngredientView.toggle()
-                                } label: {
-                                    Label("Edit", systemImage: "pencil")
+                                withAnimation {
+                                    viewModel.removeIngredient(ingredient)
                                 }
-                                .tint(.blueTint)
-                                
+                                viewModel.populateCustomIngredient(ingredient: ingredient)
+                                isShowingCustomIngredientView.toggle()
                             } else {
-                                Button(role: .none){
-                                    withAnimation {
-                                        viewModel.removeIngredient(ingredient)
-                                    }
-                                    viewModel.ingredientName = ingredient.ingredientBase.name
-                                    viewModel.category = UmbrellaCategory(rawValue: ingredient.ingredientBase.umbrellaCategory) ?? UmbrellaCategory.agaves
-                                    viewModel.ingredientTags = ingredient.ingredientBase.tags ?? Tags()
-                                    viewModel.info = ingredient.ingredientBase.info
-                                    viewModel.dynamicallyChangeMeasurementUnit()
-                                    viewModel.didChooseExistingIngredient = true
-                                    viewModel.isEdit = true
-                                    isShowingAddIngredients.toggle()
-                                } label: {
-                                    Label("Edit", systemImage: "pencil")
+                                withAnimation {
+                                    viewModel.removeIngredient(ingredient)
                                 }
-                                .tint(.blueTint)
+                                viewModel.populateExistingIngredient(ingredient: ingredient)
+                                isShowingAddIngredients.toggle()
                             }
-                        }
+                        })
                 }
             }
-            
             if viewModel.isRiff && !viewModel.addedIngredients.isEmpty {
                 SwipeToDeleteOrEditHintAnimationView()
                     .onAppear {
