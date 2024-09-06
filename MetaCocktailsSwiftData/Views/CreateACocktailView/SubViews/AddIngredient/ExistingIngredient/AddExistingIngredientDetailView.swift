@@ -13,17 +13,15 @@ struct AddExistingIngredientDetailView: View {
     @FocusState private var keyboardFocused: Bool
     @FocusState private var amountKeyboardFocused: Bool
     @Binding var isShowingAddIngredients: Bool
+    @Binding var isShowingCustomIngredientView: Bool
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     
     var body: some View {
         
         NavigationStack {
-            
             ZStack{
-                
                 MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
-                
                 Form {
                     AddIngredientSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
                     AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
@@ -35,15 +33,17 @@ struct AddExistingIngredientDetailView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .jamesHeaderWithNavigation(title: "Add Ingredient", dismiss: dismiss)
                 .toolbar {
-                    ToolbarItem(placement: .bottomBar) { CreateNewIngredientButton(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients) }
                     ToolbarItemGroup(placement: .keyboard) {
-                        KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
+                        Spacer()
+                        Button("Done") {
+                            keyboardFocused = false
+                            amountKeyboardFocused = false
+                        }
+                        .tint(.blueTint)
+                    }
+                    ToolbarItem(placement: .bottomBar) { CreateNewIngredientButton(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView)
                     }
                 }
-                .task {
-                    keyboardFocused = true
-                }
-                
                 if viewModel.isShowingingredientAlert {
                     CustomAlertView(isActive: $viewModel.isShowingingredientAlert,
                                     title: "",
@@ -53,6 +53,13 @@ struct AddExistingIngredientDetailView: View {
                     .zIndex(2)
                 }
             }
+            .onAppear {
+                if viewModel.isEdit {
+                    amountKeyboardFocused = true
+                } else {
+                    keyboardFocused = true
+                }
+            }
         }
     }
 }
@@ -60,7 +67,7 @@ struct AddExistingIngredientDetailView: View {
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
     
-    AddExistingIngredientDetailView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true))
+    AddExistingIngredientDetailView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true), isShowingCustomIngredientView: .constant(true))
         .modelContainer(preview.container)
     
 }
@@ -84,6 +91,7 @@ struct AddIngredientSearchView: View {
                         filteredIngredients2a = viewModel.matchAllIngredients(ingredients: ingredients)
                         
                     }
+                
             }
             if keyboardFocused {
                 List {
@@ -123,12 +131,8 @@ struct AddMeasurementView: View {
                     .keyboardType(.decimalPad)
                     .focused($amountKeyboardFocused)
                     .font(FontFactory.formLabel18)
-                
-                
-                
                 Menu {
                     ForEach(viewModel.dynamicallyChangeMeasurementOptionsBasedOnChosenCategory(), id: \.self) { unit in
-                        
                         Button {
                             viewModel.selectedMeasurementUnit = unit
                         } label: {
@@ -146,6 +150,11 @@ struct AddMeasurementView: View {
                         Image(systemName: "chevron.down")
                             .foregroundStyle(.gray)
                     }
+                }
+            }
+            .onAppear {
+                if viewModel.isEdit {
+                    amountKeyboardFocused = true
                 }
             }
         }
@@ -190,11 +199,12 @@ struct AddExistingIngredientToCocktailButton: View {
 struct CreateNewIngredientButton: View {
     @Bindable var viewModel: AddCocktailViewModel
     @Binding var isShowingAddIngredients: Bool
+    @Binding var isShowingCustomIngredientView: Bool
     var body: some View {
         
         
         NavigationLink {
-            AddCustomIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
+            AddCustomIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView)
                 .navigationBarBackButtonHidden(true)
         } label: {
             HStack{

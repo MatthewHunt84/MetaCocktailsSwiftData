@@ -10,50 +10,35 @@ import SwiftUI
 struct AddRecipeStepDetailView: View {
     @Bindable var viewModel: AddCocktailViewModel
     @State private var textEditor = ""
-    @FocusState private var keyboardFocused: Bool
+    @FocusState var keyboardFocused: Bool
     @Binding var isShowingBuildSheet: Bool
     
     var body: some View {
-
-                VStack {
-                    
-                    Form {
-                        Section("Add a recipe step") {
-                            Text("Step \(viewModel.prepIngredientRecipe.count + 1)")
-                            TextField("Add Step", text: $textEditor)
-                                .focused($keyboardFocused)
-                                .onChange(of: keyboardFocused) { oldValue, newValue in
-                                    if !newValue {
-                                        viewModel.prepIngredientRecipe.append(Instruction(step: viewModel.build.instructions.count + 1, method: textEditor))
-                                        isShowingBuildSheet = false
-                                    }
-                                }
-                        }
-                        
+        VStack {
+            Form {
+                Section("Add a recipe step") {
+                    Text("Step \(viewModel.prepIngredientRecipe.count + 1)")
+                    TextEditor(text: $textEditor)
+                        .focused($keyboardFocused)
+                        .frame(minHeight: 100)
+                        .scrollContentBackground(.hidden) 
+                        .background(Color.clear)
+                }
+                Button {
+                    viewModel.prepIngredientRecipe.append(Instruction(step: viewModel.prepIngredientRecipe.count + 1, method: textEditor))
+                    isShowingBuildSheet = false
+                } label: {
+                    HStack {
+                        Spacer()
+                        Text("Add Step").font(.headline)
+                        Image(systemName:textEditor != "" ? "plus.circle.fill" : "plus")
+                        Spacer()
                     }
-                    .scrollContentBackground(.hidden)
-                    .background(BlackGlassBackgroundView())
-                    .toolbar {
-                        ToolbarItem(placement: .bottomBar) {
-                            Button {
-                                viewModel.prepIngredientRecipe.append(Instruction(step: viewModel.build.instructions.count + 1, method: textEditor))
-                                isShowingBuildSheet = false
-                            } label: {
-                                HStack {
-                                    Text("Add Step").font(.headline)
-                                    Image(systemName: "plus")
-                                }
-                                .foregroundStyle(textEditor != "" ? .brandPrimaryGold : .secondary)
-                            }
-                        }
-                        ToolbarItemGroup(placement: .keyboard) {
-                            Spacer()
-                            Button("Done") {
-                                keyboardFocused = false
-                            }
-                            .tint(Color.brandPrimaryGold)
-                        }
-                    }
+                    .foregroundStyle(textEditor != "" ? .brandPrimaryGold : .secondary)
+                }
+            }
+            .scrollContentBackground(.hidden)
+            .background(BlackGlassBackgroundView())
             .task {
                 keyboardFocused = true
             }
@@ -61,3 +46,9 @@ struct AddRecipeStepDetailView: View {
     }
 }
 
+#Preview {
+    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
+    
+    return AddRecipeStepDetailView(viewModel: AddCocktailViewModel(), isShowingBuildSheet: .constant(true))
+        .modelContainer(preview.container)
+}

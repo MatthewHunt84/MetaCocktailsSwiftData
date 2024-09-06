@@ -397,7 +397,7 @@
 		4DBFF8572B60AAFB0011B5B1 /* CableCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8562B60AAFB0011B5B1 /* CableCar.swift */; };
 		4DBFF8592B60AD800011B5B1 /* CableCar(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8582B60AD800011B5B1 /* CableCar(W&G).swift */; };
 		4DBFF85B2B60AFE60011B5B1 /* Carajillo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF85A2B60AFE60011B5B1 /* Carajillo.swift */; };
-		4DCAA7A52C35E77200FBC4FE /* IngredeientRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAA7A42C35E77200FBC4FE /* IngredeientRecipeView.swift */; };
+		4DCAA7A52C35E77200FBC4FE /* CustomIngredientRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAA7A42C35E77200FBC4FE /* CustomIngredientRecipeView.swift */; };
 		4DCAA7A72C35E83F00FBC4FE /* AddRecipeStepDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAA7A62C35E83F00FBC4FE /* AddRecipeStepDetailView.swift */; };
 		4DCAA7A92C373D1700FBC4FE /* AddExistingIngredientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAA7A82C373D1700FBC4FE /* AddExistingIngredientDetailView.swift */; };
 		4DCB16F62BA239D60002D7D9 /* StreetAndFlynnSpecial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB16F52BA239D60002D7D9 /* StreetAndFlynnSpecial.swift */; };
@@ -530,6 +530,7 @@
 		F4AA6BB82C7E2B8E00610D80 /* Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA6BB72C7E2B8600610D80 /* Headers.swift */; };
 		F4AA6BBA2C7E2C4F00610D80 /* FontFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA6BB92C7E2C4D00610D80 /* FontFactory.swift */; };
 		F4AA6BBC2C7E2C8B00610D80 /* Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA6BBB2C7E2C8200610D80 /* Gradients.swift */; };
+		F4AC617D2C8B688D0015BC9D /* SharedHelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AC617C2C8B68890015BC9D /* SharedHelperMethods.swift */; };
 		F4B0ABF32B13FB2A00336D05 /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0ABF22B13FB2A00336D05 /* SearchResultsView.swift */; };
 		F4C5C3E12B3B3F2E005B2261 /* IngredientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C5C3E02B3B3F2E005B2261 /* IngredientType.swift */; };
 		F4C5C3E42B3B4086005B2261 /* NonAlchololicIngredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C5C3E32B3B4086005B2261 /* NonAlchololicIngredients.swift */; };
@@ -940,7 +941,7 @@
 		4DBFF8562B60AAFB0011B5B1 /* CableCar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CableCar.swift; sourceTree = "<group>"; };
 		4DBFF8582B60AD800011B5B1 /* CableCar(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CableCar(W&G).swift"; sourceTree = "<group>"; };
 		4DBFF85A2B60AFE60011B5B1 /* Carajillo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carajillo.swift; sourceTree = "<group>"; };
-		4DCAA7A42C35E77200FBC4FE /* IngredeientRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredeientRecipeView.swift; sourceTree = "<group>"; };
+		4DCAA7A42C35E77200FBC4FE /* CustomIngredientRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomIngredientRecipeView.swift; sourceTree = "<group>"; };
 		4DCAA7A62C35E83F00FBC4FE /* AddRecipeStepDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeStepDetailView.swift; sourceTree = "<group>"; };
 		4DCAA7A82C373D1700FBC4FE /* AddExistingIngredientDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExistingIngredientDetailView.swift; sourceTree = "<group>"; };
 		4DCB16F52BA239D60002D7D9 /* StreetAndFlynnSpecial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetAndFlynnSpecial.swift; sourceTree = "<group>"; };
@@ -1074,6 +1075,7 @@
 		F4AA6BB72C7E2B8600610D80 /* Headers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headers.swift; sourceTree = "<group>"; };
 		F4AA6BB92C7E2C4D00610D80 /* FontFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontFactory.swift; sourceTree = "<group>"; };
 		F4AA6BBB2C7E2C8200610D80 /* Gradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradients.swift; sourceTree = "<group>"; };
+		F4AC617C2C8B68890015BC9D /* SharedHelperMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedHelperMethods.swift; sourceTree = "<group>"; };
 		F4B0ABF22B13FB2A00336D05 /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
 		F4C5C3E02B3B3F2E005B2261 /* IngredientType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientType.swift; sourceTree = "<group>"; };
 		F4C5C3E32B3B4086005B2261 /* NonAlchololicIngredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonAlchololicIngredients.swift; sourceTree = "<group>"; };
@@ -1141,6 +1143,7 @@
 		1AC386812AAABED00064F52A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				F4AC617B2C8B687B0015BC9D /* SharedHelpers */,
 				1AC3867F2AAABED00064F52A /* Extensions */,
 			);
 			path = Utilities;
@@ -1632,9 +1635,9 @@
 		4D6761352C41C59D00A5939C /* CustomIngredient */ = {
 			isa = PBXGroup;
 			children = (
+				4DCAA7A42C35E77200FBC4FE /* CustomIngredientRecipeView.swift */,
 				4DCAA7A62C35E83F00FBC4FE /* AddRecipeStepDetailView.swift */,
 				4DE33DF62B8D933700312EC3 /* AddCustomIngredientView.swift */,
-				4DCAA7A42C35E77200FBC4FE /* IngredeientRecipeView.swift */,
 			);
 			path = CustomIngredient;
 			sourceTree = "<group>";
@@ -1990,6 +1993,14 @@
 			path = Design;
 			sourceTree = "<group>";
 		};
+		F4AC617B2C8B687B0015BC9D /* SharedHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				F4AC617C2C8B68890015BC9D /* SharedHelperMethods.swift */,
+			);
+			path = SharedHelpers;
+			sourceTree = "<group>";
+		};
 		F4C5C3E22B3B4061005B2261 /* Ingredients */ = {
 			isa = PBXGroup;
 			children = (
@@ -2180,7 +2191,7 @@
 				4DBBA4CF2B6A3B7100179B8F /* QueensParkSwizzle(W&G).swift in Sources */,
 				4DE33E012B91559C00312EC3 /* SiGuey.swift in Sources */,
 				4DBFF81B2B5FAE030011B5B1 /* GeneralInstructions.swift in Sources */,
-				4DCAA7A52C35E77200FBC4FE /* IngredeientRecipeView.swift in Sources */,
+				4DCAA7A52C35E77200FBC4FE /* CustomIngredientRecipeView.swift in Sources */,
 				4DBFF83F2B6082E40011B5B1 /* Boulevardier(W&G).swift in Sources */,
 				4D5DA08E2B9E8E6A00C14F1F /* AddBuildStepDetailView.swift in Sources */,
 				4DF408D02B60EBDE00EF9A6E /* CloverClub(W&G).swift in Sources */,
@@ -2278,6 +2289,7 @@
 				4DBFF8232B5FB71E0011B5B1 /* ArmyNavy.swift in Sources */,
 				4DA567842B6CB4E4003F6F04 /* El Ocho Rosado.swift in Sources */,
 				4DA567FC2B6DF5D0003F6F04 /* GreatScott!.swift in Sources */,
+				F4AC617D2C8B688D0015BC9D /* SharedHelperMethods.swift in Sources */,
 				4DBBA4AA2B68CA4300179B8F /* OaxacanOldFashioned(WnG).swift in Sources */,
 				4DF408EA2B61A86A00EF9A6E /* FancyFree.swift in Sources */,
 				4DA567562B6C41C6003F6F04 /* UltimaPalabra(W&G Version).swift in Sources */,

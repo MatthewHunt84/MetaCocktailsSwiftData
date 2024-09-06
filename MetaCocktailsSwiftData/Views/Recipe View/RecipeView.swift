@@ -358,10 +358,9 @@ struct SpecIngredientView: View {
     var scrollReader: ScrollViewProxy
     
     var body: some View {
-        let number = NSNumber(value: ingredient.value)
         VStack{
             HStack {
-                Text("\(number) \(ingredient.unit.rawValue)")
+                pluralizedIngredientUnitText(for: ingredient)
                     .font(FontFactory.specMeasurement16B)
                 if ingredient.ingredientBase.prep != nil {
                     Button{
