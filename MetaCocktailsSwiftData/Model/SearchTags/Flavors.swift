@@ -102,7 +102,7 @@ enum Flavor: String, Codable, CaseIterable {
 
     static var flavorsWithCorrespondingIngredientsDictionary: [Flavor: [String]] {
 
-        var flavorsWithCorrespondingIngredientsDictionary: [Flavor: [String]] = Dictionary(uniqueKeysWithValues: allCases.map { ($0, []) })
+        var flavorsWithCorrespondingIngredients: [Flavor: [String]] = Dictionary(uniqueKeysWithValues: allCases.map { ($0, []) })
         
        
         func addAllIngredientsConnectedToFlavorsFrom(_ ingredients: [any IngredientTagsProtocol]) {
@@ -110,7 +110,7 @@ enum Flavor: String, Codable, CaseIterable {
                 if let flavors = ingredient.tags.flavors {
                     for flavor in flavors {
                         if let flavorEnum = Flavor(rawValue: flavor.rawValue) {
-                            flavorsWithCorrespondingIngredientsDictionary[flavorEnum, default: []].append(ingredient.rawValue)
+                            flavorsWithCorrespondingIngredients[flavorEnum, default: []].append(ingredient.rawValue)
                         }
                     }
                 }
@@ -140,6 +140,6 @@ enum Flavor: String, Codable, CaseIterable {
         addAllIngredientsConnectedToFlavorsFrom(Bitters.allCases)
         addAllIngredientsConnectedToFlavorsFrom(Amaro.allCases)
         
-        return flavorsWithCorrespondingIngredientsDictionary
+        return flavorsWithCorrespondingIngredients
     }
 }
