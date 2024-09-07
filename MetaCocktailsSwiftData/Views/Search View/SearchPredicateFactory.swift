@@ -37,7 +37,7 @@ extension SearchViewModel {
     }
     
     func predicateFactory(for matchCount: Int) -> Predicate<Cocktail> {
-        
+       
         if searchType == .complex {
             return complicatedPredicateSearch(matchPredicateType(matchCount))
         }
@@ -68,6 +68,7 @@ extension SearchViewModel {
         if preferredUmbrellaCategories.isEmpty && preferredBaseCategories.isEmpty && preferredSpecialtyCategories.count == 1 && preferredIngredients.isEmpty {
             return makeSimplePredicate(totalUnwanted: totalUnwanted, expression: hasSpecialty, matchCount: matchCount)
         }
+
         
         // Check for combined categories and ingredients
         return makeCombinedPredicate(
@@ -86,7 +87,7 @@ extension SearchViewModel {
             expression.evaluate(cocktail.spec) == matchCount
         }
     }
-    
+
     private func makeCombinedPredicate(
         totalUnwanted: Expression<[Ingredient], Bool>,
         hasUmbrella: Expression<[Ingredient], Int>,

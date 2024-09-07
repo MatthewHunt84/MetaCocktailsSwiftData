@@ -23,6 +23,7 @@ final class SearchViewModel: ObservableObject {
     var baseCategoryStrings: [String] = BaseCategory.allCases.map({$0.rawValue})
     var specialtyCategoryStrings: [String] = SpecialtyCategory.allCases.map({$0.rawValue})
     let flavorStrings: [String] = Flavor.allCases.map { $0.rawValue }
+    let profileStrings: [String] = Profile.allCases.map { $0.rawValue }
     
     var ingredientNames: [String] = []
     var allWhiskies: [String] = Whiskey.allCases.map({ $0.rawValue })
@@ -36,6 +37,8 @@ final class SearchViewModel: ObservableObject {
     var preferredBaseCategories: [String] = []
     var preferredSpecialtyCategories: [String] = []
     var preferredFlavorStrings: [String] = []
+    var preferredProfileStrings: [String] = []
+    
     var isLoading = true
     var preferredCount = 0
     var sections: [ResultViewSectionData] = []
@@ -188,6 +191,7 @@ final class SearchViewModel: ObservableObject {
         preferredBaseCategories.removeAll(where: { $0 == selection})
         preferredSpecialtyCategories.removeAll(where: { $0 == selection})
         preferredFlavorStrings.removeAll(where: { $0 == selection})
+        preferredProfileStrings.removeAll(where: { $0 == selection})
         
         preferredIngredients.removeAll(where: { $0 == selection})
         includedIngredientsSet.remove(selection)
@@ -284,6 +288,8 @@ final class SearchViewModel: ObservableObject {
                 preferredSpecialtyCategories.append(selection)
             } else if flavorStrings.contains(selection) {
                 preferredFlavorStrings.append(selection)
+            } else if profileStrings.contains(selection) {
+                preferredProfileStrings.append(selection)
             } else {
                 preferredIngredients.append(selection)
             }
@@ -372,7 +378,7 @@ final class SearchViewModel: ObservableObject {
         }
         
         let lowercasedSearchText = searchText.lowercased()
-        let combinedArrays = ingredientNames + baseCategoryStrings + umbrellaCategoryStrings + specialtyCategoryStrings + flavorStrings
+        let combinedArrays = ingredientNames + baseCategoryStrings + umbrellaCategoryStrings + specialtyCategoryStrings + flavorStrings + profileStrings
         let combinedArraysWithoutDuplicates = Array(Set(combinedArrays))
         
         filteredIngredients = combinedArraysWithoutDuplicates.filter { $0.lowercased().contains(lowercasedSearchText) }

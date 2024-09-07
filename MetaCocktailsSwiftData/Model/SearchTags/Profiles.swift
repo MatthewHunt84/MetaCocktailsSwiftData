@@ -47,5 +47,4 @@ enum Profile: String, Codable, CaseIterable {
     case rich           = "Rich"
     case unrefined      = "Unrefined"
     
-    
 }
