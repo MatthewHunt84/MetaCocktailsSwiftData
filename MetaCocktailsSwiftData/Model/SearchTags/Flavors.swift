@@ -100,17 +100,17 @@ enum Flavor: String, Codable, CaseIterable {
     case walnut         = "Walnut"
     case whiteFlower    = "White Flower"
 
-    static var flavorIngredientsDictionary: [Flavor: [String]] {
+    static var flavorsWithCorrespondingIngredientsDictionary: [Flavor: [String]] {
 
-        var flavorDictionary: [Flavor: [String]] = Dictionary(uniqueKeysWithValues: allCases.map { ($0, []) })
+        var flavorsWithCorrespondingIngredientsDictionary: [Flavor: [String]] = Dictionary(uniqueKeysWithValues: allCases.map { ($0, []) })
         
        
-        func addIngredientsConnectedToFlavorToDict(_ ingredients: [any IngredientTagsProtocol]) {
+        func addAllIngredientsConnectedToFlavorsFrom(_ ingredients: [any IngredientTagsProtocol]) {
             for ingredient in ingredients {
                 if let flavors = ingredient.tags.flavors {
                     for flavor in flavors {
                         if let flavorEnum = Flavor(rawValue: flavor.rawValue) {
-                            flavorDictionary[flavorEnum, default: []].append(ingredient.rawValue)
+                            flavorsWithCorrespondingIngredientsDictionary[flavorEnum, default: []].append(ingredient.rawValue)
                         }
                     }
                 }
@@ -118,28 +118,28 @@ enum Flavor: String, Codable, CaseIterable {
         }
         
         // N/A ingredients
-        addIngredientsConnectedToFlavorToDict(Juice.allCases)
-        addIngredientsConnectedToFlavorToDict(Syrup.allCases)
-        addIngredientsConnectedToFlavorToDict(Herbs.allCases)
-        addIngredientsConnectedToFlavorToDict(Fruit.allCases)
-        addIngredientsConnectedToFlavorToDict(Seasoning.allCases)
-        addIngredientsConnectedToFlavorToDict(Soda.allCases)
-        addIngredientsConnectedToFlavorToDict(OtherNA.allCases)
+        addAllIngredientsConnectedToFlavorsFrom(Juice.allCases)
+        addAllIngredientsConnectedToFlavorsFrom(Syrup.allCases)
+        addAllIngredientsConnectedToFlavorsFrom(Herbs.allCases)
+        addAllIngredientsConnectedToFlavorsFrom(Fruit.allCases)
+        addAllIngredientsConnectedToFlavorsFrom(Seasoning.allCases)
+        addAllIngredientsConnectedToFlavorsFrom(Soda.allCases)
+        addAllIngredientsConnectedToFlavorsFrom(OtherNA.allCases)
         
         // Booze ingredients
-        addIngredientsConnectedToFlavorToDict(Agave.allCases)
-        addIngredientsConnectedToFlavorToDict(Brandy.allCases)
-        addIngredientsConnectedToFlavorToDict(Gin.allCases)
-        addIngredientsConnectedToFlavorToDict(OtherAlcohol.allCases)
-        addIngredientsConnectedToFlavorToDict(Rum.allCases)
-        addIngredientsConnectedToFlavorToDict(Vodka.allCases)
-        addIngredientsConnectedToFlavorToDict(Whiskey.allCases)
-        addIngredientsConnectedToFlavorToDict(Liqueur.allCases)
-        addIngredientsConnectedToFlavorToDict(FortifiedWine.allCases)
-        addIngredientsConnectedToFlavorToDict(Wine.allCases)
-        addIngredientsConnectedToFlavorToDict(Bitters.allCases)
-        addIngredientsConnectedToFlavorToDict(Amaro.allCases)
+        addAllIngredientsConnectedToFlavorsFrom(Agave.allCases)
+        addAllIngredientsConnectedToFlavorsFrom(Brandy.allCases)
+        addAllIngredientsConnectedToFlavorsFrom(Gin.allCases)
+        addAllIngredientsConnectedToFlavorsFrom(OtherAlcohol.allCases)
+        addAllIngredientsConnectedToFlavorsFrom(Rum.allCases)
+        addAllIngredientsConnectedToFlavorsFrom(Vodka.allCases)
+        addAllIngredientsConnectedToFlavorsFrom(Whiskey.allCases)
+        addAllIngredientsConnectedToFlavorsFrom(Liqueur.allCases)
+        addAllIngredientsConnectedToFlavorsFrom(FortifiedWine.allCases)
+        addAllIngredientsConnectedToFlavorsFrom(Wine.allCases)
+        addAllIngredientsConnectedToFlavorsFrom(Bitters.allCases)
+        addAllIngredientsConnectedToFlavorsFrom(Amaro.allCases)
         
-        return flavorDictionary
+        return flavorsWithCorrespondingIngredientsDictionary
     }
 }

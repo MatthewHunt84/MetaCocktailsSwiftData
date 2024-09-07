@@ -162,7 +162,8 @@ final class SearchViewModel: ObservableObject {
         if preferredUmbrellaCategories.count > 1 ||
             preferredBaseCategories.count > 1 ||
             preferredSpecialtyCategories.count > 1 ||
-            preferredFlavorStrings.count > 0 {
+            preferredFlavorStrings.count > 0 ||
+            (unwantedIngredients.contains { flavorStrings.contains($0) }) {
             searchType = SearchType.complex
         } else {
             searchType = SearchType.simple
@@ -178,12 +179,53 @@ final class SearchViewModel: ObservableObject {
         updatedUnwantedSelections = unwantedSelections
         updatedUnwantedSelections.removeAll(where: { $0 == selection})
         
+
+        
+        
         // Remove view-independant selections
         unwantedIngredients.removeAll(where: { $0 == selection})
         preferredUmbrellaCategories.removeAll(where: { $0 == selection})
         preferredBaseCategories.removeAll(where: { $0 == selection})
         preferredSpecialtyCategories.removeAll(where: { $0 == selection})
+        preferredFlavorStrings.removeAll(where: { $0 == selection})
+        
         preferredIngredients.removeAll(where: { $0 == selection})
+        includedIngredientsSet.remove(selection)
+        
+        // remove ingredients connected to over arching categories
+        if preferred {
+            if umbrellaCategoryStrings.contains(selection) {
+                if let umbrellaSpirit = SpiritsUmbrellaCategory.allCases.first(where: { $0.rawValue == selection }) {
+                    includedIngredientsSet.subtract(umbrellaSpirit.subCategories)
+                }
+            }
+            if baseCategoryStrings.contains(selection) {
+                if let baseSpirit = BaseCategory.allCases.first(where: { $0.rawValue == selection }) {
+                    includedIngredientsSet.subtract(baseSpirit.baseCategoryIngredients)
+                }
+            }
+            if specialtyCategoryStrings.contains(selection) {
+                if let specialtySpirit = SpecialtyCategory.allCases.first(where: { $0.rawValue == selection }) {
+                    includedIngredientsSet.subtract(specialtySpirit.specialtyCategoryIngredients)
+                }
+            }
+        } else {
+            if umbrellaCategoryStrings.contains(selection) {
+                if let umbrellaSpirit = SpiritsUmbrellaCategory.allCases.first(where: { $0.rawValue == selection }) {
+                    excludedIngredientsSet.subtract(umbrellaSpirit.subCategories)
+                }
+            }
+            if baseCategoryStrings.contains(selection) {
+                if let baseSpirit = BaseCategory.allCases.first(where: { $0.rawValue == selection }) {
+                    excludedIngredientsSet.subtract(baseSpirit.baseCategoryIngredients)
+                }
+            }
+            if specialtyCategoryStrings.contains(selection) {
+                if let specialtySpirit = SpecialtyCategory.allCases.first(where: { $0.rawValue == selection }) {
+                    excludedIngredientsSet.subtract(specialtySpirit.specialtyCategoryIngredients)
+                }
+            }
+        }
         
         // Reset arrays for generation (if complex or not they need to be reset)
         perfectMatchCocktails = []

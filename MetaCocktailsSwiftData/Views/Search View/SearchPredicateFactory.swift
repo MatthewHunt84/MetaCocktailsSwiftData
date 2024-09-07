@@ -246,7 +246,6 @@ extension SearchViewModel {
                         updatedUnwantedSelections.contains(ingredient.ingredientBase.umbrellaCategory) ||
                         updatedUnwantedSelections.contains(ingredient.ingredientBase.baseCategory) ||
                         updatedUnwantedSelections.contains(ingredient.ingredientBase.specialtyCategory) ||
-                        // check for unwanted flavors. Chain the optionals then give false as a default if their flavors array = nil.
                         (ingredient.ingredientBase.tags?.flavors?.contains { updatedUnwantedSelections.contains($0.rawValue) } ?? false)
                     }
                     
@@ -288,15 +287,18 @@ extension SearchViewModel {
                 
                 // Check for flavors
                 if !flavors.isEmpty {
-                    // Grab all of the flavors from the ingredient as strings.
                     let ingredientFlavorStrings = ingredient.ingredientBase.tags?.flavors?.map { $0.rawValue } ?? []
-                    // .intersection finds the elements that are present in both sets. So we cast flavors as a set to make the comparison because intersection returns a set.
-                    let matchedFlavors = Set(flavors).intersection(ingredientFlavorStrings)
-                    //add the matched count to matchedSelections
-                    matchedSelections += matchedFlavors.count
-                    // We take the flavors that were found already and take them out of the flavors array so that we don't waste any more time search for flavors that we've already found in previous ingredients.
-                    //We cast it back into an array so we don't have to mess with changing preferredFlavorStrings into a set.
-                    flavors = Array(Set(flavors).subtracting(matchedFlavors))
+                    var matchedFlavorCount = 0
+                    for flavor in flavors {
+                        if ingredientFlavorStrings.contains(flavor) {
+                            matchedFlavorCount += 1
+                        }
+                    }
+                    matchedSelections += matchedFlavorCount
+                    // Remove matched flavors from the flavors array
+                    flavors = flavors.filter { flavor in
+                        !ingredientFlavorStrings.contains(flavor)
+                    }
                 }
             }
             
