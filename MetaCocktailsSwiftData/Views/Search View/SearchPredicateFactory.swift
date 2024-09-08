@@ -246,15 +246,14 @@ extension SearchViewModel {
                         updatedUnwantedSelections.contains(ingredient.ingredientBase.name) ||
                         updatedUnwantedSelections.contains(ingredient.ingredientBase.umbrellaCategory) ||
                         updatedUnwantedSelections.contains(ingredient.ingredientBase.baseCategory) ||
-                        updatedUnwantedSelections.contains(ingredient.ingredientBase.specialtyCategory) ||
-                        (ingredient.ingredientBase.tags?.flavors?.contains { updatedUnwantedSelections.contains($0.rawValue) } ?? false)
-                        
+                        updatedUnwantedSelections.contains(ingredient.ingredientBase.specialtyCategory)
                     }
                     
+                    let hasUnwantedFlavor = cocktail.compiledTags.flavors?.contains { updatedUnwantedSelections.contains($0.rawValue) } ?? false
                     let hasUnwantedProfile = cocktail.compiledTags.profiles?.contains { updatedUnwantedSelections.contains($0.rawValue) } ?? false
                     
-                    if hasUnwantedIngredient || hasUnwantedProfile {
-                        return // if the cocktail has an unwanted selection, bail out early.
+                    if hasUnwantedIngredient || hasUnwantedFlavor || hasUnwantedProfile {
+                        return // if the cocktail has an unwanted selection, flavor, or profile, bail out early.
                     }
                 }
             
