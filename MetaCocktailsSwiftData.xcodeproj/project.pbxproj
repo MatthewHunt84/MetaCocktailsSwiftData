@@ -510,7 +510,7 @@
 		F4872FF52C4395FE0092F8FF /* FirstLaunchLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4872FF42C4395F80092F8FF /* FirstLaunchLoadingView.swift */; };
 		F493F3A32C6CEEF0006A0ADB /* PreferencesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3A22C6CEEF0006A0ADB /* PreferencesListView.swift */; };
 		F493F3A52C6CEF48006A0ADB /* SearchForCocktailsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3A42C6CEF48006A0ADB /* SearchForCocktailsButton.swift */; };
-		F493F3A72C6CEF73006A0ADB /* ResetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3A62C6CEF73006A0ADB /* ResetButton.swift */; };
+		F493F3A72C6CEF73006A0ADB /* ResetSearchCriteriaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3A62C6CEF73006A0ADB /* ResetSearchCriteriaButton.swift */; };
 		F493F3A92C6CEFCD006A0ADB /* FilteredIngredientListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3A82C6CEFCD006A0ADB /* FilteredIngredientListView.swift */; };
 		F493F3AB2C6CF18D006A0ADB /* SelectedIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3AA2C6CF18D006A0ADB /* SelectedIngredientView.swift */; };
 		F493F3AE2C6CFBCD006A0ADB /* SelectionTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3AD2C6CFBCD006A0ADB /* SelectionTagView.swift */; };
@@ -1052,7 +1052,7 @@
 		F4872FF42C4395F80092F8FF /* FirstLaunchLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunchLoadingView.swift; sourceTree = "<group>"; };
 		F493F3A22C6CEEF0006A0ADB /* PreferencesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesListView.swift; sourceTree = "<group>"; };
 		F493F3A42C6CEF48006A0ADB /* SearchForCocktailsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchForCocktailsButton.swift; sourceTree = "<group>"; };
-		F493F3A62C6CEF73006A0ADB /* ResetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetButton.swift; sourceTree = "<group>"; };
+		F493F3A62C6CEF73006A0ADB /* ResetSearchCriteriaButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetSearchCriteriaButton.swift; sourceTree = "<group>"; };
 		F493F3A82C6CEFCD006A0ADB /* FilteredIngredientListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredIngredientListView.swift; sourceTree = "<group>"; };
 		F493F3AA2C6CF18D006A0ADB /* SelectedIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedIngredientView.swift; sourceTree = "<group>"; };
 		F493F3AD2C6CFBCD006A0ADB /* SelectionTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTagView.swift; sourceTree = "<group>"; };
@@ -1940,7 +1940,7 @@
 			isa = PBXGroup;
 			children = (
 				F493F3AC2C6CFA81006A0ADB /* Preferences List */,
-				F493F3A62C6CEF73006A0ADB /* ResetButton.swift */,
+				F493F3A62C6CEF73006A0ADB /* ResetSearchCriteriaButton.swift */,
 				F493F3A42C6CEF48006A0ADB /* SearchForCocktailsButton.swift */,
 				F493F3A82C6CEFCD006A0ADB /* FilteredIngredientListView.swift */,
 			);
@@ -2617,7 +2617,7 @@
 				4DA567EA2B6DDB39003F6F04 /* Shokunin.swift in Sources */,
 				4DA567E62B6DD6EF003F6F04 /* ScottishInquisition.swift in Sources */,
 				4D5DA0982B9EB46E00C14F1F /* AddBuildStepView.swift in Sources */,
-				F493F3A72C6CEF73006A0ADB /* ResetButton.swift in Sources */,
+				F493F3A72C6CEF73006A0ADB /* ResetSearchCriteriaButton.swift in Sources */,
 				F4C5C3E62B3B41BA005B2261 /* Alcohol.swift in Sources */,
 				4DE33DFB2B8ECD1100312EC3 /* AmericanTrilogy.swift in Sources */,
 				4DBAE6F12C7139F400F3DBFD /* GimletMacElhone.swift in Sources */,

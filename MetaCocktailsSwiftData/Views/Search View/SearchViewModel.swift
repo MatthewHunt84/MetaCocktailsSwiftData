@@ -239,6 +239,26 @@ final class SearchViewModel: ObservableObject {
         }
     }
     
+    func clearSearchCriteria() {
+        
+        preferredSelections = []
+        unwantedSelections = []
+        
+        preferredUmbrellaCategories = []
+        preferredBaseCategories = []
+        preferredSpecialtyCategories = []
+        preferredFlavorStrings = []
+        preferredProfileStrings = []
+        preferredStyleStrings = []
+        
+        preferredIngredients = []
+        unwantedIngredients = []
+        
+        includedIngredientsSet = []
+        excludedIngredientsSet = []
+    }
+    
+    
     func resetSearch() {
         searchCompleted = false
     }
