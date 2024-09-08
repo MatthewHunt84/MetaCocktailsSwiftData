@@ -251,8 +251,9 @@ extension SearchViewModel {
                     
                     let hasUnwantedFlavor = cocktail.compiledTags.flavors?.contains { updatedUnwantedSelections.contains($0.rawValue) } ?? false
                     let hasUnwantedProfile = cocktail.compiledTags.profiles?.contains { updatedUnwantedSelections.contains($0.rawValue) } ?? false
+                    let hasUnwantedStyle = cocktail.compiledTags.styles?.contains { updatedUnwantedSelections.contains($0.rawValue) } ?? false
                     
-                    if hasUnwantedIngredient || hasUnwantedFlavor || hasUnwantedProfile {
+                    if hasUnwantedIngredient || hasUnwantedFlavor || hasUnwantedProfile || hasUnwantedStyle {
                         return // if the cocktail has an unwanted selection, flavor, or profile, bail out early.
                     }
                 }
@@ -272,6 +273,11 @@ extension SearchViewModel {
             //check flavors
             if let flavorTags = cocktail.compiledTags.flavors {
                 matchedSelections += flavorTags.filter { preferredFlavorStrings.contains($0.rawValue)}.count
+            }
+            
+            //check styles
+            if let styleTags = cocktail.compiledTags.styles {
+                matchedSelections += styleTags.filter { preferredStyleStrings.contains($0.rawValue)}.count
             }
             
             

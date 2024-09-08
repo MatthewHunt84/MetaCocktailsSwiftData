@@ -24,6 +24,7 @@ final class SearchViewModel: ObservableObject {
     var specialtyCategoryStrings: [String] = SpecialtyCategory.allCases.map({$0.rawValue})
     let flavorStrings: [String] = Flavor.allCases.map { $0.rawValue }
     let profileStrings: [String] = Profile.allCases.map { $0.rawValue }
+    let styleStrings: [String] = Style.allCases.map { $0.rawValue }
     
     var ingredientNames: [String] = []
     var allWhiskies: [String] = Whiskey.allCases.map({ $0.rawValue })
@@ -38,6 +39,7 @@ final class SearchViewModel: ObservableObject {
     var preferredSpecialtyCategories: [String] = []
     var preferredFlavorStrings: [String] = []
     var preferredProfileStrings: [String] = []
+    var preferredStyleStrings: [String] = []
     
     var isLoading = true
     var preferredCount = 0
@@ -167,7 +169,9 @@ final class SearchViewModel: ObservableObject {
             preferredSpecialtyCategories.count > 1 ||
             preferredFlavorStrings.count > 0 ||
             preferredProfileStrings.count > 0 ||
+            preferredStyleStrings.count > 0 ||
             (unwantedIngredients.contains { flavorStrings.contains($0) }) ||
+            (unwantedIngredients.contains { styleStrings.contains($0) }) ||
             (unwantedIngredients.contains { profileStrings.contains($0) }){
             searchType = SearchType.complex
         } else {
@@ -194,6 +198,7 @@ final class SearchViewModel: ObservableObject {
         preferredSpecialtyCategories.removeAll(where: { $0 == selection})
         preferredFlavorStrings.removeAll(where: { $0 == selection})
         preferredProfileStrings.removeAll(where: { $0 == selection})
+        preferredStyleStrings.removeAll(where: {$0 == selection})
         
         preferredIngredients.removeAll(where: { $0 == selection})
         includedIngredientsSet.remove(selection)
@@ -292,6 +297,8 @@ final class SearchViewModel: ObservableObject {
                 preferredFlavorStrings.append(selection)
             } else if profileStrings.contains(selection) {
                 preferredProfileStrings.append(selection)
+            } else if styleStrings.contains(selection) {
+                preferredStyleStrings.append(selection)
             } else {
                 preferredIngredients.append(selection)
             }
@@ -380,7 +387,7 @@ final class SearchViewModel: ObservableObject {
         }
         
         let lowercasedSearchText = searchText.lowercased()
-        let combinedArrays = ingredientNames + baseCategoryStrings + umbrellaCategoryStrings + specialtyCategoryStrings + flavorStrings + profileStrings
+        let combinedArrays = ingredientNames + baseCategoryStrings + umbrellaCategoryStrings + specialtyCategoryStrings + flavorStrings + profileStrings + styleStrings
         let combinedArraysWithoutDuplicates = Array(Set(combinedArrays))
         
         filteredIngredients = combinedArraysWithoutDuplicates.filter { $0.lowercased().contains(lowercasedSearchText) }
