@@ -34,17 +34,22 @@ struct IngredientSearchView: View {
                 }
                 .toolbar {
                     ToolbarItemGroup(placement: .keyboard) {
-                        HStack {
-                            Spacer()
-                            Button {
-                                keyboardFocused = false
-                            } label: {
-                                Text("Done")
-                                    .tint(.blueTint)
+                        if !viewModel.preferredSelections.isEmpty {
+                            HStack {
+                                Spacer()
+                                Button {
+                                    Task {
+                                        await viewModel.searchButtonPressed()
+                                    }
+                                } label: {
+                                    Text("Search")
+                                        .tint(.blueTint)
+                                }
                             }
                         }
                     }
                 }
+
             }
             .animation(.easeOut(duration: 0.5), value: viewModel.preferredSelections.isEmpty)
             .navigationDestination(isPresented: $viewModel.isShowingResults) {
