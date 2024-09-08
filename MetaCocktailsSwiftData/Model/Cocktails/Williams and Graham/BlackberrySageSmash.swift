@@ -27,7 +27,7 @@ let blackberrySageSmashSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.w
                                                      OldCocktailIngredient(.herbs(.sage), value: 4, unit: .gentlyMuddled)]
 
 let blackberrySageSmashTags = Tags(flavors: [.lemon],
-                                   profiles: [.fruity, .light, .herbal],
+                                   profiles: [.fruity, .light, .herbal, .refreshing],
                                    styles: [.sour, .shaken])
 
 let blackberrySageSmashBuild =  Build(instructions: [Instruction(step: 1, method: "In a tin, muddle 4 blackberries and a small pinch of sage."),

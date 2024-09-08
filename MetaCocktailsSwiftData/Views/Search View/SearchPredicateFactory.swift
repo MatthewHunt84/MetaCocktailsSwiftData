@@ -248,9 +248,12 @@ extension SearchViewModel {
                         updatedUnwantedSelections.contains(ingredient.ingredientBase.baseCategory) ||
                         updatedUnwantedSelections.contains(ingredient.ingredientBase.specialtyCategory) ||
                         (ingredient.ingredientBase.tags?.flavors?.contains { updatedUnwantedSelections.contains($0.rawValue) } ?? false)
+                        
                     }
                     
-                    if hasUnwantedIngredient {
+                    let hasUnwantedProfile = cocktail.compiledTags.profiles?.contains { updatedUnwantedSelections.contains($0.rawValue) } ?? false
+                    
+                    if hasUnwantedIngredient || hasUnwantedProfile {
                         return // if the cocktail has an unwanted selection, bail out early.
                     }
                 }
@@ -259,9 +262,19 @@ extension SearchViewModel {
             var bases = preferredBaseCategories
             var specialties = preferredSpecialtyCategories
             var ingredients = preferredIngredients
-            var flavors = preferredFlavorStrings
             
             var matchedSelections = 0
+            
+            // Check for Profiles
+            if let profileTags = cocktail.compiledTags.profiles {
+                matchedSelections += profileTags.filter { preferredProfileStrings.contains($0.rawValue) }.count
+            }
+            
+            //check flavors
+            if let flavorTags = cocktail.compiledTags.flavors {
+                matchedSelections += flavorTags.filter { preferredFlavorStrings.contains($0.rawValue)}.count
+            }
+            
             
             cocktail.spec.forEach { ingredient in
                 if !umbrellas.isEmpty && umbrellas.contains(ingredient.ingredientBase.umbrellaCategory) {
@@ -286,22 +299,8 @@ extension SearchViewModel {
                     }
                 }
                 
-                // Check for flavors
-                if !flavors.isEmpty {
-                    let ingredientFlavorStrings = ingredient.ingredientBase.tags?.flavors?.map { $0.rawValue } ?? []
-                    var matchedFlavorCount = 0
-                    for flavor in flavors {
-                        if ingredientFlavorStrings.contains(flavor) {
-                            matchedFlavorCount += 1
-                        }
-                    }
-                    matchedSelections += matchedFlavorCount
-                    // Remove matched flavors from the flavors array
-                    flavors = flavors.filter { flavor in
-                        !ingredientFlavorStrings.contains(flavor)
-                    }
-                }
             }
+            
             
             
             if matchedSelections >= numberOfSelections {

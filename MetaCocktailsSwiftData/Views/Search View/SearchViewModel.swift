@@ -166,7 +166,9 @@ final class SearchViewModel: ObservableObject {
             preferredBaseCategories.count > 1 ||
             preferredSpecialtyCategories.count > 1 ||
             preferredFlavorStrings.count > 0 ||
-            (unwantedIngredients.contains { flavorStrings.contains($0) }) {
+            preferredProfileStrings.count > 0 ||
+            (unwantedIngredients.contains { flavorStrings.contains($0) }) ||
+            (unwantedIngredients.contains { profileStrings.contains($0) }){
             searchType = SearchType.complex
         } else {
             searchType = SearchType.simple
