@@ -26,7 +26,7 @@ var streetAndFlynnSpecialSpec     =  [OldCocktailIngredient(.soda(.sodaWater), v
                                       OldCocktailIngredient(.liqueurs(.pimentoDram), value: 0.5),
                                       OldCocktailIngredient(.rums(.corubaDark), value: 1.5)]
 
-var streetAndFlynnSpecialTags     = Tags(profiles: [.savory, .refreshing, .sharp, .complex],
+var streetAndFlynnSpecialTags     = Tags(profiles: [.savory, .refreshing, .complex],
                                          styles: [.fizz, .shaken])
 
 var streetAndFlynnSpecialBuild = Build(instructions: [Instruction(step: 1, method: "Combine the rum, dram, ginger syrup, and lime juice in a cocktail shaker and shake vigorously until the drink is sufficiently chilled."),

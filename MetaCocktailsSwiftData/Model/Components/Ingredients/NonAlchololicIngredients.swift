@@ -297,7 +297,7 @@ enum Soda: String, IngredientTagsProtocol {
         case .sparklingWater:
             Tags(profiles: [.effervescent], nA: [NAIngredients(.soda(self))])
         case .gingerBeer:
-            Tags(flavors: [.ginger], profiles: [.sharp, .effervescent], nA: [NAIngredients(.soda(self))])
+            Tags(flavors: [.ginger], profiles: [.effervescent], nA: [NAIngredients(.soda(self))])
         case .lemonMintSoda:
             Tags(flavors: [.lemon, .mint], profiles: [.effervescent], nA: [NAIngredients(.soda(self))])
         case .feverTreeAromatic:

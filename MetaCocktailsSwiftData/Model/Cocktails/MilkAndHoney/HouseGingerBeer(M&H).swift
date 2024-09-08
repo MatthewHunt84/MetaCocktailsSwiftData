@@ -26,6 +26,6 @@ var houseGingerBeerSpec  = [OldCocktailIngredient(.juices(.lemon), value: 1),
                             OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
                             OldCocktailIngredient(.soda(.sodaWater) , value: 3)]
 
-var houseGingerBeerTags   = Tags(profiles: [.citrusy, .effervescent, .sharp],
+var houseGingerBeerTags   = Tags(profiles: [.citrusy, .effervescent],
                                  styles: [.nonAlcoholic, .shaken, .fizz])
 

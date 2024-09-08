@@ -22,6 +22,6 @@ var elDiabloSpec  = [OldCocktailIngredient(.soda(.gingerBeer), value: 3),
 
 
 
-var elDiabloTags   = Tags(profiles: [.refreshing, .punchy, .effervescent, .sharp],
+var elDiabloTags   = Tags(profiles: [.refreshing, .punchy, .effervescent],
                           styles: [.fizz, .built])
 

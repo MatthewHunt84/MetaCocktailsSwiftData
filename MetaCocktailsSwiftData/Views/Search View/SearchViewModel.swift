@@ -241,21 +241,48 @@ final class SearchViewModel: ObservableObject {
     
     func clearSearchCriteria() {
         
-        preferredSelections = []
-        unwantedSelections = []
+        preferredSelections.removeAll()
+        unwantedSelections.removeAll()
         
-        preferredUmbrellaCategories = []
-        preferredBaseCategories = []
-        preferredSpecialtyCategories = []
-        preferredFlavorStrings = []
-        preferredProfileStrings = []
-        preferredStyleStrings = []
         
-        preferredIngredients = []
-        unwantedIngredients = []
+        preferredUmbrellaCategories.removeAll()
+        preferredBaseCategories.removeAll()
+        preferredSpecialtyCategories.removeAll()
+        preferredFlavorStrings.removeAll()
+        preferredProfileStrings.removeAll()
+        preferredStyleStrings.removeAll()
         
-        includedIngredientsSet = []
-        excludedIngredientsSet = []
+        
+        preferredIngredients.removeAll()
+        unwantedIngredients.removeAll()
+        
+        
+        includedIngredientsSet.removeAll()
+        excludedIngredientsSet.removeAll()
+        
+        
+        perfectMatchCocktails.removeAll()
+        minusOneMatchCocktails.removeAll()
+        minusTwoMatchCocktails.removeAll()
+        searchCompleted = false
+        isShowingResults = false
+        searchType = .simple
+        preferredCount = 0
+        
+        
+        currentComponentSearchName = ""
+        sections.removeAll()
+        
+        
+        isRunningComplexSearch = false
+        isGeneratingIngredientList = false
+        
+        
+        filteredIngredients.removeAll()
+        
+        
+        cocktailsAndMissingIngredientsForMinusOne.removeAll()
+        cocktailsAndMissingIngredientsForMinusTwo.removeAll()
     }
     
     
