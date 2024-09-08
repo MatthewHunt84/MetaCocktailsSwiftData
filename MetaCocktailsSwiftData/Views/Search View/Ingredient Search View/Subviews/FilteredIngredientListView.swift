@@ -42,12 +42,18 @@ struct FilteredIngredientListView: View {
             }
             
             if keyboardFocused {
-                List {
-                    ForEach($viewModel.filteredIngredients, id: \.self) { ingredient in
-                        viewModel.returnPreferencesThumbCell(ingredient: ingredient)
+                ScrollView{
+                    LazyVStack(spacing: 10) {
+                        ForEach($viewModel.filteredIngredients, id: \.self) { ingredient in
+                            VStack {
+                                viewModel.returnPreferencesThumbCell(ingredient: ingredient)
+                                    .padding(.horizontal)
+                                Divider()
+                                    .background(Color.gray.opacity(0.3))
+                            }
+                        }
+                        .listRowBackground(Color.clear)
                     }
-                    .listRowBackground(Color.clear)
-                    
                 }
                 .scrollContentBackground(.hidden)
             }

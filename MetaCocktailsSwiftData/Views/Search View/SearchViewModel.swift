@@ -127,6 +127,66 @@ final class SearchViewModel: ObservableObject {
     var allCocktails: [Cocktail] = []
     var isShowingResults: Bool = false
     
+    func handleThumbsUp(ingredient: String) {
+        if !preferredSelections.contains(ingredient) {
+            if umbrellaCategoryStrings.contains(ingredient) {
+                if let umbrellaSpirits = SpiritsUmbrellaCategory.allCases.first(where: { $0.rawValue == ingredient }) {
+                   preferredSelections.removeAll(where: { umbrellaSpirits.subCategories.contains($0) })
+                }
+            }
+            if baseCategoryStrings.contains(ingredient) {
+                if let baseSpirits = BaseCategory.allCases.first(where: { $0.rawValue == ingredient }) {
+                    preferredSelections.removeAll(where: { baseSpirits.baseCategoryIngredients.contains($0) })
+                }
+            }
+            if specialtyCategoryStrings.contains(ingredient) {
+                if let specialtySpirits = SpecialtyCategory.allCases.first(where: { $0.rawValue == ingredient }) {
+                    preferredSelections.removeAll(where: { specialtySpirits.specialtyCategoryIngredients.contains($0) })
+                }
+            }
+            preferredSelections.append(ingredient)
+            preferredCount += 1
+            if unwantedSelections.contains(ingredient){
+                unwantedSelections.removeAll(where: {$0 == ingredient})
+            }
+        } else {
+            preferredSelections.removeAll(where: {$0 == ingredient})
+            preferredCount -= 1
+        }
+        updateCategoryIngredients()
+        fillPreferredCategoryArrays()
+        currentComponentSearchName = ""
+    }
+    func handleThumbsDown(ingredient: String) {
+        if !unwantedSelections.contains(ingredient) {
+            if umbrellaCategoryStrings.contains(ingredient) {
+                if let umbrellaSpirits = SpiritsUmbrellaCategory.allCases.first(where: { $0.rawValue == ingredient }) {
+                    unwantedSelections.removeAll(where: { umbrellaSpirits.subCategories.contains($0) })
+                }
+            }
+            if baseCategoryStrings.contains(ingredient) {
+                if let baseSpirits = BaseCategory.allCases.first(where: { $0.rawValue == ingredient }) {
+                    unwantedSelections.removeAll(where: { baseSpirits.baseCategoryIngredients.contains($0) })
+                }
+            }
+            if specialtyCategoryStrings.contains(ingredient) {
+                if let specialtySpirits = SpecialtyCategory.allCases.first(where: { $0.rawValue == ingredient }) {
+                    unwantedSelections.removeAll(where: { specialtySpirits.specialtyCategoryIngredients.contains($0) })
+                }
+            }
+            unwantedSelections.append(ingredient)
+            if preferredSelections.contains(ingredient) {
+                preferredSelections.removeAll(where: {$0 == ingredient})
+                preferredCount -= 1
+            }
+        } else {
+            unwantedSelections.removeAll(where: {$0 == ingredient})
+        }
+        updateCategoryIngredients()
+        fillUnwantedCategoryArrays()
+        currentComponentSearchName = ""
+    }
+    
     func toggleIsShowingResults() {
 
         Task {
