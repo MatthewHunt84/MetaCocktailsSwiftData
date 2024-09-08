@@ -32,6 +32,24 @@ struct IngredientSearchView: View {
                             .padding(.top, 5)
                     }
                 }
+                .toolbar {
+                    ToolbarItemGroup(placement: .keyboard) {
+                        if !viewModel.preferredSelections.isEmpty {
+                            HStack {
+                                Spacer()
+                                Button {
+                                    Task {
+                                        await viewModel.searchButtonPressed()
+                                    }
+                                } label: {
+                                    Text("Search")
+                                        .tint(.blueTint)
+                                }
+                            }
+                        }
+                    }
+                }
+
             }
             .animation(.easeOut(duration: 0.5), value: viewModel.preferredSelections.isEmpty)
             .navigationDestination(isPresented: $viewModel.isShowingResults) {
@@ -47,6 +65,9 @@ struct IngredientSearchView: View {
             .navigationBarTitleDisplayMode(.inline)
             .jamesHeader("Search Cocktails")
             .customLoadingIndicator(isLoading: viewModel.isRunningComplexSearch)
+            .onAppear{
+                keyboardFocused =  true
+            }
         }
     }
 }

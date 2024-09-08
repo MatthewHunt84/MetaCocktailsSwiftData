@@ -29,6 +29,6 @@ var palmaFizzBuild  = Build(instructions: [Instruction(step: 1, method: "Squeeze
                                            Instruction(step: 2, method: "Add 2 or 3 ice cubes, pour in the vodka, and fill with the ginger beer."),
                                            Instruction(step: 3, method: "Add a few drops of rosewater or spray the rosewater over the cocktail.")])
 
-var palmaFizzTags   = Tags(profiles: [.citrusy, .effervescent, .light, .sharp],
+var palmaFizzTags   = Tags(profiles: [.citrusy, .effervescent, .light],
                            styles: [.collins, .shaken])
 

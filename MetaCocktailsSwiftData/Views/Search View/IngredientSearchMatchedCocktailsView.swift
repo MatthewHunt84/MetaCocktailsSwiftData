@@ -35,6 +35,15 @@ struct MissingIngredientsView: View {
         cocktailIngredients += cocktail.spec.map { $0.ingredientBase.baseCategory }
         cocktailIngredients += cocktail.spec.map { $0.ingredientBase.specialtyCategory }
         cocktailIngredients += cocktail.spec.map { $0.ingredientBase.umbrellaCategory }
+        if let cocktailFlavors = cocktail.compiledTags.flavors {
+            cocktailIngredients += cocktailFlavors.map { $0.rawValue }
+        }
+        if let cocktailProfiles = cocktail.compiledTags.profiles {
+            cocktailIngredients += cocktailProfiles.map { $0.rawValue }
+        }
+        if let cocktailStyles = cocktail.compiledTags.styles {
+            cocktailIngredients += cocktailStyles.map { $0.rawValue }
+        }
         let cocktailIngredientsNoDoubles = Array(Set(cocktailIngredients))
         let missingIngredientsArray = preferredSelectionsArray.filter { !cocktailIngredientsNoDoubles.contains($0) }
         self.missingIngredientArray = missingIngredientsArray

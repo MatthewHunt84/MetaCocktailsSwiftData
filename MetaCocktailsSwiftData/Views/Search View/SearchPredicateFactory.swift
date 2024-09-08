@@ -37,7 +37,7 @@ extension SearchViewModel {
     }
     
     func predicateFactory(for matchCount: Int) -> Predicate<Cocktail> {
-        
+       
         if searchType == .complex {
             return complicatedPredicateSearch(matchPredicateType(matchCount))
         }
@@ -68,6 +68,7 @@ extension SearchViewModel {
         if preferredUmbrellaCategories.isEmpty && preferredBaseCategories.isEmpty && preferredSpecialtyCategories.count == 1 && preferredIngredients.isEmpty {
             return makeSimplePredicate(totalUnwanted: totalUnwanted, expression: hasSpecialty, matchCount: matchCount)
         }
+
         
         // Check for combined categories and ingredients
         return makeCombinedPredicate(
@@ -86,7 +87,7 @@ extension SearchViewModel {
             expression.evaluate(cocktail.spec) == matchCount
         }
     }
-    
+
     private func makeCombinedPredicate(
         totalUnwanted: Expression<[Ingredient], Bool>,
         hasUmbrella: Expression<[Ingredient], Int>,
@@ -232,7 +233,6 @@ extension SearchViewModel {
     }
     
     func generateComplicatedPredicates() async {
-        
         await toggleLoading()
         
         let numberOfSelections = preferredCount
@@ -241,16 +241,22 @@ extension SearchViewModel {
         var minusTwo = [String]()
         
         let _ = allCocktails.reduce(into: 0) { partialResult, cocktail in
-
-            if !updatedUnwantedSelections.isEmpty {
-                if cocktail.spec.contains(where: { updatedUnwantedSelections.contains($0.ingredientBase.name)
-                    || updatedUnwantedSelections.contains($0.ingredientBase.umbrellaCategory)
-                    || updatedUnwantedSelections.contains($0.ingredientBase.baseCategory)
-                    || updatedUnwantedSelections.contains($0.ingredientBase.specialtyCategory)
-                }) {
-                    return // if the cocktail has an unwanted selection, bail out early.
+                if !updatedUnwantedSelections.isEmpty {
+                    let hasUnwantedIngredient = cocktail.spec.contains { ingredient in
+                        updatedUnwantedSelections.contains(ingredient.ingredientBase.name) ||
+                        updatedUnwantedSelections.contains(ingredient.ingredientBase.umbrellaCategory) ||
+                        updatedUnwantedSelections.contains(ingredient.ingredientBase.baseCategory) ||
+                        updatedUnwantedSelections.contains(ingredient.ingredientBase.specialtyCategory)
+                    }
+                    
+                    let hasUnwantedFlavor = cocktail.compiledTags.flavors?.contains { updatedUnwantedSelections.contains($0.rawValue) } ?? false
+                    let hasUnwantedProfile = cocktail.compiledTags.profiles?.contains { updatedUnwantedSelections.contains($0.rawValue) } ?? false
+                    let hasUnwantedStyle = cocktail.compiledTags.styles?.contains { updatedUnwantedSelections.contains($0.rawValue) } ?? false
+                    
+                    if hasUnwantedIngredient || hasUnwantedFlavor || hasUnwantedProfile || hasUnwantedStyle {
+                        return // if the cocktail has an unwanted selection, flavor, or profile, bail out early.
+                    }
                 }
-            }
             
             var umbrellas = preferredUmbrellaCategories
             var bases = preferredBaseCategories
@@ -259,8 +265,23 @@ extension SearchViewModel {
             
             var matchedSelections = 0
             
+            // Check for Profiles
+            if let profileTags = cocktail.compiledTags.profiles {
+                matchedSelections += profileTags.filter { preferredProfileStrings.contains($0.rawValue) }.count
+            }
+            
+            //check flavors
+            if let flavorTags = cocktail.compiledTags.flavors {
+                matchedSelections += flavorTags.filter { preferredFlavorStrings.contains($0.rawValue)}.count
+            }
+            
+            //check styles
+            if let styleTags = cocktail.compiledTags.styles {
+                matchedSelections += styleTags.filter { preferredStyleStrings.contains($0.rawValue)}.count
+            }
+            
+            
             cocktail.spec.forEach { ingredient in
-                
                 if !umbrellas.isEmpty && umbrellas.contains(ingredient.ingredientBase.umbrellaCategory) {
                     matchedSelections += 1
                     if let index = umbrellas.firstIndex(of: ingredient.ingredientBase.umbrellaCategory) {
@@ -282,7 +303,10 @@ extension SearchViewModel {
                         ingredients.remove(at: index)
                     }
                 }
+                
             }
+            
+            
             
             if matchedSelections >= numberOfSelections {
                 perfectMatches.append(cocktail.cocktailName)
@@ -293,6 +317,7 @@ extension SearchViewModel {
                 minusTwo.append(cocktail.cocktailName)
             }
         }
+        
         perfectMatchCocktails = perfectMatches
         minusOneMatchCocktails = minusOne
         minusTwoMatchCocktails = minusTwo

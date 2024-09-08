@@ -18,8 +18,9 @@ public struct PreferencesListView: View {
                 FontFactory.regularText("Selections", size: 20, isBold: true)
                     .foregroundStyle(Color.softWhite)
                 Spacer()
+                ResetSearchCriteriaButton()
             }
-            .padding(.leading, 25)
+            .padding(.horizontal, 25)
             
             SelectedIngredientView(isPreferred: true, selections: viewModel.preferredSelections)
             SelectedIngredientView(isPreferred: false, selections: viewModel.unwantedSelections)

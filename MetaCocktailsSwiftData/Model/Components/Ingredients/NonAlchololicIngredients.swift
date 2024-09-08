@@ -27,7 +27,7 @@ struct NAIngredients: Codable, Hashable, Equatable {
     }
     
 }
-enum Juice: String, Codable, CaseIterable {
+enum Juice: String, IngredientTagsProtocol {
     case appleCider           = "Apple cider"
     case carrotJuice          = "Carrot juice"
     case cranberryJuice       = "Cranberry juice"
@@ -66,7 +66,7 @@ enum Juice: String, Codable, CaseIterable {
     }
 }
 
-enum Syrup: String, Codable, CaseIterable { 
+enum Syrup: String, IngredientTagsProtocol {
     
     case agaveSyrup              = "Agave syrup"
     case agaveNectar             = "Agave nectar"
@@ -167,7 +167,7 @@ enum Syrup: String, Codable, CaseIterable {
  
 }
 
-enum Herbs: String, Codable, CaseIterable {
+enum Herbs: String, IngredientTagsProtocol {
     case basil                = "Basil leaves"
     case cilantro             = "Cilantro leaves"
     case mint                 = "Mint leaves"
@@ -193,7 +193,8 @@ enum Herbs: String, Codable, CaseIterable {
     }
 }
 
-enum Fruit: String, Codable, CaseIterable {
+enum Fruit: String, IngredientTagsProtocol {
+    
     case blackBerry           = "Blackberries"
     case cucumberSlices       = "Cucumber slice(s)"
     case grapefruitPeel       = "Grapefruit peel(s)"
@@ -246,7 +247,7 @@ enum Fruit: String, Codable, CaseIterable {
     }
 }
 
-enum Seasoning: String, Codable, CaseIterable {
+enum Seasoning: String, IngredientTagsProtocol {
     case nutmeg               = "Grated nutmeg"
     case salt                 = "Kosher salt"
     case saline               = "Saline (5:1)"
@@ -273,7 +274,7 @@ enum Seasoning: String, Codable, CaseIterable {
     }
 }
 
-enum Soda: String, Codable, CaseIterable {
+enum Soda: String, IngredientTagsProtocol {
     
     case feverTreeAromatic    = "Fever Tree aromatic tonic"
     case gingerBeer           = "Ginger beer"
@@ -296,7 +297,7 @@ enum Soda: String, Codable, CaseIterable {
         case .sparklingWater:
             Tags(profiles: [.effervescent], nA: [NAIngredients(.soda(self))])
         case .gingerBeer:
-            Tags(flavors: [.ginger], profiles: [.sharp, .effervescent], nA: [NAIngredients(.soda(self))])
+            Tags(flavors: [.ginger], profiles: [.effervescent], nA: [NAIngredients(.soda(self))])
         case .lemonMintSoda:
             Tags(flavors: [.lemon, .mint], profiles: [.effervescent], nA: [NAIngredients(.soda(self))])
         case .feverTreeAromatic:
@@ -305,7 +306,7 @@ enum Soda: String, Codable, CaseIterable {
     }
 }
 
-enum OtherNA: String, Codable, CaseIterable {
+enum OtherNA: String, IngredientTagsProtocol {
     case bloodyMarryMixWnG    = "W&G bloody marry mix"
     case bloodyMarryMix       = "Bloody marry mix"
     case butter               = "Butter"

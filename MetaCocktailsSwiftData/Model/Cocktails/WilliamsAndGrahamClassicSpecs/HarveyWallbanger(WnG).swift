@@ -22,6 +22,6 @@ var harveyWallbangerSpecWnG    =  [OldCocktailIngredient(.liqueurs(.galliano), v
                                    OldCocktailIngredient(.juices(.orange), value: 2),
                                    OldCocktailIngredient(.vodkas(.vodkaAny), value: 1.5)]
 
-var harveyWallbangerTagsWnG     = Tags(profiles: [.fruity, .sweet, .gross],
+var harveyWallbangerTagsWnG     = Tags(profiles: [.fruity, .sweet],
                                        styles: [.sour, .shaken])
 

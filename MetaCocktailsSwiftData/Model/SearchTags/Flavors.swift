@@ -7,9 +7,14 @@
 
 import Foundation
 
+
+protocol IngredientTagsProtocol: Codable, CaseIterable, RawRepresentable where RawValue == String {
+    var tags: Tags { get }
+}
+
+
+
 enum Flavor: String, Codable, CaseIterable {
-    
-    
     case agave          = "Agave Nectar"
     case almond         = "Almond"
     case aloe           = "Aloe"
@@ -94,7 +99,5 @@ enum Flavor: String, Codable, CaseIterable {
     case vinegar        = "Vinegar"
     case walnut         = "Walnut"
     case whiteFlower    = "White Flower"
-  
-   
-}
 
+}

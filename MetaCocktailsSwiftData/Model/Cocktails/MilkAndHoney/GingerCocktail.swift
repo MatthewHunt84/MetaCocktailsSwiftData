@@ -22,5 +22,5 @@ var gingerCocktailSpec     =  [OldCocktailIngredient(.juices(.lime), value: 0.5)
                                OldCocktailIngredient(.syrups(.gingerSyrup), value: 0.75, prep: PrepBible.gingerSyrup),
                                OldCocktailIngredient(.gins(.ginAny), value: 2)]
 
-var gingerCocktailTags     = Tags(profiles: [.citrusy, .tart, .sharp],
+var gingerCocktailTags     = Tags(profiles: [.citrusy, .tart],
                                   styles: [.sour, .shaken])

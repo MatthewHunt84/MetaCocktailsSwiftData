@@ -22,6 +22,9 @@ final class SearchViewModel: ObservableObject {
     var umbrellaCategoryStrings: [String] = SpiritsUmbrellaCategory.allCases.map{ $0.rawValue }
     var baseCategoryStrings: [String] = BaseCategory.allCases.map({$0.rawValue})
     var specialtyCategoryStrings: [String] = SpecialtyCategory.allCases.map({$0.rawValue})
+    let flavorStrings: [String] = Flavor.allCases.map { $0.rawValue }
+    let profileStrings: [String] = Profile.allCases.map { $0.rawValue }
+    let styleStrings: [String] = Style.allCases.map { $0.rawValue }
     
     var ingredientNames: [String] = []
     var allWhiskies: [String] = Whiskey.allCases.map({ $0.rawValue })
@@ -34,6 +37,10 @@ final class SearchViewModel: ObservableObject {
     var preferredUmbrellaCategories: [String] = []
     var preferredBaseCategories: [String] = []
     var preferredSpecialtyCategories: [String] = []
+    var preferredFlavorStrings: [String] = []
+    var preferredProfileStrings: [String] = []
+    var preferredStyleStrings: [String] = []
+    
     var isLoading = true
     var preferredCount = 0
     var sections: [ResultViewSectionData] = []
@@ -106,6 +113,8 @@ final class SearchViewModel: ObservableObject {
         .sweetVermouthAny: SpecialtyCategory.sweetVermouthAny.specialtyCategoryIngredients,
         .tawnyPort: SpecialtyCategory.tawnyPort.specialtyCategoryIngredients]
     
+    
+    
     // complex search variables
     var perfectMatchCocktails = [String]()
     var minusOneMatchCocktails = [String]()
@@ -117,6 +126,66 @@ final class SearchViewModel: ObservableObject {
     var updatedUnwantedSelections = [String]()
     var allCocktails: [Cocktail] = []
     var isShowingResults: Bool = false
+    
+    func handleThumbsUp(ingredient: String) {
+        if !preferredSelections.contains(ingredient) {
+            if umbrellaCategoryStrings.contains(ingredient) {
+                if let umbrellaSpirits = SpiritsUmbrellaCategory.allCases.first(where: { $0.rawValue == ingredient }) {
+                   preferredSelections.removeAll(where: { umbrellaSpirits.subCategories.contains($0) })
+                }
+            }
+            if baseCategoryStrings.contains(ingredient) {
+                if let baseSpirits = BaseCategory.allCases.first(where: { $0.rawValue == ingredient }) {
+                    preferredSelections.removeAll(where: { baseSpirits.baseCategoryIngredients.contains($0) })
+                }
+            }
+            if specialtyCategoryStrings.contains(ingredient) {
+                if let specialtySpirits = SpecialtyCategory.allCases.first(where: { $0.rawValue == ingredient }) {
+                    preferredSelections.removeAll(where: { specialtySpirits.specialtyCategoryIngredients.contains($0) })
+                }
+            }
+            preferredSelections.append(ingredient)
+            preferredCount += 1
+            if unwantedSelections.contains(ingredient){
+                unwantedSelections.removeAll(where: {$0 == ingredient})
+            }
+        } else {
+            preferredSelections.removeAll(where: {$0 == ingredient})
+            preferredCount -= 1
+        }
+        updateCategoryIngredients()
+        fillPreferredCategoryArrays()
+        currentComponentSearchName = ""
+    }
+    func handleThumbsDown(ingredient: String) {
+        if !unwantedSelections.contains(ingredient) {
+            if umbrellaCategoryStrings.contains(ingredient) {
+                if let umbrellaSpirits = SpiritsUmbrellaCategory.allCases.first(where: { $0.rawValue == ingredient }) {
+                    unwantedSelections.removeAll(where: { umbrellaSpirits.subCategories.contains($0) })
+                }
+            }
+            if baseCategoryStrings.contains(ingredient) {
+                if let baseSpirits = BaseCategory.allCases.first(where: { $0.rawValue == ingredient }) {
+                    unwantedSelections.removeAll(where: { baseSpirits.baseCategoryIngredients.contains($0) })
+                }
+            }
+            if specialtyCategoryStrings.contains(ingredient) {
+                if let specialtySpirits = SpecialtyCategory.allCases.first(where: { $0.rawValue == ingredient }) {
+                    unwantedSelections.removeAll(where: { specialtySpirits.specialtyCategoryIngredients.contains($0) })
+                }
+            }
+            unwantedSelections.append(ingredient)
+            if preferredSelections.contains(ingredient) {
+                preferredSelections.removeAll(where: {$0 == ingredient})
+                preferredCount -= 1
+            }
+        } else {
+            unwantedSelections.removeAll(where: {$0 == ingredient})
+        }
+        updateCategoryIngredients()
+        fillUnwantedCategoryArrays()
+        currentComponentSearchName = ""
+    }
     
     func toggleIsShowingResults() {
 
@@ -157,12 +226,65 @@ final class SearchViewModel: ObservableObject {
     func evaluateSearchType() {
         if preferredUmbrellaCategories.count > 1 ||
             preferredBaseCategories.count > 1 ||
-            preferredSpecialtyCategories.count > 1 {
+            preferredSpecialtyCategories.count > 1 ||
+            preferredFlavorStrings.count > 0 ||
+            preferredProfileStrings.count > 0 ||
+            preferredStyleStrings.count > 0 ||
+            (unwantedIngredients.contains { flavorStrings.contains($0) }) ||
+            (unwantedIngredients.contains { styleStrings.contains($0) }) ||
+            (unwantedIngredients.contains { profileStrings.contains($0) }){
             searchType = SearchType.complex
         } else {
             searchType = SearchType.simple
         }
     }
+    
+    func clearSearchCriteria() {
+        
+        preferredSelections.removeAll()
+        unwantedSelections.removeAll()
+        
+        
+        preferredUmbrellaCategories.removeAll()
+        preferredBaseCategories.removeAll()
+        preferredSpecialtyCategories.removeAll()
+        preferredFlavorStrings.removeAll()
+        preferredProfileStrings.removeAll()
+        preferredStyleStrings.removeAll()
+        
+        
+        preferredIngredients.removeAll()
+        unwantedIngredients.removeAll()
+        
+        
+        includedIngredientsSet.removeAll()
+        excludedIngredientsSet.removeAll()
+        
+        
+        perfectMatchCocktails.removeAll()
+        minusOneMatchCocktails.removeAll()
+        minusTwoMatchCocktails.removeAll()
+        searchCompleted = false
+        isShowingResults = false
+        searchType = .simple
+        preferredCount = 0
+        
+        
+        currentComponentSearchName = ""
+        sections.removeAll()
+        
+        
+        isRunningComplexSearch = false
+        isGeneratingIngredientList = false
+        
+        
+        filteredIngredients.removeAll()
+        
+        
+        cocktailsAndMissingIngredientsForMinusOne.removeAll()
+        cocktailsAndMissingIngredientsForMinusTwo.removeAll()
+    }
+    
     
     func resetSearch() {
         searchCompleted = false
@@ -173,12 +295,55 @@ final class SearchViewModel: ObservableObject {
         updatedUnwantedSelections = unwantedSelections
         updatedUnwantedSelections.removeAll(where: { $0 == selection})
         
+
+        
+        
         // Remove view-independant selections
         unwantedIngredients.removeAll(where: { $0 == selection})
         preferredUmbrellaCategories.removeAll(where: { $0 == selection})
         preferredBaseCategories.removeAll(where: { $0 == selection})
         preferredSpecialtyCategories.removeAll(where: { $0 == selection})
+        preferredFlavorStrings.removeAll(where: { $0 == selection})
+        preferredProfileStrings.removeAll(where: { $0 == selection})
+        preferredStyleStrings.removeAll(where: {$0 == selection})
+        
         preferredIngredients.removeAll(where: { $0 == selection})
+        includedIngredientsSet.remove(selection)
+        
+        // remove ingredients connected to over arching categories
+        if preferred {
+            if umbrellaCategoryStrings.contains(selection) {
+                if let umbrellaSpirit = SpiritsUmbrellaCategory.allCases.first(where: { $0.rawValue == selection }) {
+                    includedIngredientsSet.subtract(umbrellaSpirit.subCategories)
+                }
+            }
+            if baseCategoryStrings.contains(selection) {
+                if let baseSpirit = BaseCategory.allCases.first(where: { $0.rawValue == selection }) {
+                    includedIngredientsSet.subtract(baseSpirit.baseCategoryIngredients)
+                }
+            }
+            if specialtyCategoryStrings.contains(selection) {
+                if let specialtySpirit = SpecialtyCategory.allCases.first(where: { $0.rawValue == selection }) {
+                    includedIngredientsSet.subtract(specialtySpirit.specialtyCategoryIngredients)
+                }
+            }
+        } else {
+            if umbrellaCategoryStrings.contains(selection) {
+                if let umbrellaSpirit = SpiritsUmbrellaCategory.allCases.first(where: { $0.rawValue == selection }) {
+                    excludedIngredientsSet.subtract(umbrellaSpirit.subCategories)
+                }
+            }
+            if baseCategoryStrings.contains(selection) {
+                if let baseSpirit = BaseCategory.allCases.first(where: { $0.rawValue == selection }) {
+                    excludedIngredientsSet.subtract(baseSpirit.baseCategoryIngredients)
+                }
+            }
+            if specialtyCategoryStrings.contains(selection) {
+                if let specialtySpirit = SpecialtyCategory.allCases.first(where: { $0.rawValue == selection }) {
+                    excludedIngredientsSet.subtract(specialtySpirit.specialtyCategoryIngredients)
+                }
+            }
+        }
         
         // Reset arrays for generation (if complex or not they need to be reset)
         perfectMatchCocktails = []
@@ -226,6 +391,7 @@ final class SearchViewModel: ObservableObject {
         preferredBaseCategories = []
         preferredSpecialtyCategories = []
         preferredIngredients = []
+        preferredFlavorStrings = []
         
         for selection in preferredSelections {
             if umbrellaCategoryStrings.contains(selection) {
@@ -234,6 +400,12 @@ final class SearchViewModel: ObservableObject {
                 preferredBaseCategories.append(selection)
             } else if specialtyCategoryStrings.contains(selection) {
                 preferredSpecialtyCategories.append(selection)
+            } else if flavorStrings.contains(selection) {
+                preferredFlavorStrings.append(selection)
+            } else if profileStrings.contains(selection) {
+                preferredProfileStrings.append(selection)
+            } else if styleStrings.contains(selection) {
+                preferredStyleStrings.append(selection)
             } else {
                 preferredIngredients.append(selection)
             }
@@ -322,7 +494,7 @@ final class SearchViewModel: ObservableObject {
         }
         
         let lowercasedSearchText = searchText.lowercased()
-        let combinedArrays = ingredientNames + baseCategoryStrings + umbrellaCategoryStrings + specialtyCategoryStrings
+        let combinedArrays = ingredientNames + baseCategoryStrings + umbrellaCategoryStrings + specialtyCategoryStrings + flavorStrings + profileStrings + styleStrings
         let combinedArraysWithoutDuplicates = Array(Set(combinedArrays))
         
         filteredIngredients = combinedArraysWithoutDuplicates.filter { $0.lowercased().contains(lowercasedSearchText) }

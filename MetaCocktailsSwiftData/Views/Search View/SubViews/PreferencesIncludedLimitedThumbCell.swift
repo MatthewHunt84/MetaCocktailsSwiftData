@@ -26,33 +26,7 @@ struct PreferencesIncludedLimitedThumbCell: View {
              Image(systemName:viewModel.unwantedSelections.contains(ingredient)  ? "hand.thumbsdown.fill" : "hand.thumbsdown")
                  .foregroundStyle(viewModel.unwantedSelections.contains(ingredient)  ? MeshGradients.redMesh : MeshGradients.whiteMesh)
                  .onTapGesture {
-                     if !viewModel.unwantedSelections.contains(ingredient) {
-                         if viewModel.umbrellaCategoryStrings.contains(ingredient) {
-                             if let umbrellaSpirits = SpiritsUmbrellaCategory.allCases.first(where: { $0.rawValue == ingredient }) {
-                                 viewModel.unwantedSelections.removeAll(where: { umbrellaSpirits.subCategories.contains($0) })
-                             }
-                         }
-                         if viewModel.baseCategoryStrings.contains(ingredient) {
-                             if let baseSpirits = BaseCategory.allCases.first(where: { $0.rawValue == ingredient }) {
-                                 viewModel.unwantedSelections.removeAll(where: { baseSpirits.baseCategoryIngredients.contains($0) })
-                             }
-                         }
-                         if viewModel.specialtyCategoryStrings.contains(ingredient) {
-                             if let specialtySpirits = SpecialtyCategory.allCases.first(where: { $0.rawValue == ingredient }) {
-                                 viewModel.unwantedSelections.removeAll(where: { specialtySpirits.specialtyCategoryIngredients.contains($0) })
-                             }
-                         }
-                         viewModel.unwantedSelections.append(ingredient)
-                         if viewModel.preferredSelections.contains(ingredient) {
-                             viewModel.preferredSelections.removeAll(where: {$0 == ingredient})
-                             viewModel.preferredCount -= 1
-                         }
-                     } else {
-                         viewModel.unwantedSelections.removeAll(where: {$0 == ingredient})
-                     }
-                     viewModel.updateCategoryIngredients()
-                     viewModel.fillUnwantedCategoryArrays()
-                     viewModel.currentComponentSearchName = ""
+                     viewModel.handleThumbsDown(ingredient: ingredient)
                  }
                  .padding(.horizontal, 10)
                  .font(.system(size: 20))

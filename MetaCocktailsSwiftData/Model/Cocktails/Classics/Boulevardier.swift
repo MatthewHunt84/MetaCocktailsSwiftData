@@ -24,6 +24,6 @@ var boulevardierSpec = [OldCocktailIngredient(.whiskies(.straightRyeOrBourbon), 
                         OldCocktailIngredient(.amari(.campari), value: 1)]
 
 var boulevardierTags = Tags(flavors: [.orange, .bakingSpices],
-                            profiles: [.bittersweet, .spiritForward, .rich],
+                            profiles: [.bittersweet, .spiritForward, .rich, .bitter],
                             styles: [.negroni, .stirred])
 

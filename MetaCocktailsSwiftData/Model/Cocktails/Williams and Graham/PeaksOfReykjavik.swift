@@ -27,7 +27,7 @@ let peaksOfReykjavicSpec = [OldCocktailIngredient(.bitters(.peychauds), value: 4
                             OldCocktailIngredient(.vodkas(.reyka), value: 0.75)]
 
 
-let peaksOfReykjavicTags = Tags(profiles: [.fruity, .refreshing, .light],
+let peaksOfReykjavicTags = Tags(profiles: [.herbal, .refreshing, .light],
                                 styles: [.sour, .swizzle])
 
 
