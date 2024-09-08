@@ -25,7 +25,7 @@ let mintJulepSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint
                                               OldCocktailIngredient(.whiskies(.bourbonAny), value: 2.5)]
 
 let mintJulepTags = Tags(profiles: [.herbal, .sweet, .refreshing],
-                         styles: [.julep, .built])
+                         styles: [ .built])
 
 let mintJulepBuild =  Build(instructions: [Instruction(step: 1, method: "In a highball or julep cup, gently muddle 8-10 mint leaves along with the simple syrup. I mean very gently."),
                                            Instruction(step: 2, method: "Add crushed or pebble ice and then add the spirit of choice. Cognac or Armagnac was common during it's conception but American whiskey has become more popular in recent years."),

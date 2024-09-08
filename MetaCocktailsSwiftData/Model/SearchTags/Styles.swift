@@ -21,7 +21,6 @@ enum Style: String, Codable, CaseIterable, Comparable {
     case collins       = "Collins Variation"
     case fizz          = "Fizz Variation"
     case flip          = "Flip Variation"
-    case julep         = "Julep Variation"
     case manhattan     = "Manhattan Variation"
     case oldFashioned  = "Old Fashioned Variation"
     case martini       = "Martini Variation"
