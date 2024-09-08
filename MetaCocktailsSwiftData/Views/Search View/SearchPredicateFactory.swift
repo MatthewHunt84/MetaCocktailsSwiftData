@@ -259,7 +259,6 @@ extension SearchViewModel {
             var bases = preferredBaseCategories
             var specialties = preferredSpecialtyCategories
             var ingredients = preferredIngredients
-            var flavors = preferredFlavorStrings
             
             var matchedSelections = 0
             
