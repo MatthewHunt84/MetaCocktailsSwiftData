@@ -47,10 +47,11 @@ struct FilteredIngredientListView: View {
                         ForEach($viewModel.filteredIngredients, id: \.self) { ingredient in
                             VStack {
                                 viewModel.returnPreferencesThumbCell(ingredient: ingredient)
-                                    .padding(.horizontal)
+                                    
                                 Divider()
                                     .background(Color.gray.opacity(0.3))
                             }
+                            .padding(.horizontal, 40)
                         }
                         .listRowBackground(Color.clear)
                     }
