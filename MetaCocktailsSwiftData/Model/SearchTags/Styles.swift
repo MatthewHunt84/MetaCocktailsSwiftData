@@ -15,9 +15,9 @@ enum Style: String, Codable, CaseIterable, Comparable {
     
     case shaken        = "Shaken"
     case stirred       = "Stirred"
-    
     case blended       = "Blended"
-    case built         = "Built"
+    
+    case built         = "Built in Glass"
     case collins       = "Collins Variation"
     case fizz          = "Fizz Variation"
     case flip          = "Flip Variation"
@@ -28,7 +28,6 @@ enum Style: String, Codable, CaseIterable, Comparable {
     case nonAlcoholic  = "Non-Alcoholic"
     case sour          = "Sour Variation"
     case daisy         = "Daisy Variation"
-    case punch         = "Punch"
     case spritz        = "Spritz Variation"
     case swizzle       = "Swizzle Variation"
     case tiki          = "Tiki Variation"

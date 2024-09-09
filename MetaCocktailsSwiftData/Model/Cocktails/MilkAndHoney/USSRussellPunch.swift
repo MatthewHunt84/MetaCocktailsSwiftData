@@ -30,7 +30,7 @@ var uSSRussellPunchSpec = [OldCocktailIngredient(.fruit(.lemons), value: 50, uni
                            OldCocktailIngredient(.wines(.prosecco), value: 6, unit: .bottles) ]
 
 var uSSRussellPunchTags = Tags(flavors: [.nutmeg, .clove, .cinnamon], profiles: [.aromatic, .refreshing, .citrusy, .effervescent],
-                               styles: [.punch, .built])
+                               styles: [.built])
 
 var uSSRussellPunchBuild = Build(instructions: [Instruction(step: 1, method: "Start by peeling and juicing the lemons. Then, set the peels aside to make an oleo saccharum."),
                                                 Instruction(step: 2, method: "Combine the lemon peels and sugar in a large punch bowl and let stand for 1½ and up to 4 hours."),
