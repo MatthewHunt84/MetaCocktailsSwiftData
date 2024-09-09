@@ -171,6 +171,7 @@ enum Brandy: String, IngredientTagsProtocol {
 enum Gin: String, IngredientTagsProtocol {
     
     case agedBolsGenever      = "Bols Genever Barrel Aged"
+    case aviation             = "Aviation Gin"
     case fordsGin             = "Fords Gin"
     case ginAny               = "Gin"
     case ginLondonDry         = "London Dry Gin"
@@ -238,6 +239,8 @@ enum Gin: String, IngredientTagsProtocol {
             Tags(flavors: [.juniper],booze: [Booze(.gins(self)), Booze(.gins(.ginAny))])
         case .woodyCreekGinJasmine:
             Tags(flavors: [.juniper, .tea, .citrusPeel] ,booze: [Booze(.gins(self)), Booze(.gins(.ginAny))])
+        case .aviation:
+            Tags(flavors: [.juniper] ,booze: [Booze(.gins(self)), Booze(.gins(.ginLondonDry))])
         }
     }
     
