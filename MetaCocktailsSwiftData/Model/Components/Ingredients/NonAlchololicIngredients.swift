@@ -122,9 +122,9 @@ enum Syrup: String, IngredientTagsProtocol {
         case .honeySyrup:
             Tags(flavors: [.honey], nA: [NAIngredients(.syrups(self))])
         case .orgeat:
-            Tags(flavors: [.almond], nA: [NAIngredients(.syrups(self))])
+            Tags(flavors: [.almond],  profiles: [.nutty], nA: [NAIngredients(.syrups(self))])
         case .passionfruitSyrup:
-            Tags(flavors: [.passionfruit], nA: [NAIngredients(.syrups(self))])
+            Tags(flavors: [.passionfruit], profiles: [.tropical], nA: [NAIngredients(.syrups(self))])
         case .richDem:
             Tags(nA: [NAIngredients(.syrups(self))])
         case .simple:
@@ -144,7 +144,7 @@ enum Syrup: String, IngredientTagsProtocol {
         case .agaveNectar:
             Tags(flavors: [.agave], nA: [NAIngredients(.syrups(self))])
         case .cocoLopez:
-            Tags(flavors: [.coconut], nA: [NAIngredients(.syrups(self))])
+            Tags(flavors: [.coconut], profiles: [.tropical], nA: [NAIngredients(.syrups(self))])
         case .pineappleGumSyrup:
             Tags(flavors: [.pineapple], nA: [NAIngredients(.syrups(self))])
         case .richCinnamonAndVanill:
@@ -358,7 +358,7 @@ enum OtherNA: String, IngredientTagsProtocol {
         case .eggWhole:
             Tags(flavors: [.egg], profiles: [.rich, .silky], nA: [NAIngredients(.otherNonAlc(self))])
         case .granulatedSugar:
-            Tags(profiles: [.unrefined], nA: [NAIngredients(.otherNonAlc(self))])
+            Tags(nA: [NAIngredients(.otherNonAlc(self))])
         case .orangeFlowerWater:
             Tags(flavors: [.whiteFlower], profiles: [.floral], nA: [NAIngredients(.otherNonAlc(self))])
         case .bloodyMarryMixWnG:

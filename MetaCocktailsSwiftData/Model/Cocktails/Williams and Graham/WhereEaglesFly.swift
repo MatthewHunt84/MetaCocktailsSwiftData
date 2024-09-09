@@ -24,7 +24,7 @@ var whereEaglesFlySpec  = [OldCocktailIngredient(.wines(.prosecco), value: 2),
                            OldCocktailIngredient(.amari(.cynar), value: 0.5),
                            OldCocktailIngredient(.whiskies(.eagleRare10), value: 1.5)]
 
-var whereEaglesFlyTags = Tags(profiles: [.refreshing, .fruity, .bright],
+var whereEaglesFlyTags = Tags(profiles: [.refreshing, .fruity, .citrusy],
                               styles: [.sour, .shaken])
 
 var whereEaglesFlyBuild = Build(instructions: [Instruction(step: 1, method: "Gently muddle the basil."),

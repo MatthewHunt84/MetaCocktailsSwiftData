@@ -21,6 +21,6 @@ var greatScottSpec  = [OldCocktailIngredient(.soda(.lemonMintSoda), value: 2),
                        OldCocktailIngredient(.amari(.cardamaro), value: 0.5),
                        OldCocktailIngredient(.whiskies(.monkeyShoulder), value: 1.5)]
 
-var greatScottTags = Tags(profiles: [.refreshing, .herbal, .bright],
+var greatScottTags = Tags(profiles: [.refreshing, .herbal, .citrusy],
                           styles: [.fizz, .shaken])
 

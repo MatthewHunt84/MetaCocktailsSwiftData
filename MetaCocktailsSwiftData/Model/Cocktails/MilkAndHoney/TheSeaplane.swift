@@ -31,6 +31,6 @@ var theSeaPlaneBuild  = Build(instructions: [Instruction(step: 1, method: "Add a
                                              Instruction(step: 2, method: "Strain into an absinthe rinsed flute and top with Champagne"),
                                              Instruction(step: 3, method: "Give a gentle stir")])
 
-var theSeaPlaneTags   = Tags(profiles: [.citrusy, .effervescent, .bright],
+var theSeaPlaneTags   = Tags(profiles: [.citrusy, .effervescent, .light],
                              styles: [ .shaken, .fizz])
 

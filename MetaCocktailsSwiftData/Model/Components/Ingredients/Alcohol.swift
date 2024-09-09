@@ -457,7 +457,7 @@ enum Vodka: String, IngredientTagsProtocol {
         case .zubrowka:
             Tags(booze: [Booze(.vodkas(self)), Booze(.vodkas(.vodkaAny))])
         case .peanutButterVodka:
-            Tags(flavors: [.peanut], booze: [Booze(.vodkas(self)), Booze(.vodkas(.vodkaAny))])
+            Tags(flavors: [.peanut],profiles: [.nutty], booze: [Booze(.vodkas(self)), Booze(.vodkas(.vodkaAny))])
         case .stGeorgeGreenChileVodka:
             Tags(flavors: [.greenChile], booze: [Booze(.vodkas(self)), Booze(.vodkas(.vodkaAny))])
         case .roaringForkVodka:

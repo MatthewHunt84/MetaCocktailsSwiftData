@@ -13,10 +13,8 @@ enum Profile: String, Codable, CaseIterable {
     case bitter         = "Bitter"
     case bittersweet    = "Bittersweet"
     case botanical      = "Botanical"
-    case bright         = "Bright"
     case citrusy        = "Citrusy"
     case creamy         = "Creamy"
-    case comforting     = "Comforting"
     case complex        = "Complex"
     case dry            = "Dry"
     case floral         = "Floral"
@@ -24,7 +22,6 @@ enum Profile: String, Codable, CaseIterable {
     case funky          = "Funky"
     case herbal         = "Herbal"
     case hot            = "Hot"
-    case medicinal      = "Medicinal"
     case nutty          = "Nutty"
     case punchy         = "Punchy"
     case refreshing     = "Refreshing"
@@ -37,12 +34,10 @@ enum Profile: String, Codable, CaseIterable {
     case tropical       = "Tropical"
     case vegetal        = "Vegetal"
     
-    /// Below were in "Textures" previously
+    //textures
     case light          = "Light"
     case silky          = "Silky"
-    case thin           = "Thin"
     case effervescent   = "Effervescent"
     case rich           = "Rich"
-    case unrefined      = "Unrefined"
     
 }
