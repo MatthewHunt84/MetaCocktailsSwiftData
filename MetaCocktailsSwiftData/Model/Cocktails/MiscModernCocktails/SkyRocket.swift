@@ -8,7 +8,7 @@
 
 import Foundation
 
-var skyRocket  = Cocktail(cocktailName: "Sky Rocket",
+var skyRocket  = Cocktail(cocktailName: "Sky Rocket", 
                           glasswareType: .collins,
                           ice: .koldDraft,
                           author: Author(place: "The Dead Rabbit. Manhattan, New York"),
