@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TabBarView: View {
     
-    @State private var selectedTab: TabBarComponents = .searchView
+    @State private var selectedTab: TabBarComponents = .customCocktailsView
     
     var body: some View {
         
