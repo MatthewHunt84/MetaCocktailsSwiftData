@@ -37,6 +37,7 @@ struct FilteredIngredientListView: View {
             .padding(.horizontal)
             .padding(.top)
             .task {
+                //print(modelContext.sqliteCommand)
                 viewModel.setupSearch()
                 viewModel.ingredientNames = ingredients.map { $0.name }
             }

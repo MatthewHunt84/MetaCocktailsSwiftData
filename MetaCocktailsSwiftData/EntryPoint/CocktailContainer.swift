@@ -62,4 +62,13 @@ actor CocktailContainer {
             // Save context to container
         }
     }
+    
+    static func useSwiftDataFile()  -> ModelContainer {
+        do {
+            let storeURL = Bundle.main.url(forResource: "default", withExtension: "store")!
+            return try ModelContainer(for: Cocktail.self, configurations: ModelConfiguration(url: storeURL))
+        } catch {
+            fatalError("Failed to initialize ModelContainer: \(error)")
+        }
+    }
 }

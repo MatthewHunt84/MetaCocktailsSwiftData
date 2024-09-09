@@ -17,7 +17,8 @@ struct MetaCocktailsSwiftDataApp: App {
         WindowGroup {
             ContentView()
                 .preferredColorScheme(.dark)
-                .modelContainer(CocktailContainer.preload(&shouldPreload))
+                //.modelContainer(CocktailContainer.preload(&shouldPreload))
+                .modelContainer(CocktailContainer.useSwiftDataFile())
                 .environmentObject(CBCViewModel())
                 .environmentObject(CocktailListViewModel())
                 .environmentObject(appState)
@@ -72,6 +73,15 @@ struct ContentView: View {
                     }
                 }
             }
+        }
+    }
+}
+extension ModelContext {
+    var sqliteCommand: String {
+        if let url = container.configurations.first?.url.path(percentEncoded: false) {
+            "sqlite3 \"\(url)\""
+        } else {
+            "No SQLite database found."
         }
     }
 }
