@@ -15,7 +15,7 @@ var migration = Cocktail(cocktailName: "Migration",
                          spec: migrationSpec,
                          buildOrder: grapefruitCollinsBuild,
                          tags: grapefruitCollinsTags,
-                         variation: .tomCollins,
+                         variation: .negroni,
                          collection: .milkAndHoney)
 
 var migrationSpec  = [OldCocktailIngredient(.rums(.goslingsBlackSeal), value: 0.75),
