@@ -14,8 +14,7 @@ var brancolada  = Cocktail(cocktailName: "Brancolada",
                            ice: .pebbleIce,
                            author: Author(person: "Jeremy Oertel" , place: "Donna. Brooklyn, New York"),
                            spec: brancoladaSpec,
-                           tags: brancoladaTags,
-                           variation: .pinaColada)
+                           tags: brancoladaTags)
 
 var brancoladaSpec  = [OldCocktailIngredient(.amari(.fernetBrancaMenta), value: 1),
                        OldCocktailIngredient(.rums(.appletonEstateSignatureBlend), value: 1),
@@ -25,5 +24,5 @@ var brancoladaSpec  = [OldCocktailIngredient(.amari(.fernetBrancaMenta), value: 
                        OldCocktailIngredient(.otherNonAlc(.coconutWater), value: 0.25)]
 
 
-var brancoladaTags   = Tags(flavors: [.mint, .coconut], profiles: [.creamy, .tropical], styles: [.flip, .shaken])
+var brancoladaTags   = Tags(profiles: [.creamy, .tropical], styles: [.tiki, .shaken])
 

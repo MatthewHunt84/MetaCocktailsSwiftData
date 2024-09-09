@@ -14,7 +14,6 @@ var migration = Cocktail(cocktailName: "Migration",
                          author: sashaPetraske,
                          spec: migrationSpec,
                          tags: migrationTags,
-                         variation: .negroni,
                          collection: .milkAndHoney)
 
 var migrationSpec  = [OldCocktailIngredient(.rums(.goslingsBlackSeal), value: 0.75),
