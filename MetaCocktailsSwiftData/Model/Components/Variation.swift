@@ -81,6 +81,7 @@ enum Variation: String, Codable, CaseIterable {
     case penicillin = "Penicillin"
     case peguClub  = "Pegu Club Cocktail"
     case piscoSour = "Pisco Sour"
+    case pinaColada = "Piña Colada"
     case queensParkSwizzle = "Queens Park Swizzle"
     case rememberTheMaine = "Remember the Maine"
     case robRoy = "Rob Roy"
