@@ -23,7 +23,7 @@ var torontoSpec  =  [OldCocktailIngredient(.syrups(.simple), value: 0.25, prep: 
                      OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes)]
 
 var torontoTags = Tags(flavors: [.orange],
-                       profiles: [.bittersweet, .spiritForward, .medicinal],
+                       profiles: [.bittersweet, .spiritForward],
                        styles: [.oldFashioned, .stirred])
 
 

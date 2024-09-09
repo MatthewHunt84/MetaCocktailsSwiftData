@@ -26,7 +26,7 @@ let prizefighterNo1Spec: [OldCocktailIngredient] = [OldCocktailIngredient(.seaso
                                                     OldCocktailIngredient(.amari(.fernetBranca), value: 1)]
 
 
-let prizefighterNo1Tags = Tags(profiles: [.refreshing, .herbal, .restorative, .medicinal],
+let prizefighterNo1Tags = Tags(profiles: [.refreshing, .herbal, .restorative],
                                styles: [.sour, .shaken])
 
 let wprizefighterNo1Build =  Build(instructions: [Instruction(step: 1, method: "Muddle the mint and lemon wedges together with the simple, putting the force mostely on the lemon wedges. Try not to muddle the mint too much. If you'd rather just use lemon juice, just use 3/4 of an ounce while still shaking in the fresh mint."),

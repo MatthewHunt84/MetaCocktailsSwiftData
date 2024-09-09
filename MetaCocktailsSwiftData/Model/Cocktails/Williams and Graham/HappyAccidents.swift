@@ -25,6 +25,6 @@ let happyAccidentsSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.soda(.
                                                 OldCocktailIngredient(.liqueurs(.italicus), value: 1, unit: .whole)]
 
 
-let happyAccidentsTags = Tags(profiles: [.refreshing, .light, .bright, .restorative],
+let happyAccidentsTags = Tags(profiles: [.refreshing, .light, .restorative, .citrusy],
                               styles: [.shaken, .fizz])
 

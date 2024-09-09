@@ -25,5 +25,5 @@ var falcoorSpec  = [OldCocktailIngredient(.fruit(.cucumberSlices), value: 2, uni
                     OldCocktailIngredient(.bitters(.orangeBitters), value: 0.5),
                     OldCocktailIngredient(.rums(.smithAndCross), value: 0.75)]
 
-var falcoorTags = Tags(profiles: [.refreshing, .fruity, .bright, .complex],
+var falcoorTags = Tags(profiles: [.refreshing, .fruity, .complex],
                        styles: [.sour, .shaken])

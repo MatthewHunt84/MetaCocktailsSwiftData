@@ -77,9 +77,10 @@ struct MeshGradients {
         ], colors: [
             .black, .black,.black,
             .black, .black, .black,
-            .brandSecondaryBlue, .brandSecondaryBlue, .brandSecondaryBlue
+            .black, .black, .black
         ])
     }
+
     
     static let recipeMeshBackground: MeshGradient =
     MeshGradient(width: 3, height: 3, points: [
@@ -89,7 +90,7 @@ struct MeshGradients {
     ], colors: [
         .black, .black,.black,
         .black, .black, .black,
-        .brandSecondaryBlue, .brandSecondaryBlue, .brandSecondaryBlue
+        .black, .black, .black
     ])
     
     static let staticPreferredSelection: MeshGradient =

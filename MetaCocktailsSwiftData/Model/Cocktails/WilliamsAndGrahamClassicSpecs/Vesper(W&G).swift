@@ -21,5 +21,5 @@ var vesperSpecWnG     =  [OldCocktailIngredient(.fortifiedWines(.cocchiAmericano
                           OldCocktailIngredient(.gins(.tanqueray), value: 1.5)]
 
 var vesperTagsWnG    = Tags(flavors: [.lemon],
-                            profiles: [.spiritForward, .dry, .bright],
+                            profiles: [.spiritForward, .dry],
                             styles: [.martini, .stirred])
