@@ -148,6 +148,9 @@ class OldCocktailIngredient: Codable, Hashable { // This old guy needs to be rem
             if ingredient.name == Amaro.amereNouvelle.rawValue {
                 return "By Bittermans"
             }
+            if ingredient.name ==  OtherNA.dryVanilla.rawValue {
+                return "From DRY Botanical Bubbly Company"
+            }
             return info
         }()
     }

@@ -18,12 +18,12 @@ var skyRocket  = Cocktail(cocktailName: "Sky Rocket",
 
 var skyRocketSpec  = [
                   OldCocktailIngredient(.gins(.aviation), value: 1.5),
-                  OldCocktailIngredient(.syrups(.hibiscus), value: 0.75),
+                  OldCocktailIngredient(.syrups(.hibiscus), value: 0.75, prep: PrepBible.hibiscusSyrupPrep),
                   OldCocktailIngredient(.juices(.lime), value: 0.5),
                   OldCocktailIngredient(.amari(.becherovka), value: 0.5),
                   OldCocktailIngredient(.amari(.campari), value: 0.25),
                   OldCocktailIngredient(.otherNonAlc(.dryVanilla), value: 0.5)]
 
 
-var skyRocketTags   = Tags(profiles: [.bittersweet], styles: [.collins])
+var skyRocketTags   = Tags(profiles: [.bittersweet], styles: [.collins, .shaken])
 

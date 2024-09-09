@@ -180,4 +180,10 @@ final class PrepBible{
                                             prepRecipe: [Instruction(step: 1, method: "Combine 500g each of passionfruit pulp (fresh if you can find it. But frozen works great here as well), white sugar, and water into a pot."),
                                                          Instruction(step: 2, method: "Heat just enough to dissolve the sugar. Do not let it boil."),
                                                          Instruction(step: 3, method: "Let it cool completely then strain and bottle. Keep refrigerated.")])
+    
+    static let hibiscusSyrupPrep = Prep(prepIngredientName: "Hibiscus syrup",
+                                        prepRecipe:[Instruction(step: 1, method: "Steep 5g Dried Hibiscus flowers in 500g water and bring to a boil"),
+                                                    Instruction(step: 1, method: "Add 500g turbinado sugar"),
+                                                    Instruction(step: 2, method: "Stir until disolved"),
+                                                    Instruction(step: 3, method: "Let cool before bottling.")])
 }

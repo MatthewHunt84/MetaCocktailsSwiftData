@@ -13,8 +13,7 @@ var migration = Cocktail(cocktailName: "Migration",
                          ice: .bigRock,
                          author: sashaPetraske,
                          spec: migrationSpec,
-                         buildOrder: grapefruitCollinsBuild,
-                         tags: grapefruitCollinsTags,
+                         tags: migrationTags,
                          variation: .negroni,
                          collection: .milkAndHoney)
 

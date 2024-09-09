@@ -25,5 +25,5 @@ var brancoladaSpec  = [OldCocktailIngredient(.amari(.fernetBrancaMenta), value: 
                        OldCocktailIngredient(.otherNonAlc(.coconutWater), value: 0.25)]
 
 
-var brancoladaTags   = Tags(flavors: [.mint, .coconut], profiles: [.creamy, .tropical], styles: [.flip])
+var brancoladaTags   = Tags(flavors: [.mint, .coconut], profiles: [.creamy, .tropical], styles: [.flip, .shaken])
 

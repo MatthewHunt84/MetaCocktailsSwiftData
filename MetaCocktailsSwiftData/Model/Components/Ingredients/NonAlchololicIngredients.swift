@@ -329,7 +329,7 @@ enum OtherNA: String, IngredientTagsProtocol {
     case coldBrew             = "Strong cold brew"
     case cream                = "Heavy cream"
     case demeraraSugarCube    = "Demerara sugar sube"
-    case dryVanilla           = "DRY Vanilla Botanical Bubbly"
+    case dryVanilla           = "Dry vanilla soda"
     case espressoShot         = "Espresso shot"
     case stiffCream           = "Lightly whipped cream"
     case eggWhites            = "Egg whites"
