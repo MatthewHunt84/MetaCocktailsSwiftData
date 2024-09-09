@@ -545,6 +545,7 @@
 		F4C74C832AD8CC9600EA3334 /* Ice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C74C822AD8CC9600EA3334 /* Ice.swift */; };
 		F4D184FF2C8F92170035B280 /* Migration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D184FE2C8F92110035B280 /* Migration.swift */; };
 		F4D185012C8F95370035B280 /* Brancolada.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D185002C8F95310035B280 /* Brancolada.swift */; };
+		F4D185032C8F988E0035B280 /* SkyRocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D185022C8F987D0035B280 /* SkyRocket.swift */; };
 		F4E7F1732BE2E726006B6050 /* RecipeFlipCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E7F1722BE2E726006B6050 /* RecipeFlipCardView.swift */; };
 		F4F7429E2AD6419100161A93 /* AdvancedCriteriaListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F7429D2AD6419100161A93 /* AdvancedCriteriaListView.swift */; };
 		F4F742A02AD643A500161A93 /* SearchCriteriaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F7429F2AD643A500161A93 /* SearchCriteriaViewModel.swift */; };
@@ -1092,6 +1093,7 @@
 		F4C74C822AD8CC9600EA3334 /* Ice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ice.swift; sourceTree = "<group>"; };
 		F4D184FE2C8F92110035B280 /* Migration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migration.swift; sourceTree = "<group>"; };
 		F4D185002C8F95310035B280 /* Brancolada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brancolada.swift; sourceTree = "<group>"; };
+		F4D185022C8F987D0035B280 /* SkyRocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyRocket.swift; sourceTree = "<group>"; };
 		F4E7F1722BE2E726006B6050 /* RecipeFlipCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeFlipCardView.swift; sourceTree = "<group>"; };
 		F4F7429D2AD6419100161A93 /* AdvancedCriteriaListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedCriteriaListView.swift; sourceTree = "<group>"; };
 		F4F7429F2AD643A500161A93 /* SearchCriteriaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCriteriaViewModel.swift; sourceTree = "<group>"; };
@@ -1331,6 +1333,7 @@
 		1AC386932AAABED00064F52A /* MiscModernCocktails */ = {
 			isa = PBXGroup;
 			children = (
+				F4D185022C8F987D0035B280 /* SkyRocket.swift */,
 				F4D185002C8F95310035B280 /* Brancolada.swift */,
 				4DBFF8322B6057F60011B5B1 /* BlackManhattan.swift */,
 				4DBFF8562B60AAFB0011B5B1 /* CableCar.swift */,
@@ -2205,6 +2208,7 @@
 				4DBBA44E2B673E3D00179B8F /* HoneymoonCocktail1st.swift in Sources */,
 				4DBAE7092C72E8F900F3DBFD /* Alexandre.swift in Sources */,
 				4DE33E172B91967F00312EC3 /* Spring Forward.swift in Sources */,
+				F4D185032C8F988E0035B280 /* SkyRocket.swift in Sources */,
 				4DBFF8392B605F530011B5B1 /* BloodyMary.swift in Sources */,
 				1AFDB7D02AE33F7E000A3812 /* TwentiethCenturyCocktail.swift in Sources */,
 				4DE33E1D2B91A8D500312EC3 /* TheBusiness.swift in Sources */,

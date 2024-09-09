@@ -79,6 +79,7 @@ enum Syrup: String, IngredientTagsProtocol {
     case gommeSyrup              = "Gomme syrup"
     case grapefruitShrub         = "Grapefruit shrub"
     case grenadine               = "Grenadine"
+    case hibiscus                = "Hibiscus syrup"
     case honey                   = "Honey"
     case honeySyrup              = "Honey syrup"
     case limeCordial             = "Lime Cordial"
@@ -100,10 +101,15 @@ enum Syrup: String, IngredientTagsProtocol {
     }
    
     var grenadineInfo: String {
-        return "(Pomegranate Syrup)"
+        "(Pomegranate Syrup)"
     }
+    
     var richSyrupInfo: String {
-        return "Rich 2:1 by weight syrup."
+        "Rich 2:1 by weight syrup."
+    }
+    
+    var hibiscusSyrup: String {
+        "Hibiscus infused 1:1 turbinado syrup"
     }
     
     
@@ -161,6 +167,8 @@ enum Syrup: String, IngredientTagsProtocol {
             Tags(nA: [NAIngredients(.syrups(self))])
         case .limeCordial:
             Tags(flavors: [.lime], nA: [NAIngredients(.syrups(self))])
+        case .hibiscus:
+            Tags(flavors: [.hibiscus])
         }
     }
     
@@ -321,6 +329,7 @@ enum OtherNA: String, IngredientTagsProtocol {
     case coldBrew             = "Strong cold brew"
     case cream                = "Heavy cream"
     case demeraraSugarCube    = "Demerara sugar sube"
+    case dryVanilla           = "DRY Vanilla Botanical Bubbly"
     case espressoShot         = "Espresso shot"
     case stiffCream           = "Lightly whipped cream"
     case eggWhites            = "Egg whites"
@@ -425,6 +434,8 @@ enum OtherNA: String, IngredientTagsProtocol {
             Tags(flavors: [.coffee,.espresso], nA: [NAIngredients(.otherNonAlc(self))])
         case .nutmegGrated:
             Tags(flavors: [.nutmeg], nA: [NAIngredients(.otherNonAlc(self))])
+        case .dryVanilla:
+            Tags(flavors: [.vanilla], profiles: [.dry, .effervescent])
         }
     }
 }
