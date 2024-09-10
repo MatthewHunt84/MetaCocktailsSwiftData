@@ -72,6 +72,7 @@ struct RecipeFlipCardView: View {
             }
             .frame(minHeight: geo.size.height)
             .rotation3DEffect(Angle(degrees: viewModel.frontDegree), axis: (x: 0, y: 1, z: 0))
+            .padding(.top, -20)
             
             backToRecipeViewButton(viewModel: viewModel)
             

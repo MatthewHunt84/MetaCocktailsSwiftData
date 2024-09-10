@@ -335,8 +335,7 @@ struct GlasswareView: View {
                 Text("Glassware:")
                     .font(FontFactory.recipeCardHeader18B)
                 Text(cocktail.glasswareType.rawValue)
-                    .dynamicTypeSize(.large)
-                    .multilineTextAlignment(.leading)
+                    .font(FontFactory.fontBody16)
             }
             
             Spacer()
