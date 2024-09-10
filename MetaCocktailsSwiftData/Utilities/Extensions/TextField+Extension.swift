@@ -25,7 +25,7 @@ extension TextField {
             .padding(10)
             .background(
                 RoundedRectangle(cornerRadius: 25)
-                    .fill(Color.brandSecondaryGray)
+                    .fill(ColorScheme.searchBarBackground)
             )
             .foregroundColor(.white)
             .autocorrectionDisabled(true)

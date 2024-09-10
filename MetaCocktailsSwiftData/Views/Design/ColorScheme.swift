@@ -27,6 +27,10 @@ struct ColorScheme {
                                            startPoint: .leading,
                                            endPoint: .trailing)
     
+    static let searchBarBackground = Color(hex: "#303030")
+    
+    static let buttonTint = Color(hex: "#00B2FF")
+    
 }
 
 extension Color {
