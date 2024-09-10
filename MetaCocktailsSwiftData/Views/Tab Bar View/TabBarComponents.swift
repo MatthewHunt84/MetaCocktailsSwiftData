@@ -13,6 +13,7 @@ enum TabBarComponents: Hashable, Identifiable, CaseIterable {
     case cocktailListView
     case customCocktailsView
     case addCocktailView
+    case designIdeas
     
     
     
@@ -29,6 +30,8 @@ enum TabBarComponents: Hashable, Identifiable, CaseIterable {
             Label("Custom Cocktails", systemImage: "book.closed.fill")
         case .addCocktailView:
             Label("Add Cocktail", image: "custom.book.fill.badge.plus")
+        case .designIdeas:
+            Label("Design ideas", image: "paintpalette")
         }
     }
     
@@ -45,6 +48,8 @@ enum TabBarComponents: Hashable, Identifiable, CaseIterable {
                 .environmentObject(CocktailListViewModel())
         case .addCocktailView:
             AddCocktailView()
+        case .designIdeas:
+            DeleteMeDesignView()
         }
     }
 }
@@ -57,5 +62,17 @@ extension EnvironmentValues {
     var currentTab: Binding<TabBarComponents> {
         get { self[CurrentTabKey.self] }
         set { self[CurrentTabKey.self] = newValue }
+    }
+}
+
+struct DeleteMeDesignView: View {
+    var body: some View {
+        ZStack {
+            Color.black.ignoresSafeArea()
+            
+            VStack {
+                
+            }
+        }
     }
 }
