@@ -17,10 +17,10 @@ struct AllCocktailsListView: View {
         
         ForEach(viewModel.cocktailListAlphabet, id: \.self) { letter in
             Section {
-                ForEach(organizedCocktails.keys.sorted().filter { $0.hasPrefix(letter) }, id: \.self) { key in
-                    if let cocktails = organizedCocktails[key], !cocktails.isEmpty {
+                ForEach(organizedCocktails.keys.sorted().filter { $0.hasPrefix(letter) }, id: \.self) { titleCocktail in
+                    if let cocktails = organizedCocktails[titleCocktail], !cocktails.isEmpty {
                         if cocktails.count > 1 {
-                            DisclosureGroupView(cocktails: cocktails, key: key)
+                            LazyListDisclosureGroupView(cocktails: cocktails, key: titleCocktail)
                         } else {
                             SingleCocktailListView(cocktail: cocktails[0])
                         }
@@ -34,14 +34,14 @@ struct AllCocktailsListView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.vertical, 5)
                     .foregroundStyle(Color(UIColor.systemGray2))
-                    .background(Color.black.opacity(0.9))
+                    .background(Color.black)
                     .id(letter)
             }
         }
     }
 }
 
-struct DisclosureGroupView: View {
+struct LazyListDisclosureGroupView: View {
     let cocktails: [Cocktail]
     let key: String
     @State private var isExpanded: Bool = false
@@ -116,7 +116,7 @@ struct MultipleCocktailsListView: View {
                 }
             }
         }
-        .buttonStyle(PlainButtonStyle()) // Use PlainButtonStyle to maintain tap area
+        .buttonStyle(PlainButtonStyle())
     }
 }
 
@@ -125,25 +125,15 @@ struct SearchBarAllCocktailsListView: View {
 
     var body: some View {
         let organizedCocktails = viewModel.organizeCocktails(viewModel.filteredCocktails)
-        
-        ForEach(organizedCocktails.keys.sorted(), id: \.self) { key in
-            if let cocktails = organizedCocktails[key], !cocktails.isEmpty {
+        ForEach(organizedCocktails.keys.sorted(), id: \.self) { titleCocktail in
+            if let cocktails = organizedCocktails[titleCocktail], !cocktails.isEmpty {
                 if cocktails.count > 1 {
-                    DisclosureGroup {
-                        ForEach(cocktails, id: \.id) { cocktail in
-                            MultipleCocktailsListView(cocktail: cocktail, cocktails: cocktails)
-                                .padding(.leading)
-                            
-                        }
-                    } label: {
-                        Text(key)
-                            .font(FontFactory.regularFont(size: 18))
-                    }
-                    .disclosureGroupStyle(InlineDisclosureGroupStyle())
+                    LazyListDisclosureGroupView(cocktails: cocktails, key: titleCocktail)
                 } else {
                     SingleCocktailListView(cocktail: cocktails[0])
                 }
             }
+            Divider()
         }
         .listRowBackground(Color.clear)
     }
