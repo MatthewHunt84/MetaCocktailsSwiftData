@@ -20,27 +20,61 @@ struct AllCocktailsListView: View {
                 ForEach(organizedCocktails.keys.sorted().filter { $0.hasPrefix(letter) }, id: \.self) { key in
                     if let cocktails = organizedCocktails[key], !cocktails.isEmpty {
                         if cocktails.count > 1 {
-                            DisclosureGroup {
-                                ForEach(cocktails, id: \.id) { cocktail in
-                                    MultipleCocktailsListView(cocktail: cocktail, cocktails: cocktails)
-                                        .padding(.leading)
-                                }
-                            } label: {
-                                Text(key)
-                                    .font(FontFactory.regularFont(size: 18))
-                            }
-                            .disclosureGroupStyle(InlineDisclosureGroupStyle())
+                            DisclosureGroupView(cocktails: cocktails, key: key)
                         } else {
                             SingleCocktailListView(cocktail: cocktails[0])
                         }
                     }
+                    Divider()
                 }
-                .listRowBackground(Color.clear)
             } header: {
                 Text(letter)
                     .font(FontFactory.regularFont(size: 28))
+                    .bold()
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.vertical, 5)
+                    .foregroundStyle(Color(UIColor.systemGray2))
+                    .background(Color.black.opacity(0.9))
+                    .id(letter)
             }
-            .id(letter)
+        }
+    }
+}
+
+struct DisclosureGroupView: View {
+    let cocktails: [Cocktail]
+    let key: String
+    @State private var isExpanded: Bool = false
+    
+    var body: some View {
+        VStack {
+            Button(action: {
+                withAnimation(.easeInOut(duration: 0.3)) {
+                    isExpanded.toggle()
+                }
+            }) {
+                HStack {
+                    Text(key)
+                        .font(FontFactory.regularFont(size: 18))
+                    Image(systemName: isExpanded ? "chevron.down" : "chevron.right")
+                        .foregroundStyle(.blueTint)
+                    Spacer()
+                }
+            }
+            .buttonStyle(PlainButtonStyle())
+            
+            if isExpanded {
+                LazyVStack(spacing: 0) {
+                    ForEach(cocktails, id: \.id) { cocktail in
+                        MultipleCocktailsListView(cocktail: cocktail, cocktails: cocktails)
+                            .padding()
+                        if cocktail.id != cocktails.last?.id {
+                            Divider()
+                        }
+                    }
+                }
+                .transition(.opacity.combined(with: .move(edge: .top)))
+            }
         }
     }
 }
@@ -49,7 +83,7 @@ struct SingleCocktailListView: View {
     let cocktail: Cocktail
     
     var body: some View {
-        NavigationLinkWithoutIndicator {
+        NavigationLink(destination: RecipeView(viewModel: RecipeViewModel(cocktail: cocktail)).navigationBarBackButtonHidden(true)) {
             HStack {
                 Text(cocktail.cocktailName)
                     .font(FontFactory.regularFont(size: 18))
@@ -60,19 +94,17 @@ struct SingleCocktailListView: View {
                         .font(FontFactory.regularFont(size: 15))
                 }
             }
-        } destination: {
-            RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                .navigationBarBackButtonHidden(true)
-
         }
+        .buttonStyle(PlainButtonStyle()) // Use PlainButtonStyle to maintain tap area
     }
 }
+
 struct MultipleCocktailsListView: View {
     let cocktail: Cocktail
     let cocktails: [Cocktail]
     
     var body: some View {
-        NavigationLinkWithoutIndicator {
+        NavigationLink(destination: SwipeRecipeView(variations: cocktails, initialSelection: cocktail).navigationBarBackButtonHidden(true)) {
             HStack {
                 Text(cocktail.cocktailName)
                     .font(FontFactory.regularFont(size: 18))
@@ -83,10 +115,8 @@ struct MultipleCocktailsListView: View {
                         .font(FontFactory.regularFont(size: 15))
                 }
             }
-        } destination: {
-            SwipeRecipeView(variations: cocktails, initialSelection: cocktail)
-                .navigationBarBackButtonHidden(true)
         }
+        .buttonStyle(PlainButtonStyle()) // Use PlainButtonStyle to maintain tap area
     }
 }
 
@@ -103,6 +133,7 @@ struct SearchBarAllCocktailsListView: View {
                         ForEach(cocktails, id: \.id) { cocktail in
                             MultipleCocktailsListView(cocktail: cocktail, cocktails: cocktails)
                                 .padding(.leading)
+                            
                         }
                     } label: {
                         Text(key)

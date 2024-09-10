@@ -9,56 +9,54 @@ import SwiftUI
 import SwiftData
 
 struct CocktailListView: View {
-
     @Bindable var viewModel = CocktailListViewModel()
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
-
     @FocusState private var searchBarIsFocused: Bool
+    @State private var scrollProxy: ScrollViewProxy?
 
     var body: some View {
         NavigationStack {
-
             ZStack {
-                
                 MeshGradients.meshBlueTwoRibbonBackground.ignoresSafeArea()
                 MeshGradients.meshTealRibbonBackground.ignoresSafeArea()
                 
                 VStack {
                     ListSearchBarView(text: $viewModel.searchText, isFocused: $searchBarIsFocused, viewModel: viewModel)
                         .padding()
+                    
                     GeometryReader { listGeo in
-                        ScrollView {
+                        HStack(spacing: 0) {
                             ScrollViewReader { value in
-                                HStack {
-                                    List {
+                                ScrollView {
+                                    LazyVStack(alignment: .leading, pinnedViews: .sectionHeaders) {
                                         if searchBarIsFocused {
                                             SearchBarAllCocktailsListView(viewModel: viewModel)
                                         } else {
                                             AllCocktailsListView(viewModel: viewModel)
                                         }
                                     }
-                                    .listStyle(.plain)
-                                    .frame(width: listGeo.size.width * 0.9, height: listGeo.size.height)
-                                    
-                                    AlphabetNavigationView(value: value, alphabet: viewModel.cocktailListAlphabet)
-                                        .frame(width: listGeo.size.width * 0.1, height: listGeo.size.height)
-                                        .scaledToFit()
-                                        .offset(x: searchBarIsFocused ? listGeo.size.width * 0.1 : -10, y: 5)
-                                        .opacity(searchBarIsFocused ? 0 : 1)
-                                        .animation(.easeInOut(duration: 0.8), value: searchBarIsFocused)
-
+                                    .padding(.horizontal)
+                                }
+                                .frame(width: listGeo.size.width * 0.9)
+                                .onAppear {
+                                    scrollProxy = value
                                 }
                             }
+                            
+                            AlphabetNavigationView(scrollProxy: $scrollProxy, alphabet: viewModel.cocktailListAlphabet)
+                                .frame(width: listGeo.size.width * 0.1)
+                                .scaledToFit()
+                                .offset(x: searchBarIsFocused ? listGeo.size.width * 0.1 : -10, y: 5)
+                                .opacity(searchBarIsFocused ? 0 : 1)
+                                .animation(.easeInOut(duration: 0.8), value: searchBarIsFocused)
                         }
                     }
                 }
                 .onAppear {
                     viewModel.searchText = ""
                     viewModel.setAllCocktails(cocktails)
-                    
                 }
             }
-            
             .navigationBarTitleDisplayMode(.inline)
             .jamesHeader("Cocktail List")
             .toolbar {
@@ -66,7 +64,6 @@ struct CocktailListView: View {
                     LoadSampleCocktailsButton()
                 }
             }
-            
         }
     }
 }
@@ -87,21 +84,20 @@ struct ScaleButtonStyle : ButtonStyle {
 }
 
 struct AlphabetNavigationView: View {
-    let value: ScrollViewProxy
+    @Binding var scrollProxy: ScrollViewProxy?
     let alphabet: [String]
     
     var body: some View {
         VStack {
-            ForEach(0..<alphabet.count, id: \.self) { i in
+            ForEach(alphabet, id: \.self) { letter in
                 Button(action: {
                     withAnimation {
-                        value.scrollTo(alphabet[i], anchor: .top)
+                        scrollProxy?.scrollTo(letter, anchor: .top)
                     }
                 }, label: {
-                    Text(alphabet[i])
+                    Text(letter)
                         .font(FontFactory.regularFont(size: 15))
                         .frame(width: 17, height: 13, alignment: .center)
-                    
                 })
                 .buttonStyle(ScaleButtonStyle())
             }
