@@ -52,23 +52,23 @@ class AppState: ObservableObject {
 
 struct ContentView: View {
     @EnvironmentObject var appState: AppState
-    @State private var animationTrigger = false
+    @State private var swiftDataIsLoaded = false
     
     var body: some View {
         ZStack {
-            TabBarView()
-                .opacity(animationTrigger ? 1 : 0)
-            
-            FirstLaunchLoadingView()
-                .opacity(animationTrigger ? 0 : 1)
-                .scaleEffect(animationTrigger ? 2.0 : 1)
+            if swiftDataIsLoaded {
+                TabBarView()
+            } else {
+                FirstLaunchLoadingView()
+                
+            }
         }
         .onChange(of: appState.showMainContent) { _, newValue in
             Task {
                 if newValue {
                     await MainActor.run {
-                        withAnimation(.easeInOut(duration: 0.5)) {
-                            animationTrigger = true
+                        withAnimation(.easeInOut(duration: 2)) {
+                            swiftDataIsLoaded = true
                         }
                     }
                 }
