@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TabBarView: View {
-    
+
     @State private var selectedTab: TabBarComponents = .searchView
     init() {
         let appearance = UITabBarAppearance()
@@ -16,7 +16,7 @@ struct TabBarView: View {
         appearance.backgroundColor = UIColor(Color.black.opacity(0.8))
         UITabBar.appearance().scrollEdgeAppearance = appearance
     }
-    
+
     var body: some View {
         
         TabView(selection: $selectedTab)  {
