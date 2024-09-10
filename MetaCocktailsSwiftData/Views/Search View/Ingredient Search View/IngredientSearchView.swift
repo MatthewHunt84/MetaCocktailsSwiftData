@@ -43,7 +43,7 @@ struct IngredientSearchView: View {
                                     }
                                 } label: {
                                     Text("Search")
-                                        .tint(.blueTint)
+                                        .tint(ColorScheme.interactionTint)
                                 }
                             }
                         }

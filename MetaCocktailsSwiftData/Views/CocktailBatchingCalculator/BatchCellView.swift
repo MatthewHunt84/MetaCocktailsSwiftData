@@ -31,9 +31,9 @@ struct BatchCellView: View {
                 Spacer()
                 Text("Bottle Math")
                     .font(.caption)
-                    .foregroundStyle(.blueTint)
+                    .foregroundStyle(ColorScheme.interactionTint)
                 Image(systemName:showBottleMath ? "chevron.up" : "chevron.down")
-                    .foregroundStyle(.blueTint)
+                    .foregroundStyle(ColorScheme.interactionTint)
                 
             }
             .offset(x: 0, y: 5)

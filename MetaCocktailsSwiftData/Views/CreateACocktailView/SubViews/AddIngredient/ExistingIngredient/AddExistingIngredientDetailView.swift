@@ -39,7 +39,7 @@ struct AddExistingIngredientDetailView: View {
                             keyboardFocused = false
                             amountKeyboardFocused = false
                         }
-                        .tint(.blueTint)
+                        .tint(ColorScheme.interactionTint)
                     }
                     ToolbarItem(placement: .bottomBar) { CreateNewIngredientButton(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView)
                     }
@@ -192,7 +192,7 @@ struct AddExistingIngredientToCocktailButton: View {
                 Text("Add to spec")
                     .font(FontFactory.specMeasurement16B)
             }
-            .tint(.blueTint)
+            .tint(ColorScheme.interactionTint)
             .padding()
         }
         .frame(width: 380, height: 40,  alignment: .center)
@@ -214,7 +214,7 @@ struct CreateNewIngredientButton: View {
                     .font(FontFactory.bottomToolbarButton20)
                 Image(systemName: "plus")
             }
-            .foregroundStyle(.blueTint)
+            .foregroundStyle(ColorScheme.interactionTint)
         }
         
         
@@ -234,7 +234,7 @@ struct KeyboardDoneButton: View {
                 Text("Done")
                     .font(FontFactory.fontBody16)
             }
-            .tint(.blueTint)
+            .tint(ColorScheme.interactionTint)
         }
     }
 }

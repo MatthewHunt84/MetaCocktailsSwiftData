@@ -50,7 +50,7 @@ struct RecipeFlipCardView: View {
                                 }
                             }
                             .buttonStyle(.custom)
-                            .tint(.blueTint)
+                            .tint(ColorScheme.interactionTint)
                             .disabled(viewModel.isFlipped)
                         }
                         

@@ -54,7 +54,7 @@ struct SplitBatchView: View {
                     .multilineTextAlignment(.center)
                     .dynamicTypeSize(.medium)
                     .padding(10)
-                    .foregroundStyle(.blueTint)
+                    .foregroundStyle(ColorScheme.interactionTint)
                 
             }
             .padding()

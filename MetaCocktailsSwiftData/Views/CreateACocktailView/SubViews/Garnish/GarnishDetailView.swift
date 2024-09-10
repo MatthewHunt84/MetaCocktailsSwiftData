@@ -127,7 +127,7 @@ struct AddExistingGarnishToCocktailButton: View {
                 Text("Add to spec")
                     .font(FontFactory.formLabel18)
             }
-            .tint(.blueTint)
+            .tint(ColorScheme.interactionTint)
             .padding()
         }
         .frame(width: 380, height: 40,  alignment: .center)
@@ -148,7 +148,7 @@ struct CreateCustomGarnishButton: View {
                     .font(FontFactory.bottomToolbarButton20)
                 Image(systemName: "plus")
             }
-            .foregroundStyle(.blueTint)
+            .foregroundStyle(ColorScheme.interactionTint)
         }
     }
 }

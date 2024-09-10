@@ -21,10 +21,10 @@ struct SearchForCocktailsButton: View {
             VStack{
                 Image(systemName: "magnifyingglass")
                     .font(.system(size: 20)).bold()
-                    .foregroundColor(viewModel.preferredSelections.isEmpty ? .brandSecondaryGray : .blueTint)
+                    .foregroundColor(viewModel.preferredSelections.isEmpty ? .brandSecondaryGray : ColorScheme.interactionTint)
                  
                 FontFactory.regularText("Search", size: 14)
-                    .foregroundColor(viewModel.preferredSelections.isEmpty ? .brandSecondaryGray : .blueTint)
+                    .foregroundColor(viewModel.preferredSelections.isEmpty ? .brandSecondaryGray : ColorScheme.interactionTint)
                 
             }
             

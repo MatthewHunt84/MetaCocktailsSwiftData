@@ -23,7 +23,7 @@ struct FontFactory {
     static func titleHeader30(title: String) -> Text {
         return Text(title)
             .font(.custom("AvenirNext-Medium", size: 30))
-            .foregroundStyle(MeshGradients.goldGradientHeader)
+            .foregroundStyle(ColorScheme.headerColor)
     }
     
     static var buildBodySmall10: Font = .custom("AvenirNext-Regular", size: 10)
@@ -38,7 +38,7 @@ struct FontFactory {
     static func recipeHeader(title: String) -> Text {
         return Text(title.replacingOccurrences(of: (" (W&G Version)"), with: ""))
             .font(.custom("AvenirNext-Regular", size: 24))
-            .foregroundStyle(.primary)
+            .foregroundStyle(ColorScheme.recipeHeaderColor)
     }
     
 }

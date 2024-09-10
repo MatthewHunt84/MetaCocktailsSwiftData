@@ -15,7 +15,7 @@ struct RecipeView: View {
         
         ZStack {
             
-            MeshGradients.background
+            ColorScheme.background
                 .ignoresSafeArea()
             
             GeometryReader { geo in
@@ -175,7 +175,7 @@ struct backToRecipeViewButton: View {
                         
                         
                     }
-                    .foregroundStyle(.blueTint)
+                    .foregroundStyle(ColorScheme.interactionTint)
                     .padding(.leading, 40)
                     .padding(.top, 60)
                 }
@@ -372,7 +372,7 @@ struct SpecIngredientView: View {
                     } label: {
                         Text(ingredient.ingredientBase.name)
                             .font(FontFactory.fontBody16)
-                            .tint(.blueTint)
+                            .tint(ColorScheme.interactionTint)
                     }
                     .disabled(viewModel.isFlipped)
                 } else {
@@ -383,7 +383,7 @@ struct SpecIngredientView: View {
                 }
                 if ingredient.ingredientBase.info != nil {
                     Image(systemName: "questionmark.circle.fill")
-                        .foregroundStyle(.blueTint)
+                        .foregroundStyle(ColorScheme.interactionTint)
                         .onTapGesture {
                             withAnimation(.easeInOut(duration: 0.25)) {
                                 isShowingIngredientInfo.toggle()
@@ -429,7 +429,7 @@ struct SpecView: View {
                                 showingModal = true
                             } label: {
                                 Image(systemName: "bookmark.circle.fill")
-                                    .tint(.blueTint)
+                                    .tint(ColorScheme.interactionTint)
                             }
                         }
 
@@ -438,7 +438,7 @@ struct SpecView: View {
                                 isShowingCocktailNotes.toggle()
                             } label: {
                                 Image(systemName: "questionmark.circle.fill")
-                                    .foregroundStyle(.blueTint)
+                                    .foregroundStyle(ColorScheme.interactionTint)
                             }
                         }
                         Spacer()
@@ -449,7 +449,7 @@ struct SpecView: View {
                             Text("Batch")
                             Image(systemName: "chevron.forward")
                         }
-                        .foregroundStyle(.blueTint)
+                        .foregroundStyle(ColorScheme.interactionTint)
                         .font(FontFactory.recipeCardHeader18B)
                     }
                     .padding(.bottom, 5)

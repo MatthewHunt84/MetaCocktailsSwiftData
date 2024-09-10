@@ -67,7 +67,7 @@ struct AddedIngredientView: View {
                         .font(FontFactory.formLabel18)
                     Spacer()
                     Image(systemName: "plus.circle.fill")
-                        .foregroundStyle(.blueTint)
+                        .foregroundStyle(ColorScheme.interactionTint)
                 }
             }
         }

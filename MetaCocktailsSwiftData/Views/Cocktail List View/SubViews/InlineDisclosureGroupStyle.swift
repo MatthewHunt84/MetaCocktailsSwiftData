@@ -17,7 +17,7 @@ struct InlineDisclosureGroupStyle: DisclosureGroupStyle {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 12, height: 12)
-                .foregroundColor(.blueTint)
+                .foregroundColor(ColorScheme.interactionTint)
             Spacer()
         }
         .contentShape(Rectangle()) // Make the entire HStack tappable

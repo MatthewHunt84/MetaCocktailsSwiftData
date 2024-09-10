@@ -122,7 +122,7 @@ struct FilterMatchesMenuView: View {
                 Text("Show all")
             }
         }
-        .tint(.blueTint)
+        .tint(ColorScheme.interactionTint)
     }
 }
 

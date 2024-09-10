@@ -21,7 +21,7 @@ struct TabBarView: View {
             }
         }
         .environment(\.currentTab, $selectedTab)
-        .tint(.brandPrimaryGold)
+        .tint(ColorScheme.tabBarTint)
     }
 }
 

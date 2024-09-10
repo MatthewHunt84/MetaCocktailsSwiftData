@@ -75,7 +75,7 @@ struct SearchBarForCreateCocktailView: View {
                         viewModel.searchText = ""
                     } label: {
                         Image(systemName: "x.circle.fill")
-                            .tint(.blueTint)
+                            .tint(ColorScheme.interactionTint)
                     }
                     .padding(.horizontal, 20)
                 }

@@ -136,7 +136,7 @@ struct AddCustomIngredientToCocktailButton: View {
                 Text("Add to spec")
                     .font(FontFactory.formLabel18)
             }
-            .tint(.blueTint)
+            .tint(ColorScheme.interactionTint)
             .padding()
         }
         .frame(width: 380, height: 40,  alignment: .center)

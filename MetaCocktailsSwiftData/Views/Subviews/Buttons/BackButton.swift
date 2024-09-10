@@ -21,7 +21,7 @@ struct BackButton: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 9)
                         .font(.system(size: 22))
-                        .tint(.blueTint)
+                        .tint(ColorScheme.interactionTint)
                         .padding(.trailing, 10)
                     
                 }

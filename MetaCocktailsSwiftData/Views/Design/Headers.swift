@@ -44,7 +44,7 @@ struct JamesTitleWithNavigation: ViewModifier {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 9)
-                            .tint(.blueTint)
+                            .tint(ColorScheme.interactionTint)
                     }
                 }
                 
@@ -102,7 +102,7 @@ struct GradientNavigationTitleWithNavigation: ViewModifier {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 9)
                             .bold()
-                            .tint(.blueTint)
+                            .tint(ColorScheme.interactionTint)
                     }
                 }
                 

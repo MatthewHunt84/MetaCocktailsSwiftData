@@ -550,6 +550,7 @@
 		F4D185012C8F95370035B280 /* Brancolada.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D185002C8F95310035B280 /* Brancolada.swift */; };
 		F4D185032C8F988E0035B280 /* SkyRocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D185022C8F987D0035B280 /* SkyRocket.swift */; };
 		F4E7F1732BE2E726006B6050 /* RecipeFlipCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E7F1722BE2E726006B6050 /* RecipeFlipCardView.swift */; };
+		F4F3D4222C90996E00BB6767 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F3D4212C90996200BB6767 /* ColorScheme.swift */; };
 		F4F7429E2AD6419100161A93 /* AdvancedCriteriaListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F7429D2AD6419100161A93 /* AdvancedCriteriaListView.swift */; };
 		F4F742A02AD643A500161A93 /* SearchCriteriaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F7429F2AD643A500161A93 /* SearchCriteriaViewModel.swift */; };
 		F4FBF1232AAABBB900BBF7CF /* MetaCocktailsSwiftDataApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FBF1222AAABBB900BBF7CF /* MetaCocktailsSwiftDataApp.swift */; };
@@ -1101,6 +1102,7 @@
 		F4D185002C8F95310035B280 /* Brancolada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brancolada.swift; sourceTree = "<group>"; };
 		F4D185022C8F987D0035B280 /* SkyRocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyRocket.swift; sourceTree = "<group>"; };
 		F4E7F1722BE2E726006B6050 /* RecipeFlipCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeFlipCardView.swift; sourceTree = "<group>"; };
+		F4F3D4212C90996200BB6767 /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		F4F7429D2AD6419100161A93 /* AdvancedCriteriaListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedCriteriaListView.swift; sourceTree = "<group>"; };
 		F4F7429F2AD643A500161A93 /* SearchCriteriaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCriteriaViewModel.swift; sourceTree = "<group>"; };
 		F4FBF11F2AAABBB900BBF7CF /* MetaCocktailsSwiftData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetaCocktailsSwiftData.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2001,6 +2003,7 @@
 		F493F3B22C6D256F006A0ADB /* Design */ = {
 			isa = PBXGroup;
 			children = (
+				F4F3D4212C90996200BB6767 /* ColorScheme.swift */,
 				F4AA6BBB2C7E2C8200610D80 /* Gradients.swift */,
 				F4AA6BB92C7E2C4D00610D80 /* FontFactory.swift */,
 				F4AA6BB72C7E2B8600610D80 /* Headers.swift */,
@@ -2601,6 +2604,7 @@
 				4DA567442B6AF84D003F6F04 /* SloeGinFizz.swift in Sources */,
 				4DCB17422BA52A4B0002D7D9 /* CroqueMPetraske.swift in Sources */,
 				4DCB170C2BA418B00002D7D9 /* TheTieBinder.swift in Sources */,
+				F4F3D4222C90996E00BB6767 /* ColorScheme.swift in Sources */,
 				4D6761302C3F317D00A5939C /* AddCustomGarnishView.swift in Sources */,
 				F4AA6BBA2C7E2C4F00610D80 /* FontFactory.swift in Sources */,
 				F493F3B12C6CFC72006A0ADB /* SelectionTagViewModel.swift in Sources */,

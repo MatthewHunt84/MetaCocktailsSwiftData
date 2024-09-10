@@ -21,7 +21,7 @@ struct ResetSearchCriteriaButton: View {
                         Text("Reset")
                         Image(systemName: "x.circle.fill")
                     }
-                    .tint(.blueTint)
+                    .tint(ColorScheme.interactionTint)
                     .font(FontFactory.fontBody16)
                 }
             }

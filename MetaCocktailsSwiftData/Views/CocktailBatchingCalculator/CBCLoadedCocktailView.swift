@@ -91,7 +91,7 @@ struct EditIngredientsButton: View {
                 Image(systemName: "gearshape")
             }
             .dynamicTypeSize(.xxLarge).bold()
-            .foregroundStyle(.blueTint)
+            .foregroundStyle(ColorScheme.interactionTint)
             .padding(.horizontal, 15)
             
             

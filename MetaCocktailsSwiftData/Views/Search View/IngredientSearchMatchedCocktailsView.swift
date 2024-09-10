@@ -81,7 +81,7 @@ struct FilterMatchesMenuDataQueriesView: View {
                 Text("Show all")
             }
         }
-        .tint(.blueTint)
+        .tint(ColorScheme.interactionTint)
     }
 }
 
