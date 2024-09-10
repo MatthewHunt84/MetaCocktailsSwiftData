@@ -38,11 +38,8 @@ class AppState: ObservableObject {
     
     func setDataReady() {
         isDataReady = true
-        let elapsedTime = Date().timeIntervalSince(loadingStartTime ?? Date())
-        let remainingTime = max(2.0 - elapsedTime, 0)
         
         Task {
-            try? await Task.sleep(for: .seconds(remainingTime))
             await MainActor.run {
                 showMainContent = true
             }
