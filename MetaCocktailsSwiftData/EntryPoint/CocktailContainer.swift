@@ -54,8 +54,25 @@ actor CocktailContainer {
                         }
                         // if no - add base as usual
                     }
-            
-            // Add cocktail to context
+                    
+                    // We also need to do the same for garnishes (so we don't violate the #unique name declaration)
+                    var garnishArray = [Garnish]()
+                    
+                    cocktail.garnish.forEach { garnish in
+                        
+                        let fetchDescriptor = FetchDescriptor<Garnish>(predicate: #Predicate { $0.name == garnish.name } )
+                        let existingGarnish = try? container.mainContext.fetch(fetchDescriptor).first
+                        
+                        if let foundGarnish = existingGarnish {
+                            garnishArray.append(foundGarnish)
+                        } else {
+                            garnishArray.append(garnish)
+                        }
+                    }
+                    
+                    cocktail.garnish = garnishArray
+                    
+                    // Add cocktail to context
                     
                     container.mainContext.insert(cocktail) }
             
