@@ -103,7 +103,7 @@ struct BatchCellView: View {
                         }
                         .buttonStyle(.bordered)
                     }
-                    .foregroundStyle(.brandPrimaryGreen)
+                    .foregroundStyle(ColorScheme.selectedColor)
                     .transition(.asymmetric(insertion: .scale, removal: .slide))
                 }
                 .animation(.easeInOut(duration: 0.5), value: showBottleMath)

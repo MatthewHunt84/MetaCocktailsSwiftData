@@ -73,7 +73,7 @@ struct FilterMatchesMenuDataQueriesView: View {
                 Button("- \(preference)") {
                     nonmatchSearchPreference = preference
                 }
-                .foregroundStyle(.brandPrimaryRed)
+                .foregroundStyle(ColorScheme.unwantedColor)
             }
             Button {
                 nonmatchSearchPreference = "none"

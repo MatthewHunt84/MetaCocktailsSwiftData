@@ -129,7 +129,7 @@ struct SearchedCocktailTitleHeader: View {
         HStack {
             ForEach(0..<matched, id: \.self) { match in
                 Image(systemName: "circle.fill")
-                    .foregroundStyle(.brandPrimaryGreen)
+                    .foregroundStyle(ColorScheme.selectedColor)
             }
             
             if matched - searched < 0 {

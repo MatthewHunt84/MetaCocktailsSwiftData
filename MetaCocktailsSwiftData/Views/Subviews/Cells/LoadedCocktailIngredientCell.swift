@@ -23,7 +23,7 @@ struct LoadedCocktailIngredientCell: View {
             Spacer()
             
             Toggle(isOn: $ingredient.isIncluded) {}
-                .tint(.brandPrimaryGreen)
+                .tint(ColorScheme.selectedColor)
                 .frame(maxWidth: 60)
             
             

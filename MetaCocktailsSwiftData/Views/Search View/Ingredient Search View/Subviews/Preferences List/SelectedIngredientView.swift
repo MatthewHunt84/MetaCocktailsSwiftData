@@ -32,7 +32,7 @@ struct SelectedIngredientView: View {
                     
                     Image(systemName: isPreferred ? "checkmark" : "xmark")
                         .fontWeight(.semibold)
-                        .foregroundStyle(isPreferred ? .brandPrimaryGreen : .brandPrimaryRed)
+                        .foregroundStyle(isPreferred ? ColorScheme.selectedColor : ColorScheme.unwantedColor)
                     
                     ForEach(selections, id: \.self) { selectedIngredient in
                         SelectionTagView(viewModel: SelectionTagViewModel(name: selectedIngredient, isPreferred: isPreferred))
@@ -49,7 +49,7 @@ struct SelectedIngredientView: View {
                     
                     Text("(tap to remove)")
                         .font(.subheadline)
-                        .foregroundStyle(.brandPrimaryGold)
+                        .foregroundStyle(Color.secondary)
                         .opacity(isVisible ? 1 : 0)
                         .animation(.easeOut(duration: 0.75), value: isVisible)
                         .onAppear {

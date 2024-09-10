@@ -14,6 +14,9 @@ struct ColorScheme {
     static let darkerTintColor = Color(hex: "#FF8426")
     static let interactionTint = Color(hex: "#00B2FF")
     
+    static let selectedColor = tintColor//Color(hex: "#1DA827")
+    static let unwantedColor = Color(hex: "#D63F1C")
+    
     
     static let headerColor = LinearGradient(gradient: Gradient(colors: [.brandPrimaryGold, .brandPrimaryGold, .brandPrimaryGold, .redGold]),
                                             startPoint: .topLeading,
@@ -25,7 +28,7 @@ struct ColorScheme {
     
     static let tabBarTint = tintColor
     
-    static let recipeBackground = backgroundLighter//Color(hex: "#0F0F0F")
+    static let recipeBackground = Color(hex: "#0F0F0F")
     
     static let searchBarBackground = Color(hex: "#303030")
 

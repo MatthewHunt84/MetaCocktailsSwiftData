@@ -31,7 +31,7 @@ enum TabBarComponents: Hashable, Identifiable, CaseIterable {
         case .addCocktailView:
             Label("Add Cocktail", image: "custom.book.fill.badge.plus")
         case .designIdeas:
-            Label("Design ideas", image: "paintpalette")
+            Label("Design ideas", systemImage: "paintpalette")
         }
     }
     
@@ -70,9 +70,49 @@ struct DeleteMeDesignView: View {
         ZStack {
             Color.black.ignoresSafeArea()
             
+
+            
             VStack {
                 
+                HStack {
+                    
+                    ColorScheme.tintColor
+                        .frame(width: 50, height: 50)
+                    ColorScheme.headerColor
+                        .frame(width: 50, height: 50)
+                    ColorScheme.unwantedColor
+                        .frame(width: 50, height: 50)
+
+                    ColorScheme.interactionTint
+                        .frame(width: 50, height: 50)
+                    Color.secondary
+                        .frame(width: 50, height: 50)
+                    ColorScheme.backgroundLighter
+                        .frame(width: 50, height: 50)
+                    ColorScheme.recipeBackground
+                        .frame(width: 50, height: 50)
+                }
+                
+                Text("Search Cocktails")
+                    .font(.custom("AvenirNext-Regular", size: 30))
+                Text("Search Cocktails")
+                    .font(.custom("AvenirNext-CondensedBold", size: 30))
+                Text("Search Cocktails")
+                    .font(.custom("AvenirNext-Medium", size: 30))
+                Text("Search Cocktails")
+                    .font(.custom("AvenirNext-DemiBold", size: 30))
+                Text("Search Cocktails")
+                    .font(.custom("AvenirNext-Bold", size: 30))
+                Text("Search Cocktails")
+                    .font(.custom("AvenirNext-UltraLight", size: 30))
+                Text("Search Cocktails")
+                    .font(.custom("AvenirNext-CondensedMedium", size: 30))
+                Text("Search Cocktails")
+                    .font(.custom("AvenirNext-CondensedRegular", size: 30))
+                Text("Search Cocktails")
             }
+            .foregroundStyle(Color.primary)
+            
         }
     }
 }

@@ -15,8 +15,7 @@ public struct PreferencesListView: View {
         
         VStack {
             HStack {
-                FontFactory.regularText("Selections", size: 20, isBold: true)
-                    .foregroundStyle(Color.softWhite)
+                FontFactory.regularText("Selections", size: 20, color: Color.secondary, isBold: true)
                 Spacer()
                 ResetSearchCriteriaButton()
             }

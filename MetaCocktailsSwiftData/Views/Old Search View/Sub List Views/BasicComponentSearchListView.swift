@@ -35,7 +35,7 @@ struct BasicComponentSearchListView: View {
                                                 } else {
                                                     if component.isPreferred.wrappedValue == false && component.matchesCurrentSearch.wrappedValue && (component.isFlavor.wrappedValue || component.isSpirit.wrappedValue)  {
                                                         PreferencesCheckListCell(ingredient: component, isShowingPreferences: isShowingLikes)
-                                                            .tint(.brandPrimaryRed)
+                                                            .tint(ColorScheme.unwantedColor)
                                                     }
                                                 }
                                             }
@@ -49,7 +49,7 @@ struct BasicComponentSearchListView: View {
                                                 } else {
                                                     if component.isPreferred.wrappedValue == false && component.matchesCurrentSearch.wrappedValue && (component.isNA.wrappedValue || component.isSpirit.wrappedValue) {
                                                         PreferencesCheckListCell(ingredient: component, isShowingPreferences: isShowingLikes)
-                                                            .tint(.brandPrimaryRed)
+                                                            .tint(ColorScheme.unwantedColor)
                                                     }
                                                 }
                                             }
