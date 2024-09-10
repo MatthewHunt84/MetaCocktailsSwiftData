@@ -15,7 +15,7 @@ struct RecipeView: View {
         
         ZStack {
             
-            MeshGradients.recipeMeshBackground
+            MeshGradients.background
                 .ignoresSafeArea()
             
             GeometryReader { geo in
@@ -301,7 +301,7 @@ struct RecipeTitleView: View {
         if cocktail.collection?.collectionLogo != nil {
             RecipeTitleViewWithCollection(cocktail: cocktail)
         } else {
-            FontFactory.regularText(cocktail.cocktailName, size: 30)
+            FontFactory.recipeHeader(title: cocktail.cocktailName)
                 .lineLimit(1)
                 .minimumScaleFactor(0.4)
         }
@@ -312,7 +312,7 @@ struct RecipeTitleViewWithCollection: View {
     var cocktail: Cocktail
     var body: some View {
         HStack {
-            FontFactory.regularText(cocktail.cocktailName.replacingOccurrences(of: (" (W&G Version)"), with: ""), size: 30)
+            FontFactory.recipeHeader(title: cocktail.cocktailName)
                 .lineLimit(1)
                 .minimumScaleFactor(0.4)
             if let logo = cocktail.collection?.collectionLogo {

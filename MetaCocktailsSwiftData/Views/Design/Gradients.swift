@@ -9,6 +9,9 @@ import SwiftUI
 
 struct MeshGradients {
     
+    static let goldGradientHeader = LinearGradient(gradient: Gradient(colors: [.brandPrimaryGold, .brandPrimaryGold, .brandPrimaryGold, .redGold]), startPoint: .topLeading, endPoint: .bottomTrailing)
+    static let background = LinearGradient(gradient: Gradient(colors: [.black, .black, .darkGrey]), startPoint: .topLeading, endPoint: .bottomTrailing)
+    
     static let animatedPreferredSelection: TimelineView<AnimationTimelineSchedule, MeshGradient> =
     TimelineView(.animation) { timeline in
         let x = (sin(timeline.date.timeIntervalSince1970) + 1) / 2
@@ -213,7 +216,7 @@ struct MeshGradients {
                                             startPoint: .topLeading,
                                             endPoint: .bottomTrailing)
     
-    static let meshBlueRibbonBackground = Color.black
+    static let meshBlueRibbonBackground = background
 //    MeshGradient(width: 3, height: 3, points: [
 //        [0, 0], [0.5, 0], [1, 0],
 //        [ 0 , 0.5], [0.5, 0.5], [1, 0.5],
@@ -224,7 +227,7 @@ struct MeshGradients {
 //        .brandSecondaryBlue, .brandSecondaryBlue, .brandSecondaryBlue
 //    ])
     
-    static let meshRedRibbonBackground = Color.black
+    static let meshRedRibbonBackground = background
 //    MeshGradient(width: 3, height: 3, points: [
 //        [0, 0], [0.5, 0], [1, 0],
 //        [ 0 , 0.5], [0.5, 0.5], [1, 0.5],
@@ -235,7 +238,7 @@ struct MeshGradients {
 //        .brandSecondaryRed, .brandSecondaryRed, .brandSecondaryRed
 //    ])
     
-    static let meshBlueTwoRibbonBackground = Color.black
+    static let meshBlueTwoRibbonBackground = background
 //    MeshGradient(width: 3, height: 3, points: [
 //        [0, 0], [0.5, 0], [1, 0],
 //        [ 0 , 0.5], [0.5, 0.5], [1, 0.5],
@@ -246,7 +249,7 @@ struct MeshGradients {
 //        .brandSecondaryBlue, .brandSecondaryBlue, .brandSecondaryBlue
 //    ])
     
-    static let meshTealRibbonBackground = Color.black
+    static let meshTealRibbonBackground = background
 //    MeshGradient(width: 3, height: 3, points: [
 //        [0, 0], [0.5, 0], [1, 0],
 //        [ 0 , 0.5], [0.5, 0.5], [1, 0.5],

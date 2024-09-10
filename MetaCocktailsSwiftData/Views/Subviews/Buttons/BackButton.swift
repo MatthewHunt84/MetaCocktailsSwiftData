@@ -22,7 +22,8 @@ struct BackButton: View {
                         .frame(width: 9)
                         .font(.system(size: 22))
                         .tint(.blueTint)
-                        .padding(.horizontal, 15)
+                        .padding(.trailing, 10)
+                    
                 }
             }
         }
