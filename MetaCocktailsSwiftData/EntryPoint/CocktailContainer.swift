@@ -40,10 +40,10 @@ actor CocktailContainer {
             let _ = Preload.allCases.map { $0.cocktails }
                 .flatMap { $0 }
                 .map { cocktail in
-            
-            // look at each cocktail's spec (array of ingredients)
+                    
+                    // look at each cocktail's spec (array of ingredients)
                     cocktail.spec.forEach { ingredient in
-
+                        
                         let fetchDescriptor = FetchDescriptor<IngredientBase>(predicate: #Predicate { $0.name == ingredient.ingredientBase.name } )
                         let existingBase = try? container.mainContext.fetch(fetchDescriptor).first
                         // see if ingredientbase exists in model
@@ -54,8 +54,26 @@ actor CocktailContainer {
                         }
                         // if no - add base as usual
                     }
-            
-            // Add cocktail to context
+                    
+                    // We also need to do the same for garnishes (so we don't violate the #unique name declaration)
+                    var garnishArray = [Garnish]()
+                    
+                    cocktail.garnish.forEach { garnish in
+                        
+                        let fetchDescriptor = FetchDescriptor<Garnish>(predicate: #Predicate { $0.name == garnish.name } )
+                        let existingGarnish = try? container.mainContext.fetch(fetchDescriptor).first
+                        
+                        if let foundGarnish = existingGarnish {
+                            print("Found duplicate:  \(foundGarnish.name)")
+                            garnishArray.append(foundGarnish)
+                        } else {
+                            garnishArray.append(garnish)
+                        }
+                    }
+                    
+                    cocktail.garnish = garnishArray
+                    
+                    // Add cocktail to context
                     
                     container.mainContext.insert(cocktail) }
             
