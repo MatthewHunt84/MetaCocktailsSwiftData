@@ -7,29 +7,36 @@
 import SwiftUI
 
 struct ColorScheme {
+    
+    static let backgroundDark = Color.black
+    static let backgroundLighter = recipeBackground
+    static let tintColor = Color(hex: "#FFB803")
+    static let darkerTintColor = Color(hex: "#FF8426")
+    static let interactionTint = Color(hex: "#00B2FF")
+    static let buttonTint = Color(hex: "#436EF8")
+    
     static let headerColor = LinearGradient(gradient: Gradient(colors: [.brandPrimaryGold, .brandPrimaryGold, .brandPrimaryGold, .redGold]),
                                             startPoint: .topLeading,
                                             endPoint: .bottomTrailing)
     
     static let recipeHeaderColor = Color.primary
     
-    static let background = LinearGradient(gradient: Gradient(colors: [.black, .black, .darkGrey]), startPoint: .topLeading, endPoint: .bottomTrailing)
+    static let background = LinearGradient(gradient: Gradient(colors: [backgroundDark, backgroundDark, backgroundLighter]), startPoint: .topLeading, endPoint: .bottomTrailing)
     
-    static let tabBarTint = Color(hex: "#FFB803")
+    static let tabBarTint = tintColor
     
-    static let interactionTint = Color(hex: "#00B2FF")
-
-    static let recipeBorder = LinearGradient(gradient: Gradient(colors: [.brandPrimaryGold, .brandPrimaryGold, .brandPrimaryGold, .redGold]),
-                                           startPoint: .leading,
-                                           endPoint: .trailing)
-    
-    static let recipeBorderFlipped = LinearGradient(gradient: Gradient(colors: [.redGold,.brandPrimaryGold, .brandPrimaryGold, .brandPrimaryGold]),
-                                           startPoint: .leading,
-                                           endPoint: .trailing)
+    static let recipeBackground = Color(hex: "#0F0F0F")
     
     static let searchBarBackground = Color(hex: "#303030")
+
+    static let recipeBorder = LinearGradient(gradient: Gradient(colors: [tintColor, tintColor, tintColor, darkerTintColor]),
+                                           startPoint: .leading,
+                                           endPoint: .trailing)
     
-    static let buttonTint = Color(hex: "#00B2FF")
+    static let recipeBorderFlipped = LinearGradient(gradient: Gradient(colors: [darkerTintColor,tintColor, tintColor, tintColor]),
+                                           startPoint: .leading,
+                                           endPoint: .trailing)
+
     
 }
 

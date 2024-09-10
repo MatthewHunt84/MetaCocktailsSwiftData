@@ -199,7 +199,7 @@ private struct BorderTop: View {
                 Image(.backgroundTop)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(.darkGrey)
+                    .foregroundStyle(ColorScheme.recipeBackground)
                 
                 
                 Image(.borderTop)
@@ -220,7 +220,7 @@ private struct BorderBottom: View {
                 Image(.backgroundTop)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(.darkGrey)
+                    .foregroundStyle(ColorScheme.recipeBackground)
                 
                 
                 Image(.borderTop)
@@ -244,7 +244,7 @@ private struct BorderSides: View {
                 ZStack {
                     Image(.backgroundSides)
                         .resizable()
-                        .foregroundStyle(.darkGrey)
+                        .foregroundStyle(ColorScheme.recipeBackground)
                         .frame(height: geo.size.height * 0.8)
                     
                     Image(.borderSides)
