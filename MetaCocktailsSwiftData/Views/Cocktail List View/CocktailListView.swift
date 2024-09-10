@@ -28,7 +28,7 @@ struct CocktailListView: View {
                         HStack(spacing: 0) {
                             ScrollViewReader { value in
                                 ScrollView {
-                                    LazyVStack(alignment: .leading, pinnedViews: .sectionHeaders) {
+                                    LazyVStack(alignment: .leading, spacing: 0, pinnedViews: .sectionHeaders) {
                                         if searchBarIsFocused {
                                             SearchBarAllCocktailsListView(viewModel: viewModel)
                                         } else {

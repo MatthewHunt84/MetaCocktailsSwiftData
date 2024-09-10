@@ -19,18 +19,22 @@ struct AllCocktailsListView: View {
             Section {
                 ForEach(organizedCocktails.keys.sorted().filter { $0.hasPrefix(letter) }, id: \.self) { titleCocktail in
                     if let cocktails = organizedCocktails[titleCocktail], !cocktails.isEmpty {
-                        if cocktails.count > 1 {
-                            LazyListDisclosureGroupView(cocktails: cocktails, key: titleCocktail)
-                        } else {
-                            SingleCocktailListView(cocktail: cocktails[0])
+                        VStack(spacing: 0) {
+                            if cocktails.count > 1 {
+                                LazyListDisclosureGroupView(cocktails: cocktails, titleCocktail: titleCocktail)
+                                    .padding(.vertical, 8)
+                            } else {
+                                SingleCocktailListView(cocktail: cocktails[0])
+                                    .padding(.vertical, 8)
+                            }
+                            Divider()
                         }
+                        
                     }
-                    Divider()
                 }
             } header: {
                 Text(letter)
                     .font(FontFactory.regularFont(size: 28))
-                    .bold()
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.vertical, 5)
                     .foregroundStyle(Color(UIColor.systemGray2))
@@ -43,7 +47,7 @@ struct AllCocktailsListView: View {
 
 struct LazyListDisclosureGroupView: View {
     let cocktails: [Cocktail]
-    let key: String
+    let titleCocktail: String
     @State private var isExpanded: Bool = false
     
     var body: some View {
@@ -54,7 +58,7 @@ struct LazyListDisclosureGroupView: View {
                 }
             }) {
                 HStack {
-                    Text(key)
+                    Text(titleCocktail)
                         .font(FontFactory.regularFont(size: 18))
                     Image(systemName: isExpanded ? "chevron.down" : "chevron.right")
                         .foregroundStyle(.blueTint)
@@ -64,12 +68,14 @@ struct LazyListDisclosureGroupView: View {
             .buttonStyle(PlainButtonStyle())
             
             if isExpanded {
-                LazyVStack(spacing: 0) {
+                VStack(spacing: 0) {
                     ForEach(cocktails, id: \.id) { cocktail in
-                        MultipleCocktailsListView(cocktail: cocktail, cocktails: cocktails)
-                            .padding()
-                        if cocktail.id != cocktails.last?.id {
-                            Divider()
+                        VStack(spacing: 0) {
+                            MultipleCocktailsListView(cocktail: cocktail, cocktails: cocktails)
+                                .padding(.vertical)
+                            if cocktail.id != cocktails.last?.id {
+                                Divider()
+                            }
                         }
                     }
                 }
@@ -95,7 +101,7 @@ struct SingleCocktailListView: View {
                 }
             }
         }
-        .buttonStyle(PlainButtonStyle()) // Use PlainButtonStyle to maintain tap area
+        .buttonStyle(PlainButtonStyle())
     }
 }
 
@@ -128,9 +134,11 @@ struct SearchBarAllCocktailsListView: View {
         ForEach(organizedCocktails.keys.sorted(), id: \.self) { titleCocktail in
             if let cocktails = organizedCocktails[titleCocktail], !cocktails.isEmpty {
                 if cocktails.count > 1 {
-                    LazyListDisclosureGroupView(cocktails: cocktails, key: titleCocktail)
+                    LazyListDisclosureGroupView(cocktails: cocktails, titleCocktail: titleCocktail)
+                        .padding(.vertical, 8)
                 } else {
                     SingleCocktailListView(cocktail: cocktails[0])
+                        .padding(.vertical, 8)
                 }
             }
             Divider()
