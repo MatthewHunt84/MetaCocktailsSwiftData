@@ -15,7 +15,7 @@ struct BackButton: View {
             Button{
                 dismiss()
             } label: {
-                HStack{
+                HStack {
                     Image(systemName: "chevron.backward")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -23,8 +23,10 @@ struct BackButton: View {
                         .font(.system(size: 22))
                         .tint(ColorScheme.interactionTint)
                         .padding(.trailing, 10)
-                    
                 }
+                
+                .frame(width: 40, height: 40)
+//                .background(.red)
             }
         }
     }

@@ -293,7 +293,7 @@ struct CustomButtonSnippet: View {
     var body: some View {
         Button("Label") {
             // Code
-        }.buttonStyle(.custom)
+        }.buttonStyle(.customGreyButton)
     }
 }
 
@@ -302,7 +302,7 @@ public struct CustomButtonStyle: ButtonStyle {
         configuration.label
             .fontWeight(.medium)
             .padding(.vertical, 12)
-            .foregroundStyle(.white)
+            .foregroundStyle(ColorScheme.interactionTint)
             .frame(maxWidth: .infinity)
             .background(.tint, in: .rect(cornerRadius: 14, style: .continuous))
             .opacity(configuration.isPressed ? 0.4 : 1.0)
@@ -310,7 +310,7 @@ public struct CustomButtonStyle: ButtonStyle {
 }
 
 extension ButtonStyle where Self == CustomButtonStyle {
-    static var custom: CustomButtonStyle { .init() }
+    static var customGreyButton: CustomButtonStyle { .init() }
 }
 
 

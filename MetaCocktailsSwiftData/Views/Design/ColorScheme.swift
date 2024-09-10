@@ -13,7 +13,7 @@ struct ColorScheme {
     static let tintColor = Color(hex: "#FFB803")
     static let darkerTintColor = Color(hex: "#FF8426")
     static let interactionTint = Color(hex: "#00B2FF")
-    static let buttonTint = Color(hex: "#436EF8")
+    
     
     static let headerColor = LinearGradient(gradient: Gradient(colors: [.brandPrimaryGold, .brandPrimaryGold, .brandPrimaryGold, .redGold]),
                                             startPoint: .topLeading,
@@ -37,6 +37,7 @@ struct ColorScheme {
                                            startPoint: .leading,
                                            endPoint: .trailing)
 
+    static let buttonTint = searchBarBackground //Color(hex: "#436EF8")
     
 }
 
