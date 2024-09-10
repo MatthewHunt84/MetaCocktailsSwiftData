@@ -64,7 +64,6 @@ actor CocktailContainer {
                         let existingGarnish = try? container.mainContext.fetch(fetchDescriptor).first
                         
                         if let foundGarnish = existingGarnish {
-                            print("Found duplicate:  \(foundGarnish.name)")
                             garnishArray.append(foundGarnish)
                         } else {
                             garnishArray.append(garnish)
