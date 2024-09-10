@@ -25,7 +25,7 @@ struct ColorScheme {
     
     static let tabBarTint = tintColor
     
-    static let recipeBackground = Color(hex: "#0F0F0F")
+    static let recipeBackground = backgroundLighter//Color(hex: "#0F0F0F")
     
     static let searchBarBackground = Color(hex: "#303030")
 
