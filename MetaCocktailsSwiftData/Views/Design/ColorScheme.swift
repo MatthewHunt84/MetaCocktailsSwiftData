@@ -18,6 +18,14 @@ struct ColorScheme {
     static let tabBarTint = Color(hex: "#FFB803")
     
     static let interactionTint = Color(hex: "#00B2FF")
+
+    static let recipeBorder = LinearGradient(gradient: Gradient(colors: [.brandPrimaryGold, .brandPrimaryGold, .brandPrimaryGold, .redGold]),
+                                           startPoint: .leading,
+                                           endPoint: .trailing)
+    
+    static let recipeBorderFlipped = LinearGradient(gradient: Gradient(colors: [.redGold,.brandPrimaryGold, .brandPrimaryGold, .brandPrimaryGold]),
+                                           startPoint: .leading,
+                                           endPoint: .trailing)
     
 }
 

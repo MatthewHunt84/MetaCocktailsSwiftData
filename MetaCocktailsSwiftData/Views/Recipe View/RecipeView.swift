@@ -192,7 +192,6 @@ struct backToRecipeViewButton: View {
 
 
 private struct BorderTop: View {
-    var color: Color
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .top) {
@@ -200,14 +199,35 @@ private struct BorderTop: View {
                 Image(.backgroundTop)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(.clear)
+                    .foregroundStyle(.darkGrey)
                 
                 
                 Image(.borderTop)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(color)
                     .background(.clear)
+                    .foregroundStyle(ColorScheme.recipeBorder)
+            }
+        }
+    }
+}
+
+private struct BorderBottom: View {
+    var body: some View {
+        GeometryReader { geo in
+            ZStack(alignment: .top) {
+                
+                Image(.backgroundTop)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundStyle(.darkGrey)
+                
+                
+                Image(.borderTop)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .background(.clear)
+                    .foregroundStyle(ColorScheme.recipeBorderFlipped)
             }
         }
     }
@@ -216,7 +236,6 @@ private struct BorderTop: View {
 
 
 private struct BorderSides: View {
-    var color: Color
     var body: some View {
         GeometryReader { geo in
             VStack {
@@ -225,12 +244,12 @@ private struct BorderSides: View {
                 ZStack {
                     Image(.backgroundSides)
                         .resizable()
-                        .foregroundStyle(.clear)
+                        .foregroundStyle(.darkGrey)
                         .frame(height: geo.size.height * 0.8)
                     
                     Image(.borderSides)
                         .resizable()
-                        .foregroundStyle(color)
+                        .foregroundStyle(ColorScheme.recipeBorder)
                         .background(.clear)
                     
                         .frame(height: geo.size.height * 0.8)
@@ -252,14 +271,14 @@ struct Border: View {
                 Spacer()
                 
                 ZStack {
-                    BorderSides(color: color)
+                    BorderSides()
                     
                     VStack(alignment: .leading) {
-                        BorderTop(color: color)
+                        BorderTop()
                         
                         Spacer()
                         
-                        BorderTop(color: color)
+                        BorderBottom()
                             .rotationEffect(.degrees(180))
                     }
                 }
