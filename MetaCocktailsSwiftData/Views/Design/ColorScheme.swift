@@ -9,7 +9,7 @@ import SwiftUI
 struct ColorScheme {
     
     static let backgroundDark = Color.black
-    static let backgroundLighter = recipeBackground
+    static let backgroundLighter = Color(hex: "#171717")
     static let tintColor = Color(hex: "#FFB803")
     static let darkerTintColor = Color(hex: "#FF8426")
     static let interactionTint = Color(hex: "#00B2FF")

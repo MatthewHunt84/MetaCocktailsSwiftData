@@ -38,7 +38,8 @@ struct AllCocktailsListView: View {
                 .listRowBackground(Color.clear)
             } header: {
                 Text(letter)
-                    .font(FontFactory.regularFont(size: 28))
+                    .font(FontFactory.listLetter(size: 28))
+                    .foregroundColor(Color.secondary)
             }
             .id(letter)
         }
@@ -53,6 +54,7 @@ struct SingleCocktailListView: View {
             HStack {
                 Text(cocktail.cocktailName)
                     .font(FontFactory.regularFont(size: 18))
+                    .padding(.leading, 20)
                 Spacer()
                 if cocktail.isCustomCocktail == true {
                     Text("Custom")
