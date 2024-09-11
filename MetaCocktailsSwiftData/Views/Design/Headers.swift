@@ -44,6 +44,7 @@ struct JamesTitleWithNavigation: ViewModifier {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 9)
+                            .bold()
                             .tint(ColorScheme.interactionTint)
                     }
                 }

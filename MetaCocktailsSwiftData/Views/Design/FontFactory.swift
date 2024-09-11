@@ -27,6 +27,10 @@ struct FontFactory {
         Font.custom("AvenirNext-Regular", size: size)
     }
     
+    static func mediumFont(size: CGFloat) -> Font {
+        Font.custom("AvenirNext-Medium", size: size)
+    }
+    
     static func listLetter(size: CGFloat) -> Font {
         Font.custom("AvenirNext-Medium", size: size)
     }

@@ -67,18 +67,30 @@ struct FilterMatchesMenuDataQueriesView: View {
     @Binding var nonmatchSearchPreference: String
     
     var body: some View {
-        Menu("Filter Matches") {
+        
+        Menu {
+            Text("Show only cocktails missing:")
+            
             ForEach(viewModel.preferredSelections, id: \.self) { preference in
                 
-                Button("- \(preference)") {
+                Button {
                     nonmatchSearchPreference = preference
+                } label: {
+                    Text("- \(preference)")
                 }
-                .foregroundStyle(ColorScheme.unwantedColor)
             }
+            
             Button {
                 nonmatchSearchPreference = "none"
             } label: {
-                Text("Show all")
+                Text("- Show all cocktails")
+            }
+            
+        } label: {
+            HStack {
+                Text("Filter Matches")
+                    .fontWeight(.semibold)
+                    .tint(ColorScheme.interactionTint)
             }
         }
         .tint(ColorScheme.interactionTint)
@@ -112,6 +124,7 @@ struct PerfectMatchCocktailView: View {
                     } label: {
                         HStack {
                             Text(cocktail.cocktailName)
+                                .foregroundStyle(.secondary)
                         }
                     }
                 }
@@ -138,8 +151,8 @@ struct MinusOneMatchView: View {
         if minusOneMatchCocktails.isEmpty || viewModel.preferredSelections.count < 2 {
             EmptyView()
         } else {
-            Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 1))) {
-                
+            Section(header:SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 1)))
+            {
                 HStack{
                     FilterMatchesMenuDataQueriesView(nonmatchSearchPreference: $nonmatchSearchPreference)
                     Spacer()
@@ -152,9 +165,11 @@ struct MinusOneMatchView: View {
                         VStack {
                             HStack {
                                 Text(cocktail.cocktailName)
+                                    .font(FontFactory.mediumFont(size: 16))
+                                    .foregroundStyle(.secondary)
                                 Spacer()
                             }
-                            MissingIngredientsView(for: cocktail, in: viewModel)
+//                            MissingIngredientsView(for: cocktail, in: viewModel)
                         }
                     }
                 }
@@ -206,9 +221,10 @@ struct MinusTwoMatchView: View {
                         VStack {
                             HStack {
                                 Text(cocktail.cocktailName)
+                                    .foregroundStyle(.secondary)
                                 Spacer()
                             }
-                            MissingIngredientsView(for: cocktail, in: viewModel)
+//                            MissingIngredientsView(for: cocktail, in: viewModel)
                         }
                     }
                 }

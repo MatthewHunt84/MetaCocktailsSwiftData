@@ -39,6 +39,8 @@ struct ColorScheme {
 
     static let buttonTint = searchBarBackground //Color(hex: "#436EF8")
     
+    static let backgroundGradient = LinearGradient(colors: [.black, .white.opacity(0.2)], startPoint: .top, endPoint: .bottom)
+    
 }
 
 extension Color {
