@@ -33,25 +33,9 @@ struct IngredientSearchView: View {
                         .onTapGesture {
                             keyboardFocused = true
                         }
+                    
+                    Spacer()
                 }
-                .toolbar {
-                    ToolbarItemGroup(placement: .keyboard) {
-                        if !viewModel.preferredSelections.isEmpty {
-                            HStack {
-                                Spacer()
-                                Button {
-                                    Task {
-                                        await viewModel.searchButtonPressed()
-                                    }
-                                } label: {
-                                    Text("Search")
-                                        .tint(ColorScheme.interactionTint)
-                                }
-                            }
-                        }
-                    }
-                }
-
             }
             .animation(.easeOut(duration: 0.5), value: viewModel.preferredSelections.isEmpty)
             .navigationDestination(isPresented: $viewModel.isShowingResults) {

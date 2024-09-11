@@ -211,17 +211,15 @@ final class SearchViewModel: ObservableObject {
     }
     
     func searchButtonPressed() async {
+            updatedUnwantedSelections = unwantedSelections
+            evaluateSearchType()
         
-        updatedUnwantedSelections = unwantedSelections
-        
-        evaluateSearchType()
-        if searchType == .complex {
-            await generateComplicatedPredicates()
-        }
-        await MainActor.run {
-            searchCompleted = true
-        }
-        
+            if searchType == .complex {
+                await generateComplicatedPredicates()
+            }
+            await MainActor.run {
+                searchCompleted = true
+            }
     }
     
     func evaluateSearchType() {
