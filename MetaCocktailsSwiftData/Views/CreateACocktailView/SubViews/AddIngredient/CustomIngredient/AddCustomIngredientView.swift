@@ -22,7 +22,7 @@ struct AddCustomIngredientView: View {
             
             ZStack {
                 
-                MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
+                ColorScheme.background.ignoresSafeArea()
                 
                 Form {
                     Section(header: Text("Name").font(FontFactory.sectionHeader12)) {

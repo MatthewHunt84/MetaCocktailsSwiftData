@@ -56,66 +56,6 @@ struct JamesTitleWithNavigation: ViewModifier {
     }
 }
 
-struct GradientNavigationTitle: ViewModifier {
-    let title: String
-    let colors: [Color]
-    let startPoint: UnitPoint
-    let endPoint: UnitPoint
-    let gradient: LinearGradient
-    
-    init(_ title: String, colors: [Color] = [Color(.redGold), Color(.brandPrimaryGold), .red], startPoint: UnitPoint = .leading, endPoint: UnitPoint = .trailing) {
-        self.title = title
-        self.colors = colors
-        self.startPoint = startPoint
-        self.endPoint = endPoint
-        self.gradient = LinearGradient(gradient: Gradient(colors: colors),
-                                       startPoint: startPoint,
-                                       endPoint: endPoint)
-    }
-    
-    func body(content: Content) -> some View {
-        content
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text(title)
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .foregroundStyle(gradient)
-                }
-            }
-    }
-}
-
-struct GradientNavigationTitleWithNavigation: ViewModifier {
-    
-    var dismiss: DismissAction
-    let title: String
-    
-    func body(content: Content) -> some View {
-        content
-            .toolbar {
-                ToolbarItem(placement: .navigation) {
-                    Button(action: {
-                        dismiss()
-                    }) {
-                        Image(systemName: "chevron.backward")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 9)
-                            .bold()
-                            .tint(ColorScheme.interactionTint)
-                    }
-                }
-                
-                ToolbarItem(placement: .principal) {
-                    Text(title)
-                        .font(.largeTitle).bold()
-                        .foregroundStyle(MeshGradients.goldTitle)
-                }
-            }
-    }
-}
-
 extension View {
     
     func jamesHeader(_ title: String) -> some View {
@@ -126,17 +66,5 @@ extension View {
 extension View {
     func jamesHeaderWithNavigation(title: String, dismiss: DismissAction) -> some View {
         self.modifier(JamesTitleWithNavigation(dismiss: dismiss, title: title))
-    }
-}
-
-extension View {
-    func goldHeader(_ title: String, startPoint: UnitPoint = .leading, endPoint: UnitPoint = .trailing) -> some View {
-        self.modifier(GradientNavigationTitle(title, startPoint: startPoint, endPoint: endPoint))
-    }
-}
-
-extension View {
-    func goldHeaderWithNavigation(title: String, dismiss: DismissAction) -> some View {
-        self.modifier(GradientNavigationTitleWithNavigation(dismiss: dismiss, title: title))
     }
 }

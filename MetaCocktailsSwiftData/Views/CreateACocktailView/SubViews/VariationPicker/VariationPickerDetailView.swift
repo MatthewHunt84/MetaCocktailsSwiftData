@@ -18,9 +18,13 @@ struct VariationPickerDetailView: View {
 
     
     var body: some View {
+        
         NavigationStack {
+            
             ZStack {
-                MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
+                
+                ColorScheme.background.ignoresSafeArea()
+                
                 VStack {
                     SearchBarForCreateCocktailView(isFocused: $isSearchFocused, viewModel: viewModel)
                     List {

@@ -18,8 +18,7 @@ struct CustomCocktailsListView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                MeshGradients.meshBlueTwoRibbonBackground.ignoresSafeArea()
-                MeshGradients.meshTealRibbonBackground.ignoresSafeArea()
+                ColorScheme.background.ignoresSafeArea()
                 
                 List {
                     let organizedCocktails = viewModel.organizeCocktails(customCocktails)

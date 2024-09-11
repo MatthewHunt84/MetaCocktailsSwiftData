@@ -20,8 +20,10 @@ struct AddExistingIngredientDetailView: View {
     var body: some View {
         
         NavigationStack {
-            ZStack{
-                MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
+            
+            ZStack {
+                ColorScheme.background.ignoresSafeArea()
+                
                 Form {
                     AddIngredientSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
                     AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)

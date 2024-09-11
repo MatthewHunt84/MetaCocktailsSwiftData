@@ -20,8 +20,7 @@ struct CocktailListView: View {
 
             ZStack {
                 
-                MeshGradients.meshBlueTwoRibbonBackground.ignoresSafeArea()
-                MeshGradients.meshTealRibbonBackground.ignoresSafeArea()
+                ColorScheme.background.ignoresSafeArea()
                 
                 VStack {
                     ListSearchBarView(text: $viewModel.searchText, isFocused: $searchBarIsFocused, viewModel: viewModel)

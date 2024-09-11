@@ -22,7 +22,7 @@ struct AddCocktailView: View {
             
             ZStack {
                 
-                MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
+                ColorScheme.background.ignoresSafeArea()
                 
                 Form {
                     
@@ -215,7 +215,8 @@ private struct GlassPickerDetailView: View {
     
     var body: some View {
         ZStack {
-            MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
+            
+            ColorScheme.background.ignoresSafeArea()
             
             List {
                 ForEach(Glassware.allCases, id: \.self) { newGlass in

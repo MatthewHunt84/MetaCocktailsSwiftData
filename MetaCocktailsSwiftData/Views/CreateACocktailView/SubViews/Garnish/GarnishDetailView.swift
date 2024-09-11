@@ -22,7 +22,7 @@ struct GarnishDetailView: View {
             
             ZStack {
                 
-                MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
+                ColorScheme.background.ignoresSafeArea()
                 
                 Form {
                     AddGarnishSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused)

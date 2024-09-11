@@ -64,7 +64,7 @@ struct FloatingPromptView: View {
                 .fixedSize(horizontal: false, vertical: true)
                 .padding()
                 .background(.black)
-                .background(MeshGradients.meshRedRibbonBackground)
+                .background(ColorScheme.background)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .overlay {
                     VStack{

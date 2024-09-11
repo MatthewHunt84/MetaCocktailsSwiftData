@@ -532,7 +532,6 @@
 		F4AA6BB62C7E170B00610D80 /* DefaultLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA6BB52C7E16FD00610D80 /* DefaultLoadingIndicator.swift */; };
 		F4AA6BB82C7E2B8E00610D80 /* Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA6BB72C7E2B8600610D80 /* Headers.swift */; };
 		F4AA6BBA2C7E2C4F00610D80 /* FontFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA6BB92C7E2C4D00610D80 /* FontFactory.swift */; };
-		F4AA6BBC2C7E2C8B00610D80 /* Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA6BBB2C7E2C8200610D80 /* Gradients.swift */; };
 		F4AC617D2C8B688D0015BC9D /* SharedHelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AC617C2C8B68890015BC9D /* SharedHelperMethods.swift */; };
 		F4B0ABF32B13FB2A00336D05 /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0ABF22B13FB2A00336D05 /* SearchResultsView.swift */; };
 		F4C5C3E12B3B3F2E005B2261 /* IngredientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C5C3E02B3B3F2E005B2261 /* IngredientType.swift */; };
@@ -1084,7 +1083,6 @@
 		F4AA6BB52C7E16FD00610D80 /* DefaultLoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLoadingIndicator.swift; sourceTree = "<group>"; };
 		F4AA6BB72C7E2B8600610D80 /* Headers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headers.swift; sourceTree = "<group>"; };
 		F4AA6BB92C7E2C4D00610D80 /* FontFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontFactory.swift; sourceTree = "<group>"; };
-		F4AA6BBB2C7E2C8200610D80 /* Gradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradients.swift; sourceTree = "<group>"; };
 		F4AC617C2C8B68890015BC9D /* SharedHelperMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedHelperMethods.swift; sourceTree = "<group>"; };
 		F4B0ABF22B13FB2A00336D05 /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
 		F4C5C3E02B3B3F2E005B2261 /* IngredientType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientType.swift; sourceTree = "<group>"; };
@@ -2004,7 +2002,6 @@
 			isa = PBXGroup;
 			children = (
 				F4F3D4212C90996200BB6767 /* ColorScheme.swift */,
-				F4AA6BBB2C7E2C8200610D80 /* Gradients.swift */,
 				F4AA6BB92C7E2C4D00610D80 /* FontFactory.swift */,
 				F4AA6BB72C7E2B8600610D80 /* Headers.swift */,
 			);
@@ -2349,7 +2346,6 @@
 				F4C74C812AD8CC3300EA3334 /* AperolSpritz.swift in Sources */,
 				4DBFF8592B60AD800011B5B1 /* CableCar(W&G).swift in Sources */,
 				4DBBA44A2B673DC600179B8F /* HollandHouseKappelers.swift in Sources */,
-				F4AA6BBC2C7E2C8B00610D80 /* Gradients.swift in Sources */,
 				4DA567FA2B6DF1BC003F6F04 /* SloeWalker.swift in Sources */,
 				4DCB173E2BA5220C0002D7D9 /* StrawberryFix.swift in Sources */,
 				4DCAA7A72C35E83F00FBC4FE /* AddRecipeStepDetailView.swift in Sources */,

@@ -21,7 +21,7 @@ struct AddCustomGarnishView: View {
             
             ZStack {
                 
-                MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
+                ColorScheme.background.ignoresSafeArea()
                 
                 Form {
                     Section("Name") {
