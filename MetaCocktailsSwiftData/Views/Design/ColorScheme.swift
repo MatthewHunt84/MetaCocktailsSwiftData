@@ -14,18 +14,15 @@ struct ColorScheme {
     static let darkerTintColor = Color(hex: "#FF8426")
     static let interactionTint = Color(hex: "#00B2FF")
     
-    static let selectedColor = tintColor//Color(hex: "#1DA827")
+    static let selectedColor = tintColor//Color(hex: "#1DA827") //Color.secondary
     static let unwantedColor = Color(hex: "#D63F1C")
     
     
-    static let headerColor = LinearGradient(gradient: Gradient(colors: [.brandPrimaryGold, .brandPrimaryGold, .brandPrimaryGold, .redGold]),
-                                            startPoint: .topLeading,
-                                            endPoint: .bottomTrailing)
+    static let headerColor = tintColor
     
     static let recipeHeaderColor = Color.primary
     
-    static let background = LinearGradient(gradient: Gradient(colors: [backgroundDark, backgroundDark, backgroundLighter]), startPoint: .topLeading, endPoint: .bottomTrailing)
-    
+    static let background = Color.black
     static let tabBarTint = tintColor
     
     static let recipeBackground = Color(hex: "#0F0F0F")

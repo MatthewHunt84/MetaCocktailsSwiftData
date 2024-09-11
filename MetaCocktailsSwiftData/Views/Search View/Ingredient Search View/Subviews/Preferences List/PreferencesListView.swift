@@ -12,21 +12,25 @@ public struct PreferencesListView: View {
     @Environment(\.dismiss) var dismiss
     
     public var body: some View {
-        
         VStack {
-            HStack {
-                FontFactory.regularText("Selections", size: 20, color: Color.secondary, isBold: true)
-                Spacer()
-                ResetSearchCriteriaButton()
+            VStack {
+                HStack {
+                    FontFactory.mediumText("Selections", size: 20, color: Color.primary)
+                    Spacer()
+                    ResetSearchCriteriaButton()
+                    
+                }
+                
+                SelectedIngredientView(isPreferred: true, selections: viewModel.preferredSelections)
+                SelectedIngredientView(isPreferred: false, selections: viewModel.unwantedSelections)
+                
             }
-            .padding(.horizontal, 25)
-            
-            SelectedIngredientView(isPreferred: true, selections: viewModel.preferredSelections)
-            SelectedIngredientView(isPreferred: false, selections: viewModel.unwantedSelections)
-            
+            .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
+            .background(ColorScheme.backgroundLighter)
+            .clipShape(RoundedRectangle.init(cornerRadius: 5))
         }
-        .padding(.leading, 10)
-        .padding(.bottom, 15)
+        .padding(EdgeInsets(top: 5, leading: 16, bottom: 5, trailing: 16))
+        .transition(.asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .leading)))
     }
 }
 

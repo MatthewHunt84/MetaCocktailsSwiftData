@@ -16,6 +16,13 @@ struct FontFactory {
             .bold(isBold)
     }
     
+    static func mediumText(_ text: String, font: String = "AvenirNext-Medium", size: CGFloat, color: Color = .white, isBold: Bool = false) -> Text {
+        return Text(text)
+            .font(.custom(font, size: size))
+            .foregroundStyle(color)
+            .bold(isBold)
+    }
+    
     static func regularFont(size: CGFloat) -> Font {
         Font.custom("AvenirNext-Regular", size: size)
     }
@@ -26,7 +33,7 @@ struct FontFactory {
     
     static func titleHeader30(title: String) -> Text {
         return Text(title)
-            .font(.custom("AvenirNext-Medium", size: 30))
+            .font(.custom("AvenirNext-DemiBold", size: 22))
             .foregroundStyle(ColorScheme.headerColor)
     }
     
@@ -41,7 +48,7 @@ struct FontFactory {
     
     static func recipeHeader(title: String) -> Text {
         return Text(title.replacingOccurrences(of: (" (W&G Version)"), with: ""))
-            .font(.custom("AvenirNext-Regular", size: 24))
+            .font(.custom("AvenirNext-Regular", size: 20))
             .foregroundStyle(ColorScheme.recipeHeaderColor)
     }
     

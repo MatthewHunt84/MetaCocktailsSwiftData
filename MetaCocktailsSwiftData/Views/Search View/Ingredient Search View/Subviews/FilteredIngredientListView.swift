@@ -17,48 +17,47 @@ struct FilteredIngredientListView: View {
     @State var ingredientNames = [String]()
     
     var body: some View {
+        
         VStack {
             
-            HStack{
-                SearchForCocktailsButton()
-                    .disabled(viewModel.preferredSelections.isEmpty ? true : false)
-                
-                TextField("Search for cocktails which contain...", text: $viewModel.currentComponentSearchName).SearchBarTextField()
-                    .focused($keyboardFocused)
-                    .onChange(of: viewModel.currentComponentSearchName) { _, newValue in
-                        viewModel.updateSearch(newValue)
-                        Task {
-                            await generateAllCocktailList(context: modelContext)
-                        }
+            TextField("Search for cocktails which contain...", text: $viewModel.currentComponentSearchName).SearchBarTextField()
+                .focused($keyboardFocused)
+                .onChange(of: viewModel.currentComponentSearchName) { _, newValue in
+                    viewModel.updateSearch(newValue)
+                }
+                .onSubmit {
+                    Task {
+                        await viewModel.searchButtonPressed()
                     }
-                    .animation(.easeInOut(duration: 0.2), value: keyboardFocused) // Animation on focus
-                
-            }
-            .padding(.horizontal)
-            .padding(.top)
-            .task {
-                //print(modelContext.sqliteCommand)
-                viewModel.setupSearch()
-                viewModel.ingredientNames = ingredients.map { $0.name }
-            }
+                }
+                .submitLabel(.search)
+                .animation(.easeInOut(duration: 0.2), value: keyboardFocused) // Animation on focus
             
             if keyboardFocused {
-                ScrollView{
+                ScrollView {
                     LazyVStack(spacing: 10) {
                         ForEach($viewModel.filteredIngredients, id: \.self) { ingredient in
                             VStack {
-                                viewModel.returnPreferencesThumbCell(ingredient: ingredient)
-                                    
+                                viewModel.makeIngredientSearchCell(for: ingredient)
+                                
                                 Divider()
                                     .background(Color.gray.opacity(0.3))
                             }
-                            .padding(.horizontal, 40)
+                            .padding(.horizontal, 10)
                         }
                         .listRowBackground(Color.clear)
                     }
                 }
                 .scrollContentBackground(.hidden)
             }
+        }
+        .padding(.leading, 16)
+        .padding(.trailing, 8)
+        .task {
+            //print(modelContext.sqliteCommand)
+            await generateAllCocktailList(context: modelContext)
+            viewModel.setupSearch()
+            viewModel.ingredientNames = ingredients.map { $0.name }
         }
     }
     

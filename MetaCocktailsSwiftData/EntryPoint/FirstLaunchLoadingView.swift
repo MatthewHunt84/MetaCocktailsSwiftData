@@ -13,6 +13,7 @@ struct FirstLaunchLoadingView: View {
     @Environment(\.modelContext) private var modelContext
     
     var body: some View {
+        
         VStack {
             CustomLoadingAnimation()
                 .frame(width: 150, height: 150)

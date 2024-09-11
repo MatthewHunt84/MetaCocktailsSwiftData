@@ -30,8 +30,9 @@ struct SelectedIngredientView: View {
                 
                 HStack(spacing: 10) {
                     
-                    Image(systemName: isPreferred ? "checkmark" : "xmark")
+                    Image(systemName: isPreferred ? "plus.circle.fill" : "minus.circle.fill")
                         .fontWeight(.semibold)
+                        .font(.system(size: 16))
                         .foregroundStyle(isPreferred ? ColorScheme.selectedColor : ColorScheme.unwantedColor)
                     
                     ForEach(selections, id: \.self) { selectedIngredient in

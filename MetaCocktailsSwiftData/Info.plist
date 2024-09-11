@@ -4,8 +4,8 @@
 <dict>
 	<key>UILaunchScreen</key>
 	<dict>
-		<key>UIColorName</key>
-		<string>DarkGrey</string>
+		<key>UIImageName</key>
+		<string>talllboyArtboard</string>
 	</dict>
 </dict>
 </plist>
