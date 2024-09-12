@@ -159,7 +159,7 @@ struct SearchedCocktailTitleHeader: View {
             
             if matched - searched < 0 {
                 ForEach(0..<(searched - matched), id: \.self) { nonMatch in
-                    Image(systemName: "circle.fill")
+                    Image(systemName: "circle")
                         .foregroundStyle(.secondary)
                 }
             }

@@ -153,10 +153,6 @@ struct MinusOneMatchView: View {
         } else {
             Section(header:SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 1)))
             {
-                HStack{
-                    FilterMatchesMenuDataQueriesView(nonmatchSearchPreference: $nonmatchSearchPreference)
-                    Spacer()
-                }
                 ForEach(filtered(minusOneMatchCocktails), id: \.self) { cocktail in
                     NavigationLink {
                         RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
@@ -169,7 +165,6 @@ struct MinusOneMatchView: View {
                                     .foregroundStyle(.secondary)
                                 Spacer()
                             }
-//                            MissingIngredientsView(for: cocktail, in: viewModel)
                         }
                     }
                 }
@@ -207,11 +202,6 @@ struct MinusTwoMatchView: View {
         } else {
             
             Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 2))) {
-                
-                HStack{
-                    FilterMatchesMenuDataQueriesView(nonmatchSearchPreference: $nonmatchSearchPreference)
-                    Spacer()
-                }
                 ForEach(filtered(minusTwoMatchCocktails), id: \.self) { cocktail in
                     
                     NavigationLink {
@@ -224,7 +214,6 @@ struct MinusTwoMatchView: View {
                                     .foregroundStyle(.secondary)
                                 Spacer()
                             }
-//                            MissingIngredientsView(for: cocktail, in: viewModel)
                         }
                     }
                 }
