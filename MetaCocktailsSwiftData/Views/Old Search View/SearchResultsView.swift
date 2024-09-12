@@ -134,12 +134,12 @@ struct SearchedCocktailTitleHeader: View {
                     .font(FontFactory.mediumFont(size: 16))
                     .fontWeight(.semibold)
             } else if matched == (searched - 1) {
-                Text("Missing One Ingredient")
+                Text("Minus One Ingredient")
                     .font(FontFactory.mediumFont(size: 16))
                     .fontWeight(.semibold)
                     .foregroundStyle(.white)
             } else {
-                Text("Missing Two Ingredients")
+                Text("Minus Two Ingredients")
                     .font(FontFactory.mediumFont(size: 16))
                     .fontWeight(.semibold)
                     .foregroundStyle(.white)
@@ -147,14 +147,9 @@ struct SearchedCocktailTitleHeader: View {
             
             Spacer()
             
-//            Text("(\(matched)/^[\(searched) matches](inflect: true))")
-//                .foregroundStyle(matched == searched ? ColorScheme.tintColor : .white)
-//                .font(FontFactory.mediumFont(size: 16))
-//                .fontWeight(.semibold)
-            
             ForEach(0..<matched, id: \.self) { match in
                 Image(systemName: "circle.fill")
-                    .foregroundStyle(matched == searched ? ColorScheme.selectedColor : .white)
+                    .foregroundStyle(matched == searched ? ColorScheme.tintColor : .white)
             }
             
             if matched - searched < 0 {

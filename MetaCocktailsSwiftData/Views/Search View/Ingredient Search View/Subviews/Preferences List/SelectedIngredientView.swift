@@ -18,7 +18,6 @@ struct SelectedIngredientView: View {
     @Environment(\.dismiss) var dismiss
     let isPreferred: Bool
     let selections: [String]
-    @State private var isVisible = true
     
     var body: some View {
         
@@ -47,17 +46,6 @@ struct SelectedIngredientView: View {
                                 }
                             }
                     }
-                    
-                    Text("(tap to remove)")
-                        .font(.subheadline)
-                        .foregroundStyle(Color.secondary)
-                        .opacity(isVisible ? 1 : 0)
-                        .animation(.easeOut(duration: 0.75), value: isVisible)
-                        .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                isVisible = false
-                            }
-                        }
                 }
                 .frame(height: 15)
             }

@@ -19,8 +19,7 @@ struct IngredientSearchMatchedCocktailsView: View {
             MinusOneMatchView(passedViewModel: viewModel)
             MinusTwoMatchView(passedViewModel: viewModel)
         }
-        .listStyle(.plain)
-        .listRowBackground(Color.clear)
+        .listStyle(.insetGrouped)
         .backgroundStyle(.clear)
     }
 }
@@ -129,8 +128,8 @@ struct PerfectMatchCocktailView: View {
                     }
                 }
             }
-            .backgroundStyle(.clear)
-            .listRowBackground(Color.clear)
+//            .backgroundStyle(.clear)
+//            .listRowBackground(Color.clear)
         }
     }
 }
@@ -169,8 +168,8 @@ struct MinusOneMatchView: View {
                     }
                 }
             }
-            .backgroundStyle(.clear)
-            .listRowBackground(Color.clear)
+//            .backgroundStyle(.clear)
+//            .listRowBackground(Color.clear)
         }
     }
     func filtered(_ cocktails: [Cocktail]) -> [Cocktail] {
@@ -218,8 +217,8 @@ struct MinusTwoMatchView: View {
                     }
                 }
             }
-            .backgroundStyle(.clear)
-            .listRowBackground(Color.clear)
+//            .backgroundStyle(.clear)
+//            .listRowBackground(Color.clear)
         }
     }
     func filtered(_ cocktails: [Cocktail]) -> [Cocktail] {
