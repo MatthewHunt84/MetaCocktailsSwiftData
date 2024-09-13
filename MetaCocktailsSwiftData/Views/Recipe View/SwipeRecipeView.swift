@@ -22,9 +22,13 @@ struct SwipeRecipeView: View {
     }
     
     var body: some View {
+        
         NavigationStack {
+            
             ZStack {
-                MeshGradients.meshTealRibbonBackground.ignoresSafeArea()
+                
+                ColorScheme.background.ignoresSafeArea()
+                
                 GeometryReader { geo in
                     ScrollViewReader { scrollReader in
                         ScrollView {

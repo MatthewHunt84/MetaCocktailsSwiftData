@@ -21,7 +21,7 @@ struct PreferencesCheckListCell: View {
                         //Spacer()
                         Toggle(isOn: $ingredient.isPreferred) {}
                             .padding(.horizontal, 20)
-                            .tint(Color(.brandPrimaryGreen))
+                            .tint(ColorScheme.selectedColor)
                             .frame(width: geo.size.width/9, height: 40, alignment: .leading)
                         
                             .offset(x: -15)
@@ -51,7 +51,7 @@ struct PreferencesCheckListCell: View {
                         
                         Toggle(isOn: $ingredient.isUnwanted) {}
                             .padding(.horizontal, 20)
-                            .tint(Color(.brandPrimaryRed))
+                            .tint(ColorScheme.unwantedColor)
                             .frame(width: geo.size.width/9, height: 40, alignment: .leading)
                             .offset(x: -15)
                         Text(ingredient.name)

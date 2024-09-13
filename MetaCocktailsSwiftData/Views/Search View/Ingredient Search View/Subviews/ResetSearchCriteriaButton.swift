@@ -16,16 +16,19 @@ struct ResetSearchCriteriaButton: View {
                 Button{
                     viewModel.clearSearchCriteria()
                 } label: {
-                    
                     HStack {
-                        Text("Reset")
-                        Image(systemName: "x.circle.fill")
+                        Image(systemName: "xmark")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 12, height: 12)
+                        Text("Clear")
+                            
                     }
-                    .tint(.blueTint)
-                    .font(FontFactory.fontBody16)
+                    .bold()
+                    .tint(ColorScheme.interactionTint)
                 }
             }
-        }
+    }
 }
 
 #Preview {

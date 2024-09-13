@@ -21,7 +21,7 @@ struct EightySixCheckListCell: View {
                     //Spacer()
                     Toggle(isOn: $ingredient.is86d) {}
                         .padding(.horizontal, 20)
-                        .tint(Color(.brandPrimaryRed))
+                        .tint(ColorScheme.unwantedColor)
                         .frame(width: geo.size.width/9, height: 40, alignment: .leading)
                     
                         .offset(x: -15)

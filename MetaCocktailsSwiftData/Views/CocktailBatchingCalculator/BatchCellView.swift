@@ -31,9 +31,9 @@ struct BatchCellView: View {
                 Spacer()
                 Text("Bottle Math")
                     .font(.caption)
-                    .foregroundStyle(.blueTint)
+                    .foregroundStyle(ColorScheme.interactionTint)
                 Image(systemName:showBottleMath ? "chevron.up" : "chevron.down")
-                    .foregroundStyle(.blueTint)
+                    .foregroundStyle(ColorScheme.interactionTint)
                 
             }
             .offset(x: 0, y: 5)
@@ -103,7 +103,7 @@ struct BatchCellView: View {
                         }
                         .buttonStyle(.bordered)
                     }
-                    .foregroundStyle(.brandPrimaryGreen)
+                    .foregroundStyle(ColorScheme.selectedColor)
                     .transition(.asymmetric(insertion: .scale, removal: .slide))
                 }
                 .animation(.easeInOut(duration: 0.5), value: showBottleMath)

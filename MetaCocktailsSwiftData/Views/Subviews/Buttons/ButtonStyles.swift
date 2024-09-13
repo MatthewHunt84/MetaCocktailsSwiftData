@@ -34,7 +34,7 @@ struct BlackNWhiteButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding(8)
-            .background(Color.blueTint)
+            .background(ColorScheme.interactionTint)
             .clipShape(RoundedRectangle(cornerRadius: 13))
             .foregroundColor(Color(UIColor.white))
     }

@@ -20,8 +20,7 @@ struct CocktailListView: View {
 
             ZStack {
                 
-                MeshGradients.meshBlueTwoRibbonBackground.ignoresSafeArea()
-                MeshGradients.meshTealRibbonBackground.ignoresSafeArea()
+                ColorScheme.background.ignoresSafeArea()
                 
                 VStack {
                     ListSearchBarView(text: $viewModel.searchText, isFocused: $searchBarIsFocused, viewModel: viewModel)
@@ -61,12 +60,11 @@ struct CocktailListView: View {
             
             .navigationBarTitleDisplayMode(.inline)
             .jamesHeader("Cocktail List")
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    LoadSampleCocktailsButton()
-                }
-            }
-            
+//            .toolbar {
+//                ToolbarItem(placement: .topBarTrailing) {
+//                    LoadSampleCocktailsButton()
+//                }
+//            }
         }
     }
 }
@@ -126,7 +124,7 @@ struct ListSearchBarView: View {
                 }
                 .padding(.horizontal, 8)
                 .padding(.vertical, 4)
-                .background(Color.blueTint)
+                .background(ColorScheme.interactionTint)
                 .foregroundColor(.black)
                 .cornerRadius(8)
                 
@@ -152,7 +150,7 @@ struct SearchBarForCocktailListView: View {
                         viewModel.searchText = ""
                     } label: {
                         Image(systemName: "x.circle.fill")
-                            .tint(.blueTint)
+                            .tint(ColorScheme.interactionTint)
                     }
                     .padding(.horizontal, 20)
                 }

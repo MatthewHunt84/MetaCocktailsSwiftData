@@ -12,12 +12,12 @@ import SwiftUI
 struct InlineDisclosureGroupStyle: DisclosureGroupStyle {
     func makeBody(configuration: Configuration) -> some View {
         HStack {
-            configuration.label
             Image(systemName: configuration.isExpanded ? "chevron.down" : "chevron.right")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 12, height: 12)
-                .foregroundColor(.blueTint)
+                .foregroundColor(ColorScheme.interactionTint)
+            configuration.label
             Spacer()
         }
         .contentShape(Rectangle()) // Make the entire HStack tappable

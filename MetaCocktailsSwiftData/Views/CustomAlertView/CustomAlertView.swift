@@ -35,7 +35,7 @@ struct CustomAlertView: View {
                 } label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 20)
-                            .foregroundStyle(MeshGradients.activeBlue)
+                            .foregroundStyle(ColorScheme.interactionTint)
                         Text(buttonTitle)
                             .font(FontFactory.specMeasurement16B)
                             .foregroundStyle(.white)

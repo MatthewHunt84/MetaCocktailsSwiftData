@@ -108,9 +108,9 @@ enum LikesOrDislikes: String, CaseIterable {
     func getLikesOrDislikesColor() -> Color {
         switch self {
         case .likes:
-            Color(.brandPrimaryGreen)
+            Color(ColorScheme.selectedColor)
         case .dislikes:
-            Color(.brandPrimaryRed)
+            Color(ColorScheme.unwantedColor)
         }
     }
 }

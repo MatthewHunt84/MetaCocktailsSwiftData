@@ -13,9 +13,12 @@ struct FirstLaunchLoadingView: View {
     @Environment(\.modelContext) private var modelContext
     
     var body: some View {
-        VStack {
+        
+        ZStack {
+            ColorScheme.backgroundGradient.ignoresSafeArea()
             CustomLoadingAnimation()
-                .frame(width: 150, height: 150)
+                .frame(width: 190, height: 190)
+                .padding(.bottom, 15)
         }
         .task {
             await prepareData()

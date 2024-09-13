@@ -15,7 +15,7 @@ struct RecipeView: View {
         
         ZStack {
             
-            MeshGradients.recipeMeshBackground
+            ColorScheme.background
                 .ignoresSafeArea()
             
             GeometryReader { geo in
@@ -175,7 +175,7 @@ struct backToRecipeViewButton: View {
                         
                         
                     }
-                    .foregroundStyle(.blueTint)
+                    .foregroundStyle(ColorScheme.interactionTint)
                     .padding(.leading, 40)
                     .padding(.top, 60)
                 }
@@ -192,7 +192,6 @@ struct backToRecipeViewButton: View {
 
 
 private struct BorderTop: View {
-    var color: Color
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .top) {
@@ -200,14 +199,35 @@ private struct BorderTop: View {
                 Image(.backgroundTop)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(.clear)
+                    .foregroundStyle(ColorScheme.recipeBackground)
                 
                 
                 Image(.borderTop)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(color)
                     .background(.clear)
+                    .foregroundStyle(ColorScheme.recipeBorder)
+            }
+        }
+    }
+}
+
+private struct BorderBottom: View {
+    var body: some View {
+        GeometryReader { geo in
+            ZStack(alignment: .top) {
+                
+                Image(.backgroundTop)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundStyle(ColorScheme.recipeBackground)
+                
+                
+                Image(.borderTop)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .background(.clear)
+                    .foregroundStyle(ColorScheme.recipeBorderFlipped)
             }
         }
     }
@@ -216,7 +236,6 @@ private struct BorderTop: View {
 
 
 private struct BorderSides: View {
-    var color: Color
     var body: some View {
         GeometryReader { geo in
             VStack {
@@ -225,12 +244,12 @@ private struct BorderSides: View {
                 ZStack {
                     Image(.backgroundSides)
                         .resizable()
-                        .foregroundStyle(.clear)
+                        .foregroundStyle(ColorScheme.recipeBackground)
                         .frame(height: geo.size.height * 0.8)
                     
                     Image(.borderSides)
                         .resizable()
-                        .foregroundStyle(color)
+                        .foregroundStyle(ColorScheme.recipeBorder)
                         .background(.clear)
                     
                         .frame(height: geo.size.height * 0.8)
@@ -252,14 +271,14 @@ struct Border: View {
                 Spacer()
                 
                 ZStack {
-                    BorderSides(color: color)
+                    BorderSides()
                     
                     VStack(alignment: .leading) {
-                        BorderTop(color: color)
+                        BorderTop()
                         
                         Spacer()
                         
-                        BorderTop(color: color)
+                        BorderBottom()
                             .rotationEffect(.degrees(180))
                     }
                 }
@@ -274,7 +293,7 @@ struct CustomButtonSnippet: View {
     var body: some View {
         Button("Label") {
             // Code
-        }.buttonStyle(.custom)
+        }.buttonStyle(.customGreyButton)
     }
 }
 
@@ -283,7 +302,7 @@ public struct CustomButtonStyle: ButtonStyle {
         configuration.label
             .fontWeight(.medium)
             .padding(.vertical, 12)
-            .foregroundStyle(.white)
+            .foregroundStyle(ColorScheme.interactionTint)
             .frame(maxWidth: .infinity)
             .background(.tint, in: .rect(cornerRadius: 14, style: .continuous))
             .opacity(configuration.isPressed ? 0.4 : 1.0)
@@ -291,7 +310,7 @@ public struct CustomButtonStyle: ButtonStyle {
 }
 
 extension ButtonStyle where Self == CustomButtonStyle {
-    static var custom: CustomButtonStyle { .init() }
+    static var customGreyButton: CustomButtonStyle { .init() }
 }
 
 
@@ -301,7 +320,7 @@ struct RecipeTitleView: View {
         if cocktail.collection?.collectionLogo != nil {
             RecipeTitleViewWithCollection(cocktail: cocktail)
         } else {
-            FontFactory.regularText(cocktail.cocktailName, size: 30)
+            FontFactory.recipeHeader(title: cocktail.cocktailName)
                 .lineLimit(1)
                 .minimumScaleFactor(0.4)
         }
@@ -312,7 +331,7 @@ struct RecipeTitleViewWithCollection: View {
     var cocktail: Cocktail
     var body: some View {
         HStack {
-            FontFactory.regularText(cocktail.cocktailName.replacingOccurrences(of: (" (W&G Version)"), with: ""), size: 30)
+            FontFactory.recipeHeader(title: cocktail.cocktailName)
                 .lineLimit(1)
                 .minimumScaleFactor(0.4)
             if let logo = cocktail.collection?.collectionLogo {
@@ -335,8 +354,7 @@ struct GlasswareView: View {
                 Text("Glassware:")
                     .font(FontFactory.recipeCardHeader18B)
                 Text(cocktail.glasswareType.rawValue)
-                    .dynamicTypeSize(.large)
-                    .multilineTextAlignment(.leading)
+                    .font(FontFactory.fontBody16)
             }
             
             Spacer()
@@ -373,7 +391,7 @@ struct SpecIngredientView: View {
                     } label: {
                         Text(ingredient.ingredientBase.name)
                             .font(FontFactory.fontBody16)
-                            .tint(.blueTint)
+                            .tint(ColorScheme.interactionTint)
                     }
                     .disabled(viewModel.isFlipped)
                 } else {
@@ -384,7 +402,7 @@ struct SpecIngredientView: View {
                 }
                 if ingredient.ingredientBase.info != nil {
                     Image(systemName: "questionmark.circle.fill")
-                        .foregroundStyle(.blueTint)
+                        .foregroundStyle(ColorScheme.interactionTint)
                         .onTapGesture {
                             withAnimation(.easeInOut(duration: 0.25)) {
                                 isShowingIngredientInfo.toggle()
@@ -430,7 +448,7 @@ struct SpecView: View {
                                 showingModal = true
                             } label: {
                                 Image(systemName: "bookmark.circle.fill")
-                                    .tint(.blueTint)
+                                    .tint(ColorScheme.interactionTint)
                             }
                         }
 
@@ -439,7 +457,7 @@ struct SpecView: View {
                                 isShowingCocktailNotes.toggle()
                             } label: {
                                 Image(systemName: "questionmark.circle.fill")
-                                    .foregroundStyle(.blueTint)
+                                    .foregroundStyle(ColorScheme.interactionTint)
                             }
                         }
                         Spacer()
@@ -450,7 +468,7 @@ struct SpecView: View {
                             Text("Batch")
                             Image(systemName: "chevron.forward")
                         }
-                        .foregroundStyle(.blueTint)
+                        .foregroundStyle(ColorScheme.interactionTint)
                         .font(FontFactory.recipeCardHeader18B)
                     }
                     .padding(.bottom, 5)

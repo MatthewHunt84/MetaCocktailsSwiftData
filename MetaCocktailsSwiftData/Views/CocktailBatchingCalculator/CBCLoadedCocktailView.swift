@@ -21,7 +21,7 @@ struct CBCLoadedCocktailView: View {
             
             ZStack {
                 
-                MeshGradients.meshBlueRibbonBackground.ignoresSafeArea()
+                ColorScheme.background.ignoresSafeArea()
                 
                 VStack {
                     
@@ -91,7 +91,7 @@ struct EditIngredientsButton: View {
                 Image(systemName: "gearshape")
             }
             .dynamicTypeSize(.xxLarge).bold()
-            .foregroundStyle(.blueTint)
+            .foregroundStyle(ColorScheme.interactionTint)
             .padding(.horizontal, 15)
             
             
@@ -164,7 +164,7 @@ struct QuantifiedIngredientsListView: View {
                     HStack {
                         Slider(value: $viewModel.dilutionPercentage, in: 0...100, step: 1.0)
                             .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-                            .tint(MeshGradients.activatedBlue)
+                            .tint( ColorScheme.interactionTint)
                         Text("\(viewModel.dilutionPercentage, specifier: "%.0f")%")
                             .frame(width: 50)
                             .onChange(of: viewModel.dilutionPercentage) { oldValue, newValue in
@@ -195,7 +195,7 @@ struct SplitBatchNavigationButton: View {
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(MeshGradients.activeBlue)
+                    .background( ColorScheme.interactionTint)
                     .cornerRadius(20)
                     .shadow(radius: 5)
             }

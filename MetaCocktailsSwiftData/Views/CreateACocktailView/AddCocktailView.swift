@@ -22,7 +22,7 @@ struct AddCocktailView: View {
             
             ZStack {
                 
-                MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
+                ColorScheme.background.ignoresSafeArea()
                 
                 Form {
                     
@@ -68,7 +68,7 @@ struct AddCocktailView: View {
                             Text("Reset to Defaults")
                                 .font(FontFactory.fontBody16)
                         }
-                        .tint(Color.blueTint)
+                        .tint(ColorScheme.interactionTint)
                         .padding()
                     }
                     .frame(width: 380, height: 40,  alignment: .center)
@@ -87,7 +87,7 @@ struct AddCocktailView: View {
                         } label: {
                             Image("ChooseCocktailTemplate")
                                 .resizable()
-                                .tint(.blueTint)
+                                .tint(ColorScheme.interactionTint)
                         }
                     }
                     
@@ -125,7 +125,7 @@ struct AddCocktailView: View {
                             Text("Done")
                                 .font(FontFactory.fontBody16)
                         }
-                        .tint(.blueTint)
+                        .tint(ColorScheme.interactionTint)
                         
                     }
                     
@@ -215,7 +215,8 @@ private struct GlassPickerDetailView: View {
     
     var body: some View {
         ZStack {
-            MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
+            
+            ColorScheme.background.ignoresSafeArea()
             
             List {
                 ForEach(Glassware.allCases, id: \.self) { newGlass in
@@ -301,7 +302,7 @@ private struct GarnishPicker: View {
                         .font(FontFactory.formLabel18)
                     Spacer()
                     Image(systemName: "plus.circle.fill")
-                        .foregroundStyle(.blueTint)
+                        .foregroundStyle(ColorScheme.interactionTint)
                 }
             }
         } header: {

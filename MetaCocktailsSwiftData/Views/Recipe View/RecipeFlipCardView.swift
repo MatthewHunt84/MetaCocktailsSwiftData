@@ -43,15 +43,23 @@ struct RecipeFlipCardView: View {
                         
                         if viewModel.cocktail.buildOrder != nil {
                             
-                            Button("Build Order") {
+                            Button {
                                 viewModel.flipCard()
                                 withAnimation(.easeOut(duration: viewModel.durationAndDelay)) {
                                     scrollReader.scrollTo(topID, anchor: .top)
                                 }
+                            } label: {
+                                Label {
+                                    Text("Build Order")
+                                } icon: {
+                                    Image(systemName: "list.number")
+                                }
+
                             }
-                            .buttonStyle(.custom)
-                            .tint(.blueTint)
+                            .buttonStyle(.customGreyButton)
+                            .tint(ColorScheme.buttonTint.opacity(0.5))
                             .disabled(viewModel.isFlipped)
+
                         }
                         
                         if viewModel.cocktail.author != nil {
@@ -72,6 +80,7 @@ struct RecipeFlipCardView: View {
             }
             .frame(minHeight: geo.size.height)
             .rotation3DEffect(Angle(degrees: viewModel.frontDegree), axis: (x: 0, y: 1, z: 0))
+            .padding(.top, -20)
             
             backToRecipeViewButton(viewModel: viewModel)
             

@@ -13,6 +13,8 @@ struct SelectionTagView: View {
         
         FontFactory.regularText(viewModel.ingredientName, size: 14)
             .frame(height: 15)
+            .italic()
+        
     }
 }
 

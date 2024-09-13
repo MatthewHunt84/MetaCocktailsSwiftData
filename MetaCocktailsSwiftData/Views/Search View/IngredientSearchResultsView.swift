@@ -16,24 +16,16 @@ struct IngredientSearchResultsView: View {
         
         ZStack {
             
-            MeshGradients.matchedCocktailBackground(backgroundIsActive: backgroundIsActive)
-                .ignoresSafeArea()
-                .onAppear{
-                    withAnimation(.easeInOut(duration: 10).repeatForever(autoreverses: true)) {
-                        backgroundIsActive.toggle()
-                    }
-                }
+            ColorScheme.background.ignoresSafeArea()
             
             VStack {
                 
                 PreferencesListView()
-                    .padding(.top, 10)
-                    .padding(.bottom, 10)
                 IngredientSearchMatchedCocktailsView()
             }
             .navigationBarBackButtonHidden(true)
             .navigationBarTitleDisplayMode(.inline)
-            .jamesHeaderWithNavigation(title: "Matched Cocktails", dismiss: dismiss)
+            .jamesHeaderWithNavigation(title: "Search Results", dismiss: dismiss)
             .systemLoadingIndicator(isLoading: viewModel.isRunningComplexSearch)
         }
     }

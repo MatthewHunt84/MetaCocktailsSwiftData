@@ -127,21 +127,37 @@ struct SearchedCocktailTitleHeader: View {
 
     var body: some View {
         HStack {
-            ForEach(0..<matched, id: \.self) { match in
-                Image(systemName: "circle.fill")
-                    .foregroundStyle(.brandPrimaryGreen)
-            }
             
-            if matched - searched < 0 {
-                ForEach(0..<(searched - matched), id: \.self) { nonMatch in
-                    Image(systemName: "circle.fill")
-                        .foregroundStyle(.gray)
-                }
+            if matched == searched {
+                Text("Perfect Match Cocktails")
+                    .foregroundStyle(ColorScheme.tintColor)
+                    .font(FontFactory.mediumFont(size: 16))
+                    .fontWeight(.semibold)
+            } else if matched == (searched - 1) {
+                Text("Minus One Ingredient")
+                    .font(FontFactory.mediumFont(size: 16))
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.white)
+            } else {
+                Text("Minus Two Ingredients")
+                    .font(FontFactory.mediumFont(size: 16))
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.white)
             }
             
             Spacer()
             
-            Text("^[\(matched)/\(searched) matches](inflect: true)")
+            ForEach(0..<matched, id: \.self) { match in
+                Image(systemName: "circle.fill")
+                    .foregroundStyle(matched == searched ? ColorScheme.tintColor : .white)
+            }
+            
+            if matched - searched < 0 {
+                ForEach(0..<(searched - matched), id: \.self) { nonMatch in
+                    Image(systemName: "circle")
+                        .foregroundStyle(.secondary)
+                }
+            }
         }
     }
 }

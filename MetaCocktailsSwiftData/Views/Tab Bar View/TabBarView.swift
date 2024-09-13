@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TabBarView: View {
     
-    @State private var selectedTab: TabBarComponents = .cocktailListView
+    @State private var selectedTab: TabBarComponents = .searchView
     
     var body: some View {
         
@@ -21,6 +21,7 @@ struct TabBarView: View {
             }
         }
         .environment(\.currentTab, $selectedTab)
+        .tint(ColorScheme.tabBarTint)
     }
 }
 

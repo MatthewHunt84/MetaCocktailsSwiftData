@@ -63,7 +63,7 @@ struct AdvancedCriteriaListView: View {
                                             .font(.headline)
                                             .padding(.leading, 5)
                                     }
-                                    .tint(Color(.brandPrimaryGreen))
+                                    .tint(ColorScheme.selectedColor)
                                 }
                             }
                         } else {
@@ -84,7 +84,7 @@ struct AdvancedCriteriaListView: View {
                                             .font(.headline)
                                             .padding(.leading, 5)
                                     }
-                                    .tint(Color(.brandPrimaryRed))
+                                    .tint(ColorScheme.unwantedColor)
                                 }
                             }
                             
@@ -116,7 +116,7 @@ struct AdvancedCriteriaListView: View {
                                         .font(.headline)
                                         .padding(.leading, 5)
                                 }
-                                .tint(Color(.brandPrimaryGreen))
+                                .tint(ColorScheme.selectedColor)
                             }
                         }
                     } else  {
@@ -137,7 +137,7 @@ struct AdvancedCriteriaListView: View {
                                         .font(.headline)
                                         .padding(.leading, 5)
                                 }
-                                .tint(Color(.brandPrimaryRed))
+                                .tint(ColorScheme.unwantedColor)
                             }
                         }
                         

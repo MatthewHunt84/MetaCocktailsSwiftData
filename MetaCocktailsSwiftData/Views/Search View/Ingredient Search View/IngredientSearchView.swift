@@ -19,37 +19,23 @@ struct IngredientSearchView: View {
         NavigationStack {
             
             ZStack {
-                    MeshGradients.meshBlueRibbonBackground.ignoresSafeArea()
-                VStack{
+                ColorScheme.background.ignoresSafeArea()
+                
+                VStack {
+
+                    if !viewModel.preferredSelections.isEmpty || !viewModel.unwantedSelections.isEmpty {
+                        PreferencesListView()
+                    } else {
+                        FindCocktailUserInfoView()
+                    }
+                    
                     FilteredIngredientListView(keyboardFocused: _keyboardFocused)
                         .onTapGesture {
                             keyboardFocused = true
                         }
                     
                     Spacer()
-                    if !viewModel.preferredSelections.isEmpty {
-                        PreferencesListView()
-                            .padding(.top, 5)
-                    }
                 }
-                .toolbar {
-                    ToolbarItemGroup(placement: .keyboard) {
-                        if !viewModel.preferredSelections.isEmpty {
-                            HStack {
-                                Spacer()
-                                Button {
-                                    Task {
-                                        await viewModel.searchButtonPressed()
-                                    }
-                                } label: {
-                                    Text("Search")
-                                        .tint(.blueTint)
-                                }
-                            }
-                        }
-                    }
-                }
-
             }
             .animation(.easeOut(duration: 0.5), value: viewModel.preferredSelections.isEmpty)
             .navigationDestination(isPresented: $viewModel.isShowingResults) {
@@ -63,7 +49,7 @@ struct IngredientSearchView: View {
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-            .jamesHeader("Search Cocktails")
+            .jamesHeader("Cocktail Ingredient Search")
             .customLoadingIndicator(isLoading: viewModel.isRunningComplexSearch)
             .onAppear{
                 keyboardFocused =  true
@@ -71,8 +57,6 @@ struct IngredientSearchView: View {
         }
     }
 }
-
-
 
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)

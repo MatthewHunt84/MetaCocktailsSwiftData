@@ -13,9 +13,7 @@ enum TabBarComponents: Hashable, Identifiable, CaseIterable {
     case cocktailListView
     case customCocktailsView
     case addCocktailView
-    
-    
-    
+
     var id: TabBarComponents { self }
     
     @ViewBuilder

@@ -19,7 +19,8 @@ struct RiffPickerView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                MeshGradients.meshRedRibbonBackground.ignoresSafeArea()
+                ColorScheme.background.ignoresSafeArea()
+                
                 VStack(alignment: .leading) {
                     Text("Select a cocktail to riff on")
                         .font(FontFactory.regularFont(size: 18))
@@ -75,7 +76,7 @@ struct SearchBarForCreateCocktailView: View {
                         viewModel.searchText = ""
                     } label: {
                         Image(systemName: "x.circle.fill")
-                            .tint(.blueTint)
+                            .tint(ColorScheme.interactionTint)
                     }
                     .padding(.horizontal, 20)
                 }

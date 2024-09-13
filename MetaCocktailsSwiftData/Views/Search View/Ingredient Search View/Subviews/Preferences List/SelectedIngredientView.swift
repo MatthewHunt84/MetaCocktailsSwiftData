@@ -18,7 +18,6 @@ struct SelectedIngredientView: View {
     @Environment(\.dismiss) var dismiss
     let isPreferred: Bool
     let selections: [String]
-    @State private var isVisible = true
     
     var body: some View {
         
@@ -30,9 +29,10 @@ struct SelectedIngredientView: View {
                 
                 HStack(spacing: 10) {
                     
-                    Image(systemName: isPreferred ? "checkmark" : "xmark")
+                    Image(systemName: isPreferred ? "plus.circle.fill" : "minus.circle.fill")
                         .fontWeight(.semibold)
-                        .foregroundStyle(isPreferred ? .brandPrimaryGreen : .brandPrimaryRed)
+                        .font(.system(size: 16))
+                        .foregroundStyle(isPreferred ? ColorScheme.selectedColor : ColorScheme.unwantedColor)
                     
                     ForEach(selections, id: \.self) { selectedIngredient in
                         SelectionTagView(viewModel: SelectionTagViewModel(name: selectedIngredient, isPreferred: isPreferred))
@@ -46,17 +46,6 @@ struct SelectedIngredientView: View {
                                 }
                             }
                     }
-                    
-                    Text("(tap to remove)")
-                        .font(.subheadline)
-                        .foregroundStyle(.brandPrimaryGold)
-                        .opacity(isVisible ? 1 : 0)
-                        .animation(.easeOut(duration: 0.75), value: isVisible)
-                        .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                isVisible = false
-                            }
-                        }
                 }
                 .frame(height: 15)
             }

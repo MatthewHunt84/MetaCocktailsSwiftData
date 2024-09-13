@@ -19,8 +19,7 @@ struct IngredientSearchMatchedCocktailsView: View {
             MinusOneMatchView(passedViewModel: viewModel)
             MinusTwoMatchView(passedViewModel: viewModel)
         }
-        .listStyle(.plain)
-        .listRowBackground(Color.clear)
+        .listStyle(.insetGrouped)
         .backgroundStyle(.clear)
     }
 }
@@ -67,21 +66,33 @@ struct FilterMatchesMenuDataQueriesView: View {
     @Binding var nonmatchSearchPreference: String
     
     var body: some View {
-        Menu("Filter Matches") {
+        
+        Menu {
+            Text("Show only cocktails missing:")
+            
             ForEach(viewModel.preferredSelections, id: \.self) { preference in
                 
-                Button("- \(preference)") {
+                Button {
                     nonmatchSearchPreference = preference
+                } label: {
+                    Text("- \(preference)")
                 }
-                .foregroundStyle(.brandPrimaryRed)
             }
+            
             Button {
                 nonmatchSearchPreference = "none"
             } label: {
-                Text("Show all")
+                Text("- Show all cocktails")
+            }
+            
+        } label: {
+            HStack {
+                Text("Filter Matches")
+                    .fontWeight(.semibold)
+                    .tint(ColorScheme.interactionTint)
             }
         }
-        .tint(.blueTint)
+        .tint(ColorScheme.interactionTint)
     }
 }
 
@@ -112,12 +123,11 @@ struct PerfectMatchCocktailView: View {
                     } label: {
                         HStack {
                             Text(cocktail.cocktailName)
+                                .foregroundStyle(.secondary)
                         }
                     }
                 }
             }
-            .backgroundStyle(.clear)
-            .listRowBackground(Color.clear)
         }
     }
 }
@@ -138,12 +148,8 @@ struct MinusOneMatchView: View {
         if minusOneMatchCocktails.isEmpty || viewModel.preferredSelections.count < 2 {
             EmptyView()
         } else {
-            Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 1))) {
-                
-                HStack{
-                    FilterMatchesMenuDataQueriesView(nonmatchSearchPreference: $nonmatchSearchPreference)
-                    Spacer()
-                }
+            Section(header:SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 1)))
+            {
                 ForEach(filtered(minusOneMatchCocktails), id: \.self) { cocktail in
                     NavigationLink {
                         RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
@@ -152,15 +158,14 @@ struct MinusOneMatchView: View {
                         VStack {
                             HStack {
                                 Text(cocktail.cocktailName)
+                                    .font(FontFactory.mediumFont(size: 16))
+                                    .foregroundStyle(.secondary)
                                 Spacer()
                             }
-                            MissingIngredientsView(for: cocktail, in: viewModel)
                         }
                     }
                 }
             }
-            .backgroundStyle(.clear)
-            .listRowBackground(Color.clear)
         }
     }
     func filtered(_ cocktails: [Cocktail]) -> [Cocktail] {
@@ -192,11 +197,6 @@ struct MinusTwoMatchView: View {
         } else {
             
             Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 2))) {
-                
-                HStack{
-                    FilterMatchesMenuDataQueriesView(nonmatchSearchPreference: $nonmatchSearchPreference)
-                    Spacer()
-                }
                 ForEach(filtered(minusTwoMatchCocktails), id: \.self) { cocktail in
                     
                     NavigationLink {
@@ -206,15 +206,13 @@ struct MinusTwoMatchView: View {
                         VStack {
                             HStack {
                                 Text(cocktail.cocktailName)
+                                    .foregroundStyle(.secondary)
                                 Spacer()
                             }
-                            MissingIngredientsView(for: cocktail, in: viewModel)
                         }
                     }
                 }
             }
-            .backgroundStyle(.clear)
-            .listRowBackground(Color.clear)
         }
     }
     func filtered(_ cocktails: [Cocktail]) -> [Cocktail] {

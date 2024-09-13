@@ -157,6 +157,7 @@ final class SearchViewModel: ObservableObject {
         fillPreferredCategoryArrays()
         currentComponentSearchName = ""
     }
+    
     func handleThumbsDown(ingredient: String) {
         if !unwantedSelections.contains(ingredient) {
             if umbrellaCategoryStrings.contains(ingredient) {
@@ -210,17 +211,15 @@ final class SearchViewModel: ObservableObject {
     }
     
     func searchButtonPressed() async {
+            updatedUnwantedSelections = unwantedSelections
+            evaluateSearchType()
         
-        updatedUnwantedSelections = unwantedSelections
-        
-        evaluateSearchType()
-        if searchType == .complex {
-            await generateComplicatedPredicates()
-        }
-        await MainActor.run {
-            searchCompleted = true
-        }
-        
+            if searchType == .complex {
+                await generateComplicatedPredicates()
+            }
+            await MainActor.run {
+                searchCompleted = true
+            }
     }
     
     func evaluateSearchType() {
@@ -524,13 +523,13 @@ final class SearchViewModel: ObservableObject {
         }
         
         @ViewBuilder
-        func returnPreferencesThumbCell(ingredient: Binding<String>) -> some View {
+        func makeIngredientSearchCell(for ingredient: Binding<String>) -> some View {
             if includedIngredientsSet.contains(ingredient.wrappedValue) {
-                PreferencesIncludedLimitedThumbCell(ingredient: ingredient)
+                IncludedIngredientSearchCell(ingredient: ingredient)
             } else if excludedIngredientsSet.contains(ingredient.wrappedValue) {
-                PreferencesExcludedLimitedThumbCell(ingredient: ingredient)
+                ExcludedIngredientSearchCell(ingredient: ingredient)
             } else {
-                PreferencesThumbsCell(ingredient: ingredient)
+                DefaultIngredientSearchCell(ingredient: ingredient)
             }
         }
     

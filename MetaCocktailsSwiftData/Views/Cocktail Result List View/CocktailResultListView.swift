@@ -58,7 +58,7 @@ struct CocktailResultList: View {
                                                             HStack{
                                                                 ForEach(cocktail.missingIngredients, id: \.self) { nonMatch in
                                                                     Text("-\(nonMatch) ")
-                                                                        .foregroundStyle(.brandPrimaryRed)
+                                                                        .foregroundStyle(ColorScheme.unwantedColor)
                                                                         .font(.caption)
                                                                 }
                                                                 Spacer()
@@ -114,7 +114,7 @@ struct FilterMatchesMenuView: View {
                 Button("- \(preference.name)") {
                     nonmatchSearchPreference = preference.name
                 }
-                .foregroundStyle(.brandPrimaryRed)
+                .foregroundStyle(ColorScheme.unwantedColor)
             }
             Button {
                 nonmatchSearchPreference = "none"
@@ -122,7 +122,7 @@ struct FilterMatchesMenuView: View {
                 Text("Show all")
             }
         }
-        .tint(.blueTint)
+        .tint(ColorScheme.interactionTint)
     }
 }
 
@@ -163,7 +163,7 @@ struct PartialMatchWithNoPreferenceView: View {
                     HStack{
                         ForEach(cocktail.missingIngredients, id: \.self) { nonMatch in
                             Text("-\(nonMatch) ")
-                                .foregroundStyle(.brandPrimaryRed)
+                                .foregroundStyle(ColorScheme.unwantedColor)
                                 .font(.caption)
                         }
                         Spacer()

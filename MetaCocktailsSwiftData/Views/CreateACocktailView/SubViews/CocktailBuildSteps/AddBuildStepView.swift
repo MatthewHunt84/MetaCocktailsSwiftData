@@ -24,7 +24,7 @@ struct AddBuildStepView: View {
                     Spacer()
                     
                     Image(systemName: "plus.circle.fill")
-                        .foregroundStyle(.blueTint)
+                        .foregroundStyle(ColorScheme.interactionTint)
                 }
             }
             .sheet(isPresented: $isShowingBuildSheet, content: {

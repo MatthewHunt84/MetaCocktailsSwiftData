@@ -25,17 +25,14 @@ struct CustomLoadingOverlayModifier: ViewModifier {
 
 struct CustomLoadingAnimation: View {
     @State private var rotationCircle = 0.0
-    @State private var rotationTriangle = 0.0
     
     var body: some View {
         
         ZStack {
-            MeshGradients.goldMesh.mask (
                 Image("CirclePart")
                     .resizable()
                     .rotationEffect(.degrees(rotationCircle))
                     .animation(Animation.linear(duration: 4).repeatForever(autoreverses: false), value: rotationCircle)
-            )
             
             Image("TrianglePart")
                 .resizable()
@@ -44,9 +41,11 @@ struct CustomLoadingAnimation: View {
                 .resizable()
             
         }
-        .onAppear {
-            rotationCircle = 360
-            rotationTriangle = -360
+        .foregroundStyle(ColorScheme.tintColor)
+        .task {
+            await MainActor.run {
+                rotationCircle = 360
+            }
         }
     }
 }

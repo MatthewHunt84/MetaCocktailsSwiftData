@@ -16,13 +16,29 @@ struct FontFactory {
             .bold(isBold)
     }
     
+    static func mediumText(_ text: String, font: String = "AvenirNext-Medium", size: CGFloat, color: Color = .white, isBold: Bool = false) -> Text {
+        return Text(text)
+            .font(.custom(font, size: size))
+            .foregroundStyle(color)
+            .bold(isBold)
+    }
+    
     static func regularFont(size: CGFloat) -> Font {
         Font.custom("AvenirNext-Regular", size: size)
     }
     
+    static func mediumFont(size: CGFloat) -> Font {
+        Font.custom("AvenirNext-Medium", size: size)
+    }
+    
+    static func listLetter(size: CGFloat) -> Font {
+        Font.custom("AvenirNext-Medium", size: size)
+    }
+    
     static func titleHeader30(title: String) -> Text {
         return Text(title)
-            .font(.custom("AvenirNext-Regular", size: 30))
+            .font(.custom("AvenirNext-DemiBold", size: 22))
+            .foregroundStyle(ColorScheme.headerColor)
     }
     
     static var buildBodySmall10: Font = .custom("AvenirNext-Regular", size: 10)
@@ -33,5 +49,11 @@ struct FontFactory {
     static var recipeCardHeader18B: Font = .custom("AvenirNext-Regular", size: 18).bold()
     static var formLabel18: Font = .custom("AvenirNext-Regular", size: 18)
     static var bottomToolbarButton20: Font = .custom("AvenirNext-Regular", size: 20)
+    
+    static func recipeHeader(title: String) -> Text {
+        return Text(title.replacingOccurrences(of: (" (W&G Version)"), with: ""))
+            .font(.custom("AvenirNext-Regular", size: 20))
+            .foregroundStyle(ColorScheme.recipeHeaderColor)
+    }
     
 }

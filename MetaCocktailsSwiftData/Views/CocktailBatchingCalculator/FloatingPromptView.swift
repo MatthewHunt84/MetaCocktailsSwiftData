@@ -50,7 +50,7 @@ struct FloatingPromptView: View {
                         } label: {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 20)
-                                    .foregroundStyle(.blueTint)
+                                    .foregroundStyle(ColorScheme.interactionTint)
                                 FontFactory.regularText("Batch", size: 16, isBold: true)
                                     .padding()
                                 
@@ -64,7 +64,7 @@ struct FloatingPromptView: View {
                 .fixedSize(horizontal: false, vertical: true)
                 .padding()
                 .background(.black)
-                .background(MeshGradients.meshRedRibbonBackground)
+                .background(ColorScheme.background)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .overlay {
                     VStack{
@@ -76,7 +76,7 @@ struct FloatingPromptView: View {
                                 Image(systemName: "x.circle.fill")
                                     .font(.title2)
                                     .fontWeight(.medium)
-                                    .tint(.blueTint)
+                                    .tint(ColorScheme.interactionTint)
                             }
                             .tint(.white)
                         }

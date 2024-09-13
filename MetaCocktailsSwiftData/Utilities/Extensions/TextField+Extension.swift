@@ -22,10 +22,10 @@ extension TextField {
     func SearchBarTextField() -> some View {
         self
             .font(FontFactory.regularFont(size: 16))
-            .padding(10)
+            .padding(12)
             .background(
-                RoundedRectangle(cornerRadius: 25)
-                    .fill(Color.brandSecondaryGray)
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(ColorScheme.backgroundLighter)
             )
             .foregroundColor(.white)
             .autocorrectionDisabled(true)
