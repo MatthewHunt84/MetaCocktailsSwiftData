@@ -23,7 +23,7 @@ struct CocktailListView: View {
                 ColorScheme.background.ignoresSafeArea()
                 
                 VStack {
-                    ListSearchBarView(text: $viewModel.searchText, isFocused: $searchBarIsFocused, viewModel: viewModel)
+                    SearchBarForCocktailListView(isFocused: $searchBarIsFocused, viewModel: viewModel)
                         .padding()
                     GeometryReader { listGeo in
                         ScrollView {
@@ -107,33 +107,6 @@ struct AlphabetNavigationView: View {
     }
 }
 
-struct ListSearchBarView: View {
-    
-    @Binding var text: String
-    @FocusState.Binding var isFocused: Bool
-    @Bindable var viewModel: CocktailListViewModel
-    
-    var body: some View {
-        HStack {
-            SearchBarForCocktailListView(isFocused: $isFocused, viewModel: viewModel)
-            if isFocused {
-                Button("Done") {
-                    withAnimation(.easeInOut(duration: 0.2)) {
-                        isFocused = false
-                    }
-                }
-                .padding(.horizontal, 8)
-                .padding(.vertical, 4)
-                .background(ColorScheme.interactionTint)
-                .foregroundColor(.black)
-                .cornerRadius(8)
-                
-            }
-        }
-        .animation(.default, value: isFocused)
-    }
-}
-
 struct SearchBarForCocktailListView: View {
     
     @FocusState.Binding var isFocused: Bool
@@ -158,11 +131,12 @@ struct SearchBarForCocktailListView: View {
             .onChange(of: viewModel.searchText) { _, newValue in
                 viewModel.updateSearch(newValue)
             }
+            .onSubmit {
+                viewModel.searchText = ""
+            }
+            .submitLabel(.done)
     }
 }
-
-
-
 
 
 struct CocktailRowView: View {

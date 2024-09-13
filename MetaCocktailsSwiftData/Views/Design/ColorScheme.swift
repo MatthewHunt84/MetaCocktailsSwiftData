@@ -9,7 +9,7 @@ import SwiftUI
 struct ColorScheme {
     
     static let backgroundDark = Color.black
-    static let backgroundLighter = Color(hex: "#171717")
+    static let searchBarBackground = Color(hex: "#3F3F3F")
     static let tintColor = Color(hex: "#FFB803")
     static let darkerTintColor = Color(hex: "#FF8426")
     static let interactionTint = Color(hex: "#00B2FF")
@@ -25,8 +25,6 @@ struct ColorScheme {
     static let tabBarTint = tintColor
     
     static let recipeBackground = Color(hex: "#0F0F0F")
-    
-    static let searchBarBackground = Color(hex: "#303030")
 
     static let recipeBorder = LinearGradient(gradient: Gradient(colors: [tintColor, tintColor, tintColor, darkerTintColor]),
                                            startPoint: .leading,
