@@ -5,7 +5,7 @@
 //  Created by Matt Hunt on 2/15/24.
 //
 
-import SwiftUI
+import Foundation
 
 enum CocktailCollection: Int, Codable, Identifiable, CaseIterable {
     
@@ -33,14 +33,14 @@ enum CocktailCollection: Int, Codable, Identifiable, CaseIterable {
         case .all:
             "All"
         case .deathAndCo:
-            "Death & Co."
+            "Death & Co"
         }
     }
     
-    var collectionLogo: Image? {
+    var recipeSubheading: String? {
         switch self {
-        case .williamsAndGraham:
-            return Image(.wngLogo)
+        case .deathAndCo, .williamsAndGraham, .milkAndHoney:
+            return self.collectionName + " Spec"
         default:
             return nil
         }

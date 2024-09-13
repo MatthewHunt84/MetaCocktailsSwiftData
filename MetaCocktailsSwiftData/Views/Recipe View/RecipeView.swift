@@ -23,7 +23,6 @@ struct RecipeView: View {
                 ScrollViewReader { scrollReader in
                     
                     ScrollView {
-                        
                         RecipeFlipCardView(viewModel: viewModel, geo: geo, topID: topID, scrollReader: scrollReader)
                     }
                     .navigationBarTitleDisplayMode(.inline)
@@ -317,29 +316,12 @@ extension ButtonStyle where Self == CustomButtonStyle {
 struct RecipeTitleView: View {
     var cocktail: Cocktail
     var body: some View {
-        if cocktail.collection?.collectionLogo != nil {
-            RecipeTitleViewWithCollection(cocktail: cocktail)
-        } else {
+        VStack {
             FontFactory.recipeHeader(title: cocktail.cocktailName)
                 .lineLimit(1)
                 .minimumScaleFactor(0.4)
-        }
-    }
-}
-
-struct RecipeTitleViewWithCollection: View {
-    var cocktail: Cocktail
-    var body: some View {
-        HStack {
-            FontFactory.recipeHeader(title: cocktail.cocktailName)
-                .lineLimit(1)
-                .minimumScaleFactor(0.4)
-            if let logo = cocktail.collection?.collectionLogo {
-                    logo
-                    .resizable()
-                    .scaledToFit()
-                    .foregroundStyle(.secondary)
-                    .padding(6)
+            if let variation = cocktail.variation, let recipeSubheading = cocktail.collection?.recipeSubheading {
+                FontFactory.mediumText(recipeSubheading, size: 12, color: .secondary)
             }
         }
     }
