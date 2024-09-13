@@ -59,6 +59,7 @@ struct MissingIngredientsView: View {
     }
 }
 
+
 struct FilterMatchesMenuDataQueriesView: View {
     
     @EnvironmentObject var viewModel: SearchViewModel
