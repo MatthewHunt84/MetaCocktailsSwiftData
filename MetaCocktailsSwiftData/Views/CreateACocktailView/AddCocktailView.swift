@@ -85,7 +85,7 @@ struct AddCocktailView: View {
                         Button {
                             isSelectingFromTemplate = true
                         } label: {
-                            Image("ChooseCocktailTemplate")
+                            Image("useExistingRecipe")
                                 .resizable()
                                 .tint(ColorScheme.interactionTint)
                         }
@@ -101,7 +101,7 @@ struct AddCocktailView: View {
                             if viewModel.isValid() {
                                 
                                 viewModel.addCocktailToModel(context: modelContext)
-                                selectedTab.wrappedValue = .customCocktailsView
+                                selectedTab.wrappedValue = .favoritesView
                             } else {
                                 if !viewModel.isShowingUniqueNameAlert {
                                     viewModel.isShowingAlert.toggle()

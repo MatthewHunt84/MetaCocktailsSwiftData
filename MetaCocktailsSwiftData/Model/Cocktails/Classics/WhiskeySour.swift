@@ -7,14 +7,16 @@
 
 import SwiftUI
 
-var whiskeySour = Cocktail(cocktailName: "Whiskey Sour(W&G Version)",
+var whiskeySour = Cocktail(cocktailName: "Whiskey Sour (W&G Version)",
                            glasswareType: .stemmedGlassware,
                            garnish: [.maraschinoCherry],
                            ice: nil,
                            author: nil,
                            spec: whiskeySourSpec,
                            buildOrder: whiskeySourBuild,
-                           tags: whiskeySourTags)
+                           tags: whiskeySourTags,
+                           variation: .whiskeySour,
+                           collection: .williamsAndGraham)
 
 var whiskeySourSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
                         OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),

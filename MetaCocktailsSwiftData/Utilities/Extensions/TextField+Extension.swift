@@ -24,8 +24,8 @@ extension TextField {
             .font(FontFactory.regularFont(size: 16))
             .padding(12)
             .background(
-                RoundedRectangle(cornerRadius: 8)
-                    .fill(ColorScheme.backgroundLighter)
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(ColorScheme.searchBarBackground)
             )
             .foregroundColor(.white)
             .autocorrectionDisabled(true)

@@ -20,7 +20,7 @@ struct JamesTitle: ViewModifier {
         content
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    FontFactory.titleHeader30(title: title)
+                    FontFactory.titleHeader22(title: title)
                 }
             }
     }
@@ -50,7 +50,7 @@ struct JamesTitleWithNavigation: ViewModifier {
                 }
                 
                 ToolbarItem(placement: .principal) {
-                    FontFactory.titleHeader30(title: title)
+                    FontFactory.titleHeader22(title: title)
                 }
             }
     }

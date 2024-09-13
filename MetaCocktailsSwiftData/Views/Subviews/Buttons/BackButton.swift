@@ -20,13 +20,12 @@ struct BackButton: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 9)
-                        .font(.system(size: 22))
+                        .bold()
                         .tint(ColorScheme.interactionTint)
                         .padding(.trailing, 10)
                 }
                 
                 .frame(width: 40, height: 40)
-//                .background(.red)
             }
         }
     }
@@ -35,4 +34,3 @@ struct BackButton: View {
 #Preview {
     BackButton()
 }
-

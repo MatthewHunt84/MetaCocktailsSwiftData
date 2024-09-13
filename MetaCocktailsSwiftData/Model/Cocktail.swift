@@ -37,11 +37,9 @@ class Cocktail: Equatable, Hashable, Identifiable {
     var isCustomCocktail: Bool
     var collectionName: String
     var titleCocktail: Bool?
-  
-    
-    
+    var favorite: Bool
 
-    init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [GarnishList]? = nil, ice: Ice? = nil, author: Author? = nil, spec: [OldCocktailIngredient], buildOrder: Build? = nil, notes: String? = nil, tags: Tags, variation: Variation? = nil, variationName: String? = nil, collection: CocktailCollection? = nil, isCustomCocktail: Bool = false, titleCocktail: Bool = false) {
+    init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [GarnishList]? = nil, ice: Ice? = nil, author: Author? = nil, spec: [OldCocktailIngredient], buildOrder: Build? = nil, notes: String? = nil, tags: Tags, variation: Variation? = nil, variationName: String? = nil, collection: CocktailCollection? = nil, isCustomCocktail: Bool = false, titleCocktail: Bool = false, favorite: Bool = false) {
 
         self.id = id
         self.cocktailName = cocktailName
@@ -91,11 +89,12 @@ class Cocktail: Equatable, Hashable, Identifiable {
             }
             return newCompiledTags
         }()
+        self.favorite = favorite
         
     }
     
 
-    init(cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [Garnish] = [], ice: Ice? = nil, author: Author? = nil, spec: [Ingredient], buildOrder: Build? = nil, tags: Tags, variation: Variation? = nil, variationName: String? = nil, collection: CocktailCollection? = nil, isCustomCocktail: Bool = false, titleCocktail: Bool = false) {
+    init(cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [Garnish] = [], ice: Ice? = nil, author: Author? = nil, spec: [Ingredient], buildOrder: Build? = nil, tags: Tags, variation: Variation? = nil, variationName: String? = nil, collection: CocktailCollection? = nil, isCustomCocktail: Bool = false, titleCocktail: Bool = false, favorite: Bool = false) {
 
         self.id = UUID()
         self.cocktailName = cocktailName
@@ -129,7 +128,7 @@ class Cocktail: Equatable, Hashable, Identifiable {
             }
             return newCompiledTags
         }()
-        
+        self.favorite = favorite
     }
 }
 

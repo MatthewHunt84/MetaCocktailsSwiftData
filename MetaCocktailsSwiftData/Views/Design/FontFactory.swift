@@ -35,9 +35,15 @@ struct FontFactory {
         Font.custom("AvenirNext-Medium", size: size)
     }
     
-    static func titleHeader30(title: String) -> Text {
+    static func titleHeader22(title: String) -> Text {
         return Text(title)
             .font(.custom("AvenirNext-DemiBold", size: 22))
+            .foregroundStyle(ColorScheme.headerColor)
+    }
+    
+    static func titleHeader24(title: String) -> Text {
+        return Text(title)
+            .font(.custom("AvenirNext-DemiBold", size: 24))
             .foregroundStyle(ColorScheme.headerColor)
     }
     
@@ -51,7 +57,7 @@ struct FontFactory {
     static var bottomToolbarButton20: Font = .custom("AvenirNext-Regular", size: 20)
     
     static func recipeHeader(title: String) -> Text {
-        return Text(title.replacingOccurrences(of: (" (W&G Version)"), with: ""))
+        return Text(title.replacingOccurrences(of: ("(W&G Version)"), with: ""))
             .font(.custom("AvenirNext-Regular", size: 20))
             .foregroundStyle(ColorScheme.recipeHeaderColor)
     }

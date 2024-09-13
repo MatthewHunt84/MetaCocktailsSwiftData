@@ -33,7 +33,7 @@ struct PreferencesCheckListCell: View {
                             .multilineTextAlignment(.leading)
                             .offset(x: 85)
                         if ingredient.info != nil {
-                            Image(systemName: "questionmark.circle.fill")
+                            Image(systemName: "info.circle")
                                 .foregroundStyle(.blue)
                                 .onTapGesture {
                                     withAnimation(.easeInOut(duration: 0.5)) {
@@ -60,7 +60,7 @@ struct PreferencesCheckListCell: View {
                             .multilineTextAlignment(.leading)
                             .offset(x: 85)
                         if ingredient.info != nil {
-                            Image(systemName: "questionmark.circle.fill")
+                            Image(systemName: "info.circle")
                                 .foregroundStyle(.blue)
                                 .onTapGesture {
                                     withAnimation(.easeInOut(duration: 0.5)) {
