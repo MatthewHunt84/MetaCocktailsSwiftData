@@ -411,7 +411,7 @@ struct SpecIngredientView: View {
 
                 }
                 if ingredient.ingredientBase.info != nil {
-                    Image(systemName: "questionmark.circle.fill")
+                    Image(systemName: "info.circle")
                         .foregroundStyle(ColorScheme.interactionTint)
                         .onTapGesture {
                             withAnimation(.easeInOut(duration: 0.25)) {
@@ -457,7 +457,7 @@ struct SpecView: View {
                             Button {
                                 showingModal = true
                             } label: {
-                                Image(systemName: "bookmark.circle.fill")
+                                Image(systemName: "info.circle.fill")
                                     .tint(ColorScheme.interactionTint)
                             }
                         }
@@ -466,7 +466,7 @@ struct SpecView: View {
                             Button {
                                 isShowingCocktailNotes.toggle()
                             } label: {
-                                Image(systemName: "questionmark.circle.fill")
+                                Image(systemName: "info.circle")
                                     .foregroundStyle(ColorScheme.interactionTint)
                             }
                         }
