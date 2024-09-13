@@ -46,5 +46,5 @@ public struct PreferencesListView: View {
 
 #Preview {
     PreferencesListView()
-        .environmentObject(SearchCriteriaViewModel())
+        .environmentObject(SearchViewModel())
 }

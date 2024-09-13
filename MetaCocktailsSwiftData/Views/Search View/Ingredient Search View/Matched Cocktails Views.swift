@@ -1,10 +1,9 @@
 //
-//  CocktailResultListDataQueries.swift
+//  Matched Cocktails Views.swift
 //  MetaCocktailsSwiftData
 //
-//  Created by James Menkal on 7/14/24.
+//  Created by James Menkal on 9/13/24.
 //
-
 import SwiftUI
 import SwiftData
 
@@ -59,6 +58,7 @@ struct MissingIngredientsView: View {
         }
     }
 }
+
 
 struct FilterMatchesMenuDataQueriesView: View {
     

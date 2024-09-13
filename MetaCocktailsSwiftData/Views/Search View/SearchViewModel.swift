@@ -43,10 +43,7 @@ final class SearchViewModel: ObservableObject {
     
     var isLoading = true
     var preferredCount = 0
-    var sections: [ResultViewSectionData] = []
     
-    var cocktailsAndMissingIngredientsForMinusOne: [CocktailsAndMissingIngredients] = []
-    var cocktailsAndMissingIngredientsForMinusTwo: [CocktailsAndMissingIngredients] = []
     
     let umbrellaCategoryMap: [SpiritsUmbrellaCategory: [String]] = [
         .agaves: Agave.allCases.map { $0.rawValue },
@@ -263,25 +260,18 @@ final class SearchViewModel: ObservableObject {
         perfectMatchCocktails.removeAll()
         minusOneMatchCocktails.removeAll()
         minusTwoMatchCocktails.removeAll()
-        searchCompleted = false
-        isShowingResults = false
-        searchType = .simple
         preferredCount = 0
         
         
         currentComponentSearchName = ""
-        sections.removeAll()
         
-        
-        isRunningComplexSearch = false
-        isGeneratingIngredientList = false
+//        
+//        isRunningComplexSearch = false
+//        isGeneratingIngredientList = false
         
         
         filteredIngredients.removeAll()
         
-        
-        cocktailsAndMissingIngredientsForMinusOne.removeAll()
-        cocktailsAndMissingIngredientsForMinusTwo.removeAll()
     }
     
     
@@ -463,7 +453,6 @@ final class SearchViewModel: ObservableObject {
         currentComponentSearchName = ""
         unwantedSelections = []
         preferredSelections = []
-        sections.removeAll()
         preferredCount = 0
     }
     

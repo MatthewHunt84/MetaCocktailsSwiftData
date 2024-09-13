@@ -87,16 +87,16 @@ struct PreferencesCheckListCell: View {
 }
 
 
-
-
-struct PreferencesCheckListCell_Previews: PreviewProvider {
-    @State static var mockData = CocktailComponent(name: "Super Dooper Long Working For Some Reason")
-    
-    static var previews: some View {
-        PreferencesCheckListCell(ingredient: $mockData , isShowingPreferences: true)
-            .environmentObject(SearchCriteriaViewModel())
-
-    }
-}
-
+//
+//
+//struct PreferencesCheckListCell_Previews: PreviewProvider {
+//    @State static var mockData = CocktailComponent(name: "Super Dooper Long Working For Some Reason")
+//    
+//    static var previews: some View {
+//        PreferencesCheckListCell(ingredient: $mockData , isShowingPreferences: true)
+//            .environmentObject(SearchCriteriaViewModel())
+//
+//    }
+//}
+//
 

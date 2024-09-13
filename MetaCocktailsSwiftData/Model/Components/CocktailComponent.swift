@@ -24,8 +24,6 @@ class CocktailComponent: Identifiable, ObservableObject, Hashable{
     var isFlavor: Bool = false
     var isProfile: Bool = false
     var isStyle: Bool = false
-    var is86d: Bool = false
-    var preferenceType: PreferenceType
     var spiritCategory: IngredientType?
     var nACategory: IngredientType?
     var nACategoryName: String = ""
@@ -33,13 +31,12 @@ class CocktailComponent: Identifiable, ObservableObject, Hashable{
     var info: String?
     
     
-    init(name: String, isFlavor: Bool = false, isProfile: Bool = false, isStyle: Bool = false, is86d: Bool = false, isSpirit: Bool = false, isNA: Bool = false, matchesCurrentSearch: Bool = true, info: String? = nil) {
+    init(name: String, isFlavor: Bool = false, isProfile: Bool = false, isStyle: Bool = false, isSpirit: Bool = false, isNA: Bool = false, matchesCurrentSearch: Bool = true, info: String? = nil) {
         self.name = name
         self.isSpirit = isSpirit
         self.isNA = isNA
         self.isFlavor = isFlavor
         self.isStyle = isStyle
-        self.is86d = is86d
         self.isProfile = isProfile
         self.matchesCurrentSearch = matchesCurrentSearch
         self.info = {
@@ -51,44 +48,30 @@ class CocktailComponent: Identifiable, ObservableObject, Hashable{
             }
             return info
         }()
-        if isFlavor {
-            preferenceType = .flavors
-        } else if isStyle {
-            preferenceType = .style
-        } else if isSpirit {
-            preferenceType = .spirits
-        } else if isProfile {
-            preferenceType = .profiles
-        } else {
-            preferenceType = .na
-        }
+       
     }
   
     
     init(for flavor: Flavor) {
         self.name = flavor.rawValue
         self.isFlavor = true
-        self.preferenceType = .flavors
         self.matchesCurrentSearch = true
     }
     
     init(for profile: Profile) {
         self.name = profile.rawValue
         self.isProfile = true
-        self.preferenceType = .profiles
         self.matchesCurrentSearch = true
     }
     
     init(for style: Style) {
         self.name = style.rawValue
         self.isStyle = true
-        self.preferenceType = .style
         self.matchesCurrentSearch = true
     }
     init(for booze: Booze) {
         self.name = booze.ingredientType.name
         self.isSpirit = true
-        self.preferenceType = .spirits
         self.matchesCurrentSearch = true
         self.spiritCategory = booze.ingredientType
         self.spiritCategoryName = booze.ingredientType.category
@@ -96,7 +79,6 @@ class CocktailComponent: Identifiable, ObservableObject, Hashable{
     init(for nA: NAIngredients) {
         self.name = nA.ingredientType.name
         self.isSpirit = false
-        self.preferenceType = .na
         self.matchesCurrentSearch = true
         self.isNA = true
         self.nACategory = nA.ingredientType
