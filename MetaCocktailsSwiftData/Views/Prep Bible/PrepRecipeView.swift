@@ -43,5 +43,4 @@ struct PrepRecipeView: View {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
     return PrepRecipeView(prep: Prep(prepIngredientName: "Placeholder", prepRecipe: [Instruction(step: 1, method: "Do some prep")]))
         .modelContainer(preview.container)
-        .environmentObject(SearchCriteriaViewModel())
 }

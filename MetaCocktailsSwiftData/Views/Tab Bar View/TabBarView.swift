@@ -28,7 +28,6 @@ struct TabBarView: View {
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
     return TabBarView()
-        .environmentObject(SearchCriteriaViewModel())
         .modelContainer(preview.container)
     
 }
