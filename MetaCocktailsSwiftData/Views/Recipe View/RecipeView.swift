@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct RecipeView: View {
     @Bindable var viewModel: RecipeViewModel
@@ -33,10 +34,40 @@ struct RecipeView: View {
                         ToolbarItem(placement: .topBarLeading) {
                             BackButton()
                         }
+                        ToolbarItem(placement: .topBarTrailing) {
+                            FavoriteButton(for: viewModel.cocktail)
+                        }
                     }
                 }
             }
         }
+    }
+}
+
+struct FavoriteButton: View {
+    let cocktail: Cocktail
+    @Environment(\.modelContext) private var modelContext
+    @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
+    
+    init(for cocktail: Cocktail) {
+        self.cocktail = cocktail
+    }
+
+    var body: some View {
+        Button {
+            withAnimation {
+                cocktail.favorite.toggle()
+            }
+        } label: {
+            if cocktail.favorite {
+                Image(systemName: "star.fill")
+                    .foregroundStyle(ColorScheme.tintColor)
+            } else {
+                Image(systemName: "star")
+                    .foregroundStyle(Color.gray)
+            }
+        }
+
     }
 }
 
@@ -320,7 +351,7 @@ struct RecipeTitleView: View {
             FontFactory.recipeHeader(title: cocktail.cocktailName)
                 .lineLimit(1)
                 .minimumScaleFactor(0.4)
-            if let variation = cocktail.variation, let recipeSubheading = cocktail.collection?.recipeSubheading {
+            if let _ = cocktail.variation, let recipeSubheading = cocktail.collection?.recipeSubheading {
                 FontFactory.mediumText(recipeSubheading, size: 12, color: .secondary)
             }
         }
