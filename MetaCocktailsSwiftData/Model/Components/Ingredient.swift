@@ -36,12 +36,7 @@ class OldCocktailIngredient: Codable, Hashable { // This old guy needs to be rem
                 ingredient.name == Syrup.richCinnamonAndVanill.rawValue {
                 return "Rich 2:1 by weight syrup."
             }
-            if ingredient.name == Juice.carrotJuice.rawValue ||
-                ingredient.name == Juice.grapefruit.rawValue ||
-                ingredient.name == Juice.lemon.rawValue ||
-                ingredient.name == Juice.lime.rawValue ||
-                ingredient.name == Juice.orange.rawValue ||
-                ingredient.name == Juice.pineappleJuice.rawValue {
+            if ingredient.name == Juice.carrotJuice.rawValue {
                 return "Juiced fresh"
             }
             if ingredient.name == Fruit.grapefruitPeel.rawValue {

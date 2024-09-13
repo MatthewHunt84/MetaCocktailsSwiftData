@@ -13,6 +13,7 @@ var whiteLadyWnG = Cocktail(cocktailName: "White Lady (W&G Version)",
                             author: williamsAndGraham,
                             spec: whiteLadyWnGSpec,
                             tags: whiteLadyWnGTags,
+                            variation: .whiteLady,
                             collection: .williamsAndGraham)
 
 var whiteLadyWnGSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),

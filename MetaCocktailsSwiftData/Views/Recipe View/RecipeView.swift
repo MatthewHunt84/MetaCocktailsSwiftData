@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct RecipeView: View {
     @Bindable var viewModel: RecipeViewModel
@@ -23,7 +24,6 @@ struct RecipeView: View {
                 ScrollViewReader { scrollReader in
                     
                     ScrollView {
-                        
                         RecipeFlipCardView(viewModel: viewModel, geo: geo, topID: topID, scrollReader: scrollReader)
                     }
                     .navigationBarTitleDisplayMode(.inline)
@@ -38,6 +38,33 @@ struct RecipeView: View {
                 }
             }
         }
+    }
+}
+
+struct FavoriteButton: View {
+    let cocktail: Cocktail
+    @Environment(\.modelContext) private var modelContext
+    @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
+    
+    init(for cocktail: Cocktail) {
+        self.cocktail = cocktail
+    }
+
+    var body: some View {
+        Button {
+            withAnimation(.snappy) {
+                cocktail.favorite.toggle()
+            }
+        } label: {
+            Image(systemName:  cocktail.favorite ? "heart.fill" : "heart")
+                .font(.title)
+                .foregroundStyle(cocktail.favorite ? Color.red : Color.gray)
+                .contentTransition(
+                    .symbolEffect(.replace)
+                )
+
+        }
+
     }
 }
 
@@ -317,29 +344,12 @@ extension ButtonStyle where Self == CustomButtonStyle {
 struct RecipeTitleView: View {
     var cocktail: Cocktail
     var body: some View {
-        if cocktail.collection?.collectionLogo != nil {
-            RecipeTitleViewWithCollection(cocktail: cocktail)
-        } else {
+        VStack {
             FontFactory.recipeHeader(title: cocktail.cocktailName)
                 .lineLimit(1)
                 .minimumScaleFactor(0.4)
-        }
-    }
-}
-
-struct RecipeTitleViewWithCollection: View {
-    var cocktail: Cocktail
-    var body: some View {
-        HStack {
-            FontFactory.recipeHeader(title: cocktail.cocktailName)
-                .lineLimit(1)
-                .minimumScaleFactor(0.4)
-            if let logo = cocktail.collection?.collectionLogo {
-                    logo
-                    .resizable()
-                    .scaledToFit()
-                    .foregroundStyle(.secondary)
-                    .padding(6)
+            if let _ = cocktail.variation, let recipeSubheading = cocktail.collection?.recipeSubheading {
+                FontFactory.mediumText(recipeSubheading, size: 12, color: .secondary)
             }
         }
     }
@@ -401,7 +411,7 @@ struct SpecIngredientView: View {
 
                 }
                 if ingredient.ingredientBase.info != nil {
-                    Image(systemName: "questionmark.circle.fill")
+                    Image(systemName: "info.circle")
                         .foregroundStyle(ColorScheme.interactionTint)
                         .onTapGesture {
                             withAnimation(.easeInOut(duration: 0.25)) {
@@ -447,7 +457,7 @@ struct SpecView: View {
                             Button {
                                 showingModal = true
                             } label: {
-                                Image(systemName: "bookmark.circle.fill")
+                                Image(systemName: "info.circle.fill")
                                     .tint(ColorScheme.interactionTint)
                             }
                         }
@@ -456,7 +466,7 @@ struct SpecView: View {
                             Button {
                                 isShowingCocktailNotes.toggle()
                             } label: {
-                                Image(systemName: "questionmark.circle.fill")
+                                Image(systemName: "info.circle")
                                     .foregroundStyle(ColorScheme.interactionTint)
                             }
                         }

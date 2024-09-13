@@ -51,9 +51,6 @@ struct IngredientSearchView: View {
             .navigationBarTitleDisplayMode(.inline)
             .jamesHeader("Cocktail Ingredient Search")
             .customLoadingIndicator(isLoading: viewModel.isRunningComplexSearch)
-            .onAppear{
-                keyboardFocused =  true
-            }
         }
     }
 }

@@ -9,9 +9,9 @@ import SwiftUI
 
 enum TabBarComponents: Hashable, Identifiable, CaseIterable {
     
-    case searchView
     case cocktailListView
-    case customCocktailsView
+    case searchView
+    case favoritesView
     case addCocktailView
 
     var id: TabBarComponents { self }
@@ -20,11 +20,11 @@ enum TabBarComponents: Hashable, Identifiable, CaseIterable {
     var label: some View {
         switch self {
         case .cocktailListView:
-            Label("A-Z", systemImage: "list.bullet")
+            Label("Cocktails", systemImage: "book.fill")
         case .searchView:
             Label("Search", systemImage: "magnifyingglass.circle.fill")
-        case .customCocktailsView:
-            Label("Custom Cocktails", systemImage: "book.closed.fill")
+        case .favoritesView:
+            Label("Favorites", systemImage: "heart.fill")
         case .addCocktailView:
             Label("Add Cocktail", image: "custom.book.fill.badge.plus")
         }
@@ -38,7 +38,7 @@ enum TabBarComponents: Hashable, Identifiable, CaseIterable {
         case .searchView:
             IngredientSearchView()
                 .environmentObject(SearchViewModel())
-        case .customCocktailsView:
+        case .favoritesView:
             CustomCocktailsListView()
                 .environmentObject(CocktailListViewModel())
         case .addCocktailView:

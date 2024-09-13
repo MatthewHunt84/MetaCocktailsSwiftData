@@ -67,7 +67,7 @@ struct VariationPicker: View {
                 HStack {
                     Text("Variation")
                         .font(FontFactory.formLabel18)
-                    Image(systemName: "questionmark.circle.fill")
+                    Image(systemName: "info.circle")
                         .foregroundStyle(isShowingInfo ? .brandPrimaryGold : .blue)
                         .onTapGesture {
                             isShowingInfo.toggle()

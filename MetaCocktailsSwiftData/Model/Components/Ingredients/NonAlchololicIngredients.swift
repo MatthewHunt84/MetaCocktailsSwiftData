@@ -32,11 +32,11 @@ enum Juice: String, IngredientTagsProtocol {
     case carrotJuice          = "Carrot juice"
     case cranberryJuice       = "Cranberry juice"
     case donsMix              = "Don's mix"
-    case grapefruit           = "Grapefruit juice"
-    case lemon                = "Lemon juice"
-    case lime                 = "Lime juice"
-    case orange               = "Orange juice"
-    case pineappleJuice       = "Pineapple juice"
+    case grapefruit           = "Fresh grapefruit juice"
+    case lemon                = "Fresh lemon juice"
+    case lime                 = "Fresh lime juice"
+    case orange               = "Fresh orange juice"
+    case pineappleJuice       = "Fresh pineapple juice"
     
     var nAComponent: CocktailComponent {
         return CocktailComponent(for: NAIngredients(.juices(self)))
