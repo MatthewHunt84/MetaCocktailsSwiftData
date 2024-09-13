@@ -34,9 +34,6 @@ struct RecipeView: View {
                         ToolbarItem(placement: .topBarLeading) {
                             BackButton()
                         }
-                        ToolbarItem(placement: .topBarTrailing) {
-                            FavoriteButton(for: viewModel.cocktail)
-                        }
                     }
                 }
             }
@@ -55,17 +52,17 @@ struct FavoriteButton: View {
 
     var body: some View {
         Button {
-            withAnimation {
+            withAnimation(.snappy) {
                 cocktail.favorite.toggle()
             }
         } label: {
-            if cocktail.favorite {
-                Image(systemName: "star.fill")
-                    .foregroundStyle(ColorScheme.tintColor)
-            } else {
-                Image(systemName: "star")
-                    .foregroundStyle(Color.gray)
-            }
+            Image(systemName:  cocktail.favorite ? "heart.fill" : "heart")
+                .font(.title)
+                .foregroundStyle(cocktail.favorite ? Color.red : Color.gray)
+                .contentTransition(
+                    .symbolEffect(.replace)
+                )
+
         }
 
     }

@@ -35,9 +35,15 @@ struct FontFactory {
         Font.custom("AvenirNext-Medium", size: size)
     }
     
-    static func titleHeader30(title: String) -> Text {
+    static func titleHeader22(title: String) -> Text {
         return Text(title)
             .font(.custom("AvenirNext-DemiBold", size: 22))
+            .foregroundStyle(ColorScheme.headerColor)
+    }
+    
+    static func titleHeader24(title: String) -> Text {
+        return Text(title)
+            .font(.custom("AvenirNext-DemiBold", size: 24))
             .foregroundStyle(ColorScheme.headerColor)
     }
     
