@@ -14,6 +14,7 @@ var espressoMartiniWnG = Cocktail(cocktailName: "Espresso Martini (W&G Version)"
                                   spec: espressoMartiniSpecWnG,
                                   buildOrder: espressoMartiniBuildWnG,
                                   tags: espressoMartiniTagsWnG,
+                                  variation: .espressoMartini,
                                   collection: .williamsAndGraham)
 
 var espressoMartiniSpecWnG  = [OldCocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.25, prep: PrepBible.demSyrupPrep),

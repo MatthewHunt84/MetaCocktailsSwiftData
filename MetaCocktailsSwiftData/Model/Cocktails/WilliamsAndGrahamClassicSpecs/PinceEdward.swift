@@ -13,6 +13,7 @@ var princeEdward = Cocktail(cocktailName: "Prince Edward (W&G Version)",
                             author: williamsAndGraham,
                             spec: princeEdwardSpec,
                             tags: princeEdwardTags,
+                            variation: .princeEdward,
                             collection: .williamsAndGraham)
 
 var princeEdwardSpec     =  [OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),

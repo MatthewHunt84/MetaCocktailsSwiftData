@@ -14,6 +14,7 @@ var elksClubWnG = Cocktail(cocktailName: "Elk's Club Fizz (W&G Version)",
                            spec: elksClubSpecWnG,
                            buildOrder: elksClubBuildWnG,
                            tags: elksClubTags,
+                           variation: .elksClubFizz,
                            collection: .williamsAndGraham)
 
 var elksClubSpecWnG  = [OldCocktailIngredient(.soda(.sodaWater), value: 2),

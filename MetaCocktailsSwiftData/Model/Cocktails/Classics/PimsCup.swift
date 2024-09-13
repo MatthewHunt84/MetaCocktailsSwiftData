@@ -15,6 +15,7 @@ var pimmsCup = Cocktail(cocktailName: "Pimms Cup (W&G Version)",
                         spec: pimsCupSpec,
                         notes: pimsCupNotes,
                         tags: pimsCupTags,
+                        variation: .pimsCup,
                         collection: .williamsAndGraham)
 
 let pimsCupSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.fruit(.seasonalBerries), value: 4, unit: .muddled),

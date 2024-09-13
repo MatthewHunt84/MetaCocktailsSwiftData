@@ -51,7 +51,7 @@ struct FontFactory {
     static var bottomToolbarButton20: Font = .custom("AvenirNext-Regular", size: 20)
     
     static func recipeHeader(title: String) -> Text {
-        return Text(title.replacingOccurrences(of: (" (W&G Version)"), with: ""))
+        return Text(title.replacingOccurrences(of: ("(W&G Version)"), with: ""))
             .font(.custom("AvenirNext-Regular", size: 20))
             .foregroundStyle(ColorScheme.recipeHeaderColor)
     }

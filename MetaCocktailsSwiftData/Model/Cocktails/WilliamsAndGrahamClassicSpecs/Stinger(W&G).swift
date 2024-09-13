@@ -14,6 +14,7 @@ var stingerWnG = Cocktail(cocktailName: "Stinger (W&G Version)",
                           author: williamsAndGraham,
                           spec: stingerSpecWnG,
                           tags: stingerTagsWnG,
+                          variation: .stinger,
                           collection: .williamsAndGraham)
 
 var stingerSpecWnG     =  [OldCocktailIngredient(.liqueurs(.cremeDeMenthe), value: 0.75),
