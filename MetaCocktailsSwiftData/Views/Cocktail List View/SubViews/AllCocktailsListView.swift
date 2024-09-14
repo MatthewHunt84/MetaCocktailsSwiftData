@@ -47,30 +47,6 @@ struct AllCocktailsListView: View {
         }
     }
 }
-
-struct SingleCocktailListView2: View {
-    let cocktail: Cocktail
-    
-    var body: some View {
-        NavigationLinkWithoutIndicator {
-            HStack {
-                Text(cocktail.cocktailName)
-                    .font(FontFactory.regularFont(size: 18))
-                    .padding(.leading, 20)
-                Spacer()
-                if cocktail.isCustomCocktail == true {
-                    Text("Custom")
-                        .foregroundStyle(Color.brandPrimaryGold)
-                        .font(FontFactory.regularFont(size: 15))
-                }
-            }
-        } destination: {
-            RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                .navigationBarBackButtonHidden(true)
-
-        }
-    }
-}
 struct SingleCocktailListView: View {
     let cocktail: Cocktail
     @Binding var isReturningFromRecipe: Bool
@@ -97,28 +73,7 @@ struct SingleCocktailListView: View {
         }
     }
 }
-struct MultipleCocktailsListView2: View {
-    let cocktail: Cocktail
-    let cocktails: [Cocktail]
-    
-    var body: some View {
-        NavigationLinkWithoutIndicator {
-            HStack {
-                Text(cocktail.cocktailName)
-                    .font(FontFactory.regularFont(size: 18))
-                Spacer()
-                if cocktail.isCustomCocktail == true {
-                    Text("Custom")
-                        .foregroundStyle(Color.brandPrimaryGold)
-                        .font(FontFactory.regularFont(size: 15))
-                }
-            }
-        } destination: {
-            SwipeRecipeView(variations: cocktails, initialSelection: cocktail)
-                .navigationBarBackButtonHidden(true)
-        }
-    }
-}
+
 struct MultipleCocktailsListView: View {
     let cocktail: Cocktail
     let cocktails: [Cocktail]
