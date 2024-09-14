@@ -11,6 +11,8 @@ import SwiftData
 struct AllCocktailsListView: View {
     @Bindable var viewModel: CocktailListViewModel
     @Environment(\.modelContext) private var modelContext
+    @Binding var isReturningFromRecipe: Bool
+    
 
     var body: some View {
         let organizedCocktails = viewModel.organizeCocktails(viewModel.filteredCocktails)
@@ -22,7 +24,7 @@ struct AllCocktailsListView: View {
                         if cocktails.count > 1 {
                             DisclosureGroup {
                                 ForEach(cocktails, id: \.id) { cocktail in
-                                    MultipleCocktailsListView(cocktail: cocktail, cocktails: cocktails)
+                                    MultipleCocktailsListView(cocktail: cocktail, cocktails: cocktails, isReturningFromRecipe: $isReturningFromRecipe)
                                         .padding(.leading)
                                 }
                             } label: {
@@ -31,7 +33,7 @@ struct AllCocktailsListView: View {
                             }
                             .disclosureGroupStyle(InlineDisclosureGroupStyle())
                         } else {
-                            SingleCocktailListView(cocktail: cocktails[0])
+                            SingleCocktailListView(cocktail: cocktails[0], isReturningFromRecipe: $isReturningFromRecipe)
                         }
                     }
                 }
@@ -46,7 +48,7 @@ struct AllCocktailsListView: View {
     }
 }
 
-struct SingleCocktailListView: View {
+struct SingleCocktailListView2: View {
     let cocktail: Cocktail
     
     var body: some View {
@@ -69,7 +71,33 @@ struct SingleCocktailListView: View {
         }
     }
 }
-struct MultipleCocktailsListView: View {
+struct SingleCocktailListView: View {
+    let cocktail: Cocktail
+    @Binding var isReturningFromRecipe: Bool
+    
+    var body: some View {
+        NavigationLinkWithoutIndicator {
+            HStack {
+                Text(cocktail.cocktailName)
+                    .font(FontFactory.regularFont(size: 18))
+                    .padding(.leading, 20)
+                Spacer()
+                if cocktail.isCustomCocktail == true {
+                    Text("Custom")
+                        .foregroundStyle(Color.brandPrimaryGold)
+                        .font(FontFactory.regularFont(size: 15))
+                }
+            }
+        } destination: {
+            RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                .navigationBarBackButtonHidden(true)
+                .onDisappear {
+                    isReturningFromRecipe = true
+                }
+        }
+    }
+}
+struct MultipleCocktailsListView2: View {
     let cocktail: Cocktail
     let cocktails: [Cocktail]
     
@@ -91,9 +119,36 @@ struct MultipleCocktailsListView: View {
         }
     }
 }
+struct MultipleCocktailsListView: View {
+    let cocktail: Cocktail
+    let cocktails: [Cocktail]
+    @Binding var isReturningFromRecipe: Bool
+    
+    var body: some View {
+        NavigationLinkWithoutIndicator {
+            HStack {
+                Text(cocktail.cocktailName)
+                    .font(FontFactory.regularFont(size: 18))
+                Spacer()
+                if cocktail.isCustomCocktail == true {
+                    Text("Custom")
+                        .foregroundStyle(Color.brandPrimaryGold)
+                        .font(FontFactory.regularFont(size: 15))
+                }
+            }
+        } destination: {
+            SwipeRecipeView(variations: cocktails, initialSelection: cocktail)
+                .navigationBarBackButtonHidden(true)
+                .onDisappear {
+                    isReturningFromRecipe = true
+                }
+        }
+    }
+}
 
 struct SearchBarAllCocktailsListView: View {
     @Bindable var viewModel: CocktailListViewModel
+    @Binding var isReturningFromRecipe: Bool
 
     var body: some View {
         let organizedCocktails = viewModel.organizeCocktails(viewModel.filteredCocktails)
@@ -103,7 +158,7 @@ struct SearchBarAllCocktailsListView: View {
                 if cocktails.count > 1 {
                     DisclosureGroup {
                         ForEach(cocktails, id: \.id) { cocktail in
-                            MultipleCocktailsListView(cocktail: cocktail, cocktails: cocktails)
+                            MultipleCocktailsListView(cocktail: cocktail, cocktails: cocktails, isReturningFromRecipe: $isReturningFromRecipe)
                                 .padding(.leading)
                         }
                     } label: {
@@ -112,7 +167,7 @@ struct SearchBarAllCocktailsListView: View {
                     }
                     .disclosureGroupStyle(InlineDisclosureGroupStyle())
                 } else {
-                    SingleCocktailListView(cocktail: cocktails[0])
+                    SingleCocktailListView(cocktail: cocktails[0], isReturningFromRecipe: $isReturningFromRecipe)
                 }
             }
         }

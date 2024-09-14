@@ -9,31 +9,27 @@ import SwiftUI
 import SwiftData
 
 struct CocktailListView: View {
-
     @Bindable var viewModel = CocktailListViewModel()
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
-
-    @FocusState private var searchBarIsFocused: Bool
+    @State private var isSearchActive = false
+    @State private var isReturningFromRecipe = false
+    @FocusState private var isSearchFocused: Bool
 
     var body: some View {
         NavigationStack {
-
             ZStack {
-                
                 ColorScheme.background.ignoresSafeArea()
                 
                 VStack {
-                    SearchBarForCocktailListView(isFocused: $searchBarIsFocused, viewModel: viewModel)
-                        .padding()
                     GeometryReader { listGeo in
                         ScrollView {
                             ScrollViewReader { value in
                                 HStack {
                                     List {
-                                        if searchBarIsFocused {
-                                            SearchBarAllCocktailsListView(viewModel: viewModel)
+                                        if isSearchActive && !isReturningFromRecipe {
+                                            SearchBarAllCocktailsListView(viewModel: viewModel, isReturningFromRecipe: $isReturningFromRecipe)
                                         } else {
-                                            AllCocktailsListView(viewModel: viewModel)
+                                            AllCocktailsListView(viewModel: viewModel, isReturningFromRecipe: $isReturningFromRecipe)
                                         }
                                     }
                                     .listStyle(.plain)
@@ -42,32 +38,52 @@ struct CocktailListView: View {
                                     AlphabetNavigationView(value: value, alphabet: viewModel.cocktailListAlphabet)
                                         .frame(width: listGeo.size.width * 0.1, height: listGeo.size.height)
                                         .scaledToFit()
-                                        .offset(x: searchBarIsFocused ? listGeo.size.width * 0.1 : -10, y: 5)
-                                        .opacity(searchBarIsFocused ? 0 : 1)
-                                        .animation(.easeInOut(duration: 0.8), value: searchBarIsFocused)
-
+                                        .offset(x: isSearchActive ? listGeo.size.width * 0.1 : -10, y: 5)
+                                        .opacity(isSearchActive ? 0 : 1)
+                                        .animation(.easeInOut(duration: 0.8), value: isSearchActive)
                                 }
                             }
                         }
                     }
                 }
-                .onAppear {
+                .searchable(text: $viewModel.searchText, isPresented: $isSearchActive, prompt: "Search cocktails")
+                .focused($isSearchFocused)
+                .onSubmit(of: .search) {
                     viewModel.searchText = ""
-                    viewModel.setAllCocktails(cocktails)
-                    
+                    isSearchFocused = false
+                }
+                .autocorrectionDisabled()
+                .onChange(of: viewModel.searchText) { _, newValue in
+                    viewModel.updateSearch(newValue)
+                    isSearchActive = !newValue.isEmpty
+                    isReturningFromRecipe = false
+                }
+                .onChange(of: isReturningFromRecipe) { _, newValue in
+                    if newValue {
+                        resetSearch()
+                    }
                 }
             }
-            
             .navigationBarTitleDisplayMode(.inline)
             .jamesHeader("Cocktail List")
-//            .toolbar {
-//                ToolbarItem(placement: .topBarTrailing) {
-//                    LoadSampleCocktailsButton()
-//                }
-//            }
+        }
+        .onAppear {
+            viewModel.setAllCocktails(cocktails)
+            if isReturningFromRecipe {
+                resetSearch()
+            }
         }
     }
+
+    private func resetSearch() {
+        isSearchActive = false
+        isSearchFocused = false
+        viewModel.searchText = ""
+        isReturningFromRecipe = false
+    }
 }
+
+
 
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
