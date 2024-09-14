@@ -35,6 +35,20 @@ struct IngredientSearchView: View {
                         }
                     
                     Spacer()
+                    if keyboardFocused {
+                        HStack{
+                            Spacer()
+                            Button(action: {
+                                keyboardFocused = false
+                            }) {
+                                Text("Done")
+                            }
+                            .buttonStyle(.plain)
+                            .transition(.move(edge: .bottom))
+                            .padding(10)
+                            .foregroundStyle(.blueTint)
+                        }
+                    }
                 }
             }
             .animation(.easeOut(duration: 0.5), value: viewModel.preferredSelections.isEmpty)
