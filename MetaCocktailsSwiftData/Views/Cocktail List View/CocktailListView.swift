@@ -9,26 +9,25 @@ import SwiftUI
 import SwiftData
 
 struct CocktailListView: View {
-
+    
     @Bindable var viewModel = CocktailListViewModel()
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
-
     @FocusState private var searchBarIsFocused: Bool
+    @State private var selectedNavigationLetter: String?
 
     var body: some View {
         NavigationStack {
-
             ZStack {
-                
                 ColorScheme.background.ignoresSafeArea()
                 
                 VStack {
                     SearchBarForCocktailListView(isFocused: $searchBarIsFocused, viewModel: viewModel)
                         .padding()
+                    
                     GeometryReader { listGeo in
-                        ScrollView {
-                            ScrollViewReader { value in
-                                HStack {
+                        HStack {
+                            ScrollViewReader { proxy in
+                                ScrollView {
                                     List {
                                         if searchBarIsFocused {
                                             SearchBarAllCocktailsListView(viewModel: viewModel)
@@ -38,33 +37,53 @@ struct CocktailListView: View {
                                     }
                                     .listStyle(.plain)
                                     .frame(width: listGeo.size.width * 0.9, height: listGeo.size.height)
-                                    
-                                    AlphabetNavigationView(value: value, alphabet: viewModel.cocktailListAlphabet)
-                                        .frame(width: listGeo.size.width * 0.1, height: listGeo.size.height)
-                                        .scaledToFit()
-                                        .offset(x: searchBarIsFocused ? listGeo.size.width * 0.1 : -10, y: 5)
-                                        .opacity(searchBarIsFocused ? 0 : 1)
-                                        .animation(.easeInOut(duration: 0.8), value: searchBarIsFocused)
-
+                              
+                                }
+                                .onChange(of: selectedNavigationLetter) { oldValue, newValue in
+                                    if let letter = newValue {
+                                        withAnimation {
+                                            proxy.scrollTo(letter, anchor: .top)
+                                        }
+                                        selectedNavigationLetter = nil
+                                    }
                                 }
                             }
+                            AlphabetNavigationView(selectedLetter: $selectedNavigationLetter, alphabet: viewModel.cocktailListAlphabet)
+                                .frame(width: listGeo.size.width * 0.1, height: listGeo.size.height)
+                                .scaledToFit()
+                                .offset(x: searchBarIsFocused ? listGeo.size.width * 0.1 : -10, y: 5)
+                                .opacity(searchBarIsFocused ? 0 : 1)
+                                .animation(.easeInOut(duration: 0.8), value: searchBarIsFocused)
                         }
                     }
                 }
                 .onAppear {
                     viewModel.searchText = ""
                     viewModel.setAllCocktails(cocktails)
-                    
                 }
             }
-            
             .navigationBarTitleDisplayMode(.inline)
             .jamesHeader("Cocktail List")
-//            .toolbar {
-//                ToolbarItem(placement: .topBarTrailing) {
-//                    LoadSampleCocktailsButton()
-//                }
-//            }
+        }
+    }
+}
+
+struct AlphabetNavigationView: View {
+    @Binding var selectedLetter: String?
+    let alphabet: [String]
+    
+    var body: some View {
+        VStack {
+            ForEach(alphabet, id: \.self) { letter in
+                Button(action: {
+                    selectedLetter = letter
+                }, label: {
+                    Text(letter)
+                        .font(FontFactory.regularFont(size: 15))
+                        .frame(width: 17, height: 13, alignment: .center)
+                })
+                .buttonStyle(ScaleButtonStyle())
+            }
         }
     }
 }
@@ -81,29 +100,6 @@ struct ScaleButtonStyle : ButtonStyle {
         configuration.label.scaleEffect(configuration.isPressed ? 2.5 : 1)
             .shadow(radius: 30)
         
-    }
-}
-
-struct AlphabetNavigationView: View {
-    let value: ScrollViewProxy
-    let alphabet: [String]
-    
-    var body: some View {
-        VStack {
-            ForEach(0..<alphabet.count, id: \.self) { i in
-                Button(action: {
-                    withAnimation {
-                        value.scrollTo(alphabet[i], anchor: .top)
-                    }
-                }, label: {
-                    Text(alphabet[i])
-                        .font(FontFactory.regularFont(size: 15))
-                        .frame(width: 17, height: 13, alignment: .center)
-                    
-                })
-                .buttonStyle(ScaleButtonStyle())
-            }
-        }
     }
 }
 
