@@ -10,6 +10,7 @@ import SwiftUI
 struct RecipeFlipCardView: View {
     @State private var isShowingFloatingPrompt = false
     @State private var isShowingCocktailNotes = false
+    @State private var shouldNavigate = false
     @EnvironmentObject var cBCViewModel: CBCViewModel
     @Bindable var viewModel: RecipeViewModel
     let geo: GeometryProxy // seems like a constant
@@ -80,6 +81,19 @@ struct RecipeFlipCardView: View {
                     .frame(width: geo.size.width * 0.75)
                     
                 }
+                .alert("Number of Cocktails", isPresented: $isShowingFloatingPrompt) {
+                    TextField("Amount", value: $cBCViewModel.numberOfCocktailsText, formatter: cBCViewModel.formatter)
+                        .keyboardType(.numberPad)
+                    Button("Cancel", role: .cancel) {}
+                    Button("Batch") {
+                        cBCViewModel.convertLoadedCocktail(for: viewModel.cocktail)
+                        cBCViewModel.convertIngredientsToBatchCellData()
+                        shouldNavigate = true
+                    }
+                } message: {
+                    FontFactory.regularText("*You can modify this later.", size: 16)
+                        .multilineTextAlignment(.center)
+                }
                 
             }
             .onAppear {
@@ -91,19 +105,20 @@ struct RecipeFlipCardView: View {
             
             backToRecipeViewButton(viewModel: viewModel)
             
-            if isShowingFloatingPrompt {
-                
-                FloatingPromptView(isActive: $isShowingFloatingPrompt)
-            }
+//            if isShowingFloatingPrompt {
+//                FloatingPromptView(isActive: $isShowingFloatingPrompt)
+//            }
             if isShowingCocktailNotes{
                 if let notes = viewModel.cocktail.notes {
                     CustomAlertView(isActive: $isShowingCocktailNotes, title: "Note:", message: notes , buttonTitle: "Heard, chef.") {}
-                    .zIndex(1)
+                        .zIndex(1)
                 }
             }
             
         }
-        
+        .navigationDestination(isPresented: $shouldNavigate) {
+            CBCLoadedCocktailView()
+        }
     }
 }
 
