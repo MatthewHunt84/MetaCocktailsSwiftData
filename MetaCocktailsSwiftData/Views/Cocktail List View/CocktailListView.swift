@@ -9,7 +9,6 @@ import SwiftUI
 import SwiftData
 
 struct CocktailListView: View {
-    
     @Bindable var viewModel = CocktailListViewModel()
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
     @FocusState private var searchBarIsFocused: Bool
@@ -64,9 +63,14 @@ struct CocktailListView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
             .jamesHeader("Cocktail List")
+//            .toolbar {
+//                ToolbarItem(placement: .topBarTrailing) {
+//                    LoadSampleCocktailsButton()
+//                }
+//            }
+            }
         }
     }
-}
 
 struct AlphabetNavigationView: View {
     @Binding var selectedLetter: String?
