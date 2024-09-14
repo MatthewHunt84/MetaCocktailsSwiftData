@@ -12,8 +12,8 @@ struct CocktailListView: View {
 
     @Bindable var viewModel = CocktailListViewModel()
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
-
     @FocusState private var searchBarIsFocused: Bool
+    
 
     var body: some View {
         NavigationStack {
@@ -29,23 +29,21 @@ struct CocktailListView: View {
                         ScrollView {
                             ScrollViewReader { value in
                                 HStack {
-                                    List {
-                                        if searchBarIsFocused {
-                                            SearchBarAllCocktailsListView(viewModel: viewModel)
-                                        } else {
-                                            AllCocktailsListView(viewModel: viewModel)
-                                        }
-                                    }
-                                    .listStyle(.plain)
-                                    .frame(width: listGeo.size.width * 0.9, height: listGeo.size.height)
                                     
+                                    if searchBarIsFocused {
+                                        SearchBarAllCocktailsListView(viewModel: viewModel)
+                                            .frame(width: listGeo.size.width * 0.9, height: listGeo.size.height)
+                                    } else {
+                                        AllCocktailsListView(viewModel: viewModel)
+                                            .frame(width: listGeo.size.width * 0.9, height: listGeo.size.height)
+                                    }
                                     AlphabetNavigationView(value: value, alphabet: viewModel.cocktailListAlphabet)
                                         .frame(width: listGeo.size.width * 0.1, height: listGeo.size.height)
                                         .scaledToFit()
                                         .offset(x: searchBarIsFocused ? listGeo.size.width * 0.1 : -10, y: 5)
                                         .opacity(searchBarIsFocused ? 0 : 1)
                                         .animation(.easeInOut(duration: 0.8), value: searchBarIsFocused)
-
+                                    
                                 }
                             }
                         }
