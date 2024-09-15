@@ -108,7 +108,7 @@ import Combine
                     organizedCocktailsDict[variationName]?.append(cocktail)
                 }
             } else {
-                // If customVariation is Nil, then it's is a base cocktail, create a new group
+                // If variationName is Nil, then it's is a base cocktail, create a new group
                 if organizedCocktailsDict[cocktail.cocktailName] == nil {
                     organizedCocktailsDict[cocktail.cocktailName] = [cocktail]
                 }

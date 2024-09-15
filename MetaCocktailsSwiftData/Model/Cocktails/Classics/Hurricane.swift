@@ -10,7 +10,7 @@ import Foundation
 var hurricane = Cocktail(cocktailName: "Hurricane",
                          imageAsset: nil,
                          glasswareType: .hurricaneGlass,
-                         garnish: [.orangeFlag],
+                         garnish: [.maraschinoCherry, .halfOrangeWheel],
                          ice: .pebbleIce,
                          author: Author(person: "Louis Culligan", place: "Pat O'Brian's, New Orleans", year: "1939" ),
                          spec: hurricaneSpec,

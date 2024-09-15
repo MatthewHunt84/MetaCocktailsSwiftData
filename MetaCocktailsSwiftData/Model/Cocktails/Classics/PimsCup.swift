@@ -7,11 +7,12 @@
 
 import Foundation
 
-var pimmsCup = Cocktail(cocktailName: "Pimms Cup (W&G Version)",
+var pimmsCup = Cocktail(cocktailName: "Pimms Cup",
                         imageAsset: nil,
                         glasswareType: .collins,
                         garnish: [.seasonalBerries, .mintSprig],
                         ice: .pebbleIce,
+                        author: williamsAndGraham,
                         spec: pimsCupSpec,
                         notes: pimsCupNotes,
                         tags: pimsCupTags,

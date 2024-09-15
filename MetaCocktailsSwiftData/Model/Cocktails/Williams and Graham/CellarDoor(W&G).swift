@@ -8,7 +8,7 @@
 import Foundation
 
 
-var cellarDoor = Cocktail(cocktailName: "Cellar Door(W&G)",
+var cellarDoor = Cocktail(cocktailName: "Cellar Door",
                           glasswareType: .teaCup,
                           garnish: [.cinnamon, .almonds, .raisins],
                           author: justWnG,

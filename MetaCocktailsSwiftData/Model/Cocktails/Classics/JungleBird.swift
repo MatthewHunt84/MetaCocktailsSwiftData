@@ -9,7 +9,7 @@ import SwiftUI
 
 var jungleBird = Cocktail(cocktailName: "JungleBird",
                           glasswareType: .tikiBird,
-                          garnish: [.orchid, .limeWheel, .orangeFlag],
+                          garnish: [.orchid, .limeWheel, .maraschinoCherry, .halfOrangeWheel],
                           ice: .pebbleIce,
                           author: Author(person: "Jeffery Ong",
                                          place: AuthorPlaces.aviaryBar.rawValue,

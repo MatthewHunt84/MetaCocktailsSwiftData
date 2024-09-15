@@ -9,7 +9,7 @@ import Foundation
 
 var honeymoonCocktailWnG = Cocktail(cocktailName: "Honeymoon(WnG Version)",
                                     glasswareType: .martini,
-                                    garnish: [.orangeFlag],
+                                    garnish: [.maraschinoCherry, .halfOrangeWheel],
                                     ice: nil,
                                     author: williamsAndGraham,
                                     spec: honeymoonCocktailSpecWnG,

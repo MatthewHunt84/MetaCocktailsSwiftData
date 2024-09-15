@@ -9,7 +9,7 @@ import Foundation
 
 var tomCollinsWnG  = Cocktail(cocktailName: "Tom Collins (W&G Version)",
                               glasswareType: .collins,
-                              garnish: [.orangeFlag],
+                              garnish: [.maraschinoCherry, .halfOrangeWheel],
                               ice: .koldDraft,
                               author: williamsAndGraham,
                               spec: tomCollinsWnGSpec,

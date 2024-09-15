@@ -10,7 +10,7 @@ import Foundation
 var lordTouchingtonsDelight = Cocktail(cocktailName: "Lord Touchingtons Delight",
                                        imageAsset: nil,
                                        glasswareType: .tikiMug,
-                                       garnish: [.pineappleFrond, .orangeFlag],
+                                       garnish: [.pineappleFrond, .maraschinoCherry, .halfOrangeWheel],
                                        ice: .pebbleIce,
                                        author: Author(person: AuthorNames.nickTouch.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue, year: "2015"),
                                        spec: lordTouchingtonsDelightSpec,

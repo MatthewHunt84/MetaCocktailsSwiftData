@@ -10,7 +10,7 @@ import Foundation
 var hurricaneWnG = Cocktail(cocktailName: "Hurricane (W&G Version)",
                             imageAsset: nil,
                             glasswareType: .tikiMug,
-                            garnish: [.orangeFlag],
+                            garnish: [.maraschinoCherry, .halfOrangeWheel],
                             ice: .pebbleIce,
                             author: williamsAndGraham,
                             spec: hurricaneSpecWnG,

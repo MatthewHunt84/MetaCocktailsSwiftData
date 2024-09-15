@@ -7,7 +7,7 @@
 
 import Foundation
 
-var jupiter = Cocktail(cocktailName: "Jupiter(W&G)",
+var jupiter = Cocktail(cocktailName: "Jupiter",
                        glasswareType: .collins,
                        garnish: [.mintSprig, .halfOrangeWheel],
                        ice: .pebbleIce,

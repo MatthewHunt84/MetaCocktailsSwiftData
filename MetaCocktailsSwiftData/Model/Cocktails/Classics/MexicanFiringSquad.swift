@@ -9,7 +9,7 @@ import Foundation
 
 var mexicanFiringSquad = Cocktail(cocktailName: "Mexican Firing Squad",
                                   glasswareType: .doubleOld,
-                                  garnish: [.orangeFlag, .pineappleWedge],
+                                  garnish: [.maraschinoCherry, .halfOrangeWheel, .pineappleWedge],
                                   ice: .crackedIce,
                                   author: charlesBaker,
                                   spec: mexicanFiringSquadSpec,

@@ -9,7 +9,7 @@ import Foundation
 
 var harveyWallbangerWnG = Cocktail(cocktailName: "Harvey Wallbanger(WnG Version)",
                                    glasswareType: .collins,
-                                   garnish: [.orangeFlag],
+                                   garnish: [.maraschinoCherry, .halfOrangeWheel],
                                    ice: .koldDraft,
                                    author: williamsAndGraham,
                                    spec: harveyWallbangerSpecWnG,

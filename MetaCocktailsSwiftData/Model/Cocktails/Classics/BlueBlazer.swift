@@ -8,7 +8,7 @@
 import Foundation
 
 var blueBlazer = Cocktail(cocktailName: "Blue Blazer",
-                          glasswareType: .toddyGlass,
+                          glasswareType: .blueBlazerMugs,
                           garnish: [.lemonPeel],
                           author: jerryThomas,
                           spec: blueBlazerSpec,

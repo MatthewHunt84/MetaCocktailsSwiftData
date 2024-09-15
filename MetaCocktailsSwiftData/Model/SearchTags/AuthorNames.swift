@@ -67,6 +67,7 @@ enum AuthorNames: String, Codable, CaseIterable {
     case sashaPetraske     = "Sasha Petraske"
     case saydeeCanada      = "Saydee Canada"
     case stanleyArthur     = "Stanley Clisby Arthur"
+    case stanJones         = "Stan Jones"
     case tedSaucier        = "Ted Saucier"
     case tobyMaloney       = "Toby Maloney"
     case tomBullock        = "Tom Bullock"
@@ -152,4 +153,5 @@ var traderVic1947  = Author(person: AuthorNames.traderVic.rawValue, place: Autho
 var charlesBaker = Author(person: AuthorNames.charlesBaker.rawValue, place: AuthorPlaces.gentlemansCompanion.rawValue, year: "1939")
 var oHByron = Author(person: AuthorNames.ohByron.rawValue, place: "The Modern Bartenders' Guide", year: "1884")
 var sashaPetraske = Author(person: AuthorNames.sashaPetraske.rawValue, place: AuthorPlaces.milkAndHoney.rawValue, year: "Early 2000s")
+var stanJones = Author(person: AuthorNames.stanJones.rawValue, place: "Jones' Complete Barguide", year: "1977")
 
