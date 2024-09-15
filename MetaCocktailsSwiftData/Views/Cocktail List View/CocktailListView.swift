@@ -50,9 +50,9 @@ struct CocktailListView: View {
                             AlphabetNavigationView(selectedLetter: $selectedNavigationLetter, alphabet: viewModel.cocktailListAlphabet)
                                 .frame(width: listGeo.size.width * 0.1, height: listGeo.size.height)
                                 .scaledToFit()
-                                .offset(x: searchBarIsFocused ? listGeo.size.width * 0.1 : -10, y: 5)
+                                .offset(x: -2, y: -7)
                                 .opacity(searchBarIsFocused ? 0 : 1)
-                                .animation(.easeInOut(duration: 0.8), value: searchBarIsFocused)
+                                .animation(.easeInOut(duration: 0.3), value: searchBarIsFocused)
                         }
                     }
                 }
@@ -84,7 +84,7 @@ struct AlphabetNavigationView: View {
                 }, label: {
                     Text(letter)
                         .font(FontFactory.regularFont(size: 15))
-                        .frame(width: 17, height: 13, alignment: .center)
+                        .frame(width: 17, height: 15, alignment: .center)
                 })
                 .buttonStyle(ScaleButtonStyle())
             }
