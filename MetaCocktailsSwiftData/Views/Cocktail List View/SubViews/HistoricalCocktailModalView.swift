@@ -23,8 +23,7 @@ struct HistoricalCocktailModalView: View {
                         HStack {
                             Spacer()
                             Button(action: { isPresented = false }) {
-                                Image(systemName: "xmark.circle.fill")
-                                    .foregroundColor(.brandPrimaryGold)
+                                Image(systemName: "custom.xmark.circle")
                                     .font(.title2)
                             }
                         }
@@ -33,7 +32,7 @@ struct HistoricalCocktailModalView: View {
                         Text(alertContent.title)
                             .font(.title2)
                             .fontWeight(.bold)
-                            .foregroundColor(.white)
+                            .foregroundColor(.brandPrimaryGold)
                             .padding(.bottom, 10)
                         
                         Text(alertContent.message)
@@ -58,12 +57,14 @@ struct HistoricalCocktailModalView: View {
                     isPresented = false
                 }) {
                     Text(alertContent.buttonTitle)
-                        .font(.headline)
-                        .foregroundColor(.black)
+                        .font(FontFactory.fontBody16)
+                        .foregroundStyle(.blueTint)
                         .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.brandPrimaryGold)
-                        .cornerRadius(10)
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(Color.white, lineWidth: 1)
+                        )
                 }
                 .padding(.horizontal)
                 .padding(.bottom, 30)
