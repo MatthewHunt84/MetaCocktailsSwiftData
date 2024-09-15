@@ -49,7 +49,7 @@ enum Juice: String, IngredientTagsProtocol {
         case .lemon:
             Tags(flavors: [.lemon], profiles: [.citrusy], nA: [NAIngredients(.juices(self))])
         case .lime:
-            Tags(flavors: [.lime,], profiles: [.citrusy], nA: [NAIngredients(.juices(self))])
+            Tags(flavors: [.lime], profiles: [.citrusy], nA: [NAIngredients(.juices(self))])
         case .pineappleJuice:
             Tags(flavors: [.pineapple], profiles: [.fruity], nA: [NAIngredients(.juices(self))])
         case .grapefruit:
