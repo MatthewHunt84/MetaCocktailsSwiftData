@@ -130,8 +130,54 @@ struct MinusOneMatchView: View {
     }
 }
 
+//struct MinusTwoMatchView: View {
+//    @State var nonmatchSearchPreference = "none"
+//    @EnvironmentObject var viewModel: SearchViewModel
+//    @Query var minusTwoMatchCocktails: [Cocktail]
+//    
+//    init(passedViewModel: SearchViewModel) {
+//        let predicate = passedViewModel.predicateFactory(for: passedViewModel.preferredCount - 2)
+//        _minusTwoMatchCocktails = Query(filter: predicate, sort: \Cocktail.cocktailName)
+//    }
+//    
+//    var body: some View {
+//        if minusTwoMatchCocktails.isEmpty  || viewModel.preferredSelections.count < 4{
+//            EmptyView()
+//        } else {
+//            
+//            Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 2))) {
+//                ForEach(filtered(minusTwoMatchCocktails), id: \.self) { cocktail in
+//                    
+//                    NavigationLink {
+//                        RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+//                            .navigationBarBackButtonHidden(true)
+//                    } label: {
+//                        VStack {
+//                            HStack {
+//                                Text(cocktail.cocktailName)
+//                                    .foregroundStyle(.secondary)
+//                                Spacer()
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
+//    func filtered(_ cocktails: [Cocktail]) -> [Cocktail] {
+//        guard nonmatchSearchPreference != "none" else { return cocktails }
+//        return cocktails.filter { cocktail in
+//            cocktail.spec.filter { ingredient in
+//                ingredient.ingredientBase.name == nonmatchSearchPreference ||
+//                ingredient.ingredientBase.umbrellaCategory == nonmatchSearchPreference ||
+//                ingredient.ingredientBase.baseCategory == nonmatchSearchPreference ||
+//                ingredient.ingredientBase.specialtyCategory == nonmatchSearchPreference
+//            }.count == 0
+//        }
+//    }
+//}
+
 struct MinusTwoMatchView: View {
-    @State var nonmatchSearchPreference = "none"
     @EnvironmentObject var viewModel: SearchViewModel
     @Query var minusTwoMatchCocktails: [Cocktail]
     
@@ -141,38 +187,29 @@ struct MinusTwoMatchView: View {
     }
     
     var body: some View {
-        if minusTwoMatchCocktails.isEmpty  || viewModel.preferredSelections.count < 4{
+        if minusTwoMatchCocktails.isEmpty || viewModel.preferredSelections.count < 4 {
             EmptyView()
         } else {
-            
             Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 2))) {
-                ForEach(filtered(minusTwoMatchCocktails), id: \.self) { cocktail in
-                    
-                    NavigationLink {
-                        RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                            .navigationBarBackButtonHidden(true)
-                    } label: {
-                        VStack {
-                            HStack {
-                                Text(cocktail.cocktailName)
-                                    .foregroundStyle(.secondary)
-                                Spacer()
+                ForEach(viewModel.groupMinusTwo(cocktails: minusTwoMatchCocktails), id: \.0) { missingIngredients, cocktails in
+                    if !cocktails.isEmpty {
+                        DisclosureGroup {
+                            ForEach(cocktails, id: \.self) { cocktail in
+                                NavigationLink {
+                                    RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                                        .navigationBarBackButtonHidden(true)
+                                } label: {
+                                    Text(cocktail.cocktailName)
+                                        .font(FontFactory.mediumFont(size: 16))
+                                        .foregroundStyle(.secondary)
+                                }
                             }
+                        } label: {
+                            viewModel.minusTwoHeader(missingIngredients: missingIngredients)
                         }
                     }
                 }
             }
-        }
-    }
-    func filtered(_ cocktails: [Cocktail]) -> [Cocktail] {
-        guard nonmatchSearchPreference != "none" else { return cocktails }
-        return cocktails.filter { cocktail in
-            cocktail.spec.filter { ingredient in
-                ingredient.ingredientBase.name == nonmatchSearchPreference ||
-                ingredient.ingredientBase.umbrellaCategory == nonmatchSearchPreference ||
-                ingredient.ingredientBase.baseCategory == nonmatchSearchPreference ||
-                ingredient.ingredientBase.specialtyCategory == nonmatchSearchPreference
-            }.count == 0
         }
     }
 }

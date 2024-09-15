@@ -187,7 +187,7 @@ final class SearchViewModel: ObservableObject {
     
     func minusOneHeader(missingIngredient: String) -> some View {
         HStack{
-            Text("Missing ingredient:")
+            Text("Missing:")
                 .font(FontFactory.fontBody16)
                 .foregroundColor(.white)
             Text(missingIngredient)
@@ -197,18 +197,16 @@ final class SearchViewModel: ObservableObject {
     }
     
     func minusTwoHeader(missingIngredients: [String]) -> some View {
-        VStack{
-            Text("Missing ingredients:")
+        HStack{
+            Text("Missing:")
                 .font(FontFactory.fontBody16)
                 .foregroundColor(.white)
-            HStack{
-                Text("\(missingIngredients[0]), ")
-                    .font(FontFactory.fontBody16)
-                    .foregroundColor(.brandPrimaryGold)
-                Text(missingIngredients[1])
-                    .font(FontFactory.fontBody16)
-                    .foregroundColor(.brandPrimaryGold)
-            }
+            Text("\(missingIngredients[0]), ")
+                .font(FontFactory.fontBody16)
+                .foregroundColor(.brandPrimaryGold)
+            Text(missingIngredients[1])
+                .font(FontFactory.fontBody16)
+                .foregroundColor(.brandPrimaryGold)
         }
     }
     
@@ -232,11 +230,38 @@ final class SearchViewModel: ObservableObject {
         return missingIngredientsArray.first ?? "Unknown"
     }
     
+    func getMissingIngredients(for cocktail: Cocktail) -> [String] {
+        let preferredSelectionsArray = preferredSelections
+        var cocktailIngredients = cocktail.spec.map { $0.ingredientBase.name }
+        cocktailIngredients += cocktail.spec.map { $0.ingredientBase.baseCategory }
+        cocktailIngredients += cocktail.spec.map { $0.ingredientBase.specialtyCategory }
+        cocktailIngredients += cocktail.spec.map { $0.ingredientBase.umbrellaCategory }
+        if let cocktailFlavors = cocktail.compiledTags.flavors {
+            cocktailIngredients += cocktailFlavors.map { $0.rawValue }
+        }
+        if let cocktailProfiles = cocktail.compiledTags.profiles {
+            cocktailIngredients += cocktailProfiles.map { $0.rawValue }
+        }
+        if let cocktailStyles = cocktail.compiledTags.styles {
+            cocktailIngredients += cocktailStyles.map { $0.rawValue }
+        }
+        let cocktailIngredientsNoDoubles = Array(Set(cocktailIngredients))
+        let missingIngredientsArray = preferredSelectionsArray.filter { !cocktailIngredientsNoDoubles.contains($0) }
+        return Array(missingIngredientsArray)
+    }
+    
     func groupMinusOne(cocktails: [Cocktail]) -> [(String, [Cocktail])] {
         let grouped = Dictionary(grouping: cocktails) { cocktail in
             getMissingIngredient(for: cocktail)
         }
         return grouped.sorted { $0.key < $1.key }
+    }
+    
+    func groupMinusTwo(cocktails: [Cocktail]) -> [([String], [Cocktail])] {
+        let grouped = Dictionary(grouping: cocktails) { cocktail in
+            getMissingIngredients(for: cocktail)
+        }
+        return grouped.sorted { $0.key.joined() < $1.key.joined() }
     }
     
     func toggleIsShowingResults() {
