@@ -58,16 +58,12 @@ struct CocktailListView: View {
                 }
                 .onAppear {
                     viewModel.searchText = ""
+                    searchBarIsFocused = false
                     viewModel.setAllCocktails(cocktails)
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
             .jamesHeader("Cocktail List")
-//            .toolbar {
-//                ToolbarItem(placement: .topBarTrailing) {
-//                    LoadSampleCocktailsButton()
-//                }
-//            }
             }
         }
     }
