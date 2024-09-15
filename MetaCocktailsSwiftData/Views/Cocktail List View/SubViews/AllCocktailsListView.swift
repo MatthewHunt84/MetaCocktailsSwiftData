@@ -11,7 +11,9 @@ import SwiftData
 struct AllCocktailsListView: View {
     @Bindable var viewModel: CocktailListViewModel
     @Environment(\.modelContext) private var modelContext
-    @Binding var isReturningFromRecipe: Bool
+    @Binding var isSearchActive: Bool
+    @FocusState var isSearchFocused: Bool
+    @Binding var path: NavigationPath
     
 
     var body: some View {
@@ -24,7 +26,7 @@ struct AllCocktailsListView: View {
                         if cocktails.count > 1 {
                             DisclosureGroup {
                                 ForEach(cocktails, id: \.id) { cocktail in
-                                    MultipleCocktailsListView(cocktail: cocktail, cocktails: cocktails, isReturningFromRecipe: $isReturningFromRecipe)
+                                    MultipleCocktailsListView(viewModel: viewModel,cocktail: cocktail, cocktails: cocktails, path: $path, isSearchActive: $isSearchActive, isSearchFocused: _isSearchFocused)
                                         .padding(.leading)
                                 }
                             } label: {
@@ -33,7 +35,7 @@ struct AllCocktailsListView: View {
                             }
                             .disclosureGroupStyle(InlineDisclosureGroupStyle())
                         } else {
-                            SingleCocktailListView(cocktail: cocktails[0], isReturningFromRecipe: $isReturningFromRecipe)
+                            SingleCocktailListView(viewModel: viewModel,cocktail: cocktails[0], path: $path, isSearchActive: $isSearchActive, isSearchFocused: _isSearchFocused)
                         }
                     }
                 }
@@ -48,11 +50,21 @@ struct AllCocktailsListView: View {
     }
 }
 struct SingleCocktailListView: View {
+    @Bindable var viewModel: CocktailListViewModel
     let cocktail: Cocktail
-    @Binding var isReturningFromRecipe: Bool
+    @Binding var path: NavigationPath
+    @Binding var isSearchActive: Bool
+    @FocusState var isSearchFocused: Bool
     
     var body: some View {
-        NavigationLinkWithoutIndicator {
+        NavigationLink(destination: RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+            .navigationBarBackButtonHidden(true)
+            .onDisappear {
+                isSearchActive = false
+                isSearchFocused = false
+                viewModel.searchText = ""
+            }
+        ) {
             HStack {
                 Text(cocktail.cocktailName)
                     .font(FontFactory.regularFont(size: 18))
@@ -64,26 +76,31 @@ struct SingleCocktailListView: View {
                         .font(FontFactory.regularFont(size: 15))
                 }
             }
-        } destination: {
-            RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                .navigationBarBackButtonHidden(true)
-                .onDisappear {
-                    isReturningFromRecipe = true
-                }
         }
     }
 }
 
+
 struct MultipleCocktailsListView: View {
+    @Bindable var viewModel: CocktailListViewModel
     let cocktail: Cocktail
     let cocktails: [Cocktail]
-    @Binding var isReturningFromRecipe: Bool
+    @Binding var path: NavigationPath
+    @Binding var isSearchActive: Bool
+    @FocusState var isSearchFocused: Bool
     
     var body: some View {
-        NavigationLinkWithoutIndicator {
+        NavigationLink(destination: SwipeRecipeView(variations: cocktails, initialSelection: cocktail)
+            .navigationBarBackButtonHidden(true)
+            .onDisappear {
+                isSearchActive = false
+                isSearchFocused = false
+                viewModel.searchText = "" }
+        ) {
             HStack {
                 Text(cocktail.cocktailName)
                     .font(FontFactory.regularFont(size: 18))
+                    .padding(.leading, 20)
                 Spacer()
                 if cocktail.isCustomCocktail == true {
                     Text("Custom")
@@ -91,19 +108,15 @@ struct MultipleCocktailsListView: View {
                         .font(FontFactory.regularFont(size: 15))
                 }
             }
-        } destination: {
-            SwipeRecipeView(variations: cocktails, initialSelection: cocktail)
-                .navigationBarBackButtonHidden(true)
-                .onDisappear {
-                    isReturningFromRecipe = true
-                }
         }
     }
 }
 
 struct SearchBarAllCocktailsListView: View {
     @Bindable var viewModel: CocktailListViewModel
-    @Binding var isReturningFromRecipe: Bool
+    @Binding var path: NavigationPath
+    @Binding var isSearchActive: Bool
+    @FocusState var isSearchFocused: Bool
 
     var body: some View {
         let organizedCocktails = viewModel.organizeCocktails(viewModel.filteredCocktails)
@@ -113,7 +126,7 @@ struct SearchBarAllCocktailsListView: View {
                 if cocktails.count > 1 {
                     DisclosureGroup {
                         ForEach(cocktails, id: \.id) { cocktail in
-                            MultipleCocktailsListView(cocktail: cocktail, cocktails: cocktails, isReturningFromRecipe: $isReturningFromRecipe)
+                            MultipleCocktailsListView(viewModel: viewModel, cocktail: cocktail, cocktails: cocktails, path: $path, isSearchActive: $isSearchActive, isSearchFocused: _isSearchFocused)
                                 .padding(.leading)
                         }
                     } label: {
@@ -122,7 +135,7 @@ struct SearchBarAllCocktailsListView: View {
                     }
                     .disclosureGroupStyle(InlineDisclosureGroupStyle())
                 } else {
-                    SingleCocktailListView(cocktail: cocktails[0], isReturningFromRecipe: $isReturningFromRecipe)
+                    SingleCocktailListView(viewModel: viewModel,cocktail: cocktails[0], path: $path, isSearchActive: $isSearchActive, isSearchFocused: _isSearchFocused)
                 }
             }
         }

@@ -12,11 +12,12 @@ struct CocktailListView: View {
     @Bindable var viewModel = CocktailListViewModel()
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
     @State private var isSearchActive = false
-    @State private var isReturningFromRecipe = false
     @FocusState private var isSearchFocused: Bool
+    
+    @State private var path = NavigationPath()
 
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path){
             ZStack {
                 ColorScheme.background.ignoresSafeArea()
                 
@@ -26,10 +27,10 @@ struct CocktailListView: View {
                             ScrollViewReader { value in
                                 HStack {
                                     List {
-                                        if isSearchActive && !isReturningFromRecipe {
-                                            SearchBarAllCocktailsListView(viewModel: viewModel, isReturningFromRecipe: $isReturningFromRecipe)
+                                        if isSearchActive  {
+                                            SearchBarAllCocktailsListView(viewModel: viewModel, path: $path, isSearchActive: $isSearchActive, isSearchFocused: _isSearchFocused)
                                         } else {
-                                            AllCocktailsListView(viewModel: viewModel, isReturningFromRecipe: $isReturningFromRecipe)
+                                            AllCocktailsListView(viewModel: viewModel, isSearchActive: $isSearchActive, isSearchFocused: _isSearchFocused, path: $path)
                                         }
                                     }
                                     .listStyle(.plain)
@@ -46,6 +47,9 @@ struct CocktailListView: View {
                         }
                     }
                 }
+                .navigationDestination(for: Cocktail.self, destination: { cocktail in
+                    RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                })
                 .searchable(text: $viewModel.searchText, isPresented: $isSearchActive, prompt: "Search cocktails")
                 .focused($isSearchFocused)
                 .onSubmit(of: .search) {
@@ -56,30 +60,18 @@ struct CocktailListView: View {
                 .onChange(of: viewModel.searchText) { _, newValue in
                     viewModel.updateSearch(newValue)
                     isSearchActive = !newValue.isEmpty
-                    isReturningFromRecipe = false
-                }
-                .onChange(of: isReturningFromRecipe) { _, newValue in
-                    if newValue {
-                        resetSearch()
-                    }
+              
                 }
             }
+           
             .navigationBarTitleDisplayMode(.inline)
             .jamesHeader("Cocktail List")
+            
         }
-        .onAppear {
+        .task {
             viewModel.setAllCocktails(cocktails)
-            if isReturningFromRecipe {
-                resetSearch()
-            }
         }
-    }
-
-    private func resetSearch() {
-        isSearchActive = false
-        isSearchFocused = false
-        viewModel.searchText = ""
-        isReturningFromRecipe = false
+        
     }
 }
 
