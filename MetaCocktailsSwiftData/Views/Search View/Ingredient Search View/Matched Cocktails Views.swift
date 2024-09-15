@@ -23,43 +23,6 @@ struct IngredientSearchMatchedCocktailsView: View {
     }
 }
 
-struct MissingIngredientsView: View {
-    
-    var missingIngredientArray: [String]
-    
-    init(for cocktail: Cocktail, in viewModel: SearchViewModel) {
-        let preferredSelectionsArray = viewModel.preferredSelections
-        var cocktailIngredients = cocktail.spec.map { $0.ingredientBase.name }
-        cocktailIngredients += cocktail.spec.map { $0.ingredientBase.baseCategory }
-        cocktailIngredients += cocktail.spec.map { $0.ingredientBase.specialtyCategory }
-        cocktailIngredients += cocktail.spec.map { $0.ingredientBase.umbrellaCategory }
-        if let cocktailFlavors = cocktail.compiledTags.flavors {
-            cocktailIngredients += cocktailFlavors.map { $0.rawValue }
-        }
-        if let cocktailProfiles = cocktail.compiledTags.profiles {
-            cocktailIngredients += cocktailProfiles.map { $0.rawValue }
-        }
-        if let cocktailStyles = cocktail.compiledTags.styles {
-            cocktailIngredients += cocktailStyles.map { $0.rawValue }
-        }
-        let cocktailIngredientsNoDoubles = Array(Set(cocktailIngredients))
-        let missingIngredientsArray = preferredSelectionsArray.filter { !cocktailIngredientsNoDoubles.contains($0) }
-        self.missingIngredientArray = missingIngredientsArray
-    }
-   
-    var body: some View {
-        HStack{
-            ForEach(missingIngredientArray, id: \.self) { nonMatch in
-                Text("-\(nonMatch) ")
-                    .foregroundStyle(.secondary)
-                    .font(.caption)
-            }
-            Spacer()
-        }
-    }
-}
-
-
 struct FilterMatchesMenuDataQueriesView: View {
     
     @EnvironmentObject var viewModel: SearchViewModel
@@ -148,7 +111,7 @@ struct MinusOneMatchView: View {
             Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 1))) {
                 ForEach(viewModel.groupMinusOne(cocktails: minusOneMatchCocktails), id: \.0) { missingIngredient, cocktails in
                     if !cocktails.isEmpty {
-                        Section(header: viewModel.trailingHeader(text: "Missing ingredient: \(missingIngredient)")) {
+                        Section(header: viewModel.centeredHeader(text: "Missing ingredient: \(missingIngredient)")) {
                             ForEach(cocktails, id: \.self) { cocktail in
                                 NavigationLink {
                                     RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))

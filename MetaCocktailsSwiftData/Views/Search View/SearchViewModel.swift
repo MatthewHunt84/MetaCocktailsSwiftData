@@ -185,7 +185,7 @@ final class SearchViewModel: ObservableObject {
         currentComponentSearchName = ""
     }
     
-    func trailingHeader(text: String) -> some View {
+    func centeredHeader(text: String) -> some View {
         HStack {
             Spacer()
             Text(text)
