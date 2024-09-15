@@ -23,8 +23,9 @@ struct HistoricalCocktailModalView: View {
                         HStack {
                             Spacer()
                             Button(action: { isPresented = false }) {
-                                Image(systemName: "custom.xmark.circle")
+                                Image(systemName: "xmark.circle")
                                     .font(.title2)
+                                    .foregroundStyle(.blueTint)
                             }
                         }
                         .padding(.top)
