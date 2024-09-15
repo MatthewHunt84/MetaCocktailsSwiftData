@@ -185,13 +185,30 @@ final class SearchViewModel: ObservableObject {
         currentComponentSearchName = ""
     }
     
-    func centeredHeader(text: String) -> some View {
-        HStack {
-            Spacer()
-            Text(text)
+    func minusOneHeader(missingIngredient: String) -> some View {
+        HStack{
+            Text("Missing ingredient:")
                 .font(FontFactory.fontBody16)
                 .foregroundColor(.white)
-            Spacer()
+            Text(missingIngredient)
+                .font(FontFactory.fontBody16)
+                .foregroundColor(.brandPrimaryGold)
+        }
+    }
+    
+    func minusTwoHeader(missingIngredients: [String]) -> some View {
+        VStack{
+            Text("Missing ingredients:")
+                .font(FontFactory.fontBody16)
+                .foregroundColor(.white)
+            HStack{
+                Text("\(missingIngredients[0]), ")
+                    .font(FontFactory.fontBody16)
+                    .foregroundColor(.brandPrimaryGold)
+                Text(missingIngredients[1])
+                    .font(FontFactory.fontBody16)
+                    .foregroundColor(.brandPrimaryGold)
+            }
         }
     }
     

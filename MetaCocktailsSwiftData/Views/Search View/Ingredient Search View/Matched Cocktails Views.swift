@@ -111,7 +111,7 @@ struct MinusOneMatchView: View {
             Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 1))) {
                 ForEach(viewModel.groupMinusOne(cocktails: minusOneMatchCocktails), id: \.0) { missingIngredient, cocktails in
                     if !cocktails.isEmpty {
-                        Section(header: viewModel.centeredHeader(text: "Missing ingredient: \(missingIngredient)")) {
+                        Section(header: viewModel.minusOneHeader(missingIngredient: missingIngredient)) {
                             ForEach(cocktails, id: \.self) { cocktail in
                                 NavigationLink {
                                     RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
