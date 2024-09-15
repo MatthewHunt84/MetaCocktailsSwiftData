@@ -185,6 +185,43 @@ final class SearchViewModel: ObservableObject {
         currentComponentSearchName = ""
     }
     
+    func trailingHeader(text: String) -> some View {
+        HStack {
+            Spacer()
+            Text(text)
+                .font(FontFactory.fontBody16)
+                .foregroundColor(.white)
+            Spacer()
+        }
+    }
+    
+    func getMissingIngredient(for cocktail: Cocktail) -> String {
+        let preferredSelectionsArray = preferredSelections
+        var cocktailIngredients = cocktail.spec.map { $0.ingredientBase.name }
+        cocktailIngredients += cocktail.spec.map { $0.ingredientBase.baseCategory }
+        cocktailIngredients += cocktail.spec.map { $0.ingredientBase.specialtyCategory }
+        cocktailIngredients += cocktail.spec.map { $0.ingredientBase.umbrellaCategory }
+        if let cocktailFlavors = cocktail.compiledTags.flavors {
+            cocktailIngredients += cocktailFlavors.map { $0.rawValue }
+        }
+        if let cocktailProfiles = cocktail.compiledTags.profiles {
+            cocktailIngredients += cocktailProfiles.map { $0.rawValue }
+        }
+        if let cocktailStyles = cocktail.compiledTags.styles {
+            cocktailIngredients += cocktailStyles.map { $0.rawValue }
+        }
+        let cocktailIngredientsNoDoubles = Array(Set(cocktailIngredients))
+        let missingIngredientsArray = preferredSelectionsArray.filter { !cocktailIngredientsNoDoubles.contains($0) }
+        return missingIngredientsArray.first ?? "Unknown"
+    }
+    
+    func groupMinusOne(cocktails: [Cocktail]) -> [(String, [Cocktail])] {
+        let grouped = Dictionary(grouping: cocktails) { cocktail in
+            getMissingIngredient(for: cocktail)
+        }
+        return grouped.sorted { $0.key < $1.key }
+    }
+    
     func toggleIsShowingResults() {
 
         Task {
