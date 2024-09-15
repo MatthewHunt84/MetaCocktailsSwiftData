@@ -109,9 +109,9 @@ struct MinusOneMatchView: View {
             EmptyView()
         } else {
             Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 1))) {
-                ForEach(viewModel.groupMinusOne(cocktails: minusOneMatchCocktails), id: \.0) { missingIngredient, cocktails in
+                ForEach(viewModel.group(cocktails: minusOneMatchCocktails), id: \.0) { missingIngredient, cocktails in
                     if !cocktails.isEmpty {
-                        Section(header: viewModel.minusOneHeader(missingIngredient: missingIngredient)) {
+                        Section(header: viewModel.minusOneHeader(missingIngredient: missingIngredient[0])) {
                             ForEach(cocktails, id: \.self) { cocktail in
                                 NavigationLink {
                                     RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
@@ -130,53 +130,6 @@ struct MinusOneMatchView: View {
     }
 }
 
-//struct MinusTwoMatchView: View {
-//    @State var nonmatchSearchPreference = "none"
-//    @EnvironmentObject var viewModel: SearchViewModel
-//    @Query var minusTwoMatchCocktails: [Cocktail]
-//    
-//    init(passedViewModel: SearchViewModel) {
-//        let predicate = passedViewModel.predicateFactory(for: passedViewModel.preferredCount - 2)
-//        _minusTwoMatchCocktails = Query(filter: predicate, sort: \Cocktail.cocktailName)
-//    }
-//    
-//    var body: some View {
-//        if minusTwoMatchCocktails.isEmpty  || viewModel.preferredSelections.count < 4{
-//            EmptyView()
-//        } else {
-//            
-//            Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 2))) {
-//                ForEach(filtered(minusTwoMatchCocktails), id: \.self) { cocktail in
-//                    
-//                    NavigationLink {
-//                        RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-//                            .navigationBarBackButtonHidden(true)
-//                    } label: {
-//                        VStack {
-//                            HStack {
-//                                Text(cocktail.cocktailName)
-//                                    .foregroundStyle(.secondary)
-//                                Spacer()
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
-//    func filtered(_ cocktails: [Cocktail]) -> [Cocktail] {
-//        guard nonmatchSearchPreference != "none" else { return cocktails }
-//        return cocktails.filter { cocktail in
-//            cocktail.spec.filter { ingredient in
-//                ingredient.ingredientBase.name == nonmatchSearchPreference ||
-//                ingredient.ingredientBase.umbrellaCategory == nonmatchSearchPreference ||
-//                ingredient.ingredientBase.baseCategory == nonmatchSearchPreference ||
-//                ingredient.ingredientBase.specialtyCategory == nonmatchSearchPreference
-//            }.count == 0
-//        }
-//    }
-//}
-
 struct MinusTwoMatchView: View {
     @EnvironmentObject var viewModel: SearchViewModel
     @Query var minusTwoMatchCocktails: [Cocktail]
@@ -191,7 +144,7 @@ struct MinusTwoMatchView: View {
             EmptyView()
         } else {
             Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 2))) {
-                ForEach(viewModel.groupMinusTwo(cocktails: minusTwoMatchCocktails), id: \.0) { missingIngredients, cocktails in
+                ForEach(viewModel.group(cocktails: minusTwoMatchCocktails), id: \.0) { missingIngredients, cocktails in
                     if !cocktails.isEmpty {
                         DisclosureGroup {
                             ForEach(cocktails, id: \.self) { cocktail in
@@ -205,7 +158,7 @@ struct MinusTwoMatchView: View {
                                 }
                             }
                         } label: {
-                            viewModel.minusTwoHeader(missingIngredients: missingIngredients)
+                            viewModel.minusTwoHeader(missingIngredients: missingIngredients, cocktailCount: cocktails.count)
                         }
                     }
                 }

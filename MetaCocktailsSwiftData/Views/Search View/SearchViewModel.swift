@@ -196,7 +196,7 @@ final class SearchViewModel: ObservableObject {
         }
     }
     
-    func minusTwoHeader(missingIngredients: [String]) -> some View {
+    func minusTwoHeader(missingIngredients: [String], cocktailCount: Int) -> some View {
         HStack{
             Text("Missing:")
                 .font(FontFactory.fontBody16)
@@ -207,27 +207,11 @@ final class SearchViewModel: ObservableObject {
             Text(missingIngredients[1])
                 .font(FontFactory.fontBody16)
                 .foregroundColor(.brandPrimaryGold)
+            Spacer()
+            Text("(\(cocktailCount))")
+                .font(FontFactory.fontBody16)
+                .foregroundColor(.secondary)
         }
-    }
-    
-    func getMissingIngredient(for cocktail: Cocktail) -> String {
-        let preferredSelectionsArray = preferredSelections
-        var cocktailIngredients = cocktail.spec.map { $0.ingredientBase.name }
-        cocktailIngredients += cocktail.spec.map { $0.ingredientBase.baseCategory }
-        cocktailIngredients += cocktail.spec.map { $0.ingredientBase.specialtyCategory }
-        cocktailIngredients += cocktail.spec.map { $0.ingredientBase.umbrellaCategory }
-        if let cocktailFlavors = cocktail.compiledTags.flavors {
-            cocktailIngredients += cocktailFlavors.map { $0.rawValue }
-        }
-        if let cocktailProfiles = cocktail.compiledTags.profiles {
-            cocktailIngredients += cocktailProfiles.map { $0.rawValue }
-        }
-        if let cocktailStyles = cocktail.compiledTags.styles {
-            cocktailIngredients += cocktailStyles.map { $0.rawValue }
-        }
-        let cocktailIngredientsNoDoubles = Array(Set(cocktailIngredients))
-        let missingIngredientsArray = preferredSelectionsArray.filter { !cocktailIngredientsNoDoubles.contains($0) }
-        return missingIngredientsArray.first ?? "Unknown"
     }
     
     func getMissingIngredients(for cocktail: Cocktail) -> [String] {
@@ -250,19 +234,13 @@ final class SearchViewModel: ObservableObject {
         return Array(missingIngredientsArray)
     }
     
-    func groupMinusOne(cocktails: [Cocktail]) -> [(String, [Cocktail])] {
-        let grouped = Dictionary(grouping: cocktails) { cocktail in
-            getMissingIngredient(for: cocktail)
-        }
-        return grouped.sorted { $0.key < $1.key }
-    }
-    
-    func groupMinusTwo(cocktails: [Cocktail]) -> [([String], [Cocktail])] {
+    func group(cocktails: [Cocktail]) -> [([String], [Cocktail])] {
         let grouped = Dictionary(grouping: cocktails) { cocktail in
             getMissingIngredients(for: cocktail)
         }
         return grouped.sorted { $0.key.joined() < $1.key.joined() }
     }
+  
     
     func toggleIsShowingResults() {
 
