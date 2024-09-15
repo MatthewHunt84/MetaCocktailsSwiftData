@@ -230,8 +230,7 @@ final class SearchViewModel: ObservableObject {
             cocktailIngredients += cocktailStyles.map { $0.rawValue }
         }
         let cocktailIngredientsNoDoubles = Array(Set(cocktailIngredients))
-        let missingIngredientsArray = preferredSelectionsArray.filter { !cocktailIngredientsNoDoubles.contains($0) }
-        return Array(missingIngredientsArray)
+        return preferredSelectionsArray.filter { !cocktailIngredientsNoDoubles.contains($0) }
     }
     
     func group(cocktails: [Cocktail]) -> [([String], [Cocktail])] {
