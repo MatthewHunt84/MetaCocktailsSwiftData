@@ -78,14 +78,35 @@ struct BatchCellView: View {
 }
 
 
-//
-//#Preview {
-//    BatchCellView(quantifiedBatchedIngredient: .constant(BottleBatchedCellData(ingredientName: "Creme de Cacao", whole1LBottles: 2.1, remaining1LMls: 900, whole750mlBottles: 1.2, remaining750mLs: 34, mlAmount: 55, totalMls: 786)))
-//        .environmentObject(CBCViewModel())
-//}
+struct BatchCellViewPreview: View {
+    @FocusState private var isFocused: Bool
+    
+    var body: some View {
+        NavigationView {
+            BatchCellView(
+                quantifiedBatchedIngredient: .constant(
+                    BottleBatchedCellData(
+                        ingredientName: "Creme de Cacao",
+                        whole1LBottles: 2.1,
+                        remaining1LMls: 900,
+                        whole750mlBottles: 1.2,
+                        remaining750mLs: 34,
+                        mlAmount: 55,
+                        totalMls: 786
+                    )
+                ),
+                isFocused: $isFocused
+            )
+            .environmentObject(CBCViewModel())
+        }
+    }
+}
+
+#Preview {
+    BatchCellViewPreview()
+}
 
 struct BottleMathView: View {
-    @EnvironmentObject var viewModel: CBCViewModel
     @Binding var quantifiedBatchedIngredient: BottleBatchedCellData
     @Binding var showBottleMath: Bool
     
@@ -93,65 +114,87 @@ struct BottleMathView: View {
         VStack {
             Divider()
                 .padding(.vertical, 4)
-            HStack {
-                
-                Spacer()
-                HStack {
-                    Text("\(Int(quantifiedBatchedIngredient.whole1LBottles)) x 1L Bottles")
-                    if quantifiedBatchedIngredient.remaining1LMls != 0 {
-                        Text("+")
-                        Text("\(quantifiedBatchedIngredient.remaining1LMls)ml")
-                    }
-                }
-                .font(.footnote).bold()
-                Button {
-                    
-                    viewModel.doMathForModified1LBottleCount(initialAmount: Double(quantifiedBatchedIngredient.mlAmount), newQuantityAmount: quantifiedBatchedIngredient.whole1LBottles + 1)
-                } label: {
-                    Image(systemName: "arrow.up.circle")
-                }
-                .buttonStyle(.bordered)
-                Button {
-                    if quantifiedBatchedIngredient.whole1LBottles != 0 {
-                        viewModel.doMathForModified1LBottleCount(initialAmount: Double(quantifiedBatchedIngredient.mlAmount), newQuantityAmount: quantifiedBatchedIngredient.whole1LBottles - 1)
-                    }
-                } label: {
-                    Image(systemName: "arrow.down.circle")
-                }
-                .buttonStyle(.bordered)
-            }
-            .foregroundStyle(.brandPrimaryGold)
-            .transition(.asymmetric(insertion: .scale, removal: .slide))
             
-            HStack {
-                Spacer()
-                HStack {
-                    Text("\(Int(quantifiedBatchedIngredient.whole750mlBottles)) x 750ml Bottles")
-                    
-                    if quantifiedBatchedIngredient.remaining750mLs != 0 {
-                        Text("+")
-                        Text("\(quantifiedBatchedIngredient.remaining750mLs)ml")
-                    }
-                }
-                .font(.footnote).bold()
-                Button {
-                    viewModel.doMathForModified750mlBottleCount(initialAmount: Double(quantifiedBatchedIngredient.mlAmount), newQuantityAmount: quantifiedBatchedIngredient.whole750mlBottles + 1)
-                } label: {
-                    Image(systemName: "arrow.up.circle")
-                }
-                .buttonStyle(.bordered)
-                Button {
-                    if quantifiedBatchedIngredient.whole750mlBottles != 0 {
-                        viewModel.doMathForModified750mlBottleCount(initialAmount: Double(quantifiedBatchedIngredient.mlAmount), newQuantityAmount: quantifiedBatchedIngredient.whole750mlBottles - 1)
-                    }
-                } label: {
-                    Image(systemName: "arrow.down.circle")
-                }
-                .buttonStyle(.bordered)
-            }
-            .foregroundStyle(ColorScheme.selectedColor)
-            .transition(.asymmetric(insertion: .scale, removal: .slide))
+            OneLiterBottleView(quantifiedBatchedIngredient: $quantifiedBatchedIngredient)
+            
+            SevenFiftyBottleView(quantifiedBatchedIngredient: $quantifiedBatchedIngredient)
         }
         .animation(.easeInOut(duration: 0.5), value: showBottleMath)
+    }
+}
+
+struct OneLiterBottleView: View {
+    @EnvironmentObject var viewModel: CBCViewModel
+    @Binding var quantifiedBatchedIngredient: BottleBatchedCellData
+    @State private var buttonBackgroundColor = ColorScheme.buttonTint
+    
+    var body: some View {
+        HStack {
+            Spacer()
+            HStack {
+                Text("\(Int(quantifiedBatchedIngredient.whole1LBottles)) x 1L Bottles")
+                if quantifiedBatchedIngredient.remaining1LMls != 0 {
+                    Text("+")
+                    Text("\(quantifiedBatchedIngredient.remaining1LMls)ml")
+                }
+            }
+            .font(.footnote).bold()
+            Button {
+                viewModel.doMathForModified1LBottleCount(initialAmount: Double(quantifiedBatchedIngredient.mlAmount), newQuantityAmount: quantifiedBatchedIngredient.whole1LBottles + 1)
+            } label: {
+                Image(systemName: "arrow.up.circle")
+            }
+            .buttonStyle(.bordered)
+            .tint(buttonBackgroundColor)
+            Button {
+                if quantifiedBatchedIngredient.whole1LBottles != 0 {
+                    viewModel.doMathForModified1LBottleCount(initialAmount: Double(quantifiedBatchedIngredient.mlAmount), newQuantityAmount: quantifiedBatchedIngredient.whole1LBottles - 1)
+                }
+            } label: {
+                Image(systemName: "arrow.down.circle")
+            }
+            .buttonStyle(.bordered)
+            .tint(buttonBackgroundColor)
+        }
+        .foregroundStyle(.brandPrimaryGold)
+        .transition(.asymmetric(insertion: .scale, removal: .slide))
+    }
+}
+
+struct SevenFiftyBottleView: View {
+    @EnvironmentObject var viewModel: CBCViewModel
+    @Binding var quantifiedBatchedIngredient: BottleBatchedCellData
+    @State private var buttonBackgroundColor = ColorScheme.buttonTint
+    
+    var body: some View {
+        HStack {
+            Spacer()
+            HStack {
+                Text("\(Int(quantifiedBatchedIngredient.whole750mlBottles)) x 750ml Bottles")
+                if quantifiedBatchedIngredient.remaining750mLs != 0 {
+                    Text("+")
+                    Text("\(quantifiedBatchedIngredient.remaining750mLs)ml")
+                }
+            }
+            .font(.footnote).bold()
+            Button {
+                viewModel.doMathForModified750mlBottleCount(initialAmount: Double(quantifiedBatchedIngredient.mlAmount), newQuantityAmount: quantifiedBatchedIngredient.whole750mlBottles + 1)
+            } label: {
+                Image(systemName: "arrow.up.circle")
+            }
+            .buttonStyle(.bordered)
+            .tint(buttonBackgroundColor)
+            Button {
+                if quantifiedBatchedIngredient.whole750mlBottles != 0 {
+                    viewModel.doMathForModified750mlBottleCount(initialAmount: Double(quantifiedBatchedIngredient.mlAmount), newQuantityAmount: quantifiedBatchedIngredient.whole750mlBottles - 1)
+                }
+            } label: {
+                Image(systemName: "arrow.down.circle")
+            }
+            .buttonStyle(.bordered)
+            .tint(buttonBackgroundColor)
+        }
+        .foregroundStyle(ColorScheme.selectedColor)
+        .transition(.asymmetric(insertion: .scale, removal: .slide))
     }
 }

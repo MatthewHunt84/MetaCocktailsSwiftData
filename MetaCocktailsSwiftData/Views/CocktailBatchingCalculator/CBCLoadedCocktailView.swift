@@ -118,7 +118,7 @@ struct CocktailCountView: View {
                 viewModel.numberOfCocktailsText = 0
             }
             .dynamicTypeSize(.large)
-            .frame(width: 125)
+            .frame(width: 100)
     }
 }
 struct QuantifiedIngredientsListView: View {
