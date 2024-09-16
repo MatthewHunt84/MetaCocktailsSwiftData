@@ -110,6 +110,28 @@ final class CBCViewModel: ObservableObject {
         splitBatchData = splitData
         
     }
+    
+    func updateIngredientAmount(ingredientName: String, newAmount: Int) {
+        print("Updating ingredient: \(ingredientName) with new amount: \(newAmount)")
+        if let index = quantifiedBatchedIngredients.firstIndex(where: { $0.ingredientName == ingredientName }) {
+            let oldAmount = quantifiedBatchedIngredients[index].totalMls
+            let ratio = Double(newAmount) / Double(oldAmount)
+            
+            print("Old amount: \(oldAmount), Ratio: \(ratio)")
+            
+            // Update the number of cocktails
+            numberOfCocktailsText *= ratio
+            
+            print("New number of cocktails: \(numberOfCocktailsText)")
+            
+            // Recalculate all ingredients
+            convertIngredientsToBatchCellData()
+            
+            print("Ingredients recalculated")
+        } else {
+            print("Ingredient not found: \(ingredientName)")
+        }
+    }
 }
 
 struct CBCLoadedCocktailData: Hashable, Equatable {
@@ -138,6 +160,7 @@ struct BottleBatchedCellData: Hashable, Equatable {
     var remaining750mLs: Int
     var mlAmount: Double
     var totalMls: Int
+    var editedTotalMls: String = ""
     
     static func == (lhs: BottleBatchedCellData, rhs: BottleBatchedCellData) -> Bool {
         return lhs.ingredientName == rhs.ingredientName

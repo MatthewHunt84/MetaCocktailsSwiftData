@@ -141,20 +141,64 @@ struct CocktailCountView: View {
     }
 }
 
+//struct QuantifiedIngredientsListView: View {
+//    @EnvironmentObject var viewModel: CBCViewModel
+//    
+//    var body: some View {
+//        ScrollView {
+//            
+//            LazyVStack {
+//                
+//                ForEach($viewModel.quantifiedBatchedIngredients, id: \.self) { ingredient in
+//                    BatchCellView(quantifiedBatchedIngredient: ingredient)
+//                }
+//                
+//                VStack {
+//                    
+//                    HStack {
+//                        Text("Batch Dilution")
+//                        Spacer()
+//                        Text("\(Int(ceil(viewModel.totalDilutionVolume)))ml")
+//                    }
+//                    
+//                    HStack {
+//                        Slider(value: $viewModel.dilutionPercentage, in: 0...100, step: 1.0)
+//                            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+//                            .tint( ColorScheme.interactionTint)
+//                        Text("\(viewModel.dilutionPercentage, specifier: "%.0f")%")
+//                            .frame(width: 50)
+//                            .onChange(of: viewModel.dilutionPercentage) { oldValue, newValue in
+//                                viewModel.dilutionPercentage = newValue
+//                                viewModel.convertIngredientsToBatchCellData()
+//                            }
+//                    }
+//                }
+//                
+//                SplitBatchNavigationButton()
+//                    .padding(.top, 20)
+//                
+//            }
+//        }
+//    }
+//}
 struct QuantifiedIngredientsListView: View {
     @EnvironmentObject var viewModel: CBCViewModel
+    @State private var activeEditingIngredient: String?
+    @FocusState private var focusedField: String?
+    @FocusState private var keyboardFocused: Bool
+    
     
     var body: some View {
         ScrollView {
-            
             LazyVStack {
-                
                 ForEach($viewModel.quantifiedBatchedIngredients, id: \.self) { ingredient in
-                    BatchCellView(quantifiedBatchedIngredient: ingredient)
+                    BatchCellView(quantifiedBatchedIngredient: ingredient,
+                                  activeEditingIngredient: $activeEditingIngredient,
+                                  focusedField: $focusedField,
+                                  keyboardFocused: $keyboardFocused)
                 }
                 
                 VStack {
-                    
                     HStack {
                         Text("Batch Dilution")
                         Spacer()
@@ -164,7 +208,7 @@ struct QuantifiedIngredientsListView: View {
                     HStack {
                         Slider(value: $viewModel.dilutionPercentage, in: 0...100, step: 1.0)
                             .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-                            .tint( ColorScheme.interactionTint)
+                            .tint(ColorScheme.interactionTint)
                         Text("\(viewModel.dilutionPercentage, specifier: "%.0f")%")
                             .frame(width: 50)
                             .onChange(of: viewModel.dilutionPercentage) { oldValue, newValue in
@@ -176,7 +220,23 @@ struct QuantifiedIngredientsListView: View {
                 
                 SplitBatchNavigationButton()
                     .padding(.top, 20)
-                
+            }
+        }
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button("Done") {
+                    if let activeIngredient = activeEditingIngredient ?? focusedField {
+                        if let index = viewModel.quantifiedBatchedIngredients.firstIndex(where: { $0.ingredientName == activeIngredient }) {
+                            if let newValue = Int(viewModel.quantifiedBatchedIngredients[index].editedTotalMls) {
+                                viewModel.updateIngredientAmount(ingredientName: activeIngredient, newAmount: newValue)
+                            }
+                        }
+                    }
+                    focusedField = nil
+                    activeEditingIngredient = nil
+                    keyboardFocused = false
+                }
             }
         }
     }
