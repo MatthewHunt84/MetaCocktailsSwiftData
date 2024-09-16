@@ -7,66 +7,76 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct BatchCellView: View {
     @EnvironmentObject var viewModel: CBCViewModel
     @Binding var quantifiedBatchedIngredient: BottleBatchedCellData
     @State private var showBottleMath: Bool = false
-    @Binding var activeEditingIngredient: String?
-    @FocusState.Binding var focusedField: String?
-    @FocusState.Binding var keyboardFocused: Bool
-    
-    var isEditing: Bool {
-        focusedField == quantifiedBatchedIngredient.ingredientName
-    }
+    @FocusState.Binding var isFocused: Bool
     
     var body: some View {
         VStack(alignment: .leading) {
-            HStack {
-                Image(systemName: showBottleMath ? "chevron.down" : "chevron.right")
-                    .foregroundStyle(ColorScheme.interactionTint)
-                Text(quantifiedBatchedIngredient.ingredientName)
-                    .foregroundStyle(.white)
-                Spacer()
-                TextField("\(quantifiedBatchedIngredient.totalMls)ml", text: $quantifiedBatchedIngredient.editedTotalMls)
-                    .autocorrectionDisabled()
-                    .padding(5)
-                    .background(Color(UIColor.systemGray5))
-                    .cornerRadius(10)
-                    .keyboardType(.decimalPad)
-                    .foregroundStyle(.white)
-                    .multilineTextAlignment(.trailing)
-                    .frame(width: 100)
-                    .focused($keyboardFocused)
-                    .onTapGesture {
-                        activeEditingIngredient = quantifiedBatchedIngredient.ingredientName
-                        if quantifiedBatchedIngredient.editedTotalMls.isEmpty {
-                            quantifiedBatchedIngredient.editedTotalMls = "\(quantifiedBatchedIngredient.totalMls)"
-                        }
-                        focusedField = quantifiedBatchedIngredient.ingredientName
+            
+                HStack {
+                    Image(systemName: showBottleMath ? "chevron.down" : "chevron.right")
+                        .foregroundStyle(ColorScheme.interactionTint)
+                    Text(quantifiedBatchedIngredient.ingredientName)
+                        .font(FontFactory.formLabel18)
+                        .foregroundStyle(.white)
+                    Spacer()
+                    if viewModel.editingIngredient == quantifiedBatchedIngredient.ingredientName {
+                        TextField("\(quantifiedBatchedIngredient.totalMls)", text: $quantifiedBatchedIngredient.editedTotalMls)
+                            .font(FontFactory.formLabel18)
+                            .multilineTextAlignment(.center)
+                            .padding(.vertical, 5)
+                            .keyboardType(.numberPad)
+                            .frame(width: 80)
+                            .background(Color(UIColor.systemGray5))
+                            .cornerRadius(10)
+                            .focused($isFocused)
+                        Text("ml")
+                            .font(FontFactory.formLabel18)
+                            .multilineTextAlignment(.leading)
+                        
+                    } else {
+                        
+                        Text("\(quantifiedBatchedIngredient.totalMls)")
+                            .font(FontFactory.formLabel18)
+                            .multilineTextAlignment(.center)
+                            .padding(.vertical, 5)
+                            .frame(width: 80)
+                            .background(Color(UIColor.systemGray5))
+                            .cornerRadius(10)
+                            .onTapGesture {
+                                quantifiedBatchedIngredient.editedTotalMls = String(quantifiedBatchedIngredient.totalMls)
+                                viewModel.updateEditingIngredient(name: quantifiedBatchedIngredient.ingredientName)
+                                isFocused = true
+                                quantifiedBatchedIngredient.editedTotalMls = ""
+                            }
+                        Text("ml")
+                            .font(FontFactory.formLabel18)
+                            .multilineTextAlignment(.leading)
                         
                     }
-                    .onChange(of: focusedField) { oldValue, newValue in
-                        if newValue == quantifiedBatchedIngredient.ingredientName {
-                            activeEditingIngredient = quantifiedBatchedIngredient.ingredientName
+                }
+                .onTapGesture {
+                    if !isFocused {
+                        withAnimation(.easeInOut(duration: 0.5)) {
+                            showBottleMath.toggle()
                         }
                     }
-            }
-            .onTapGesture {
-                keyboardFocused = false
-                withAnimation(.easeInOut(duration: 0.5)) {
-                    showBottleMath.toggle()
+                }
+                .offset(x: 0, y: 5)
+                
+                if showBottleMath {
+                    BottleMathView(quantifiedBatchedIngredient: $quantifiedBatchedIngredient, showBottleMath: $showBottleMath)
                 }
             }
-            
-            .offset(x: 0, y: 5)
-            
-            if showBottleMath {
-                BottleMathView(quantifiedBatchedIngredient: $quantifiedBatchedIngredient, showBottleMath: $showBottleMath)
-            }
-        }
-        .padding(.vertical, 10)
+            .padding(.vertical, 10)
     }
 }
+
 
 //
 //#Preview {

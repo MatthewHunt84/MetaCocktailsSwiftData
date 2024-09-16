@@ -16,6 +16,7 @@ final class CBCViewModel: ObservableObject {
     @Published var dilutionPercentage = 25.0
     @Published var numberOfCocktailsText: Double = 100.0
     @Published var isShowingBottleMathMode: Bool = false
+    @Published var editingIngredient: String?
     @Published //@Published var totalCocktailABVPercentage = 0.0
     var loadedCocktailData: CBCLoadedCocktailData = CBCLoadedCocktailData(cocktailName: "Test", ingredients: [])
     
@@ -89,7 +90,7 @@ final class CBCViewModel: ObservableObject {
         convertIngredientsToBatchCellData()
         
     }
-
+    
     func convertLoadedCocktail(for cocktail: Cocktail) {
         var newLoadedCocktailData = CBCLoadedCocktailData(cocktailName: cocktail.cocktailName, ingredients: [])
         for spec in cocktail.spec {
@@ -110,26 +111,27 @@ final class CBCViewModel: ObservableObject {
         splitBatchData = splitData
         
     }
+    func updateEditingIngredient(name: String) {
+        editingIngredient = name
+    }
+    
+    
+    func finishEditing() {
+        if let editing = editingIngredient,
+           let index = quantifiedBatchedIngredients.firstIndex(where: { $0.ingredientName == editing }),
+           let newValue = Int(quantifiedBatchedIngredients[index].editedTotalMls) {
+            updateIngredientAmount(ingredientName: editing, newAmount: newValue)
+        }
+        editingIngredient = nil
+        convertIngredientsToBatchCellData()
+    }
     
     func updateIngredientAmount(ingredientName: String, newAmount: Int) {
-        print("Updating ingredient: \(ingredientName) with new amount: \(newAmount)")
         if let index = quantifiedBatchedIngredients.firstIndex(where: { $0.ingredientName == ingredientName }) {
             let oldAmount = quantifiedBatchedIngredients[index].totalMls
             let ratio = Double(newAmount) / Double(oldAmount)
-            
-            print("Old amount: \(oldAmount), Ratio: \(ratio)")
-            
-            // Update the number of cocktails
             numberOfCocktailsText *= ratio
-            
-            print("New number of cocktails: \(numberOfCocktailsText)")
-            
-            // Recalculate all ingredients
-            convertIngredientsToBatchCellData()
-            
-            print("Ingredients recalculated")
-        } else {
-            print("Ingredient not found: \(ingredientName)")
+            quantifiedBatchedIngredients[index].totalMls = newAmount
         }
     }
 }

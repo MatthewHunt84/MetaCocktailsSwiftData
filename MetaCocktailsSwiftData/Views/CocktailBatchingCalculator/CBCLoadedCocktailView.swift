@@ -64,13 +64,11 @@ struct CBCCocktailHeaderView: View {
     var body: some View {
         VStack(alignment: .center) {
             HStack {
-                Text(cocktailName)
-                    .foregroundStyle(.softWhite)
-                    .font(.title2)
+                FontFactory.regularText(cocktailName, size: 22, color: .white, isBold: false)
             }
             HStack {
-                Text("Full Batch:")
-                Text("\(Int(ceil(totalBatchVolume)))ml")
+                FontFactory.regularText("Full Batch:", size: 20, color: .white, isBold: false)
+                FontFactory.regularText("\(Int(ceil(totalBatchVolume)))ml", size: 20, color: .white, isBold: false)
             }
             .font(.title3)
             .foregroundStyle(.secondary)
@@ -105,10 +103,11 @@ struct CocktailCountView: View {
     
     var body: some View {
         Text("Cocktail Count:")
-            .dynamicTypeSize(.large)
+            .font(FontFactory.formLabel18)
             .bold()
         TextField("#", value:  $viewModel.numberOfCocktailsText, formatter: viewModel.formatter)
             .padding(5)
+            .font(FontFactory.formLabel18)
             .autocorrectionDisabled()
             .background(Color(UIColor.systemGray5))
             .cornerRadius(10)
@@ -140,71 +139,22 @@ struct CocktailCountView: View {
             .frame(width: 125)
     }
 }
-
-//struct QuantifiedIngredientsListView: View {
-//    @EnvironmentObject var viewModel: CBCViewModel
-//    
-//    var body: some View {
-//        ScrollView {
-//            
-//            LazyVStack {
-//                
-//                ForEach($viewModel.quantifiedBatchedIngredients, id: \.self) { ingredient in
-//                    BatchCellView(quantifiedBatchedIngredient: ingredient)
-//                }
-//                
-//                VStack {
-//                    
-//                    HStack {
-//                        Text("Batch Dilution")
-//                        Spacer()
-//                        Text("\(Int(ceil(viewModel.totalDilutionVolume)))ml")
-//                    }
-//                    
-//                    HStack {
-//                        Slider(value: $viewModel.dilutionPercentage, in: 0...100, step: 1.0)
-//                            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-//                            .tint( ColorScheme.interactionTint)
-//                        Text("\(viewModel.dilutionPercentage, specifier: "%.0f")%")
-//                            .frame(width: 50)
-//                            .onChange(of: viewModel.dilutionPercentage) { oldValue, newValue in
-//                                viewModel.dilutionPercentage = newValue
-//                                viewModel.convertIngredientsToBatchCellData()
-//                            }
-//                    }
-//                }
-//                
-//                SplitBatchNavigationButton()
-//                    .padding(.top, 20)
-//                
-//            }
-//        }
-//    }
-//}
 struct QuantifiedIngredientsListView: View {
     @EnvironmentObject var viewModel: CBCViewModel
-    @State private var activeEditingIngredient: String?
-    @FocusState private var focusedField: String?
-    @FocusState private var keyboardFocused: Bool
-    
+    @FocusState private var isFocused: Bool
     
     var body: some View {
         ScrollView {
             LazyVStack {
                 ForEach($viewModel.quantifiedBatchedIngredients, id: \.self) { ingredient in
-                    BatchCellView(quantifiedBatchedIngredient: ingredient,
-                                  activeEditingIngredient: $activeEditingIngredient,
-                                  focusedField: $focusedField,
-                                  keyboardFocused: $keyboardFocused)
+                    BatchCellView(quantifiedBatchedIngredient: ingredient, isFocused: $isFocused)
                 }
-                
                 VStack {
                     HStack {
                         Text("Batch Dilution")
                         Spacer()
                         Text("\(Int(ceil(viewModel.totalDilutionVolume)))ml")
                     }
-                    
                     HStack {
                         Slider(value: $viewModel.dilutionPercentage, in: 0...100, step: 1.0)
                             .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
@@ -217,7 +167,6 @@ struct QuantifiedIngredientsListView: View {
                             }
                     }
                 }
-                
                 SplitBatchNavigationButton()
                     .padding(.top, 20)
             }
@@ -226,16 +175,8 @@ struct QuantifiedIngredientsListView: View {
             ToolbarItemGroup(placement: .keyboard) {
                 Spacer()
                 Button("Done") {
-                    if let activeIngredient = activeEditingIngredient ?? focusedField {
-                        if let index = viewModel.quantifiedBatchedIngredients.firstIndex(where: { $0.ingredientName == activeIngredient }) {
-                            if let newValue = Int(viewModel.quantifiedBatchedIngredients[index].editedTotalMls) {
-                                viewModel.updateIngredientAmount(ingredientName: activeIngredient, newAmount: newValue)
-                            }
-                        }
-                    }
-                    focusedField = nil
-                    activeEditingIngredient = nil
-                    keyboardFocused = false
+                    viewModel.finishEditing()
+                    isFocused = false
                 }
             }
         }
@@ -254,7 +195,7 @@ struct SplitBatchNavigationButton: View {
                     .font(.headline)
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
-                    .padding()
+                    .padding(.horizontal, 40)
                     .background( ColorScheme.interactionTint)
                     .cornerRadius(20)
                     .shadow(radius: 5)
