@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CBCLoadedCocktailView: View {
     @EnvironmentObject var viewModel: CBCViewModel
-    @FocusState var isInputActive: Bool
+    @FocusState private var isInputActive: Bool
     @State private var isShowingPreferencesModal: Bool = false
     @Environment(\.dismiss) private var dismiss
     
@@ -28,11 +28,11 @@ struct CBCLoadedCocktailView: View {
                     CBCCocktailHeaderView(cocktailName: viewModel.chosenCocktail.cocktailName, totalBatchVolume: viewModel.totalBatchVolume)
                     
                     HStack{
-                        CocktailCountView(isInputActive: _isInputActive)
+                        CocktailCountView(isInputActive: $isInputActive)
                         Spacer()
                         EditIngredientsButton(isShowingIngredientsModal: $isShowingPreferencesModal)
                     }
-                    QuantifiedIngredientsListView()
+                    QuantifiedIngredientsListView(isInputActive: $isInputActive)
                 }
                 .padding()
             }
@@ -99,7 +99,7 @@ struct EditIngredientsButton: View {
 
 struct CocktailCountView: View {
     @EnvironmentObject var viewModel: CBCViewModel
-    @FocusState var isInputActive: Bool
+    @FocusState.Binding var isInputActive: Bool
     
     var body: some View {
         Text("Cocktail Count:")
@@ -111,37 +111,20 @@ struct CocktailCountView: View {
             .autocorrectionDisabled()
             .background(Color(UIColor.systemGray5))
             .cornerRadius(10)
+            .multilineTextAlignment(.center)
             .keyboardType(.decimalPad)
             .focused($isInputActive)
             .onTapGesture {
                 viewModel.numberOfCocktailsText = 0
             }
             .dynamicTypeSize(.large)
-        
-        
-            .toolbar {
-                if isInputActive {
-                    
-                    ToolbarItemGroup(placement: .keyboard) {
-                        Spacer()
-                        
-                        Button {
-                            viewModel.convertIngredientsToBatchCellData()
-                            isInputActive = false
-                        } label: {
-                            Text("Done")
-                                .bold()
-                                .foregroundStyle(.blue)
-                        }
-                    }
-                }
-            }
             .frame(width: 125)
     }
 }
 struct QuantifiedIngredientsListView: View {
     @EnvironmentObject var viewModel: CBCViewModel
     @FocusState private var isFocused: Bool
+    @FocusState.Binding var isInputActive: Bool
     
     var body: some View {
         ScrollView {
@@ -152,14 +135,17 @@ struct QuantifiedIngredientsListView: View {
                 VStack {
                     HStack {
                         Text("Batch Dilution")
+                            .font(FontFactory.formLabel18)
                         Spacer()
                         Text("\(Int(ceil(viewModel.totalDilutionVolume)))ml")
+                            .font(FontFactory.formLabel18)
                     }
                     HStack {
                         Slider(value: $viewModel.dilutionPercentage, in: 0...100, step: 1.0)
                             .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
                             .tint(ColorScheme.interactionTint)
                         Text("\(viewModel.dilutionPercentage, specifier: "%.0f")%")
+                            .font(FontFactory.formLabel18)
                             .frame(width: 50)
                             .onChange(of: viewModel.dilutionPercentage) { oldValue, newValue in
                                 viewModel.dilutionPercentage = newValue
@@ -175,6 +161,7 @@ struct QuantifiedIngredientsListView: View {
             ToolbarItemGroup(placement: .keyboard) {
                 Spacer()
                 Button("Done") {
+                    isInputActive = false
                     viewModel.finishEditing()
                     isFocused = false
                 }
@@ -192,15 +179,10 @@ struct SplitBatchNavigationButton: View {
         } label: {
             HStack{
                 Text("Divide Total Batch")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding(.horizontal, 40)
-                    .background( ColorScheme.interactionTint)
-                    .cornerRadius(20)
-                    .shadow(radius: 5)
+                    
             }
-            .foregroundStyle(.brandPrimaryGold)
         }
+        .buttonStyle(.customGreyButton)
+        .tint(ColorScheme.buttonTint.opacity(0.5))
     }
 }
