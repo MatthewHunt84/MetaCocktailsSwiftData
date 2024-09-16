@@ -12,51 +12,56 @@ struct SplitBatchView: View {
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        
-        ZStack{
-            
+        ZStack {
             ColorScheme.background.ignoresSafeArea()
             
-            VStack {
+            VStack(spacing: 20) {
+                VStack(alignment: .center) {
+                    Text(viewModel.chosenCocktail.cocktailName)
+                        .font(FontFactory.mediumFont(size: 22))
+                        .foregroundStyle(.softWhite)
+                    Text("Split into \(viewModel.numberOfContainers) containers")
+                        .font(FontFactory.regularFont(size: 18))
+                        .foregroundStyle(.secondary)
+                }
                 
                 VStack(alignment: .center) {
-                    Text("\(viewModel.chosenCocktail.cocktailName)")
-                        .font(.title2)
-                        .foregroundStyle(.softWhite)
-                        .bold()
-                    Text("Split into \(viewModel.numberOfContainers) containers")
-                        .font(.title3)
-                        .foregroundStyle(.secondary)
-                        .bold()
-                }
-                .padding(.bottom, 25)
-                
-                HStack {
-                    Text("Container Size: ")
+                    Text("Container Size:")
+                        .font(FontFactory.mediumFont(size: 18))
                     ContainerMenuView()
-                    Spacer()
                 }
                 
-                HStack {
-                    Text("Batch Recipe Per Container:")
-                    Spacer()
-                }
-                
-                List {
-                    ForEach($viewModel.splitBatchData, id: \.self) { ingredient in
-                        SplitBatchCell(quantifiedSpiltBatches: ingredient)
+                ZStack {
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(Color.darkGrey2)
+                    VStack {
+                        Text("Batch Recipe Per Container:")
+                            .font(FontFactory.mediumFont(size: 18))
+                            .padding(.top)
+                        Divider()
+                            .background(Color.white)
+                            .frame(height: 1)
+                            .padding(.horizontal, 5)
+                            .padding(.vertical, -10)
+                        List {
+                            ForEach($viewModel.splitBatchData, id: \.self) { ingredient in
+                                SplitBatchCell(quantifiedSpiltBatches: ingredient)
+                            }
+                            .listRowBackground(Color.clear)
+                        }
+                        .listStyle(.plain)
+                        .background(Color.clear)
                     }
                 }
-                .scrollContentBackground(.hidden)
-                .listRowBackground(Color.clear)
+                .frame(maxHeight: .infinity)
                 
                 Text("* At least 10% of the container's volume will be left empty for safe transportation.")
+                    .font(FontFactory.regularFont(size: 14))
                     .multilineTextAlignment(.center)
-                    .dynamicTypeSize(.medium)
                     .padding(10)
-                    .foregroundStyle(ColorScheme.interactionTint)
-                
+                    .foregroundStyle(.gray)
             }
+            .frame(maxHeight: .infinity, alignment: .top)
             .padding()
             .navigationBarBackButtonHidden()
             .navigationBarTitleDisplayMode(.inline)
@@ -66,11 +71,13 @@ struct SplitBatchView: View {
             }
         }
     }
-    
 }
 
 #Preview {
-    SplitBatchView()
-        .environmentObject(CBCViewModel())
+    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
+    NavigationStack {
+        return SplitBatchView()
+            .modelContainer(preview.container)
+            .environmentObject(CBCViewModel())
+    }
 }
-
