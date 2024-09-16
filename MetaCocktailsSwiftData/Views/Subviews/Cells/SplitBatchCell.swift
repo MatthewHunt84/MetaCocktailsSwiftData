@@ -12,9 +12,11 @@ struct SplitBatchCell: View {
     @Binding var quantifiedSpiltBatches: SplitBatchCellData
     var body: some View {
         HStack {
-            Spacer()
-            Text("\(quantifiedSpiltBatches.ingredientName)")
             Text("\(quantifiedSpiltBatches.splitIngredientAmount)ml")
+                .font(FontFactory.formLabel18)
+            Text("\(quantifiedSpiltBatches.ingredientName)")
+                .font(FontFactory.formLabel18)
+            Spacer()
         }
         .background(Color.clear)
         .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 10))

@@ -41,7 +41,7 @@ struct SplitBatchView: View {
                         Divider()
                             .background(Color.white)
                             .frame(height: 1)
-                            .padding(.horizontal, 5)
+                            .padding(.horizontal, 10)
                             .padding(.vertical, -10)
                         List {
                             ForEach($viewModel.splitBatchData, id: \.self) { ingredient in
