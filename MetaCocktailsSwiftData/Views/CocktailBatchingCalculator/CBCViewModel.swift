@@ -117,10 +117,12 @@ final class CBCViewModel: ObservableObject {
     
     
     func finishEditing() {
-        if let editing = editingIngredient,
-           let index = quantifiedBatchedIngredients.firstIndex(where: { $0.ingredientName == editing }),
-           let newValue = Int(quantifiedBatchedIngredients[index].editedTotalMls) {
-            updateIngredientAmount(ingredientName: editing, newAmount: newValue)
+        if let editing = editingIngredient {
+            if let index = quantifiedBatchedIngredients.firstIndex(where: { $0.ingredientName == editing }) {
+                if let newValue = Int(quantifiedBatchedIngredients[index].editedTotalMls) {
+                    updateIngredientAmount(ingredientName: editing, newAmount: newValue)
+                }
+            }
         }
         editingIngredient = nil
         convertIngredientsToBatchCellData()
