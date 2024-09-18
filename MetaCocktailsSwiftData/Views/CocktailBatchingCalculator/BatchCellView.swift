@@ -61,10 +61,6 @@ struct BatchCellView: View {
                     }
                 }
                 .offset(x: 0, y: 5)
-                
-                if showBottleMath {
-                    BottleMathView(quantifiedBatchedIngredient: $quantifiedBatchedIngredient, showBottleMath: $showBottleMath)
-                }
             }
             .padding(.vertical, 10)
     }
@@ -75,7 +71,7 @@ struct BottleMathButton: View {
         Button {
             isShowingBottleMathModal.toggle()
         } label: {
-            Image("White Liquor Bottle")
+            Image("BlueTintBottle")
                 .resizable()
                 .frame(width: 40, height: 40, alignment: .center)
         }
@@ -204,3 +200,4 @@ struct SevenFiftyBottleView: View {
         .transition(.asymmetric(insertion: .scale, removal: .slide))
     }
 }
+

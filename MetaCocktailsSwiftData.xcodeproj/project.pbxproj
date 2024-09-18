@@ -72,6 +72,7 @@
 		4D1442CB2C9767BA006C882F /* WhiskeySourOG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1442CA2C9767BA006C882F /* WhiskeySourOG.swift */; };
 		4D1442CD2C976BB7006C882F /* PinaColada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1442CC2C976BB7006C882F /* PinaColada.swift */; };
 		4D1442CF2C977092006C882F /* WhiskeySourWnG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1442CE2C977092006C882F /* WhiskeySourWnG.swift */; };
+		4D1442D12C9B72AA006C882F /* BottleMathModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1442D02C9B72AA006C882F /* BottleMathModalView.swift */; };
 		4D1E85B12B5C6AEA00214BC6 /* GreatWhiteBuffalo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E85B02B5C6AEA00214BC6 /* GreatWhiteBuffalo.swift */; };
 		4D1E85B32B5C737D00214BC6 /* PeanutButterFalon .swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E85B22B5C737D00214BC6 /* PeanutButterFalon .swift */; };
 		4D1E85B52B5C7B6500214BC6 /* NetfilixAndChill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E85B42B5C7B6500214BC6 /* NetfilixAndChill.swift */; };
@@ -617,6 +618,7 @@
 		4D1442CA2C9767BA006C882F /* WhiskeySourOG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiskeySourOG.swift; sourceTree = "<group>"; };
 		4D1442CC2C976BB7006C882F /* PinaColada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinaColada.swift; sourceTree = "<group>"; };
 		4D1442CE2C977092006C882F /* WhiskeySourWnG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiskeySourWnG.swift; sourceTree = "<group>"; };
+		4D1442D02C9B72AA006C882F /* BottleMathModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleMathModalView.swift; sourceTree = "<group>"; };
 		4D1E85B02B5C6AEA00214BC6 /* GreatWhiteBuffalo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreatWhiteBuffalo.swift; sourceTree = "<group>"; };
 		4D1E85B22B5C737D00214BC6 /* PeanutButterFalon .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PeanutButterFalon .swift"; sourceTree = "<group>"; };
 		4D1E85B42B5C7B6500214BC6 /* NetfilixAndChill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetfilixAndChill.swift; sourceTree = "<group>"; };
@@ -1554,6 +1556,7 @@
 			isa = PBXGroup;
 			children = (
 				4D54F7352B79F1E500D046D9 /* ContainerMenuView.swift */,
+				4D1442D02C9B72AA006C882F /* BottleMathModalView.swift */,
 			);
 			path = "Sub Views";
 			sourceTree = "<group>";
@@ -2412,6 +2415,7 @@
 				4DF408DE2B6108AB00EF9A6E /* ElPresidente(W&G).swift in Sources */,
 				1AFDB7AC2ADF22AD000A3812 /* French75Cognac.swift in Sources */,
 				4DBBA4B22B68D22E00179B8F /* OldFashioned(W&G).swift in Sources */,
+				4D1442D12C9B72AA006C882F /* BottleMathModalView.swift in Sources */,
 				4DBBA47C2B6877CC00179B8F /* LaLouisiane(W&G).swift in Sources */,
 				4DCB172C2BA4EA6D0002D7D9 /* TritterCollins.swift in Sources */,
 				4DF408CA2B60D80C00EF9A6E /* ChocolateCocktail.swift in Sources */,
