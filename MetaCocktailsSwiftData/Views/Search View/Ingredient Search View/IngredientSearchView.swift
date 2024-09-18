@@ -35,17 +35,21 @@ struct IngredientSearchView: View {
                         }
                     
                     Spacer()
+                    
                     if keyboardFocused {
-                        HStack{
+                        HStack {
                             Spacer()
+                            
                             Button(action: {
                                 keyboardFocused = false
                             }) {
-                                Text("Done")
+                                Image(systemName: "keyboard.chevron.compact.down")
+                                    .font(.system(size: 26))
+                                
                             }
                             .buttonStyle(.plain)
-                            .transition(.move(edge: .bottom))
-                            .padding(10)
+                            .padding(.trailing, 16)
+                            .padding(.bottom, 8)
                             .foregroundStyle(.blueTint)
                         }
                     }
