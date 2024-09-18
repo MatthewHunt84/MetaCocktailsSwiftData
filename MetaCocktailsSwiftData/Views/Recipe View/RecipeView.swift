@@ -489,8 +489,8 @@ struct SpecView: View {
                 }
                 .fullScreenCover(isPresented: $showingModal) {
                     HistoricalCocktailModalView(
-                        isPresented: $showingModal,
-                        alertContent: HistoricalCocktailAlert.standard
+                        cocktail: viewModel.cocktail,
+                        presented: $showingModal
                     ) {
                     }
                 }

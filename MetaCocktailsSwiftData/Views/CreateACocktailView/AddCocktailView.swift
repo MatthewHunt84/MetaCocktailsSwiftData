@@ -152,7 +152,7 @@ struct AddCocktailView: View {
                     CustomAlertView(isActive: $viewModel.isShowingAlert,
                                     title: "Missing Information",
                                     message: viewModel.cantAddCocktailMessage(),
-                                    buttonTitle: heardChef, action: {})
+                                    buttonTitle: yesChef, action: {})
                     .zIndex(1)
                 }
                 
@@ -160,7 +160,7 @@ struct AddCocktailView: View {
                     CustomAlertView(isActive: $viewModel.isShowingUniqueNameAlert,
                                     title: "Name must be unique",
                                     message: "Another cocktail already exists with that name",
-                                    buttonTitle: heardChef, action: {})
+                                    buttonTitle: yesChef, action: {})
                     .zIndex(1)
                 }
             }

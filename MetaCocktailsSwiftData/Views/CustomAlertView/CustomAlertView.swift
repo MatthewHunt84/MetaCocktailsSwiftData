@@ -80,6 +80,6 @@ struct CustomAlertView: View {
 }
 
 
-var heardChef = "Heard, Chef."
+var yesChef = "Yes Chef"
 
 
