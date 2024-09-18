@@ -186,32 +186,27 @@ final class SearchViewModel: ObservableObject {
     }
     
     func minusOneHeader(missingIngredient: String) -> some View {
-        HStack{
-            Text("Missing:")
-                .font(FontFactory.fontBody16)
-                .foregroundColor(.white)
-            Text(missingIngredient)
-                .font(FontFactory.fontBody16)
-                .foregroundColor(.brandPrimaryGold)
+        VStack {
+            Spacer()
+            HStack {
+                Spacer()
+                Text("MATCHES EXCEPT FOR \(missingIngredient.uppercased())")
+                    .foregroundColor(.secondary)
+//                Spacer()
+            }
+            .padding(.leading, 4)
+            .font(FontFactory.fontBody14)
+//            .bold()
         }
     }
     
     func minusTwoHeader(missingIngredients: [String], cocktailCount: Int) -> some View {
         HStack{
-            Text("Missing:")
-                .font(FontFactory.fontBody16)
-                .foregroundColor(.white)
-            Text("\(missingIngredients[0]), ")
-                .font(FontFactory.fontBody16)
-                .foregroundColor(.brandPrimaryGold)
-            Text(missingIngredients[1])
-                .font(FontFactory.fontBody16)
-                .foregroundColor(.brandPrimaryGold)
+            Text("(\(cocktailCount)) Missing \(missingIngredients[0]) & \(missingIngredients[1])")
             Spacer()
-            Text("(\(cocktailCount))")
-                .font(FontFactory.fontBody16)
-                .foregroundColor(.secondary)
         }
+        .font(FontFactory.fontBody16)
+        .foregroundColor(.secondary)
     }
     
     func getMissingIngredients(for cocktail: Cocktail) -> [String] {

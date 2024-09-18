@@ -14,8 +14,9 @@ struct SearchedCocktailTitleHeader: View {
     
     var searched: Int
     var matched: Int
-
+    
     var body: some View {
+        
         HStack {
             
             if matched == searched {
@@ -48,6 +49,7 @@ struct SearchedCocktailTitleHeader: View {
                         .foregroundStyle(.secondary)
                 }
             }
+            
         }
     }
 }

@@ -18,7 +18,7 @@ struct FirstLaunchLoadingView: View {
             ColorScheme.backgroundGradient.ignoresSafeArea()
             CustomLoadingAnimation()
                 .frame(width: 190, height: 190)
-                .padding(.bottom, 15)
+                .padding(.bottom, 12)
         }
         .task {
             await prepareData()

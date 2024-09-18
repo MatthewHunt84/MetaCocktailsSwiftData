@@ -51,6 +51,7 @@ struct FontFactory {
     static var buildStepSmall10B: Font = .custom("AvenirNext-Regular", size: 10).bold()
     static var sectionHeader12: Font = .custom("AvenirNext-Regular", size: 12)
     static var specMeasurement16B: Font = .custom("AvenirNext-Regular", size: 16).bold()
+    static var fontBody14: Font = .custom("AvenirNext-Regular", size: 14)
     static var fontBody16: Font = .custom("AvenirNext-Regular", size: 16)
     static var recipeCardHeader18B: Font = .custom("AvenirNext-Regular", size: 18).bold()
     static var formLabel18: Font = .custom("AvenirNext-Regular", size: 18)

@@ -111,7 +111,7 @@ struct MinusOneMatchView: View {
             Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 1))) {
                 ForEach(viewModel.group(cocktails: minusOneMatchCocktails), id: \.0) { missingIngredient, cocktails in
                     if !cocktails.isEmpty {
-                        Section(header: viewModel.minusOneHeader(missingIngredient: missingIngredient[0])) {
+                        Section {
                             ForEach(cocktails, id: \.self) { cocktail in
                                 NavigationLink {
                                     RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
@@ -122,6 +122,11 @@ struct MinusOneMatchView: View {
                                         .foregroundStyle(.secondary)
                                 }
                             }
+                        } header: {
+                            viewModel.minusOneHeader(missingIngredient: missingIngredient[0])
+                                .listRowInsets(EdgeInsets())
+                                .background(Color.clear)
+                                .listRowBackground(Color.clear)
                         }
                     }
                 }
@@ -160,6 +165,8 @@ struct MinusTwoMatchView: View {
                         } label: {
                             viewModel.minusTwoHeader(missingIngredients: missingIngredients, cocktailCount: cocktails.count)
                         }
+                        .disclosureGroupStyle(InlineDisclosureGroupStyle())
+                        .tint(ColorScheme.interactionTint)
                     }
                 }
             }
