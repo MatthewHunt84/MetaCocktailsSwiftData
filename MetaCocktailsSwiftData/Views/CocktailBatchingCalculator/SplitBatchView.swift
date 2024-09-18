@@ -20,7 +20,7 @@ struct SplitBatchView: View {
                     Text(viewModel.chosenCocktail.cocktailName)
                         .font(FontFactory.mediumFont(size: 22))
                         .foregroundStyle(.softWhite)
-                    Text("Split into \(viewModel.numberOfContainers) containers")
+                    Text("Split into ^[\(NSNumber(value: viewModel.numberOfContainers)) container](inflect: true)")
                         .font(FontFactory.regularFont(size: 18))
                         .foregroundStyle(.secondary)
                 }

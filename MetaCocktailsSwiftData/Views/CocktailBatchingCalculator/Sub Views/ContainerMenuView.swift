@@ -44,14 +44,7 @@ struct ContainerMenuView: View {
                             .foregroundColor(viewModel.containerSize == size ? ColorScheme.interactionTint : .gray)
                             .padding(.vertical, 8)
                             .padding(.horizontal, 16)
-                            .background(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .fill(Color.clear)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .stroke(Color.white, lineWidth: viewModel.containerSize == size ? 1 : 0)
-                                    )
-                            )
+                            .background(Capsule().strokeBorder(.white, lineWidth: viewModel.containerSize == size ? 1 : 0))
                     }
                 }
             }
