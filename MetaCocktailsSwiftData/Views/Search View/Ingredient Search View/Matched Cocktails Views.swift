@@ -108,29 +108,37 @@ struct MinusOneMatchView: View {
         if minusOneMatchCocktails.isEmpty || viewModel.preferredSelections.count < 2 {
             EmptyView()
         } else {
-            Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 1))) {
-                ForEach(viewModel.group(cocktails: minusOneMatchCocktails), id: \.0) { missingIngredient, cocktails in
-                    if !cocktails.isEmpty {
-                        Section {
-                            ForEach(cocktails, id: \.self) { cocktail in
-                                NavigationLink {
-                                    RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                                        .navigationBarBackButtonHidden(true)
-                                } label: {
-                                    Text(cocktail.cocktailName)
-                                        .font(FontFactory.mediumFont(size: 16))
-                                        .foregroundStyle(.secondary)
+            Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 1)),
+                    footer:
+                        viewModel.minusOneFooter()
+                .listRowInsets(EdgeInsets())
+                .listRowBackground(Color.clear))  {
+                    ForEach(viewModel.group(cocktails: minusOneMatchCocktails), id: \.0) { missingIngredient, cocktails in
+                        if !cocktails.isEmpty {
+                            Section {
+                                ForEach(cocktails, id: \.self) { cocktail in
+                                    NavigationLink {
+                                        RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                                            .navigationBarBackButtonHidden(true)
+                                    } label: {
+                                        Text(cocktail.cocktailName)
+                                            .font(FontFactory.mediumFont(size: 16))
+                                            .foregroundStyle(.secondary)
+                                    }
+                                }
+                            } header: {
+                                if viewModel.sortMinusOne {
+                                    viewModel.minusOneHeader(missingIngredient: missingIngredient[0])
+                                        .listRowInsets(EdgeInsets())
+                                        .background(Color.clear)
+                                        .listRowBackground(Color.clear)
+                                } else {
+                                    EmptyView()
                                 }
                             }
-                        } header: {
-                            viewModel.minusOneHeader(missingIngredient: missingIngredient[0])
-                                .listRowInsets(EdgeInsets())
-                                .background(Color.clear)
-                                .listRowBackground(Color.clear)
                         }
                     }
                 }
-            }
         }
     }
 }

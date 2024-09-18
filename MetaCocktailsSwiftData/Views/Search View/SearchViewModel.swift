@@ -11,7 +11,7 @@ import Combine
 
 @Observable
 final class SearchViewModel: ObservableObject {
-    
+
     // Any changes to these two arrays will trigger view updates and must happen on the main thread!
     var unwantedSelections: [String] = []
     var preferredSelections: [String] = []
@@ -116,6 +116,7 @@ final class SearchViewModel: ObservableObject {
     var perfectMatchCocktails = [String]()
     var minusOneMatchCocktails = [String]()
     var minusTwoMatchCocktails = [String]()
+    var sortMinusOne = false
     var isRunningComplexSearch = false
     var isGeneratingIngredientList = false
     var searchCompleted = false
@@ -123,6 +124,8 @@ final class SearchViewModel: ObservableObject {
     var updatedUnwantedSelections = [String]()
     var allCocktails: [Cocktail] = []
     var isShowingResults: Bool = false
+    
+
     
     func handleThumbsUp(ingredient: String) {
         if !preferredSelections.contains(ingredient) {
@@ -189,15 +192,37 @@ final class SearchViewModel: ObservableObject {
         VStack {
             Spacer()
             HStack {
-                Spacer()
-                Text("MATCHES EXCEPT FOR \(missingIngredient.uppercased())")
+                Text("MATCHES ALL EXCEPT FOR")
                     .foregroundColor(.secondary)
-//                Spacer()
+                Text(missingIngredient.uppercased())
+                    .foregroundColor(.white)
+                    .bold()
+                Spacer()
             }
             .padding(.leading, 4)
             .font(FontFactory.fontBody14)
-//            .bold()
         }
+    }
+    
+    func minusOneFooter() -> some View {
+        HStack {
+            Spacer()
+            Button {
+                Task {
+                    await MainActor.run {
+                        withAnimation {
+                            self.sortMinusOne.toggle()
+                        }
+                    }
+                }
+            } label: {
+                Text(sortMinusOne ? "COLLAPSE" : "SORT BY MISSING INGREDIENT" )
+                    .foregroundColor(ColorScheme.interactionTint)
+            }
+        }
+        .font(FontFactory.fontBody14)
+        .background(Color.clear)
+        .frame(maxWidth: .infinity, maxHeight: 5)
     }
     
     func minusTwoHeader(missingIngredients: [String], cocktailCount: Int) -> some View {
