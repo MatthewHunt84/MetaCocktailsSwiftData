@@ -12,6 +12,7 @@ struct CBCLoadedCocktailView: View {
     @EnvironmentObject var viewModel: CBCViewModel
     @FocusState private var isInputActive: Bool
     @State private var isShowingPreferencesModal: Bool = false
+    @State private var isShowingBottleMathModal: Bool = false
     @Environment(\.dismiss) private var dismiss
     
     
@@ -32,7 +33,7 @@ struct CBCLoadedCocktailView: View {
                         Spacer()
                         EditIngredientsButton(isShowingIngredientsModal: $isShowingPreferencesModal)
                     }
-                    QuantifiedIngredientsListView(isInputActive: $isInputActive)
+                    QuantifiedIngredientsListView(isInputActive: $isInputActive, isShowingBottleMathModal: $isShowingBottleMathModal)
                 }
                 .padding()
             }
@@ -42,6 +43,13 @@ struct CBCLoadedCocktailView: View {
         .jamesHeaderWithNavigation(title: "Batch Calculator", dismiss: dismiss)
         .sheet(isPresented: $isShowingPreferencesModal, content: {
             EditBatchModalView()
+                .onDisappear(perform: {
+                    viewModel.convertIngredientsToBatchCellData()
+                    
+                })
+        })
+        .sheet(isPresented: $isShowingBottleMathModal, content: {
+            BottleMathModalView(isFocused: $isInputActive)
                 .onDisappear(perform: {
                     viewModel.convertIngredientsToBatchCellData()
                     
@@ -125,12 +133,13 @@ struct QuantifiedIngredientsListView: View {
     @EnvironmentObject var viewModel: CBCViewModel
     @FocusState private var isFocused: Bool
     @FocusState.Binding var isInputActive: Bool
+    @Binding var isShowingBottleMathModal: Bool
     
     var body: some View {
         ScrollView {
             LazyVStack {
                 ForEach($viewModel.quantifiedBatchedIngredients, id: \.self) { ingredient in
-                    BatchCellView(quantifiedBatchedIngredient: ingredient, isFocused: $isFocused)
+                    BatchCellView(quantifiedBatchedIngredient: ingredient, isFocused: $isFocused, isShowingBottleMathModal: $isShowingBottleMathModal)
                 }
                 VStack {
                     HStack {
@@ -184,5 +193,59 @@ struct SplitBatchNavigationButton: View {
         }
         .buttonStyle(.customGreyButton)
         .tint(ColorScheme.buttonTint.opacity(0.5))
+    }
+}
+
+struct BottleMathModalView: View {
+    @EnvironmentObject var viewModel: CBCViewModel
+    @FocusState.Binding var isFocused: Bool
+    @State private var numberOfBottlesText: String = ""
+    @State private var bottlesSizeText: String = ""
+    
+    var body: some View {
+        VStack {
+            Text("How many bottles do you have?")
+                .font(FontFactory.formLabel18)
+            HStack {
+                Button {
+                    
+                } label: {
+                    Image(systemName: "plus.circle")
+                }
+                TextField("\(numberOfBottlesText)", text: $numberOfBottlesText)
+                    .font(FontFactory.formLabel18)
+                    .multilineTextAlignment(.center)
+                    .padding(.vertical, 5)
+                    .keyboardType(.numberPad)
+                    .frame(width: 80)
+                    .background(Color(UIColor.systemGray5))
+                    .cornerRadius(10)
+                    .focused($isFocused)
+                Button {
+                    
+                } label: {
+                    Image(systemName: "minus.circle")
+                }
+                
+            }
+            
+            HStack{
+                Text("What volume are the bottles?")
+                    .font(FontFactory.formLabel18)
+                TextField("\(numberOfBottlesText)", text: $numberOfBottlesText)
+                    .font(FontFactory.formLabel18)
+                    .multilineTextAlignment(.center)
+                    .padding(.vertical, 5)
+                    .keyboardType(.numberPad)
+                    .frame(width: 80)
+                    .background(Color(UIColor.systemGray5))
+                    .cornerRadius(10)
+                    .focused($isFocused)
+                Text("ml")
+                    .font(FontFactory.formLabel18)
+            }
+            
+        }
+        .jamesHeader("Calculate by number of available bottles:")
     }
 }

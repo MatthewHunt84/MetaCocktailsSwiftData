@@ -17,6 +17,8 @@ final class CBCViewModel: ObservableObject {
     @Published var numberOfCocktailsText: Double = 100.0
     @Published var isShowingBottleMathMode: Bool = false
     @Published var editingIngredient: String?
+    @Published var numberOfBottlesText: String?
+    @Published var sizeOfTheBottle: String?
     @Published //@Published var totalCocktailABVPercentage = 0.0
     var loadedCocktailData: CBCLoadedCocktailData = CBCLoadedCocktailData(cocktailName: "Test", ingredients: [])
     

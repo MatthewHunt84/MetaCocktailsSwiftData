@@ -14,18 +14,18 @@ struct BatchCellView: View {
     @Binding var quantifiedBatchedIngredient: BottleBatchedCellData
     @State private var showBottleMath: Bool = false
     @FocusState.Binding var isFocused: Bool
+    @Binding var isShowingBottleMathModal: Bool
     
     var body: some View {
         VStack(alignment: .leading) {
             
                 HStack {
-                    Image(systemName: showBottleMath ? "chevron.down" : "chevron.right")
-                        .foregroundStyle(ColorScheme.interactionTint)
                     Text(quantifiedBatchedIngredient.ingredientName)
                         .font(FontFactory.formLabel18)
                         .foregroundStyle(.white)
                     Spacer()
                     if viewModel.editingIngredient == quantifiedBatchedIngredient.ingredientName {
+                        BottleMathButton(isShowingBottleMathModal: $isShowingBottleMathModal)
                         TextField("\(quantifiedBatchedIngredient.totalMls)", text: $quantifiedBatchedIngredient.editedTotalMls)
                             .font(FontFactory.formLabel18)
                             .multilineTextAlignment(.center)
@@ -40,7 +40,7 @@ struct BatchCellView: View {
                             .multilineTextAlignment(.leading)
                         
                     } else {
-                        
+                        BottleMathButton(isShowingBottleMathModal: $isShowingBottleMathModal)
                         Text("\(quantifiedBatchedIngredient.totalMls)")
                             .font(FontFactory.formLabel18)
                             .multilineTextAlignment(.center)
@@ -60,13 +60,6 @@ struct BatchCellView: View {
                         
                     }
                 }
-                .onTapGesture {
-                    if !isFocused {
-                        withAnimation(.easeInOut(duration: 0.5)) {
-                            showBottleMath.toggle()
-                        }
-                    }
-                }
                 .offset(x: 0, y: 5)
                 
                 if showBottleMath {
@@ -76,10 +69,22 @@ struct BatchCellView: View {
             .padding(.vertical, 10)
     }
 }
-
+struct BottleMathButton: View {
+    @Binding var isShowingBottleMathModal: Bool
+    var body: some View {
+        Button {
+            isShowingBottleMathModal.toggle()
+        } label: {
+            Image("White Liquor Bottle")
+                .resizable()
+                .frame(width: 40, height: 40, alignment: .center)
+        }
+    }
+}
 
 struct BatchCellViewPreview: View {
     @FocusState private var isFocused: Bool
+    @State private var isShowingBottleMathModal: Bool = false
     
     var body: some View {
         NavigationView {
@@ -95,7 +100,8 @@ struct BatchCellViewPreview: View {
                         totalMls: 786
                     )
                 ),
-                isFocused: $isFocused
+                isFocused: $isFocused,
+                isShowingBottleMathModal: $isShowingBottleMathModal
             )
             .environmentObject(CBCViewModel())
         }
