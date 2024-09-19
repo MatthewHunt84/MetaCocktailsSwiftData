@@ -50,6 +50,7 @@ struct CocktailListView: View {
                                     .frame(width: listGeo.size.width * 0.1)
                                     .opacity(searchBarIsFocused ? 0 : 1)
                                     .animation(.easeInOut(duration: 0.3), value: searchBarIsFocused)
+                                    .offset(y: -7)
                             }
                         }
                     }
