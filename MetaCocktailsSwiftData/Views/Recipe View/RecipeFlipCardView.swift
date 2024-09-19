@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct RecipeFlipCardView: View {
-    @State private var isShowingFloatingPrompt = false
     @State private var isShowingCocktailNotes = false
     @EnvironmentObject var cBCViewModel: CBCViewModel
     @Bindable var viewModel: RecipeViewModel
@@ -35,7 +34,7 @@ struct RecipeFlipCardView: View {
                         
                         GlasswareView(cocktail: viewModel.cocktail)
                         
-                        SpecView(cocktail: viewModel.cocktail, viewModel: viewModel, isShowingCocktailNotes: $isShowingCocktailNotes, isShowingPrompt: $isShowingFloatingPrompt, geo: geo, topID: topID, scrollReader: scrollReader)
+                        SpecView(cocktail: viewModel.cocktail, viewModel: viewModel, isShowingCocktailNotes: $isShowingCocktailNotes, geo: geo, topID: topID, scrollReader: scrollReader)
                         
                         GarnishView(cocktail: viewModel.cocktail)
                         
@@ -80,7 +79,6 @@ struct RecipeFlipCardView: View {
                     .frame(width: geo.size.width * 0.75)
                     
                 }
-                
             }
             .onAppear {
                 cBCViewModel.chosenCocktail = viewModel.cocktail
@@ -91,19 +89,14 @@ struct RecipeFlipCardView: View {
             
             backToRecipeViewButton(viewModel: viewModel)
             
-            if isShowingFloatingPrompt {
-                
-                FloatingPromptView(isActive: $isShowingFloatingPrompt)
-            }
             if isShowingCocktailNotes{
                 if let notes = viewModel.cocktail.notes {
                     CustomAlertView(isActive: $isShowingCocktailNotes, title: "Note:", message: notes , buttonTitle: "Heard, chef.") {}
-                    .zIndex(1)
+                        .zIndex(1)
                 }
             }
             
         }
-        
     }
 }
 

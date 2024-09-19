@@ -56,13 +56,13 @@ struct CustomAlertView: View {
             )
             .offset(x: 0, y: offset)
             .onAppear {
-                withAnimation(.easeInOut.speed(0.75)) {
+                withAnimation(.easeInOut) {
                     offset = 0
                 }
             }
     }
     func close() {
-        withAnimation((.easeInOut.speed(0.75))) {
+        withAnimation(.easeInOut) {
             offset = 1000
             isActive = false
         }
