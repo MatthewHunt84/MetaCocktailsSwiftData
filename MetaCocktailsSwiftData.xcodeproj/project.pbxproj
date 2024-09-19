@@ -146,7 +146,6 @@
 		4D7439902B9E59EA0020C3B8 /* SpecifiedListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D74398F2B9E59EA0020C3B8 /* SpecifiedListView.swift */; };
 		4D7439922B9E5A2A0020C3B8 /* AllCocktailsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7439912B9E5A2A0020C3B8 /* AllCocktailsListView.swift */; };
 		4D7B01752B72BF0A0026FE34 /* MainBatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7B01742B72BF0A0026FE34 /* MainBatchView.swift */; };
-		4D7B01772B72C2260026FE34 /* BottleBatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7B01762B72C2260026FE34 /* BottleBatchCell.swift */; };
 		4D90259C2B6456C0005F44F6 /* French75(WnG).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D90259B2B6456C0005F44F6 /* French75(WnG).swift */; };
 		4D9025A02B645868005F44F6 /* Gibson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D90259F2B645868005F44F6 /* Gibson.swift */; };
 		4D9025A22B6459C0005F44F6 /* GinFizz(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9025A12B6459C0005F44F6 /* GinFizz(W&G).swift */; };
@@ -692,7 +691,6 @@
 		4D74398F2B9E59EA0020C3B8 /* SpecifiedListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecifiedListView.swift; sourceTree = "<group>"; };
 		4D7439912B9E5A2A0020C3B8 /* AllCocktailsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCocktailsListView.swift; sourceTree = "<group>"; };
 		4D7B01742B72BF0A0026FE34 /* MainBatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBatchView.swift; sourceTree = "<group>"; };
-		4D7B01762B72C2260026FE34 /* BottleBatchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleBatchCell.swift; sourceTree = "<group>"; };
 		4D90259B2B6456C0005F44F6 /* French75(WnG).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "French75(WnG).swift"; sourceTree = "<group>"; };
 		4D90259F2B645868005F44F6 /* Gibson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gibson.swift; sourceTree = "<group>"; };
 		4D9025A12B6459C0005F44F6 /* GinFizz(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GinFizz(W&G).swift"; sourceTree = "<group>"; };
@@ -1675,7 +1673,6 @@
 				4D54F7372B79FD5B00D046D9 /* Sub Views */,
 				4DED94472BE73889002305C2 /* FloatingPromptView.swift */,
 				4DED944D2C098DBF002305C2 /* BatchCellView.swift */,
-				4D7B01762B72C2260026FE34 /* BottleBatchCell.swift */,
 				4DED944F2C0E38BC002305C2 /* EditBatchModalView.swift */,
 			);
 			path = CocktailBatchingCalculator;
@@ -2546,7 +2543,6 @@
 				4DBBA49C2B68B20200179B8F /* MorningGloryFizz(W&G).swift in Sources */,
 				4DBBA46C2B6796C200179B8F /* JungleBird(WnG).swift in Sources */,
 				1AC386C62AAABED10064F52A /* PrepRecipeView.swift in Sources */,
-				4D7B01772B72C2260026FE34 /* BottleBatchCell.swift in Sources */,
 				4DA5679C2B6CD371003F6F04 /* WhatsYourFavorite.swift in Sources */,
 				4DA5677C2B6C928F003F6F04 /* EasyStreet.swift in Sources */,
 				4DA5681C2B6E2819003F6F04 /* Yeen.swift in Sources */,

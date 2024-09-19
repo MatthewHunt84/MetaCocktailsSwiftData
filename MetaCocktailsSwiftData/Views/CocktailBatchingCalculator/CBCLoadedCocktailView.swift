@@ -16,6 +16,7 @@ struct CBCLoadedCocktailView: View {
     @Environment(\.dismiss) private var dismiss
     
     
+    
     var body: some View {
         
         NavigationStack {
@@ -33,10 +34,14 @@ struct CBCLoadedCocktailView: View {
                         Spacer()
                         EditIngredientsButton(isShowingIngredientsModal: $isShowingPreferencesModal)
                     }
-                    QuantifiedIngredientsListView(isInputActive: $isInputActive, isShowingBottleMathModal: $isShowingBottleMathModal)
+                    QuantifiedIngredientsListView(isInputActive: $isInputActive)
                 }
                 .padding()
             }
+        }
+        .onChange(of: viewModel.quantifiedBatchedIngredients) { _, _ in
+            // Force view update when quantifiedBatchedIngredients change
+            viewModel.objectWillChange.send()
         }
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
@@ -48,13 +53,7 @@ struct CBCLoadedCocktailView: View {
                     
                 })
         })
-        .sheet(isPresented: $isShowingBottleMathModal, content: {
-            BottleMathModalView(isFocused: $isInputActive)
-                .onDisappear(perform: {
-                    viewModel.convertIngredientsToBatchCellData()
-                    
-                })
-        })
+        
     }
 }
 
@@ -125,21 +124,28 @@ struct CocktailCountView: View {
             .onTapGesture {
                 viewModel.numberOfCocktailsText = 0
             }
+            .onChange(of: viewModel.numberOfCocktailsText) { oldValue, newValue in
+                viewModel.convertIngredientsToBatchCellData()
+            }
             .dynamicTypeSize(.large)
             .frame(width: 100)
     }
 }
+
 struct QuantifiedIngredientsListView: View {
     @EnvironmentObject var viewModel: CBCViewModel
     @FocusState private var isFocused: Bool
     @FocusState.Binding var isInputActive: Bool
-    @Binding var isShowingBottleMathModal: Bool
+    
     
     var body: some View {
         ScrollView {
             LazyVStack {
-                ForEach($viewModel.quantifiedBatchedIngredients, id: \.self) { ingredient in
-                    BatchCellView(quantifiedBatchedIngredient: ingredient, isFocused: $isFocused, isShowingBottleMathModal: $isShowingBottleMathModal)
+                ForEach($viewModel.quantifiedBatchedIngredients, id: \.id) { $ingredient in
+                    BatchCellView(
+                        quantifiedBatchedIngredient: $ingredient,
+                        isFocused: $isFocused
+                    )
                 }
                 VStack {
                     HStack {
@@ -157,7 +163,6 @@ struct QuantifiedIngredientsListView: View {
                             .font(FontFactory.formLabel18)
                             .frame(width: 50)
                             .onChange(of: viewModel.dilutionPercentage) { oldValue, newValue in
-                                viewModel.dilutionPercentage = newValue
                                 viewModel.convertIngredientsToBatchCellData()
                             }
                     }
@@ -170,8 +175,9 @@ struct QuantifiedIngredientsListView: View {
             ToolbarItemGroup(placement: .keyboard) {
                 Spacer()
                 Button("Done") {
-                    isInputActive = false
                     viewModel.finishEditing()
+                    viewModel.convertIngredientsToBatchCellData()
+                    isInputActive = false
                     isFocused = false
                 }
             }

@@ -19,8 +19,17 @@ final class CBCViewModel: ObservableObject {
     @Published var editingIngredient: String?
     @Published var numberOfBottlesText: String?
     @Published var sizeOfTheBottle: String?
-    @Published //@Published var totalCocktailABVPercentage = 0.0
-    var loadedCocktailData: CBCLoadedCocktailData = CBCLoadedCocktailData(cocktailName: "Test", ingredients: [])
+    //@Published var totalCocktailABVPercentage = 0.0
+    @Published var loadedCocktailData: CBCLoadedCocktailData = CBCLoadedCocktailData(cocktailName: "Test", ingredients: [])
+    @Published var unitConversion: [MeasurementUnit: Double] = [
+        .barSpoon: 0.17,
+        .teaspoon: 0.17,
+        .splash: 0.17,
+        .dashes: 0.04,
+        .sprays: 0.02,
+        .drops: 0.0017,
+        .bottles: 25.36
+    ]
     
     ///Main batch view variables
     @Published var totalDilutionVolume = 0.0
@@ -45,38 +54,58 @@ final class CBCViewModel: ObservableObject {
         var quantifiableIngredients = [BottleBatchedCellData]()
         var totalVolume = 0.0
         
-        // Conversion factors based on unit type
-        let unitConversion: [MeasurementUnit: Double] = [
-            .barSpoon: 0.17,
-            .teaspoon: 0.17,
-            .splash: 0.17,
-            .dashes: 0.04,
-            .sprays: 0.02,
-            .drops: 0.0017,
-            .bottles: 25.36
-        ]
         
-        for ingredient in loadedCocktailData.ingredients where ingredient.isIncluded {
-            let conversionFactor = unitConversion[ingredient.ingredient.unit] ?? 1.0
-            let modifiedMeasurement = ingredient.ingredient.value * conversionFactor
-            let ingredientVolume = modifiedMeasurement.toMilliliters * numberOfCocktailsText
-            
-            
-            totalVolume += ingredientVolume
-            quantifiableIngredients.append(BottleBatchedCellData(ingredientName: ingredient.ingredient.ingredientBase.name,
-                                                                 whole1LBottles: (ingredientVolume.rounded(.up) / 1000).rounded(.down),
-                                                                 remaining1LMls: Int(ingredientVolume.rounded(.up).truncatingRemainder(dividingBy: 1000)),
-                                                                 whole750mlBottles: (ingredientVolume.rounded(.up) / 750).rounded(.down),
-                                                                 remaining750mLs: Int(ingredientVolume.rounded(.up).truncatingRemainder(dividingBy: 750)),
-                                                                 mlAmount: modifiedMeasurement.toMilliliters,
-                                                                 totalMls: Int(ingredientVolume.rounded(.up))))
-            
-            
+        for ingredient in loadedCocktailData.ingredients {
+            if ingredient.isIncluded {
+                let conversionFactor = unitConversion[ingredient.ingredient.unit] ?? 1.0
+                let modifiedMeasurement = ingredient.ingredient.value * conversionFactor
+                let ingredientVolume = modifiedMeasurement.toMilliliters * numberOfCocktailsText
+                totalVolume += ingredientVolume
+                let existingIngredient = quantifiedBatchedIngredients.first { $0.ingredientName == ingredient.ingredient.ingredientBase.name }
+                let bottleSize = existingIngredient?.bottleSize ?? 750
+                let wholeBottles = Int(ingredientVolume / Double(bottleSize))
+                let remainingMls = Int(ingredientVolume.truncatingRemainder(dividingBy: Double(bottleSize)))
+                print("\(ingredient.ingredient.ingredientBase.name) needs \(wholeBottles) bottles and has \(remainingMls) remaining mls.")
+                quantifiableIngredients.append(BottleBatchedCellData(
+                    id: existingIngredient?.id ?? UUID(),
+                    ingredientName: ingredient.ingredient.ingredientBase.name,
+                    bottleSize: bottleSize,
+                    wholeBottles: wholeBottles,
+                    remainingMls: remainingMls,
+                    mlAmount: modifiedMeasurement.toMilliliters,
+                    totalMls: Int(ingredientVolume.rounded(.up))
+                ))
+            }
         }
+        
         totalDilutionVolume = totalVolume * (dilutionPercentage / 100.0)
         totalBatchVolume = totalVolume + totalDilutionVolume
         numberOfContainers = Int(ceil(totalBatchVolume / (Double(containerSize) * 0.9)))
+        
+        // recalculate bottle sizes and remaining mls
+        for (index, ingredient) in quantifiableIngredients.enumerated() {
+            if let existingIngredient = quantifiedBatchedIngredients.first(where: { $0.ingredientName == ingredient.ingredientName }) {
+                quantifiableIngredients[index].bottleSize = existingIngredient.bottleSize
+                let totalMls = quantifiableIngredients[index].totalMls
+                quantifiableIngredients[index].wholeBottles = totalMls / existingIngredient.bottleSize
+                quantifiableIngredients[index].remainingMls = totalMls % existingIngredient.bottleSize
+            }
+        }
         quantifiedBatchedIngredients = quantifiableIngredients
+    }
+    
+    
+    func updateIngredientAmount(ingredientName: String, newAmount: Int, newBottleSize: Int) {
+        if let index = quantifiedBatchedIngredients.firstIndex(where: { $0.ingredientName == ingredientName }) {
+            let oldAmount = quantifiedBatchedIngredients[index].totalMls
+            let ratio = Double(newAmount) / Double(oldAmount)
+            numberOfCocktailsText *= ratio
+            quantifiedBatchedIngredients[index].totalMls = newAmount
+            quantifiedBatchedIngredients[index].bottleSize = newBottleSize
+            quantifiedBatchedIngredients[index].wholeBottles = newAmount / newBottleSize
+            quantifiedBatchedIngredients[index].remainingMls = newAmount % newBottleSize
+            convertIngredientsToBatchCellData()
+        }
     }
     
     func doMathForModified1LBottleCount(initialAmount: Double, newQuantityAmount: Double) {
@@ -122,21 +151,13 @@ final class CBCViewModel: ObservableObject {
         if let editing = editingIngredient {
             if let index = quantifiedBatchedIngredients.firstIndex(where: { $0.ingredientName == editing }) {
                 if let newValue = Int(quantifiedBatchedIngredients[index].editedTotalMls) {
-                    updateIngredientAmount(ingredientName: editing, newAmount: newValue)
+                    
+                    let currentBottleSize = quantifiedBatchedIngredients[index].bottleSize
+                    updateIngredientAmount(ingredientName: editing, newAmount: newValue, newBottleSize: currentBottleSize)
                 }
             }
         }
         editingIngredient = nil
-        convertIngredientsToBatchCellData()
-    }
-    
-    func updateIngredientAmount(ingredientName: String, newAmount: Int) {
-        if let index = quantifiedBatchedIngredients.firstIndex(where: { $0.ingredientName == ingredientName }) {
-            let oldAmount = quantifiedBatchedIngredients[index].totalMls
-            let ratio = Double(newAmount) / Double(oldAmount)
-            numberOfCocktailsText *= ratio
-            quantifiedBatchedIngredients[index].totalMls = newAmount
-        }
     }
 }
 
@@ -159,14 +180,24 @@ struct CBCLoadedIngredient {
 }
 
 struct BottleBatchedCellData: Hashable, Equatable {
+    let id: UUID
     var ingredientName: String
-    var whole1LBottles: Double
-    var remaining1LMls: Int
-    var whole750mlBottles: Double
-    var remaining750mLs: Int
+    var bottleSize: Int
+    var wholeBottles: Int
+    var remainingMls: Int
     var mlAmount: Double
     var totalMls: Int
     var editedTotalMls: String = ""
+    
+    init(id: UUID = UUID(), ingredientName: String, bottleSize: Int, wholeBottles: Int, remainingMls: Int, mlAmount: Double, totalMls: Int) {
+        self.id = id
+        self.ingredientName = ingredientName
+        self.bottleSize = bottleSize
+        self.wholeBottles = wholeBottles
+        self.remainingMls = remainingMls
+        self.mlAmount = mlAmount
+        self.totalMls = totalMls
+    }
     
     static func == (lhs: BottleBatchedCellData, rhs: BottleBatchedCellData) -> Bool {
         return lhs.ingredientName == rhs.ingredientName
