@@ -18,10 +18,9 @@ struct CustomAlertView: View {
     var body: some View {
             VStack {
                 Text(title)
-                    .font(FontFactory.regularFont(size: 28))
+                    .font(FontFactory.regularFont(size: 22))
                     .bold()
-                    .padding()
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.brandPrimaryGold)
                     .multilineTextAlignment(.center)
                 
                 Text(message)
@@ -34,12 +33,15 @@ struct CustomAlertView: View {
                     close()
                 } label: {
                     ZStack {
-                        RoundedRectangle(cornerRadius: 20)
-                            .foregroundStyle(ColorScheme.interactionTint)
                         Text(buttonTitle)
-                            .font(FontFactory.specMeasurement16B)
-                            .foregroundStyle(.white)
+                            .font(FontFactory.fontBody16)
+                            .foregroundStyle(.blueTint)
                             .padding()
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 12)
+                                    .stroke(Color.white, lineWidth: 1)
+                            )
                     }
                     .padding()
                 }
@@ -47,9 +49,11 @@ struct CustomAlertView: View {
             .fixedSize(horizontal: false, vertical: true)
             .padding()
             .background(BlackGlassBackgroundView())
-            .clipShape(RoundedRectangle(cornerRadius: 20))
-            .shadow(color: .white, radius: 5)
-            .padding(30)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.white, lineWidth: 2)
+            )
             .offset(x: 0, y: offset)
             .onAppear {
                 withAnimation(.easeInOut.speed(0.75)) {
@@ -76,6 +80,6 @@ struct CustomAlertView: View {
 }
 
 
-var heardChef = "Heard, Chef."
+var yesChef = "Yes Chef"
 
 
