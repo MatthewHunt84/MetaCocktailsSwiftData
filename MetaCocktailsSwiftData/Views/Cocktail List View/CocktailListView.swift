@@ -79,7 +79,7 @@ struct AlphabetNavigationView: View {
                     selectedLetter = letter
                 }, label: {
                     Text(letter)
-                        .font(FontFactory.regularFont(size: 15))
+                        .font(FontFactory.alphabetFont(size: 20))
                         .frame(width: 17, height: 15, alignment: .center)
                 })
                 .buttonStyle(ScaleButtonStyle())
