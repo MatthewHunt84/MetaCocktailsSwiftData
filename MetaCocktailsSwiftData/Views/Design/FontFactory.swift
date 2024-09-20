@@ -32,13 +32,10 @@ struct FontFactory {
         case 0..<400:
             return regularFont(size: 14)
         case 400..<500:
-            print("size 16")
             return regularFont(size: 16)
         case 500..<600:
-            print("size 18")
             return regularFont(size: 18)
         case 600..<700:
-            print("size 20")
             return regularFont(size: 20)
         default:
             return regularFont(size: 22)
