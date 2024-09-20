@@ -18,11 +18,10 @@ struct BottleMathModalView: View {
     @FocusState private var keyboardFocused: Bool
     
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 12)
-                .fill(Color.black)
-                .frame(width: .infinity, height: .infinity, alignment: .center)
-                .ignoresSafeArea()
+//        ZStack {
+//            RoundedRectangle(cornerRadius: 12)
+                
+//                .ignoresSafeArea()
             VStack {
                 FontFactory.titleHeader22(title: "Calculate by number of available bottles:")
                     .padding()
@@ -101,11 +100,12 @@ struct BottleMathModalView: View {
                     }
                 }
             }
+            .background(BlackGlassBackgroundView())
             .onAppear {
                 bottleSizeText = quantifiedBatchedIngredient.bottleSize
                 numberOfBottlesText = quantifiedBatchedIngredient.wholeBottles
             }
-        }
+//        }
     }
     
     private func updateBatchWithBottleMath() {

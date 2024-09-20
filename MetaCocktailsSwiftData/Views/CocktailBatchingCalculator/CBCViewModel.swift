@@ -65,7 +65,7 @@ final class CBCViewModel: ObservableObject {
                 let bottleSize = existingIngredient?.bottleSize ?? 750
                 let wholeBottles = Int(ingredientVolume / Double(bottleSize))
                 let remainingMls = Int(ingredientVolume.truncatingRemainder(dividingBy: Double(bottleSize)))
-                print("\(ingredient.ingredient.ingredientBase.name) needs \(wholeBottles) bottles and has \(remainingMls) remaining mls.")
+//                print("\(ingredient.ingredient.ingredientBase.name) needs \(wholeBottles) bottles and has \(remainingMls) remaining mls.")
                 quantifiableIngredients.append(BottleBatchedCellData(
                     id: existingIngredient?.id ?? UUID(),
                     ingredientName: ingredient.ingredient.ingredientBase.name,
@@ -179,7 +179,7 @@ struct CBCLoadedIngredient {
     var isIncluded: Bool
 }
 
-struct BottleBatchedCellData: Hashable, Equatable {
+struct BottleBatchedCellData: Hashable, Equatable, Identifiable {
     let id: UUID
     var ingredientName: String
     var bottleSize: Int
@@ -230,5 +230,11 @@ struct SplitBatchCellData: Hashable, Equatable {
     }
     func hash(into hasher: inout Hasher) {
         hasher.combine(ingredientName)
+    }
+}
+
+extension String {
+    func addingMls() -> String {
+        return self + " mls"
     }
 }
