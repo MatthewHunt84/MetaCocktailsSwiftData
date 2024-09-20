@@ -13,16 +13,11 @@ struct RecipeView: View {
     @Namespace var topID
     
     var body: some View {
-        
         ZStack {
-            
             ColorScheme.background
                 .ignoresSafeArea()
-            
             GeometryReader { geo in
-                
                 ScrollViewReader { scrollReader in
-                    
                     ScrollView {
                         RecipeFlipCardView(viewModel: viewModel, geo: geo, topID: topID, scrollReader: scrollReader)
                     }
@@ -435,11 +430,9 @@ struct SpecIngredientView: View {
 struct SpecView: View {
     var cocktail: Cocktail
     @Bindable var viewModel: RecipeViewModel
-    @State private var isShowingSheet = false
-    @State private var isShowingBatchView = false
+    @EnvironmentObject var cBCViewModel: CBCViewModel
     @State private var showingModal = false
     @Binding var isShowingCocktailNotes: Bool
-    @Binding var isShowingPrompt: Bool
     let geo: GeometryProxy
     var topID: Namespace.ID
     var scrollReader: ScrollViewProxy
@@ -461,7 +454,6 @@ struct SpecView: View {
                                     .tint(ColorScheme.interactionTint)
                             }
                         }
-
                         if cocktail.notes != nil {
                             Button {
                                 isShowingCocktailNotes.toggle()
@@ -471,15 +463,18 @@ struct SpecView: View {
                             }
                         }
                         Spacer()
-                        
-                        Button {
-                            isShowingPrompt.toggle()
+                        NavigationLink {
+                            CBCLoadedCocktailView()
                         } label: {
                             Text("Batch")
                             Image(systemName: "chevron.forward")
                         }
                         .foregroundStyle(ColorScheme.interactionTint)
                         .font(FontFactory.recipeCardHeader18B)
+                        .simultaneousGesture(TapGesture().onEnded {
+                            cBCViewModel.convertLoadedCocktail(for: cocktail)
+                            cBCViewModel.convertIngredientsToBatchCellData()
+                        })
                     }
                     .padding(.bottom, 5)
                     
@@ -489,8 +484,8 @@ struct SpecView: View {
                 }
                 .fullScreenCover(isPresented: $showingModal) {
                     HistoricalCocktailModalView(
-                        isPresented: $showingModal,
-                        alertContent: HistoricalCocktailAlert.standard
+                        cocktail: viewModel.cocktail,
+                        presented: $showingModal
                     ) {
                     }
                 }

@@ -8,7 +8,7 @@
 import Foundation
 
 var pinaColada  = Cocktail(cocktailName: "Piña Colada",
-                           glasswareType: .collins,
+                           glasswareType: .hurricaneGlass,
                            garnish: [.maraschinoCherry],
                            ice: .pebbleIce,
                            spec: pinaColadaSpec,

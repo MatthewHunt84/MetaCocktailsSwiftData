@@ -64,7 +64,7 @@ struct ContentView: View {
             Task {
                 if newValue {
                     await MainActor.run {
-                        withAnimation(.easeInOut(duration: 2)) {
+                        withAnimation(.easeIn(duration: 1)) {
                             swiftDataIsLoaded = true
                         }
                     }

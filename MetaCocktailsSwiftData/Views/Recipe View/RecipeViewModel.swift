@@ -80,6 +80,7 @@ import Observation
             if styles.contains([.blended, .shaken]) { return "Shake or blend" }
             else if styles.contains(.built) { return "Build in glass" }
             else if styles.contains(.shaken) { return "Shake" }
+            else if styles.contains(.blended) { return "Blended" }
             else if styles.contains(.stirred) { return "Stir" }
             else if styles.contains(.swizzle) { return "Swizzle" }
         }

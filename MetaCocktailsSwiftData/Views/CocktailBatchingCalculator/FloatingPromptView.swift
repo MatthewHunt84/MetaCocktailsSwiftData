@@ -12,84 +12,94 @@ struct FloatingPromptView: View {
     @EnvironmentObject var viewModel: CBCViewModel
     @FocusState private var cocktailNumberFocus: Bool
     
-    
-   
     @State private var offset: CGFloat = 1000
     
     var body: some View {
-        NavigationStack{
+        NavigationStack {
             ZStack {
                 Color(.black)
-                    .opacity(0.1)
+                    .opacity(0.5)
                     .onTapGesture {
                         close()
                     }
-            
                     
-                    VStack {
-                        FontFactory.regularText("Number of Cocktails:", size: 24, isBold: true)
-                            .padding()
-                            .foregroundStyle(.white)
-                            .multilineTextAlignment(.center)
-                        TextField("Amount", value: $viewModel.numberOfCocktailsText, formatter: viewModel.formatter)
-                            .font(FontFactory.regularFont(size: 20))
-                            .padding(5)
-                            .autocorrectionDisabled()
-                            .background(Color(UIColor.systemGray5))
-                            .cornerRadius(10)
-                            .multilineTextAlignment(.center)
-                            .frame(width: 100, height: 40, alignment: .center)
-                            .keyboardType(.numberPad)
-                            .focused($cocktailNumberFocus)
+                
+                VStack {
+                    
+                    
+                    Text("Number of cocktails to batch:")
+                        .font(FontFactory.recipeCardHeader18B)
+                        .multilineTextAlignment(.center)
+                        .foregroundStyle(.brandPrimaryGold)
+                    
                         
-                        FontFactory.regularText("*You can modify this later.", size: 16)
-                            .multilineTextAlignment(.center)
+                    
+                    TextField("Amount", value: $viewModel.numberOfCocktailsText, formatter: viewModel.formatter)
+                        .font(FontFactory.formLabel18)
+                        .padding(8)
+                        .autocorrectionDisabled()
+                        .background(Color(UIColor.systemGray5))
+                        .cornerRadius(12)
+                        .multilineTextAlignment(.center)
+                        .frame(minWidth: 0, maxWidth: 200)
+                        .keyboardType(.numberPad)
+                        .focused($cocktailNumberFocus)
+                        
+                    FontFactory.regularText("You can always modify this later.", size: 16)
+                        .multilineTextAlignment(.center)
+                        .padding(.bottom)
+                    
+                    
+                    
+                    
+                    HStack {
+                        Button(action: {
+                            close()
+                        }) {
+                            Text("Cancel")
+                                .font(FontFactory.fontBody16)
+                                .foregroundStyle(.blueTint)
+                                .padding()
+                                .frame(minWidth: 0, maxWidth: .infinity)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .stroke(Color.white, lineWidth: 1)
+                                )
+                        }
                         
                         NavigationLink {
                             CBCLoadedCocktailView()
                         } label: {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 20)
-                                    .foregroundStyle(ColorScheme.interactionTint)
-                                FontFactory.regularText("Batch", size: 16, isBold: true)
-                                    .padding()
-                                
-                            }
-                            .padding()
-                        }.simultaneousGesture(TapGesture().onEnded {
+                            Text("Batch")
+                                .font(FontFactory.fontBody16)
+                                .foregroundStyle(.blueTint)
+                                .padding()
+                                .frame(minWidth: 0, maxWidth: .infinity)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .stroke(Color.white, lineWidth: 1)
+                                )
+                        }
+                        .simultaneousGesture(TapGesture().onEnded {
                             viewModel.convertIngredientsToBatchCellData()
                         })
-                   
-            }
-                .fixedSize(horizontal: false, vertical: true)
-                .padding()
-                .background(.black)
-                .background(ColorScheme.background)
-                .clipShape(RoundedRectangle(cornerRadius: 20))
-                .overlay {
-                    VStack{
-                        HStack {
-                            Spacer()
-                            Button {
-                                close()
-                            } label: {
-                                Image(systemName: "x.circle.fill")
-                                    .font(.title2)
-                                    .fontWeight(.medium)
-                                    .tint(ColorScheme.interactionTint)
-                            }
-                            .tint(.white)
-                        }
-                        Spacer()
                     }
-                    .padding()
+                    .padding(.horizontal)
                 }
                 
-                .padding(30)
+                //.fixedSize(horizontal: false, vertical: true)
+                .frame(width: 300, height: 190, alignment: .center)
+                .padding()
+                .background(Color(uiColor: .secondarySystemGroupedBackground))
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.white, lineWidth: 2)
+                )
                 .offset(x: 0, y: offset)
                 .onAppear {
-                    withAnimation(.easeInOut.speed(0.75)) {
-                        offset = -50
+                    withAnimation(.easeInOut(duration: 0.2)) {
+                        offset = -150
                     }
                 }
                 .task {
@@ -98,18 +108,16 @@ struct FloatingPromptView: View {
                 }
                 
             }
-            
         }
         .ignoresSafeArea()
-        
     }
+    
     func close() {
-        withAnimation((.easeInOut.speed(0.75))) {
+        withAnimation(.easeInOut(duration: 0.2)) {
             offset = 1000
             isActive = false
         }
     }
-    
 }
 
 #Preview {
@@ -119,3 +127,4 @@ struct FloatingPromptView: View {
     .modelContainer(preview.container)
     
 }
+

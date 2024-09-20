@@ -26,7 +26,7 @@ var theMedicinaLatinaSpec = [OldCocktailIngredient(.juices(.lime), value: 0.75, 
                              OldCocktailIngredient(.agaves(.tequilaBlanco), value: 2),
                              OldCocktailIngredient(.agaves(.mezcalSmokeyAny), value: 0.15)]
 
-var theMedicinaLatinaTags = Tags(flavors: [.lemon, .honey, .ginger],
+var theMedicinaLatinaTags = Tags(flavors: [.lime, .honey, .ginger],
                                  profiles: [.citrusy, .smokey, .light, .complex],
                                  styles: [.sour, .shaken])
 

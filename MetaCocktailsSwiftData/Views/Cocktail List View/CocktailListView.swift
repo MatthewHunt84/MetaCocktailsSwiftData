@@ -9,26 +9,24 @@ import SwiftUI
 import SwiftData
 
 struct CocktailListView: View {
-
     @Bindable var viewModel = CocktailListViewModel()
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
-
     @FocusState private var searchBarIsFocused: Bool
-
+    @State private var selectedNavigationLetter: String?
+    
     var body: some View {
         NavigationStack {
-
-            ZStack {
-                
-                ColorScheme.background.ignoresSafeArea()
-                
-                VStack {
-                    SearchBarForCocktailListView(isFocused: $searchBarIsFocused, viewModel: viewModel)
-                        .padding()
-                    GeometryReader { listGeo in
-                        ScrollView {
-                            ScrollViewReader { value in
-                                HStack {
+            GeometryReader { outerGeo in
+                ZStack {
+                    ColorScheme.background.ignoresSafeArea()
+                    
+                    VStack(spacing: 0) {
+                        SearchBarForCocktailListView(isFocused: $searchBarIsFocused, viewModel: viewModel)
+                            .padding()
+                        
+                        GeometryReader { listGeo in
+                            HStack(spacing: 0) {
+                                ScrollViewReader { proxy in
                                     List {
                                         if searchBarIsFocused {
                                             SearchBarAllCocktailsListView(viewModel: viewModel)
@@ -37,34 +35,58 @@ struct CocktailListView: View {
                                         }
                                     }
                                     .listStyle(.plain)
-                                    .frame(width: listGeo.size.width * 0.9, height: listGeo.size.height)
-                                    
-                                    AlphabetNavigationView(value: value, alphabet: viewModel.cocktailListAlphabet)
-                                        .frame(width: listGeo.size.width * 0.1, height: listGeo.size.height)
-                                        .scaledToFit()
-                                        .offset(x: searchBarIsFocused ? listGeo.size.width * 0.1 : -10, y: 5)
-                                        .opacity(searchBarIsFocused ? 0 : 1)
-                                        .animation(.easeInOut(duration: 0.8), value: searchBarIsFocused)
-
+                                    .frame(width: listGeo.size.width * 0.90)
+                                    .onChange(of: selectedNavigationLetter) { oldValue, newValue in
+                                        if let letter = newValue {
+                                            withAnimation {
+                                                proxy.scrollTo(letter, anchor: .top)
+                                            }
+                                            selectedNavigationLetter = nil
+                                        }
+                                    }
                                 }
+                                
+                                AlphabetNavigationView(selectedLetter: $selectedNavigationLetter, alphabet: viewModel.cocktailListAlphabet)
+                                    .frame(width: listGeo.size.width * 0.1)
+                                    .opacity(searchBarIsFocused ? 0 : 1)
+                                    .animation(.easeInOut(duration: 0.3), value: searchBarIsFocused)
+                                    .offset(y: -7)
                             }
                         }
                     }
-                }
-                .onAppear {
-                    viewModel.searchText = ""
-                    viewModel.setAllCocktails(cocktails)
-                    
+                    .frame(height: outerGeo.size.height)
                 }
             }
-            
+            .onAppear {
+                viewModel.searchText = ""
+                searchBarIsFocused = false
+                viewModel.setAllCocktails(cocktails)
+            }
             .navigationBarTitleDisplayMode(.inline)
             .jamesHeader("Cocktail List")
-//            .toolbar {
-//                ToolbarItem(placement: .topBarTrailing) {
-//                    LoadSampleCocktailsButton()
-//                }
-//            }
+        }
+    }
+}
+
+struct AlphabetNavigationView: View {
+    @Binding var selectedLetter: String?
+    let alphabet: [String]
+    
+    var body: some View {
+        GeometryReader { geometry in
+            VStack(spacing: 0) {
+                ForEach(alphabet, id: \.self) { letter in
+                    Button(action: {
+                        selectedLetter = letter
+                    }) {
+                        Text(letter)
+                            .font(FontFactory.alphabetFont(for: geometry.size.height))
+                            .frame(width: geometry.size.width, height: geometry.size.height / CGFloat(alphabet.count))
+                            .contentShape(Rectangle())
+                    }
+                    .buttonStyle(ScaleButtonStyle())
+                }
+            }
         }
     }
 }
@@ -81,29 +103,6 @@ struct ScaleButtonStyle : ButtonStyle {
         configuration.label.scaleEffect(configuration.isPressed ? 2.5 : 1)
             .shadow(radius: 30)
         
-    }
-}
-
-struct AlphabetNavigationView: View {
-    let value: ScrollViewProxy
-    let alphabet: [String]
-    
-    var body: some View {
-        VStack {
-            ForEach(0..<alphabet.count, id: \.self) { i in
-                Button(action: {
-                    withAnimation {
-                        value.scrollTo(alphabet[i], anchor: .top)
-                    }
-                }, label: {
-                    Text(alphabet[i])
-                        .font(FontFactory.regularFont(size: 15))
-                        .frame(width: 17, height: 13, alignment: .center)
-                    
-                })
-                .buttonStyle(ScaleButtonStyle())
-            }
-        }
     }
 }
 

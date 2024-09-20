@@ -27,6 +27,24 @@ struct FontFactory {
         Font.custom("AvenirNext-Regular", size: size)
     }
     
+    static func alphabetFont(for frameHeight: CGFloat) -> Font {
+        switch frameHeight {
+        case 0..<400:
+            return regularFont(size: 14)
+        case 400..<500:
+            print("size 16")
+            return regularFont(size: 16)
+        case 500..<600:
+            print("size 18")
+            return regularFont(size: 18)
+        case 600..<700:
+            print("size 20")
+            return regularFont(size: 20)
+        default:
+            return regularFont(size: 22)
+        }
+    }
+    
     static func mediumFont(size: CGFloat) -> Font {
         Font.custom("AvenirNext-Medium", size: size)
     }
@@ -51,6 +69,7 @@ struct FontFactory {
     static var buildStepSmall10B: Font = .custom("AvenirNext-Regular", size: 10).bold()
     static var sectionHeader12: Font = .custom("AvenirNext-Regular", size: 12)
     static var specMeasurement16B: Font = .custom("AvenirNext-Regular", size: 16).bold()
+    static var fontBody14: Font = .custom("AvenirNext-Regular", size: 14)
     static var fontBody16: Font = .custom("AvenirNext-Regular", size: 16)
     static var recipeCardHeader18B: Font = .custom("AvenirNext-Regular", size: 18).bold()
     static var formLabel18: Font = .custom("AvenirNext-Regular", size: 18)
