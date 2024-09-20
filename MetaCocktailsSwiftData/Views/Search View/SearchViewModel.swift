@@ -11,7 +11,7 @@ import Combine
 
 @Observable
 final class SearchViewModel: ObservableObject {
-    
+
     // Any changes to these two arrays will trigger view updates and must happen on the main thread!
     var unwantedSelections: [String] = []
     var preferredSelections: [String] = []
@@ -116,6 +116,7 @@ final class SearchViewModel: ObservableObject {
     var perfectMatchCocktails = [String]()
     var minusOneMatchCocktails = [String]()
     var minusTwoMatchCocktails = [String]()
+    var sortMinusOne = false
     var isRunningComplexSearch = false
     var isGeneratingIngredientList = false
     var searchCompleted = false
@@ -123,6 +124,8 @@ final class SearchViewModel: ObservableObject {
     var updatedUnwantedSelections = [String]()
     var allCocktails: [Cocktail] = []
     var isShowingResults: Bool = false
+    
+
     
     func handleThumbsUp(ingredient: String) {
         if !preferredSelections.contains(ingredient) {
@@ -184,6 +187,79 @@ final class SearchViewModel: ObservableObject {
         fillUnwantedCategoryArrays()
         currentComponentSearchName = ""
     }
+    
+    func minusOneHeader(missingIngredient: String) -> some View {
+        VStack {
+            Spacer()
+            HStack {
+                Text("MATCHES ALL EXCEPT FOR")
+                    .foregroundColor(.secondary)
+                Text(missingIngredient.uppercased())
+                    .foregroundColor(.white)
+                    .bold()
+                Spacer()
+            }
+            .padding(.leading, 4)
+            .font(FontFactory.fontBody14)
+        }
+    }
+    
+    func minusOneFooter() -> some View {
+        HStack {
+            Spacer()
+            Button {
+                Task {
+                    await MainActor.run {
+                        withAnimation {
+                            self.sortMinusOne.toggle()
+                        }
+                    }
+                }
+            } label: {
+                Text(sortMinusOne ? "COLLAPSE" : "SORT BY MISSING INGREDIENT" )
+                    .foregroundColor(ColorScheme.interactionTint)
+            }
+        }
+        .font(FontFactory.fontBody14)
+        .background(Color.clear)
+        .frame(maxWidth: .infinity, maxHeight: 5)
+    }
+    
+    func minusTwoHeader(missingIngredients: [String], cocktailCount: Int) -> some View {
+        HStack{
+            Text("(\(cocktailCount)) Missing \(missingIngredients[0]) & \(missingIngredients[1])")
+            Spacer()
+        }
+        .font(FontFactory.fontBody16)
+        .foregroundColor(.secondary)
+    }
+    
+    func getMissingIngredients(for cocktail: Cocktail) -> [String] {
+        let preferredSelectionsArray = preferredSelections
+        var cocktailIngredients = cocktail.spec.map { $0.ingredientBase.name }
+        cocktailIngredients += cocktail.spec.map { $0.ingredientBase.baseCategory }
+        cocktailIngredients += cocktail.spec.map { $0.ingredientBase.specialtyCategory }
+        cocktailIngredients += cocktail.spec.map { $0.ingredientBase.umbrellaCategory }
+        if let cocktailFlavors = cocktail.compiledTags.flavors {
+            cocktailIngredients += cocktailFlavors.map { $0.rawValue }
+        }
+        if let cocktailProfiles = cocktail.compiledTags.profiles {
+            cocktailIngredients += cocktailProfiles.map { $0.rawValue }
+        }
+        if let cocktailStyles = cocktail.compiledTags.styles {
+            cocktailIngredients += cocktailStyles.map { $0.rawValue }
+        }
+        let cocktailIngredientsNoDoubles = Array(Set(cocktailIngredients))
+        return preferredSelectionsArray.filter { !cocktailIngredientsNoDoubles.contains($0) }
+    }
+    
+    func group(cocktails: [Cocktail]) -> [([String], [Cocktail])] {
+        let grouped = Dictionary(grouping: cocktails) { cocktail in
+            getMissingIngredients(for: cocktail)
+        }
+        return grouped.sorted { $0.key.joined() < $1.key.joined() }
+    }
+  
     
     func toggleIsShowingResults() {
 

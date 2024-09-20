@@ -35,6 +35,24 @@ struct IngredientSearchView: View {
                         }
                     
                     Spacer()
+                    
+                    if keyboardFocused {
+                        HStack {
+                            Spacer()
+                            
+                            Button(action: {
+                                keyboardFocused = false
+                            }) {
+                                Image(systemName: "keyboard.chevron.compact.down")
+                                    .font(.system(size: 26))
+                                
+                            }
+                            .buttonStyle(.plain)
+                            .padding(.trailing, 16)
+                            .padding(.bottom, 8)
+                            .foregroundStyle(.blueTint)
+                        }
+                    }
                 }
             }
             .animation(.easeOut(duration: 0.5), value: viewModel.preferredSelections.isEmpty)
