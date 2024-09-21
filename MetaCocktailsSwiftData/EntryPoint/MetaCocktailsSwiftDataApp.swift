@@ -12,17 +12,39 @@ import SwiftUI
 struct MetaCocktailsSwiftDataApp: App {
     @StateObject private var appState = AppState()
     @AppStorage("shouldPreload") private var shouldPreload: Bool = true
+    var container = try? ModelContainer(for: Schema([Cocktail.self]), configurations: ModelConfiguration())
     
     init() {
-        importJSONToSwiftData(&shouldPreload)
-//        exportSwiftDataToJSON()
+        
+        do {
+            guard let bundleURL = Bundle.main.url(forResource: "default", withExtension: "store") else {
+                fatalError("Failed to find SwiftData default.store in app bundle - we can't run without it")
+            }
+            
+            print("hello!")
+            let fileManager = FileManager.default
+            let documentDirectoryURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let documentURL = documentDirectoryURL.appendingPathComponent("default.store")
+            
+            // Only copy the store from the bundle to the Documents directory if it doesn't exist
+            if !fileManager.fileExists(atPath: documentURL.path) {
+                try fileManager.copyItem(at: bundleURL, to: documentURL)
+            }
+            
+            let schema = Schema([Cocktail.self])
+            
+            let configuration = ModelConfiguration(url: documentURL)
+            self.container = try! ModelContainer(for: schema, configurations: configuration)
+        } catch {
+            debugPrint(error)
+        }
     }
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .preferredColorScheme(.dark)
-                .modelContainer(for: Cocktail.self)
+                .modelContainer(container!)
 //                .modelContainer(CocktailContainer.preload(&shouldPreload))
                 .environmentObject(CBCViewModel())
                 .environmentObject(CocktailListViewModel())
