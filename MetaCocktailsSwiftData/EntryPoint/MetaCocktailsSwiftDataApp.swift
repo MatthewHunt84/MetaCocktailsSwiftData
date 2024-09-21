@@ -11,12 +11,15 @@ import SwiftUI
 @main
 struct MetaCocktailsSwiftDataApp: App {
     @StateObject private var appState = AppState()
+    @AppStorage("shouldPreload") private var shouldPreload: Bool = true
     
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .modelContainer(CocktailContainer.useSwiftDataFile()) // turn me off to repopulate model
+//                .modelContainer(CocktailContainer.preload(&shouldPreload)) // turn me on to repopulate model
+            
                 .preferredColorScheme(.dark)
-                .modelContainer(CocktailContainer.useSwiftDataFile())
                 .environmentObject(CBCViewModel())
                 .environmentObject(CocktailListViewModel())
                 .environmentObject(appState)
