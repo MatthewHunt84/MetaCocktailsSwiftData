@@ -13,6 +13,11 @@ struct MetaCocktailsSwiftDataApp: App {
     @StateObject private var appState = AppState()
     @AppStorage("shouldPreload") private var shouldPreload: Bool = true
     
+    init() {
+
+//        exportSwiftDataToJSON()
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -22,6 +27,31 @@ struct MetaCocktailsSwiftDataApp: App {
                 .environmentObject(CBCViewModel())
                 .environmentObject(CocktailListViewModel())
                 .environmentObject(appState)
+        }
+    }
+    
+    func exportSwiftDataToJSON() {
+        do {
+            let container = try ModelContainer(for: Cocktail.self)
+            let context = container.mainContext
+            
+            let fetchDescriptor = FetchDescriptor<Cocktail>(sortBy: [SortDescriptor(\.cocktailName)])
+            let cocktails = try context.fetch(fetchDescriptor)
+            
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .prettyPrinted
+            let jsonData = try encoder.encode(cocktails)
+            
+            let fileManager = FileManager.default
+            let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            let fileURL = documentsDirectory.appendingPathComponent("ExportedCocktails.json")
+            
+            try jsonData.write(to: fileURL)
+            
+            print("✅✅✅ JSON file created successfully.")
+            print("File location: \(fileURL.path)")
+        } catch {
+            print("💀💀💀 Error exporting data to JSON: \(error)")
         }
     }
 }
