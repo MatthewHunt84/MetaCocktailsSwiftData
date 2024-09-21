@@ -13,7 +13,7 @@ struct ContainerMenuView: View {
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 20) {
+            HStack {
                 ForEach(viewModel.groupedContainerSizes, id: \.1) { labelForVolume, volume in
                     Button {
                         viewModel.updateContainerSize(newSize: volume)
@@ -27,7 +27,6 @@ struct ContainerMenuView: View {
                     }
                 }
             }
-            .padding(.horizontal, 10)
         }
         .frame(height: 50)
         .onAppear {
