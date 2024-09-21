@@ -59,7 +59,7 @@ struct ContentView: View {
                     await MainActor.run {
                         withAnimation(.easeIn(duration: 1)) {
                             swiftDataIsLoaded = true
-                            print("Default.store file location: \(modelContext.sqliteCommand)")
+//                            print("Default.store file location: \(modelContext.sqliteCommand)")
                         }
                     }
                 }
