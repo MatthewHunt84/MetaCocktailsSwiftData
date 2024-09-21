@@ -503,10 +503,7 @@
 		4DF637A52C7C522100B2E3BF /* HistoricalCocktailModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF637A42C7C522100B2E3BF /* HistoricalCocktailModalView.swift */; };
 		F40FB6B12B7E38DA0047D597 /* CocktailCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40FB6B02B7E38DA0047D597 /* CocktailCollection.swift */; };
 		F41045072AD4FD42000CA913 /* CocktailImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41045062AD4FD42000CA913 /* CocktailImageView.swift */; };
-		F4441CE72C9F55A70025E988 /* Cocktails.json in Resources */ = {isa = PBXBuildFile; fileRef = F4441CE62C9F55A70025E988 /* Cocktails.json */; };
-		F4441CEB2C9F7AB80025E988 /* default.store-wal in Resources */ = {isa = PBXBuildFile; fileRef = F4441CEA2C9F7AB80025E988 /* default.store-wal */; };
 		F4441CEC2C9F7AB80025E988 /* default.store in Resources */ = {isa = PBXBuildFile; fileRef = F4441CE82C9F7AB80025E988 /* default.store */; };
-		F4441CED2C9F7AB80025E988 /* default.store-shm in Resources */ = {isa = PBXBuildFile; fileRef = F4441CE92C9F7AB80025E988 /* default.store-shm */; };
 		F4538E032C91F99E004B686A /* FindCocktailUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4538E022C91F997004B686A /* FindCocktailUserInfoView.swift */; };
 		F47FBF652C6BF5EB00CD599E /* CustomLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47FBF642C6BF5EB00CD599E /* CustomLoadingIndicator.swift */; };
 		F4872FEE2C4353E10092F8FF /* DummyCocktails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4872FED2C4353E10092F8FF /* DummyCocktails.swift */; };
@@ -1049,10 +1046,7 @@
 		4DF637A42C7C522100B2E3BF /* HistoricalCocktailModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalCocktailModalView.swift; sourceTree = "<group>"; };
 		F40FB6B02B7E38DA0047D597 /* CocktailCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailCollection.swift; sourceTree = "<group>"; };
 		F41045062AD4FD42000CA913 /* CocktailImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImageView.swift; sourceTree = "<group>"; };
-		F4441CE62C9F55A70025E988 /* Cocktails.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Cocktails.json; sourceTree = "<group>"; };
 		F4441CE82C9F7AB80025E988 /* default.store */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.store; sourceTree = "<group>"; };
-		F4441CE92C9F7AB80025E988 /* default.store-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "default.store-shm"; sourceTree = "<group>"; };
-		F4441CEA2C9F7AB80025E988 /* default.store-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "default.store-wal"; sourceTree = "<group>"; };
 		F4538E022C91F997004B686A /* FindCocktailUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindCocktailUserInfoView.swift; sourceTree = "<group>"; };
 		F473FFD22C2716C4008689D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F47FBF642C6BF5EB00CD599E /* CustomLoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoadingIndicator.swift; sourceTree = "<group>"; };
@@ -2070,10 +2064,7 @@
 		F4FBF1212AAABBB900BBF7CF /* MetaCocktailsSwiftData */ = {
 			isa = PBXGroup;
 			children = (
-				F4441CE62C9F55A70025E988 /* Cocktails.json */,
 				F4441CE82C9F7AB80025E988 /* default.store */,
-				F4441CE92C9F7AB80025E988 /* default.store-shm */,
-				F4441CEA2C9F7AB80025E988 /* default.store-wal */,
 				F473FFD22C2716C4008689D3 /* Info.plist */,
 				1AC3867C2AAABED00064F52A /* Assets.xcassets */,
 				1AC386852AAABED00064F52A /* EntryPoint */,
@@ -2152,10 +2143,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4441CE72C9F55A70025E988 /* Cocktails.json in Resources */,
-				F4441CEB2C9F7AB80025E988 /* default.store-wal in Resources */,
 				F4441CEC2C9F7AB80025E988 /* default.store in Resources */,
-				F4441CED2C9F7AB80025E988 /* default.store-shm in Resources */,
 				F4FBF12C2AAABBBB00BBF7CF /* Preview Assets.xcassets in Resources */,
 				1AC386B02AAABED10064F52A /* Assets.xcassets in Resources */,
 			);
