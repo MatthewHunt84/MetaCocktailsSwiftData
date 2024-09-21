@@ -14,7 +14,7 @@ struct MetaCocktailsSwiftDataApp: App {
     @AppStorage("shouldPreload") private var shouldPreload: Bool = true
     
     init() {
-        importJSONToSwiftData()
+        importJSONToSwiftData(&shouldPreload)
 //        exportSwiftDataToJSON()
     }
     
@@ -23,7 +23,7 @@ struct MetaCocktailsSwiftDataApp: App {
             ContentView()
                 .preferredColorScheme(.dark)
                 .modelContainer(for: Cocktail.self)
-//                .modelContainer(CocktailContainer.preload(&shouldPreload))
+                .modelContainer(CocktailContainer.preload(&shouldPreload))
                 .environmentObject(CBCViewModel())
                 .environmentObject(CocktailListViewModel())
                 .environmentObject(appState)
@@ -55,16 +55,14 @@ struct MetaCocktailsSwiftDataApp: App {
         }
     }
     
-    func importJSONToSwiftData() {
+    func importJSONToSwiftData(_ shouldPreload: inout Bool) {
+        guard shouldPreload else { return }
+        let modelImportStartTime = CACurrentMediaTime()
+        
         let fileManager = FileManager.default
         let documentsPath = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let storePath = documentsPath.appendingPathComponent("Cocktails.store")
-        
-        // Check if SwiftData store already exists
-        guard !fileManager.fileExists(atPath: storePath.path) else {
-            print("✅✅✅ FOUND SWIFT DATA FILE!")
-            return
-        }
+        let storePath = documentsPath.appendingPathComponent("Default.store")
+
         
         // Load JSON data from the app bundle
         guard let jsonURL = Bundle.main.url(forResource: "Cocktails", withExtension: "json"),
@@ -116,7 +114,9 @@ struct MetaCocktailsSwiftDataApp: App {
             }
             
             try context.save()
-            print("✅ Cocktails imported from JSON successfully")
+            shouldPreload = false
+            print("🕔Loading Time: \(CACurrentMediaTime() - modelImportStartTime)")
+            print("✅ Cocktails imported from JSON successfully. (🕔Loading Time: \(CACurrentMediaTime() - modelImportStartTime))")
             
         } catch {
             print("💀 Failed to import cocktails: \(error)")
