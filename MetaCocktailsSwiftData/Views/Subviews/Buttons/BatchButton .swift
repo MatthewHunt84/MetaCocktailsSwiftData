@@ -29,7 +29,7 @@ struct BatchButton: View {
                             Image("batchBottles", label: Text("Batch"))
                                 .resizable()
                             Text("B  A  T  C  H")
-                                .foregroundStyle(.white)
+                                .foregroundStyle(.primary)
                                 .dynamicTypeSize(.large)
                         }
                         .frame(width: 125, height: 125, alignment: .center)

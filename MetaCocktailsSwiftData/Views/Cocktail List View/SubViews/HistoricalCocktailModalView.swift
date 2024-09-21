@@ -46,7 +46,7 @@ struct HistoricalCocktailModalView: View {
                         
                         Text(alertContent.message)
                             .font(.body)
-                            .foregroundColor(.white)
+                            .foregroundColor(.primary)
                         
                         ForEach(alertContent.bulletPoints, id: \.self) { point in
                             HStack(alignment: .top, spacing: 10) {
@@ -54,7 +54,7 @@ struct HistoricalCocktailModalView: View {
                                     .foregroundColor(.brandPrimaryGold)
                                 Text(point)
                                     .font(.body)
-                                    .foregroundColor(.white)
+                                    .foregroundColor(.primary)
                             }
                         }
                     }
@@ -72,7 +72,7 @@ struct HistoricalCocktailModalView: View {
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .overlay(
                             RoundedRectangle(cornerRadius: 12)
-                                .stroke(Color.white, lineWidth: 1)
+                                .stroke(Color.primary, lineWidth: 1)
                         )
                 }
                 .padding(.horizontal)

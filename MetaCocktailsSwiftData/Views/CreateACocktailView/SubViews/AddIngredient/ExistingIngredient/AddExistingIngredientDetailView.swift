@@ -110,7 +110,7 @@ struct AddIngredientSearchView: View {
                         } label: {
                             Text(ingredient.name)
                         }
-                        .tint(.white)
+                        .tint(.primary)
                     }
                     .listStyle(.plain)
                     .listRowBackground(Color.clear)
@@ -147,7 +147,7 @@ struct AddMeasurementView: View {
                 } label: {
                     HStack{
                         Text(viewModel.selectedMeasurementUnit.rawValue)
-                            .tint(.white)
+                            .tint(.primary)
                             .font(FontFactory.formLabel18)
                         Image(systemName: "chevron.down")
                             .foregroundStyle(.gray)

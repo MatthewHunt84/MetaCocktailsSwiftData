@@ -15,7 +15,7 @@ extension TextField {
             .background(Color.black)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .shadow(color: Color(UIColor.systemGray), radius: 4, x: 0, y: 0)
-            .foregroundColor(Color(UIColor.white))
+            .foregroundColor(.primary)
             .multilineTextAlignment(.center)
     }
 
@@ -27,7 +27,7 @@ extension TextField {
                 RoundedRectangle(cornerRadius: 12)
                     .fill(ColorScheme.searchBarBackground)
             )
-            .foregroundColor(.white)
+            .foregroundColor(.primary)
             .autocorrectionDisabled(true)
             .padding(.trailing, 8)
     }

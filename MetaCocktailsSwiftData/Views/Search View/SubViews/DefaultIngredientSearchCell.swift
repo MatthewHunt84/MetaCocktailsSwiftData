@@ -20,7 +20,7 @@ struct DefaultIngredientSearchCell: View {
             Spacer()
             
             Image(systemName:viewModel.preferredSelections.contains(ingredient)  ? "plus.circle.fill" : "plus.circle")
-                .foregroundStyle(viewModel.preferredSelections.contains(ingredient)  ? ColorScheme.selectedColor: .white)
+                .foregroundStyle(viewModel.preferredSelections.contains(ingredient)  ? ColorScheme.selectedColor: .primary)
                 .onTapGesture {
                     withAnimation {
                         viewModel.handleThumbsUp(ingredient: ingredient)
@@ -29,7 +29,7 @@ struct DefaultIngredientSearchCell: View {
                 .font(.system(size: 20))
             
             Image(systemName:viewModel.unwantedSelections.contains(ingredient)  ? "minus.circle.fill" : "minus.circle")
-                .foregroundStyle(viewModel.unwantedSelections.contains(ingredient)  ? ColorScheme.unwantedColor : .white)
+                .foregroundStyle(viewModel.unwantedSelections.contains(ingredient)  ? ColorScheme.unwantedColor : .primary)
                 .onTapGesture {
                     withAnimation {
                         viewModel.handleThumbsDown(ingredient: ingredient)

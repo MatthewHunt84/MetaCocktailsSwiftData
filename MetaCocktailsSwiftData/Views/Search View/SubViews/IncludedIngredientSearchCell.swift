@@ -27,7 +27,7 @@ struct IncludedIngredientSearchCell: View {
             }
             
             Image(systemName:viewModel.unwantedSelections.contains(ingredient)  ? "minus.circle.fill" : "minus.circle")
-                .foregroundStyle(viewModel.unwantedSelections.contains(ingredient)  ? ColorScheme.unwantedColor : Color.white)
+                .foregroundStyle(viewModel.unwantedSelections.contains(ingredient)  ? ColorScheme.unwantedColor : Color.primary)
                 .onTapGesture {
                     viewModel.handleThumbsDown(ingredient: ingredient)
                 }

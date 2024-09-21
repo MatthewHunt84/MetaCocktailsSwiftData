@@ -9,14 +9,14 @@ import SwiftUI
 
 struct FontFactory {
     
-    static func regularText(_ text: String, font: String = "AvenirNext-Regular", size: CGFloat, color: Color = .white, isBold: Bool = false) -> Text {
+    static func regularText(_ text: String, font: String = "AvenirNext-Regular", size: CGFloat, color: Color = .primary, isBold: Bool = false) -> Text {
         return Text(text)
             .font(.custom(font, size: size))
             .foregroundStyle(color)
             .bold(isBold)
     }
     
-    static func mediumText(_ text: String, font: String = "AvenirNext-Medium", size: CGFloat, color: Color = .white, isBold: Bool = false) -> Text {
+    static func mediumText(_ text: String, font: String = "AvenirNext-Medium", size: CGFloat, color: Color = .primary, isBold: Bool = false) -> Text {
         return Text(text)
             .font(.custom(font, size: size))
             .foregroundStyle(color)

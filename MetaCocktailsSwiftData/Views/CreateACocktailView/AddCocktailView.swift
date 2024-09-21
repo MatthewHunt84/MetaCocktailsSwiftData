@@ -235,7 +235,7 @@ private struct GlassPickerDetailView: View {
                                 Text(newGlass.rawValue)
                                     .tag(Optional(newGlass))
                                     .font(FontFactory.bottomToolbarButton20)
-                                    .foregroundStyle(.white)
+                                    .foregroundStyle(.primary)
                             }
                         }
                     }
@@ -269,7 +269,7 @@ private struct IcePicker: View {
             .labelsHidden()
             
         }
-        .tint(ice == Ice.none ? Color.secondary : .white)
+        .tint(ice == Ice.none ? Color.secondary : .primary)
         .font(FontFactory.formLabel18)
     }
 }
@@ -298,7 +298,7 @@ private struct GarnishPicker: View {
             } label: {
                 HStack {
                     Text(viewModel.addedGarnish.count < 1 ? "Add Garnish" : "Add another garnish")
-                        .tint(viewModel.addedGarnish.count < 1 ? .white : .secondary)
+                        .tint(viewModel.addedGarnish.count < 1 ? .primary : .secondary)
                         .font(FontFactory.formLabel18)
                     Spacer()
                     Image(systemName: "plus.circle.fill")

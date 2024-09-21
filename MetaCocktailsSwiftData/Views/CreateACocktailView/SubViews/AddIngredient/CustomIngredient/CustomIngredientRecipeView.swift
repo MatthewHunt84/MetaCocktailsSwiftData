@@ -19,7 +19,7 @@ struct CustomIngredientRecipeView: View {
                 } label: {
                     HStack {
                         Text("Add recipe step")
-                            .foregroundStyle(.white)
+                            .foregroundStyle(.primary)
                             .font(FontFactory.formLabel18)
                         
                         Spacer()

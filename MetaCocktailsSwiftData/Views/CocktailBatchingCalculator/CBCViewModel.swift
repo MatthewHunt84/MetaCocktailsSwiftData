@@ -63,7 +63,7 @@ final class CBCViewModel: ObservableObject {
                 totalVolume += ingredientVolume
                 let existingIngredient = quantifiedBatchedIngredients.first { $0.ingredientName == ingredient.ingredient.ingredientBase.name }
                 let bottleSize = existingIngredient?.bottleSize ?? 750
-                let wholeBottles = Int(ingredientVolume / Double(bottleSize))
+                let wholeBottles = Int(ingredientVolume / Double(bottleSize)) 
                 let remainingMls = Int(ingredientVolume.truncatingRemainder(dividingBy: Double(bottleSize)))
 //                print("\(ingredient.ingredient.ingredientBase.name) needs \(wholeBottles) bottles and has \(remainingMls) remaining mls.")
                 quantifiableIngredients.append(BottleBatchedCellData(

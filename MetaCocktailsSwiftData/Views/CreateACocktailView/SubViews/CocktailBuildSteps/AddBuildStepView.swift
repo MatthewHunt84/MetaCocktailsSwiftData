@@ -17,7 +17,7 @@ struct AddBuildStepView: View {
             } label: {
                 HStack {
                     Text("Add build step")
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.primary)
                         .font(FontFactory.formLabel18)
 
                     

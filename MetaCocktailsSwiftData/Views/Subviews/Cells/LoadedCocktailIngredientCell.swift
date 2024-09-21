@@ -11,24 +11,21 @@ import SwiftUI
 struct LoadedCocktailIngredientCell: View {
     
     @Binding var ingredient: CBCLoadedIngredient
-    
-    
-    
+
     var body: some View {
+        
         HStack {
-            
+
             Text("\(ingredient.ingredient.ingredientBase.name)")
-                
-            
+                .font(FontFactory.formLabel18)
+                .foregroundStyle(ingredient.isIncluded ? .primary : .secondary)
+
             Spacer()
             
-            Toggle(isOn: $ingredient.isIncluded) {}
-                .tint(ColorScheme.selectedColor)
+            Toggle(isOn: $ingredient.isIncluded) { }
+                .tint(ColorScheme.interactionTint)
                 .frame(maxWidth: 60)
-            
-            
         }
-     
     }
 }
 

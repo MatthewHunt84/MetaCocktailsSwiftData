@@ -23,7 +23,7 @@ struct defaultButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
         .clipShape(RoundedRectangle(cornerRadius: 20))
-        .foregroundColor(Color(UIColor.white))
+        .foregroundColor(.primary)
         .font(.system(size: 16, weight: .bold))
         .padding(.top, 25)
         .padding(.bottom, 25)
@@ -36,7 +36,7 @@ struct BlackNWhiteButton: ButtonStyle {
             .padding(8)
             .background(ColorScheme.interactionTint)
             .clipShape(RoundedRectangle(cornerRadius: 13))
-            .foregroundColor(Color(UIColor.white))
+            .foregroundColor(.primary)
     }
 }
 

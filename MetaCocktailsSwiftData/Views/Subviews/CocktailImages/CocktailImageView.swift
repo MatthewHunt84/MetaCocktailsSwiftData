@@ -66,7 +66,7 @@ struct CocktailImageView: View {
                 Image(cocktailImage.glassBackLayer)
                     .resizable()
                     .scaledToFit()
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.primary)
                     .opacity(0.2)
                 
                 Image(cocktailImage.drinkLayer)

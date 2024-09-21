@@ -18,32 +18,39 @@ struct BottleMathModalView: View {
     @FocusState private var keyboardFocused: Bool
     
     var body: some View {
-//        ZStack {
-//            RoundedRectangle(cornerRadius: 12)
-                
-//                .ignoresSafeArea()
+        
+        ZStack {
+            
+            BlackGlassBackgroundView().ignoresSafeArea()
+            
             VStack {
-                FontFactory.titleHeader22(title: "Calculate by number of available bottles:")
-                    .padding()
-                    .multilineTextAlignment(.center)
+                
+                FontFactory.titleHeader22(title: "Calculate by bottles")
+                    .padding(.top, 10)
+                    .padding(.bottom, 20)
+                
+                Text("How many milliliters in each bottle?")
+                    .font(FontFactory.formLabel18)
+                
                 HStack {
-                    Text("What volume are the bottles?")
-                        .font(FontFactory.formLabel18)
                     TextField("Volume", value: $bottleSizeText, formatter: NumberFormatter())
-                        .font(FontFactory.formLabel18)
+                        .font(FontFactory.mediumFont(size: 18))
                         .multilineTextAlignment(.center)
+                        .foregroundStyle(ColorScheme.interactionTint)
                         .padding(.vertical, 5)
                         .focused($keyboardFocused)
                         .keyboardType(.numberPad)
                         .frame(width: 80)
                         .background(Color(UIColor.systemGray5))
                         .cornerRadius(10)
-                    Text("ml")
-                        .font(FontFactory.formLabel18)
                 }
+                .padding(.bottom, 30)
+                
                 Text("How many full bottles will you be using?")
                     .font(FontFactory.formLabel18)
+                
                 HStack {
+                    
                     Button {
                         if numberOfBottlesText > 0 {
                             numberOfBottlesText -= 1
@@ -54,6 +61,7 @@ struct BottleMathModalView: View {
                             .tint(.blueTint)
                             .font(FontFactory.formLabel18)
                     }
+                    
                     TextField("Btl. #", value: $numberOfBottlesText, formatter: NumberFormatter())
                         .font(FontFactory.formLabel18)
                         .multilineTextAlignment(.center)
@@ -63,7 +71,7 @@ struct BottleMathModalView: View {
                         .frame(width: 80)
                         .background(Color(UIColor.systemGray5))
                         .cornerRadius(10)
-
+                    
                     Button {
                         numberOfBottlesText += 1
                         updateBatchWithBottleMath()
@@ -73,43 +81,31 @@ struct BottleMathModalView: View {
                             .font(FontFactory.formLabel18)
                     }
                 }
-                if !isEditingValues && quantifiedBatchedIngredient.remainingMls != 0 {
-                    Text("You'll need to add an extra \(quantifiedBatchedIngredient.remainingMls) mls")
-                        .font(FontFactory.formLabel18)
-                        .padding()
-                }
+                .padding(.bottom, 30)
+                
                 Button {
                     isShowingBottleMathModal = false
-                } label: {
-                    Text("Add to batch")
+                } label : {
+                        Text("Calculate")
+                            .font(FontFactory.mediumFont(size: 18))
+                            .foregroundStyle(numberOfBottlesText > 0 ? ColorScheme.interactionTint : Color.secondary)
+                            .padding(.vertical, 8)
+                            .padding(.horizontal, 16)
+                            .background(Capsule().strokeBorder(numberOfBottlesText > 0 ? ColorScheme.interactionTint : Color.secondary, lineWidth: 1))
+                            .disabled(numberOfBottlesText > 0 ? false : true)
                 }
-                .buttonStyle(.customGreyButton)
-                .tint(ColorScheme.buttonTint.opacity(0.5))
-                .padding()
-                .disabled(numberOfBottlesText > 0 ? false : true)
+
                 Spacer()
-                if keyboardFocused {
-                    HStack {
-                        Spacer()
-                        Button {
-                            keyboardFocused = false
-                        } label: {
-                            Text("Done")
-                                .tint(.blueTint)
-                        }
-                    }
-                }
             }
-            .background(BlackGlassBackgroundView())
-            .onAppear {
-                bottleSizeText = quantifiedBatchedIngredient.bottleSize
-                numberOfBottlesText = quantifiedBatchedIngredient.wholeBottles
-            }
-//        }
+        }
+        .onAppear {
+            bottleSizeText = quantifiedBatchedIngredient.bottleSize
+            numberOfBottlesText = quantifiedBatchedIngredient.wholeBottles
+        }
     }
     
     private func updateBatchWithBottleMath() {
-        if bottleSizeText > 0 && numberOfBottlesText >= 0 {
+        if bottleSizeText > 0 && numberOfBottlesText > 0 {
             let totalMls = numberOfBottlesText * bottleSizeText
                
                viewModel.updateIngredientAmount(
