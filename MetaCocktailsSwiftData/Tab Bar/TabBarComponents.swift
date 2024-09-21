@@ -9,10 +9,11 @@ import SwiftUI
 
 enum TabBarComponents: Hashable, Identifiable, CaseIterable {
     
-    case cocktailListView
-    case searchView
-    case favoritesView
+    
     case addCocktailView
+    case favoritesView
+    case searchView
+    case cocktailListView
 
     var id: TabBarComponents { self }
     

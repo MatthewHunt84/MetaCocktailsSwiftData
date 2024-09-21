@@ -1362,7 +1362,6 @@
 				4DA567B02B6D9524003F6F04 /* CocktailBatchingCalculator */,
 				F4DBE4C32AB882FF009A0C09 /* Loading Indicators */,
 				F4C6A8EF2AB0000800BB0AD0 /* Subviews */,
-				1AC386972AAABED00064F52A /* Tab Bar View */,
 				1AC3869B2AAABED00064F52A /* Recipe View */,
 				1AC3869E2AAABED00064F52A /* Prep Bible */,
 				1AC386A22AAABED00064F52A /* Cocktail List View */,
@@ -1371,13 +1370,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		1AC386972AAABED00064F52A /* Tab Bar View */ = {
+		1AC386972AAABED00064F52A /* Tab Bar */ = {
 			isa = PBXGroup;
 			children = (
 				1AC386982AAABED00064F52A /* TabBarView.swift */,
 				4DD0DE982B97E020008EF203 /* TabBarComponents.swift */,
 			);
-			path = "Tab Bar View";
+			path = "Tab Bar";
 			sourceTree = "<group>";
 		};
 		1AC386992AAABED00064F52A /* SubViews */ = {
@@ -2074,6 +2073,7 @@
 				F473FFD22C2716C4008689D3 /* Info.plist */,
 				1AC3867C2AAABED00064F52A /* Assets.xcassets */,
 				1AC386852AAABED00064F52A /* EntryPoint */,
+				1AC386972AAABED00064F52A /* Tab Bar */,
 				1AC386962AAABED00064F52A /* Views */,
 				1AC386812AAABED00064F52A /* Utilities */,
 				1AC386872AAABED00064F52A /* Model */,
