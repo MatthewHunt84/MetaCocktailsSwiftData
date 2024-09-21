@@ -10,11 +10,11 @@ import SwiftUI
 
 struct CBCLoadedCocktailView: View {
     @EnvironmentObject var viewModel: CBCViewModel
-    @FocusState var isInputActive: Bool
+    @FocusState private var isInputActive: Bool
     @State private var isShowingPreferencesModal: Bool = false
+    @State private var isShowingBottleMathModal: Bool = false
     @Environment(\.dismiss) private var dismiss
-    
-    
+
     var body: some View {
         
         NavigationStack {
@@ -23,23 +23,28 @@ struct CBCLoadedCocktailView: View {
                 
                 ColorScheme.background.ignoresSafeArea()
                 
-                VStack {
+                VStack(spacing: 10) {
                     
                     CBCCocktailHeaderView(cocktailName: viewModel.chosenCocktail.cocktailName, totalBatchVolume: viewModel.totalBatchVolume)
                     
-                    HStack{
-                        CocktailCountView(isInputActive: _isInputActive)
-                        Spacer()
-                        EditIngredientsButton(isShowingIngredientsModal: $isShowingPreferencesModal)
-                    }
-                    QuantifiedIngredientsListView()
+                    QuantifiedIngredientsListView(isInputActive: $isInputActive)
                 }
                 .padding()
             }
+            .padding(.top, -20)
+        }
+        .onChange(of: viewModel.quantifiedBatchedIngredients) { _, _ in
+            // Force view update when quantifiedBatchedIngredients change
+            viewModel.objectWillChange.send()
         }
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
         .jamesHeaderWithNavigation(title: "Batch Calculator", dismiss: dismiss)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                EditIngredientsButton(isShowingIngredientsModal: $isShowingPreferencesModal)
+            }
+        }
         .sheet(isPresented: $isShowingPreferencesModal, content: {
             EditBatchModalView()
                 .onDisappear(perform: {
@@ -62,23 +67,10 @@ struct CBCCocktailHeaderView: View {
     let totalBatchVolume: Double
     
     var body: some View {
-        VStack(alignment: .center) {
-            HStack {
-                Text(cocktailName)
-                    .foregroundStyle(.softWhite)
-                    .font(.title2)
-            }
-            HStack {
-                Text("Full Batch:")
-                Text("\(Int(ceil(totalBatchVolume)))ml")
-            }
-            .font(.title3)
-            .foregroundStyle(.secondary)
-        }
-        .bold()
-        .padding(.bottom, 25)
+        FontFactory.mediumText(cocktailName, size: 28, color: .primary, isBold: false)
     }
 }
+
 struct EditIngredientsButton: View {
     @Binding var isShowingIngredientsModal: Bool
     
@@ -87,119 +79,162 @@ struct EditIngredientsButton: View {
             isShowingIngredientsModal.toggle()
             
         } label: {
-            VStack{
                 Image(systemName: "gearshape")
-            }
-            .dynamicTypeSize(.xxLarge).bold()
-            .foregroundStyle(ColorScheme.interactionTint)
-            .padding(.horizontal, 15)
-            
-            
+                    .resizable()
+                    .foregroundStyle(ColorScheme.interactionTint)
         }
     }
 }
 
 struct CocktailCountView: View {
     @EnvironmentObject var viewModel: CBCViewModel
-    @FocusState var isInputActive: Bool
+    @FocusState.Binding var isInputActive: Bool
     
     var body: some View {
-        Text("Cocktail Count:")
-            .dynamicTypeSize(.large)
-            .bold()
-        TextField("#", value:  $viewModel.numberOfCocktailsText, formatter: viewModel.formatter)
-            .padding(5)
-            .autocorrectionDisabled()
-            .background(Color(UIColor.systemGray5))
-            .cornerRadius(10)
-            .keyboardType(.decimalPad)
-            .focused($isInputActive)
-            .onTapGesture {
-                viewModel.numberOfCocktailsText = 0
-            }
-            .dynamicTypeSize(.large)
         
-        
-            .toolbar {
-                if isInputActive {
-                    
-                    ToolbarItemGroup(placement: .keyboard) {
-                        Spacer()
-                        
-                        Button {
-                            viewModel.convertIngredientsToBatchCellData()
-                            isInputActive = false
-                        } label: {
-                            Text("Done")
-                                .bold()
-                                .foregroundStyle(.blue)
-                        }
-                    }
+        HStack {
+
+            FontFactory.mediumText("Number of cocktails", size: 18, color: ColorScheme.tintColor)
+            
+            Spacer()
+            
+            TextField("", value:  $viewModel.numberOfCocktailsText, formatter: viewModel.formatter)
+                .font(FontFactory.mediumFont(size: 18))
+                .multilineTextAlignment(.trailing)
+                .autocorrectionDisabled()
+                .background(.clear)
+                .foregroundStyle(ColorScheme.interactionTint)
+                .keyboardType(.decimalPad)
+                .frame(maxWidth: 80)
+                .focused($isInputActive)
+                .onTapGesture {
+                    viewModel.numberOfCocktailsText = 0
                 }
-            }
-            .frame(width: 125)
+                .onChange(of: viewModel.numberOfCocktailsText) { oldValue, newValue in
+                    viewModel.convertIngredientsToBatchCellData()
+                }
+        }
     }
 }
 
 struct QuantifiedIngredientsListView: View {
     @EnvironmentObject var viewModel: CBCViewModel
+    @FocusState private var isFocused: Bool
+    @FocusState.Binding var isInputActive: Bool
+    
     
     var body: some View {
-        ScrollView {
+        
+        List {
             
-            LazyVStack {
-                
-                ForEach($viewModel.quantifiedBatchedIngredients, id: \.self) { ingredient in
-                    BatchCellView(quantifiedBatchedIngredient: ingredient)
-                }
+            Section(header: Text("How many cocktails do you need?")) {
+                CocktailCountView(isInputActive: $isInputActive)
+            }
+            
+            Section(header: Text("What is the dilution percentage?")) {
                 
                 VStack {
                     
                     HStack {
-                        Text("Batch Dilution")
-                        Spacer()
-                        Text("\(Int(ceil(viewModel.totalDilutionVolume)))ml")
-                    }
-                    
-                    HStack {
+                        Text("Dilution")
+                            .font(FontFactory.formLabel18)
                         Slider(value: $viewModel.dilutionPercentage, in: 0...100, step: 1.0)
                             .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-                            .tint( ColorScheme.interactionTint)
+                            .tint(ColorScheme.interactionTint)
                         Text("\(viewModel.dilutionPercentage, specifier: "%.0f")%")
-                            .frame(width: 50)
+                            .font(FontFactory.formLabel18)
                             .onChange(of: viewModel.dilutionPercentage) { oldValue, newValue in
-                                viewModel.dilutionPercentage = newValue
                                 viewModel.convertIngredientsToBatchCellData()
                             }
                     }
                 }
+            }
+            
+            Section(header: CBCIngredientSectionHeader(), footer: CBCIngredientSectionFooter()) {
+                ForEach($viewModel.quantifiedBatchedIngredients, id: \.id) { $ingredient in
+                    BatchCellView(
+                        quantifiedBatchedIngredient: $ingredient,
+                        isFocused: $isFocused
+                    )
+                }
                 
-                SplitBatchNavigationButton()
-                    .padding(.top, 20)
-                
+                HStack {
+                    Text("Dilution")
+                        .font(FontFactory.formLabel18)
+                    Spacer()
+                    Text("\(Int(ceil(viewModel.totalDilutionVolume))) ml")
+                        .font(FontFactory.formLabel18)
+                        .foregroundStyle(Color.secondary)
+                }
+            }
+            
+            SplitBatchButton()
+                .listStyle(.plain)
+                .listRowBackground(Color.clear)
+        }
+        .listStyle(.insetGrouped)
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button("Done") {
+                    isInputActive = false
+                    isFocused = false
+                    viewModel.finishEditing()
+                    viewModel.convertIngredientsToBatchCellData()
+                }
             }
         }
     }
 }
 
-struct SplitBatchNavigationButton: View {
-    @EnvironmentObject var viewModel: CBCViewModel
+struct CBCIngredientSectionHeader: View {
     
     var body: some View {
-        NavigationLink {
-            SplitBatchView()
-        } label: {
-            HStack{
-                Text("Divide Total Batch")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background( ColorScheme.interactionTint)
-                    .cornerRadius(20)
-                    .shadow(radius: 5)
+        Text("Ingredient measurements")
+    }
+}
+
+struct CBCIngredientSectionFooter: View {
+    
+    @State var isShowingIngredientSwipeInfo = false
+    
+    var body: some View {
+        
+        VStack {
+            
+            HStack {
+                
+                Text("Calculating based on bottle count?".uppercased())
+                
+                Image(systemName: "info.circle")
+                    .foregroundStyle(isShowingIngredientSwipeInfo ? ColorScheme.tintColor : ColorScheme.interactionTint)
+                    .onTapGesture {
+                        isShowingIngredientSwipeInfo.toggle()
+                    }
+                Spacer()
             }
-            .foregroundStyle(.brandPrimaryGold)
+            
+            if isShowingIngredientSwipeInfo {
+                Text("Swipe left on any ingredient to calculate by number of bottles instead")
+                    .font(.footnote)
+                    .foregroundStyle(.brandPrimaryGold)
+            }
+        }
+    }
+}
+
+struct SplitBatchButton: View {
+    var body: some View {
+        
+        NavigationLinkWithoutIndicator {
+            Text("Divide Total Batch")
+                .font(FontFactory.mediumFont(size: 18))
+                .foregroundStyle(ColorScheme.interactionTint)
+                .padding(.vertical, 8)
+                .padding(.horizontal, 16)
+                .background(Capsule().strokeBorder(ColorScheme.interactionTint, lineWidth: 1))
+        } destination: {
+            SplitBatchView()
         }
     }
 }

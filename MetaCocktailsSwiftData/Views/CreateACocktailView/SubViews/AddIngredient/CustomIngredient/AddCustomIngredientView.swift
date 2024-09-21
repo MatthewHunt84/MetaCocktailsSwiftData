@@ -96,7 +96,7 @@ struct CategoryPickerView: View {
                         
                     }
                 }
-                .tint(.white)
+                .tint(.primary)
             }
         }
     }

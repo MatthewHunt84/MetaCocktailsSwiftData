@@ -195,7 +195,7 @@ final class SearchViewModel: ObservableObject {
                 Text("MATCHES ALL EXCEPT FOR")
                     .foregroundColor(.secondary)
                 Text(missingIngredient.uppercased())
-                    .foregroundColor(.white)
+                    .foregroundColor(.primary)
                     .bold()
                 Spacer()
             }

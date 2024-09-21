@@ -28,19 +28,19 @@ struct SearchedCocktailTitleHeader: View {
                 Text("Minus One Ingredient")
                     .font(FontFactory.mediumFont(size: 16))
                     .fontWeight(.semibold)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.primary)
             } else {
                 Text("Minus Two Ingredients")
                     .font(FontFactory.mediumFont(size: 16))
                     .fontWeight(.semibold)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.primary)
             }
             
             Spacer()
             
             ForEach(0..<matched, id: \.self) { match in
                 Image(systemName: "circle.fill")
-                    .foregroundStyle(matched == searched ? ColorScheme.tintColor : .white)
+                    .foregroundStyle(matched == searched ? ColorScheme.tintColor : .primary)
             }
             
             if matched - searched < 0 {

@@ -63,7 +63,7 @@ struct FloatingPromptView: View {
                                 .frame(minWidth: 0, maxWidth: .infinity)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 12)
-                                        .stroke(Color.white, lineWidth: 1)
+                                        .stroke(Color.primary, lineWidth: 1)
                                 )
                         }
                         
@@ -77,7 +77,7 @@ struct FloatingPromptView: View {
                                 .frame(minWidth: 0, maxWidth: .infinity)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 12)
-                                        .stroke(Color.white, lineWidth: 1)
+                                        .stroke(Color.primary, lineWidth: 1)
                                 )
                         }
                         .simultaneousGesture(TapGesture().onEnded {
@@ -94,7 +94,7 @@ struct FloatingPromptView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.white, lineWidth: 2)
+                        .stroke(Color.primary, lineWidth: 2)
                 )
                 .offset(x: 0, y: offset)
                 .onAppear {
