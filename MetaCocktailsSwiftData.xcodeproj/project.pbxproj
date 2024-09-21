@@ -72,6 +72,7 @@
 		4D1442CB2C9767BA006C882F /* WhiskeySourOG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1442CA2C9767BA006C882F /* WhiskeySourOG.swift */; };
 		4D1442CD2C976BB7006C882F /* PinaColada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1442CC2C976BB7006C882F /* PinaColada.swift */; };
 		4D1442CF2C977092006C882F /* WhiskeySourWnG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1442CE2C977092006C882F /* WhiskeySourWnG.swift */; };
+		4D1442D12C9B72AA006C882F /* BottleMathModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1442D02C9B72AA006C882F /* BottleMathModalView.swift */; };
 		4D1E85B12B5C6AEA00214BC6 /* GreatWhiteBuffalo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E85B02B5C6AEA00214BC6 /* GreatWhiteBuffalo.swift */; };
 		4D1E85B32B5C737D00214BC6 /* PeanutButterFalon .swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E85B22B5C737D00214BC6 /* PeanutButterFalon .swift */; };
 		4D1E85B52B5C7B6500214BC6 /* NetfilixAndChill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E85B42B5C7B6500214BC6 /* NetfilixAndChill.swift */; };
@@ -145,7 +146,6 @@
 		4D7439902B9E59EA0020C3B8 /* SpecifiedListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D74398F2B9E59EA0020C3B8 /* SpecifiedListView.swift */; };
 		4D7439922B9E5A2A0020C3B8 /* AllCocktailsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7439912B9E5A2A0020C3B8 /* AllCocktailsListView.swift */; };
 		4D7B01752B72BF0A0026FE34 /* MainBatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7B01742B72BF0A0026FE34 /* MainBatchView.swift */; };
-		4D7B01772B72C2260026FE34 /* BottleBatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7B01762B72C2260026FE34 /* BottleBatchCell.swift */; };
 		4D90259C2B6456C0005F44F6 /* French75(WnG).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D90259B2B6456C0005F44F6 /* French75(WnG).swift */; };
 		4D9025A02B645868005F44F6 /* Gibson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D90259F2B645868005F44F6 /* Gibson.swift */; };
 		4D9025A22B6459C0005F44F6 /* GinFizz(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9025A12B6459C0005F44F6 /* GinFizz(W&G).swift */; };
@@ -617,6 +617,7 @@
 		4D1442CA2C9767BA006C882F /* WhiskeySourOG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiskeySourOG.swift; sourceTree = "<group>"; };
 		4D1442CC2C976BB7006C882F /* PinaColada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinaColada.swift; sourceTree = "<group>"; };
 		4D1442CE2C977092006C882F /* WhiskeySourWnG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiskeySourWnG.swift; sourceTree = "<group>"; };
+		4D1442D02C9B72AA006C882F /* BottleMathModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleMathModalView.swift; sourceTree = "<group>"; };
 		4D1E85B02B5C6AEA00214BC6 /* GreatWhiteBuffalo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreatWhiteBuffalo.swift; sourceTree = "<group>"; };
 		4D1E85B22B5C737D00214BC6 /* PeanutButterFalon .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PeanutButterFalon .swift"; sourceTree = "<group>"; };
 		4D1E85B42B5C7B6500214BC6 /* NetfilixAndChill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetfilixAndChill.swift; sourceTree = "<group>"; };
@@ -690,7 +691,6 @@
 		4D74398F2B9E59EA0020C3B8 /* SpecifiedListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecifiedListView.swift; sourceTree = "<group>"; };
 		4D7439912B9E5A2A0020C3B8 /* AllCocktailsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCocktailsListView.swift; sourceTree = "<group>"; };
 		4D7B01742B72BF0A0026FE34 /* MainBatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBatchView.swift; sourceTree = "<group>"; };
-		4D7B01762B72C2260026FE34 /* BottleBatchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleBatchCell.swift; sourceTree = "<group>"; };
 		4D90259B2B6456C0005F44F6 /* French75(WnG).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "French75(WnG).swift"; sourceTree = "<group>"; };
 		4D90259F2B645868005F44F6 /* Gibson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gibson.swift; sourceTree = "<group>"; };
 		4D9025A12B6459C0005F44F6 /* GinFizz(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GinFizz(W&G).swift"; sourceTree = "<group>"; };
@@ -1554,6 +1554,7 @@
 			isa = PBXGroup;
 			children = (
 				4D54F7352B79F1E500D046D9 /* ContainerMenuView.swift */,
+				4D1442D02C9B72AA006C882F /* BottleMathModalView.swift */,
 			);
 			path = "Sub Views";
 			sourceTree = "<group>";
@@ -1672,7 +1673,6 @@
 				4D54F7372B79FD5B00D046D9 /* Sub Views */,
 				4DED94472BE73889002305C2 /* FloatingPromptView.swift */,
 				4DED944D2C098DBF002305C2 /* BatchCellView.swift */,
-				4D7B01762B72C2260026FE34 /* BottleBatchCell.swift */,
 				4DED944F2C0E38BC002305C2 /* EditBatchModalView.swift */,
 			);
 			path = CocktailBatchingCalculator;
@@ -2412,6 +2412,7 @@
 				4DF408DE2B6108AB00EF9A6E /* ElPresidente(W&G).swift in Sources */,
 				1AFDB7AC2ADF22AD000A3812 /* French75Cognac.swift in Sources */,
 				4DBBA4B22B68D22E00179B8F /* OldFashioned(W&G).swift in Sources */,
+				4D1442D12C9B72AA006C882F /* BottleMathModalView.swift in Sources */,
 				4DBBA47C2B6877CC00179B8F /* LaLouisiane(W&G).swift in Sources */,
 				4DCB172C2BA4EA6D0002D7D9 /* TritterCollins.swift in Sources */,
 				4DF408CA2B60D80C00EF9A6E /* ChocolateCocktail.swift in Sources */,
@@ -2542,7 +2543,6 @@
 				4DBBA49C2B68B20200179B8F /* MorningGloryFizz(W&G).swift in Sources */,
 				4DBBA46C2B6796C200179B8F /* JungleBird(WnG).swift in Sources */,
 				1AC386C62AAABED10064F52A /* PrepRecipeView.swift in Sources */,
-				4D7B01772B72C2260026FE34 /* BottleBatchCell.swift in Sources */,
 				4DA5679C2B6CD371003F6F04 /* WhatsYourFavorite.swift in Sources */,
 				4DA5677C2B6C928F003F6F04 /* EasyStreet.swift in Sources */,
 				4DA5681C2B6E2819003F6F04 /* Yeen.swift in Sources */,

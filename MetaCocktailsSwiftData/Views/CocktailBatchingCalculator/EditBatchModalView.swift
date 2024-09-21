@@ -13,12 +13,14 @@ struct EditBatchModalView: View {
     
     
     var body: some View {
-        VStack{
+        
+        VStack {
             
-            HStack{
-                Text("Batch Preferences")
-                    .dynamicTypeSize(.xxxLarge)
-                    .bold()
+            HStack {
+                
+                Spacer()
+                
+                FontFactory.titleHeader22(title: "Batching Preferences")
                 
                 Spacer()
                 
@@ -26,34 +28,26 @@ struct EditBatchModalView: View {
                     dismiss()
                 } label: {
                     
-                    Image(systemName: "x.circle")
-                        .dynamicTypeSize(.xxxLarge)
+                    Image(systemName: "chevron.down")
+                        .font(.system(size: 20))
+                        .bold()
+                        .tint(ColorScheme.interactionTint)
                 }
             }
             .padding(.bottom, 20)
             
-            VStack{
-                
-                HStack{
-                    Text("Included Ingredients:")
-                        .bold()
-                    
-                    Spacer()
-                }
-                List {
+            List {
+                Section(header: FontFactory.mediumText("Included Ingredients", size: 20)) {
                     ForEach($viewModel.loadedCocktailData.ingredients, id: \.ingredient.ingredientBase.name) { ingredient in
-                        
                         LoadedCocktailIngredientCell(ingredient: ingredient)
-                        
                     }
-                    .listRowBackground(Color.black)
                 }
-                .listStyle(.plain)
-                
             }
+            .listStyle(.plain)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
         }
         .padding()
-        .background(Color.black)
+        .background(BlackGlassBackgroundView())
     }
 }
 

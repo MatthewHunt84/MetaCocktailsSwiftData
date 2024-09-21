@@ -44,7 +44,7 @@ struct IngredientSearchView: View {
                                 keyboardFocused = false
                             }) {
                                 Image(systemName: "keyboard.chevron.compact.down")
-                                    .font(.system(size: 26))
+                                    .font(.system(size: 22))
                                 
                             }
                             .buttonStyle(.plain)

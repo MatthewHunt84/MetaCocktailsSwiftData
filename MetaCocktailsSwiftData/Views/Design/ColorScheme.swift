@@ -14,8 +14,8 @@ struct ColorScheme {
     static let darkerTintColor = Color(hex: "#FF8426")
     static let interactionTint = Color(hex: "#00B2FF")
     
-    static let selectedColor = Color.white
-    static let unwantedColor = Color.white
+    static let selectedColor = Color.primary
+    static let unwantedColor = Color.primary
     
     static let headerColor = tintColor
     

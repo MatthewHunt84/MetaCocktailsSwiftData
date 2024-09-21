@@ -91,7 +91,7 @@ struct AddGarnishSearchView: View {
                         } label: {
                             Text(garnish)
                         }
-                        .tint(.white)
+                        .tint(.primary)
                     }
                     .listStyle(.plain)
                     .listRowBackground(Color.clear)

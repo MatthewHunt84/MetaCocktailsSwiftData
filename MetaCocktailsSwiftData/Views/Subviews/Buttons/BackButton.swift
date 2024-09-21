@@ -17,15 +17,11 @@ struct BackButton: View {
             } label: {
                 HStack {
                     Image(systemName: "chevron.backward")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 9)
+                        .font(.system(size: 16))
                         .bold()
                         .tint(ColorScheme.interactionTint)
-                        .padding(.trailing, 10)
                 }
-                
-                .frame(width: 40, height: 40)
+                .frame(width: 50, height: 40)
             }
         }
     }

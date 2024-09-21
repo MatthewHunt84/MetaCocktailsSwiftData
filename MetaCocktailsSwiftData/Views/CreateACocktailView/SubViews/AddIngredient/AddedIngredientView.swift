@@ -63,7 +63,7 @@ struct AddedIngredientView: View {
             } label: {
                 HStack{
                     Text(viewModel.addedIngredients.count < 1 ? "Add Ingredient" : "Add another ingredient")
-                        .tint(viewModel.addedIngredients.count < 1 ? .white : .secondary)
+                        .tint(viewModel.addedIngredients.count < 1 ? .primary : .secondary)
                         .font(FontFactory.formLabel18)
                     Spacer()
                     Image(systemName: "plus.circle.fill")
@@ -92,10 +92,10 @@ struct SwipeToEditHintView: View {
                     Spacer()
                     HStack {
                         Image(systemName: "arrowshape.left.fill")
-                            .foregroundColor(.white)
+                            .foregroundColor(.primary)
                         Text("Swipe to delete")
                             .font(FontFactory.fontBody16)
-                            .foregroundColor(.white)
+                            .foregroundColor(.primary)
                     }
                     .padding(5)
                     .background(.red)

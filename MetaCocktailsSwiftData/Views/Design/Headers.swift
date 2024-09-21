@@ -41,11 +41,10 @@ struct JamesTitleWithNavigation: ViewModifier {
                         dismiss()
                     }) {
                         Image(systemName: "chevron.backward")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 9)
+                            .font(.system(size: 16))
                             .bold()
                             .tint(ColorScheme.interactionTint)
+                            .frame(width: 50, height: 40)
                     }
                 }
                 
