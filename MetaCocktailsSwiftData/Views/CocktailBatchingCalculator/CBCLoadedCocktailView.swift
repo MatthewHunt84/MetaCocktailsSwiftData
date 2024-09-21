@@ -159,7 +159,7 @@ struct QuantifiedIngredientsListView: View {
                 }
                 
                 HStack {
-                    Text("Water")
+                    Text("Dilution")
                         .font(FontFactory.formLabel18)
                     Spacer()
                     Text("\(Int(ceil(viewModel.totalDilutionVolume))) ml")
