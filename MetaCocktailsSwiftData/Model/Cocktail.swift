@@ -10,7 +10,7 @@ import SwiftUI
 
 @available(iOS 18, *)
 @Model
-class Cocktail: Equatable, Hashable, Identifiable {
+class Cocktail: Equatable, Hashable, Identifiable, Codable {
     static func == (lhs: Cocktail, rhs: Cocktail) -> Bool {
         return lhs.id == rhs.id
     }
@@ -129,6 +129,56 @@ class Cocktail: Equatable, Hashable, Identifiable {
             return newCompiledTags
         }()
         self.favorite = favorite
+    }
+    
+    // Codable (should probably be extension, but just so it works I'm putting it here. Also we need to remove imageAsset we dont use it)
+    
+    enum CodingKeys: String, CodingKey {
+        case id, cocktailName, imageAsset, glasswareType, garnish, ice, author, spec, buildOrder, notes, compiledTags, variation, variationName, collection, isCustomCocktail, collectionName, titleCocktail, favorite
+    }
+
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(UUID.self, forKey: .id)
+        cocktailName = try container.decode(String.self, forKey: .cocktailName)
+//        imageAsset = try container.decodeIfPresent(CocktailImage.self, forKey: .imageAsset)
+        glasswareType = try container.decode(Glassware.self, forKey: .glasswareType)
+        garnish = try container.decode([Garnish].self, forKey: .garnish)
+        ice = try container.decodeIfPresent(Ice.self, forKey: .ice)
+        author = try container.decodeIfPresent(Author.self, forKey: .author)
+        spec = try container.decode([Ingredient].self, forKey: .spec)
+        buildOrder = try container.decodeIfPresent(Build.self, forKey: .buildOrder)
+        notes = try container.decodeIfPresent(String.self, forKey: .notes)
+        compiledTags = try container.decode(Tags.self, forKey: .compiledTags)
+        variation = try container.decodeIfPresent(Variation.self, forKey: .variation)
+        variationName = try container.decodeIfPresent(String.self, forKey: .variationName)
+        collection = try container.decodeIfPresent(CocktailCollection.self, forKey: .collection)
+        isCustomCocktail = try container.decode(Bool.self, forKey: .isCustomCocktail)
+        collectionName = try container.decode(String.self, forKey: .collectionName)
+        titleCocktail = try container.decodeIfPresent(Bool.self, forKey: .titleCocktail)
+        favorite = try container.decode(Bool.self, forKey: .favorite)
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(cocktailName, forKey: .cocktailName)
+//        try container.encodeIfPresent(imageAsset, forKey: .imageAsset)
+        try container.encode(glasswareType, forKey: .glasswareType)
+        try container.encode(garnish, forKey: .garnish)
+        try container.encodeIfPresent(ice, forKey: .ice)
+        try container.encodeIfPresent(author, forKey: .author)
+        try container.encode(spec, forKey: .spec)
+        try container.encodeIfPresent(buildOrder, forKey: .buildOrder)
+        try container.encodeIfPresent(notes, forKey: .notes)
+        try container.encode(compiledTags, forKey: .compiledTags)
+        try container.encodeIfPresent(variation, forKey: .variation)
+        try container.encodeIfPresent(variationName, forKey: .variationName)
+        try container.encodeIfPresent(collection, forKey: .collection)
+        try container.encode(isCustomCocktail, forKey: .isCustomCocktail)
+        try container.encode(collectionName, forKey: .collectionName)
+        try container.encodeIfPresent(titleCocktail, forKey: .titleCocktail)
+        try container.encode(favorite, forKey: .favorite)
     }
 }
 
