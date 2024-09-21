@@ -16,9 +16,10 @@ struct MetaCocktailsSwiftDataApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .modelContainer(CocktailContainer.useSwiftDataFile()) // turn me off to repopulate model
+//                .modelContainer(CocktailContainer.preload(&shouldPreload)) // turn me on to repopulate model
+            
                 .preferredColorScheme(.dark)
-                .modelContainer(CocktailContainer.preload(&shouldPreload))
-                //.modelContainer(CocktailContainer.useSwiftDataFile())
                 .environmentObject(CBCViewModel())
                 .environmentObject(CocktailListViewModel())
                 .environmentObject(appState)
@@ -30,11 +31,6 @@ struct MetaCocktailsSwiftDataApp: App {
 class AppState: ObservableObject {
     @Published var isDataReady = false
     @Published var showMainContent = false
-    private var loadingStartTime: Date?
-    
-    init() {
-        loadingStartTime = Date()
-    }
     
     func setDataReady() {
         isDataReady = true
@@ -49,6 +45,7 @@ class AppState: ObservableObject {
 
 struct ContentView: View {
     @EnvironmentObject var appState: AppState
+    @Environment(\.modelContext) var modelContext
     @State private var swiftDataIsLoaded = false
     
     var body: some View {
@@ -57,7 +54,6 @@ struct ContentView: View {
                 TabBarView()
             } else {
                 FirstLaunchLoadingView()
-                
             }
         }
         .onChange(of: appState.showMainContent) { _, newValue in
@@ -66,6 +62,7 @@ struct ContentView: View {
                     await MainActor.run {
                         withAnimation(.easeIn(duration: 1)) {
                             swiftDataIsLoaded = true
+//                            print("Default.store file location: \(modelContext.sqliteCommand)")
                         }
                     }
                 }
@@ -73,6 +70,7 @@ struct ContentView: View {
         }
     }
 }
+
 extension ModelContext {
     var sqliteCommand: String {
         if let url = container.configurations.first?.url.path(percentEncoded: false) {
