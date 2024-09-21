@@ -323,17 +323,17 @@ class IngredientBase: Codable, Hashable {
     }
     
     enum CodingKeys: CodingKey {
-        case id, name, category, tags, prep, info, isCustom, baseCategory, specialtyCategory
+        case id, name, tags, prep, info, isCustom, umbrellaCategory, baseCategory, specialtyCategory
     }
     
     required init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(UUID.self, forKey: .id)
         self.name = try container.decode(String.self, forKey: .name)
-        self.umbrellaCategory = try container.decode(String.self, forKey: .category)
-        self.tags = try container.decode(Tags.self, forKey: .tags)
-        self.prep = try container.decode(Prep.self, forKey: .prep)
-        self.info = try container.decode(String.self, forKey: .info)
+        self.umbrellaCategory = try container.decode(String.self, forKey: .umbrellaCategory)
+        self.tags = try container.decodeIfPresent(Tags.self, forKey: .tags)
+        self.prep = try container.decodeIfPresent(Prep.self, forKey: .prep)
+        self.info = try container.decodeIfPresent(String.self, forKey: .info)
         self.isCustom = try container.decode(Bool.self, forKey: .isCustom)
         self.baseCategory = try container.decode(String.self, forKey: .baseCategory)
         self.specialtyCategory = try container.decode(String.self, forKey: .specialtyCategory)
@@ -343,10 +343,10 @@ class IngredientBase: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
-        try container.encode(umbrellaCategory, forKey: .category)
-        try container.encode(tags, forKey: .tags)
-        try container.encode(prep, forKey: .prep)
-        try container.encode(info, forKey: .info)
+        try container.encode(umbrellaCategory, forKey: .umbrellaCategory)
+        try container.encodeIfPresent(tags, forKey: .tags)
+        try container.encodeIfPresent(prep, forKey: .prep)
+        try container.encodeIfPresent(info, forKey: .info)
         try container.encode(isCustom, forKey: .isCustom)
         try container.encode(baseCategory, forKey: .baseCategory)
         try container.encode(specialtyCategory, forKey: .specialtyCategory)
