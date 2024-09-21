@@ -68,7 +68,7 @@ final class CBCViewModel: ObservableObject {
             ("16 Liter", 16000),
             ("17 Liter", 17000),
             ("18 Liter", 18000),
-            ("5 Gallon Bucket", 18927)
+            ("5 Gallon (19 Liter)", 18927)
         ]
         
         var groups: [[(label: String, volume: Int)]] = []
@@ -90,16 +90,21 @@ final class CBCViewModel: ObservableObject {
             groups.append(currentGroup)
         }
         groupedContainerSizes = groups.map { group in
+            var label = "Error"
+            
             if group.count == 1 {
                 return group[0]
             } else {
                 if let first = group.first {
                     if let last = group.last {
                         var firstLabel = first.label
-                        if last.label != "5 Gallon Bucket"{
+                        if last.label != "5 Gallon (19 Liter)" {
                             firstLabel = first.label.replacingOccurrences(of: "Liter", with: "")
+                            label = "\(firstLabel) - \(last.label)"
+                        } else {
+                            label = "\(firstLabel) +"
                         }
-                        let label = "\(firstLabel) - \(last.label)"
+                    
                         return (label: label, volume: first.volume)
                     }
                 }
