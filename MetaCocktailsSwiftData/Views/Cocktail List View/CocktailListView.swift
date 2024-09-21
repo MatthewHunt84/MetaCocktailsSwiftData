@@ -37,15 +37,10 @@ struct CocktailListView: View {
                                     .listStyle(.plain)
                                     .frame(width: listGeo.size.width * 0.90)
                                     .onChange(of: selectedNavigationLetter) { oldValue, newValue in
-                                        if let letter = newValue {
-                                            withAnimation {
-                                                proxy.scrollTo(letter, anchor: .top)
-                                            }
+                                        proxy.scrollTo(newValue, anchor: .top)
                                             selectedNavigationLetter = nil
-                                        }
                                     }
                                 }
-                                
                                 AlphabetNavigationView(selectedLetter: $selectedNavigationLetter, alphabet: viewModel.cocktailListAlphabet)
                                     .frame(width: listGeo.size.width * 0.1)
                                     .opacity(searchBarIsFocused ? 0 : 1)
