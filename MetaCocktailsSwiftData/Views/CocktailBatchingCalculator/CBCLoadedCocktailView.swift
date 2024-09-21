@@ -25,7 +25,7 @@ struct CBCLoadedCocktailView: View {
                 
                 VStack(spacing: 10) {
                     
-                    CBCCocktailHeaderView(cocktailName: viewModel.chosenCocktail.cocktailName, totalBatchVolume: viewModel.totalBatchVolume)
+                    CBCCocktailHeaderView(cocktailName: viewModel.chosenCocktail.cocktailName)
                     
                     QuantifiedIngredientsListView(isInputActive: $isInputActive)
                 }
@@ -64,7 +64,6 @@ struct CBCLoadedCocktailView: View {
 
 struct CBCCocktailHeaderView: View {
     let cocktailName: String
-    let totalBatchVolume: Double
     
     var body: some View {
         FontFactory.mediumText(cocktailName, size: 28, color: .primary, isBold: false)

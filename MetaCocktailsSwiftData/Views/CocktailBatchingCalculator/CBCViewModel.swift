@@ -16,6 +16,7 @@ final class CBCViewModel: ObservableObject {
     @Published var dilutionPercentage = 25.0
     @Published var numberOfCocktailsText: Double = 100.0
     @Published var isShowingBottleMathMode: Bool = false
+
     @Published var editingIngredient: String?
     @Published var numberOfBottlesText: String?
     @Published var sizeOfTheBottle: String?
@@ -30,7 +31,6 @@ final class CBCViewModel: ObservableObject {
         .drops: 0.0017,
         .bottles: 25.36
     ]
-    
     ///Main batch view variables
     @Published var totalDilutionVolume = 0.0
     @Published var totalBatchVolume = 0.0
@@ -42,6 +42,7 @@ final class CBCViewModel: ObservableObject {
     @Published var numberOfContainers = 2
     @Published var splitBatchData: [SplitBatchCellData] = []
     @Published var containerSizeLabel = "4 Liter"
+    @Published var groupedContainerSizes: [(label: String, volume: Int)] = []
     
     var  formatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -49,6 +50,85 @@ final class CBCViewModel: ObservableObject {
         formatter.maximumFractionDigits = 2
         return formatter
     }()
+    
+    func groupContainerSizes() {
+        let containerSizes: [(label: String, volume: Int)] = [
+            ("4 Liter", 4000),
+            ("5 Liter", 5000),
+            ("6 Liter", 6000),
+            ("7 Liter", 7000),
+            ("8 Liter", 8000),
+            ("9 Liter", 9000),
+            ("10 Liter", 10000),
+            ("11 Liter", 11000),
+            ("12 Liter", 12000),
+            ("13 Liter", 13000),
+            ("14 Liter", 14000),
+            ("15 Liter", 15000),
+            ("16 Liter", 16000),
+            ("17 Liter", 17000),
+            ("18 Liter", 18000),
+            ("5 Gallon (19 Liter)", 18927)
+        ]
+        
+        var groups: [[(label: String, volume: Int)]] = []
+        var currentGroup: [(label: String, volume: Int)] = []
+        var containerCountForThePreviousSize = 0
+        
+        for size in containerSizes {
+            let currentContainerCount = getContainerCount(for: size.volume)
+            
+            if currentContainerCount != containerCountForThePreviousSize && !currentGroup.isEmpty {
+                groups.append(currentGroup)
+                currentGroup = []
+            }
+            
+            currentGroup.append(size)
+            containerCountForThePreviousSize = currentContainerCount
+        }
+        if !currentGroup.isEmpty {
+            groups.append(currentGroup)
+        }
+        groupedContainerSizes = groups.map { group in
+            var label = "Error"
+            
+            if group.count == 1 {
+                return group[0]
+            } else {
+                if let first = group.first {
+                    if let last = group.last {
+                        var firstLabel = first.label
+                        if last.label != "5 Gallon (19 Liter)" {
+                            firstLabel = first.label.replacingOccurrences(of: "Liter", with: "")
+                            label = "\(firstLabel) - \(last.label)"
+                        } else {
+                            label = "\(firstLabel) +"
+                        }
+                    
+                        return (label: label, volume: first.volume)
+                    }
+                }
+            }
+                //Theoretically, this will never get returned.
+                return (label: "Error", volume: 0)
+            
+        }
+    }
+    
+    private func getContainerCount(for size: Int) -> Int {
+        let safeVolume = Double(size) * 0.9 // 90% of container size
+        return Int(ceil(totalBatchVolume / safeVolume))
+    }
+    
+    func updateContainerSize(newSize: Int) {
+        containerSize = newSize
+        if let label = groupedContainerSizes.first(where: { $0.volume == newSize })?.label {
+            containerSizeLabel = label
+        }
+        convertIngredientsToBatchCellData()
+        doSplitBatchMath()
+    }
+    
     
     func convertIngredientsToBatchCellData() {
         var quantifiableIngredients = [BottleBatchedCellData]()

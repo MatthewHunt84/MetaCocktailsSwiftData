@@ -12,51 +12,47 @@ struct SplitBatchView: View {
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        
-        ZStack{
-            
+        ZStack {
             ColorScheme.background.ignoresSafeArea()
             
             VStack {
                 
-                VStack(alignment: .center) {
-                    Text("\(viewModel.chosenCocktail.cocktailName)")
-                        .font(.title2)
-                        .foregroundStyle(.softWhite)
-                        .bold()
-                    Text("Split into \(viewModel.numberOfContainers) containers")
-                        .font(.title3)
-                        .foregroundStyle(.secondary)
-                        .bold()
-                }
-                .padding(.bottom, 25)
-                
-                HStack {
-                    Text("Container Size: ")
-                    ContainerMenuView()
-                    Spacer()
-                }
-                
-                HStack {
-                    Text("Batch Recipe Per Container:")
-                    Spacer()
-                }
+                CBCCocktailHeaderView(cocktailName: viewModel.chosenCocktail.cocktailName)
+
+                    
+                    if viewModel.numberOfContainers == 1 {
+                        Text("Only 1 container required")
+                            .font(FontFactory.mediumFont(size: 18))
+                            .foregroundStyle(.secondary)
+                            .padding(.top, -14)
+                    } else {
+                        Text("Split into ^[\(NSNumber(value: viewModel.numberOfContainers)) container](inflect: true)")
+                            .font(FontFactory.mediumFont(size: 18))
+                            .foregroundStyle(.secondary)
+                            .padding(.top, -14)
+                    }
                 
                 List {
-                    ForEach($viewModel.splitBatchData, id: \.self) { ingredient in
-                        SplitBatchCell(quantifiedSpiltBatches: ingredient)
+                    
+                    Section(header: CBCSplitBatchContainerHeader()) {
+                        
+                        GroupBox {
+                            ContainerMenuView()
+                                
+                        }
+                        .frame(height: 37)
+                    }
+                    
+                    Section(header: Text("Recipe per container"), footer: CBCSplitBatchSectionFooter()) {
+                        ForEach($viewModel.splitBatchData, id: \.self) { ingredient in
+                            SplitBatchCell(quantifiedSpiltBatches: ingredient)
+                        }
                     }
                 }
-                .scrollContentBackground(.hidden)
-                .listRowBackground(Color.clear)
-                
-                Text("* At least 10% of the container's volume will be left empty for safe transportation.")
-                    .multilineTextAlignment(.center)
-                    .dynamicTypeSize(.medium)
-                    .padding(10)
-                    .foregroundStyle(ColorScheme.interactionTint)
-                
+                .listStyle(.insetGrouped)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
             }
+            .frame(maxHeight: .infinity, alignment: .top)
             .padding()
             .navigationBarBackButtonHidden()
             .navigationBarTitleDisplayMode(.inline)
@@ -65,12 +61,55 @@ struct SplitBatchView: View {
                 viewModel.doSplitBatchMath()
             }
         }
+        .padding(.top, -20)
     }
+}
+
+struct CBCSplitBatchContainerHeader: View {
+    var body: some View {
+            Text("Choose Container Size")
+    }
+}
+
+struct CBCSplitBatchSectionFooter: View {
     
+    @State var isShowingContainerInfo = false
+    @EnvironmentObject var viewModel: CBCViewModel
+    
+    var body: some View {
+        
+        VStack {
+            
+            HStack {
+                
+                if viewModel.numberOfContainers == 1 {
+                    Text("Only 1 container required".uppercased())
+                } else {
+                    Text("Batch split into \(viewModel.numberOfContainers) containers".uppercased())
+                }
+                
+                Image(systemName: "info.circle")
+                    .foregroundStyle(isShowingContainerInfo ? ColorScheme.tintColor : ColorScheme.interactionTint)
+                    .onTapGesture {
+                        isShowingContainerInfo.toggle()
+                    }
+                Spacer()
+            }
+            
+            if isShowingContainerInfo {
+                Text("At least 10% of the container's volume will be left empty for safe transportation")
+                    .font(.footnote)
+                    .foregroundStyle(.brandPrimaryGold)
+            }
+        }
+    }
 }
 
 #Preview {
-    SplitBatchView()
-        .environmentObject(CBCViewModel())
+    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
+    NavigationStack {
+        return SplitBatchView()
+            .modelContainer(preview.container)
+            .environmentObject(CBCViewModel())
+    }
 }
-
