@@ -1160,6 +1160,7 @@
 			isa = PBXGroup;
 			children = (
 				F4C6A8F42AB0042400BB0AD0 /* Cocktail.swift */,
+				F4441CEE2C9F82A70025E988 /* Database */,
 				F4872FEC2C43535E0092F8FF /* DummyCocktails */,
 				1AC3868D2AAABED00064F52A /* Components */,
 				F4C6A8E12AAFF66B00BB0AD0 /* SearchTags */,
@@ -1896,6 +1897,14 @@
 			path = CreateACocktailView;
 			sourceTree = "<group>";
 		};
+		F4441CEE2C9F82A70025E988 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				F4441CE82C9F7AB80025E988 /* default.store */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		F46A73162AD71A770065AE0E /* CocktailImages */ = {
 			isa = PBXGroup;
 			children = (
@@ -2064,7 +2073,6 @@
 		F4FBF1212AAABBB900BBF7CF /* MetaCocktailsSwiftData */ = {
 			isa = PBXGroup;
 			children = (
-				F4441CE82C9F7AB80025E988 /* default.store */,
 				F473FFD22C2716C4008689D3 /* Info.plist */,
 				1AC3867C2AAABED00064F52A /* Assets.xcassets */,
 				1AC386852AAABED00064F52A /* EntryPoint */,
