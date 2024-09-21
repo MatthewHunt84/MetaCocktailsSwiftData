@@ -23,12 +23,11 @@ struct ContainerMenuView: View {
                             .foregroundColor(viewModel.containerSize == volume ? ColorScheme.interactionTint : .gray)
                             .padding(.vertical, 8)
                             .padding(.horizontal, 16)
-                            .background(Capsule().strokeBorder(.white, lineWidth: viewModel.containerSize == volume ? 1 : 0))
+                            .background(Capsule().strokeBorder(ColorScheme.interactionTint, lineWidth: viewModel.containerSize == volume ? 1 : 0))
                     }
                 }
             }
         }
-        .frame(height: 50)
         .onAppear {
             viewModel.groupContainerSizes()
         }
