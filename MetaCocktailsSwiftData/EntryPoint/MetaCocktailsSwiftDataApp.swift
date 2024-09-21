@@ -23,7 +23,7 @@ struct MetaCocktailsSwiftDataApp: App {
             ContentView()
                 .preferredColorScheme(.dark)
                 .modelContainer(for: Cocktail.self)
-                .modelContainer(CocktailContainer.preload(&shouldPreload))
+//                .modelContainer(CocktailContainer.preload(&shouldPreload))
                 .environmentObject(CBCViewModel())
                 .environmentObject(CocktailListViewModel())
                 .environmentObject(appState)
@@ -56,7 +56,11 @@ struct MetaCocktailsSwiftDataApp: App {
     }
     
     func importJSONToSwiftData(_ shouldPreload: inout Bool) {
-        guard shouldPreload else { return }
+        guard shouldPreload else {
+            print("✅ Models loaded from database")
+            return
+        }
+        
         let modelImportStartTime = CACurrentMediaTime()
         
         let fileManager = FileManager.default
