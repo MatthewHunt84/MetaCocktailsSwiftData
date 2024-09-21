@@ -151,6 +151,7 @@ class AppState: ObservableObject {
 
 struct ContentView: View {
     @EnvironmentObject var appState: AppState
+    @Environment(\.modelContext) var modelContext
     @State private var swiftDataIsLoaded = false
     
     var body: some View {
@@ -159,7 +160,6 @@ struct ContentView: View {
                 TabBarView()
             } else {
                 FirstLaunchLoadingView()
-                
             }
         }
         .onChange(of: appState.showMainContent) { _, newValue in
@@ -168,6 +168,7 @@ struct ContentView: View {
                     await MainActor.run {
                         withAnimation(.easeIn(duration: 1)) {
                             swiftDataIsLoaded = true
+                            print("Default.store file location: \(modelContext.sqliteCommand)")
                         }
                     }
                 }
