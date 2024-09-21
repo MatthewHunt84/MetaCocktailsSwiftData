@@ -82,7 +82,11 @@ final class CBCViewModel: ObservableObject {
             } else {
                 if let first = group.first {
                     if let last = group.last {
-                        let label = "\(first.label) - \(last.label)"
+                        var firstLabel = first.label
+                        if last.label != "5 Gallon Bucket"{
+                            firstLabel = first.label.replacingOccurrences(of: "Liter", with: "")
+                        }
+                        let label = "\(firstLabel) - \(last.label)"
                         return (label: label, volume: first.volume)
                     }
                 }
