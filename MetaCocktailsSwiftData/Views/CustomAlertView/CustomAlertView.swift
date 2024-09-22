@@ -19,34 +19,22 @@ struct CustomAlertView: View {
             VStack {
                 Text(title)
                     .font(FontFactory.regularFont(size: 22))
-                    .bold()
                     .foregroundStyle(.brandPrimaryGold)
                     .multilineTextAlignment(.center)
+                    .padding(.bottom, 5)
                 
                 Text(message)
                     .font(FontFactory.fontBody16)
                     .foregroundStyle(.primary)
                     .multilineTextAlignment(.center)
+                    .padding(.bottom, 5)
+                    
                 
-                Button {
+                UniversalBlueButton(buttonText: buttonTitle) {
                     action()
                     close()
-                } label: {
-                    ZStack {
-                        Text(buttonTitle)
-                            .font(FontFactory.fontBody16)
-                            .foregroundStyle(.blueTint)
-                            .padding()
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 12)
-                                    .stroke(Color.primary, lineWidth: 1)
-                            )
-                    }
-                    .padding()
                 }
             }
-            .fixedSize(horizontal: false, vertical: true)
             .padding()
             .background(BlackGlassBackgroundView())
             .clipShape(RoundedRectangle(cornerRadius: 12))
@@ -60,6 +48,7 @@ struct CustomAlertView: View {
                     offset = 0
                 }
             }
+            .padding(.horizontal, 40)
     }
     func close() {
         withAnimation(.easeInOut) {
@@ -72,7 +61,7 @@ struct CustomAlertView: View {
 
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    return CustomAlertView(isActive: .constant(true), title: "Title", message: "Message", buttonTitle: "Custom Button") {
+    return CustomAlertView(isActive: .constant(true), title: "This is a title", message: "Message that explains what needs to change.", buttonTitle: yesChef) {
         
     }
     .modelContainer(preview.container)
@@ -80,6 +69,6 @@ struct CustomAlertView: View {
 }
 
 
-var yesChef = "Yes Chef"
+var yesChef = "Yes, Chef"
 
 
