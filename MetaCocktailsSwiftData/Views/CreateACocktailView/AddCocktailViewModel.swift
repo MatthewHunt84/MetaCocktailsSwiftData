@@ -266,6 +266,11 @@ import Combine
         currentMethod = instruction.method
         currentBuildInstructionUUID = instruction.id
     }
+    func reEnumerateBuildSteps() {
+        for (index, instruction) in build.instructions.enumerated() {
+            build.instructions[index].step = index
+        }
+    }
     
     func updateBuildInstruction(id: UUID, newMethod: String) {
         if let index = build.instructions.firstIndex(where: { $0.id == id }) {
