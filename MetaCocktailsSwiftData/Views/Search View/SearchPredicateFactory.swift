@@ -305,9 +305,7 @@ extension SearchViewModel {
                 }
                 
             }
-            
-            
-            
+
             if matchedSelections >= numberOfSelections {
                 perfectMatches.append(cocktail.cocktailName)
                 partialResult += 1
@@ -321,6 +319,14 @@ extension SearchViewModel {
         perfectMatchCocktails = perfectMatches
         minusOneMatchCocktails = minusOne
         minusTwoMatchCocktails = minusTwo
+        
+        await MainActor.run {
+            if perfectMatchCocktails.isEmpty && minusOneMatchCocktails.isEmpty && minusTwoMatchCocktails.isEmpty {
+                showingNoResultsView = true
+            } else {
+                showingNoResultsView = false
+            }
+        }
         
         await toggleLoading()
     }

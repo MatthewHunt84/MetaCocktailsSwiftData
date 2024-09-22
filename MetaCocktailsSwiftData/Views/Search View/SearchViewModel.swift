@@ -125,7 +125,35 @@ final class SearchViewModel: ObservableObject {
     var allCocktails: [Cocktail] = []
     var isShowingResults: Bool = false
     
-
+    // No Results View Logic
+    
+    var noMatches = (noPerfect: false, noMinusOne: false, noMinusTwo: false)
+    var showingNoResultsView = false
+    
+    enum NoMatchMessage {
+        case noPerfectMatchCocktails, noMinusOneCocktails, noMinusTwoCocktails
+    }
+    
+    func notify(_ message: NoMatchMessage) {
+        guard searchType == .simple else { return }
+        switch message {
+        case .noPerfectMatchCocktails:
+            noMatches.noPerfect = true
+        case .noMinusOneCocktails:
+            noMatches.noMinusOne = true
+        case .noMinusTwoCocktails:
+            noMatches.noMinusTwo = true
+        }
+        
+        if noMatches == (true, true, true) {
+            Task {
+                await MainActor.run {
+                    showingNoResultsView = true
+                    noMatches = (false, false, false)
+                }
+            }
+        }
+    }
     
     func handleThumbsUp(ingredient: String) {
         if !preferredSelections.contains(ingredient) {
@@ -313,6 +341,8 @@ final class SearchViewModel: ObservableObject {
     
     func clearSearchCriteria() {
         
+        showingNoResultsView = false
+        
         preferredSelections.removeAll()
         unwantedSelections.removeAll()
         
@@ -360,10 +390,7 @@ final class SearchViewModel: ObservableObject {
         
         updatedUnwantedSelections = unwantedSelections
         updatedUnwantedSelections.removeAll(where: { $0 == selection})
-        
 
-        
-        
         // Remove view-independant selections
         unwantedIngredients.removeAll(where: { $0 == selection})
         preferredUmbrellaCategories.removeAll(where: { $0 == selection})
@@ -433,7 +460,6 @@ final class SearchViewModel: ObservableObject {
         // If complex, do complex thing. (note: look for count somewhere in here, that's gotta be switched out)
         Task {
             if searchType == .complex {
-                
                 await generateComplicatedPredicates()
                 
                 await MainActor.run {
