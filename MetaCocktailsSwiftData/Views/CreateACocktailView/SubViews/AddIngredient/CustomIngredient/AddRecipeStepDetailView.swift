@@ -12,13 +12,16 @@ struct AddRecipeStepDetailView: View {
     @State private var textEditor = ""
     @FocusState var keyboardFocused: Bool
     @Binding var isShowingBuildSheet: Bool
+    @Binding var editingInstruction: Bool 
     
     var body: some View {
         VStack {
             List {
                 Section("Add a recipe step") {
-                    Text("Step \(viewModel.prepIngredientRecipe.count + 1)")
+                    Text(editingInstruction ? "\(viewModel.currentBuildStep)" : "Step \(viewModel.prepIngredientRecipe.count + 1)")
+                        .font(FontFactory.formLabel18)
                     TextEditor(text: $textEditor)
+                        .font(FontFactory.formLabel18)
                         .focused($keyboardFocused)
                         .frame(minHeight: 100)
                         .scrollContentBackground(.hidden)
@@ -27,8 +30,15 @@ struct AddRecipeStepDetailView: View {
                 HStack {
                     Spacer()
                     UniversalBlueButton(buttonText: "Add Recipe Step", image: Image(systemName:textEditor != "" ? "plus.circle.fill" : "plus")) {
-                        viewModel.prepIngredientRecipe.append(Instruction(step: viewModel.prepIngredientRecipe.count + 1, method: textEditor))
+                        if editingInstruction {
+                            viewModel.updatePrepIngredientRecipe(id: viewModel.currentBuildInstructionUUID, newMethod: textEditor)
+                        } else {
+                            viewModel.prepIngredientRecipe.append(Instruction(step: viewModel.prepIngredientRecipe.count + 1, method: textEditor))
+                        }
                         isShowingBuildSheet = false
+                        editingInstruction = false
+                        
+                    
                     }
                     Spacer()
                 }
@@ -41,6 +51,9 @@ struct AddRecipeStepDetailView: View {
             Spacer()
         }
         .task {
+            if editingInstruction {
+                textEditor = viewModel.currentMethod
+            }
             keyboardFocused = true
         }
     }
@@ -49,6 +62,6 @@ struct AddRecipeStepDetailView: View {
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
     
-    return AddRecipeStepDetailView(viewModel: AddCocktailViewModel(), isShowingBuildSheet: .constant(true))
+    AddRecipeStepDetailView(viewModel: AddCocktailViewModel(), isShowingBuildSheet: .constant(true), editingInstruction: .constant(true))
         .modelContainer(preview.container)
 }

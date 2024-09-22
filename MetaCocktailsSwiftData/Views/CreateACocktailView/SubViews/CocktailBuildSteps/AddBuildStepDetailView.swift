@@ -23,7 +23,9 @@ struct AddBuildStepDetailView: View {
                 Section("Add a build step") {
                     Text(willEditBuildStep ? "\(viewModel.currentBuildStep)" : "Step \(viewModel.build.instructions.count + 1)")
                         .foregroundStyle(Color.secondary)
+                        .font(FontFactory.formLabel18)
                     TextEditor(text: $textEditor)
+                        .font(FontFactory.formLabel18)
                         .focused($cocktailBuildStepKeyboardFocused)
                         .frame(minHeight: 100)
                         .scrollContentBackground(.hidden)

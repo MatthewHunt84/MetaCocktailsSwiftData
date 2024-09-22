@@ -11,6 +11,8 @@ struct CustomIngredientRecipeView: View {
     @Bindable var viewModel: AddCocktailViewModel
     @State private var isShowingBuildSheet: Bool = false
     @FocusState var keyboardFocused: Bool
+    @State private var editingInstruction: Bool = false 
+    
     var body: some View {
         Section(header: Text("Recipe (Optional)").font(FontFactory.sectionHeader12)) {
             List {
@@ -21,6 +23,7 @@ struct CustomIngredientRecipeView: View {
                         Text("Add recipe step")
                             .foregroundStyle(.primary)
                             .font(FontFactory.formLabel18)
+                            .foregroundStyle(.white)
                         
                         Spacer()
                         
@@ -29,18 +32,22 @@ struct CustomIngredientRecipeView: View {
                     }
                 }
                 .sheet(isPresented: $isShowingBuildSheet, content: {
-                    AddRecipeStepDetailView(viewModel: viewModel, keyboardFocused: _keyboardFocused, isShowingBuildSheet: $isShowingBuildSheet)
-                        .presentationBackground(.clear)
+                    AddRecipeStepDetailView(viewModel: viewModel, keyboardFocused: _keyboardFocused, isShowingBuildSheet: $isShowingBuildSheet, editingInstruction: $editingInstruction)
                 })
                 ForEach(viewModel.prepIngredientRecipe, id: \.id) { buildStep in
                     VStack{
                         Text("Step \(buildStep.step)")
                             .font(FontFactory.formLabel18)
-                            .foregroundStyle(.brandPrimaryGold)
+                            .foregroundStyle(ColorScheme.interactionTint)
                             .frame(maxWidth: .infinity, alignment: .leading)
                         Text(buildStep.method)
                             .font(FontFactory.formLabel18)
                             .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    .onTapGesture {
+                        viewModel.populateCocktailBuildStepFor(instruction: buildStep)
+                        editingInstruction.toggle()
+                        isShowingBuildSheet = true
                     }
                 }
                 .onDelete(perform: { indexSet in

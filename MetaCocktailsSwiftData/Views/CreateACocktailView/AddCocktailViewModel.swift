@@ -271,6 +271,11 @@ import Combine
             build.instructions[index].method = newMethod
         }
     }
+    func updatePrepIngredientRecipe(id: UUID, newMethod: String) {
+        if let index = prepIngredientRecipe.firstIndex(where: { $0.id == id }) {
+            prepIngredientRecipe[index].method = newMethod
+        }
+    }
     func populateExistingIngredient(ingredient: Ingredient) {
         ingredientName = ingredient.ingredientBase.name
         category = UmbrellaCategory(rawValue: ingredient.ingredientBase.umbrellaCategory) ?? UmbrellaCategory.agaves
@@ -291,6 +296,7 @@ import Combine
             addedIngredients.remove(at: index)
         }
     }
+    
     
     func customGarnishIsValid(allGarnishes: [Garnish]) -> Bool {
         return currentGarnishName != "" &&
