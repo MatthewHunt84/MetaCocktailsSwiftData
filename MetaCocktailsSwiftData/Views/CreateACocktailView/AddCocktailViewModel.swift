@@ -271,6 +271,11 @@ import Combine
             build.instructions[index].step = index + 1
         }
     }
+    func reEnumeratePrepIngredientRecipe() {
+        for (index, _) in prepIngredientRecipe.enumerated() {
+            prepIngredientRecipe[index].step = index + 1
+        }
+    }
     
     func updateBuildInstruction(id: UUID, newMethod: String) {
         if let index = build.instructions.firstIndex(where: { $0.id == id }) {

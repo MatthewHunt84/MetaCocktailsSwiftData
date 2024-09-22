@@ -52,6 +52,7 @@ struct CustomIngredientRecipeView: View {
                 }
                 .onDelete(perform: { indexSet in
                     viewModel.build.instructions.remove(atOffsets: indexSet)
+                    viewModel.reEnumeratePrepIngredientRecipe()
                 })
             }
         }

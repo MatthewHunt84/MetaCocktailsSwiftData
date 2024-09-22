@@ -27,7 +27,7 @@ struct AddRecipeStepDetailView: View {
                         .scrollContentBackground(.hidden)
                         .background(Color.clear)
                 }
-                UniversalBlueButton(buttonText: "Add Recipe Step", rightImage: Image(systemName:textEditor != "" ? "plus.circle.fill" : "plus"), leftImage: nil, includeBorder: true) {
+                UniversalBlueButton(buttonText: "Add Recipe Step", rightImage: Image(systemName:"plus"), leftImage: nil, includeBorder: true) {
                     if editingInstruction {
                         viewModel.updatePrepIngredientRecipe(id: viewModel.currentBuildInstructionUUID, newMethod: textEditor)
                     } else {
@@ -37,6 +37,8 @@ struct AddRecipeStepDetailView: View {
                     editingInstruction = false
                 }
                 .listRowBackground(Color.clear)
+                .disabled(textEditor == "" ? true : false)
+                .foregroundStyle(textEditor != "" ? Color.secondary : ColorScheme.interactionTint)
             }
             .scrollContentBackground(.hidden)
             .background(BlackGlassBackgroundView())
