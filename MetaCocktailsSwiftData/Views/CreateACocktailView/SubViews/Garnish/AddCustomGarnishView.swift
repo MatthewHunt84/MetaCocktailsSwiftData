@@ -12,17 +12,13 @@ struct AddCustomGarnishView: View {
     @Bindable var viewModel: AddCocktailViewModel
     @Binding var addExistingGarnishViewIsActive: Bool
     @FocusState private var keyboardFocused: Bool
-    @FocusState private var amountKeyboardFocused: Bool
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         
         NavigationStack{
-            
             ZStack {
-                
                 ColorScheme.background.ignoresSafeArea()
-                
                 Form {
                     Section("Name") {
                         TextField("Garnish Name", text: $viewModel.currentGarnishName)
@@ -32,11 +28,6 @@ struct AddCustomGarnishView: View {
                 }
                 .scrollContentBackground(.hidden)
                 .background(Color.clear)
-                .toolbar {
-                    ToolbarItemGroup(placement: .keyboard) {
-                        KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
-                    }
-                }
                 .task {
                     keyboardFocused = true
                 }
@@ -59,30 +50,25 @@ struct AddCustomGarnishToCocktailButton: View {
 
     
     var body: some View {
-        Button{
-            if viewModel.customGarnishIsValid(allGarnishes: garnish){
-                viewModel.addedGarnish.append(Garnish(name: viewModel.currentGarnishName))
-                viewModel.clearIngredientData()
-                addExistingGarnishViewIsActive = false
-            } else {
-                for name in garnish {
-                    if name.name == viewModel.currentGarnishName {
-                        viewModel.addedGarnish.append(name)
-                        viewModel.clearIngredientData()
-                        addExistingGarnishViewIsActive = false
+        Section {
+            UniversalBlueButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), leftImage: nil, includeBorder: true) {
+                if viewModel.customGarnishIsValid(allGarnishes: garnish){
+                    viewModel.addedGarnish.append(Garnish(name: viewModel.currentGarnishName))
+                    viewModel.clearIngredientData()
+                    addExistingGarnishViewIsActive = false
+                } else {
+                    for name in garnish {
+                        if name.name == viewModel.currentGarnishName {
+                            viewModel.addedGarnish.append(name)
+                            viewModel.clearIngredientData()
+                            addExistingGarnishViewIsActive = false
+                        }
                     }
                 }
             }
-        } label: {
-            HStack {
-                Image(systemName: "plus.circle.fill")
-                    .font(.headline)
-                Text("Add to spec")
-                    .font(FontFactory.formLabel18)
-            }
-            .tint(ColorScheme.interactionTint)
-            .padding()
+            .disabled(viewModel.currentGarnishName == "" ? true : false)
+            .foregroundStyle(viewModel.currentGarnishName == "" ? ColorScheme.interactionTint : Color.secondary)
         }
-        .frame(width: 380, height: 40,  alignment: .center)
+        .listRowBackground(Color.clear)
     }
 }

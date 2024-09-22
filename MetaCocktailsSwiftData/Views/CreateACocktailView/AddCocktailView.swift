@@ -98,7 +98,9 @@ struct AddCocktailView: View {
                                 }
                             }
                         }
+                        .foregroundStyle(viewModel.isValid() ? ColorScheme.interactionTint : Color.secondary)
                     }
+                    
                     ToolbarItemGroup(placement: .keyboard) {
                         Spacer()
                         Button {
