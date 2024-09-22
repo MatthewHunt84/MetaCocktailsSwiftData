@@ -40,8 +40,9 @@ struct AddCocktailView: View {
                         IcePicker(ice: $viewModel.ice)
                         VariationPicker(viewModel: viewModel)
                     }
-                    
-                    GarnishPicker(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive)
+                    Section(header: Text("Garnish").font(FontFactory.sectionHeader12)) {
+                        GarnishPicker(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive)
+                    }
                     
                     Section(header: Text("Credit (optional)").font(FontFactory.sectionHeader12)) {
                         TextField("Author", text: $viewModel.authorName)
@@ -296,36 +297,29 @@ private struct GarnishPicker: View {
     @Bindable var viewModel: AddCocktailViewModel
     @Binding var addExistingGarnishViewIsActive: Bool
     var body: some View {
-        
-        Section {
-            
-            List{
-                ForEach(viewModel.addedGarnish, id: \.name) { garnish in
-                    Text(garnish.name)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .font(FontFactory.formLabel18)
-                }
-                .onDelete(perform: { indexSet in
-                    viewModel.addedGarnish.remove(atOffsets: indexSet)
-                })
+        List{
+            ForEach(viewModel.addedGarnish, id: \.name) { garnish in
+                Text(garnish.name)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(FontFactory.formLabel18)
             }
-            Button {
-                addExistingGarnishViewIsActive.toggle()
-                
-            } label: {
-                HStack {
-                    Text(viewModel.addedGarnish.count < 1 ? "Add Garnish" : "Add another garnish")
-                        .tint(viewModel.addedGarnish.count < 1 ? .primary : .secondary)
-                        .font(FontFactory.formLabel18)
-                    Spacer()
-                    Image(systemName: "plus.circle.fill")
-                        .foregroundStyle(ColorScheme.interactionTint)
-                }
-            }
-        } header: {
-            Text("Garnish")
+            .onDelete(perform: { indexSet in
+                viewModel.addedGarnish.remove(atOffsets: indexSet)
+            })
         }
-        
+        Button {
+            addExistingGarnishViewIsActive.toggle()
+            
+        } label: {
+            HStack {
+                Text(viewModel.addedGarnish.count < 1 ? "Add Garnish" : "Add another garnish")
+                    .tint(viewModel.addedGarnish.count < 1 ? .primary : .secondary)
+                    .font(FontFactory.formLabel18)
+                Spacer()
+                Image(systemName: "plus.circle.fill")
+                    .foregroundStyle(ColorScheme.interactionTint)
+            }
+        }
     }
 }
 
