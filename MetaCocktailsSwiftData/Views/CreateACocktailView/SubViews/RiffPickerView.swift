@@ -31,6 +31,7 @@ struct RiffPickerView: View {
                     List {
                         ForEach(viewModel.filteredCocktails, id: \.self) { cocktail in
                             Button {
+                                viewModel.clearData()
                                 viewModel.populateFromCocktail(cocktail)
                                 dismiss()
                             } label: {
