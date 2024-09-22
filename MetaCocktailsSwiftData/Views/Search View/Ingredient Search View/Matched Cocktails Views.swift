@@ -14,7 +14,7 @@ struct IngredientSearchMatchedCocktailsView: View {
     var body: some View {
         
         if viewModel.showingNoResultsView {
-            ContentUnavailableView( "No Results", systemImage: "magnifyingglass", description: Text("Who would you want to drink that?\n What the hell is wrong with you"))
+            ContentUnavailableView( "No Results", systemImage: "magnifyingglass", description: Text("Why would anyone want to drink that?\n What the hell is wrong with you"))
         } else {
             List {
                 PerfectMatchCocktailView(passedViewModel: viewModel)
