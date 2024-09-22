@@ -15,33 +15,33 @@ struct AddRecipeStepDetailView: View {
     
     var body: some View {
         VStack {
-            Form {
+            List {
                 Section("Add a recipe step") {
                     Text("Step \(viewModel.prepIngredientRecipe.count + 1)")
                     TextEditor(text: $textEditor)
                         .focused($keyboardFocused)
                         .frame(minHeight: 100)
-                        .scrollContentBackground(.hidden) 
+                        .scrollContentBackground(.hidden)
                         .background(Color.clear)
                 }
-                Button {
-                    viewModel.prepIngredientRecipe.append(Instruction(step: viewModel.prepIngredientRecipe.count + 1, method: textEditor))
-                    isShowingBuildSheet = false
-                } label: {
-                    HStack {
-                        Spacer()
-                        Text("Add Step").font(.headline)
-                        Image(systemName:textEditor != "" ? "plus.circle.fill" : "plus")
-                        Spacer()
+                HStack {
+                    Spacer()
+                    UniversalBlueButton(buttonText: "Add Recipe Step", image: Image(systemName:textEditor != "" ? "plus.circle.fill" : "plus")) {
+                        viewModel.prepIngredientRecipe.append(Instruction(step: viewModel.prepIngredientRecipe.count + 1, method: textEditor))
+                        isShowingBuildSheet = false
                     }
-                    .foregroundStyle(textEditor != "" ? .brandPrimaryGold : .secondary)
+                    Spacer()
                 }
+                .listRowBackground(Color.clear)
+                
             }
             .scrollContentBackground(.hidden)
             .background(BlackGlassBackgroundView())
-            .task {
-                keyboardFocused = true
-            }
+           
+            Spacer()
+        }
+        .task {
+            keyboardFocused = true
         }
     }
 }

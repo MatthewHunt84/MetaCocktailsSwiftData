@@ -19,6 +19,7 @@ struct AddBuildStepView: View {
                     Text("Add build step")
                         .foregroundStyle(.primary)
                         .font(FontFactory.formLabel18)
+                        .tint(ColorScheme.interactionTint)
 
                     
                     Spacer()
@@ -36,10 +37,11 @@ struct AddBuildStepView: View {
             ForEach(viewModel.build.instructions, id: \.id) { buildStep in
                 VStack{
                     Text("Step \(buildStep.step)")
-                        .foregroundStyle(.brandPrimaryGold)
+                        .tint(ColorScheme.interactionTint)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Text(buildStep.method)
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundStyle(.white)
                 }
             }
             .onDelete(perform: { indexSet in

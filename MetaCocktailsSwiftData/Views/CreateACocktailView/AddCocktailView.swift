@@ -117,6 +117,17 @@ struct AddCocktailView: View {
                             .foregroundStyle(viewModel.isValid() ? .brandPrimaryGold : .secondary)
                         }
                     }
+                    ToolbarItemGroup(placement: .keyboard) {
+                        Spacer()
+                        Button {
+                            yearKeyboardFocused = false
+                        } label: {
+                            Text("Done")
+                                .font(FontFactory.fontBody16)
+                        }
+                        .tint(ColorScheme.interactionTint)
+                        
+                    }
                     
                     
                 }
