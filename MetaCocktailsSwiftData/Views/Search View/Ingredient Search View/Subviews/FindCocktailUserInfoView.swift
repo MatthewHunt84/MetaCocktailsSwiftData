@@ -16,7 +16,9 @@ struct FindCocktailUserInfoView: View {
             
             HStack {
                 Text("Search for cocktails by ingredient")
-                    .font(FontFactory.regularFont(size: 18))
+                    .font(.body.smallCaps())
+                    .fontWeight(.light)
+                    .foregroundStyle(.secondary)
                 
                     Image(systemName: "info.circle")
                     .foregroundStyle(isShowingSearchInfo ? ColorScheme.tintColor : ColorScheme.interactionTint)
@@ -25,18 +27,17 @@ struct FindCocktailUserInfoView: View {
                                 isShowingSearchInfo.toggle()
                             }
                         }
+                Spacer()
             }
             
             if isShowingSearchInfo {
                 Text("Choose any ingredient, category, flavor, style or profile to be included or excluded from cocktail results")
                     .font(FontFactory.regularFont(size: 16))
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(.primary)
             }
         }
-        .padding(.leading, 16)
-        .padding(.trailing, 16)
-        .padding(.top, 5)
-        .padding(.bottom, 5)
+        .padding(.leading, 32)
+        .padding(.top, 16)
         .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .trailing)))
     }
 }

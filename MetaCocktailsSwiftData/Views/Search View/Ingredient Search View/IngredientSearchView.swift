@@ -29,6 +29,7 @@ struct IngredientSearchView: View {
                         PreferencesListView()
                     } else {
                         FindCocktailUserInfoView()
+                            .padding(.bottom, -5)
                     }
                     
                     FilteredIngredientListView(keyboardFocused: _keyboardFocused)
