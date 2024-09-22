@@ -60,22 +60,10 @@ struct AddCocktailView: View {
                         AddBuildStepView(viewModel: viewModel, cocktailBuildStepKeyboardFocused: _cocktailBuildStepKeyboardFocused)
                     }
                     
-                    
-                    Button{
+                    UniversalBlueButton(buttonText: "Clear Form",rightImage: nil, leftImage: Image(systemName: "xmark"), includeBorder: true) {
                         viewModel.clearData()
-                    } label: {
-                        HStack {
-                            Image(systemName: "xmark")
-                                .font(.headline).bold()
-                            Text("Clear Form")
-                                .font(FontFactory.fontBody16)
-                        }
-                        .tint(ColorScheme.interactionTint)
-                        .padding()
                     }
-                    .frame(width: 380, height: 40,  alignment: .center)
-                    
-                    
+                    .listRowBackground(Color.clear)
                 }
                 .blur(radius: (viewModel.isShowingUniqueNameAlert || viewModel.isShowingAlert) ? 3 : 0)
                 .scrollContentBackground(.hidden)
@@ -94,7 +82,7 @@ struct AddCocktailView: View {
                     }
                     
                     ToolbarItem(placement: .bottomBar) {
-                        Button {
+                        UniversalBlueButton(buttonText: "Add to cocktails", rightImage: Image(systemName: "plus"), leftImage: nil, includeBorder: false) {
                             guard nameIsUnique() else {
                                 viewModel.isShowingUniqueNameAlert.toggle()
                                 return
@@ -109,14 +97,6 @@ struct AddCocktailView: View {
                                     viewModel.isShowingAlert.toggle()
                                 }
                             }
-                            
-                        } label: {
-                            HStack {
-                                Text("Add to cocktails")
-                                    .font(FontFactory.bottomToolbarButton20)
-                                Image(systemName: "plus")
-                            }
-                            .foregroundStyle(viewModel.isValid() ? .brandPrimaryGold : .secondary)
                         }
                     }
                     ToolbarItemGroup(placement: .keyboard) {

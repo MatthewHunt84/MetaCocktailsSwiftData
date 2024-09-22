@@ -10,7 +10,9 @@ import SwiftUI
 
 struct UniversalBlueButton: View {
     let buttonText: String
-    let image: Image?
+    let rightImage: Image?
+    let leftImage: Image?
+    let includeBorder: Bool
     let action: () -> ()
     
     var body: some View {
@@ -20,9 +22,13 @@ struct UniversalBlueButton: View {
                 action()
             } label: {
                 HStack {
+                    if let leftNewImage = leftImage {
+                        leftNewImage
+                            .tint(ColorScheme.interactionTint)
+                    }
                     Text(buttonText)
-                    if let newImage = image {
-                        newImage
+                    if let rightNewImage = rightImage {
+                        rightNewImage
                             .tint(ColorScheme.interactionTint)
                     }
                 }
@@ -30,7 +36,7 @@ struct UniversalBlueButton: View {
                 .foregroundStyle(ColorScheme.interactionTint)
                 .padding(.vertical, 8)
                 .padding(.horizontal, 16)
-                .background(Capsule().strokeBorder(ColorScheme.interactionTint, lineWidth: 1))
+                .background(Capsule().strokeBorder(ColorScheme.interactionTint, lineWidth: includeBorder ? 1 : 0))
             }
             Spacer()
         }
@@ -39,5 +45,5 @@ struct UniversalBlueButton: View {
 
 
 #Preview {
-    UniversalBlueButton(buttonText: "Enter", image: nil, action: {})
+    UniversalBlueButton(buttonText: "Enter", rightImage: nil, leftImage: nil, includeBorder: true, action: {})
 }

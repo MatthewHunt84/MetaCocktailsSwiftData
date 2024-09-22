@@ -32,7 +32,7 @@ struct AddBuildStepDetailView: View {
                         .background(Color.clear)
                 }
                 
-                UniversalBlueButton(buttonText: "Add Recipe Step", image: Image(systemName: "plus")) {
+                UniversalBlueButton(buttonText: "Add Recipe Step", rightImage: Image(systemName: "plus"), leftImage: nil, includeBorder: true) {
                     if willEditBuildStep {
                         viewModel.updateBuildInstruction(id: viewModel.currentBuildInstructionUUID, newMethod: textEditor)
                         isShowingBuildSheet = false

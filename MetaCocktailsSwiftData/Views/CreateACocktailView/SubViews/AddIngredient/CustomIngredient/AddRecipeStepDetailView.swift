@@ -10,7 +10,7 @@ import SwiftUI
 struct AddRecipeStepDetailView: View {
     @Bindable var viewModel: AddCocktailViewModel
     @State private var textEditor = ""
-    @FocusState.Binding var keyboardFocused: Bool
+    @FocusState var recipeKeyboardFocused: Bool
     @Binding var isShowingBuildSheet: Bool
     @Binding var editingInstruction: Bool 
     
@@ -22,12 +22,12 @@ struct AddRecipeStepDetailView: View {
                         .font(FontFactory.formLabel18)
                     TextEditor(text: $textEditor)
                         .font(FontFactory.formLabel18)
-                        .focused($keyboardFocused)
+                        .focused($recipeKeyboardFocused)
                         .frame(minHeight: 100)
                         .scrollContentBackground(.hidden)
                         .background(Color.clear)
                 }
-                UniversalBlueButton(buttonText: "Add Recipe Step", image: Image(systemName:textEditor != "" ? "plus.circle.fill" : "plus")) {
+                UniversalBlueButton(buttonText: "Add Recipe Step", rightImage: Image(systemName:textEditor != "" ? "plus.circle.fill" : "plus"), leftImage: nil, includeBorder: true) {
                     if editingInstruction {
                         viewModel.updatePrepIngredientRecipe(id: viewModel.currentBuildInstructionUUID, newMethod: textEditor)
                     } else {
@@ -46,7 +46,10 @@ struct AddRecipeStepDetailView: View {
             if editingInstruction {
                 textEditor = viewModel.currentMethod
             }
-            keyboardFocused = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                recipeKeyboardFocused = true
+            }
+            
         }
     }
 }
@@ -55,6 +58,6 @@ struct AddRecipeStepDetailView: View {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
     @FocusState var keyboardFocused: Bool
     
-    AddRecipeStepDetailView(viewModel: AddCocktailViewModel(), keyboardFocused: $keyboardFocused, isShowingBuildSheet: .constant(true), editingInstruction: .constant(true))
+    AddRecipeStepDetailView(viewModel: AddCocktailViewModel(), recipeKeyboardFocused: _keyboardFocused, isShowingBuildSheet: .constant(true), editingInstruction: .constant(true))
         .modelContainer(preview.container)
 }

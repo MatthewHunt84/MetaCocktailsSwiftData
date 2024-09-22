@@ -10,8 +10,8 @@ import SwiftUI
 struct CustomIngredientRecipeView: View {
     @Bindable var viewModel: AddCocktailViewModel
     @State private var isShowingBuildSheet: Bool = false
-    @FocusState var keyboardFocused: Bool
-    @State private var editingInstruction: Bool = false 
+    @FocusState var recipeKeyboardFocused: Bool
+    @State private var editingInstruction: Bool = false
     
     var body: some View {
         Section(header: Text("Recipe (Optional)").font(FontFactory.sectionHeader12)) {
@@ -32,7 +32,7 @@ struct CustomIngredientRecipeView: View {
                     }
                 }
                 .sheet(isPresented: $isShowingBuildSheet, content: {
-                    AddRecipeStepDetailView(viewModel: viewModel, keyboardFocused: $keyboardFocused, isShowingBuildSheet: $isShowingBuildSheet, editingInstruction: $editingInstruction)
+                    AddRecipeStepDetailView(viewModel: viewModel, recipeKeyboardFocused: _recipeKeyboardFocused, isShowingBuildSheet: $isShowingBuildSheet, editingInstruction: $editingInstruction)
                 })
                 ForEach(viewModel.prepIngredientRecipe, id: \.id) { buildStep in
                     VStack{

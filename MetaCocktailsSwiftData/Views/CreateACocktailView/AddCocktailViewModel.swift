@@ -267,8 +267,8 @@ import Combine
         currentBuildInstructionUUID = instruction.id
     }
     func reEnumerateBuildSteps() {
-        for (index, instruction) in build.instructions.enumerated() {
-            build.instructions[index].step = index
+        for (index, _) in build.instructions.enumerated() {
+            build.instructions[index].step = index + 1
         }
     }
     
