@@ -27,6 +27,7 @@ struct VariationPickerDetailView: View {
                 
                 VStack {
                     SearchBarForCreateCocktailView(isFocused: $isSearchFocused, viewModel: viewModel)
+                        .padding()
                     List {
                         ForEach(viewModel.filteredCocktails, id: \.id) { cocktail in
                             if !viewModel.searchText.isEmpty {
@@ -48,7 +49,7 @@ struct VariationPickerDetailView: View {
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-            .jamesHeader("Add Variation Name")
+            .jamesHeaderWithNavigation(title: "Add Variation Name", dismiss: dismiss)
         }
         .onAppear {
             viewModel.setAllCocktails(allCocktails)
@@ -63,7 +64,7 @@ struct VariationPicker: View {
     @State private var isShowingInfo = false
     var body: some View {
         VStack {
-            NavigationLink(destination: VariationPickerDetailView(viewModel: viewModel)) {
+            NavigationLink(destination: VariationPickerDetailView(viewModel: viewModel).navigationBarBackButtonHidden(true)) {
                 HStack {
                     Text("Variation")
                         .font(FontFactory.formLabel18)
