@@ -44,7 +44,6 @@ import Combine
     var addedIngredients: [Ingredient] = []
     var didChooseExistingIngredient: Bool = false
     var isShowingingredientAlert: Bool = false
-    var addIngredientDetailViewIsActive = false
  
     //Garnish
     var addedGarnish: [Garnish] = []
