@@ -11,56 +11,48 @@ struct AddBuildStepDetailView: View {
     
     @Bindable var viewModel: AddCocktailViewModel
     @State private var textEditor = ""
-    @FocusState private var keyboardFocused: Bool
+    @FocusState var cocktailBuildStepKeyboardFocused: Bool
     @Binding var isShowingBuildSheet: Bool
     
     var body: some View {
         
         VStack {
-
-            Form {
+            
+            List {
                 Section("Add a build step") {
                     Text("Step \(viewModel.build.instructions.count + 1)")
-                    TextField("Add Step", text: $textEditor)
-                        .focused($keyboardFocused)
-                        .onChange(of: keyboardFocused) { oldValue, newValue in
-                            guard !newValue else { return }
-                            viewModel.build.instructions.append(Instruction(step: viewModel.build.instructions.count + 1, method: textEditor))
-                            isShowingBuildSheet = false
-                        }
+                        .foregroundStyle(Color.secondary)
+                    TextEditor(text: $textEditor)
+                        .focused($cocktailBuildStepKeyboardFocused)
+                        .frame(minHeight: 100)
+                        .scrollContentBackground(.hidden)
+                        .background(Color.clear)
                 }
+                HStack {
+                    Spacer()
+                    UniversalBlueButton(buttonText: "Add Recipe Step", image: Image(systemName: "plus")) {
+                        viewModel.build.instructions.append(Instruction(step: viewModel.build.instructions.count + 1, method: textEditor))
+                        isShowingBuildSheet = false
+                    }
+                    .foregroundStyle(textEditor != "" ? Color.secondary : ColorScheme.interactionTint)
+                    Spacer()
+                }
+                .listRowBackground(Color.clear)
+                .disabled(textEditor == "" ? true : false)
                 
             }
             .scrollContentBackground(.hidden)
             .background(BlackGlassBackgroundView())
-            .toolbar {
-                ToolbarItem(placement: .bottomBar) {
-                    Button {
-                        viewModel.build.instructions.append(Instruction(step: viewModel.build.instructions.count + 1, method: textEditor))
-                        isShowingBuildSheet = false
-                    } label: {
-                        HStack {
-                            Text("Add Step").font(.headline)
-                            Image(systemName: "plus")
-                        }
-                        .foregroundStyle(textEditor != "" ? .brandPrimaryGold : .secondary)
-                    }
-                }
-                ToolbarItemGroup(placement: .keyboard) {
-                    Spacer()
-                    Button("Done") {
-                        keyboardFocused = false
-                    }
-                    .tint(Color.brandPrimaryGold)
-                }
-            }
+            
         }
-        .task {
-            keyboardFocused = true
+        .onAppear {
+            cocktailBuildStepKeyboardFocused = true
         }
+        
     }
 }
 
 #Preview(traits: .sampleData) {
-    AddBuildStepDetailView(viewModel: AddCocktailViewModel(), isShowingBuildSheet: .constant(true))
+    @FocusState var cocktailBuildStepKeyboardFocused: Bool
+    AddBuildStepDetailView(viewModel: AddCocktailViewModel(), cocktailBuildStepKeyboardFocused: _cocktailBuildStepKeyboardFocused, isShowingBuildSheet: .constant(true))
 }

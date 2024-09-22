@@ -15,6 +15,7 @@ struct AddCocktailView: View {
     @State private var isActive: Bool = false
     @State private var isRiff: Bool = false
     @State private var isSelectingFromTemplate: Bool = false
+    @FocusState private var cocktailBuildStepKeyboardFocused: Bool
     
     var body: some View {
         
@@ -55,7 +56,7 @@ struct AddCocktailView: View {
                             .font(FontFactory.formLabel18)
                     }
                     Section(header: Text("Build steps (optional)").font(FontFactory.sectionHeader12)) {
-                        AddBuildStepView(viewModel: viewModel)
+                        AddBuildStepView(viewModel: viewModel, cocktailBuildStepKeyboardFocused: _cocktailBuildStepKeyboardFocused)
                     }
                     
                     
@@ -120,6 +121,7 @@ struct AddCocktailView: View {
                     ToolbarItemGroup(placement: .keyboard) {
                         Spacer()
                         Button {
+                            cocktailBuildStepKeyboardFocused = false 
                             yearKeyboardFocused = false
                         } label: {
                             Text("Done")
@@ -171,6 +173,7 @@ struct AddCocktailView: View {
                 Spacer()
                 Button {
                     yearKeyboardFocused = false
+                    
                 } label: {
                     Text("Done")
                         .font(FontFactory.fontBody16)

@@ -10,6 +10,7 @@ import SwiftUI
 struct AddBuildStepView: View {
     @Bindable var viewModel: AddCocktailViewModel
     @State private var isShowingBuildSheet: Bool = false
+    @FocusState var cocktailBuildStepKeyboardFocused: Bool
     var body: some View {
         List {
             Button{
@@ -19,25 +20,20 @@ struct AddBuildStepView: View {
                     Text("Add build step")
                         .foregroundStyle(.primary)
                         .font(FontFactory.formLabel18)
-                        .tint(ColorScheme.interactionTint)
-
-                    
+                        .tint(.white)
                     Spacer()
-                    
                     Image(systemName: "plus.circle.fill")
                         .foregroundStyle(ColorScheme.interactionTint)
                 }
             }
             .sheet(isPresented: $isShowingBuildSheet, content: {
-
-                    AddBuildStepDetailView(viewModel: viewModel, isShowingBuildSheet: $isShowingBuildSheet)
-                    .presentationBackground(.clear)
+                AddBuildStepDetailView(viewModel: viewModel, cocktailBuildStepKeyboardFocused: _cocktailBuildStepKeyboardFocused, isShowingBuildSheet: $isShowingBuildSheet)
             })
             
             ForEach(viewModel.build.instructions, id: \.id) { buildStep in
                 VStack{
                     Text("Step \(buildStep.step)")
-                        .tint(ColorScheme.interactionTint)
+                        .foregroundStyle(Color.secondary)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Text(buildStep.method)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -53,8 +49,8 @@ struct AddBuildStepView: View {
 }
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    
-    return AddBuildStepView(viewModel: AddCocktailViewModel())
+    @FocusState var cocktailBuildStepKeyboardFocused: Bool
+    AddBuildStepView(viewModel: AddCocktailViewModel(), cocktailBuildStepKeyboardFocused: _cocktailBuildStepKeyboardFocused)
         .modelContainer(preview.container)
     
 }
