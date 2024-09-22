@@ -13,6 +13,7 @@ struct AddBuildStepDetailView: View {
     @State private var textEditor = ""
     @FocusState var cocktailBuildStepKeyboardFocused: Bool
     @Binding var isShowingBuildSheet: Bool
+    @Binding var willEditBuildStep: Bool
     
     var body: some View {
         
@@ -20,7 +21,7 @@ struct AddBuildStepDetailView: View {
             
             List {
                 Section("Add a build step") {
-                    Text("Step \(viewModel.build.instructions.count + 1)")
+                    Text(willEditBuildStep ? "\(viewModel.currentBuildStep)" : "Step \(viewModel.build.instructions.count + 1)")
                         .foregroundStyle(Color.secondary)
                     TextEditor(text: $textEditor)
                         .focused($cocktailBuildStepKeyboardFocused)
@@ -31,8 +32,14 @@ struct AddBuildStepDetailView: View {
                 HStack {
                     Spacer()
                     UniversalBlueButton(buttonText: "Add Recipe Step", image: Image(systemName: "plus")) {
-                        viewModel.build.instructions.append(Instruction(step: viewModel.build.instructions.count + 1, method: textEditor))
-                        isShowingBuildSheet = false
+                        if willEditBuildStep {
+                            viewModel.updateBuildInstruction(id: viewModel.currentBuildInstructionUUID, newMethod: textEditor)
+                            isShowingBuildSheet = false
+                            
+                        } else {
+                            viewModel.build.instructions.append(Instruction(step: viewModel.build.instructions.count + 1, method: textEditor))
+                            isShowingBuildSheet = false
+                        }
                     }
                     .foregroundStyle(textEditor != "" ? Color.secondary : ColorScheme.interactionTint)
                     Spacer()
@@ -46,6 +53,9 @@ struct AddBuildStepDetailView: View {
             
         }
         .onAppear {
+            if willEditBuildStep {
+                textEditor = viewModel.currentMethod
+            }
             cocktailBuildStepKeyboardFocused = true
         }
         
@@ -54,5 +64,5 @@ struct AddBuildStepDetailView: View {
 
 #Preview(traits: .sampleData) {
     @FocusState var cocktailBuildStepKeyboardFocused: Bool
-    AddBuildStepDetailView(viewModel: AddCocktailViewModel(), cocktailBuildStepKeyboardFocused: _cocktailBuildStepKeyboardFocused, isShowingBuildSheet: .constant(true))
+    AddBuildStepDetailView(viewModel: AddCocktailViewModel(), cocktailBuildStepKeyboardFocused: _cocktailBuildStepKeyboardFocused, isShowingBuildSheet: .constant(true), willEditBuildStep: .constant(true))
 }

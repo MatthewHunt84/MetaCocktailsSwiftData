@@ -72,6 +72,9 @@ import Combine
     
     // Build
     var build: Build = Build(instructions: [])
+    var currentBuildInstructionUUID: UUID = UUID()
+    var currentBuildStep: Int = 0
+    var currentMethod: String = ""
     var buildOption: Build?
     func validateBuildInstructions() {
         if build.instructions != [] {
@@ -256,6 +259,17 @@ import Combine
         ingredientAmount = ingredient.value
         selectedMeasurementUnit = MeasurementUnit(rawValue: ingredient.unit.rawValue) ?? MeasurementUnit.fluidOunces
         isEdit.toggle()
+    }
+    func populateCocktailBuildStepFor(instruction: Instruction) {
+        currentBuildStep = instruction.step
+        currentMethod = instruction.method
+        currentBuildInstructionUUID = instruction.id
+    }
+    
+    func updateBuildInstruction(id: UUID, newMethod: String) {
+        if let index = build.instructions.firstIndex(where: { $0.id == id }) {
+            build.instructions[index].method = newMethod
+        }
     }
     func populateExistingIngredient(ingredient: Ingredient) {
         ingredientName = ingredient.ingredientBase.name

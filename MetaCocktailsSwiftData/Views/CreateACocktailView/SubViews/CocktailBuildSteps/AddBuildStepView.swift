@@ -11,6 +11,7 @@ struct AddBuildStepView: View {
     @Bindable var viewModel: AddCocktailViewModel
     @State private var isShowingBuildSheet: Bool = false
     @FocusState var cocktailBuildStepKeyboardFocused: Bool
+    @State private var willEditBuildStep: Bool = false
     var body: some View {
         List {
             Button{
@@ -27,17 +28,22 @@ struct AddBuildStepView: View {
                 }
             }
             .sheet(isPresented: $isShowingBuildSheet, content: {
-                AddBuildStepDetailView(viewModel: viewModel, cocktailBuildStepKeyboardFocused: _cocktailBuildStepKeyboardFocused, isShowingBuildSheet: $isShowingBuildSheet)
+                AddBuildStepDetailView(viewModel: viewModel, cocktailBuildStepKeyboardFocused: _cocktailBuildStepKeyboardFocused, isShowingBuildSheet: $isShowingBuildSheet, willEditBuildStep: $willEditBuildStep)
             })
             
             ForEach(viewModel.build.instructions, id: \.id) { buildStep in
                 VStack{
                     Text("Step \(buildStep.step)")
-                        .foregroundStyle(Color.secondary)
+                        .foregroundStyle(ColorScheme.interactionTint)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Text(buildStep.method)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundStyle(.white)
+                }
+                .onTapGesture {
+                    viewModel.populateCocktailBuildStepFor(instruction: buildStep)
+                    willEditBuildStep = true
+                    isShowingBuildSheet.toggle()
                 }
             }
             .onDelete(perform: { indexSet in
