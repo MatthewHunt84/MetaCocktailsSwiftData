@@ -11,12 +11,9 @@ import SwiftData
 struct CustomCocktailsListView: View {
     @EnvironmentObject var viewModel: CocktailListViewModel
     @Environment(\.modelContext) private var modelContext
-    @Query(filter: #Predicate<Cocktail> { cocktail in
-        cocktail.isCustomCocktail == true
-    }) private var customCocktails: [Cocktail]
-    @Query(filter: #Predicate<Cocktail> { cocktail in
-        cocktail.favorite == true
-    }) private var favoriteCocktails: [Cocktail]
+    @Query(filter: #Predicate<Cocktail> { cocktail in cocktail.isCustomCocktail == true }) private var customCocktails: [Cocktail]
+    @Query(filter: #Predicate<Cocktail> { cocktail in cocktail.favorite == true }) private var favoriteCocktails: [Cocktail]
+    @State var organizedCocktails = [String: [Cocktail]]()
 
     var body: some View {
         
@@ -29,46 +26,93 @@ struct CustomCocktailsListView: View {
                 VStack {
                     
                     List {
-                        ForEach(favoriteCocktails, id: \.self) { favoriteCocktail in
-                            FavoriteCocktailView(cocktail: favoriteCocktail)
-                        }
-                    }
-                    .listStyle(.insetGrouped)
-                    
-                    FontFactory.titleHeader24(title: "Custom Cocktails")
-                    List {
-                        let organizedCocktails = viewModel.organizeCocktails(customCocktails)
                         
-                        ForEach(organizedCocktails.keys.sorted(), id: \.self) { key in
-                            if let cocktails = organizedCocktails[key], !cocktails.isEmpty {
-                                if cocktails.count > 1 {
-                                    DisclosureGroup {
-                                        ForEach(cocktails, id: \.id) { cocktail in
-                                            CustomMultipleCocktailsListView(cocktail: cocktail, cocktails: cocktails)
-                                                .padding(.leading)
+                        if favoriteCocktails.count > 0 {
+                            ForEach(favoriteCocktails, id: \.self) { favoriteCocktail in
+                                FavoriteCocktailView(cocktail: favoriteCocktail)
+                            }
+                        } else {
+                            NoFavoritesPlaceholderView()
+                        }
+                        
+                        if customCocktails.count > 0 {
+                            Section(header: CustomCocktailHeader()) {
+                                
+                                let organizedCocktails = viewModel.organizeCocktails(customCocktails)
+                                
+                                ForEach(organizedCocktails.keys.sorted(), id: \.self) { key in
+                                    if let cocktails = organizedCocktails[key], !cocktails.isEmpty {
+                                        if cocktails.count > 1 {
+                                            DisclosureGroup {
+                                                ForEach(cocktails, id: \.id) { cocktail in
+                                                    CustomMultipleCocktailsListView(cocktail: cocktail, cocktails: cocktails)
+                                                        .padding(.leading)
+                                                }
+                                            } label: {
+                                                Text(key)
+                                                    .font(FontFactory.regularFont(size: 18))
+                                            }
+                                            .disclosureGroupStyle(InlineDisclosureGroupStyle())
+                                        } else {
+                                            
+                                            CustomSingleCocktailListView(cocktail: cocktails[0])
                                         }
-                                    } label: {
-                                        Text(key)
-                                            .font(FontFactory.regularFont(size: 18))
                                     }
-                                    .disclosureGroupStyle(InlineDisclosureGroupStyle())
-                                } else {
-                                    CustomSingleCocktailListView(cocktail: cocktails[0])
                                 }
                             }
                         }
-//                        .listRowBackground(Color.clear)
                     }
                     .listStyle(.insetGrouped)
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
             .jamesHeader("Favorites")
+            .navigationViewStyle(StackNavigationViewStyle())
+            .task {
+                organizedCocktails = viewModel.organizeCocktails(customCocktails)
+            }
         }
+        
     }
 }
 
-struct CustomSingleCocktailListView: View {
+fileprivate struct NoFavoritesPlaceholderView: View {
+    var body: some View {
+        VStack(spacing: 5) {
+            HStack {
+                Spacer()
+                Text("You have no favorite cocktails")
+                    .font(FontFactory.regularFont(size: 20))
+                    .foregroundStyle(.primary)
+                Spacer()
+            }
+            HStack {
+                Spacer()
+                Text("No rush - Ernest Hemingway took 10 years to choose his favorite cocktail. Then he turned 11.")
+                    .multilineTextAlignment(.center)
+                    .font(FontFactory.regularFont(size: 16))
+                    .italic()
+                    .foregroundStyle(.secondary)
+                Spacer()
+            }
+        }
+        .listRowBackground(Color.clear)
+    }
+}
+
+fileprivate struct CustomCocktailHeader: View {
+    var body: some View {
+        HStack {
+            Spacer()
+            FontFactory.titleHeader24(title: "Custom Cocktails")
+            Spacer()
+        }
+        .textCase(nil)
+        .listRowBackground(Color.clear)
+    }
+}
+    
+fileprivate struct CustomSingleCocktailListView: View {
     let cocktail: Cocktail
     @Environment(\.modelContext) private var modelContext
     
@@ -99,7 +143,7 @@ struct CustomSingleCocktailListView: View {
     }
 }
 
-struct FavoriteCocktailView: View {
+fileprivate struct FavoriteCocktailView: View {
     let cocktail: Cocktail
     @Environment(\.modelContext) private var modelContext
     
@@ -125,7 +169,7 @@ struct FavoriteCocktailView: View {
     }
 }
 
-struct CustomMultipleCocktailsListView: View {
+fileprivate struct CustomMultipleCocktailsListView: View {
     let cocktail: Cocktail
     let cocktails: [Cocktail]
     @Environment(\.modelContext) private var modelContext
