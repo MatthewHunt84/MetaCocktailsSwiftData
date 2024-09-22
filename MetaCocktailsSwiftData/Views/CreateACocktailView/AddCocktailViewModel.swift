@@ -22,6 +22,7 @@ import Combine
     
     var selectedMeasurementUnit = MeasurementUnit.fluidOunces
     var currentSelectedComponent = CocktailComponent(name: "Placeholder")
+    var filteredIngredients: [IngredientBase] = []
 
     var isShowingAlert: Bool = false
     var dateAdded = Date()
@@ -342,15 +343,15 @@ import Combine
 
    
     
-    func matchAllIngredients(ingredients: [IngredientBase]) -> [IngredientBase] {
+    func matchAllIngredients(ingredients: [IngredientBase]) {
         
         guard !ingredientName.isEmpty else {
-             return [] // Return all ingredients if search text is empty
+            return filteredIngredients = [] // Return all ingredients if search text is empty
          }
-        
+//        
         let lowercasedSearchText = ingredientName.lowercased()
         
-        return ingredients.filter { $0.name.lowercased().contains(lowercasedSearchText) }
+        filteredIngredients = ingredients.filter { $0.name.lowercased().contains(lowercasedSearchText) }
             .sorted { lhs, rhs in
                 let lhsLowercased = lhs.name.lowercased()
                 let rhsLowercased = rhs.name.lowercased()

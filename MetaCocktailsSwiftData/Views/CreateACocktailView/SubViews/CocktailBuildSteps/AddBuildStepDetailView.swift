@@ -31,21 +31,18 @@ struct AddBuildStepDetailView: View {
                         .scrollContentBackground(.hidden)
                         .background(Color.clear)
                 }
-                HStack {
-                    Spacer()
-                    UniversalBlueButton(buttonText: "Add Recipe Step", image: Image(systemName: "plus")) {
-                        if willEditBuildStep {
-                            viewModel.updateBuildInstruction(id: viewModel.currentBuildInstructionUUID, newMethod: textEditor)
-                            isShowingBuildSheet = false
-                            
-                        } else {
-                            viewModel.build.instructions.append(Instruction(step: viewModel.build.instructions.count + 1, method: textEditor))
-                            isShowingBuildSheet = false
-                        }
+                
+                UniversalBlueButton(buttonText: "Add Recipe Step", image: Image(systemName: "plus")) {
+                    if willEditBuildStep {
+                        viewModel.updateBuildInstruction(id: viewModel.currentBuildInstructionUUID, newMethod: textEditor)
+                        isShowingBuildSheet = false
+                        
+                    } else {
+                        viewModel.build.instructions.append(Instruction(step: viewModel.build.instructions.count + 1, method: textEditor))
+                        isShowingBuildSheet = false
                     }
-                    .foregroundStyle(textEditor != "" ? Color.secondary : ColorScheme.interactionTint)
-                    Spacer()
                 }
+                .foregroundStyle(textEditor != "" ? Color.secondary : ColorScheme.interactionTint)
                 .listRowBackground(Color.clear)
                 .disabled(textEditor == "" ? true : false)
                 

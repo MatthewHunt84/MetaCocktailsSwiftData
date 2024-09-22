@@ -27,27 +27,19 @@ struct AddRecipeStepDetailView: View {
                         .scrollContentBackground(.hidden)
                         .background(Color.clear)
                 }
-                HStack {
-                    Spacer()
-                    UniversalBlueButton(buttonText: "Add Recipe Step", image: Image(systemName:textEditor != "" ? "plus.circle.fill" : "plus")) {
-                        if editingInstruction {
-                            viewModel.updatePrepIngredientRecipe(id: viewModel.currentBuildInstructionUUID, newMethod: textEditor)
-                        } else {
-                            viewModel.prepIngredientRecipe.append(Instruction(step: viewModel.prepIngredientRecipe.count + 1, method: textEditor))
-                        }
-                        isShowingBuildSheet = false
-                        editingInstruction = false
-                        
-                    
+                UniversalBlueButton(buttonText: "Add Recipe Step", image: Image(systemName:textEditor != "" ? "plus.circle.fill" : "plus")) {
+                    if editingInstruction {
+                        viewModel.updatePrepIngredientRecipe(id: viewModel.currentBuildInstructionUUID, newMethod: textEditor)
+                    } else {
+                        viewModel.prepIngredientRecipe.append(Instruction(step: viewModel.prepIngredientRecipe.count + 1, method: textEditor))
                     }
-                    Spacer()
+                    isShowingBuildSheet = false
+                    editingInstruction = false
                 }
                 .listRowBackground(Color.clear)
-                
             }
             .scrollContentBackground(.hidden)
             .background(BlackGlassBackgroundView())
-           
             Spacer()
         }
         .task {

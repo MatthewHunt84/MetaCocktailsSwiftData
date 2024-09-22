@@ -14,22 +14,25 @@ struct UniversalBlueButton: View {
     let action: () -> ()
     
     var body: some View {
-        
-        Button {
-            action()
-        } label: {
-            HStack {
-                Text(buttonText)
-                if let newImage = image {
-                    newImage
-                        .tint(ColorScheme.interactionTint)
+        HStack {
+            Spacer()
+            Button {
+                action()
+            } label: {
+                HStack {
+                    Text(buttonText)
+                    if let newImage = image {
+                        newImage
+                            .tint(ColorScheme.interactionTint)
+                    }
                 }
+                .font(FontFactory.mediumFont(size: 18))
+                .foregroundStyle(ColorScheme.interactionTint)
+                .padding(.vertical, 8)
+                .padding(.horizontal, 16)
+                .background(Capsule().strokeBorder(ColorScheme.interactionTint, lineWidth: 1))
             }
-            .font(FontFactory.mediumFont(size: 18))
-            .foregroundStyle(ColorScheme.interactionTint)
-            .padding(.vertical, 8)
-            .padding(.horizontal, 16)
-            .background(Capsule().strokeBorder(ColorScheme.interactionTint, lineWidth: 1))
+            Spacer()
         }
     }
 }
