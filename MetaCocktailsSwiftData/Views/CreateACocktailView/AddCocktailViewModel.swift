@@ -70,7 +70,7 @@ import Combine
     var authorYear: String = ""
     var author: Author?
     
-    // Build
+    // Cocktail Build Instructions
     var build: Build = Build(instructions: [])
     var currentBuildInstructionUUID: UUID = UUID()
     var currentBuildStep: Int = 0

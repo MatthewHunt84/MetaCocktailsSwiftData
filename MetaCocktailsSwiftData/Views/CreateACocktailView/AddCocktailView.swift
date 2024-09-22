@@ -64,9 +64,9 @@ struct AddCocktailView: View {
                         viewModel.clearData()
                     } label: {
                         HStack {
-                            Image(systemName: "arrow.triangle.2.circlepath")
+                            Image(systemName: "xmark")
                                 .font(.headline).bold()
-                            Text("Reset to Defaults")
+                            Text("Clear Form")
                                 .font(FontFactory.fontBody16)
                         }
                         .tint(ColorScheme.interactionTint)
