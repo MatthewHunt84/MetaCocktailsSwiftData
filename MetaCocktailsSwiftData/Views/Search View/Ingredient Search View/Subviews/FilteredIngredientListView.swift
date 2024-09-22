@@ -55,21 +55,9 @@ struct FilteredIngredientListView: View {
         .padding(.trailing, 8)
         .task {
             //print(modelContext.sqliteCommand)
-            await generateAllCocktailList(context: modelContext)
+//            await generateAllCocktailList(context: modelContext)
             viewModel.setupSearch()
             viewModel.ingredientNames = ingredients.map { $0.name }
-        }
-    }
-    
-    func generateAllCocktailList(context: ModelContext) async {
-        if viewModel.allCocktails.isEmpty {
-            do {
-                let descriptor = FetchDescriptor<Cocktail>()
-                let fetchedCocktails = try context.fetch(descriptor)
-                viewModel.allCocktails = fetchedCocktails
-            } catch {
-                print("Error fetching cocktails: \(error)")
-            }
         }
     }
 }

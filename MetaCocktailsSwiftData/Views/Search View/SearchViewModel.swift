@@ -316,7 +316,6 @@ final class SearchViewModel: ObservableObject {
         preferredSelections.removeAll()
         unwantedSelections.removeAll()
         
-        
         preferredUmbrellaCategories.removeAll()
         preferredBaseCategories.removeAll()
         preferredSpecialtyCategories.removeAll()
