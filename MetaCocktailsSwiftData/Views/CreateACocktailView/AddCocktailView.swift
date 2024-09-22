@@ -117,17 +117,7 @@ struct AddCocktailView: View {
                             .foregroundStyle(viewModel.isValid() ? .brandPrimaryGold : .secondary)
                         }
                     }
-                    ToolbarItemGroup(placement: .keyboard) {
-                        Spacer()
-                        Button {
-                            yearKeyboardFocused = false
-                        } label: {
-                            Text("Done")
-                                .font(FontFactory.fontBody16)
-                        }
-                        .tint(ColorScheme.interactionTint)
-                        
-                    }
+                    
                     
                 }
                 .fullScreenCover(isPresented: $addExistingGarnishViewIsActive) {
@@ -163,6 +153,19 @@ struct AddCocktailView: View {
                                     buttonTitle: yesChef, action: {})
                     .zIndex(1)
                 }
+            }
+        }
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button {
+                    yearKeyboardFocused = false
+                } label: {
+                    Text("Done")
+                        .font(FontFactory.fontBody16)
+                }
+                .tint(ColorScheme.interactionTint)
+                
             }
         }
     }

@@ -80,12 +80,13 @@ struct VariationPicker: View {
                         .foregroundColor(.gray)
                 }
             }
+            
             if isShowingInfo {
                 Text("If this cocktail is a riff on another cocktail, you may add it here. Variations will be grouped together in the search list and in the custom cocktails tab.")
                     .font(FontFactory.fontBody14)
                     .foregroundStyle(.brandPrimaryGold)
-//                    .padding(.top, 10)
             }
+            
         }
     }
 }
