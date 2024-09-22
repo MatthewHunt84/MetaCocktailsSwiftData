@@ -60,10 +60,13 @@ struct IngredientSearchView: View {
                 IngredientSearchResultsView()
                 
             }
-            .onChange(of: viewModel.searchCompleted) { _, newValue in
-                if newValue {
+            .onChange(of: viewModel.searchCompleted) { _, _ in
+                if !viewModel.preferredSelections.isEmpty {
                     viewModel.toggleIsShowingResults()
                     viewModel.resetSearch()
+                } else {
+                    // Empty Search. Reset
+                    viewModel.searchCompleted = false
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
