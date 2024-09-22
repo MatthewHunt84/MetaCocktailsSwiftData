@@ -68,9 +68,11 @@ struct VariationPicker: View {
                     Text("Variation")
                         .font(FontFactory.formLabel18)
                     Image(systemName: "info.circle")
-                        .foregroundStyle(isShowingInfo ? .brandPrimaryGold : .blue)
+                        .foregroundStyle(ColorScheme.interactionTint)
                         .onTapGesture {
-                            isShowingInfo.toggle()
+                            withAnimation(.easeInOut) {
+                                isShowingInfo.toggle()
+                            }
                         }
                     Spacer()
                     Text(viewModel.customVariationName ?? "None")
@@ -80,9 +82,9 @@ struct VariationPicker: View {
             }
             if isShowingInfo {
                 Text("If this cocktail is a riff on another cocktail, you may add it here. Variations will be grouped together in the search list and in the custom cocktails tab.")
-                    .font(FontFactory.sectionHeader12)
+                    .font(FontFactory.fontBody14)
                     .foregroundStyle(.brandPrimaryGold)
-                    .padding(.top, 10)
+//                    .padding(.top, 10)
             }
         }
     }

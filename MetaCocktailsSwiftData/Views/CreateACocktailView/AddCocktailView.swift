@@ -235,7 +235,7 @@ private struct GlassPickerDetailView: View {
                                 Text(newGlass.rawValue)
                                     .tag(Optional(newGlass))
                                     .font(FontFactory.bottomToolbarButton20)
-                                    .foregroundStyle(.primary)
+                                    .foregroundStyle(.white)
                             }
                         }
                     }
