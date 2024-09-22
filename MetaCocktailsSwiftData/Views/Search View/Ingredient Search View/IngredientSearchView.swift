@@ -63,7 +63,7 @@ struct IngredientSearchView: View {
                 
             }
             .onChange(of: viewModel.searchCompleted) { _, _ in
-                if !viewModel.preferredSelections.isEmpty && !viewModel.unwantedSelections.isEmpty {
+                if !viewModel.preferredSelections.isEmpty || !viewModel.unwantedSelections.isEmpty {
                     viewModel.toggleIsShowingResults()
                     viewModel.resetSearch()
                 } else {

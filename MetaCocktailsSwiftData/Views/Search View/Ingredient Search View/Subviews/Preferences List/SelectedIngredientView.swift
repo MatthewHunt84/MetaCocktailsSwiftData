@@ -34,18 +34,25 @@ struct SelectedIngredientView: View {
                         .font(.system(size: 16))
                         .foregroundStyle(isPreferred ? ColorScheme.tintColor : .secondary)
                     
-                    ForEach(selections, id: \.self) { selectedIngredient in
-                        SelectionTagView(viewModel: SelectionTagViewModel(name: selectedIngredient, isPreferred: isPreferred))
-                            .onTapGesture {
-                                withAnimation(.snappy) {
-                                    guard !viewModel.isRunningComplexSearch else { return }
-                                    viewModel.handleRemovalOf(selection: selectedIngredient, preferred: isPreferred)
-                                    if viewModel.preferredCount == 0 {
-                                        dismiss()
+                    ForEach(Array(selections.enumerated()), id: \.element) { index, selectedIngredient in
+                        HStack {
+                            SelectionTagView(viewModel: SelectionTagViewModel(name: selectedIngredient, isPreferred: isPreferred))
+                                .onTapGesture {
+                                    withAnimation(.snappy) {
+                                        guard !viewModel.isRunningComplexSearch else { return }
+                                        viewModel.handleRemovalOf(selection: selectedIngredient, preferred: isPreferred)
+                                        if viewModel.preferredCount == 0 {
+                                            dismiss()
+                                        }
                                     }
                                 }
+                            if index < selections.count - 1 {
+                                Text("·")
+                                    .foregroundStyle(.secondary)
                             }
+                        }
                     }
+                    .listRowSeparator(.automatic)
                 }
                 .frame(height: 15)
             }
