@@ -21,13 +21,13 @@ struct IncludedIngredientSearchCell: View {
             Spacer()
             
             if !viewModel.unwantedSelections.contains(ingredient) {
-                Image(systemName: "plus.circle.fill")
-                    .foregroundStyle(ColorScheme.selectedColor)
+                Image(systemName: "plus.circle")
+                    .foregroundStyle(ColorScheme.tintColor)
                     .font(.system(size: 20))
             }
             
-            Image(systemName:viewModel.unwantedSelections.contains(ingredient)  ? "minus.circle.fill" : "minus.circle")
-                .foregroundStyle(viewModel.unwantedSelections.contains(ingredient)  ? ColorScheme.unwantedColor : Color.primary)
+            Image(systemName:viewModel.unwantedSelections.contains(ingredient)  ? "minus.circle" : "minus.circle.fill")
+                .foregroundStyle(viewModel.unwantedSelections.contains(ingredient)  ? .secondary : ColorScheme.interactionTint)
                 .onTapGesture {
                     viewModel.handleThumbsDown(ingredient: ingredient)
                 }

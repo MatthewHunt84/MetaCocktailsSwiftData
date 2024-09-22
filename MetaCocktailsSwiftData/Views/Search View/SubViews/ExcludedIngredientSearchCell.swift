@@ -18,8 +18,8 @@ struct ExcludedIngredientSearchCell: View {
 
             Spacer()
             
-            Image(systemName: "minus.circle.fill")
-                .foregroundStyle(ColorScheme.unwantedColor)
+            Image(systemName: "minus.circle")
+                .foregroundStyle(.secondary)
                 .font(.system(size: 20))
                 .padding(.horizontal, 10)
         }

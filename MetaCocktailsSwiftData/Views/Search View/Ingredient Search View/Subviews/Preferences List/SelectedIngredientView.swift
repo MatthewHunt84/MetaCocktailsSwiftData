@@ -29,10 +29,10 @@ struct SelectedIngredientView: View {
                 
                 HStack(spacing: 10) {
                     
-                    Image(systemName: isPreferred ? "plus.circle.fill" : "minus.circle.fill")
+                    Image(systemName: isPreferred ? "plus.circle" : "minus.circle")
                         .fontWeight(.semibold)
                         .font(.system(size: 16))
-                        .foregroundStyle(isPreferred ? ColorScheme.selectedColor : ColorScheme.unwantedColor)
+                        .foregroundStyle(isPreferred ? ColorScheme.tintColor : .secondary)
                     
                     ForEach(selections, id: \.self) { selectedIngredient in
                         SelectionTagView(viewModel: SelectionTagViewModel(name: selectedIngredient, isPreferred: isPreferred))
