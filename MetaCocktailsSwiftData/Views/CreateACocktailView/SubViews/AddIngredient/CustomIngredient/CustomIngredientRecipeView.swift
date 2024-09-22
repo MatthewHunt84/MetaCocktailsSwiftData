@@ -32,7 +32,7 @@ struct CustomIngredientRecipeView: View {
                     }
                 }
                 .sheet(isPresented: $isShowingBuildSheet, content: {
-                    AddRecipeStepDetailView(viewModel: viewModel, keyboardFocused: _keyboardFocused, isShowingBuildSheet: $isShowingBuildSheet, editingInstruction: $editingInstruction)
+                    AddRecipeStepDetailView(viewModel: viewModel, keyboardFocused: $keyboardFocused, isShowingBuildSheet: $isShowingBuildSheet, editingInstruction: $editingInstruction)
                 })
                 ForEach(viewModel.prepIngredientRecipe, id: \.id) { buildStep in
                     VStack{
@@ -45,7 +45,7 @@ struct CustomIngredientRecipeView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     .onTapGesture {
-                        viewModel.populateCocktailBuildStepFor(instruction: buildStep)
+                        viewModel.populateBuildStepFor(instruction: buildStep)
                         editingInstruction.toggle()
                         isShowingBuildSheet = true
                     }

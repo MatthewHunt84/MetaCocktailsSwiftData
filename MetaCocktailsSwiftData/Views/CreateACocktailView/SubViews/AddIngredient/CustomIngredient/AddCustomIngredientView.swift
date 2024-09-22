@@ -42,8 +42,17 @@ struct AddCustomIngredientView: View {
                 .background(Color.clear)
                 .toolbar {
                     ToolbarItemGroup(placement: .keyboard) {
-                        KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
-                            .background(Color.clear)
+                        HStack{
+                            Spacer()
+                            Button{
+                                keyboardFocused = false
+                                amountKeyboardFocused = false
+                            } label: {
+                                Text("Done")
+                                    .font(FontFactory.fontBody16)
+                            }
+                            .tint(ColorScheme.interactionTint)
+                        }
                     }
                 }
                 .onAppear {

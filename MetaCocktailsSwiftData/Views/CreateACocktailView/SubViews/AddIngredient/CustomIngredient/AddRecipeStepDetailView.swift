@@ -10,7 +10,7 @@ import SwiftUI
 struct AddRecipeStepDetailView: View {
     @Bindable var viewModel: AddCocktailViewModel
     @State private var textEditor = ""
-    @FocusState var keyboardFocused: Bool
+    @FocusState.Binding var keyboardFocused: Bool
     @Binding var isShowingBuildSheet: Bool
     @Binding var editingInstruction: Bool 
     
@@ -61,7 +61,8 @@ struct AddRecipeStepDetailView: View {
 
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
+    @FocusState var keyboardFocused: Bool
     
-    AddRecipeStepDetailView(viewModel: AddCocktailViewModel(), isShowingBuildSheet: .constant(true), editingInstruction: .constant(true))
+    AddRecipeStepDetailView(viewModel: AddCocktailViewModel(), keyboardFocused: $keyboardFocused, isShowingBuildSheet: .constant(true), editingInstruction: .constant(true))
         .modelContainer(preview.container)
 }

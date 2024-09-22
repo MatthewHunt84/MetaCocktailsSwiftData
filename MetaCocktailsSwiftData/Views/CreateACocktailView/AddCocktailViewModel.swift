@@ -260,7 +260,7 @@ import Combine
         selectedMeasurementUnit = MeasurementUnit(rawValue: ingredient.unit.rawValue) ?? MeasurementUnit.fluidOunces
         isEdit.toggle()
     }
-    func populateCocktailBuildStepFor(instruction: Instruction) {
+    func populateBuildStepFor(instruction: Instruction) {
         currentBuildStep = instruction.step
         currentMethod = instruction.method
         currentBuildInstructionUUID = instruction.id

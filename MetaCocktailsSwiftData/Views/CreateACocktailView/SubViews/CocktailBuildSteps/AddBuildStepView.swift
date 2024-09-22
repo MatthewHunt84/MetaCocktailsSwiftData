@@ -41,7 +41,7 @@ struct AddBuildStepView: View {
                         .foregroundStyle(.white)
                 }
                 .onTapGesture {
-                    viewModel.populateCocktailBuildStepFor(instruction: buildStep)
+                    viewModel.populateBuildStepFor(instruction: buildStep)
                     willEditBuildStep = true
                     isShowingBuildSheet.toggle()
                 }
