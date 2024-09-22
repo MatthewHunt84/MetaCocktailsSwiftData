@@ -80,7 +80,7 @@ struct AddIngredientSearchView: View {
     var body: some View {
         Section(header:  Text("Name").font(FontFactory.sectionHeader12)) {
             VStack{
-                TextField("Ingredient Name", text: $viewModel.ingredientName)
+                TextField("Search for ingredient...", text: $viewModel.ingredientName)
                     .focused($keyboardFocused)
                     .font(FontFactory.formLabel18)
                     .onChange(of: viewModel.ingredientName) { old, new in
