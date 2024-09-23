@@ -27,16 +27,8 @@ struct CocktailListView: View {
                                 GeometryReader { geometry in
                                     Color.clear
                                         .contentShape(Rectangle())
-                                        .frame(
-                                            width: geometry.size.width + 40,
-                                            height: geometry.size.height + 40
-                                        )
-                                        .position(
-                                            x: geometry.frame(in: .local).midX,
-                                            y: geometry.frame(in: .local).midY
-                                        )
-                                }
-                            )
+                                        .frame(width: geometry.size.width + 40, height: geometry.size.height + 40)
+                                        .position(x: geometry.frame(in: .local).midX, y: geometry.frame(in: .local).midY)})
                             .onTapGesture {
                                 searchBarIsFocused = true
                             }
