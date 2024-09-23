@@ -49,6 +49,7 @@ struct FavoriteButton: View {
         Button {
             withAnimation(.snappy) {
                 cocktail.favorite.toggle()
+                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
             }
         } label: {
             Image(systemName:  cocktail.favorite ? "heart.fill" : "heart")
@@ -59,6 +60,8 @@ struct FavoriteButton: View {
                 )
 
         }
+        .sensoryFeedback(.success, trigger: cocktail.favorite)
+        
 
     }
 }
