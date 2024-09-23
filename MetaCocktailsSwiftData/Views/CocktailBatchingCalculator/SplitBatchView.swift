@@ -23,15 +23,16 @@ struct SplitBatchView: View {
                             ContainerMenuView()
                         }
                         .frame(height: 37)
+                        .padding(.horizontal, -25)
                         
                         HStack{
                             Spacer()
                             if viewModel.numberOfContainers == 1 {
                                 Text("Only 1 container required")
-                                    .font(FontFactory.formLabel18)
+                                    .font(FontFactory.fontBody16)
                             } else {
                                 Text("Split into ^[\(NSNumber(value: viewModel.numberOfContainers)) container](inflect: true)")
-                                    .font(FontFactory.formLabel18)
+                                    .font(FontFactory.fontBody16)
                             }
                             Spacer()
                         }
