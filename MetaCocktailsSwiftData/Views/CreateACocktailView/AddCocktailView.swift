@@ -15,6 +15,8 @@ struct AddCocktailView: View {
     @State private var isActive: Bool = false
     @State private var isRiff: Bool = false
     @State private var isSelectingFromTemplate: Bool = false
+    @FocusState private var cocktailBuildStepKeyboardFocused: Bool
+    @State private var isShowingInfo = false
     
     var body: some View {
         
@@ -37,10 +39,13 @@ struct AddCocktailView: View {
                     Section(header: Text("Extras").font(FontFactory.sectionHeader12)) {
                         GlassPickerButton(viewModel: viewModel)
                         IcePicker(ice: $viewModel.ice)
-                        VariationPicker(viewModel: viewModel)
+                        VariationPicker(viewModel: viewModel, isShowingInfo: $isShowingInfo)
                     }
+                    VariationInfoView(isShowingInfo: $isShowingInfo)
                     
-                    GarnishPicker(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive)
+                    Section(header: Text("Garnish").font(FontFactory.sectionHeader12)) {
+                        GarnishPicker(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive)
+                    }
                     
                     Section(header: Text("Credit (optional)").font(FontFactory.sectionHeader12)) {
                         TextField("Author", text: $viewModel.authorName)
@@ -55,25 +60,13 @@ struct AddCocktailView: View {
                             .font(FontFactory.formLabel18)
                     }
                     Section(header: Text("Build steps (optional)").font(FontFactory.sectionHeader12)) {
-                        AddBuildStepView(viewModel: viewModel)
+                        AddBuildStepView(viewModel: viewModel, cocktailBuildStepKeyboardFocused: _cocktailBuildStepKeyboardFocused)
                     }
                     
-                    
-                    Button{
+                    UniversalBlueButton(buttonText: "Clear Form",rightImage: nil, leftImage: Image(systemName: "xmark"), includeBorder: true) {
                         viewModel.clearData()
-                    } label: {
-                        HStack {
-                            Image(systemName: "arrow.triangle.2.circlepath")
-                                .font(.headline).bold()
-                            Text("Reset to Defaults")
-                                .font(FontFactory.fontBody16)
-                        }
-                        .tint(ColorScheme.interactionTint)
-                        .padding()
                     }
-                    .frame(width: 380, height: 40,  alignment: .center)
-                    
-                    
+                    .listRowBackground(Color.clear)
                 }
                 .blur(radius: (viewModel.isShowingUniqueNameAlert || viewModel.isShowingAlert) ? 3 : 0)
                 .scrollContentBackground(.hidden)
@@ -92,7 +85,7 @@ struct AddCocktailView: View {
                     }
                     
                     ToolbarItem(placement: .bottomBar) {
-                        Button {
+                        UniversalBlueButton(buttonText: "Add to cocktails", rightImage: Image(systemName: "plus"), includeBorder: false) {
                             guard nameIsUnique() else {
                                 viewModel.isShowingUniqueNameAlert.toggle()
                                 return
@@ -107,19 +100,14 @@ struct AddCocktailView: View {
                                     viewModel.isShowingAlert.toggle()
                                 }
                             }
-                            
-                        } label: {
-                            HStack {
-                                Text("Add to cocktails")
-                                    .font(FontFactory.bottomToolbarButton20)
-                                Image(systemName: "plus")
-                            }
-                            .foregroundStyle(viewModel.isValid() ? .brandPrimaryGold : .secondary)
                         }
+                        .foregroundStyle(viewModel.isValid() ? ColorScheme.interactionTint : Color.secondary)
                     }
+                    
                     ToolbarItemGroup(placement: .keyboard) {
                         Spacer()
                         Button {
+                            cocktailBuildStepKeyboardFocused = false 
                             yearKeyboardFocused = false
                         } label: {
                             Text("Done")
@@ -129,8 +117,9 @@ struct AddCocktailView: View {
                         
                     }
                     
+                    
                 }
-                .fullScreenCover(isPresented: $viewModel.addExistingGarnishViewIsActive) {
+                .fullScreenCover(isPresented: $addExistingGarnishViewIsActive) {
                     GarnishDetailView(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive)
                         .navigationBarBackButtonHidden(true)
                 }
@@ -165,6 +154,20 @@ struct AddCocktailView: View {
                 }
             }
         }
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button {
+                    yearKeyboardFocused = false
+                    
+                } label: {
+                    Text("Done")
+                        .font(FontFactory.fontBody16)
+                }
+                .tint(ColorScheme.interactionTint)
+                
+            }
+        }
     }
     
     func nameIsUnique() -> Bool {
@@ -184,6 +187,7 @@ struct AddCocktailView: View {
         }
     }
 }
+
 
 private struct GlassPickerButton: View {
     @Bindable var viewModel: AddCocktailViewModel
@@ -230,12 +234,13 @@ private struct GlassPickerDetailView: View {
                             HStack {
                                 newGlass.findGlass(for: newGlass)
                                     .resizable()
-                                    .frame(width: 60, height: 60, alignment: .trailing)
+                                    .frame(width: 40, height: 40, alignment: .trailing)
+                                    .padding(.trailing, 10)
                                 
                                 Text(newGlass.rawValue)
                                     .tag(Optional(newGlass))
-                                    .font(FontFactory.bottomToolbarButton20)
-                                    .foregroundStyle(.primary)
+                                    .font(FontFactory.mediumFont(size: 16))
+                                    .foregroundStyle(.white)
                             }
                         }
                     }
@@ -279,36 +284,29 @@ private struct GarnishPicker: View {
     @Bindable var viewModel: AddCocktailViewModel
     @Binding var addExistingGarnishViewIsActive: Bool
     var body: some View {
-        
-        Section {
-            
-            List{
-                ForEach(viewModel.addedGarnish, id: \.name) { garnish in
-                    Text(garnish.name)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .font(FontFactory.formLabel18)
-                }
-                .onDelete(perform: { indexSet in
-                    viewModel.addedGarnish.remove(atOffsets: indexSet)
-                })
+        List{
+            ForEach(viewModel.addedGarnish, id: \.name) { garnish in
+                Text(garnish.name)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(FontFactory.formLabel18)
             }
-            Button {
-                addExistingGarnishViewIsActive.toggle()
-                
-            } label: {
-                HStack {
-                    Text(viewModel.addedGarnish.count < 1 ? "Add Garnish" : "Add another garnish")
-                        .tint(viewModel.addedGarnish.count < 1 ? .primary : .secondary)
-                        .font(FontFactory.formLabel18)
-                    Spacer()
-                    Image(systemName: "plus.circle.fill")
-                        .foregroundStyle(ColorScheme.interactionTint)
-                }
-            }
-        } header: {
-            Text("Garnish")
+            .onDelete(perform: { indexSet in
+                viewModel.addedGarnish.remove(atOffsets: indexSet)
+            })
         }
-        
+        Button {
+            addExistingGarnishViewIsActive.toggle()
+            
+        } label: {
+            HStack {
+                Text(viewModel.addedGarnish.count < 1 ? "Add Garnish" : "Add another garnish")
+                    .tint(viewModel.addedGarnish.count < 1 ? .primary : .secondary)
+                    .font(FontFactory.formLabel18)
+                Spacer()
+                Image(systemName: "plus.circle.fill")
+                    .foregroundStyle(ColorScheme.interactionTint)
+            }
+        }
     }
 }
 

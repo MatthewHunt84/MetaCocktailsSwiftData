@@ -418,7 +418,7 @@ struct SpecIngredientView: View {
             .multilineTextAlignment(.leading)
             if isShowingIngredientInfo {
                 Text(ingredient.ingredientBase.info!)
-                    .font(.footnote)
+                    .font(FontFactory.goldInfoFootnote13)
                     .foregroundStyle(.brandPrimaryGold)
                 
                 

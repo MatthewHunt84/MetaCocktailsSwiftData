@@ -73,6 +73,7 @@
 		4D1442CD2C976BB7006C882F /* PinaColada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1442CC2C976BB7006C882F /* PinaColada.swift */; };
 		4D1442CF2C977092006C882F /* WhiskeySourWnG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1442CE2C977092006C882F /* WhiskeySourWnG.swift */; };
 		4D1442D12C9B72AA006C882F /* BottleMathModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1442D02C9B72AA006C882F /* BottleMathModalView.swift */; };
+		4D1442D32C9FE5E3006C882F /* UniversalBlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1442D22C9FE5E3006C882F /* UniversalBlueButton.swift */; };
 		4D1E85B12B5C6AEA00214BC6 /* GreatWhiteBuffalo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E85B02B5C6AEA00214BC6 /* GreatWhiteBuffalo.swift */; };
 		4D1E85B32B5C737D00214BC6 /* PeanutButterFalon .swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E85B22B5C737D00214BC6 /* PeanutButterFalon .swift */; };
 		4D1E85B52B5C7B6500214BC6 /* NetfilixAndChill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E85B42B5C7B6500214BC6 /* NetfilixAndChill.swift */; };
@@ -616,6 +617,7 @@
 		4D1442CC2C976BB7006C882F /* PinaColada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinaColada.swift; sourceTree = "<group>"; };
 		4D1442CE2C977092006C882F /* WhiskeySourWnG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiskeySourWnG.swift; sourceTree = "<group>"; };
 		4D1442D02C9B72AA006C882F /* BottleMathModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleMathModalView.swift; sourceTree = "<group>"; };
+		4D1442D22C9FE5E3006C882F /* UniversalBlueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalBlueButton.swift; sourceTree = "<group>"; };
 		4D1E85B02B5C6AEA00214BC6 /* GreatWhiteBuffalo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreatWhiteBuffalo.swift; sourceTree = "<group>"; };
 		4D1E85B22B5C737D00214BC6 /* PeanutButterFalon .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PeanutButterFalon .swift"; sourceTree = "<group>"; };
 		4D1E85B42B5C7B6500214BC6 /* NetfilixAndChill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetfilixAndChill.swift; sourceTree = "<group>"; };
@@ -1977,6 +1979,7 @@
 				F4F3D4212C90996200BB6767 /* ColorScheme.swift */,
 				F4AA6BB92C7E2C4D00610D80 /* FontFactory.swift */,
 				F4AA6BB72C7E2B8600610D80 /* Headers.swift */,
+				4D1442D22C9FE5E3006C882F /* UniversalBlueButton.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -2243,6 +2246,7 @@
 				4DBFF81D2B5FB0840011B5B1 /* Americano(WilliamsAndGraham).swift in Sources */,
 				4D5DA0A02B9FEAF300C14F1F /* FrescaPlatino.swift in Sources */,
 				F4C6A8F32AB003C200BB0AD0 /* Localization.swift in Sources */,
+				4D1442D32C9FE5E3006C882F /* UniversalBlueButton.swift in Sources */,
 				F4C6A8EC2AAFFE5700BB0AD0 /* Tags.swift in Sources */,
 				F493F3AB2C6CF18D006A0ADB /* SelectedIngredientView.swift in Sources */,
 				4D088FCA2B62E3640047B056 /* RecipeViewModel.swift in Sources */,

@@ -22,6 +22,7 @@ import Combine
     
     var selectedMeasurementUnit = MeasurementUnit.fluidOunces
     var currentSelectedComponent = CocktailComponent(name: "Placeholder")
+    var filteredIngredients: [IngredientBase] = []
 
     var isShowingAlert: Bool = false
     var dateAdded = Date()
@@ -44,7 +45,6 @@ import Combine
     var addedIngredients: [Ingredient] = []
     var didChooseExistingIngredient: Bool = false
     var isShowingingredientAlert: Bool = false
-    var addIngredientDetailViewIsActive = false
  
     //Garnish
     var addedGarnish: [Garnish] = []
@@ -71,8 +71,11 @@ import Combine
     var authorYear: String = ""
     var author: Author?
     
-    // Build
+    // Cocktail Build Instructions
     var build: Build = Build(instructions: [])
+    var currentBuildInstructionUUID: UUID = UUID()
+    var currentBuildStep: Int = 0
+    var currentMethod: String = ""
     var buildOption: Build?
     func validateBuildInstructions() {
         if build.instructions != [] {
@@ -258,6 +261,32 @@ import Combine
         selectedMeasurementUnit = MeasurementUnit(rawValue: ingredient.unit.rawValue) ?? MeasurementUnit.fluidOunces
         isEdit.toggle()
     }
+    func populateBuildStepFor(instruction: Instruction) {
+        currentBuildStep = instruction.step
+        currentMethod = instruction.method
+        currentBuildInstructionUUID = instruction.id
+    }
+    func reEnumerateBuildSteps() {
+        for (index, _) in build.instructions.enumerated() {
+            build.instructions[index].step = index + 1
+        }
+    }
+    func reEnumeratePrepIngredientRecipe() {
+        for (index, _) in prepIngredientRecipe.enumerated() {
+            prepIngredientRecipe[index].step = index + 1
+        }
+    }
+    
+    func updateBuildInstruction(id: UUID, newMethod: String) {
+        if let index = build.instructions.firstIndex(where: { $0.id == id }) {
+            build.instructions[index].method = newMethod
+        }
+    }
+    func updatePrepIngredientRecipe(id: UUID, newMethod: String) {
+        if let index = prepIngredientRecipe.firstIndex(where: { $0.id == id }) {
+            prepIngredientRecipe[index].method = newMethod
+        }
+    }
     func populateExistingIngredient(ingredient: Ingredient) {
         ingredientName = ingredient.ingredientBase.name
         category = UmbrellaCategory(rawValue: ingredient.ingredientBase.umbrellaCategory) ?? UmbrellaCategory.agaves
@@ -278,6 +307,7 @@ import Combine
             addedIngredients.remove(at: index)
         }
     }
+    
     
     func customGarnishIsValid(allGarnishes: [Garnish]) -> Bool {
         return currentGarnishName != "" &&
@@ -323,15 +353,15 @@ import Combine
 
    
     
-    func matchAllIngredients(ingredients: [IngredientBase]) -> [IngredientBase] {
+    func matchAllIngredients(ingredients: [IngredientBase]) {
         
         guard !ingredientName.isEmpty else {
-             return [] // Return all ingredients if search text is empty
+            return filteredIngredients = [] // Return all ingredients if search text is empty
          }
-        
+//        
         let lowercasedSearchText = ingredientName.lowercased()
         
-        return ingredients.filter { $0.name.lowercased().contains(lowercasedSearchText) }
+        filteredIngredients = ingredients.filter { $0.name.lowercased().contains(lowercasedSearchText) }
             .sorted { lhs, rhs in
                 let lhsLowercased = lhs.name.lowercased()
                 let rhsLowercased = rhs.name.lowercased()

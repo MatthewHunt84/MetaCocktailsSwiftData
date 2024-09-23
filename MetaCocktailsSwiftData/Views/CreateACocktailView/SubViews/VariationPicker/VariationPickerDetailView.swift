@@ -27,6 +27,7 @@ struct VariationPickerDetailView: View {
                 
                 VStack {
                     SearchBarForCreateCocktailView(isFocused: $isSearchFocused, viewModel: viewModel)
+                        .padding()
                     List {
                         ForEach(viewModel.filteredCocktails, id: \.id) { cocktail in
                             if !viewModel.searchText.isEmpty {
@@ -48,7 +49,7 @@ struct VariationPickerDetailView: View {
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-            .jamesHeader("Add Variation Name")
+            .jamesHeaderWithNavigation(title: "Add Variation Name", dismiss: dismiss)
         }
         .onAppear {
             viewModel.setAllCocktails(allCocktails)
@@ -60,17 +61,20 @@ struct VariationPickerDetailView: View {
 struct VariationPicker: View {
     @Bindable var viewModel: AddCocktailViewModel
     @State private var isShowingVariationPicker = false
-    @State private var isShowingInfo = false
+    @Binding var isShowingInfo: Bool
+
     var body: some View {
-        VStack {
-            NavigationLink(destination: VariationPickerDetailView(viewModel: viewModel)) {
+        VStack(spacing: 0) {
+            NavigationLink(destination: VariationPickerDetailView(viewModel: viewModel).navigationBarBackButtonHidden(true)) {
                 HStack {
                     Text("Variation")
                         .font(FontFactory.formLabel18)
                     Image(systemName: "info.circle")
-                        .foregroundStyle(isShowingInfo ? .brandPrimaryGold : .blue)
+                        .foregroundStyle(ColorScheme.interactionTint)
                         .onTapGesture {
-                            isShowingInfo.toggle()
+                            withAnimation(.easeInOut(duration: 0.3)) {
+                                isShowingInfo.toggle()
+                            }
                         }
                     Spacer()
                     Text(viewModel.customVariationName ?? "None")
@@ -78,12 +82,23 @@ struct VariationPicker: View {
                         .foregroundColor(.gray)
                 }
             }
+        }
+    }
+}
+
+struct VariationInfoView: View {
+    @Binding var isShowingInfo: Bool
+    
+    var body: some View {
+        Section {
             if isShowingInfo {
                 Text("If this cocktail is a riff on another cocktail, you may add it here. Variations will be grouped together in the search list and in the custom cocktails tab.")
-                    .font(FontFactory.sectionHeader12)
+                    .font(FontFactory.fontBody14)
                     .foregroundStyle(.brandPrimaryGold)
-                    .padding(.top, 10)
+                    .backgroundStyle(Color.clear)
             }
         }
+        .listSectionSpacing(0)
+        .listRowBackground(Color.clear)
     }
 }

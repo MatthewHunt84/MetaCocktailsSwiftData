@@ -15,6 +15,6 @@ struct Build: Codable {
 struct Instruction: Codable, Identifiable, Equatable {
     var id = UUID()
     
-    let step: Int
-    let method: String
+    var step: Int
+    var method: String
 }
