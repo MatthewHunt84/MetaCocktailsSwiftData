@@ -11,6 +11,7 @@ import SwiftData
 struct AllCocktailsListView: View {
     @Bindable var viewModel: CocktailListViewModel
     @Environment(\.modelContext) private var modelContext
+    @Binding var animatingLetter: String?
 
     var body: some View {
         let organizedCocktails = viewModel.organizeCocktails(viewModel.filteredCocktails)
@@ -37,12 +38,42 @@ struct AllCocktailsListView: View {
                 }
                 .listRowBackground(Color.clear)
             } header: {
-                Text(letter)
-                    .font(FontFactory.listLetter(size: 28))
-                    .foregroundColor(Color.secondary)
+               AnimatedSectionHeader(letter: letter, animatingLetter: $animatingLetter)
+//                Text(letter)
+//                    .font(FontFactory.listLetter(size: 28))
+//                    .foregroundColor(Color.secondary)
             }
             .id(letter)
         }
+    }
+}
+
+struct AnimatedSectionHeader: View {
+    let letter: String
+    @Binding var animatingLetter: String?
+    
+    @State private var isAnimating = false
+    
+    var body: some View {
+        Text(letter)
+            .font(FontFactory.listLetter(size: 28))
+            .foregroundColor(Color.secondary)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.leading)
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(isAnimating ? Color.brandPrimaryGold : Color.clear)
+                    .animation(.easeInOut(duration: 0.3), value: isAnimating)
+            )
+            .onChange(of: animatingLetter) { oldValue, newValue in
+                if newValue == letter {
+                    isAnimating = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        isAnimating = false
+                        animatingLetter = nil
+                    }
+                }
+            }
     }
 }
 
