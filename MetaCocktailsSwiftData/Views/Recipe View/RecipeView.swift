@@ -28,40 +28,11 @@ struct RecipeView: View {
                             RecipeTitleView(cocktail: viewModel.cocktail)
                         }
                         ToolbarItem(placement: .topBarLeading) {
-                            DebugBackButton()
+                            BackButton()
                         }
                     }
                 }
             }
-        }
-        .onAppear {
-            print("RecipeView appeared")
-        }
-        .onDisappear {
-            print("RecipeView disappeared")
-        }
-    }
-}
-struct DebugBackButton: View {
-    @Environment(\.dismiss) private var dismiss
-    
-    var body: some View {
-        Button(action: {
-            print("Back button tapped")
-            DispatchQueue.main.async {
-                dismiss()
-            }
-        }) {
-            Image(systemName: "chevron.backward")
-                .font(.system(size: 16))
-                .bold()
-                .tint(ColorScheme.interactionTint)
-        }
-        .onAppear {
-            print("BackButton appeared")
-        }
-        .onDisappear {
-            print("BackButton disappeared")
         }
     }
 }

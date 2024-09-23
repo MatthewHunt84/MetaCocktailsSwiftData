@@ -55,6 +55,12 @@ import Combine
         return organizedCocktailsCache[letter] ?? [:]
     }
     
+    func setAllCocktails(_ cocktails: [Cocktail]) {
+        self.allCocktails = cocktails
+        updateFilteredCocktails()
+        cacheOrganizedCocktails()
+    }
+    
     private func updateFilteredCocktails() {
         let lowercasedSearchText = debouncedSearchText.lowercased()
         
@@ -86,12 +92,6 @@ import Combine
         }
     }
     
-    func setAllCocktails(_ cocktails: [Cocktail]) {
-        self.allCocktails = cocktails
-        updateFilteredCocktails()
-        cacheOrganizedCocktails()
-    }
-
     func selectedCocktailVariations(for cocktail: Cocktail) -> [Cocktail] {
         
         let variationsWithSelectedCocktailFirst = allCocktails.filter { $0.variationName == cocktail.cocktailName }.sorted {
