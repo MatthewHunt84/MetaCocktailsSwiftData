@@ -13,41 +13,34 @@ struct EditBatchModalView: View {
     
     
     var body: some View {
-        
-        VStack {
-            
-            HStack {
-                
-                Spacer()
-                
-                FontFactory.titleHeader22(title: "Batching Preferences")
-                
-                Spacer()
-                
-                Button {
-                    dismiss()
-                } label: {
+            VStack {
+                HStack {
+                    Spacer()
+                    FontFactory.titleHeader22(title: "Batching Preferences")
                     
-                    Image(systemName: "chevron.down")
-                        .font(.system(size: 20))
-                        .bold()
-                        .tint(ColorScheme.interactionTint)
+                    Spacer()
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "chevron.down")
+                            .font(.system(size: 20))
+                            .bold()
+                            .tint(ColorScheme.interactionTint)
+                    }
                 }
-            }
-            .padding(.bottom, 20)
-            
-            List {
+                .padding(.bottom, 20)
                 Section(header: FontFactory.mediumText("Included Ingredients", size: 20)) {
                     ForEach($viewModel.loadedCocktailData.ingredients, id: \.ingredient.ingredientBase.name) { ingredient in
                         LoadedCocktailIngredientCell(ingredient: ingredient)
                     }
                 }
+                .padding(.horizontal)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+                Spacer()
             }
-            .listStyle(.plain)
-            .clipShape(RoundedRectangle(cornerRadius: 12))
-        }
-        .padding()
-        .background(BlackGlassBackgroundView())
+            .padding()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(BlackGlassBackgroundView())
     }
 }
 

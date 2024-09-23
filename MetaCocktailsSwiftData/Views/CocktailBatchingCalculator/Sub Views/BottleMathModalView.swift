@@ -15,7 +15,7 @@ struct BottleMathModalView: View {
     @State private var bottleSizeText: Int = 0
     @State private var numberOfBottlesText: Int = 0
     @State private var isEditingValues: Bool = false
-    @FocusState private var keyboardFocused: Bool
+    @FocusState var keyboardFocused: Bool
     
     var body: some View {
         

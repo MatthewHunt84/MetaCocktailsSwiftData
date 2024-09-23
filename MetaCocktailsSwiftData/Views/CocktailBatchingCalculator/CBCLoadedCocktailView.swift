@@ -120,7 +120,8 @@ struct QuantifiedIngredientsListView: View {
     @EnvironmentObject var viewModel: CBCViewModel
     @FocusState private var isFocused: Bool
     @FocusState.Binding var isInputActive: Bool
-    
+    @FocusState private var bottleBatchInputActive: Bool
+    @State private var isShowingBottleMathModal: Bool = false
     
     var body: some View {
         
@@ -151,12 +152,11 @@ struct QuantifiedIngredientsListView: View {
             
             Section(header: CBCIngredientSectionHeader(), footer: CBCIngredientSectionFooter()) {
                 ForEach($viewModel.quantifiedBatchedIngredients, id: \.id) { $ingredient in
-                    BatchCellView(
-                        quantifiedBatchedIngredient: $ingredient,
-                        isFocused: $isFocused
-                    )
+                    BatchCellView(quantifiedBatchedIngredient: $ingredient,
+                                  isShowingBottleMathModal: $isShowingBottleMathModal,
+                                  isFocused: $isFocused,
+                                  bottleBatchInputActive: _bottleBatchInputActive)
                 }
-                
                 HStack {
                     Text("Dilution")
                         .font(FontFactory.formLabel18)
@@ -188,6 +188,7 @@ struct QuantifiedIngredientsListView: View {
                 Button("Done") {
                     isInputActive = false
                     isFocused = false
+                    bottleBatchInputActive = false
                     viewModel.finishEditing()
                     viewModel.convertIngredientsToBatchCellData()
                         
