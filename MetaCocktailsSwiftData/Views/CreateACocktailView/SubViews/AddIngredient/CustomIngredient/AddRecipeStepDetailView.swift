@@ -10,45 +10,56 @@ import SwiftUI
 struct AddRecipeStepDetailView: View {
     @Bindable var viewModel: AddCocktailViewModel
     @State private var textEditor = ""
-    @FocusState var keyboardFocused: Bool
+    @FocusState var recipeKeyboardFocused: Bool
     @Binding var isShowingBuildSheet: Bool
+    @Binding var editingInstruction: Bool 
     
     var body: some View {
         VStack {
-            Form {
+            List {
                 Section("Add a recipe step") {
-                    Text("Step \(viewModel.prepIngredientRecipe.count + 1)")
+                    Text(editingInstruction ? "\(viewModel.currentBuildStep)" : "Step \(viewModel.prepIngredientRecipe.count + 1)")
+                        .font(FontFactory.formLabel18)
                     TextEditor(text: $textEditor)
-                        .focused($keyboardFocused)
+                        .font(FontFactory.formLabel18)
+                        .focused($recipeKeyboardFocused)
                         .frame(minHeight: 100)
-                        .scrollContentBackground(.hidden) 
+                        .scrollContentBackground(.hidden)
                         .background(Color.clear)
                 }
-                Button {
-                    viewModel.prepIngredientRecipe.append(Instruction(step: viewModel.prepIngredientRecipe.count + 1, method: textEditor))
-                    isShowingBuildSheet = false
-                } label: {
-                    HStack {
-                        Spacer()
-                        Text("Add Step").font(.headline)
-                        Image(systemName:textEditor != "" ? "plus.circle.fill" : "plus")
-                        Spacer()
+                UniversalBlueButton(buttonText: "Add Recipe Step", rightImage: Image(systemName:"plus"), includeBorder: true) {
+                    if editingInstruction {
+                        viewModel.updatePrepIngredientRecipe(id: viewModel.currentBuildInstructionUUID, newMethod: textEditor)
+                    } else {
+                        viewModel.prepIngredientRecipe.append(Instruction(step: viewModel.prepIngredientRecipe.count + 1, method: textEditor))
                     }
-                    .foregroundStyle(textEditor != "" ? .brandPrimaryGold : .secondary)
+                    isShowingBuildSheet = false
+                    editingInstruction = false
                 }
+                .listRowBackground(Color.clear)
+                .disabled(textEditor == "" ? true : false)
+                .foregroundStyle(textEditor != "" ? Color.secondary : ColorScheme.interactionTint)
             }
             .scrollContentBackground(.hidden)
             .background(BlackGlassBackgroundView())
-            .task {
-                keyboardFocused = true
+            Spacer()
+        }
+        .task {
+            if editingInstruction {
+                textEditor = viewModel.currentMethod
             }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                recipeKeyboardFocused = true
+            }
+            
         }
     }
 }
 
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
+    @FocusState var keyboardFocused: Bool
     
-    return AddRecipeStepDetailView(viewModel: AddCocktailViewModel(), isShowingBuildSheet: .constant(true))
+    AddRecipeStepDetailView(viewModel: AddCocktailViewModel(), recipeKeyboardFocused: _keyboardFocused, isShowingBuildSheet: .constant(true), editingInstruction: .constant(true))
         .modelContainer(preview.container)
 }

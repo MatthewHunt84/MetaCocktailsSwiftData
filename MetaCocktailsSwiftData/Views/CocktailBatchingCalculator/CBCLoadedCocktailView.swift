@@ -180,7 +180,9 @@ struct QuantifiedIngredientsListView: View {
                     isFocused = false
                     viewModel.finishEditing()
                     viewModel.convertIngredientsToBatchCellData()
+                        
                 }
+                .tint(ColorScheme.interactionTint)
             }
         }
     }
@@ -237,3 +239,4 @@ struct SplitBatchButton: View {
         }
     }
 }
+

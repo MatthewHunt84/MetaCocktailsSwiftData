@@ -15,7 +15,8 @@ struct AddCustomIngredientView: View {
     @FocusState private var amountKeyboardFocused: Bool
     @Environment(\.dismiss) private var dismiss
     @Binding var isShowingAddIngredients: Bool
-    @Binding var isShowingCustomIngredientView: Bool 
+    @Binding var isShowingCustomIngredientView: Bool
+    @FocusState private var recipeKeyboardFocused: Bool
     
     var body: some View {
         NavigationStack {
@@ -33,7 +34,7 @@ struct AddCustomIngredientView: View {
                     }
                     CategoryPickerView(viewModel: viewModel)
                     AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
-                    CustomIngredientRecipeView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
+                    CustomIngredientRecipeView(viewModel: viewModel, recipeKeyboardFocused: _recipeKeyboardFocused)
                     AddCustomIngredientToCocktailButton(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView)
                 }
                 .navigationBarTitleDisplayMode(.inline)
@@ -42,8 +43,18 @@ struct AddCustomIngredientView: View {
                 .background(Color.clear)
                 .toolbar {
                     ToolbarItemGroup(placement: .keyboard) {
-                        KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
-                            .background(Color.clear)
+                        HStack{
+                            Spacer()
+                            Button{
+                                keyboardFocused = false
+                                amountKeyboardFocused = false
+                                recipeKeyboardFocused = false
+                            } label: {
+                                Text("Done")
+                                    .font(FontFactory.fontBody16)
+                            }
+                            .tint(ColorScheme.interactionTint)
+                        }
                     }
                 }
                 .onAppear {
