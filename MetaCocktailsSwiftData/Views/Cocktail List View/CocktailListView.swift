@@ -23,7 +23,23 @@ struct CocktailListView: View {
                     VStack(spacing: 0) {
                         SearchBarForCocktailListView(isFocused: $searchBarIsFocused, viewModel: viewModel)
                             .padding()
-                        
+                            .overlay(
+                                GeometryReader { geometry in
+                                    Color.clear
+                                        .contentShape(Rectangle())
+                                        .frame(
+                                            width: geometry.size.width + 40,
+                                            height: geometry.size.height + 40
+                                        )
+                                        .position(
+                                            x: geometry.frame(in: .local).midX,
+                                            y: geometry.frame(in: .local).midY
+                                        )
+                                }
+                            )
+                            .onTapGesture {
+                                searchBarIsFocused = true
+                            }
                         GeometryReader { listGeo in
                             HStack(spacing: 0) {
                                 ScrollViewReader { proxy in
@@ -130,6 +146,7 @@ struct SearchBarForCocktailListView: View {
                 viewModel.searchText = ""
             }
             .submitLabel(.done)
+            
     }
 }
 
