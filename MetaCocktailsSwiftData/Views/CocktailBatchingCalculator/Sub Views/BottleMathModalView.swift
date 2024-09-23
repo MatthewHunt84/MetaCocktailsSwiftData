@@ -84,6 +84,7 @@ struct BottleMathModalView: View {
                 .padding(.bottom, 30)
                 
                 Button {
+                    updateBatchWithBottleMath()
                     isShowingBottleMathModal = false
                 } label : {
                         Text("Calculate")
