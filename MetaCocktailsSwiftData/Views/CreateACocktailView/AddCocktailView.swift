@@ -85,7 +85,7 @@ struct AddCocktailView: View {
                     }
                     
                     ToolbarItem(placement: .bottomBar) {
-                        UniversalBlueButton(buttonText: "Add to cocktails", rightImage: Image(systemName: "plus"), leftImage: nil, includeBorder: false) {
+                        UniversalBlueButton(buttonText: "Add to cocktails", rightImage: Image(systemName: "plus"), includeBorder: false) {
                             guard nameIsUnique() else {
                                 viewModel.isShowingUniqueNameAlert.toggle()
                                 return

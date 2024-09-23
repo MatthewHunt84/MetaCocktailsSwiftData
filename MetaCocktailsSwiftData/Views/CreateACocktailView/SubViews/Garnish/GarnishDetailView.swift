@@ -108,7 +108,7 @@ struct AddExistingGarnishToCocktailButton: View {
     
     var body: some View {
         Section {
-            UniversalBlueButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), leftImage: nil, includeBorder: true) {
+            UniversalBlueButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), includeBorder: true) {
                 if viewModel.existingGarnishIsValid(allGarnishes: garnish) {
                     viewModel.addExistingGarnishToCocktail(context: modelContext)
                     addExistingGarnishViewIsActive = false

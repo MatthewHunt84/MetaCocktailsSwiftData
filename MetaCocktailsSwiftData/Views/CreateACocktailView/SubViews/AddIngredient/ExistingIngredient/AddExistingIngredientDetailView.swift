@@ -164,7 +164,7 @@ struct AddExistingIngredientToCocktailButton: View {
     
     var body: some View {
         
-        UniversalBlueButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), leftImage: nil, includeBorder: true) {
+        UniversalBlueButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), includeBorder: true) {
             if viewModel.existingIngredientIsValid(allIngredients: ingredients) {
                 viewModel.removeIngredient()
                 let ingredient = Ingredient(ingredientBase: IngredientBase(name: viewModel.ingredientName,

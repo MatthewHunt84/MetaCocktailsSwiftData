@@ -15,6 +15,14 @@ struct UniversalBlueButton: View {
     let includeBorder: Bool
     let action: () -> ()
     
+    init(buttonText: String, rightImage: Image? = nil, leftImage: Image? = nil, includeBorder: Bool, action: @escaping () -> Void) {
+        self.buttonText = buttonText
+        self.rightImage = rightImage
+        self.leftImage = leftImage
+        self.includeBorder = includeBorder
+        self.action = action
+    }
+    
     var body: some View {
         HStack {
             Spacer()
@@ -45,5 +53,5 @@ struct UniversalBlueButton: View {
 
 
 #Preview {
-    UniversalBlueButton(buttonText: "Enter", rightImage: nil, leftImage: nil, includeBorder: true, action: {})
+    UniversalBlueButton(buttonText: "Enter", includeBorder: true, action: {})
 }

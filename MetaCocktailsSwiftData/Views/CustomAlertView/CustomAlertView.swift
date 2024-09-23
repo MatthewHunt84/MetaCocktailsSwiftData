@@ -30,7 +30,7 @@ struct CustomAlertView: View {
                     .padding(.bottom, 5)
                     
                 
-                UniversalBlueButton(buttonText: buttonTitle, rightImage: nil, leftImage: nil, includeBorder: true) {
+                UniversalBlueButton(buttonText: buttonTitle, includeBorder: true) {
                     action()
                     close()
                 }

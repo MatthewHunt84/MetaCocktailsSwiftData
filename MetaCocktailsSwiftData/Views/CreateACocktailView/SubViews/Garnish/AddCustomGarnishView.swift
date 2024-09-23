@@ -51,7 +51,7 @@ struct AddCustomGarnishToCocktailButton: View {
     
     var body: some View {
         Section {
-            UniversalBlueButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), leftImage: nil, includeBorder: true) {
+            UniversalBlueButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), includeBorder: true) {
                 if viewModel.customGarnishIsValid(allGarnishes: garnish){
                     viewModel.addedGarnish.append(Garnish(name: viewModel.currentGarnishName))
                     viewModel.clearIngredientData()
