@@ -21,6 +21,8 @@ import Combine
     private var cancellables = Set<AnyCancellable>()
     private let searchSubject = PassthroughSubject<String, Never>()
     
+    private var organizedCocktailsCache: [String: [String: [Cocktail]]] = [:]
+    
     init() {
         setupSearch()
     }
@@ -42,6 +44,15 @@ import Combine
     private func performSearch(_ searchText: String) {
         self.debouncedSearchText = searchText
         updateFilteredCocktails()
+    }
+    
+    private func cacheOrganizedCocktails() {
+        for letter in cocktailListAlphabet {
+            organizedCocktailsCache[letter] = organizeCocktails(filteredCocktails.filter { $0.cocktailName.hasPrefix(letter) })
+        }
+    }
+    func getOrganizedCocktails(for letter: String) -> [String: [Cocktail]] {
+        return organizedCocktailsCache[letter] ?? [:]
     }
     
     private func updateFilteredCocktails() {
@@ -78,6 +89,7 @@ import Combine
     func setAllCocktails(_ cocktails: [Cocktail]) {
         self.allCocktails = cocktails
         updateFilteredCocktails()
+        cacheOrganizedCocktails()
     }
 
     func selectedCocktailVariations(for cocktail: Cocktail) -> [Cocktail] {

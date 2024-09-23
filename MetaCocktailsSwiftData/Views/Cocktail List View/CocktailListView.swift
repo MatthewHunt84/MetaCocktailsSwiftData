@@ -35,18 +35,21 @@ struct CocktailListView: View {
                         GeometryReader { listGeo in
                             HStack(spacing: 0) {
                                 ScrollViewReader { proxy in
-                                    List {
+                                    ScrollView {
                                         if searchBarIsFocused {
                                             SearchBarAllCocktailsListView(viewModel: viewModel)
                                         } else {
                                             AllCocktailsListView(viewModel: viewModel, animatingLetter: $selectedNavigationLetter)
                                         }
                                     }
-                                    .listStyle(.plain)
                                     .frame(width: listGeo.size.width * 0.90)
                                     .onChange(of: selectedNavigationLetter) { oldValue, newValue in
-                                        proxy.scrollTo(newValue, anchor: .top)
+                                        if let newValue = newValue {
+                                            withAnimation(.easeOut(duration: 0.2)) {
+                                                proxy.scrollTo(newValue, anchor: .top)
+                                            }
                                             selectedNavigationLetter = nil
+                                        }
                                     }
                                 }
                                 AlphabetNavigationView(selectedLetter: $selectedNavigationLetter, alphabet: viewModel.cocktailListAlphabet)
