@@ -16,6 +16,7 @@ struct AddCocktailView: View {
     @State private var isRiff: Bool = false
     @State private var isSelectingFromTemplate: Bool = false
     @FocusState private var cocktailBuildStepKeyboardFocused: Bool
+    @State private var isShowingInfo = false
     
     var body: some View {
         
@@ -38,8 +39,10 @@ struct AddCocktailView: View {
                     Section(header: Text("Extras").font(FontFactory.sectionHeader12)) {
                         GlassPickerButton(viewModel: viewModel)
                         IcePicker(ice: $viewModel.ice)
-                        VariationPicker(viewModel: viewModel)
+                        VariationPicker(viewModel: viewModel, isShowingInfo: $isShowingInfo)
                     }
+                    VariationInfoView(isShowingInfo: $isShowingInfo)
+                    
                     Section(header: Text("Garnish").font(FontFactory.sectionHeader12)) {
                         GarnishPicker(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive)
                     }
@@ -184,6 +187,7 @@ struct AddCocktailView: View {
         }
     }
 }
+
 
 private struct GlassPickerButton: View {
     @Bindable var viewModel: AddCocktailViewModel

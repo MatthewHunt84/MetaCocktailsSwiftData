@@ -61,9 +61,10 @@ struct VariationPickerDetailView: View {
 struct VariationPicker: View {
     @Bindable var viewModel: AddCocktailViewModel
     @State private var isShowingVariationPicker = false
-    @State private var isShowingInfo = false
+    @Binding var isShowingInfo: Bool
+
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             NavigationLink(destination: VariationPickerDetailView(viewModel: viewModel).navigationBarBackButtonHidden(true)) {
                 HStack {
                     Text("Variation")
@@ -71,7 +72,7 @@ struct VariationPicker: View {
                     Image(systemName: "info.circle")
                         .foregroundStyle(ColorScheme.interactionTint)
                         .onTapGesture {
-                            withAnimation(.easeInOut) {
+                            withAnimation(.easeInOut(duration: 0.3)) {
                                 isShowingInfo.toggle()
                             }
                         }
@@ -81,13 +82,23 @@ struct VariationPicker: View {
                         .foregroundColor(.gray)
                 }
             }
-            
+        }
+    }
+}
+
+struct VariationInfoView: View {
+    @Binding var isShowingInfo: Bool
+    
+    var body: some View {
+        Section {
             if isShowingInfo {
                 Text("If this cocktail is a riff on another cocktail, you may add it here. Variations will be grouped together in the search list and in the custom cocktails tab.")
                     .font(FontFactory.fontBody14)
                     .foregroundStyle(.brandPrimaryGold)
+                    .backgroundStyle(Color.clear)
             }
-            
         }
+        .listSectionSpacing(0)
+        .listRowBackground(Color.clear)
     }
 }
