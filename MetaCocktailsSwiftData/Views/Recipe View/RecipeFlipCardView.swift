@@ -41,24 +41,13 @@ struct RecipeFlipCardView: View {
                         MethodIceView(cocktail: viewModel.cocktail, methodText: viewModel.methodString)
                         
                         if viewModel.cocktail.buildOrder != nil {
-                            
-                            Button {
+                            UniversalBlueButton(buttonText: "Build Order", rightImage: nil, leftImage: nil, includeBorder: true) {
                                 viewModel.flipCard()
                                 withAnimation(.easeOut(duration: viewModel.durationAndDelay)) {
                                     scrollReader.scrollTo(topID, anchor: .top)
                                 }
-                            } label: {
-                                Label {
-                                    Text("Build Order")
-                                } icon: {
-                                    Image(systemName: "list.number")
-                                }
-
                             }
-                            .buttonStyle(.customGreyButton)
-                            .tint(ColorScheme.buttonTint.opacity(0.5))
                             .disabled(viewModel.isFlipped)
-
                         }
                         
                         if viewModel.cocktail.author != nil {
