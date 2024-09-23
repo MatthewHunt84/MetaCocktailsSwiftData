@@ -80,6 +80,7 @@ struct AlphabetNavigationView: View {
                             .contentShape(Rectangle())
                     }
                     .buttonStyle(ScaleButtonStyle())
+                    .sensoryFeedback(.selection, trigger: selectedLetter)
                 }
             }
         }
