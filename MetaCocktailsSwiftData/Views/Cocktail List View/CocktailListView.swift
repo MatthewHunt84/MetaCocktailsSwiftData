@@ -32,6 +32,11 @@ struct CocktailListView: View {
                             .onTapGesture {
                                 searchBarIsFocused = true
                             }
+                            .onDisappear{
+                                viewModel.searchText = ""
+                                searchBarIsFocused = false
+                                viewModel.setAllCocktails(cocktails)
+                            }
                         GeometryReader { listGeo in
                             HStack(spacing: 0) {
                                 ScrollViewReader { proxy in
