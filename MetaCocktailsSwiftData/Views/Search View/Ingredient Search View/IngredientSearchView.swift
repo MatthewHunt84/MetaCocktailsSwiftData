@@ -14,6 +14,8 @@ struct IngredientSearchView: View {
     @EnvironmentObject var viewModel: SearchViewModel
     @FocusState var keyboardFocused: Bool
     @State private var backgroundIsActive: Bool = false
+    @State private var isGeneratingStuff: Bool = false
+    
     var body: some View {
         
         NavigationStack {
@@ -27,6 +29,7 @@ struct IngredientSearchView: View {
                         PreferencesListView()
                     } else {
                         FindCocktailUserInfoView()
+                            .padding(.bottom, -5)
                     }
                     
                     FilteredIngredientListView(keyboardFocused: _keyboardFocused)
@@ -60,15 +63,35 @@ struct IngredientSearchView: View {
                 IngredientSearchResultsView()
                 
             }
-            .onChange(of: viewModel.searchCompleted) { _, newValue in
-                if newValue {
+            .onChange(of: viewModel.searchCompleted) { _, _ in
+                if !viewModel.preferredSelections.isEmpty || !viewModel.unwantedSelections.isEmpty {
                     viewModel.toggleIsShowingResults()
                     viewModel.resetSearch()
+                } else {
+                    viewModel.searchCompleted = false
                 }
             }
+            .systemLoadingIndicator(isLoading: isGeneratingStuff)
             .navigationBarTitleDisplayMode(.inline)
             .jamesHeader("Cocktail Ingredient Search")
             .customLoadingIndicator(isLoading: viewModel.isRunningComplexSearch)
+            .task {
+                isGeneratingStuff = true
+                await generateAllCocktailList(context: modelContext)
+                isGeneratingStuff = false
+            }
+        }
+    }
+    
+    func generateAllCocktailList(context: ModelContext) async {
+        if viewModel.allCocktails.isEmpty {
+            do {
+                let descriptor = FetchDescriptor<Cocktail>()
+                let fetchedCocktails = try context.fetch(descriptor)
+                viewModel.allCocktails = fetchedCocktails
+            } catch {
+                print("Error fetching cocktails: \(error)")
+            }
         }
     }
 }

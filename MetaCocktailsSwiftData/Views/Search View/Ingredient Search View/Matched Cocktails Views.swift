@@ -13,13 +13,17 @@ struct IngredientSearchMatchedCocktailsView: View {
     
     var body: some View {
         
-        List {
-            PerfectMatchCocktailView(passedViewModel: viewModel)
-            MinusOneMatchView(passedViewModel: viewModel)
-            MinusTwoMatchView(passedViewModel: viewModel)
+        if viewModel.showingNoResultsView {
+            ContentUnavailableView( "No Results", systemImage: "magnifyingglass", description: Text("Why would anyone want to drink that?\n What the hell is wrong with you"))
+        } else {
+            List {
+                PerfectMatchCocktailView(passedViewModel: viewModel)
+                MinusOneMatchView(passedViewModel: viewModel)
+                MinusTwoMatchView(passedViewModel: viewModel)
+            }
+            .listStyle(.insetGrouped)
+            .backgroundStyle(.clear)
         }
-        .listStyle(.insetGrouped)
-        .backgroundStyle(.clear)
     }
 }
 
@@ -74,23 +78,28 @@ struct PerfectMatchCocktailView: View {
     
     var body: some View {
         
-        if fullMatchCocktails.isEmpty {
-            EmptyView()
-        } else {
-            Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: viewModel.preferredCount)) {
-                ForEach(fullMatchCocktails, id: \.self) { cocktail in
-                    
-                    NavigationLink {
-                        RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                            .navigationBarBackButtonHidden(true)
-                    } label: {
-                        HStack {
-                            Text(cocktail.cocktailName)
-                                .foregroundStyle(.secondary)
+        Group {
+            if fullMatchCocktails.isEmpty {
+                EmptyView()
+            } else {
+                Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: viewModel.preferredCount)) {
+                    ForEach(fullMatchCocktails, id: \.self) { cocktail in
+                        
+                        NavigationLink {
+                            RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                                .navigationBarBackButtonHidden(true)
+                        } label: {
+                            HStack {
+                                Text(cocktail.cocktailName)
+                                    .foregroundStyle(.secondary)
+                            }
                         }
                     }
                 }
             }
+        }
+        .task {
+            viewModel.notify(.noPerfectMatchCocktails)
         }
     }
 }
@@ -105,40 +114,47 @@ struct MinusOneMatchView: View {
     }
     
     var body: some View {
-        if minusOneMatchCocktails.isEmpty || viewModel.preferredSelections.count < 2 {
-            EmptyView()
-        } else {
-            Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 1)),
-                    footer:
-                        viewModel.minusOneFooter()
-                .listRowInsets(EdgeInsets())
-                .listRowBackground(Color.clear))  {
-                    ForEach(viewModel.group(cocktails: minusOneMatchCocktails), id: \.0) { missingIngredient, cocktails in
-                        if !cocktails.isEmpty {
-                            Section {
-                                ForEach(cocktails, id: \.self) { cocktail in
-                                    NavigationLink {
-                                        RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                                            .navigationBarBackButtonHidden(true)
-                                    } label: {
-                                        Text(cocktail.cocktailName)
-                                            .font(FontFactory.mediumFont(size: 16))
-                                            .foregroundStyle(.secondary)
+        
+        Group {
+            
+            if minusOneMatchCocktails.isEmpty || viewModel.preferredSelections.count < 2 {
+                EmptyView()
+            } else {
+                Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 1)),
+                        footer:
+                            viewModel.minusOneFooter()
+                    .listRowInsets(EdgeInsets())
+                    .listRowBackground(Color.clear))  {
+                        ForEach(viewModel.group(cocktails: minusOneMatchCocktails), id: \.0) { missingIngredient, cocktails in
+                            if !cocktails.isEmpty {
+                                Section {
+                                    ForEach(cocktails, id: \.self) { cocktail in
+                                        NavigationLink {
+                                            RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                                                .navigationBarBackButtonHidden(true)
+                                        } label: {
+                                            Text(cocktail.cocktailName)
+                                                .font(FontFactory.mediumFont(size: 16))
+                                                .foregroundStyle(.secondary)
+                                        }
                                     }
-                                }
-                            } header: {
-                                if viewModel.sortMinusOne {
-                                    viewModel.minusOneHeader(missingIngredient: missingIngredient[0])
-                                        .listRowInsets(EdgeInsets())
-                                        .background(Color.clear)
-                                        .listRowBackground(Color.clear)
-                                } else {
-                                    EmptyView()
+                                } header: {
+                                    if viewModel.sortMinusOne {
+                                        viewModel.minusOneHeader(missingIngredient: missingIngredient[0])
+                                            .listRowInsets(EdgeInsets())
+                                            .background(Color.clear)
+                                            .listRowBackground(Color.clear)
+                                    } else {
+                                        EmptyView()
+                                    }
                                 }
                             }
                         }
                     }
-                }
+            }
+        }
+        .task {
+            viewModel.notify(.noMinusOneCocktails)
         }
     }
 }
@@ -153,31 +169,36 @@ struct MinusTwoMatchView: View {
     }
     
     var body: some View {
-        if minusTwoMatchCocktails.isEmpty || viewModel.preferredSelections.count < 4 {
-            EmptyView()
-        } else {
-            Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 2))) {
-                ForEach(viewModel.group(cocktails: minusTwoMatchCocktails), id: \.0) { missingIngredients, cocktails in
-                    if !cocktails.isEmpty {
-                        DisclosureGroup {
-                            ForEach(cocktails, id: \.self) { cocktail in
-                                NavigationLink {
-                                    RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                                        .navigationBarBackButtonHidden(true)
-                                } label: {
-                                    Text(cocktail.cocktailName)
-                                        .font(FontFactory.mediumFont(size: 16))
-                                        .foregroundStyle(.secondary)
+        Group {
+            if minusTwoMatchCocktails.isEmpty || viewModel.preferredSelections.count < 4 {
+                EmptyView()
+            } else {
+                Section(header: SearchedCocktailTitleHeader(searched: viewModel.preferredCount, matched: (viewModel.preferredCount - 2))) {
+                    ForEach(viewModel.group(cocktails: minusTwoMatchCocktails), id: \.0) { missingIngredients, cocktails in
+                        if !cocktails.isEmpty {
+                            DisclosureGroup {
+                                ForEach(cocktails, id: \.self) { cocktail in
+                                    NavigationLink {
+                                        RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                                            .navigationBarBackButtonHidden(true)
+                                    } label: {
+                                        Text(cocktail.cocktailName)
+                                            .font(FontFactory.mediumFont(size: 16))
+                                            .foregroundStyle(.secondary)
+                                    }
                                 }
+                            } label: {
+                                viewModel.minusTwoHeader(missingIngredients: missingIngredients, cocktailCount: cocktails.count)
                             }
-                        } label: {
-                            viewModel.minusTwoHeader(missingIngredients: missingIngredients, cocktailCount: cocktails.count)
+                            .disclosureGroupStyle(InlineDisclosureGroupStyle())
+                            .tint(ColorScheme.interactionTint)
                         }
-                        .disclosureGroupStyle(InlineDisclosureGroupStyle())
-                        .tint(ColorScheme.interactionTint)
                     }
                 }
             }
+        }
+        .task {
+            viewModel.notify(.noMinusTwoCocktails)
         }
     }
 }

@@ -17,6 +17,7 @@ public struct PreferencesListView: View {
             VStack {
                 HStack {
                     FontFactory.mediumText("Selections", size: 20, color: Color.primary)
+                    
                     Text(" (tap to remove)")
                         .font(.subheadline)
                         .foregroundStyle(Color.secondary)
@@ -28,6 +29,7 @@ public struct PreferencesListView: View {
                             }
                         }
                     Spacer()
+                    
                     ResetSearchCriteriaButton()
                     
                 }
