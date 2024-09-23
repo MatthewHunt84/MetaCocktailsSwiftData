@@ -594,6 +594,7 @@ struct GarnishView: View {
                         
                         Text("\(secondGarnishName)")
                     }
+                    .multilineTextAlignment(.leading)
                 } else {
                     ForEach(cocktail.garnish, id: \.name) { garnish in
                         Text("\(garnish.name)")
