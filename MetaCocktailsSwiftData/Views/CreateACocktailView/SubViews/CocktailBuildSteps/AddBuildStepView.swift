@@ -34,6 +34,7 @@ struct AddBuildStepView: View {
             ForEach(viewModel.build.instructions, id: \.id) { buildStep in
                 VStack{
                     Text("Step \(buildStep.step)")
+                        .font(FontFactory.mediumFont(size: 18))
                         .foregroundStyle(ColorScheme.interactionTint)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Text(buildStep.method)
