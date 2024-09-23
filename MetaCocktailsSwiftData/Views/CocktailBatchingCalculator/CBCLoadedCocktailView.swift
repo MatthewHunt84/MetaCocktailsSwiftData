@@ -166,7 +166,17 @@ struct QuantifiedIngredientsListView: View {
                         .foregroundStyle(Color.secondary)
                 }
             }
-            
+            Section{
+                HStack(spacing: 0){
+                    Spacer()
+                    Text("Total Volume: \(viewModel.totalBatchVolume, specifier: "%.0f") ml")
+                        .font(FontFactory.formLabel18)
+                        .foregroundStyle(Color.secondary)
+                    Spacer()
+                }
+            }
+            .listRowBackground(Color.clear)
+            .listSectionSpacing(0)
             SplitBatchButton()
                 .listStyle(.plain)
                 .listRowBackground(Color.clear)
