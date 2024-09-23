@@ -16,33 +16,26 @@ struct SplitBatchView: View {
             ColorScheme.background.ignoresSafeArea()
             
             VStack {
-                
                 CBCCocktailHeaderView(cocktailName: viewModel.chosenCocktail.cocktailName)
-
-                    
-                    if viewModel.numberOfContainers == 1 {
-                        Text("Only 1 container required")
-                            .font(FontFactory.mediumFont(size: 18))
-                            .foregroundStyle(.secondary)
-                            .padding(.top, -14)
-                    } else {
-                        Text("Split into ^[\(NSNumber(value: viewModel.numberOfContainers)) container](inflect: true)")
-                            .font(FontFactory.mediumFont(size: 18))
-                            .foregroundStyle(.secondary)
-                            .padding(.top, -14)
-                    }
-                
                 List {
-                    
                     Section(header: CBCSplitBatchContainerHeader()) {
-                        
                         GroupBox {
                             ContainerMenuView()
-                                
                         }
                         .frame(height: 37)
+                        
+                        HStack{
+                            Spacer()
+                            if viewModel.numberOfContainers == 1 {
+                                Text("Only 1 container required")
+                                    .font(FontFactory.formLabel18)
+                            } else {
+                                Text("Split into ^[\(NSNumber(value: viewModel.numberOfContainers)) container](inflect: true)")
+                                    .font(FontFactory.formLabel18)
+                            }
+                            Spacer()
+                        }
                     }
-                    
                     Section(header: Text("Recipe per container"), footer: CBCSplitBatchSectionFooter()) {
                         ForEach($viewModel.splitBatchData, id: \.self) { ingredient in
                             SplitBatchCell(quantifiedSpiltBatches: ingredient)
