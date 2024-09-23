@@ -234,11 +234,12 @@ private struct GlassPickerDetailView: View {
                             HStack {
                                 newGlass.findGlass(for: newGlass)
                                     .resizable()
-                                    .frame(width: 60, height: 60, alignment: .trailing)
+                                    .frame(width: 40, height: 40, alignment: .trailing)
+                                    .padding(.trailing, 10)
                                 
                                 Text(newGlass.rawValue)
                                     .tag(Optional(newGlass))
-                                    .font(FontFactory.bottomToolbarButton20)
+                                    .font(FontFactory.mediumFont(size: 16))
                                     .foregroundStyle(.white)
                             }
                         }
