@@ -11,6 +11,7 @@ import SwiftData
 struct RecipeView: View {
     @Bindable var viewModel: RecipeViewModel
     @Namespace var topID
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         ZStack {
@@ -27,11 +28,40 @@ struct RecipeView: View {
                             RecipeTitleView(cocktail: viewModel.cocktail)
                         }
                         ToolbarItem(placement: .topBarLeading) {
-                            BackButton()
+                            DebugBackButton()
                         }
                     }
                 }
             }
+        }
+        .onAppear {
+            print("RecipeView appeared")
+        }
+        .onDisappear {
+            print("RecipeView disappeared")
+        }
+    }
+}
+struct DebugBackButton: View {
+    @Environment(\.dismiss) private var dismiss
+    
+    var body: some View {
+        Button(action: {
+            print("Back button tapped")
+            DispatchQueue.main.async {
+                dismiss()
+            }
+        }) {
+            Image(systemName: "chevron.backward")
+                .font(.system(size: 16))
+                .bold()
+                .tint(ColorScheme.interactionTint)
+        }
+        .onAppear {
+            print("BackButton appeared")
+        }
+        .onDisappear {
+            print("BackButton disappeared")
         }
     }
 }
