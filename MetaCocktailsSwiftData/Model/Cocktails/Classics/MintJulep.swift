@@ -17,12 +17,11 @@ var mintJulep = Cocktail(cocktailName: "Mint Julep",
                          notes: mintJulepNotes,
                          tags: mintJulepTags,
                          variation: .mintJulep,
-                         collection: .originals,
                          titleCocktail: true)
 
 let mintJulepSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint), value: 10, unit: .gentlyMuddled),
-                                              OldCocktailIngredient(.syrups(.demSyrupOneToOne), value: 1, prep: PrepBible.simpleSyrupPrep),
-                                              OldCocktailIngredient(.whiskies(.bourbonAny), value: 2.5)]
+                                              OldCocktailIngredient(.syrups(.richDem), value: 0.25, prep: PrepBible.richDem),
+                                              OldCocktailIngredient(.whiskies(.bourbonAny), value: 2)]
 
 let mintJulepTags = Tags(profiles: [.herbal, .sweet, .refreshing],
                          styles: [ .built])
@@ -34,4 +33,4 @@ let mintJulepBuild =  Build(instructions: [Instruction(step: 1, method: "In a hi
                                            Instruction(step: 5, method: "add the straw and then snow cone the top of the cocktail with ice so that the straw does not disturb the ice on top. Optional: Float funky Jamaican rum and use french brandy as a base!"),
                                            Instruction(step: 6, method: "Garnish with a mint bouquet. Optional: Top mint with powdered sugar")])
 
-let mintJulepNotes = "This is one of the oldest cocktails to exist. This is a style of cocktail that came from a long rich history of the 'Julep' dating back to the early 1700s. This whiskey version didn't come to prominence until the mid 1800s. The Kentucky Derby didn't claim it until the 1930's. That being said, this cocktail is almost impossible to credit one person or place for its invention. "
+let mintJulepNotes = "This is one of the oldest cocktails to exist. This is a style of cocktail that came from a long rich history of the 'Julep' dating back to the early 1700s. This whiskey version didn't come to prominence until the mid 1800s. The Kentucky Derby didn't claim it until the 1930's. That being said, this cocktail is almost impossible to credit one person or place for its invention. The version we're presenting here is a more modernized take. So, feel free to modify the sugar content to your liking."
