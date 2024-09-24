@@ -11,16 +11,15 @@ struct RecipeFlipCardView: View {
     @State private var isShowingCocktailNotes = false
     @EnvironmentObject var cBCViewModel: CBCViewModel
     @Bindable var viewModel: RecipeViewModel
-    let geo: GeometryProxy // seems like a constant
-    var topID: Namespace.ID // isn't going to change, but is it bound?
-    var scrollReader: ScrollViewProxy // no idea, but also needs to be bound I'm guessing.
+    let geo: GeometryProxy
+    var topID: Namespace.ID
+    var scrollReader: ScrollViewProxy
     
     var body: some View {
         
         ZStack {
             
             RecipeViewBack(viewModel: viewModel, geometry: geo)
-                .rotation3DEffect(Angle(degrees: viewModel.backDegree), axis: (x: 0, y: 1, z: 0), anchor: .center)
                 .id(topID)
             
             VStack(alignment: .center) {
@@ -73,10 +72,14 @@ struct RecipeFlipCardView: View {
                 cBCViewModel.chosenCocktail = viewModel.cocktail
             }
             .frame(minHeight: geo.size.height)
-            .rotation3DEffect(Angle(degrees: viewModel.frontDegree), axis: (x: 0, y: 1, z: 0))
+            .opacity(viewModel.backDegree == -90 ? 1 : 0)
+            .rotation3DEffect(
+                Angle(degrees: viewModel.frontDegree),
+                axis: (x: 0, y: 1, z: 0)
+            )
+            .allowsHitTesting(!viewModel.isFlipped)
             .padding(.top, -20)
             
-            backToRecipeViewButton(viewModel: viewModel)
             
             if isShowingCocktailNotes{
                 if let notes = viewModel.cocktail.notes {
@@ -84,11 +87,6 @@ struct RecipeFlipCardView: View {
                         .zIndex(1)
                 }
             }
-            
         }
     }
 }
-
-//#Preview {
-//    RecipeFlipCardView(viewModel: RecipeViewModel(cocktail: ramonaFlowers))
-//}

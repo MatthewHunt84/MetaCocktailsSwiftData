@@ -62,7 +62,7 @@ struct FavoriteButton: View {
         }
         .sensoryFeedback(.success, trigger: cocktail.favorite)
         
-
+        
     }
 }
 
@@ -72,33 +72,48 @@ struct BuildOrderView: View {
     var viewModel: RecipeViewModel
     
     var body: some View {
-
-        VStack(alignment: .center) {
-            HStack(alignment: .center) {
-                Spacer()
+        
+        VStack(alignment: .leading) {
+            
+            ZStack(alignment: .centerFirstTextBaseline) {
+                
+                HStack {
+                    
+                    Button(action: {
+                        viewModel.flipCard()
+                    }) {
+                        Image(systemName: "arrow.triangle.2.circlepath")
+                            .foregroundColor(ColorScheme.interactionTint)
+                            .font(.system(size: 22))
+                            .contentShape(Rectangle())
+                            .frame(width: 50, height: 40)
+                            .padding(.leading, 10)
+                    }
+                    
+                    Spacer()
+                }
+                
                 Text("Build Order")
                     .font(FontFactory.recipeCardHeader18B)
-                Spacer()
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding(.bottom, 15)
+                
             }
-            .padding(.bottom, 10)
             
-            VStack(alignment: .leading) {
-                ForEach(buildOrder.instructions) { build in
-                    HStack(alignment: .top) {
-                        Text("\(build.step).")
-                            .font(calculateFontSize(numberOfSteps: buildOrder.instructions.count, body: false))
-                        Text("\(build.method)")
-                            .font(calculateFontSize(numberOfSteps: buildOrder.instructions.count, body: true))
-                    }
-                    .listRowBackground(Color.darkGrey)
-                    Divider()
+            ForEach(buildOrder.instructions) { build in
+                HStack(alignment: .top) {
+                    Text("\(build.step).")
+                        .font(calculateFontSize(numberOfSteps: buildOrder.instructions.count, body: false))
+                    Text("\(build.method)")
+                        .font(calculateFontSize(numberOfSteps: buildOrder.instructions.count, body: true))
                 }
+                .listRowBackground(Color.darkGrey)
+                Divider()
             }
+            
             Spacer()
         }
     }
-    
-    
     
     func calculateFontSize(numberOfSteps: Int, body: Bool) -> Font {
         let weight: Font.Weight = body ? .regular : .bold
@@ -120,27 +135,47 @@ struct IngredientRecipeView: View {
     
     var body: some View {
         
-        VStack(alignment: .center) {
-            HStack(alignment: .center) {
-                Spacer()
-                Text("\(prep.prepIngredientName) recipe:")
-                    .font(FontFactory.recipeCardHeader18B)
-                Spacer()
-            }
-            .padding(.bottom, 10)
+        VStack(alignment: .leading) {
             
-            VStack(alignment: .leading) {
-                ForEach(prep.prepRecipe) { build in
-                    HStack(alignment: .top) {
-                        Text("\(build.step).")
-                            .font(calculateFontSize(numberOfSteps: prep.prepRecipe.count, body: false))
-                        Text("\(build.method)")
-                            .font(calculateFontSize(numberOfSteps: prep.prepRecipe.count, body: true))
+            ZStack(alignment: .centerFirstTextBaseline) {
+                
+                HStack {
+                    
+                    Button(action: {
+                        viewModel.flipCard()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+                            viewModel.isShowingIngredientRecipe = false
+                        }
+                    }) {
+                        Image(systemName: "arrow.triangle.2.circlepath")
+                            .foregroundColor(ColorScheme.interactionTint)
+                            .font(.system(size: 22))
+                            .contentShape(Rectangle())
+                            .frame(width: 50, height: 40)
+                            .padding(.leading, 10)
                     }
-                    .listRowBackground(Color.darkGrey)
-                    Divider()
+                    
+                    Spacer()
                 }
+                
+                Text("\(prep.prepIngredientName) recipe")
+                    .font(FontFactory.recipeCardHeader18B)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding(.bottom, 15)
             }
+            
+            ForEach(prep.prepRecipe) { build in
+                HStack(alignment: .top) {
+                    Text("\(build.step).")
+                        .font(calculateFontSize(numberOfSteps: prep.prepRecipe.count, body: false))
+                    Text("\(build.method)")
+                        .font(calculateFontSize(numberOfSteps: prep.prepRecipe.count, body: true))
+                }
+                .listRowBackground(Color.darkGrey)
+                
+                Divider()
+            }
+            
             Spacer()
         }
     }
@@ -168,53 +203,25 @@ struct RecipeViewBack: View {
         ZStack {
             
             Border()
-            if viewModel.isShowingIngredientRecipe{
+            
+            if viewModel.isShowingIngredientRecipe {
                 IngredientRecipeView(prep: viewModel.currentIngredientRecipe, viewModel: viewModel)
                     .frame(width: geometry.size.width * 0.85)
-                    .padding(.top, 80)
-                
+                    .padding(.top, 60)
             } else {
                 BuildOrderView(buildOrder: viewModel.cocktail.buildOrder ?? ramosGinFizzBuild, viewModel: viewModel)
                     .frame(width: geometry.size.width * 0.85)
                     .padding(.top, 60)
             }
         }
+        .opacity(viewModel.frontDegree == 90.0 ? 1 : 0)
+        .rotation3DEffect(
+            Angle(degrees: viewModel.backDegree),
+            axis: (x: 0, y: 1, z: 0)
+        )
+        .allowsHitTesting(viewModel.isFlipped)
     }
 }
-
-struct backToRecipeViewButton: View {
-    var viewModel: RecipeViewModel
-    
-    
-    var body: some View {
-        VStack {
-            
-            HStack {
-
-                if viewModel.backDegree == 0 {
-                    Button("", systemImage: "arrowshape.turn.up.left.fill") {
-                        viewModel.flipCard()
-                        
-                        //viewModel.isShowingIngredientRecipe = false
-                            
-                        
-                        
-                    }
-                    .foregroundStyle(ColorScheme.interactionTint)
-                    .padding(.leading, 40)
-                    .padding(.top, 60)
-                }
-                   
-                
-                Spacer()
-            }
-            
-            Spacer()
-        }
-    }
-   
-}
-
 
 private struct BorderTop: View {
     var body: some View {
@@ -341,14 +348,26 @@ extension ButtonStyle where Self == CustomButtonStyle {
 
 struct RecipeTitleView: View {
     var cocktail: Cocktail
+    var variation: Variation?
+    
+    init(cocktail: Cocktail, variation: Variation? = nil) {
+        self.cocktail = cocktail
+        self.variation = variation
+    }
+    
     var body: some View {
-        VStack {
+        if variation != nil, let recipeSubheading = cocktail.collection?.recipeSubheading {
+            VStack {
+                FontFactory.recipeHeader(title: cocktail.cocktailName)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.4)
+                
+                    FontFactory.mediumText(recipeSubheading, size: 12, color: .secondary)
+            }
+        } else {
             FontFactory.recipeHeader(title: cocktail.cocktailName)
                 .lineLimit(1)
                 .minimumScaleFactor(0.4)
-            if let _ = cocktail.variation, let recipeSubheading = cocktail.collection?.recipeSubheading {
-                FontFactory.mediumText(recipeSubheading, size: 12, color: .secondary)
-            }
         }
     }
 }

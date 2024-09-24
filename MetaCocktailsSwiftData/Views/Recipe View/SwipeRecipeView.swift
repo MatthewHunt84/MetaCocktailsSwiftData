@@ -31,20 +31,18 @@ struct SwipeRecipeView: View {
                 
                 GeometryReader { geo in
                     ScrollViewReader { scrollReader in
-                        ScrollView {
-                            HeightPreservingTabView(selection: $selectedIndex) {
-                                ForEach(Array(variations.enumerated()), id: \.element) { index, cocktail in
-                                    VStack {
-                                        RecipeFlipCardView(viewModel: RecipeViewModel(cocktail: cocktail), geo: geo, topID: topID, scrollReader: scrollReader)
-                                            .padding(.bottom, 28)
-                                    }
-                                    .toolbar {
-                                        ToolbarItem(placement: .principal) {
-                                            RecipeTitleView(cocktail: cocktail)
-                                        }
-                                    }
-                                    .tag(index)
+                        HeightPreservingTabView(selection: $selectedIndex) {
+                            ForEach(Array(variations.enumerated()), id: \.element) { index, cocktail in
+                                ScrollView {
+                                    RecipeFlipCardView(viewModel: RecipeViewModel(cocktail: cocktail), geo: geo, topID: topID, scrollReader: scrollReader)
+                                        .padding(.bottom, 28)
                                 }
+                                .toolbar {
+                                    ToolbarItem(placement: .principal) {
+                                        RecipeTitleView(cocktail: cocktail, variation: cocktail.variation)
+                                    }
+                                }
+                                .tag(index)
                             }
                         }
                         .toolbar {
@@ -52,6 +50,7 @@ struct SwipeRecipeView: View {
                                 BackButton()
                             }
                         }
+                        
                     }
                 }
             }
