@@ -110,8 +110,6 @@ struct CocktailGroupView: View {
                     ForEach(cocktails, id: \.id) { cocktail in
                         SingleCocktailListView(cocktail: cocktail, isInGroupedList: true)
                             .transition(.asymmetric(insertion: .slide, removal: .scale))
-                            
-                            
                     }
                 }
             }
@@ -180,9 +178,11 @@ struct SearchBarAllCocktailsListView: View {
     @EnvironmentObject var viewModel: CocktailListViewModel
     
     var body: some View {
-        ForEach(viewModel.filteredCocktails, id: \.self) { cocktail in
-            SingleCocktailListView(cocktail: cocktail)
+        VStack(spacing: 0){
+            ForEach(viewModel.filteredCocktails, id: \.self) { cocktail in
+                SingleCocktailListView(cocktail: cocktail)
+            }
+            .listRowBackground(Color.clear)
         }
-        .listRowBackground(Color.clear)
     }
 }
