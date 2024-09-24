@@ -23,3 +23,5 @@ var migrationSpec  = [OldCocktailIngredient(.rums(.goslingsBlackSeal), value: 0.
 
 var migrationTags   = Tags(profiles: [.bitter, .spiritForward,],
                            styles: [.stirred, .negroni])
+
+

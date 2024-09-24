@@ -7,7 +7,7 @@
 
 import Foundation
 
-var mojitoMnH = Cocktail(cocktailName: "Mojito(Milk & Honey version)",
+var mojitoMnH = Cocktail(cocktailName: "Mojito" + mAndHVersionTag,
                          imageAsset: nil,
                          glasswareType: .doubleOld,
                          garnish: [.mintBouquet],
