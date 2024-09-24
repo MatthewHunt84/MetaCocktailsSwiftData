@@ -21,10 +21,12 @@ struct AllCocktailsListView: View {
                     ForEach(organizedCocktails.keys.sorted(), id: \.self) { key in
                         if let cocktails = organizedCocktails[key], !cocktails.isEmpty {
                             CocktailGroupView(key: key, cocktails: cocktails)
+                                .zIndex(1)
                         }
                     }
                 } header: {
                     SectionHeaderView(letter: letter, animatingLetter: $animatingLetter)
+                        .zIndex(2)
                 }
                 .id(letter)
             }
@@ -82,23 +84,27 @@ struct CocktailGroupView: View {
     let cocktails: [Cocktail]
     
     var body: some View {
-        if cocktails.count > 1 {
-            DisclosureGroup {
-                ForEach(cocktails, id: \.id) { cocktail in
-                    MultipleCocktailsListView(cocktail: cocktail, cocktails: cocktails)
-                        .padding(.leading)
+        Group{
+            if cocktails.count > 1 {
+                DisclosureGroup {
+                    ForEach(cocktails, id: \.id) { cocktail in
+                        MultipleCocktailsListView(cocktail: cocktail, cocktails: cocktails)
+                            .padding(.leading)
+                    }
+                } label: {
+                    Text(key)
+                        .font(FontFactory.regularFont(size: 18))
                 }
-            } label: {
-                Text(key)
-                    .font(FontFactory.regularFont(size: 18))
+                .disclosureGroupStyle(InlineDisclosureGroupStyle())
+                
+            } else {
+                SingleCocktailListView(cocktail: cocktails[0])
             }
-            .disclosureGroupStyle(InlineDisclosureGroupStyle())
-            .frame(height: 35)
-            .padding(.vertical, 2)
-        } else {
-            SingleCocktailListView(cocktail: cocktails[0])
         }
+        .frame(height: 35)
+        .padding(.vertical, 2)
     }
+    
 }
 
 struct SingleCocktailListView: View {
@@ -157,27 +163,10 @@ struct MultipleCocktailsListView: View {
 
 struct SearchBarAllCocktailsListView: View {
     @EnvironmentObject var viewModel: CocktailListViewModel
-
+    
     var body: some View {
-        let organizedCocktails = viewModel.organizeCocktails(viewModel.filteredCocktails)
-        
-        ForEach(organizedCocktails.keys.sorted(), id: \.self) { key in
-            if let cocktails = organizedCocktails[key], !cocktails.isEmpty {
-                if cocktails.count > 1 {
-                    DisclosureGroup {
-                        ForEach(cocktails, id: \.id) { cocktail in
-                            MultipleCocktailsListView(cocktail: cocktail, cocktails: cocktails)
-                                .padding(.leading)
-                        }
-                    } label: {
-                        Text(key)
-                            .font(FontFactory.regularFont(size: 18))
-                    }
-                    .disclosureGroupStyle(InlineDisclosureGroupStyle())
-                } else {
-                    SingleCocktailListView(cocktail: cocktails[0])
-                }
-            }
+        ForEach(viewModel.filteredCocktails, id: \.self) { cocktail in
+            SingleCocktailListView(cocktail: cocktail)
         }
         .listRowBackground(Color.clear)
     }
