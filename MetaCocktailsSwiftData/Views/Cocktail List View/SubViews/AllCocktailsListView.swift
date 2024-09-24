@@ -24,13 +24,59 @@ struct AllCocktailsListView: View {
                         }
                     }
                 } header: {
-                    SectionHeaderView(letter: letter)
+                    SectionHeaderView(letter: letter, animatingLetter: $animatingLetter)
                 }
                 .id(letter)
             }
         }
     }
 }
+
+struct SectionHeaderView: View {
+    let letter: String
+    @Binding var animatingLetter: String?
+    @State private var isAnimating: Bool = false
+    
+    var body: some View {
+        ZStack {
+            VisualEffectView(effect: UIBlurEffect(style: .systemThickMaterialDark))
+                .clipShape(RoundedRectangle(cornerRadius: 4))
+            
+            headerSelectionGradient
+                .clipShape(RoundedRectangle(cornerRadius: 4))
+            
+            HStack {
+                Text(letter)
+                    .font(FontFactory.listLetter(size: 28))
+                    .foregroundColor(isAnimating ? ColorScheme.tintColor : .secondary)
+                    .padding(.horizontal)
+                Spacer()
+            }
+        }
+        .task(id: animatingLetter) {
+            if letter == animatingLetter {
+                isAnimating = true
+                try? await Task.sleep(for: .milliseconds(100))
+                withAnimation(.easeOut(duration: 1.5)) {
+                    isAnimating = false
+                }
+                animatingLetter = nil
+            }
+        }
+    }
+    
+    var headerSelectionGradient: LinearGradient {
+        LinearGradient(
+            gradient: Gradient(colors: [
+                isAnimating ? ColorScheme.tintColor.opacity(0.15) : .clear,
+                .black
+            ]),
+            startPoint: .leading,
+            endPoint: .trailing
+        )
+    }
+}
+
 struct CocktailGroupView: View {
     let key: String
     let cocktails: [Cocktail]
@@ -52,29 +98,6 @@ struct CocktailGroupView: View {
         } else {
             SingleCocktailListView(cocktail: cocktails[0])
         }
-    }
-}
-
-struct SectionHeaderView: View {
-    let letter: String
-    
-    var body: some View {
-        ZStack {
-            VisualEffectView(effect: UIBlurEffect(style: .systemThickMaterialDark))
-                .opacity(0.85)
-            
-            LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0.2), Color.black.opacity(1)]),
-                           startPoint: .topLeading,
-                           endPoint: .bottomTrailing)
-            HStack {
-                Text(letter)
-                    .font(FontFactory.listLetter(size: 28))
-                    .foregroundColor(Color.secondary)
-                    .padding(.horizontal)
-                Spacer()
-            }
-        }
-        .backgroundStyle(Color(UIColor.systemGray6).opacity(0.8))
     }
 }
 

@@ -38,7 +38,7 @@ struct CocktailListView: View {
                                             withAnimation(.easeOut(duration: 0.2)) {
                                                 proxy.scrollTo(newValue, anchor: .top)
                                             }
-                                            selectedNavigationLetter = nil
+                                            
                                         }
                                     }
                                 }
@@ -64,9 +64,11 @@ struct CocktailListView: View {
     }
 }
 
+
 struct AlphabetNavigationView: View {
     @Binding var selectedLetter: String?
     let alphabet: [String]
+    @State private var animatingLetter: String?
     
     var body: some View {
         GeometryReader { geometry in
@@ -74,32 +76,31 @@ struct AlphabetNavigationView: View {
                 ForEach(alphabet, id: \.self) { letter in
                     Button(action: {
                         selectedLetter = letter
+                        withAnimation(.none) {
+                            animatingLetter = letter
+                        }
+                        withAnimation(.easeOut(duration: 0.5).delay(0.1)) {
+                            animatingLetter = nil
+                        }
                     }) {
                         Text(letter)
-                            .font(FontFactory.alphabetFont(for: geometry.size.height))
+                            .font(FontFactory.alphabetFont(for: geometry.size.height, isSelected: animatingLetter == letter))
+                            .foregroundColor(animatingLetter == letter ? ColorScheme.tintColor : .primary)
                             .frame(width: geometry.size.width, height: geometry.size.height / CGFloat(alphabet.count))
                             .contentShape(Rectangle())
                     }
                     .buttonStyle(ScaleButtonStyle())
-                    .sensoryFeedback(.impact, trigger: selectedLetter)
+                    .sensoryFeedback(.impact(weight: .heavy), trigger: selectedLetter == letter)
                 }
             }
         }
     }
 }
 
-#Preview {
-    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    CocktailListView(viewModel: CocktailListViewModel())
-        .modelContainer(preview.container)
-        
-}
 struct ScaleButtonStyle : ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label.scaleEffect(configuration.isPressed ? 2.5 : 1)
-            .shadow(radius: 30)
-        
     }
 }
 
@@ -219,4 +220,11 @@ struct CocktailRowView: View {
             }
         }
     }
+}
+
+#Preview {
+    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
+    CocktailListView(viewModel: CocktailListViewModel())
+        .modelContainer(preview.container)
+        
 }
