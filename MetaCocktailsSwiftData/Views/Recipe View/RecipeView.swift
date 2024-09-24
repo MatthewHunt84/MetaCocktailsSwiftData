@@ -11,6 +11,7 @@ import SwiftData
 struct RecipeView: View {
     @Bindable var viewModel: RecipeViewModel
     @Namespace var topID
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         ZStack {

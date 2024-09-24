@@ -27,18 +27,18 @@ struct FontFactory {
         Font.custom("AvenirNext-Regular", size: size)
     }
     
-    static func alphabetFont(for frameHeight: CGFloat) -> Font {
+    static func alphabetFont(for frameHeight: CGFloat, isSelected: Bool) -> Font {
         switch frameHeight {
         case 0..<400:
-            return regularFont(size: 14)
+            isSelected ? mediumFont(size: 14) : regularFont(size: 14)
         case 400..<500:
-            return regularFont(size: 16)
+            isSelected ? mediumFont(size: 16) : regularFont(size: 16)
         case 500..<600:
-            return regularFont(size: 18)
+            isSelected ? mediumFont(size: 18) : regularFont(size: 18)
         case 600..<700:
-            return regularFont(size: 20)
+            isSelected ? mediumFont(size: 20) : regularFont(size: 20)
         default:
-            return regularFont(size: 22)
+            isSelected ? mediumFont(size: 22) : regularFont(size: 22)
         }
     }
     
