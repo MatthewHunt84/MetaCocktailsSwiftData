@@ -21,12 +21,12 @@ struct AllCocktailsListView: View {
                     ForEach(organizedCocktails.keys.sorted(), id: \.self) { key in
                         if let cocktails = organizedCocktails[key], !cocktails.isEmpty {
                             CocktailGroupView(key: key, cocktails: cocktails)
-                                .zIndex(1)
+                                
                         }
                     }
                 } header: {
                     SectionHeaderView(letter: letter, animatingLetter: $animatingLetter)
-                        .zIndex(2)
+                        
                 }
                 .id(letter)
             }
@@ -78,37 +78,51 @@ struct SectionHeaderView: View {
         )
     }
 }
-
 struct CocktailGroupView: View {
     let key: String
     let cocktails: [Cocktail]
+    @State private var isExpanded: Bool = false
     
     var body: some View {
-        Group{
-            if cocktails.count > 1 {
-                DisclosureGroup {
-                    ForEach(cocktails, id: \.id) { cocktail in
-                        MultipleCocktailsListView(cocktail: cocktail, cocktails: cocktails)
-                            .padding(.leading)
+        if cocktails.count > 1 {
+            VStack(spacing: 0) {
+                Button(action: {
+                    withAnimation {
+                        isExpanded.toggle()
                     }
-                } label: {
-                    Text(key)
-                        .font(FontFactory.regularFont(size: 18))
+                }) {
+                    HStack {
+                        Image(systemName: isExpanded ? "chevron.down" : "chevron.right")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 12, height: 12)
+                            .foregroundColor(ColorScheme.interactionTint)
+                        Text(key)
+                            .font(FontFactory.regularFont(size: 18))
+                            .foregroundStyle(.white)
+                        Spacer()
+                    }
+                    .contentShape(Rectangle())
+                    .frame(height: 35)
+                    .padding(.vertical, 2)
                 }
-                .disclosureGroupStyle(InlineDisclosureGroupStyle())
-                
-            } else {
-                SingleCocktailListView(cocktail: cocktails[0])
+                if isExpanded {
+                    ForEach(cocktails, id: \.id) { cocktail in
+                        SingleCocktailListView(cocktail: cocktail, isInGroupedList: true)
+                            .transition(.opacity)
+                            
+                    }
+                }
             }
+        } else {
+            SingleCocktailListView(cocktail: cocktails[0], isInGroupedList: false)
         }
-        .frame(height: 35)
-        .padding(.vertical, 2)
     }
-    
 }
 
 struct SingleCocktailListView: View {
     let cocktail: Cocktail
+    @State var isInGroupedList: Bool?
     
     var body: some View {
         NavigationLink {
@@ -118,7 +132,7 @@ struct SingleCocktailListView: View {
             HStack {
                 Text(cocktail.cocktailName)
                     .font(FontFactory.regularFont(size: 18))
-                    .padding(.leading, 20)
+                    .padding(.leading, isInGroupedList ?? false ? 35 : 20)
                     .foregroundStyle(.white)
                 Spacer()
                 if cocktail.isCustomCocktail == true {
