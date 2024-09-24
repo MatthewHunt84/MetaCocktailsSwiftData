@@ -22,21 +22,6 @@ struct CocktailListView: View {
                     
                     VStack(spacing: 0) {
                         SearchBarForCocktailListView(isFocused: $searchBarIsFocused, viewModel: viewModel)
-                            .padding()
-//                            .overlay(
-//                                GeometryReader { geometry in
-//                                    Color.red
-//                                        .contentShape(Rectangle())
-//                                        .frame(width:searchBarIsFocused ? geometry.size.width / 2 : geometry.size.width + 40, height: geometry.size.height + 40)
-//                                        .position(x: geometry.frame(in: .local).midX, y: geometry.frame(in: .local).midY)})
-                            .onTapGesture {
-                                searchBarIsFocused = true
-                            }
-                            .onDisappear{
-                                viewModel.searchText = ""
-                                searchBarIsFocused = false
-                                viewModel.setAllCocktails(cocktails)
-                            }
                         GeometryReader { listGeo in
                             HStack(spacing: 0) {
                                 ScrollViewReader { proxy in
@@ -149,8 +134,16 @@ struct SearchBarForCocktailListView: View {
             .onSubmit {
                 viewModel.searchText = ""
             }
+            .onTapGesture {
+                isFocused = true
+            }
+            .onDisappear{
+                viewModel.searchText = ""
+                isFocused = false
+                viewModel.updateAndCache()
+            }
             .submitLabel(.done)
-            
+            .padding()
     }
 }
 

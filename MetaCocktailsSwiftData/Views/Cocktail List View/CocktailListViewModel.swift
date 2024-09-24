@@ -62,6 +62,11 @@ import Combine
         cacheOrganizedCocktails()
     }
     
+    func updateAndCache() {
+        updateFilteredCocktails()
+        cacheOrganizedCocktails()
+    }
+    
     private func updateFilteredCocktails() {
         let lowercasedSearchText = debouncedSearchText.lowercased()
         
