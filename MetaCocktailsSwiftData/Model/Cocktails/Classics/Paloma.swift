@@ -16,7 +16,7 @@ var paloma  = Cocktail(cocktailName: "Paloma",
                        tags: palomaTags)
 
 var palomaSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.5),
-                   OldCocktailIngredient(.seasoning(.saline), value: 4, unit: .drops),
+                   OldCocktailIngredient(.seasoning(.saline), value: 4, unit: .drops, prep: PrepBible.fiveToOneSaline),
                    OldCocktailIngredient(.soda(.grapefruitSoda), value: 3),
                    OldCocktailIngredient(.agaves(.tequilaBlanco), value: 1.5)]
 

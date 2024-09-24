@@ -20,6 +20,11 @@ final class PrepBible{
                                           Instruction(step: 2, method: "Bring the mixture to a boil and then immediately take it off heat."),
                                           Instruction(step: 3, method: "Let it cool before bottling.")])
     
+    static let fiveToOneSaline = Prep(prepIngredientName: "Saline (5:1)",
+                                      prepRecipe:[Instruction(step: 1, method: "Combine one part salt to five parts warm water by weight into a bottle."),
+                                                  Instruction(step: 2, method: "Put the cap on the bottle and give it a good shake util the salt dissolves."),
+                                                  Instruction(step: 3, method: "Add the solution to a dropper bottle for use behind the bar.")])
+    
     static let simpleSyrupPrep = Prep(prepIngredientName: "Simple syrup",
                                       prepRecipe:[Instruction(step: 1, method: "Combine one part sugar to one part water by weight into a pot."),
                                                   Instruction(step: 2, method: "Bring to a boil and then immediately take off heat."),

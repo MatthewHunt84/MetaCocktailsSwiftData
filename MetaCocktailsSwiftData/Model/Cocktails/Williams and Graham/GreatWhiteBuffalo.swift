@@ -21,7 +21,7 @@ var greatWhiteBuffalo = Cocktail(cocktailName: "Great White Buffalo",
 let greatWhiteBuffaloSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.juices(.lemon), value: 0.25),
                                                    OldCocktailIngredient(.syrups(.grapefruitShrub), value: 1.25, prep: PrepBible.grapefruitShrub),
                                                    OldCocktailIngredient(.liqueurs(.licor43), value: 0.5),
-                                                   OldCocktailIngredient(.seasoning(.saline), value: 5, unit: .drops),
+                                                   OldCocktailIngredient(.seasoning(.saline), value: 5, unit: .drops, prep: PrepBible.fiveToOneSaline),
                                                    OldCocktailIngredient(.vodkas(.zubrowka), value: 1.5)]
 
 
