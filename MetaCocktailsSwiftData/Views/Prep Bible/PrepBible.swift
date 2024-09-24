@@ -57,12 +57,12 @@ final class PrepBible{
                                               Instruction(step: 4, method:  "Add 1oz(30ml) vodka to every 750ml of syrup to stabilize.")] )
     
     static let gingerBeer = Prep(prepIngredientName: "Ginger beer",
-                                  prepRecipe:[Instruction(step: 1, method:  "This requires juicing fresh ginger, which can be a strain on household juicers."),
-                                              Instruction(step: 2, method:  "Add equal parts fresh ginger juice and sugar to a pot and bring to a boil while stirring. Some prefer Demerara sugar for a darker and more robust flavor. You can use plain white sugar for a brighter and sharper flavor."),
-                                              Instruction(step: 3, method:  "Take off heat immediately after boiling and let cool."),
-                                              Instruction(step: 4, method:  "For every 8 ounces of water, add 2 ounces of ginger syrup."),
-                                              Instruction(step: 5, method:  "Modify the syrup to soda ratio however you see fit."),
-                                              Instruction(step: 6, method:  "Enjoy with ice.")] )
+                                 prepRecipe:[Instruction(step: 1, method:  "This requires juicing fresh ginger, which can be a strain on household juicers."),
+                                             Instruction(step: 2, method:  "Add equal parts fresh ginger juice and sugar to a pot and bring to a boil while stirring. Some prefer Demerara sugar for a darker and more robust flavor. You can use plain white sugar for a brighter and sharper flavor."),
+                                             Instruction(step: 3, method:  "Take off heat immediately after boiling and let cool."),
+                                             Instruction(step: 4, method:  "For every 8 ounces of water, add 2 ounces of ginger syrup."),
+                                             Instruction(step: 5, method:  "Modify the syrup to soda ratio however you see fit."),
+                                             Instruction(step: 6, method:  "Enjoy with ice.")] )
     
     static let morgenthalersGingerSyrup = Prep(prepIngredientName: "Morgenthaler's ginger syrup",
                                                prepRecipe:[Instruction(step: 1, method: "Roughly chop 8 ounces washed, unpeeled ginger (each piece about the size of your pinkie-tip). "),
@@ -84,7 +84,7 @@ final class PrepBible{
                                       prepRecipe: [Instruction(step: 1, method:  "For 500ml: Add 250g white sugar to 150g grapefruit peels."),
                                                    Instruction(step: 2, method: "Let sit in a mason jar for 24 hours in a semi-warm place. This will be our oleo saccharum."),
                                                    Instruction(step: 3, method: "Add 250g fresh grapefruit juice and shake until the oleo is completely emulsified."),
-                                                   Instruction(step: 4, method: "Strain the peels out. Keeps for 1 week in the fridge.")]) 
+                                                   Instruction(step: 4, method: "Strain the peels out. Keeps for 1 week in the fridge.")])
     
     static let clementineShrub = Prep(prepIngredientName: "Clementine shrub",
                                       prepRecipe: [Instruction(step: 1, method:  "For 500ml: Add 250g white sugar to 150g of orange peels."),
@@ -202,9 +202,17 @@ final class PrepBible{
                                                     Instruction(step: 3, method: "Let cool before bottling.")])
     
     static let notSpicyJalapenoTincture = Prep(prepIngredientName: "Not spicy jalapeño tincture",
-                                               prepRecipe:[Instruction(step: 1, method: "Prepare your jalapeños by quarting them and removing the seeds."),
+                                               prepRecipe:[Instruction(step: 1, method: "Prepare your jalapeños by quartering them and removing the seeds."),
                                                            Instruction(step: 2, method: "With a very sharp knife, remove all of the pith so that only the outer skin is left."),
                                                            Instruction(step: 3, method: "Wash the skins with cold water and then pat them dry with a paper towel."),
                                                            Instruction(step: 4, method: "Add them to a small mason jar."),
-                                                           Instruction(step: 3, method: "After the jar is full of the prepared skins, add a high proof neutral spirit to fill the remaining volume.")])
+                                                           Instruction(step: 3, method: "After the jar is full of the prepared skins, add a high proof neutral spirit to fill the remaining volume."),
+                                                           Instruction(step: 3, method: "Let it sit for 2-3 days, checking the flavor every 12 hours to make sure it isn't developing a muted flavor."),
+                                                           Instruction(step: 3, method: "Strain through a coffee filter and bottle.")])
+    static let lavenderTincture = Prep(prepIngredientName: "Lavender tincture",
+                                       prepRecipe:[Instruction(step: 1, method: "Fill a small mason jar 1/2 - 3/4 full of dehydrated lavender buds (no sticks or stems)."),
+                                                   Instruction(step: 2, method: "Fill the jar with a high proof neutral spirit."),
+                                                   Instruction(step: 3, method: "Let it sit for at least 3 days."),
+                                                   Instruction(step: 4, method: "You can let it sit for several weeks if you'd like a more intense concentrated flavor. But, we feel that the flavor is plenty concentrated after a few days."),
+                                                   Instruction(step: 3, method: "Strain through a coffee filter and bottle.")])
 }

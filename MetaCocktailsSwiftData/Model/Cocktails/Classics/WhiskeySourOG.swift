@@ -11,9 +11,8 @@ var whiskeySourOG = Cocktail(cocktailName: "Whiskey Sour",
                              glasswareType: .stemmedGlassware,
                              garnish: [.maraschinoCherry, .halfOrangeWheel],
                              ice: nil,
-                             author: nil,
-                             spec: whiskeySourSpecOG,
-                             buildOrder: whiskeySourOGBuild,
+                             author: nil, spec: whiskeySourSpecOG, buildOrder: whiskeySourOGBuild,
+                             notes: whiskeySourNotes,
                              tags: whiskeySourOGTags,
                              variation: .whiskeySour,
                              collection: .originals,
@@ -31,4 +30,4 @@ var whiskeySourOGBuild = Build(instructions: [Instruction(step: 1, method: "Add 
                                               Instruction(step: 2, method: "And a few Kold Draft cubes and shake until cold. Do not over dilute"),
                                               Instruction(step: 3, method: "Immediately after shaking (with vigor), pop the tin and double strain into a stemmed glass.")])
 
-var whiskeySourNotes = "Dave Wondrich says that the first print of the name 'Whiskey Sour' shows up in print as early as 1826. This is another example of a cocktail that hundreds of people thought they invented. Like the Old Fashioned, it's long been a staple in the cocktail world. The addition of egg whites have always been optional but we think that it significantly improves the cocktail."
+var whiskeySourNotes = "The term 'Whiskey Sour' first appeared in print as early as 1826, according to cocktail historian Dave Wondrich. This classic cocktail, like the Old Fashioned, has been a longstanding fixture in the world of mixology. Its origins are disputed, with numerous individuals claiming to have invented it over the years. While egg whites have always been an optional ingredient in the Whiskey Sour, their inclusion is believed by many to enhance the drink significantly. We couldn't agree more."

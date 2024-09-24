@@ -264,6 +264,7 @@
 		4DA568292B6E38C2003F6F04 /* VictoryLap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA568282B6E38C2003F6F04 /* VictoryLap.swift */; };
 		4DA568662B70AF07003F6F04 /* CBCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA568652B70AF07003F6F04 /* CBCViewModel.swift */; };
 		4DA888FB2CA277AC00113ED7 /* ElDiablo(WnG).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA888FA2CA277AC00113ED7 /* ElDiablo(WnG).swift */; };
+		4DA888FD2CA369B300113ED7 /* DayMan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA888FC2CA369B300113ED7 /* DayMan.swift */; };
 		4DAD6C872C802CB900860555 /* CustomCocktailsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAD6C862C802CB900860555 /* CustomCocktailsListView.swift */; };
 		4DAD6C8C2C804A2F00860555 /* VariationPickerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAD6C8B2C804A2F00860555 /* VariationPickerDetailView.swift */; };
 		4DAD6C922C83B86C00860555 /* RiffPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAD6C912C83B86C00860555 /* RiffPickerView.swift */; };
@@ -809,6 +810,7 @@
 		4DA568282B6E38C2003F6F04 /* VictoryLap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VictoryLap.swift; sourceTree = "<group>"; };
 		4DA568652B70AF07003F6F04 /* CBCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBCViewModel.swift; sourceTree = "<group>"; };
 		4DA888FA2CA277AC00113ED7 /* ElDiablo(WnG).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElDiablo(WnG).swift"; sourceTree = "<group>"; };
+		4DA888FC2CA369B300113ED7 /* DayMan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayMan.swift; sourceTree = "<group>"; };
 		4DAD6C862C802CB900860555 /* CustomCocktailsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCocktailsListView.swift; sourceTree = "<group>"; };
 		4DAD6C8B2C804A2F00860555 /* VariationPickerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariationPickerDetailView.swift; sourceTree = "<group>"; };
 		4DAD6C912C83B86C00860555 /* RiffPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiffPickerView.swift; sourceTree = "<group>"; };
@@ -1444,6 +1446,7 @@
 				4DA568092B6E0FE6003F6F04 /* CorporateJargon.swift */,
 				4DA5681D2B6E2CAE003F6F04 /* DarkCorners.swift */,
 				4DA5678B2B6CBFE3003F6F04 /* DaveyCrocketsLocker.swift */,
+				4DA888FC2CA369B300113ED7 /* DayMan.swift */,
 				4DA568252B6E36FA003F6F04 /* DontPanic.swift */,
 				4DA567B72B6DA8FD003F6F04 /* EasternDiplomat.swift */,
 				4DA5677B2B6C928F003F6F04 /* EasyStreet.swift */,
@@ -2283,6 +2286,7 @@
 				F4872FF02C4355320092F8FF /* SampleData.swift in Sources */,
 				F4C5C3E12B3B3F2E005B2261 /* IngredientType.swift in Sources */,
 				4DE33E072B915E5C00312EC3 /* Bensonhurst.swift in Sources */,
+				4DA888FD2CA369B300113ED7 /* DayMan.swift in Sources */,
 				4DA567E82B6DD90A003F6F04 /* MadusasFang.swift in Sources */,
 				4DBBA48E2B68963200179B8F /* Mezcalero.swift in Sources */,
 				4DBFF8232B5FB71E0011B5B1 /* ArmyNavy.swift in Sources */,

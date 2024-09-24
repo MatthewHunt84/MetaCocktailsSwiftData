@@ -78,6 +78,7 @@ enum GarnishList: String, Codable, CaseIterable {
     case garnishAtWill             = "Garnish at will."
     case grapefruitExpression      = "Grapefruit expression (then discard)"
     case grapefruitPeel            = "Grapefruit peel"
+    case grapeFruitNoExpress       = "Grapefruit Peel (no oil expression)"
     case grapefruitWedge           = "Grapefruit wedge"
     case goldLeaf                  = "Gold leaf"
     case halfOrangeWheel           = "Half orange wheel"
