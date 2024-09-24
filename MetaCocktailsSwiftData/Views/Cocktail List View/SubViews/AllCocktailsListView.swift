@@ -20,48 +20,61 @@ struct AllCocktailsListView: View {
                     let organizedCocktails = viewModel.getOrganizedCocktails(for: letter)
                     ForEach(organizedCocktails.keys.sorted(), id: \.self) { key in
                         if let cocktails = organizedCocktails[key], !cocktails.isEmpty {
-                            if cocktails.count > 1 {
-                                DisclosureGroup {
-                                    ForEach(cocktails, id: \.id) { cocktail in
-                                        MultipleCocktailsListView(cocktail: cocktail, cocktails: cocktails)
-                                            .padding(.leading)
-                                    }
-                                } label: {
-                                    Text(key)
-                                        .font(FontFactory.regularFont(size: 18))
-                                }
-                                .disclosureGroupStyle(InlineDisclosureGroupStyle())
-                                .frame(height: 35)
-                                .padding(.vertical, 2)
-                                
-                              
-                            } else {
-                                SingleCocktailListView(cocktail: cocktails[0])
-                            }
+                            CocktailGroupView(key: key, cocktails: cocktails)
                         }
                     }
                 } header: {
-                    ZStack {
-                        //copied BlackGlassBackground
-                        VisualEffectView(effect: UIBlurEffect(style: .systemThickMaterialDark))
-                            .opacity(0.85)
-                        
-                        LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0.2), Color.black.opacity(1)]),
-                                       startPoint: .topLeading,
-                                       endPoint: .bottomTrailing)
-                        HStack{
-                            Text(letter)
-                                .font(FontFactory.listLetter(size: 28))
-                                .foregroundColor(Color.secondary)
-                                .padding(.horizontal)
-                            Spacer()
-                        }
-                    }
-                    .backgroundStyle(Color(UIColor.systemGray6).opacity(0.8))
+                    SectionHeaderView(letter: letter)
                 }
                 .id(letter)
             }
         }
+    }
+}
+struct CocktailGroupView: View {
+    let key: String
+    let cocktails: [Cocktail]
+    
+    var body: some View {
+        if cocktails.count > 1 {
+            DisclosureGroup {
+                ForEach(cocktails, id: \.id) { cocktail in
+                    MultipleCocktailsListView(cocktail: cocktail, cocktails: cocktails)
+                        .padding(.leading)
+                }
+            } label: {
+                Text(key)
+                    .font(FontFactory.regularFont(size: 18))
+            }
+            .disclosureGroupStyle(InlineDisclosureGroupStyle())
+            .frame(height: 35)
+            .padding(.vertical, 2)
+        } else {
+            SingleCocktailListView(cocktail: cocktails[0])
+        }
+    }
+}
+
+struct SectionHeaderView: View {
+    let letter: String
+    
+    var body: some View {
+        ZStack {
+            VisualEffectView(effect: UIBlurEffect(style: .systemThickMaterialDark))
+                .opacity(0.85)
+            
+            LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0.2), Color.black.opacity(1)]),
+                           startPoint: .topLeading,
+                           endPoint: .bottomTrailing)
+            HStack {
+                Text(letter)
+                    .font(FontFactory.listLetter(size: 28))
+                    .foregroundColor(Color.secondary)
+                    .padding(.horizontal)
+                Spacer()
+            }
+        }
+        .backgroundStyle(Color(UIColor.systemGray6).opacity(0.8))
     }
 }
 
