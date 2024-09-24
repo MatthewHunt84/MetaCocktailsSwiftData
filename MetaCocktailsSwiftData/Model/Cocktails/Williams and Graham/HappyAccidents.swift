@@ -20,7 +20,7 @@ var happyAccidents = Cocktail(cocktailName: "Happy Accidents",
 let happyAccidentsSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.soda(.sodaWater), value: 2),
                                                    OldCocktailIngredient(.fruit(.cucumberSlices), value: 2, unit: .muddled),
                                                    OldCocktailIngredient(.juices(.lemon), value: 1),
-                                                   OldCocktailIngredient(.otherAlcohol(.absinthe), value: 0.23),
+                                                   OldCocktailIngredient(.otherAlcohol(.absinthe), value: 0.22),
                                                    OldCocktailIngredient(.amari(.amaroMontenegro), value: 1),
                                                    OldCocktailIngredient(.liqueurs(.italicus), value: 1)]
 
