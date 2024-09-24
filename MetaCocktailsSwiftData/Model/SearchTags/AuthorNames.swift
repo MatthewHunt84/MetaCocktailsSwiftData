@@ -94,6 +94,7 @@ enum AuthorPlaces: String, Codable, CaseIterable, Identifiable {
     case cafeRoyalCocktialBook        = "Cafe Royal Cocktail Book (London)"
     case crosbyGaigeCocktailGuide     = "Crosby Gaige's Cocktail Guide and Ladies Companion, New York"
     case deathAndCo                   = "Death & Co"
+    case nitecap                      = "Nitecap"
     case detroitAthleticClub          = "Detroit Athletic club"
     case dutchKills                   = "Dutch Kills, New York"
     case ellaDiningRoom               = "Ella Dining Room, Sacramento"
