@@ -23,7 +23,7 @@ var oaxacanite = Cocktail(cocktailName: "Oaxacanite",
 var oaxacaniteSpec = [OldCocktailIngredient(.juices(.lime), value: 0.75, unit: .fluidOunces),
                       OldCocktailIngredient(.bitters(.angosturaBitters), value: 0.5, unit: .teaspoon),
                       OldCocktailIngredient(.syrups(.honeySyrup), value: 0.75, prep: PrepBible.honeySyrup),
-                      OldCocktailIngredient(.fruit(.grapefruitPeel), value: 1),
+                      OldCocktailIngredient(.fruit(.grapefruitPeel), value: 1, unit: .none),
                       OldCocktailIngredient(.agaves(.tequilaBlanco), value: 1),
                       OldCocktailIngredient(.agaves(.mezcalDelMagueyVida), value: 1)]
 

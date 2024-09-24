@@ -66,7 +66,7 @@ enum GarnishList: String, Codable, CaseIterable {
     case cocoaPowder               = "Cocoa powder"
     case cocktailOnion             = "Cocktail onion"
     case coffeeBeans               = "3 coffee beans"
-    case cucumberSlices            = "Cucumber slice(s)"
+    case cucumberSlices            = "Sliced cucumber"
     case cucumberSliceLong         = "Long fancy cucumber"
     case dehydratedGrapefruitSlice = "Dehydrated grapefruit slice"
     case dehydratedOrangeWheel     = "Dehydrated orange wheel"

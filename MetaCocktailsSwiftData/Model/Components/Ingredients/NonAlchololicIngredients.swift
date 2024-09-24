@@ -204,7 +204,7 @@ enum Herbs: String, IngredientTagsProtocol {
 enum Fruit: String, IngredientTagsProtocol {
     
     case blackBerry           = "Blackberries"
-    case cucumberSlices       = "Cucumber slice(s)"
+    case cucumberSlices       = "Cucumber slices"
     case grapefruitPeel       = "Grapefruit peel(s)"
     case guavaPure            = "Guava puree"
     case lemonRibbon          = "Long lemon ribbon"

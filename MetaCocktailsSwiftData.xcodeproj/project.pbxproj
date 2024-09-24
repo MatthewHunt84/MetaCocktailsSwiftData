@@ -265,6 +265,7 @@
 		4DA568662B70AF07003F6F04 /* CBCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA568652B70AF07003F6F04 /* CBCViewModel.swift */; };
 		4DA888FB2CA277AC00113ED7 /* ElDiablo(WnG).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA888FA2CA277AC00113ED7 /* ElDiablo(WnG).swift */; };
 		4DA888FD2CA369B300113ED7 /* DayMan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA888FC2CA369B300113ED7 /* DayMan.swift */; };
+		4DA888FF2CA3748700113ED7 /* ElGeneralisimo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA888FE2CA3748700113ED7 /* ElGeneralisimo.swift */; };
 		4DAD6C872C802CB900860555 /* CustomCocktailsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAD6C862C802CB900860555 /* CustomCocktailsListView.swift */; };
 		4DAD6C8C2C804A2F00860555 /* VariationPickerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAD6C8B2C804A2F00860555 /* VariationPickerDetailView.swift */; };
 		4DAD6C922C83B86C00860555 /* RiffPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAD6C912C83B86C00860555 /* RiffPickerView.swift */; };
@@ -811,6 +812,7 @@
 		4DA568652B70AF07003F6F04 /* CBCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBCViewModel.swift; sourceTree = "<group>"; };
 		4DA888FA2CA277AC00113ED7 /* ElDiablo(WnG).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElDiablo(WnG).swift"; sourceTree = "<group>"; };
 		4DA888FC2CA369B300113ED7 /* DayMan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayMan.swift; sourceTree = "<group>"; };
+		4DA888FE2CA3748700113ED7 /* ElGeneralisimo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElGeneralisimo.swift; sourceTree = "<group>"; };
 		4DAD6C862C802CB900860555 /* CustomCocktailsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCocktailsListView.swift; sourceTree = "<group>"; };
 		4DAD6C8B2C804A2F00860555 /* VariationPickerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariationPickerDetailView.swift; sourceTree = "<group>"; };
 		4DAD6C912C83B86C00860555 /* RiffPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiffPickerView.swift; sourceTree = "<group>"; };
@@ -1451,6 +1453,7 @@
 				4DA567B72B6DA8FD003F6F04 /* EasternDiplomat.swift */,
 				4DA5677B2B6C928F003F6F04 /* EasyStreet.swift */,
 				4D1E85C22B5C924F00214BC6 /* ElChicicabra.swift */,
+				4DA888FE2CA3748700113ED7 /* ElGeneralisimo.swift */,
 				4DA567832B6CB4E4003F6F04 /* El Ocho Rosado.swift */,
 				4DA567DB2B6DCA4D003F6F04 /* EndOfAnEmpire.swift */,
 				4DA567F52B6DEE90003F6F04 /* Falcor.swift */,
@@ -2178,6 +2181,7 @@
 				4DBFF83D2B60803E0011B5B1 /* BobbyBurns.swift in Sources */,
 				F4C6A8F52AB0042400BB0AD0 /* Cocktail.swift in Sources */,
 				4DCB17382BA51BF20002D7D9 /* Mojito(M&H).swift in Sources */,
+				4DA888FF2CA3748700113ED7 /* ElGeneralisimo.swift in Sources */,
 				4DA567942B6CCC1F003F6F04 /* NightVision.swift in Sources */,
 				4D1E85C52B5C973100214BC6 /* FuegoVioleta.swift in Sources */,
 				4DF408D22B60EF2400EF9A6E /* CornNOil.swift in Sources */,
