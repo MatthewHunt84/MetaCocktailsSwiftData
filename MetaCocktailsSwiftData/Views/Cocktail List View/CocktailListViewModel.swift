@@ -105,25 +105,30 @@ import Combine
     }
     
     func organizeCocktails(_ cocktails: [Cocktail]) -> [String: [Cocktail]] {
-            var organizedCocktailsDict: [String: [Cocktail]] = [:]
+        var organizedCocktailsDict: [String: [Cocktail]] = [:]
+        
+        for cocktail in cocktails {
+            let key = cocktail.variationName ?? cocktail.cocktailName
             
-            for cocktail in cocktails {
-                let key = cocktail.variationName ?? cocktail.cocktailName
-                
-                if organizedCocktailsDict[key] == nil {
-                    organizedCocktailsDict[key] = []
-                }
-                
-                if !organizedCocktailsDict[key]!.contains(where: { $0.id == cocktail.id }) {
+            if organizedCocktailsDict[key] == nil {
+                organizedCocktailsDict[key] = []
+            }
+            
+            if let existingCocktails = organizedCocktailsDict[key] {
+                if !existingCocktails.contains(where: { $0.id == cocktail.id }) {
                     organizedCocktailsDict[key]?.append(cocktail)
                 }
+            } else {
+                //Theoretically, this will never be reached.
+                organizedCocktailsDict[key] = [cocktail]
             }
-            for (key, value) in organizedCocktailsDict {
-                organizedCocktailsDict[key] = value.sorted { $0.cocktailName < $1.cocktailName }
-            }
-            
-            return organizedCocktailsDict
         }
+        for (key, value) in organizedCocktailsDict {
+            organizedCocktailsDict[key] = value.sorted { $0.cocktailName < $1.cocktailName }
+        }
+        
+        return organizedCocktailsDict
+    }
 }
 
 
