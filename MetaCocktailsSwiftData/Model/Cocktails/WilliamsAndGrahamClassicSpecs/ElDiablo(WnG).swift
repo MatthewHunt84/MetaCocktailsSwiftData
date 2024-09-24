@@ -16,9 +16,10 @@ var elDiabloWnG  = Cocktail(cocktailName: "El Diablo (W&G Version)",
                             spec: elDiabloSpecWnG,
                             buildOrder: elDiabloBuildOrderWnG,
                             tags: elDiabloTagsWnG,
-                            collection: .originals)
+                            variationName: "El Diablo",
+                            collection: .williamsAndGraham)
 
-var elDiabloSpecWnG  = [OldCocktailIngredient(.soda(.gingerBeer), value: 2.5),
+var elDiabloSpecWnG  = [OldCocktailIngredient(.soda(.gingerBeer), value: 2.5, prep: PrepBible.gingerBeer),
                         OldCocktailIngredient(.juices(.lime), value: 0.5),
                         OldCocktailIngredient(.liqueurs(.cremeDeCassis), value: 0.25),
                         OldCocktailIngredient(.agaves(.tequilaFortalezaRepo), value: 1.5)]

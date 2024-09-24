@@ -51,6 +51,14 @@ final class PrepBible{
                                               Instruction(step: 3, method:  "Take off heat immediately after boiling and let cool."),
                                               Instruction(step: 4, method:  "Add 1oz(30ml) vodka to every 750ml of syrup to stabilize.")] )
     
+    static let gingerBeer = Prep(prepIngredientName: "Ginger beer",
+                                  prepRecipe:[Instruction(step: 1, method:  "This requires juicing fresh ginger, which can be a strain on household juicers."),
+                                              Instruction(step: 2, method:  "Add equal parts fresh ginger juice and sugar to a pot and bring to a boil while stirring. Some prefer Demerara sugar for a darker and more robust flavor. You can use plain white sugar for a brighter and sharper flavor."),
+                                              Instruction(step: 3, method:  "Take off heat immediately after boiling and let cool."),
+                                              Instruction(step: 4, method:  "For every 8 ounces of water, add 2 ounces of ginger syrup."),
+                                              Instruction(step: 5, method:  "Modify the syrup to soda ratio however you see fit."),
+                                              Instruction(step: 6, method:  "Enjoy with ice.")] )
+    
     static let morgenthalersGingerSyrup = Prep(prepIngredientName: "Morgenthaler's ginger syrup",
                                                prepRecipe:[Instruction(step: 1, method: "Roughly chop 8 ounces washed, unpeeled ginger (each piece about the size of your pinkie-tip). "),
                                                            Instruction(step: 2, method: "Put in a blender and combine with equal parts sugar and boiling water."),
