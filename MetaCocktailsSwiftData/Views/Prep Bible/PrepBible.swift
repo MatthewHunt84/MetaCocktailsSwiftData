@@ -200,4 +200,11 @@ final class PrepBible{
                                                     Instruction(step: 3, method: "Stir until sugar is disolved"),
                                                     Instruction(step: 4, method: "Strain out hibiscus flowers"),
                                                     Instruction(step: 3, method: "Let cool before bottling.")])
+    
+    static let notSpicyJalapenoTincture = Prep(prepIngredientName: "Not spicy jalapeño tincture",
+                                               prepRecipe:[Instruction(step: 1, method: "Prepare your jalapeños by quarting them and removing the seeds."),
+                                                           Instruction(step: 2, method: "With a very sharp knife, remove all of the pith so that only the outer skin is left."),
+                                                           Instruction(step: 3, method: "Wash the skins with cold water and then pat them dry with a paper towel."),
+                                                           Instruction(step: 4, method: "Add them to a small mason jar."),
+                                                           Instruction(step: 3, method: "After the jar is full of the prepared skins, add a high proof neutral spirit to fill the remaining volume.")])
 }
