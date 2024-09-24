@@ -113,14 +113,10 @@ import Combine
             if organizedCocktailsDict[key] == nil {
                 organizedCocktailsDict[key] = []
             }
-            
             if let existingCocktails = organizedCocktailsDict[key] {
                 if !existingCocktails.contains(where: { $0.id == cocktail.id }) {
                     organizedCocktailsDict[key]?.append(cocktail)
                 }
-            } else {
-                //Theoretically, this will never be reached.
-                organizedCocktailsDict[key] = [cocktail]
             }
         }
         for (key, value) in organizedCocktailsDict {
