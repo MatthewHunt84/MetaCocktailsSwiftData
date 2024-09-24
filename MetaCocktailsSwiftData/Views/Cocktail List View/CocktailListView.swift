@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct CocktailListView: View {
-    @Bindable var viewModel = CocktailListViewModel()
+    @EnvironmentObject var viewModel: CocktailListViewModel
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
     @FocusState private var searchBarIsFocused: Bool
     @State private var selectedNavigationLetter: String?
@@ -27,9 +27,9 @@ struct CocktailListView: View {
                                 ScrollViewReader { proxy in
                                     ScrollView {
                                         if searchBarIsFocused {
-                                            SearchBarAllCocktailsListView(viewModel: viewModel)
+                                            SearchBarAllCocktailsListView()
                                         } else {
-                                            AllCocktailsListView(viewModel: viewModel, animatingLetter: $selectedNavigationLetter)
+                                            AllCocktailsListView(animatingLetter: $selectedNavigationLetter)
                                         }
                                     }
                                     .frame(width: listGeo.size.width * 0.90)
@@ -224,7 +224,7 @@ struct CocktailRowView: View {
 
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    CocktailListView(viewModel: CocktailListViewModel())
+    CocktailListView()
         .modelContainer(preview.container)
         
 }

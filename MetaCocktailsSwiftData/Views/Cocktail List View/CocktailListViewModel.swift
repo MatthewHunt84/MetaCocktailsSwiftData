@@ -23,6 +23,8 @@ import Combine
     
     private var organizedCocktailsCache: [String: [String: [Cocktail]]] = [:]
     
+    var shouldReloadCache = false
+    
     init() {
         setupSearch()
     }
@@ -46,7 +48,14 @@ import Combine
         updateFilteredCocktails()
     }
     
+    private func shouldPopulateCache() -> Bool {
+        let shouldPopulateCache = organizedCocktailsCache.isEmpty || shouldReloadCache
+        print("should reload cache: \(shouldPopulateCache)")
+        return shouldPopulateCache
+    }
+    
     private func cacheOrganizedCocktails() {
+        guard shouldPopulateCache() else { return }
         let allOrganizedCocktails = organizeCocktails(filteredCocktails)
         for letter in cocktailListAlphabet {
             organizedCocktailsCache[letter] = allOrganizedCocktails.filter { $0.key.hasPrefix(letter) }

@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct AllCocktailsListView: View {
-    @Bindable var viewModel: CocktailListViewModel
+    @EnvironmentObject var viewModel: CocktailListViewModel
     @Environment(\.modelContext) private var modelContext
     @Binding var animatingLetter: String?
     
@@ -156,7 +156,7 @@ struct MultipleCocktailsListView: View {
 }
 
 struct SearchBarAllCocktailsListView: View {
-    @Bindable var viewModel: CocktailListViewModel
+    @EnvironmentObject var viewModel: CocktailListViewModel
 
     var body: some View {
         let organizedCocktails = viewModel.organizeCocktails(viewModel.filteredCocktails)
