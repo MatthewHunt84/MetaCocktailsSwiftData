@@ -7,7 +7,7 @@
 
 import Foundation
 
-var betweenTheSheetsWnG  = Cocktail(cocktailName: "Between the Sheets (W&G Version)",
+var betweenTheSheetsWnG  = Cocktail(cocktailName: "Between the Sheets" + wAndGTitleTag,
                                     glasswareType: .martini,
                                     garnish: [.orangeAndLemon],
                                     author: williamsAndGraham,

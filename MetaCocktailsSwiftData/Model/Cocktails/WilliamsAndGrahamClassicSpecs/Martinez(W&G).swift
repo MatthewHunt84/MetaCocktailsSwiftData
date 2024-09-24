@@ -7,7 +7,7 @@
 
 import Foundation
 
-var martinezWnG = Cocktail(cocktailName: "Martinez (W&G Version)",
+var martinezWnG = Cocktail(cocktailName: "Martinez" + wAndGTitleTag,
                            glasswareType: .stemmedGlassware,
                            garnish: [.maraschinoCherry],
                            author: williamsAndGraham,

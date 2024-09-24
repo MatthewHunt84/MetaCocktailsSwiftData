@@ -7,7 +7,7 @@
 
 import Foundation
 
-var brambleWng = Cocktail(cocktailName: "Bramble (W&G Version)",
+var brambleWng = Cocktail(cocktailName: "Bramble" + wAndGTitleTag,
                           imageAsset: nil,
                           glasswareType: .doubleOld,
                           garnish: [.lemonWheel],

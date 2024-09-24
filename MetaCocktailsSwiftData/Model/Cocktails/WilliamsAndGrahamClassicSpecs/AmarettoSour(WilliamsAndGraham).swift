@@ -7,7 +7,7 @@
 
 import Foundation
 
-var amarettoSourWnG  = Cocktail(cocktailName: "Amaretto Sour (W&G Version)",
+var amarettoSourWnG  = Cocktail(cocktailName: "Amaretto Sour" + wAndGTitleTag,
                                 glasswareType: .martini,
                                 garnish: [.maraschinoCherry],
                                 author: williamsAndGraham,

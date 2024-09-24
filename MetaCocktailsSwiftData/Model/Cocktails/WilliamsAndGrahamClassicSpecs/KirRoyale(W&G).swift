@@ -7,7 +7,7 @@
 
 import Foundation
 
-var kirRoyaleWnG = Cocktail(cocktailName: "Kir Royale (W&G Version)",
+var kirRoyaleWnG = Cocktail(cocktailName: "Kir Royale" + wAndGTitleTag,
                             glasswareType: .flute,
                             garnish: [.lemonPeel],
                             ice: nil,

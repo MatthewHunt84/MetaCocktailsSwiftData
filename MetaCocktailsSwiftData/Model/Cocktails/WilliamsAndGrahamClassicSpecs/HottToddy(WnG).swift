@@ -7,7 +7,7 @@
 
 import Foundation
 
-var hotToddyWnG = Cocktail(cocktailName: "Hot Toddy (W&G Version)",
+var hotToddyWnG = Cocktail(cocktailName: "Hot Toddy" + wAndGTitleTag,
                            glasswareType: .toddyGlass,
                            garnish: [.lemonWheel],
                            author: williamsAndGraham,

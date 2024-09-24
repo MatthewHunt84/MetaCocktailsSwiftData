@@ -7,7 +7,7 @@
 
 import Foundation
 
-var ultimaPalabraWnG = Cocktail(cocktailName: "Ultima Palabra (W&G Version)",
+var ultimaPalabraWnG = Cocktail(cocktailName: "Ultima Palabra" + wAndGTitleTag,
                                 glasswareType: .stemmedGlassware,
                                 garnish: [.maraschinoCherry],
                                 ice: nil,

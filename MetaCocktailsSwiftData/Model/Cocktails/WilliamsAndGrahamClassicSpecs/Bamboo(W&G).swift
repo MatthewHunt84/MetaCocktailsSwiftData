@@ -7,7 +7,7 @@
 
 import Foundation
 
-var bambooWnG = Cocktail(cocktailName: "Bamboo (W&G Version)",
+var bambooWnG = Cocktail(cocktailName: "Bamboo" + wAndGTitleTag,
                          imageAsset: nil,
                          glasswareType: Glassware.coupe,
                          garnish: [.orangePeel],

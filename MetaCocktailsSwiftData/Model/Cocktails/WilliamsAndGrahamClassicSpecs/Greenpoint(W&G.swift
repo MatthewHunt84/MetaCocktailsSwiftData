@@ -7,7 +7,7 @@
 
 import Foundation
 
-var greenpointWnG = Cocktail(cocktailName: "Greenpoint (W&G Version)",
+var greenpointWnG = Cocktail(cocktailName: "Greenpoint" + wAndGTitleTag,
                              glasswareType: .stemmedGlassware,
                              garnish: [.orangePeel],
                              author:williamsAndGraham,
