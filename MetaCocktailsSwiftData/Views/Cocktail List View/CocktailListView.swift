@@ -23,12 +23,12 @@ struct CocktailListView: View {
                     VStack(spacing: 0) {
                         SearchBarForCocktailListView(isFocused: $searchBarIsFocused, viewModel: viewModel)
                             .padding()
-                            .overlay(
-                                GeometryReader { geometry in
-                                    Color.clear
-                                        .contentShape(Rectangle())
-                                        .frame(width:searchBarIsFocused ? geometry.size.width / 2 : geometry.size.width + 40, height: geometry.size.height + 40)
-                                        .position(x: geometry.frame(in: .local).midX, y: geometry.frame(in: .local).midY)})
+//                            .overlay(
+//                                GeometryReader { geometry in
+//                                    Color.red
+//                                        .contentShape(Rectangle())
+//                                        .frame(width:searchBarIsFocused ? geometry.size.width / 2 : geometry.size.width + 40, height: geometry.size.height + 40)
+//                                        .position(x: geometry.frame(in: .local).midX, y: geometry.frame(in: .local).midY)})
                             .onTapGesture {
                                 searchBarIsFocused = true
                             }
@@ -133,10 +133,14 @@ struct SearchBarForCocktailListView: View {
                     Button {
                         viewModel.searchText = ""
                     } label: {
-                        Image(systemName: "x.circle.fill")
+                        Image(systemName: "x.circle")
                             .tint(ColorScheme.interactionTint)
+                            .bold()
+                            .font(.system(size: 18))
+                            .padding()
+                            .frame(width: 60, height: 40)
+                            .contentShape(Rectangle())
                     }
-                    .padding(.horizontal, 20)
                 }
             }
             .onChange(of: viewModel.searchText) { _, newValue in
