@@ -46,6 +46,7 @@ class Garnish: Codable, Hashable {
 enum GarnishList: String, Codable, CaseIterable {
     
     case angoDeco                  = "Angostura bitters design over egg whites"
+    case angoAndPeychaudsDeco      = "Angostura and Peychaud's bitters design over egg whites"
     case almonds                   = "Almonds"
     case assortedBerries230g       = "230g assorted berries"
     case babiesBreath              = "Babies breath"

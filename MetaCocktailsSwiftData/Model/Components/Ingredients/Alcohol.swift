@@ -36,7 +36,7 @@ enum Agave: String, IngredientTagsProtocol {
     case mezcalDelMagueyVida       = "Vida"
     case mezcalDelMagueySanLuis    = "San Luis Del Rio"
     case mezcalEspadin             = "Mezcal Espadine"
-    case mezcalSmokeyAny           = "Smokey Mezcal"
+    case mezcalSmokeyAny           = "Smoky Mezcal"
     case mezcalNotSmokeyAny        = "Not Smokey Mezcal"
     case puebloViejoBlanco104      = "Blanco 104"
     case tanteoJalepeno            = "Tanteo Jalapenno Tequila"
