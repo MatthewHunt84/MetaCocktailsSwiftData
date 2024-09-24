@@ -132,7 +132,7 @@ class OldCocktailIngredient: Codable, Hashable { // This old guy needs to be rem
                 return "French bitter apertif"
             }
             if ingredient.name == Bitters.bitterTruthJTDecanter.rawValue {
-                return "By Bitter Truth"
+                return "Bitters by Bitter Truth"
             }
             if ingredient.name == Bitters.blackWalnut.rawValue {
                 return "By Fee Brothers"
@@ -148,6 +148,9 @@ class OldCocktailIngredient: Codable, Hashable { // This old guy needs to be rem
             }
             if ingredient.name ==  Liqueur.luxardoCherry.rawValue {
                 return "Liqueur by Luxardo"
+            }
+            if ingredient.name ==  Bitters.bittercubeJamaican1.rawValue {
+                return "Bitters by Bittercube"
             }
             return info
         }()
