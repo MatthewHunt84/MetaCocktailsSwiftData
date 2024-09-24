@@ -13,8 +13,10 @@ var bloodyMary  = Cocktail(cocktailName: "Bloody Mary",
                            ice: .koldDraft,
                            spec: bloodyMarrySpec,
                            buildOrder: bloodyMarryBuild,
+                           notes: bloodyMaryNotes,
                            tags: bloodyMarryTags,
                            variation: .bloodyMary,
+                           collection: .originals,
                            titleCocktail: true)
 
 var bloodyMarrySpec  = [OldCocktailIngredient(.otherNonAlc(.tomatoJuice), value: 4.5),
@@ -29,3 +31,4 @@ var bloodyMarryBuild  = Build(instructions: [Instruction(step: 1, method: "Add a
 
 var bloodyMarryTags   = Tags(profiles: [.savory, .rich, .restorative])
 
+var bloodyMaryNotes = "The origins of this cocktail are shrouded in mystery, with several unverified stories claiming its creation. We present here a simple, classic version of the recipe. Feel free to embellish or modify it to suit your own tastes, captain 'Morning Drinker' 🫡."

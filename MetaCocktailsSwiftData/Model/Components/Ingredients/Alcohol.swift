@@ -687,7 +687,7 @@ enum Liqueur: String, IngredientTagsProtocol {
     case leopoldCherry        = "Michigan Cherry Liqueur"
     case licor43              = "Licor 43"
     case lolita               = "Caffe Lolita Coffee Liqueur"
-    case luxardoCherry        = "Luxardo Sangue Morlacco Cherry"
+    case luxardoCherry        = "Sangue Morlacco Cherry"
     case maraschinoLiqueur    = "Maraschino Liqueur"
     case nocino               = "Nocino Liquor"
     case nuxAlpina            = "Nux Alpina Walnut Liqueur"

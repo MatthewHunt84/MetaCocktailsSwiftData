@@ -146,6 +146,9 @@ class OldCocktailIngredient: Codable, Hashable { // This old guy needs to be rem
             if ingredient.name ==  OtherNA.dryVanilla.rawValue {
                 return "From DRY Botanical Bubbly Company"
             }
+            if ingredient.name ==  Liqueur.luxardoCherry.rawValue {
+                return "Liqueur by Luxardo"
+            }
             return info
         }()
     }
