@@ -17,6 +17,7 @@ var cosmopolitan  = Cocktail(cocktailName: "Cosmopolitan",
                                            year: "1988"),
                              spec: cosmoSpec,
                              buildOrder: nil,
+                             notes: cosmoNotes,
                              tags: cosmoTags)
 
 var cosmoSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.25),
@@ -28,3 +29,4 @@ var cosmoTags  = Tags(flavors: [.orange, .cranberry, .lime],
                       profiles: [.fruity, .citrusy, .light],
                       styles: [.daisy, .shaken, .sour])
                      
+var cosmoNotes = "While this cocktail originated in the 1980s, its popularity surged in the early 2000s during the cocktail renaissance, thanks in large part to Dale DeGroff's influence at New York's Rainbow Room. The HBO series 'Sex and the City' also played a substantial role in boosting its fame. Regardless of its origins, it's undeniable that this drink has now firmly established itself in the modern cocktail canon."
