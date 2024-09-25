@@ -104,24 +104,35 @@ struct BuildOrderView: View {
                         .frame(width: 50, height: 50)
                 }
             }
-            .padding(.bottom, 15)
+            .padding(.bottom, buildOrder.instructions.contains(where: { $0.step == 0}) ? 0 : 16)
+            
+            if buildOrder.instructions.contains(where: { $0.step == 0}) {
+                Text(buildOrder.instructions.first!.method)
+                    .font(FontFactory.italicFont(size: 14))
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding(EdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16))
+            }
             
             ForEach(buildOrder.instructions) { build in
-                HStack(alignment: .top) {
-                    Text("\(build.step).")
-                        .font(FontFactory.mediumFont(size: 14))
-                        .bold()
-                    Text("\(build.method)")
-                        .font(FontFactory.mediumFont(size: 14))
+                if build.step > 0 {
+                    HStack(alignment: .top) {
+                        Text("\(build.step).")
+                            .font(FontFactory.mediumFont(size: 14))
+                            .bold()
+                        Text("\(build.method)")
+                            .font(FontFactory.mediumFont(size: 14))
+                    }
+                    .listRowBackground(Color.darkGrey)
+                    Divider()
                 }
-                .listRowBackground(Color.darkGrey)
-                Divider()
             }
             
             Spacer()
         }
     }
 }
+
 struct IngredientRecipeView: View {
     
     let prep: Prep
