@@ -20,7 +20,7 @@ struct ContainerMenuView: View {
                     } label: {
                         Text(labelForVolume)
                             .font(FontFactory.mediumFont(size: 16))
-                            .foregroundColor(viewModel.containerSize == volume ? ColorScheme.interactionTint : .gray)
+                            .foregroundColor(viewModel.containerSize == volume ? ColorScheme.interactionTint : .primary)
                             .padding(.vertical, 3)
                             .padding(.horizontal, 16)
                             .background(Capsule().strokeBorder(ColorScheme.interactionTint, lineWidth: viewModel.containerSize == volume ? 1 : 0))

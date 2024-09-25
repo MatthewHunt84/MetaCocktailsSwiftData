@@ -37,7 +37,9 @@ struct SplitBatchView: View {
                             Spacer()
                             
                             Text("^[\(NSNumber(value: viewModel.numberOfContainers)) container](inflect: true) required")
-                                .font(FontFactory.fontBody16)
+                                .font(FontFactory.mediumFont(size: 16))
+//                                .font(FontFactory.fontBody16)
+                                .foregroundStyle(.secondary)
                             
                             Image(systemName: "info.circle")
                                 .font(.system(size: 16))
@@ -47,6 +49,7 @@ struct SplitBatchView: View {
                                         isShowingContainerInfo.toggle()
                                     }
                                 }
+                            
                             Spacer()
                         }
                         
