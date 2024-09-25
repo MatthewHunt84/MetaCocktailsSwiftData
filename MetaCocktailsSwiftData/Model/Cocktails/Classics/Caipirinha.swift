@@ -13,8 +13,8 @@ var caipirinha   = Cocktail(cocktailName: "Caipirinha",
                             author:Author(place: "Brazil"),
                             spec: caipirinhaSpec,
                             buildOrder: caipirnhaBuild,
-                            tags: caipirnhaTags,
-                            collection: .originals)
+                            notes: caipirnhaNotes,
+                            tags: caipirnhaTags)
 
 
 var caipirinhaSpec = [OldCocktailIngredient(.fruit(.limeHalf), value: 1, unit: .none),
@@ -33,3 +33,4 @@ var caipirnhaTags  = Tags(flavors: [.lime],
                           profiles: [.sweet, .citrusy, .light],
                           styles: [.sour, .shaken])
                          
+var caipirnhaNotes = "Caipirinha is the national drink of Brasil. Cachaça it's native spirit that's made from juiced sugarcane."

@@ -16,7 +16,8 @@ var elksOwnCocktail = Cocktail(cocktailName: "Elk's Own Cocktail",
                                buildOrder: elksOwnCocktailBuild,
                                tags: elksOwnCocktailTags,
                                variation: .elksClubFizz,
-                               collection: .originals, titleCocktail: true)
+                               collection: .originals,
+                               titleCocktail: true)
 
 var elksOwnCocktailSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
                             OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 1),

@@ -33,7 +33,7 @@ let brambleTags = Tags(flavors: [.lemon],
 
 let brambleBuild =  Build(instructions: [Instruction(step: 1, method: "This is typically a built cocktail."),
                                           Instruction(step: 2, method: "If following tradition, add crushed ice to a double old fashioned glass and add the ingredients to that."),
-                                          Instruction(step: 3, method: "Then, drizzle the creme de mure over the top."),
+                                          Instruction(step: 3, method: "Then, drizzle the creme de mûre over the top."),
                                           Instruction(step: 4, method: "Garnish with blackberry and lemon wheel."),
-                                          Instruction(step: 5, method: "NOTE: This cocktail is significantly improved with fresh muddled bramble fruit(i.e. blackberries and raspberries). In this case, shake the cocktail, double strain the fruit and still leave the creme de mure to float.")])
+                                          Instruction(step: 5, method: "NOTE: This cocktail is significantly improved with fresh muddled bramble fruit(i.e. blackberries and raspberries). In this case, shake the cocktail, double strain the fruit and still leave the creme de mûre to float.")])
 
