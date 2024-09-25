@@ -12,7 +12,7 @@ var ramosGinFizz = Cocktail(cocktailName: "Ramos Gin Fizz",
                             glasswareType: .collins,
                             garnish: [.orangePeel],
                             ice: .koldDraft,
-                            author:Author(person: "Henry Charles Ramos", place: "New Orleans"),
+                            author:Author(person: "Henry Charles Ramos", place: "Imperial Cabinet Saloon, New Orleans", year: "1880s"),
                             spec: ramosGinFizzSpec, buildOrder:
                                 ramosGinFizzBuild, notes: ramosNotes,
                             tags: ramosTags)
