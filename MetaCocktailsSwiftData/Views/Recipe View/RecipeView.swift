@@ -74,72 +74,10 @@ struct BuildOrderView: View {
     var body: some View {
         
         VStack(alignment: .leading) {
-            
-            ZStack(alignment: .centerFirstTextBaseline) {
+
+            Grid(horizontalSpacing: 1) {
                 
-                HStack {
-                    
-                    Button(action: {
-                        viewModel.flipCard()
-                    }) {
-                        Image(systemName: "arrow.triangle.2.circlepath")
-                            .foregroundColor(ColorScheme.interactionTint)
-                            .font(.system(size: 22))
-                            .contentShape(Rectangle())
-                            .frame(width: 50, height: 40)
-                            .padding(.leading, 10)
-                    }
-                    
-                    Spacer()
-                }
-                
-                Text("Build Order")
-                    .font(FontFactory.recipeCardHeader18B)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .padding(.bottom, 15)
-                
-            }
-            
-            ForEach(buildOrder.instructions) { build in
-                HStack(alignment: .top) {
-                    Text("\(build.step).")
-                        .font(calculateFontSize(numberOfSteps: buildOrder.instructions.count, body: false))
-                    Text("\(build.method)")
-                        .font(calculateFontSize(numberOfSteps: buildOrder.instructions.count, body: true))
-                }
-                .listRowBackground(Color.darkGrey)
-                Divider()
-            }
-            
-            Spacer()
-        }
-    }
-    
-    func calculateFontSize(numberOfSteps: Int, body: Bool) -> Font {
-        let weight: Font.Weight = body ? .regular : .bold
-        let size: CGFloat = {
-            switch numberOfSteps {
-            case 0...5: 16
-            case 6...9: 14
-            default: 12
-            }
-        }()
-        
-        return .system(size: size, weight: weight)
-    }
-}
-struct IngredientRecipeView: View {
-    
-    let prep: Prep
-    var viewModel: RecipeViewModel
-    
-    var body: some View {
-        
-        VStack(alignment: .leading) {
-            
-            ZStack(alignment: .centerFirstTextBaseline) {
-                
-                HStack {
+                GridRow {
                     
                     Button(action: {
                         viewModel.flipCard()
@@ -151,45 +89,96 @@ struct IngredientRecipeView: View {
                             .foregroundColor(ColorScheme.interactionTint)
                             .font(.system(size: 22))
                             .contentShape(Rectangle())
-                            .frame(width: 50, height: 40)
-                            .padding(.leading, 10)
                     }
+                    .frame(width: 50, height: 50)
+                    .gridColumnAlignment(.leading)
                     
-                    Spacer()
+                    Text("Build Order")
+                        .font(FontFactory.mediumFont(size: 18).bold())
+                        .gridColumnAlignment(.center)
+                        .frame(maxWidth: .infinity)
+                        .multilineTextAlignment(.center)
+                    
+                    Color.clear
+                        .gridColumnAlignment(.trailing)
+                        .frame(width: 50, height: 50)
                 }
-                
-                Text("\(prep.prepIngredientName) recipe")
-                    .font(FontFactory.recipeCardHeader18B)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .padding(.bottom, 15)
             }
+            .padding(.bottom, 15)
             
-            ForEach(prep.prepRecipe) { build in
+            ForEach(buildOrder.instructions) { build in
                 HStack(alignment: .top) {
                     Text("\(build.step).")
-                        .font(calculateFontSize(numberOfSteps: prep.prepRecipe.count, body: false))
+                        .font(FontFactory.mediumFont(size: 14))
+                        .bold()
                     Text("\(build.method)")
-                        .font(calculateFontSize(numberOfSteps: prep.prepRecipe.count, body: true))
+                        .font(FontFactory.mediumFont(size: 14))
                 }
                 .listRowBackground(Color.darkGrey)
-                
                 Divider()
             }
             
             Spacer()
         }
     }
+}
+struct IngredientRecipeView: View {
     
-    func calculateFontSize(numberOfSteps: Int, body: Bool) -> Font {
-        let weight: Font.Weight = body ? .regular : .bold
-        let size: CGFloat = {
-            switch numberOfSteps {
-            case 0...5: 16
-            case 6...9: 14
-            default: 11
+    let prep: Prep
+    var viewModel: RecipeViewModel
+    
+    var body: some View {
+        
+        VStack(alignment: .leading) {
+            
+            Grid(horizontalSpacing: 1) {
+                
+                GridRow {
+                    
+                    Button(action: {
+                        viewModel.flipCard()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+                            viewModel.isShowingIngredientRecipe = false
+                        }
+                    }) {
+                        Image(systemName: "arrow.triangle.2.circlepath")
+                            .foregroundColor(ColorScheme.interactionTint)
+                            .font(.system(size: 22))
+                            .contentShape(Rectangle())
+                    }
+                    .frame(width: 50, height: 50)
+                    .gridColumnAlignment(.leading)
+                    
+                    Text("\(prep.prepIngredientName) recipe")
+                        .font(FontFactory.mediumFont(size: 18).bold())
+                        .gridColumnAlignment(.center)
+                        .frame(maxWidth: .infinity)
+                        .multilineTextAlignment(.center)
+                    
+                    Color.clear
+                        .gridColumnAlignment(.trailing)
+                        .frame(width: 50, height: 50)
+                }
             }
-        }()
-        return .system(size: size, weight: weight)
+            .padding(.bottom, 15)
+            
+            ForEach(prep.prepRecipe) { build in
+                HStack(alignment: .top) {
+                    Text("\(build.step).")
+                        .font(FontFactory.mediumFont(size: 14))
+                        .bold()
+                        
+                    Text("\(build.method)")
+                        .font(FontFactory.mediumFont(size: 14))
+                }
+                .foregroundStyle(.primary)
+                .listRowBackground(Color.darkGrey)
+                
+                Divider()
+            }
+
+            Spacer()
+        }
     }
 }
 
@@ -676,9 +665,9 @@ struct AuthorView: View {
     }
 }
 
-//#Preview {
-//    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-//    return RecipeView(viewModel: RecipeViewModel(cocktail: mintJulep))
-//        .modelContainer(preview.container)
-//}
+#Preview {
+    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
+    return IngredientRecipeView(prep: PrepBible.pineappleGommeSyrup, viewModel: RecipeViewModel(cocktail: mintJulep))
+        .modelContainer(preview.container)
+}
 
