@@ -33,4 +33,4 @@ var tomCollinsTags   = Tags(flavors: [.lemon],
                             styles: [.collins, .shaken, .fizz])
 
 
-var tomCollinsNotes = "The Tom Collins started out as the John Collins, for which it was originally named in the early 1800s. The name change came in part from a common prank that local American bar flies would play on out-of-towners, saying that some dude named \"Tom Collins\" was badmouthing them at the bar next door. What a solid 1800s prank. That, and the fact that it was usually made with Old Tom Gin, played crucial roles in the name change."
+var tomCollinsNotes = "The Tom Collins started out as the John Collins in the early 1800s. The name change came in part from a common prank that local American bar flies would play on out-of-towners, saying that someone named \"Tom Collins\" was badmouthing them at the bar next door. The solid 1800s prank, combined the fact that the drink was usually made with Old Tom Gin, lead to the name we know today."

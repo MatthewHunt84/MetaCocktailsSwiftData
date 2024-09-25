@@ -35,4 +35,4 @@ let wprizefighterNo1Build =  Build(instructions: [Instruction(step: 1, method: "
                                                   Instruction(step: 3, method: "Double strain the shaken cocktail into D.O.F. glass and top with crushed or cracked ice."),
                                                   Instruction(step: 4, method: "Garnish with a mint bouquet.")])
 
-let prizeFighterNotes = "The cocktail was originally named simply 'Prizefighter' when it debuted at Clover Club, one of Julie Reiner's renowned establishments. The 'No. 1' designation was only appended later, after various iterations of the drink had been developed."
+let prizeFighterNotes = "Simply named 'Prizefighter' when it debuted on the menu at Julie Reiner's Clover Club in Manhattan, the 'Prizefighter No. 1' designation was appended only after subsequent iterations of the drink found their way onto the menu."

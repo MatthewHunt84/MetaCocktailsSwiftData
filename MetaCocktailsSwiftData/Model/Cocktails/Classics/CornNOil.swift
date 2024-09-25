@@ -25,4 +25,4 @@ var cornNOilSpec  = [OldCocktailIngredient(.bitters(.angosturaBitters), value: 3
 var cornNOilTags   = Tags(profiles: [.citrusy, .rich],
                           styles: [.sour, .shaken])
                       
-var cornNOilNotes = "The Corn 'n' Oil cocktail likely originated in Barbados during the 18th century. Its intriguing name is derived from a biblical passage in Deuteronomy, which refers to gathering 'corn, wine, and oil.'Like other cocktails with such a long history, it fails to produce a noteable author."
+var cornNOilNotes = "The Corn 'n' Oil cocktail likely originated in Barbados during the 18th century. Its intriguing name is derived from a biblical passage in Deuteronomy, which refers to gathering \"corn, wine, and oil\" Like other cocktails with such a long history, it fails to produce a noteable author."

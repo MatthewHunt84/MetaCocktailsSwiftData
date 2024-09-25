@@ -23,4 +23,4 @@ var daiquiriSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.rums(.rumWhi
 var daiquiriTags = Tags(profiles: [.citrusy, .refreshing, .light],
                         styles: [.sour, .shaken])
 
-var daiquiriNotes = "This is the perfect cocktail. It's the king of the Cuban cocktails. It's a cocktail thats sweetened with the base material of the ditilate and complimented with lime. It's perfection in simplicity. Everyone has their version. On the east coast, you'll see the lime in larger proportion than the simple. This is how we like it the most. Just do yourself a favor and use a well distilled rum like Planteray 3 star or Banks 5 Island."
+var daiquiriNotes = "This is the king of the Cuban cocktails. While the preferred balance of citrus and and sweet varies between bartenders, a high quality white rum is essential. We recommend Planteray 3 star or Banks 5 Island."

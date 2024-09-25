@@ -47,7 +47,7 @@ struct GarnishDetailView: View {
                     CustomAlertView(isActive: $viewModel.isShowingingredientAlert,
                                     title: "",
                                     message: "Please choose from an existing garnish. If you'd like to make your own, press 'Create Custom Garnish'",
-                                    buttonTitle: "Heard, Chef",
+                                    buttonTitle: "Yes, Chef",
                                     action: {})
                     .zIndex(2)
                 }

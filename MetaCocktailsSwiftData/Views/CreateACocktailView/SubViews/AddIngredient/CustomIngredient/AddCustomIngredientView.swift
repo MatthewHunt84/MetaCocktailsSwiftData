@@ -68,7 +68,7 @@ struct AddCustomIngredientView: View {
                     CustomAlertView(isActive: $viewModel.isShowingingredientAlert,
                                     title: "",
                                     message: "Please choose a unique ingredient name, a category, and an amount.",
-                                    buttonTitle: "Heard, Chef",
+                                    buttonTitle: "Yes, Chef",
                                     action: {})
                     .zIndex(2)
                 }

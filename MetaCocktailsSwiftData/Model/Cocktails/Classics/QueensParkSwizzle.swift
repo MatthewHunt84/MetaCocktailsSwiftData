@@ -31,6 +31,6 @@ var queensParkTags = Tags(flavors: [.lime, .mint, .bakingSpices],
                           profiles: [.aromatic, .refreshing, .citrusy, .light],
                           styles: [.swizzle, .sour])
 
-var queensParkBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients to a tall glass and swizzle."),
-                                           Instruction(step: 2, method: "Garnish with mint"),
-                                           Instruction(step: 3, method: "NOTE: The original recipe says 'juice of half a lime and 15ml of a sugar syrup.' Interpret that how you must.")])
+var queensParkBuild = Build(instructions: [Instruction(step: 0, method: "The original recipe calls for the \"juice of half a lime and 15ml of a sugar syrup\" Interpret that how you will."),
+                                           Instruction(step: 1, method: "Add all ingredients to a tall glass and swizzle."),
+                                           Instruction(step: 2, method: "Garnish with mint")])

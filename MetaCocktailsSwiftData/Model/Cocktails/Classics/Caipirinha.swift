@@ -33,4 +33,4 @@ var caipirnhaTags  = Tags(flavors: [.lime],
                           profiles: [.sweet, .citrusy, .light],
                           styles: [.sour, .shaken])
                          
-var caipirnhaNotes = "Caipirinha is the national drink of Brasil. Cachaça it's native spirit that's made from juiced sugarcane."
+var caipirnhaNotes = "Caipirinha is the national drink of Brasil. Cachaça is a native Brazilian spirit distilled from juiced sugarcane."
