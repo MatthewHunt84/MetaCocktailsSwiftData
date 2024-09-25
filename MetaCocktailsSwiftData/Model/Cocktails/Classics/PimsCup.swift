@@ -26,7 +26,7 @@ let pimsCupSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.fruit(.season
                                             OldCocktailIngredient(.gins(.fordsGin), value: 1),
                                             OldCocktailIngredient(.liqueurs(.pimms), value: 2)]
 
-let pimsCupNotes = "The original cocktail, dating somewhere around 1912, was a bottled sling called the 'Pimms No. 1 Cup'. It was kinda like what we know of today as an RTD, but without the carbonation or citrus. We now know of Pimms as the liquor that more or less resembles an Amaro. All the modern versions of this cocktail are restoritive and refreshing. I assure you, like this recipe from Williams and Graham, they're better than the original."
+let pimsCupNotes = "The Pimm's Cup originated around 1912 as a bottled sling called \"Pimm's No. 1 Cup\". It was similar to today's ready-to-drink cocktails, but without carbonation or citrus. Pimm's itself is now known as a liqueur resembling an amaro. Today, the Pimm's Cup is the official drink of Wimbledon. Modern versions of this cocktail are restorative and refreshing, evolving significantly from the original formula. Contemporary recipes, like this one from Williams and Graham, offer a more refined and enjoyable drinking experience compared to the initial bottled version."
 
 let pimsCupTags = Tags(flavors: [.mint, .blackberry, .raspberry, .strawberry],
                        profiles: [.refreshing, .complex, .fruity, .restorative],

@@ -12,12 +12,11 @@ var tiPunch = Cocktail(cocktailName: "Ti' Punch",
                        glasswareType: .doubleOld,
                        garnish: [.limePeel],
                        ice: .bigRock,
-                       author:Author(place: "Somewhere in Martinique"),
+                       author:Author(place: "Somewhere in Martinique", year: "1700s"),
                        spec: tiPunchSpec,
                        buildOrder: tiPunchBuildOrder,
                        tags: tiPunchTags,
                        variation: .tiPunch,
-                       collection: .originals,
                        titleCocktail: true)
 
 var tiPunchSpec  =  [OldCocktailIngredient(.syrups(.richDem), value: 2, unit: .teaspoon, prep: PrepBible.richDem),

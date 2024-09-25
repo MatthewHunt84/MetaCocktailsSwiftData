@@ -17,7 +17,6 @@ var sherryCobbler = Cocktail(cocktailName: "Sherry Cobbler",
                              notes: sherryCobblerNotes,
                              tags: sherryCobblerTags,
                              variation: .sherryCobbler,
-                             collection: .originals,
                              titleCocktail: true)
 
 let sherryCobblerSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.fruit(.lemonRibbon), value: 1, unit: .whole),

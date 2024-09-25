@@ -15,7 +15,6 @@ var margarita = Cocktail(cocktailName: "Margarita",
                          notes: margNotes,
                          tags: margaritaTags,
                          variation: .margarita,
-                         collection: .originals,
                          titleCocktail: true)
 
 var margaritaSpec = [OldCocktailIngredient(.juices(.lime), value: 0.75),

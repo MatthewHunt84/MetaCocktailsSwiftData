@@ -14,9 +14,9 @@ var tomCollins  = Cocktail(cocktailName: "Tom Collins",
                            author: Author(person: "Unknown"),
                            spec: tomCollinsSpec,
                            buildOrder: tomCollinsBuild,
+                           notes: tomCollinsNotes,
                            tags: tomCollinsTags,
                            variation: .tomCollins,
-                           collection: .originals,
                            titleCocktail: true)
 
 var tomCollinsSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
@@ -32,3 +32,5 @@ var tomCollinsTags   = Tags(flavors: [.lemon],
                             profiles: [.citrusy, .floral, .effervescent, .light],
                             styles: [.collins, .shaken, .fizz])
 
+
+var tomCollinsNotes = "The Tom Collins started out as the John Collins, for which it was originally named in the early 1800s. The name change came in part from a common prank that local American bar flies would play on out-of-towners, saying that some dude named \"Tom Collins\" was badmouthing them at the bar next door. What a solid 1800s prank. That, and the fact that it was usually made with Old Tom Gin, played crucial roles in the name change."

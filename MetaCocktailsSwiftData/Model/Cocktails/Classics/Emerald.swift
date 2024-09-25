@@ -14,6 +14,7 @@ var emerald = Cocktail(cocktailName: "Emerald",
                        garnish: [.maraschinoCherry, .lemonExpression],
                        author: nil,
                        spec: emeraldSpec,
+                       notes: robRoyNotes,
                        tags: emeraldTags,
                        variation: .manhattan)
 

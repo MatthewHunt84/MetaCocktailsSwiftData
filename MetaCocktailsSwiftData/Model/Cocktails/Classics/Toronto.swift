@@ -15,6 +15,7 @@ var toronto = Cocktail(cocktailName: "Toronto",
                        spec: torontoSpec,
                        tags: torontoTags,
                        variation: nil,
+                       collection: .originals,
                        titleCocktail: true)
 
 var torontoSpec  =  [OldCocktailIngredient(.syrups(.simple), value: 0.25, prep: PrepBible.simpleSyrupPrep),
