@@ -78,9 +78,7 @@ struct RecipeFlipCardView: View {
                 axis: (x: 0, y: 1, z: 0)
             )
             .allowsHitTesting(!viewModel.isFlipped)
-            .padding(.top, -20)
-            
-            
+
             if isShowingCocktailNotes{
                 if let notes = viewModel.cocktail.notes {
                     CustomAlertView(isActive: $isShowingCocktailNotes, title: "Note:", message: notes , buttonTitle: "Heard, chef.") {}

@@ -67,3 +67,38 @@ extension View {
         self.modifier(JamesTitleWithNavigation(dismiss: dismiss, title: title))
     }
 }
+
+extension View {
+    func recipeHeader(cocktail: Cocktail, variation: Variation? = nil) -> some View {
+        self.modifier(RecipeTitleView(cocktail: cocktail, variation: variation))
+    }
+}
+
+
+struct RecipeTitleView: ViewModifier {
+    var cocktail: Cocktail
+    var variation: Variation?
+    
+    init(cocktail: Cocktail, variation: Variation? = nil) {
+        self.cocktail = cocktail
+        self.variation = variation
+    }
+    
+    func body(content: Content) -> some View {
+        
+        content
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    VStack {
+                        FontFactory.recipeHeader(title: cocktail.cocktailName)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.4)
+                        if variation != nil, let recipeSubheading = cocktail.collection?.recipeSubheading {
+                            FontFactory.mediumText(recipeSubheading, size: 12, color: .secondary)
+                        }
+                    }
+                }
+            }
+        
+    }
+}

@@ -30,19 +30,20 @@ struct SwipeRecipeView: View {
                 ColorScheme.background.ignoresSafeArea()
                 
                 GeometryReader { geo in
+                    
                     ScrollViewReader { scrollReader in
-                        HeightPreservingTabView(selection: $selectedIndex) {
-                            ForEach(Array(variations.enumerated()), id: \.element) { index, cocktail in
-                                ScrollView {
+                        
+                        ScrollView {
+                            
+                            HeightPreservingTabView(selection: $selectedIndex) {
+                                ForEach(Array(variations.enumerated()), id: \.element) { index, cocktail in
+                                    
                                     RecipeFlipCardView(viewModel: RecipeViewModel(cocktail: cocktail), geo: geo, topID: topID, scrollReader: scrollReader)
-                                        .padding(.bottom, 28)
+                                        .recipeHeader(cocktail: cocktail, variation: cocktail.variation)
+                                        .tag(index)
+                                        .padding(.top, 20)
+                                        .padding(.bottom, 20)
                                 }
-                                .toolbar {
-                                    ToolbarItem(placement: .principal) {
-                                        RecipeTitleView(cocktail: cocktail, variation: cocktail.variation)
-                                    }
-                                }
-                                .tag(index)
                             }
                         }
                         .toolbar {
@@ -50,7 +51,6 @@ struct SwipeRecipeView: View {
                                 BackButton()
                             }
                         }
-                        
                     }
                 }
             }
@@ -98,8 +98,8 @@ private struct TabViewMinHeightPreference: PreferenceKey {
         value = max(value, nextValue())
     }
 }
-//
+
 //#Preview(traits: .sampleData) {
 //    @Previewable @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
-//    return SwipeRecipeView(variations: cocktails)
+//    SwipeRecipeView(variations: cocktails, initialSelection: zombie)
 //}

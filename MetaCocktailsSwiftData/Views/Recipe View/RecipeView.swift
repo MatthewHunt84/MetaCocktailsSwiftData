@@ -22,10 +22,8 @@ struct RecipeView: View {
                         RecipeFlipCardView(viewModel: viewModel, geo: geo, topID: topID, scrollReader: scrollReader)
                     }
                     .navigationBarTitleDisplayMode(.inline)
+                    .recipeHeader(cocktail: viewModel.cocktail)
                     .toolbar {
-                        ToolbarItem(placement: .principal) {
-                            RecipeTitleView(cocktail: viewModel.cocktail)
-                        }
                         ToolbarItem(placement: .topBarLeading) {
                             BackButton()
                         }
@@ -343,33 +341,6 @@ public struct CustomButtonStyle: ButtonStyle {
 
 extension ButtonStyle where Self == CustomButtonStyle {
     static var customGreyButton: CustomButtonStyle { .init() }
-}
-
-
-struct RecipeTitleView: View {
-    var cocktail: Cocktail
-    var variation: Variation?
-    
-    init(cocktail: Cocktail, variation: Variation? = nil) {
-        self.cocktail = cocktail
-        self.variation = variation
-    }
-    
-    var body: some View {
-        if variation != nil, let recipeSubheading = cocktail.collection?.recipeSubheading {
-            VStack {
-                FontFactory.recipeHeader(title: cocktail.cocktailName)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.4)
-                
-                    FontFactory.mediumText(recipeSubheading, size: 12, color: .secondary)
-            }
-        } else {
-            FontFactory.recipeHeader(title: cocktail.cocktailName)
-                .lineLimit(1)
-                .minimumScaleFactor(0.4)
-        }
-    }
 }
 
 struct GlasswareView: View {
