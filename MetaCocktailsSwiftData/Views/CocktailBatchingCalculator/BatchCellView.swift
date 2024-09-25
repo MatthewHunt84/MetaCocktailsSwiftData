@@ -10,9 +10,9 @@ import SwiftUI
 struct BatchCellView: View {
     @EnvironmentObject var viewModel: CBCViewModel
     @Binding var quantifiedBatchedIngredient: BottleBatchedCellData
-    @State private var isShowingBottleMathModal: Bool = false
+    @Binding var isShowingBottleMathModal: Bool
     @FocusState.Binding var isFocused: Bool
-    
+    @FocusState var bottleBatchInputActive: Bool
     
     var body: some View {
         
@@ -59,7 +59,8 @@ struct BatchCellView: View {
         .sheet(isPresented: $isShowingBottleMathModal) {
             BottleMathModalView(
                 quantifiedBatchedIngredient: $quantifiedBatchedIngredient,
-                isShowingBottleMathModal: $isShowingBottleMathModal
+                isShowingBottleMathModal: $isShowingBottleMathModal,
+                keyboardFocused: _bottleBatchInputActive
             )
         }
     }
