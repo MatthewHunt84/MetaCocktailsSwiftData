@@ -152,6 +152,9 @@ class OldCocktailIngredient: Codable, Hashable { // This old guy needs to be rem
             if ingredient.name ==  Bitters.bittercubeJamaican1.rawValue {
                 return "Bitters by Bittercube"
             }
+            if ingredient.name == OtherNA.cream.rawValue {
+                return "High fat content cream (above 40%) is recommended"
+            }
             return info
         }()
     }
