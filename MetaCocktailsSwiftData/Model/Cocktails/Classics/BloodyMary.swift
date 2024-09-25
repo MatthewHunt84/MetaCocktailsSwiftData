@@ -16,7 +16,6 @@ var bloodyMary  = Cocktail(cocktailName: "Bloody Mary",
                            notes: bloodyMaryNotes,
                            tags: bloodyMarryTags,
                            variation: .bloodyMary,
-                           collection: .originals,
                            titleCocktail: true)
 
 var bloodyMarrySpec  = [OldCocktailIngredient(.otherNonAlc(.tomatoJuice), value: 4.5),
