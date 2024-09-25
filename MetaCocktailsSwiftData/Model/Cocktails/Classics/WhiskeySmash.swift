@@ -14,9 +14,9 @@ var whiskeySmash = Cocktail(cocktailName: "Whiskey Smash",
                             glasswareType: .doubleOld,
                             garnish: [.mintSprig],
                             ice: .pebbleIce,
-                            author: williamsAndGraham,
                             spec: whiskeySmashSpec,
                             buildOrder: whiskeySmashBuild,
+                            notes: whiskeySmashNotes,
                             tags: whiskeySmashTags)
 
 let whiskeySmashSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
@@ -31,3 +31,5 @@ let whiskeySmashBuild =  Build(instructions: [Instruction(step: 1, method: "In a
                                               Instruction(step: 2, method: "Double strain over crushed ice."),
                                               Instruction(step: 3, method: "Garnish with mint sprig."),
                                               Instruction(step: 4, method: "Note: Use a few lemon wedges instead of the lemon juice for a more classic smash. In that case, muddle them with the mint before adding the other ingredients.")])
+
+let whiskeySmashNotes = "The \"Smash\" was a category of cocktails, notebly documented in Jerry Thomas' influential 1862 book \"How to Mix Drinks, or The Bon Vivant's Companion\". In its original form, a Smash typically included sugar, spirit, mint, and ice. This modern version builds upon that classic foundation by incorporating whiskey and fresh lemon juice, a modification that gained popularity during the cocktail renaissance of the early 2000s. Renowned bartenders like Dale DeGroff, often credited as a key figure in reviving interest in classic cocktails, played a significant role in popularizing this updated take on the Smash."
