@@ -7,7 +7,7 @@
 
 import Foundation
 
-var piscoSourWnG = Cocktail(cocktailName: "Pisco Sour (W&G Version)",
+var piscoSourWnG = Cocktail(cocktailName: "Pisco Sour" + wAndGTitleTag,
                             glasswareType: .coupe,
                             garnish: [.angoDeco],
                             ice: nil,

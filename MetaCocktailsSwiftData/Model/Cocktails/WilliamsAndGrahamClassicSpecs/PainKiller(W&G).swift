@@ -7,7 +7,7 @@
 
 import Foundation
 
-var painKillerWnG  = Cocktail(cocktailName: "Pain Killer (W&G Version)",
+var painKillerWnG  = Cocktail(cocktailName: "Pain Killer" + wAndGTitleTag,
                               glasswareType: .collins,
                               garnish: [.nutmeg],
                               ice: .crackedIce,

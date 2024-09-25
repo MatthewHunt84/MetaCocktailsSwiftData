@@ -14,7 +14,8 @@ var peguClubSavoy = Cocktail(cocktailName: "Pegu Club Cocktail (Savoy)",
                              spec: peguClubSavoySpec,
                              buildOrder: peguClubSavoyBuild,
                              tags: peguClubSavoyTags,
-                             variation: .peguClub)
+                             variation: .peguClub,
+                             collection: .originals)
 
 var peguClubSavoySpec  = [OldCocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dashes),
                           OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),

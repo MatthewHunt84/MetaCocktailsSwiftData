@@ -22,7 +22,7 @@ let secondSunriseSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.syrups(
                                                   OldCocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 0.25),
                                                   OldCocktailIngredient(.fortifiedWines(.cocchiAmericano), value: 0.5),
                                                   OldCocktailIngredient(.gins(.hendricks), value: 1.5),
-                                                  OldCocktailIngredient(.otherAlcohol(.lavenderTincture), value: 2, unit: .dashes)]
+                                                  OldCocktailIngredient(.otherAlcohol(.lavenderTincture), value: 2, unit: .dashes, prep: PrepBible.lavenderTincture)]
 
 
 let secondSunriseTags = Tags(profiles: [.herbal, .refreshing, .floral, .light],

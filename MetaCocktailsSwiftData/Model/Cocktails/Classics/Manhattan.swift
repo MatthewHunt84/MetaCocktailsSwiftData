@@ -16,6 +16,7 @@ var manhattan = Cocktail(cocktailName: "Manhattan",
                          spec: manhattanSpec,
                          tags: manhattanTags,
                          variation: .manhattan,
+                         collection: .originals,
                          titleCocktail: true)
 
 var manhattanSpec     =  [OldCocktailIngredient(.bitters(.angosturaBitters), value: 2, unit: .dashes),

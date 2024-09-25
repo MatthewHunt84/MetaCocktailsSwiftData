@@ -20,6 +20,11 @@ final class PrepBible{
                                           Instruction(step: 2, method: "Bring the mixture to a boil and then immediately take it off heat."),
                                           Instruction(step: 3, method: "Let it cool before bottling.")])
     
+    static let fiveToOneSaline = Prep(prepIngredientName: "Saline (5:1)",
+                                      prepRecipe:[Instruction(step: 1, method: "Combine one part salt to five parts warm water by weight into a bottle."),
+                                                  Instruction(step: 2, method: "Put the cap on the bottle and give it a good shake util the salt dissolves."),
+                                                  Instruction(step: 3, method: "Add the solution to a dropper bottle for use behind the bar.")])
+    
     static let simpleSyrupPrep = Prep(prepIngredientName: "Simple syrup",
                                       prepRecipe:[Instruction(step: 1, method: "Combine one part sugar to one part water by weight into a pot."),
                                                   Instruction(step: 2, method: "Bring to a boil and then immediately take off heat."),
@@ -51,6 +56,14 @@ final class PrepBible{
                                               Instruction(step: 3, method:  "Take off heat immediately after boiling and let cool."),
                                               Instruction(step: 4, method:  "Add 1oz(30ml) vodka to every 750ml of syrup to stabilize.")] )
     
+    static let gingerBeer = Prep(prepIngredientName: "Ginger beer",
+                                 prepRecipe:[Instruction(step: 1, method:  "This requires juicing fresh ginger, which can be a strain on household juicers."),
+                                             Instruction(step: 2, method:  "Add equal parts fresh ginger juice and sugar to a pot and bring to a boil while stirring. Some prefer Demerara sugar for a darker and more robust flavor. You can use plain white sugar for a brighter and sharper flavor."),
+                                             Instruction(step: 3, method:  "Take off heat immediately after boiling and let cool."),
+                                             Instruction(step: 4, method:  "For every 8 ounces of water, add 2 ounces of ginger syrup."),
+                                             Instruction(step: 5, method:  "Modify the syrup to soda ratio however you see fit."),
+                                             Instruction(step: 6, method:  "Enjoy with ice.")] )
+    
     static let morgenthalersGingerSyrup = Prep(prepIngredientName: "Morgenthaler's ginger syrup",
                                                prepRecipe:[Instruction(step: 1, method: "Roughly chop 8 ounces washed, unpeeled ginger (each piece about the size of your pinkie-tip). "),
                                                            Instruction(step: 2, method: "Put in a blender and combine with equal parts sugar and boiling water."),
@@ -71,7 +84,7 @@ final class PrepBible{
                                       prepRecipe: [Instruction(step: 1, method:  "For 500ml: Add 250g white sugar to 150g grapefruit peels."),
                                                    Instruction(step: 2, method: "Let sit in a mason jar for 24 hours in a semi-warm place. This will be our oleo saccharum."),
                                                    Instruction(step: 3, method: "Add 250g fresh grapefruit juice and shake until the oleo is completely emulsified."),
-                                                   Instruction(step: 4, method: "Strain the peels out. Keeps for 1 week in the fridge.")]) 
+                                                   Instruction(step: 4, method: "Strain the peels out. Keeps for 1 week in the fridge.")])
     
     static let clementineShrub = Prep(prepIngredientName: "Clementine shrub",
                                       prepRecipe: [Instruction(step: 1, method:  "For 500ml: Add 250g white sugar to 150g of orange peels."),
@@ -187,4 +200,19 @@ final class PrepBible{
                                                     Instruction(step: 3, method: "Stir until sugar is disolved"),
                                                     Instruction(step: 4, method: "Strain out hibiscus flowers"),
                                                     Instruction(step: 3, method: "Let cool before bottling.")])
+    
+    static let notSpicyJalapenoTincture = Prep(prepIngredientName: "Not spicy jalapeño tincture",
+                                               prepRecipe:[Instruction(step: 1, method: "Prepare your jalapeños by quartering them and removing the seeds."),
+                                                           Instruction(step: 2, method: "With a very sharp knife, remove all of the pith so that only the outer skin is left."),
+                                                           Instruction(step: 3, method: "Wash the skins with cold water and then pat them dry with a paper towel."),
+                                                           Instruction(step: 4, method: "Add them to a small mason jar."),
+                                                           Instruction(step: 3, method: "After the jar is full of the prepared skins, add a high proof neutral spirit to fill the remaining volume."),
+                                                           Instruction(step: 3, method: "Let it sit for 2-3 days, checking the flavor every 12 hours to make sure it isn't developing a muted flavor."),
+                                                           Instruction(step: 3, method: "Strain through a coffee filter and bottle.")])
+    static let lavenderTincture = Prep(prepIngredientName: "Lavender tincture",
+                                       prepRecipe:[Instruction(step: 1, method: "Fill a small mason jar 1/2 - 3/4 full of dehydrated lavender buds (no sticks or stems)."),
+                                                   Instruction(step: 2, method: "Fill the jar with a high proof neutral spirit."),
+                                                   Instruction(step: 3, method: "Let it sit for at least 3 days."),
+                                                   Instruction(step: 4, method: "You can let it sit for several weeks if you'd like a more intense concentrated flavor. But, we feel that the flavor is plenty concentrated after a few days."),
+                                                   Instruction(step: 3, method: "Strain through a coffee filter and bottle.")])
 }

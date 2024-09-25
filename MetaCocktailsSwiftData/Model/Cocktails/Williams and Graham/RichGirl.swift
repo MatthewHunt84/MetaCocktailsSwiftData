@@ -18,7 +18,7 @@ var richGirl  =  Cocktail(cocktailName: "Rich Girl",
                           tags: richGirlTags,
                           collection: .williamsAndGraham)
 
-var richGirlSpec = [OldCocktailIngredient(.seasoning(.saline), value: 2, unit: .drops),
+var richGirlSpec = [OldCocktailIngredient(.seasoning(.saline), value: 2, unit: .drops, prep: PrepBible.fiveToOneSaline),
                     OldCocktailIngredient(.bitters(.bolivarBitters), value: 2, unit: .dashes),
                     OldCocktailIngredient(.liqueurs(.nuxAlpina), value: 0.5),
                     OldCocktailIngredient(.fortifiedWines(.capaletti), value: 1),

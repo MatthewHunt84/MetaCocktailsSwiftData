@@ -7,7 +7,7 @@
 
 import Foundation
 
-var sherryCobblerWnG = Cocktail(cocktailName: "Sherry Cobbler (W&G Version)",
+var sherryCobblerWnG = Cocktail(cocktailName: "Sherry Cobbler" + wAndGTitleTag,
                                 imageAsset: nil,
                                 glasswareType: .wineGlass,
                                 garnish: [.seasonalBerries, .mintSprig],

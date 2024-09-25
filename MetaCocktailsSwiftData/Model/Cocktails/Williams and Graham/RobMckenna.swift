@@ -18,7 +18,7 @@ var robMcKenna = Cocktail(cocktailName: "Rob McKenna",
                           tags: robMcKennaTags,
                           collection: .williamsAndGraham)
 
-let robMcKennaSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.seasoning(.saline), value: 15, unit: .drops),
+let robMcKennaSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.seasoning(.saline), value: 15, unit: .drops, prep: PrepBible.fiveToOneSaline),
                                             OldCocktailIngredient(.bitters(.orangeBitters), value: 2, unit: .dashes),
                                             OldCocktailIngredient(.syrups(.cinnamonSyrup), value: 0.23, prep: PrepBible.cinnamonSyrup),
                                             OldCocktailIngredient(.amari(.fernetBranca), value: 0.5),

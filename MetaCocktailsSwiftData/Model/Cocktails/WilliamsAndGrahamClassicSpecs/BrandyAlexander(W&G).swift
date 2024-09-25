@@ -7,7 +7,7 @@
 
 import Foundation
 
-let brandyAlexanderWnG = Cocktail(cocktailName: "Brandy Alexander (W&G Version)",
+let brandyAlexanderWnG = Cocktail(cocktailName: "Brandy Alexander" + wAndGTitleTag,
                                   glasswareType: .coupe,
                                   garnish: [.nutmeg],
                                   author: williamsAndGraham,

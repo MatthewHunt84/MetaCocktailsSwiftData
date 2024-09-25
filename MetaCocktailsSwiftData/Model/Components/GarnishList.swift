@@ -46,6 +46,7 @@ class Garnish: Codable, Hashable {
 enum GarnishList: String, Codable, CaseIterable {
     
     case angoDeco                  = "Angostura bitters design over egg whites"
+    case angoAndPeychaudsDeco      = "Angostura and Peychaud's bitters design over egg whites"
     case almonds                   = "Almonds"
     case assortedBerries230g       = "230g assorted berries"
     case babiesBreath              = "Babies breath"
@@ -65,7 +66,7 @@ enum GarnishList: String, Codable, CaseIterable {
     case cocoaPowder               = "Cocoa powder"
     case cocktailOnion             = "Cocktail onion"
     case coffeeBeans               = "3 coffee beans"
-    case cucumberSlices            = "Cucumber slice(s)"
+    case cucumberSlices            = "Sliced cucumber"
     case cucumberSliceLong         = "Long fancy cucumber"
     case dehydratedGrapefruitSlice = "Dehydrated grapefruit slice"
     case dehydratedOrangeWheel     = "Dehydrated orange wheel"
@@ -77,6 +78,7 @@ enum GarnishList: String, Codable, CaseIterable {
     case garnishAtWill             = "Garnish at will."
     case grapefruitExpression      = "Grapefruit expression (then discard)"
     case grapefruitPeel            = "Grapefruit peel"
+    case grapeFruitNoExpress       = "Grapefruit Peel (no oil expression)"
     case grapefruitWedge           = "Grapefruit wedge"
     case goldLeaf                  = "Gold leaf"
     case halfOrangeWheel           = "Half orange wheel"

@@ -204,7 +204,7 @@ enum Herbs: String, IngredientTagsProtocol {
 enum Fruit: String, IngredientTagsProtocol {
     
     case blackBerry           = "Blackberries"
-    case cucumberSlices       = "Cucumber slice(s)"
+    case cucumberSlices       = "Cucumber slices"
     case grapefruitPeel       = "Grapefruit peel(s)"
     case guavaPure            = "Guava puree"
     case lemonRibbon          = "Long lemon ribbon"
@@ -286,6 +286,7 @@ enum Soda: String, IngredientTagsProtocol {
     
     case feverTreeAromatic    = "Fever Tree aromatic tonic"
     case gingerBeer           = "Ginger beer"
+    case gingerAle            = "Ginger ale"
     case grapefruitSoda       = "Grapefruit soda"
     case lemonMintSoda        = "Lemon mint San Pellegrino"
     case sodaWater            = "Soda water"
@@ -310,6 +311,8 @@ enum Soda: String, IngredientTagsProtocol {
             Tags(flavors: [.lemon, .mint], profiles: [.effervescent], nA: [NAIngredients(.soda(self))])
         case .feverTreeAromatic:
             Tags( profiles: [.effervescent], nA: [NAIngredients(.soda(self))])
+        case .gingerAle:
+            Tags(flavors: [.ginger], profiles: [.effervescent], nA: [NAIngredients(.soda(self))])
         }
     }
 }

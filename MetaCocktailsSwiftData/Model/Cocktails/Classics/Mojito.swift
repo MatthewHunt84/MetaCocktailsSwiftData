@@ -15,16 +15,16 @@ var mojito = Cocktail(cocktailName: "Mojito",
                       author: Author(person: "Cuba" ,year: "1800s"),
                       spec: mojitoSpec,
                       buildOrder: mojitoBuild,
+                      notes: mojitoNotes,
                       tags: mojitoTags,
                       variation: .mojito,
-                      collection: .originals,
                       titleCocktail: true)
 
 let mojitoSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint), value: 8, unit: .gentlyMuddled),
-                                        OldCocktailIngredient(.juices(.lime), value: 1),
-                                        OldCocktailIngredient(.syrups(.simple), value: 1, prep: PrepBible.simpleSyrupPrep),
-                                        OldCocktailIngredient(.rums(.rumWhite), value: 1.5),
-                                        OldCocktailIngredient(.soda(.sparklingWater), value: 2)]
+                                           OldCocktailIngredient(.juices(.lime), value: 1),
+                                           OldCocktailIngredient(.syrups(.simple), value: 1, prep: PrepBible.simpleSyrupPrep),
+                                           OldCocktailIngredient(.rums(.rumWhite), value: 1.5),
+                                           OldCocktailIngredient(.soda(.sparklingWater), value: 2)]
 
 let mojitoTags = Tags(profiles: [.herbal, .refreshing, .light, .effervescent],
                       styles: [.fizz, .shaken, .built])
@@ -34,3 +34,4 @@ let mojitoBuild =  Build(instructions: [Instruction(step: 1, method: "Shake all 
                                         Instruction(step: 3, method: "Double strain the shaken cocktail over the soda and ice."),
                                         Instruction(step: 4, method: "Garnish with a mint bouquet. Serve with a straw.")])
 
+var mojitoNotes = "This is a more modern version of the mojito that you'll find in cocktail bars all accross America. Original recipes seem to all leave the mint in the glass and treat it more as a built cocktail. The cocktail definitely stems from Cubs in the 1800s, and was popularized at bars like La Floridita. Though, like many cocktails from this era, there isn't simply one name to atatch to its creation."

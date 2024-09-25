@@ -20,7 +20,7 @@ var pipeDream  =  Cocktail(cocktailName: "Pipe Dream",
                            tags: pipeDreamTags,
                            collection: .williamsAndGraham)
 
-var pipeDreamSpec = [OldCocktailIngredient(.seasoning(.saline), value: 2, unit: .drops),
+var pipeDreamSpec = [OldCocktailIngredient(.seasoning(.saline), value: 2, unit: .drops, prep: PrepBible.fiveToOneSaline),
                      OldCocktailIngredient(.otherAlcohol(.serranoTincture), value: 1, unit: .dashes),
                      OldCocktailIngredient(.bitters(.chocolateMole), value: 2, unit: .dashes),
                      OldCocktailIngredient(.liqueurs(.damiana), value: 1.5),

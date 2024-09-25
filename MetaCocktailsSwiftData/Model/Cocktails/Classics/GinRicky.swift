@@ -13,7 +13,8 @@ var ginRickey  = Cocktail(cocktailName: "Gin Rickey",
                           ice: .koldDraft,
                           author:Author(person: "Joe Rickey", year: "1883"),
                           spec: ginRickeySpec,
-                          tags: ginRickeyTags)
+                          tags: ginRickeyTags,
+                          collection: .originals)
 
 var ginRickeySpec  = [OldCocktailIngredient(.gins(.ginAny), value: 1.5),
                       OldCocktailIngredient(.soda(.sparklingWater), value: 4)]

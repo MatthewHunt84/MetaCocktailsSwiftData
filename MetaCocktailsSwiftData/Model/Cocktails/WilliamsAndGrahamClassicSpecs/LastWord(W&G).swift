@@ -7,7 +7,7 @@
 
 import Foundation
 
-var lastWordWnG = Cocktail(cocktailName: "Last Word (W&G Version)",
+var lastWordWnG = Cocktail(cocktailName: "Last Word" + wAndGTitleTag,
                            glasswareType: .stemmedGlassware,
                            ice: nil,
                            author: williamsAndGraham,

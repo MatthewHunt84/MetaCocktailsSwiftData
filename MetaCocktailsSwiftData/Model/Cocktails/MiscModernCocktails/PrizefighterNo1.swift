@@ -7,13 +7,14 @@
 
 import Foundation
 
-var prizefighterNo1 = Cocktail(cocktailName: "Prizefighter No. 1",
+var prizefighterNo1 = Cocktail(cocktailName: "Prizefighter",
                                imageAsset: nil,
                                glasswareType: .doubleOld,
                                garnish: [.mintBouquet],
                                ice: .crackedIce,
                                author:Author(person: AuthorNames.nicholasJarrett.rawValue,
-                                             year: "2010"),
+                                             place: "Clover Club, New York" ,
+                                             year: "2011"),
                                spec: prizefighterNo1Spec,
                                buildOrder: wprizefighterNo1Build,
                                tags: prizefighterNo1Tags)
@@ -34,3 +35,4 @@ let wprizefighterNo1Build =  Build(instructions: [Instruction(step: 1, method: "
                                                   Instruction(step: 3, method: "Double strain the shaken cocktail into D.O.F. glass and top with crushed or cracked ice."),
                                                   Instruction(step: 4, method: "Garnish with a mint bouquet.")])
 
+let prizeFighterNotes = "Simply named 'Prizefighter' when it debuted on the menu at Julie Reiner's Clover Club in Manhattan, the 'Prizefighter No. 1' designation was appended only after subsequent iterations of the drink found their way onto the menu."

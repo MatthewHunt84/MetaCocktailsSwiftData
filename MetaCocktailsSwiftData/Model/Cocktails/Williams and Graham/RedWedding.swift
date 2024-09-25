@@ -20,7 +20,7 @@ var redWedding  =  Cocktail(cocktailName: "Red Wedding",
                             tags: redWeddingTags,
                             collection: .williamsAndGraham)
 
-var redWeddingSpec = [OldCocktailIngredient(.seasoning(.saline), value: 5, unit: .drops),
+var redWeddingSpec = [OldCocktailIngredient(.seasoning(.saline), value: 5, unit: .drops, prep: PrepBible.fiveToOneSaline),
                       OldCocktailIngredient(.amari(.sfumato), value: 0.5),
                       OldCocktailIngredient(.amari(.cynar), value: 0.5),
                       OldCocktailIngredient(.amari(.aperol), value: 0.75),

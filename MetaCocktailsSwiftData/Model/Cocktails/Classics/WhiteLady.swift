@@ -12,7 +12,8 @@ var whiteLady = Cocktail(cocktailName: "White Lady",
                          garnish: nil,
                          author: harryCraddock,
                          spec: whiteLadySpec,
-                         tags: whiteLadyTags)
+                         tags: whiteLadyTags,
+                         collection: .originals)
 
 var whiteLadySpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
                       OldCocktailIngredient(.liqueurs(.cointreau), value: 0.75),

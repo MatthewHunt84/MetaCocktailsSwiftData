@@ -14,6 +14,7 @@ let alexandre = Cocktail(cocktailName: "Alexandre",
                          spec: alexandreSpec,
                          tags: alexandreTags,
                          variation: .alexander,
+                         collection: .originals,
                          titleCocktail: false)
 
 var alexandreSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 1),

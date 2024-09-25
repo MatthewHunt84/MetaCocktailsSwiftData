@@ -7,7 +7,7 @@
 
 import Foundation
 
-let papaDobleWnG = Cocktail(cocktailName: "Hemingway Daiquiri (W&G Version)",
+let papaDobleWnG = Cocktail(cocktailName: "Hemingway Daiquiri" + wAndGTitleTag,
                             glasswareType: .coupe,
                             garnish: [.limeWheel],
                             author: williamsAndGraham,

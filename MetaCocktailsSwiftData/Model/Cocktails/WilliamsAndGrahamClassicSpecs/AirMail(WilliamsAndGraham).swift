@@ -7,7 +7,7 @@
 
 import Foundation
 
-var airMailWnG  = Cocktail(cocktailName: "Air Mail (W&G Version)",
+var airMailWnG  = Cocktail(cocktailName: "Air Mail" + wAndGTitleTag,
                            glasswareType: .flute,
                            garnish: [.noGarnish],
                            author: Author(place: AuthorPlaces.williamsAndGraham.rawValue,
@@ -27,3 +27,4 @@ var airMailWnGSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.75),
 var airMailWnGTags   = Tags(profiles: [.citrusy, .effervescent, .light],
                             styles: [.shaken, .fizz])
 
+let wAndGTitleTag = " (W&G Version)"

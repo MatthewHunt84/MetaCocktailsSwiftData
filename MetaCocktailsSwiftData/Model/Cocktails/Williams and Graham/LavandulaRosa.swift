@@ -21,7 +21,7 @@ let lavandulaRosaSpec = [OldCocktailIngredient(.fruit(.raspberries), value: 2, u
                          OldCocktailIngredient(.juices(.lemon), value: 0.5),
                          OldCocktailIngredient(.syrups(.honeySyrup), value: 0.5, prep: PrepBible.honeySyrup),
                          OldCocktailIngredient(.bitters(.appleBitters), value: 1, unit: .dashes),
-                         OldCocktailIngredient(.otherAlcohol(.lavenderTincture), value: 2, unit: .dashes),
+                         OldCocktailIngredient(.otherAlcohol(.lavenderTincture), value: 2, unit: .dashes, prep: PrepBible.lavenderTincture),
                          OldCocktailIngredient(.fortifiedWines(.dolinBlanc), value: 0.5),
                          OldCocktailIngredient(.vodkas(.woodyCreekVodka), value: 1.5)]
 
