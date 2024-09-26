@@ -69,36 +69,54 @@ extension View {
 }
 
 extension View {
-    func recipeHeader(cocktail: Cocktail, variation: Variation? = nil) -> some View {
-        self.modifier(RecipeTitleView(cocktail: cocktail, variation: variation))
+    func recipeHeader(cocktail: Cocktail?) -> some View {
+        self.modifier(RecipeTitleView(cocktail: cocktail))
     }
 }
 
 
 struct RecipeTitleView: ViewModifier {
-    var cocktail: Cocktail
-    var variation: Variation?
     
-    init(cocktail: Cocktail, variation: Variation? = nil) {
+    @Environment(\.dismiss) private var dismiss
+    var cocktail: Cocktail?
+    
+    init(cocktail: Cocktail?) {
         self.cocktail = cocktail
-        self.variation = variation
     }
     
     func body(content: Content) -> some View {
         
         content
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .principal) {
-                    VStack {
-                        FontFactory.recipeHeader(title: cocktail.cocktailName)
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.4)
-                        if variation != nil, let recipeSubheading = cocktail.collection?.recipeSubheading {
-                            FontFactory.mediumText(recipeSubheading, size: 12, color: .secondary)
+                
+                ToolbarItem(placement: .navigation) {
+                    
+                    Button(action: {
+                        dismiss()
+                    }) {
+                        Image(systemName: "chevron.backward")
+                            .font(.system(size: 16))
+                            .bold()
+                            .tint(ColorScheme.interactionTint)
+                            .frame(width: 50, height: 40)
+                    }
+                }
+                if let cocktail {
+                    
+                    ToolbarItem(placement: .principal) {
+                        
+                        VStack {
+                            FontFactory.recipeHeader(title: cocktail.cocktailName)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.4)
+                            if let _ = cocktail.variation, let recipeSubheading = cocktail.collection?.recipeSubheading {
+                                FontFactory.mediumText(recipeSubheading, size: 12, color: .secondary)
+                            }
                         }
                     }
                 }
+                    
             }
-        
     }
 }

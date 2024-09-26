@@ -16,20 +16,16 @@ struct RecipeView: View {
         ZStack {
             ColorScheme.background
                 .ignoresSafeArea()
-            GeometryReader { geo in
+            
                 ScrollViewReader { scrollReader in
                     ScrollView {
-                        RecipeFlipCardView(viewModel: viewModel)
+                        RecipeFlipCardView(viewModel: viewModel, scrollReader: scrollReader)
                     }
+                    .contentMargins(.top, -10)
+                    .scrollIndicators(.hidden)
                     .navigationBarTitleDisplayMode(.inline)
                     .recipeHeader(cocktail: viewModel.cocktail)
-                    .toolbar {
-                        ToolbarItem(placement: .topBarLeading) {
-                            BackButton()
-                        }
-                    }
                 }
-            }
         }
     }
 }
@@ -203,8 +199,8 @@ struct RecipeViewBack: View {
                 IngredientRecipeView(prep: viewModel.currentIngredientRecipe, viewModel: viewModel)
                     .padding(.top, 60)
                     .padding(.horizontal, 32)
-            } else {
-                BuildOrderView(buildOrder: viewModel.cocktail.buildOrder ?? ramosGinFizzBuild, viewModel: viewModel)
+            } else if let buildOrder = viewModel.cocktail.buildOrder {
+                BuildOrderView(buildOrder: buildOrder, viewModel: viewModel)
                     .padding(.top, 60)
                     .padding(.horizontal, 32)
             }
@@ -220,42 +216,38 @@ struct RecipeViewBack: View {
 
 private struct BorderTop: View {
     var body: some View {
-        GeometryReader { geo in
-            ZStack(alignment: .top) {
-                
-                Image(.backgroundTop)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(ColorScheme.recipeBackground)
-                
-                
-                Image(.borderTop)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .background(.clear)
-                    .foregroundStyle(ColorScheme.recipeBorder)
-            }
+        ZStack {
+            
+            Image(.backgroundTop)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .foregroundStyle(ColorScheme.recipeBackground)
+            
+            
+            Image(.borderTop)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .background(.clear)
+                .foregroundStyle(ColorScheme.recipeBorder)
         }
     }
 }
 
 private struct BorderBottom: View {
     var body: some View {
-        GeometryReader { geo in
-            ZStack(alignment: .top) {
-                
-                Image(.backgroundTop)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(ColorScheme.recipeBackground)
-                
-                
-                Image(.borderTop)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .background(.clear)
-                    .foregroundStyle(ColorScheme.recipeBorderFlipped)
-            }
+        ZStack(alignment: .top) {
+            
+            Image(.backgroundTop)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .foregroundStyle(ColorScheme.recipeBackground)
+            
+            
+            Image(.borderTop)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .background(.clear)
+                .foregroundStyle(ColorScheme.recipeBorderFlipped)
         }
     }
 }
@@ -276,11 +268,8 @@ private struct BorderSides: View {
                         .resizable()
                         .foregroundStyle(ColorScheme.recipeBorder)
                         .background(.clear)
-                    
                         .frame(height: geo.size.height * 0.8)
                 }
-                
-                
                 Spacer()
             }
         }
@@ -288,28 +277,22 @@ private struct BorderSides: View {
 }
 
 struct Border: View {
-    var color: Color = .brandPrimaryGold
+    
     var body: some View {
-        GeometryReader { geo in
+        
+        ZStack {
+            BorderSides()
             
-            VStack {
+            VStack(alignment: .leading) {
+                BorderTop()
+                
                 Spacer()
                 
-                ZStack {
-                    BorderSides()
-                    
-                    VStack(alignment: .leading) {
-                        BorderTop()
-                        
-                        Spacer()
-                        
-                        BorderBottom()
-                            .rotationEffect(.degrees(180))
-                    }
-                }
-                Spacer()
+                BorderBottom()
+                    .rotationEffect(.degrees(180))
             }
         }
+        .frame(maxHeight: .infinity, alignment: .center)
     }
 }
 
@@ -364,9 +347,6 @@ struct SpecIngredientView: View {
     var ingredient: Ingredient
     @State private var isShowingIngredientInfo : Bool = false
     @Bindable var viewModel: RecipeViewModel
-//    let geo: GeometryProxy
-//    var topID: Namespace.ID
-//    var scrollReader: ScrollViewProxy
     
     var body: some View {
         VStack{
@@ -379,14 +359,13 @@ struct SpecIngredientView: View {
                         viewModel.currentIngredientRecipe = ingredient.ingredientBase.prep ?? PrepBible.aPPBitters
                         viewModel.flipCard()
                         withAnimation(.easeOut(duration: viewModel.durationAndDelay)) {
-//                            scrollReader.scrollTo(topID, anchor: .top)
                         }
                     } label: {
                         Text(ingredient.ingredientBase.name)
                             .font(FontFactory.fontBody16)
                             .tint(ColorScheme.interactionTint)
                     }
-                    .disabled(viewModel.isFlipped)
+                    .disabled(viewModel.backDegree == 0) // fix me!
                 } else {
                     Text("\(ingredient.ingredientBase.name)")
 

@@ -11,11 +11,16 @@ struct RecipeFlipCardView: View {
     @State private var isShowingCocktailNotes = false
     @EnvironmentObject var cBCViewModel: CBCViewModel
     @Bindable var viewModel: RecipeViewModel
+    var scrollReader: ScrollViewProxy
+    @Namespace var topID
     
     var body: some View {
         
         ZStack {
-
+            
+            RecipeViewBack(viewModel: viewModel)
+                .id(topID)
+            
             VStack(alignment: .center) {
                 
                 ZStack() {
@@ -35,9 +40,9 @@ struct RecipeFlipCardView: View {
                         if viewModel.cocktail.buildOrder != nil {
                             UniversalBlueButton(buttonText: "Build Order", rightImage: nil, leftImage: nil, includeBorder: true) {
                                 viewModel.flipCard()
-//                                withAnimation(.easeOut(duration: viewModel.durationAndDelay)) {
-//                                    scrollReader.scrollTo(topID, anchor: .top)
-//                                }
+                                withAnimation(.easeOut(duration: viewModel.durationAndDelay)) {
+                                    scrollReader.scrollTo(topID, anchor: .top)
+                                }
                             }
                             .disabled(viewModel.isFlipped)
                         }
@@ -48,8 +53,6 @@ struct RecipeFlipCardView: View {
                             
                         }
                         
-                        Spacer()
-                        
                         HStack {
                             Spacer()
                             FavoriteButton(for: viewModel.cocktail)
@@ -58,8 +61,7 @@ struct RecipeFlipCardView: View {
                         .padding(.trailing, 16)
                     }
                     .padding(.horizontal, 32)
-                    .padding(.top, 50)
-                    .padding(.bottom, 50)
+                    .padding(.vertical, 46)
                 }
             }
             .onAppear {
@@ -71,7 +73,7 @@ struct RecipeFlipCardView: View {
                 axis: (x: 0, y: 1, z: 0)
             )
             .allowsHitTesting(!viewModel.isFlipped)
-
+            
             if isShowingCocktailNotes {
                 if let notes = viewModel.cocktail.notes {
                     CustomAlertView(isActive: $isShowingCocktailNotes, title: "Note:", message: notes , buttonTitle: "Yes, chef.") {}

@@ -509,6 +509,7 @@
 		F41045072AD4FD42000CA913 /* CocktailImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41045062AD4FD42000CA913 /* CocktailImageView.swift */; };
 		F4441CEC2C9F7AB80025E988 /* default.store in Resources */ = {isa = PBXBuildFile; fileRef = F4441CE82C9F7AB80025E988 /* default.store */; };
 		F4538E032C91F99E004B686A /* FindCocktailUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4538E022C91F997004B686A /* FindCocktailUserInfoView.swift */; };
+		F47AE7B02CA5FE060070E7A8 /* AnimationModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47AE7AF2CA5FDFE0070E7A8 /* AnimationModifiers.swift */; };
 		F47FBF652C6BF5EB00CD599E /* CustomLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47FBF642C6BF5EB00CD599E /* CustomLoadingIndicator.swift */; };
 		F4872FEE2C4353E10092F8FF /* DummyCocktails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4872FED2C4353E10092F8FF /* DummyCocktails.swift */; };
 		F4872FF02C4355320092F8FF /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4872FEF2C4355320092F8FF /* SampleData.swift */; };
@@ -1057,6 +1058,7 @@
 		F4441CE82C9F7AB80025E988 /* default.store */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.store; sourceTree = "<group>"; };
 		F4538E022C91F997004B686A /* FindCocktailUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindCocktailUserInfoView.swift; sourceTree = "<group>"; };
 		F473FFD22C2716C4008689D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F47AE7AF2CA5FDFE0070E7A8 /* AnimationModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationModifiers.swift; sourceTree = "<group>"; };
 		F47FBF642C6BF5EB00CD599E /* CustomLoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoadingIndicator.swift; sourceTree = "<group>"; };
 		F4872FED2C4353E10092F8FF /* DummyCocktails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyCocktails.swift; sourceTree = "<group>"; };
 		F4872FEF2C4355320092F8FF /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
@@ -1923,6 +1925,14 @@
 			path = CocktailImages;
 			sourceTree = "<group>";
 		};
+		F47AE7AE2CA5FDE90070E7A8 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				F47AE7AF2CA5FDFE0070E7A8 /* AnimationModifiers.swift */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
 		F4872FEC2C43535E0092F8FF /* DummyCocktails */ = {
 			isa = PBXGroup;
 			children = (
@@ -2088,6 +2098,7 @@
 				1AC3867C2AAABED00064F52A /* Assets.xcassets */,
 				1AC386852AAABED00064F52A /* EntryPoint */,
 				1AC386972AAABED00064F52A /* Tab Bar */,
+				F47AE7AE2CA5FDE90070E7A8 /* Animations */,
 				1AC386962AAABED00064F52A /* Views */,
 				1AC386812AAABED00064F52A /* Utilities */,
 				1AC386872AAABED00064F52A /* Model */,
@@ -2525,6 +2536,7 @@
 				4DF408EE2B61B89B00EF9A6E /* FogCutter.swift in Sources */,
 				4D1E85C72B5C97DB00214BC6 /* AuthorNames.swift in Sources */,
 				4DBBA4942B68A7DC00179B8F /* ModernCocktail(W&G).swift in Sources */,
+				F47AE7B02CA5FE060070E7A8 /* AnimationModifiers.swift in Sources */,
 				4DCB17082BA405AD0002D7D9 /* LionsTail.swift in Sources */,
 				4D1442C92C976529006C882F /* RustyNail.swift in Sources */,
 				4DCB174E2BA543940002D7D9 /* TemperanceIrishCoffee.swift in Sources */,
