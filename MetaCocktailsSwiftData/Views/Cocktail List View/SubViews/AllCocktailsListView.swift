@@ -82,6 +82,7 @@ struct CocktailGroupView: View {
     let key: String
     let cocktails: [Cocktail]
     @State private var isExpanded: Bool = false
+    @EnvironmentObject var viewModel: CocktailListViewModel
     
     var body: some View {
         if cocktails.count > 1 {
@@ -108,20 +109,20 @@ struct CocktailGroupView: View {
                 }
                 if isExpanded {
                     ForEach(cocktails, id: \.id) { cocktail in
-                        SingleCocktailListView(cocktail: cocktail, isInGroupedList: true)
-                            .transition(.asymmetric(insertion: .slide, removal: .scale))
+                        MultipleCocktailsListView(cocktail: cocktail, cocktails: cocktails)
+                            .transition(.opacity)
                     }
                 }
             }
         } else {
-            SingleCocktailListView(cocktail: cocktails[0], isInGroupedList: false)
+            SingleCocktailListView(cocktail: cocktails[0])
         }
     }
 }
 
+
 struct SingleCocktailListView: View {
     let cocktail: Cocktail
-    @State var isInGroupedList: Bool?
     
     var body: some View {
         NavigationLink {
@@ -131,7 +132,7 @@ struct SingleCocktailListView: View {
             HStack {
                 Text(cocktail.cocktailName)
                     .font(FontFactory.regularFont(size: 18))
-                    .padding(.leading, isInGroupedList ?? false ? 35 : 20)
+                    .padding(.leading, 20)
                     .foregroundStyle(.white)
                 Spacer()
                 if cocktail.isCustomCocktail == true {
@@ -160,6 +161,7 @@ struct MultipleCocktailsListView: View {
             HStack {
                 Text(cocktail.cocktailName)
                     .font(FontFactory.regularFont(size: 18))
+                    .padding(.leading, 35)
                     .foregroundStyle(.white)
                 Spacer()
                 if cocktail.isCustomCocktail == true {
