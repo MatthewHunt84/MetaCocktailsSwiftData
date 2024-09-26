@@ -33,7 +33,7 @@ var ramosTags = Tags(flavors: [.lemon, .lime, .orange],
 
 var ramosGinFizzBuild: Build = Build(instructions: [
     Instruction(step: 1, method: "Chill your 14oz. collins glass ahead of time"),
-    Instruction(step: 2, method: "Add all of the ingredients except for the soda into a shaker along with two Kold Draft cubs, or their equivalent weight in alternative ice (roughly 16g)."),
+    Instruction(step: 2, method: "Add all of the ingredients except for the soda into a shaker along with two Kold Draft cubes, or their equivalent weight in alternative ice (roughly 16g)."),
     Instruction(step: 3, method: "Shake vigorously until the Ice cubes completely dissolve."),
     Instruction(step: 4, method: "Add the soda to the chilled glass."),
     Instruction(step: 5, method: "Give the tin a couple more shakes to re-emulsify then pop the tin and strain the cocktail over the soda as quickly as possible (the forceful motion of the cocktail getting added to the soda creates the initial reaction that you need to form the head). Fill until the head touches the top of the glass. There should be 2-4oz. of liquid left in the tin. Put it aside for step 7."),
