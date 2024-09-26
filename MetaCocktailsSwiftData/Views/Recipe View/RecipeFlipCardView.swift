@@ -11,16 +11,14 @@ struct RecipeFlipCardView: View {
     @State private var isShowingCocktailNotes = false
     @EnvironmentObject var cBCViewModel: CBCViewModel
     @Bindable var viewModel: RecipeViewModel
-    let geo: GeometryProxy // seems like a constant
-    var topID: Namespace.ID // isn't going to change, but is it bound?
-    var scrollReader: ScrollViewProxy // no idea, but also needs to be bound I'm guessing.
+    var scrollReader: ScrollViewProxy
+    @Namespace var topID
     
     var body: some View {
         
         ZStack {
             
-            RecipeViewBack(viewModel: viewModel, geometry: geo)
-                .rotation3DEffect(Angle(degrees: viewModel.backDegree), axis: (x: 0, y: 1, z: 0), anchor: .center)
+            RecipeViewBack(viewModel: viewModel)
                 .id(topID)
             
             VStack(alignment: .center) {
@@ -28,37 +26,25 @@ struct RecipeFlipCardView: View {
                 ZStack() {
                     
                     Border()
-                        .frame(minHeight: geo.size.height)
                     
                     VStack(alignment: .leading, spacing: 20) {
                         
                         GlasswareView(cocktail: viewModel.cocktail)
                         
-                        SpecView(cocktail: viewModel.cocktail, viewModel: viewModel, isShowingCocktailNotes: $isShowingCocktailNotes, geo: geo, topID: topID, scrollReader: scrollReader)
+                        SpecView(cocktail: viewModel.cocktail, viewModel: viewModel, isShowingCocktailNotes: $isShowingCocktailNotes)
                         
                         GarnishView(cocktail: viewModel.cocktail)
                         
                         MethodIceView(cocktail: viewModel.cocktail, methodText: viewModel.methodString)
                         
                         if viewModel.cocktail.buildOrder != nil {
-                            
-                            Button {
+                            UniversalBlueButton(buttonText: "Build Order", rightImage: nil, leftImage: nil, includeBorder: true) {
                                 viewModel.flipCard()
                                 withAnimation(.easeOut(duration: viewModel.durationAndDelay)) {
                                     scrollReader.scrollTo(topID, anchor: .top)
                                 }
-                            } label: {
-                                Label {
-                                    Text("Build Order")
-                                } icon: {
-                                    Image(systemName: "list.number")
-                                }
-
                             }
-                            .buttonStyle(.customGreyButton)
-                            .tint(ColorScheme.buttonTint.opacity(0.5))
                             .disabled(viewModel.isFlipped)
-
                         }
                         
                         if viewModel.cocktail.author != nil {
@@ -67,39 +53,33 @@ struct RecipeFlipCardView: View {
                             
                         }
                         
-                        Spacer()
-                        
                         HStack {
                             Spacer()
                             FavoriteButton(for: viewModel.cocktail)
                         }
+                        .padding(.bottom, 16)
+                        .padding(.trailing, 16)
                     }
-                    .padding(.top, 50)
-                    .padding(.bottom, 70)
-                    .frame(width: geo.size.width * 0.75)
-                    
+                    .padding(.horizontal, 32)
+                    .padding(.vertical, 46)
                 }
             }
             .onAppear {
                 cBCViewModel.chosenCocktail = viewModel.cocktail
             }
-            .frame(minHeight: geo.size.height)
-            .rotation3DEffect(Angle(degrees: viewModel.frontDegree), axis: (x: 0, y: 1, z: 0))
-            .padding(.top, -20)
+            .opacity(viewModel.backDegree == -90 ? 1 : 0)
+            .rotation3DEffect(
+                Angle(degrees: viewModel.frontDegree),
+                axis: (x: 0, y: 1, z: 0)
+            )
+            .allowsHitTesting(!viewModel.isFlipped)
             
-            backToRecipeViewButton(viewModel: viewModel)
-            
-            if isShowingCocktailNotes{
+            if isShowingCocktailNotes {
                 if let notes = viewModel.cocktail.notes {
                     CustomAlertView(isActive: $isShowingCocktailNotes, title: "Note:", message: notes , buttonTitle: "Yes, chef.") {}
                         .zIndex(1)
                 }
             }
-            
         }
     }
 }
-
-//#Preview {
-//    RecipeFlipCardView(viewModel: RecipeViewModel(cocktail: ramonaFlowers))
-//}

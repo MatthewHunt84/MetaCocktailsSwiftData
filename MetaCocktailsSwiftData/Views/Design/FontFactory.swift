@@ -46,6 +46,10 @@ struct FontFactory {
         Font.custom("AvenirNext-Medium", size: size)
     }
     
+    static func italicFont(size: CGFloat) -> Font {
+        Font.custom("AvenirNext-MediumItalic", size: size)
+    }
+    
     static func listLetter(size: CGFloat) -> Font {
         Font.custom("AvenirNext-Medium", size: size)
     }

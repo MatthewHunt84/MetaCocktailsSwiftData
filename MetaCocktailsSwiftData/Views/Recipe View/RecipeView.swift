@@ -10,29 +10,22 @@ import SwiftData
 
 struct RecipeView: View {
     @Bindable var viewModel: RecipeViewModel
-    @Namespace var topID
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         ZStack {
             ColorScheme.background
                 .ignoresSafeArea()
-            GeometryReader { geo in
+            
                 ScrollViewReader { scrollReader in
                     ScrollView {
-                        RecipeFlipCardView(viewModel: viewModel, geo: geo, topID: topID, scrollReader: scrollReader)
+                        RecipeFlipCardView(viewModel: viewModel, scrollReader: scrollReader)
                     }
+                    .contentMargins(.top, -10)
+                    .scrollIndicators(.hidden)
                     .navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        ToolbarItem(placement: .principal) {
-                            RecipeTitleView(cocktail: viewModel.cocktail)
-                        }
-                        ToolbarItem(placement: .topBarLeading) {
-                            BackButton()
-                        }
-                    }
+                    .recipeHeader(cocktail: viewModel.cocktail)
                 }
-            }
         }
     }
 }
@@ -50,6 +43,7 @@ struct FavoriteButton: View {
         Button {
             withAnimation(.snappy) {
                 cocktail.favorite.toggle()
+                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
             }
         } label: {
             Image(systemName:  cocktail.favorite ? "heart.fill" : "heart")
@@ -60,7 +54,9 @@ struct FavoriteButton: View {
                 )
 
         }
-
+        .sensoryFeedback(.success, trigger: cocktail.favorite)
+        
+        
     }
 }
 
@@ -70,47 +66,67 @@ struct BuildOrderView: View {
     var viewModel: RecipeViewModel
     
     var body: some View {
+        
+        VStack(alignment: .leading) {
 
-        VStack(alignment: .center) {
-            HStack(alignment: .center) {
-                Spacer()
-                Text("Build Order")
-                    .font(FontFactory.recipeCardHeader18B)
-                Spacer()
+            Grid(horizontalSpacing: 1) {
+                
+                GridRow {
+                    
+                    Button(action: {
+                        viewModel.flipCard()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+                            viewModel.isShowingIngredientRecipe = false
+                        }
+                    }) {
+                        Image(systemName: "arrow.triangle.2.circlepath")
+                            .foregroundColor(ColorScheme.interactionTint)
+                            .font(.system(size: 22))
+                            .contentShape(Rectangle())
+                    }
+                    .frame(width: 50, height: 50)
+                    .gridColumnAlignment(.leading)
+                    
+                    Text("Build Order")
+                        .font(FontFactory.mediumFont(size: 18).bold())
+                        .gridColumnAlignment(.center)
+                        .frame(maxWidth: .infinity)
+                        .multilineTextAlignment(.center)
+                    
+                    Color.clear
+                        .gridColumnAlignment(.trailing)
+                        .frame(width: 50, height: 50)
+                }
             }
-            .padding(.bottom, 10)
+            .padding(.bottom, buildOrder.instructions.contains(where: { $0.step == 0}) ? 0 : 16)
             
-            VStack(alignment: .leading) {
-                ForEach(buildOrder.instructions) { build in
+            if buildOrder.instructions.contains(where: { $0.step == 0}) {
+                Text(buildOrder.instructions.first!.method)
+                    .font(FontFactory.italicFont(size: 14))
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding(EdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16))
+            }
+            
+            ForEach(buildOrder.instructions) { build in
+                if build.step > 0 {
                     HStack(alignment: .top) {
                         Text("\(build.step).")
-                            .font(calculateFontSize(numberOfSteps: buildOrder.instructions.count, body: false))
+                            .font(FontFactory.mediumFont(size: 14))
+                            .bold()
                         Text("\(build.method)")
-                            .font(calculateFontSize(numberOfSteps: buildOrder.instructions.count, body: true))
+                            .font(FontFactory.mediumFont(size: 14))
                     }
                     .listRowBackground(Color.darkGrey)
                     Divider()
                 }
             }
+            
             Spacer()
         }
     }
-    
-    
-    
-    func calculateFontSize(numberOfSteps: Int, body: Bool) -> Font {
-        let weight: Font.Weight = body ? .regular : .bold
-        let size: CGFloat = {
-            switch numberOfSteps {
-            case 0...5: 16
-            case 6...9: 14
-            default: 12
-            }
-        }()
-        
-        return .system(size: size, weight: weight)
-    }
 }
+
 struct IngredientRecipeView: View {
     
     let prep: Prep
@@ -118,145 +134,123 @@ struct IngredientRecipeView: View {
     
     var body: some View {
         
-        VStack(alignment: .center) {
-            HStack(alignment: .center) {
-                Spacer()
-                Text("\(prep.prepIngredientName) recipe:")
-                    .font(FontFactory.recipeCardHeader18B)
-                Spacer()
-            }
-            .padding(.bottom, 10)
+        VStack(alignment: .leading) {
             
-            VStack(alignment: .leading) {
-                ForEach(prep.prepRecipe) { build in
-                    HStack(alignment: .top) {
-                        Text("\(build.step).")
-                            .font(calculateFontSize(numberOfSteps: prep.prepRecipe.count, body: false))
-                        Text("\(build.method)")
-                            .font(calculateFontSize(numberOfSteps: prep.prepRecipe.count, body: true))
+            Grid(horizontalSpacing: 1) {
+                
+                GridRow {
+                    
+                    Button(action: {
+                        viewModel.flipCard()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+                            viewModel.isShowingIngredientRecipe = false
+                        }
+                    }) {
+                        Image(systemName: "arrow.triangle.2.circlepath")
+                            .foregroundColor(ColorScheme.interactionTint)
+                            .font(.system(size: 22))
+                            .contentShape(Rectangle())
                     }
-                    .listRowBackground(Color.darkGrey)
-                    Divider()
+                    .frame(width: 50, height: 50)
+                    .gridColumnAlignment(.leading)
+                    
+                    Text("\(prep.prepIngredientName) recipe")
+                        .font(FontFactory.mediumFont(size: 18).bold())
+                        .gridColumnAlignment(.center)
+                        .frame(maxWidth: .infinity)
+                        .multilineTextAlignment(.center)
+                    
+                    Color.clear
+                        .gridColumnAlignment(.trailing)
+                        .frame(width: 50, height: 50)
                 }
             }
+            .padding(.bottom, 15)
+            
+            ForEach(prep.prepRecipe) { build in
+                HStack(alignment: .top) {
+                    Text("\(build.step).")
+                        .font(FontFactory.mediumFont(size: 14))
+                        .bold()
+                        
+                    Text("\(build.method)")
+                        .font(FontFactory.mediumFont(size: 14))
+                }
+                .foregroundStyle(.primary)
+                .listRowBackground(Color.darkGrey)
+                
+                Divider()
+            }
+
             Spacer()
         }
-    }
-    
-    func calculateFontSize(numberOfSteps: Int, body: Bool) -> Font {
-        let weight: Font.Weight = body ? .regular : .bold
-        let size: CGFloat = {
-            switch numberOfSteps {
-            case 0...5: 16
-            case 6...9: 14
-            default: 11
-            }
-        }()
-        return .system(size: size, weight: weight)
     }
 }
 
 struct RecipeViewBack: View {
     var viewModel: RecipeViewModel
-    let geometry: GeometryProxy
-    
-    
     var body: some View {
         
         ZStack {
             
             Border()
-            if viewModel.isShowingIngredientRecipe{
+            
+            if viewModel.isShowingIngredientRecipe {
                 IngredientRecipeView(prep: viewModel.currentIngredientRecipe, viewModel: viewModel)
-                    .frame(width: geometry.size.width * 0.85)
-                    .padding(.top, 80)
-                
-            } else {
-                BuildOrderView(buildOrder: viewModel.cocktail.buildOrder ?? ramosGinFizzBuild, viewModel: viewModel)
-                    .frame(width: geometry.size.width * 0.85)
                     .padding(.top, 60)
+                    .padding(.horizontal, 32)
+            } else if let buildOrder = viewModel.cocktail.buildOrder {
+                BuildOrderView(buildOrder: buildOrder, viewModel: viewModel)
+                    .padding(.top, 60)
+                    .padding(.horizontal, 32)
             }
         }
+        .opacity(viewModel.frontDegree == 90.0 ? 1 : 0)
+        .rotation3DEffect(
+            Angle(degrees: viewModel.backDegree),
+            axis: (x: 0, y: 1, z: 0)
+        )
+        .allowsHitTesting(viewModel.isFlipped)
     }
 }
-
-struct backToRecipeViewButton: View {
-    var viewModel: RecipeViewModel
-    
-    
-    var body: some View {
-        VStack {
-            
-            HStack {
-
-                if viewModel.backDegree == 0 {
-                    Button("", systemImage: "arrowshape.turn.up.left.fill") {
-                        viewModel.flipCard()
-                        
-                        //viewModel.isShowingIngredientRecipe = false
-                            
-                        
-                        
-                    }
-                    .foregroundStyle(ColorScheme.interactionTint)
-                    .padding(.leading, 40)
-                    .padding(.top, 60)
-                }
-                   
-                
-                Spacer()
-            }
-            
-            Spacer()
-        }
-    }
-   
-}
-
 
 private struct BorderTop: View {
     var body: some View {
-        GeometryReader { geo in
-            ZStack(alignment: .top) {
-                
-                Image(.backgroundTop)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(ColorScheme.recipeBackground)
-                
-                
-                Image(.borderTop)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .background(.clear)
-                    .foregroundStyle(ColorScheme.recipeBorder)
-            }
+        ZStack {
+            
+            Image(.backgroundTop)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .foregroundStyle(ColorScheme.recipeBackground)
+            
+            
+            Image(.borderTop)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .background(.clear)
+                .foregroundStyle(ColorScheme.recipeBorder)
         }
     }
 }
 
 private struct BorderBottom: View {
     var body: some View {
-        GeometryReader { geo in
-            ZStack(alignment: .top) {
-                
-                Image(.backgroundTop)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(ColorScheme.recipeBackground)
-                
-                
-                Image(.borderTop)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .background(.clear)
-                    .foregroundStyle(ColorScheme.recipeBorderFlipped)
-            }
+        ZStack(alignment: .top) {
+            
+            Image(.backgroundTop)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .foregroundStyle(ColorScheme.recipeBackground)
+            
+            
+            Image(.borderTop)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .background(.clear)
+                .foregroundStyle(ColorScheme.recipeBorderFlipped)
         }
     }
 }
-
-
 
 private struct BorderSides: View {
     var body: some View {
@@ -274,11 +268,8 @@ private struct BorderSides: View {
                         .resizable()
                         .foregroundStyle(ColorScheme.recipeBorder)
                         .background(.clear)
-                    
                         .frame(height: geo.size.height * 0.8)
                 }
-                
-                
                 Spacer()
             }
         }
@@ -286,28 +277,22 @@ private struct BorderSides: View {
 }
 
 struct Border: View {
-    var color: Color = .brandPrimaryGold
+    
     var body: some View {
-        GeometryReader { geo in
+        
+        ZStack {
+            BorderSides()
             
-            VStack {
+            VStack(alignment: .leading) {
+                BorderTop()
+                
                 Spacer()
                 
-                ZStack {
-                    BorderSides()
-                    
-                    VStack(alignment: .leading) {
-                        BorderTop()
-                        
-                        Spacer()
-                        
-                        BorderBottom()
-                            .rotationEffect(.degrees(180))
-                    }
-                }
-                Spacer()
+                BorderBottom()
+                    .rotationEffect(.degrees(180))
             }
         }
+        .frame(maxHeight: .infinity, alignment: .center)
     }
 }
 
@@ -336,21 +321,6 @@ extension ButtonStyle where Self == CustomButtonStyle {
     static var customGreyButton: CustomButtonStyle { .init() }
 }
 
-
-struct RecipeTitleView: View {
-    var cocktail: Cocktail
-    var body: some View {
-        VStack {
-            FontFactory.recipeHeader(title: cocktail.cocktailName)
-                .lineLimit(1)
-                .minimumScaleFactor(0.4)
-            if let _ = cocktail.variation, let recipeSubheading = cocktail.collection?.recipeSubheading {
-                FontFactory.mediumText(recipeSubheading, size: 12, color: .secondary)
-            }
-        }
-    }
-}
-
 struct GlasswareView: View {
     
     var cocktail: Cocktail
@@ -377,9 +347,6 @@ struct SpecIngredientView: View {
     var ingredient: Ingredient
     @State private var isShowingIngredientInfo : Bool = false
     @Bindable var viewModel: RecipeViewModel
-    let geo: GeometryProxy
-    var topID: Namespace.ID
-    var scrollReader: ScrollViewProxy
     
     var body: some View {
         VStack{
@@ -392,14 +359,13 @@ struct SpecIngredientView: View {
                         viewModel.currentIngredientRecipe = ingredient.ingredientBase.prep ?? PrepBible.aPPBitters
                         viewModel.flipCard()
                         withAnimation(.easeOut(duration: viewModel.durationAndDelay)) {
-                            scrollReader.scrollTo(topID, anchor: .top)
                         }
                     } label: {
                         Text(ingredient.ingredientBase.name)
                             .font(FontFactory.fontBody16)
                             .tint(ColorScheme.interactionTint)
                     }
-                    .disabled(viewModel.isFlipped)
+                    .disabled(viewModel.backDegree == 0) // fix me!
                 } else {
                     Text("\(ingredient.ingredientBase.name)")
 
@@ -434,9 +400,6 @@ struct SpecView: View {
     @EnvironmentObject var cBCViewModel: CBCViewModel
     @State private var showingModal = false
     @Binding var isShowingCocktailNotes: Bool
-    let geo: GeometryProxy
-    var topID: Namespace.ID
-    var scrollReader: ScrollViewProxy
     
     var body: some View {
         NavigationStack{
@@ -480,7 +443,7 @@ struct SpecView: View {
                     .padding(.bottom, 5)
                     
                     ForEach(orderSpec(), id: \.id) { ingredient in
-                        SpecIngredientView(ingredient: ingredient, viewModel: viewModel, geo: geo, topID: topID, scrollReader: scrollReader)
+                        SpecIngredientView(ingredient: ingredient, viewModel: viewModel)
                     }
                 }
                 .fullScreenCover(isPresented: $showingModal) {
@@ -595,6 +558,7 @@ struct GarnishView: View {
                         
                         Text("\(secondGarnishName)")
                     }
+                    .multilineTextAlignment(.leading)
                 } else {
                     ForEach(cocktail.garnish, id: \.name) { garnish in
                         Text("\(garnish.name)")
@@ -654,9 +618,9 @@ struct AuthorView: View {
     }
 }
 
-//#Preview {
-//    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-//    return RecipeView(viewModel: RecipeViewModel(cocktail: mintJulep))
-//        .modelContainer(preview.container)
-//}
+#Preview {
+    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
+    return IngredientRecipeView(prep: PrepBible.pineappleGommeSyrup, viewModel: RecipeViewModel(cocktail: mintJulep))
+        .modelContainer(preview.container)
+}
 
