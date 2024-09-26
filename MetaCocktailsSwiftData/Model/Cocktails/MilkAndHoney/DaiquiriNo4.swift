@@ -7,7 +7,7 @@
 
 import Foundation
 
-let daiquiriNo4MnH = Cocktail(cocktailName: "Daiquiri No. 4 (Milk & Honey)",
+let daiquiriNo4MnH = Cocktail(cocktailName: "Daiquiri No. 4" + mAndHVersionTag,
                               glasswareType: .coupe,
                               garnish: [.maraschinoCherry],
                               author: Author(place: AuthorPlaces.milkAndHoney.rawValue, year: "Early 2000s"),

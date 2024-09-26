@@ -7,7 +7,7 @@
 
 import Foundation
 
-var homeOnTheRangeMnH = Cocktail(cocktailName: "Home on the Range (Milk and Honey version)",
+var homeOnTheRangeMnH = Cocktail(cocktailName: "Home on the Range" + mAndHVersionTag,
                                  glasswareType: .doubleOld,
                                  garnish: [.lemonPeel, .orangePeel],
                                  ice: .bigRock,
