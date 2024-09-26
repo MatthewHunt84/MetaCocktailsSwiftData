@@ -20,14 +20,16 @@ struct ContainerMenuView: View {
                     } label: {
                         Text(labelForVolume)
                             .font(FontFactory.mediumFont(size: 16))
-                            .foregroundColor(viewModel.containerSize == volume ? ColorScheme.interactionTint : .gray)
-                            .padding(.vertical, 8)
+                            .foregroundColor(viewModel.containerSize == volume ? ColorScheme.interactionTint : .primary)
+                            .padding(.vertical, 3)
                             .padding(.horizontal, 16)
                             .background(Capsule().strokeBorder(ColorScheme.interactionTint, lineWidth: viewModel.containerSize == volume ? 1 : 0))
                     }
                 }
             }
         }
+        .scrollTargetLayout()
+        .scrollTargetBehavior(.paging)
         .onAppear {
             viewModel.groupContainerSizes()
         }
@@ -38,3 +40,4 @@ struct ContainerMenuView: View {
     ContainerMenuView()
         .environmentObject(CBCViewModel())
 }
+

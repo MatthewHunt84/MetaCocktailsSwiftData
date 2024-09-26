@@ -33,4 +33,4 @@ var cloverClubBuild = Build(instructions: [Instruction(step: 1, method: "Add all
 var cloverClubTags = Tags(profiles: [.citrusy, .fruity, .tart, .light, .silky],
                           styles: [.sour, .shaken])
 
-var cloverClubNotes = "The original Clover Club was a gentleman's club in Philadelphia from 1882-1920s, where the cocktail originated."
+var cloverClubNotes = "The original Clover Club was a gentleman's club in Philadelphia from 1882-1920s, where the cocktail originated. Julie Reiner's recipe is a great example of a modern sour which stays true the the original formula, shaken with dry vermouth."

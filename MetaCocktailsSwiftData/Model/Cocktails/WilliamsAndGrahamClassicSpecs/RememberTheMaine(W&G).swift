@@ -7,7 +7,7 @@
 
 import Foundation
 
-var rememberTheMaineWnG = Cocktail(cocktailName: "Remember The Maine (W&G Version)",
+var rememberTheMaineWnG = Cocktail(cocktailName: "Remember The Maine" + wAndGTitleTag,
                                    glasswareType: .coupe,
                                    garnish: [.maraschinoCherry],
                                    author: williamsAndGraham,

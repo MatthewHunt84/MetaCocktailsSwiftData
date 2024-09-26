@@ -7,7 +7,7 @@
 
 import Foundation
 
-var harveyWallbangerWnG = Cocktail(cocktailName: "Harvey Wallbanger(WnG Version)",
+var harveyWallbangerWnG = Cocktail(cocktailName: "Harvey Wallbanger" + wAndGTitleTag,
                                    glasswareType: .collins,
                                    garnish: [.maraschinoCherry, .halfOrangeWheel],
                                    ice: .koldDraft,

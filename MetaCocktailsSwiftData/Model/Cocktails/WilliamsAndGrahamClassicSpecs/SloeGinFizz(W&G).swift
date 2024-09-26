@@ -7,7 +7,7 @@
 
 import Foundation
 
-var sloeGinFizzWnG  = Cocktail(cocktailName: "Sloe Gin Fizz (W&G Version)",
+var sloeGinFizzWnG  = Cocktail(cocktailName: "Sloe Gin Fizz" + wAndGTitleTag,
                                glasswareType: .fizzGlass,
                                garnish: [.lemonPeel],
                                ice: nil,

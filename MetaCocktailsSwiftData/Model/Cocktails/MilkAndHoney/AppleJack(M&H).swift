@@ -7,7 +7,7 @@
 
 import Foundation
 
-var appleJackMnH = Cocktail(cocktailName: "Apple Jack (Milk & Honey)",
+var appleJackMnH = Cocktail(cocktailName: "Apple Jack" + mAndHVersionTag,
                             glasswareType: .coupe,
                             garnish: nil,
                             ice: nil,
@@ -25,3 +25,5 @@ var appleJackMnHSpec     =  [OldCocktailIngredient(.juices(.lemon), value: 0.5),
 
 var appleJackMnHTags     = Tags(profiles: [.fruity, .refreshing, .citrusy],
                                 styles: [.sour, .shaken])
+
+var mAndHVersionTag = " (M&H Version)"

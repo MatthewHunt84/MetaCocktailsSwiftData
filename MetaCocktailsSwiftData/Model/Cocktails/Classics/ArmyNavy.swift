@@ -13,7 +13,8 @@ var armyNavy  = Cocktail(cocktailName: "Army & Navy",
                          author: davidEmbury,
                          spec: armyNavySpec,
                          buildOrder: armyNavyBuild,
-                         tags: armyNavyTags)
+                         tags: armyNavyTags,
+                         collection: .originals)
 
 var armyNavySpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
                      OldCocktailIngredient(.syrups(.orgeat), value: 0.75, prep: PrepBible.orgeat),

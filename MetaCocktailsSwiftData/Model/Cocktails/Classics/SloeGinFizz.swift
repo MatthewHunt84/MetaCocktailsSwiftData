@@ -14,7 +14,6 @@ var sloeGinFizz  = Cocktail(cocktailName: "Sloe Gin Fizz",
                             author: nil,
                             spec: sloeGinFizzSpec,
                             buildOrder: sloeGinFizzBuild,
-                            notes: sloeGinFizzNotes,
                             tags: sloeGinFizzTags,
                             variation: .sloeGinFizz,
                             titleCocktail: true)
@@ -31,5 +30,3 @@ var sloeGinFizzBuild  = Build(instructions: [Instruction(step: 1, method: "Add a
 var sloeGinFizzTags   = Tags(flavors: [.lemon],
                              profiles: [.citrusy, .effervescent, .light, .silky, .refreshing, .fruity],
                              styles: [.fizz, .shaken])
-
-var sloeGinFizzNotes = "Note: This is another cocktail that fails to produce a legitimate author."

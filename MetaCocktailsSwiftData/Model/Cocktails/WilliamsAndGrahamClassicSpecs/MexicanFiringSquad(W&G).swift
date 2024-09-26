@@ -8,7 +8,7 @@
 import Foundation
 
 
-var mexicanFiringSquadWnG = Cocktail(cocktailName: "Mexican Firing Squad (W&G Version)",
+var mexicanFiringSquadWnG = Cocktail(cocktailName: "Mexican Firing Squad" + wAndGTitleTag,
                                      glasswareType: .doubleOld,
                                      garnish: [.limeWheel],
                                      ice: .bigRock,

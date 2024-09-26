@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CocktailCollectionPicker: View {
     
-    @Bindable var viewModel = CocktailListViewModel()
+    @EnvironmentObject var viewModel: CocktailListViewModel
     @Binding  var cocktailCollection: CocktailCollection
     
     var body: some View {

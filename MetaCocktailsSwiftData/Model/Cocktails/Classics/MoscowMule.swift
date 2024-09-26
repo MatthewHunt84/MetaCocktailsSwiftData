@@ -16,7 +16,7 @@ var moscowMule  = Cocktail(cocktailName: "Moscow Mule",
                            tags: moscowMuleTags)
 
 var moscowMuleSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.5),
-                       OldCocktailIngredient(.soda(.gingerBeer), value: 3),
+                       OldCocktailIngredient(.soda(.gingerBeer), value: 3, prep: PrepBible.gingerBeer),
                        OldCocktailIngredient(.vodkas(.vodkaAny), value: 2)]
 
 

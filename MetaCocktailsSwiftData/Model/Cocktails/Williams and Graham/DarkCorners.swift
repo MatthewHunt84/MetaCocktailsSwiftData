@@ -18,7 +18,7 @@ var darkCorners  =  Cocktail(cocktailName: "Dark Corners",
                              tags: darkCornersTags,
                              collection: .williamsAndGraham)
 
-var darkCornersSpec = [OldCocktailIngredient(.seasoning(.saline), value: 3, unit: .drops),
+var darkCornersSpec = [OldCocktailIngredient(.seasoning(.saline), value: 3, unit: .drops, prep: PrepBible.fiveToOneSaline),
                        OldCocktailIngredient(.amari(.fernetBranca), value: 1, unit: .barSpoon),
                        OldCocktailIngredient(.liqueurs(.licor43), value: 0.25),
                        OldCocktailIngredient(.amari(.campari), value: 0.5),

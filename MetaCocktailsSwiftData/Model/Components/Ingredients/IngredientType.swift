@@ -182,7 +182,7 @@ enum MeasurementUnit: String, Codable, CaseIterable {
     case sliceOf            = "Slice of"
     case splash             = "Splash of"
     case sprays             = "Spray"
-    case teaspoon           = "Tsp"
+    case teaspoon           = "tsp"
     case tablespoon         = "Tbsp"
     case whole              = "Whole"
     

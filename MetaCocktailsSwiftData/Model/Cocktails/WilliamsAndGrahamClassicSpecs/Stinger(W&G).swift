@@ -7,7 +7,7 @@
 
 import Foundation
 
-var stingerWnG = Cocktail(cocktailName: "Stinger (W&G Version)",
+var stingerWnG = Cocktail(cocktailName: "Stinger" + wAndGTitleTag,
                           glasswareType: .doubleOld,
                           garnish: [.mintSprigPowdered],
                           ice: .pebbleIce,

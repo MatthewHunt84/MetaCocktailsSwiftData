@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SpecifiedListView: View {
     
-    @Bindable var viewModel = CocktailListViewModel()
+    @EnvironmentObject var viewModel: CocktailListViewModel
     var cocktails: [Cocktail]
     
     var body: some View {

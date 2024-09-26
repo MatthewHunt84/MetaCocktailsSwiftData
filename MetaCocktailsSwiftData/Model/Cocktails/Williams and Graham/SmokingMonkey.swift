@@ -11,7 +11,7 @@ import Foundation
 var smokingMonkey = Cocktail(cocktailName: "Smoking Monkey",
                              imageAsset: nil,
                              glasswareType: .stemmedGlassware,
-                             garnish: [.angoDeco, .peychaudsDeco],
+                             garnish: [.angoAndPeychaudsDeco],
                              author:Author(person: AuthorNames.jamesMenkal.rawValue,
                                            place: AuthorPlaces.williamsAndGraham.rawValue, year: "2018"),
                              spec: smokingMonkeySpec,

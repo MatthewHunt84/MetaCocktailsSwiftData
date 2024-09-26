@@ -15,7 +15,6 @@ var pinaColada  = Cocktail(cocktailName: "Piña Colada",
                            notes: pinaColadaNotes,
                            tags: pinaColadaTags,
                            variation: .pinaColada,
-                           collection: .originals,
                            titleCocktail: true)
 
 var pinaColadaSpec  = [OldCocktailIngredient(.rums(.rumPuertoRican), value: 2),

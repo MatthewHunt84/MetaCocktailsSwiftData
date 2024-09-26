@@ -15,8 +15,7 @@ let stinger = Cocktail(cocktailName: "Stinger",
                        author: Author(place: "Manhattan", year: "1880s"),
                        spec: stingerSpec,
                        notes: stingerBuild,
-                       tags: stingerTags,
-                       collection: .originals)
+                       tags: stingerTags)
 
 let stingerSpec  =  [OldCocktailIngredient(.liqueurs(.cremeDeMenthe), value: 0.75),
                      OldCocktailIngredient(.brandies(.cognacVSOP), value: 2.25)]

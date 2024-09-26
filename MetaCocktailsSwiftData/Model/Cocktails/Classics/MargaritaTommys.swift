@@ -14,7 +14,8 @@ var margaritaTommys = Cocktail(cocktailName: "Margarita (Tommy's)",
                                author: Author(person: "Julio Bermejo", place: "Tommy's Mexican Restaurant", year: "1990"),
                                spec: margaritaTommysSpec,
                                tags: margaritaTommysTags,
-                               variation: .margarita)
+                               variation: .margarita,
+                               collection: .originals)
 
 var margaritaTommysSpec = [OldCocktailIngredient(.juices(.lime), value: 1),
                            OldCocktailIngredient(.syrups(.agaveSyrup), value: 1, prep: PrepBible.agaveSyrup),

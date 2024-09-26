@@ -21,6 +21,10 @@ import Combine
     private var cancellables = Set<AnyCancellable>()
     private let searchSubject = PassthroughSubject<String, Never>()
     
+    private var organizedCocktailsCache: [String: [String: [Cocktail]]] = [:]
+    
+    var shouldReloadCache = false
+    
     init() {
         setupSearch()
     }
@@ -42,6 +46,34 @@ import Combine
     private func performSearch(_ searchText: String) {
         self.debouncedSearchText = searchText
         updateFilteredCocktails()
+    }
+    
+    private func shouldPopulateCache() -> Bool {
+        let shouldPopulateCache = organizedCocktailsCache.isEmpty || shouldReloadCache
+        print("should reload cache: \(shouldPopulateCache)")
+        return shouldPopulateCache
+    }
+    
+    private func cacheOrganizedCocktails() {
+        guard shouldPopulateCache() else { return }
+        let allOrganizedCocktails = organizeCocktails(filteredCocktails)
+        for letter in cocktailListAlphabet {
+            organizedCocktailsCache[letter] = allOrganizedCocktails.filter { $0.key.hasPrefix(letter) }
+        }
+    }
+    func getOrganizedCocktails(for letter: String) -> [String: [Cocktail]] {
+        return organizedCocktailsCache[letter] ?? [:]
+    }
+    
+    func setAllCocktails(_ cocktails: [Cocktail]) {
+        self.allCocktails = cocktails
+        updateFilteredCocktails()
+        cacheOrganizedCocktails()
+    }
+    
+    func updateAndCache() {
+        updateFilteredCocktails()
+        cacheOrganizedCocktails()
     }
     
     private func updateFilteredCocktails() {
@@ -75,11 +107,6 @@ import Combine
         }
     }
     
-    func setAllCocktails(_ cocktails: [Cocktail]) {
-        self.allCocktails = cocktails
-        updateFilteredCocktails()
-    }
-
     func selectedCocktailVariations(for cocktail: Cocktail) -> [Cocktail] {
         
         let variationsWithSelectedCocktailFirst = allCocktails.filter { $0.variationName == cocktail.cocktailName }.sorted {
@@ -91,38 +118,21 @@ import Combine
         
     }
     
-    
     func organizeCocktails(_ cocktails: [Cocktail]) -> [String: [Cocktail]] {
         var organizedCocktailsDict: [String: [Cocktail]] = [:]
         
         for cocktail in cocktails {
-            //check to see if the cocktail is a variation
-            if let variationName = cocktail.variationName {
-                // if it is a variation, check to see if it's value exists in the dict.
-                if organizedCocktailsDict[variationName] == nil {
-                    organizedCocktailsDict[variationName] = []
-                }
-                //if it does exist, it appends that cocktail to that group. But first, check it's ID so it isn't adding duplicates.
-                //I was finding duplicates in CocktailListView before I added this.
-                if !organizedCocktailsDict[variationName]!.contains(where: { $0.id == cocktail.id }) {
-                    organizedCocktailsDict[variationName]?.append(cocktail)
-                }
-            } else {
-                // If variationName is Nil, then it's is a base cocktail, create a new group
-                if organizedCocktailsDict[cocktail.cocktailName] == nil {
-                    organizedCocktailsDict[cocktail.cocktailName] = [cocktail]
-                }
-                let variations = cocktails.filter { $0.variationName == cocktail.cocktailName }
-                for variation in variations {
-                    // again, make sure duplicates aren't being added.
-                    if !organizedCocktailsDict[cocktail.cocktailName]!.contains(where: { $0.id == variation.id }) {
-                        organizedCocktailsDict[cocktail.cocktailName]?.append(variation)
-                    }
+            let key = cocktail.variationName ?? cocktail.cocktailName
+            
+            if organizedCocktailsDict[key] == nil {
+                organizedCocktailsDict[key] = []
+            }
+            if let existingCocktails = organizedCocktailsDict[key] {
+                if !existingCocktails.contains(where: { $0.id == cocktail.id }) {
+                    organizedCocktailsDict[key]?.append(cocktail)
                 }
             }
         }
-        
-        // Sort each group
         for (key, value) in organizedCocktailsDict {
             organizedCocktailsDict[key] = value.sorted { $0.cocktailName < $1.cocktailName }
         }

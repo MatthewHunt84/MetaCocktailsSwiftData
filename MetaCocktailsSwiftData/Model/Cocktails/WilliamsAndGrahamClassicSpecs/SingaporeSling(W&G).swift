@@ -7,7 +7,7 @@
 
 import Foundation
 
-var singaporeSlingWnG = Cocktail(cocktailName: "Singapore Sling (W&G Version)",
+var singaporeSlingWnG = Cocktail(cocktailName: "Singapore Sling" + wAndGTitleTag,
                                  glasswareType: .collins,
                                  garnish: [.limeWheel, .maraschinoCherry],
                                  ice: .columnIce,

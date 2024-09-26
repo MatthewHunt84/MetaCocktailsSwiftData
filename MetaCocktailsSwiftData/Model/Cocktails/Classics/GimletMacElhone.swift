@@ -16,6 +16,7 @@ var gimletMcElhone = Cocktail(cocktailName: "Gimlet (McElhone)",
                               buildOrder: gimletMcElhoneBuild,
                               tags: gimletMcElhoneTags,
                               variation: .gimlet,
+                              collection: .originals,
                               titleCocktail: true)
 
 var gimletMcElhoneSpec  = [OldCocktailIngredient(.syrups(.limeCordial), value: 1.5, prep: PrepBible.limeCordial),

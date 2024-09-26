@@ -9,6 +9,7 @@ struct AddCocktailView: View {
     @State private var isShowingCustomIngredientView: Bool = false
     @Environment(\.modelContext) private var modelContext
     @Environment(\.currentTab) private var selectedTab
+    @EnvironmentObject var cocktailListViewModel: CocktailListViewModel
     @Environment(\.dismiss) private var dismiss
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
     @FocusState private var yearKeyboardFocused: Bool
@@ -92,8 +93,8 @@ struct AddCocktailView: View {
                             }
                             
                             if viewModel.isValid() {
-                                
                                 viewModel.addCocktailToModel(context: modelContext)
+                                cocktailListViewModel.shouldReloadCache = true
                                 selectedTab.wrappedValue = .favoritesView
                             } else {
                                 if !viewModel.isShowingUniqueNameAlert {

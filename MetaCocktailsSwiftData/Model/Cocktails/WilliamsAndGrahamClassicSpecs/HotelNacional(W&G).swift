@@ -8,7 +8,7 @@
 import Foundation
 
 
-var hotelNacionalWnG = Cocktail(cocktailName: "Hotel Nacional (W&G Version)",
+var hotelNacionalWnG = Cocktail(cocktailName: "Hotel Nacional" + wAndGTitleTag,
                                 glasswareType: .stemmedGlassware,
                                 garnish: [.limeWheel],
                                 ice: nil,

@@ -44,6 +44,25 @@ final class CBCViewModel: ObservableObject {
     @Published var containerSizeLabel = "4 Liter"
     @Published var groupedContainerSizes: [(label: String, volume: Int)] = []
     
+    @Published var containerSizes: [(label: String, volume: Int)] = [
+        ("4 Liter", 4000),
+        ("5 Liter", 5000),
+        ("6 Liter", 6000),
+        ("7 Liter", 7000),
+        ("8 Liter", 8000),
+        ("9 Liter", 9000),
+        ("10 Liter", 10000),
+        ("11 Liter", 11000),
+        ("12 Liter", 12000),
+        ("13 Liter", 13000),
+        ("14 Liter", 14000),
+        ("15 Liter", 15000),
+        ("16 Liter", 16000),
+        ("17 Liter", 17000),
+        ("18 Liter", 18000),
+        ("5 Gallon (19 Liter)", 18927)
+    ]
+    
     var  formatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -52,24 +71,6 @@ final class CBCViewModel: ObservableObject {
     }()
     
     func groupContainerSizes() {
-        let containerSizes: [(label: String, volume: Int)] = [
-            ("4 Liter", 4000),
-            ("5 Liter", 5000),
-            ("6 Liter", 6000),
-            ("7 Liter", 7000),
-            ("8 Liter", 8000),
-            ("9 Liter", 9000),
-            ("10 Liter", 10000),
-            ("11 Liter", 11000),
-            ("12 Liter", 12000),
-            ("13 Liter", 13000),
-            ("14 Liter", 14000),
-            ("15 Liter", 15000),
-            ("16 Liter", 16000),
-            ("17 Liter", 17000),
-            ("18 Liter", 18000),
-            ("5 Gallon (19 Liter)", 18927)
-        ]
         
         var groups: [[(label: String, volume: Int)]] = []
         var currentGroup: [(label: String, volume: Int)] = []

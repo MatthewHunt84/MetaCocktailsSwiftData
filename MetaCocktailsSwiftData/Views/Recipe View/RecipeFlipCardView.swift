@@ -81,7 +81,7 @@ struct RecipeFlipCardView: View {
 
             if isShowingCocktailNotes{
                 if let notes = viewModel.cocktail.notes {
-                    CustomAlertView(isActive: $isShowingCocktailNotes, title: "Note:", message: notes , buttonTitle: "Heard, chef.") {}
+                    CustomAlertView(isActive: $isShowingCocktailNotes, title: "Note:", message: notes , buttonTitle: "Yes, chef.") {}
                         .zIndex(1)
                 }
             }

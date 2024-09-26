@@ -7,7 +7,7 @@
 
 import Foundation
 
-var oldCubanWnG = Cocktail(cocktailName: "Old Cuban (W&G Version)",
+var oldCubanWnG = Cocktail(cocktailName: "Old Cuban" + wAndGTitleTag,
                            imageAsset: nil,
                            glasswareType: .collins,
                            garnish: [.mintSprig],

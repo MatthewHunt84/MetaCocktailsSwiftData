@@ -7,7 +7,7 @@
 
 import Foundation
 
-var tipperaryWnG = Cocktail(cocktailName: "Tipperary (W&G Version)",
+var tipperaryWnG = Cocktail(cocktailName: "Tipperary" + wAndGTitleTag,
                             glasswareType: .martini,
                             garnish: [.orangeExpress, .maraschinoCherry],
                             author: williamsAndGraham,

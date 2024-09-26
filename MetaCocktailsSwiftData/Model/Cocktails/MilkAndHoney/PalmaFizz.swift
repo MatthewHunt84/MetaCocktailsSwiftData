@@ -23,7 +23,7 @@ var palmaFizz  = Cocktail(cocktailName: "Palma Fizz",
 var palmaFizzSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.5),
                       OldCocktailIngredient(.otherNonAlc(.roseWater), value: 3, unit: .drops),
                       OldCocktailIngredient(.vodkas(.vodkaAny), value: 2),
-                      OldCocktailIngredient(.soda(.gingerBeer) , value: 5)]
+                      OldCocktailIngredient(.soda(.gingerBeer) , value: 5, prep: PrepBible.gingerBeer)]
 
 var palmaFizzBuild  = Build(instructions: [Instruction(step: 1, method: "Squeeze ½ oz (15 ml) of lime juice into a Collins glass (or a Moscow Mule mug) and drop in the empty half lime shell."),
                                            Instruction(step: 2, method: "Add 2 or 3 ice cubes, pour in the vodka, and fill with the ginger beer."),

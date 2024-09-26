@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct CocktailListView: View {
-    @Bindable var viewModel = CocktailListViewModel()
+    @EnvironmentObject var viewModel: CocktailListViewModel
     @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
     @FocusState private var searchBarIsFocused: Bool
     @State private var selectedNavigationLetter: String?
@@ -22,23 +22,24 @@ struct CocktailListView: View {
                     
                     VStack(spacing: 0) {
                         SearchBarForCocktailListView(isFocused: $searchBarIsFocused, viewModel: viewModel)
-                            .padding()
-                        
                         GeometryReader { listGeo in
                             HStack(spacing: 0) {
                                 ScrollViewReader { proxy in
-                                    List {
+                                    ScrollView {
                                         if searchBarIsFocused {
-                                            SearchBarAllCocktailsListView(viewModel: viewModel)
+                                            SearchBarAllCocktailsListView()
                                         } else {
-                                            AllCocktailsListView(viewModel: viewModel)
+                                            AllCocktailsListView(animatingLetter: $selectedNavigationLetter)
                                         }
                                     }
-                                    .listStyle(.plain)
                                     .frame(width: listGeo.size.width * 0.90)
                                     .onChange(of: selectedNavigationLetter) { oldValue, newValue in
-                                        proxy.scrollTo(newValue, anchor: .top)
-                                            selectedNavigationLetter = nil
+                                        if let newValue = newValue {
+                                            withAnimation(.easeOut(duration: 0.2)) {
+                                                proxy.scrollTo(newValue, anchor: .top)
+                                            }
+                                            
+                                        }
                                     }
                                 }
                                 AlphabetNavigationView(selectedLetter: $selectedNavigationLetter, alphabet: viewModel.cocktailListAlphabet)
@@ -63,9 +64,11 @@ struct CocktailListView: View {
     }
 }
 
+
 struct AlphabetNavigationView: View {
     @Binding var selectedLetter: String?
     let alphabet: [String]
+    @State private var animatingLetter: String?
     
     var body: some View {
         GeometryReader { geometry in
@@ -73,31 +76,31 @@ struct AlphabetNavigationView: View {
                 ForEach(alphabet, id: \.self) { letter in
                     Button(action: {
                         selectedLetter = letter
+                        withAnimation(.none) {
+                            animatingLetter = letter
+                        }
+                        withAnimation(.easeOut(duration: 0.5).delay(0.1)) {
+                            animatingLetter = nil
+                        }
                     }) {
                         Text(letter)
-                            .font(FontFactory.alphabetFont(for: geometry.size.height))
+                            .font(FontFactory.alphabetFont(for: geometry.size.height, isSelected: animatingLetter == letter))
+                            .foregroundColor(animatingLetter == letter ? ColorScheme.tintColor : .primary)
                             .frame(width: geometry.size.width, height: geometry.size.height / CGFloat(alphabet.count))
                             .contentShape(Rectangle())
                     }
                     .buttonStyle(ScaleButtonStyle())
+                    .sensoryFeedback(.impact(weight: .heavy), trigger: selectedLetter == letter)
                 }
             }
         }
     }
 }
 
-#Preview {
-    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    CocktailListView(viewModel: CocktailListViewModel())
-        .modelContainer(preview.container)
-        
-}
 struct ScaleButtonStyle : ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label.scaleEffect(configuration.isPressed ? 2.5 : 1)
-            .shadow(radius: 30)
-        
     }
 }
 
@@ -110,16 +113,21 @@ struct SearchBarForCocktailListView: View {
         TextField("Search cocktails", text: $viewModel.searchText)
             .SearchBarTextField()
             .focused($isFocused)
+            .sensoryFeedback(.impact(weight: .heavy), trigger: isFocused == true)
             .animation(.easeInOut(duration: 0.2), value: isFocused)
             .overlay(alignment: .trailing) {
                 if !viewModel.searchText.isEmpty {
                     Button {
                         viewModel.searchText = ""
                     } label: {
-                        Image(systemName: "x.circle.fill")
+                        Image(systemName: "x.circle")
                             .tint(ColorScheme.interactionTint)
+                            .bold()
+                            .font(.system(size: 18))
+                            .padding()
+                            .frame(width: 60, height: 40)
+                            .contentShape(Rectangle())
                     }
-                    .padding(.horizontal, 20)
                 }
             }
             .onChange(of: viewModel.searchText) { _, newValue in
@@ -128,80 +136,22 @@ struct SearchBarForCocktailListView: View {
             .onSubmit {
                 viewModel.searchText = ""
             }
+            .onTapGesture {
+                isFocused = true
+            }
+            .onDisappear{
+                viewModel.searchText = ""
+                isFocused = false
+                viewModel.updateAndCache()
+            }
             .submitLabel(.done)
+            .padding()
     }
 }
 
-
-struct CocktailRowView: View {
-    
-    let cocktail: Cocktail
-    @Environment(\.modelContext) private var modelContext
-    @Bindable var viewModel: CocktailListViewModel
-    
-    var body: some View {
-        if cocktail.variation == nil  {
-            if cocktail.collection == .custom {
-                NavigationLinkWithoutIndicator {
-                    HStack{
-                        Text(cocktail.cocktailName)
-                        Spacer()
-                    }
-                } destination: {
-                    RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                        .navigationBarBackButtonHidden(true)
-                }
-            } else {
-                NavigationLinkWithoutIndicator {
-                    HStack{
-                        Text(cocktail.cocktailName)
-                        Spacer()
-                    }
-                } destination: {
-                    RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                        .navigationBarBackButtonHidden(true)
-                }
-            }
-        } else {
-            if cocktail.titleCocktail == true {
-                let variations = viewModel.selectedCocktailVariations(for: cocktail)
-                DisclosureGroup {
-                    ForEach(variations, id: \.cocktailName) { variationCocktail in
-                        
-                        if cocktail.collection == .custom {
-                            NavigationLinkWithoutIndicator {
-                                HStack{
-                                    Text(cocktail.cocktailName)
-                                    Spacer()
-                                    Text("Custom")
-                                        .foregroundStyle(Color.brandPrimaryGold)
-                                        .font(.subheadline)
-                                }
-                            } destination: {
-                                RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                                    .navigationBarBackButtonHidden(true)
-                            }
-                        } else {
-                            NavigationLinkWithoutIndicator {
-                                HStack{
-                                    Text(cocktail.cocktailName)
-                                    Spacer()
-                                }
-                            } destination: {
-                                RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                                    .navigationBarBackButtonHidden(true)
-                            }
-                        }
-                    }
-                } label: {
-                    if let variationName = cocktail.variation {
-                        Text(variationName.rawValue)
-                    } else {
-                        Text(cocktail.cocktailName)
-                    }
-                }
-                .disclosureGroupStyle(InlineDisclosureGroupStyle())
-            }
-        }
-    }
+#Preview {
+    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
+    CocktailListView()
+        .modelContainer(preview.container)
+        
 }

@@ -13,7 +13,8 @@ let brandyAlexander = Cocktail(cocktailName: "Alexander Cocktail No. 2",
                                author: harryCraddock,
                                spec: brandyAlexanderSpec,
                                tags: brandyAlexanderTags,
-                               variation: .alexander)
+                               variation: .alexander,
+                               collection: .originals)
 
 var brandyAlexanderSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.otherNonAlc(.cream), value: 1),
                                                     OldCocktailIngredient(.liqueurs(.cremeDeCacao), value:1),
