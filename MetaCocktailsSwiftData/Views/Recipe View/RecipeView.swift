@@ -10,7 +10,6 @@ import SwiftData
 
 struct RecipeView: View {
     @Bindable var viewModel: RecipeViewModel
-    @Namespace var topID
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
@@ -20,7 +19,7 @@ struct RecipeView: View {
             GeometryReader { geo in
                 ScrollViewReader { scrollReader in
                     ScrollView {
-                        RecipeFlipCardView(viewModel: viewModel, geo: geo, topID: topID, scrollReader: scrollReader)
+                        RecipeFlipCardView(viewModel: viewModel)
                     }
                     .navigationBarTitleDisplayMode(.inline)
                     .recipeHeader(cocktail: viewModel.cocktail)
@@ -194,9 +193,6 @@ struct IngredientRecipeView: View {
 
 struct RecipeViewBack: View {
     var viewModel: RecipeViewModel
-    let geometry: GeometryProxy
-    
-    
     var body: some View {
         
         ZStack {
@@ -205,12 +201,12 @@ struct RecipeViewBack: View {
             
             if viewModel.isShowingIngredientRecipe {
                 IngredientRecipeView(prep: viewModel.currentIngredientRecipe, viewModel: viewModel)
-                    .frame(width: geometry.size.width * 0.85)
                     .padding(.top, 60)
+                    .padding(.horizontal, 32)
             } else {
                 BuildOrderView(buildOrder: viewModel.cocktail.buildOrder ?? ramosGinFizzBuild, viewModel: viewModel)
-                    .frame(width: geometry.size.width * 0.85)
                     .padding(.top, 60)
+                    .padding(.horizontal, 32)
             }
         }
         .opacity(viewModel.frontDegree == 90.0 ? 1 : 0)
@@ -263,8 +259,6 @@ private struct BorderBottom: View {
         }
     }
 }
-
-
 
 private struct BorderSides: View {
     var body: some View {
@@ -370,9 +364,9 @@ struct SpecIngredientView: View {
     var ingredient: Ingredient
     @State private var isShowingIngredientInfo : Bool = false
     @Bindable var viewModel: RecipeViewModel
-    let geo: GeometryProxy
-    var topID: Namespace.ID
-    var scrollReader: ScrollViewProxy
+//    let geo: GeometryProxy
+//    var topID: Namespace.ID
+//    var scrollReader: ScrollViewProxy
     
     var body: some View {
         VStack{
@@ -385,7 +379,7 @@ struct SpecIngredientView: View {
                         viewModel.currentIngredientRecipe = ingredient.ingredientBase.prep ?? PrepBible.aPPBitters
                         viewModel.flipCard()
                         withAnimation(.easeOut(duration: viewModel.durationAndDelay)) {
-                            scrollReader.scrollTo(topID, anchor: .top)
+//                            scrollReader.scrollTo(topID, anchor: .top)
                         }
                     } label: {
                         Text(ingredient.ingredientBase.name)
@@ -427,9 +421,6 @@ struct SpecView: View {
     @EnvironmentObject var cBCViewModel: CBCViewModel
     @State private var showingModal = false
     @Binding var isShowingCocktailNotes: Bool
-    let geo: GeometryProxy
-    var topID: Namespace.ID
-    var scrollReader: ScrollViewProxy
     
     var body: some View {
         NavigationStack{
@@ -473,7 +464,7 @@ struct SpecView: View {
                     .padding(.bottom, 5)
                     
                     ForEach(orderSpec(), id: \.id) { ingredient in
-                        SpecIngredientView(ingredient: ingredient, viewModel: viewModel, geo: geo, topID: topID, scrollReader: scrollReader)
+                        SpecIngredientView(ingredient: ingredient, viewModel: viewModel)
                     }
                 }
                 .fullScreenCover(isPresented: $showingModal) {

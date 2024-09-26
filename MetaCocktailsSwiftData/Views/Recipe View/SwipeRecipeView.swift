@@ -37,12 +37,10 @@ struct SwipeRecipeView: View {
                             
                             HeightPreservingTabView(selection: $selectedIndex) {
                                 ForEach(Array(variations.enumerated()), id: \.element) { index, cocktail in
-                                    
-                                    RecipeFlipCardView(viewModel: RecipeViewModel(cocktail: cocktail), geo: geo, topID: topID, scrollReader: scrollReader)
+
+                                    RecipeFlipCardView(viewModel: RecipeViewModel(cocktail: cocktail))
                                         .recipeHeader(cocktail: cocktail, variation: cocktail.variation)
                                         .tag(index)
-                                        .padding(.top, 20)
-                                        .padding(.bottom, 20)
                                 }
                             }
                         }
