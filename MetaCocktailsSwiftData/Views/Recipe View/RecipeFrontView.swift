@@ -1,12 +1,34 @@
 //
-//  SwipeRecipeView.swift
-//  MetaCocktailsSwiftData
+//  RecipeIngredientsView.swift
+//  MetaCocktails
 //
-//  Created by James Menkal on 2/20/24.
+//  Created by James on 8/9/23.
 //
 
 import SwiftUI
 import SwiftData
+
+struct RecipeView: View {
+    @Bindable var viewModel: RecipeViewModel
+    @Environment(\.dismiss) private var dismiss
+    
+    var body: some View {
+        ZStack {
+            ColorScheme.background
+                .ignoresSafeArea()
+            
+                ScrollViewReader { scrollReader in
+                    ScrollView {
+                        RecipeFlipCardView(viewModel: viewModel, scrollReader: scrollReader)
+                    }
+                    .contentMargins(.top, -10)
+                    .scrollIndicators(.hidden)
+                    .navigationBarTitleDisplayMode(.inline)
+                    .recipeHeader(cocktail: viewModel.cocktail)
+                }
+        }
+    }
+}
 
 struct SwipeRecipeView: View {
     @State var variations: [Cocktail]
@@ -61,3 +83,10 @@ struct SwipeRecipeView: View {
         }
     }
 }
+
+#Preview {
+    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
+    return IngredientRecipeView(prep: PrepBible.pineappleGommeSyrup, viewModel: RecipeViewModel(cocktail: mintJulep))
+        .modelContainer(preview.container)
+}
+

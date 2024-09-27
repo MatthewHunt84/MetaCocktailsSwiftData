@@ -20,7 +20,7 @@
 		1AC386C02AAABED10064F52A /* BlackberrySageSmash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC386942AAABED00064F52A /* BlackberrySageSmash.swift */; };
 		1AC386C22AAABED10064F52A /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC386982AAABED00064F52A /* TabBarView.swift */; };
 		1AC386C32AAABED10064F52A /* BuildOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC3869A2AAABED00064F52A /* BuildOrderView.swift */; };
-		1AC386C52AAABED10064F52A /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC3869D2AAABED00064F52A /* RecipeView.swift */; };
+		1AC386C52AAABED10064F52A /* RecipeFrontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC3869D2AAABED00064F52A /* RecipeFrontView.swift */; };
 		1AC386C62AAABED10064F52A /* PrepRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC3869F2AAABED00064F52A /* PrepRecipeView.swift */; };
 		1AC386C82AAABED10064F52A /* PrepBible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC386A12AAABED00064F52A /* PrepBible.swift */; };
 		1AC386C92AAABED10064F52A /* CocktailListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC386A32AAABED00064F52A /* CocktailListView.swift */; };
@@ -453,7 +453,6 @@
 		4DD0DE9E2B97F5E1008EF203 /* TestCocktails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD0DE9D2B97F5E1008EF203 /* TestCocktails.swift */; };
 		4DD0DEA02B981EC3008EF203 /* Debbie, Don't.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD0DE9F2B981EC3008EF203 /* Debbie, Don't.swift */; };
 		4DD2AC312C487B5000550114 /* SubCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD2AC302C487B5000550114 /* SubCategories.swift */; };
-		4DDC116C2B857EF0009EF5C4 /* SwipeRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDC116B2B857EF0009EF5C4 /* SwipeRecipeView.swift */; };
 		4DDC116E2B861576009EF5C4 /* InlineDisclosureGroupStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDC116D2B861576009EF5C4 /* InlineDisclosureGroupStyle.swift */; };
 		4DE33DF72B8D933700312EC3 /* AddCustomIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE33DF62B8D933700312EC3 /* AddCustomIngredientView.swift */; };
 		4DE33DF92B8D96B500312EC3 /* AddCocktailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE33DF82B8D96B500312EC3 /* AddCocktailViewModel.swift */; };
@@ -507,6 +506,10 @@
 		4DF637A52C7C522100B2E3BF /* HistoricalCocktailModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF637A42C7C522100B2E3BF /* HistoricalCocktailModalView.swift */; };
 		F40FB6B12B7E38DA0047D597 /* CocktailCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40FB6B02B7E38DA0047D597 /* CocktailCollection.swift */; };
 		F41045072AD4FD42000CA913 /* CocktailImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41045062AD4FD42000CA913 /* CocktailImageView.swift */; };
+		F44016092CA6F37B00839E6A /* RecipeBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44016082CA6F37300839E6A /* RecipeBackView.swift */; };
+		F440160B2CA6F3BC00839E6A /* RecipeBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F440160A2CA6F3B600839E6A /* RecipeBorder.swift */; };
+		F440160D2CA6F40B00839E6A /* RecipeSubViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = F440160C2CA6F40500839E6A /* RecipeSubViews.swift */; };
+		F440160F2CA6F49500839E6A /* RecipeButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F440160E2CA6F49000839E6A /* RecipeButtons.swift */; };
 		F4441CEC2C9F7AB80025E988 /* default.store in Resources */ = {isa = PBXBuildFile; fileRef = F4441CE82C9F7AB80025E988 /* default.store */; };
 		F4538E032C91F99E004B686A /* FindCocktailUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4538E022C91F997004B686A /* FindCocktailUserInfoView.swift */; };
 		F47AE7B02CA5FE060070E7A8 /* AnimationModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47AE7AF2CA5FDFE0070E7A8 /* AnimationModifiers.swift */; };
@@ -568,7 +571,7 @@
 		1AC386942AAABED00064F52A /* BlackberrySageSmash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlackberrySageSmash.swift; sourceTree = "<group>"; };
 		1AC386982AAABED00064F52A /* TabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		1AC3869A2AAABED00064F52A /* BuildOrderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildOrderView.swift; sourceTree = "<group>"; };
-		1AC3869D2AAABED00064F52A /* RecipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
+		1AC3869D2AAABED00064F52A /* RecipeFrontView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeFrontView.swift; sourceTree = "<group>"; };
 		1AC3869F2AAABED00064F52A /* PrepRecipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrepRecipeView.swift; sourceTree = "<group>"; };
 		1AC386A12AAABED00064F52A /* PrepBible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrepBible.swift; sourceTree = "<group>"; };
 		1AC386A32AAABED00064F52A /* CocktailListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocktailListView.swift; sourceTree = "<group>"; };
@@ -1001,7 +1004,6 @@
 		4DD0DE9D2B97F5E1008EF203 /* TestCocktails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCocktails.swift; sourceTree = "<group>"; };
 		4DD0DE9F2B981EC3008EF203 /* Debbie, Don't.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Debbie, Don't.swift"; sourceTree = "<group>"; };
 		4DD2AC302C487B5000550114 /* SubCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategories.swift; sourceTree = "<group>"; };
-		4DDC116B2B857EF0009EF5C4 /* SwipeRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeRecipeView.swift; sourceTree = "<group>"; };
 		4DDC116D2B861576009EF5C4 /* InlineDisclosureGroupStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineDisclosureGroupStyle.swift; sourceTree = "<group>"; };
 		4DE33DF62B8D933700312EC3 /* AddCustomIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomIngredientView.swift; sourceTree = "<group>"; };
 		4DE33DF82B8D96B500312EC3 /* AddCocktailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCocktailViewModel.swift; sourceTree = "<group>"; };
@@ -1055,6 +1057,10 @@
 		4DF637A42C7C522100B2E3BF /* HistoricalCocktailModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalCocktailModalView.swift; sourceTree = "<group>"; };
 		F40FB6B02B7E38DA0047D597 /* CocktailCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailCollection.swift; sourceTree = "<group>"; };
 		F41045062AD4FD42000CA913 /* CocktailImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImageView.swift; sourceTree = "<group>"; };
+		F44016082CA6F37300839E6A /* RecipeBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeBackView.swift; sourceTree = "<group>"; };
+		F440160A2CA6F3B600839E6A /* RecipeBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeBorder.swift; sourceTree = "<group>"; };
+		F440160C2CA6F40500839E6A /* RecipeSubViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSubViews.swift; sourceTree = "<group>"; };
+		F440160E2CA6F49000839E6A /* RecipeButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeButtons.swift; sourceTree = "<group>"; };
 		F4441CE82C9F7AB80025E988 /* default.store */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.store; sourceTree = "<group>"; };
 		F4538E022C91F997004B686A /* FindCocktailUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindCocktailUserInfoView.swift; sourceTree = "<group>"; };
 		F473FFD22C2716C4008689D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1398,10 +1404,13 @@
 		1AC3869B2AAABED00064F52A /* Recipe View */ = {
 			isa = PBXGroup;
 			children = (
-				4D088FC92B62E3640047B056 /* RecipeViewModel.swift */,
-				1AC3869D2AAABED00064F52A /* RecipeView.swift */,
-				4DDC116B2B857EF0009EF5C4 /* SwipeRecipeView.swift */,
+				1AC3869D2AAABED00064F52A /* RecipeFrontView.swift */,
+				F44016082CA6F37300839E6A /* RecipeBackView.swift */,
 				F4E7F1722BE2E726006B6050 /* RecipeFlipCardView.swift */,
+				F440160A2CA6F3B600839E6A /* RecipeBorder.swift */,
+				F440160C2CA6F40500839E6A /* RecipeSubViews.swift */,
+				F440160E2CA6F49000839E6A /* RecipeButtons.swift */,
+				4D088FC92B62E3640047B056 /* RecipeViewModel.swift */,
 				1AC386992AAABED00064F52A /* SubViews */,
 			);
 			path = "Recipe View";
@@ -2331,7 +2340,6 @@
 				4DF408F22B61BCCC00EF9A6E /* FogCutter(W&G).swift in Sources */,
 				4DBAE6F92C71647000F3DBFD /* WardEight.swift in Sources */,
 				4DCB17502BA545E50002D7D9 /* USSRussellPunch.swift in Sources */,
-				4DDC116C2B857EF0009EF5C4 /* SwipeRecipeView.swift in Sources */,
 				4D9025A62B645BF3005F44F6 /* GinRicky.swift in Sources */,
 				4DA567F42B6DE6F5003F6F04 /* CellarDoor(W&G).swift in Sources */,
 				4DBBA48C2B68948100179B8F /* MexicanFiringSquad(W&G).swift in Sources */,
@@ -2351,9 +2359,10 @@
 				1AC386BE2AAABED10064F52A /* GarnishList.swift in Sources */,
 				4DA567F82B6DF024003F6F04 /* RamonaFlowers.swift in Sources */,
 				4DA567CA2B6DBA86003F6F04 /* Shameless.swift in Sources */,
-				1AC386C52AAABED10064F52A /* RecipeView.swift in Sources */,
+				1AC386C52AAABED10064F52A /* RecipeFrontView.swift in Sources */,
 				4D49243D2B7B5E2700BBE86C /* BatchButton .swift in Sources */,
 				4DBBA4C02B6A18EE00179B8F /* PapaDoble(WnG).swift in Sources */,
+				F44016092CA6F37B00839E6A /* RecipeBackView.swift in Sources */,
 				F4C6A8F72AB0145800BB0AD0 /* Profiles.swift in Sources */,
 				4DBFF8182B5FAD850011B5B1 /* AmarettoSour.swift in Sources */,
 				1AD87A212AE8A32D00859028 /* Paloma.swift in Sources */,
@@ -2447,6 +2456,7 @@
 				4DA567362B6AE48F003F6F04 /* Scofflaw.swift in Sources */,
 				1AC386C02AAABED10064F52A /* BlackberrySageSmash.swift in Sources */,
 				4DBFF84F2B609F1F0011B5B1 /* BrownDerby(OGRumVersion).swift in Sources */,
+				F440160F2CA6F49500839E6A /* RecipeButtons.swift in Sources */,
 				F40FB6B12B7E38DA0047D597 /* CocktailCollection.swift in Sources */,
 				4DA567582B6C43CA003F6F04 /* UltimaPalabra(London).swift in Sources */,
 				4DBBA42A2B65A2FC00179B8F /* Grasshopper.swift in Sources */,
@@ -2596,6 +2606,7 @@
 				4DCB17422BA52A4B0002D7D9 /* CroqueMPetraske.swift in Sources */,
 				4DCB170C2BA418B00002D7D9 /* TheTieBinder.swift in Sources */,
 				F4F3D4222C90996E00BB6767 /* ColorScheme.swift in Sources */,
+				F440160D2CA6F40B00839E6A /* RecipeSubViews.swift in Sources */,
 				4D6761302C3F317D00A5939C /* AddCustomGarnishView.swift in Sources */,
 				F4AA6BBA2C7E2C4F00610D80 /* FontFactory.swift in Sources */,
 				F493F3B12C6CFC72006A0ADB /* SelectionTagViewModel.swift in Sources */,
@@ -2605,6 +2616,7 @@
 				4D1E85CB2B5CA28C00214BC6 /* HeartOfGold.swift in Sources */,
 				4D1E85ED2B5F71B200214BC6 /* AirMail(WilliamsAndGraham).swift in Sources */,
 				4DED944E2C098DBF002305C2 /* BatchCellView.swift in Sources */,
+				F440160B2CA6F3BC00839E6A /* RecipeBorder.swift in Sources */,
 				4DA567B82B6DA8FD003F6F04 /* EasternDiplomat.swift in Sources */,
 				F493F3AE2C6CFBCD006A0ADB /* SelectionTagView.swift in Sources */,
 				4D6761392C44902C00A5939C /* DefaultIngredientSearchCell.swift in Sources */,
