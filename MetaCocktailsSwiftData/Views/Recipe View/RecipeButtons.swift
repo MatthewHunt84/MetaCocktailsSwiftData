@@ -32,33 +32,6 @@ struct FavoriteButton: View {
                 )
 
         }
-        .sensoryFeedback(.success, trigger: cocktail.favorite)
-        
-        
+        .sensoryFeedback(.success, trigger: cocktail.favorite)  
     }
 }
-
-//struct CustomButtonSnippet: View {
-//    var body: some View {
-//        Button("Label") {
-//            // Code
-//        }.buttonStyle(.customGreyButton)
-//    }
-//}
-//
-//public struct CustomButtonStyle: ButtonStyle {
-//    public func makeBody(configuration: Self.Configuration) -> some View {
-//        configuration.label
-//            .fontWeight(.medium)
-//            .padding(.vertical, 12)
-//            .foregroundStyle(ColorScheme.interactionTint)
-//            .frame(maxWidth: .infinity)
-//            .background(.tint, in: .rect(cornerRadius: 14, style: .continuous))
-//            .opacity(configuration.isPressed ? 0.4 : 1.0)
-//    }
-//}
-
-//extension ButtonStyle where Self == CustomButtonStyle {
-//    static var customGreyButton: CustomButtonStyle { .init() }
-//}
-

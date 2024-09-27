@@ -58,6 +58,17 @@ import Observation
         }
         return nil
     }
+    
+    func contentSize(for borderHeight: CGFloat) -> CGFloat {
+        switch borderHeight {
+        case 0..<650:
+            return borderHeight * 0.896
+        case 651..<671:
+            return borderHeight * 0.90
+        default:
+            return borderHeight * 0.91
+        }
+    }
 }
 
 struct NavigationLinkWithoutIndicator<Label: View, Destination: View>: View {

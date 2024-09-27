@@ -73,6 +73,7 @@ struct SpecView: View {
                         .foregroundStyle(ColorScheme.interactionTint)
                         .font(FontFactory.recipeCardHeader18B)
                         .simultaneousGesture(TapGesture().onEnded {
+                            cBCViewModel.chosenCocktail = cocktail
                             cBCViewModel.convertLoadedCocktail(for: cocktail)
                             cBCViewModel.convertIngredientsToBatchCellData()
                         })

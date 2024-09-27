@@ -41,11 +41,11 @@ struct SectionHeaderView: View {
     
     var body: some View {
         ZStack {
-            VisualEffectView(effect: UIBlurEffect(style: .systemThickMaterialDark))
+            
+            BlackGlassBackgroundView()
                 .clipShape(RoundedRectangle(cornerRadius: 4))
             
             headerSelectionGradient
-                .clipShape(RoundedRectangle(cornerRadius: 4))
             
             HStack {
                 Text(letter)
@@ -70,11 +70,11 @@ struct SectionHeaderView: View {
     var headerSelectionGradient: LinearGradient {
         LinearGradient(
             gradient: Gradient(colors: [
-                isAnimating ? ColorScheme.tintColor.opacity(0.15) : .clear,
+                isAnimating ? ColorScheme.tintColor.opacity(0.2) : .clear,
                 .black
             ]),
-            startPoint: .leading,
-            endPoint: .trailing
+            startPoint: .bottomLeading,
+            endPoint: .topTrailing
         )
     }
 }

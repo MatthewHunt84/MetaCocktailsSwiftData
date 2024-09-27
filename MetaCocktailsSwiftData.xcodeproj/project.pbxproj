@@ -551,7 +551,6 @@
 		F4D184FF2C8F92170035B280 /* Migration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D184FE2C8F92110035B280 /* Migration.swift */; };
 		F4D185012C8F95370035B280 /* Brancolada.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D185002C8F95310035B280 /* Brancolada.swift */; };
 		F4D185032C8F988E0035B280 /* SkyRocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D185022C8F987D0035B280 /* SkyRocket.swift */; };
-		F4E7F1732BE2E726006B6050 /* RecipeFlipCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E7F1722BE2E726006B6050 /* RecipeFlipCardView.swift */; };
 		F4F3D4222C90996E00BB6767 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F3D4212C90996200BB6767 /* ColorScheme.swift */; };
 		F4FBF1232AAABBB900BBF7CF /* MetaCocktailsSwiftDataApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FBF1222AAABBB900BBF7CF /* MetaCocktailsSwiftDataApp.swift */; };
 		F4FBF12C2AAABBBB00BBF7CF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4FBF12B2AAABBBB00BBF7CF /* Preview Assets.xcassets */; };
@@ -1103,7 +1102,6 @@
 		F4D184FE2C8F92110035B280 /* Migration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migration.swift; sourceTree = "<group>"; };
 		F4D185002C8F95310035B280 /* Brancolada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brancolada.swift; sourceTree = "<group>"; };
 		F4D185022C8F987D0035B280 /* SkyRocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyRocket.swift; sourceTree = "<group>"; };
-		F4E7F1722BE2E726006B6050 /* RecipeFlipCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeFlipCardView.swift; sourceTree = "<group>"; };
 		F4F3D4212C90996200BB6767 /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		F4FBF11F2AAABBB900BBF7CF /* MetaCocktailsSwiftData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetaCocktailsSwiftData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FBF1222AAABBB900BBF7CF /* MetaCocktailsSwiftDataApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaCocktailsSwiftDataApp.swift; sourceTree = "<group>"; };
@@ -1406,7 +1404,6 @@
 			children = (
 				1AC3869D2AAABED00064F52A /* RecipeFrontView.swift */,
 				F44016082CA6F37300839E6A /* RecipeBackView.swift */,
-				F4E7F1722BE2E726006B6050 /* RecipeFlipCardView.swift */,
 				F440160A2CA6F3B600839E6A /* RecipeBorder.swift */,
 				F440160C2CA6F40500839E6A /* RecipeSubViews.swift */,
 				F440160E2CA6F49000839E6A /* RecipeButtons.swift */,
@@ -2263,7 +2260,6 @@
 				4DBFF8312B5FC6750011B5B1 /* Bijou(W&G).swift in Sources */,
 				4DED94502C0E38BC002305C2 /* EditBatchModalView.swift in Sources */,
 				4DCB17102BA4CFCC0002D7D9 /* TurnPike.swift in Sources */,
-				F4E7F1732BE2E726006B6050 /* RecipeFlipCardView.swift in Sources */,
 				4D5DA0BE2BA145A600C14F1F /* TheSeaplane.swift in Sources */,
 				4DED94462BE70A34002305C2 /* NumberOfCocktailsModal.swift in Sources */,
 				4DCB172E2BA4EB450002D7D9 /* TritterRickey.swift in Sources */,

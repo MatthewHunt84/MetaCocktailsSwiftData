@@ -9,21 +9,26 @@ import SwiftUI
 
 struct Border: View {
     
+    var height: CGFloat
+    
     var body: some View {
         
-        ZStack {
-            BorderSides()
+        GeometryReader { geo in
             
-            VStack(alignment: .leading) {
-                BorderTop()
+            ZStack {
+                BorderSides()
                 
-                Spacer()
-                
-                BorderBottom()
-                    .rotationEffect(.degrees(180))
+                VStack(alignment: .leading) {
+                    BorderTop()
+                    
+                    Spacer()
+                    
+                    BorderBottom()
+                        .rotationEffect(.degrees(180))
+                }
             }
+            .frame(height: height, alignment: .center)
         }
-        .frame(maxHeight: .infinity, alignment: .center)
     }
 }
 

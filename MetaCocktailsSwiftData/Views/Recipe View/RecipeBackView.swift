@@ -9,28 +9,33 @@ import SwiftUI
 
 struct RecipeViewBack: View {
     var viewModel: RecipeViewModel
+    var parentGeo: GeometryProxy
     var body: some View {
         
         ZStack {
             
-            Border()
+            Border(height: parentGeo.size.height)
             
-            if viewModel.isShowingIngredientRecipe {
-                IngredientRecipeView(prep: viewModel.currentIngredientRecipe, viewModel: viewModel)
-                    .padding(.top, 60)
-                    .padding(.horizontal, 32)
-            } else if let buildOrder = viewModel.cocktail.buildOrder {
-                BuildOrderView(buildOrder: buildOrder, viewModel: viewModel)
-                    .padding(.top, 60)
-                    .padding(.horizontal, 32)
+            ScrollView {
+                
+                if viewModel.isShowingIngredientRecipe {
+                    IngredientRecipeView(prep: viewModel.currentIngredientRecipe, viewModel: viewModel)
+                        .padding()
+
+                } else if let buildOrder = viewModel.cocktail.buildOrder {
+                    BuildOrderView(buildOrder: buildOrder, viewModel: viewModel)
+                        .padding()
+                }
             }
+            .scrollIndicators(.hidden)
+            .frame(width: parentGeo.size.width * 0.88, height: viewModel.contentSize(for: parentGeo.size.height))
+            .allowsHitTesting(viewModel.isFlipped)
         }
         .opacity(viewModel.frontDegree == 90.0 ? 1 : 0)
         .rotation3DEffect(
             Angle(degrees: viewModel.backDegree),
             axis: (x: 0, y: 1, z: 0)
         )
-        .allowsHitTesting(viewModel.isFlipped)
     }
 }
 
