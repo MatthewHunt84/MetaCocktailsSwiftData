@@ -123,6 +123,7 @@ struct RecipeFlipCardView: View {
                         .padding()
                     }
                     .frame(width: outerGeo.size.width * 0.88, height: viewModel.contentSize(for: outerGeo.size.height))
+                    .background(Color.pink.opacity(0.2))
                     .scrollIndicators(.hidden)
                     .allowsHitTesting(!viewModel.isFlipped)
                     
@@ -135,6 +136,10 @@ struct RecipeFlipCardView: View {
                 }
                 .opacity(viewModel.backDegree == -90 ? 1 : 0)
                 .rotation3DEffect(Angle(degrees: viewModel.frontDegree), axis: (x: 0, y: 1, z: 0))
+                
+                Text("SIZE: \(outerGeo.size.height)")
+                    .font(.system(size: 30))
+                    .foregroundStyle(.green)
             }
         }
     }
