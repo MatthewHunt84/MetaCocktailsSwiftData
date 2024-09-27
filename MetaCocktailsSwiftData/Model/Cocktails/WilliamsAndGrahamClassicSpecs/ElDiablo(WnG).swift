@@ -16,6 +16,7 @@ var elDiabloWnG  = Cocktail(cocktailName: "El Diablo" + wAndGTitleTag,
                             spec: elDiabloSpecWnG,
                             buildOrder: elDiabloBuildOrderWnG,
                             tags: elDiabloTagsWnG,
+                            variation: .elDiablo,
                             variationName: "El Diablo",
                             collection: .williamsAndGraham)
 

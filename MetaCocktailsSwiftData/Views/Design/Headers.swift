@@ -109,7 +109,6 @@ struct RecipeTitleView: ViewModifier {
                         VStack {
                             FontFactory.recipeHeader(title: cocktail.cocktailName)
                                 .lineLimit(1)
-                                .minimumScaleFactor(0.4)
                             if let _ = cocktail.variation, let recipeSubheading = cocktail.collection?.recipeSubheading {
                                 FontFactory.mediumText(recipeSubheading, size: 12, color: .secondary)
                             }

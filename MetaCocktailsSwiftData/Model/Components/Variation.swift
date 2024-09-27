@@ -35,6 +35,7 @@ enum Variation: String, Codable, CaseIterable {
     case daiquiri = "Daiquiri"
     case eastSide = "East Side"
     case elksClubFizz = "Elk's Own Cocktail"
+    case elDiablo = "El Diablo"
     case elPresidente = "El Presidente"
     case espressoMartini = "Espresso Martini"
     case fairAndWarmer = "Fair and Warmer"
