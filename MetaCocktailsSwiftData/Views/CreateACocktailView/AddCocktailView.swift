@@ -91,6 +91,10 @@ struct AddCocktailView: View {
                                 viewModel.isShowingUniqueNameAlert.toggle()
                                 return
                             }
+                            guard viewModel.cocktailName != "" else {
+                                viewModel.isShowingAlert.toggle()
+                                return
+                            }
                             
                             if viewModel.isValid() {
                                 viewModel.addCocktailToModel(context: modelContext)
@@ -139,7 +143,7 @@ struct AddCocktailView: View {
                         .navigationBarBackButtonHidden(true)
                 }
                 if viewModel.isShowingAlert {
-                    CustomAlertView(isActive: $viewModel.isShowingAlert,
+                    ErrorAlertView(isActive: $viewModel.isShowingAlert,
                                     title: "Missing Information",
                                     message: viewModel.cantAddCocktailMessage(),
                                     buttonTitle: yesChef, action: {})
@@ -147,13 +151,15 @@ struct AddCocktailView: View {
                 }
                 
                 if viewModel.isShowingUniqueNameAlert {
-                    CustomAlertView(isActive: $viewModel.isShowingUniqueNameAlert,
+                    ErrorAlertView(isActive: $viewModel.isShowingUniqueNameAlert,
                                     title: "Name must be unique",
                                     message: "Another cocktail already exists with that name",
                                     buttonTitle: yesChef, action: {})
                     .zIndex(1)
                 }
             }
+            .sensoryFeedback(.error, trigger: viewModel.isShowingAlert)
+            .sensoryFeedback(.error, trigger: viewModel.isShowingUniqueNameAlert)
         }
         .toolbar {
             ToolbarItemGroup(placement: .keyboard) {
