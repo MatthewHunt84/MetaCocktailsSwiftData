@@ -12,10 +12,11 @@ struct RotatingDiscardScrollTransitionModifier: ViewModifier {
         content
             .scrollTransition { content, phase in
                 withAnimation(.easeOut) {
-                    content.rotation3DEffect(
+                    content
+                        .rotation3DEffect(
                         Angle(degrees: phase.value * -50),
-                        axis: (x: 0, y: 1, z: 0)
-                    )
+                        axis: (x: 0, y: 1, z: 0))
+                        .opacity(1 - (phase.value * -1))
                 }
             }
     }
@@ -27,57 +28,27 @@ extension View {
     }
 }
 
-struct DelayedBackgroundGlowAnimation: View {
-    
-    var color: Color
-    @State var durationAndDelay: CGFloat = 1.0
-    
-    @State var trigger: Bool = false
-    @State private var isAnimating: Bool = false
-    
-    var body: some View {
-        
-        ZStack {
-            color
-                .opacity(trigger ? 1 : 0)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-                .blur(radius: 20)
-        }
-        .task {
-            
-            try? await Task.sleep(for: .milliseconds(200))
-            trigger = true
-            
-            try? await Task.sleep(for: .milliseconds(100))
-            withAnimation(.easeOut(duration: 0.1)) {
-                trigger = false
-            }
-        }
-    }
-}
-
 struct BackgroundGlowAnimation: View {
     
     var color: Color
-    
-    @State var trigger: Bool = false
-    @State private var isAnimating: Bool = false
+    @State private var isAnimating: Bool = true
+
     
     var body: some View {
         
         ZStack {
-            color
-                .opacity(trigger ? 0.15 : 0.05)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-                .blur(radius: 20)
-        }
-        .task {
-            trigger = true
             
-            try? await Task.sleep(for: .milliseconds(100))
-            withAnimation(.easeOut(duration: 1)) {
-                trigger = false
+            color
+                .opacity(isAnimating ? 0.16 : 0.10)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .padding(14)
+                .blur(radius: 30)
+        }
+        .onAppear {
+            withAnimation(.easeOut(duration: 1.8).repeatForever()) {
+                isAnimating = false
             }
         }
     }
+    
 }

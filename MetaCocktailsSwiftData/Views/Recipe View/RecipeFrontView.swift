@@ -9,7 +9,9 @@ import SwiftUI
 import SwiftData
 
 struct RecipeView: View {
+    
     @Bindable var viewModel: RecipeViewModel
+    @State var borderColor = ColorScheme.tintColor
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
@@ -18,7 +20,7 @@ struct RecipeView: View {
             ColorScheme.background
                 .ignoresSafeArea()
 
-            RecipeFlipCardView(viewModel: viewModel)
+            RecipeFlipCardView(viewModel: viewModel, borderColor: $borderColor)
                 .navigationBarTitleDisplayMode(.inline)
                 .recipeHeader(cocktail: viewModel.cocktail)
         }
@@ -30,6 +32,7 @@ struct SwipeRecipeView: View {
     @State private var selectedIndex: Int
     @Environment(\.dismiss) private var dismiss
     @State private var scrollID: Cocktail.ID?
+    @State var borderColor = ColorScheme.tintColor
     
     init(variations: [Cocktail], initialSelection: Cocktail) {
         self._variations = State(initialValue: variations)
@@ -47,11 +50,11 @@ struct SwipeRecipeView: View {
                 
                 ScrollView(.horizontal) {
                     
-                    LazyHStack(alignment: .top) {
+                    HStack(alignment: .top) {
                         
                         ForEach(variations) { cocktail in
                             
-                            RecipeFlipCardView(viewModel: RecipeViewModel(cocktail: cocktail))
+                            RecipeFlipCardView(viewModel: RecipeViewModel(cocktail: cocktail), borderColor: $borderColor)
                                 .containerRelativeFrame(.horizontal)
                                 .discardTransition()
                         }
@@ -62,6 +65,11 @@ struct SwipeRecipeView: View {
                 .scrollPosition(id: $scrollID)
                 .contentMargins(.bottom, 84, for: .scrollIndicators) // This will probably break on other devices but will leave it in for testing
                 .scrollIndicators(.visible)
+                .onScrollPhaseChange { oldPhase, newPhase in
+                    withAnimation {
+                        borderColor = newPhase != .interacting ? ColorScheme.tintColor : Color.secondary
+                    }
+                }
             }
             .recipeHeader(cocktail: variations.first(where: { $0.id == scrollID }))
         }
@@ -74,7 +82,7 @@ struct RecipeFlipCardView: View {
     @State private var isShowingCocktailNotes = false
     @EnvironmentObject var cBCViewModel: CBCViewModel
     @Bindable var viewModel: RecipeViewModel
-    @State var glowTrigger = false
+    @Binding var borderColor: Color
     
     var body: some View {
         
@@ -86,7 +94,9 @@ struct RecipeFlipCardView: View {
                 
                 ZStack {
                     
-                    Border(height: outerGeo.size.height)
+                    BackgroundGlowAnimation(color: Color.redGold)
+                    
+                    Border(height: outerGeo.size.height, color: $borderColor)
                     
                     ScrollView {
                         
@@ -123,7 +133,6 @@ struct RecipeFlipCardView: View {
                         .padding()
                     }
                     .frame(width: outerGeo.size.width * 0.88, height: viewModel.contentSize(for: outerGeo.size.height))
-                    .background(Color.pink.opacity(0.2))
                     .scrollIndicators(.hidden)
                     .allowsHitTesting(!viewModel.isFlipped)
                     
@@ -136,10 +145,6 @@ struct RecipeFlipCardView: View {
                 }
                 .opacity(viewModel.backDegree == -90 ? 1 : 0)
                 .rotation3DEffect(Angle(degrees: viewModel.frontDegree), axis: (x: 0, y: 1, z: 0))
-                
-                Text("SIZE: \(outerGeo.size.height)")
-                    .font(.system(size: 30))
-                    .foregroundStyle(.green)
             }
         }
     }

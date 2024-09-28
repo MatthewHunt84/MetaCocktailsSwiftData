@@ -63,7 +63,7 @@ import Observation
         switch borderHeight {
         case 0..<650:
             return borderHeight * 0.896
-        case 651..<680:
+        case 651..<672:
             return borderHeight * 0.90
         default:
             return borderHeight * 0.91

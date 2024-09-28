@@ -11,19 +11,21 @@ struct Border: View {
     
     var height: CGFloat
     
+    @Binding var color: Color
+    
     var body: some View {
         
         GeometryReader { geo in
             
             ZStack {
-                BorderSides()
+                BorderSides(color: $color)
                 
                 VStack(alignment: .leading) {
-                    BorderTop()
+                    BorderTop(color: $color)
                     
                     Spacer()
                     
-                    BorderBottom()
+                    BorderBottom(color: $color)
                         .rotationEffect(.degrees(180))
                 }
             }
@@ -35,6 +37,9 @@ struct Border: View {
 
 
 private struct BorderTop: View {
+    
+    @Binding var color: Color
+    
     var body: some View {
         ZStack {
             
@@ -48,12 +53,15 @@ private struct BorderTop: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .background(.clear)
-                .foregroundStyle(ColorScheme.recipeBorder)
+                .foregroundStyle(color)
         }
     }
 }
 
 private struct BorderBottom: View {
+    
+    @Binding var color: Color
+    
     var body: some View {
         ZStack(alignment: .top) {
             
@@ -67,12 +75,15 @@ private struct BorderBottom: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .background(.clear)
-                .foregroundStyle(ColorScheme.recipeBorderFlipped)
+                .foregroundStyle(color)
         }
     }
 }
 
 private struct BorderSides: View {
+    
+    @Binding var color: Color
+    
     var body: some View {
         GeometryReader { geo in
             VStack {
@@ -86,7 +97,7 @@ private struct BorderSides: View {
                     
                     Image(.borderSides)
                         .resizable()
-                        .foregroundStyle(ColorScheme.recipeBorder)
+                        .foregroundStyle(color)
                         .background(.clear)
                         .frame(height: geo.size.height * 0.8)
                 }

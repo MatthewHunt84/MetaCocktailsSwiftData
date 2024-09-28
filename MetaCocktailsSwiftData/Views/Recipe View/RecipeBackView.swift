@@ -10,11 +10,15 @@ import SwiftUI
 struct RecipeViewBack: View {
     var viewModel: RecipeViewModel
     var parentGeo: GeometryProxy
+    @State var secondaryBackgroundColor = Color.secondary
+    
     var body: some View {
         
         ZStack {
             
-            Border(height: parentGeo.size.height)
+            BackgroundGlowAnimation(color: .blue)
+            
+            Border(height: parentGeo.size.height, color: $secondaryBackgroundColor)
             
             ScrollView {
                 
@@ -31,6 +35,7 @@ struct RecipeViewBack: View {
             .frame(width: parentGeo.size.width * 0.88, height: viewModel.contentSize(for: parentGeo.size.height))
             .allowsHitTesting(viewModel.isFlipped)
         }
+        
         .opacity(viewModel.frontDegree == 90.0 ? 1 : 0)
         .rotation3DEffect(
             Angle(degrees: viewModel.backDegree),
