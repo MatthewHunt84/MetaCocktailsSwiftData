@@ -109,14 +109,129 @@ struct RecipeTitleView: ViewModifier {
                         VStack {
                             FontFactory.recipeHeader(title: cocktail.cocktailName)
                                 .lineLimit(1)
-                                .minimumScaleFactor(0.4)
                             if let _ = cocktail.variation, let recipeSubheading = cocktail.collection?.recipeSubheading {
                                 FontFactory.mediumText(recipeSubheading, size: 12, color: .secondary)
                             }
                         }
                     }
                 }
-                    
+                
             }
     }
 }
+
+struct ModalHeader: View {
+    
+    let title: String
+    @Environment(\.dismiss) private var dismiss
+    
+    var body: some View {
+        
+        HStack {
+            Spacer()
+            FontFactory.titleHeader22(title: title)
+            
+            Spacer()
+            Button {
+                dismiss()
+            } label: {
+                Image(systemName: "chevron.down")
+                    .font(.system(size: 20))
+                    .bold()
+                    .tint(ColorScheme.interactionTint)
+            }
+        }
+        .padding(.bottom, 20)
+    }
+}
+
+extension View {
+    
+    func modalPrentation(_ icon: Image, labelText: String, isPresented: Binding<Bool>) -> some View {
+        self.modifier(ModalPrentation(icon: icon, labelText: labelText, isPresented: isPresented))
+    }
+}
+
+struct ModalPrentation: ViewModifier {
+    let icon: Image
+    let labelText: String
+    @Binding var isPresented: Bool
+    
+    func body(content: Content) -> some View {
+        content
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        isPresented.toggle()
+                    } label: {
+                        VStack {
+                            icon
+                                .tint(ColorScheme.interactionTint)
+                            FontFactory.mediumText(labelText, size: 12, color: ColorScheme.interactionTint)
+                        }
+                    }
+                }
+            }
+    }
+}
+
+struct InfoHeader: View {
+    
+    @Binding var isShowingDetail: Bool
+    let text: String
+    
+    var body: some View {
+        
+        HStack(alignment: .firstTextBaseline) {
+            
+            FontFactory.mediumText(text, size: 20)
+            
+            Image(systemName: "info.circle")
+                .font(.system(size: 16))
+                .foregroundStyle(isShowingDetail ? ColorScheme.tintColor : ColorScheme.interactionTint)
+                .onTapGesture {
+                    withAnimation(.easeInOut(duration: 0.25)) {
+                        isShowingDetail.toggle()
+                    }
+                }
+        }
+    }
+}
+
+struct InfoDisclosureHeader: View {
+    
+    @Binding var isShowingDetail: Bool
+    let text: String
+    let detail: String
+    
+    var body: some View {
+        
+        VStack {
+            
+            HStack(alignment: .firstTextBaseline) {
+                
+                FontFactory.mediumText(text, size: 20)
+                
+                Image(systemName: "info.circle")
+                    .font(.system(size: 16))
+                    .foregroundStyle(isShowingDetail ? ColorScheme.tintColor : ColorScheme.interactionTint)
+                    .onTapGesture {
+                        withAnimation(.easeInOut(duration: 0.25)) {
+                            isShowingDetail.toggle()
+                        }
+                    }
+            }
+            
+            if isShowingDetail {
+                Text(detail)
+                    .font(FontFactory.regularFont(size: 16))
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(.secondary)
+                    .padding(.horizontal)
+                    .padding(.vertical, 5)
+            }
+        }
+    }
+}
+
+   

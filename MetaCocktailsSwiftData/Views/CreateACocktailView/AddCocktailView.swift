@@ -74,21 +74,20 @@ struct AddCocktailView: View {
                 .background(Color.clear)
                 .navigationBarTitleDisplayMode(.inline)
                 .jamesHeader("Add New Cocktail")
+                .modalPrentation(Image("useExistingRecipe"), labelText: "Use existing", isPresented: $isSelectingFromTemplate)
+                .sheet(isPresented: $isSelectingFromTemplate) {
+                    RiffPickerView(viewModel: viewModel)
+                        .navigationBarBackButtonHidden(true)
+                }
                 .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button {
-                            isSelectingFromTemplate = true
-                        } label: {
-                            Image("useExistingRecipe")
-                                .resizable()
-                                .tint(ColorScheme.interactionTint)
-                        }
-                    }
-                    
                     ToolbarItem(placement: .bottomBar) {
                         UniversalBlueButton(buttonText: "Add to cocktails", rightImage: Image(systemName: "plus"), includeBorder: false) {
                             guard nameIsUnique() else {
                                 viewModel.isShowingUniqueNameAlert.toggle()
+                                return
+                            }
+                            guard viewModel.cocktailName != "" else {
+                                viewModel.isShowingAlert.toggle()
                                 return
                             }
                             
@@ -130,16 +129,12 @@ struct AddCocktailView: View {
                             .navigationBarBackButtonHidden(true)
                     }
                 }
-                .fullScreenCover(isPresented: $isSelectingFromTemplate) {
-                    RiffPickerView(viewModel: viewModel)
-                        .navigationBarBackButtonHidden(true)
-                }
                 .fullScreenCover(isPresented: $isShowingCustomIngredientView) {
                     AddCustomIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView)
                         .navigationBarBackButtonHidden(true)
                 }
                 if viewModel.isShowingAlert {
-                    CustomAlertView(isActive: $viewModel.isShowingAlert,
+                    ErrorAlertView(isActive: $viewModel.isShowingAlert,
                                     title: "Missing Information",
                                     message: viewModel.cantAddCocktailMessage(),
                                     buttonTitle: yesChef, action: {})
@@ -147,13 +142,15 @@ struct AddCocktailView: View {
                 }
                 
                 if viewModel.isShowingUniqueNameAlert {
-                    CustomAlertView(isActive: $viewModel.isShowingUniqueNameAlert,
+                    ErrorAlertView(isActive: $viewModel.isShowingUniqueNameAlert,
                                     title: "Name must be unique",
                                     message: "Another cocktail already exists with that name",
                                     buttonTitle: yesChef, action: {})
                     .zIndex(1)
                 }
             }
+            .sensoryFeedback(.error, trigger: viewModel.isShowingAlert)
+            .sensoryFeedback(.error, trigger: viewModel.isShowingUniqueNameAlert)
         }
         .toolbar {
             ToolbarItemGroup(placement: .keyboard) {

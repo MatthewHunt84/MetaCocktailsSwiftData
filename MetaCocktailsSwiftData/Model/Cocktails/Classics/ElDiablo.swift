@@ -16,7 +16,7 @@ var elDiablo  = Cocktail(cocktailName: "El Diablo",
                          buildOrder: elDiabloBuildOrder,
                          notes: elDiabloNotes,
                          tags: elDiabloTags,
-                         variation: nil,
+                         variation: .elDiablo,
                          collection: .originals)
 
 var elDiabloSpec  = [OldCocktailIngredient(.soda(.gingerAle), value: 3),

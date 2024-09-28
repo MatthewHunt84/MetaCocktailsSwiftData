@@ -14,21 +14,7 @@ struct EditBatchModalView: View {
     
     var body: some View {
             VStack {
-                HStack {
-                    Spacer()
-                    FontFactory.titleHeader22(title: "Batching Preferences")
-                    
-                    Spacer()
-                    Button {
-                        dismiss()
-                    } label: {
-                        Image(systemName: "chevron.down")
-                            .font(.system(size: 20))
-                            .bold()
-                            .tint(ColorScheme.interactionTint)
-                    }
-                }
-                .padding(.bottom, 20)
+                ModalHeader(title: "Batching Preferences")
                 Section(header: FontFactory.mediumText("Included Ingredients", size: 20)) {
                     ForEach($viewModel.loadedCocktailData.ingredients, id: \.ingredient.ingredientBase.name) { ingredient in
                         LoadedCocktailIngredientCell(ingredient: ingredient)
@@ -39,7 +25,6 @@ struct EditBatchModalView: View {
                 Spacer()
             }
             .padding()
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(BlackGlassBackgroundView())
     }
 }

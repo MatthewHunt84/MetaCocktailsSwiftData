@@ -8,7 +8,7 @@
 import Foundation
 
 
-var elDiabloWnG  = Cocktail(cocktailName: "El Diablo" + wAndGTitleTag,
+var elDiabloWnG  = Cocktail(cocktailName: "El Diablo\(wAndGTitleTag)",
                             glasswareType: .collins,
                             garnish: [.limeWheel],
                             ice: .crackedIce,
@@ -16,6 +16,7 @@ var elDiabloWnG  = Cocktail(cocktailName: "El Diablo" + wAndGTitleTag,
                             spec: elDiabloSpecWnG,
                             buildOrder: elDiabloBuildOrderWnG,
                             tags: elDiabloTagsWnG,
+                            variation: .elDiablo,
                             variationName: "El Diablo",
                             collection: .williamsAndGraham)
 
