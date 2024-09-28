@@ -13,50 +13,64 @@ struct RiffPickerView: View {
     @Environment(\.dismiss) private var dismiss
     @Bindable var viewModel: AddCocktailViewModel
     @FocusState private var isSearchFocused: Bool
+    @State var isShowingRiffPickerInfo = false
     
     @Query(sort: \Cocktail.cocktailName) private var allCocktails: [Cocktail]
     
     var body: some View {
-        NavigationStack {
-            ZStack {
-                ColorScheme.background.ignoresSafeArea()
+        
+        VStack {
+            ModalHeader(title: "Cocktail Template")
+            
+            HStack(alignment: .firstTextBaseline) {
                 
-                VStack(alignment: .leading) {
-                    Text("Select a cocktail to riff on")
-                        .font(FontFactory.regularFont(size: 18))
-                    Text("The spec will be imported into your new cocktail as a starting template")
-                        .font(FontFactory.regularFont(size: 16))
-                        .foregroundStyle(.secondary)
-                    SearchBarForCreateCocktailView(isFocused: $isSearchFocused, viewModel: viewModel)
-                    List {
-                        ForEach(viewModel.filteredCocktails, id: \.self) { cocktail in
-                            Button {
-                                viewModel.clearData()
-                                viewModel.populateFromCocktail(cocktail)
-                                dismiss()
-                            } label: {
-                                HStack {
-                                    Text(cocktail.cocktailName)
-                                        .font(FontFactory.formLabel18)
-                                }
-                            }
+                FontFactory.mediumText("Choose a cocktail recipe", size: 20)
+                
+                Image(systemName: "info.circle")
+                    .font(.system(size: 16))
+                    .foregroundStyle(isShowingRiffPickerInfo ? ColorScheme.tintColor : ColorScheme.interactionTint)
+                    .onTapGesture {
+                        withAnimation(.easeInOut(duration: 0.25)) {
+                            isShowingRiffPickerInfo.toggle()
                         }
-                        .listRowBackground(Color.clear)
                     }
-                    .listStyle(.plain)
+            }
+            
+            if isShowingRiffPickerInfo {
+                Text("The recipe will be used as a starting template")
+                    .font(FontFactory.regularFont(size: 16))
+                    .foregroundStyle(.secondary)
+            }
+            
+            SearchBarForCreateCocktailView(isFocused: $isSearchFocused, viewModel: viewModel)
+            
+            List {
+                ForEach(viewModel.filteredCocktails, id: \.self) { cocktail in
+                    Button {
+                        viewModel.clearData()
+                        viewModel.populateFromCocktail(cocktail)
+                        dismiss()
+                    } label: {
+                        HStack {
+                            Text(cocktail.cocktailName)
+                                .font(FontFactory.formLabel18)
+                        }
+                    }
                 }
-                .padding(.top, 20)
-                .padding()
+                .listRowBackground(Color.clear)
             }
-            .navigationBarTitleDisplayMode(.inline)
-            .jamesHeaderWithNavigation(title: "Cocktail Template", dismiss: dismiss)
-            .onAppear {
-                viewModel.setAllCocktails(allCocktails)
-                isSearchFocused = true
-            }
-            .onDisappear {
-                viewModel.resetSearch()
-            }
+            .listStyle(.plain)
+            
+            Spacer()
+        }
+        .padding()
+        .background(BlackGlassBackgroundView())
+        .onAppear {
+            viewModel.setAllCocktails(allCocktails)
+            isSearchFocused = true
+        }
+        .onDisappear {
+            viewModel.resetSearch()
         }
     }
 }

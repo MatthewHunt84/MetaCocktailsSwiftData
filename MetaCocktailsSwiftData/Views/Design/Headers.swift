@@ -115,7 +115,32 @@ struct RecipeTitleView: ViewModifier {
                         }
                     }
                 }
-                    
+                
             }
+    }
+}
+
+struct ModalHeader: View {
+    
+    let title: String
+    @Environment(\.dismiss) private var dismiss
+    
+    var body: some View {
+        
+        HStack {
+            Spacer()
+            FontFactory.titleHeader22(title: title)
+            
+            Spacer()
+            Button {
+                dismiss()
+            } label: {
+                Image(systemName: "chevron.down")
+                    .font(.system(size: 20))
+                    .bold()
+                    .tint(ColorScheme.interactionTint)
+            }
+        }
+        .padding(.bottom, 20)
     }
 }

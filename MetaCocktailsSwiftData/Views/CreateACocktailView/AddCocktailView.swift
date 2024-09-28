@@ -136,7 +136,7 @@ struct AddCocktailView: View {
                             .navigationBarBackButtonHidden(true)
                     }
                 }
-                .fullScreenCover(isPresented: $isSelectingFromTemplate) {
+                .sheet(isPresented: $isSelectingFromTemplate) {
                     RiffPickerView(viewModel: viewModel)
                         .navigationBarBackButtonHidden(true)
                 }
