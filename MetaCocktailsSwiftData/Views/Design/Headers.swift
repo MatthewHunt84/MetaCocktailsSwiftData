@@ -144,3 +144,36 @@ struct ModalHeader: View {
         .padding(.bottom, 20)
     }
 }
+
+extension View {
+    
+    func modalPrentation(_ icon: Image, labelText: String, isPresented: Binding<Bool>) -> some View {
+        self.modifier(ModalPrentation(icon: icon, labelText: labelText, isPresented: isPresented))
+    }
+}
+
+struct ModalPrentation: ViewModifier {
+    let icon: Image
+    let labelText: String
+    @Binding var isPresented: Bool
+    
+    func body(content: Content) -> some View {
+        content
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        isPresented.toggle()
+                    } label: {
+                        VStack {
+                            icon
+                                .tint(ColorScheme.interactionTint)
+                            FontFactory.mediumText(labelText, size: 12, color: ColorScheme.interactionTint)
+                        }
+                    }
+                }
+            }
+    }
+}
+
+    
+   

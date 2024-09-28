@@ -40,11 +40,7 @@ struct CBCLoadedCocktailView: View {
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
         .jamesHeaderWithNavigation(title: "Batch Calculator", dismiss: dismiss)
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                EditIngredientsButton(isShowingIngredientsModal: $isShowingPreferencesModal)
-            }
-        }
+        .modalPrentation(Image(systemName:"gearshape"), labelText: "Settings", isPresented: $isShowingPreferencesModal)
         .sheet(isPresented: $isShowingPreferencesModal, content: {
             EditBatchModalView()
                 .onDisappear(perform: {
@@ -67,21 +63,6 @@ struct CBCCocktailHeaderView: View {
     
     var body: some View {
         FontFactory.mediumText(cocktailName, size: 28, color: .primary, isBold: false)
-    }
-}
-
-struct EditIngredientsButton: View {
-    @Binding var isShowingIngredientsModal: Bool
-    
-    var body: some View {
-        Button {
-            isShowingIngredientsModal.toggle()
-            
-        } label: {
-                Image(systemName: "gearshape")
-                    .resizable()
-                    .foregroundStyle(ColorScheme.interactionTint)
-        }
     }
 }
 

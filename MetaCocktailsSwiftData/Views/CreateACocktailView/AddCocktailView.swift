@@ -74,19 +74,12 @@ struct AddCocktailView: View {
                 .background(Color.clear)
                 .navigationBarTitleDisplayMode(.inline)
                 .jamesHeader("Add New Cocktail")
+                .modalPrentation(Image("useExistingRecipe"), labelText: "Use existing", isPresented: $isSelectingFromTemplate)
+                .sheet(isPresented: $isSelectingFromTemplate) {
+                    RiffPickerView(viewModel: viewModel)
+                        .navigationBarBackButtonHidden(true)
+                }
                 .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button {
-                            isSelectingFromTemplate = true
-                        } label: {
-                            VStack {
-                                Image("useExistingRecipe")
-                                    .tint(ColorScheme.interactionTint)
-                                FontFactory.mediumText("Use existing", size: 12, color: ColorScheme.interactionTint)
-                            }
-                        }
-                    }
-                    
                     ToolbarItem(placement: .bottomBar) {
                         UniversalBlueButton(buttonText: "Add to cocktails", rightImage: Image(systemName: "plus"), includeBorder: false) {
                             guard nameIsUnique() else {
@@ -135,10 +128,6 @@ struct AddCocktailView: View {
                         AddExistingIngredientDetailView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView)
                             .navigationBarBackButtonHidden(true)
                     }
-                }
-                .sheet(isPresented: $isSelectingFromTemplate) {
-                    RiffPickerView(viewModel: viewModel)
-                        .navigationBarBackButtonHidden(true)
                 }
                 .fullScreenCover(isPresented: $isShowingCustomIngredientView) {
                     AddCustomIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView)
