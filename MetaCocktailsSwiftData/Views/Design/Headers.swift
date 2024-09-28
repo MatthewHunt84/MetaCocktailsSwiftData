@@ -175,5 +175,63 @@ struct ModalPrentation: ViewModifier {
     }
 }
 
+struct InfoHeader: View {
     
+    @Binding var isShowingDetail: Bool
+    let text: String
+    
+    var body: some View {
+        
+        HStack(alignment: .firstTextBaseline) {
+            
+            FontFactory.mediumText(text, size: 20)
+            
+            Image(systemName: "info.circle")
+                .font(.system(size: 16))
+                .foregroundStyle(isShowingDetail ? ColorScheme.tintColor : ColorScheme.interactionTint)
+                .onTapGesture {
+                    withAnimation(.easeInOut(duration: 0.25)) {
+                        isShowingDetail.toggle()
+                    }
+                }
+        }
+    }
+}
+
+struct InfoDisclosureHeader: View {
+    
+    @Binding var isShowingDetail: Bool
+    let text: String
+    let detail: String
+    
+    var body: some View {
+        
+        VStack {
+            
+            HStack(alignment: .firstTextBaseline) {
+                
+                FontFactory.mediumText(text, size: 20)
+                
+                Image(systemName: "info.circle")
+                    .font(.system(size: 16))
+                    .foregroundStyle(isShowingDetail ? ColorScheme.tintColor : ColorScheme.interactionTint)
+                    .onTapGesture {
+                        withAnimation(.easeInOut(duration: 0.25)) {
+                            isShowingDetail.toggle()
+                        }
+                    }
+            }
+            
+            if isShowingDetail {
+                Text(detail)
+                    .font(FontFactory.regularFont(size: 16))
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(.secondary)
+                    .padding(.horizontal)
+                    .padding(.vertical, 5)
+            }
+        }
+    }
+}
+
    

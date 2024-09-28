@@ -20,27 +20,12 @@ struct RiffPickerView: View {
     var body: some View {
         
         VStack {
+            
             ModalHeader(title: "Cocktail Template")
             
-            HStack(alignment: .firstTextBaseline) {
-                
-                FontFactory.mediumText("Choose a cocktail recipe", size: 20)
-                
-                Image(systemName: "info.circle")
-                    .font(.system(size: 16))
-                    .foregroundStyle(isShowingRiffPickerInfo ? ColorScheme.tintColor : ColorScheme.interactionTint)
-                    .onTapGesture {
-                        withAnimation(.easeInOut(duration: 0.25)) {
-                            isShowingRiffPickerInfo.toggle()
-                        }
-                    }
-            }
-            
-            if isShowingRiffPickerInfo {
-                Text("The recipe will be used as a starting template")
-                    .font(FontFactory.regularFont(size: 16))
-                    .foregroundStyle(.secondary)
-            }
+            InfoDisclosureHeader(isShowingDetail: $isShowingRiffPickerInfo,
+                                 text: "Choose a cocktail recipe",
+                                 detail: "The recipe will be used as a starting template")
             
             SearchBarForCreateCocktailView(isFocused: $isSearchFocused, viewModel: viewModel)
             

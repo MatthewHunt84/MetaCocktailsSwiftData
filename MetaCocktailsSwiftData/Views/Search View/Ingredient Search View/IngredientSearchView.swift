@@ -20,44 +20,42 @@ struct IngredientSearchView: View {
         
         NavigationStack {
             
-            ZStack {
-                ColorScheme.background.ignoresSafeArea()
+            VStack {
                 
-                VStack {
-
-                    if !viewModel.preferredSelections.isEmpty || !viewModel.unwantedSelections.isEmpty {
-                        PreferencesListView()
-                    } else {
-                        FindCocktailUserInfoView()
-                            .padding(.bottom, -5)
+                if !viewModel.preferredSelections.isEmpty || !viewModel.unwantedSelections.isEmpty {
+                    PreferencesListView()
+                } else {
+                    FindCocktailUserInfoView()
+                        .padding(.top, 20)
+                }
+                
+                FilteredIngredientListView(keyboardFocused: _keyboardFocused)
+                    .onTapGesture {
+                        keyboardFocused = true
                     }
-                    
-                    FilteredIngredientListView(keyboardFocused: _keyboardFocused)
-                        .onTapGesture {
-                            keyboardFocused = true
-                        }
-                    
-                    Spacer()
-                    
-                    if keyboardFocused {
-                        HStack {
-                            Spacer()
+                
+                Spacer()
+                
+                if keyboardFocused {
+                    HStack {
+                        Spacer()
+                        
+                        Button(action: {
+                            keyboardFocused = false
+                        }) {
+                            Image(systemName: "keyboard.chevron.compact.down")
+                                .font(.system(size: 22))
                             
-                            Button(action: {
-                                keyboardFocused = false
-                            }) {
-                                Image(systemName: "keyboard.chevron.compact.down")
-                                    .font(.system(size: 22))
-                                
-                            }
-                            .buttonStyle(.plain)
-                            .padding(.trailing, 16)
-                            .padding(.bottom, 8)
-                            .foregroundStyle(.blueTint)
                         }
+                        .buttonStyle(.plain)
+                        .padding(.trailing, 16)
+                        .padding(.bottom, 8)
+                        .foregroundStyle(.blueTint)
                     }
                 }
             }
+            .background(ColorScheme.background)
+            
             .animation(.easeOut(duration: 0.5), value: viewModel.preferredSelections.isEmpty)
             .navigationDestination(isPresented: $viewModel.isShowingResults) {
                 IngredientSearchResultsView()
@@ -73,7 +71,7 @@ struct IngredientSearchView: View {
             }
             .systemLoadingIndicator(isLoading: isGeneratingStuff)
             .navigationBarTitleDisplayMode(.inline)
-            .jamesHeader("Cocktail Ingredient Search")
+            .jamesHeader("Ingredient Search")
             .customLoadingIndicator(isLoading: viewModel.isRunningComplexSearch)
             .task {
                 isGeneratingStuff = true
