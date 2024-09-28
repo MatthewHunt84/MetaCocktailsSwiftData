@@ -79,9 +79,11 @@ struct AddCocktailView: View {
                         Button {
                             isSelectingFromTemplate = true
                         } label: {
-                            Image("useExistingRecipe")
-                                .resizable()
-                                .tint(ColorScheme.interactionTint)
+                            VStack {
+                                Image("useExistingRecipe")
+                                    .tint(ColorScheme.interactionTint)
+                                FontFactory.mediumText("Use existing", size: 12, color: ColorScheme.interactionTint)
+                            }
                         }
                     }
                     
