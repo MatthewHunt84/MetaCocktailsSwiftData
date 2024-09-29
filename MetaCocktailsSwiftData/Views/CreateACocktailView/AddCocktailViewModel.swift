@@ -295,6 +295,7 @@ import Combine
         dynamicallyChangeMeasurementUnit()
         didChooseExistingIngredient = true
         isEdit.toggle()
+        
     }
     func customIngredientIsValid(allIngredients: [IngredientBase]) -> Bool {
         
