@@ -14,10 +14,12 @@ struct BatchCellView: View {
     @FocusState var isFocused: Bool
     @FocusState var bottleBatchInputActive: Bool
     @Binding var isShowingOunceMeasurements: Bool
+    @Binding var isShowingBottleMathAmounts: Bool
     
     var body: some View {
         
         VStack {
+            
             HStack {
                 
                 Text(quantifiedBatchedIngredient.ingredientName)
@@ -26,28 +28,48 @@ struct BatchCellView: View {
                 
                 Spacer()
                 editableMlView(quantifiedBatchedIngredient: $quantifiedBatchedIngredient, isFocused: _isFocused)
-                    
+                
             }
-            .swipeActions(edge: .trailing) {
-                Button(role: .none) {
-                    isShowingBottleMathModal.toggle()
-                } label: {
-                    Label("By bottle number", systemImage: "basket")
-                }
-                .tint(ColorScheme.interactionTint)
-            }
-            .sheet(isPresented: $isShowingBottleMathModal) {
-                BottleMathModalView(
-                    quantifiedBatchedIngredient: $quantifiedBatchedIngredient,
-                    isShowingBottleMathModal: $isShowingBottleMathModal,
-                    keyboardFocused: _bottleBatchInputActive
-                )
-            }
+            
             if isShowingOunceMeasurements {
-                HStack {
-                    Spacer()
-                    Text("\(NSNumber(value: viewModel.findIngredientOunceAmountFor(batchCellData: quantifiedBatchedIngredient))) oz")
+                
+                if viewModel.findIngredientOunceAmountFor(batchCellData: quantifiedBatchedIngredient).truncatingRemainder(dividingBy: 1) == 0 {
+                    Text("\(Int(viewModel.findIngredientOunceAmountFor(batchCellData: quantifiedBatchedIngredient))) oz")
                         .font(FontFactory.formLabel18)
+                        .foregroundStyle(.secondary)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                } else {
+                    Text("\(viewModel.findIngredientOunceAmountFor(batchCellData: quantifiedBatchedIngredient), specifier: "%.2f") oz")
+                        .font(FontFactory.formLabel18)
+                        .foregroundStyle(.secondary)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                }
+            }
+            
+            if isShowingBottleMathAmounts {
+                
+                Text("\(quantifiedBatchedIngredient.wholeBottles) x \(quantifiedBatchedIngredient.bottleSize)ml bottles + \(quantifiedBatchedIngredient.remainingMls)ml")
+                    .font(FontFactory.fontBody16)
+                    .foregroundStyle(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+        }
+        .swipeActions(edge: .trailing) {
+            Button(role: .none) {
+                viewModel.editingBottleMathIngredient = quantifiedBatchedIngredient
+                isShowingBottleMathModal.toggle()
+            } label: {
+                Label("By bottle number", systemImage: "basket")
+            }
+            .tint(ColorScheme.interactionTint)
+        }
+        .sheet(isPresented: $isShowingBottleMathModal) {
+            BottleMathModalView(quantifiedBatchedIngredient: $viewModel.quantifiedBatchedIngredients[viewModel.findIndexForBottleMath()],
+                                isShowingBottleMathModal: $isShowingBottleMathModal,
+                                keyboardFocused: _isFocused)
+            .onDisappear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    viewModel.objectWillChange.send()
                 }
                 
             }

@@ -15,23 +15,23 @@ struct CBCLoadedCocktailView: View {
     @State private var isShowingBottleMathModal: Bool = false
     @Environment(\.dismiss) private var dismiss
     @State private var isShowingOunceMeasurements: Bool = false
-
+    @State private var isShowingBottleMathAmounts: Bool = false
+    @FocusState private var isFocused: Bool
+    
     var body: some View {
         
         NavigationStack {
             
-//            ZStack {
+            VStack(spacing: 10) {
                 
-//                ColorScheme.background.ignoresSafeArea()
+                CBCCocktailHeaderView(cocktailName: viewModel.chosenCocktail.cocktailName)
                 
-                VStack(spacing: 10) {
-                    
-                    CBCCocktailHeaderView(cocktailName: viewModel.chosenCocktail.cocktailName)
-                    
-                    QuantifiedIngredientsListView(isInputActive: $isInputActive, isShowingOunceMeasurements: $isShowingOunceMeasurements)
-                }
-                .padding()
-
+                QuantifiedIngredientsListView(isInputActive: $isInputActive,
+                                              isShowingOunceMeasurements: $isShowingOunceMeasurements,
+                                              isShowingBottleMathAmounts: $isShowingBottleMathAmounts)
+            }
+            .padding()
+            
             .padding(.top, -20)
         }
         .background(ColorScheme.background)
@@ -44,7 +44,7 @@ struct CBCLoadedCocktailView: View {
         .jamesHeaderWithNavigation(title: "Batch Calculator", dismiss: dismiss)
         .modalPrentation(Image(systemName:"gearshape"), labelText: "Settings", isPresented: $isShowingPreferencesModal)
         .sheet(isPresented: $isShowingPreferencesModal, content: {
-            EditBatchModalView(isShowingOunceMeasurements: $isShowingOunceMeasurements)
+            EditBatchModalView(isShowingOunceMeasurements: $isShowingOunceMeasurements, isShowingBottleMathAmounts: $isShowingBottleMathAmounts)
                 .onDisappear(perform: {
                     viewModel.convertIngredientsToBatchCellData()
                     
@@ -75,7 +75,7 @@ struct CocktailCountView: View {
     var body: some View {
         
         HStack {
-
+            
             FontFactory.mediumText("Number of cocktails", size: 18, color: ColorScheme.tintColor)
             
             Spacer()
@@ -106,6 +106,7 @@ struct QuantifiedIngredientsListView: View {
     @FocusState private var bottleBatchInputActive: Bool
     @State private var isShowingBottleMathModal: Bool = false
     @Binding var isShowingOunceMeasurements: Bool
+    @Binding var isShowingBottleMathAmounts: Bool
     
     var body: some View {
         
@@ -140,7 +141,7 @@ struct QuantifiedIngredientsListView: View {
                                   isShowingBottleMathModal: $isShowingBottleMathModal,
                                   isFocused: _isFocused,
                                   bottleBatchInputActive: _bottleBatchInputActive,
-                                  isShowingOunceMeasurements: $isShowingOunceMeasurements)
+                                  isShowingOunceMeasurements: $isShowingOunceMeasurements, isShowingBottleMathAmounts: $isShowingBottleMathAmounts)
                 }
                 
                 VStack {
@@ -153,26 +154,21 @@ struct QuantifiedIngredientsListView: View {
                             .foregroundStyle(Color.secondary)
                     }
                     if isShowingOunceMeasurements {
-                        HStack {
-                            Spacer()
-                            Text("\(viewModel.totalDilutionVolume.toOunces, specifier: "%.2f") oz")
-                                .font(FontFactory.formLabel18)
-                        }
-                        
+                        Text("\(viewModel.totalDilutionVolume.toOunces, specifier: "%.0f") oz")
+                            .font(FontFactory.formLabel18)
+                            .foregroundStyle(.secondary)
+                            .frame(maxWidth: .infinity, alignment: .trailing)
                     }
                 }
             }
-            Section{
-                HStack(spacing: 0){
-                    Spacer()
-                    Text("Total Volume: \(viewModel.totalBatchVolume, specifier: "%.0f") ml")
-                        .font(FontFactory.formLabel18)
-                        .foregroundStyle(Color.secondary)
-                    Spacer()
-                }
+            
+            Section {
+                Text("Total Volume: \(viewModel.totalBatchVolume, specifier: "%.0f") ml")
+                    .font(FontFactory.formLabel18)
+                    .foregroundStyle(Color.secondary)
+                    .frame(maxWidth: .infinity, alignment: .center)
             }
-//            .listRowBackground(Color.clear)
-//            .listSectionSpacing(0)
+            
             
             SplitBatchButton()
                 .listStyle(.plain)
@@ -189,7 +185,7 @@ struct QuantifiedIngredientsListView: View {
                     bottleBatchInputActive = false
                     viewModel.finishEditing()
                     viewModel.convertIngredientsToBatchCellData()
-                        
+                    
                 }
                 .tint(ColorScheme.interactionTint)
             }

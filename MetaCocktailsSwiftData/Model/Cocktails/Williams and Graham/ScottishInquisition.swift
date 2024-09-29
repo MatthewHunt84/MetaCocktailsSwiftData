@@ -7,7 +7,7 @@
 
 import Foundation
 
-var scottishInquisition = Cocktail(cocktailName: "The Scottish Inquisition",
+var scottishInquisition = Cocktail(cocktailName: "Scottish Inquisition",
                                     glasswareType: .doubleOld,
                                     garnish: nil,
                                     ice: .bigRock,

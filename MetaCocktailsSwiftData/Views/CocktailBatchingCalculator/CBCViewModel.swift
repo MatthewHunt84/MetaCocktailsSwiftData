@@ -20,6 +20,7 @@ final class CBCViewModel: ObservableObject {
     @Published var editingIngredient: String?
     @Published var numberOfBottlesText: String?
     @Published var sizeOfTheBottle: String?
+    @Published var editingBottleMathIngredient: BottleBatchedCellData?
     //@Published var totalCocktailABVPercentage = 0.0
     @Published var loadedCocktailData: CBCLoadedCocktailData = CBCLoadedCocktailData(cocktailName: "Test", ingredients: [])
     @Published var unitConversion: [MeasurementUnit: Double] = [
@@ -115,6 +116,14 @@ final class CBCViewModel: ObservableObject {
             
         }
     }
+    func findIndexForBottleMath() -> Int {
+        if let editingIngredient = editingBottleMathIngredient {
+            if let index = quantifiedBatchedIngredients.firstIndex(where: { $0.id == editingIngredient.id }) {
+                return index
+            }
+        }
+      return 0
+    }
     func findIngredientOunceAmountFor(batchCellData: BottleBatchedCellData) -> Double {
         
         let initialIngredient =  chosenCocktail.spec.first(where: { $0.ingredientBase.name == batchCellData.ingredientName })
@@ -186,6 +195,7 @@ final class CBCViewModel: ObservableObject {
     
     func updateIngredientAmount(ingredientName: String, newAmount: Int, newBottleSize: Int) {
         if let index = quantifiedBatchedIngredients.firstIndex(where: { $0.ingredientName == ingredientName }) {
+
             let oldAmount = quantifiedBatchedIngredients[index].totalMls
             let ratio = Double(newAmount) / Double(oldAmount)
             numberOfCocktailsText *= ratio
