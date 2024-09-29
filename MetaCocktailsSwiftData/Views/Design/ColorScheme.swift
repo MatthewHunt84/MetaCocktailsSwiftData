@@ -8,7 +8,6 @@ import SwiftUI
 
 struct ColorScheme {
     
-    static let backgroundDark = Color.black
     static let searchBarBackground = Color(hex: "#3F3F3F")
     static let tintColor = Color(hex: "#FFB803")
     static let darkerTintColor = Color(hex: "#FF8426")

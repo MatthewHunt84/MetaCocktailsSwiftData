@@ -22,28 +22,17 @@ struct HistoricalCocktailModalView: View {
     
     var body: some View {
         ZStack {
-            Color.black.opacity(0.3)
-                .edgesIgnoringSafeArea(.all)
+            
+            BlackGlassBackgroundView()
             
             VStack(spacing: 20) {
+                
                 ScrollView {
+                    
                     VStack(alignment: .leading, spacing: 20) {
-                        HStack {
-                            Spacer()
-                            Button(action: { isPresented = false }) {
-                                Image(systemName: "xmark.circle")
-                                    .font(.title2)
-                                    .foregroundStyle(.blueTint)
-                            }
-                        }
-                        .padding(.top)
                         
-                        Text(alertContent.title)
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(.brandPrimaryGold)
-                            .padding(.bottom, 10)
-                        
+                        ModalHeader(title: alertContent.title)
+
                         Text(alertContent.message)
                             .font(.body)
                             .foregroundColor(.primary)
@@ -59,7 +48,6 @@ struct HistoricalCocktailModalView: View {
                         }
                     }
                     .padding()
-                }
                 
                 Button(action: {
                     action()
@@ -77,8 +65,8 @@ struct HistoricalCocktailModalView: View {
                 }
                 .padding(.horizontal)
                 .padding(.bottom, 30)
+                }
             }
-            .background(Color.black)
             .cornerRadius(20)
             .padding(.horizontal, 20)
             .frame(maxWidth: 500)

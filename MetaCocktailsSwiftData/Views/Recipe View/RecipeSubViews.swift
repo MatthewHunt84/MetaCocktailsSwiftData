@@ -84,7 +84,7 @@ struct SpecView: View {
                         SpecIngredientView(ingredient: ingredient, viewModel: viewModel)
                     }
                 }
-                .fullScreenCover(isPresented: $showingModal) {
+                .sheet(isPresented: $showingModal) {
                     HistoricalCocktailModalView(
                         cocktail: viewModel.cocktail,
                         presented: $showingModal

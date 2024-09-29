@@ -64,6 +64,7 @@ struct CustomCocktailsListView: View {
                     .padding(.top, 10)
                 }
                 .listStyle(.insetGrouped)
+                .scrollContentBackground(.hidden)
             }
             .background(ColorScheme.background)
             

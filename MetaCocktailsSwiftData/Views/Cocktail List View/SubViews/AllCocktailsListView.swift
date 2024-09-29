@@ -71,7 +71,7 @@ struct SectionHeaderView: View {
         LinearGradient(
             gradient: Gradient(colors: [
                 isAnimating ? ColorScheme.tintColor.opacity(0.2) : .clear,
-                .black
+                ColorScheme.background
             ]),
             startPoint: .bottomLeading,
             endPoint: .topTrailing

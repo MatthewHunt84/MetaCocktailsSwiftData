@@ -22,6 +22,7 @@ struct IngredientSearchMatchedCocktailsView: View {
                 MinusTwoMatchView(passedViewModel: viewModel)
             }
             .listStyle(.insetGrouped)
+            .scrollContentBackground(.hidden)
             .backgroundStyle(.clear)
         }
     }

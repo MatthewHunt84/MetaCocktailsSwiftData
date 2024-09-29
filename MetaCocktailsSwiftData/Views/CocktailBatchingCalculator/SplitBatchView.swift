@@ -38,7 +38,6 @@ struct SplitBatchView: View {
                             
                             Text("^[\(NSNumber(value: viewModel.numberOfContainers)) container](inflect: true) required")
                                 .font(FontFactory.mediumFont(size: 16))
-//                                .font(FontFactory.fontBody16)
                                 .foregroundStyle(.secondary)
                             
                             Image(systemName: "info.circle")
@@ -67,6 +66,7 @@ struct SplitBatchView: View {
                     }
                 }
                 .listStyle(.insetGrouped)
+                .scrollContentBackground(.hidden)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
             }
             .frame(maxHeight: .infinity, alignment: .top)
