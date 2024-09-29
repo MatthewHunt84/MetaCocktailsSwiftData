@@ -115,6 +115,14 @@ final class CBCViewModel: ObservableObject {
             
         }
     }
+    func findIngredientOunceAmountFor(batchCellData: BottleBatchedCellData) -> Double {
+        
+        let initialIngredient =  chosenCocktail.spec.first(where: { $0.ingredientBase.name == batchCellData.ingredientName })
+        if let foundIngredient = initialIngredient {
+            return foundIngredient.value * numberOfCocktailsText
+        }
+        return 0.0
+    }
     
     private func getContainerCount(for size: Int) -> Int {
         let safeVolume = Double(size) * 0.9 // 90% of container size
@@ -269,6 +277,7 @@ struct BottleBatchedCellData: Hashable, Equatable, Identifiable {
     var mlAmount: Double
     var totalMls: Int
     var editedTotalMls: String = ""
+ 
     
     init(id: UUID = UUID(), ingredientName: String, bottleSize: Int, wholeBottles: Int, remainingMls: Int, mlAmount: Double, totalMls: Int) {
         self.id = id

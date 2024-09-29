@@ -10,7 +10,7 @@ import SwiftUI
 struct EditBatchModalView: View {
     @EnvironmentObject var viewModel: CBCViewModel
     @Environment(\.dismiss) var dismiss
-    
+    @Binding var isShowingOunceMeasurements: Bool
     
     var body: some View {
             VStack {
@@ -21,7 +21,23 @@ struct EditBatchModalView: View {
                     }
                 }
                 .padding(.horizontal)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
+                Section(header: FontFactory.mediumText("Measurement Volume Type", size: 20)) {
+                    HStack {
+
+                        Text("Show ounce amounts")
+                            .font(FontFactory.formLabel18)
+
+                        Spacer()
+                        
+                        Toggle(isOn: $isShowingOunceMeasurements) { }
+                            .tint(ColorScheme.interactionTint)
+                            .frame(maxWidth: 60)
+                    }
+                    
+                    
+                }
+                .padding(.horizontal)
+                .padding(.top, 16)
                 Spacer()
             }
             .padding()
@@ -29,10 +45,11 @@ struct EditBatchModalView: View {
     }
 }
 
-#Preview {
-    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    return EditBatchModalView()
-        .environmentObject(CBCViewModel())
-        .modelContainer(preview.container)
-    
-}
+//#Preview {
+//
+//    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
+//    return EditBatchModalView(isShowingOunceMeasurements: Binding<variable>)
+//        .environmentObject(CBCViewModel())
+//        .modelContainer(preview.container)
+//    
+//}
