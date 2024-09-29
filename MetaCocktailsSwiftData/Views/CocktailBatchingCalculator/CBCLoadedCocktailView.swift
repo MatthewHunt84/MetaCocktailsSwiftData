@@ -15,6 +15,8 @@ struct CBCLoadedCocktailView: View {
     @State private var isShowingBottleMathModal: Bool = false
     @Environment(\.dismiss) private var dismiss
     @State private var isShowingOunceMeasurements: Bool = false
+    @State private var isShowingBottleMathAmounts: Bool = false
+    @FocusState private var isFocused: Bool
 
     var body: some View {
         
@@ -28,7 +30,9 @@ struct CBCLoadedCocktailView: View {
                     
                     CBCCocktailHeaderView(cocktailName: viewModel.chosenCocktail.cocktailName)
                     
-                    QuantifiedIngredientsListView(isInputActive: $isInputActive, isShowingOunceMeasurements: $isShowingOunceMeasurements)
+                    QuantifiedIngredientsListView(isInputActive: $isInputActive,
+                                                  isShowingOunceMeasurements: $isShowingOunceMeasurements,
+                                                  isShowingBottleMathAmounts: $isShowingBottleMathAmounts)
                 }
                 .padding()
 
@@ -44,7 +48,7 @@ struct CBCLoadedCocktailView: View {
         .jamesHeaderWithNavigation(title: "Batch Calculator", dismiss: dismiss)
         .modalPrentation(Image(systemName:"gearshape"), labelText: "Settings", isPresented: $isShowingPreferencesModal)
         .sheet(isPresented: $isShowingPreferencesModal, content: {
-            EditBatchModalView(isShowingOunceMeasurements: $isShowingOunceMeasurements)
+            EditBatchModalView(isShowingOunceMeasurements: $isShowingOunceMeasurements, isShowingBottleMathAmounts: $isShowingBottleMathAmounts)
                 .onDisappear(perform: {
                     viewModel.convertIngredientsToBatchCellData()
                     
@@ -106,6 +110,7 @@ struct QuantifiedIngredientsListView: View {
     @FocusState private var bottleBatchInputActive: Bool
     @State private var isShowingBottleMathModal: Bool = false
     @Binding var isShowingOunceMeasurements: Bool
+    @Binding var isShowingBottleMathAmounts: Bool
     
     var body: some View {
         
@@ -140,7 +145,7 @@ struct QuantifiedIngredientsListView: View {
                                   isShowingBottleMathModal: $isShowingBottleMathModal,
                                   isFocused: _isFocused,
                                   bottleBatchInputActive: _bottleBatchInputActive,
-                                  isShowingOunceMeasurements: $isShowingOunceMeasurements)
+                                  isShowingOunceMeasurements: $isShowingOunceMeasurements, isShowingBottleMathAmounts: $isShowingBottleMathAmounts)
                 }
                 
                 VStack {

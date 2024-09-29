@@ -14,6 +14,7 @@ struct BatchCellView: View {
     @FocusState var isFocused: Bool
     @FocusState var bottleBatchInputActive: Bool
     @Binding var isShowingOunceMeasurements: Bool
+    @Binding var isShowingBottleMathAmounts: Bool 
     
     var body: some View {
         
@@ -30,6 +31,7 @@ struct BatchCellView: View {
             }
             .swipeActions(edge: .trailing) {
                 Button(role: .none) {
+                    viewModel.editingBottleMathIngredient = quantifiedBatchedIngredient
                     isShowingBottleMathModal.toggle()
                 } label: {
                     Label("By bottle number", systemImage: "basket")
@@ -37,17 +39,34 @@ struct BatchCellView: View {
                 .tint(ColorScheme.interactionTint)
             }
             .sheet(isPresented: $isShowingBottleMathModal) {
-                BottleMathModalView(
-                    quantifiedBatchedIngredient: $quantifiedBatchedIngredient,
-                    isShowingBottleMathModal: $isShowingBottleMathModal,
-                    keyboardFocused: _bottleBatchInputActive
-                )
+                BottleMathModalView(quantifiedBatchedIngredient: $viewModel.quantifiedBatchedIngredients[viewModel.findIndexForBottleMath()],
+                                    isShowingBottleMathModal: $isShowingBottleMathModal,
+                                    keyboardFocused: _isFocused)
+                .onDisappear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        viewModel.objectWillChange.send()
+                    }
+                    
+                }
             }
             if isShowingOunceMeasurements {
                 HStack {
                     Spacer()
-                    Text("\(NSNumber(value: viewModel.findIngredientOunceAmountFor(batchCellData: quantifiedBatchedIngredient))) oz")
-                        .font(FontFactory.formLabel18)
+                    if viewModel.findIngredientOunceAmountFor(batchCellData: quantifiedBatchedIngredient).truncatingRemainder(dividingBy: 1) == 0 {
+                        Text("\(Int(viewModel.findIngredientOunceAmountFor(batchCellData: quantifiedBatchedIngredient))) oz")
+                            .font(FontFactory.formLabel18)
+                    } else {
+                        Text("\(viewModel.findIngredientOunceAmountFor(batchCellData: quantifiedBatchedIngredient), specifier: "%.2f") oz")
+                            .font(FontFactory.formLabel18)
+                    }
+                }
+            }
+            if isShowingBottleMathAmounts {
+                HStack {
+                    Spacer()
+                    Text("\(quantifiedBatchedIngredient.wholeBottles) x \(quantifiedBatchedIngredient.bottleSize)ml bottles + \(quantifiedBatchedIngredient.remainingMls)ml")
+                        .font(FontFactory.fontBody16)
+                        
                 }
                 
             }

@@ -108,14 +108,13 @@ struct BottleMathModalView: View {
     private func updateBatchWithBottleMath() {
         if bottleSizeText > 0 && numberOfBottlesText > 0 {
             let totalMls = numberOfBottlesText * bottleSizeText
-               
-               viewModel.updateIngredientAmount(
-                   ingredientName: quantifiedBatchedIngredient.ingredientName,
-                   newAmount: totalMls,
-                   newBottleSize: bottleSizeText
-               )
-           }
-       }
+            viewModel.updateIngredientAmount(
+                ingredientName: quantifiedBatchedIngredient.ingredientName,
+                newAmount: totalMls,
+                newBottleSize: bottleSizeText
+            )
+        }
+    }
 }
 
 struct BottleMathModalView_Previews: PreviewProvider {
