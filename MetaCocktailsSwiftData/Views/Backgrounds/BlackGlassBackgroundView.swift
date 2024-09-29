@@ -13,7 +13,7 @@ struct BlackGlassBackgroundView: View {
             VisualEffectView(effect: UIBlurEffect(style: .systemThickMaterialDark))
                 .opacity(0.95)
             
-            LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0.2), Color.black.opacity(1)]),
+            LinearGradient(gradient: Gradient(colors: [ColorScheme.background.opacity(0.2), ColorScheme.background.opacity(1)]),
                            startPoint: .topLeading,
                            endPoint: .bottomTrailing)
         }

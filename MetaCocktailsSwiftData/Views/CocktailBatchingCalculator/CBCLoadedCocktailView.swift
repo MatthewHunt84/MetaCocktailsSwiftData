@@ -20,9 +20,9 @@ struct CBCLoadedCocktailView: View {
         
         NavigationStack {
             
-            ZStack {
+//            ZStack {
                 
-                ColorScheme.background.ignoresSafeArea()
+//                ColorScheme.background.ignoresSafeArea()
                 
                 VStack(spacing: 10) {
                     
@@ -31,9 +31,10 @@ struct CBCLoadedCocktailView: View {
                     QuantifiedIngredientsListView(isInputActive: $isInputActive, isShowingOunceMeasurements: $isShowingOunceMeasurements)
                 }
                 .padding()
-            }
+
             .padding(.top, -20)
         }
+        .background(ColorScheme.background)
         .onChange(of: viewModel.quantifiedBatchedIngredients) { _, _ in
             // Force view update when quantifiedBatchedIngredients change
             viewModel.objectWillChange.send()
@@ -170,12 +171,14 @@ struct QuantifiedIngredientsListView: View {
                     Spacer()
                 }
             }
-            .listRowBackground(Color.clear)
-            .listSectionSpacing(0)
+//            .listRowBackground(Color.clear)
+//            .listSectionSpacing(0)
+            
             SplitBatchButton()
                 .listStyle(.plain)
                 .listRowBackground(Color.clear)
         }
+        .scrollContentBackground(.hidden)
         .listStyle(.insetGrouped)
         .toolbar {
             ToolbarItemGroup(placement: .keyboard) {
