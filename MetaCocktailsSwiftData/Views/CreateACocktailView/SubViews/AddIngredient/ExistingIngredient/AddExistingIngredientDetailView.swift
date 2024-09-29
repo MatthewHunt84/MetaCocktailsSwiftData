@@ -88,10 +88,6 @@ struct AddIngredientSearchView: View {
                         viewModel.matchAllIngredients(ingredients: ingredients)
                     }
             }
-            .onAppear {
-                keyboardFocused = true
-                viewModel.ingredientName = ""
-            }
             if keyboardFocused {
                 ForEach(viewModel.filteredIngredients, id: \.name) { ingredient in
                     Button {
