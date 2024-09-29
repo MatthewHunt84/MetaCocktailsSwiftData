@@ -29,16 +29,11 @@ struct RecipeView: View {
 
 struct SwipeRecipeView: View {
     @State var variations: [Cocktail]
-    @State private var selectedIndex: Int
     @Environment(\.dismiss) private var dismiss
-    @State private var scrollID: Cocktail.ID?
     @State var borderColor = ColorScheme.tintColor
+    @State var initialSelection: Cocktail
+    @State var scrollID: Cocktail.ID?
     
-    init(variations: [Cocktail], initialSelection: Cocktail) {
-        self._variations = State(initialValue: variations)
-        self._selectedIndex = State(initialValue: variations.firstIndex(of: initialSelection) ?? 0)
-        self._scrollID = State(initialValue: initialSelection.id)
-    }
     
     var body: some View {
         
@@ -47,35 +42,39 @@ struct SwipeRecipeView: View {
             ZStack {
                 
                 ColorScheme.background.ignoresSafeArea()
-                
-                ScrollView(.horizontal) {
-                    
-                    HStack(alignment: .top) {
+              
+                    ScrollView(.horizontal) {
                         
-                        ForEach(variations) { cocktail in
+                        HStack(alignment: .top) {
                             
-                            RecipeFlipCardView(viewModel: RecipeViewModel(cocktail: cocktail), borderColor: $borderColor)
-                                .containerRelativeFrame(.horizontal)
-                                .discardTransition()
+                            ForEach(variations) { cocktail in
+                                
+                                RecipeFlipCardView(viewModel: RecipeViewModel(cocktail: cocktail), borderColor: $borderColor)
+                                    .containerRelativeFrame(.horizontal)
+                                    .discardTransition()
+                            }
                         }
+                        
                     }
                     .scrollTargetLayout()
-                }
-                .scrollTargetBehavior(.viewAligned)
-                .scrollPosition(id: $scrollID)
-                .contentMargins(.bottom, 84, for: .scrollIndicators) // This will probably break on other devices but will leave it in for testing
-                .scrollIndicators(.visible)
-                .onScrollPhaseChange { oldPhase, newPhase in
-                    withAnimation {
-                        borderColor = newPhase != .interacting ? ColorScheme.tintColor : Color.secondary
+                    .scrollTargetBehavior(.viewAligned)
+                    .scrollPosition(id: $scrollID)
+                    .contentMargins(.bottom, 84, for: .scrollIndicators) // This will probably break on other devices but will leave it in for testing
+                    .scrollIndicators(.visible)
+                    .onScrollPhaseChange { oldPhase, newPhase in
+                        withAnimation {
+                            borderColor = newPhase != .interacting ? ColorScheme.tintColor : Color.secondary
+                        }
                     }
-                }
+                    .onAppear {
+                        scrollID = initialSelection.id
+                    }
+            
             }
             .recipeHeader(cocktail: variations.first(where: { $0.id == scrollID }))
         }
     }
 }
-
 
 
 struct RecipeFlipCardView: View {
