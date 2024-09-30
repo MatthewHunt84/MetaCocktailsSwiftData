@@ -42,15 +42,6 @@ struct GarnishDetailView: View {
                 .task {
                     keyboardFocused = true
                 }
-                
-                if viewModel.isShowingingredientAlert {
-                    CustomAlertView(isActive: $viewModel.isShowingingredientAlert,
-                                    title: "",
-                                    message: "Please choose from an existing garnish. If you'd like to make your own, press 'Create Custom Garnish'",
-                                    buttonTitle: "Yes, Chef",
-                                    action: {})
-                    .zIndex(2)
-                }
             }
         }
     }
@@ -79,6 +70,22 @@ struct AddGarnishSearchView: View {
                         viewModel.currentGarnishName = new
                         filteredGarnish = viewModel.matchAllGarnish(garnishes: garnish)
                     }
+                    .overlay(alignment: .trailing) {
+                        if !viewModel.currentGarnishName.isEmpty {
+                            Button {
+                                viewModel.currentGarnishName = ""
+                            } label: {
+                                Image(systemName: "x.circle")
+                                    .tint(ColorScheme.interactionTint)
+                                    .bold()
+                                    .font(.system(size: 18))
+                                    .padding()
+                                    .frame(width: 60, height: 40)
+                                    .contentShape(Rectangle())
+                            }
+                        }
+                    }
+                    .submitLabel(.done)
             }
             if keyboardFocused {
                 ForEach(filteredGarnish, id: \.self) { garnish in
@@ -109,16 +116,11 @@ struct AddExistingGarnishToCocktailButton: View {
     var body: some View {
         Section {
             UniversalBlueButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), includeBorder: true) {
-                if viewModel.existingGarnishIsValid(allGarnishes: garnish) {
                     viewModel.addExistingGarnishToCocktail(context: modelContext)
                     addExistingGarnishViewIsActive = false
-                } else {
-                    viewModel.isShowingingredientAlert.toggle()
-                    viewModel.didChooseExistingIngredient = false
-                }
             }
-            .disabled(viewModel.currentGarnishName == "" ? true : false)
-            .foregroundStyle(viewModel.currentGarnishName == "" ? ColorScheme.interactionTint : Color.secondary)
+            .disabled(viewModel.existingGarnishIsValid(allGarnishes: garnish) ? false : true)
+            .foregroundStyle(viewModel.existingGarnishIsValid(allGarnishes: garnish) ? ColorScheme.interactionTint : Color.secondary)
         }
         .listRowBackground(Color.clear)
     }

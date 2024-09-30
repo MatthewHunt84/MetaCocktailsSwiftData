@@ -80,6 +80,22 @@ struct AddIngredientSearchView: View {
                         viewModel.ingredientName = new
                         viewModel.matchAllIngredients(ingredients: ingredients)
                     }
+                    .overlay(alignment: .trailing) {
+                        if !viewModel.ingredientName.isEmpty {
+                            Button {
+                                viewModel.ingredientName = ""
+                            } label: {
+                                Image(systemName: "x.circle")
+                                    .tint(ColorScheme.interactionTint)
+                                    .bold()
+                                    .font(.system(size: 18))
+                                    .padding()
+                                    .frame(width: 60, height: 40)
+                                    .contentShape(Rectangle())
+                            }
+                        }
+                    }
+                    .submitLabel(.done)
             }
             if keyboardFocused {
                 ForEach(viewModel.filteredIngredients, id: \.name) { ingredient in
@@ -103,17 +119,19 @@ struct AddIngredientSearchView: View {
                 .listRowBackground(Color.clear)
             }
         } header: {
-            Text("Name")
-                .font(FontFactory.sectionHeader12)
-        } footer: {
-            Image(systemName: "info.circle")
-                .font(.system(size: 16))
-                .foregroundStyle(isShowingDetail ? ColorScheme.tintColor : ColorScheme.interactionTint)
-                .onTapGesture {
-                    withAnimation(.easeInOut(duration: 0.25)) {
-                        isShowingDetail.toggle()
+            HStack {
+                Text("Choose Ingredient")
+                    .font(FontFactory.sectionHeader12)
+                Image(systemName: "info.circle")
+                    .font(.system(size: 16))
+                    .foregroundStyle(isShowingDetail ? ColorScheme.tintColor : ColorScheme.interactionTint)
+                    .onTapGesture {
+                        withAnimation(.easeInOut(duration: 0.25)) {
+                            isShowingDetail.toggle()
+                        }
                     }
-                }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
         if isShowingDetail {
             Section {
@@ -136,6 +154,9 @@ struct AddMeasurementView: View {
                     .keyboardType(.decimalPad)
                     .focused($amountKeyboardFocused)
                     .font(FontFactory.formLabel18)
+                    .onChange(of: viewModel.ingredientAmount) { oldValue, newValue in
+                        viewModel.ingredientAmount = newValue
+                    }
                     
                 Menu {
                     ForEach(viewModel.dynamicallyChangeMeasurementOptionsBasedOnChosenCategory(), id: \.self) { unit in
@@ -177,13 +198,15 @@ struct AddExistingIngredientToCocktailButton: View {
         UniversalBlueButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), includeBorder: true) {
             if viewModel.existingIngredientIsValid(allIngredients: ingredients) {
                 viewModel.removeIngredient()
-                let ingredient = Ingredient(ingredientBase: IngredientBase(name: viewModel.ingredientName,
-                                                                           category: viewModel.category,
-                                                                           prep: viewModel.prep),
-                                            value: viewModel.ingredientAmount,
-                                            unit: viewModel.selectedMeasurementUnit)
-                
-                viewModel.addedIngredients.append(ingredient)
+                if let ingredientValue = viewModel.ingredientAmount{
+                    let ingredient = Ingredient(ingredientBase: IngredientBase(name: viewModel.ingredientName,
+                                                                               category: viewModel.category,
+                                                                               prep: viewModel.prep),
+                                                value: ingredientValue,
+                                                unit: viewModel.selectedMeasurementUnit)
+                    
+                    viewModel.addedIngredients.append(ingredient)
+                }
                 
                 viewModel.clearIngredientData()
                 isShowingAddIngredients = false

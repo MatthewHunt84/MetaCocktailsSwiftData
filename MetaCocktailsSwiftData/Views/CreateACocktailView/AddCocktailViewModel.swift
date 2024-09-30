@@ -17,7 +17,7 @@ import Combine
 
     //AddIngredientView
     var category: UmbrellaCategory = UmbrellaCategory.agaves
-    var ingredientAmount = 0.0
+    var ingredientAmount: Double? = nil
     var ingredientTags = Tags()
     
     var selectedMeasurementUnit = MeasurementUnit.fluidOunces
@@ -117,7 +117,7 @@ import Combine
     func clearIngredientData() {
         ingredientName = ""
         currentGarnishName = ""
-        ingredientAmount = 0
+        ingredientAmount = nil
         prep = nil
         selectedMeasurementUnit = .fluidOunces
         prepIngredientRecipe = []
@@ -175,14 +175,13 @@ import Combine
     }
     
     func existingIngredientIsValid(allIngredients: [IngredientBase]) -> Bool {
-        return ingredientAmount != 0.0 &&
+        return ingredientAmount != nil &&
         allIngredients.contains(where: { $0.name == ingredientName } )
     }
     
     func existingGarnishIsValid(allGarnishes: [Garnish]) -> Bool {
         
-        return currentGarnishName != "" &&
-        didChooseExistingGarnish == true &&
+        return didChooseExistingGarnish == true &&
         allGarnishes.contains(where: { $0.name == currentGarnishName })
         
     }
@@ -298,7 +297,7 @@ import Combine
     func customIngredientIsValid(allIngredients: [IngredientBase]) -> Bool {
         
         return ingredientName != "" &&
-        ingredientAmount != 0.0 &&
+        ingredientAmount != nil &&
         !allIngredients.contains(where: { $0.name == ingredientName } )
     }
     func removeIngredient() {

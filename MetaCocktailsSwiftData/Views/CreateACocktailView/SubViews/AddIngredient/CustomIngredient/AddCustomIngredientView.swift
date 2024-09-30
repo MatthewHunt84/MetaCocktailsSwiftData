@@ -116,14 +116,18 @@ struct AddCustomIngredientToCocktailButton: View {
             UniversalBlueButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), includeBorder: true) {
                 if viewModel.customIngredientIsValid(allIngredients: ingredients) {
                     viewModel.removeIngredient()
+                    
                     if !viewModel.prepIngredientRecipe.isEmpty {
                         viewModel.prep = Prep(prepIngredientName: viewModel.ingredientName, prepRecipe: viewModel.prepIngredientRecipe)
                     }
-                    viewModel.addedIngredients.append(Ingredient(ingredientBase: IngredientBase(name: viewModel.ingredientName,
-                                                                                                category: viewModel.category,
-                                                                                                prep: viewModel.prep, isCustom: true),
-                                                                 value: viewModel.ingredientAmount,
-                                                                 unit: viewModel.selectedMeasurementUnit))
+                    if let ingredientValue = viewModel.ingredientAmount {
+                        viewModel.addedIngredients.append(Ingredient(ingredientBase: IngredientBase(name: viewModel.ingredientName,
+                                                                                                    category: viewModel.category,
+                                                                                                    prep: viewModel.prep, isCustom: true),
+                                                                     value: ingredientValue,
+                                                                     unit: viewModel.selectedMeasurementUnit))
+                    }
+                    
                     
                     viewModel.clearIngredientData()
                     isShowingAddIngredients = false
