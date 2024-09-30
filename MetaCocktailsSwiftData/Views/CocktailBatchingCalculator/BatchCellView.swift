@@ -10,11 +10,11 @@ import SwiftUI
 struct BatchCellView: View {
     @EnvironmentObject var viewModel: CBCViewModel
     @Binding var quantifiedBatchedIngredient: BottleBatchedCellData
-    @Binding var isShowingBottleMathModal: Bool
     @FocusState var isFocused: Bool
     @FocusState var bottleBatchInputActive: Bool
     @Binding var isShowingOunceMeasurements: Bool
     @Binding var isShowingBottleMathAmounts: Bool
+    @State private var isShowingBottleMathModal: Bool = false
     
     var body: some View {
         
@@ -64,7 +64,7 @@ struct BatchCellView: View {
         .swipeActions(edge: .trailing) {
             Button(role: .none) {
                 viewModel.editingBottleMathIngredient = quantifiedBatchedIngredient
-                isShowingBottleMathModal.toggle()
+                isShowingBottleMathModal = true
             } label: {
                 Label("By bottle number", systemImage: "basket")
             }
