@@ -104,7 +104,7 @@ final class CBCViewModel: ObservableObject {
                             firstLabel = first.label.replacingOccurrences(of: "Liter", with: "")
                             label = "\(firstLabel) - \(last.label)"
                         } else {
-                            label = "\(firstLabel) +"
+                            label = "\(firstLabel) - 5 Gallon"
                         }
                     
                         return (label: label, volume: first.volume)
