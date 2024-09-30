@@ -47,11 +47,18 @@ struct BatchCellView: View {
             }
             
             if isShowingBottleMathAmounts {
-                
-                Text("\(quantifiedBatchedIngredient.wholeBottles) x \(quantifiedBatchedIngredient.bottleSize)ml bottles + \(quantifiedBatchedIngredient.remainingMls)ml")
-                    .font(FontFactory.fontBody16)
-                    .foregroundStyle(.secondary)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
+                HStack(spacing: 0) {
+                    Text("\(quantifiedBatchedIngredient.wholeBottles) x \(quantifiedBatchedIngredient.bottleSize)ml bottles ")
+                        .font(FontFactory.fontBody16)
+                        .foregroundStyle(.secondary)
+                    if quantifiedBatchedIngredient.remainingMls > 0 {
+                        Text("+ \(quantifiedBatchedIngredient.remainingMls)ml")
+                            .font(FontFactory.fontBody16)
+                            .foregroundStyle(.secondary)
+                    }
+                        
+                }
+                .frame(maxWidth: .infinity, alignment: .trailing)
             }
         }
         .swipeActions(edge: .trailing) {
@@ -67,12 +74,6 @@ struct BatchCellView: View {
             BottleMathModalView(quantifiedBatchedIngredient: $viewModel.quantifiedBatchedIngredients[viewModel.findIndexForBottleMath()],
                                 isShowingBottleMathModal: $isShowingBottleMathModal,
                                 keyboardFocused: _isFocused)
-            .onDisappear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                    viewModel.objectWillChange.send()
-                }
-                
-            }
         }
     }
 }
