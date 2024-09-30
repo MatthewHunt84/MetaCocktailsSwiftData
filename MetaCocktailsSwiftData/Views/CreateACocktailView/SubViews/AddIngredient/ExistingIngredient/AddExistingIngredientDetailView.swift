@@ -116,9 +116,13 @@ struct AddIngredientSearchView: View {
                 }
         }
         if isShowingDetail {
-            Text("Choose from an existing ingredient. If you would rather create your own, tap the 'Create Custom Ingredient' button below.")
-                .font(FontFactory.fontBody14)
-                .foregroundStyle(.brandPrimaryGold)
+            Section {
+                Text("Choose from an existing ingredient. If you would rather create your own, tap the 'Create Custom Ingredient' button below.")
+                    .font(FontFactory.fontBody14)
+                    .foregroundStyle(.brandPrimaryGold)
+            }
+            .listSectionSpacing(0)
+            .listRowBackground(Color.clear)
         }
     }
 }
