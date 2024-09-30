@@ -175,9 +175,7 @@ import Combine
     }
     
     func existingIngredientIsValid(allIngredients: [IngredientBase]) -> Bool {
-        
         return ingredientAmount != 0.0 &&
-        didChooseExistingIngredient == true &&
         allIngredients.contains(where: { $0.name == ingredientName } )
     }
     

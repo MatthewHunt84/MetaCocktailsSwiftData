@@ -42,14 +42,6 @@ struct AddExistingIngredientDetailView: View {
                     .jamesHeaderWithNavigation(title: "Add Ingredient", dismiss: dismiss)
                    
                 }
-                if viewModel.isShowingingredientAlert {
-                    CustomAlertView(isActive: $viewModel.isShowingingredientAlert,
-                                    title: "Missing name or amount:",
-                                    message: "Please add an amount and choose from an existing ingredient. If you'd like to make your own, press 'Create Custom Ingredient'",
-                                    buttonTitle: yesChef,
-                                    action: {})
-                    .zIndex(2)
-                }
             }
             .onAppear {
                 if viewModel.isEdit {
@@ -76,9 +68,10 @@ struct AddIngredientSearchView: View {
     @FocusState var keyboardFocused: Bool
     @FocusState var amountKeyboardFocused: Bool
     @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]
+    @State private var isShowingDetail: Bool = false
     
     var body: some View {
-        Section(header:  Text("Name").font(FontFactory.sectionHeader12)) {
+        Section {
             VStack{
                 TextField("Search for ingredient...", text: $viewModel.ingredientName)
                     .focused($keyboardFocused)
@@ -109,6 +102,23 @@ struct AddIngredientSearchView: View {
                 .listStyle(.plain)
                 .listRowBackground(Color.clear)
             }
+        } header: {
+            Text("Name")
+                .font(FontFactory.sectionHeader12)
+        } footer: {
+            Image(systemName: "info.circle")
+                .font(.system(size: 16))
+                .foregroundStyle(isShowingDetail ? ColorScheme.tintColor : ColorScheme.interactionTint)
+                .onTapGesture {
+                    withAnimation(.easeInOut(duration: 0.25)) {
+                        isShowingDetail.toggle()
+                    }
+                }
+        }
+        if isShowingDetail {
+            Text("Choose from an existing ingredient. If you would rather create your own, tap the 'Create Custom Ingredient' button below.")
+                .font(FontFactory.fontBody14)
+                .foregroundStyle(.brandPrimaryGold)
         }
     }
 }
@@ -173,11 +183,10 @@ struct AddExistingIngredientToCocktailButton: View {
                 
                 viewModel.clearIngredientData()
                 isShowingAddIngredients = false
-            } else {
-                viewModel.isShowingingredientAlert.toggle()
-                viewModel.didChooseExistingIngredient = false
             }
         }
+        .foregroundStyle(viewModel.existingIngredientIsValid(allIngredients: ingredients) ? ColorScheme.interactionTint : Color.secondary)
+        .disabled(viewModel.existingIngredientIsValid(allIngredients: ingredients) ? false : true)
     }
 }
 struct CreateNewIngredientButton: View {
