@@ -10,37 +10,35 @@ import SwiftData
 
 struct AddCustomGarnishView: View {
     @Bindable var viewModel: AddCocktailViewModel
-    @Binding var addExistingGarnishViewIsActive: Bool
-    @FocusState private var keyboardFocused: Bool
-    @Environment(\.dismiss) private var dismiss
+    @FocusState var keyboardFocused: Bool
     
     var body: some View {
-        
-        NavigationStack{
-            ZStack {
-                ColorScheme.background.ignoresSafeArea()
-                Form {
-                    Section("Name") {
-                        TextField("Garnish Name", text: $viewModel.currentGarnishName)
-                            .focused($keyboardFocused)
+            Section(header: Text("Custom Garnish Name").font(FontFactory.sectionHeader12)) {
+                TextField("Create custom garnish", text: $viewModel.currentGarnishName)
+                    .focused($keyboardFocused)
+                    .overlay(alignment: .trailing) {
+                        if !viewModel.currentGarnishName.isEmpty {
+                            Button {
+                                viewModel.currentGarnishName = ""
+                            } label: {
+                                Image(systemName: "x.circle")
+                                    .tint(ColorScheme.interactionTint)
+                                    .bold()
+                                    .font(.system(size: 18))
+                                    .padding()
+                                    .frame(width: 60, height: 40)
+                                    .contentShape(Rectangle())
+                            }
+                        }
                     }
-                    AddCustomGarnishToCocktailButton(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive)
-                }
-                .scrollContentBackground(.hidden)
-                .background(Color.clear)
-                .task {
-                    keyboardFocused = true
-                }
+                    .submitLabel(.done)
+                
             }
-            .navigationBarTitleDisplayMode(.inline)
-            .jamesHeaderWithNavigation(title: "Add Custom Garnish", dismiss: dismiss)
-        }
+        
     }
 }
 
-#Preview {
-    AddCustomGarnishView(viewModel: AddCocktailViewModel(), addExistingGarnishViewIsActive: .constant(true))
-}
+
 
 struct AddCustomGarnishToCocktailButton: View {
     @Bindable var viewModel: AddCocktailViewModel

@@ -15,6 +15,8 @@ struct GarnishDetailView: View {
     @FocusState private var amountKeyboardFocused: Bool
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
+    @State private var isCreatingCustomGarnish: Bool = false
+    @State private var filteredGarnish: [String] = []
     
     var body: some View {
         
@@ -25,9 +27,14 @@ struct GarnishDetailView: View {
                 ColorScheme.background.ignoresSafeArea()
                 
                 List {
-                    AddGarnishSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
-                    AddExistingGarnishToCocktailButton(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive)
-                    CreateCustomGarnishButton(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive)
+                    if !isCreatingCustomGarnish {
+                        addExistingGarnishSearchBarAndListView(viewModel: viewModel, keyboardFocused: _keyboardFocused, isCreatingCustomGarnish: $isCreatingCustomGarnish)
+                        AddExistingGarnishToCocktailButton(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive, isCreatingCustomGarnish: $isCreatingCustomGarnish)
+                    } else {
+                        AddCustomGarnishView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
+                        AddCustomGarnishToCocktailButton(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive)
+                    }
+                    CreateCustomGarnishButton(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive, isCreatingCustomGarnish: $isCreatingCustomGarnish, keyboardFocused: _keyboardFocused)
                         .padding()
                 }
                 .navigationBarTitleDisplayMode(.inline)
@@ -52,18 +59,71 @@ struct GarnishDetailView: View {
     GarnishDetailView(viewModel: AddCocktailViewModel(), addExistingGarnishViewIsActive: .constant(true))
 }
 
-struct AddGarnishSearchView: View {
+
+struct AddExistingGarnishToCocktailButton: View {
+    @Bindable var viewModel: AddCocktailViewModel
+    @Environment(\.dismiss) private var dismiss
+    @Query(sort: \Garnish.name) var garnish: [Garnish]
+    @Environment(\.modelContext) private var modelContext
+    @Binding var addExistingGarnishViewIsActive: Bool
+    @Binding var isCreatingCustomGarnish: Bool
     
+    var body: some View {
+        Section {
+            UniversalBlueButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), includeBorder: true) {
+                    viewModel.addExistingGarnishToCocktail(context: modelContext)
+                    addExistingGarnishViewIsActive = false
+            }
+            .disabled(viewModel.existingGarnishIsValid(allGarnishes: garnish) ? false : true)
+            .foregroundStyle(viewModel.existingGarnishIsValid(allGarnishes: garnish) ? ColorScheme.interactionTint : Color.secondary)
+        }
+        .listRowBackground(Color.clear)
+    }
+}
+
+struct CreateCustomGarnishButton: View {
+    @Bindable var viewModel: AddCocktailViewModel
+    @Binding var addExistingGarnishViewIsActive: Bool
+    @Binding var isCreatingCustomGarnish: Bool
+    @FocusState var keyboardFocused: Bool
+    
+    var body: some View {
+        Section {
+            Button {
+                withAnimation {
+                    isCreatingCustomGarnish.toggle()
+                    keyboardFocused = true
+                }
+               
+            } label: {
+                HStack{
+                    Text(isCreatingCustomGarnish ? "Choose existing garnish" : "Add as custom garnish")
+                        .font(FontFactory.bottomToolbarButton20)
+                    if !isCreatingCustomGarnish {
+                        Image(systemName: "plus")
+                    }
+                   
+                }
+                .foregroundStyle(ColorScheme.interactionTint)
+            }
+        }
+        .listRowBackground(Color.clear)
+        .frame(maxWidth: .infinity, alignment: .center)
+    }
+}
+
+struct addExistingGarnishSearchBarAndListView: View {
     @Bindable var viewModel: AddCocktailViewModel
     @FocusState var keyboardFocused: Bool
     @Query(sort: \Garnish.name) var garnish: [Garnish]
     @State private var filteredGarnish: [String] = []
-    
+    @Binding var isCreatingCustomGarnish: Bool
     
     var body: some View {
-        Section(header: Text("Name").font(FontFactory.sectionHeader12)) {
-            VStack{
-                TextField("Garnish Name", text: $viewModel.currentGarnishName)
+     
+            Section(header:  Text("Existing Garnish Name").font(FontFactory.sectionHeader12)) {
+                
+                TextField("Search for existing garnish...", text: $viewModel.currentGarnishName)
                     .focused($keyboardFocused)
                     .font(FontFactory.formLabel18)
                     .onChange(of: viewModel.currentGarnishName, initial: true) { old, new in
@@ -103,47 +163,7 @@ struct AddGarnishSearchView: View {
             } else {
                 EmptyView()
             }
-        }
-    }
-}
-struct AddExistingGarnishToCocktailButton: View {
-    @Bindable var viewModel: AddCocktailViewModel
-    @Environment(\.dismiss) private var dismiss
-    @Query(sort: \Garnish.name) var garnish: [Garnish]
-    @Environment(\.modelContext) private var modelContext
-    @Binding var addExistingGarnishViewIsActive: Bool
-    
-    var body: some View {
-        Section {
-            UniversalBlueButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), includeBorder: true) {
-                    viewModel.addExistingGarnishToCocktail(context: modelContext)
-                    addExistingGarnishViewIsActive = false
-            }
-            .disabled(viewModel.existingGarnishIsValid(allGarnishes: garnish) ? false : true)
-            .foregroundStyle(viewModel.existingGarnishIsValid(allGarnishes: garnish) ? ColorScheme.interactionTint : Color.secondary)
-        }
-        .listRowBackground(Color.clear)
-    }
-}
-
-struct CreateCustomGarnishButton: View {
-    @Bindable var viewModel: AddCocktailViewModel
-    @Binding var addExistingGarnishViewIsActive: Bool
-    
-    var body: some View {
-        Section {
-            NavigationLinkWithoutIndicator {
-                HStack{
-                    Text("Create Custom Garnish")
-                        .font(FontFactory.bottomToolbarButton20)
-                    Image(systemName: "plus")
-                }
-                .foregroundStyle(ColorScheme.interactionTint)
-            } destination: {
-                AddCustomGarnishView(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive)
-                    .navigationBarBackButtonHidden(true)
-            }
-        }
-        .listRowBackground(Color.clear)
+            
+        
     }
 }
