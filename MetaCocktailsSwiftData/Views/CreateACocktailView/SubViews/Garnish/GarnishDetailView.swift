@@ -64,7 +64,7 @@ struct CreateCustomGarnishButton: View {
     
     var body: some View {
         
-        if let customName = viewModel.finalizedGarnishName, !viewModel.addedGarnish.contains(where: { $0.name == customName }) {
+        if let customName = viewModel.finalizedGarnishName, !viewModel.addedGarnish.contains(where: { $0.name == customName }), customName != "" {
             Section {
                 UniversalBlueButton(buttonText: "Add \"\(customName)\" to garnishes", rightImage: Image(systemName: "plus"), includeBorder: true) {
                     if viewModel.customGarnishIsValid(allGarnishes: garnish) {
