@@ -20,37 +20,23 @@ struct GarnishDetailView: View {
     
     var body: some View {
         
-        NavigationStack{
+        NavigationStack {
             
-            ZStack {
+            List {
                 
-                ColorScheme.background.ignoresSafeArea()
+                AddExistingGarnishSearchBarAndListView(viewModel: viewModel, keyboardFocused: _keyboardFocused, isCreatingCustomGarnish: $isCreatingCustomGarnish)
                 
-                List {
-                    if !isCreatingCustomGarnish {
-                        addExistingGarnishSearchBarAndListView(viewModel: viewModel, keyboardFocused: _keyboardFocused, isCreatingCustomGarnish: $isCreatingCustomGarnish)
-                        AddExistingGarnishToCocktailButton(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive, isCreatingCustomGarnish: $isCreatingCustomGarnish)
-                    } else {
-                        AddCustomGarnishView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
-                        AddCustomGarnishToCocktailButton(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive)
-                    }
-                    CreateCustomGarnishButton(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive, isCreatingCustomGarnish: $isCreatingCustomGarnish, keyboardFocused: _keyboardFocused)
-                        .padding()
-                }
-                .navigationBarTitleDisplayMode(.inline)
-                .jamesHeaderWithNavigation(title: "Add Garnish", dismiss: dismiss)
-                .scrollContentBackground(.hidden)
-                .background(Color.clear)
-                .toolbar {
-                    ToolbarItemGroup(placement: .keyboard) {
-                        KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
-                    }
-                }
-                .task {
-                    keyboardFocused = true
-                }
+                CreateCustomGarnishButton(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive, isCreatingCustomGarnish: $isCreatingCustomGarnish, keyboardFocused: _keyboardFocused)
+                
+                AddExistingGarnishToCocktailButton(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive, isCreatingCustomGarnish: $isCreatingCustomGarnish)
+  
             }
+            .background(ColorScheme.background)
+            .navigationBarTitleDisplayMode(.inline)
+            .jamesHeaderWithNavigation(title: "Add Garnish", dismiss: dismiss)
+            .scrollContentBackground(.hidden)
         }
+        
     }
 }
 
@@ -80,33 +66,38 @@ struct CreateCustomGarnishButton: View {
     @Binding var addExistingGarnishViewIsActive: Bool
     @Binding var isCreatingCustomGarnish: Bool
     @FocusState var keyboardFocused: Bool
+    @Query(sort: \Garnish.name) var garnish: [Garnish]
     
     var body: some View {
-        Section {
-            Button {
-                withAnimation {
-                    isCreatingCustomGarnish.toggle()
-                    keyboardFocused = true
-                }
-               
-            } label: {
-                HStack{
-                    Text(isCreatingCustomGarnish ? "Choose existing garnish" : "Add as custom garnish")
-                        .font(FontFactory.bottomToolbarButton20)
-                    if !isCreatingCustomGarnish {
-                        Image(systemName: "plus")
+        
+        if let customName = viewModel.finalizedGarnishName, !viewModel.addedGarnish.contains(where: { $0.name == customName }) {
+            Section {
+                UniversalBlueButton(buttonText: "Add \"\(customName)\" to garnishes", rightImage: Image(systemName: "plus"), includeBorder: true) {
+                    if viewModel.customGarnishIsValid(allGarnishes: garnish) {
+                        viewModel.addedGarnish.append(Garnish(name: customName))
+                        viewModel.clearIngredientData()
+                        addExistingGarnishViewIsActive = false
+                    } else {
+                        for name in garnish {
+                            if name.name == customName {
+                                viewModel.addedGarnish.append(name)
+                                viewModel.clearIngredientData()
+                                addExistingGarnishViewIsActive = false
+                            }
+                        }
                     }
-                   
                 }
-                .foregroundStyle(ColorScheme.interactionTint)
             }
+            .listRowBackground(Color.clear)
+            .frame(maxWidth: .infinity, alignment: .center)
         }
-        .listRowBackground(Color.clear)
-        .frame(maxWidth: .infinity, alignment: .center)
+        else {
+            EmptyView()
+        }
     }
 }
 
-struct addExistingGarnishSearchBarAndListView: View {
+struct AddExistingGarnishSearchBarAndListView: View {
     @Bindable var viewModel: AddCocktailViewModel
     @FocusState var keyboardFocused: Bool
     @Query(sort: \Garnish.name) var garnish: [Garnish]
@@ -115,12 +106,13 @@ struct addExistingGarnishSearchBarAndListView: View {
     
     var body: some View {
      
-            Section(header:  Text("Existing Garnish Name").font(FontFactory.sectionHeader12)) {
+            Section(header:  Text("Enter garnish name").font(FontFactory.sectionHeader12)) {
                 
-                TextField("Search for existing garnish...", text: $viewModel.currentGarnishName)
+                TextField("Search garnishes", text: $viewModel.currentGarnishName)
                     .focused($keyboardFocused)
                     .font(FontFactory.formLabel18)
                     .onChange(of: viewModel.currentGarnishName, initial: true) { old, new in
+                        viewModel.finalizedGarnishName = nil
                         viewModel.currentGarnishName = new
                         filteredGarnish = viewModel.matchAllGarnish(garnishes: garnish)
                     }
@@ -139,7 +131,18 @@ struct addExistingGarnishSearchBarAndListView: View {
                         }
                     }
                     .submitLabel(.done)
+                    .onSubmit {
+                        if !filteredGarnish.contains(where: { $0 == viewModel.currentGarnishName } ) {
+                            withAnimation {
+                                viewModel.finalizedGarnishName = viewModel.currentGarnishName
+                                viewModel.didChooseExistingGarnish = false
+                            }
+                        } else {
+                            viewModel.finalizedGarnishName = nil
+                        }
+                    }
             }
+        
             if keyboardFocused {
                 ForEach(filteredGarnish, id: \.self) { garnish in
                     Button {

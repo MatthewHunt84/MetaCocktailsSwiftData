@@ -49,6 +49,7 @@ import Combine
     //Garnish
     var addedGarnish: [Garnish] = []
     var currentGarnishName: String = ""
+    var finalizedGarnishName: String? 
     var didChooseExistingGarnish: Bool = false
     var addExistingGarnishViewIsActive: Bool = false
     
