@@ -15,7 +15,6 @@ struct GarnishDetailView: View {
     @FocusState private var amountKeyboardFocused: Bool
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
-    @State private var isCreatingCustomGarnish: Bool = false
     @State private var filteredGarnish: [String] = []
     
     var body: some View {
@@ -24,11 +23,11 @@ struct GarnishDetailView: View {
             
             List {
                 
-                AddExistingGarnishSearchBarAndListView(viewModel: viewModel, keyboardFocused: _keyboardFocused, isCreatingCustomGarnish: $isCreatingCustomGarnish)
+                AddExistingGarnishSearchBarAndListView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
                 
-                CreateCustomGarnishButton(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive, isCreatingCustomGarnish: $isCreatingCustomGarnish, keyboardFocused: _keyboardFocused)
+                CreateCustomGarnishButton(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive, keyboardFocused: _keyboardFocused)
                 
-                AddExistingGarnishToCocktailButton(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive, isCreatingCustomGarnish: $isCreatingCustomGarnish)
+                AddExistingGarnishToCocktailButton(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive)
   
             }
             .background(ColorScheme.background)
@@ -46,7 +45,6 @@ struct AddExistingGarnishToCocktailButton: View {
     @Query(sort: \Garnish.name) var garnish: [Garnish]
     @Environment(\.modelContext) private var modelContext
     @Binding var addExistingGarnishViewIsActive: Bool
-    @Binding var isCreatingCustomGarnish: Bool
     
     var body: some View {
         Section {
@@ -64,7 +62,6 @@ struct AddExistingGarnishToCocktailButton: View {
 struct CreateCustomGarnishButton: View {
     @Bindable var viewModel: AddCocktailViewModel
     @Binding var addExistingGarnishViewIsActive: Bool
-    @Binding var isCreatingCustomGarnish: Bool
     @FocusState var keyboardFocused: Bool
     @Query(sort: \Garnish.name) var garnish: [Garnish]
     
@@ -102,7 +99,6 @@ struct AddExistingGarnishSearchBarAndListView: View {
     @FocusState var keyboardFocused: Bool
     @Query(sort: \Garnish.name) var garnish: [Garnish]
     @State private var filteredGarnish: [String] = []
-    @Binding var isCreatingCustomGarnish: Bool
     
     var body: some View {
      
