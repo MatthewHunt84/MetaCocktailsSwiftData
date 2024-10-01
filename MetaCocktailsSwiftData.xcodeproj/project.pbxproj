@@ -136,7 +136,6 @@
 		4D5DA0BC2BA1345B00C14F1F /* Saladito.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5DA0BB2BA1345B00C14F1F /* Saladito.swift */; };
 		4D5DA0BE2BA145A600C14F1F /* TheSeaplane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5DA0BD2BA145A600C14F1F /* TheSeaplane.swift */; };
 		4D67612E2C3EE46A00A5939C /* GarnishDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D67612D2C3EE46A00A5939C /* GarnishDetailView.swift */; };
-		4D6761302C3F317D00A5939C /* AddCustomGarnishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D67612F2C3F317D00A5939C /* AddCustomGarnishView.swift */; };
 		4D6761372C448E3200A5939C /* IngredientSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6761362C448E3200A5939C /* IngredientSearchView.swift */; };
 		4D6761392C44902C00A5939C /* DefaultIngredientSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6761382C44902C00A5939C /* DefaultIngredientSearchCell.swift */; };
 		4D67613E2C44B62000A5939C /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D67613D2C44B62000A5939C /* SearchViewModel.swift */; };
@@ -686,7 +685,6 @@
 		4D5DA0BB2BA1345B00C14F1F /* Saladito.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saladito.swift; sourceTree = "<group>"; };
 		4D5DA0BD2BA145A600C14F1F /* TheSeaplane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheSeaplane.swift; sourceTree = "<group>"; };
 		4D67612D2C3EE46A00A5939C /* GarnishDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarnishDetailView.swift; sourceTree = "<group>"; };
-		4D67612F2C3F317D00A5939C /* AddCustomGarnishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomGarnishView.swift; sourceTree = "<group>"; };
 		4D6761362C448E3200A5939C /* IngredientSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientSearchView.swift; sourceTree = "<group>"; };
 		4D6761382C44902C00A5939C /* DefaultIngredientSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultIngredientSearchCell.swift; sourceTree = "<group>"; };
 		4D67613D2C44B62000A5939C /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
@@ -1616,7 +1614,6 @@
 			isa = PBXGroup;
 			children = (
 				4D67612D2C3EE46A00A5939C /* GarnishDetailView.swift */,
-				4D67612F2C3F317D00A5939C /* AddCustomGarnishView.swift */,
 			);
 			path = Garnish;
 			sourceTree = "<group>";
@@ -2603,7 +2600,6 @@
 				4DCB170C2BA418B00002D7D9 /* TheTieBinder.swift in Sources */,
 				F4F3D4222C90996E00BB6767 /* ColorScheme.swift in Sources */,
 				F440160D2CA6F40B00839E6A /* RecipeSubViews.swift in Sources */,
-				4D6761302C3F317D00A5939C /* AddCustomGarnishView.swift in Sources */,
 				F4AA6BBA2C7E2C4F00610D80 /* FontFactory.swift in Sources */,
 				F493F3B12C6CFC72006A0ADB /* SelectionTagViewModel.swift in Sources */,
 				1AC386C82AAABED10064F52A /* PrepBible.swift in Sources */,
