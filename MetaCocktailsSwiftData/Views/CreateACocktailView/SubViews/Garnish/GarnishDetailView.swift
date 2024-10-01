@@ -54,12 +54,6 @@ struct GarnishDetailView: View {
     }
 }
 
-
-#Preview {
-    GarnishDetailView(viewModel: AddCocktailViewModel(), addExistingGarnishViewIsActive: .constant(true))
-}
-
-
 struct AddExistingGarnishToCocktailButton: View {
     @Bindable var viewModel: AddCocktailViewModel
     @Environment(\.dismiss) private var dismiss
@@ -139,8 +133,7 @@ struct addExistingGarnishSearchBarAndListView: View {
                                     .tint(ColorScheme.interactionTint)
                                     .bold()
                                     .font(.system(size: 18))
-                                    .padding()
-                                    .frame(width: 60, height: 40)
+                                    .frame(width: 60, height: 40, alignment: .trailing)
                                     .contentShape(Rectangle())
                             }
                         }
@@ -167,3 +160,7 @@ struct addExistingGarnishSearchBarAndListView: View {
         
     }
 }
+
+//#Preview {
+//    GarnishDetailView(viewModel: AddCocktailViewModel(), addExistingGarnishViewIsActive: .constant(true))
+//}
