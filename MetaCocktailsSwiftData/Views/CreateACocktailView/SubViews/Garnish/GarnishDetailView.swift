@@ -10,7 +10,6 @@ import SwiftData
 
 struct GarnishDetailView: View {
     @Bindable var viewModel: AddCocktailViewModel
-    @Binding var addExistingGarnishViewIsActive: Bool
     @FocusState private var keyboardFocused: Bool
     @FocusState private var amountKeyboardFocused: Bool
     @Environment(\.dismiss) private var dismiss
@@ -25,9 +24,9 @@ struct GarnishDetailView: View {
                 
                 AddExistingGarnishSearchBarAndListView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
                 
-                CreateCustomGarnishButton(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive, keyboardFocused: _keyboardFocused)
+                CreateCustomGarnishButton(viewModel: viewModel, keyboardFocused: _keyboardFocused)
                 
-                AddExistingGarnishToCocktailButton(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive)
+                AddExistingGarnishToCocktailButton(viewModel: viewModel)
   
             }
             .background(ColorScheme.background)
@@ -44,13 +43,12 @@ struct AddExistingGarnishToCocktailButton: View {
     @Environment(\.dismiss) private var dismiss
     @Query(sort: \Garnish.name) var garnish: [Garnish]
     @Environment(\.modelContext) private var modelContext
-    @Binding var addExistingGarnishViewIsActive: Bool
     
     var body: some View {
         Section {
             UniversalBlueButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), includeBorder: true) {
                     viewModel.addExistingGarnishToCocktail(context: modelContext)
-                    addExistingGarnishViewIsActive = false
+                    dismiss()
             }
             .disabled(viewModel.existingGarnishIsValid(allGarnishes: garnish) ? false : true)
             .foregroundStyle(viewModel.existingGarnishIsValid(allGarnishes: garnish) ? ColorScheme.interactionTint : Color.secondary)
@@ -61,9 +59,9 @@ struct AddExistingGarnishToCocktailButton: View {
 
 struct CreateCustomGarnishButton: View {
     @Bindable var viewModel: AddCocktailViewModel
-    @Binding var addExistingGarnishViewIsActive: Bool
     @FocusState var keyboardFocused: Bool
     @Query(sort: \Garnish.name) var garnish: [Garnish]
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         
@@ -73,13 +71,13 @@ struct CreateCustomGarnishButton: View {
                     if viewModel.customGarnishIsValid(allGarnishes: garnish) {
                         viewModel.addedGarnish.append(Garnish(name: customName))
                         viewModel.clearIngredientData()
-                        addExistingGarnishViewIsActive = false
+                        dismiss()
                     } else {
                         for name in garnish {
                             if name.name == customName {
                                 viewModel.addedGarnish.append(name)
                                 viewModel.clearIngredientData()
-                                addExistingGarnishViewIsActive = false
+                                dismiss()
                             }
                         }
                     }
