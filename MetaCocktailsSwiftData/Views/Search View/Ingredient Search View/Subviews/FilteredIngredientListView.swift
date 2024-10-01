@@ -25,6 +25,9 @@ struct FilteredIngredientListView: View {
                 .onChange(of: viewModel.currentComponentSearchName) { _, newValue in
                     viewModel.updateSearch(newValue)
                 }
+                .clearSearchButton(text: $viewModel.currentComponentSearchName) {
+                    viewModel.currentComponentSearchName = ""
+                }
                 .onSubmit {
                     Task {
                         await viewModel.searchButtonPressed()

@@ -80,20 +80,8 @@ struct AddIngredientSearchView: View {
                         viewModel.ingredientName = new
                         viewModel.matchAllIngredients(ingredients: ingredients)
                     }
-                    .overlay(alignment: .trailing) {
-                        if !viewModel.ingredientName.isEmpty {
-                            Button {
-                                viewModel.ingredientName = ""
-                            } label: {
-                                Image(systemName: "x.circle")
-                                    .tint(ColorScheme.interactionTint)
-                                    .bold()
-                                    .font(.system(size: 18))
-                                    .padding()
-                                    .frame(width: 60, height: 40)
-                                    .contentShape(Rectangle())
-                            }
-                        }
+                    .clearSearchButton(text: $viewModel.ingredientName, isEmbeddedInSection: true) {
+                        viewModel.ingredientName = ""
                     }
                     .submitLabel(.done)
             }

@@ -109,19 +109,8 @@ struct AddExistingGarnishSearchBarAndListView: View {
                         viewModel.currentGarnishName = new
                         filteredGarnish = viewModel.matchAllGarnish(garnishes: garnish)
                     }
-                    .overlay(alignment: .trailing) {
-                        if !viewModel.currentGarnishName.isEmpty {
-                            Button {
-                                viewModel.currentGarnishName = ""
-                            } label: {
-                                Image(systemName: "x.circle")
-                                    .tint(ColorScheme.interactionTint)
-                                    .bold()
-                                    .font(.system(size: 18))
-                                    .frame(width: 60, height: 40, alignment: .trailing)
-                                    .contentShape(Rectangle())
-                            }
-                        }
+                    .clearSearchButton(text: $viewModel.currentGarnishName, isEmbeddedInSection: true) {
+                        viewModel.currentGarnishName = ""
                     }
                     .submitLabel(.done)
                     .onSubmit {
