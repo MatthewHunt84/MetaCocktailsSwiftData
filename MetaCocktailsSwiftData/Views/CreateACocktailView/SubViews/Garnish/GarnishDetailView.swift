@@ -13,7 +13,6 @@ struct GarnishDetailView: View {
     @FocusState private var keyboardFocused: Bool
     @FocusState private var amountKeyboardFocused: Bool
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.modelContext) private var modelContext
     @State private var filteredGarnish: [String] = []
     
     var body: some View {
