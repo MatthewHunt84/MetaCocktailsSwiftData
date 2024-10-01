@@ -49,9 +49,10 @@ import Combine
     //Garnish
     var addedGarnish: [Garnish] = []
     var currentGarnishName: String = ""
-    var finalizedGarnishName: String? 
+    var customGarnishNameEntered: String? 
     var didChooseExistingGarnish: Bool = false
     var addExistingGarnishViewIsActive: Bool = false
+    var filteredGarnish: [String] = []
     
     // Extras
     var uniqueGlasswareName: Glassware?
@@ -183,8 +184,8 @@ import Combine
     func existingGarnishIsValid(allGarnishes: [Garnish]) -> Bool {
         
         return didChooseExistingGarnish == true &&
-        allGarnishes.contains(where: { $0.name == currentGarnishName })
-        
+        allGarnishes.contains(where: { $0.name == currentGarnishName }) &&
+        !addedGarnish.contains(where: { $0.name == currentGarnishName })
     }
     
     @MainActor
