@@ -22,26 +22,24 @@ struct AddExistingIngredientDetailView: View {
         NavigationStack {
             
             ZStack {
-                ColorScheme.background.ignoresSafeArea()
-                VStack {
-                    List {
-                        AddIngredientSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
-                        AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
-                        Section {
-                            AddExistingIngredientToCocktailButton(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
-                        }
-                        .listRowBackground(Color.clear)
-                        Section {
-                            CreateNewIngredientButton(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView)
-                        }
-                        .listRowBackground(Color.clear)
+                
+                BlackGlassBackgroundView().ignoresSafeArea()
+
+                List {
+                    AddIngredientSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
+                    AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
+                    Section {
+                        AddExistingIngredientToCocktailButton(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
                     }
-                    .scrollContentBackground(.hidden)
-                    .background(BlackGlassBackgroundView())
-                    .navigationBarTitleDisplayMode(.inline)
-                    .jamesHeaderWithNavigation(title: "Add Ingredient", dismiss: dismiss)
-                    
+                    .listRowBackground(Color.clear)
+                    Section {
+                        CreateNewIngredientButton(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView)
+                    }
+                    .listRowBackground(Color.clear)
                 }
+                .scrollContentBackground(.hidden)
+                .navigationBarTitleDisplayMode(.inline)
+                .jamesHeaderWithNavigation(title: "Add Ingredient", dismiss: dismiss)
             }
             .onAppear {
                 if viewModel.isEdit {
@@ -204,6 +202,7 @@ struct AddExistingIngredientToCocktailButton: View {
         .disabled(viewModel.existingIngredientIsValid(allIngredients: ingredients) ? false : true)
     }
 }
+
 struct CreateNewIngredientButton: View {
     @Bindable var viewModel: AddCocktailViewModel
     @Binding var isShowingAddIngredients: Bool

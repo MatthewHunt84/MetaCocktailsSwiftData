@@ -16,21 +16,24 @@ struct GarnishDetailView: View {
         
         NavigationStack {
             
-            List {
+            ZStack {
                 
-                AddExistingGarnishSearchBarAndListView(viewModel: viewModel)
+                BlackGlassBackgroundView().ignoresSafeArea()
                 
-                CreateCustomGarnishButton(viewModel: viewModel)
-                
-                AddExistingGarnishToCocktailButton(viewModel: viewModel)
-                
+                List {
+                    
+                    AddExistingGarnishSearchBarAndListView(viewModel: viewModel)
+                    
+                    CreateCustomGarnishButton(viewModel: viewModel)
+                    
+                    AddExistingGarnishToCocktailButton(viewModel: viewModel)
+                    
+                }
+                .navigationBarTitleDisplayMode(.inline)
+                .jamesHeaderWithNavigation(title: "Add Garnish", dismiss: dismiss)
+                .scrollContentBackground(.hidden)
             }
-            .background(ColorScheme.background)
-            .navigationBarTitleDisplayMode(.inline)
-            .jamesHeaderWithNavigation(title: "Add Garnish", dismiss: dismiss)
-            .scrollContentBackground(.hidden)
         }
-        
     }
 }
 
@@ -99,9 +102,9 @@ struct AddExistingGarnishSearchBarAndListView: View {
     
     var body: some View {
         
-        Section(header:  Text("Enter garnish name").font(FontFactory.sectionHeader12)) {
+        Section(header:  Text("Choose garnish").font(FontFactory.sectionHeader12)) {
             
-            TextField("Search garnishes", text: $viewModel.currentGarnishName)
+            TextField("Search for garnish...", text: $viewModel.currentGarnishName)
                 .focused($keyboardFocused)
                 .font(FontFactory.formLabel18)
                 .onChange(of: viewModel.currentGarnishName, initial: true) { old, new in
