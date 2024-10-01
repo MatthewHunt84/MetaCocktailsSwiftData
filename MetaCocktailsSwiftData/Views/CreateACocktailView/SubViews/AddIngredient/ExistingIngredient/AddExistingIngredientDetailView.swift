@@ -40,7 +40,7 @@ struct AddExistingIngredientDetailView: View {
                     .background(BlackGlassBackgroundView())
                     .navigationBarTitleDisplayMode(.inline)
                     .jamesHeaderWithNavigation(title: "Add Ingredient", dismiss: dismiss)
-                   
+                    
                 }
             }
             .onAppear {
@@ -145,7 +145,7 @@ struct AddMeasurementView: View {
                     .onChange(of: viewModel.ingredientAmount) { oldValue, newValue in
                         viewModel.ingredientAmount = newValue
                     }
-                    
+                
                 Menu {
                     ForEach(viewModel.dynamicallyChangeMeasurementOptionsBasedOnChosenCategory(), id: \.self) { unit in
                         Button {
@@ -213,7 +213,7 @@ struct CreateNewIngredientButton: View {
             HStack {
                 Text("Create Custom Ingredient")
                 Image(systemName: "plus")
-                        .tint(ColorScheme.interactionTint)
+                    .tint(ColorScheme.interactionTint)
                 
             }
             .font(FontFactory.mediumFont(size: 18))
@@ -223,7 +223,7 @@ struct CreateNewIngredientButton: View {
             
         } destination: {
             AddCustomIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView)
-                            .navigationBarBackButtonHidden(true)
+                .navigationBarBackButtonHidden(true)
         }
     }
 }

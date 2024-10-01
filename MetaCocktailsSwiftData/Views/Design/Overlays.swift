@@ -11,7 +11,7 @@ struct ClearButtonModifier: ViewModifier {
     @Binding var text: String
     let isEmbeddedInSection: Bool
     var action: () -> Void
-
+    
     func body(content: Content) -> some View {
         content
             .overlay(alignment: .trailing) {

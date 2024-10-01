@@ -26,7 +26,7 @@ struct GarnishDetailView: View {
                 CreateCustomGarnishButton(viewModel: viewModel, keyboardFocused: _keyboardFocused)
                 
                 AddExistingGarnishToCocktailButton(viewModel: viewModel)
-  
+                
             }
             .background(ColorScheme.background)
             .navigationBarTitleDisplayMode(.inline)
@@ -46,8 +46,8 @@ struct AddExistingGarnishToCocktailButton: View {
     var body: some View {
         Section {
             UniversalBlueButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), includeBorder: true) {
-                    viewModel.addExistingGarnishToCocktail(context: modelContext)
-                    dismiss()
+                viewModel.addExistingGarnishToCocktail(context: modelContext)
+                dismiss()
             }
             .disabled(viewModel.existingGarnishIsValid(allGarnishes: garnish) ? false : true)
             .foregroundStyle(viewModel.existingGarnishIsValid(allGarnishes: garnish) ? ColorScheme.interactionTint : Color.secondary)
@@ -98,50 +98,50 @@ struct AddExistingGarnishSearchBarAndListView: View {
     @State private var filteredGarnish: [String] = []
     
     var body: some View {
-     
-            Section(header:  Text("Enter garnish name").font(FontFactory.sectionHeader12)) {
-                
-                TextField("Search garnishes", text: $viewModel.currentGarnishName)
-                    .focused($keyboardFocused)
-                    .font(FontFactory.formLabel18)
-                    .onChange(of: viewModel.currentGarnishName, initial: true) { old, new in
-                        viewModel.finalizedGarnishName = nil
-                        viewModel.currentGarnishName = new
-                        filteredGarnish = viewModel.matchAllGarnish(garnishes: garnish)
-                    }
-                    .clearSearchButton(text: $viewModel.currentGarnishName, isEmbeddedInSection: true) {
-                        viewModel.currentGarnishName = ""
-                    }
-                    .submitLabel(.done)
-                    .onSubmit {
-                        if !filteredGarnish.contains(where: { $0 == viewModel.currentGarnishName } ) {
-                            withAnimation {
-                                viewModel.finalizedGarnishName = viewModel.currentGarnishName
-                                viewModel.didChooseExistingGarnish = false
-                            }
-                        } else {
-                            viewModel.finalizedGarnishName = nil
-                        }
-                    }
-            }
         
-            if keyboardFocused {
-                ForEach(filteredGarnish, id: \.self) { garnish in
-                    Button {
-                        viewModel.currentGarnishName = garnish
-                        viewModel.didChooseExistingGarnish = true
-                        keyboardFocused = false
-                    } label: {
-                        Text(garnish)
-                    }
-                    .tint(.primary)
-                }
-                .listStyle(.plain)
-                .listRowBackground(Color.clear)
-            } else {
-                EmptyView()
-            }
+        Section(header:  Text("Enter garnish name").font(FontFactory.sectionHeader12)) {
             
+            TextField("Search garnishes", text: $viewModel.currentGarnishName)
+                .focused($keyboardFocused)
+                .font(FontFactory.formLabel18)
+                .onChange(of: viewModel.currentGarnishName, initial: true) { old, new in
+                    viewModel.finalizedGarnishName = nil
+                    viewModel.currentGarnishName = new
+                    filteredGarnish = viewModel.matchAllGarnish(garnishes: garnish)
+                }
+                .clearSearchButton(text: $viewModel.currentGarnishName, isEmbeddedInSection: true) {
+                    viewModel.currentGarnishName = ""
+                }
+                .submitLabel(.done)
+                .onSubmit {
+                    if !filteredGarnish.contains(where: { $0 == viewModel.currentGarnishName } ) {
+                        withAnimation {
+                            viewModel.finalizedGarnishName = viewModel.currentGarnishName
+                            viewModel.didChooseExistingGarnish = false
+                        }
+                    } else {
+                        viewModel.finalizedGarnishName = nil
+                    }
+                }
+        }
+        
+        if keyboardFocused {
+            ForEach(filteredGarnish, id: \.self) { garnish in
+                Button {
+                    viewModel.currentGarnishName = garnish
+                    viewModel.didChooseExistingGarnish = true
+                    keyboardFocused = false
+                } label: {
+                    Text(garnish)
+                }
+                .tint(.primary)
+            }
+            .listStyle(.plain)
+            .listRowBackground(Color.clear)
+        } else {
+            EmptyView()
+        }
+        
         
     }
 }

@@ -141,5 +141,5 @@ struct SearchBarForCocktailListView: View {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
     CocktailListView()
         .modelContainer(preview.container)
-        
+    
 }
