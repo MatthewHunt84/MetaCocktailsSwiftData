@@ -12,7 +12,6 @@ struct CBCLoadedCocktailView: View {
     @EnvironmentObject var viewModel: CBCViewModel
     @FocusState private var isInputActive: Bool
     @State private var isShowingPreferencesModal: Bool = false
-    @State private var isShowingBottleMathModal: Bool = false
     @Environment(\.dismiss) private var dismiss
     @State private var isShowingOunceMeasurements: Bool = false
     @State private var isShowingBottleMathAmounts: Bool = false
@@ -104,7 +103,6 @@ struct QuantifiedIngredientsListView: View {
     @FocusState private var isFocused: Bool
     @FocusState.Binding var isInputActive: Bool
     @FocusState private var bottleBatchInputActive: Bool
-    @State private var isShowingBottleMathModal: Bool = false
     @Binding var isShowingOunceMeasurements: Bool
     @Binding var isShowingBottleMathAmounts: Bool
     
@@ -138,10 +136,10 @@ struct QuantifiedIngredientsListView: View {
             Section(header: CBCIngredientSectionHeader(), footer: CBCIngredientSectionFooter()) {
                 ForEach($viewModel.quantifiedBatchedIngredients, id: \.id) { $ingredient in
                     BatchCellView(quantifiedBatchedIngredient: $ingredient,
-                                  isShowingBottleMathModal: $isShowingBottleMathModal,
                                   isFocused: _isFocused,
                                   bottleBatchInputActive: _bottleBatchInputActive,
-                                  isShowingOunceMeasurements: $isShowingOunceMeasurements, isShowingBottleMathAmounts: $isShowingBottleMathAmounts)
+                                  isShowingOunceMeasurements: $isShowingOunceMeasurements,
+                                  isShowingBottleMathAmounts: $isShowingBottleMathAmounts)
                 }
                 
                 VStack {

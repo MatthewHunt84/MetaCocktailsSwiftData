@@ -22,34 +22,24 @@ struct AddExistingIngredientDetailView: View {
         NavigationStack {
             
             ZStack {
-                ColorScheme.background.ignoresSafeArea()
-                VStack {
-                    List {
-                        AddIngredientSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
-                        AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
-                        Section {
-                            AddExistingIngredientToCocktailButton(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
-                        }
-                        .listRowBackground(Color.clear)
-                        Section {
-                            CreateNewIngredientButton(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView)
-                        }
-                        .listRowBackground(Color.clear)
+                
+                BlackGlassBackgroundView().ignoresSafeArea()
+
+                List {
+                    AddIngredientSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
+                    AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
+                    Section {
+                        AddExistingIngredientToCocktailButton(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
                     }
-                    .scrollContentBackground(.hidden)
-                    .background(BlackGlassBackgroundView())
-                    .navigationBarTitleDisplayMode(.inline)
-                    .jamesHeaderWithNavigation(title: "Add Ingredient", dismiss: dismiss)
-                   
+                    .listRowBackground(Color.clear)
+                    Section {
+                        CreateNewIngredientButton(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView)
+                    }
+                    .listRowBackground(Color.clear)
                 }
-                if viewModel.isShowingingredientAlert {
-                    CustomAlertView(isActive: $viewModel.isShowingingredientAlert,
-                                    title: "Missing name or amount:",
-                                    message: "Please add an amount and choose from an existing ingredient. If you'd like to make your own, press 'Create Custom Ingredient'",
-                                    buttonTitle: yesChef,
-                                    action: {})
-                    .zIndex(2)
-                }
+                .scrollContentBackground(.hidden)
+                .navigationBarTitleDisplayMode(.inline)
+                .jamesHeaderWithNavigation(title: "Add Ingredient", dismiss: dismiss)
             }
             .onAppear {
                 if viewModel.isEdit {
@@ -76,9 +66,10 @@ struct AddIngredientSearchView: View {
     @FocusState var keyboardFocused: Bool
     @FocusState var amountKeyboardFocused: Bool
     @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]
+    @State private var isShowingDetail: Bool = false
     
     var body: some View {
-        Section(header:  Text("Name").font(FontFactory.sectionHeader12)) {
+        Section {
             VStack{
                 TextField("Search for ingredient...", text: $viewModel.ingredientName)
                     .focused($keyboardFocused)
@@ -87,6 +78,10 @@ struct AddIngredientSearchView: View {
                         viewModel.ingredientName = new
                         viewModel.matchAllIngredients(ingredients: ingredients)
                     }
+                    .clearSearchButton(text: $viewModel.ingredientName, isEmbeddedInSection: true) {
+                        viewModel.ingredientName = ""
+                    }
+                    .submitLabel(.done)
             }
             if keyboardFocused {
                 ForEach(viewModel.filteredIngredients, id: \.name) { ingredient in
@@ -109,6 +104,29 @@ struct AddIngredientSearchView: View {
                 .listStyle(.plain)
                 .listRowBackground(Color.clear)
             }
+        } header: {
+            HStack {
+                Text("Choose Ingredient")
+                    .font(FontFactory.sectionHeader12)
+                Image(systemName: "info.circle")
+                    .font(.system(size: 16))
+                    .foregroundStyle(isShowingDetail ? ColorScheme.tintColor : ColorScheme.interactionTint)
+                    .onTapGesture {
+                        withAnimation(.easeInOut(duration: 0.25)) {
+                            isShowingDetail.toggle()
+                        }
+                    }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        if isShowingDetail {
+            Section {
+                Text("Choose from an existing ingredient. If you would rather create your own, tap the 'Create Custom Ingredient' button below.")
+                    .font(FontFactory.fontBody14)
+                    .foregroundStyle(.brandPrimaryGold)
+            }
+            .listSectionSpacing(0)
+            .listRowBackground(Color.clear)
         }
     }
 }
@@ -122,7 +140,10 @@ struct AddMeasurementView: View {
                     .keyboardType(.decimalPad)
                     .focused($amountKeyboardFocused)
                     .font(FontFactory.formLabel18)
-                    
+                    .onChange(of: viewModel.ingredientAmount) { oldValue, newValue in
+                        viewModel.ingredientAmount = newValue
+                    }
+                
                 Menu {
                     ForEach(viewModel.dynamicallyChangeMeasurementOptionsBasedOnChosenCategory(), id: \.self) { unit in
                         Button {
@@ -163,23 +184,25 @@ struct AddExistingIngredientToCocktailButton: View {
         UniversalBlueButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), includeBorder: true) {
             if viewModel.existingIngredientIsValid(allIngredients: ingredients) {
                 viewModel.removeIngredient()
-                let ingredient = Ingredient(ingredientBase: IngredientBase(name: viewModel.ingredientName,
-                                                                           category: viewModel.category,
-                                                                           prep: viewModel.prep),
-                                            value: viewModel.ingredientAmount,
-                                            unit: viewModel.selectedMeasurementUnit)
-                
-                viewModel.addedIngredients.append(ingredient)
+                if let ingredientValue = viewModel.ingredientAmount{
+                    let ingredient = Ingredient(ingredientBase: IngredientBase(name: viewModel.ingredientName,
+                                                                               category: viewModel.category,
+                                                                               prep: viewModel.prep),
+                                                value: ingredientValue,
+                                                unit: viewModel.selectedMeasurementUnit)
+                    
+                    viewModel.addedIngredients.append(ingredient)
+                }
                 
                 viewModel.clearIngredientData()
                 isShowingAddIngredients = false
-            } else {
-                viewModel.isShowingingredientAlert.toggle()
-                viewModel.didChooseExistingIngredient = false
             }
         }
+        .foregroundStyle(viewModel.existingIngredientIsValid(allIngredients: ingredients) ? ColorScheme.interactionTint : Color.secondary)
+        .disabled(viewModel.existingIngredientIsValid(allIngredients: ingredients) ? false : true)
     }
 }
+
 struct CreateNewIngredientButton: View {
     @Bindable var viewModel: AddCocktailViewModel
     @Binding var isShowingAddIngredients: Bool
@@ -189,7 +212,7 @@ struct CreateNewIngredientButton: View {
             HStack {
                 Text("Create Custom Ingredient")
                 Image(systemName: "plus")
-                        .tint(ColorScheme.interactionTint)
+                    .tint(ColorScheme.interactionTint)
                 
             }
             .font(FontFactory.mediumFont(size: 18))
@@ -199,7 +222,7 @@ struct CreateNewIngredientButton: View {
             
         } destination: {
             AddCustomIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView)
-                            .navigationBarBackButtonHidden(true)
+                .navigationBarBackButtonHidden(true)
         }
     }
 }

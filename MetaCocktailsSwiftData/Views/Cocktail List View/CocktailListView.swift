@@ -115,20 +115,8 @@ struct SearchBarForCocktailListView: View {
             .focused($isFocused)
             .sensoryFeedback(.impact(weight: .heavy), trigger: isFocused == true)
             .animation(.easeInOut(duration: 0.2), value: isFocused)
-            .overlay(alignment: .trailing) {
-                if !viewModel.searchText.isEmpty {
-                    Button {
-                        viewModel.searchText = ""
-                    } label: {
-                        Image(systemName: "x.circle")
-                            .tint(ColorScheme.interactionTint)
-                            .bold()
-                            .font(.system(size: 18))
-                            .padding()
-                            .frame(width: 60, height: 40)
-                            .contentShape(Rectangle())
-                    }
-                }
+            .clearSearchButton(text: $viewModel.searchText) {
+                viewModel.searchText = ""
             }
             .onChange(of: viewModel.searchText) { _, newValue in
                 viewModel.updateSearch(newValue)
@@ -153,5 +141,5 @@ struct SearchBarForCocktailListView: View {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
     CocktailListView()
         .modelContainer(preview.container)
-        
+    
 }

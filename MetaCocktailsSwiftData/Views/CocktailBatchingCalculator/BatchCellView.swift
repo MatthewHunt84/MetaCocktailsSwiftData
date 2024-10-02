@@ -10,11 +10,11 @@ import SwiftUI
 struct BatchCellView: View {
     @EnvironmentObject var viewModel: CBCViewModel
     @Binding var quantifiedBatchedIngredient: BottleBatchedCellData
-    @Binding var isShowingBottleMathModal: Bool
     @FocusState var isFocused: Bool
     @FocusState var bottleBatchInputActive: Bool
     @Binding var isShowingOunceMeasurements: Bool
     @Binding var isShowingBottleMathAmounts: Bool
+    @State private var isShowingBottleMathModal: Bool = false
     
     var body: some View {
         
@@ -47,17 +47,24 @@ struct BatchCellView: View {
             }
             
             if isShowingBottleMathAmounts {
-                
-                Text("\(quantifiedBatchedIngredient.wholeBottles) x \(quantifiedBatchedIngredient.bottleSize)ml bottles + \(quantifiedBatchedIngredient.remainingMls)ml")
-                    .font(FontFactory.fontBody16)
-                    .foregroundStyle(.secondary)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
+                HStack(spacing: 0) {
+                    Text("\(quantifiedBatchedIngredient.wholeBottles) x \(quantifiedBatchedIngredient.bottleSize)ml bottles ")
+                        .font(FontFactory.fontBody16)
+                        .foregroundStyle(.secondary)
+                    if quantifiedBatchedIngredient.remainingMls > 0 {
+                        Text("+ \(quantifiedBatchedIngredient.remainingMls)ml")
+                            .font(FontFactory.fontBody16)
+                            .foregroundStyle(.secondary)
+                    }
+                        
+                }
+                .frame(maxWidth: .infinity, alignment: .trailing)
             }
         }
         .swipeActions(edge: .trailing) {
             Button(role: .none) {
                 viewModel.editingBottleMathIngredient = quantifiedBatchedIngredient
-                isShowingBottleMathModal.toggle()
+                isShowingBottleMathModal = true
             } label: {
                 Label("By bottle number", systemImage: "basket")
             }
@@ -67,12 +74,6 @@ struct BatchCellView: View {
             BottleMathModalView(quantifiedBatchedIngredient: $viewModel.quantifiedBatchedIngredients[viewModel.findIndexForBottleMath()],
                                 isShowingBottleMathModal: $isShowingBottleMathModal,
                                 keyboardFocused: _isFocused)
-            .onDisappear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                    viewModel.objectWillChange.send()
-                }
-                
-            }
         }
     }
 }

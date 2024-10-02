@@ -24,8 +24,7 @@ struct UniversalBlueButton: View {
     }
     
     var body: some View {
-        HStack {
-            Spacer()
+    
             Button {
                 action()
             } label: {
@@ -46,8 +45,8 @@ struct UniversalBlueButton: View {
                 .padding(.horizontal, 16)
                 .background(Capsule().strokeBorder(ColorScheme.interactionTint, lineWidth: includeBorder ? 1 : 0))
             }
-            Spacer()
-        }
+            .frame(maxWidth: .infinity, alignment: .center)
+        
     }
 }
 

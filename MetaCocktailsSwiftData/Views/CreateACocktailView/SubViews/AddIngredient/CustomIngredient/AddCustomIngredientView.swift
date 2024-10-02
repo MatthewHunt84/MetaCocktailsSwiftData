@@ -64,14 +64,6 @@ struct AddCustomIngredientView: View {
                         keyboardFocused = true
                     }
                 }
-                if viewModel.isShowingingredientAlert {
-                    CustomAlertView(isActive: $viewModel.isShowingingredientAlert,
-                                    title: "",
-                                    message: "Please choose a unique ingredient name, a category, and an amount.",
-                                    buttonTitle: "Yes, Chef",
-                                    action: {})
-                    .zIndex(2)
-                }
             }
         }
     }
@@ -120,36 +112,31 @@ struct AddCustomIngredientToCocktailButton: View {
     @Binding var isShowingCustomIngredientView: Bool
     
     var body: some View {
-        Button{
-            if viewModel.customIngredientIsValid(allIngredients: ingredients) {
-                viewModel.removeIngredient()
-                if !viewModel.prepIngredientRecipe.isEmpty {
-                    viewModel.prep = Prep(prepIngredientName: viewModel.ingredientName, prepRecipe: viewModel.prepIngredientRecipe)
+        Section {
+            UniversalBlueButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), includeBorder: true) {
+                if viewModel.customIngredientIsValid(allIngredients: ingredients) {
+                    viewModel.removeIngredient()
+                    
+                    if !viewModel.prepIngredientRecipe.isEmpty {
+                        viewModel.prep = Prep(prepIngredientName: viewModel.ingredientName, prepRecipe: viewModel.prepIngredientRecipe)
+                    }
+                    if let ingredientValue = viewModel.ingredientAmount {
+                        viewModel.addedIngredients.append(Ingredient(ingredientBase: IngredientBase(name: viewModel.ingredientName,
+                                                                                                    category: viewModel.category,
+                                                                                                    prep: viewModel.prep, isCustom: true),
+                                                                     value: ingredientValue,
+                                                                     unit: viewModel.selectedMeasurementUnit))
+                    }
+                    
+                    
+                    viewModel.clearIngredientData()
+                    isShowingAddIngredients = false
+                    isShowingCustomIngredientView = false
                 }
-                viewModel.addedIngredients.append(Ingredient(ingredientBase: IngredientBase(name: viewModel.ingredientName,
-                                                                                            category: viewModel.category,
-                                                                                            prep: viewModel.prep, isCustom: true),
-                                                             value: viewModel.ingredientAmount,
-                                                             unit: viewModel.selectedMeasurementUnit))
-                                                  
-                viewModel.clearIngredientData()
-                isShowingAddIngredients = false
-                isShowingCustomIngredientView = false
-            } else {
-                viewModel.isShowingingredientAlert.toggle()
             }
-            
-        } label: {
-            
-            HStack {
-                Image(systemName: "plus.circle.fill")
-                    .font(.headline).bold()
-                Text("Add to spec")
-                    .font(FontFactory.formLabel18)
-            }
-            .tint(ColorScheme.interactionTint)
-            .padding()
+            .foregroundStyle(viewModel.customIngredientIsValid(allIngredients: ingredients) ? ColorScheme.interactionTint : Color.secondary)
+            .disabled(viewModel.customIngredientIsValid(allIngredients: ingredients) ? false : true)
         }
-        .frame(width: 380, height: 40,  alignment: .center)
+        .listRowBackground(Color.clear)
     }
 }

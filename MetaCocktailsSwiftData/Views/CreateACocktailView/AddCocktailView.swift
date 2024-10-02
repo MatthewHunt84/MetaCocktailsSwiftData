@@ -5,7 +5,7 @@ struct AddCocktailView: View {
     
     @Bindable var viewModel = AddCocktailViewModel()
     @State private var isShowingAddIngredients: Bool = false
-    @State private var addExistingGarnishViewIsActive: Bool = false
+    @State private var isShowingAddGarnishView: Bool = false
     @State private var isShowingCustomIngredientView: Bool = false
     @Environment(\.modelContext) private var modelContext
     @Environment(\.currentTab) private var selectedTab
@@ -45,7 +45,7 @@ struct AddCocktailView: View {
                     VariationInfoView(isShowingInfo: $isShowingInfo)
                     
                     Section(header: Text("Garnish").font(FontFactory.sectionHeader12)) {
-                        GarnishPicker(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive)
+                        GarnishPicker(viewModel: viewModel, addExistingGarnishViewIsActive: $isShowingAddGarnishView)
                     }
                     
                     Section(header: Text("Credit (optional)").font(FontFactory.sectionHeader12)) {
@@ -119,8 +119,8 @@ struct AddCocktailView: View {
                     
                     
                 }
-                .fullScreenCover(isPresented: $addExistingGarnishViewIsActive) {
-                    GarnishDetailView(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive)
+                .fullScreenCover(isPresented: $isShowingAddGarnishView) {
+                    GarnishDetailView(viewModel: viewModel)
                         .navigationBarBackButtonHidden(true)
                 }
                 .fullScreenCover(isPresented: $isShowingAddIngredients) {

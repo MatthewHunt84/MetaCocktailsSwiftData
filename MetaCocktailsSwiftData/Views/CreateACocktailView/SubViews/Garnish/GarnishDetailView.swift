@@ -10,115 +10,52 @@ import SwiftData
 
 struct GarnishDetailView: View {
     @Bindable var viewModel: AddCocktailViewModel
-    @Binding var addExistingGarnishViewIsActive: Bool
-    @FocusState private var keyboardFocused: Bool
-    @FocusState private var amountKeyboardFocused: Bool
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.modelContext) private var modelContext
     
     var body: some View {
         
-        NavigationStack{
+        NavigationStack {
             
             ZStack {
                 
-                ColorScheme.background.ignoresSafeArea()
+                BlackGlassBackgroundView().ignoresSafeArea()
                 
                 List {
-                    AddGarnishSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused)
-                    AddExistingGarnishToCocktailButton(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive)
-                    CreateCustomGarnishButton(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive)
-                        .padding()
+                    
+                    AddExistingGarnishSearchBarAndListView(viewModel: viewModel)
+                    
+                    CreateCustomGarnishButton(viewModel: viewModel)
+                    
+                    AddExistingGarnishToCocktailButton(viewModel: viewModel)
+                    
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .jamesHeaderWithNavigation(title: "Add Garnish", dismiss: dismiss)
                 .scrollContentBackground(.hidden)
-                .background(Color.clear)
-                .toolbar {
-                    ToolbarItemGroup(placement: .keyboard) {
-                        KeyboardDoneButton(keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
-                    }
-                }
-                .task {
-                    keyboardFocused = true
-                }
-                
-                if viewModel.isShowingingredientAlert {
-                    CustomAlertView(isActive: $viewModel.isShowingingredientAlert,
-                                    title: "",
-                                    message: "Please choose from an existing garnish. If you'd like to make your own, press 'Create Custom Garnish'",
-                                    buttonTitle: "Yes, Chef",
-                                    action: {})
-                    .zIndex(2)
-                }
             }
         }
     }
 }
 
-
-#Preview {
-    GarnishDetailView(viewModel: AddCocktailViewModel(), addExistingGarnishViewIsActive: .constant(true))
-}
-
-struct AddGarnishSearchView: View {
-    
-    @Bindable var viewModel: AddCocktailViewModel
-    @FocusState var keyboardFocused: Bool
-    @Query(sort: \Garnish.name) var garnish: [Garnish]
-    @State private var filteredGarnish: [String] = []
-    
-    
-    var body: some View {
-        Section(header: Text("Name").font(FontFactory.sectionHeader12)) {
-            VStack{
-                TextField("Garnish Name", text: $viewModel.currentGarnishName)
-                    .focused($keyboardFocused)
-                    .font(FontFactory.formLabel18)
-                    .onChange(of: viewModel.currentGarnishName, initial: true) { old, new in
-                        viewModel.currentGarnishName = new
-                        filteredGarnish = viewModel.matchAllGarnish(garnishes: garnish)
-                    }
-            }
-            if keyboardFocused {
-                ForEach(filteredGarnish, id: \.self) { garnish in
-                    Button {
-                        viewModel.currentGarnishName = garnish
-                        viewModel.didChooseExistingGarnish = true
-                        keyboardFocused = false
-                    } label: {
-                        Text(garnish)
-                    }
-                    .tint(.primary)
-                }
-                .listStyle(.plain)
-                .listRowBackground(Color.clear)
-            } else {
-                EmptyView()
-            }
-        }
-    }
-}
 struct AddExistingGarnishToCocktailButton: View {
     @Bindable var viewModel: AddCocktailViewModel
     @Environment(\.dismiss) private var dismiss
     @Query(sort: \Garnish.name) var garnish: [Garnish]
     @Environment(\.modelContext) private var modelContext
-    @Binding var addExistingGarnishViewIsActive: Bool
     
     var body: some View {
         Section {
-            UniversalBlueButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), includeBorder: true) {
-                if viewModel.existingGarnishIsValid(allGarnishes: garnish) {
+            
+            if viewModel.customGarnishNameEntered == nil {
+                UniversalBlueButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), includeBorder: true) {
                     viewModel.addExistingGarnishToCocktail(context: modelContext)
-                    addExistingGarnishViewIsActive = false
-                } else {
-                    viewModel.isShowingingredientAlert.toggle()
-                    viewModel.didChooseExistingIngredient = false
+                    dismiss()
                 }
+                .disabled(viewModel.existingGarnishIsValid(allGarnishes: garnish) ? false : true)
+                .foregroundStyle(viewModel.existingGarnishIsValid(allGarnishes: garnish) ? ColorScheme.interactionTint : Color.red)
+            } else {
+                EmptyView()
             }
-            .disabled(viewModel.currentGarnishName == "" ? true : false)
-            .foregroundStyle(viewModel.currentGarnishName == "" ? ColorScheme.interactionTint : Color.secondary)
         }
         .listRowBackground(Color.clear)
     }
@@ -126,22 +63,98 @@ struct AddExistingGarnishToCocktailButton: View {
 
 struct CreateCustomGarnishButton: View {
     @Bindable var viewModel: AddCocktailViewModel
-    @Binding var addExistingGarnishViewIsActive: Bool
+    @Query(sort: \Garnish.name) var garnish: [Garnish]
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        Section {
-            NavigationLinkWithoutIndicator {
-                HStack{
-                    Text("Create Custom Garnish")
-                        .font(FontFactory.bottomToolbarButton20)
-                    Image(systemName: "plus")
+        
+        if let customName = viewModel.customGarnishNameEntered, !viewModel.addedGarnish.contains(where: { $0.name == customName }), customName != "" {
+            Section {
+                UniversalBlueButton(buttonText: "Add \"\(customName)\" garnish", rightImage: Image(systemName: "plus"), includeBorder: true) {
+                    if viewModel.customGarnishIsValid(allGarnishes: garnish) {
+                        viewModel.addedGarnish.append(Garnish(name: customName))
+                        viewModel.clearIngredientData()
+                        dismiss()
+                    } else {
+                        for name in garnish {
+                            if name.name == customName {
+                                viewModel.addedGarnish.append(name)
+                                viewModel.clearIngredientData()
+                                dismiss()
+                            }
+                        }
+                    }
                 }
-                .foregroundStyle(ColorScheme.interactionTint)
-            } destination: {
-                AddCustomGarnishView(viewModel: viewModel, addExistingGarnishViewIsActive: $addExistingGarnishViewIsActive)
-                    .navigationBarBackButtonHidden(true)
             }
+            .listRowBackground(Color.clear)
+            .frame(maxWidth: .infinity, alignment: .center)
         }
-        .listRowBackground(Color.clear)
+        else {
+            EmptyView()
+        }
     }
 }
+
+struct AddExistingGarnishSearchBarAndListView: View {
+    @Bindable var viewModel: AddCocktailViewModel
+    @FocusState var keyboardFocused: Bool
+    @Query(sort: \Garnish.name) var garnish: [Garnish]
+    
+    var body: some View {
+        
+        Section(header:  Text("Choose garnish").font(FontFactory.sectionHeader12)) {
+            
+            TextField("Search for garnish...", text: $viewModel.currentGarnishName)
+                .focused($keyboardFocused)
+                .font(FontFactory.formLabel18)
+                .onChange(of: viewModel.currentGarnishName, initial: true) { old, new in
+                    viewModel.customGarnishNameEntered = nil
+                    viewModel.currentGarnishName = new
+                    viewModel.filteredGarnish = viewModel.matchAllGarnish(garnishes: garnish)
+                }
+                .clearSearchButton(text: $viewModel.currentGarnishName, isEmbeddedInSection: true) {
+                    viewModel.currentGarnishName = ""
+                }
+                .submitLabel(.done)
+                .onSubmit {
+                    if !viewModel.filteredGarnish.contains(where: { $0 == viewModel.currentGarnishName } ) {
+                        withAnimation {
+                            viewModel.customGarnishNameEntered = viewModel.currentGarnishName
+                            viewModel.didChooseExistingGarnish = false
+                        }
+                    } else {
+                        viewModel.customGarnishNameEntered = nil
+                    }
+                }
+            
+            if keyboardFocused && viewModel.currentGarnishName != "" {
+                if !viewModel.filteredGarnish.isEmpty {
+                    ForEach(viewModel.filteredGarnish, id: \.self) { garnish in
+                        Button {
+                            viewModel.currentGarnishName = garnish
+                            viewModel.didChooseExistingGarnish = true
+                            keyboardFocused = false
+                        } label: {
+                            Text(garnish)
+                        }
+                        .tint(.primary)
+                    }
+                    .listStyle(.plain)
+                    .listRowBackground(Color.clear)
+                } else {
+                    ContentUnavailableView("No matching garnishes",
+                                           systemImage: "magnifyingglass",
+                                           description: Text("Click done to add \"\(viewModel.currentGarnishName)\" to garnish library"))
+                    .listStyle(.plain)
+                    .listRowBackground(Color.clear)
+                }
+            } else {
+                EmptyView()
+            }
+        }
+    }
+}
+
+//#Preview {
+//    GarnishDetailView(viewModel: AddCocktailViewModel(), addExistingGarnishViewIsActive: .constant(true))
+//}

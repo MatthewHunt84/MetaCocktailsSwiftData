@@ -70,16 +70,8 @@ struct SearchBarForCreateCocktailView: View {
             .SearchBarTextField()
             .focused($isFocused)
             .animation(.easeInOut(duration: 0.2), value: isFocused)
-            .overlay(alignment: .trailing) {
-                if !viewModel.searchText.isEmpty {
-                    Button {
-                        viewModel.searchText = ""
-                    } label: {
-                        Image(systemName: "x.circle.fill")
-                            .tint(ColorScheme.interactionTint)
-                    }
-                    .padding(.horizontal, 20)
-                }
+            .clearSearchButton(text: $viewModel.searchText) {
+                viewModel.searchText = ""
             }
             .onChange(of: viewModel.searchText) { _, newValue in
                 viewModel.updateSearch(newValue)

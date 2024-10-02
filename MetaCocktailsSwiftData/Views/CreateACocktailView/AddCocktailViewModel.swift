@@ -17,7 +17,7 @@ import Combine
 
     //AddIngredientView
     var category: UmbrellaCategory = UmbrellaCategory.agaves
-    var ingredientAmount = 0.0
+    var ingredientAmount: Double? = nil
     var ingredientTags = Tags()
     
     var selectedMeasurementUnit = MeasurementUnit.fluidOunces
@@ -49,8 +49,10 @@ import Combine
     //Garnish
     var addedGarnish: [Garnish] = []
     var currentGarnishName: String = ""
+    var customGarnishNameEntered: String? 
     var didChooseExistingGarnish: Bool = false
     var addExistingGarnishViewIsActive: Bool = false
+    var filteredGarnish: [String] = []
     
     // Extras
     var uniqueGlasswareName: Glassware?
@@ -117,7 +119,7 @@ import Combine
     func clearIngredientData() {
         ingredientName = ""
         currentGarnishName = ""
-        ingredientAmount = 0
+        ingredientAmount = nil
         prep = nil
         selectedMeasurementUnit = .fluidOunces
         prepIngredientRecipe = []
@@ -175,18 +177,16 @@ import Combine
     }
     
     func existingIngredientIsValid(allIngredients: [IngredientBase]) -> Bool {
-        
-        return ingredientAmount != 0.0 &&
-        didChooseExistingIngredient == true &&
-        allIngredients.contains(where: { $0.name == ingredientName } )
+        return ingredientAmount != nil &&
+        allIngredients.contains(where: { $0.name == ingredientName }) &&
+        !addedIngredients.contains(where: { $0.ingredientBase.name == ingredientName })
     }
     
     func existingGarnishIsValid(allGarnishes: [Garnish]) -> Bool {
         
-        return currentGarnishName != "" &&
-        didChooseExistingGarnish == true &&
-        allGarnishes.contains(where: { $0.name == currentGarnishName })
-        
+        return didChooseExistingGarnish == true &&
+        allGarnishes.contains(where: { $0.name == currentGarnishName }) &&
+        !addedGarnish.contains(where: { $0.name == currentGarnishName })
     }
     
     @MainActor
@@ -300,7 +300,7 @@ import Combine
     func customIngredientIsValid(allIngredients: [IngredientBase]) -> Bool {
         
         return ingredientName != "" &&
-        ingredientAmount != 0.0 &&
+        ingredientAmount != nil &&
         !allIngredients.contains(where: { $0.name == ingredientName } )
     }
     func removeIngredient() {

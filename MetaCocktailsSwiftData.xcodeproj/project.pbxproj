@@ -136,7 +136,6 @@
 		4D5DA0BC2BA1345B00C14F1F /* Saladito.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5DA0BB2BA1345B00C14F1F /* Saladito.swift */; };
 		4D5DA0BE2BA145A600C14F1F /* TheSeaplane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5DA0BD2BA145A600C14F1F /* TheSeaplane.swift */; };
 		4D67612E2C3EE46A00A5939C /* GarnishDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D67612D2C3EE46A00A5939C /* GarnishDetailView.swift */; };
-		4D6761302C3F317D00A5939C /* AddCustomGarnishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D67612F2C3F317D00A5939C /* AddCustomGarnishView.swift */; };
 		4D6761372C448E3200A5939C /* IngredientSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6761362C448E3200A5939C /* IngredientSearchView.swift */; };
 		4D6761392C44902C00A5939C /* DefaultIngredientSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6761382C44902C00A5939C /* DefaultIngredientSearchCell.swift */; };
 		4D67613E2C44B62000A5939C /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D67613D2C44B62000A5939C /* SearchViewModel.swift */; };
@@ -512,6 +511,7 @@
 		F440160F2CA6F49500839E6A /* RecipeButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F440160E2CA6F49000839E6A /* RecipeButtons.swift */; };
 		F4441CEC2C9F7AB80025E988 /* default.store in Resources */ = {isa = PBXBuildFile; fileRef = F4441CE82C9F7AB80025E988 /* default.store */; };
 		F4538E032C91F99E004B686A /* FindCocktailUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4538E022C91F997004B686A /* FindCocktailUserInfoView.swift */; };
+		F45C3A8F2CAC60C600AFBBA6 /* Overlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45C3A8E2CAC60BF00AFBBA6 /* Overlays.swift */; };
 		F47AE7B02CA5FE060070E7A8 /* AnimationModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47AE7AF2CA5FDFE0070E7A8 /* AnimationModifiers.swift */; };
 		F47FBF652C6BF5EB00CD599E /* CustomLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47FBF642C6BF5EB00CD599E /* CustomLoadingIndicator.swift */; };
 		F4872FEE2C4353E10092F8FF /* DummyCocktails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4872FED2C4353E10092F8FF /* DummyCocktails.swift */; };
@@ -686,7 +686,6 @@
 		4D5DA0BB2BA1345B00C14F1F /* Saladito.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saladito.swift; sourceTree = "<group>"; };
 		4D5DA0BD2BA145A600C14F1F /* TheSeaplane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheSeaplane.swift; sourceTree = "<group>"; };
 		4D67612D2C3EE46A00A5939C /* GarnishDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarnishDetailView.swift; sourceTree = "<group>"; };
-		4D67612F2C3F317D00A5939C /* AddCustomGarnishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomGarnishView.swift; sourceTree = "<group>"; };
 		4D6761362C448E3200A5939C /* IngredientSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientSearchView.swift; sourceTree = "<group>"; };
 		4D6761382C44902C00A5939C /* DefaultIngredientSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultIngredientSearchCell.swift; sourceTree = "<group>"; };
 		4D67613D2C44B62000A5939C /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
@@ -1062,6 +1061,7 @@
 		F440160E2CA6F49000839E6A /* RecipeButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeButtons.swift; sourceTree = "<group>"; };
 		F4441CE82C9F7AB80025E988 /* default.store */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.store; sourceTree = "<group>"; };
 		F4538E022C91F997004B686A /* FindCocktailUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindCocktailUserInfoView.swift; sourceTree = "<group>"; };
+		F45C3A8E2CAC60BF00AFBBA6 /* Overlays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overlays.swift; sourceTree = "<group>"; };
 		F473FFD22C2716C4008689D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F47AE7AF2CA5FDFE0070E7A8 /* AnimationModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationModifiers.swift; sourceTree = "<group>"; };
 		F47FBF642C6BF5EB00CD599E /* CustomLoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoadingIndicator.swift; sourceTree = "<group>"; };
@@ -1616,7 +1616,6 @@
 			isa = PBXGroup;
 			children = (
 				4D67612D2C3EE46A00A5939C /* GarnishDetailView.swift */,
-				4D67612F2C3F317D00A5939C /* AddCustomGarnishView.swift */,
 			);
 			path = Garnish;
 			sourceTree = "<group>";
@@ -2001,6 +2000,7 @@
 		F493F3B22C6D256F006A0ADB /* Design */ = {
 			isa = PBXGroup;
 			children = (
+				F45C3A8E2CAC60BF00AFBBA6 /* Overlays.swift */,
 				F4F3D4212C90996200BB6767 /* ColorScheme.swift */,
 				F4AA6BB92C7E2C4D00610D80 /* FontFactory.swift */,
 				F4AA6BB72C7E2B8600610D80 /* Headers.swift */,
@@ -2447,6 +2447,7 @@
 				4DBBA47C2B6877CC00179B8F /* LaLouisiane(W&G).swift in Sources */,
 				4DCB172C2BA4EA6D0002D7D9 /* TritterCollins.swift in Sources */,
 				4DF408CA2B60D80C00EF9A6E /* ChocolateCocktail.swift in Sources */,
+				F45C3A8F2CAC60C600AFBBA6 /* Overlays.swift in Sources */,
 				4DBAE6EB2C71285800F3DBFD /* Conference.swift in Sources */,
 				4DA567962B6CCD6A003F6F04 /* NorthmansConquest.swift in Sources */,
 				4DA567362B6AE48F003F6F04 /* Scofflaw.swift in Sources */,
@@ -2603,7 +2604,6 @@
 				4DCB170C2BA418B00002D7D9 /* TheTieBinder.swift in Sources */,
 				F4F3D4222C90996E00BB6767 /* ColorScheme.swift in Sources */,
 				F440160D2CA6F40B00839E6A /* RecipeSubViews.swift in Sources */,
-				4D6761302C3F317D00A5939C /* AddCustomGarnishView.swift in Sources */,
 				F4AA6BBA2C7E2C4F00610D80 /* FontFactory.swift in Sources */,
 				F493F3B12C6CFC72006A0ADB /* SelectionTagViewModel.swift in Sources */,
 				1AC386C82AAABED10064F52A /* PrepBible.swift in Sources */,
