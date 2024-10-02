@@ -4,8 +4,8 @@
 <dict>
 	<key>UILaunchScreen</key>
 	<dict>
-		<key>UIImageName</key>
-		<string>newsplashpng</string>
+		<key>UIColorName</key>
+		<string>DarkGrey</string>
 	</dict>
 </dict>
 </plist>
