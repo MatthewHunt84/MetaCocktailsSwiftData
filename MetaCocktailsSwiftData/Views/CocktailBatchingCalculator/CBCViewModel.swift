@@ -44,6 +44,7 @@ final class CBCViewModel: ObservableObject {
     @Published var splitBatchData: [SplitBatchCellData] = []
     @Published var containerSizeLabel = "4 Liter"
     @Published var groupedContainerSizes: [(label: String, volume: Int)] = []
+    @Published var containerSizes: [(label: String, volume: Int)] = []
     
     var  formatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -52,12 +53,9 @@ final class CBCViewModel: ObservableObject {
         return formatter
     }()
     
-    func groupContainerSizes() {
-      
-        var containerSizes: [(label: String, volume: Int)] = []
+    func makeDynamicContainerSizes() {
+        containerSizes = []
         var size = 4000
-        
-        // create dynamic labels
         while getContainerCount(for: size) > 1 {
             
             var label = "\(size / 1000) Liter"
@@ -72,9 +70,12 @@ final class CBCViewModel: ObservableObject {
             finalLabel = "19 Liter (5 Gallon) +"
         }
         containerSizes.append((label: finalLabel, volume: size))
+    }
+    
+    func groupContainerSizes() {
         
+        makeDynamicContainerSizes()
         
-        // All this stuff is the same as before 
         var groups: [[(label: String, volume: Int)]] = []
         var currentGroup: [(label: String, volume: Int)] = []
         var containerCountForThePreviousSize = 0
