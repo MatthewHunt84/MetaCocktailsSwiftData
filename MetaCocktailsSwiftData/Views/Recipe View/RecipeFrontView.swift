@@ -93,11 +93,11 @@ struct RecipeFlipCardView: View {
                 
                 ZStack {
                     
-                    BackgroundGlowAnimation(color: Color.redGold)
+                    BackgroundGlowAnimation(color: viewModel.cocktail.favorite ? Color.redGold : ColorScheme.tintColor, isFavorite: $viewModel.cocktail.favorite)
                     
                     Border(height: outerGeo.size.height, color: $borderColor)
                     
-                    ScrollView {
+                    FadingEdgesScrollView {
                         
                         VStack(alignment: .leading, spacing: 20) {
                             
@@ -121,15 +121,8 @@ struct RecipeFlipCardView: View {
                                     .frame(maxWidth: .infinity, alignment: .center)
                                 
                             }
-                            
-                            HStack {
-                                Spacer()
-                                FavoriteButton(for: viewModel.cocktail)
-                            }
-                            .padding(.bottom, 16)
-                            .padding(.trailing, 16)
                         }
-                        .padding()
+                        .padding(.horizontal)
                     }
                     .frame(width: outerGeo.size.width * 0.88, height: viewModel.contentSize(for: outerGeo.size.height))
                     .scrollIndicators(.hidden)

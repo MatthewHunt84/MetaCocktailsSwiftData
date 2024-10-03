@@ -73,7 +73,7 @@
 		4D1442CD2C976BB7006C882F /* PinaColada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1442CC2C976BB7006C882F /* PinaColada.swift */; };
 		4D1442CF2C977092006C882F /* WhiskeySourWnG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1442CE2C977092006C882F /* WhiskeySourWnG.swift */; };
 		4D1442D12C9B72AA006C882F /* BottleMathModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1442D02C9B72AA006C882F /* BottleMathModalView.swift */; };
-		4D1442D32C9FE5E3006C882F /* UniversalBlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1442D22C9FE5E3006C882F /* UniversalBlueButton.swift */; };
+		4D1442D32C9FE5E3006C882F /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1442D22C9FE5E3006C882F /* Buttons.swift */; };
 		4D1E85B12B5C6AEA00214BC6 /* GreatWhiteBuffalo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E85B02B5C6AEA00214BC6 /* GreatWhiteBuffalo.swift */; };
 		4D1E85B32B5C737D00214BC6 /* PeanutButterFalon .swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E85B22B5C737D00214BC6 /* PeanutButterFalon .swift */; };
 		4D1E85B52B5C7B6500214BC6 /* NetfilixAndChill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E85B42B5C7B6500214BC6 /* NetfilixAndChill.swift */; };
@@ -509,7 +509,6 @@
 		F44016092CA6F37B00839E6A /* RecipeBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44016082CA6F37300839E6A /* RecipeBackView.swift */; };
 		F440160B2CA6F3BC00839E6A /* RecipeBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F440160A2CA6F3B600839E6A /* RecipeBorder.swift */; };
 		F440160D2CA6F40B00839E6A /* RecipeSubViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = F440160C2CA6F40500839E6A /* RecipeSubViews.swift */; };
-		F440160F2CA6F49500839E6A /* RecipeButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F440160E2CA6F49000839E6A /* RecipeButtons.swift */; };
 		F4441CEC2C9F7AB80025E988 /* default.store in Resources */ = {isa = PBXBuildFile; fileRef = F4441CE82C9F7AB80025E988 /* default.store */; };
 		F4538E032C91F99E004B686A /* FindCocktailUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4538E022C91F997004B686A /* FindCocktailUserInfoView.swift */; };
 		F45C3A8F2CAC60C600AFBBA6 /* Overlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45C3A8E2CAC60BF00AFBBA6 /* Overlays.swift */; };
@@ -624,7 +623,7 @@
 		4D1442CC2C976BB7006C882F /* PinaColada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinaColada.swift; sourceTree = "<group>"; };
 		4D1442CE2C977092006C882F /* WhiskeySourWnG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiskeySourWnG.swift; sourceTree = "<group>"; };
 		4D1442D02C9B72AA006C882F /* BottleMathModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleMathModalView.swift; sourceTree = "<group>"; };
-		4D1442D22C9FE5E3006C882F /* UniversalBlueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalBlueButton.swift; sourceTree = "<group>"; };
+		4D1442D22C9FE5E3006C882F /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		4D1E85B02B5C6AEA00214BC6 /* GreatWhiteBuffalo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreatWhiteBuffalo.swift; sourceTree = "<group>"; };
 		4D1E85B22B5C737D00214BC6 /* PeanutButterFalon .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PeanutButterFalon .swift"; sourceTree = "<group>"; };
 		4D1E85B42B5C7B6500214BC6 /* NetfilixAndChill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetfilixAndChill.swift; sourceTree = "<group>"; };
@@ -1060,7 +1059,6 @@
 		F44016082CA6F37300839E6A /* RecipeBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeBackView.swift; sourceTree = "<group>"; };
 		F440160A2CA6F3B600839E6A /* RecipeBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeBorder.swift; sourceTree = "<group>"; };
 		F440160C2CA6F40500839E6A /* RecipeSubViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSubViews.swift; sourceTree = "<group>"; };
-		F440160E2CA6F49000839E6A /* RecipeButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeButtons.swift; sourceTree = "<group>"; };
 		F4441CE82C9F7AB80025E988 /* default.store */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.store; sourceTree = "<group>"; };
 		F4538E022C91F997004B686A /* FindCocktailUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindCocktailUserInfoView.swift; sourceTree = "<group>"; };
 		F45C3A8E2CAC60BF00AFBBA6 /* Overlays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overlays.swift; sourceTree = "<group>"; };
@@ -1409,7 +1407,6 @@
 				F44016082CA6F37300839E6A /* RecipeBackView.swift */,
 				F440160A2CA6F3B600839E6A /* RecipeBorder.swift */,
 				F440160C2CA6F40500839E6A /* RecipeSubViews.swift */,
-				F440160E2CA6F49000839E6A /* RecipeButtons.swift */,
 				4D088FC92B62E3640047B056 /* RecipeViewModel.swift */,
 				1AC386992AAABED00064F52A /* SubViews */,
 			);
@@ -2007,7 +2004,7 @@
 				F4F3D4212C90996200BB6767 /* ColorScheme.swift */,
 				F4AA6BB92C7E2C4D00610D80 /* FontFactory.swift */,
 				F4AA6BB72C7E2B8600610D80 /* Headers.swift */,
-				4D1442D22C9FE5E3006C882F /* UniversalBlueButton.swift */,
+				4D1442D22C9FE5E3006C882F /* Buttons.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -2276,7 +2273,7 @@
 				4DBFF81D2B5FB0840011B5B1 /* Americano(WilliamsAndGraham).swift in Sources */,
 				4D5DA0A02B9FEAF300C14F1F /* FrescaPlatino.swift in Sources */,
 				F4C6A8F32AB003C200BB0AD0 /* Localization.swift in Sources */,
-				4D1442D32C9FE5E3006C882F /* UniversalBlueButton.swift in Sources */,
+				4D1442D32C9FE5E3006C882F /* Buttons.swift in Sources */,
 				F4C6A8EC2AAFFE5700BB0AD0 /* Tags.swift in Sources */,
 				F493F3AB2C6CF18D006A0ADB /* SelectedIngredientView.swift in Sources */,
 				4D088FCA2B62E3640047B056 /* RecipeViewModel.swift in Sources */,
@@ -2457,7 +2454,6 @@
 				4DA567362B6AE48F003F6F04 /* Scofflaw.swift in Sources */,
 				1AC386C02AAABED10064F52A /* BlackberrySageSmash.swift in Sources */,
 				4DBFF84F2B609F1F0011B5B1 /* BrownDerby(OGRumVersion).swift in Sources */,
-				F440160F2CA6F49500839E6A /* RecipeButtons.swift in Sources */,
 				F40FB6B12B7E38DA0047D597 /* CocktailCollection.swift in Sources */,
 				4DA567582B6C43CA003F6F04 /* UltimaPalabra(London).swift in Sources */,
 				4DBBA42A2B65A2FC00179B8F /* Grasshopper.swift in Sources */,
@@ -2880,8 +2876,8 @@
 				INFOPLIST_FILE = MetaCocktailsSwiftData/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2890,9 +2886,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewhunt.gmail.MetaCocktailsSwiftData;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -2910,8 +2910,8 @@
 				INFOPLIST_FILE = MetaCocktailsSwiftData/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2920,9 +2920,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewhunt.gmail.MetaCocktailsSwiftData;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
