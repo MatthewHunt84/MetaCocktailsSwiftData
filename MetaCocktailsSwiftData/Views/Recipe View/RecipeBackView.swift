@@ -16,7 +16,7 @@ struct RecipeViewBack: View {
         
         ZStack {
             
-            BackgroundGlowAnimation(color: .blue)
+            BackgroundGlowAnimation(color: .blue, isFavorite: .constant(false))
             
             Border(height: parentGeo.size.height, color: $secondaryBackgroundColor)
             

@@ -93,7 +93,7 @@ struct RecipeFlipCardView: View {
                 
                 ZStack {
                     
-                    BackgroundGlowAnimation(color: Color.redGold)
+                    BackgroundGlowAnimation(color: viewModel.cocktail.favorite ? Color.redGold : ColorScheme.tintColor, isFavorite: $viewModel.cocktail.favorite)
                     
                     Border(height: outerGeo.size.height, color: $borderColor)
                     
