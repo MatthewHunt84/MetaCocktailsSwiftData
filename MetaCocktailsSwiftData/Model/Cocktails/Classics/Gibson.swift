@@ -12,7 +12,7 @@ var gibson   = Cocktail(cocktailName: "Gibson",
                         garnish: [.cocktailOnion],
                         author: Author(place: "Bohemian Club, San Francisco", year: "1898"),
                         spec: gibsonSpec,
-                        notes: ginsonNotes,
+                        notes: gibsonNotes,
                         tags: gibsonTags,
                         variation: .martini,
                         collection: .originals)
