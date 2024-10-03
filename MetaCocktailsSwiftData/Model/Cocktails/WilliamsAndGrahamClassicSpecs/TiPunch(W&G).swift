@@ -24,5 +24,3 @@ var tiPunchSpecWnG  =  [OldCocktailIngredient(.syrups(.simple), value: 1, unit: 
 var tiPunchTagsWnG = Tags(flavors: [.lime],
                           profiles: [.sweet, .spiritForward, .funky],
                           styles: [.oldFashioned, .stirred])
-
-var tiPunchNotesWnG = "Think of this like an Old Fashioned without the bitters."

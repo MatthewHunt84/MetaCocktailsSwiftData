@@ -29,5 +29,3 @@ var aperolSpritzTags = Tags(flavors: [.orange, .rhubarb, .grapefruit],
                             profiles: [.bittersweet, .refreshing, .effervescent],
                             styles: [.spritz, .built])
 
-
-var aperolSpritzNotes = "Aperol was introduced to the market in 1919, initially enjoyed primarily with soda water. Around the mid-20th century, this bitter liqueur found its way into the classic Italian spritz, enhancing the popular drink with the addition of sparkling wine. A significant turning point came in 2003 when the Campari company acquired Aperol. They launched a highly effective advertising campaign that dramatically increased the drink's global popularity. As a result of this marketing success, the Aperol Spritz has become a universally recognized cocktail."

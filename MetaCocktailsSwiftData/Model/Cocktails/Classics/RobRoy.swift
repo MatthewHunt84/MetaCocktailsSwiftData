@@ -25,5 +25,3 @@ var robRoySpec     =  [OldCocktailIngredient(.bitters(.angosturaBitters), value:
 var robRoyTags     = Tags(flavors: [.orange],
                           profiles: [.spiritForward, .punchy, .fruity],
                           styles: [.manhattan, .stirred])
-
-var robRoyNotes = "The Manhattan, Rob Roy, and Emerald cocktails all emerged in the late 19th century, with the Manhattan serving as the inspiration for the other two. The Manhattan led to the creation of the Rob Roy, substituting Scotch whisky in place of American whiskey. The Emerald meanwhile features Irish whiskey instead."

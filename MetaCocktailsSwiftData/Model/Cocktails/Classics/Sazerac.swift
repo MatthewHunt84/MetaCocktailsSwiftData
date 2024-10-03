@@ -34,7 +34,3 @@ var sazeracBuild = Build(instructions: [Instruction(step: 1, method: "Add all in
                                         Instruction(step: 2, method: "Spray your frozen single old fashioned glass with 5 spritzes of absinthe. Another option is to ad 1/4 oz. into the glass and spin to glaze the inside. "),
                                         Instruction(step: 3, method: "Add your cocktail to the rinsed glass"),
                                         Instruction(step: 5, method: "Garnish with a lemon twist.")])
-                     
-
-
-var sazeracNotes = "This is a more modernized version of the original cocktail, which had a base of Cognac. This is also our prefered version of the Sazerac. Making a rich dem adds texture to the cocktail and also has the added benifit of fully emulsifying. A sugar cube does not."

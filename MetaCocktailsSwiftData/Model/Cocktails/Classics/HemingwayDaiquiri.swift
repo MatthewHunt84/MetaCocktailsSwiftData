@@ -27,5 +27,3 @@ var hemingwayDaiquiriSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.jui
 
 var hemingwayDaiquiriTags = Tags(profiles: [.citrusy, .tart, .punchy],
                                  styles: [.daisy, .shaken, .sour, .blended])
-
-var hemingwayNote = "The original cocktail stemmed from the Daiquiri No. 3 at La Floridita, which actually was one of the first blended Daiquiris to ever exist as Constantino 'Constante' Ribalaigua was utilizing the latest technology that existed at the time, the blender. Hemingway loved the cocktail but asked for it with no sugar and double the rum making it an insanely tart and punchy cocktail. The cocktail is unbalanced but I think it's important to understand where this cocktail came from and why it exists."

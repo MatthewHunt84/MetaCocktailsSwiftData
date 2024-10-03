@@ -29,5 +29,3 @@ var redWeddingSpec = [OldCocktailIngredient(.seasoning(.saline), value: 5, unit:
 var redWeddingTags = Tags(flavors: [.orange],
                           profiles: [.rich, .bittersweet, .punchy, .bitter],
                           styles: [.negroni, .stirred])
-
-var redWeddingNotes = "This is a modified version of the original, which had 1.5 oz. mezcal and .25 oz. Sfumato. This updated version is the one you'll currently get from James at the bar."

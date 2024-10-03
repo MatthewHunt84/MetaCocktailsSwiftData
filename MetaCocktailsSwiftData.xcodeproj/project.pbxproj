@@ -505,6 +505,7 @@
 		4DF637A52C7C522100B2E3BF /* HistoricalCocktailModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF637A42C7C522100B2E3BF /* HistoricalCocktailModalView.swift */; };
 		F40FB6B12B7E38DA0047D597 /* CocktailCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40FB6B02B7E38DA0047D597 /* CocktailCollection.swift */; };
 		F41045072AD4FD42000CA913 /* CocktailImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41045062AD4FD42000CA913 /* CocktailImageView.swift */; };
+		F434A0D62CAEF73E00F75168 /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434A0D52CAEF73900F75168 /* Notes.swift */; };
 		F44016092CA6F37B00839E6A /* RecipeBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44016082CA6F37300839E6A /* RecipeBackView.swift */; };
 		F440160B2CA6F3BC00839E6A /* RecipeBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F440160A2CA6F3B600839E6A /* RecipeBorder.swift */; };
 		F440160D2CA6F40B00839E6A /* RecipeSubViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = F440160C2CA6F40500839E6A /* RecipeSubViews.swift */; };
@@ -1055,6 +1056,7 @@
 		4DF637A42C7C522100B2E3BF /* HistoricalCocktailModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalCocktailModalView.swift; sourceTree = "<group>"; };
 		F40FB6B02B7E38DA0047D597 /* CocktailCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailCollection.swift; sourceTree = "<group>"; };
 		F41045062AD4FD42000CA913 /* CocktailImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImageView.swift; sourceTree = "<group>"; };
+		F434A0D52CAEF73900F75168 /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
 		F44016082CA6F37300839E6A /* RecipeBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeBackView.swift; sourceTree = "<group>"; };
 		F440160A2CA6F3B600839E6A /* RecipeBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeBorder.swift; sourceTree = "<group>"; };
 		F440160C2CA6F40500839E6A /* RecipeSubViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSubViews.swift; sourceTree = "<group>"; };
@@ -1173,6 +1175,7 @@
 		1AC386872AAABED00064F52A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F434A0D52CAEF73900F75168 /* Notes.swift */,
 				F4C6A8F42AB0042400BB0AD0 /* Cocktail.swift */,
 				F4441CEE2C9F82A70025E988 /* Database */,
 				F4872FEC2C43535E0092F8FF /* DummyCocktails */,
@@ -2209,6 +2212,7 @@
 				F41045072AD4FD42000CA913 /* CocktailImageView.swift in Sources */,
 				4DD0DE992B97E020008EF203 /* TabBarComponents.swift in Sources */,
 				4DBBA4CF2B6A3B7100179B8F /* QueensParkSwizzle(W&G).swift in Sources */,
+				F434A0D62CAEF73E00F75168 /* Notes.swift in Sources */,
 				4DE33E012B91559C00312EC3 /* SiGuey.swift in Sources */,
 				4DBFF81B2B5FAE030011B5B1 /* GeneralInstructions.swift in Sources */,
 				4DCAA7A52C35E77200FBC4FE /* CustomIngredientRecipeView.swift in Sources */,

@@ -23,6 +23,3 @@ var gibsonSpec     =  [OldCocktailIngredient(.fortifiedWines(.dryVermouthAny), v
 var gibsonTags     = Tags(profiles: [.spiritForward, .dry],
                           styles: [.martini, .stirred])
 
- 
-
-var ginsonNotes = "The name of the coctail came from illustrator Charles Dana Gibson, the creator of the Gibson Girl drawings, or Walder D.K. Gibson. Both were members of the club. - Dave Wondrich, The Oxford Companion to Spirits and Cocktails"

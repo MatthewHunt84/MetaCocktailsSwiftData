@@ -32,5 +32,3 @@ var caipirnhaBuild = Build(instructions: [Instruction(step: 1, method: "Cut half
 var caipirnhaTags  = Tags(flavors: [.lime],
                           profiles: [.sweet, .citrusy, .light],
                           styles: [.sour, .shaken])
-                         
-var caipirnhaNotes = "Caipirinha is the national drink of Brasil. Cachaça is a native Brazilian spirit distilled from juiced sugarcane."
