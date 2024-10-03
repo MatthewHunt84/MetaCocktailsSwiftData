@@ -122,7 +122,7 @@ struct RecipeFlipCardView: View {
                                 
                             }
                         }
-                        .padding()
+                        .padding(.horizontal)
                     }
                     .frame(width: outerGeo.size.width * 0.88, height: viewModel.contentSize(for: outerGeo.size.height))
                     .scrollIndicators(.hidden)
