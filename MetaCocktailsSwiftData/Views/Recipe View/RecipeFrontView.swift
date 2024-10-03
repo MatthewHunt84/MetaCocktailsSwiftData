@@ -97,7 +97,7 @@ struct RecipeFlipCardView: View {
                     
                     Border(height: outerGeo.size.height, color: $borderColor)
                     
-                    ScrollView {
+                    FadingEdgesScrollView {
                         
                         VStack(alignment: .leading, spacing: 20) {
                             
