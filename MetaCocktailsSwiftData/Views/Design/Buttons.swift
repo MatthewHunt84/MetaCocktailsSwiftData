@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import SwiftData
 
 struct UniversalBlueButton: View {
     let buttonText: String
@@ -53,4 +53,33 @@ struct UniversalBlueButton: View {
 
 #Preview {
     UniversalBlueButton(buttonText: "Enter", includeBorder: true, action: {})
+}
+
+
+struct FavoriteButton: View {
+    let cocktail: Cocktail
+    @Environment(\.modelContext) private var modelContext
+    @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
+    
+    init(for cocktail: Cocktail) {
+        self.cocktail = cocktail
+    }
+
+    var body: some View {
+        Button {
+            withAnimation(.snappy) {
+                cocktail.favorite.toggle()
+                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+            }
+        } label: {
+            Image(systemName:  cocktail.favorite ? "heart.fill" : "heart")
+                .font(.system(size: 20))
+                .foregroundStyle(cocktail.favorite ? Color.red : Color.gray)
+                .contentTransition(
+                    .symbolEffect(.replace)
+                )
+
+        }
+        .sensoryFeedback(.success, trigger: cocktail.favorite)
+    }
 }

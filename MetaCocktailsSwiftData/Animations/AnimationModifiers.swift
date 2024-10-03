@@ -29,26 +29,39 @@ extension View {
 }
 
 struct BackgroundGlowAnimation: View {
-    
     var color: Color
-    @State private var isAnimating: Bool = true
-
+    @Binding var isFavorite: Bool
+    
+    @State private var animationAmount: CGFloat = 0.0
     
     var body: some View {
-        
         ZStack {
-            
-            color
-                .opacity(isAnimating ? 0.16 : 0.10)
+            glowColor()
+                .opacity(opacity(for: animationAmount))
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .padding(14)
                 .blur(radius: 30)
         }
-        .onAppear {
-            withAnimation(.easeOut(duration: 1.8).repeatForever()) {
-                isAnimating = false
-            }
+        .onAppear(perform: startAnimation)
+        .onChange(of: isFavorite) { _, _ in
+            animationAmount = 0.0
+            startAnimation()
         }
     }
     
+    private func startAnimation() {
+        withAnimation(.easeInOut(duration: 1.8).repeatForever(autoreverses: true)) {
+            animationAmount = 1.0
+        }
+    }
+    
+    private func opacity(for amount: CGFloat) -> Double {
+        let minOpacity = isFavorite ? 0.14 : 0.10
+        let maxOpacity = isFavorite ? 0.20 : 0.16
+        return minOpacity + (maxOpacity - minOpacity) * Double(amount)
+    }
+    
+    private func glowColor() -> Color {
+        isFavorite ? Color.red : color
+    }
 }

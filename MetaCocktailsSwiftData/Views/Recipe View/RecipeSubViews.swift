@@ -307,3 +307,29 @@ struct AuthorView: View {
         .fixedSize(horizontal: false, vertical: true)
     }
 }
+
+struct FadingEdgesScrollView<Content: View>: View {
+    let content: Content
+    
+    init(@ViewBuilder content: () -> Content) {
+        self.content = content()
+    }
+    
+    var body: some View {
+        GeometryReader { geometry in
+            ScrollView {
+                content
+                    .padding(.vertical, geometry.size.height * 0.05)
+            }
+            .mask(
+                VStack(spacing: 0) {
+                    LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .top, endPoint: .bottom)
+                        .frame(height: geometry.size.height * 0.05)
+                    Rectangle().fill(Color.black)
+                    LinearGradient(gradient: Gradient(colors: [.black, .clear]), startPoint: .top, endPoint: .bottom)
+                        .frame(height: geometry.size.height * 0.05)
+                }
+            )
+        }
+    }
+}
