@@ -57,19 +57,13 @@ final class CBCViewModel: ObservableObject {
         containerSizes = []
         var size = 4000
         while getContainerCount(for: size) > 1 {
-            
-            var label = "\(size / 1000) Liter"
-            if label == "19 Liter" {
-                label = "19 Liter (5 Gallon)"
-            }
+            var label = size == 19 ? "19 Liter (5 Gallon)" : "\(size / 1000) Liter"
             containerSizes.append((label: label, volume: size))
             size += 1000
         }
-        var finalLabel = "\(size / 1000) Liter +"
-        if finalLabel == "19 Liter +" {
-            finalLabel = "19 Liter (5 Gallon) +"
-        }
-        containerSizes.append((label: finalLabel, volume: size))
+        
+        var lastLabel = size == 19 ? "19 Liter (5 Gallon) +" : "\(size / 1000) Liter +"
+        containerSizes.append((label: lastLabel, volume: size))
     }
     
     func groupContainerSizes() {
