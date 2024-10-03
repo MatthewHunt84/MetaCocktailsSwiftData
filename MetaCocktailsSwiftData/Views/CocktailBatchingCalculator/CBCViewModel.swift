@@ -44,25 +44,7 @@ final class CBCViewModel: ObservableObject {
     @Published var splitBatchData: [SplitBatchCellData] = []
     @Published var containerSizeLabel = "4 Liter"
     @Published var groupedContainerSizes: [(label: String, volume: Int)] = []
-    
-    @Published var containerSizes: [(label: String, volume: Int)] = [
-        ("4 Liter", 4000),
-        ("5 Liter", 5000),
-        ("6 Liter", 6000),
-        ("7 Liter", 7000),
-        ("8 Liter", 8000),
-        ("9 Liter", 9000),
-        ("10 Liter", 10000),
-        ("11 Liter", 11000),
-        ("12 Liter", 12000),
-        ("13 Liter", 13000),
-        ("14 Liter", 14000),
-        ("15 Liter", 15000),
-        ("16 Liter", 16000),
-        ("17 Liter", 17000),
-        ("18 Liter", 18000),
-        ("5 Gallon (19 Liter)", 18927)
-    ]
+    @Published var containerSizes: [(label: String, volume: Int)] = []
     
     var  formatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -71,7 +53,22 @@ final class CBCViewModel: ObservableObject {
         return formatter
     }()
     
+    func makeDynamicContainerSizes() {
+        containerSizes = []
+        var size = 4000
+        while getContainerCount(for: size) > 1 {
+            var label = size == 19 ? "19 Liter (5 Gallon)" : "\(size / 1000) Liter"
+            containerSizes.append((label: label, volume: size))
+            size += 1000
+        }
+        
+        var lastLabel = size == 19 ? "19 Liter (5 Gallon) +" : "\(size / 1000) Liter +"
+        containerSizes.append((label: lastLabel, volume: size))
+    }
+    
     func groupContainerSizes() {
+        
+        makeDynamicContainerSizes()
         
         var groups: [[(label: String, volume: Int)]] = []
         var currentGroup: [(label: String, volume: Int)] = []
@@ -88,34 +85,42 @@ final class CBCViewModel: ObservableObject {
             currentGroup.append(size)
             containerCountForThePreviousSize = currentContainerCount
         }
+        
         if !currentGroup.isEmpty {
             groups.append(currentGroup)
         }
+        
         groupedContainerSizes = groups.map { group in
-            var label = "Error"
-            
             if group.count == 1 {
                 return group[0]
             } else {
                 if let first = group.first {
                     if let last = group.last {
-                        var firstLabel = first.label
-                        if last.label != "5 Gallon (19 Liter)" {
-                            firstLabel = first.label.replacingOccurrences(of: "Liter", with: "")
-                            label = "\(firstLabel) - \(last.label)"
+                        let firstLiterAmount = first.volume / 1000
+                        let lastLiterAmount = last.volume / 1000
+                        
+                        var label = ""
+                        
+                        if first.volume == 19000 {
+                            label = "19 Liter (5 Gallon) - \(lastLiterAmount) Liter"
+                        } else if last.volume == 19000 {
+                            label = "\(firstLiterAmount) Liter - 19 Liter (5 Gallon)"
                         } else {
-                            label = "\(firstLabel)"
+                            label = "\(firstLiterAmount) - \(lastLiterAmount) Liter"
                         }
-                    
+                        if last.label.contains("+") {
+                            label += " +"
+                        }
+                        
                         return (label: label, volume: first.volume)
                     }
                 }
             }
-                //Theoretically, this will never get returned.
-                return (label: "Error", volume: 0)
-            
+                        //Theoretically, this will never get returned.
+                         return (label: "Error", volume: 0)
         }
     }
+    
     func findIndexForBottleMath() -> Int {
         if let editingIngredient = editingBottleMathIngredient {
             if let index = quantifiedBatchedIngredients.firstIndex(where: { $0.id == editingIngredient.id }) {
