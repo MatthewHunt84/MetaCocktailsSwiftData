@@ -20,10 +20,10 @@ struct ColorScheme {
     
     static let recipeHeaderColor = Color.primary
     
-    static let background = Color.black
+    static let background = Color(hex: "#0A0A0A")
     static let tabBarTint = tintColor
     
-    static let recipeBackground = Color(hex: "#0F0F0F")
+    static let recipeBackground = Color(hex: "#111111")
 
     static let recipeBorder = LinearGradient(gradient: Gradient(colors: [tintColor, tintColor, tintColor, darkerTintColor]),
                                            startPoint: .leading,
