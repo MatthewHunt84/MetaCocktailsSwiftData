@@ -121,13 +121,6 @@ struct RecipeFlipCardView: View {
                                     .frame(maxWidth: .infinity, alignment: .center)
                                 
                             }
-                            
-                            HStack {
-                                Spacer()
-                                FavoriteButton(for: viewModel.cocktail)
-                            }
-                            .padding(.bottom, 16)
-                            .padding(.trailing, 16)
                         }
                         .padding()
                     }

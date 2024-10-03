@@ -102,6 +102,7 @@ struct RecipeTitleView: ViewModifier {
                             .frame(width: 50, height: 40)
                     }
                 }
+                
                 if let cocktail {
                     
                     ToolbarItem(placement: .principal) {
@@ -114,8 +115,11 @@ struct RecipeTitleView: ViewModifier {
                             }
                         }
                     }
+                    
+                    ToolbarItem(placement: .topBarTrailing) {
+                        FavoriteButton(for: cocktail)
+                    }
                 }
-                
             }
     }
 }
