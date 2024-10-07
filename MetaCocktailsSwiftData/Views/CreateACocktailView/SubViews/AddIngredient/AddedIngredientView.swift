@@ -27,7 +27,7 @@ struct AddedIngredientView: View {
                             Button(role: .none) {
                                 withAnimation {
                                     viewModel.currentIngredientUUID = ingredient.id
-                                    viewModel.removeIngredient()
+                                    viewModel.swipeToRemoveIngredient()
                                 }
                             } label: {
                                 Label("Delete", systemImage: "trash")
