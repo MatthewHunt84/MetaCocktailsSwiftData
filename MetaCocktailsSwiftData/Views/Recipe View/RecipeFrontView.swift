@@ -82,6 +82,7 @@ struct RecipeFlipCardView: View {
     @EnvironmentObject var cBCViewModel: CBCViewModel
     @Bindable var viewModel: RecipeViewModel
     @Binding var borderColor: Color
+    @State var favoriteBorderColor: Color = ColorScheme.tintColor.mix(with: .redGold, by: 0.2)
     
     var body: some View {
         
@@ -95,7 +96,7 @@ struct RecipeFlipCardView: View {
                     
                     BackgroundGlowAnimation(color: viewModel.cocktail.favorite ? Color.redGold : ColorScheme.tintColor, isFavorite: $viewModel.cocktail.favorite)
                     
-                    Border(height: outerGeo.size.height, color: $borderColor)
+                    Border(height: outerGeo.size.height, color: viewModel.cocktail.favorite ? $favoriteBorderColor : $borderColor)
                     
                     FadingEdgesScrollView {
                         

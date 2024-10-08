@@ -62,6 +62,6 @@ struct BackgroundGlowAnimation: View {
     }
     
     private func glowColor() -> Color {
-        isFavorite ? Color.red : color
+        isFavorite ? color.mix(with: .red, by: 0.5) : color
     }
 }
