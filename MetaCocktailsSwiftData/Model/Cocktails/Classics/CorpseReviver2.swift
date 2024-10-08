@@ -27,5 +27,3 @@ var corpseReviver2Spec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
 var corpseReviver2Tags = Tags(profiles: [.citrusy, .tart, .light, .restorative],
                               styles: [.daisy, .shaken, .sour])
 
-var kinaLilletExplanation = "The original cocktail called for Kina Lillet which is a quinine bitter that stopped production in 1985. The closest thing we can find to it is Cocchi Americano, so that's why we're using it here. Lillet Blanc is nothing like Kina Lillet."
-

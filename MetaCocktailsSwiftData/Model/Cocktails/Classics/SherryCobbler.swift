@@ -32,6 +32,3 @@ let sherryCobblerBuild = Build(instructions: [Instruction(step: 1, method: "Mudd
 let sherryCobblerTags = Tags(flavors: [.mint],
                              profiles: [.refreshing, .fruity, .restorative],
                              styles: [.sour, .shaken])
-
-
-let sherryCobblerNotes = "This cocktail is one of those 'too old to tell' cocktails, so it's up to interpretation. It used to be a muddle stuff and dirty dump situation."

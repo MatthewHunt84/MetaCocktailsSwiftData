@@ -25,5 +25,3 @@ let oldFashionedSpec  =  [OldCocktailIngredient(.syrups(.richDem), value: 2, uni
 let oldFashionedTags = Tags( profiles: [.bittersweet, .spiritForward],
                              styles: [.oldFashioned, .stirred])
 
-
-let oldFashionedBuild = "This is a more modern version that you'll find at upscale cocktail bars. This is also our prefered version of the Old Fashioned. Making a rich dem adds texture to the cocktail and also has the added benifit of fully emulsifying. A sugar cube does not."

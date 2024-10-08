@@ -23,5 +23,3 @@ let stingerSpec  =  [OldCocktailIngredient(.liqueurs(.cremeDeMenthe), value: 0.7
 let stingerTags = Tags( profiles: [.sweet, .spiritForward],
                         styles: [.stirred])
 
-
-let stingerBuild = "The combination of brandy and creme de menthe has been seen popping up in New York since the late 1880s. The 'Stinger' name wasn't attatched to it until the early 1910s. Is it technically a cocktail? Maybe it isn't. But we think it's at least worth a mention."

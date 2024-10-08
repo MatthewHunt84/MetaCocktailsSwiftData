@@ -29,5 +29,3 @@ var bloodyMarryBuild  = Build(instructions: [Instruction(step: 1, method: "Add a
                                              Instruction(step: 2, method: "Go nuts with the garnish if you'd like to.")])
 
 var bloodyMarryTags   = Tags(profiles: [.savory, .rich, .restorative])
-
-var bloodyMaryNotes = "The origins of this cocktail are shrouded in mystery, with several unverified stories claiming its creation. We present here a simple, classic version of the recipe. Feel free to embellish or modify it to suit your own tastes."

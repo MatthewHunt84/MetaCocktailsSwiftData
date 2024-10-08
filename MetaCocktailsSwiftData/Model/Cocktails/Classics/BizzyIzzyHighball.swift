@@ -31,5 +31,3 @@ var bizzyIzzyHighballTags = Tags(profiles: [.citrusy, .light, .fruity, .efferves
 
 var bizzyIzzyHighballBuild = Build(instructions: [Instruction(step: 1, method: "We tried to keep the recipe as close to the one in the book. Though, the book doesn't have soda in the recipe (So feel free to omit), but still labels it as a highball and doesn't mention any sort of garnish."),
                                                   Instruction(step: 2, method: "However, if you do add the sparkling water, add it last after you've shaken and strained the cocktail.")])
-
-var bizzyIzzyNotes = "This is an interesting cocktail that seems to have a ton of variation. The book with the origional print states a pineapple syrup but the modern veriation adds up to an ounce of pineapple juice."

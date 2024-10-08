@@ -31,6 +31,3 @@ var piscoSourBuild = Build(instructions: [Instruction(step: 1, method: "Add all 
                                           Instruction(step: 2, method: "Add a few Kold Draft cubes and shake until cold. Do not over dilute"),
                                           Instruction(step: 3, method: "Immediately after shaking (with vigor), pop the tin and double strain very carefully into a stemmed glass. Create the least amount of turbulence here so that you create a smooth and even surface for the design with the bitters."),
                                           Instruction(step: 4, method: "Wait about 30 seconds after you stain out the cocktail to make the design over the top. It helps for the egg whites to settle for a bit to give you a better and more even canvas to work with.")])
-
-
-var piscoSourNotes = "Both Peru and Chile claim the Pisco Sour as their national cocktail. The cocktail's earliest mention at Morris' bar in Peru didn't include egg whites or bitters. Similarly, early Chilean variations also lacked these ingredients. The cocktail began to make appearances in the United States in the 1960s, however it wasn't until the cocktail renaissance of the early 2000s that it gained it's reputation as a classic sour, shaken with egg whites."

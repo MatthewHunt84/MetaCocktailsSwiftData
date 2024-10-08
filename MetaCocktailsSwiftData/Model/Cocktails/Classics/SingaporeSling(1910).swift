@@ -29,5 +29,3 @@ var singaporeSlingSpec  = [OldCocktailIngredient(.bitters(.angosturaBitters), va
 
 var singaporeSlingTags = Tags(profiles: [.refreshing, .fruity],
                               styles: [.sour, .shaken])
-
-var singSlingNotes = "There's a ton of controversy with the origional recipe here. So we're using what the Raffles hotel claims to be the original recipe."

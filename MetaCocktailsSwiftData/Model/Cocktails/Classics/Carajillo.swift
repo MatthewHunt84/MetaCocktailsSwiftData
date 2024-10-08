@@ -19,6 +19,3 @@ var carajilloSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.otherNonAlc
 
 var carajilloTags = Tags(profiles: [.punchy, .bittersweet],
                          styles: [.shaken])
-
-
-let carajilloNotes = "Licor 43, a sweet vanilla-based Spanish liqueur, was first produced by the Zamora family in 1946. Its natural affinity with espresso led to a popular cocktail combination. When shaken with ice, this mixture creates a foamy texture, with the coffee's bitterness balancing the liqueur's sweetness. The drink's origins are unclear, but it likely emerged from Spain. This cocktail is a great example of how technique is everything."
