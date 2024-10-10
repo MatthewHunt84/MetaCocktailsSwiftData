@@ -135,15 +135,19 @@ struct RecipeFlipCardView: View {
                         .background(BlackGlassBackgroundView())
                         
                         GeometryReader { innerGeo in
-                            
-                            HistoricalCocktailModalView(
-                                cocktail: viewModel.cocktail,
-                                presented: $overlayPresented
-                            ) { overlayPresented.toggle() }
-                            .frame(height: overlayPresented ? innerGeo.size.height : 0)
-                            .animation(.spring(), value: overlayPresented)
+                            VStack {
+                                if !overlayPresented {
+                                    Spacer()
+                                }
+                                HistoricalCocktailModalView(
+                                    cocktail: viewModel.cocktail,
+                                    presented: $overlayPresented
+                                ) { overlayPresented.toggle() }
+                                    .frame(height: overlayPresented ? innerGeo.size.height : 0)
+                                    .animation(.spring(), value: overlayPresented)
+                            }
+                            .allowsHitTesting(overlayPresented)
                         }
-                        .allowsHitTesting(overlayPresented)
                     }
                     .frame(width: outerGeo.size.width * 0.88, height: viewModel.contentSize(for: outerGeo.size.height))
                     

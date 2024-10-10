@@ -22,12 +22,12 @@ struct HistoricalCocktailModalView: View {
     
     var body: some View {
         ZStack {
-            
+//            Color.pink.opacity(0.4)
             BlackGlassBackgroundView().rotation3DEffect(.degrees(180), axis: (x: 1, y: 0, z: 0))
             
             VStack(spacing: 20) {
                 
-                ScrollView {
+                FadingEdgesScrollView {
                     
                     VStack(alignment: .leading, spacing: 20) {
                         

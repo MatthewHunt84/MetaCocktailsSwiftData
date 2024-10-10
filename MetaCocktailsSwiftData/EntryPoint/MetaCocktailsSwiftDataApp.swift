@@ -18,7 +18,6 @@ struct MetaCocktailsSwiftDataApp: App {
             ContentView()
 //                .modelContainer(CocktailContainer.useSwiftDataFile()) // turn me off to repopulate model
                 .modelContainer(CocktailContainer.preload(&shouldPreload)) // turn me on to repopulate model
-            
                 .preferredColorScheme(.dark)
                 .environmentObject(CBCViewModel())
                 .environmentObject(CocktailListViewModel())

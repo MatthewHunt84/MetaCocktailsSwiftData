@@ -29,10 +29,11 @@ struct CustomLoadingAnimation: View {
     var body: some View {
         
         ZStack {
-                Image("CirclePart")
-                    .resizable()
-                    .rotationEffect(.degrees(rotationCircle))
-                    .animation(Animation.linear(duration: 4).repeatForever(autoreverses: false), value: rotationCircle)
+            
+            Image("CirclePart")
+                .resizable()
+                .rotationEffect(.degrees(rotationCircle))
+                .animation(Animation.linear(duration: 4).repeatForever(autoreverses: false), value: rotationCircle)
             
             Image("TrianglePart")
                 .resizable()
