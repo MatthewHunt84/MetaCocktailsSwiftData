@@ -10,7 +10,7 @@ import SwiftUI
 struct RecipeViewBack: View {
     var viewModel: RecipeViewModel
     var parentGeo: GeometryProxy
-    @State var secondaryBackgroundColor = Color.brandPrimaryGold
+    @State var secondaryBackgroundColor = ColorScheme.presentedBorder
     
     var body: some View {
         

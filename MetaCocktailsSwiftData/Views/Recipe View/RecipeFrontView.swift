@@ -11,7 +11,7 @@ import SwiftData
 struct RecipeView: View {
     
     @Bindable var viewModel: RecipeViewModel
-    @State var borderColor = ColorScheme.tintColor
+    @State var borderColor = ColorScheme.presentedBorder
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
@@ -30,7 +30,7 @@ struct RecipeView: View {
 struct SwipeRecipeView: View {
     @State var variations: [Cocktail]
     @Environment(\.dismiss) private var dismiss
-    @State var borderColor = ColorScheme.tintColor
+    @State var borderColor = ColorScheme.presentedBorder
     @State var initialSelection: Cocktail
     @State var scrollID: Cocktail.ID?
     
@@ -63,7 +63,7 @@ struct SwipeRecipeView: View {
                     .scrollIndicators(.visible)
                     .onScrollPhaseChange { oldPhase, newPhase in
                         withAnimation {
-                            borderColor = newPhase != .interacting ? ColorScheme.tintColor : Color.secondary
+                            borderColor = newPhase != .interacting ? ColorScheme.presentedBorder : ColorScheme.inactiveBorder
                         }
                     }
                     .onAppear {
@@ -81,8 +81,8 @@ struct RecipeFlipCardView: View {
     @State private var isShowingCocktailNotes = false
     @EnvironmentObject var cBCViewModel: CBCViewModel
     @Bindable var viewModel: RecipeViewModel
-    @Binding var borderColor: Color
-    @State var favoriteBorderColor: Color = ColorScheme.tintColor.mix(with: .redGold, by: 0.2)
+    @Binding var borderColor: BorderGradient
+    @State var favoriteBorderColor = ColorScheme.presentedBorder
     
     var body: some View {
         
@@ -96,7 +96,7 @@ struct RecipeFlipCardView: View {
                     
                     BackgroundGlowAnimation(color: viewModel.cocktail.favorite ? Color.redGold : ColorScheme.tintColor, isFavorite: $viewModel.cocktail.favorite)
                     
-                    Border(height: outerGeo.size.height, color: viewModel.cocktail.favorite ? $favoriteBorderColor : $borderColor)
+//                    Border(height: outerGeo.size.height, color: viewModel.cocktail.favorite ? $favoriteBorderColor : $borderColor)
                     
                     FadingEdgesScrollView {
                         
@@ -128,6 +128,10 @@ struct RecipeFlipCardView: View {
                     .frame(width: outerGeo.size.width * 0.88, height: viewModel.contentSize(for: outerGeo.size.height))
                     .scrollIndicators(.hidden)
                     .allowsHitTesting(!viewModel.isFlipped)
+                    .background(BlackGlassBackgroundView())
+                    
+                    Border(height: outerGeo.size.height, color: viewModel.cocktail.favorite ? $favoriteBorderColor : $borderColor)
+                        .allowsHitTesting(false)
                     
                     if isShowingCocktailNotes {
                         if let notes = viewModel.cocktail.notes {

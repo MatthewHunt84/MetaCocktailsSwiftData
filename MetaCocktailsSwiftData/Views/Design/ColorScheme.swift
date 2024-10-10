@@ -24,6 +24,7 @@ struct ColorScheme {
     static let tabBarTint = tintColor
     
     static let recipeBackground = Color(hex: "#111111")
+    static let secondaryClone = Color(hex: "#939393")
 
     static let recipeBorder = LinearGradient(gradient: Gradient(colors: [tintColor, tintColor, tintColor, darkerTintColor]),
                                            startPoint: .leading,
@@ -32,13 +33,26 @@ struct ColorScheme {
     static let recipeBorderFlipped = LinearGradient(gradient: Gradient(colors: [darkerTintColor,tintColor, tintColor, tintColor]),
                                            startPoint: .leading,
                                            endPoint: .trailing)
+    
+    static let recipeBorderInactive = LinearGradient(gradient: Gradient(colors: [secondaryClone]),
+                                           startPoint: .leading,
+                                           endPoint: .trailing)
+    
+    static let glow = LinearGradient(gradient: Gradient(colors: [interactionTint, .blue, .cyan]),
+                                           startPoint: .leading,
+                                           endPoint: .trailing)
 
     static let buttonTint = searchBarBackground //Color(hex: "#436EF8")
     
-    
-    
     static let backgroundGradient = LinearGradient(colors: [.black, .white.opacity(0.2)], startPoint: .top, endPoint: .bottom)
     
+    static let presentedBorder = BorderGradient(top: recipeBorder, bottom: recipeBorderFlipped)
+    static let inactiveBorder = BorderGradient(top: recipeBorderInactive, bottom: recipeBorderInactive)
+}
+
+struct BorderGradient {
+    let top: LinearGradient
+    let bottom: LinearGradient
 }
 
 extension Color {

@@ -36,7 +36,8 @@ struct BackgroundGlowAnimation: View {
     
     var body: some View {
         ZStack {
-            glowColor()
+//            glowColor()
+                glowGradient()
                 .opacity(opacity(for: animationAmount))
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .padding(14)
@@ -63,5 +64,9 @@ struct BackgroundGlowAnimation: View {
     
     private func glowColor() -> Color {
         isFavorite ? color.mix(with: .red, by: 0.5) : color
+    }
+    
+    private func glowGradient() -> LinearGradient {
+        ColorScheme.recipeBorder
     }
 }
