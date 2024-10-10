@@ -45,7 +45,7 @@ struct SpecView: View {
                 VStack(alignment: .leading, spacing: 6) {
                     
                     HStack {
-                        Text("Cocktail Spec:")
+                        Text("Cocktail Spec")
                             .font(FontFactory.recipeCardHeader18B)
                         if cocktail.collection == .originals {
                             Button {
@@ -63,7 +63,9 @@ struct SpecView: View {
                                     .foregroundStyle(ColorScheme.interactionTint)
                             }
                         }
+                        
                         Spacer()
+                        
                         NavigationLink {
                             CBCLoadedCocktailView()
                         } label: {
@@ -147,7 +149,6 @@ struct SpecIngredientView: View {
                     .disabled(viewModel.backDegree == 0) // fix me!
                 } else {
                     Text("\(ingredient.ingredientBase.name)")
-
                         .font(FontFactory.fontBody16)
 
                 }

@@ -82,7 +82,7 @@ struct RecipeFlipCardView: View {
     @EnvironmentObject var cBCViewModel: CBCViewModel
     @Bindable var viewModel: RecipeViewModel
     @Binding var borderColor: BorderGradient
-    @State var favoriteBorderColor = ColorScheme.presentedFrontBorder
+    @State var historicBorderColor = ColorScheme.inactiveBorder
     @State private var overlayPresented = false
     
     var body: some View {
@@ -95,7 +95,7 @@ struct RecipeFlipCardView: View {
                 
                 ZStack {
                     
-                    BackgroundGlowAnimation(gradient: favoriteBorderColor.top, isFavorite: $viewModel.cocktail.favorite)
+                    BackgroundGlowAnimation(gradient: historicBorderColor.top, isFavorite: $viewModel.cocktail.favorite)
                     
                     ZStack {
                         
@@ -140,6 +140,7 @@ struct RecipeFlipCardView: View {
                             }
                             .padding(.horizontal)
                         }
+                        .foregroundStyle(viewModel.cocktail.collection == .originals ? .secondary : .primary)
                         .scrollIndicators(.hidden)
                         .allowsHitTesting(!viewModel.isFlipped)
                         .background(BlackGlassBackgroundView())
@@ -161,7 +162,7 @@ struct RecipeFlipCardView: View {
                     }
                     .frame(width: outerGeo.size.width * 0.88, height: viewModel.contentSize(for: outerGeo.size.height))
                     
-                    Border(height: outerGeo.size.height, gradient: viewModel.cocktail.favorite ? $favoriteBorderColor : $borderColor)
+                    Border(height: outerGeo.size.height, gradient: viewModel.cocktail.collection == .originals ? $historicBorderColor : $borderColor)
                     
                     if isShowingCocktailNotes {
                         if let notes = viewModel.cocktail.notes {
