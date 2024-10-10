@@ -11,25 +11,23 @@ struct Border: View {
     
     var height: CGFloat
     
-    @Binding var color: BorderGradient
+    @Binding var gradient: BorderGradient
     
     var body: some View {
         
         GeometryReader { geo in
             
             ZStack {
-//                BorderSides(color: $color)
+                BorderSides(gradient: $gradient)
                 
                 VStack(alignment: .leading) {
-                    BorderTop(color: $color)
+                    BorderTop(gradient: $gradient)
                     
                     Spacer()
                     
-                    BorderBottom(color: $color)
+                    BorderBottom(gradient: $gradient)
                         .rotationEffect(.degrees(180))
                 }
-                
-                BorderSides(color: $color)
             }
             .frame(height: height, alignment: .center)
         }
@@ -40,7 +38,7 @@ struct Border: View {
 
 private struct BorderTop: View {
     
-    @Binding var color: BorderGradient
+    @Binding var gradient: BorderGradient
     
     var body: some View {
         ZStack {
@@ -55,14 +53,14 @@ private struct BorderTop: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .background(.clear)
-                .foregroundStyle(color.top)
+                .foregroundStyle(gradient.top)
         }
     }
 }
 
 private struct BorderBottom: View {
     
-    @Binding var color: BorderGradient
+    @Binding var gradient: BorderGradient
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -77,14 +75,14 @@ private struct BorderBottom: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .background(.clear)
-                .foregroundStyle(color.bottom)
+                .foregroundStyle(gradient.bottom)
         }
     }
 }
 
 private struct BorderSides: View {
     
-    @Binding var color: BorderGradient
+    @Binding var gradient: BorderGradient
     
     var body: some View {
         GeometryReader { geo in
@@ -100,7 +98,7 @@ private struct BorderSides: View {
                     Image(.borderSides)
                         .resizable()
                         .background(.clear)
-                        .foregroundStyle(color.top)
+                        .foregroundStyle(gradient.top)
                         .frame(height: geo.size.height * 0.8)
                 }
                 Spacer()

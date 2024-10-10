@@ -96,8 +96,6 @@ struct RecipeFlipCardView: View {
                     
                     BackgroundGlowAnimation(color: viewModel.cocktail.favorite ? Color.redGold : ColorScheme.tintColor, isFavorite: $viewModel.cocktail.favorite)
                     
-//                    Border(height: outerGeo.size.height, color: viewModel.cocktail.favorite ? $favoriteBorderColor : $borderColor)
-                    
                     FadingEdgesScrollView {
                         
                         VStack(alignment: .leading, spacing: 20) {
@@ -130,7 +128,7 @@ struct RecipeFlipCardView: View {
                     .allowsHitTesting(!viewModel.isFlipped)
                     .background(BlackGlassBackgroundView())
                     
-                    Border(height: outerGeo.size.height, color: viewModel.cocktail.favorite ? $favoriteBorderColor : $borderColor)
+                    Border(height: outerGeo.size.height, gradient: viewModel.cocktail.favorite ? $favoriteBorderColor : $borderColor)
                         .allowsHitTesting(false)
                     
                     if isShowingCocktailNotes {

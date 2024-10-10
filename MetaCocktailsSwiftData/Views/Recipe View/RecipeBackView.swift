@@ -10,7 +10,7 @@ import SwiftUI
 struct RecipeViewBack: View {
     var viewModel: RecipeViewModel
     var parentGeo: GeometryProxy
-    @State var secondaryBackgroundColor = ColorScheme.presentedBorder
+    @State var flippedBorderGradient = ColorScheme.presentedBorder
     
     var body: some View {
         
@@ -18,7 +18,7 @@ struct RecipeViewBack: View {
             
             BackgroundGlowAnimation(color: .blue, isFavorite: .constant(false))
             
-            Border(height: parentGeo.size.height, color: $secondaryBackgroundColor)
+            Border(height: parentGeo.size.height, gradient: $flippedBorderGradient)
             
             ScrollView {
                 
