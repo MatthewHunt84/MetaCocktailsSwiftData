@@ -22,8 +22,8 @@ struct HistoricalCocktailModalView: View {
     
     var body: some View {
         ZStack {
-//            Color.pink.opacity(0.4)
-            BlackGlassBackgroundView().rotation3DEffect(.degrees(180), axis: (x: 1, y: 0, z: 0))
+
+            BlackGlassBackgroundView()
             
             VStack(spacing: 20) {
                 
@@ -31,7 +31,7 @@ struct HistoricalCocktailModalView: View {
                     
                     VStack(alignment: .leading, spacing: 20) {
                         
-                        ModalHeader(title: alertContent.title)
+//                        ModalHeader(title: alertContent.title)
 
                         Text(alertContent.message)
                             .font(.body)

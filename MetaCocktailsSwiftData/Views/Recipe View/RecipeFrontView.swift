@@ -103,10 +103,20 @@ struct RecipeFlipCardView: View {
                             
                             VStack(alignment: .leading, spacing: 20) {
                                 
-                                Button("Toggle Overlay") {
-                                    overlayPresented.toggle()
+                                if viewModel.cocktail.collection == .originals {
+                                    Button {
+                                        overlayPresented.toggle()
+                                    } label: {
+                                        Text("Historical Recipe")
+                                            .font(.custom("Zapfino", size: 24))
+                                            .foregroundStyle(.secondary)
+                                            .frame(maxWidth: .infinity, alignment: .center)
+                                        
+                                    }
+                                    .buttonStyle(.plain)
+                                    .padding(.bottom, -20)
                                 }
-                                
+
                                 GlasswareView(cocktail: viewModel.cocktail)
                                 
                                 SpecView(cocktail: viewModel.cocktail, viewModel: viewModel, isShowingCocktailNotes: $isShowingCocktailNotes)
