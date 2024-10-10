@@ -179,7 +179,6 @@ import Combine
     func existingIngredientIsValid(allIngredients: [IngredientBase]) -> Bool {
         return ingredientAmount != nil &&
         allIngredients.contains(where: { $0.name == ingredientName }) 
-        //!addedIngredients.contains(where: { $0.ingredientBase.name == ingredientName })
     }
     
     func existingGarnishIsValid(allGarnishes: [Garnish]) -> Bool {
