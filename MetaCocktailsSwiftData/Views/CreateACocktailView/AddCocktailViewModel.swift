@@ -178,8 +178,7 @@ import Combine
     
     func existingIngredientIsValid(allIngredients: [IngredientBase]) -> Bool {
         return ingredientAmount != nil &&
-        allIngredients.contains(where: { $0.name == ingredientName }) &&
-        !addedIngredients.contains(where: { $0.ingredientBase.name == ingredientName })
+        allIngredients.contains(where: { $0.name == ingredientName }) 
     }
     
     func existingGarnishIsValid(allGarnishes: [Garnish]) -> Bool {
@@ -304,6 +303,11 @@ import Combine
         !allIngredients.contains(where: { $0.name == ingredientName } )
     }
     func removeIngredient() {
+        if let index = addedIngredients.firstIndex(where: { $0.ingredientBase.name == ingredientName}) {
+            addedIngredients.remove(at: index)
+        }
+    }
+    func swipeToRemoveIngredient() {
         if let index = addedIngredients.firstIndex(where: { $0.id == currentIngredientUUID}) {
             addedIngredients.remove(at: index)
         }
