@@ -23,7 +23,7 @@ struct HistoricalCocktailModalView: View {
     var body: some View {
         ZStack {
             
-            BlackGlassBackgroundView()
+            BlackGlassBackgroundView().rotation3DEffect(.degrees(180), axis: (x: 1, y: 0, z: 0))
             
             VStack(spacing: 20) {
                 

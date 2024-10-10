@@ -30,7 +30,7 @@ struct ColorScheme {
                                            startPoint: .leading,
                                            endPoint: .trailing)
     
-    static let recipeBorderFlipped = LinearGradient(gradient: Gradient(colors: [darkerTintColor,tintColor, tintColor, tintColor]),
+    static let recipeBorderFlipped = LinearGradient(gradient: Gradient(colors: [darkerTintColor.mix(with: tintColor, by: 0.5),tintColor, tintColor, tintColor]),
                                            startPoint: .leading,
                                            endPoint: .trailing)
     
@@ -46,7 +46,8 @@ struct ColorScheme {
     
     static let backgroundGradient = LinearGradient(colors: [.black, .white.opacity(0.2)], startPoint: .top, endPoint: .bottom)
     
-    static let presentedBorder = BorderGradient(top: recipeBorder, bottom: recipeBorderFlipped)
+    static let presentedFrontBorder = BorderGradient(top: recipeBorder, bottom: recipeBorderFlipped)
+    static let presentedBackBorder = BorderGradient(top: recipeBorderFlipped, bottom: recipeBorder)
     static let inactiveBorder = BorderGradient(top: recipeBorderInactive, bottom: recipeBorderInactive)
 }
 

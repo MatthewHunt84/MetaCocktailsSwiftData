@@ -11,7 +11,7 @@ import SwiftData
 struct RecipeView: View {
     
     @Bindable var viewModel: RecipeViewModel
-    @State var borderColor = ColorScheme.presentedBorder
+    @State var borderColor = ColorScheme.presentedFrontBorder
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
@@ -30,7 +30,7 @@ struct RecipeView: View {
 struct SwipeRecipeView: View {
     @State var variations: [Cocktail]
     @Environment(\.dismiss) private var dismiss
-    @State var borderColor = ColorScheme.presentedBorder
+    @State var borderColor = ColorScheme.presentedFrontBorder
     @State var initialSelection: Cocktail
     @State var scrollID: Cocktail.ID?
     
@@ -63,7 +63,7 @@ struct SwipeRecipeView: View {
                     .scrollIndicators(.visible)
                     .onScrollPhaseChange { oldPhase, newPhase in
                         withAnimation {
-                            borderColor = newPhase != .interacting ? ColorScheme.presentedBorder : ColorScheme.inactiveBorder
+                            borderColor = newPhase != .interacting ? ColorScheme.presentedFrontBorder : ColorScheme.inactiveBorder
                         }
                     }
                     .onAppear {
@@ -82,7 +82,8 @@ struct RecipeFlipCardView: View {
     @EnvironmentObject var cBCViewModel: CBCViewModel
     @Bindable var viewModel: RecipeViewModel
     @Binding var borderColor: BorderGradient
-    @State var favoriteBorderColor = ColorScheme.presentedBorder
+    @State var favoriteBorderColor = ColorScheme.presentedFrontBorder
+    @State private var overlayPresented = false
     
     var body: some View {
         
@@ -94,42 +95,59 @@ struct RecipeFlipCardView: View {
                 
                 ZStack {
                     
-                    BackgroundGlowAnimation(color: viewModel.cocktail.favorite ? Color.redGold : ColorScheme.tintColor, isFavorite: $viewModel.cocktail.favorite)
+                    BackgroundGlowAnimation(gradient: favoriteBorderColor.top, isFavorite: $viewModel.cocktail.favorite)
                     
-                    FadingEdgesScrollView {
+                    ZStack {
                         
-                        VStack(alignment: .leading, spacing: 20) {
+                        FadingEdgesScrollView {
                             
-                            GlasswareView(cocktail: viewModel.cocktail)
-                            
-                            SpecView(cocktail: viewModel.cocktail, viewModel: viewModel, isShowingCocktailNotes: $isShowingCocktailNotes)
-                            
-                            GarnishView(cocktail: viewModel.cocktail)
-                            
-                            MethodIceView(cocktail: viewModel.cocktail, methodText: viewModel.methodString)
-                            
-                            if viewModel.cocktail.buildOrder != nil {
-                                UniversalBlueButton(buttonText: "Build Order", rightImage: nil, leftImage: nil, includeBorder: true) {
-                                    viewModel.flipCard()
-                                }
-                                .disabled(viewModel.isFlipped)
-                            }
-                            
-                            if viewModel.cocktail.author != nil {
-                                AuthorView(cocktail: viewModel.cocktail)
-                                    .frame(maxWidth: .infinity, alignment: .center)
+                            VStack(alignment: .leading, spacing: 20) {
                                 
+                                Button("Toggle Overlay") {
+                                    overlayPresented.toggle()
+                                }
+                                
+                                GlasswareView(cocktail: viewModel.cocktail)
+                                
+                                SpecView(cocktail: viewModel.cocktail, viewModel: viewModel, isShowingCocktailNotes: $isShowingCocktailNotes)
+                                
+                                GarnishView(cocktail: viewModel.cocktail)
+                                
+                                MethodIceView(cocktail: viewModel.cocktail, methodText: viewModel.methodString)
+                                
+                                if viewModel.cocktail.buildOrder != nil {
+                                    UniversalBlueButton(buttonText: "Build Order", rightImage: nil, leftImage: nil, includeBorder: true) {
+                                        viewModel.flipCard()
+                                    }
+                                    .disabled(viewModel.isFlipped)
+                                }
+                                
+                                if viewModel.cocktail.author != nil {
+                                    AuthorView(cocktail: viewModel.cocktail)
+                                        .frame(maxWidth: .infinity, alignment: .center)
+                                    
+                                }
                             }
+                            .padding(.horizontal)
                         }
-                        .padding(.horizontal)
+                        .scrollIndicators(.hidden)
+                        .allowsHitTesting(!viewModel.isFlipped)
+                        .background(BlackGlassBackgroundView())
+                        
+                        GeometryReader { innerGeo in
+                            
+                            HistoricalCocktailModalView(
+                                cocktail: viewModel.cocktail,
+                                presented: $overlayPresented
+                            ) { overlayPresented.toggle() }
+                            .frame(height: overlayPresented ? innerGeo.size.height : 0)
+                            .animation(.spring(), value: overlayPresented)
+                        }
+                        .allowsHitTesting(overlayPresented)
                     }
                     .frame(width: outerGeo.size.width * 0.88, height: viewModel.contentSize(for: outerGeo.size.height))
-                    .scrollIndicators(.hidden)
-                    .allowsHitTesting(!viewModel.isFlipped)
-                    .background(BlackGlassBackgroundView())
                     
                     Border(height: outerGeo.size.height, gradient: viewModel.cocktail.favorite ? $favoriteBorderColor : $borderColor)
-                        .allowsHitTesting(false)
                     
                     if isShowingCocktailNotes {
                         if let notes = viewModel.cocktail.notes {

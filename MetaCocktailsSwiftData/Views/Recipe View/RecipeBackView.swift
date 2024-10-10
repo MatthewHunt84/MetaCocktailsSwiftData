@@ -10,17 +10,14 @@ import SwiftUI
 struct RecipeViewBack: View {
     var viewModel: RecipeViewModel
     var parentGeo: GeometryProxy
-    @State var flippedBorderGradient = ColorScheme.presentedBorder
+    @State var flippedBorderGradient = ColorScheme.presentedBackBorder
     
     var body: some View {
         
         ZStack {
+            BackgroundGlowAnimation(gradient: flippedBorderGradient.top, isFavorite: .constant(false))
             
-            BackgroundGlowAnimation(color: .blue, isFavorite: .constant(false))
-            
-            Border(height: parentGeo.size.height, gradient: $flippedBorderGradient)
-            
-            ScrollView {
+            FadingEdgesScrollView {
                 
                 if viewModel.isShowingIngredientRecipe {
                     IngredientRecipeView(prep: viewModel.currentIngredientRecipe, viewModel: viewModel)
@@ -31,9 +28,12 @@ struct RecipeViewBack: View {
                         .padding()
                 }
             }
+            .background(BlackGlassBackgroundView())
             .scrollIndicators(.hidden)
             .frame(width: parentGeo.size.width * 0.88, height: viewModel.contentSize(for: parentGeo.size.height))
             .allowsHitTesting(viewModel.isFlipped)
+            
+            Border(height: parentGeo.size.height, gradient: $flippedBorderGradient)
         }
         
         .opacity(viewModel.frontDegree == 90.0 ? 1 : 0)

@@ -30,6 +30,7 @@ struct Border: View {
                 }
             }
             .frame(height: height, alignment: .center)
+            .allowsHitTesting(false)
         }
     }
 }

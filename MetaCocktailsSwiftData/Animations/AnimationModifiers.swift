@@ -29,7 +29,7 @@ extension View {
 }
 
 struct BackgroundGlowAnimation: View {
-    var color: Color
+    var gradient: LinearGradient
     @Binding var isFavorite: Bool
     
     @State private var animationAmount: CGFloat = 0.0
@@ -62,11 +62,12 @@ struct BackgroundGlowAnimation: View {
         return minOpacity + (maxOpacity - minOpacity) * Double(amount)
     }
     
-    private func glowColor() -> Color {
-        isFavorite ? color.mix(with: .red, by: 0.5) : color
-    }
+//    private func glowColor() -> Color {
+//        isFavorite ? color.mix(with: .red, by: 0.5) : color
+//    }
     
     private func glowGradient() -> LinearGradient {
-        ColorScheme.recipeBorder
+        gradient
+//        ColorScheme.recipeBorder
     }
 }
