@@ -47,7 +47,7 @@ struct AddExistingGarnishToCocktailButton: View {
         Section {
             
             if viewModel.customGarnishNameEntered == nil {
-                UniversalBlueButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), includeBorder: true) {
+                UniversalButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), includeBorder: true) {
                     viewModel.addExistingGarnishToCocktail(context: modelContext)
                     dismiss()
                 }
@@ -70,7 +70,7 @@ struct CreateCustomGarnishButton: View {
         
         if let customName = viewModel.customGarnishNameEntered, !viewModel.addedGarnish.contains(where: { $0.name == customName }), customName != "" {
             Section {
-                UniversalBlueButton(buttonText: "Add \"\(customName)\" garnish", rightImage: Image(systemName: "plus"), includeBorder: true) {
+                UniversalButton(buttonText: "Add \"\(customName)\" garnish", rightImage: Image(systemName: "plus"), includeBorder: true) {
                     if viewModel.customGarnishIsValid(allGarnishes: garnish) {
                         viewModel.addedGarnish.append(Garnish(name: customName))
                         viewModel.clearIngredientData()

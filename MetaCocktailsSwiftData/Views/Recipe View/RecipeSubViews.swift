@@ -13,7 +13,7 @@ struct GlasswareView: View {
     var body: some View {
         HStack(alignment: .center) {
             VStack(alignment: .leading, spacing: 5) {
-                Text("Glassware:")
+                Text("Glassware")
                     .font(FontFactory.recipeCardHeader18B)
                 Text(cocktail.glasswareType.rawValue)
                     .font(FontFactory.fontBody16)
@@ -24,7 +24,7 @@ struct GlasswareView: View {
             cocktail.glasswareType.glassImage(cocktail: cocktail)
                 .resizable()
                 .frame(width: 70, height: 70, alignment: .center)
-                .padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 10))
+                .padding(.trailing, 10)
              
         }
     }
@@ -47,19 +47,20 @@ struct SpecView: View {
                     HStack {
                         Text("Cocktail Spec")
                             .font(FontFactory.recipeCardHeader18B)
-                        if cocktail.collection == .originals {
-                            Button {
-                                showingModal = true
-                            } label: {
-                                Image(systemName: "info.circle.fill")
-                                    .tint(ColorScheme.interactionTint)
-                            }
-                        }
+//                        if cocktail.collection == .originals {
+//                            Button {
+//                                showingModal = true
+//                            } label: {
+//                                Image(systemName: "info.circle.fill")
+//                                    .tint(ColorScheme.interactionTint)
+//                                    .foregroundStyle(ColorScheme.interactionTint)
+//                            }
+//                        }
                         if cocktail.notes != nil {
                             Button {
                                 isShowingCocktailNotes.toggle()
                             } label: {
-                                Image(systemName: "info.circle")
+                                Image(systemName: "info.circle.fill")
                                     .foregroundStyle(ColorScheme.interactionTint)
                             }
                         }
@@ -130,10 +131,13 @@ struct SpecIngredientView: View {
     @Bindable var viewModel: RecipeViewModel
     
     var body: some View {
-        VStack{
+        VStack {
+            
             HStack {
+                
                 pluralizedIngredientUnitText(for: ingredient)
                     .font(FontFactory.specMeasurement16B)
+                
                 if ingredient.ingredientBase.prep != nil {
                     Button{
                         viewModel.isShowingIngredientRecipe = true
@@ -150,10 +154,10 @@ struct SpecIngredientView: View {
                 } else {
                     Text("\(ingredient.ingredientBase.name)")
                         .font(FontFactory.fontBody16)
-
                 }
+                
                 if ingredient.ingredientBase.info != nil {
-                    Image(systemName: "info.circle")
+                    Image(systemName: "info.circle.fill")
                         .foregroundStyle(ColorScheme.interactionTint)
                         .onTapGesture {
                             withAnimation(.easeInOut(duration: 0.25)) {
@@ -162,12 +166,14 @@ struct SpecIngredientView: View {
                         }
                 }
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
             .multilineTextAlignment(.leading)
-            if isShowingIngredientInfo {
-                Text(ingredient.ingredientBase.info!)
-                    .font(FontFactory.goldInfoFootnote13)
-                    .foregroundStyle(.brandPrimaryGold)
-                
+            
+            if isShowingIngredientInfo, let info = ingredient.ingredientBase.info {
+                Text(info)
+                    .font(FontFactory.ingredientInfoFootnote13)
+                    .foregroundStyle(ColorScheme.secondaryClone)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 
             }
         }
@@ -291,20 +297,22 @@ struct AuthorView: View {
     }
     var body: some View {
         VStack {
-            Text("Author:")
+            Text("Author")
                 .font(FontFactory.recipeCardHeader18B)
             if author != "" {
                 Text(author)
-                    .font(FontFactory.fontBody16)
+//                    .font(FontFactory.fontBody16)
             }
             if place != "" {
-                FontFactory.regularText(place, size: 16)
-                        .multilineTextAlignment(.center)
+                Text(place)
+                        
                 }
                 if year != "" {
-                    FontFactory.regularText(year, size: 16)
+                    Text(year)
                 }
         }
+        .multilineTextAlignment(.center)
+        .font(FontFactory.fontBody16)
         .fixedSize(horizontal: false, vertical: true)
     }
 }

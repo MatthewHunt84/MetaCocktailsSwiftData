@@ -15,13 +15,12 @@ var algonquin  = Cocktail(cocktailName: "Algonquin",
                           tags: algonquinTags,
                           variation: .algonquin,
                           collection: .originals,
-                          titleCocktail: true)
+                          titleCocktail: true,
+                          historicSpec: .algonquin)
 
 var algonquinSpec  = [OldCocktailIngredient(.juices(.pineappleJuice), value: 1),
                       OldCocktailIngredient(.fortifiedWines(.dryVermouthAny), value: 1),
                       OldCocktailIngredient(.whiskies(.ryeWhiskeyAny), value: 2)]
-
-
 
 var algonquinTags   = Tags(profiles: [.fruity, .light, .dry],
                            styles: [.shaken, .sour])

@@ -40,9 +40,21 @@ enum CocktailCollection: Int, Codable, Identifiable, CaseIterable {
     var recipeSubheading: String? {
         switch self {
         case .deathAndCo, .williamsAndGraham, .milkAndHoney:
-            return self.collectionName + " Version"
+            return self.collectionName //+ " Version"
         default:
             return nil
+        }
+    }
+}
+
+enum HistoricSpec: String, Codable {
+    
+    case algonquin = "Algonquin"
+    
+    var recommendedSpec: String {
+        switch self {
+        case .algonquin:
+            "Algonquin" + wAndGTitleTag
         }
     }
 }

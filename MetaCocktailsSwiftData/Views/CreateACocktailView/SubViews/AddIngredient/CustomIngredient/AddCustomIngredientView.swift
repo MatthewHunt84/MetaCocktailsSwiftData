@@ -113,7 +113,7 @@ struct AddCustomIngredientToCocktailButton: View {
     
     var body: some View {
         Section {
-            UniversalBlueButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), includeBorder: true) {
+            UniversalButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), includeBorder: true) {
                 if viewModel.customIngredientIsValid(allIngredients: ingredients) {
                     viewModel.removeIngredient()
                     

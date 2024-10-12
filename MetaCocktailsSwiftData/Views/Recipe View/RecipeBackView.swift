@@ -86,7 +86,7 @@ struct BuildOrderView: View {
             
             if buildOrder.instructions.contains(where: { $0.step == 0}) {
                 Text(buildOrder.instructions.first!.method)
-                    .font(FontFactory.italicFont(size: 14))
+                    .font(FontFactory.italicMediumFont(size: 14))
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .padding(EdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16))

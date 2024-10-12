@@ -64,7 +64,7 @@ struct AddCocktailView: View {
                         AddBuildStepView(viewModel: viewModel, cocktailBuildStepKeyboardFocused: _cocktailBuildStepKeyboardFocused)
                     }
                     
-                    UniversalBlueButton(buttonText: "Clear Form",rightImage: nil, leftImage: Image(systemName: "xmark"), includeBorder: true) {
+                    UniversalButton(buttonText: "Clear Form",rightImage: nil, leftImage: Image(systemName: "xmark"), includeBorder: true) {
                         viewModel.clearData()
                     }
                     .listRowBackground(Color.clear)
@@ -81,7 +81,7 @@ struct AddCocktailView: View {
                 }
                 .toolbar {
                     ToolbarItem(placement: .bottomBar) {
-                        UniversalBlueButton(buttonText: "Add to cocktails", rightImage: Image(systemName: "plus"), includeBorder: false) {
+                        UniversalButton(buttonText: "Add to cocktails", rightImage: Image(systemName: "plus"), includeBorder: false) {
                             guard nameIsUnique() else {
                                 viewModel.isShowingUniqueNameAlert.toggle()
                                 return

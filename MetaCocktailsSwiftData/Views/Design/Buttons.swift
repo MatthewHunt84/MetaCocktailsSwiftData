@@ -8,18 +8,20 @@
 import SwiftUI
 import SwiftData
 
-struct UniversalBlueButton: View {
+struct UniversalButton: View {
     let buttonText: String
     let rightImage: Image?
     let leftImage: Image?
     let includeBorder: Bool
+    let color: LinearGradient
     let action: () -> ()
-    
-    init(buttonText: String, rightImage: Image? = nil, leftImage: Image? = nil, includeBorder: Bool, action: @escaping () -> Void) {
+
+    init(buttonText: String, rightImage: Image? = nil, leftImage: Image? = nil, includeBorder: Bool, color: LinearGradient = ColorScheme.nullInteractionTintGradient, action: @escaping () -> Void) {
         self.buttonText = buttonText
         self.rightImage = rightImage
         self.leftImage = leftImage
         self.includeBorder = includeBorder
+        self.color = color
         self.action = action
     }
     
@@ -31,19 +33,19 @@ struct UniversalBlueButton: View {
                 HStack {
                     if let leftNewImage = leftImage {
                         leftNewImage
-                            .tint(ColorScheme.interactionTint)
+                            .tint(color)
                     }
                     Text(buttonText)
                     if let rightNewImage = rightImage {
                         rightNewImage
-                            .tint(ColorScheme.interactionTint)
+                            .tint(color)
                     }
                 }
                 .font(FontFactory.mediumFont(size: 18))
-                .foregroundStyle(ColorScheme.interactionTint)
+                .foregroundStyle(color)
                 .padding(.vertical, 8)
                 .padding(.horizontal, 16)
-                .background(Capsule().strokeBorder(ColorScheme.interactionTint, lineWidth: includeBorder ? 1 : 0))
+                .background(Capsule().strokeBorder(color, lineWidth: includeBorder ? 1 : 0))
             }
             .frame(maxWidth: .infinity, alignment: .center)
         
@@ -52,7 +54,7 @@ struct UniversalBlueButton: View {
 
 
 #Preview {
-    UniversalBlueButton(buttonText: "Enter", includeBorder: true, action: {})
+    UniversalButton(buttonText: "Enter", includeBorder: true, action: {})
 }
 
 
@@ -73,8 +75,9 @@ struct FavoriteButton: View {
             }
         } label: {
             Image(systemName:  cocktail.favorite ? "heart.fill" : "heart")
-                .font(.system(size: 20))
-                .foregroundStyle(cocktail.favorite ? Color.red : Color.gray)
+                .font(.system(size: 24))
+                .foregroundStyle(cocktail.favorite ? ColorScheme.heartGradient : ColorScheme.nullSecondaryGradient)
+//                .foregroundStyle(cocktail.favorite ? Color.red : Color.gray)
                 .contentTransition(
                     .symbolEffect(.replace)
                 )

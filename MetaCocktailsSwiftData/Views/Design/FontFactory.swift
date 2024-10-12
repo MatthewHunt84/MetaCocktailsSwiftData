@@ -23,6 +23,13 @@ struct FontFactory {
             .bold(isBold)
     }
     
+    static func historicText(_ text: String, font: String = "Avenir-BookOblique", size: CGFloat, color: Color = .primary, isBold: Bool = false) -> Text {
+        return Text(text)
+            .font(.custom(font, size: size))
+            .foregroundStyle(Color.secondary)
+            .bold(isBold)
+    }
+    
     static func regularFont(size: CGFloat) -> Font {
         Font.custom("AvenirNext-Regular", size: size)
     }
@@ -46,8 +53,12 @@ struct FontFactory {
         Font.custom("AvenirNext-Medium", size: size)
     }
     
-    static func italicFont(size: CGFloat) -> Font {
+    static func italicMediumFont(size: CGFloat) -> Font {
         Font.custom("AvenirNext-MediumItalic", size: size)
+    }
+    
+    static func italicFont(size: CGFloat) -> Font {
+        Font.custom("AvenirNext-Italic", size: size)
     }
     
     static func listLetter(size: CGFloat) -> Font {
@@ -69,7 +80,7 @@ struct FontFactory {
     static var buildBodySmall10: Font = .custom("AvenirNext-Regular", size: 10)
     static var buildStepSmall10B: Font = .custom("AvenirNext-Regular", size: 10).bold()
     static var sectionHeader12: Font = .custom("AvenirNext-Regular", size: 12)
-    static var goldInfoFootnote13: Font = .custom("AvenirNext-Regular", size: 13)
+    static var ingredientInfoFootnote13: Font = .custom("AvenirNext-Italic", size: 14)
     static var fontBody14: Font = .custom("AvenirNext-Regular", size: 14)
     static var fontBody16: Font = .custom("AvenirNext-Regular", size: 16)
     static var specMeasurement16B: Font = .custom("AvenirNext-Regular", size: 16).bold()
@@ -77,16 +88,18 @@ struct FontFactory {
     static var formLabel18: Font = .custom("AvenirNext-Regular", size: 18)
     static var bottomToolbarButton20: Font = .custom("AvenirNext-Regular", size: 20)
     
-    static func recipeHeader(title: String) -> Text {
+    static func recipeHeader(title: String, isHistoric: Bool = false) -> Text {
         if title.contains("(W&G Version)") {
             return Text(title.replacingOccurrences(of: (" (W&G Version)"), with: ""))
-                .font(.custom("AvenirNext-Regular", size: 20))
-                .foregroundStyle(ColorScheme.recipeHeaderColor)
+                .font(.custom("AvenirNext-Regular", size: 24))
+                .foregroundStyle(.primary)
+//                .foregroundStyle(isHistoric ? ColorScheme.nullPrimaryGradient : ColorScheme.recipeHeaderColor)
         }
         
         return Text(title.replacingOccurrences(of: (" (M&H Version)"), with: ""))
-            .font(.custom("AvenirNext-Regular", size: 20))
-            .foregroundStyle(ColorScheme.recipeHeaderColor)
+            .font(.custom("AvenirNext-Regular", size: 24))
+            .foregroundStyle(.primary)
+//            .foregroundStyle(isHistoric ? ColorScheme.nullPrimaryGradient : ColorScheme.recipeHeaderColor)
         
     }
     

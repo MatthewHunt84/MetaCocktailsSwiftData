@@ -38,8 +38,9 @@ class Cocktail: Equatable, Hashable, Identifiable, Codable {
     var collectionName: String
     var titleCocktail: Bool?
     var favorite: Bool
+    var historicSpec: HistoricSpec?
 
-    init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [GarnishList]? = nil, ice: Ice? = nil, author: Author? = nil, spec: [OldCocktailIngredient], buildOrder: Build? = nil, notes: String? = nil, tags: Tags, variation: Variation? = nil, variationName: String? = nil, collection: CocktailCollection? = nil, isCustomCocktail: Bool = false, titleCocktail: Bool = false, favorite: Bool = false) {
+    init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [GarnishList]? = nil, ice: Ice? = nil, author: Author? = nil, spec: [OldCocktailIngredient], buildOrder: Build? = nil, notes: String? = nil, tags: Tags, variation: Variation? = nil, variationName: String? = nil, collection: CocktailCollection? = nil, isCustomCocktail: Bool = false, titleCocktail: Bool = false, favorite: Bool = false, historicSpec: HistoricSpec? = nil) {
 
         self.id = id
         self.cocktailName = cocktailName
@@ -90,11 +91,12 @@ class Cocktail: Equatable, Hashable, Identifiable, Codable {
             return newCompiledTags
         }()
         self.favorite = favorite
+        self.historicSpec = historicSpec
         
     }
     
 
-    init(cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [Garnish] = [], ice: Ice? = nil, author: Author? = nil, spec: [Ingredient], buildOrder: Build? = nil, tags: Tags, variation: Variation? = nil, variationName: String? = nil, collection: CocktailCollection? = nil, isCustomCocktail: Bool = false, titleCocktail: Bool = false, favorite: Bool = false) {
+    init(cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [Garnish] = [], ice: Ice? = nil, author: Author? = nil, spec: [Ingredient], buildOrder: Build? = nil, tags: Tags, variation: Variation? = nil, variationName: String? = nil, collection: CocktailCollection? = nil, isCustomCocktail: Bool = false, titleCocktail: Bool = false, favorite: Bool = false, historicSpec: HistoricSpec? = nil) {
 
         self.id = UUID()
         self.cocktailName = cocktailName
@@ -129,12 +131,13 @@ class Cocktail: Equatable, Hashable, Identifiable, Codable {
             return newCompiledTags
         }()
         self.favorite = favorite
+        self.historicSpec = historicSpec
     }
     
     // Codable (should probably be extension, but just so it works I'm putting it here. Also we need to remove imageAsset we dont use it)
     
     enum CodingKeys: String, CodingKey {
-        case id, cocktailName, imageAsset, glasswareType, garnish, ice, author, spec, buildOrder, notes, compiledTags, variation, variationName, collection, isCustomCocktail, collectionName, titleCocktail, favorite
+        case id, cocktailName, imageAsset, glasswareType, garnish, ice, author, spec, buildOrder, notes, compiledTags, variation, variationName, collection, isCustomCocktail, collectionName, titleCocktail, favorite, historicSpec
     }
 
     required init(from decoder: Decoder) throws {
@@ -157,6 +160,7 @@ class Cocktail: Equatable, Hashable, Identifiable, Codable {
         collectionName = try container.decode(String.self, forKey: .collectionName)
         titleCocktail = try container.decodeIfPresent(Bool.self, forKey: .titleCocktail)
         favorite = try container.decode(Bool.self, forKey: .favorite)
+        historicSpec = try container.decode(HistoricSpec.self, forKey: .historicSpec)
     }
 
     func encode(to encoder: Encoder) throws {
@@ -179,6 +183,7 @@ class Cocktail: Equatable, Hashable, Identifiable, Codable {
         try container.encode(collectionName, forKey: .collectionName)
         try container.encodeIfPresent(titleCocktail, forKey: .titleCocktail)
         try container.encode(favorite, forKey: .favorite)
+        try container.encode(historicSpec, forKey: .historicSpec)
     }
 }
 
