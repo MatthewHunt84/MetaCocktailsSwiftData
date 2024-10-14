@@ -93,14 +93,11 @@ struct FontFactory {
             return Text(title.replacingOccurrences(of: (" (W&G Version)"), with: ""))
                 .font(.custom("AvenirNext-Regular", size: 24))
                 .foregroundStyle(.primary)
-//                .foregroundStyle(isHistoric ? ColorScheme.nullPrimaryGradient : ColorScheme.recipeHeaderColor)
         }
         
         return Text(title.replacingOccurrences(of: (" (M&H Version)"), with: ""))
             .font(.custom("AvenirNext-Regular", size: 24))
             .foregroundStyle(.primary)
-//            .foregroundStyle(isHistoric ? ColorScheme.nullPrimaryGradient : ColorScheme.recipeHeaderColor)
-        
     }
     
 }

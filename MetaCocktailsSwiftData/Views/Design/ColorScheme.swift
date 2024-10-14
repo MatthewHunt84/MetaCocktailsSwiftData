@@ -18,8 +18,6 @@ struct ColorScheme {
     
     static let headerColor = tintColor
     
-    static let recipeHeaderColor = recipeBorder//Color.primary
-    
     static let background = Color(hex: "#0A0A0A")
     static let tabBarTint = tintColor
     
@@ -58,7 +56,7 @@ struct ColorScheme {
                                            startPoint: .leading,
                                            endPoint: .trailing)
 
-    static let buttonTint = searchBarBackground //Color(hex: "#436EF8")
+    static let buttonTint = searchBarBackground
     
     static let backgroundGradient = LinearGradient(colors: [.black, .white.opacity(0.2)], startPoint: .top, endPoint: .bottom)
     

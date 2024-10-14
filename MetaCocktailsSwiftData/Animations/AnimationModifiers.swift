@@ -14,8 +14,8 @@ struct RotatingDiscardScrollTransitionModifier: ViewModifier {
                 withAnimation(.easeOut) {
                     content
                         .rotation3DEffect(
-                        Angle(degrees: phase.value * -50),
-                        axis: (x: 0, y: 1, z: 0))
+                            Angle(degrees: phase.value * -50),
+                            axis: (x: 0, y: 1, z: 0))
                         .opacity(1 - (phase.value * -1))
                 }
             }
@@ -35,9 +35,9 @@ struct BackgroundGlowAnimation: View {
     @State private var animationAmount: CGFloat = 0.0
     
     var body: some View {
+        
         ZStack {
-//            glowColor()
-                glowGradient()
+            glowGradient()
                 .opacity(opacity(for: animationAmount))
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .padding(14)
@@ -62,12 +62,7 @@ struct BackgroundGlowAnimation: View {
         return minOpacity + (maxOpacity - minOpacity) * Double(amount)
     }
     
-//    private func glowColor() -> Color {
-//        isFavorite ? color.mix(with: .red, by: 0.5) : color
-//    }
-    
     private func glowGradient() -> LinearGradient {
         gradient
-//        ColorScheme.recipeBorder
     }
 }

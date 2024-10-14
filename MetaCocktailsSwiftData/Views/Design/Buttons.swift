@@ -77,7 +77,6 @@ struct FavoriteButton: View {
             Image(systemName:  cocktail.favorite ? "heart.fill" : "heart")
                 .font(.system(size: 24))
                 .foregroundStyle(cocktail.favorite ? ColorScheme.heartGradient : ColorScheme.nullSecondaryGradient)
-//                .foregroundStyle(cocktail.favorite ? Color.red : Color.gray)
                 .contentTransition(
                     .symbolEffect(.replace)
                 )
