@@ -93,11 +93,15 @@ struct FontFactory {
             return Text(title.replacingOccurrences(of: (" (W&G Version)"), with: ""))
                 .font(.custom("AvenirNext-Regular", size: 24))
                 .foregroundStyle(.primary)
+        } else if title.contains("(Death & Co Version)") {
+            return Text(title.replacingOccurrences(of: (" (Death & Co Version)"), with: ""))
+                .font(.custom("AvenirNext-Regular", size: 24))
+                .foregroundStyle(.primary)
+        } else {
+            return Text(title.replacingOccurrences(of: (" (M&H Version)"), with: ""))
+                .font(.custom("AvenirNext-Regular", size: 24))
+                .foregroundStyle(.primary)
         }
-        
-        return Text(title.replacingOccurrences(of: (" (M&H Version)"), with: ""))
-            .font(.custom("AvenirNext-Regular", size: 24))
-            .foregroundStyle(.primary)
     }
     
 }
