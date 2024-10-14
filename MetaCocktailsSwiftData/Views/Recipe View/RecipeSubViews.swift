@@ -412,8 +412,8 @@ struct FadingEdgesScrollView<Content: View>: View {
         GeometryReader { geometry in
             ScrollView {
                 content
-                    .padding(.vertical, geometry.size.height * 0.05)
             }
+            .scrollIndicators(.hidden)
             .mask(
                 VStack(spacing: 0) {
                     LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .top, endPoint: .bottom)

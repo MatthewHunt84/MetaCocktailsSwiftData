@@ -69,9 +69,9 @@ struct RecipeFlipCardView: View {
                                 }
                             }
                             .padding(.horizontal)
+                            .padding(.vertical, outerGeo.size.height * 0.04)
                         }
                         .foregroundStyle(viewModel.cocktail.historicSpec == nil ? .primary : .secondary)
-                        .scrollIndicators(.hidden)
                         .allowsHitTesting(!viewModel.isFlipped)
                         .background(BlackGlassBackgroundView())
                         
