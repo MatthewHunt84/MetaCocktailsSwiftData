@@ -19,7 +19,6 @@
 		1AC386BF2AAABED10064F52A /* Prep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC386922AAABED00064F52A /* Prep.swift */; };
 		1AC386C02AAABED10064F52A /* BlackberrySageSmash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC386942AAABED00064F52A /* BlackberrySageSmash.swift */; };
 		1AC386C22AAABED10064F52A /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC386982AAABED00064F52A /* TabBarView.swift */; };
-		1AC386C32AAABED10064F52A /* BuildOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC3869A2AAABED00064F52A /* BuildOrderView.swift */; };
 		1AC386C52AAABED10064F52A /* RecipeFrontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC3869D2AAABED00064F52A /* RecipeFrontView.swift */; };
 		1AC386C62AAABED10064F52A /* PrepRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC3869F2AAABED00064F52A /* PrepRecipeView.swift */; };
 		1AC386C82AAABED10064F52A /* PrepBible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC386A12AAABED00064F52A /* PrepBible.swift */; };
@@ -551,6 +550,8 @@
 		F4D184FF2C8F92170035B280 /* Migration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D184FE2C8F92110035B280 /* Migration.swift */; };
 		F4D185012C8F95370035B280 /* Brancolada.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D185002C8F95310035B280 /* Brancolada.swift */; };
 		F4D185032C8F988E0035B280 /* SkyRocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D185022C8F987D0035B280 /* SkyRocket.swift */; };
+		F4D7C0102CBC279500B8D9C0 /* HistoricSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7C00F2CBC278200B8D9C0 /* HistoricSpec.swift */; };
+		F4D7C0122CBC3D7100B8D9C0 /* IngredientPrepOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7C0112CBC3D6800B8D9C0 /* IngredientPrepOverlay.swift */; };
 		F4F3D4222C90996E00BB6767 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F3D4212C90996200BB6767 /* ColorScheme.swift */; };
 		F4FBF1232AAABBB900BBF7CF /* MetaCocktailsSwiftDataApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FBF1222AAABBB900BBF7CF /* MetaCocktailsSwiftDataApp.swift */; };
 		F4FBF12C2AAABBBB00BBF7CF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4FBF12B2AAABBBB00BBF7CF /* Preview Assets.xcassets */; };
@@ -569,7 +570,6 @@
 		1AC386922AAABED00064F52A /* Prep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Prep.swift; sourceTree = "<group>"; };
 		1AC386942AAABED00064F52A /* BlackberrySageSmash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlackberrySageSmash.swift; sourceTree = "<group>"; };
 		1AC386982AAABED00064F52A /* TabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
-		1AC3869A2AAABED00064F52A /* BuildOrderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildOrderView.swift; sourceTree = "<group>"; };
 		1AC3869D2AAABED00064F52A /* RecipeFrontView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeFrontView.swift; sourceTree = "<group>"; };
 		1AC3869F2AAABED00064F52A /* PrepRecipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrepRecipeView.swift; sourceTree = "<group>"; };
 		1AC386A12AAABED00064F52A /* PrepBible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrepBible.swift; sourceTree = "<group>"; };
@@ -1102,6 +1102,8 @@
 		F4D184FE2C8F92110035B280 /* Migration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migration.swift; sourceTree = "<group>"; };
 		F4D185002C8F95310035B280 /* Brancolada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brancolada.swift; sourceTree = "<group>"; };
 		F4D185022C8F987D0035B280 /* SkyRocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyRocket.swift; sourceTree = "<group>"; };
+		F4D7C00F2CBC278200B8D9C0 /* HistoricSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricSpec.swift; sourceTree = "<group>"; };
+		F4D7C0112CBC3D6800B8D9C0 /* IngredientPrepOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientPrepOverlay.swift; sourceTree = "<group>"; };
 		F4F3D4212C90996200BB6767 /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		F4FBF11F2AAABBB900BBF7CF /* MetaCocktailsSwiftData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetaCocktailsSwiftData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FBF1222AAABBB900BBF7CF /* MetaCocktailsSwiftDataApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaCocktailsSwiftDataApp.swift; sourceTree = "<group>"; };
@@ -1329,6 +1331,7 @@
 			children = (
 				F4C5C3E22B3B4061005B2261 /* Ingredients */,
 				1AC3868F2AAABED00064F52A /* Ingredient.swift */,
+				F4D7C00F2CBC278200B8D9C0 /* HistoricSpec.swift */,
 				F40FB6B02B7E38DA0047D597 /* CocktailCollection.swift */,
 				4DB1C0B82B46D4E600943C69 /* CocktailComponent.swift */,
 				F4A628E12B7E31BF0084FD80 /* Variation.swift */,
@@ -1394,7 +1397,6 @@
 		1AC386992AAABED00064F52A /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
-				1AC3869A2AAABED00064F52A /* BuildOrderView.swift */,
 				4D5DA0932B9E9C4900C14F1F /* CocktailProfileView.swift */,
 			);
 			path = SubViews;
@@ -1403,6 +1405,7 @@
 		1AC3869B2AAABED00064F52A /* Recipe View */ = {
 			isa = PBXGroup;
 			children = (
+				F4D7C0112CBC3D6800B8D9C0 /* IngredientPrepOverlay.swift */,
 				1AC3869D2AAABED00064F52A /* RecipeFrontView.swift */,
 				F44016082CA6F37300839E6A /* RecipeBackView.swift */,
 				F440160A2CA6F3B600839E6A /* RecipeBorder.swift */,
@@ -2528,7 +2531,6 @@
 				4DBBA47A2B6876F800179B8F /* LastWord(W&G).swift in Sources */,
 				4DA567662B6C6FF3003F6F04 /* WhiskeySmash.swift in Sources */,
 				4D7439892B9D277F0020C3B8 /* BackButton.swift in Sources */,
-				1AC386C32AAABED10064F52A /* BuildOrderView.swift in Sources */,
 				4D9025A22B6459C0005F44F6 /* GinFizz(W&G).swift in Sources */,
 				4DBAE6FD2C71B99100F3DBFD /* PrizefighterNo1.swift in Sources */,
 				4D1442CD2C976BB7006C882F /* PinaColada.swift in Sources */,
@@ -2626,6 +2628,7 @@
 				1AC386BF2AAABED10064F52A /* Prep.swift in Sources */,
 				1AFDB7DC2AE36E0A000A3812 /* Mojito.swift in Sources */,
 				4DA567642B6C6F46003F6F04 /* Vesper(OG).swift in Sources */,
+				F4D7C0102CBC279500B8D9C0 /* HistoricSpec.swift in Sources */,
 				4D5DA0A62BA0FFA500C14F1F /* GordonsBreakfast.swift in Sources */,
 				4DBFF8432B6089C20011B5B1 /* Bramble(W&G).swift in Sources */,
 				1AFDB7BC2AE2FF69000A3812 /* LastWord.swift in Sources */,
@@ -2642,6 +2645,7 @@
 				4DAD6C922C83B86C00860555 /* RiffPickerView.swift in Sources */,
 				4D54F73E2B7B053800D046D9 /* LoadedCocktailIngredientCell.swift in Sources */,
 				4DA5677A2B6C90E9003F6F04 /* CleverGirl.swift in Sources */,
+				F4D7C0122CBC3D7100B8D9C0 /* IngredientPrepOverlay.swift in Sources */,
 				4DA567F22B6DE424003F6F04 /* BurisBovineBeverage.swift in Sources */,
 				4DA567C82B6DB8F5003F6F04 /* PrettyInParadox.swift in Sources */,
 				4DBFF8142B5F9E4E0011B5B1 /* Algonquin(WilliamsAndGraham).swift in Sources */,

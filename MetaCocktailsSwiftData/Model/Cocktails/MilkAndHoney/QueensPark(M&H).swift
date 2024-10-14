@@ -7,7 +7,7 @@
 
 import Foundation
 
-var queensParkMnH = Cocktail(cocktailName: "Queen's Park Swizzle(Dark)",
+var queensParkMnH = Cocktail(cocktailName: "Queen's Park Swizzle (Dark)",
                              glasswareType: .collins,
                              garnish: [.mintBouquet],
                              ice: .pebbleIce,

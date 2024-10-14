@@ -7,6 +7,110 @@
 
 import SwiftUI
 
+struct FlipCardNavigationHeader: View {
+    
+    @Environment(\.dismiss) private var dismiss
+    var viewModel: RecipeViewModel
+    var body: some View {
+        VStack(spacing: 0) {
+            
+            HStack {
+                
+                Button(action: {
+                    dismiss()
+                }) {
+                    Image(systemName: "chevron.backward")
+                        .font(.system(size: 24))
+                        .foregroundStyle(ColorScheme.interactionTint)
+                }
+                
+                Spacer()
+                
+                FontFactory.recipeHeader(title: viewModel.cocktail.cocktailName, isHistoric: viewModel.cocktail.collection == .originals)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
+                
+                Spacer()
+                
+                FavoriteButton(for: viewModel.cocktail)
+            }
+            
+            if let _ = viewModel.cocktail.variation, let recipeSubheading = viewModel.cocktail.collection?.recipeSubheading {
+                FontFactory.historicText(recipeSubheading, size: 18, color: .secondary)
+            }
+        }
+    }
+}
+
+struct HistoricalRecipeView: View {
+    
+    @Binding var showingHistoricInfo: Bool
+    @Binding var scrollID: Cocktail.ID?
+    var recommendedCocktailID: UUID? = nil
+    let HistoricText = "Although historically accurate, this recipe has improved with time."
+    
+    var body: some View {
+        
+        VStack {
+            
+            HStack {
+                
+                Text("~")
+                
+                Text("Historical Recipe")
+                    .lineLimit(1)
+                
+                Button {
+                    withAnimation(.bouncy) {
+                        showingHistoricInfo.toggle()
+                    }
+                } label: {
+                    Image(systemName: "info.circle.fill")
+                        .tint(ColorScheme.interactionTint)
+                        .foregroundStyle(ColorScheme.interactionTint)
+                        .font(.system(size: 14))
+                        .padding(.bottom, 10)
+                        .padding(.leading, 4)
+                    
+                }
+                
+                Text("~")
+            }
+            .font(.custom("Zapfino", size: 20))
+            .foregroundStyle(.secondary)
+            .frame(maxWidth: .infinity, alignment: .center)
+            
+            if showingHistoricInfo {
+                
+                VStack {
+                    
+                    Text(HistoricText)
+                        .font(FontFactory.italicFont(size: 16))
+                        .multilineTextAlignment(.center)
+                    
+                    UniversalButton(buttonText: "Recommended Spec", includeBorder: true, color: ColorScheme.recipeBorder) {
+                        withAnimation(.easeInOut) {
+                            scrollID = recommendedCocktailID
+                        }
+                    }
+                }
+                .transition(.move(edge: .top).combined(with: .blurReplace))
+            }
+        }
+    }
+}
+
+struct NoteView: View {
+    let note: String
+    
+    var body: some View {
+        Text(note)
+            .font(FontFactory.italicFont(size: 16))
+            .multilineTextAlignment(.center)
+            .frame(maxWidth: .infinity, alignment: .center)
+    }
+}
+
 struct GlasswareView: View {
     
     var cocktail: Cocktail
@@ -25,7 +129,7 @@ struct GlasswareView: View {
                 .resizable()
                 .frame(width: 70, height: 70, alignment: .center)
                 .padding(.trailing, 10)
-             
+            
         }
     }
 }
@@ -35,7 +139,6 @@ struct SpecView: View {
     var cocktail: Cocktail
     @Bindable var viewModel: RecipeViewModel
     @EnvironmentObject var cBCViewModel: CBCViewModel
-    @State private var showingModal = false
     @Binding var isShowingCocktailNotes: Bool
     
     var body: some View {
@@ -47,15 +150,7 @@ struct SpecView: View {
                     HStack {
                         Text("Cocktail Spec")
                             .font(FontFactory.recipeCardHeader18B)
-//                        if cocktail.collection == .originals {
-//                            Button {
-//                                showingModal = true
-//                            } label: {
-//                                Image(systemName: "info.circle.fill")
-//                                    .tint(ColorScheme.interactionTint)
-//                                    .foregroundStyle(ColorScheme.interactionTint)
-//                            }
-//                        }
+                        
                         if cocktail.notes != nil {
                             Button {
                                 isShowingCocktailNotes.toggle()
@@ -85,13 +180,6 @@ struct SpecView: View {
                     
                     ForEach(orderSpec(), id: \.id) { ingredient in
                         SpecIngredientView(ingredient: ingredient, viewModel: viewModel)
-                    }
-                }
-                .sheet(isPresented: $showingModal) {
-                    HistoricalCocktailModalView(
-                        cocktail: viewModel.cocktail,
-                        presented: $showingModal
-                    ) {
                     }
                 }
             }
@@ -138,19 +226,16 @@ struct SpecIngredientView: View {
                 pluralizedIngredientUnitText(for: ingredient)
                     .font(FontFactory.specMeasurement16B)
                 
-                if ingredient.ingredientBase.prep != nil {
-                    Button{
-                        viewModel.isShowingIngredientRecipe = true
-                        viewModel.currentIngredientRecipe = ingredient.ingredientBase.prep ?? PrepBible.aPPBitters
-                        viewModel.flipCard()
-                        withAnimation(.easeOut(duration: viewModel.durationAndDelay)) {
-                        }
+                if let ingredientPrep = ingredient.ingredientBase.prep {
+                    
+                    Button {
+                        viewModel.presentOverlay(for: ingredientPrep)
                     } label: {
                         Text(ingredient.ingredientBase.name)
                             .font(FontFactory.fontBody16)
                             .tint(ColorScheme.interactionTint)
+                            .foregroundStyle(ColorScheme.interactionTint)
                     }
-                    .disabled(viewModel.backDegree == 0) // fix me!
                 } else {
                     Text("\(ingredient.ingredientBase.name)")
                         .font(FontFactory.fontBody16)
@@ -245,8 +330,8 @@ struct GarnishView: View {
             if cocktail.garnish != []{
                 
                 if cocktail.garnish.count == 2,
-                    let firstGarnishName = cocktail.garnish.first?.name,
-                    let secondGarnishName = cocktail.garnish.last?.name {
+                   let firstGarnishName = cocktail.garnish.first?.name,
+                   let secondGarnishName = cocktail.garnish.last?.name {
                     HStack(alignment: .top) {
                         Text("\(firstGarnishName)")
                         
@@ -301,15 +386,14 @@ struct AuthorView: View {
                 .font(FontFactory.recipeCardHeader18B)
             if author != "" {
                 Text(author)
-//                    .font(FontFactory.fontBody16)
             }
             if place != "" {
                 Text(place)
-                        
-                }
-                if year != "" {
-                    Text(year)
-                }
+                
+            }
+            if year != "" {
+                Text(year)
+            }
         }
         .multilineTextAlignment(.center)
         .font(FontFactory.fontBody16)

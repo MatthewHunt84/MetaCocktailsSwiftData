@@ -42,20 +42,12 @@ private struct BorderTop: View {
     @Binding var gradient: BorderGradient
     
     var body: some View {
-        ZStack {
-            
-//            Image(.backgroundTop)
-//                .resizable()
-//                .aspectRatio(contentMode: .fit)
-//                .foregroundStyle(ColorScheme.recipeBackground)
-            
-            
+
             Image(.borderTop)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .background(.clear)
                 .foregroundStyle(gradient.top)
-        }
     }
 }
 
@@ -64,20 +56,12 @@ private struct BorderBottom: View {
     @Binding var gradient: BorderGradient
     
     var body: some View {
-        ZStack(alignment: .top) {
-            
-//            Image(.backgroundTop)
-//                .resizable()
-//                .aspectRatio(contentMode: .fit)
-//                .foregroundStyle(ColorScheme.recipeBackground)
-            
             
             Image(.borderTop)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .background(.clear)
                 .foregroundStyle(gradient.bottom)
-        }
     }
 }
 
@@ -87,21 +71,17 @@ private struct BorderSides: View {
     
     var body: some View {
         GeometryReader { geo in
+            
             VStack {
-                Spacer()
                 
-                ZStack {
-//                    Image(.backgroundSides)
-//                        .resizable()
-//                        .foregroundStyle(ColorScheme.recipeBackground)
-//                        .frame(height: geo.size.height * 0.8)
+                Spacer()
                     
                     Image(.borderSides)
                         .resizable()
                         .background(.clear)
                         .foregroundStyle(gradient.top)
                         .frame(height: geo.size.height * 0.8)
-                }
+
                 Spacer()
             }
         }

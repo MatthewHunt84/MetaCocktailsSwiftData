@@ -8,16 +8,14 @@
 import SwiftUI
 import SwiftData
 
-
 struct RecipeFlipCardView: View {
-    @Environment(\.dismiss) private var dismiss
+    
     @State private var isShowingCocktailNotes = false
     @EnvironmentObject var cBCViewModel: CBCViewModel
     @Bindable var viewModel: RecipeViewModel
     @Binding var borderColor: BorderGradient
     @Binding var scrollID: Cocktail.ID?
     @State var historicBorderColor = ColorScheme.inactiveBorder
-    @State private var overlayPresented = false
     @State private var showingHistoricInfo = false
     var recommendedCocktailID: UUID? = nil
     
@@ -39,84 +37,14 @@ struct RecipeFlipCardView: View {
                             
                             VStack(alignment: .leading, spacing: 20) {
                                 
-                                VStack(spacing: 0) {
-                                    
-                                    HStack {
-                                        
-                                        Button(action: {
-                                            dismiss()
-                                        }) {
-                                            Image(systemName: "chevron.backward")
-                                                .font(.system(size: 24))
-                                                .foregroundStyle(ColorScheme.interactionTint)
-                                        }
-                                        
-                                        Spacer()
-                                        
-                                        FontFactory.recipeHeader(title: viewModel.cocktail.cocktailName, isHistoric: viewModel.cocktail.collection == .originals)
-                                            .lineLimit(1)
-                                            .minimumScaleFactor(0.5)
-                                        
-                                        Spacer()
-                                        
-                                        FavoriteButton(for: viewModel.cocktail)
-                                    }
-                                    
-                                    if let _ = viewModel.cocktail.variation, let recipeSubheading = viewModel.cocktail.collection?.recipeSubheading {
-                                        FontFactory.historicText(recipeSubheading, size: 18, color: .secondary)
-                                    }
-                                }
+                                FlipCardNavigationHeader(viewModel: viewModel)
                                 
                                 if recommendedCocktailID != nil {
-                                    
-                                    VStack {
-                                        
-                                        HStack {
-                                            Text("~")
-                                            Text("Historical Recipe")
-                                                .lineLimit(1)
-                                            Button {
-                                                withAnimation(.bouncy) {
-                                                    showingHistoricInfo.toggle()
-                                                }
-                                            } label: {
-                                                Image(systemName: "info.circle.fill")
-                                                    .tint(ColorScheme.interactionTint)
-                                                    .foregroundStyle(ColorScheme.interactionTint)
-                                                    .font(.system(size: 14))
-                                                    .padding(.bottom, 10)
-                                                    .padding(.leading, 4)
-                                                
-                                            }
-                                            Text("~")
-                                        }
-                                        .font(.custom("Zapfino", size: 20))
-                                        .foregroundStyle(.secondary)
-                                        .frame(maxWidth: .infinity, alignment: .center)
-                                        //                                        .background(.teal.opacity(0.5))
-                                        
-                                        if showingHistoricInfo {
-                                            
-                                            VStack {
-                                                
-                                                Text(HistoricText)
-                                                    .font(FontFactory.italicFont(size: 16))
-                                                    .multilineTextAlignment(.center)
-                                                //                                                .background(.pink.opacity(0.5))
-                                                UniversalButton(buttonText: "Recommended Spec", includeBorder: true, color: ColorScheme.recipeBorder) {
-//                                                    print("ACTION existing id is: \(scrollID)")
-                                                    withAnimation(.bouncy) {
-                                                        scrollID = recommendedCocktailID
-                                                    }
-//                                                    print("ACTION new id is: \(scrollID)")
-                                                    
-                                                    //                                                    overlayPresented.toggle()
-                                                }
-                                            }
-                                            .transition(.move(edge: .top).combined(with: .blurReplace))
-//                                            .transition(.blurReplace)
-                                        }
-                                    }
+                                    HistoricalRecipeView(showingHistoricInfo: $showingHistoricInfo, scrollID: $scrollID, recommendedCocktailID: recommendedCocktailID)
+                                }
+                                
+                                if let cocktailNote = viewModel.cocktail.notes {
+                                    NoteView(note: cocktailNote)
                                 }
                                 
                                 GlasswareView(cocktail: viewModel.cocktail)
@@ -142,45 +70,34 @@ struct RecipeFlipCardView: View {
                             }
                             .padding(.horizontal)
                         }
-                        .foregroundStyle(viewModel.cocktail.collection == .originals ? .secondary : .primary)
+                        .foregroundStyle(viewModel.cocktail.historicSpec == nil ? .primary : .secondary)
                         .scrollIndicators(.hidden)
                         .allowsHitTesting(!viewModel.isFlipped)
                         .background(BlackGlassBackgroundView())
                         
-                        
                         GeometryReader { innerGeo in
+                            
                             VStack {
-                                if !overlayPresented {
+                                if !viewModel.overlayPresented {
                                     Spacer()
                                 }
-                                HistoricalCocktailModalView(
-                                    cocktail: viewModel.cocktail,
-                                    presented: $overlayPresented
-                                ) { overlayPresented.toggle() }
-                                    .frame(height: overlayPresented ? innerGeo.size.height : 0)
-                                    .animation(.spring(), value: overlayPresented)
+                                
+                                IngredientPrepOverlay(viewModel: viewModel)
+                                    .frame(height: viewModel.overlayPresented ? innerGeo.size.height : 0)
+                                    .animation(.spring(), value: viewModel.overlayPresented)
                             }
-                            .allowsHitTesting(overlayPresented)
+                            .allowsHitTesting(viewModel.overlayPresented)
                         }
                     }
                     .frame(width: outerGeo.size.width * 0.88, height: viewModel.contentSize(for: outerGeo.size.height))
                     
                     Border(height: outerGeo.size.height, gradient: viewModel.cocktail.historicSpec != nil ? $historicBorderColor : $borderColor)
-                    
-                    if isShowingCocktailNotes {
-                        if let notes = viewModel.cocktail.notes {
-                            CustomAlertView(isActive: $isShowingCocktailNotes, title: "Note:", message: notes , buttonTitle: "Yes, chef.") {}
-                                .zIndex(1)
-                        }
-                    }
                 }
                 .opacity(viewModel.backDegree == -90 ? 1 : 0)
                 .rotation3DEffect(Angle(degrees: viewModel.frontDegree), axis: (x: 0, y: 1, z: 0))
             }
         }
     }
-    
-    let HistoricText = "Although historically accurate, this recipe has improved with time."
 }
 
 
@@ -228,29 +145,17 @@ struct SwipeRecipeView: View {
                     variations.forEach { cocktail in
                         print("\(cocktail.cocktailName) has id: \(cocktail.id)")
                     }
-//                    print("current id is: \(scrollID)")
                 }
-                
             }
-//                        .recipeHeader(cocktail: variations.first(where: { $0.id == scrollID }))
         }
     }
     
     func getRecommendation(for cocktail: Cocktail) -> UUID? {
         guard let historicCocktail = cocktail.historicSpec else {
-            print("--- no historic spec found for \(cocktail.cocktailName)")
             return nil }
         let recommendedSpec = variations.first { $0.cocktailName == historicCocktail.recommendedSpec }
-        print("---is recommendation exist? \(recommendedSpec?.id)")
         return recommendedSpec?.id
     }
-    
-//    func getID() -> UUID? {
-//        if let found = variations.last {
-//            return found.id
-//        }
-//        return nil
-//    }
 }
 
 struct RecipeView: View {
@@ -267,7 +172,6 @@ struct RecipeView: View {
             
             RecipeFlipCardView(viewModel: viewModel, borderColor: $borderColor, scrollID: .constant(UUID()))
                 .navigationBarTitleDisplayMode(.inline)
-            //                .recipeHeader(cocktail: viewModel.cocktail)
         }
     }
 }
@@ -287,3 +191,7 @@ struct RecipeView: View {
 //    RecipeView(viewModel: RecipeViewModel(cocktail: ramosGinFizz))
 //        .environmentObject(CBCViewModel())
 //}
+
+
+
+
