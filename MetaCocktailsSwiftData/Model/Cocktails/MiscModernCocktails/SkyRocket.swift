@@ -14,8 +14,7 @@ var skyRocket  = Cocktail(cocktailName: "Sky Rocket",
                           author: Author(place: "The Dead Rabbit. Manhattan, New York"),
                           spec: skyRocketSpec,
                           buildOrder: skyRocketBuild,
-                          tags: skyRocketTags,
-                          variation: .tomCollins)
+                          tags: skyRocketTags)
 
 var skyRocketSpec  = [
                   OldCocktailIngredient(.gins(.aviation), value: 1.5),

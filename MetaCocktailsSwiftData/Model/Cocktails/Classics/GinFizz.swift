@@ -17,11 +17,12 @@ var ginFizz  = Cocktail(cocktailName: "Gin Fizz",
                         tags: ginFizzTags,
                         variation: .ginFizz,
                         collection: .originals,
-                        titleCocktail: true)
+                        titleCocktail: true,
+                        historicSpec: .ginFizz)
 
-var ginFizzSpec  = [OldCocktailIngredient(.juices(.lemon), value: 1),
-                    OldCocktailIngredient(.syrups(.simple), value: 1, prep: PrepBible.simpleSyrupPrep),
-                    OldCocktailIngredient(.gins(.ginAny), value: 1.5),
+var ginFizzSpec  = [OldCocktailIngredient(.juices(.lemon), value: 3, unit: .dashes),
+                    OldCocktailIngredient(.otherNonAlc(.powderedSugar), value: 1, unit: .tablespoon),
+                    OldCocktailIngredient(.gins(.geneverAny), value: 1.5),
                     OldCocktailIngredient(.soda(.sparklingWater), value: 2)]
 
 var ginFizzBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the sparkling water, into a tin and shake with ice"), 

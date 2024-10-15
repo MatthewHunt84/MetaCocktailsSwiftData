@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-var gimlet = Cocktail(cocktailName: "Gimlet (Modern)",
+var gimlet = Cocktail(cocktailName: "Gimlet" + houseTag,
                       glasswareType: .stemmedGlassware,
                       garnish: [.limeWheel],
                       ice: nil,

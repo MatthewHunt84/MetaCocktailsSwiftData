@@ -15,7 +15,8 @@ var betweenTheSheets  = Cocktail(cocktailName: "Between the Sheets",
                                  tags: betweenTheSheetsTags,
                                  variation: .betweenTheSheets,
                                  collection: .originals,
-                                 titleCocktail: true)
+                                 titleCocktail: true,
+                                 historicSpec: .betweenTheSheets)
 
 var betweenTheSheetsSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
                              OldCocktailIngredient(.rums(.rumWhite), value: 0.75),

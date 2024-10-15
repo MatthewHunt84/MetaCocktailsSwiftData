@@ -15,7 +15,8 @@ var alaska  = Cocktail(cocktailName: "Alaska Cocktail",
                        tags: alaskaTags,
                        variation: .alaska,
                        collection: .originals,
-                       titleCocktail: true)
+                       titleCocktail: true,
+                       historicSpec: .alaska)
 
 var alaskaSpec  = [OldCocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.75),
                    OldCocktailIngredient(.gins(.ginLondonDry), value: 2.25)]

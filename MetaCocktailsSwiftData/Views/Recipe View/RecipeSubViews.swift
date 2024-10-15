@@ -88,7 +88,7 @@ struct HistoricalRecipeView: View {
                         .font(FontFactory.italicFont(size: 16))
                         .multilineTextAlignment(.center)
                     
-                    UniversalButton(buttonText: "Recommended Spec", includeBorder: true, color: ColorScheme.recipeBorder) {
+                    UniversalButton(buttonText: "Recommended Spec", includeBorder: true, color: ColorScheme.nullInteractionTintGradient) {
                         withAnimation(.easeInOut) {
                             scrollID = recommendedCocktailID
                         }
@@ -150,16 +150,7 @@ struct SpecView: View {
                     HStack {
                         Text("Cocktail Spec")
                             .font(FontFactory.recipeCardHeader18B)
-                        
-                        if cocktail.notes != nil {
-                            Button {
-                                isShowingCocktailNotes.toggle()
-                            } label: {
-                                Image(systemName: "info.circle.fill")
-                                    .foregroundStyle(ColorScheme.interactionTint)
-                            }
-                        }
-                        
+
                         Spacer()
                         
                         NavigationLink {

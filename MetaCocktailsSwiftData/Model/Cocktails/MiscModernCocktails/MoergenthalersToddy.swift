@@ -7,7 +7,7 @@
 
 import Foundation
 
-var morgenthalersToddy = Cocktail(cocktailName: "Hot Toddy(Morgenthaler’s)",
+var morgenthalersToddy = Cocktail(cocktailName: "Hot Toddy (Morgenthaler’s)",
                                   glasswareType: .toddyGlass,
                                   garnish: [.orangePeel],
                                   author: Author(person: "Jeffrey Morggenthaler", year: "2014"),

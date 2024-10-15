@@ -7,19 +7,20 @@
 
 import Foundation
 
-var chocolateCocktail  = Cocktail(cocktailName: "Chocolate Cocktail",
-                                  glasswareType: .snifter,
-                                  garnish: [.cocoaPowder],
+var chocolateCocktail  = Cocktail(cocktailName: "Chocolate Cocktail No. 2",
+                                  glasswareType: .singleOld,
                                   author:Author(person: AuthorNames.harryCraddock.rawValue, place: AuthorPlaces.savoy.rawValue, year: "1930"),
                                   spec: chocolateCocktailSpec,
                                   buildOrder: eggWhiteInstructionsNoBitters,
                                   tags: chocolateCocktailTags,
-                                  collection: .originals)
+                                  variation: .chocolateCocktail,
+                                  collection: .originals,
+                                  historicSpec: .chocolateCocktail)
 
-var chocolateCocktailSpec  = [OldCocktailIngredient(.otherNonAlc(.eggWhole), value: 1),
-                              OldCocktailIngredient(.liqueurs(.cremeDeCacao), value: 0.75),
-                              OldCocktailIngredient(.liqueurs(.yellowChartreuse), value: 1),
-                              OldCocktailIngredient(.fortifiedWines(.sandemanPort) , value: 1)]
+var chocolateCocktailSpec  = [OldCocktailIngredient(.otherNonAlc(.eggYolk), value: 1, unit: .whole),
+                              OldCocktailIngredient(.otherNonAlc(.crushedChocolate), value: 1, unit: .teaspoon),
+                              OldCocktailIngredient(.liqueurs(.yellowChartreuse), value: 0.5),
+                              OldCocktailIngredient(.fortifiedWines(.tawnyPort) , value: 1.5)]
 
 var chocolateCocktailTags   = Tags(profiles: [.sweet, .rich],
                                    styles: [.shaken, .flip])

@@ -264,6 +264,12 @@
 		4DA888FB2CA277AC00113ED7 /* ElDiablo(WnG).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA888FA2CA277AC00113ED7 /* ElDiablo(WnG).swift */; };
 		4DA888FD2CA369B300113ED7 /* DayMan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA888FC2CA369B300113ED7 /* DayMan.swift */; };
 		4DA888FF2CA3748700113ED7 /* ElGeneralisimo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA888FE2CA3748700113ED7 /* ElGeneralisimo.swift */; };
+		4DA889022CBDAB5600113ED7 /* HouseBramble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA889012CBDAB5600113ED7 /* HouseBramble.swift */; };
+		4DA889042CBDE94F00113ED7 /* HouseBTS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA889032CBDE94F00113ED7 /* HouseBTS.swift */; };
+		4DA889062CBDED4D00113ED7 /* HouseBobbyBurns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA889052CBDED4D00113ED7 /* HouseBobbyBurns.swift */; };
+		4DA889082CBDF41900113ED7 /* ChocolateCocktailW&G.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA889072CBDF41900113ED7 /* ChocolateCocktailW&G.swift */; };
+		4DA8890A2CBE00B800113ED7 /* HouseSilverFizz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA889092CBE00B800113ED7 /* HouseSilverFizz.swift */; };
+		4DA8890C2CBE0A1A00113ED7 /* HouseMexicanFiringSquad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA8890B2CBE0A1A00113ED7 /* HouseMexicanFiringSquad.swift */; };
 		4DAD6C872C802CB900860555 /* CustomCocktailsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAD6C862C802CB900860555 /* CustomCocktailsListView.swift */; };
 		4DAD6C8C2C804A2F00860555 /* VariationPickerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAD6C8B2C804A2F00860555 /* VariationPickerDetailView.swift */; };
 		4DAD6C922C83B86C00860555 /* RiffPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAD6C912C83B86C00860555 /* RiffPickerView.swift */; };
@@ -815,6 +821,12 @@
 		4DA888FA2CA277AC00113ED7 /* ElDiablo(WnG).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElDiablo(WnG).swift"; sourceTree = "<group>"; };
 		4DA888FC2CA369B300113ED7 /* DayMan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayMan.swift; sourceTree = "<group>"; };
 		4DA888FE2CA3748700113ED7 /* ElGeneralisimo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElGeneralisimo.swift; sourceTree = "<group>"; };
+		4DA889012CBDAB5600113ED7 /* HouseBramble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseBramble.swift; sourceTree = "<group>"; };
+		4DA889032CBDE94F00113ED7 /* HouseBTS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseBTS.swift; sourceTree = "<group>"; };
+		4DA889052CBDED4D00113ED7 /* HouseBobbyBurns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseBobbyBurns.swift; sourceTree = "<group>"; };
+		4DA889072CBDF41900113ED7 /* ChocolateCocktailW&G.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChocolateCocktailW&G.swift"; sourceTree = "<group>"; };
+		4DA889092CBE00B800113ED7 /* HouseSilverFizz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseSilverFizz.swift; sourceTree = "<group>"; };
+		4DA8890B2CBE0A1A00113ED7 /* HouseMexicanFiringSquad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseMexicanFiringSquad.swift; sourceTree = "<group>"; };
 		4DAD6C862C802CB900860555 /* CustomCocktailsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCocktailsListView.swift; sourceTree = "<group>"; };
 		4DAD6C8B2C804A2F00860555 /* VariationPickerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariationPickerDetailView.swift; sourceTree = "<group>"; };
 		4DAD6C912C83B86C00860555 /* RiffPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiffPickerView.swift; sourceTree = "<group>"; };
@@ -1694,6 +1706,18 @@
 			path = CocktailBatchingCalculator;
 			sourceTree = "<group>";
 		};
+		4DA889002CBDAB3A00113ED7 /* HouseCocktails */ = {
+			isa = PBXGroup;
+			children = (
+				4DA889012CBDAB5600113ED7 /* HouseBramble.swift */,
+				4DA889032CBDE94F00113ED7 /* HouseBTS.swift */,
+				4DA889052CBDED4D00113ED7 /* HouseBobbyBurns.swift */,
+				4DA889092CBE00B800113ED7 /* HouseSilverFizz.swift */,
+				4DA8890B2CBE0A1A00113ED7 /* HouseMexicanFiringSquad.swift */,
+			);
+			path = HouseCocktails;
+			sourceTree = "<group>";
+		};
 		4DAD6C882C804A0300860555 /* VariationPicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -1828,6 +1852,7 @@
 				4DBFF84C2B609D0C0011B5B1 /* Brooklyn(W&G).swift */,
 				4DBFF8522B60A3630011B5B1 /* BrownDerby(W&G).swift */,
 				4DBFF8582B60AD800011B5B1 /* CableCar(W&G).swift */,
+				4DA889072CBDF41900113ED7 /* ChocolateCocktailW&G.swift */,
 				4DF408CD2B60E24000EF9A6E /* ChocolateMartini(W&G).swift */,
 				4DF408CF2B60EBDE00EF9A6E /* CloverClub(W&G).swift */,
 				4DA888FA2CA277AC00113ED7 /* ElDiablo(WnG).swift */,
@@ -2046,6 +2071,7 @@
 		F4C6A8ED2AAFFF2800BB0AD0 /* Cocktails */ = {
 			isa = PBXGroup;
 			children = (
+				4DA889002CBDAB3A00113ED7 /* HouseCocktails */,
 				4DBBA4C92B6A32E100179B8F /* MilkAndHoney */,
 				4DBFF8192B5FADE20011B5B1 /* General Cocktail Instructions */,
 				4D1E85B92B5C838C00214BC6 /* Death and Co */,
@@ -2212,6 +2238,7 @@
 				F41045072AD4FD42000CA913 /* CocktailImageView.swift in Sources */,
 				4DD0DE992B97E020008EF203 /* TabBarComponents.swift in Sources */,
 				4DBBA4CF2B6A3B7100179B8F /* QueensParkSwizzle(W&G).swift in Sources */,
+				4DA889062CBDED4D00113ED7 /* HouseBobbyBurns.swift in Sources */,
 				F434A0D62CAEF73E00F75168 /* Notes.swift in Sources */,
 				4DE33E012B91559C00312EC3 /* SiGuey.swift in Sources */,
 				4DBFF81B2B5FAE030011B5B1 /* GeneralInstructions.swift in Sources */,
@@ -2324,6 +2351,7 @@
 				4DA5679E2B6CD4B2003F6F04 /* Zombie129.swift in Sources */,
 				4DA567DA2B6DC90E003F6F04 /* WilliamsCross.swift in Sources */,
 				4DBBA4762B6873D000179B8F /* LemonDrop.swift in Sources */,
+				4DA889022CBDAB5600113ED7 /* HouseBramble.swift in Sources */,
 				4DCB174A2BA539250002D7D9 /* NocheBuena.swift in Sources */,
 				4DF408C22B60D0F100EF9A6E /* Caucasian.swift in Sources */,
 				4DCB173A2BA51DCC0002D7D9 /* QueensPark(M&H).swift in Sources */,
@@ -2411,6 +2439,7 @@
 				4DBFF82D2B5FC2FD0011B5B1 /* BetweenTheSheets(W&G).swift in Sources */,
 				4D1442C32C974C94006C882F /* Stinger.swift in Sources */,
 				4DBAE6FF2C71BDCC00F3DBFD /* FourInHand.swift in Sources */,
+				4DA889082CBDF41900113ED7 /* ChocolateCocktailW&G.swift in Sources */,
 				4D5DA0B42BA125DD00C14F1F /* PiscoSourMnH.swift in Sources */,
 				F47FBF652C6BF5EB00CD599E /* CustomLoadingIndicator.swift in Sources */,
 				4DA5673A2B6AEA34003F6F04 /* SherryCobbler.swift in Sources */,
@@ -2576,9 +2605,11 @@
 				4DBBA4562B67524900179B8F /* HotBrandyToddy(JT).swift in Sources */,
 				4DBFF8512B60A23A0011B5B1 /* BrownDerby(Bourbon).swift in Sources */,
 				F4C5C3E42B3B4086005B2261 /* NonAlchololicIngredients.swift in Sources */,
+				4DA8890C2CBE0A1A00113ED7 /* HouseMexicanFiringSquad.swift in Sources */,
 				4DBBA49C2B68B20200179B8F /* MorningGloryFizz(W&G).swift in Sources */,
 				4DBBA46C2B6796C200179B8F /* JungleBird(WnG).swift in Sources */,
 				1AC386C62AAABED10064F52A /* PrepRecipeView.swift in Sources */,
+				4DA8890A2CBE00B800113ED7 /* HouseSilverFizz.swift in Sources */,
 				4DA5679C2B6CD371003F6F04 /* WhatsYourFavorite.swift in Sources */,
 				4DA5677C2B6C928F003F6F04 /* EasyStreet.swift in Sources */,
 				4DA5681C2B6E2819003F6F04 /* Yeen.swift in Sources */,
@@ -2632,6 +2663,7 @@
 				4D5DA0A62BA0FFA500C14F1F /* GordonsBreakfast.swift in Sources */,
 				4DBFF8432B6089C20011B5B1 /* Bramble(W&G).swift in Sources */,
 				1AFDB7BC2AE2FF69000A3812 /* LastWord.swift in Sources */,
+				4DA889042CBDE94F00113ED7 /* HouseBTS.swift in Sources */,
 				4D1E85C12B5C8F4500214BC6 /* AFlightSouthOfTheBorder.swift in Sources */,
 				4DAD6CAE2C94C80C00860555 /* Matched Cocktails Views.swift in Sources */,
 				4DA567D82B6DC65B003F6F04 /* UnusualSuspect.swift in Sources */,
