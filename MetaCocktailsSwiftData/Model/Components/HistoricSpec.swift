@@ -19,6 +19,7 @@ enum HistoricSpec: Codable {
     case elDiablo
     case fogCutter
     case ginFizz
+    case gimlet
     case silverFizz
     case hotToddy
     case mexicanFiringSquad
@@ -55,6 +56,8 @@ enum HistoricSpec: Codable {
             "Mexican Firing Squad" + houseTag
         case .modernCocktail:
             "Modern Cocktail" + wAndGTitleTag
+        case .gimlet:
+            "Gimlet" + houseTag
         }
     }
 }
