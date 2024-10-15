@@ -88,7 +88,7 @@ struct HistoricalRecipeView: View {
                         .font(FontFactory.italicFont(size: 16))
                         .multilineTextAlignment(.center)
                     
-                    UniversalButton(buttonText: "Recommended Spec", includeBorder: true, color: ColorScheme.nullInteractionTintGradient) {
+                    UniversalButton(buttonText: "Recommended Spec", includeBorder: true, color: ColorScheme.recipeBorder) {
                         withAnimation(.easeInOut) {
                             scrollID = recommendedCocktailID
                         }

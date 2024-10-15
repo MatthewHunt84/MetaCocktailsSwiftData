@@ -15,6 +15,7 @@ enum CocktailCollection: Int, Codable, Identifiable, CaseIterable {
     case originals 
     case milkAndHoney
     case custom
+    case house
     
     var id: Int {
         rawValue
@@ -34,12 +35,14 @@ enum CocktailCollection: Int, Codable, Identifiable, CaseIterable {
             "All"
         case .deathAndCo:
             "Death & Co"
+        case .house:
+            "Copilot"
         }
     }
     
     var recipeSubheading: String? {
         switch self {
-        case .deathAndCo, .williamsAndGraham, .milkAndHoney:
+        case .deathAndCo, .williamsAndGraham, .milkAndHoney, .house:
             return "\(self.collectionName) Version"
         default:
             return nil

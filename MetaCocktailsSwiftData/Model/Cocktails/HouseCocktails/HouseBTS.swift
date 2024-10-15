@@ -12,7 +12,8 @@ var houseBetweenTheSheets  = Cocktail(cocktailName: "Between the Sheets" + house
                                       garnish: [.orangePeel],
                                       spec: houseBetweenTheSheetsSpec,
                                       tags: houseBetweenTheSheetsTags,
-                                      variation: .betweenTheSheets)
+                                      variation: .betweenTheSheets,
+                                      collection: .house)
 
 var houseBetweenTheSheetsSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.5),
                                   OldCocktailIngredient(.syrups(.demSyrupOneToOne), value: 0.25),

@@ -21,4 +21,4 @@ var grasshopperWnG = Cocktail(cocktailName: "Grasshopper" + wAndGTitleTag,
 var grasshopperWnGSpec = [OldCocktailIngredient(.otherNonAlc(.cream), value: 1),
                           OldCocktailIngredient(.liqueurs(.cremeDeCacao), value: 1),
                           OldCocktailIngredient(.amari(.fernetBrancaMenta), value: 1),
-                          OldCocktailIngredient(.herbs(.mint), value: 4, unit: .none)]
+                          OldCocktailIngredient(.herbs(.mint), value: 4, unit: .gentlyMuddled)]

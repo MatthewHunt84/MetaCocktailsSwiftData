@@ -8,12 +8,13 @@
 import Foundation
 
 var houseMexicanFiringSquad = Cocktail(cocktailName: "Mexican Firing Squad" + houseTag,
-                                          glasswareType: .doubleOld,
-                                          garnish: [.limeWheel],
-                                          ice: .koldDraft,
-                                          spec: houseMexicanFiringSquadSpec,
-                                          tags: houseMexicanFiringSquadTags,
-                                          variation: .mexicanFiringSquad)
+                                       glasswareType: .doubleOld,
+                                       garnish: [.limeWheel],
+                                       ice: .koldDraft,
+                                       spec: houseMexicanFiringSquadSpec,
+                                       tags: houseMexicanFiringSquadTags,
+                                       variation: .mexicanFiringSquad,
+                                       collection: .house)
 
 var houseMexicanFiringSquadSpec = [OldCocktailIngredient(.bitters(.angosturaBitters), value: 5, unit: .dashes),
                                    OldCocktailIngredient(.juices(.lime), value: 0.75),

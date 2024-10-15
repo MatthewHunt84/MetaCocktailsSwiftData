@@ -12,10 +12,11 @@ var houseSilverGinFizz  = Cocktail(cocktailName: "Silver Gin Fizz" + houseTag,
                                    spec: houseSilverGinFizzSpec,
                                    buildOrder: houseSilverGinFizzBuild,
                                    tags: houseSilverGinFizzTags,
-                                   variation: .silverFizz)
+                                   variation: .silverFizz,
+                                   collection: .house)
 
-var houseSilverGinFizzSpec  = [OldCocktailIngredient(.juices(.lemon), value: 1),
-                               OldCocktailIngredient(.syrups(.simple), value: 1, prep: PrepBible.simpleSyrupPrep),
+var houseSilverGinFizzSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
+                               OldCocktailIngredient(.syrups(.simple), value: 0.75, prep: PrepBible.simpleSyrupPrep),
                                OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
                                OldCocktailIngredient(.gins(.ginAny), value: 1.5),
                                OldCocktailIngredient(.soda(.sparklingWater), value: 2)]

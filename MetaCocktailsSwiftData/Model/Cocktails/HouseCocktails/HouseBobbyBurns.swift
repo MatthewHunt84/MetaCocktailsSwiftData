@@ -12,7 +12,8 @@ var houseBobbyBurns = Cocktail(cocktailName: "Bobby Burns" + houseTag,
                                garnish: [.lemonPeel],
                                spec: houseBobbyBurnsSpec,
                                tags: houseBobbyBurnsTags,
-                               variation: .bobbyBurns)
+                               variation: .bobbyBurns,
+                               collection: .house)
 
 var houseBobbyBurnsSpec     =  [OldCocktailIngredient(.liqueurs(.benedictine), value: 2, unit: .barSpoon),
                                 OldCocktailIngredient(.fortifiedWines(.dolinRouge), value: 1),

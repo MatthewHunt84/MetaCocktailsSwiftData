@@ -90,15 +90,19 @@ struct FontFactory {
     
     static func recipeHeader(title: String, isHistoric: Bool = false) -> Text {
         if title.contains("(W&G Version)") {
-            return Text(title.replacingOccurrences(of: (" (W&G Version)"), with: ""))
+            return Text(title.replacingOccurrences(of: wAndGTitleTag, with: ""))
                 .font(.custom("AvenirNext-Regular", size: 24))
                 .foregroundStyle(.primary)
         } else if title.contains("(Death & Co Version)") {
             return Text(title.replacingOccurrences(of: (" (Death & Co Version)"), with: ""))
                 .font(.custom("AvenirNext-Regular", size: 24))
                 .foregroundStyle(.primary)
+        } else if title.contains("(M&H Version)") {
+            return Text(title.replacingOccurrences(of: mAndHVersionTag, with: ""))
+                .font(.custom("AvenirNext-Regular", size: 24))
+                .foregroundStyle(.primary)
         } else {
-            return Text(title.replacingOccurrences(of: (" (M&H Version)"), with: ""))
+            return Text(title.replacingOccurrences(of: houseTag, with: ""))
                 .font(.custom("AvenirNext-Regular", size: 24))
                 .foregroundStyle(.primary)
         }

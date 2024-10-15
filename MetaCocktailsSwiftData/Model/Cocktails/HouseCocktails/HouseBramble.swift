@@ -15,7 +15,8 @@ var houseBramble = Cocktail(cocktailName: "Bramble" + houseTag,
                             spec: houseBrambleSpec,
                             buildOrder: houseBrambleBuild,
                             tags: brambleTags,
-                            variation: .bramble)
+                            variation: .bramble,
+                            collection: .house)
 
 let houseBrambleSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.fruit(.raspberries), value: 3, unit: .whole),
                                                  OldCocktailIngredient(.fruit(.blackBerry), value: 3, unit: .whole),
@@ -30,4 +31,4 @@ let houseBrambleBuild =  Build(instructions: [Instruction(step: 1, method: "Mudd
                                               Instruction(step: 4, method: "Garnish with skewered blackberries and raspberries.")])
 
 
-var houseTag = " (Copilot House Spec)"
+var houseTag = " (Copilot Version)"
