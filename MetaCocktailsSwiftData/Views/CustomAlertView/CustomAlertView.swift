@@ -123,7 +123,7 @@ struct CustomAlertView: View {
                     .padding(.bottom, 5)
                     
                 
-                UniversalBlueButton(buttonText: buttonTitle, includeBorder: true) {
+                UniversalButton(buttonText: buttonTitle, includeBorder: true) {
                     action()
                     close()
                 }

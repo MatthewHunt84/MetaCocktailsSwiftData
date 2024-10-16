@@ -327,6 +327,7 @@ enum OtherNA: String, IngredientTagsProtocol {
     case coconutCream         = "Coconut cream"
     case coconutMilk          = "Coconut milk"
     case coconutWater         = "Coconut water"
+    case crushedChocolate     = "Crushed Chocolate"
     case coffee               = "Hot coffee"
     case hotWater             = "Hot water"
     case coldBrew             = "Strong cold brew"
@@ -439,6 +440,8 @@ enum OtherNA: String, IngredientTagsProtocol {
             Tags(flavors: [.nutmeg], nA: [NAIngredients(.otherNonAlc(self))])
         case .dryVanilla:
             Tags(flavors: [.vanilla], profiles: [.dry, .effervescent])
+        case .crushedChocolate:
+            Tags(flavors: [.chocolate], nA: [NAIngredients(.otherNonAlc(self))])
         }
     }
 }

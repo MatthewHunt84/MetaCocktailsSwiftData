@@ -11,25 +11,26 @@ struct Border: View {
     
     var height: CGFloat
     
-    @Binding var color: Color
+    @Binding var gradient: BorderGradient
     
     var body: some View {
         
         GeometryReader { geo in
             
             ZStack {
-                BorderSides(color: $color)
+                BorderSides(gradient: $gradient)
                 
                 VStack(alignment: .leading) {
-                    BorderTop(color: $color)
+                    BorderTop(gradient: $gradient)
                     
                     Spacer()
                     
-                    BorderBottom(color: $color)
+                    BorderBottom(gradient: $gradient)
                         .rotationEffect(.degrees(180))
                 }
             }
             .frame(height: height, alignment: .center)
+            .allowsHitTesting(false)
         }
     }
 }
@@ -38,69 +39,49 @@ struct Border: View {
 
 private struct BorderTop: View {
     
-    @Binding var color: Color
+    @Binding var gradient: BorderGradient
     
     var body: some View {
-        ZStack {
-            
-            Image(.backgroundTop)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .foregroundStyle(ColorScheme.recipeBackground)
-            
-            
+
             Image(.borderTop)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .background(.clear)
-                .foregroundStyle(color)
-        }
+                .foregroundStyle(gradient.top)
     }
 }
 
 private struct BorderBottom: View {
     
-    @Binding var color: Color
+    @Binding var gradient: BorderGradient
     
     var body: some View {
-        ZStack(alignment: .top) {
-            
-            Image(.backgroundTop)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .foregroundStyle(ColorScheme.recipeBackground)
-            
             
             Image(.borderTop)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .background(.clear)
-                .foregroundStyle(color)
-        }
+                .foregroundStyle(gradient.bottom)
     }
 }
 
 private struct BorderSides: View {
     
-    @Binding var color: Color
+    @Binding var gradient: BorderGradient
     
     var body: some View {
         GeometryReader { geo in
+            
             VStack {
-                Spacer()
                 
-                ZStack {
-                    Image(.backgroundSides)
-                        .resizable()
-                        .foregroundStyle(ColorScheme.recipeBackground)
-                        .frame(height: geo.size.height * 0.8)
+                Spacer()
                     
                     Image(.borderSides)
                         .resizable()
-                        .foregroundStyle(color)
                         .background(.clear)
+                        .foregroundStyle(gradient.top)
                         .frame(height: geo.size.height * 0.8)
-                }
+
                 Spacer()
             }
         }

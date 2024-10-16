@@ -108,10 +108,10 @@ struct RecipeTitleView: ViewModifier {
                     ToolbarItem(placement: .principal) {
                         
                         VStack {
-                            FontFactory.recipeHeader(title: cocktail.cocktailName)
+                            FontFactory.recipeHeader(title: cocktail.cocktailName, isHistoric: cocktail.collection == .originals)
                                 .lineLimit(1)
                             if let _ = cocktail.variation, let recipeSubheading = cocktail.collection?.recipeSubheading {
-                                FontFactory.mediumText(recipeSubheading, size: 12, color: .secondary)
+                                FontFactory.historicText(recipeSubheading, size: 12, color: .secondary)
                             }
                         }
                     }

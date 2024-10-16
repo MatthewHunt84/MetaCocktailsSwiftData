@@ -13,7 +13,7 @@ var laLouisiane = Cocktail(cocktailName: "La Louisiane",
                            ice: nil,
                            author: stanleyArthur,
                            spec: laLouisianeSpec,
-                           buildOrder: laLouisianeBuild,
+                           notes: laLouisianeNotes,
                            tags: laLouisianeTags,
                            variation: .laLouisiane,
                            collection: .originals,
@@ -27,5 +27,3 @@ var laLouisianeSpec     =  [OldCocktailIngredient(.otherAlcohol(.absinthe), valu
 
 var laLouisianeTags     = Tags(profiles: [.spiritForward, .rich, .punchy, .bittersweet, .aromatic],
                                styles: [.manhattan, .stirred])
-
-var laLouisianeBuild  = Build(instructions: [Instruction(step: 1, method: "The A La Louisiane (sometimes called De La Louisiane) is the former house drink of historic New Orleans’ restaurant La Louisiane, which was built in 1881. ")])

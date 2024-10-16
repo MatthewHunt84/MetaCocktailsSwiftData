@@ -176,6 +176,7 @@ enum Gin: String, IngredientTagsProtocol {
     case ginAny               = "Gin"
     case ginLondonDry         = "London Dry Gin"
     case geneverBols          = "Bols Genever"
+    case geneverAny           = "Genever"
     case haymansLondonDry     = "Hayman's London Dry Gin"
     case hendricks            = "Hendrick's Gin"
     case hendricksOrbium      = "Hendrick's Orbium Gin"
@@ -184,6 +185,7 @@ enum Gin: String, IngredientTagsProtocol {
     case leopoldNavy          = "Leopold's Navy Strength"
     case leopoldAmericanSBGin = "American Small Batch Gin"
     case monkey47             = "Monkey 47"
+    case oldTom               = "Old Tom Gin"
     case plymouth             = "Plymouth Gin"
     case ransomOldTom         = "Ransom Old Tom"
     case stGeorgeBotanivore   = "St. George Botnivore Gin"
@@ -241,6 +243,10 @@ enum Gin: String, IngredientTagsProtocol {
             Tags(flavors: [.juniper, .tea, .citrusPeel] ,booze: [Booze(.gins(self)), Booze(.gins(.ginAny))])
         case .aviation:
             Tags(flavors: [.juniper] ,booze: [Booze(.gins(self)), Booze(.gins(.ginLondonDry))])
+        case .geneverAny:
+            Tags(flavors: [.juniper],booze: [Booze(.gins(self)), Booze(.gins(.ginAny))])
+        case .oldTom:
+            Tags(flavors: [.juniper],booze: [Booze(.gins(self)), Booze(.gins(.ginAny))])
         }
     }
     

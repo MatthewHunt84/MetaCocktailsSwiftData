@@ -9,7 +9,7 @@ import Foundation
 
 var featheredHatFlipNo2 = Cocktail(cocktailName: "Feathered Hat Flip No. 2",
                                    glasswareType: .snifter,
-                                   garnish: [.sesameOil],
+                                   garnish: [.nutmeg],
                                    ice: nil,
                                    author: Author(person: AuthorNames.jamesMenkal.rawValue,
                                                   place: AuthorPlaces.williamsAndGraham.rawValue,
@@ -17,11 +17,9 @@ var featheredHatFlipNo2 = Cocktail(cocktailName: "Feathered Hat Flip No. 2",
                                    spec: featheredHatFlip2Spec,
                                    buildOrder: featheredHatFlip2Build,
                                    tags: featheredHatFlip2Tags,
-                                   variation: .featheredHatFlip,
-                                   collection: .williamsAndGraham,
-                                   titleCocktail: false)
+                                   collection: .williamsAndGraham)
 
-var featheredHatFlip2Spec  = [OldCocktailIngredient(.otherNonAlc(.sesameOil), value: 6 ,unit: .drops),
+var featheredHatFlip2Spec  = [OldCocktailIngredient(.otherNonAlc(.sesameOil), value: 8 ,unit: .drops),
                              OldCocktailIngredient(.otherAlcohol(.leftHandMilkStout), value: 1),
                              OldCocktailIngredient(.syrups(.cinnamonSyrup), value: 0.75, prep: PrepBible.cinnamonSyrup),
                              OldCocktailIngredient(.liqueurs(.giffardBanane), value: 0.5),
@@ -35,5 +33,4 @@ var featheredHatFlip2Tags = Tags(flavors: [.nutmeg],
 
 var featheredHatFlip2Build = Build(instructions: [Instruction(step: 1, method: "Add all ingredients into a tin a dry shake to emulsify"),
                                                  Instruction(step: 2, method: "Add a few Kold Draft cubes and shake until cold."),
-                                                 Instruction(step: 3, method: "Immediately after shaking, pop the tin and double strain into a flip glass."),
-                                                 Instruction(step: 4, method: "float the sesame oil on top for aromatics.")])
+                                                 Instruction(step: 3, method: "Immediately after shaking, pop the tin and double strain into a flip glass.")])

@@ -18,27 +18,56 @@ struct ColorScheme {
     
     static let headerColor = tintColor
     
-    static let recipeHeaderColor = Color.primary
-    
     static let background = Color(hex: "#0A0A0A")
     static let tabBarTint = tintColor
     
     static let recipeBackground = Color(hex: "#111111")
+    static let secondaryClone = Color(hex: "#939393")
+    
+    static let nullPrimaryGradient = LinearGradient(gradient: Gradient(colors: [.primary]),
+                                           startPoint: .leading,
+                                           endPoint: .trailing)
+    
+    static let nullSecondaryGradient = LinearGradient(gradient: Gradient(colors: [.secondary]),
+                                           startPoint: .leading,
+                                           endPoint: .trailing)
+    
+    static let nullInteractionTintGradient = LinearGradient(gradient: Gradient(colors: [interactionTint]),
+                                           startPoint: .leading,
+                                           endPoint: .trailing)
 
     static let recipeBorder = LinearGradient(gradient: Gradient(colors: [tintColor, tintColor, tintColor, darkerTintColor]),
                                            startPoint: .leading,
                                            endPoint: .trailing)
     
-    static let recipeBorderFlipped = LinearGradient(gradient: Gradient(colors: [darkerTintColor,tintColor, tintColor, tintColor]),
+    static let recipeBorderFlipped = LinearGradient(gradient: Gradient(colors: [darkerTintColor.mix(with: tintColor, by: 0.5),tintColor, tintColor, tintColor]),
+                                           startPoint: .leading,
+                                           endPoint: .trailing)
+    
+    static let recipeBorderInactive = LinearGradient(gradient: Gradient(colors: [secondaryClone]),
+                                           startPoint: .leading,
+                                           endPoint: .trailing)
+    
+    static let glow = LinearGradient(gradient: Gradient(colors: [interactionTint, .blue, .cyan]),
+                                           startPoint: .leading,
+                                           endPoint: .trailing)
+    
+    static let heartGradient = LinearGradient(gradient: Gradient(colors: [darkerTintColor, darkerTintColor, tintColor]),
                                            startPoint: .leading,
                                            endPoint: .trailing)
 
-    static let buttonTint = searchBarBackground //Color(hex: "#436EF8")
-    
-    
+    static let buttonTint = searchBarBackground
     
     static let backgroundGradient = LinearGradient(colors: [.black, .white.opacity(0.2)], startPoint: .top, endPoint: .bottom)
     
+    static let presentedFrontBorder = BorderGradient(top: recipeBorder, bottom: recipeBorderFlipped)
+    static let presentedBackBorder = BorderGradient(top: recipeBorderFlipped, bottom: recipeBorder)
+    static let inactiveBorder = BorderGradient(top: recipeBorderInactive, bottom: recipeBorderInactive)
+}
+
+struct BorderGradient {
+    let top: LinearGradient
+    let bottom: LinearGradient
 }
 
 extension Color {

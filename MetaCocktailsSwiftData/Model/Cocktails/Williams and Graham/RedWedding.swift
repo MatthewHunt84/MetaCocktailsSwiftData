@@ -16,7 +16,6 @@ var redWedding  =  Cocktail(cocktailName: "Red Wedding",
                                           place: AuthorPlaces.williamsAndGraham.rawValue, year: "2018"),
                             spec: redWeddingSpec,
                             buildOrder: nil,
-                            notes: redWeddingNotes,
                             tags: redWeddingTags,
                             collection: .williamsAndGraham)
 

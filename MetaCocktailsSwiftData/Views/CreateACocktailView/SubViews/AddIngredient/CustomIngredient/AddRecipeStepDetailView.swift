@@ -27,7 +27,7 @@ struct AddRecipeStepDetailView: View {
                         .scrollContentBackground(.hidden)
                         .background(Color.clear)
                 }
-                UniversalBlueButton(buttonText: "Add Recipe Step", rightImage: Image(systemName:"plus"), includeBorder: true) {
+                UniversalButton(buttonText: "Add Recipe Step", rightImage: Image(systemName:"plus"), includeBorder: true) {
                     if editingInstruction {
                         viewModel.updatePrepIngredientRecipe(id: viewModel.currentBuildInstructionUUID, newMethod: textEditor)
                     } else {

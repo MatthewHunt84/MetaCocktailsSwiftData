@@ -7,7 +7,7 @@
 
 import Foundation
 
-var gimletMcElhone = Cocktail(cocktailName: "Gimlet (McElhone)",
+var gimletMcElhone = Cocktail(cocktailName: "Gimlet" + historicTag,
                               glasswareType: .stemmedGlassware,
                               garnish: [.limeWheel],
                               ice: nil,
@@ -17,7 +17,8 @@ var gimletMcElhone = Cocktail(cocktailName: "Gimlet (McElhone)",
                               tags: gimletMcElhoneTags,
                               variation: .gimlet,
                               collection: .originals,
-                              titleCocktail: true)
+                              titleCocktail: true,
+                              historicSpec: .gimlet)
 
 var gimletMcElhoneSpec  = [OldCocktailIngredient(.syrups(.limeCordial), value: 1.5, prep: PrepBible.limeCordial),
                            OldCocktailIngredient(.gins(.plymouth), value: 1.5),]

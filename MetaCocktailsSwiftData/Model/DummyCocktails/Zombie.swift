@@ -21,14 +21,14 @@ var zombie = Cocktail(cocktailName: "Zombie",
                       titleCocktail: true)
 
 let zombieSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.juices(.lime), value: 0.75),
-                                        OldCocktailIngredient(.juices(.donsMix), value: 0.5),
+                                           OldCocktailIngredient(.juices(.donsMix), value: 0.5),
                                            OldCocktailIngredient(.syrups(.grenadine), value: 1, unit: .teaspoon, prep: PrepBible.grenadine),
-                                        OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
-                                        OldCocktailIngredient(.liqueurs(.falernum), value: 0.5),
-                                        OldCocktailIngredient(.otherAlcohol(.pernod), value: 6, unit: .drops),
-                                        OldCocktailIngredient(.rums(.goldJamaicanRum), value: 1.5),
-                                        OldCocktailIngredient(.rums(.goldPuertoRicanRum), value: 1.5),
-                                        OldCocktailIngredient(.rums(.lemonHeart151), value: 1)]
+                                           OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),
+                                           OldCocktailIngredient(.liqueurs(.falernum), value: 0.5),
+                                           OldCocktailIngredient(.otherAlcohol(.pernod), value: 6, unit: .drops),
+                                           OldCocktailIngredient(.rums(.goldJamaicanRum), value: 1.5),
+                                           OldCocktailIngredient(.rums(.goldPuertoRicanRum), value: 1.5),
+                                           OldCocktailIngredient(.rums(.lemonHeart151), value: 1)]
 
 
 let zombieTags = Tags(flavors: [.mint],

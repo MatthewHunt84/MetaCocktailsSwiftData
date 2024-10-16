@@ -12,7 +12,7 @@ var armyNavy  = Cocktail(cocktailName: "Army & Navy",
                          garnish: [.lemonPeel],
                          author: davidEmbury,
                          spec: armyNavySpec,
-                         buildOrder: armyNavyBuild,
+                         notes: armyNavyNotes,
                          tags: armyNavyTags,
                          collection: .originals)
 
@@ -24,5 +24,3 @@ var armyNavySpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
 
 var armyNavyTags   = Tags(profiles: [.citrusy, .tart, .light],
                           styles: [.shaken, .sour])
-                          
-var armyNavyBuild   = Build(instructions: [Instruction(step: 1, method: "This cocktail was not invented by Mr. Embury, we simply like his build the most and we think it's more suitable for the modern palate. The original author, like many classics, is unknown.")])

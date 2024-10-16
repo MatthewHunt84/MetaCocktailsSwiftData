@@ -10,30 +10,26 @@ import SwiftUI
 struct RecipeViewBack: View {
     var viewModel: RecipeViewModel
     var parentGeo: GeometryProxy
-    @State var secondaryBackgroundColor = Color.brandPrimaryGold
+    @State var flippedBorderGradient = ColorScheme.presentedBackBorder
     
     var body: some View {
         
         ZStack {
+            BackgroundGlowAnimation(gradient: flippedBorderGradient.top, isFavorite: .constant(false))
             
-            BackgroundGlowAnimation(color: .blue, isFavorite: .constant(false))
-            
-            Border(height: parentGeo.size.height, color: $secondaryBackgroundColor)
-            
-            ScrollView {
+            FadingEdgesScrollView {
                 
-                if viewModel.isShowingIngredientRecipe {
-                    IngredientRecipeView(prep: viewModel.currentIngredientRecipe, viewModel: viewModel)
-                        .padding()
-
-                } else if let buildOrder = viewModel.cocktail.buildOrder {
+                if let buildOrder = viewModel.cocktail.buildOrder {
                     BuildOrderView(buildOrder: buildOrder, viewModel: viewModel)
                         .padding()
                 }
             }
+            .background(BlackGlassBackgroundView())
             .scrollIndicators(.hidden)
             .frame(width: parentGeo.size.width * 0.88, height: viewModel.contentSize(for: parentGeo.size.height))
             .allowsHitTesting(viewModel.isFlipped)
+            
+            Border(height: parentGeo.size.height, gradient: $flippedBorderGradient)
         }
         
         .opacity(viewModel.frontDegree == 90.0 ? 1 : 0)
@@ -51,8 +47,8 @@ struct BuildOrderView: View {
     
     var body: some View {
         
-        VStack(alignment: .leading) {
-
+        VStack(alignment: .leading, spacing: 12) {
+            
             Grid(horizontalSpacing: 1) {
                 
                 GridRow {
@@ -86,7 +82,7 @@ struct BuildOrderView: View {
             
             if buildOrder.instructions.contains(where: { $0.step == 0}) {
                 Text(buildOrder.instructions.first!.method)
-                    .font(FontFactory.italicFont(size: 14))
+                    .font(FontFactory.italicMediumFont(size: 14))
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .padding(EdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16))
@@ -96,10 +92,10 @@ struct BuildOrderView: View {
                 if build.step > 0 {
                     HStack(alignment: .top) {
                         Text("\(build.step).")
-                            .font(FontFactory.mediumFont(size: 14))
+                            .font(FontFactory.mediumFont(size: 16))
                             .bold()
                         Text("\(build.method)")
-                            .font(FontFactory.mediumFont(size: 14))
+                            .font(FontFactory.mediumFont(size: 16))
                     }
                     .listRowBackground(Color.darkGrey)
                     Divider()
@@ -111,62 +107,3 @@ struct BuildOrderView: View {
     }
 }
 
-struct IngredientRecipeView: View {
-    
-    let prep: Prep
-    var viewModel: RecipeViewModel
-    
-    var body: some View {
-        
-        VStack(alignment: .leading) {
-            
-            Grid(horizontalSpacing: 1) {
-                
-                GridRow {
-                    
-                    Button(action: {
-                        viewModel.flipCard()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
-                            viewModel.isShowingIngredientRecipe = false
-                        }
-                    }) {
-                        Image(systemName: "arrow.triangle.2.circlepath")
-                            .foregroundColor(ColorScheme.interactionTint)
-                            .font(.system(size: 22))
-                            .contentShape(Rectangle())
-                    }
-                    .frame(width: 50, height: 50)
-                    .gridColumnAlignment(.leading)
-                    
-                    Text("\(prep.prepIngredientName) recipe")
-                        .font(FontFactory.mediumFont(size: 18).bold())
-                        .gridColumnAlignment(.center)
-                        .frame(maxWidth: .infinity)
-                        .multilineTextAlignment(.center)
-                    
-                    Color.clear
-                        .gridColumnAlignment(.trailing)
-                        .frame(width: 50, height: 50)
-                }
-            }
-            .padding(.bottom, 15)
-            
-            ForEach(prep.prepRecipe) { build in
-                HStack(alignment: .top) {
-                    Text("\(build.step).")
-                        .font(FontFactory.mediumFont(size: 14))
-                        .bold()
-                        
-                    Text("\(build.method)")
-                        .font(FontFactory.mediumFont(size: 14))
-                }
-                .foregroundStyle(.primary)
-                .listRowBackground(Color.darkGrey)
-                
-                Divider()
-            }
-
-            Spacer()
-        }
-    }
-}

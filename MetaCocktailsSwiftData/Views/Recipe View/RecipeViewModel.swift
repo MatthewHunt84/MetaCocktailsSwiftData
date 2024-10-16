@@ -20,7 +20,8 @@ import Observation
     var cocktailGlassImage: Image
     var methodString: String?
     var currentIngredientRecipe: Prep = PrepBible.demSyrupPrep
-    var isShowingIngredientRecipe: Bool = false 
+    var isShowingIngredientRecipe: Bool = false
+    var overlayPresented = false
     
     var backDegree = -90.0
     var frontDegree = 0.0
@@ -69,18 +70,23 @@ import Observation
             return borderHeight * 0.91
         }
     }
+    
+    func presentOverlay(for ingredient: Prep) {
+        currentIngredientRecipe = ingredient
+        overlayPresented = true
+    }
 }
 
 struct NavigationLinkWithoutIndicator<Label: View, Destination: View>: View {
     let label: () -> Label
     let destination: () -> Destination
-
+    
     init(@ViewBuilder label: @escaping () -> Label,
          @ViewBuilder destination: @escaping () -> Destination) {
         self.label = label
         self.destination = destination
     }
-
+    
     var body: some View {
         ZStack {
             NavigationLink {
