@@ -42,7 +42,7 @@ enum CocktailCollection: Int, Codable, Identifiable, CaseIterable {
     
     var recipeSubheading: String? {
         switch self {
-        case .deathAndCo, .williamsAndGraham, .milkAndHoney, .house:
+        case .deathAndCo, .williamsAndGraham, .milkAndHoney:
             return "\(self.collectionName) Version"
         default:
             return nil

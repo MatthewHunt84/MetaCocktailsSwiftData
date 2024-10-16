@@ -31,4 +31,4 @@ let houseBrambleBuild =  Build(instructions: [Instruction(step: 1, method: "Mudd
                                               Instruction(step: 4, method: "Garnish with skewered blackberries and raspberries.")])
 
 
-var houseTag = " (Copilot Version)"
+var houseTag = ""

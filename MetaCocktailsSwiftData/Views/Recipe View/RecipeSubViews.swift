@@ -47,7 +47,7 @@ struct HistoricalRecipeView: View {
     @Binding var showingHistoricInfo: Bool
     @Binding var scrollID: Cocktail.ID?
     var recommendedCocktailID: UUID? = nil
-    let HistoricText = "This cocktail is presented for historical context. Since its creation, there have been significant changes in techniques, ingredients, and the overall tastes of cocktail enthusiasts."
+    let historicText = "This cocktail is presented for historical context. Since its creation, there have been significant changes in techniques, ingredients, and the overall tastes of cocktail enthusiasts."
     
     var body: some View {
         
@@ -84,7 +84,7 @@ struct HistoricalRecipeView: View {
                 
                 VStack {
                     
-                    Text(HistoricText)
+                    Text(historicText)
                         .font(FontFactory.italicFont(size: 16))
                         .multilineTextAlignment(.center)
                     

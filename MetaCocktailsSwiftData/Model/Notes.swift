@@ -23,6 +23,11 @@ let oldFashionedBuild = "This is a more modern version that you'll find at upsca
 let smokingMonkeyNotes = "The original cocktail had a rice paper cut-out of a smoking monkey where the bitters were the smoke design."
 
 // History Info
+
+let armyNavyNotes = "Like many classics, the author of the Army & Navy is unknown. David Embury's early publication of the recipe in 1948 is excellent, even by modern standards."
+
+var laLouisianeNotes  = "The A La Louisiane (sometimes called De La Louisiane) is the former house drink of historic New Orleans’ restaurant La Louisiane, which was built in 1881."
+
 let cloverClubNotes = "The original Clover Club was a gentleman's club in Philadelphia from 1882-1920s, where the cocktail originated. Julie Reiner's recipe is a great example of a modern sour which stays true the the original formula, shaken with dry vermouth."
 
 let harveyWalbangerNotes = "This is a built cocktail that gained popularity through a marketing campaign from George Bednar for McKesson Imports (Galliano's importer at the time). Though, the drink itself was likely the creation of bartender Donato 'Duke' Antone, who may have been serving it since the 1950s at the Hollywood bar Black Watch, calling it the 'Duke Screwdriver'. Bednar picked it up in the late 60s and built an advertising campaign around it for McKesson. It goes to show you that even if the cocktail is total trash, as long as its easy to make and there's tons of advertising behind it, it has a chance to make it into the history books and people like us, who dedicate their entire careers to perfecting their craft, end up writing about it."
@@ -86,3 +91,4 @@ let whiskeySourNotes = "The term 'Whiskey Sour' first appeared in print as early
 // Historical info presented as a quote
 
 let gibsonNotes = "The name of the cocktail came from illustrator Charles Dana Gibson, the creator of the Gibson Girl drawings, or Walder D.K. Gibson. Both were members of the club. - Dave Wondrich, The Oxford Companion to Spirits and Cocktails"
+
