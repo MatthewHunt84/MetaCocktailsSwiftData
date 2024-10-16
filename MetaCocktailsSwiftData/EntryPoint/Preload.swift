@@ -40,6 +40,7 @@ enum Preload: CaseIterable {
             
         case .milkAndHoney:
             [americanTrilogy, appleJackMnH, asburyParkSwizzle, bensonhurst, bicycleThief, binAndGitters, bottlerocket, cafeConLecheFlip, calvados75, cobbleHill, cosmonaut, daiquiriMnH, daiquiriNo4MnH, debbieDont, deepBlueSea, dominicana, eastSideCocktail, eskimosKiss, fakerFace, fallbackCocktail, french75MnH, frescaPlatino, gabriella, ginAndIt, gingerCocktail, goldRush, gordonsBreakfast, gordonsCup, grapefruitCollins, harvestOldFashioned, hayesFizz, homeOnTheRangeMnH, holeInTheCup, houseGingerBeer, jFKHarris, kentuckyMaid, kTCollins, leftHand, maloneyParkSwizzle, mojitoMnH, nocheBuena, oaxacanite,  palmaFizz, paperPlane, penicillin, piscoSourMnH, queensParkMnH, queensParkLightMnH, regalAmburana, redHookCocktail, rossCollins, ryeHummingbirdDown, saladito, savoirFaire,  siGuey, silverFox, silverLining, southSideCocktail, springForward, streetAndFlynnSpecial, strawberryFix, sugarplum, suttersMill, tarzanCocktail, tattletale, temperanceGrapefruitCollins, temperanceIrishCoffee, tequilaEastSide, theBusiness, thirtyEightSpecial, theMedicinaLatina, theSeaPlane, theStark, theTieBinder, tooSoon, tritterCollins, tritterRickey, turnpike,  waterLily, migration]
+            
         case .houseCocktails:
             [houseBramble, houseBetweenTheSheets, houseBobbyBurns, houseSilverGinFizz, houseMexicanFiringSquad, houseGimlet]
         }

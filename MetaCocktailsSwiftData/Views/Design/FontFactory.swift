@@ -102,7 +102,7 @@ struct FontFactory {
                 .font(.custom("AvenirNext-Regular", size: 24))
                 .foregroundStyle(.primary)
         } else {
-            return Text(title.replacingOccurrences(of: houseTag, with: ""))
+            return Text(title.replacingOccurrences(of: historicTag, with: ""))
                 .font(.custom("AvenirNext-Regular", size: 24))
                 .foregroundStyle(.primary)
         }

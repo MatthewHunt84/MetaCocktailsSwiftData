@@ -7,7 +7,7 @@
 
 import Foundation
 
-var elDiablo  = Cocktail(cocktailName: "El Diablo",
+var elDiablo  = Cocktail(cocktailName: "El Diablo" + historicTag,
                          glasswareType: .collins,
                          garnish: [.limeWheel],
                          ice: .pebbleIce,

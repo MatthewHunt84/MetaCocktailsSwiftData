@@ -7,7 +7,7 @@
 
 import Foundation
 
-var gimletMcElhone = Cocktail(cocktailName: "Gimlet",
+var gimletMcElhone = Cocktail(cocktailName: "Gimlet" + historicTag,
                               glasswareType: .stemmedGlassware,
                               garnish: [.limeWheel],
                               ice: nil,

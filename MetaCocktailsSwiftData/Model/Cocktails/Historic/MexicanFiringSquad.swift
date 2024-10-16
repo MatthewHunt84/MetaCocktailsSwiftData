@@ -7,7 +7,7 @@
 
 import Foundation
 
-var mexicanFiringSquad = Cocktail(cocktailName: "Mexican Firing Squad",
+var mexicanFiringSquad = Cocktail(cocktailName: "Mexican Firing Squad" + historicTag,
                                   glasswareType: .doubleOld,
                                   garnish: [.maraschinoCherry, .halfOrangeWheel, .pineappleWedge],
                                   ice: .crackedIce,
