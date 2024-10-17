@@ -9,7 +9,6 @@ import Foundation
 
 
 var highlandLass = Cocktail(cocktailName: "Highland Lass",
-                            imageAsset: nil,
                             glasswareType: .doubleOld,
                             garnish: [.lemonPeel, .mintSprig],
                             ice: .bigRock,

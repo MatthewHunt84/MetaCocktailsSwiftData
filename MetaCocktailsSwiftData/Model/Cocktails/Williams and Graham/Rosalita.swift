@@ -8,7 +8,6 @@
 import Foundation
 
 var rosalita = Cocktail(cocktailName: "Rosalita",
-                        imageAsset: nil,
                         glasswareType: .collins,
                         garnish: [.rosePetals, .goldLeaf],
                         ice: .koldDraft,

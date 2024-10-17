@@ -8,7 +8,6 @@
 import SwiftUI
 
 var mintJulep = Cocktail(cocktailName: "Mint Julep",
-                         imageAsset: nil,
                          glasswareType: .julep,
                          garnish: [.mintBouquet],
                          ice: .pebbleIce,

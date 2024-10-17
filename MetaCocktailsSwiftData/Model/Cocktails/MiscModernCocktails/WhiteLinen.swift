@@ -8,7 +8,6 @@
 import Foundation
 
 var whiteLinen = Cocktail(cocktailName: "White Linen",
-                          imageAsset: nil,
                           glasswareType: .collins,
                           garnish: [.cucumberSlices],
                           ice: .koldDraft,

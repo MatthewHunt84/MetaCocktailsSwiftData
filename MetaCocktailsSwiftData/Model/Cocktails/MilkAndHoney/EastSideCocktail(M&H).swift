@@ -8,7 +8,6 @@
 import Foundation
 
 var eastSideCocktail = Cocktail(cocktailName: "East Side Cocktail",
-                                imageAsset: nil,
                                 glasswareType: .coupe,
                                 garnish: [.cucumberSlices],
                                 ice: nil,

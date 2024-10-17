@@ -8,7 +8,6 @@
 import Foundation
 
 var lavandulaRosa = Cocktail(cocktailName: "Lavandula Rosa",
-                             imageAsset: nil,
                              glasswareType: .martini,
                              garnish: [.raspberry],
                              ice: nil,

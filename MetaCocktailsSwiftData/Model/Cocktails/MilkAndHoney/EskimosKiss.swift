@@ -9,7 +9,6 @@ import Foundation
 
 
 var eskimosKiss = Cocktail(cocktailName: "Eskimo's Kiss",
-                           imageAsset: nil,
                            glasswareType: .hurricaneGlass,
                            garnish: [.mintBouquet],
                            ice: .pebbleIce,

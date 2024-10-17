@@ -8,7 +8,6 @@
 import Foundation
 
 var secondSunrise = Cocktail(cocktailName: "Second Sunrise",
-                             imageAsset: nil,
                              glasswareType: .stemmedGlassware,
                              garnish: [.edibleFlower],
                              author:Author(person: AuthorNames.jamesMenkal.rawValue,

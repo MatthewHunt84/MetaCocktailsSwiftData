@@ -8,7 +8,6 @@
 import SwiftUI
 
 var southSideCocktail = Cocktail(cocktailName: "South Side Cocktail",
-                                 imageAsset: nil,
                                  glasswareType: .coupe,
                                  garnish: [.mintLeaf],
                                  ice: nil,

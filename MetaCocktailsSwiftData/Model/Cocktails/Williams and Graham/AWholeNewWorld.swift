@@ -8,7 +8,6 @@
 import Foundation
 
 var aWholeNewWorld = Cocktail(cocktailName: "A Whole New World",
-                              imageAsset: nil,
                               glasswareType: .collins,
                               garnish: [.bambooLeaf],
                               ice: .pebbleIce,

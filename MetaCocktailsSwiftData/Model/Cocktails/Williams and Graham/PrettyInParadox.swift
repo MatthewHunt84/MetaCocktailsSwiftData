@@ -8,7 +8,6 @@
 import Foundation
 
 var prettyInParadox = Cocktail(cocktailName: "Pretty In Paradox",
-                               imageAsset: nil,
                                glasswareType: .doubleOld,
                                garnish: nil,
                                ice: .bigRock,

@@ -8,7 +8,6 @@
 import Foundation
 
 var aloeForThatBurn = Cocktail(cocktailName: "Aloe for that Burn",
-                         imageAsset: nil,
                          glasswareType: .stemmedGlassware,
                          garnish: [.limeWheel],
                          author: Author(person: "Killian Hopkins", place: AuthorPlaces.williamsAndGraham.rawValue, year: "2018"),

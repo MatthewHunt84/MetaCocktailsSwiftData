@@ -9,7 +9,6 @@ import Foundation
 
 
 var silverMonk = Cocktail(cocktailName: "Silver Monk",
-                          imageAsset: nil,
                           glasswareType: .coupe,
                           garnish: [.cucumberSliceLong],
                           ice: nil,

@@ -8,7 +8,6 @@
 import SwiftUI
 
 var ramosGinFizz = Cocktail(cocktailName: "Ramos Gin Fizz",
-                            imageAsset: nil,
                             glasswareType: .collins,
                             garnish: [.orangePeel],
                             ice: .koldDraft,

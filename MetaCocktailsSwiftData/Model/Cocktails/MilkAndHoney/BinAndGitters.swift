@@ -10,7 +10,6 @@ import Foundation
 
 
 var binAndGitters = Cocktail(cocktailName: "Bin & Gitters",
-                             imageAsset: nil,
                              glasswareType: .doubleOld,
                              garnish: [.limeWedge],
                              ice: .pebbleIce,

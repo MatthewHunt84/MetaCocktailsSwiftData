@@ -8,13 +8,10 @@
 import Foundation
 
 var adonis = Cocktail(cocktailName: "Adonis",
-                      imageAsset: nil,
                       glasswareType: Glassware.coupe,
                       garnish: [.orangeOrLemon],
-                      ice: nil,
                       author:Author(person: "Joe McKone", place: AuthorPlaces.hoffmanHouse.rawValue, year: "1880s"),
                       spec: adonisSpec,
-                      buildOrder: nil,
                       tags: adonisTags)
 
 var adonisSpec = [OldCocktailIngredient(.fortifiedWines(.fino), value: 1.5),
@@ -22,7 +19,7 @@ var adonisSpec = [OldCocktailIngredient(.fortifiedWines(.fino), value: 1.5),
                   OldCocktailIngredient(.bitters(.orangeBitters), value: 1, unit: .dashes),
                   OldCocktailIngredient(.bitters(.angosturaBitters), value: 1, unit: .dashes),]
 
-var adonisTags = Tags(profiles: [ .light, .complex, .bittersweet ],
+var adonisTags = Tags(profiles: [ .light, .complex, .bittersweet],
                       styles: [.martini, .stirred])
                    
 

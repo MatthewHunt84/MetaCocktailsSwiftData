@@ -9,7 +9,6 @@ import Foundation
 
 
 var fourInHand = Cocktail(cocktailName: "Four in Hand",
-                          imageAsset: nil,
                           glasswareType: .doubleOld,
                           garnish: [.orangePeel],
                           ice: .bigRock,

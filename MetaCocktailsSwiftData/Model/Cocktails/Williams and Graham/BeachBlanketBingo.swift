@@ -8,7 +8,6 @@
 import Foundation
 
 var beachBlanketBingo = Cocktail(cocktailName: "Beach Blanket Bingo",
-                                 imageAsset: nil,
                                  glasswareType: .collins,
                                  garnish: [.raspberry],
                                  ice: .koldDraft,

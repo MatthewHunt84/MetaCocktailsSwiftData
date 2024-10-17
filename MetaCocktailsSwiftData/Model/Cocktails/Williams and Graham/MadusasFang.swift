@@ -8,7 +8,6 @@
 import Foundation
 
 var medusasFang = Cocktail(cocktailName: "Medusa's Fang",
-                           imageAsset: nil,
                            glasswareType: .doubleOld,
                            garnish: [.mintSprig, .pineappleFronds],
                            ice: .pebbleIce,

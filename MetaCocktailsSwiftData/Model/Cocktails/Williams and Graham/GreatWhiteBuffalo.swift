@@ -8,7 +8,6 @@
 import Foundation
 
 var greatWhiteBuffalo = Cocktail(cocktailName: "Great White Buffalo",
-                                 imageAsset: nil,
                                  glasswareType: .collins,
                                  garnish: [.lemongrass, .chineseFiveSpice],
                                  ice: .pebbleIce,

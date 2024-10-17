@@ -8,7 +8,6 @@
 import Foundation
 
 var followTheCompass = Cocktail(cocktailName: "Follow The Compass",
-                                imageAsset: nil,
                                 glasswareType: .doubleOld,
                                 garnish: [.grapefruitPeel],
                                 ice: .bigRock,

@@ -8,7 +8,6 @@
 import Foundation
 
 var harvestMoon = Cocktail(cocktailName: "Harvest Moon",
-                           imageAsset: nil,
                            glasswareType: .stemmedGlassware,
                            garnish: [.nutmeg],
                            ice: nil,

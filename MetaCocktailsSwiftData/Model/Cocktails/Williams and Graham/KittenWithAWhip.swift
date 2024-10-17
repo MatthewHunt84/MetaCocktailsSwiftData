@@ -9,7 +9,6 @@ import Foundation
 
 
 var kittenWithAWhip = Cocktail(cocktailName: "Kitten with a Whip",
-                               imageAsset: nil,
                                glasswareType: .martini,
                                garnish: [.maraschinoCherry],
                                ice: nil,

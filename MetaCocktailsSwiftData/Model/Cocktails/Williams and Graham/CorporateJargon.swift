@@ -8,7 +8,6 @@
 import Foundation
 
 var corporateJargon = Cocktail(cocktailName: "Corporate Jargon",
-                               imageAsset: nil,
                                glasswareType: .stemmedGlassware,
                                garnish: nil,
                                author: Author(person: "Justin Jenkins", place: AuthorPlaces.williamsAndGraham.rawValue, year: "Fall, 2021"),

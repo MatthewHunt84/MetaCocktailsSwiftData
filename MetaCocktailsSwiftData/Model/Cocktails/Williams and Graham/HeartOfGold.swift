@@ -8,7 +8,6 @@
 import Foundation
 
 var heartOfGold = Cocktail(cocktailName: "Heart of Gold",
-                           imageAsset: nil,
                            glasswareType: .stemmedGlassware,
                            garnish: nil,
                            author: Author(person: "Justin Jenkins", place: AuthorPlaces.williamsAndGraham.rawValue, year: "2020"),

@@ -8,7 +8,6 @@
 import Foundation
 
 var cardiC = Cocktail(cocktailName: "Cardi C",
-                      imageAsset: nil,
                       glasswareType: .singleOld,
                       garnish: [.orangePeel],
                       ice: nil,

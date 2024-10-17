@@ -1368,7 +1368,6 @@
 			isa = PBXGroup;
 			children = (
 				F493F3B22C6D256F006A0ADB /* Design */,
-				F4872FF12C4374410092F8FF /* Backgrounds */,
 				4D5DA09C2B9ED43300C14F1F /* CustomAlertView */,
 				4DE33DF52B8D931500312EC3 /* CreateACocktailView */,
 				4DA567B02B6D9524003F6F04 /* CocktailBatchingCalculator */,
@@ -2002,14 +2001,6 @@
 			path = DummyCocktails;
 			sourceTree = "<group>";
 		};
-		F4872FF12C4374410092F8FF /* Backgrounds */ = {
-			isa = PBXGroup;
-			children = (
-				F4872FF22C4374580092F8FF /* BlackGlassBackgroundView.swift */,
-			);
-			path = Backgrounds;
-			sourceTree = "<group>";
-		};
 		F493F3A02C6CEE90006A0ADB /* Ingredient Search View */ = {
 			isa = PBXGroup;
 			children = (
@@ -2047,6 +2038,7 @@
 				F4F3D4212C90996200BB6767 /* ColorScheme.swift */,
 				F4AA6BB92C7E2C4D00610D80 /* FontFactory.swift */,
 				F4AA6BB72C7E2B8600610D80 /* Headers.swift */,
+				F4872FF22C4374580092F8FF /* BlackGlassBackgroundView.swift */,
 				4D1442D22C9FE5E3006C882F /* Buttons.swift */,
 			);
 			path = Design;

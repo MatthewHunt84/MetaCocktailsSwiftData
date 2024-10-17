@@ -8,7 +8,6 @@
 import Foundation
 
 var ramonaFlowers = Cocktail(cocktailName: "Ramona Flowers",
-                             imageAsset: nil,
                              glasswareType: .flute,
                              garnish: [.limePeel, .edibleFlower],
                              author:Author(person: AuthorNames.saydeeCanada.rawValue,

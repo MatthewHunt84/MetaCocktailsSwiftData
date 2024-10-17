@@ -8,7 +8,6 @@
 import Foundation
 
 var unusualSuspect = Cocktail(cocktailName: "Unusual Suspect",
-                              imageAsset: nil,
                               glasswareType: .doubleOld,
                               garnish: [.bloodOrangePeel],
                               ice: .bigRock,

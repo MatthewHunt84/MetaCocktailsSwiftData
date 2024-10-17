@@ -8,7 +8,6 @@
 import Foundation
 
 var jaredLetosPrettyFace = Cocktail(cocktailName: "Jared Leto's Pretty Face",
-                                    imageAsset: nil,
                                     glasswareType: .collins,
                                     garnish: [.raspberry, .lemonWheel], 
                                     ice: .pebbleIce,

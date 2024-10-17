@@ -10,7 +10,6 @@ import Foundation
 
 
 var whiskeySmash = Cocktail(cocktailName: "Whiskey Smash",
-                            imageAsset: nil,
                             glasswareType: .doubleOld,
                             garnish: [.mintSprig],
                             ice: .pebbleIce,

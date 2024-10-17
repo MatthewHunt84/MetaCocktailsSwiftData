@@ -9,7 +9,6 @@ import Foundation
 
 
 var smokingMonkey = Cocktail(cocktailName: "Smoking Monkey",
-                             imageAsset: nil,
                              glasswareType: .stemmedGlassware,
                              garnish: [.angoAndPeychaudsDeco],
                              author:Author(person: AuthorNames.jamesMenkal.rawValue,
@@ -21,16 +20,16 @@ var smokingMonkey = Cocktail(cocktailName: "Smoking Monkey",
                              collection: .williamsAndGraham)
 
 let smokingMonkeySpec: [OldCocktailIngredient] = [OldCocktailIngredient(.syrups(.gingerSyrup), value: 0.25, prep: PrepBible.gingerSyrup),
-                                               OldCocktailIngredient(.juices(.lemon), value: 0.5),
-                                               OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
-                                               OldCocktailIngredient(.liqueurs(.velvetFalernum), value: 0.25),
-                                               OldCocktailIngredient(.liqueurs(.strega), value: 0.5),
-                                               OldCocktailIngredient(.whiskies(.Ardbeg), value: 0.5),
-                                               OldCocktailIngredient(.gins(.monkey47), value: 1)]
+                                                  OldCocktailIngredient(.juices(.lemon), value: 0.5),
+                                                  OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
+                                                  OldCocktailIngredient(.liqueurs(.velvetFalernum), value: 0.25),
+                                                  OldCocktailIngredient(.liqueurs(.strega), value: 0.5),
+                                                  OldCocktailIngredient(.whiskies(.Ardbeg), value: 0.5),
+                                                  OldCocktailIngredient(.gins(.monkey47), value: 1)]
 
 
 let smokingMonkeyTags = Tags(profiles: [.herbal, .refreshing, .complex, .silky],
-                      styles: [.sour, .shaken])
+                             styles: [.sour, .shaken])
 
 let smokingMonkeyBuild =  Build(instructions: [Instruction(step: 1, method: "Add all ingredients except the biters and dry shake."),
                                                Instruction(step: 2, method: "Shake with ice."),

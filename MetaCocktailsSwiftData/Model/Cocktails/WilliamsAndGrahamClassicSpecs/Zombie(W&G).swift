@@ -8,7 +8,6 @@
 import Foundation
 
 var zombieWnG = Cocktail(cocktailName: "Zombie" + wAndGTitleTag,
-                         imageAsset: nil,
                          glasswareType: .tikiMug,
                          garnish: [.mintSprig],
                          ice: .pebbleIce,
