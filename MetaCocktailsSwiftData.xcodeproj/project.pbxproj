@@ -1642,9 +1642,9 @@
 		4D67613A2C44AA1300A5939C /* Search View */ = {
 			isa = PBXGroup;
 			children = (
+				4DA8890D2CC0FA4600113ED7 /* Search View Models */,
 				4DAD6CAA2C94C64700860555 /* TitleHeaders */,
 				F493F3A02C6CEE90006A0ADB /* Ingredient Search View */,
-				4D67613D2C44B62000A5939C /* SearchViewModel.swift */,
 				4D6761402C44E61F00A5939C /* IngredientSearchResultsView.swift */,
 				F4A233BE2C63B5300061027C /* SearchPredicateFactory.swift */,
 				4D67613F2C44C8A400A5939C /* SearchViewCells */,
@@ -1701,6 +1701,14 @@
 				4DA8890B2CBE0A1A00113ED7 /* HouseMexicanFiringSquad.swift */,
 			);
 			path = HouseCocktails;
+			sourceTree = "<group>";
+		};
+		4DA8890D2CC0FA4600113ED7 /* Search View Models */ = {
+			isa = PBXGroup;
+			children = (
+				4D67613D2C44B62000A5939C /* SearchViewModel.swift */,
+			);
+			path = "Search View Models";
 			sourceTree = "<group>";
 		};
 		4DAD6C882C804A0300860555 /* VariationPicker */ = {
