@@ -16,39 +16,39 @@ struct ErrorAlertView: View {
     @State private var offset: CGFloat = 1000
     
     var body: some View {
-            VStack {
-                Text(title)
-                    .font(FontFactory.mediumFont(size: 22))
-                    .foregroundStyle(Color.selectedRed)
-                    .multilineTextAlignment(.center)
-                    .padding(.bottom, 5)
-                
-                Text(message)
-                    .font(FontFactory.fontBody16)
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
-                    .padding(.bottom, 5)
-                    
-                
-                ErrorButton(buttonText: buttonTitle) {
-                    action()
-                    close()
-                }
+        VStack {
+            Text(title)
+                .font(FontFactory.mediumFont(size: 22))
+                .foregroundStyle(Color.selectedRed)
+                .multilineTextAlignment(.center)
+                .padding(.bottom, 5)
+            
+            Text(message)
+                .font(FontFactory.fontBody16)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+                .padding(.bottom, 5)
+            
+            
+            ErrorButton(buttonText: buttonTitle) {
+                action()
+                close()
             }
-            .padding()
-            .background(BlackGlassBackgroundView())
-            .clipShape(RoundedRectangle(cornerRadius: 12))
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.redGold, lineWidth: 2)
-            )
-            .offset(x: 0, y: offset)
-            .onAppear {
-                withAnimation(.easeInOut) {
-                    offset = 0
-                }
+        }
+        .padding()
+        .background(BlackGlassBackgroundView())
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color.redGold, lineWidth: 2)
+        )
+        .offset(x: 0, y: offset)
+        .onAppear {
+            withAnimation(.easeInOut) {
+                offset = 0
             }
-            .padding(.horizontal, 40)
+        }
+        .padding(.horizontal, 40)
     }
     
     func close() {
@@ -109,39 +109,39 @@ struct CustomAlertView: View {
     @State private var offset: CGFloat = 1000
     
     var body: some View {
-            VStack {
-                Text(title)
-                    .font(FontFactory.regularFont(size: 22))
-                    .foregroundStyle(.brandPrimaryGold)
-                    .multilineTextAlignment(.center)
-                    .padding(.bottom, 5)
-                
-                Text(message)
-                    .font(FontFactory.fontBody16)
-                    .foregroundStyle(.primary)
-                    .multilineTextAlignment(.center)
-                    .padding(.bottom, 5)
-                    
-                
-                UniversalButton(buttonText: buttonTitle, includeBorder: true) {
-                    action()
-                    close()
-                }
+        VStack {
+            Text(title)
+                .font(FontFactory.regularFont(size: 22))
+                .foregroundStyle(.brandPrimaryGold)
+                .multilineTextAlignment(.center)
+                .padding(.bottom, 5)
+            
+            Text(message)
+                .font(FontFactory.fontBody16)
+                .foregroundStyle(.primary)
+                .multilineTextAlignment(.center)
+                .padding(.bottom, 5)
+            
+            
+            UniversalButton(buttonText: buttonTitle, includeBorder: true) {
+                action()
+                close()
             }
-            .padding()
-            .background(BlackGlassBackgroundView())
-            .clipShape(RoundedRectangle(cornerRadius: 12))
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.primary, lineWidth: 2)
-            )
-            .offset(x: 0, y: offset)
-            .onAppear {
-                withAnimation(.easeInOut) {
-                    offset = 0
-                }
+        }
+        .padding()
+        .background(BlackGlassBackgroundView())
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color.primary, lineWidth: 2)
+        )
+        .offset(x: 0, y: offset)
+        .onAppear {
+            withAnimation(.easeInOut) {
+                offset = 0
             }
-            .padding(.horizontal, 40)
+        }
+        .padding(.horizontal, 40)
     }
     func close() {
         withAnimation(.easeInOut) {
