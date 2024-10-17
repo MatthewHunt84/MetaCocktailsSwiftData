@@ -1707,6 +1707,7 @@
 			isa = PBXGroup;
 			children = (
 				4D67613D2C44B62000A5939C /* SearchViewModel.swift */,
+				F493F3B02C6CFC72006A0ADB /* SelectionTagViewModel.swift */,
 			);
 			path = "Search View Models";
 			sourceTree = "<group>";
@@ -2035,7 +2036,6 @@
 		F493F3AF2C6CFC4D006A0ADB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F493F3B02C6CFC72006A0ADB /* SelectionTagViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
