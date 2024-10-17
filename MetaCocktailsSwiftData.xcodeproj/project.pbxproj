@@ -1643,11 +1643,10 @@
 			isa = PBXGroup;
 			children = (
 				4DA8890D2CC0FA4600113ED7 /* Search View Models */,
-				4DAD6CAA2C94C64700860555 /* TitleHeaders */,
 				F493F3A02C6CEE90006A0ADB /* Ingredient Search View */,
-				4D6761402C44E61F00A5939C /* IngredientSearchResultsView.swift */,
-				F4A233BE2C63B5300061027C /* SearchPredicateFactory.swift */,
-				4D67613F2C44C8A400A5939C /* SearchViewCells */,
+				F493F3AC2C6CFA81006A0ADB /* Preferences List */,
+				4DA8890E2CC1944800113ED7 /* IngredientSearchResults */,
+				4DAD6CAA2C94C64700860555 /* TitleHeaders */,
 			);
 			path = "Search View";
 			sourceTree = "<group>";
@@ -1707,9 +1706,19 @@
 			isa = PBXGroup;
 			children = (
 				4D67613D2C44B62000A5939C /* SearchViewModel.swift */,
+				F4A233BE2C63B5300061027C /* SearchPredicateFactory.swift */,
 				F493F3B02C6CFC72006A0ADB /* SelectionTagViewModel.swift */,
 			);
 			path = "Search View Models";
+			sourceTree = "<group>";
+		};
+		4DA8890E2CC1944800113ED7 /* IngredientSearchResults */ = {
+			isa = PBXGroup;
+			children = (
+				4D6761402C44E61F00A5939C /* IngredientSearchResultsView.swift */,
+				4DAD6CAD2C94C80C00860555 /* Matched Cocktails Views.swift */,
+			);
+			path = IngredientSearchResults;
 			sourceTree = "<group>";
 		};
 		4DAD6C882C804A0300860555 /* VariationPicker */ = {
@@ -2006,7 +2015,6 @@
 			children = (
 				4D6761362C448E3200A5939C /* IngredientSearchView.swift */,
 				F493F3A12C6CEEC8006A0ADB /* Subviews */,
-				4DAD6CAD2C94C80C00860555 /* Matched Cocktails Views.swift */,
 			);
 			path = "Ingredient Search View";
 			sourceTree = "<group>";
@@ -2017,7 +2025,7 @@
 				F4538E022C91F997004B686A /* FindCocktailUserInfoView.swift */,
 				F493F3A62C6CEF73006A0ADB /* ResetSearchCriteriaButton.swift */,
 				F493F3A82C6CEFCD006A0ADB /* FilteredIngredientListView.swift */,
-				F493F3AC2C6CFA81006A0ADB /* Preferences List */,
+				4D67613F2C44C8A400A5939C /* SearchViewCells */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -2025,19 +2033,11 @@
 		F493F3AC2C6CFA81006A0ADB /* Preferences List */ = {
 			isa = PBXGroup;
 			children = (
-				F493F3AF2C6CFC4D006A0ADB /* Models */,
 				F493F3A22C6CEEF0006A0ADB /* PreferencesListView.swift */,
 				F493F3AA2C6CF18D006A0ADB /* SelectedIngredientView.swift */,
 				F493F3AD2C6CFBCD006A0ADB /* SelectionTagView.swift */,
 			);
 			path = "Preferences List";
-			sourceTree = "<group>";
-		};
-		F493F3AF2C6CFC4D006A0ADB /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		F493F3B22C6D256F006A0ADB /* Design */ = {
