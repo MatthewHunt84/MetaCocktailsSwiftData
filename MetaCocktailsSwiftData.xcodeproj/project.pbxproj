@@ -1647,19 +1647,19 @@
 				4D67613D2C44B62000A5939C /* SearchViewModel.swift */,
 				4D6761402C44E61F00A5939C /* IngredientSearchResultsView.swift */,
 				F4A233BE2C63B5300061027C /* SearchPredicateFactory.swift */,
-				4D67613F2C44C8A400A5939C /* SubViews */,
+				4D67613F2C44C8A400A5939C /* SearchViewCells */,
 			);
 			path = "Search View";
 			sourceTree = "<group>";
 		};
-		4D67613F2C44C8A400A5939C /* SubViews */ = {
+		4D67613F2C44C8A400A5939C /* SearchViewCells */ = {
 			isa = PBXGroup;
 			children = (
 				4D6761382C44902C00A5939C /* DefaultIngredientSearchCell.swift */,
 				4D08602B2C60599E000AB17A /* IncludedIngredientSearchCell.swift */,
 				4D08602D2C60C0F4000AB17A /* ExcludedIngredientSearchCell.swift */,
 			);
-			path = SubViews;
+			path = SearchViewCells;
 			sourceTree = "<group>";
 		};
 		4D74398C2B9E586D0020C3B8 /* SubViews */ = {
