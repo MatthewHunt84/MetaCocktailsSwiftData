@@ -8,7 +8,6 @@
 import Foundation
 
 var treadLightly = Cocktail(cocktailName: "Tread Lightly",
-                            imageAsset: nil,
                             glasswareType: .doubleOld,
                             garnish: [.lemonPeel],
                             ice: .bigRock,

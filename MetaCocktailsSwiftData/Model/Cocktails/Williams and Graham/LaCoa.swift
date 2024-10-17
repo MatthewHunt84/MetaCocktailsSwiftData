@@ -9,7 +9,6 @@ import Foundation
 
 
 var laCoa = Cocktail(cocktailName: "La Coa",
-                     imageAsset: nil,
                      glasswareType: .doubleOld,
                      garnish: [.orangePeel],
                      ice: .bigRock,

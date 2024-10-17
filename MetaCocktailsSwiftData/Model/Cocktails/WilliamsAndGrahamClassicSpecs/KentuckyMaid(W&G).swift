@@ -8,7 +8,6 @@
 import Foundation
 
 var kentuckyMaidWnG = Cocktail(cocktailName: "Kentucky Maid" + wAndGTitleTag,
-                               imageAsset: nil,
                                glasswareType: .doubleOld,
                                garnish: [.mintSprig],
                                ice: .koldDraft,

@@ -8,7 +8,6 @@
 import Foundation
 
 var fogCutter = Cocktail(cocktailName: "Fog Cutter" + historicTag,
-                         imageAsset: nil,
                          glasswareType: .tikiMug,
                          garnish: [.mintBouquet],
                          ice: .pebbleIce,

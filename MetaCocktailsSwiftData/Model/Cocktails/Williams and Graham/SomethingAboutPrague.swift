@@ -8,7 +8,6 @@
 import Foundation
 
 var somethingAboutPrague = Cocktail(cocktailName: "Something About Prague",
-                                    imageAsset: nil,
                                     glasswareType: .doubleOld,
                                     garnish: [.nutmeg],
                                     ice: .koldDraft,

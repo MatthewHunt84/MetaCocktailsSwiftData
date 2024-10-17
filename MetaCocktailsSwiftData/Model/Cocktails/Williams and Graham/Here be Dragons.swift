@@ -8,7 +8,6 @@
 import Foundation
 
 var hereBeDragons = Cocktail(cocktailName: "Here Be Dragons",
-                             imageAsset: nil,
                              glasswareType: .tikiMug,
                              garnish: [.mintBouquet, .flamingLimeBoat],
                              author: Author(person: AuthorNames.christinaAndrews.rawValue, place: AuthorPlaces.williamsAndGraham.rawValue),

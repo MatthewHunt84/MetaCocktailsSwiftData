@@ -9,9 +9,7 @@ import Foundation
 
 
 var robMcKenna = Cocktail(cocktailName: "Rob McKenna",
-                          imageAsset: nil,
                           glasswareType: .doubleOld,
-                          garnish: nil,
                           ice: .bigRock,
                           author: Author(person: "Justin Jenkins", place: AuthorPlaces.williamsAndGraham.rawValue, year: "Winter, 2021"),
                           spec: robMcKennaSpec,

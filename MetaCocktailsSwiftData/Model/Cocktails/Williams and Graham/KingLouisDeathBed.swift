@@ -9,7 +9,6 @@ import Foundation
 
 
 var kingLouisDeathBed = Cocktail(cocktailName: "King Louis Death Bed",
-                                 imageAsset: nil,
                                  glasswareType: .stemmedGlassware,
                                  garnish: [.lemonPeel],
                                  ice: nil,

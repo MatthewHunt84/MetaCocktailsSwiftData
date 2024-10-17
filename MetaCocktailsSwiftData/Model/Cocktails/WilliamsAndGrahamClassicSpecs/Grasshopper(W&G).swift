@@ -8,7 +8,6 @@
 import Foundation
 
 var grasshopperWnG = Cocktail(cocktailName: "Grasshopper" + wAndGTitleTag,
-                              imageAsset: nil,
                               glasswareType: Glassware.coupe,
                               garnish: [.mintLeaf],
                               ice: nil,

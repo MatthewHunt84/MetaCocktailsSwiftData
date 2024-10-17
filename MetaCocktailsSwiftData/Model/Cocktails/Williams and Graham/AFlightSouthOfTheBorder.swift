@@ -8,7 +8,6 @@
 import Foundation
 
 var aFlightSouthOfTheBorder = Cocktail(cocktailName: "A Flight South of the Border",
-                                       imageAsset: nil,
                                        glasswareType: .doubleOld,
                                        garnish: [.dehydratedGrapefruitSlice],
                                        ice: .bigRock,

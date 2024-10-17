@@ -8,7 +8,6 @@
 import Foundation
 
 var chocolateMartiniWnG = Cocktail(cocktailName: "Chocolate Martini" + wAndGTitleTag,
-                                   imageAsset: nil,
                                    glasswareType: .martini,
                                    garnish: [.chocolateChips],
                                    author: williamsAndGraham,

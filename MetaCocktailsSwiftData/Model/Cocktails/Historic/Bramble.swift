@@ -8,7 +8,6 @@
 import Foundation
 
 var bramble = Cocktail(cocktailName: "Bramble" + historicTag,
-                       imageAsset: nil,
                        glasswareType: .doubleOld,
                        garnish: [.lemonWheel, .blackberry],
                        ice: .pebbleIce,

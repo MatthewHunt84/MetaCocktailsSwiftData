@@ -8,7 +8,6 @@
 import Foundation
 
 var shokunin = Cocktail(cocktailName: "Shokunin",
-                        imageAsset: nil,
                         glasswareType: .singleOld,
                         garnish: [.flamedOrange, .chiliOil],
                         ice: .pebbleIce,

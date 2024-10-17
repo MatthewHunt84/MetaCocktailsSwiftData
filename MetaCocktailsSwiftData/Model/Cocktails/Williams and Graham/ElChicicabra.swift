@@ -8,7 +8,6 @@
 import Foundation
 
 var elChicicabra = Cocktail(cocktailName: "El Chicicabra",
-                            imageAsset: nil,
                             glasswareType: .doubleOld,
                             garnish: [.flamedOrange],
                             ice: .bigRock,

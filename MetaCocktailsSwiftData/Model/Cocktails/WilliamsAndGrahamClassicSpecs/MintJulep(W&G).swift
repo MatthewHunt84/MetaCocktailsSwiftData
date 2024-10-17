@@ -8,7 +8,6 @@
 import Foundation
 
 var mintJulepWnG = Cocktail(cocktailName: "Mint Julep" + wAndGTitleTag,
-                            imageAsset: nil,
                             glasswareType: .julep,
                             garnish: [.mintBouquet],
                             ice: .pebbleIce,

@@ -8,7 +8,6 @@
 import Foundation
 
 var peaksOfReykjavic = Cocktail(cocktailName: "Peaks of Reykjavic",
-                                imageAsset: nil,
                                 glasswareType: .collins,
                                 garnish: [.raspberry, .mintSprig],
                                 ice: .pebbleIce,

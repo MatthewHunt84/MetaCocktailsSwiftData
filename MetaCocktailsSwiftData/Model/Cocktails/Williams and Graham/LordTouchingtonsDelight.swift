@@ -8,7 +8,6 @@
 import Foundation
 
 var lordTouchingtonsDelight = Cocktail(cocktailName: "Lord Touchingtons Delight",
-                                       imageAsset: nil,
                                        glasswareType: .tikiMug,
                                        garnish: [.pineappleFrond, .maraschinoCherry, .halfOrangeWheel],
                                        ice: .pebbleIce,

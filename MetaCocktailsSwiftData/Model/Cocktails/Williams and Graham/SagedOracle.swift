@@ -8,7 +8,6 @@
 import Foundation
 
 var sagedOracle = Cocktail(cocktailName: "Saged Oracle",
-                           imageAsset: nil,
                            glasswareType: .collins,
                            garnish: [.rosemarySprig],
                            ice: .pebbleIce,

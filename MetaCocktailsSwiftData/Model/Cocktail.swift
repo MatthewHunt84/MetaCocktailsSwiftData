@@ -21,7 +21,6 @@ class Cocktail: Equatable, Hashable, Identifiable, Codable {
     
     var id = UUID()
     @Attribute(.unique) var cocktailName: String
-    var imageAsset: CocktailImage?
     var glasswareType: Glassware
     @Relationship(deleteRule: .nullify, inverse: \Garnish.cocktails) var garnish: [Garnish]
     var ice: Ice?
@@ -40,11 +39,10 @@ class Cocktail: Equatable, Hashable, Identifiable, Codable {
     var favorite: Bool
     var historicSpec: HistoricSpec?
 
-    init(id: UUID = UUID(), cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [GarnishList]? = nil, ice: Ice? = nil, author: Author? = nil, spec: [OldCocktailIngredient], buildOrder: Build? = nil, notes: String? = nil, tags: Tags, variation: Variation? = nil, variationName: String? = nil, collection: CocktailCollection? = nil, isCustomCocktail: Bool = false, titleCocktail: Bool = false, favorite: Bool = false, historicSpec: HistoricSpec? = nil) {
+    init(id: UUID = UUID(), cocktailName: String, glasswareType: Glassware, garnish: [GarnishList]? = nil, ice: Ice? = nil, author: Author? = nil, spec: [OldCocktailIngredient], buildOrder: Build? = nil, notes: String? = nil, tags: Tags, variation: Variation? = nil, variationName: String? = nil, collection: CocktailCollection? = nil, isCustomCocktail: Bool = false, titleCocktail: Bool = false, favorite: Bool = false, historicSpec: HistoricSpec? = nil) {
 
         self.id = id
         self.cocktailName = cocktailName
-        self.imageAsset = imageAsset
         self.glasswareType = glasswareType
         self.garnish = {
             var newGarnishes: [Garnish] = []
@@ -96,11 +94,10 @@ class Cocktail: Equatable, Hashable, Identifiable, Codable {
     }
     
 
-    init(cocktailName: String, imageAsset: CocktailImage? = nil, glasswareType: Glassware, garnish: [Garnish] = [], ice: Ice? = nil, author: Author? = nil, spec: [Ingredient], buildOrder: Build? = nil, tags: Tags, variation: Variation? = nil, variationName: String? = nil, collection: CocktailCollection? = nil, isCustomCocktail: Bool = false, titleCocktail: Bool = false, favorite: Bool = false, historicSpec: HistoricSpec? = nil) {
+    init(cocktailName: String, glasswareType: Glassware, garnish: [Garnish] = [], ice: Ice? = nil, author: Author? = nil, spec: [Ingredient], buildOrder: Build? = nil, tags: Tags, variation: Variation? = nil, variationName: String? = nil, collection: CocktailCollection? = nil, isCustomCocktail: Bool = false, titleCocktail: Bool = false, favorite: Bool = false, historicSpec: HistoricSpec? = nil) {
 
         self.id = UUID()
         self.cocktailName = cocktailName
-        self.imageAsset = imageAsset
         self.glasswareType = glasswareType
         self.garnish = garnish
         self.ice = ice
@@ -137,14 +134,13 @@ class Cocktail: Equatable, Hashable, Identifiable, Codable {
     // Codable (should probably be extension, but just so it works I'm putting it here. Also we need to remove imageAsset we dont use it)
     
     enum CodingKeys: String, CodingKey {
-        case id, cocktailName, imageAsset, glasswareType, garnish, ice, author, spec, buildOrder, notes, compiledTags, variation, variationName, collection, isCustomCocktail, collectionName, titleCocktail, favorite, historicSpec
+        case id, cocktailName, glasswareType, garnish, ice, author, spec, buildOrder, notes, compiledTags, variation, variationName, collection, isCustomCocktail, collectionName, titleCocktail, favorite, historicSpec
     }
 
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(UUID.self, forKey: .id)
         cocktailName = try container.decode(String.self, forKey: .cocktailName)
-//        imageAsset = try container.decodeIfPresent(CocktailImage.self, forKey: .imageAsset)
         glasswareType = try container.decode(Glassware.self, forKey: .glasswareType)
         garnish = try container.decode([Garnish].self, forKey: .garnish)
         ice = try container.decodeIfPresent(Ice.self, forKey: .ice)
@@ -167,7 +163,6 @@ class Cocktail: Equatable, Hashable, Identifiable, Codable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
         try container.encode(cocktailName, forKey: .cocktailName)
-//        try container.encodeIfPresent(imageAsset, forKey: .imageAsset)
         try container.encode(glasswareType, forKey: .glasswareType)
         try container.encode(garnish, forKey: .garnish)
         try container.encodeIfPresent(ice, forKey: .ice)

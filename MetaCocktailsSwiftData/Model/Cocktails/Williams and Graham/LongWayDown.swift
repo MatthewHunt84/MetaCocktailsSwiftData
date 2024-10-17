@@ -9,7 +9,6 @@ import Foundation
 
 
 var longWayDown = Cocktail(cocktailName: "Long Way Down",
-                           imageAsset: nil,
                            glasswareType: .collins,
                            garnish: [.mintSprig],
                            ice: .pebbleIce,

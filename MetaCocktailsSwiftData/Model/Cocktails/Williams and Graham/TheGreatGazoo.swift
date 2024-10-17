@@ -8,7 +8,6 @@
 import Foundation
 
 var theGreatGazoo = Cocktail(cocktailName: "The Great Gazoo",
-                             imageAsset: nil,
                              glasswareType: .doubleOld,
                              garnish: [.angoDeco],
                              ice: .bigRock,

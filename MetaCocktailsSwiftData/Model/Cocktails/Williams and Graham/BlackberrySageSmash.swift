@@ -8,7 +8,6 @@
 import SwiftUI
 
 var blackberrySageSmash = Cocktail(cocktailName: "Blackberry Sage Smash", 
-                                   imageAsset: nil,
                                    glasswareType: .doubleOld,
                                    garnish: [.skeweredBlackberryAndSage],
                                    ice: .koldDraft,

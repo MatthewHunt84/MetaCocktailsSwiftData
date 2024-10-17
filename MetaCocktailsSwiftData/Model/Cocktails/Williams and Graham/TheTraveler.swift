@@ -8,7 +8,6 @@
 import Foundation
 
 var theTraveler = Cocktail(cocktailName: "The Traveler",
-                           imageAsset: nil,
                            glasswareType: .doubleOld,
                            garnish: [.lemonPeel, .orangePeel],
                            ice: .bigRock,

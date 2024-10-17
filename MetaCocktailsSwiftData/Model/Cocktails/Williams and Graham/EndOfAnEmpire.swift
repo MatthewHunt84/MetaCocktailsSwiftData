@@ -8,7 +8,6 @@
 import Foundation
 
 var endOfAnEmpire = Cocktail(cocktailName: "End of an Empire",
-                             imageAsset: nil,
                              glasswareType: .doubleOld,
                              garnish: [.orangePeel],
                              ice: .bigRock,

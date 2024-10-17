@@ -9,7 +9,6 @@ import Foundation
 
 
 var dontPanic = Cocktail(cocktailName: "Don't Panic",
-                         imageAsset: nil,
                          glasswareType: .collins,
                          garnish: [.mintSprig],
                          ice: .columnIce,

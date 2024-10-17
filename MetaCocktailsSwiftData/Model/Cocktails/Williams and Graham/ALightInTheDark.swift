@@ -9,7 +9,6 @@ import Foundation
 
 
 var aLightInTheDark = Cocktail(cocktailName: "A Light in the Dark",
-                               imageAsset: nil,
                                glasswareType: .tikiMug,
                                garnish: [.spentLimeShellFlaming, .pineappleFronds],
                                ice: .pebbleIce,
