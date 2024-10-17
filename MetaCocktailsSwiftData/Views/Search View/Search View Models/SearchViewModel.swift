@@ -26,6 +26,7 @@ final class SearchViewModel: ObservableObject {
     let profileStrings: [String] = Profile.allCases.map { $0.rawValue }
     let styleStrings: [String] = Style.allCases.map { $0.rawValue }
     
+    
     var ingredientNames: [String] = []
     var allWhiskies: [String] = Whiskey.allCases.map({ $0.rawValue })
     
