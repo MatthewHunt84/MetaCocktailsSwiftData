@@ -18,7 +18,7 @@ struct ColorScheme {
     
     static let headerColor = tintColor
     
-    static let background = Color(hex: "#0A0A0A")
+    static let background = Color(hex: "#0F0F0F")
     static let tabBarTint = tintColor
     
     static let recipeBackground = Color(hex: "#111111")
@@ -36,13 +36,23 @@ struct ColorScheme {
                                            startPoint: .leading,
                                            endPoint: .trailing)
 
-    static let recipeBorder = LinearGradient(gradient: Gradient(colors: [tintColor, tintColor, tintColor, darkerTintColor]),
+    static let recipeBorder = LinearGradient(gradient: Gradient(colors: [darkerTintColor, tintColor, darkerTintColor]),
                                            startPoint: .leading,
                                            endPoint: .trailing)
     
-    static let recipeBorderFlipped = LinearGradient(gradient: Gradient(colors: [darkerTintColor.mix(with: tintColor, by: 0.5),tintColor, tintColor, tintColor]),
-                                           startPoint: .leading,
-                                           endPoint: .trailing)
+    static let recipeBorderFlipped = recipeBorder
+    
+//    static let recipeBorder = LinearGradient(gradient: Gradient(colors: [tintColor, interactionTint]),
+//                                           startPoint: .leading,
+//                                           endPoint: .trailing)
+//    
+//    static let recipeBorderFlipped = LinearGradient(gradient: Gradient(colors: [darkerTintColor, tintColor, tintColor, tintColor]),
+//                                           startPoint: .leading,
+//                                           endPoint: .trailing)
+    
+//    static let recipeBorderFlipped = LinearGradient(gradient: Gradient(colors: [interactionTint, tintColor]),
+//                                           startPoint: .leading,
+//                                           endPoint: .trailing)
     
     static let recipeBorderInactive = LinearGradient(gradient: Gradient(colors: [secondaryClone]),
                                            startPoint: .leading,

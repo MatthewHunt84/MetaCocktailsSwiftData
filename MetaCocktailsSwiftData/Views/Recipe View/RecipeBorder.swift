@@ -43,7 +43,7 @@ private struct BorderTop: View {
     
     var body: some View {
 
-            Image(.borderTop)
+        Image(.borderTopNew)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .background(.clear)
@@ -57,11 +57,12 @@ private struct BorderBottom: View {
     
     var body: some View {
             
-            Image(.borderTop)
+            Image(.borderTopNew)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .background(.clear)
                 .foregroundStyle(gradient.bottom)
+//                .foregroundStyle(gradient.top)
     }
 }
 

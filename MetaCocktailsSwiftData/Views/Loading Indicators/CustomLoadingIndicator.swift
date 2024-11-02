@@ -15,11 +15,38 @@ struct CustomLoadingOverlayModifier: ViewModifier {
             .overlay {
                 if isLoading {
                     CustomLoadingAnimation()
-                        .frame(width: 110, height: 110)
+                        .frame(width: 120, height: 120)
                         .transition(.opacity.animation(.easeOut(duration: 0.3)))
+                        .opacity(0.9)
                 }
             }
-            .animation(.easeOut(duration: 1), value: isLoading)
+            .animation(.easeOut(duration: 10), value: isLoading)
+    }
+}
+
+struct FirstLoadAnimation: View {
+    @State private var rotationCircle = 0.0
+    
+    var body: some View {
+        
+        ZStack {
+            Image(.limeCenter)
+                .resizable()
+                .foregroundStyle(Color.primary.mix(with: ColorScheme.tintColor, by: 0.33))
+            
+            Image(.limeSegments)
+                .resizable()
+                .rotationEffect(.degrees(rotationCircle))
+                .animation(Animation.linear(duration: 2).repeatForever(autoreverses: false), value: rotationCircle)
+        }
+        .foregroundStyle(LinearGradient(colors: [Color.brandPrimaryOrange, ColorScheme.tintColor, Color.brandPrimaryOrange], startPoint: .topLeading, endPoint: .bottomTrailing))
+        .frame(width: 200, height: 200)
+        .opacity(0.9)
+        .task {
+            await MainActor.run {
+                rotationCircle = 360
+            }
+        }
     }
 }
 
@@ -29,20 +56,16 @@ struct CustomLoadingAnimation: View {
     var body: some View {
         
         ZStack {
+            Image(.limeCenter)
+                .resizable()
+                .foregroundStyle(Color.clear)
             
-            Image("CirclePart")
+            Image(.limeSegments)
                 .resizable()
                 .rotationEffect(.degrees(rotationCircle))
-                .animation(Animation.linear(duration: 4).repeatForever(autoreverses: false), value: rotationCircle)
-            
-            Image("TrianglePart")
-                .resizable()
-            
-            Image("GlassPart")
-                .resizable()
-            
+                .animation(Animation.linear(duration: 2).repeatForever(autoreverses: false), value: rotationCircle)
         }
-        .foregroundStyle(ColorScheme.tintColor)
+        .foregroundStyle(LinearGradient(colors: [Color.brandPrimaryOrange, ColorScheme.tintColor, Color.brandPrimaryOrange], startPoint: .topLeading, endPoint: .bottomTrailing))
         .task {
             await MainActor.run {
                 rotationCircle = 360
@@ -56,3 +79,9 @@ extension View {
         self.modifier(CustomLoadingOverlayModifier(isLoading: isLoading))
     }
 }
+
+#Preview {
+    CustomLoadingAnimation()
+        .frame(width: 250, height: 250)
+}
+

@@ -16,8 +16,7 @@ struct FirstLaunchLoadingView: View {
         
         ZStack {
             ColorScheme.background.ignoresSafeArea()
-            CustomLoadingAnimation()
-                .frame(width: 180, height: 180)
+            FirstLoadAnimation()
         }
         .task {
             await prepareData()
