@@ -68,8 +68,8 @@ struct FontFactory {
     static func titleHeader22(title: String) -> Text {
         return Text(title)
             .font(.custom("AvenirNext-DemiBold", size: 22))
-//            .foregroundStyle(ColorScheme.headerColor)
-            .foregroundStyle(LinearGradient(colors: [Color.brandPrimaryOrange, ColorScheme.tintColor], startPoint: .topLeading, endPoint: .bottomTrailing))
+            .foregroundStyle(ColorScheme.headerColor)
+//            .foregroundStyle(LinearGradient(colors: [Color.brandPrimaryOrange, ColorScheme.tintColor], startPoint: .topLeading, endPoint: .bottomTrailing))
     }
     
     static func titleHeader24(title: String) -> Text {
