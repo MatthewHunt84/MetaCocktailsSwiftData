@@ -62,7 +62,6 @@ private struct BorderBottom: View {
                 .aspectRatio(contentMode: .fit)
                 .background(.clear)
                 .foregroundStyle(gradient.bottom)
-//                .foregroundStyle(gradient.top)
     }
 }
 

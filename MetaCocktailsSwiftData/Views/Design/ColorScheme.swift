@@ -42,18 +42,6 @@ struct ColorScheme {
     
     static let recipeBorderFlipped = recipeBorder
     
-//    static let recipeBorder = LinearGradient(gradient: Gradient(colors: [tintColor, interactionTint]),
-//                                           startPoint: .leading,
-//                                           endPoint: .trailing)
-//    
-//    static let recipeBorderFlipped = LinearGradient(gradient: Gradient(colors: [darkerTintColor, tintColor, tintColor, tintColor]),
-//                                           startPoint: .leading,
-//                                           endPoint: .trailing)
-    
-//    static let recipeBorderFlipped = LinearGradient(gradient: Gradient(colors: [interactionTint, tintColor]),
-//                                           startPoint: .leading,
-//                                           endPoint: .trailing)
-    
     static let recipeBorderInactive = LinearGradient(gradient: Gradient(colors: [secondaryClone]),
                                            startPoint: .leading,
                                            endPoint: .trailing)
