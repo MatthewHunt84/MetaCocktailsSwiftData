@@ -52,15 +52,15 @@ final class PrepBible{
     
     static let gingerSyrup = Prep(prepIngredientName: "Ginger syrup",
                                   prepRecipe:[Instruction(step: 1, method:  "This requires juicing fresh ginger, which can be a strain on household juicers."),
-                                              Instruction(step: 2, method:  "Add equal parts fresh ginger juice and sugar to a pot and bring to a boil while stirring. Some prefer Demerara sugar for a darker and more robust flavor. You can use plain white sugar for a brighter and sharper flavor."),
+                                              Instruction(step: 2, method:  "Add equal parts fresh ginger juice and sugar to a pot and bring to a boil while stirring. Some prefer Demerara sugar for a darker and more robust flavor. You can use plain white sugar for a brighter and sharper flavor. The Williams and Graham method is to add black pepper and lemon juice in small proportions (highly recommend)."),
                                               Instruction(step: 3, method:  "Take off heat immediately after boiling and let cool."),
                                               Instruction(step: 4, method:  "Add 1oz(30ml) vodka to every 750ml of syrup to stabilize.")] )
     
     static let gingerBeer = Prep(prepIngredientName: "Ginger beer",
                                  prepRecipe:[Instruction(step: 1, method:  "This requires juicing fresh ginger, which can be a strain on household juicers."),
-                                             Instruction(step: 2, method:  "Add equal parts fresh ginger juice and sugar to a pot and bring to a boil while stirring. Some prefer Demerara sugar for a darker and more robust flavor. You can use plain white sugar for a brighter and sharper flavor."),
+                                             Instruction(step: 2, method:  "Add equal parts fresh ginger juice and sugar to a pot and bring to a boil while stirring. Some prefer Demerara sugar for a darker and more robust flavor. You can use plain white sugar for a brighter and sharper flavor. The Williams and Graham method is to add black pepper and lemon juice in small proportions (highly recommend)."),
                                              Instruction(step: 3, method:  "Take off heat immediately after boiling and let cool."),
-                                             Instruction(step: 4, method:  "For every 8 ounces of water, add 2 ounces of ginger syrup."),
+                                             Instruction(step: 4, method:  "Add one ounce of ginger syrup to every four ounces of soda water to make the ginger beer. NOTE: A true ginger beer is fermented, which produces alcohol. This is the N/A version."),
                                              Instruction(step: 5, method:  "Modify the syrup to soda ratio however you see fit."),
                                              Instruction(step: 6, method:  "Enjoy with ice.")] )
     
