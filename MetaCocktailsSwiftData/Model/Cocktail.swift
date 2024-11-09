@@ -156,7 +156,7 @@ class Cocktail: Equatable, Hashable, Identifiable, Codable {
         collectionName = try container.decode(String.self, forKey: .collectionName)
         titleCocktail = try container.decodeIfPresent(Bool.self, forKey: .titleCocktail)
         favorite = try container.decode(Bool.self, forKey: .favorite)
-        historicSpec = try container.decode(HistoricSpec.self, forKey: .historicSpec)
+        historicSpec = try container.decodeIfPresent(HistoricSpec.self, forKey: .historicSpec)
     }
 
     func encode(to encoder: Encoder) throws {
@@ -178,7 +178,7 @@ class Cocktail: Equatable, Hashable, Identifiable, Codable {
         try container.encode(collectionName, forKey: .collectionName)
         try container.encodeIfPresent(titleCocktail, forKey: .titleCocktail)
         try container.encode(favorite, forKey: .favorite)
-        try container.encode(historicSpec, forKey: .historicSpec)
+        try container.encodeIfPresent(historicSpec, forKey: .historicSpec)
     }
 }
 
