@@ -515,7 +515,6 @@
 		F45C3A8F2CAC60C600AFBBA6 /* Overlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45C3A8E2CAC60BF00AFBBA6 /* Overlays.swift */; };
 		F47AE7B02CA5FE060070E7A8 /* AnimationModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47AE7AF2CA5FDFE0070E7A8 /* AnimationModifiers.swift */; };
 		F47FBF652C6BF5EB00CD599E /* CustomLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47FBF642C6BF5EB00CD599E /* CustomLoadingIndicator.swift */; };
-		F482CFA82CD5B6DD00203BEA /* NewLogoTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F482CFA72CD5B6D700203BEA /* NewLogoTestView.swift */; };
 		F4872FEE2C4353E10092F8FF /* DummyCocktails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4872FED2C4353E10092F8FF /* DummyCocktails.swift */; };
 		F4872FF02C4355320092F8FF /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4872FEF2C4355320092F8FF /* SampleData.swift */; };
 		F4872FF32C4374580092F8FF /* BlackGlassBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4872FF22C4374580092F8FF /* BlackGlassBackgroundView.swift */; };
@@ -1071,7 +1070,6 @@
 		F473FFD22C2716C4008689D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F47AE7AF2CA5FDFE0070E7A8 /* AnimationModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationModifiers.swift; sourceTree = "<group>"; };
 		F47FBF642C6BF5EB00CD599E /* CustomLoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoadingIndicator.swift; sourceTree = "<group>"; };
-		F482CFA72CD5B6D700203BEA /* NewLogoTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLogoTestView.swift; sourceTree = "<group>"; };
 		F4872FED2C4353E10092F8FF /* DummyCocktails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyCocktails.swift; sourceTree = "<group>"; };
 		F4872FEF2C4355320092F8FF /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		F4872FF22C4374580092F8FF /* BlackGlassBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackGlassBackgroundView.swift; sourceTree = "<group>"; };
@@ -1382,7 +1380,6 @@
 			children = (
 				1AC386982AAABED00064F52A /* TabBarView.swift */,
 				4DD0DE982B97E020008EF203 /* TabBarComponents.swift */,
-				F482CFA72CD5B6D700203BEA /* NewLogoTestView.swift */,
 			);
 			path = "Tab Bar";
 			sourceTree = "<group>";
@@ -2502,7 +2499,6 @@
 				4DCB17522BA54AD00002D7D9 /* WeddingPunch.swift in Sources */,
 				4DCB171A2BA4D9220002D7D9 /* French75(M&H).swift in Sources */,
 				4DBFF83B2B6063AC0011B5B1 /* BlueBlazer.swift in Sources */,
-				F482CFA82CD5B6DD00203BEA /* NewLogoTestView.swift in Sources */,
 				4DF408CC2B60DDC700EF9A6E /* Chrysanthemum.swift in Sources */,
 				4DBFF81F2B5FB1D70011B5B1 /* Americano.swift in Sources */,
 				4DF408DE2B6108AB00EF9A6E /* ElPresidente(W&G).swift in Sources */,
