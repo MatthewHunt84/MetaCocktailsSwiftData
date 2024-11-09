@@ -370,12 +370,6 @@ final class SearchViewModel: ObservableObject {
         
         
         currentComponentSearchName = ""
-        
-        
-//        isRunningComplexSearch = false
-//        isGeneratingIngredientList = false
-        
-        
         filteredIngredients.removeAll()
         
         isShowingResults = false

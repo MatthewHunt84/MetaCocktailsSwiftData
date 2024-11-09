@@ -35,6 +35,7 @@ class AppState: ObservableObject {
         isDataReady = true
         
         Task {
+            try? await Task.sleep(for: .seconds(1))  
             await MainActor.run {
                 showMainContent = true
             }
