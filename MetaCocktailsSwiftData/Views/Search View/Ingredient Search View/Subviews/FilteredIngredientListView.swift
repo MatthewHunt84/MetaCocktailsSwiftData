@@ -18,6 +18,7 @@ struct FilteredIngredientListView: View {
     
     var body: some View {
         
+        
         VStack {
             
             TextField("Search for cocktails which contain...", text: $viewModel.currentComponentSearchName).SearchBarTextField()
