@@ -9,8 +9,10 @@ import SwiftUI
 import SwiftData
 
 struct CocktailListView: View {
+    @EnvironmentObject var appState: AppState
     @EnvironmentObject var viewModel: CocktailListViewModel
-    @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
+    @Query(sort: \Cocktail.cocktailName) var loadedCocktails: [Cocktail]
+    @State var cocktails: [Cocktail] = []
     @FocusState private var searchBarIsFocused: Bool
     @State private var selectedNavigationLetter: String?
     
@@ -56,8 +58,16 @@ struct CocktailListView: View {
             .onAppear {
                 viewModel.searchText = ""
                 searchBarIsFocused = false
-                viewModel.setAllCocktails(cocktails)
+                
             }
+            .onChange(of: appState.showMainContent, { _, newValue in
+                Task {
+                    await MainActor.run {
+                        cocktails = loadedCocktails
+                        viewModel.setAllCocktails(cocktails)
+                    }
+                }
+            })
             .navigationBarTitleDisplayMode(.inline)
             .jamesHeader("Cocktail List")
         }
