@@ -12,7 +12,7 @@ actor CocktailContainer {
     
     static func makeSwiftDataStore() -> ModelContainer {
         
-        // To generate a new Swift Data Store,
+        // To generate a new Swift Data Store
         // Make sure you are about to run on a new simulator which doesn't have the app loaded on it yet.
         // Uncomment the lines below and run the generateNewDatabase test.
         // Once this completes, open the file directory which gets printed in the console, and replace the "PreloadedCocktails.store" file in the Database folder
@@ -25,7 +25,7 @@ actor CocktailContainer {
         
         do {
             guard let bundleURL = Bundle.main.url(forResource: "PreloadedCocktails", withExtension: "store") else {
-                fatalError("💀 Error: Failed to find SwiftData default.store in app bundle - we can't run without it")
+                fatalError("💀 Error: Failed to find PreloadedCocktails file in app bundle - we can't run without it")
                 // If we hit this, it probably means we tried to generate a new database without uncommenting the lines above first.
             }
 
@@ -37,7 +37,7 @@ actor CocktailContainer {
                 print("✅ First Launch: Copying bundled sqlite file to documents")
                 try fileManager.copyItem(at: bundleURL, to: documentURL)
             } else {
-                print("✅ Local SwiftData file found")
+                print("✅ Using Existing SwiftData file")
             }
             
             let schema = Schema([Cocktail.self])

@@ -6,10 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 import Observation
 import Combine
 
-@Observable final class CocktailListViewModel: ObservableObject{
+@Observable final class CocktailListViewModel: ObservableObject {
+    
+    private let container: ModelContainer
+    var cocktailFetchCompleted = false
     
     private var allCocktails: [Cocktail] = []
     var filteredCocktails: [Cocktail] = []
@@ -25,8 +29,39 @@ import Combine
     
     var shouldReloadCache = false
     
-    init() {
-        setupSearch()
+    init(container: ModelContainer) {
+        self.container = container
+        self.setupSearch()
+        Task {
+            await fetchCocktails()
+        }
+    }
+    
+    @MainActor
+    private func fetchCocktails() async {
+        
+        let context = container.mainContext
+        
+        do {
+            let fetchedCocktails = try await Task.detached(priority: .background) {
+                let descriptor = FetchDescriptor<Cocktail>()
+                return try context.fetch(descriptor)
+            }.value
+            
+            await MainActor.run {
+                self.allCocktails = fetchedCocktails
+                self.updateFilteredCocktails()
+                self.cacheOrganizedCocktails()
+                withAnimation(.easeOut(duration: 1)) {
+                    self.cocktailFetchCompleted = true
+                }
+            }
+        } catch {
+            print("Error fetching cocktails: \(error)")
+            await MainActor.run {
+                self.cocktailFetchCompleted = true
+            }
+        }
     }
     
     private func setupSearch() {
@@ -50,7 +85,6 @@ import Combine
     
     private func shouldPopulateCache() -> Bool {
         let shouldPopulateCache = organizedCocktailsCache.isEmpty || shouldReloadCache
-        print("should reload cache: \(shouldPopulateCache)")
         return shouldPopulateCache
     }
     
@@ -61,14 +95,9 @@ import Combine
             organizedCocktailsCache[letter] = allOrganizedCocktails.filter { $0.key.hasPrefix(letter) }
         }
     }
+    
     func getOrganizedCocktails(for letter: String) -> [String: [Cocktail]] {
         return organizedCocktailsCache[letter] ?? [:]
-    }
-    
-    func setAllCocktails(_ cocktails: [Cocktail]) {
-        self.allCocktails = cocktails
-        updateFilteredCocktails()
-        cacheOrganizedCocktails()
     }
     
     func updateAndCache() {

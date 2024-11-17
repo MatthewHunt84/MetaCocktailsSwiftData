@@ -67,7 +67,6 @@ struct CustomCocktailsListView: View {
                 .scrollContentBackground(.hidden)
             }
             .background(ColorScheme.background)
-            
             .navigationBarTitleDisplayMode(.inline)
             .jamesHeader("Favorites")
             .navigationViewStyle(StackNavigationViewStyle())
