@@ -11,13 +11,11 @@ import SwiftUI
 @main
 struct MetaCocktailsSwiftDataApp: App {
     @StateObject private var appState = AppState()
-    @AppStorage("shouldPreload") private var shouldPreload: Bool = true
     
     var body: some Scene {
         WindowGroup {
             ContentView()
-//                .modelContainer(CocktailContainer.useSwiftDataFile()) // turn me off to repopulate model
-                .modelContainer(CocktailContainer.preload(&shouldPreload)) // turn me on to repopulate model
+                .modelContainer(CocktailContainer.makeSwiftDataStore())
                 .preferredColorScheme(.dark)
                 .environmentObject(CBCViewModel())
                 .environmentObject(CocktailListViewModel())
@@ -62,7 +60,6 @@ struct ContentView: View {
                     await MainActor.run {
                         withAnimation(.easeIn(duration: 1)) {
                             swiftDataIsLoaded = true
-//                            print("Default.store file location: \(modelContext.sqliteCommand)")
                         }
                     }
                 }
