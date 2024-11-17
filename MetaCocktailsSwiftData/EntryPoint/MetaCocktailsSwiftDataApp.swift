@@ -11,30 +11,11 @@ import SwiftUI
 @main
 struct MetaCocktailsSwiftDataApp: App {
     @StateObject private var appState = AppState()
-    @AppStorage("shouldPreload") private var shouldPreload: Bool = true
-//    let container: ModelContainer
-    
-//    init() {
-//           do {
-//               container = try ModelContainer.createWithPreloadedCocktails()
-//               print("✅ Loaded pre-bundled cocktail database")
-//           } catch {
-//               print("⚠️ Failed to load pre-bundled database: \(error.localizedDescription)")
-//               print("⚠️ Falling back to empty database")
-//               
-//               // Fallback to empty database
-//               let schema = Schema([Cocktail.self])
-//               let config = ModelConfiguration()
-//               container = try! ModelContainer(for: schema, configurations: config)
-//           }
-//       }
     
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .modelContainer(CocktailContainer.useSwiftDataFile()) // turn me off to repopulate model
-//                .modelContainer(CocktailContainer.preload(&shouldPreload)) // turn me on to repopulate model
-//                .modelContainer(container)
+                .modelContainer(CocktailContainer.makeSwiftDataStore())
                 .preferredColorScheme(.dark)
                 .environmentObject(CBCViewModel())
                 .environmentObject(CocktailListViewModel())
@@ -79,7 +60,6 @@ struct ContentView: View {
                     await MainActor.run {
                         withAnimation(.easeIn(duration: 1)) {
                             swiftDataIsLoaded = true
-//                            print("Default.store file location: \(modelContext.sqliteCommand)")
                         }
                     }
                 }
