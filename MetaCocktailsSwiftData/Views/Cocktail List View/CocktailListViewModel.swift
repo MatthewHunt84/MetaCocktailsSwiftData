@@ -12,7 +12,7 @@ import Combine
 
 @Observable final class CocktailListViewModel: ObservableObject {
     
-    private let container: ModelContainer
+    let modelContext: ModelContext
     var cocktailFetchCompleted = false
     
     private var allCocktails: [Cocktail] = []
@@ -30,28 +30,25 @@ import Combine
     var shouldReloadCache = false
     
     init(container: ModelContainer) {
-        self.container = container
+        modelContext = ModelContext(container)
         self.setupSearch()
         Task {
             await fetchCocktails()
         }
     }
     
-    @MainActor
     private func fetchCocktails() async {
         
-        let context = container.mainContext
-        
         do {
-            let fetchedCocktails = try await Task.detached(priority: .background) {
+            let fetchedCocktails = try {
                 let descriptor = FetchDescriptor<Cocktail>()
-                return try context.fetch(descriptor)
-            }.value
+                return try modelContext.fetch(descriptor)
+            }()
             
+            self.allCocktails = fetchedCocktails
+            self.updateFilteredCocktails()
+            self.cacheOrganizedCocktails()
             await MainActor.run {
-                self.allCocktails = fetchedCocktails
-                self.updateFilteredCocktails()
-                self.cacheOrganizedCocktails()
                 withAnimation(.easeOut(duration: 1)) {
                     self.cocktailFetchCompleted = true
                 }
