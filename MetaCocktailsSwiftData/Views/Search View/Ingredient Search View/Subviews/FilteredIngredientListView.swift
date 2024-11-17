@@ -58,7 +58,7 @@ struct FilteredIngredientListView: View {
         .padding(.leading, 16)
         .padding(.trailing, 8)
         .task {
-            print(modelContext.sqliteCommand)
+//            print(modelContext.sqliteCommand)
 //            await generateAllCocktailList(context: modelContext)
             viewModel.setupSearch()
             viewModel.ingredientNames = ingredients.map { $0.name }

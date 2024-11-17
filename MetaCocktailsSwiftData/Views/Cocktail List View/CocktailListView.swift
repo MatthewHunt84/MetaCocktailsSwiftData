@@ -10,7 +10,6 @@ import SwiftData
 
 struct CocktailListView: View {
     @EnvironmentObject var viewModel: CocktailListViewModel
-    @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
     @FocusState private var searchBarIsFocused: Bool
     @State private var selectedNavigationLetter: String?
     
@@ -56,7 +55,6 @@ struct CocktailListView: View {
             .onAppear {
                 viewModel.searchText = ""
                 searchBarIsFocused = false
-                viewModel.setAllCocktails(cocktails)
             }
             .navigationBarTitleDisplayMode(.inline)
             .jamesHeader("Cocktail List")
