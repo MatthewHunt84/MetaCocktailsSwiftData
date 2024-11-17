@@ -49,7 +49,7 @@ import Combine
             self.updateFilteredCocktails()
             self.cacheOrganizedCocktails()
             await MainActor.run {
-                withAnimation(.easeOut(duration: 1)) {
+                withAnimation(.easeOut(duration: 1.5)) {
                     self.cocktailFetchCompleted = true
                 }
             }
