@@ -18,6 +18,7 @@ struct FilteredIngredientListView: View {
     
     var body: some View {
         
+        
         VStack {
             
             TextField("Search for cocktails which contain...", text: $viewModel.currentComponentSearchName).SearchBarTextField()
@@ -57,7 +58,7 @@ struct FilteredIngredientListView: View {
         .padding(.leading, 16)
         .padding(.trailing, 8)
         .task {
-            //print(modelContext.sqliteCommand)
+            print(modelContext.sqliteCommand)
 //            await generateAllCocktailList(context: modelContext)
             viewModel.setupSearch()
             viewModel.ingredientNames = ingredients.map { $0.name }
