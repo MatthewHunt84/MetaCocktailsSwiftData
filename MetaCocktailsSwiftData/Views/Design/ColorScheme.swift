@@ -40,6 +40,10 @@ struct ColorScheme {
                                            startPoint: .leading,
                                            endPoint: .trailing)
     
+    static let aboutUsBorderGradient = LinearGradient(gradient: Gradient(colors: [Color.white, Color.white, Color.white]),
+                                           startPoint: .leading,
+                                           endPoint: .trailing)
+    
     static let recipeBorderFlipped = recipeBorder
     
     static let recipeBorderInactive = LinearGradient(gradient: Gradient(colors: [secondaryClone]),
@@ -61,6 +65,8 @@ struct ColorScheme {
     static let presentedFrontBorder = BorderGradient(top: recipeBorder, bottom: recipeBorderFlipped)
     static let presentedBackBorder = BorderGradient(top: recipeBorderFlipped, bottom: recipeBorder)
     static let inactiveBorder = BorderGradient(top: recipeBorderInactive, bottom: recipeBorderInactive)
+    static let aboutUsBorder = BorderGradient(top: aboutUsBorderGradient, bottom: aboutUsBorderGradient)
+    
 }
 
 struct BorderGradient {

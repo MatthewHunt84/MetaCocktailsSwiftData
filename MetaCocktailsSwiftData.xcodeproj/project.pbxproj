@@ -269,6 +269,7 @@
 		4DA889082CBDF41900113ED7 /* ChocolateCocktailW&G.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA889072CBDF41900113ED7 /* ChocolateCocktailW&G.swift */; };
 		4DA8890A2CBE00B800113ED7 /* HouseSilverFizz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA889092CBE00B800113ED7 /* HouseSilverFizz.swift */; };
 		4DA8890C2CBE0A1A00113ED7 /* HouseMexicanFiringSquad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA8890B2CBE0A1A00113ED7 /* HouseMexicanFiringSquad.swift */; };
+		4DABDD1E2CEBC49A0080A529 /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DABDD1D2CEBC49A0080A529 /* AboutUsView.swift */; };
 		4DAD6C872C802CB900860555 /* CustomCocktailsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAD6C862C802CB900860555 /* CustomCocktailsListView.swift */; };
 		4DAD6C8C2C804A2F00860555 /* VariationPickerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAD6C8B2C804A2F00860555 /* VariationPickerDetailView.swift */; };
 		4DAD6C922C83B86C00860555 /* RiffPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAD6C912C83B86C00860555 /* RiffPickerView.swift */; };
@@ -834,6 +835,7 @@
 		4DA889072CBDF41900113ED7 /* ChocolateCocktailW&G.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChocolateCocktailW&G.swift"; sourceTree = "<group>"; };
 		4DA889092CBE00B800113ED7 /* HouseSilverFizz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseSilverFizz.swift; sourceTree = "<group>"; };
 		4DA8890B2CBE0A1A00113ED7 /* HouseMexicanFiringSquad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseMexicanFiringSquad.swift; sourceTree = "<group>"; };
+		4DABDD1D2CEBC49A0080A529 /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
 		4DAD6C862C802CB900860555 /* CustomCocktailsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCocktailsListView.swift; sourceTree = "<group>"; };
 		4DAD6C8B2C804A2F00860555 /* VariationPickerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariationPickerDetailView.swift; sourceTree = "<group>"; };
 		4DAD6C912C83B86C00860555 /* RiffPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiffPickerView.swift; sourceTree = "<group>"; };
@@ -1385,6 +1387,7 @@
 		1AC386962AAABED00064F52A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4DABDD1C2CEBC47F0080A529 /* AboutUsView */,
 				F493F3B22C6D256F006A0ADB /* Design */,
 				4D5DA09C2B9ED43300C14F1F /* CustomAlertView */,
 				4DE33DF52B8D931500312EC3 /* CreateACocktailView */,
@@ -1765,6 +1768,14 @@
 				4DED944D2C098DBF002305C2 /* BatchCellView.swift */,
 			);
 			path = SubViews;
+			sourceTree = "<group>";
+		};
+		4DABDD1C2CEBC47F0080A529 /* AboutUsView */ = {
+			isa = PBXGroup;
+			children = (
+				4DABDD1D2CEBC49A0080A529 /* AboutUsView.swift */,
+			);
+			path = AboutUsView;
 			sourceTree = "<group>";
 		};
 		4DAD6C882C804A0300860555 /* VariationPicker */ = {
@@ -2868,6 +2879,7 @@
 				4DBFF85B2B60AFE60011B5B1 /* Carajillo.swift in Sources */,
 				4D5DA0962B9EB43600C14F1F /* AddedIngredientView.swift in Sources */,
 				4D5DA0AA2BA1091000C14F1F /* HarvestOldFashioned.swift in Sources */,
+				4DABDD1E2CEBC49A0080A529 /* AboutUsView.swift in Sources */,
 				F4AA6ADC2B84F10D003DBB80 /* Preload.swift in Sources */,
 				4DCB17442BA532570002D7D9 /* Dominicana.swift in Sources */,
 				4DE33E092B9160DF00312EC3 /* CobbleHill.swift in Sources */,
