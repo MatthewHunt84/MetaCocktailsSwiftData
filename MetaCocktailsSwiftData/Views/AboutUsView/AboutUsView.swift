@@ -18,7 +18,6 @@ struct AboutUsView: View {
         NavigationStack{
             GeometryReader { outerGeo in
                 ZStack {
-                    
                     Border(height: outerGeo.size.height, gradient: $borderColor)
                     ZStack{
                         FadingEdgesScrollView {
@@ -32,7 +31,7 @@ struct AboutUsView: View {
                                             .foregroundStyle(ColorScheme.interactionTint)
                                     }
                                     Spacer()
-                                    FontFactory.recipeHeader(title: "About the Authors", isHistoric: false)
+                                    FontFactory.recipeHeader(title: "About the Creators", isHistoric: false)
                                         .lineLimit(1)
                                         .minimumScaleFactor(0.5)
                                     
