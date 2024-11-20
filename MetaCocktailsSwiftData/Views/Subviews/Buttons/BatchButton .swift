@@ -42,7 +42,7 @@ struct BatchButton: View {
     }
 }
 
-#Preview(traits: .sampleData) {
-    @Previewable @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
-    BatchButton(cocktail: cocktails.first ?? DummyCocktails.randomCocktail())
-}
+//#Preview(traits: .sampleData) {
+//    @Previewable @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
+//    BatchButton(cocktail: cocktails.first ?? DummyCocktails.randomCocktail())
+//}

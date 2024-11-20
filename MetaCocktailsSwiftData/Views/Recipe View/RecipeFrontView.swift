@@ -176,12 +176,12 @@ struct RecipeView: View {
     }
 }
 
-#Preview(traits: .sampleData) {
-    @Previewable @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
-    
-    SwipeRecipeView(variations: cocktails ?? DummyCocktails.cocktails, initialSelection: zombie)
-        .environmentObject(CBCViewModel())
-}
+//#Preview(traits: .sampleData) {
+//    @Previewable @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
+//    
+//    SwipeRecipeView(variations: cocktails ?? DummyCocktails.cocktails, initialSelection: zombie)
+//        .environmentObject(CBCViewModel())
+//}
 
 /// Uncomment below to test single recipe view (instead of swipe view above)
 
