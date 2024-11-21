@@ -61,7 +61,7 @@ struct AddBuildStepDetailView: View {
     }
 }
 
-#Preview(traits: .sampleData) {
-    @FocusState var cocktailBuildStepKeyboardFocused: Bool
-    AddBuildStepDetailView(viewModel: AddCocktailViewModel(), cocktailBuildStepKeyboardFocused: _cocktailBuildStepKeyboardFocused, isShowingBuildSheet: .constant(true), willEditBuildStep: .constant(true))
-}
+//#Preview(traits: .sampleData) {
+//    @FocusState var cocktailBuildStepKeyboardFocused: Bool
+//    AddBuildStepDetailView(viewModel: AddCocktailViewModel(), cocktailBuildStepKeyboardFocused: _cocktailBuildStepKeyboardFocused, isShowingBuildSheet: .constant(true), willEditBuildStep: .constant(true))
+//}
