@@ -18,7 +18,7 @@ struct MetaCocktailsSwiftDataApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(viewModel: CocktailListViewModel(modelContext: container.mainContext))
                 .modelContainer(container)
                 .preferredColorScheme(.dark)
                 .environmentObject(CBCViewModel())
@@ -27,18 +27,18 @@ struct MetaCocktailsSwiftDataApp: App {
 }
 
 struct ContentView: View {
-
-    @Environment(\.modelContext) var modelContext
-    @EnvironmentObject var viewModel: CocktailListViewModel
     
-    @State private var swiftDataIsLoaded = false
+    @StateObject var viewModel: CocktailListViewModel
     @State private var startTime = CFAbsoluteTimeGetCurrent()
     
     var body: some View {
         ZStack {
-            TabBarView()//.opacity(viewModel.cocktailFetchCompleted ? 1 : 0)
-                .environmentObject(CocktailListViewModel(modelContext: modelContext))
-//            FirstLaunchLoadingView()//.opacity(viewModel.cocktailFetchCompleted ? 0 : 1).allowsHitTesting(false)
+            TabBarView()
+                .opacity(viewModel.cocktailFetchCompleted ? 1 : 0)
+            FirstLaunchLoadingView()
+                .opacity(viewModel.cocktailFetchCompleted ? 0 : 1)
+                .allowsHitTesting(false)
         }
+        .environmentObject(viewModel)
     }
 }
