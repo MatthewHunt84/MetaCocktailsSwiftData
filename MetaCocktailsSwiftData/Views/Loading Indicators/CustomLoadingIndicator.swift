@@ -26,25 +26,30 @@ struct CustomLoadingOverlayModifier: ViewModifier {
 
 struct FirstLoadAnimation: View {
     @State private var rotationCircle = 0.0
+    let frame: CGFloat
+    let duration: TimeInterval
+    let internalColor: Color
+    let externalColor: LinearGradient
+    let reverse: Bool
     
     var body: some View {
         
         ZStack {
             Image(.limeCenter)
                 .resizable()
-                .foregroundStyle(Color.primary.mix(with: ColorScheme.tintColor, by: 0.33))
+                .foregroundStyle(internalColor)
             
             Image(.limeSegments)
                 .resizable()
                 .rotationEffect(.degrees(rotationCircle))
-                .animation(Animation.linear(duration: 2).repeatForever(autoreverses: false), value: rotationCircle)
+                .animation(Animation.linear(duration: duration).repeatForever(autoreverses: false), value: rotationCircle)
         }
-        .foregroundStyle(LinearGradient(colors: [Color.brandPrimaryOrange, ColorScheme.tintColor, Color.brandPrimaryOrange], startPoint: .topLeading, endPoint: .bottomTrailing))
-        .frame(width: 200, height: 200)
+        .foregroundStyle(externalColor)
+        .frame(width: frame, height: frame)
         .opacity(0.9)
         .task {
             await MainActor.run {
-                rotationCircle = 360
+                rotationCircle = reverse ? -360 : 360
             }
         }
     }

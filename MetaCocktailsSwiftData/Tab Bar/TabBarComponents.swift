@@ -40,7 +40,8 @@ enum TabBarComponents: Hashable, Identifiable, CaseIterable {
             IngredientSearchView()
                 .environmentObject(SearchViewModel())
         case .favoritesView:
-            CustomCocktailsListView()
+            AboutUsView()
+//            CustomCocktailsListView()
         case .addCocktailView:
             AddCocktailView()
         }

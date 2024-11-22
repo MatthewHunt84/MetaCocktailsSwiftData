@@ -55,6 +55,33 @@ struct JamesTitleWithNavigation: ViewModifier {
     }
 }
 
+struct AboutTitleWithNavigation: ViewModifier {
+    
+    var dismiss: DismissAction
+    let title: String
+    
+    func body(content: Content) -> some View {
+        content
+            .toolbar {
+                ToolbarItem(placement: .navigation) {
+                    Button(action: {
+                        dismiss()
+                    }) {
+                        Image(systemName: "chevron.backward")
+                            .font(.system(size: 16))
+                            .bold()
+                            .tint(ColorScheme.interactionTint)
+                            .frame(width: 30, height: 30)
+                    }
+                }
+                
+                ToolbarItem(placement: .principal) {
+                    FontFactory.aboutHeader(title: title)
+                }
+            }
+    }
+}
+
 extension View {
     
     func jamesHeader(_ title: String) -> some View {
@@ -65,6 +92,12 @@ extension View {
 extension View {
     func jamesHeaderWithNavigation(title: String, dismiss: DismissAction) -> some View {
         self.modifier(JamesTitleWithNavigation(dismiss: dismiss, title: title))
+    }
+}
+
+extension View {
+    func aboutHeaderWithNavigation(title: String, dismiss: DismissAction) -> some View {
+        self.modifier(AboutTitleWithNavigation(dismiss: dismiss, title: title))
     }
 }
 

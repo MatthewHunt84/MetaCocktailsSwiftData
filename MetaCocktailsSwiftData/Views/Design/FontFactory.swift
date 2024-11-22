@@ -78,6 +78,19 @@ struct FontFactory {
             .foregroundStyle(ColorScheme.headerColor)
     }
     
+    static func aboutHeader(title: String) -> Text {
+        return Text(title)
+            .font(.custom("AvenirNext-DemiBold", size: 26))
+            .foregroundStyle(Color.brandPrimaryOrange.mix(with: ColorScheme.tintColor, by: 0.5))
+//            .foregroundStyle(LinearGradient(colors: [Color.brandPrimaryOrange, ColorScheme.tintColor, Color.brandPrimaryOrange], startPoint: .topLeading, endPoint: .bottomTrailing))
+    }
+    
+    static func devHeader(title: String) -> Text {
+        return Text(title)
+            .font(.custom("AvenirNext-DemiBold", size: 18))
+            .foregroundStyle(LinearGradient(colors: [Color.brandPrimaryOrange, ColorScheme.tintColor, Color.brandPrimaryOrange], startPoint: .topLeading, endPoint: .bottomTrailing))
+    }
+    
     static var buildBodySmall10: Font = .custom("AvenirNext-Regular", size: 10)
     static var buildStepSmall10B: Font = .custom("AvenirNext-Regular", size: 10).bold()
     static var sectionHeader12: Font = .custom("AvenirNext-Regular", size: 12)
