@@ -31,7 +31,7 @@ struct AboutUsView: View {
                         
                         HStack {
                             
-                            Text("We designed this app to give bartenders the ability to filter cocktails by ingredients, flavors, or styles. We included a complete batching calculator, quick access to favorites, and much more.")
+                            Text("This app represents our transition from building drinks to building software. We've poured our combined expertise into publishing a comprehensive library of meticulously sourced recipes and features for the modern bartender.")
                                 .font(FontFactory.fontBody14)
                                 .multilineTextAlignment(.leading)
                             
@@ -43,11 +43,7 @@ struct AboutUsView: View {
                                                                              endPoint: .bottomTrailing),
                                                reverse: false)
                         }
-                        
-                        Text("This app represents our transition from building drinks to building software. We've poured our combined expertise into publishing a comprehensive library of meticulously sourced recipes and features. Enjoy!")
-                            .font(FontFactory.fontBody14)
-                            .multilineTextAlignment(.leading)
-                            .padding(.bottom, 20)
+                        .padding(.bottom, 20)
                         
                         HStack(spacing: 20) {
                             JamesPicture()
@@ -56,12 +52,13 @@ struct AboutUsView: View {
                                 
                                 Text("James Menkal")
                                     .font(.custom("AvenirNext-DemiBold", size: 18))
-                                    .foregroundStyle(Color.brandPrimaryOrange.mix(with: ColorScheme.tintColor, by: 0.5))
+//                                    .foregroundStyle(Color.brandPrimaryOrange.mix(with: ColorScheme.tintColor, by: 0.5))
                                 
                                 Text("A veteran of the industry with over a decade of craft cocktail expertise, James Menkal is the longest-serving bartender at Denver's award-winning Williams and Graham.")
                                     .font(FontFactory.fontBody14)
                             }
                         }
+//                        .foregroundStyle(Color.primary.mix(with: ColorScheme.tintColor, by: 0.33))
                         .padding(.bottom, 20)
                         
                         
@@ -71,22 +68,23 @@ struct AboutUsView: View {
                                 
                                 Text("Matt Hunt")
                                     .font(.custom("AvenirNext-DemiBold", size: 18))
-                                    .foregroundStyle(Color.brandPrimaryOrange.mix(with: ColorScheme.tintColor, by: 0.5))
+//                                    .foregroundStyle(Color.brandPrimaryOrange.mix(with: ColorScheme.tintColor, by: 0.5))
                                 
-                                Text("An international bartender who loved reading about cocktails almost as much as drinking them, Matt now has has several recipes featured in the 'Welcome Home' cocktail book by Death & Co.")
+                                Text("An international bartender who enjoyed reading about cocktails almost as much as drinking them, Matt now has has several recipes featured in the 'Welcome Home' cocktail book by Death & Co.")
                                     .font(FontFactory.fontBody14)
                             }
                             
                             MattPicture()
                         }
+//                        .foregroundStyle(Color.primary.mix(with: ColorScheme.tintColor, by: 0.33))
                     }
-                    .foregroundStyle(Color.primary.mix(with: ColorScheme.tintColor, by: 0.33))
+//                    .foregroundStyle(Color.primary.mix(with: ColorScheme.tintColor, by: 0.33))
                     .aboutHeaderWithNavigation(title: "About Cocktail Copilot", dismiss: dismiss)
                     .navigationBarTitleDisplayMode(.inline)
                     .background(
                         Image(.limeSegments)
                             .offset(x: 120, y: 240)
-                            .opacity(0.03)
+                            .opacity(0.02)
                     )
                     .padding(20)
                 }
@@ -144,11 +142,11 @@ struct AboutUsView2: View {
                                                                                  startPoint: .topLeading,
                                                                                  endPoint: .bottomTrailing),
                                                    reverse: true)
-
+                                
                                 
                                 HStack {
                                     ZStack {
-
+                                        
                                         VStack {
                                             Image("jamesFace")
                                                 .resizable()
@@ -158,19 +156,20 @@ struct AboutUsView2: View {
                                         }
                                         
                                         Circle()
-                                            .stroke(Color.primary.mix(with: ColorScheme.tintColor, by: 0.33), lineWidth: 9)
+                                            .stroke(Color.primary, lineWidth: 9)
+//                                            .stroke(Color.primary.mix(with: ColorScheme.tintColor, by: 0.33), lineWidth: 9)
                                             .frame(width: 120, height: 120, alignment: .center)
                                     }
                                     .padding(.horizontal, 20)
                                     
                                     VStack {
                                         ZStack {
-                                                
-                                                Image(.limeCenter)
-                                                    .resizable()
-                                                    .foregroundStyle(RadialGradient(colors: [.black, .darkestGray], center: .center, startRadius: 1, endRadius: 100))
-                                                    .frame(width: 150, height: 150, alignment: .center)
-
+                                            
+                                            Image(.limeCenter)
+                                                .resizable()
+                                                .foregroundStyle(RadialGradient(colors: [.black, .darkestGray], center: .center, startRadius: 1, endRadius: 100))
+                                                .frame(width: 150, height: 150, alignment: .center)
+                                            
                                             Image("mattFaceCropped")
                                                 .resizable()
                                                 .aspectRatio(contentMode: .fill)
@@ -180,7 +179,8 @@ struct AboutUsView2: View {
                                                 .frame(width: pictureFrame, height: pictureFrame, alignment: .center)
                                             
                                             Circle()
-                                                .stroke(Color.primary.mix(with: ColorScheme.tintColor, by: 0.33), lineWidth: 9)
+                                                .stroke(Color.primary, lineWidth: 9)
+//                                                .stroke(Color.primary.mix(with: ColorScheme.tintColor, by: 0.33), lineWidth: 9)
                                                 .frame(width: 120, height: 120, alignment: .center)
                                             
                                             
@@ -216,6 +216,7 @@ var aboutUsTextSecondParagraph = "       While Matt transitioned into iOS develo
 
 struct JamesPicture: View {
     
+    @State private var rotationCircle = 0.0
     private var pictureFrame = CGFloat(112)
     
     var body: some View {
@@ -227,8 +228,19 @@ struct JamesPicture: View {
                 .frame(width: pictureFrame, height: pictureFrame, alignment: .center)
             
             Circle()
-                .stroke(Color.primary.mix(with: ColorScheme.tintColor, by: 0.33), lineWidth: 9)
+                .stroke(LinearGradient(colors: [Color.brandPrimaryOrange, ColorScheme.tintColor, Color.brandPrimaryOrange],
+                                       startPoint: .topLeading,
+                                       endPoint: .bottomTrailing), lineWidth: 9)
+//                .stroke(Color.primary.mix(with: ColorScheme.tintColor, by: 0.33), lineWidth: 9)
                 .frame(width: 120, height: 120, alignment: .center)
+                .rotationEffect(.degrees(rotationCircle))
+                .animation(Animation.linear(duration: 4).repeatForever(autoreverses: false), value: rotationCircle)
+                .task {
+                    await MainActor.run {
+                        rotationCircle = -360
+                    }
+                }
+//                .opacity(0.8)
         }
         
     }
@@ -236,6 +248,7 @@ struct JamesPicture: View {
 
 struct MattPicture: View {
     
+    @State private var rotationCircle = 0.0
     private var pictureFrame = CGFloat(112)
     
     var body: some View {
@@ -255,8 +268,19 @@ struct MattPicture: View {
                 .frame(width: pictureFrame, height: pictureFrame, alignment: .center)
             
             Circle()
-                .stroke(Color.primary.mix(with: ColorScheme.tintColor, by: 0.33), lineWidth: 9)
+                .stroke(LinearGradient(colors: [Color.brandPrimaryOrange, ColorScheme.tintColor, Color.brandPrimaryOrange],
+                                       startPoint: .topLeading,
+                                       endPoint: .bottomTrailing), lineWidth: 9)
+//                .stroke(Color.primary.mix(with: ColorScheme.tintColor, by: 0.33), lineWidth: 9)
                 .frame(width: 120, height: 120, alignment: .center)
+                .rotationEffect(.degrees(rotationCircle))
+                .animation(Animation.linear(duration: 4).repeatForever(autoreverses: false), value: rotationCircle)
+                .task {
+                    await MainActor.run {
+                        rotationCircle = 360
+                    }
+                }
+//                .opacity(0.8)
         }
     }
 }
