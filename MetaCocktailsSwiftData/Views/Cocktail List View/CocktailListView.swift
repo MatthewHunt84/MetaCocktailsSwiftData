@@ -67,9 +67,11 @@ struct CocktailListView: View {
                         VStack(spacing: 0) {
                             Image(.limeSegments)
                                 .resizable()
-                                .frame(width: 22, height: 22)
-                            FontFactory.mediumText("About", size: 12, color: ColorScheme.interactionTint)
+                                .frame(width: 30, height: 30)
+                                .foregroundStyle(ColorScheme.tintColor)
+                            FontFactory.mediumText("About Us", size: 12, color: ColorScheme.interactionTint)
                         }
+                        .offset(x: 15)
                         .foregroundStyle(ColorScheme.interactionTint)
                     }
                     .padding(.horizontal, 20)
