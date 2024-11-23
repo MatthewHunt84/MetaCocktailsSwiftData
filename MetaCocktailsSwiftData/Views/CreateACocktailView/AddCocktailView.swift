@@ -76,9 +76,8 @@ struct AddCocktailView: View {
                 .jamesHeader("Add New Cocktail")
                 .modalPrentation(Image("useExistingRecipe"), labelText: "Use existing", isPresented: $isSelectingFromTemplate)
                 .sheet(isPresented: $isSelectingFromTemplate) {
-                    AboutUsView()
-//                    RiffPickerView(viewModel: viewModel)
-//                        .navigationBarBackButtonHidden(true)
+                    RiffPickerView(viewModel: viewModel)
+                        .navigationBarBackButtonHidden(true)
                 }
                 .toolbar {
                     ToolbarItem(placement: .bottomBar) {
