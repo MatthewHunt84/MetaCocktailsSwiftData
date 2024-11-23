@@ -230,7 +230,7 @@ struct JamesPicture: View {
             Circle()
                 .stroke(LinearGradient(colors: [Color.brandPrimaryOrange, ColorScheme.tintColor, Color.brandPrimaryOrange],
                                        startPoint: .topLeading,
-                                       endPoint: .bottomTrailing), lineWidth: 9)
+                                       endPoint: .bottomTrailing), lineWidth: 7.5)
 //                .stroke(Color.primary.mix(with: ColorScheme.tintColor, by: 0.33), lineWidth: 9)
                 .frame(width: 120, height: 120, alignment: .center)
                 .rotationEffect(.degrees(rotationCircle))
@@ -270,7 +270,7 @@ struct MattPicture: View {
             Circle()
                 .stroke(LinearGradient(colors: [Color.brandPrimaryOrange, ColorScheme.tintColor, Color.brandPrimaryOrange],
                                        startPoint: .topLeading,
-                                       endPoint: .bottomTrailing), lineWidth: 9)
+                                       endPoint: .bottomTrailing), lineWidth: 7.5)
 //                .stroke(Color.primary.mix(with: ColorScheme.tintColor, by: 0.33), lineWidth: 9)
                 .frame(width: 120, height: 120, alignment: .center)
                 .rotationEffect(.degrees(rotationCircle))
