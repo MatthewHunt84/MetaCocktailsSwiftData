@@ -9,7 +9,8 @@ import SwiftUI
 struct ColorScheme {
     
     static let searchBarBackground = Color(hex: "#3F3F3F")
-    static let tintColor = Color(hex: "#FFB803")
+    static let tintColor = Color.brandPrimaryOrange.mix(with: Color(hex: "#FFB803"), by: 0.5)
+
     static let darkerTintColor = Color(hex: "#FF8426")
     static let interactionTint = Color(hex: "#00B2FF")
     
@@ -36,7 +37,11 @@ struct ColorScheme {
                                            startPoint: .leading,
                                            endPoint: .trailing)
 
-    static let recipeBorder = LinearGradient(gradient: Gradient(colors: [darkerTintColor, tintColor, darkerTintColor]),
+    static let recipeBorder = LinearGradient(gradient: Gradient(colors: [darkerTintColor, Color(hex: "#FFB803"), darkerTintColor]),
+                                           startPoint: .leading,
+                                           endPoint: .trailing)
+    
+    static let aboutUsBorderGradient = LinearGradient(gradient: Gradient(colors: [Color.white, Color.white, Color.white]),
                                            startPoint: .leading,
                                            endPoint: .trailing)
     
@@ -61,6 +66,8 @@ struct ColorScheme {
     static let presentedFrontBorder = BorderGradient(top: recipeBorder, bottom: recipeBorderFlipped)
     static let presentedBackBorder = BorderGradient(top: recipeBorderFlipped, bottom: recipeBorder)
     static let inactiveBorder = BorderGradient(top: recipeBorderInactive, bottom: recipeBorderInactive)
+    static let aboutUsBorder = BorderGradient(top: aboutUsBorderGradient, bottom: aboutUsBorderGradient)
+    
 }
 
 struct BorderGradient {

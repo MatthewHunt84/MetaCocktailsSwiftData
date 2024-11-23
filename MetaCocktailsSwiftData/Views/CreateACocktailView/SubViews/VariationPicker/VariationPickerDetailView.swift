@@ -69,7 +69,7 @@ struct VariationPicker: View {
                 HStack {
                     Text("Variation")
                         .font(FontFactory.formLabel18)
-                    Image(systemName: "info.circle")
+                    Image(systemName: "info.circle.fill")
                         .foregroundStyle(ColorScheme.interactionTint)
                         .onTapGesture {
                             withAnimation(.easeInOut(duration: 0.3)) {

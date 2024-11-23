@@ -210,7 +210,7 @@ struct CBCIngredientSectionFooter: View {
                 
                 Text("Calculating based on bottle count?".uppercased())
                 
-                Image(systemName: "info.circle")
+                Image(systemName: "info.circle.fill")
                     .foregroundStyle(isShowingIngredientSwipeInfo ? ColorScheme.tintColor : ColorScheme.interactionTint)
                     .onTapGesture {
                         isShowingIngredientSwipeInfo.toggle()

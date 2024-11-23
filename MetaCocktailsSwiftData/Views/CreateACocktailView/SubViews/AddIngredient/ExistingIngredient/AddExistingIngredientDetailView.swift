@@ -108,7 +108,7 @@ struct AddIngredientSearchView: View {
             HStack {
                 Text("Choose Ingredient")
                     .font(FontFactory.sectionHeader12)
-                Image(systemName: "info.circle")
+                Image(systemName: "info.circle.fill")
                     .font(.system(size: 16))
                     .foregroundStyle(isShowingDetail ? ColorScheme.tintColor : ColorScheme.interactionTint)
                     .onTapGesture {
