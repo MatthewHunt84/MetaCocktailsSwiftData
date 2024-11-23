@@ -58,6 +58,24 @@ struct CocktailListView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
             .jamesHeader("Cocktail List")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink {
+                        AboutUsView()
+                            .navigationBarBackButtonHidden(true)
+                    } label: {
+                        VStack(spacing: 0) {
+                            Image(.limeSegments)
+                                .resizable()
+                                .frame(width: 22, height: 22)
+                            FontFactory.mediumText("About", size: 12, color: ColorScheme.interactionTint)
+                        }
+                        .foregroundStyle(ColorScheme.interactionTint)
+                    }
+                    .padding(.horizontal, 20)
+                    
+                }
+            }
         }
     }
 }

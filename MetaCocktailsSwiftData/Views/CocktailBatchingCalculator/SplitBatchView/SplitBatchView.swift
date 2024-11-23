@@ -40,7 +40,7 @@ struct SplitBatchView: View {
                                 .font(FontFactory.mediumFont(size: 16))
                                 .foregroundStyle(.secondary)
                             
-                            Image(systemName: "info.circle")
+                            Image(systemName: "info.circle.fill")
                                 .font(.system(size: 16))
                                 .foregroundStyle(isShowingContainerInfo ? ColorScheme.tintColor : ColorScheme.interactionTint)
                                 .onTapGesture {

@@ -223,7 +223,7 @@ struct InfoHeader: View {
             
             FontFactory.mediumText(text, size: 20)
             
-            Image(systemName: "info.circle")
+            Image(systemName: "info.circle.fill")
                 .font(.system(size: 16))
                 .foregroundStyle(isShowingDetail ? ColorScheme.tintColor : ColorScheme.interactionTint)
                 .onTapGesture {
@@ -249,7 +249,7 @@ struct InfoDisclosureHeader: View {
                 
                 FontFactory.mediumText(text, size: 20)
                 
-                Image(systemName: "info.circle")
+                Image(systemName: "info.circle.fill")
                     .font(.system(size: 16))
                     .foregroundStyle(isShowingDetail ? ColorScheme.tintColor : ColorScheme.interactionTint)
                     .onTapGesture {
