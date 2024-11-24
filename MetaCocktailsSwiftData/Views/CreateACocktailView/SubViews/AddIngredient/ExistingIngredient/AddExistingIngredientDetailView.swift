@@ -16,6 +16,7 @@ struct AddExistingIngredientDetailView: View {
     @Binding var isShowingCustomIngredientView: Bool
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
+    @Binding var isModifyingIngredientValue: Bool 
     
     var body: some View {
         
@@ -27,9 +28,10 @@ struct AddExistingIngredientDetailView: View {
 
                 List {
                     AddIngredientSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
+                        .disabled(isModifyingIngredientValue ? true : false)
                     AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
                     Section {
-                        AddExistingIngredientToCocktailButton(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
+                        AddExistingIngredientToCocktailButton(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isModifyingIngredientValue: $isModifyingIngredientValue)
                     }
                     .listRowBackground(Color.clear)
                     Section {
@@ -55,7 +57,7 @@ struct AddExistingIngredientDetailView: View {
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
     
-    AddExistingIngredientDetailView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true), isShowingCustomIngredientView: .constant(true))
+    AddExistingIngredientDetailView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true), isShowingCustomIngredientView: .constant(true), isModifyingIngredientValue: .constant(false))
         .modelContainer(preview.container)
     
 }
@@ -178,6 +180,7 @@ struct AddExistingIngredientToCocktailButton: View {
     @Bindable var viewModel: AddCocktailViewModel
     @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]
     @Binding  var isShowingAddIngredients: Bool
+    @Binding var isModifyingIngredientValue: Bool
     
     var body: some View {
         
@@ -193,7 +196,7 @@ struct AddExistingIngredientToCocktailButton: View {
                     
                     viewModel.addedIngredients.append(ingredient)
                 }
-                
+                isModifyingIngredientValue = false 
                 viewModel.clearIngredientData()
                 isShowingAddIngredients = false
             }

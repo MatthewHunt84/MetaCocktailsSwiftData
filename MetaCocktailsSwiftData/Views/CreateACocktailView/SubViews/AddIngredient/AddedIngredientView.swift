@@ -14,6 +14,7 @@ struct AddedIngredientView: View {
     @Binding var isShowingAddIngredients: Bool
     @Binding var isShowingCustomIngredientView: Bool 
     @Environment(\.modelContext) private var modelContext
+    @Binding var isModifyingIngredientValue: Bool 
     
     var body: some View {
         
@@ -42,6 +43,7 @@ struct AddedIngredientView: View {
                             } else {
                                 viewModel.currentIngredientUUID = ingredient.id
                                 viewModel.populateExistingIngredient(ingredient: ingredient)
+                                isModifyingIngredientValue = true 
                                 isShowingAddIngredients.toggle()
                             }
                         })
@@ -76,7 +78,7 @@ struct AddedIngredientView: View {
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
     
-    AddedIngredientView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true), isShowingCustomIngredientView: .constant(true))
+    AddedIngredientView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true), isShowingCustomIngredientView: .constant(true), isModifyingIngredientValue: .constant(false))
         .modelContainer(preview.container)
     
 }
