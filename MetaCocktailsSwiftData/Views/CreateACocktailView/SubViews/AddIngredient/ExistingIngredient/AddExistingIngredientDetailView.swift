@@ -27,8 +27,9 @@ struct AddExistingIngredientDetailView: View {
                 BlackGlassBackgroundView().ignoresSafeArea()
 
                 List {
-                    AddIngredientSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
+                    AddIngredientSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused, isModifyingIngredientValue: $isModifyingIngredientValue)
                         .disabled(isModifyingIngredientValue ? true : false)
+                    
                     AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
                     Section {
                         AddExistingIngredientToCocktailButton(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isModifyingIngredientValue: $isModifyingIngredientValue)
@@ -50,6 +51,9 @@ struct AddExistingIngredientDetailView: View {
                     keyboardFocused = true
                 }
             }
+            .onDisappear {
+                isModifyingIngredientValue = false
+            }
         }
     }
 }
@@ -69,6 +73,7 @@ struct AddIngredientSearchView: View {
     @FocusState var amountKeyboardFocused: Bool
     @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]
     @State private var isShowingDetail: Bool = false
+    @Binding var isModifyingIngredientValue: Bool
     
     var body: some View {
         Section {
@@ -107,19 +112,27 @@ struct AddIngredientSearchView: View {
                 .listRowBackground(Color.clear)
             }
         } header: {
-            HStack {
-                Text("Choose Ingredient")
-                    .font(FontFactory.sectionHeader12)
-                Image(systemName: "info.circle.fill")
-                    .font(.system(size: 16))
-                    .foregroundStyle(isShowingDetail ? ColorScheme.tintColor : ColorScheme.interactionTint)
-                    .onTapGesture {
-                        withAnimation(.easeInOut(duration: 0.25)) {
-                            isShowingDetail.toggle()
+       
+                HStack {
+                    Text(!isModifyingIngredientValue ? "Choose Ingredient" : "")
+                        .font(FontFactory.sectionHeader12)
+                    Image(systemName:!isModifyingIngredientValue ? "info.circle.fill" : "")
+                        .font(.system(size: 16))
+                        .foregroundStyle(isShowingDetail ? ColorScheme.tintColor : ColorScheme.interactionTint)
+                        .onTapGesture {
+                            withAnimation(.easeInOut(duration: 0.25)) {
+                                isShowingDetail.toggle()
+                            }
                         }
-                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+          
+        } footer: {
+            if isModifyingIngredientValue {
+                Text("You can only modify the value of an added ingredient.")
+                    .font(FontFactory.fontBody14)
+                    .foregroundStyle(.brandPrimaryGold)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
         }
         if isShowingDetail {
             Section {
