@@ -18,7 +18,6 @@ struct AddCocktailView: View {
     @State private var isSelectingFromTemplate: Bool = false
     @FocusState private var cocktailBuildStepKeyboardFocused: Bool
     @State private var isShowingInfo = false
-    @State private var isEditingAddedIngredient: Bool = false
     
     var body: some View {
         
@@ -36,7 +35,7 @@ struct AddCocktailView: View {
                             .font(FontFactory.fontBody16)
                     }
                     
-                    AddedIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView, isEditingAddedIngredient: $isEditingAddedIngredient)
+                    AddedIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView)
                     
                     Section(header: Text("Extras").font(FontFactory.sectionHeader12)) {
                         GlassPickerButton(viewModel: viewModel)
@@ -126,7 +125,7 @@ struct AddCocktailView: View {
                 }
                 .fullScreenCover(isPresented: $isShowingAddIngredients) {
                     NavigationStack{
-                        AddExistingIngredientDetailView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView, isEditingAddedIngredient: $isEditingAddedIngredient)
+                        AddExistingIngredientDetailView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView)
                             .navigationBarBackButtonHidden(true)
                     }
                 }

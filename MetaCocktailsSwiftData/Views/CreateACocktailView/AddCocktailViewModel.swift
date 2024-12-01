@@ -329,13 +329,7 @@ import Combine
         addedIngredients[index] = updatedIngredient
         isEdit = true
     }
-    func removeEditedIngredient() {
-        if let editIngredient = editedIngredient {
-            if let index = addedIngredients.firstIndex(where: { $0.ingredientBase.name == editIngredient.ingredientBase.name}) {
-                addedIngredients.remove(at: index)
-            }
-        }
-    }
+
     func updateEditedIngredient() {
         if let editedIngredient = editedIngredient,
            let index = addedIngredients.firstIndex(where: { $0.id == editedIngredient.id }),

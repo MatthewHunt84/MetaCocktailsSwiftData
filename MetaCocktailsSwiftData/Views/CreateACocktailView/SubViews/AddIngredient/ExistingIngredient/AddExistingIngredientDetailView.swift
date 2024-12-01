@@ -16,7 +16,6 @@ struct AddExistingIngredientDetailView: View {
     @Binding var isShowingCustomIngredientView: Bool
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
-    @Binding var isEditingAddedIngredient: Bool
     
     var body: some View {
         
@@ -30,7 +29,7 @@ struct AddExistingIngredientDetailView: View {
                     AddIngredientSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
                     AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
                     Section {
-                        AddExistingIngredientToCocktailButton(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isEditingAddedIngredient: $isEditingAddedIngredient)
+                        AddExistingIngredientToCocktailButton(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
                     }
                     .listRowBackground(Color.clear)
                     Section {
@@ -48,9 +47,6 @@ struct AddExistingIngredientDetailView: View {
                 } else {
                     keyboardFocused = true
                 }
-                if isEditingAddedIngredient {
-                    
-                }
             }
         }
     }
@@ -59,7 +55,7 @@ struct AddExistingIngredientDetailView: View {
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
     
-    AddExistingIngredientDetailView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true), isShowingCustomIngredientView: .constant(true), isEditingAddedIngredient: .constant(false))
+    AddExistingIngredientDetailView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true), isShowingCustomIngredientView: .constant(true))
         .modelContainer(preview.container)
     
 }
@@ -81,13 +77,17 @@ struct AddIngredientSearchView: View {
                     .onChange(of: viewModel.ingredientName) { old, new in
                         viewModel.ingredientName = new
                         viewModel.matchAllIngredients(ingredients: ingredients)
+                        
+                        if viewModel.didChooseExistingIngredient {
+                            viewModel.didChooseExistingIngredient = false
+                        }
                     }
                     .clearSearchButton(text: $viewModel.ingredientName, isEmbeddedInSection: true) {
                         viewModel.ingredientName = ""
                     }
                     .submitLabel(.done)
             }
-            if keyboardFocused {
+            if keyboardFocused && !viewModel.didChooseExistingIngredient {
                 ForEach(viewModel.filteredIngredients, id: \.name) { ingredient in
                     Button {
                         viewModel.ingredientName = ingredient.name
@@ -97,6 +97,8 @@ struct AddIngredientSearchView: View {
                         viewModel.dynamicallyChangeMeasurementUnit()
                         viewModel.didChooseExistingIngredient = true
                         viewModel.filteredIngredients = []
+                        keyboardFocused = false
+                        
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                             amountKeyboardFocused = true
                         }
@@ -169,12 +171,6 @@ struct AddMeasurementView: View {
                     }
                 }
             }
-            .onAppear {
-                if viewModel.isEdit {
-                    amountKeyboardFocused = true
-                }
-            }
-            
         }
     }
 }
@@ -182,14 +178,13 @@ struct AddExistingIngredientToCocktailButton: View {
     @Bindable var viewModel: AddCocktailViewModel
     @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]
     @Binding  var isShowingAddIngredients: Bool
-    @Binding var isEditingAddedIngredient: Bool
     
     var body: some View {
         
         UniversalButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), includeBorder: true) {
             if viewModel.existingIngredientIsValid(allIngredients: ingredients) {
                 viewModel.replaceIngredient()
-                if isEditingAddedIngredient {
+                if viewModel.isEdit {
                     viewModel.updateEditedIngredient()
                 }
                 if !viewModel.isEdit {

@@ -14,7 +14,7 @@ struct AddedIngredientView: View {
     @Binding var isShowingAddIngredients: Bool
     @Binding var isShowingCustomIngredientView: Bool 
     @Environment(\.modelContext) private var modelContext
-    @Binding var isEditingAddedIngredient: Bool 
+
     
     var body: some View {
         
@@ -39,12 +39,12 @@ struct AddedIngredientView: View {
                             if ingredient.ingredientBase.isCustom {
                                 viewModel.currentIngredientUUID = ingredient.id 
                                 viewModel.populateCustomIngredient(ingredient: ingredient)
-                                isEditingAddedIngredient = true
+                                viewModel.isEdit = true
                                 isShowingCustomIngredientView.toggle()
                             } else {
                                 viewModel.currentIngredientUUID = ingredient.id
                                 viewModel.populateExistingIngredient(ingredient: ingredient)
-                                isEditingAddedIngredient = true
+                                viewModel.isEdit = true
                                 isShowingAddIngredients.toggle()
                             }
                         })
@@ -62,6 +62,9 @@ struct AddedIngredientView: View {
             }
             
             Button {
+                viewModel.isEdit = false
+                viewModel.ingredientName = ""
+                viewModel.matchAllIngredients(ingredients: [])
                 isShowingAddIngredients.toggle()
             } label: {
                 HStack{
@@ -79,7 +82,7 @@ struct AddedIngredientView: View {
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
     
-    AddedIngredientView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true), isShowingCustomIngredientView: .constant(true), isEditingAddedIngredient: .constant(false))
+    AddedIngredientView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true), isShowingCustomIngredientView: .constant(true))
         .modelContainer(preview.container)
     
 }
