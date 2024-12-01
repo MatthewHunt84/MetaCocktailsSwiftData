@@ -309,26 +309,6 @@ import Combine
             addedIngredients.remove(at: index)
         }
     }
-    func replaceIngredient() {
-        guard let ingredientValue = ingredientAmount,
-              let index = addedIngredients.firstIndex(where: { $0.ingredientBase.name == ingredientName }) else {
-            return
-        }
-        
-        let updatedIngredient = Ingredient(
-            id: addedIngredients[index].id,
-            ingredientBase: IngredientBase(
-                name: ingredientName,
-                category: category,
-                prep: prep
-            ),
-            value: ingredientValue,
-            unit: selectedMeasurementUnit
-        )
-        
-        addedIngredients[index] = updatedIngredient
-        isEdit = true
-    }
 
     func updateEditedIngredient() {
         if let editedIngredient = editedIngredient,
@@ -345,7 +325,6 @@ import Combine
                 value: ingredientValue,
                 unit: selectedMeasurementUnit
             )
-            
             
             addedIngredients[index] = updatedIngredient
         }

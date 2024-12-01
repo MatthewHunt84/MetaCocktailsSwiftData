@@ -105,7 +105,9 @@ struct AddIngredientSearchView: View {
                     } label: {
                         Text(ingredient.name)
                     }
-                    .tint(.primary)
+                    .foregroundStyle(viewModel.addedIngredients.contains(where: { $0.ingredientBase.name == ingredient.name}) ? Color.gray : .white)
+                    .disabled(viewModel.addedIngredients.contains(where: { $0.ingredientBase.name == ingredient.name}) ? true : false )
+                    
                 }
                 .listStyle(.plain)
                 .listRowBackground(Color.clear)
@@ -183,7 +185,7 @@ struct AddExistingIngredientToCocktailButton: View {
         
         UniversalButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), includeBorder: true) {
             if viewModel.existingIngredientIsValid(allIngredients: ingredients) {
-                viewModel.replaceIngredient()
+         
                 if viewModel.isEdit {
                     viewModel.updateEditedIngredient()
                 }
