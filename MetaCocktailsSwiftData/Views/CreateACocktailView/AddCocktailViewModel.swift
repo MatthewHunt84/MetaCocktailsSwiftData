@@ -43,6 +43,7 @@ import Combine
     var ingredientName = ""
     var info: String?
     var addedIngredients: [Ingredient] = []
+    var editedIngredient: Ingredient? = nil  
     var didChooseExistingIngredient: Bool = false
     var isShowingingredientAlert: Bool = false
  
@@ -293,6 +294,7 @@ import Combine
         info = ingredient.ingredientBase.info
         dynamicallyChangeMeasurementUnit()
         didChooseExistingIngredient = true
+        editedIngredient = ingredient
         isEdit.toggle()
         
     }
@@ -305,6 +307,53 @@ import Combine
     func removeIngredient() {
         if let index = addedIngredients.firstIndex(where: { $0.ingredientBase.name == ingredientName}) {
             addedIngredients.remove(at: index)
+        }
+    }
+    func replaceIngredient() {
+        guard let ingredientValue = ingredientAmount,
+              let index = addedIngredients.firstIndex(where: { $0.ingredientBase.name == ingredientName }) else {
+            return
+        }
+        
+        let updatedIngredient = Ingredient(
+            id: addedIngredients[index].id,
+            ingredientBase: IngredientBase(
+                name: ingredientName,
+                category: category,
+                prep: prep
+            ),
+            value: ingredientValue,
+            unit: selectedMeasurementUnit
+        )
+        
+        addedIngredients[index] = updatedIngredient
+        isEdit = true
+    }
+    func removeEditedIngredient() {
+        if let editIngredient = editedIngredient {
+            if let index = addedIngredients.firstIndex(where: { $0.ingredientBase.name == editIngredient.ingredientBase.name}) {
+                addedIngredients.remove(at: index)
+            }
+        }
+    }
+    func updateEditedIngredient() {
+        if let editedIngredient = editedIngredient,
+           let index = addedIngredients.firstIndex(where: { $0.id == editedIngredient.id }),
+           let ingredientValue = ingredientAmount {
+            
+            let updatedIngredient = Ingredient(
+                id: editedIngredient.id,
+                ingredientBase: IngredientBase(
+                    name: ingredientName,
+                    category: category,
+                    prep: prep
+                ),
+                value: ingredientValue,
+                unit: selectedMeasurementUnit
+            )
+            
+            
+            addedIngredients[index] = updatedIngredient
         }
     }
     func swipeToRemoveIngredient() {

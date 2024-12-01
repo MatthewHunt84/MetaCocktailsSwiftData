@@ -16,6 +16,7 @@ struct AddExistingIngredientDetailView: View {
     @Binding var isShowingCustomIngredientView: Bool
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
+    @Binding var isEditingAddedIngredient: Bool
     
     var body: some View {
         
@@ -29,7 +30,7 @@ struct AddExistingIngredientDetailView: View {
                     AddIngredientSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
                     AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
                     Section {
-                        AddExistingIngredientToCocktailButton(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
+                        AddExistingIngredientToCocktailButton(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isEditingAddedIngredient: $isEditingAddedIngredient)
                     }
                     .listRowBackground(Color.clear)
                     Section {
@@ -47,6 +48,9 @@ struct AddExistingIngredientDetailView: View {
                 } else {
                     keyboardFocused = true
                 }
+                if isEditingAddedIngredient {
+                    
+                }
             }
         }
     }
@@ -55,7 +59,7 @@ struct AddExistingIngredientDetailView: View {
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
     
-    AddExistingIngredientDetailView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true), isShowingCustomIngredientView: .constant(true))
+    AddExistingIngredientDetailView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true), isShowingCustomIngredientView: .constant(true), isEditingAddedIngredient: .constant(false))
         .modelContainer(preview.container)
     
 }
@@ -178,20 +182,26 @@ struct AddExistingIngredientToCocktailButton: View {
     @Bindable var viewModel: AddCocktailViewModel
     @Query(sort: \IngredientBase.name) var ingredients: [IngredientBase]
     @Binding  var isShowingAddIngredients: Bool
+    @Binding var isEditingAddedIngredient: Bool
     
     var body: some View {
         
         UniversalButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), includeBorder: true) {
             if viewModel.existingIngredientIsValid(allIngredients: ingredients) {
-                viewModel.removeIngredient()
-                if let ingredientValue = viewModel.ingredientAmount{
-                    let ingredient = Ingredient(ingredientBase: IngredientBase(name: viewModel.ingredientName,
-                                                                               category: viewModel.category,
-                                                                               prep: viewModel.prep),
-                                                value: ingredientValue,
-                                                unit: viewModel.selectedMeasurementUnit)
-                    
-                    viewModel.addedIngredients.append(ingredient)
+                viewModel.replaceIngredient()
+                if isEditingAddedIngredient {
+                    viewModel.updateEditedIngredient()
+                }
+                if !viewModel.isEdit {
+                    if let ingredientValue = viewModel.ingredientAmount{
+                        let ingredient = Ingredient(ingredientBase: IngredientBase(name: viewModel.ingredientName,
+                                                                                   category: viewModel.category,
+                                                                                   prep: viewModel.prep),
+                                                    value: ingredientValue,
+                                                    unit: viewModel.selectedMeasurementUnit)
+                        
+                        viewModel.addedIngredients.append(ingredient)
+                    }
                 }
                 
                 viewModel.clearIngredientData()
