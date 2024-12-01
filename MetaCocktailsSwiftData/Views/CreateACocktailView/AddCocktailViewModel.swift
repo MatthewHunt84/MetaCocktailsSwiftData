@@ -19,14 +19,11 @@ import Combine
     var category: UmbrellaCategory = UmbrellaCategory.agaves
     var ingredientAmount: Double? = nil
     var ingredientTags = Tags()
-    
     var selectedMeasurementUnit = MeasurementUnit.fluidOunces
-    var currentSelectedComponent = CocktailComponent(name: "Placeholder")
     var filteredIngredients: [IngredientBase] = []
 
     var isShowingAlert: Bool = false
-    var dateAdded = Date()
-    var defaultName = "Add Cocktail"
+
     
     var  formatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -52,7 +49,6 @@ import Combine
     var currentGarnishName: String = ""
     var customGarnishNameEntered: String? 
     var didChooseExistingGarnish: Bool = false
-    var addExistingGarnishViewIsActive: Bool = false
     var filteredGarnish: [String] = []
     
     // Extras
@@ -111,7 +107,6 @@ import Combine
         addedGarnish = []
         variation = nil
         addedIngredients = []
-        defaultName = "Add Cocktail"
         build = Build(instructions: [])
         buildOption = nil
         customVariationName = nil
@@ -305,12 +300,6 @@ import Combine
         ingredientAmount != nil &&
         !allIngredients.contains(where: { $0.name == ingredientName } )
     }
-    func removeIngredient() {
-        if let index = addedIngredients.firstIndex(where: { $0.ingredientBase.name == ingredientName}) {
-            addedIngredients.remove(at: index)
-        }
-    }
-
 
     func updateEditedIngredient(isCustom: Bool) {
         if let editedIngredient = editedIngredient,

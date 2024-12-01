@@ -115,7 +115,6 @@ struct AddCustomIngredientToCocktailButton: View {
         Section {
             UniversalButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), includeBorder: true) {
                 if viewModel.customIngredientIsValid(allIngredients: ingredients) {
-                    //viewModel.removeIngredient()
                     if viewModel.isEdit {
                         viewModel.updateEditedIngredient(isCustom: true)
                     }
