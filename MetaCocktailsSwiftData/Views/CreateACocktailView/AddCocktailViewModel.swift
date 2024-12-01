@@ -111,6 +111,7 @@ import Combine
         buildOption = nil
         customVariationName = nil
         currentIngredientUUID = UUID()
+        clearIngredientData()
     }
     func clearIngredientData() {
         ingredientName = ""
@@ -143,13 +144,11 @@ import Combine
                                                    tags: ingredientSpec.ingredientBase.tags,
                                                    prep: ingredientSpec.ingredientBase.prep
             )
-            
             let newIngredient = Ingredient(id: UUID(),
                                            ingredientBase: newIngredientBase,
                                            value: ingredientSpec.value,
                                            unit: ingredientSpec.unit
             )
-            
             addedIngredients.append(newIngredient)
             
         }
@@ -162,9 +161,6 @@ import Combine
         authorYear = String(Calendar.current.component(.year, from: Date()))
         customVariationName = cocktail.cocktailName
         isRiff = true
-        
-        print("Populated from cocktail: \(cocktailName)")
-        print("Number of ingredients: \(addedIngredients.count)")
     }
 
     
@@ -245,6 +241,16 @@ import Combine
         }
         clearData()
     }
+    func populateExistingIngredient(ingredient: Ingredient) {
+        ingredientName = ingredient.ingredientBase.name
+        category = UmbrellaCategory(rawValue: ingredient.ingredientBase.umbrellaCategory) ?? UmbrellaCategory.agaves
+        ingredientTags = ingredient.ingredientBase.tags ?? Tags()
+        info = ingredient.ingredientBase.info
+        dynamicallyChangeMeasurementUnit()
+        didChooseExistingIngredient = true
+        editedIngredient = ingredient
+        isEdit = true
+    }
     func populateCustomIngredient(ingredient: Ingredient) {
         if let prep = ingredient.ingredientBase.prep {
             prepIngredientRecipe = prep.prepRecipe
@@ -283,19 +289,8 @@ import Combine
             prepIngredientRecipe[index].method = newMethod
         }
     }
-    func populateExistingIngredient(ingredient: Ingredient) {
-        ingredientName = ingredient.ingredientBase.name
-        category = UmbrellaCategory(rawValue: ingredient.ingredientBase.umbrellaCategory) ?? UmbrellaCategory.agaves
-        ingredientTags = ingredient.ingredientBase.tags ?? Tags()
-        info = ingredient.ingredientBase.info
-        dynamicallyChangeMeasurementUnit()
-        didChooseExistingIngredient = true
-        editedIngredient = ingredient
-        isEdit = true
-        
-    }
+ 
     func customIngredientIsValid(allIngredients: [IngredientBase]) -> Bool {
-        
         return ingredientName != "" &&
         ingredientAmount != nil &&
         !allIngredients.contains(where: { $0.name == ingredientName } )
@@ -316,7 +311,6 @@ import Combine
                 value: ingredientValue,
                 unit: selectedMeasurementUnit
             )
-            
             addedIngredients[index] = updatedIngredient
         }
     }
@@ -325,7 +319,6 @@ import Combine
             addedIngredients.remove(at: index)
         }
     }
-    
     
     func customGarnishIsValid(allGarnishes: [Garnish]) -> Bool {
         return currentGarnishName != "" &&
@@ -352,24 +345,6 @@ import Combine
         }
         return text
     }
-    
-    func customIngredientIsSpirit() -> Bool {
-        if category == .agaves || category == .amari || category == .bitters || category == .brandies || category == .fortifiedWines || category == .gins || category == .liqueurs || category == .otherAlcohol || category == .rums || category == .vodkas || category == .whiskies || category == .wines {
-            return true
-        }
-        
-        return false
-    }
-    func customIngredientIsNA() -> Bool {
-        if customIngredientIsSpirit() {
-            return false
-        }
-        
-        return true
-    }
-   
-
-   
     
     func matchAllIngredients(ingredients: [IngredientBase]) {
         
@@ -477,46 +452,11 @@ import Combine
         }
     }
     
-    static func getAllPhysicalComponents() -> [CocktailComponent] {
-        var cocktailComponentArray = [CocktailComponent]()
-        
-        cocktailComponentArray.append(contentsOf: Syrup.allCases.map({ $0.nAComponent}))
-        cocktailComponentArray.append(contentsOf: Juice.allCases.map({ $0.nAComponent}))
-        cocktailComponentArray.append(contentsOf: Herbs.allCases.map({ $0.nAComponent}))
-        cocktailComponentArray.append(contentsOf: Fruit.allCases.map({ $0.nAComponent}))
-        cocktailComponentArray.append(contentsOf: Seasoning.allCases.map({ $0.nAComponent}))
-        cocktailComponentArray.append(contentsOf: Soda.allCases.map({ $0.nAComponent}))
-        cocktailComponentArray.append(contentsOf: OtherNA.allCases.map({ $0.nAComponent}))
-        
-        cocktailComponentArray.append(contentsOf: Agave.allCases.map { $0.cockTailComponent })
-        cocktailComponentArray.append(contentsOf: Brandy.allCases.map { $0.cockTailComponent })
-        cocktailComponentArray.append(contentsOf: Gin.allCases.map { $0.cockTailComponent })
-        cocktailComponentArray.append(contentsOf: OtherAlcohol.allCases.map { $0.cockTailComponent })
-        cocktailComponentArray.append(contentsOf: Rum.allCases.map { $0.cockTailComponent })
-        cocktailComponentArray.append(contentsOf: Vodka.allCases.map { $0.cockTailComponent })
-        cocktailComponentArray.append(contentsOf: Whiskey.allCases.map { $0.cockTailComponent })
-        cocktailComponentArray.append(contentsOf: Liqueur.allCases.map { $0.cockTailComponent })
-        cocktailComponentArray.append(contentsOf: FortifiedWine.allCases.map { $0.cockTailComponent })
-        cocktailComponentArray.append(contentsOf: Wine.allCases.map { $0.cockTailComponent })
-        cocktailComponentArray.append(contentsOf: Bitters.allCases.map { $0.cockTailComponent })
-        cocktailComponentArray.append(contentsOf: Amaro.allCases.map { $0.cockTailComponent })
-        
-     
-        
-        return cocktailComponentArray
-        
-    }
-    
- 
-    
     func validateAuthor() {
         if authorName != "" && authorYear != "" && authorPlace != "" {
             author = Author(person: authorName, place: authorYear, year: authorPlace)
         }
     }
-    
-    
-    
     
     init() {
         setupSearch()
