@@ -22,7 +22,7 @@ var espressoMartiniSpecOG  = [OldCocktailIngredient(.syrups(.richDem), value: 5,
                               OldCocktailIngredient(.otherNonAlc(.espressoShot), value: 25, unit: .ml),
                               OldCocktailIngredient(.vodkas(.vodkaAny), value: 50, unit: .ml)]
 
-var espressoMartiniTagsOG = Tags(profiles: [ .punchy, .bittersweet],
+var espressoMartiniTagsOG = Tags(profiles: [.punchy, .bittersweet],
                                  styles: [.shaken])
 
 
