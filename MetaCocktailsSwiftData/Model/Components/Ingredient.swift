@@ -155,6 +155,9 @@ class OldCocktailIngredient: Codable, Hashable { // This old guy needs to be rem
             if ingredient.name == OtherNA.cream.rawValue {
                 return "High fat content cream (above 40%) is recommended"
             }
+            if ingredient.name == Amaro.amerPicon.rawValue {
+                return "Several modern Picon varieties exist, including Amer (closest to the original Brooklyn Cocktail version), Bière, and Club for sparkling wine."
+            }
             return info
         }()
     }

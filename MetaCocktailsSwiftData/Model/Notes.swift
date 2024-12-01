@@ -92,3 +92,4 @@ let whiskeySourNotes = "The term 'Whiskey Sour' first appeared in print as early
 
 let gibsonNotes = "The name of the cocktail came from illustrator Charles Dana Gibson, the creator of the Gibson Girl drawings, or Walder D.K. Gibson. Both were members of the club. - Dave Wondrich, The Oxford Companion to Spirits and Cocktails"
 
+var brooklynNotes = "The Brooklyn Cocktail was originally written as 50% rye and 50% Ballor Italian sweet vermouth with a dash of Amer Picon and a dash of Maraschino. The Amer Picon that was in the origional recipe was significantly higher proof and more bitter than the versions of Picon that are sold today."
