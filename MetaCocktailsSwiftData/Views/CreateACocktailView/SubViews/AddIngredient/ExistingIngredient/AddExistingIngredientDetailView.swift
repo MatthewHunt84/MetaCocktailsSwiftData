@@ -187,7 +187,7 @@ struct AddExistingIngredientToCocktailButton: View {
             if viewModel.existingIngredientIsValid(allIngredients: ingredients) {
          
                 if viewModel.isEdit {
-                    viewModel.updateEditedIngredient()
+                    viewModel.updateEditedIngredient(isCustom: false)
                 }
                 if !viewModel.isEdit {
                     if let ingredientValue = viewModel.ingredientAmount{

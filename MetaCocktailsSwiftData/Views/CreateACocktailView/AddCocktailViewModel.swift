@@ -259,7 +259,8 @@ import Combine
         prep = ingredient.ingredientBase.prep
         ingredientAmount = ingredient.value
         selectedMeasurementUnit = MeasurementUnit(rawValue: ingredient.unit.rawValue) ?? MeasurementUnit.fluidOunces
-        isEdit.toggle()
+        editedIngredient = ingredient
+        isEdit = true
     }
     func populateBuildStepFor(instruction: Instruction) {
         currentBuildStep = instruction.step
@@ -295,7 +296,7 @@ import Combine
         dynamicallyChangeMeasurementUnit()
         didChooseExistingIngredient = true
         editedIngredient = ingredient
-        isEdit.toggle()
+        isEdit = true
         
     }
     func customIngredientIsValid(allIngredients: [IngredientBase]) -> Bool {
@@ -310,7 +311,8 @@ import Combine
         }
     }
 
-    func updateEditedIngredient() {
+
+    func updateEditedIngredient(isCustom: Bool) {
         if let editedIngredient = editedIngredient,
            let index = addedIngredients.firstIndex(where: { $0.id == editedIngredient.id }),
            let ingredientValue = ingredientAmount {
@@ -320,7 +322,7 @@ import Combine
                 ingredientBase: IngredientBase(
                     name: ingredientName,
                     category: category,
-                    prep: prep
+                    prep: prep, isCustom: isCustom
                 ),
                 value: ingredientValue,
                 unit: selectedMeasurementUnit
