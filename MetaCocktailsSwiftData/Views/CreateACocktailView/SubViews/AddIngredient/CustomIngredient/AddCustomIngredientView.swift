@@ -115,20 +115,21 @@ struct AddCustomIngredientToCocktailButton: View {
         Section {
             UniversalButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), includeBorder: true) {
                 if viewModel.customIngredientIsValid(allIngredients: ingredients) {
-                    viewModel.removeIngredient()
-                    
-                    if !viewModel.prepIngredientRecipe.isEmpty {
-                        viewModel.prep = Prep(prepIngredientName: viewModel.ingredientName, prepRecipe: viewModel.prepIngredientRecipe)
+                    if viewModel.isEdit {
+                        viewModel.updateEditedIngredient(isCustom: true)
                     }
-                    if let ingredientValue = viewModel.ingredientAmount {
-                        viewModel.addedIngredients.append(Ingredient(ingredientBase: IngredientBase(name: viewModel.ingredientName,
-                                                                                                    category: viewModel.category,
-                                                                                                    prep: viewModel.prep, isCustom: true),
-                                                                     value: ingredientValue,
-                                                                     unit: viewModel.selectedMeasurementUnit))
+                    if !viewModel.isEdit {
+                        if !viewModel.prepIngredientRecipe.isEmpty {
+                            viewModel.prep = Prep(prepIngredientName: viewModel.ingredientName, prepRecipe: viewModel.prepIngredientRecipe)
+                        }
+                        if let ingredientValue = viewModel.ingredientAmount {
+                            viewModel.addedIngredients.append(Ingredient(ingredientBase: IngredientBase(name: viewModel.ingredientName,
+                                                                                                        category: viewModel.category,
+                                                                                                        prep: viewModel.prep, isCustom: true),
+                                                                         value: ingredientValue,
+                                                                         unit: viewModel.selectedMeasurementUnit))
+                        }
                     }
-                    
-                    
                     viewModel.clearIngredientData()
                     isShowingAddIngredients = false
                     isShowingCustomIngredientView = false
