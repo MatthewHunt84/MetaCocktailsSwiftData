@@ -483,7 +483,6 @@
 		4DED944E2C098DBF002305C2 /* BatchCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DED944D2C098DBF002305C2 /* BatchCellView.swift */; };
 		4DED94502C0E38BC002305C2 /* EditBatchModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DED944F2C0E38BC002305C2 /* EditBatchModalView.swift */; };
 		4DF35CCB2CFD076E0046BAA8 /* EspressoMartiniOG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF35CCA2CFD076E0046BAA8 /* EspressoMartiniOG.swift */; };
-		4DF35CCF2CFD15D10046BAA8 /* PreloadedCocktails.store in Resources */ = {isa = PBXBuildFile; fileRef = 4DF35CCE2CFD15D10046BAA8 /* PreloadedCocktails.store */; };
 		4DF408C22B60D0F100EF9A6E /* Caucasian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF408C12B60D0F100EF9A6E /* Caucasian.swift */; };
 		4DF408C62B60D4A100EF9A6E /* ChampsElysees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF408C52B60D4A100EF9A6E /* ChampsElysees.swift */; };
 		4DF408C82B60D71400EF9A6E /* ChampagnCocktail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF408C72B60D71400EF9A6E /* ChampagnCocktail.swift */; };
@@ -516,6 +515,7 @@
 		F4538E032C91F99E004B686A /* FindCocktailUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4538E022C91F997004B686A /* FindCocktailUserInfoView.swift */; };
 		F45C3A8F2CAC60C600AFBBA6 /* Overlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45C3A8E2CAC60BF00AFBBA6 /* Overlays.swift */; };
 		F47AE7B02CA5FE060070E7A8 /* AnimationModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47AE7AF2CA5FDFE0070E7A8 /* AnimationModifiers.swift */; };
+		F47DD7462CFE98E400A9CBB2 /* PreloadedCocktails.store in Resources */ = {isa = PBXBuildFile; fileRef = F47DD7452CFE98E400A9CBB2 /* PreloadedCocktails.store */; };
 		F47FBF652C6BF5EB00CD599E /* CustomLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47FBF642C6BF5EB00CD599E /* CustomLoadingIndicator.swift */; };
 		F4872FEE2C4353E10092F8FF /* DummyCocktails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4872FED2C4353E10092F8FF /* DummyCocktails.swift */; };
 		F4872FF02C4355320092F8FF /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4872FEF2C4355320092F8FF /* SampleData.swift */; };
@@ -1050,7 +1050,6 @@
 		4DED944D2C098DBF002305C2 /* BatchCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchCellView.swift; sourceTree = "<group>"; };
 		4DED944F2C0E38BC002305C2 /* EditBatchModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBatchModalView.swift; sourceTree = "<group>"; };
 		4DF35CCA2CFD076E0046BAA8 /* EspressoMartiniOG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EspressoMartiniOG.swift; sourceTree = "<group>"; };
-		4DF35CCE2CFD15D10046BAA8 /* PreloadedCocktails.store */ = {isa = PBXFileReference; lastKnownFileType = file; path = PreloadedCocktails.store; sourceTree = "<group>"; };
 		4DF408C12B60D0F100EF9A6E /* Caucasian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caucasian.swift; sourceTree = "<group>"; };
 		4DF408C52B60D4A100EF9A6E /* ChampsElysees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampsElysees.swift; sourceTree = "<group>"; };
 		4DF408C72B60D71400EF9A6E /* ChampagnCocktail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampagnCocktail.swift; sourceTree = "<group>"; };
@@ -1085,6 +1084,7 @@
 		F45C3A8E2CAC60BF00AFBBA6 /* Overlays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overlays.swift; sourceTree = "<group>"; };
 		F473FFD22C2716C4008689D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F47AE7AF2CA5FDFE0070E7A8 /* AnimationModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationModifiers.swift; sourceTree = "<group>"; };
+		F47DD7452CFE98E400A9CBB2 /* PreloadedCocktails.store */ = {isa = PBXFileReference; lastKnownFileType = file; path = PreloadedCocktails.store; sourceTree = "<group>"; };
 		F47FBF642C6BF5EB00CD599E /* CustomLoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoadingIndicator.swift; sourceTree = "<group>"; };
 		F4872FED2C4353E10092F8FF /* DummyCocktails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyCocktails.swift; sourceTree = "<group>"; };
 		F4872FEF2C4355320092F8FF /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
@@ -2030,8 +2030,8 @@
 		F4441CEE2C9F82A70025E988 /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				F47DD7452CFE98E400A9CBB2 /* PreloadedCocktails.store */,
 				F498A46B2CEA66370082D818 /* CocktailDatabaseGenerator.swift */,
-				4DF35CCE2CFD15D10046BAA8 /* PreloadedCocktails.store */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -2318,7 +2318,7 @@
 			files = (
 				F4FBF12C2AAABBBB00BBF7CF /* Preview Assets.xcassets in Resources */,
 				1AC386B02AAABED10064F52A /* Assets.xcassets in Resources */,
-				4DF35CCF2CFD15D10046BAA8 /* PreloadedCocktails.store in Resources */,
+				F47DD7462CFE98E400A9CBB2 /* PreloadedCocktails.store in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
