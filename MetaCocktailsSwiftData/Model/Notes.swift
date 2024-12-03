@@ -66,11 +66,14 @@ let whiskeySmashNotes = "Rather than a single drink, the \"Smash\" was initially
 let sherryCobblerNotes = "This cocktail is one of those 'too old to tell' cocktails, so it's up to interpretation."
 
 // History info mixed with and recipe info
+
 let amarettoSourNotes = "The Amaretto Sour was first introduced to the public in 1974 by the importer of Amaretto di Saronno. The original recipe called for a ratio of 1.5 oz (45 ml) of Amaretto to 3 oz (90 ml) of sour mix, without the inclusion of egg whites or bitters. This formulation tends to produce a notably sweet cocktail. However, we believe the natural sweetness of the liqueur itself is sufficient to balance the drink. Our approach is to use 1 oz of fresh lemon juice to complement the sweetness of Amaretto, especially when incorporating egg whites. For those who prefer to omit the egg whites, we recommend to reduce the lemon juice to 0.75 oz and adjust the sweetness to taste. A good starting point is to add 0.25 oz of simple syrup, increasing or decreasing as needed to achieve the desired balance."
 
 let bizzyIzzyNotes = "This is an interesting cocktail that seems to have a ton of variation. The book with the original print calls for a pineapple syrup but the modern variation adds up to an ounce of pineapple juice."
 
 let bloodyMaryNotes = "The origins of this cocktail are shrouded in mystery, with several unverified stories claiming its creation. We present here a simple, classic version of the recipe. Feel free to embellish or modify it to suit your own tastes."
+
+var brooklynNotes = "The Brooklyn Cocktail was essentially a Manhattan variation, combining equal parts rye and Italian vermouth with dashes of Maraschino and Amer Picon (originally stronger and more bitter than today's version). The modern dry vermouth version likely arose from Jacques Straub's 1914 Drinks manual, where he apparently mistook Ballor, an Italian sweet vermouth, for French dry vermouth."
 
 let margNotes = "The term 'Margarita' translates to 'daisy' in Spanish. In cocktail parlance, a daisy refers to a classic drink style akin to a sour, with liqueur standing in for a sugar syrup. Margaritas typically have a tart flavor profile. For those who prefer a more balanced taste, consider adding 0.25 oz of simple syrup or agave nectar to suit your palate. The Margarita's origins are disputed, with numerous individuals claiming to have invented it, making it difficult to attribute its creation to any single person."
 

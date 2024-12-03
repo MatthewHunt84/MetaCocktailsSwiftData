@@ -12,6 +12,7 @@ var brooklyn = Cocktail(cocktailName: "Brooklyn",
                         garnish: [.lemonExpression],
                         author:Author(person: "Jacob A. Grohusko", place: "Jack's Manual, New York", year: "1908"),
                         spec: brooklynSpec,
+                        notes: brooklynNotes,
                         tags: brooklynTags,
                         variation: .brooklyn,
                         collection: .originals,
@@ -25,4 +26,5 @@ var brooklynSpec     =  [OldCocktailIngredient(.liqueurs(.maraschinoLiqueur), va
 var brooklynTags     = Tags(flavors: [.lemon],
                             profiles: [.spiritForward, .rich, .complex, .bittersweet],
                             styles: [.manhattan, .stirred])
+
 
