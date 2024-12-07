@@ -65,7 +65,7 @@ struct AddCocktailView: View {
                     }
                     
                     UniversalButton(buttonText: "Clear Form",rightImage: nil, leftImage: Image(systemName: "xmark"), includeBorder: true) {
-                        viewModel.clearData()
+                        viewModel.isAboutToClearForm = true
                     }
                     .listRowBackground(Color.clear)
                 }
@@ -146,6 +146,14 @@ struct AddCocktailView: View {
                                     title: "Name must be unique",
                                     message: "Another cocktail already exists with that name",
                                     buttonTitle: yesChef, action: {})
+                    .zIndex(1)
+                }
+                if viewModel.isAboutToClearForm {
+                    twoButtonErrorAlertView(isActive: $viewModel.isAboutToClearForm, title: "Are you sure?", message: "None of the input data will be saved.", buttonTitle1: "Clear", action1: {
+                        viewModel.isAboutToClearForm = false
+                    }, buttonTitle2: "Delete", action2: {
+                        viewModel.clearData()
+                    })
                     .zIndex(1)
                 }
             }
