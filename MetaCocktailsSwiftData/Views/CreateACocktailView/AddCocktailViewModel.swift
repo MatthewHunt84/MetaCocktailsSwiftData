@@ -14,7 +14,7 @@ import Combine
 
     var isRiff: Bool = false
     var isEdit: Bool = false
-
+    var isAboutToClearForm = false 
     //AddIngredientView
     var category: UmbrellaCategory = UmbrellaCategory.agaves
     var ingredientAmount: Double? = nil
@@ -112,6 +112,7 @@ import Combine
         customVariationName = nil
         currentIngredientUUID = UUID()
         clearIngredientData()
+        isAboutToClearForm = false
     }
     func clearIngredientData() {
         ingredientName = ""
