@@ -36,6 +36,10 @@ struct ColorScheme {
     static let nullInteractionTintGradient = LinearGradient(gradient: Gradient(colors: [interactionTint]),
                                            startPoint: .leading,
                                            endPoint: .trailing)
+    
+    static let nullAlertGradient = LinearGradient(gradient: Gradient(colors: [.red]),
+                                           startPoint: .leading,
+                                           endPoint: .trailing)
 
     static let recipeBorder = LinearGradient(gradient: Gradient(colors: [darkerTintColor, Color(hex: "#FFB803"), darkerTintColor]),
                                            startPoint: .leading,

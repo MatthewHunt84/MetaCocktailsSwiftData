@@ -42,6 +42,7 @@ struct AddCocktailView: View {
                         IcePicker(ice: $viewModel.ice)
                         VariationPicker(viewModel: viewModel, isShowingInfo: $isShowingInfo)
                     }
+                    
                     VariationInfoView(isShowingInfo: $isShowingInfo)
                     
                     Section(header: Text("Garnish").font(FontFactory.sectionHeader12)) {
@@ -64,12 +65,12 @@ struct AddCocktailView: View {
                         AddBuildStepView(viewModel: viewModel, cocktailBuildStepKeyboardFocused: _cocktailBuildStepKeyboardFocused)
                     }
                     
-                    UniversalButton(buttonText: "Clear Form",rightImage: nil, leftImage: Image(systemName: "xmark"), includeBorder: true) {
-                        viewModel.clearData()
+                    UniversalButton(buttonText: "Start Over", rightImage: nil, leftImage: Image(systemName: "trash"), includeBorder: true, color: ColorScheme.nullAlertGradient, disabled: viewModel.hasNoData) {
+                        viewModel.isAboutToClearForm = true
                     }
                     .listRowBackground(Color.clear)
                 }
-                .blur(radius: (viewModel.isShowingUniqueNameAlert || viewModel.isShowingAlert) ? 3 : 0)
+                .blur(radius: (viewModel.isShowingUniqueNameAlert || viewModel.isShowingAlert || viewModel.isAboutToClearForm) ? 3 : 0)
                 .scrollContentBackground(.hidden)
                 .background(Color.clear)
                 .navigationBarTitleDisplayMode(.inline)
@@ -117,7 +118,6 @@ struct AddCocktailView: View {
                         
                     }
                     
-                    
                 }
                 .fullScreenCover(isPresented: $isShowingAddGarnishView) {
                     GarnishDetailView(viewModel: viewModel)
@@ -133,6 +133,20 @@ struct AddCocktailView: View {
                     AddCustomIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView)
                         .navigationBarBackButtonHidden(true)
                 }
+                .overlay {
+                    if viewModel.isAboutToClearForm {
+                        TwoButtonAlertView(
+                            isActive: $viewModel.isAboutToClearForm,
+                            title: "Start Over?",
+                            message: "This will reset all fields",
+                            buttonTitle1: "Cancel",
+                            action1: { },
+                            buttonTitle2: "Reset",
+                            action2: { viewModel.clearData() }
+                        )
+                    }
+                }
+                .animation(.spring(response: 0.3, dampingFraction: 0.7), value: viewModel.isAboutToClearForm)
                 if viewModel.isShowingAlert {
                     ErrorAlertView(isActive: $viewModel.isShowingAlert,
                                     title: "Missing Information",
@@ -151,6 +165,7 @@ struct AddCocktailView: View {
             }
             .sensoryFeedback(.error, trigger: viewModel.isShowingAlert)
             .sensoryFeedback(.error, trigger: viewModel.isShowingUniqueNameAlert)
+
         }
         .toolbar {
             ToolbarItemGroup(placement: .keyboard) {
