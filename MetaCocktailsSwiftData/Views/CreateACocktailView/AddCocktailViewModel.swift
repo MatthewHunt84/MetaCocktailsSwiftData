@@ -14,7 +14,9 @@ import Combine
 
     var isRiff: Bool = false
     var isEdit: Bool = false
-    var isAboutToClearForm = false 
+    var isAboutToClearForm = false
+    var hasNoData: Bool = false 
+    
     //AddIngredientView
     var category: UmbrellaCategory = UmbrellaCategory.agaves
     var ingredientAmount: Double? = nil
@@ -23,7 +25,6 @@ import Combine
     var filteredIngredients: [IngredientBase] = []
 
     var isShowingAlert: Bool = false
-
     
     var  formatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -94,7 +95,19 @@ import Combine
         filteredCocktails = []
     }
     
-
+    func listHasData() -> Bool {
+        cocktailName == "" &&
+        addedGarnish.isEmpty &&
+        glasswareName == "None" &&
+        ice == Ice.none &&
+        variation == Variation.none &&
+        addedIngredients.isEmpty &&
+        authorName == "" &&
+        authorPlace == "" &&
+        authorYear == "" &&
+        build.instructions.isEmpty
+    }
+    
     func clearData() {
         cocktailName = ""
         authorName = ""
@@ -113,7 +126,9 @@ import Combine
         currentIngredientUUID = UUID()
         clearIngredientData()
         isAboutToClearForm = false
+        hasNoData = true
     }
+    
     func clearIngredientData() {
         ingredientName = ""
         currentGarnishName = ""
@@ -124,10 +139,7 @@ import Combine
         didChooseExistingIngredient = false
         didChooseExistingGarnish = false
         isEdit = false
-        
     }
-    
- 
 
     func populateFromCocktail(_ cocktail: Cocktail) {
         cocktailName = "Riff on " + cocktail.cocktailName
@@ -352,7 +364,7 @@ import Combine
         guard !ingredientName.isEmpty else {
             return filteredIngredients = [] // Return all ingredients if search text is empty
          }
-//        
+        
         let lowercasedSearchText = ingredientName.lowercased()
         
         filteredIngredients = ingredients.filter { $0.name.lowercased().contains(lowercasedSearchText) }
@@ -384,6 +396,7 @@ import Combine
                 return matchedArray
             }
     }
+    
     func matchAllGarnish(garnishes: [Garnish]) -> [String] {
         guard !currentGarnishName.isEmpty else {
             return []
@@ -437,6 +450,7 @@ import Combine
                 selectedMeasurementUnit = MeasurementUnit.fluidOunces
             }
         }
+    
     func dynamicallyChangeMeasurementOptionsBasedOnChosenCategory() -> [MeasurementUnit] {
         
         switch category {
@@ -465,7 +479,6 @@ import Combine
     
     
     //MARK: TODO: Extract to shared view model
-    
     
     private func setupSearch() {
         searchSubject
