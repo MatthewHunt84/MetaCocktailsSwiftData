@@ -689,6 +689,7 @@ enum Liqueur: String, IngredientTagsProtocol {
     case giffardElderflour    = "Elderflower Liqueur"
     case greenChartreuse      = "Green Chartreuse"
     case italicus             = "Italicus"
+    case kahlua               = "Kahlua"
     case lopoldsApple         = "New York Sour Apple Liqueur"
     case leopoldCherry        = "Michigan Cherry Liqueur"
     case licor43              = "Licor 43"
@@ -706,6 +707,7 @@ enum Liqueur: String, IngredientTagsProtocol {
     case stGermaine           = "St. Germaine"
     case strega               = "Strega"
     case tempusFugitKina      = "Tempus Fugit Kina"
+    case tiaMaria             = "Tia Maria"
     case traderVicsChestnut   = "Trader Vic's Chestnut Liquor"
     case velvetFalernum       = "Velvet Falernum"
     case yellowChartreuse     = "Yellow Chartreuse"
@@ -815,6 +817,10 @@ enum Liqueur: String, IngredientTagsProtocol {
             Tags(flavors: [.coffee, .espresso], booze: [Booze(.liqueurs(self))])
         case .stGermaine:
             Tags(flavors: [.elderflower], booze: [Booze(.liqueurs(self))])
+        case .kahlua:
+            Tags(flavors: [.coffee, .espresso], booze: [Booze(.liqueurs(self))])
+        case .tiaMaria:
+            Tags(flavors: [.coffee, .espresso], booze: [Booze(.liqueurs(self))])
         }
     }
     

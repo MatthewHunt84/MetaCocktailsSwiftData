@@ -155,6 +155,9 @@ class OldCocktailIngredient: Codable, Hashable { // This old guy needs to be rem
             if ingredient.name == OtherNA.cream.rawValue {
                 return "High fat content cream (above 40%) is recommended"
             }
+            if ingredient.name == Amaro.amerPicon.rawValue {
+                return "Amer Picon was originally 39% ABV. Today's versions include Picon Club (a lower-proof reformulation of the original) and Picon Bière, an apéritif commonly added to beer in Northern France."
+            }
             return info
         }()
     }
