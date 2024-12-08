@@ -14,41 +14,48 @@ struct UniversalButton: View {
     let leftImage: Image?
     let includeBorder: Bool
     let color: LinearGradient
+    @State var disabled: Bool
     let action: () -> ()
-
-    init(buttonText: String, rightImage: Image? = nil, leftImage: Image? = nil, includeBorder: Bool, color: LinearGradient = ColorScheme.nullInteractionTintGradient, action: @escaping () -> Void) {
+    
+    init(buttonText: String, rightImage: Image? = nil, leftImage: Image? = nil, includeBorder: Bool, color: LinearGradient = ColorScheme.nullInteractionTintGradient, disabled: Bool = false, action: @escaping () -> Void) {
         self.buttonText = buttonText
         self.rightImage = rightImage
         self.leftImage = leftImage
         self.includeBorder = includeBorder
         self.color = color
+        self.disabled = disabled
         self.action = action
     }
     
     var body: some View {
-    
-            Button {
-                action()
-            } label: {
-                HStack {
-                    if let leftNewImage = leftImage {
-                        leftNewImage
-                            .tint(color)
-                    }
-                    Text(buttonText)
-                    if let rightNewImage = rightImage {
-                        rightNewImage
-                            .tint(color)
-                    }
-                }
-                .font(FontFactory.mediumFont(size: 18))
-                .foregroundStyle(color)
-                .padding(.vertical, 8)
-                .padding(.horizontal, 16)
-                .background(Capsule().strokeBorder(color, lineWidth: includeBorder ? 1 : 0))
-            }
-            .frame(maxWidth: .infinity, alignment: .center)
         
+        Button {
+            action()
+        } label: {
+            HStack {
+                if let leftNewImage = leftImage {
+                    leftNewImage
+                        .tint(disabledOrActiveColor())
+                }
+                Text(buttonText)
+                if let rightNewImage = rightImage {
+                    rightNewImage
+                        .tint(disabledOrActiveColor())
+                }
+            }
+            .font(FontFactory.mediumFont(size: 18))
+            .foregroundStyle(disabledOrActiveColor())
+            .padding(.vertical, 8)
+            .padding(.horizontal, 16)
+            .background(Capsule().strokeBorder(disabledOrActiveColor(), lineWidth: includeBorder ? 1 : 0))
+        }
+        .disabled(disabled)
+        .frame(maxWidth: .infinity, alignment: .center)
+        
+    }
+    
+    func disabledOrActiveColor() -> LinearGradient {
+        disabled ? ColorScheme.nullSecondaryGradient : color
     }
 }
 

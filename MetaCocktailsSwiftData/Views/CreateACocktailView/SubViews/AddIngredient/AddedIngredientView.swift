@@ -14,6 +14,7 @@ struct AddedIngredientView: View {
     @Binding var isShowingAddIngredients: Bool
     @Binding var isShowingCustomIngredientView: Bool 
     @Environment(\.modelContext) private var modelContext
+
     
     var body: some View {
         
@@ -59,6 +60,9 @@ struct AddedIngredientView: View {
             }
             
             Button {
+                viewModel.isEdit = false
+                viewModel.ingredientName = ""
+                viewModel.matchAllIngredients(ingredients: [])
                 isShowingAddIngredients.toggle()
             } label: {
                 HStack{

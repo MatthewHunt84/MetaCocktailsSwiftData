@@ -18,8 +18,8 @@ var brooklyn = Cocktail(cocktailName: "Brooklyn",
                         collection: .originals,
                         titleCocktail: true)
 
-var brooklynSpec     =  [OldCocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 1, unit: .teaspoon),
-                         OldCocktailIngredient(.amari(.amerPicon), value: 1, unit: .teaspoon),
+var brooklynSpec     =  [OldCocktailIngredient(.liqueurs(.maraschinoLiqueur), value: 1, unit: .dashes),
+                         OldCocktailIngredient(.amari(.amerPicon), value: 1, unit: .dashes),
                          OldCocktailIngredient(.fortifiedWines(.sweetVermouthAny), value: 1.5),
                          OldCocktailIngredient(.whiskies(.straightRye), value: 1.5)]
 

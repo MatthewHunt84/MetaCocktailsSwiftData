@@ -15,6 +15,7 @@ struct ErrorAlertView: View {
     let action: () -> ()
     @State private var offset: CGFloat = 1000
     
+ 
     var body: some View {
         VStack {
             Text(title)
@@ -56,6 +57,60 @@ struct ErrorAlertView: View {
             offset = 1000
             isActive = false
         }
+    }
+}
+
+struct TwoButtonAlertView: View {
+    @Binding var isActive: Bool
+    let title: String
+    let message: String
+    let buttonTitle1: String
+    let action1: () -> Void
+    let buttonTitle2: String
+    let action2: () -> Void
+    
+    var body: some View {
+        VStack {
+            VStack {
+                Text(title)
+                    .font(FontFactory.mediumFont(size: 22))
+                    .foregroundStyle(.primary)
+                    .multilineTextAlignment(.center)
+                    .padding(.bottom, 5)
+                
+                Text(message)
+                    .font(FontFactory.fontBody16)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+                    .padding(.bottom, 5)
+                
+                HStack {
+                    UniversalButton(buttonText: buttonTitle1, includeBorder: true) {
+                        withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                            isActive = false
+                        }
+                        action1()
+                    }
+                    ErrorButton(buttonText: buttonTitle2) {
+                        withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                            isActive = false
+                        }
+                        action2()
+                    }
+                }
+            }
+            .padding()
+            .background(BlackGlassBackgroundView())
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.selectedRed, lineWidth: 2)
+            )
+            .padding(.horizontal, 40)
+        }
+        .frame(width: UIScreen.main.bounds.width)
+        .transition(.move(edge: .bottom).combined(with: .opacity))
+        .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isActive)
     }
 }
 
