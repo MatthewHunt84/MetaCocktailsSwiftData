@@ -24,7 +24,7 @@ let smokingMonkeySpec: [OldCocktailIngredient] = [OldCocktailIngredient(.syrups(
                                                   OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
                                                   OldCocktailIngredient(.liqueurs(.velvetFalernum), value: 0.25),
                                                   OldCocktailIngredient(.liqueurs(.strega), value: 0.5),
-                                                  OldCocktailIngredient(.whiskies(.Ardbeg), value: 0.5),
+                                                  OldCocktailIngredient(.whiskies(.ardbeg), value: 0.5),
                                                   OldCocktailIngredient(.gins(.monkey47), value: 1)]
 
 

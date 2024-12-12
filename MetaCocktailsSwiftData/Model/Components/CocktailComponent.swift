@@ -43,7 +43,7 @@ class CocktailComponent: Identifiable, ObservableObject, Hashable{
             if name == Whiskey.aberlourAbundah.rawValue {
                 return "High Proof Single Malt"
             }
-            if name == Syrup.richDem.rawValue || name == Syrup.richSimple.rawValue || name == Syrup.richCinnamonAndVanill.rawValue {
+            if name == Syrup.richDem.rawValue || name == Syrup.richSimple.rawValue || name == Syrup.richCinnamonAndVanilla.rawValue {
                 return "Rich 2:1 by weight syrup."
             }
             return info
