@@ -33,7 +33,7 @@ class OldCocktailIngredient: Codable, Hashable { // This old guy needs to be rem
                 return "High Proof Single Malt"
             }
             if ingredient.name == Syrup.richDem.rawValue ||
-                ingredient.name == Syrup.richCinnamonAndVanill.rawValue {
+                ingredient.name == Syrup.richCinnamonAndVanilla.rawValue {
                 return "Rich 2:1 by weight syrup."
             }
             if ingredient.name == Juice.carrotJuice.rawValue {
@@ -45,10 +45,10 @@ class OldCocktailIngredient: Codable, Hashable { // This old guy needs to be rem
             if ingredient.name == Seasoning.pepper.rawValue {
                 return "Fresh Ground"
             }
-            if ingredient.name == OtherNA.bloodyMarryMixWnG.rawValue {
+            if ingredient.name == OtherNA.bloodyMaryMixWnG.rawValue {
                 return "Williams and Graham's recipe"
             }
-            if ingredient.name == OtherNA.bloodyMarryMix.rawValue {
+            if ingredient.name == OtherNA.bloodyMaryMix.rawValue {
                 return "Home Made"
             }
             if ingredient.name == OtherNA.celeryStrip.rawValue {
@@ -89,7 +89,7 @@ class OldCocktailIngredient: Codable, Hashable { // This old guy needs to be rem
                 return "Single Blended Rum"
             }
             if ingredient.name == Whiskey.portCharlotte.rawValue ||
-                ingredient.name == Whiskey.Ardbeg.rawValue {
+                ingredient.name == Whiskey.ardbeg.rawValue {
                 return "10 Yr Peated Scotch"
             }
             if ingredient.name == Whiskey.compassBoxOakCross.rawValue ||
@@ -129,7 +129,7 @@ class OldCocktailIngredient: Codable, Hashable { // This old guy needs to be rem
                 return "Sweet Vermouth"
             }
             if ingredient.name == FortifiedWine.byrrh.rawValue {
-                return "French bitter apertif"
+                return "French bitter apéritif"
             }
             if ingredient.name == Bitters.bitterTruthJTDecanter.rawValue {
                 return "Bitters by Bitter Truth"
@@ -138,7 +138,7 @@ class OldCocktailIngredient: Codable, Hashable { // This old guy needs to be rem
                 return "By Fee Brothers"
             }
             if ingredient.name == Bitters.blackWalnut.rawValue {
-                return "Dale Degroff's"
+                return "Dale DeGroff's"
             }
             if ingredient.name == Amaro.amereNouvelle.rawValue {
                 return "By Bittermans"

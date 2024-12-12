@@ -21,7 +21,7 @@ let heartOfGoldSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.bitters(.
                                              OldCocktailIngredient(.amari(.amaroNonino), value: 0.75),
                                              OldCocktailIngredient(.agaves(.mezcalDelMagueyVida), value: 0.75),
                                              OldCocktailIngredient(.agaves(.tequilaFortalezaRepo), value: 0.75),
-                                             OldCocktailIngredient(.whiskies(.Ardbeg), value: 3, unit: .sprays)]
+                                             OldCocktailIngredient(.whiskies(.ardbeg), value: 3, unit: .sprays)]
 
 
 let heartOfGoldTags = Tags(profiles: [.rich],
@@ -29,5 +29,5 @@ let heartOfGoldTags = Tags(profiles: [.rich],
 
 
 var heartOfGoldBuild  = Build(instructions: [Instruction(step: 1, method: "Combine all ingredients, except for the Ardbeg Scotch, into a mixing glass with ice and stir."),
-                                             Instruction(step: 2, method: "Rinse your stemmed glassware with the ardbeg."),
+                                             Instruction(step: 2, method: "Rinse your stemmed glassware with the Ardbeg."),
                                              Instruction(step: 3, method: "Strain the cocktail into the prepared glass.")])

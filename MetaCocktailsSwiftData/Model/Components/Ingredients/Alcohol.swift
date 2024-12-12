@@ -35,11 +35,11 @@ enum Agave: String, IngredientTagsProtocol {
     case mezcalDelMagueyJabali     = "Wild Jabali"
     case mezcalDelMagueyVida       = "Vida"
     case mezcalDelMagueySanLuis    = "San Luis Del Rio"
-    case mezcalEspadin             = "Mezcal Espadine"
+    case mezcalEspadin             = "Mezcal Espadin"
     case mezcalSmokeyAny           = "Smoky Mezcal"
     case mezcalNotSmokeyAny        = "Not Smokey Mezcal"
     case puebloViejoBlanco104      = "Blanco 104"
-    case tanteoJalepeno            = "Tanteo Jalapenno Tequila"
+    case tanteoJalepeno            = "Tanteo Jalapeño Tequila"
     case tapatioTequilaBlanco      = "Tapatio Tequila Blanco"
     case tequilaAny                = "Tequila"
     case tequilaAnejo              = "Tequila Anejo"
@@ -180,7 +180,7 @@ enum Gin: String, IngredientTagsProtocol {
     case haymansLondonDry     = "Hayman's London Dry Gin"
     case hendricks            = "Hendrick's Gin"
     case hendricksOrbium      = "Hendrick's Orbium Gin"
-    case juinipero            = "Juinipero Gin"
+    case junipero             = "Junipero Gin"
     case juniperJones         = "Juniper Jones"
     case leopoldNavy          = "Leopold's Navy Strength"
     case leopoldAmericanSBGin = "American Small Batch Gin"
@@ -188,7 +188,7 @@ enum Gin: String, IngredientTagsProtocol {
     case oldTom               = "Old Tom Gin"
     case plymouth             = "Plymouth Gin"
     case ransomOldTom         = "Ransom Old Tom"
-    case stGeorgeBotanivore   = "St. George Botnivore Gin"
+    case stGeorgeBotanivore   = "St. George Botanivore Gin"
     case stGeorgeTerroir      = "St. George Terroir Gin"
     case tanqueray            = "Tanqueray"
     case woodyCreekGin        = "Woody Creek Gin"
@@ -205,7 +205,7 @@ enum Gin: String, IngredientTagsProtocol {
             Tags(flavors: [.juniper],booze: [Booze(.gins(self)), Booze(.gins(.ginAny))])
         case .stGeorgeTerroir:
             Tags(flavors: [.juniper, .pine],booze: [Booze(.gins(self)), Booze(.gins(.ginAny))])
-        case .juinipero:
+        case .junipero:
             Tags(flavors: [.juniper],booze: [Booze(.gins(self)), Booze(.gins(.ginAny))])
         case .monkey47:
             Tags(flavors: [.juniper, .kaffirLimeLeaf],booze: [Booze(.gins(self)), Booze(.gins(.ginAny))])
@@ -487,7 +487,7 @@ enum Vodka: String, IngredientTagsProtocol {
 
 enum Whiskey: String, IngredientTagsProtocol {
     case aberlourAbundah       = "Aberlour Abundah"
-    case Ardbeg                = "Ardbeg 10"
+    case ardbeg                = "Ardbeg 10"
     case americanWhiskeyAny    = "American Whiskey"
     case balconesRye           = "Balcones 100 Proof Rye Whisky"
     case balvinieDW            = "Balvenie DoubleWood 12-year"
@@ -559,7 +559,7 @@ enum Whiskey: String, IngredientTagsProtocol {
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)), Booze(.whiskies(.bourbonAny)), Booze(.whiskies(.bourbonOverproof))])
         case .whiskeyAny:
             Tags(booze: [Booze(.whiskies(self))])
-        case .Ardbeg:
+        case .ardbeg:
             Tags(flavors: [.peat], profiles: [.smokey], booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.scotchAny)), Booze(.whiskies(.scotchIsla))])
         case .rittenhouseRye:
             Tags(booze: [Booze(.whiskies(self)), Booze(.whiskies(.whiskeyAny)), Booze(.whiskies(.americanWhiskeyAny)), Booze(.whiskies(.ryeWhiskeyAny))])
@@ -663,7 +663,7 @@ enum Liqueur: String, IngredientTagsProtocol {
     case amaretto             = "Amaretto"
     case anchoVerde           = "Verde Poblano Chile Liquor"
     case anchoRayesAncho      = "Chili Ancho Liqueur"
-    case apricotLiqueur       = "Apricot Liqeur"
+    case apricotLiqueur       = "Apricot Liqueur"
     case benedictine          = "Benedictine"
     case berentzenApple       = "Berentzen Apple Liqueur"
     case borghetti            = "Borghetti Espresso Liqueur"
