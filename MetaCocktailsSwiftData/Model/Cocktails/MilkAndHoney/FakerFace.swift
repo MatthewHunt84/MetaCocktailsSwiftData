@@ -26,5 +26,4 @@ var fakerFaceSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.75),
 var fakerFaceTags   = Tags(profiles: [.citrusy, .fruity, .effervescent, .light],
                            styles: [.nonAlcoholic, .shaken, .sour])
 
-var fakerFaceBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the soda, into a tin and shake with ice."),
-                                          Instruction(step: 2, method: "Strain into a chilled coupe and top with soda.")])
+

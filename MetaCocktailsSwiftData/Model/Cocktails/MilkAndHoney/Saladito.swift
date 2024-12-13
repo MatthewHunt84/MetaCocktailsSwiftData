@@ -27,5 +27,4 @@ var saladitoSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.75),
 var saladitoTags   = Tags(profiles: [.citrusy, .refreshing, .complex],
                           styles: [.shaken, .sour])
 
-var salditoBuild = Build(instructions: [Instruction(step: 1, method: "Combine the mezcal, honey syrup, and lime juice in a cocktail shaker, add one large ice cube, and shake vigorously until the drink is sufficiently chilled."),
-                                        Instruction(step: 2, method: "Strain into a chilled coupe and garnish with a pinch each of cayenne pepper and sea salt.")])
+

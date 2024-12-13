@@ -33,6 +33,4 @@ var tritterRickeyTags   = Tags(flavors: [.mint],
                                styles: [.collins, .shaken])
 
 
-var tritterRickeyBuild  = Build(instructions: [Instruction(step: 1, method: "Combine the lime juice, simple syrup, and gin in a cocktail shaker, add 1 large ice cube, and shake vigorously until the drink is sufficiently chilled."),
-                                               Instruction(step: 2, method: "Put a large Collins ice cube in a chilled Collins glass and rinse with absinthe."),
-                                               Instruction(step: 3, method: "Strain the cocktail into the glass and garnish with a mint sprig and top with soda.")])
+

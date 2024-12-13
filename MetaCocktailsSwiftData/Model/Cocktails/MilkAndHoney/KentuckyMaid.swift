@@ -30,8 +30,5 @@ let kentuckyMaidSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.m
 let kentuckyMaidTags = Tags(profiles: [.herbal, .refreshing, .light, .restorative],
                             styles: [.sour, .shaken])
 
-let kentuckyMaidBuild =  Build(instructions: [Instruction(step: 1, method: "Gently muddle the cucumber, lime, and simple together."),
-                                              Instruction(step: 2, method: "Add the rest of the ingredients and shake with ice."),
-                                              Instruction(step: 3, method: "Double strain over a large cube."),
-                                              Instruction(step: 4, method: "Garnish with a mint sprig skewered through a cucumber slice.")])
+
 

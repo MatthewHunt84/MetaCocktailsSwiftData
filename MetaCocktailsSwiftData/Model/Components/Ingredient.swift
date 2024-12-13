@@ -251,7 +251,7 @@ class Ingredient: Codable, Hashable {
     // MARK: Equatable + Hashable Conformance
     
     static func == (lhs: Ingredient, rhs: Ingredient) -> Bool {
-        lhs.id > rhs.id
+        lhs.id == rhs.id
     }
     
     func hash(into hasher: inout Hasher) {
@@ -327,7 +327,7 @@ class IngredientBase: Codable, Hashable {
     // MARK: Equatable + Hashable Conformance
     
     static func == (lhs: IngredientBase, rhs: IngredientBase) -> Bool {
-        lhs.name > rhs.name
+        lhs.name == rhs.name
     }
     
     func hash(into hasher: inout Hasher) {

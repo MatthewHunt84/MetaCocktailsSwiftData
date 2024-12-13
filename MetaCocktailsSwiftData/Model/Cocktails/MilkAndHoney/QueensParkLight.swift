@@ -31,8 +31,4 @@ var queensParkLightMnHTags = Tags(flavors: [.lime, .mint, .bakingSpices],
                                   profiles: [.aromatic, .refreshing, .citrusy, .light],
                                   styles: [.swizzle, .sour])
 
-var queensParkLightMnHBuild = Build(instructions: [Instruction(step: 1, method: "Combine the mint, sugar cube, lime juice, and simple syrup in a cocktail shaker and gently muddle. "),
-                                                   Instruction(step: 2, method: "Add the rum and swirl to combine. "),
-                                                   Instruction(step: 3, method: "Pour the cocktail into a rocks glass and add crushed ice to come to just under the rim of the glass.  "),
-                                                   Instruction(step: 4, method: "Add the bitters and lightly swizzle into a red layer on top of the drink, then top with more ice, shaping it into a cone."),
-                                                   Instruction(step: 5, method: "Garnish with the mint sprig (tap it on the side of your hand to release the essential oils for the optimum aroma).")])
+

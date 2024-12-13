@@ -10,7 +10,7 @@ import Foundation
 var lionsTail  = Cocktail(cocktailName: "Lion's Tail",
                           glasswareType: .coupe,
                           garnish: nil ,
-                          author: Author(person: AuthorNames.laClarke.rawValue , place: AuthorPlaces.cafeRoyalCocktialBook.rawValue, year: "1937"),
+                          author: Author(person: AuthorNames.laClarke.rawValue , place: AuthorPlaces.cafeRoyalCocktailBook.rawValue, year: "1937"),
                           spec: lionsTailSpec,
                           buildOrder: nil,
                           tags: lionsTailTags,

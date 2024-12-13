@@ -27,7 +27,4 @@ var gabriellaSpec     =  [OldCocktailIngredient(.fruit(.strawberryHalf), value: 
 var gabriellaTags     = Tags(profiles: [.light, .refreshing, .citrusy, .tart],
                              styles: [.sour, .shaken])
 
-var gabriellaBuild = Build(instructions: [Instruction(step: 1, method: "Hull one half of the strawberry. Combine it with the lemon juice in a cocktail shaker and muddle gently."),
-                                          Instruction(step: 2, method: "Add the simple syrup, pisco, and one large ice cube and shake vigorously until the drink is sufficiently chilled. "),
-                                          Instruction(step: 3, method: "Strain into a rocks glass and add crushed ice until a 'high and dry' mountain is formed."),
-                                          Instruction(step: 4, method: "Garnish with the remaining strawberry half and the pinch of salt.")])
+

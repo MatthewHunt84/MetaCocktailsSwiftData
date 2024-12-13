@@ -25,5 +25,4 @@ var dominicanaTags = Tags(flavors: [.coffee],
                           profiles: [.bittersweet, .punchy],
                           styles: [.stirred])
 
-var dominicanaBuild = Build(instructions: [Instruction(step: 1, method: "Add the coffee liquor and the rum into a mixing glass and stir with ice."),
-                                           Instruction(step: 2, method: "Strain into a chilled coupe and top with a thin layer of the lightly whipped cream.")])
+

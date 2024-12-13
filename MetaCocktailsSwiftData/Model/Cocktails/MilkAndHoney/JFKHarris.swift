@@ -29,6 +29,4 @@ var jFKHarrisSpec     =  [OldCocktailIngredient(.herbs(.mint), value: 11, unit: 
 var jFKHarrisTags     = Tags(profiles: [.savory, .refreshing, .citrusy, .complex],
                              styles: [.sour, .shaken])
 
-var jFKHarrisBuild = Build(instructions: [Instruction(step: 1, method: "Combine the rum, lemon juice, simple syrup, and mint in a cocktail shaker, fill with ice, and shake vigorously until the drink is sufficiently chilled."),
-                                          Instruction(step: 2, method: "Strain into a double rocks glass filled with a single large ice cube. "),
-                                          Instruction(step: 3, method: "Slowly float a finger of red wine on top.")])
+
