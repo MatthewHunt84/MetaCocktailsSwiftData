@@ -75,10 +75,10 @@ enum GarnishList: String, Codable, CaseIterable {
     case flamedLemon               = "Flamed lemon"
     case flamedOrange              = "Flamed orange peel"
     case flamingLimeBoat           = "Hollowed out lime shell with overproof spirit thats on fire"
-    case garnishAtWill             = "Garnish at will."
+    case garnishAtWill             = "Garnish at will"
     case grapefruitExpression      = "Grapefruit expression (then discard)"
     case grapefruitPeel            = "Grapefruit peel"
-    case grapeFruitNoExpress       = "Grapefruit Peel (no oil expression)"
+    case grapeFruitNoExpress       = "Grapefruit peel (no oil expression)"
     case grapefruitWedge           = "Grapefruit wedge"
     case goldLeaf                  = "Gold leaf"
     case halfOrangeWheel           = "Half orange wheel"
@@ -91,7 +91,7 @@ enum GarnishList: String, Codable, CaseIterable {
     case nutmeg                    = "Grated nutmeg"
     case orangePeel                = "Orange peel"
     case orangePeelLong            = "Long orange peel"
-    case orangeExpress             = "Orange expression then discard"
+    case orangeExpress             = "Orange expression (then discard)"
     case limeWheel                 = "Lime wheel"
     case limeHalf                  = "Half a lime, squeezed into the cocktail"
     case lemonWheel                = "Lemon wheel"
@@ -113,7 +113,7 @@ enum GarnishList: String, Codable, CaseIterable {
     case wholeLimesSliced          = "2 limes, sliced into wheels"
     case orangeOrLemon             = "Twist of orange or lemon"
     case orchid                    = "Orchid"
-    case peaTendril                = "Pease tendril"
+    case peaTendril                = "Pea tendril"
     case peychaudsDeco             = "Peychaud's bitters design over egg whites"
     case pineappleFrond            = "Pineapple frond"
     case pineappleFronds           = "Pineapple fronds"
@@ -137,10 +137,5 @@ enum GarnishList: String, Codable, CaseIterable {
     case skeweredBlackberryAndSage = "Skewered blackberry and sage leaf"
     case spentLimeShell            = "Spent lime shell"
     case spentLimeShellFlaming     = "Spent lime shell with Green Chartreuse on fire"
-   
-    
-    
-    
-    
     
 }

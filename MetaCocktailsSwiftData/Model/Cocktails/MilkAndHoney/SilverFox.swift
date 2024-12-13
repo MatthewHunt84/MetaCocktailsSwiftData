@@ -27,10 +27,7 @@ var silverFoxSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
                       OldCocktailIngredient(.liqueurs(.amaretto), value: 0.5),
                       OldCocktailIngredient(.soda(.sodaWater) , value: 1.5)]
 
-var silverFoxBuild  = Build(instructions: [Instruction(step: 1, method: "Combine the egg white, orgeat syrup, lemon juice, and gin in a cocktail shaker and shake to emulsify the mixture."),
-                                           Instruction(step: 2, method: "Add one large ice cube and shake vigorously until the drink is sufficiently chilled."),
-                                           Instruction(step: 3, method: "Strain into a chilled 9-oz (270 ml) highball glass."),
-                                           Instruction(step: 4, method: "Top off with soda and float the amaretto or Faretti on top. Serve with a straw.")])
+
 
 var silverFoxTags   = Tags(profiles: [.citrusy, .nutty, .light, .silky],
                            styles: [.fizz, .shaken])

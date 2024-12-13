@@ -23,9 +23,7 @@ var calvados75Spec  = [OldCocktailIngredient(.juices(.lemon), value: 0.5),
                        OldCocktailIngredient(.brandies(.boulardCalvados), value: 1),
                        OldCocktailIngredient(.wines(.champagne) , value: 2)]
 
-var calvados75Build  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the Champagne, into a tin and shake with ice"),
-                                            Instruction(step: 2, method: "Strain over cracked ice and top with Champagne"),
-                                            Instruction(step: 3, method: "Give a gentle stir")])
+
 
 var calvados75Tags   = Tags(flavors: [.lemon],
                             profiles: [.citrusy, .floral, .effervescent, .light, .fruity],

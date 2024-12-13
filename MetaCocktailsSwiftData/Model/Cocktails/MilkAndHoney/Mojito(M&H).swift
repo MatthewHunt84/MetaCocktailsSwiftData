@@ -30,7 +30,5 @@ let mojitoSpecMnH: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint
 let mojitoTagsMnH = Tags(profiles: [.herbal, .refreshing, .light],
                          styles: [.sour, .shaken, .built])
 
-let mojitoBuildMnH =  Build(instructions: [Instruction(step: 1, method: "Combine the mint, lime juice, simple syrup, and sugar cube in a cocktail shaker and gently muddle (bruise, but don't abuse!)."),
-                                           Instruction(step: 2, method: "Add the rum and pour into a chilled rocks glass. "),
-                                           Instruction(step: 3, method: "Top off with crushed ice and garnish with a bouquet of mint sprigs.")])
+
 

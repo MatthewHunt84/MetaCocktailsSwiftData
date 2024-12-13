@@ -24,10 +24,7 @@ let houseBrambleSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.fruit(.r
                                                  OldCocktailIngredient(.liqueurs(.cremeDeCassis), value: 0.25),
                                                  OldCocktailIngredient(.gins(.fordsGin), value: 2)]
 
-let houseBrambleBuild =  Build(instructions: [Instruction(step: 1, method: "Muddle blackberries and raspberries."),
-                                              Instruction(step: 2, method: "Shake all the ingredients with ice."),
-                                              Instruction(step: 3, method: "Strain into a double old fashioned glass and add pebble ice."),
-                                              Instruction(step: 4, method: "Garnish with skewered blackberries and raspberries.")])
+
 
 
 var houseTag = ""

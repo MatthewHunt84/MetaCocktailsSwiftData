@@ -32,8 +32,4 @@ var queensParkMnHTags = Tags(flavors: [.lime, .mint, .bakingSpices],
                              profiles: [.aromatic, .refreshing, .citrusy, .light],
                              styles: [.swizzle, .sour])
 
-var queensParkMnHBuild = Build(instructions: [Instruction(step: 1, method: "Combine the mint leaves, simple syrup, and lime juice in a cocktail shaker and gently muddle.  "),
-                                              Instruction(step: 2, method: "Add the rum, then transfer to a chilled Collins glass, making sure that the mint is firmly settled at the bottom of the glass. "),
-                                              Instruction(step: 3, method: "Add crushed ice to come three-quarters of the way up the sides of the glass and lightly swizzle. "),
-                                              Instruction(step: 4, method: "Float the bitters and lightly swizzle again to get a tricolor effect."),
-                                              Instruction(step: 4, method: "Top off with more crushed ice and garnish with a bouquet of mint sprigs.")])
+

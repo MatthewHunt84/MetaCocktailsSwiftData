@@ -27,9 +27,7 @@ var kTCollinsSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
                       OldCocktailIngredient(.gins(.ginAny), value: 2),
                       OldCocktailIngredient(.soda(.sodaWater) , value: 1.5)]
 
-var kTCollinsBuild  = Build(instructions: [Instruction(step: 1, method: "Muddle the celery in a cocktail shaker."),
-                                           Instruction(step: 2, method: "Fill the shaker with ice, add the lemon juice, simple syrup, salt, and gin, and shake vigorously until the drink is sufficiently chilled."),
-                                           Instruction(step: 3, method: "Strain into a Collins glass filled with ice. Top off with club soda.")])
+
 
 var kTCollinsTags   = Tags(profiles: [.citrusy, .effervescent, .light, .vegetal],
                            styles: [.collins, .shaken])

@@ -27,9 +27,7 @@ var theSeaPlaneSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.5),
                         OldCocktailIngredient(.bitters(.orangeBitters), value: 2, unit: .dashes),
                         OldCocktailIngredient(.wines(.champagne) , value: 2)]
 
-var theSeaPlaneBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the Champagne and absinthe, into a tin and shake with ice"),
-                                             Instruction(step: 2, method: "Strain into an absinthe rinsed flute and top with Champagne"),
-                                             Instruction(step: 3, method: "Give a gentle stir")])
+
 
 var theSeaPlaneTags   = Tags(profiles: [.citrusy, .effervescent, .light],
                              styles: [ .shaken, .fizz])

@@ -25,9 +25,7 @@ var palmaFizzSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.5),
                       OldCocktailIngredient(.vodkas(.vodkaAny), value: 2),
                       OldCocktailIngredient(.soda(.gingerBeer) , value: 5, prep: PrepBible.gingerBeer)]
 
-var palmaFizzBuild  = Build(instructions: [Instruction(step: 1, method: "Squeeze ½ oz (15 ml) of lime juice into a Collins glass (or a Moscow Mule mug) and drop in the empty half lime shell."),
-                                           Instruction(step: 2, method: "Add 2 or 3 ice cubes, pour in the vodka, and fill with the ginger beer."),
-                                           Instruction(step: 3, method: "Add a few drops of rosewater or spray the rosewater over the cocktail.")])
+
 
 var palmaFizzTags   = Tags(profiles: [.citrusy, .effervescent, .light],
                            styles: [.collins, .shaken])

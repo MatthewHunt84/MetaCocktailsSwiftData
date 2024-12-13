@@ -26,8 +26,7 @@ var bottlerocketSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.75),
                          OldCocktailIngredient(.otherNonAlc(.jalapenoSlice), value: 1, unit: .gentlyMuddled),
                          OldCocktailIngredient(.agaves(.tequilaBlanco) , value: 2)]
 
-var bottlerocketBuild  = Build(instructions: [Instruction(step: 1, method: "Combine the Tequila, lime juice, honey syrup, and jalapeño in a cocktail shaker, fill the shaker with ice, and shake vigorously until the drink is sufficiently chilled."),
-                                              Instruction(step: 2, method: "Strain into a collins glass filled with ice and top off with the club soda.")])
+
 
 var bottlerocketTags   = Tags(profiles: [.citrusy, .effervescent, .light, .spicy],
                               styles: [.collins, .shaken])

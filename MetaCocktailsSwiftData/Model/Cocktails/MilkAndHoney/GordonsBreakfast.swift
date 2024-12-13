@@ -29,7 +29,4 @@ var gordonsBreakfastSpec     =  [OldCocktailIngredient(.seasoning(.salt), value:
 var gordonsBreakfastTags     = Tags(profiles: [.savory, .refreshing, .citrusy, .complex, .spicy, .restorative],
                                     styles: [.sour, .shaken])
 
-var gordonsBreakfastBuild = Build(instructions: [Instruction(step: 1, method: "Combine all ingredients in a cocktail shaker."),
-                                                 Instruction(step: 2, method: "Add 1 cup (240 ml) cracked ice and shake vigorously until the drink is sufficiently chilled."),
-                                                 Instruction(step: 3, method: "Pour into a chilled rocks glass. "),
-                                                 Instruction(step: 4, method: "Finish with a pinch each of salt and freshly ground pepper.")])
+
