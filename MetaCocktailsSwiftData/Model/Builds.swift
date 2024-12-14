@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: Historic
 let brambleBuild =  Build(instructions: [Instruction(step: 1, method: "Build in glass."),
                                          Instruction(step: 2, method: "Add crushed ice to a double old fashioned glass and add the ingredients to that."),
                                          Instruction(step: 3, method: "Then, drizzle the creme de mûre over the top."),
@@ -35,7 +36,7 @@ var silverGinFizzBuild  = Build(instructions: [Instruction(step: 1, method: "Add
                                                Instruction(step: 2, method: "Then shake with ice."),
                                                Instruction(step: 3, method: "Strain the cocktail into a chilled glass"),
                                                Instruction(step: 4, method: "Top with seltzer water.")])
-
+// MARK: House Cocktails
 let houseBrambleBuild =  Build(instructions: [Instruction(step: 1, method: "Muddle blackberries and raspberries."),
                                               Instruction(step: 2, method: "Shake all the ingredients with ice."),
                                               Instruction(step: 3, method: "Strain into a double old fashioned glass and add pebble ice."),
@@ -46,6 +47,7 @@ var houseSilverGinFizzBuild  = Build(instructions: [Instruction(step: 1, method:
                                                     Instruction(step: 3, method: "Add soda to the glass then strain the cocktail over the soda"),
                                                     Instruction(step: 4, method: "Express the lemon peen then garnish with the peel.")])
 
+// MARK: Milk and Honey
 var americanTrilogyBuild = Build(instructions: [Instruction(step: 1, method: "Add the bitters, a sugar cube, and a splash of soda into a double old fashioned glass and muddle. The soda just breaks down the sugar cube."),
                                                 Instruction(step: 2, method: "Add the rye and Laird's Bonded into the glass."),
                                                 Instruction(step: 3, method: "Then, with the back end of a bar spoon, guide a large rock into the glass so that it doesn't make a splash."),
@@ -272,6 +274,7 @@ var weddingPunchBuild = Build(instructions: [Instruction(step: 1, method: "Combi
                                              Instruction(step: 2, method: "Add the ice and garnish with the berries and citrus wheels."),
                                              Instruction(step: 3, method: "Makes 10.75 liters.")])
 
+// MARK: Williams and Graham Classics
 var bloodyMarryWnGBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients along with the ice and toss from tin to tin."),
                                                 Instruction(step: 2, method: "Dirty dump")])
 
