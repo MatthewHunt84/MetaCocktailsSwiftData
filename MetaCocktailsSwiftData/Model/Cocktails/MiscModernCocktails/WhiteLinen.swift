@@ -29,8 +29,5 @@ let whiteLinenSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.soda(.soda
 let whiteLinenTags = Tags(profiles: [.refreshing, .light, .restorative],
                           styles: [.collins, .shaken])
 
-let whiteLinenBuild =  Build(instructions: [Instruction(step: 1, method: "Muddle the cucumber into a mixing tin."),
-                                            Instruction(step: 2, method: "Add all of the ingredients, leaving the soda for after you're done shaking."),
-                                            Instruction(step: 3, method: "Double strain the shaken cocktail into an ice filled collins glass and top with soda."),
-                                            Instruction(step: 4, method: "Garnish with cucumber.")])
+
 

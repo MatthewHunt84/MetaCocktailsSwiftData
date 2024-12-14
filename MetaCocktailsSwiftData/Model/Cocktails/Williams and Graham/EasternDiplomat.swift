@@ -27,6 +27,4 @@ var easternDiplomatSpec  = [OldCocktailIngredient(.otherAlcohol(.absinthe), valu
 var easternDiplomatTags = Tags(profiles: [.rich, .bittersweet, .punchy, .spiritForward],
                                styles: [.martini, .stirred])
 
-var easternDiplomatBuild  = Build(instructions: [Instruction(step: 1, method: "Combine all ingredients, except for the absinthe, into a mixing glass with ice and stir."),
-                                                 Instruction(step: 2, method: "Rinse a coupe glass with absinthe."),
-                                                 Instruction(step: 3, method: "Strain the cocktail into the prepared glass.")])
+

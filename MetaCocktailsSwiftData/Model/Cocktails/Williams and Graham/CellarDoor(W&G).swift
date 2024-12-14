@@ -26,8 +26,4 @@ var cellarDoorTags = Tags(flavors: [.tea, .cinnamon],
                           profiles: [.hot, .aromatic, .nutty],
                           styles: [.toddy])
 
-var cellarDoorBuild = Build(instructions: [Instruction(step: 1, method: "Place all ingredients in a small shaker tin. "),
-                                           Instruction(step: 2, method: "Fill the large shaker tin half full of near boiling water then float the small tin on top, bain-marie style."),
-                                           Instruction(step: 3, method: "At the same time, heat your tea cup by adding hot water to it. Remove water before adding the cocktail."),
-                                           Instruction(step: 4, method: "After the cocktail is sufficiently heated, emulsify with a small electric milk frother and then pour into the tea cup. "),
-                                           Instruction(step: 5, method: "Grate cinnamon on top and add almonds and raisins to the saucer for garnish.")])
+

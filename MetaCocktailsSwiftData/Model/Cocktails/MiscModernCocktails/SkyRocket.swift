@@ -27,5 +27,4 @@ var skyRocketSpec  = [
 
 var skyRocketTags   = Tags(profiles: [.bittersweet], styles: [.collins, .shaken])
 
-var skyRocketBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the soda, into a tin and shake with ice"),
-                                            Instruction(step: 2, method: "Add soda and ice into the glass and top with the shaken cocktail.")])
+

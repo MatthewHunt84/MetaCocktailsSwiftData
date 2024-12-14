@@ -22,9 +22,7 @@ var french75CognacSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.25),
                            OldCocktailIngredient(.brandies(.cognacVSOP), value: 1.25),
                            OldCocktailIngredient(.wines(.champagne), value: 2.5)]
 
-var french75CognacBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the Champagne, into a tin and shake with ice"),
-                                                Instruction(step: 2, method: "strain into the flute and top with Champagne"),
-                                                Instruction(step: 3, method: "Give a gentle stir")])
+
 
 var french75CognacTags   = Tags(flavors: [.lemon],
                                 profiles: [.citrusy, .effervescent, .light],

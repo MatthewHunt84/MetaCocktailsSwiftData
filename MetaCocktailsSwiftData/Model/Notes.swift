@@ -81,6 +81,10 @@ let mintJulepNotes = "This is one of the oldest cocktails to exist. This is a st
 
 let mojitoNotes = "This is a more modern version of the mojito that you'll find in cocktail bars all across America. Original recipes seem to all leave the mint in the glass and treat it more as a built cocktail. The cocktail definitely stems from Cuba in the 1800s, and was popularized at bars like La Floridita. Though, like many cocktails from this era, there isn't simply one name to attach to its creation."
 
+var daiquiriNotes = "This is the king of the Cuban cocktails. While the preferred balance of citrus and and sweet varies between bartenders, a high quality white rum is essential. We recommend Planteray 3 star or Banks 5 Island."
+
+var darkAndStormyNotes = " \"The drink might have been invented by British sailors on shore leave in Bermuda after World War I. Though, in 1991, the Gosling family, which founded Gosling's in Bermuda in 1806, claimed a trademark for the recipe...\" -David Wondrich, The Oxford Companion to Spirits and Cocktails"
+
 let pinaColadaNotes = "The widely recognized version of the Piña Colada today is a blended frozen cocktail that originated with the creation of Coco Lopez in Puerto Rico. It is regarded as their signature drink. The term 'Piña Colada' translates to 'strained pineapple.' According to Dave Wondrich, prior to Coco Lopez, the Piña Colada was a Cuban non-alcoholic refreshment. It's likely that Cubans also mixed rum into it, representing one of those seemingly inevitable combinations that obscure its true origin. To prepare this version, you'll need approximately 250ml of crushed ice to blend with the other ingredients."
 
 let robRoyNotes = "The Manhattan, Rob Roy, and Emerald cocktails all emerged in the late 19th century, with the Manhattan serving as the inspiration for the other two. The Manhattan led to the creation of the Rob Roy, substituting Scotch whisky in place of American whiskey. The Emerald meanwhile features Irish whiskey instead."
@@ -90,6 +94,10 @@ let sazeracNotes = "This is a modernization of the original cocktail, which had 
 let ward8Notes = "There's a lot of speculation as to where this cocktail comes from. Here, we're using the oldest version that we could find that seems to be in line with how modern bartenders are presenting it."
 
 let whiskeySourNotes = "The term 'Whiskey Sour' first appeared in print as early as 1826. Like the Old Fashioned, this classic cocktail has been a longstanding fixture in the world of mixology. Its origins are disputed, with numerous individuals claiming to have invented it over the years. While egg whites have always been an optional ingredient in the Whiskey Sour, their inclusion is recommended."
+
+var martiniNotes = "The Martini - which predates the Manhattan - has evolved significantly over time. The original recipe featured more vermouth than gin, later shifting to equal parts, then progressively less vermouth. By the 1910s, vodka began replacing gin in some versions. By the 1950s, without the botanical profile of gin to accompany it, vermouth lost popularity with olive brine often taking its place. While this is an excellent recipe for a classic Martini, the most important recipe for a Martini is the one the drinker asks you for."
+
+let prizeFighterNotes = "Simply named 'Prizefighter' when it debuted on the menu at Julie Reiner's Clover Club in Manhattan, the 'Prizefighter No. 1' designation was appended only after subsequent iterations of the drink found their way onto the menu."
 
 // Historical info presented as a quote
 

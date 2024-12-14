@@ -12,6 +12,7 @@ let daiquiri = Cocktail(cocktailName: "Daiquiri",
                         garnish: [.limeWheel],
                         author: Author(place: "Cuba", year: "1890s"),
                         spec: daiquiriSpec,
+                        notes: daiquiriNotes,
                         tags: daiquiriTags,
                         variation: .daiquiri,
                         titleCocktail: true)
@@ -23,4 +24,4 @@ var daiquiriSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.rums(.rumWhi
 var daiquiriTags = Tags(profiles: [.citrusy, .refreshing, .light],
                         styles: [.sour, .shaken])
 
-var daiquiriNotes = "This is the king of the Cuban cocktails. While the preferred balance of citrus and and sweet varies between bartenders, a high quality white rum is essential. We recommend Planteray 3 star or Banks 5 Island."
+

@@ -23,9 +23,7 @@ var sloeGinFizzSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
                         OldCocktailIngredient(.liqueurs(.plymouthSloeGin), value: 1.5),
                         OldCocktailIngredient(.soda(.sparklingWater), value: 2)]
 
-var sloeGinFizzBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the sparkling water,and shake with ice."),
-                                             Instruction(step: 2, method: "Add soda to the glass then strain the cocktail over the soda"),
-                                             Instruction(step: 3, method: "Garnish with a lemon peel after expression.")])
+
 
 var sloeGinFizzTags   = Tags(flavors: [.lemon],
                              profiles: [.citrusy, .effervescent, .light, .silky, .refreshing, .fruity],

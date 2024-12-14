@@ -26,6 +26,4 @@ var coffeeAndCigsTags = Tags(flavors: [.nutmeg],
                              profiles: [.punchy, .rich, .bittersweet],
                              styles: [.oldFashioned, .stirred, .built])
 
-var coffeeAndCigsBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients besides the cream over a large rock into double old fashioned glass and stir in glass."),
-                                              Instruction(step: 2, method: "Float the stiff cream on top."),
-                                              Instruction(step: 3, method: "Garnish with grated nutmeg.")])
+

@@ -28,6 +28,3 @@ var oldFashionedTagsWnG = Tags(flavors: [.lemon],
                                styles: [.oldFashioned, .stirred])
 
 
-var oldFashionedWGBuild = Build(instructions: [Instruction(step: 1, method: "Add bitters, a sugar cube, and a splash of soda into a double old fashioned glass and muddle. The soda is just to break down the sugar cube"),
-                                               Instruction(step: 2, method: "Add the whiskey, lemon expression, and lemon peel into the glass."),
-                                               Instruction(step: 3, method: "Then, with the back end of a bar spoon, guide a large rock into the glass, so that it doesn't make a splash, and stir until chilled.")])

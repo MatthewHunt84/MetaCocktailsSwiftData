@@ -30,6 +30,4 @@ var NewYorkSourSpec = [OldCocktailIngredient(.juices(.lemon), value: 0.25),
 var NewYorkSourTags = Tags(profiles: [.citrusy, .light, .refreshing],
                            styles: [.sour, .shaken])
 
-var NewYorkSourBuild = Build(instructions: [Instruction(step: 1, method: "Mix all ingredients, except the red wine, together in a tin and shake with ice."),
-                                            Instruction(step: 2, method: "Strain into a chilled cocktail glass."),
-                                            Instruction(step: 3, method: "Carefully float the red wine on top of the cocktail so that there's a clear separation between the wine and the rest of the cocktail.")])
+

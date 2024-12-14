@@ -24,8 +24,6 @@ var bloodyMarrySpec  = [OldCocktailIngredient(.otherNonAlc(.tomatoJuice), value:
                         OldCocktailIngredient(.otherNonAlc(.tobasco), value: 3, unit: .dashes),
                         OldCocktailIngredient(.vodkas(.vodkaAny), value: 1.5)]
 
-var bloodyMarryBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients along with the ice and toss from tin to tin or shake gently."),
-                                             Instruction(step: 2, method: "Dirty dump."),
-                                             Instruction(step: 2, method: "Go nuts with the garnish if you'd like to.")])
+
 
 var bloodyMarryTags   = Tags(profiles: [.savory, .rich, .restorative])
