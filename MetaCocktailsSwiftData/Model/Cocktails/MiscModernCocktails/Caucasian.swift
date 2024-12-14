@@ -23,6 +23,5 @@ var caucasianSpec  = [OldCocktailIngredient(.liqueurs(.borghetti), value: 1),
 var caucasianTags = Tags(profiles: [.sweet, .creamy, .rich],
                          styles: [.built])
 
-var caucasianBuild = Build(instructions: [Instruction(step: 1, method: "Add everything but the cream to a frozen fizz glass or small highball and stir."),
-                                          Instruction(step: 2, method: "Top with cream.")])
+
 

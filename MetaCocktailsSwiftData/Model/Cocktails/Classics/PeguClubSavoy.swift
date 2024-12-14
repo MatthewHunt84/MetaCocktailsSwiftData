@@ -27,4 +27,4 @@ var peguClubSavoyTags = Tags(profiles: [.citrusy, .tart, .light, .restorative],
                              styles: [.daisy, .shaken, .sour])
 
 
-let peguClubSavoyBuild = Build(instructions: [Instruction(step: 1, method: "Shake well and strain into a cocktail glass. The favourite cocktail at tthe Pegu CLub, Burma, and the one that has travelled, and is asked for, around the world. -Harry Craddock")])
+

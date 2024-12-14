@@ -27,6 +27,4 @@ let americanGothicTags = Tags(profiles: [.rich, .punchy, .spiritForward],
                               styles: [.manhattan, .stirred])
 
 
-var americanGothicBuild  = Build(instructions: [Instruction(step: 1, method: "Combine all ingredients, except for the absinthe, into a mixing glass with ice and stir."),
-                                                Instruction(step: 2, method: "Rinse a double old fashioned glass with absinthe."),
-                                                Instruction(step: 3, method: "Strain the cocktail into the glass over a large rock.")])
+

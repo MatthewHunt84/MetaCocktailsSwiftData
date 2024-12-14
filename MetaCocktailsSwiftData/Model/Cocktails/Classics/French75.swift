@@ -24,9 +24,7 @@ var french75Spec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
                      OldCocktailIngredient(.gins(.ginAny), value: 1.5),
                      OldCocktailIngredient(.wines(.champagne) , value: 2)]
 
-var french75Build  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the Champagne, into a tin and shake with ice"), 
-                                          Instruction(step: 2, method: "strain over cracked ice and top with Champagne"),
-                                          Instruction(step: 3, method: "Give a gentle stir")])
+
 
 var french75Tags   = Tags(flavors: [.lemon], 
                           profiles: [.citrusy, .floral, .effervescent, .light],

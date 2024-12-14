@@ -31,6 +31,4 @@ var featheredHatFlip2Tags = Tags(flavors: [.nutmeg],
                                 profiles: [.rich, .silky, .savory],
                                 styles: [.flip, .shaken])
 
-var featheredHatFlip2Build = Build(instructions: [Instruction(step: 1, method: "Add all ingredients into a tin a dry shake to emulsify"),
-                                                 Instruction(step: 2, method: "Add a few Kold Draft cubes and shake until cold."),
-                                                 Instruction(step: 3, method: "Immediately after shaking, pop the tin and double strain into a flip glass.")])
+

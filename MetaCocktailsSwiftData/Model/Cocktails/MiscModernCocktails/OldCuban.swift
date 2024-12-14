@@ -27,9 +27,7 @@ let oldCubanSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mint)
                                           OldCocktailIngredient(.wines(.champagne), value: 2)]
 
 
-let oldCubanBuild =  Build(instructions: [Instruction(step: 1, method: "Shake all of the ingredients, except for the champagne, in a tin. Use Kold draft of Hoshizake cubes and the mint will the muddled while you're shaking."),
-                                          Instruction(step: 2, method: "Double strain the shaken cocktail over the champagne in a chilled glass."),
-                                          Instruction(step: 3, method: "Garnish with a mint sprig.")])
+
 
 let oldCubanTags = Tags(profiles: [.herbal, .refreshing, .light, .effervescent],
                       styles: [.sour, .shaken])

@@ -31,5 +31,3 @@ var elDiabloTagsWnG   = Tags(profiles: [.refreshing, .punchy, .effervescent],
                              styles: [.fizz, .shaken])
 
 
-var elDiabloBuildOrderWnG = Build(instructions: [Instruction(step: 1, method: "Shake everything but the ginger beer with ice."),
-                                                 Instruction(step: 1, method: "Strain into a collins glass full of ice and top the ginger beer.")])

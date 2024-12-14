@@ -26,7 +26,3 @@ let oldCubanSpecWnG: [OldCocktailIngredient] = [OldCocktailIngredient(.herbs(.mi
                                              OldCocktailIngredient(.wines(.prosecco), value: 2)]
 
 
-let oldCubanWnGBuild =  Build(instructions: [Instruction(step: 1, method: "Shake all of the ingredients, except for the sparkling wine, in a tin. Use Kold draft of Hoshizake cubes and the mint will the muddled while you're shaking."),
-                                        Instruction(step: 2, method: "Double strain the shaken cocktail over the ice then top with Prosecco."),
-                                        Instruction(step: 3, method: "Garnish with a mint sprig. Serve with a straw.")])
-

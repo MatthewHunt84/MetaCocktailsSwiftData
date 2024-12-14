@@ -31,7 +31,4 @@ let peaksOfReykjavicTags = Tags(profiles: [.herbal, .refreshing, .light],
 
 
 
-var peaksOfReykjavicBuild = Build(instructions: [Instruction(step: 1, method: "Add mint to the bottom of the collins glass and gently press to release mint oils. Do not muddle"),
-                                                 Instruction(step: 2, method: "Pack the glass with pebble ice and add the rest of the ingredients, besides the bitters, and swizzle. Try to keep the mint at the bottom of the glass."),
-                                                 Instruction(step: 3, method: "Pack the glass with more ice to fill and then add the bitters."),
-                                                 Instruction(step: 4, method: "Garnish with a raspberry and mint sprig.")])
+

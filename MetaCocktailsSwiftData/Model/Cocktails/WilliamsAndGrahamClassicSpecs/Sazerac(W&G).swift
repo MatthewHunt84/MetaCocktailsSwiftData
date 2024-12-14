@@ -27,9 +27,3 @@ var sazeracTagsWnG = Tags(flavors: [.lemon],
                           profiles: [.spiritForward, .punchy],
                           styles: [.oldFashioned, .stirred])
 
-var sazeracBuildWnG = Build(instructions: [Instruction(step: 1, method: "Muddle your sugar cube and bitters together in a mixing glass with a splash of soda water to help the sugar disolve."),
-                                           Instruction(step: 2, method: "Add the whiskey and ice and stir."),
-                                           Instruction(step: 3, method: "Add your cocktail to the frozen absinthe rinsed glass"),
-                                           Instruction(step: 4, method: "Garnish with a lemon twist."),
-                                           Instruction(step: 5, method: "The original was done with Cognac. Try it! It doesn't suck.")])
-

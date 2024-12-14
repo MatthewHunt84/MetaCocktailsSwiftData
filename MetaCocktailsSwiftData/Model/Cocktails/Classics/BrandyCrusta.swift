@@ -26,9 +26,5 @@ var brandyCrustaSpec    = [OldCocktailIngredient(.juices(.lemon), value: 1, unit
 var brandyCrustaTags     = Tags(profiles: [.spiritForward, .rich, .fruity],
                                 styles: [.sour, .stirred])
 
-var brandyCrustaBuild = Build(instructions: [Instruction(step: 1, method: "The glass for this cocktail needs to be prepared ahead of time. It's a narrow mouthed, stemmed cocktail glass, fitted with a wide ribbon of lemon peel around the rim. Rim the peel and glass with sugar and chill the glass."),
-                                             Instruction(step: 2, method: "This is a stirred cocktail. So stir and then strain into the prepared glass.")])
-
-
 
 

@@ -28,6 +28,4 @@ let heartOfGoldTags = Tags(profiles: [.rich],
                            styles: [.martini, .stirred])
 
 
-var heartOfGoldBuild  = Build(instructions: [Instruction(step: 1, method: "Combine all ingredients, except for the Ardbeg Scotch, into a mixing glass with ice and stir."),
-                                             Instruction(step: 2, method: "Rinse your stemmed glassware with the Ardbeg."),
-                                             Instruction(step: 3, method: "Strain the cocktail into the prepared glass.")])
+

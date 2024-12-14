@@ -29,4 +29,3 @@ var saturnSpec  =  [OldCocktailIngredient(.juices(.lemon), value: 0.5),
 var saturnTags = Tags( profiles: [.citrusy, .fruity, .tropical, .sweet, .refreshing, .floral, .light],
                        styles: [.tiki, .shaken, .sour, .blended])
 
-var saturnBuildOrder = Build(instructions: [Instruction(step: 1, method: "Skewer the lemon peel around the cherry to make it look like the rings of Saturn. The original cocktail was blended. So, blend if you must.")])
