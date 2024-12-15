@@ -45,7 +45,7 @@ let houseBrambleBuild =  Build(instructions: [Instruction(step: 1, method: "Mudd
 var houseSilverGinFizzBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the sparkling water, into a tin and dry shake"),
                                                     Instruction(step: 2, method: "Then shake with ice."),
                                                     Instruction(step: 3, method: "Add soda to the glass then strain the cocktail over the soda"),
-                                                    Instruction(step: 4, method: "Express the lemon peen then garnish with the peel.")])
+                                                    Instruction(step: 4, method: "Express the lemon peel then garnish with the peel.")])
 
 // MARK: Milk and Honey
 var americanTrilogyBuild = Build(instructions: [Instruction(step: 1, method: "Add the bitters, a sugar cube, and a splash of soda into a double old fashioned glass and muddle. The soda just breaks down the sugar cube."),
@@ -72,7 +72,7 @@ var bottlerocketBuild  = Build(instructions: [Instruction(step: 1, method: "Comb
 
 var cafeConLecheFlipBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients into a tin a dry shake to emulsify"),
                                                  Instruction(step: 2, method: "Add a few Kold Draft cubes and shake until cold."),
-                                                 Instruction(step: 3, method: "Immediately after shaking, pop the tin and double strain into a flip glass. (In Sasha Petraske's 'Regaurding Cocktails', is says to use a  'chilled sour glas')"),
+                                                 Instruction(step: 3, method: "Immediately after shaking, pop the tin and double strain into a flip glass. (In Sasha Petraske's 'Regarding Cocktails', it says to use a  'chilled sour glass')"),
                                                  Instruction(step: 4, method: "Grate some nutmeg over the top.")])
 
 var calvados75Build  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the Champagne, into a tin and shake with ice"),
@@ -170,7 +170,7 @@ var palmaFizzBuild  = Build(instructions: [Instruction(step: 1, method: "Squeeze
                                            Instruction(step: 2, method: "Add 2 or 3 ice cubes, pour in the vodka, and fill with the ginger beer."),
                                            Instruction(step: 3, method: "Add a few drops of rosewater or spray the rosewater over the cocktail.")])
 
-var piscoSourBuildMnH = Build(instructions: [Instruction(step: 1, method: "Add all ingredients accept for the bitters into a tin a dry shake to emulsify"),
+var piscoSourBuildMnH = Build(instructions: [Instruction(step: 1, method: "Add all ingredients except for the bitters into a tin a dry shake to emulsify"),
                                              Instruction(step: 2, method: "Add a few Kold Draft cubes and shake until cold. Do not over dilute"),
                                              Instruction(step: 3, method: "Immediately after shaking (with vigor), pop the tin and double strain very carefully into a stemmed glass. Create the least amount of turbulence here so that you create a smooth and even surface for the design with the bitters."),
                                              Instruction(step: 4, method: "Wait about 30 seconds after you stain out the cocktail to make the design over the top. It helps for the egg whites to settle for a bit to give you a better and more even canvas to work with.")])
@@ -281,7 +281,7 @@ var weddingPunchBuild = Build(instructions: [Instruction(step: 1, method: "Combi
                                              Instruction(step: 3, method: "Makes 10.75 liters.")])
 
 // MARK: Williams and Graham Classics
-var bloodyMarryWnGBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients along with the ice and toss from tin to tin."),
+var bloodyMaryWnGBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients along with the ice and toss from tin to tin."),
                                                 Instruction(step: 2, method: "Dirty dump")])
 
 let brambleWGBuild =  Build(instructions: [Instruction(step: 1, method: "Shake all ingredients, except for the creme de cassis, in a tin with ice."),
@@ -356,7 +356,7 @@ var penicillinBuildWnG = Build(instructions: [Instruction(step: 1, method: "Mix 
                                               Instruction(step: 3, method: "Float the peated Islay whisky on top of the cocktail"),
                                               Instruction(step: 4, method: "Garnish With a lemon wheel.")])
 
-var piscoSourBuildWnG = Build(instructions: [Instruction(step: 1, method: "Add all ingredients accept for the bitters into a tin a dry shake to emulsify"),
+var piscoSourBuildWnG = Build(instructions: [Instruction(step: 1, method: "Add all ingredients except for the bitters into a tin a dry shake to emulsify"),
                                              Instruction(step: 2, method: "Add a few Kold Draft cubes and shake until cold. Do not over dilute"),
                                              Instruction(step: 3, method: "Immediately after shaking (with vigor), pop the tin and double strain very carefully into a stemmed glass. Create the least amount of turbulence here so that you create a smooth and even surface for the design with the bitters."),
                                              Instruction(step: 4, method: "Wait about 30 seconds after you stain out the cocktail to make the design over the top. It helps for the egg whites to settle for a bit to give you a better and more even canvas to work with.")])
@@ -386,7 +386,7 @@ var tomCollinsWnGBuild  = Build(instructions: [Instruction(step: 1, method: "Add
                                                Instruction(step: 2, method: "strain over cracked ice and top with soda"),
                                                Instruction(step: 3, method: "Give a gentle stir")])
 
-var whiskeySourBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients accept for the bitters into a tin a dry shake to emulsify"),
+var whiskeySourBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients except for the bitters into a tin a dry shake to emulsify"),
                                             Instruction(step: 2, method: "And a few Kold Draft cubes and shake until cold. Do not over dilute"),
                                             Instruction(step: 3, method: "Immediately after shaking (with vigor), pop the tin and double strain very carefully into a stemmed glass. Create the least amount of turbulence here so that you create a smooth and even surface for the design with the bitters. The bitters are optional here. But we think it adds a bit off needed complexity to the cocktail."),
                                             Instruction(step: 4, method: "Wait about 30 seconds after you stain out the cocktail to make the design over the top. It helps for the egg whites to settle for a bit to give you a better and more even canvas to work with.")])
@@ -480,9 +480,9 @@ var NewYorkSourBuild = Build(instructions: [Instruction(step: 1, method: "Mix al
 var palomaBuild = Build(instructions: [Instruction(step: 1, method: "This is typically a built cocktail. Feel free to shake the ingredients that aren't soda to make it extra cold."),
                                        Instruction(step: 1, method: "We like to add saline into the cocktail rather than a pinch of salt. Some prefer a salt rim. Either way is fine."),])
 
-let peguClubSavoyBuild = Build(instructions: [Instruction(step: 1, method: "Shake well and strain into a cocktail glass. The favourite cocktail at tthe Pegu CLub, Burma, and the one that has travelled, and is asked for, around the world. -Harry Craddock")])
+let peguClubSavoyBuild = Build(instructions: [Instruction(step: 1, method: "Shake well and strain into a cocktail glass. The favourite cocktail at the Pegu Club, Burma, and the one that has travelled, and is asked for, around the world. -Harry Craddock")])
 
-var piscoSourBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients accept for the bitters into a tin a dry shake to emulsify"),
+var piscoSourBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients except for the bitters into a tin a dry shake to emulsify"),
                                           Instruction(step: 2, method: "Add a few Kold Draft cubes and shake until cold. Do not over dilute"),
                                           Instruction(step: 3, method: "Immediately after shaking (with vigor), pop the tin and double strain very carefully into a stemmed glass. Create the least amount of turbulence here so that you create a smooth and even surface for the design with the bitters."),
                                           Instruction(step: 4, method: "Wait about 30 seconds after you stain out the cocktail to make the design over the top. It helps for the egg whites to settle for a bit to give you a better and more even canvas to work with.")])
@@ -493,7 +493,7 @@ var queensParkBuild = Build(instructions: [Instruction(step: 0, method: "The ori
 
 var saturnBuildOrder = Build(instructions: [Instruction(step: 1, method: "Skewer the lemon peel around the cherry to make it look like the rings of Saturn. The original cocktail was blended. So, blend if you must.")])
 
-var sazeracBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients accept for the absinthe into a mixing glass with ice and stir until cold."),
+var sazeracBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients except for the absinthe into a mixing glass with ice and stir until cold."),
                                         Instruction(step: 2, method: "Spray your frozen single old fashioned glass with 5 spritzes of absinthe. Another option is to ad 1/4 oz. into the glass and spin to glaze the inside. "),
                                         Instruction(step: 3, method: "Add your cocktail to the rinsed glass"),
                                         Instruction(step: 5, method: "Garnish with a lemon twist.")])
@@ -525,7 +525,7 @@ let whiskeySmashBuild =  Build(instructions: [Instruction(step: 0, method: "For 
                                               Instruction(step: 2, method: "Double strain over crushed ice."),
                                               Instruction(step: 3, method: "Garnish with mint sprig.")])
 
-var whiskeySourOGBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients accept for the bitters into a tin a dry shake to emulsify"),
+var whiskeySourOGBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients except for the bitters into a tin a dry shake to emulsify"),
                                               Instruction(step: 2, method: "And a few Kold Draft cubes and shake until cold. Do not over dilute"),
                                               Instruction(step: 3, method: "Immediately after shaking (with vigor), pop the tin and double strain into a stemmed glass.")])
 
@@ -547,7 +547,7 @@ let oldCubanBuild =  Build(instructions: [Instruction(step: 1, method: "Shake al
                                           Instruction(step: 2, method: "Double strain the shaken cocktail over the champagne in a chilled glass."),
                                           Instruction(step: 3, method: "Garnish with a mint sprig.")])
 
-let wprizefighterNo1Build =  Build(instructions: [Instruction(step: 1, method: "Muddle the mint and lemon wedges together with the simple, putting the force mostely on the lemon wedges. Try not to muddle the mint too much. If you'd rather just use lemon juice, just use 3/4 of an ounce while still shaking in the fresh mint."),
+let wprizefighterNo1Build =  Build(instructions: [Instruction(step: 1, method: "Muddle the mint and lemon wedges together with the simple, putting the force mostly on the lemon wedges. Try not to muddle the mint too much. If you'd rather just use lemon juice, just use 3/4 of an ounce while still shaking in the fresh mint."),
                                                   Instruction(step: 2, method: "Add all of the rest of the ingredients and shake."),
                                                   Instruction(step: 3, method: "Double strain the shaken cocktail into D.O.F. glass and top with crushed or cracked ice."),
                                                   Instruction(step: 4, method: "Garnish with a mint bouquet.")])
