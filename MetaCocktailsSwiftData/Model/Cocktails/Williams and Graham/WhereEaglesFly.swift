@@ -27,8 +27,4 @@ var whereEaglesFlySpec  = [OldCocktailIngredient(.wines(.prosecco), value: 2),
 var whereEaglesFlyTags = Tags(profiles: [.refreshing, .fruity, .citrusy],
                               styles: [.sour, .shaken])
 
-var whereEaglesFlyBuild = Build(instructions: [Instruction(step: 1, method: "Gently muddle the basil."),
-                                               Instruction(step: 1, method: "add the rest of the ingredients except for the Prosecco."),
-                                               Instruction(step: 1, method: "Shake and then double strain over ice."),
-                                               Instruction(step: 1, method: "Top with Prosecco."),
-                                               Instruction(step: 1, method: "Garnish with a lemon wheel and basil.")])
+

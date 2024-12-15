@@ -25,5 +25,4 @@ var palomaSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.5),
 var palomaTags  =  Tags(profiles: [.fruity, .refreshing, .light, .effervescent],
                         styles: [.built, .sour, .fizz])
 
-var palomaBuild = Build(instructions: [Instruction(step: 1, method: "This is typically a built cocktail. Feel free to shake the ingredients that aren't soda to make it extra cold."),
-                                       Instruction(step: 1, method: "We like to add saline into the cocktail rather than a pinch of salt. Some prefer a salt rim. Either way is fine."),])
+

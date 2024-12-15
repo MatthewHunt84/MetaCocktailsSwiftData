@@ -31,6 +31,4 @@ var theStarkTags = Tags(profiles: [.citrusy, .refreshing, .herbal, .complex],
                         styles: [.sour, .shaken])
 
 
-let theStarkBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except the bitters, into a tin and shake with ice."),
-                                         Instruction(step: 2, method: "Strain into a double old fashioned glass and then fill the glass with cracked ice."),
-                                         Instruction(step: 3, method: "Float the bitters on top.")])
+

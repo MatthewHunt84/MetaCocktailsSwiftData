@@ -31,6 +31,4 @@ let binAndGittersSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.bitters
 let binAndGittersTags = Tags(profiles: [.refreshing, .light],
                              styles: [.sour, .shaken])
 
-let binAndGittersBuild = Build(instructions: [Instruction(step: 1, method: "Add lime, simple, and gin into a tin and shake with ice."),
-                                              Instruction(step: 2, method: "Strain into a double old fashioned glass and then pack the glass with pebble ice."),
-                                              Instruction(step: 3, method: "Float the bitters on top and add a lime wedge for garnish.")])
+

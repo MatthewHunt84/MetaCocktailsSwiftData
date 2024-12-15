@@ -29,7 +29,7 @@ struct NAIngredients: Codable, Hashable, Equatable {
 }
 enum Juice: String, IngredientTagsProtocol {
     case appleCider           = "Apple cider"
-    case carrotJuice          = "Carrot juice"
+    case carrotJuice          = "Fresh carrot juice"
     case cranberryJuice       = "Cranberry juice"
     case donsMix              = "Don's mix"
     case grapefruit           = "Fresh grapefruit juice"
@@ -88,7 +88,7 @@ enum Syrup: String, IngredientTagsProtocol {
     case orgeat                  = "Orgeat"
     case passionfruitSyrup       = "Passionfruit syrup"
     case pineappleGumSyrup       = "Pineapple gomme syrup"
-    case richCinnamonAndVanill   = "Cinnamon & vanilla syrup"
+    case richCinnamonAndVanilla   = "Cinnamon & vanilla syrup"
     case richDem                 = "Rich Demerara syrup"
     case richSimple              = "Rich simple syrup"
     case raspberrySyrup          = "Raspberry syrup"
@@ -153,7 +153,7 @@ enum Syrup: String, IngredientTagsProtocol {
             Tags(flavors: [.coconut], profiles: [.tropical], nA: [NAIngredients(.syrups(self))])
         case .pineappleGumSyrup:
             Tags(flavors: [.pineapple], nA: [NAIngredients(.syrups(self))])
-        case .richCinnamonAndVanill:
+        case .richCinnamonAndVanilla:
             Tags(flavors: [.vanilla, .cinnamon], nA: [NAIngredients(.syrups(self))])
         case .clementineShrub:
             Tags(flavors: [.orange, .clementine], nA: [NAIngredients(.syrups(self))])
@@ -206,7 +206,7 @@ enum Fruit: String, IngredientTagsProtocol {
     case blackBerry           = "Blackberries"
     case cucumberSlices       = "Cucumber slices"
     case grapefruitPeel       = "Grapefruit peel(s)"
-    case guavaPure            = "Guava puree"
+    case guavaPure            = "Guava purée"
     case lemonRibbon          = "Long lemon ribbon"
     case lemons               = "Lemons"
     case lemonWedges          = "Lemon wedges"
@@ -318,8 +318,8 @@ enum Soda: String, IngredientTagsProtocol {
 }
 
 enum OtherNA: String, IngredientTagsProtocol {
-    case bloodyMarryMixWnG    = "W&G bloody marry mix"
-    case bloodyMarryMix       = "Bloody marry mix"
+    case bloodyMaryMixWnG     = "W&G Bloody Mary mix"
+    case bloodyMaryMix        = "Bloody Mary mix"
     case butter               = "Butter"
     case celeryStrip          = "Celery strip"
     case cholula              = "Cholula hot sauce"
@@ -332,7 +332,7 @@ enum OtherNA: String, IngredientTagsProtocol {
     case hotWater             = "Hot water"
     case coldBrew             = "Strong cold brew"
     case cream                = "Heavy cream"
-    case demeraraSugarCube    = "Demerara sugar sube"
+    case demeraraSugarCube    = "Demerara sugar cube"
     case dryVanilla           = "Dry vanilla soda"
     case espressoShot         = "Espresso shot"
     case stiffCream           = "Floated lightly whipped cream"
@@ -343,7 +343,7 @@ enum OtherNA: String, IngredientTagsProtocol {
     case jalapenoSlice        = "Jalapeño slice"
     case angosturaCream       = "Floated Angostura cream"
     case mapleSugar           = "Maple sugar"
-    case nutmegGrated         = "Grated sutmeg"
+    case nutmegGrated         = "Grated nutmeg"
     case orangeConcentrate    = "Orange concentrate"
     case orangeFlowerWater    = "Orange flower water"
     case powderedSugar        = "Powdered sugar"
@@ -355,7 +355,7 @@ enum OtherNA: String, IngredientTagsProtocol {
     case tobasco              = "Tobasco"
     case tomatoJuice          = "Tomato juice"
     case vanillaExtract       = "Vanilla extract"
-    case whitePeachPure       = "White peach puree"
+    case whitePeachPure       = "White peach purée"
     case worcestershire       = "Worcestershire"
     
     var nAComponent: CocktailComponent {
@@ -374,9 +374,9 @@ enum OtherNA: String, IngredientTagsProtocol {
             Tags(nA: [NAIngredients(.otherNonAlc(self))])
         case .orangeFlowerWater:
             Tags(flavors: [.whiteFlower], profiles: [.floral], nA: [NAIngredients(.otherNonAlc(self))])
-        case .bloodyMarryMixWnG:
+        case .bloodyMaryMixWnG:
             Tags(flavors: [.tomato], profiles: [.vegetal], nA: [NAIngredients(.otherNonAlc(self))])
-        case .bloodyMarryMix:
+        case .bloodyMaryMix:
             Tags(flavors: [.tomato], profiles: [.vegetal], nA: [NAIngredients(.otherNonAlc(self))])
         case .tomatoJuice:
             Tags(flavors: [.tomato], profiles: [.vegetal], nA: [NAIngredients(.otherNonAlc(self))])

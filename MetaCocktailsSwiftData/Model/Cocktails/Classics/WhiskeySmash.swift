@@ -26,7 +26,3 @@ let whiskeySmashSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.juices(.
 let whiskeySmashTags = Tags(profiles: [.light, .herbal, .refreshing, .restorative],
                             styles: [.sour, .shaken])
 
-let whiskeySmashBuild =  Build(instructions: [Instruction(step: 0, method: "For a classic recipe, substitute a few lemon wedges in place of squeezed lemon juice. Then muddle them with the mint before adding the other ingredients."),
-                                              Instruction(step: 1, method: "In a tin, gently muddle the mint if you don't have sizable ice cubes to do the muddling for you while shaking."),
-                                              Instruction(step: 2, method: "Double strain over crushed ice."),
-                                              Instruction(step: 3, method: "Garnish with mint sprig.")])

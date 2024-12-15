@@ -24,14 +24,11 @@ let smokingMonkeySpec: [OldCocktailIngredient] = [OldCocktailIngredient(.syrups(
                                                   OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 0.75),
                                                   OldCocktailIngredient(.liqueurs(.velvetFalernum), value: 0.25),
                                                   OldCocktailIngredient(.liqueurs(.strega), value: 0.5),
-                                                  OldCocktailIngredient(.whiskies(.Ardbeg), value: 0.5),
+                                                  OldCocktailIngredient(.whiskies(.ardbeg), value: 0.5),
                                                   OldCocktailIngredient(.gins(.monkey47), value: 1)]
 
 
 let smokingMonkeyTags = Tags(profiles: [.herbal, .refreshing, .complex, .silky],
                              styles: [.sour, .shaken])
 
-let smokingMonkeyBuild =  Build(instructions: [Instruction(step: 1, method: "Add all ingredients except the biters and dry shake."),
-                                               Instruction(step: 2, method: "Shake with ice."),
-                                               Instruction(step: 3, method: "Double strain the shaken cocktail into a stemmed glassware."),
-                                               Instruction(step: 4, method: "Decorate with a design of Angostura and Peychaud's bitters.")])
+

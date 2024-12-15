@@ -32,6 +32,4 @@ let longWayDownTags = Tags(flavors: [.mint],
                            styles: [.sour, .shaken, .tiki])
 
 
-let longWayDownBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except the bitters, into a tin and shake with ice."),
-                                            Instruction(step: 2, method: "Strain into a collins glass and then fill the glass with pebble ice."),
-                                            Instruction(step: 3, method: "Add a mint sprig for garnish and float the bitters on top of the ice.")])
+

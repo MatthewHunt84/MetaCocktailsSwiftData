@@ -29,6 +29,4 @@ var streetAndFlynnSpecialSpec     =  [OldCocktailIngredient(.soda(.sodaWater), v
 var streetAndFlynnSpecialTags     = Tags(profiles: [.savory, .refreshing, .complex],
                                          styles: [.fizz, .shaken])
 
-var streetAndFlynnSpecialBuild = Build(instructions: [Instruction(step: 1, method: "Combine the rum, dram, ginger syrup, and lime juice in a cocktail shaker and shake vigorously until the drink is sufficiently chilled."),
-                                                      Instruction(step: 2, method: "Strain into a Collins glass filled with 3 medium ice cubes and top off with club soda."),
-                                                      Instruction(step: 3, method: "Serve with a straw.")])
+

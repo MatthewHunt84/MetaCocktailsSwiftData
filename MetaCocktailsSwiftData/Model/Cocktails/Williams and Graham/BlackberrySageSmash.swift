@@ -29,8 +29,5 @@ let blackberrySageSmashTags = Tags(flavors: [.lemon],
                                    profiles: [.fruity, .light, .herbal, .refreshing],
                                    styles: [.sour, .shaken])
 
-let blackberrySageSmashBuild =  Build(instructions: [Instruction(step: 1, method: "In a tin, muddle 4 blackberries and a small pinch of sage."),
-                                                     Instruction(step: 2, method: "Add your ingredients and shake with ice."),
-                                                     Instruction(step: 3, method: "Double strain over crushed ice."),
-                                                     Instruction(step: 4, method: "Garnish with blackberry and sage.")])
+
 

@@ -24,6 +24,4 @@ var springForwardSpec     =  [OldCocktailIngredient(.fortifiedWines(.dolinDry), 
 var springForwardTags     = Tags(profiles: [.spiritForward, .dry, .vegetal],
                                  styles: [.martini, .stirred])
 
-var springForwardBuild  = Build(instructions: [Instruction(step: 1, method: "Combine all the ingredients into a mixing glass and gently muddle the spring onion. Over-muddling will result in a bitter flavor."),
-                                               Instruction(step: 2, method: "Add ice and stir."),
-                                               Instruction(step: 3, method: "Strain into a chilled coupe and garnish with a spring onion.")])
+

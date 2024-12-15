@@ -13,7 +13,8 @@ struct MetaCocktailsSwiftDataApp: App {
     let container: ModelContainer
     
     init() {
-        self.container = CocktailContainer.makeSwiftDataStore()
+//        self.container = CocktailContainer.makeSwiftDataStore()
+        self.container = CocktailContainer.testSwiftDataStoreChanges()
     }
     
     var body: some Scene {

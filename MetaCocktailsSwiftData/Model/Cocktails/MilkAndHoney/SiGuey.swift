@@ -24,6 +24,4 @@ var siGueySpec     =  [OldCocktailIngredient(.bitters(.orangeBitters), value: 3,
 var siGueyTags     = Tags(profiles: [.spiritForward, .bittersweet, .fruity, .smokey, .complex],
                           styles: [.oldFashioned, .stirred])
 
-var siGueyBuild = Build(instructions: [Instruction(step: 1, method: "Build the drink over a large cube in a double Old Fashioned glass, starting with the bitters and ending with tequila."),
-                                       Instruction(step: 2, method: "Stir."),
-                                       Instruction(step: 3, method: "Float the whisky.")])
+

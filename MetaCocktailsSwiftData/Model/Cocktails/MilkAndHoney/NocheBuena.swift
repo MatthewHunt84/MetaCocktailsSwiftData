@@ -29,7 +29,4 @@ var nocheBuenaTags = Tags(flavors: [.cinnamon],
                           profiles: [.rich, .silky, .fruity, .sweet],
                           styles: [.flip, .shaken])
 
-var nocheBuenaBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients except for the Champagn into a tin a dry shake to emulsify"),
-                                           Instruction(step: 2, method: "Add a few Kold Draft cubes and shake until cold."),
-                                           Instruction(step: 3, method: "Immediately after shaking, pop the tin and double strain into a coupe."),
-                                           Instruction(step: 4, method: "Top with Champagne and grate some cinnamon over the top.")])
+

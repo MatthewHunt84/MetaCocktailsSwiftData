@@ -30,7 +30,7 @@ var laLouisianeNotes  = "The A La Louisiane (sometimes called De La Louisiane) i
 
 let cloverClubNotes = "The original Clover Club was a gentleman's club in Philadelphia from 1882-1920s, where the cocktail originated. Julie Reiner's recipe is a great example of a modern sour which stays true the the original formula, shaken with dry vermouth."
 
-let harveyWalbangerNotes = "This is a built cocktail that gained popularity through a marketing campaign from George Bednar for McKesson Imports (Galliano's importer at the time). Though, the drink itself was likely the creation of bartender Donato 'Duke' Antone, who may have been serving it since the 1950s at the Hollywood bar Black Watch, calling it the 'Duke Screwdriver'. Bednar picked it up in the late 60s and built an advertising campaign around it for McKesson. It goes to show you that even if the cocktail is total trash, as long as its easy to make and there's tons of advertising behind it, it has a chance to make it into the history books and people like us, who dedicate their entire careers to perfecting their craft, end up writing about it."
+let harveyWalbangerNotes = "This is a built cocktail that gained popularity through a marketing campaign from George Bednar for McKesson Imports (Galliano's importer at the time). Though, the drink itself was likely the creation of bartender Donato 'Duke' Antone, who may have been serving it since the 1950s at the Hollywood bar Black Watch, calling it the 'Duke Screwdriver'. Bednar picked it up in the late 60s and built an advertising campaign around it for McKesson. It goes to show you that even if the cocktail is total trash, as long as its easy-to-make and there's tons of advertising behind it, it has a chance to make it into the history books and people like us, who dedicate their entire careers to perfecting their craft, end up writing about it."
 
 let saturnNotes = "California bartender  J. “Popo” Galsini introduced the Saturn to the world in 1967 when he won the International Bartender’s Association World Championship with it. Originally he titled his gin creation the X-15 after an American rocket plane, but shortly after doing so one of those planes crashed, killing its pilot. Reportedly, Galsini renamed the drink as the Saturn for the competition."
 
@@ -69,7 +69,7 @@ let sherryCobblerNotes = "This cocktail is one of those 'too old to tell' cockta
 
 let amarettoSourNotes = "The Amaretto Sour was first introduced to the public in 1974 by the importer of Amaretto di Saronno. The original recipe called for a ratio of 1.5 oz (45 ml) of Amaretto to 3 oz (90 ml) of sour mix, without the inclusion of egg whites or bitters. This formulation tends to produce a notably sweet cocktail. However, we believe the natural sweetness of the liqueur itself is sufficient to balance the drink. Our approach is to use 1 oz of fresh lemon juice to complement the sweetness of Amaretto, especially when incorporating egg whites. For those who prefer to omit the egg whites, we recommend to reduce the lemon juice to 0.75 oz and adjust the sweetness to taste. A good starting point is to add 0.25 oz of simple syrup, increasing or decreasing as needed to achieve the desired balance."
 
-let bizzyIzzyNotes = "This is an interesting cocktail that seems to have a ton of variation. The book with the original print calls for a pineapple syrup but the modern variation adds up to an ounce of pineapple juice."
+let bizzyIzzyNotes = "This is an interesting cocktail that seems to have a number of variations. The book with the original print calls for a pineapple syrup but the modern variation adds up to an ounce of pineapple juice."
 
 let bloodyMaryNotes = "The origins of this cocktail are shrouded in mystery, with several unverified stories claiming its creation. We present here a simple, classic version of the recipe. Feel free to embellish or modify it to suit your own tastes."
 
@@ -79,7 +79,11 @@ let margNotes = "The term 'Margarita' translates to 'daisy' in Spanish. In cockt
 
 let mintJulepNotes = "This is one of the oldest cocktails to exist. This is a style of cocktail that came from a long rich history of the 'Julep' dating back to the early 1700s. This whiskey version didn't come to prominence until the mid 1800s. The Kentucky Derby didn't claim it until the 1930's. That being said, this cocktail is almost impossible to credit one person or place for its invention. The version we're presenting here is a more modernized take. So, feel free to modify the sugar content to your liking."
 
-let mojitoNotes = "This is a more modern version of the mojito that you'll find in cocktail bars all across America. Original recipes seem to all leave the mint in the glass and treat it more as a built cocktail. The cocktail definitely stems from Cubs in the 1800s, and was popularized at bars like La Floridita. Though, like many cocktails from this era, there isn't simply one name to attach to its creation."
+let mojitoNotes = "This is a more modern version of the mojito that you'll find in cocktail bars all across America. Original recipes seem to all leave the mint in the glass and treat it more as a built cocktail. The cocktail definitely stems from Cuba in the 1800s, and was popularized at bars like La Floridita. Though, like many cocktails from this era, there isn't simply one name to attach to its creation."
+
+var daiquiriNotes = "This is the king of the Cuban cocktails. While the preferred balance of citrus and and sweet varies between bartenders, a high quality white rum is essential. We recommend Planteray 3 star or Banks 5 Island."
+
+var darkAndStormyNotes = " \"The drink might have been invented by British sailors on shore leave in Bermuda after World War I. Though, in 1991, the Gosling family, which founded Gosling's in Bermuda in 1806, claimed a trademark for the recipe...\" -David Wondrich, The Oxford Companion to Spirits and Cocktails"
 
 let pinaColadaNotes = "The widely recognized version of the Piña Colada today is a blended frozen cocktail that originated with the creation of Coco Lopez in Puerto Rico. It is regarded as their signature drink. The term 'Piña Colada' translates to 'strained pineapple.' According to Dave Wondrich, prior to Coco Lopez, the Piña Colada was a Cuban non-alcoholic refreshment. It's likely that Cubans also mixed rum into it, representing one of those seemingly inevitable combinations that obscure its true origin. To prepare this version, you'll need approximately 250ml of crushed ice to blend with the other ingredients."
 
@@ -90,6 +94,10 @@ let sazeracNotes = "This is a modernization of the original cocktail, which had 
 let ward8Notes = "There's a lot of speculation as to where this cocktail comes from. Here, we're using the oldest version that we could find that seems to be in line with how modern bartenders are presenting it."
 
 let whiskeySourNotes = "The term 'Whiskey Sour' first appeared in print as early as 1826. Like the Old Fashioned, this classic cocktail has been a longstanding fixture in the world of mixology. Its origins are disputed, with numerous individuals claiming to have invented it over the years. While egg whites have always been an optional ingredient in the Whiskey Sour, their inclusion is recommended."
+
+var martiniNotes = "The Martini - which predates the Manhattan - has evolved significantly over time. The original recipe featured more vermouth than gin, later shifting to equal parts, then progressively less vermouth. By the 1910s, vodka began replacing gin in some versions. By the 1950s, without the botanical profile of gin to accompany it, vermouth lost popularity with olive brine often taking its place. While this is an excellent recipe for a classic Martini, the most important recipe for a Martini is the one the drinker asks you for."
+
+let prizeFighterNotes = "Simply named 'Prizefighter' when it debuted on the menu at Julie Reiner's Clover Club in Manhattan, the 'Prizefighter No. 1' designation was appended only after subsequent iterations of the drink found their way onto the menu."
 
 // Historical info presented as a quote
 

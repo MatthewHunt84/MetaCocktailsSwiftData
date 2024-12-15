@@ -23,9 +23,7 @@ var tomCollinsWnGSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
                           OldCocktailIngredient(.gins(.fordsGin), value: 2),
                           OldCocktailIngredient(.soda(.sodaWater) , value: 2)]
 
-var tomCollinsWnGBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the soda, into a tin and shake with ice"),
-                                               Instruction(step: 2, method: "strain over cracked ice and top with soda"),
-                                               Instruction(step: 3, method: "Give a gentle stir")])
+
 
 var tomCollinsWnGTags   = Tags(flavors: [.lemon],
                                profiles: [.citrusy, .floral, .effervescent, .light],

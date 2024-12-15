@@ -26,4 +26,4 @@ var gimletMcElhoneSpec  = [OldCocktailIngredient(.syrups(.limeCordial), value: 1
 var gimletMcElhoneTags = Tags(profiles: [.citrusy, .refreshing, .light],
                               styles: [.sour, .shaken, .stirred])
 
-var gimletMcElhoneBuild = Build(instructions: [Instruction(step: 1, method: "Stir, and serve in same glass. Can be iced if desired. A very popular beverage of the Navy. -Harry McElhone")])
+

@@ -26,7 +26,4 @@ let shokuninTags = Tags(flavors: [.orange],
                         profiles: [.light, .complex, .bittersweet],
                         styles: [.stirred, .negroni])
 
-let shokuninBuild = Build(instructions: [Instruction(step: 1, method: "Stir the sake, vermouth and Campari."),
-                                         Instruction(step: 2, method: "Flame the orange into the chilled glass then add the stirred cocktail."),
-                                         Instruction(step: 2, method: "Add pebble Ice."),
-                                         Instruction(step: 2, method: "Drop chili oil over the ice and serve. No straw.")])
+
