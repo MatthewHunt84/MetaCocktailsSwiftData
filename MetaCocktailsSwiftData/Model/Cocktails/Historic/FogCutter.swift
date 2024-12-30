@@ -38,6 +38,4 @@ let fogCutterTags = Tags(flavors: [.mint],
                          styles: [.sour, .tiki, .shaken])
 
 
-var fogCutterBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the sherry, into a tin and shake with ice."),
-                                          Instruction(step: 2, method: "Strain into a tiki mug and add pebble ice."),
-                                          Instruction(step: 3, method: "Garnish with a mint bouquet and then float the sherry on top.")])
+

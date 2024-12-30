@@ -28,6 +28,4 @@ var stagPartyTags = Tags(flavors: [.orange],
                          profiles: [.rich, .bittersweet, .punchy, .spiritForward],
                          styles: [.negroni, .stirred])
 
-var stagPartyBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, besides the cream, to a mixing glass and stir."),
-                                          Instruction(step: 2, method: "Strain into a frozen single old fashioned glass."),
-                                          Instruction(step: 3, method: "Float the stiff cream on top and garnish with an orange peel.")])
+

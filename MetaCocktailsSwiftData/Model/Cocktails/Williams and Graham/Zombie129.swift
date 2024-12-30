@@ -33,6 +33,4 @@ let zombie129Spec  = [OldCocktailIngredient(.otherNonAlc(.eggWhites), value: 0.7
 let zombie129Tags = Tags(profiles: [.complex, .fruity, .punchy],
                          styles: [.sour, .shaken, .tiki])
 
-let zombie129Build = Build(instructions: [Instruction(step: 1, method: "Put all ingredients, except for the bitters and absinthe, in a tin and shake with ice."),
-                                          Instruction(step: 2, method: "Strain into a tiki mug that's been rinsed with absinthe and add pebble ice."),
-                                          Instruction(step: 3, method: "Garnish with pineapple fronds and finish with a spray of Angostura bitters on top of the cocktail.")])
+

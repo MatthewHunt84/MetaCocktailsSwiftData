@@ -27,6 +27,4 @@ let irishGoodbyeTags = Tags(profiles: [.rich],
                             styles: [.martini, .stirred])
 
 
-let irishGoodbyeBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the absinthe, into a mixing glass with ice and stir."),
-                                             Instruction(step: 2, method: "Prepare a double old fashioned glass by rinsing it with absinthe. We use about 5 sprays but you can swirl a 1/4 oz. of absinthe in the glass if you don't have an atomizer."),
-                                             Instruction(step: 3, method: "Add a large rock and strain the cocktail into the prepared glass.")])
+

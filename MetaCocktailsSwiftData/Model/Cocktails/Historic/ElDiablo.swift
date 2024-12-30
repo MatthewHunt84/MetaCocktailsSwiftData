@@ -13,7 +13,7 @@ var elDiablo  = Cocktail(cocktailName: "El Diablo" + historicTag,
                          ice: .pebbleIce,
                          author: Author(person: AuthorNames.traderVic.rawValue, place: "Bartender's Guide", year: "New York: Garden City, 1947"),
                          spec: elDiabloSpec,
-                         buildOrder: elDiabloBuildOrder,
+                         buildOrder: elDiabloBuild,
                          notes: elDiabloNotes,
                          tags: elDiabloTags,
                          variation: .elDiablo,
@@ -30,5 +30,4 @@ var elDiabloSpec  = [OldCocktailIngredient(.soda(.gingerAle), value: 3),
 var elDiabloTags   = Tags(profiles: [.refreshing, .punchy, .effervescent],
                           styles: [.fizz, .built])
 
-var elDiabloBuildOrder = Build(instructions: [Instruction(step: 1, method: "Shake everything but the ginger ale with ice."),
-                                              Instruction(step: 1, method: "Strain into a collins glass full of ice and top the ginger ale.")])
+

@@ -30,7 +30,4 @@ var holeInTheCupSpec     =  [OldCocktailIngredient(.fruit(.cucumberSlices), valu
 var holeInTheCupTags     = Tags(profiles: [.savory, .refreshing, .citrusy, .complex, .spicy, .restorative],
                                 styles: [.sour, .shaken])
 
-var holeInTheCupBuild = Build(instructions: [Instruction(step: 1, method: "Add all of the ingredients into cocktail shaker."),
-                                             Instruction(step: 2, method: "Add 12 large pieces of solid ice and shake vigorously until the drink is sufficiently chilled."),
-                                             Instruction(step: 3, method: "Strain into a frosted coupe, pouring from high enough to create a nice, fluffy head."),
-                                             Instruction(step: 4, method: "Garnish with a cucumber slice. - Regarding Cocktails, Sasha Petraske")])
+

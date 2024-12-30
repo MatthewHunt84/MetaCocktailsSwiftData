@@ -23,9 +23,7 @@ let sherryCobblerWnGSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.frui
                                                   OldCocktailIngredient(.fortifiedWines(.lustauAmontillado), value: 2.5),
                                                   OldCocktailIngredient(.fortifiedWines(.lustauPX), value: 0.5)]
 
-let sherryCobblerWnGBuild = Build(instructions: [Instruction(step: 1, method: "Muddle 4-6 seasonal berries and 2 orange moons."),
-                                                 Instruction(step: 2, method: "Add the rest of your ingredients and shake."),
-                                                 Instruction(step: 3, method: "Double strain over pebble ice and then garnish.")])
+
 
 let sherryCobblerWnGTags = Tags(flavors: [.mint, .blackberry, .raspberry, .strawberry],
                                 profiles: [.refreshing, .fruity, .dry, .restorative],

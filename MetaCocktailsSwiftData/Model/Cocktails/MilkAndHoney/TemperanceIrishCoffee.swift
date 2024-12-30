@@ -27,5 +27,4 @@ var temperanceIrishCoffeeTags = Tags(flavors: [.coffee, .nutmeg, .cinnamon],
                                      profiles: [.hot],
                                      styles: [.toddy, .nonAlcoholic])
 
-var temperanceIrishBuild = Build(instructions: [Instruction(step: 1, method: "Heat up your mug with hot water."),
-                                                Instruction(step: 2, method: "Dump the water then add all the ingredients, leaving the cream to float on top.")])
+

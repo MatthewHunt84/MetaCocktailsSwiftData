@@ -29,5 +29,4 @@ var harveyWallbangerSpec     =  [OldCocktailIngredient(.liqueurs(.galliano), val
 var harveyWallbangerTags     = Tags(profiles: [.fruity, .sweet],
                                    styles: [.sour, .built])
 
-var harveyWallbangerBuild = Build(instructions: [Instruction(step: 1, method: "Build in glass."),
-                                                 Instruction(step: 2, method: "Float the Galliano")])
+

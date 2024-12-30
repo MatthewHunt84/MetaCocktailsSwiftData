@@ -26,8 +26,3 @@ var espressoMartiniSpecWnG  = [OldCocktailIngredient(.syrups(.demSyrupOneToOne),
 var espressoMartiniTagsWnG = Tags(profiles: [.creamy, .light],
                                   styles: [.shaken])
 
-var espressoMartiniBuildWnG = Build(instructions: [Instruction(step: 1, method: "Add everything but the cream to a tin with ice and shake."),
-                                                   Instruction(step: 2, method: "Strain into a chilled cocktail glass."),
-                                                   Instruction(step: 3, method: "Float the Angostura cream and make a pretty design."),
-                                                   Instruction(step: 4, method: "Garnish with 3 espresso beans.")])
-

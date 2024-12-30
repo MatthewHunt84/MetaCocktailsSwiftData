@@ -26,6 +26,4 @@ var savoirFaireTags     = Tags(flavors: [.lemon],
                                profiles: [.spiritForward, .bittersweet, .fruity],
                                styles: [.manhattan, .stirred])
 
-var savoirFaireBuild  = Build(instructions: [Instruction(step: 1, method: "Combine everything but the orange blossom water into a mixing glass and stir with ice."),
-                                             Instruction(step: 2, method: "Prep a chilled coupe by spraying the orange blossom water into the glass before adding the stirred cocktail."),
-                                             Instruction(step: 3, method: "Twist the lemon peel over the cocktail and add the twist in.")])
+

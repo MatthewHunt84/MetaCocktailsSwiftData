@@ -32,8 +32,3 @@ let sunnySideSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.otherAlcoho
 let sunnySideTags = Tags(profiles: [.herbal, .refreshing, .light, .restorative],
                          styles: [.sour, .shaken])
 
-let sunnySideBuild =  Build(instructions: [Instruction(step: 1, method: "Use Kold draft or Hoshizake cubes and the mint will the muddled while you're shaking."),
-                                           Instruction(step: 2, method: "Prepare your glass with the absinthe rinse. 2 sprays with an atomizer works best here."),
-                                           Instruction(step: 2, method: "Double strain the shaken cocktail over a big rock."),
-                                           Instruction(step: 3, method: "Garnish with a mint bouquet tucked in between the rock and the wall of the glass.")])
-

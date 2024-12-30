@@ -24,9 +24,7 @@ let sherryCobblerSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.fruit(.
                                                   OldCocktailIngredient(.syrups(.richSimple), value: 0.5, prep: PrepBible.richSimple),
                                                   OldCocktailIngredient(.fortifiedWines(.lustauAmontillado), value: 3)]
 
-let sherryCobblerBuild = Build(instructions: [Instruction(step: 1, method: "Muddle 2 orange moons and then add your lemon peel."),
-                                              Instruction(step: 2, method: "Add the rest of your ingredients and shake with cubed ice."),
-                                              Instruction(step: 3, method: "Double strain over pebble ice and then garnish.")])
+
 
 let sherryCobblerTags = Tags(flavors: [.mint],
                              profiles: [.refreshing, .fruity, .restorative],

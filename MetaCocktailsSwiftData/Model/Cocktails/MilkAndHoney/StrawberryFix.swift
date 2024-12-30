@@ -29,8 +29,4 @@ var strawberryFixSpec = [OldCocktailIngredient(.fruit(.strawberryHalf), value: 4
 var strawberryFixTags = Tags(profiles: [.fruity, .refreshing, .citrusy, .light],
                              styles: [.shaken, .sour])
 
-var strawberryFixBuild = Build(instructions: [Instruction(step: 1, method: "Taste a piece of quartered strawberry for sweetness and tartness."),
-                                              Instruction(step: 2, method: "Add the quartered strawberries to a chilled double rocks glass and muddle very gently to create a layer of strawberry 'jam' on the bottom of the glass."),
-                                              Instruction(step: 3, method: "Fill the glass to the top with crushed ice; set aside.  "),
-                                              Instruction(step: 4, method: "Combine the lemon juice, simple syrup, and bourbon in a cocktail shaker and shake to mix. "),
-                                              Instruction(step: 4, method: "Pour over the crushed ice in the rocks glass, garnish with the whole strawberry, and serve with a straw.")])
+

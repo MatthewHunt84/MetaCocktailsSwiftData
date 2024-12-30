@@ -31,8 +31,3 @@ let brambleTags = Tags(flavors: [.lemon],
                        profiles: [.fruity, .floral, .citrusy],
                        styles: [.built])
 
-let brambleBuild =  Build(instructions: [Instruction(step: 1, method: "Build in glass."),
-                                         Instruction(step: 2, method: "Add crushed ice to a double old fashioned glass and add the ingredients to that."),
-                                         Instruction(step: 3, method: "Then, drizzle the creme de mûre over the top."),
-                                         Instruction(step: 4, method: "Garnish with blackberry and lemon wheel.")])
-

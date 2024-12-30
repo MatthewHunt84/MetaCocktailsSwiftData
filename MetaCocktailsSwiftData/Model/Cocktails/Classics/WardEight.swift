@@ -31,5 +31,4 @@ var wardEightSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.67),
 var wardEightTags = Tags(profiles: [.citrusy, .light, .fruity, .tart],
                          styles: [.sour, .shaken])
 
-var wardEightBuild = Build(instructions: [Instruction(step: 1, method: "It says the orange juice or orange Curaçao is optional. But this seems to be a common modern through line. So, we added it to the spec."),
-                                          Instruction(step: 2, method: "However you make it, add the sparkling water last after you've shaken and strained the cocktail.")])
+

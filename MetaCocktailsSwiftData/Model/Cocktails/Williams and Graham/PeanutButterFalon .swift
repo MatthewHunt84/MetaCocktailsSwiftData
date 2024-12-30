@@ -29,6 +29,4 @@ var peanutButterFalconTags = Tags(flavors: [.nutmeg],
                                   profiles: [.rich, .silky, .savory, .bittersweet],
                                   styles: [.flip, .shaken])
 
-var peanutButterFalconBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients except the bitters into a tin shake with ice"),
-                                                   Instruction(step: 2, method: "Strain into a stemmed glass."),
-                                                   Instruction(step: 3, method: "Dash the bitters over the top of the glass so that it makes an X. The black walnut bitters will float to make the design.")])
+

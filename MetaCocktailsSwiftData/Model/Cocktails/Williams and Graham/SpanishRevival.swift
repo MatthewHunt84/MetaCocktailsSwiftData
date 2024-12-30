@@ -27,6 +27,4 @@ var spanishRevivalSpec  = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
 var spanishRevivalTags = Tags(profiles: [.light, .fruity, .refreshing],
                               styles: [.sour, .shaken])
 
-var spanishRevivalBuild  = Build(instructions: [Instruction(step: 1, method: "Combine all ingredients, except for the absinthe, into a tin with ice and shake."),
-                                                Instruction(step: 2, method: "Rinse your stemmed glassware with the absinthe."),
-                                                Instruction(step: 3, method: "Strain the cocktail into the prepared glass and garnish with a grapefruit peel.")])
+
