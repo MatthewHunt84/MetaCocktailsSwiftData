@@ -101,5 +101,5 @@ let prizeFighterNotes = "Simply named 'Prizefighter' when it debuted on the menu
 
 let gibsonNotes = "\"The name of the cocktail came from illustrator Charles Dana Gibson, the creator of the Gibson Girl drawings, or Walder D.K. Gibson. Both were members of the club.\"\n - Dave Wondrich, The Oxford Companion to Spirits and Cocktails"
 
-let peguClubSavoyNotes = "The favorite cocktail at the Pegu Club, Burma, the one that has travelled, and is asked for, around the world.\"\n -Harry Craddock"
+let peguClubSavoyNotes = "The favorite cocktail at the Pegu Club, Burma. The one that has travelled, and is asked for, around the world.\" -Harry Craddock"
 

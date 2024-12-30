@@ -15,7 +15,7 @@ let brambleBuild =  Build(instructions: [Instruction(step: 1, method: "Build in 
                                          Instruction(step: 4, method: "Garnish with blackberry and lemon wheel.")])
 
 let elDiabloBuild = Build(instructions: [Instruction(step: 1, method: "Shake everything but the ginger ale with ice."),
-                                              Instruction(step: 2, method: "Strain into a collins glass full of ice and top the ginger ale.")])
+                                         Instruction(step: 2, method: "Strain into a collins glass full of ice and top the ginger ale.")])
 
 let fogCutterBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the sherry, into a tin and shake with ice."),
                                           Instruction(step: 2, method: "Strain into a tiki mug and add pebble ice."),
@@ -103,8 +103,8 @@ let fakerFaceBuild = Build(instructions: [Instruction(step: 1, method: "Add all 
                                           Instruction(step: 2, method: "Strain into a chilled coupe and top with soda.")])
 
 let french75MnHBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the Champagne, into a tin and shake with ice"),
-                                            Instruction(step: 2, method: "Strain over into a Champagne flute and top with Champagne"),
-                                            Instruction(step: 3, method: "Give a gentle stir")])
+                                             Instruction(step: 2, method: "Strain over into a Champagne flute and top with Champagne"),
+                                             Instruction(step: 3, method: "Give a gentle stir")])
 
 let gabriellaBuild = Build(instructions: [Instruction(step: 1, method: "Hull one half of the strawberry. Combine it with the lemon juice in a cocktail shaker and muddle gently."),
                                           Instruction(step: 2, method: "Add the simple syrup, pisco, and one large ice cube and shake vigorously until the drink is sufficiently chilled."),
@@ -156,8 +156,8 @@ let kTCollinsBuild  = Build(instructions: [Instruction(step: 1, method: "Muddle 
                                            Instruction(step: 3, method: "Strain into a Collins glass filled with ice. Top off with club soda.")])
 
 let maloneyParkBuild = Build(instructions: [Instruction(step: 1, method: "Combine the mint leaves, lime juice, and simple syrup in a cocktail shaker and gently muddle."),
-                                           Instruction(step: 2, method: "Add the rum, then transfer to a chilled Collins glass, making sure that the mint is firmly settled at the bottom of the glass."),
-                                           Instruction(step: 3, method: "Add crushed ice to come three-quarters of the way up the sides of the glass and lightly swizzle."),
+                                            Instruction(step: 2, method: "Add the rum, then transfer to a chilled Collins glass, making sure that the mint is firmly settled at the bottom of the glass."),
+                                            Instruction(step: 3, method: "Add crushed ice to come three-quarters of the way up the sides of the glass and lightly swizzle."),
                                             Instruction(step: 4, method: "Float the bitters and lightly swizzle again to get a tricolor effect."),
                                             Instruction(step: 5, method: "Top off with more crushed ice and garnish with a bouquet of mint sprigs.")])
 
@@ -232,8 +232,8 @@ let streetAndFlynnSpecialBuild = Build(instructions: [Instruction(step: 1, metho
                                                       Instruction(step: 3, method: "Serve with a straw.")])
 
 let tarzanCocktailBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the soda, into a tin and shake with ice"),
-                                              Instruction(step: 2, method: "Strain into a collins glass over ice and top with soda"),
-                                              Instruction(step: 3, method: "Give a gentle stir")])
+                                                Instruction(step: 2, method: "Strain into a collins glass over ice and top with soda"),
+                                                Instruction(step: 3, method: "Give a gentle stir")])
 
 let temperanceGrapefruitCollinsBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the soda, into a tin and shake with ice"),
                                                              Instruction(step: 2, method: "Strain over column ice and top with soda"),
@@ -309,8 +309,8 @@ let espressoMartiniBuildWnG = Build(instructions: [Instruction(step: 1, method: 
                                                    Instruction(step: 4, method: "Garnish with 3 espresso beans.")])
 
 let fogCutterWGBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients to a tin, except for the sherry, and shake with ice."),
-                                          Instruction(step: 2, method: "Strain into a collins glass and add pebble ice."),
-                                          Instruction(step: 3, method: "Garnish with a mint bouquet and orange slices and then float the sherry on top.")])
+                                            Instruction(step: 2, method: "Strain into a collins glass and add pebble ice."),
+                                            Instruction(step: 3, method: "Garnish with a mint bouquet and orange slices and then float the sherry on top.")])
 
 let hotToddyWnGBuild = Build(instructions: [Instruction(step: 1, method: "Place all ingredients except the hot water in a small shaker tin."),
                                             Instruction(step: 2, method: "Fill the large shaker tin half full of near boiling water then float the small tin on top, bain-marie style."),
@@ -341,8 +341,8 @@ let NewYorkSourBuildWnG = Build(instructions: [Instruction(step: 1, method: "Mix
                                                Instruction(step: 4, method: "Carefully float the red wine on top of the cocktail so that there's a clear separation between the wine and the rest of the cocktail.")])
 
 let oldCubanWnGBuild =  Build(instructions: [Instruction(step: 1, method: "Shake all of the ingredients, except for the sparkling wine, in a tin. Use Kold draft of Hoshizake cubes and the mint will  muddled while you're shaking."),
-                                        Instruction(step: 2, method: "Double strain the shaken cocktail over the ice then top with Prosecco."),
-                                        Instruction(step: 3, method: "Garnish with a mint sprig. Serve with a straw.")])
+                                             Instruction(step: 2, method: "Double strain the shaken cocktail over the ice then top with Prosecco."),
+                                             Instruction(step: 3, method: "Garnish with a mint sprig. Serve with a straw.")])
 
 
 let oldFashionedWGBuild = Build(instructions: [Instruction(step: 1, method: "Add bitters, a sugar cube, and a splash of soda into a double old fashioned glass and muddle. The soda is just to break down the sugar cube"),
@@ -384,9 +384,9 @@ let tomCollinsWnGBuild  = Build(instructions: [Instruction(step: 1, method: "Add
                                                Instruction(step: 3, method: "Give a gentle stir")])
 
 let whiskeySourBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients except for the bitters into a tin a dry shake to emulsify"),
-                                          Instruction(step: 2, method: "Add a few Kold Draft cubes and shake until cold. Do not over dilute"),
-                                          Instruction(step: 3, method: "Immediately after shaking (with vigor), pop the tin and double strain very carefully into a stemmed glass. Create the least amount of turbulence here so that you create a smooth and even surface for the design with the bitters. The bitters are optional here. But we think it adds a bit off needed complexity to the cocktail."),
-                                          Instruction(step: 4, method: "Wait approximately 30 seconds after straining before proceeding with bitters decoration (this will allow for the egg white to settle).")])
+                                            Instruction(step: 2, method: "Add a few Kold Draft cubes and shake until cold. Do not over dilute"),
+                                            Instruction(step: 3, method: "Immediately after shaking (with vigor), pop the tin and double strain very carefully into a stemmed glass. Create the least amount of turbulence here so that you create a smooth and even surface for the design with the bitters. The bitters are optional here. But we think it adds a bit off needed complexity to the cocktail."),
+                                            Instruction(step: 4, method: "Wait approximately 30 seconds after straining before proceeding with bitters decoration (this will allow for the egg white to settle).")])
 
 let airMailBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the Champagne, into a tin and shake with ice"),
                                          Instruction(step: 2, method: "Add Champagne to the glass first. This seems to be the best way to preserve the carbonation. A common alternative is to add the bubbles to the tin then strain it into the glass. If you do this, make sure you aren't double straining with a tea strainer and immediately killing the carbonation."),
@@ -468,7 +468,7 @@ let mojitoBuild =  Build(instructions: [Instruction(step: 1, method: "Add all of
                                         Instruction(step: 4, method: "Double strain the shaken cocktail over the soda and ice."),
                                         Instruction(step: 5, method: "Garnish with a mint bouquet. Serve with a straw.")])
 
-let morningGloryFizzBuild = Build(instructions: [Instruction(step: 0, method: "\"To be drank immediately, or the effect will be lost. It is a morning beverage, a tonic and a nerve quieter. -O.H. Byron\""),
+let morningGloryFizzBuild = Build(instructions: [Instruction(step: 0, method: "\"To be drank immediately, or the effect will be lost. It is a morning beverage, a tonic and a nerve quieter.\" -O.H. Byron"),
                                                  Instruction(step: 1, method: "'Shake well in shaker and strain; fill balance of glass with seltzer or Vichy water'")])
 
 let NewYorkSourBuild = Build(instructions: [Instruction(step: 1, method: "Mix all ingredients, except the red wine, together in a tin and shake with ice."),
@@ -529,7 +529,7 @@ let whiskeySourOGBuild = Build(instructions: [Instruction(step: 1, method: "Add 
 // MARK:  MiscModernCocktails
 
 let skyRocketBuild  = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the soda, into a tin and shake with ice"),
-                                            Instruction(step: 2, method: "Add soda and ice into the glass and top with the shaken cocktail.")])
+                                           Instruction(step: 2, method: "Add soda and ice into the glass and top with the shaken cocktail.")])
 
 let caucasianBuild = Build(instructions: [Instruction(step: 1, method: "Add everything but the cream to a frozen fizz glass or small highball and stir."),
                                           Instruction(step: 2, method: "Top with cream.")])
@@ -546,14 +546,19 @@ let oldCubanBuild =  Build(instructions: [Instruction(step: 1, method: "Add all 
                                           Instruction(step: 4, method: "Garnish with a mint sprig.")])
 
 let prizefighterNo1Build =  Build(instructions: [Instruction(step: 1, method: "Muddle the mint and lemon wedges together with the simple, putting the force mostly on the lemon wedges. Try not to muddle the mint too much. If you'd rather just use lemon juice, just use 3/4 of an ounce while still shaking in the fresh mint."),
-                                                  Instruction(step: 2, method: "Add all of the rest of the ingredients and shake."),
-                                                  Instruction(step: 3, method: "Double strain the shaken cocktail into D.O.F. glass and top with crushed or cracked ice."),
-                                                  Instruction(step: 4, method: "Garnish with a mint bouquet.")])
+                                                 Instruction(step: 2, method: "Add all of the rest of the ingredients and shake."),
+                                                 Instruction(step: 3, method: "Double strain the shaken cocktail into D.O.F. glass and top with crushed or cracked ice."),
+                                                 Instruction(step: 4, method: "Garnish with a mint bouquet.")])
 
 let whiteLinenBuild =  Build(instructions: [Instruction(step: 1, method: "Muddle the cucumber into a mixing tin."),
                                             Instruction(step: 2, method: "Add all of the ingredients, leaving the soda for after you're done shaking."),
                                             Instruction(step: 3, method: "Double strain the shaken cocktail into an ice filled collins glass and top with soda."),
                                             Instruction(step: 4, method: "Garnish with cucumber.")])
+
+let starfishAndCoffeeBuild: Build = Build(instructions: [Instruction(step: 1, method: "Place large ice cube into glass"),
+                                                         Instruction(step: 2, method: "Pour 3oz tonic over the ice"),
+                                                         Instruction(step: 3, method: "Shake remaining ingredients vigorously"),
+                                                         Instruction(step: 4, method: "Pour carefully from shaker, layering contents so they float on top of the tonic")])
 
 // MARK: Williams and Graham house cocktails
 
@@ -562,9 +567,9 @@ let americanGothicBuild  = Build(instructions: [Instruction(step: 1, method: "Co
                                                 Instruction(step: 3, method: "Strain the cocktail into the glass over a large rock.")])
 
 let beckyWithTheGoodHairBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients into a tin a dry shake to emulsify"),
-                                          Instruction(step: 2, method: "Add a few Kold Draft cubes and shake until cold."),
-                                          Instruction(step: 3, method: "Immediately after shaking, pop the tin and double strain into a flip glass."),
-                                          Instruction(step: 4, method: "Grate some nutmeg over the top.")])
+                                                     Instruction(step: 2, method: "Add a few Kold Draft cubes and shake until cold."),
+                                                     Instruction(step: 3, method: "Immediately after shaking, pop the tin and double strain into a flip glass."),
+                                                     Instruction(step: 4, method: "Grate some nutmeg over the top.")])
 
 let blackberrySageSmashBuild =  Build(instructions: [Instruction(step: 1, method: "In a tin, muddle 4 blackberries and a small pinch of sage."),
                                                      Instruction(step: 2, method: "Add your ingredients and shake with ice."),
@@ -597,8 +602,8 @@ let featheredHatFlipBuild = Build(instructions: [Instruction(step: 1, method: "A
                                                  Instruction(step: 4, method: "Make a design with angostura on top.")])
 
 let featheredHatFlip2Build = Build(instructions: [Instruction(step: 1, method: "Add all ingredients into a tin a dry shake to emulsify"),
-                                                 Instruction(step: 2, method: "Add a few Kold Draft cubes and shake until cold."),
-                                                 Instruction(step: 3, method: "Immediately after shaking, pop the tin and double strain into a flip glass.")])
+                                                  Instruction(step: 2, method: "Add a few Kold Draft cubes and shake until cold."),
+                                                  Instruction(step: 3, method: "Immediately after shaking, pop the tin and double strain into a flip glass.")])
 
 let heartOfGoldBuild  = Build(instructions: [Instruction(step: 1, method: "Combine all ingredients, except for the Ardbeg Scotch, into a mixing glass with ice and stir."),
                                              Instruction(step: 2, method: "Rinse your stemmed glassware with the Ardbeg."),
