@@ -18,10 +18,10 @@ actor CocktailContainer {
         // Once this completes, open the file directory which gets printed in the console, and replace the "PreloadedCocktails.store" file in the Database folder
         // Then comment out these lines again
         
-//        let schema = Schema([Cocktail.self])
-//        let config = ModelConfiguration()
-//        let container = try! ModelContainer(for: schema, configurations: config)
-//        return container
+        let schema = Schema([Cocktail.self])
+        let config = ModelConfiguration()
+        let container = try! ModelContainer(for: schema, configurations: config)
+        return container
         
         do {
             guard let bundleURL = Bundle.main.url(forResource: "PreloadedCocktails", withExtension: "store") else {
