@@ -63,6 +63,7 @@ let tomCollinsNotes = "The Tom Collins started out as the John Collins in the ea
 let vesperNotes = "The cocktail was not Fleming's creation. It was devised by his friend Ivar Bryce as evidenced by the words Fleming inscribed in Bryce's copy of Casino Royale: 'For Ivar, who mixed the first Vesper and said the good word.' Naming a cocktail the Vesper was Fleming's idea though he drew inspiration from someone else's joke. He had encountered the term at evening drinks when a butler announced: 'Vespers are served.' Fleming adapted this pun on the name of the religious observance normally held about sunset, 'Vespers'. And Bond alludes to this by praising his cocktail's name as 'very appropriate to the violet hour when my cocktail will now be drunk all over the world.' Just as the character Vesper Lynd dies in Casino Royale, the cocktail named for her makes no appearance in any of Fleming's later Bond novels. Fleming, in a letter to The Guardian in 1958, said that when he tasted a Vesper for the first time several months after including it in his novel, he found it 'unpalatable'."
 
 let whiskeySmashNotes = "Rather than a single drink, the \"Smash\" was initially a category of cocktails documented by Jerry Thomas' influential 1862 book \"How to Mix Drinks, or The Bon Vivant's Companion\". In its original form, a Smash typically included sugar, spirit, mint, and ice. This modern version builds upon that classic foundation by incorporating whiskey and fresh lemon juice, a modification that gained popularity during the cocktail renaissance of the early 2000s. Renowned bartenders like Dale DeGroff, often credited as a key figure in reviving interest in classic cocktails, played a significant role in popularizing this updated take on the Smash."
+
 let sherryCobblerNotes = "This cocktail is one of those 'too old to tell' cocktails, so it's up to interpretation."
 
 // History info mixed with and recipe info
@@ -98,5 +99,7 @@ let prizeFighterNotes = "Simply named 'Prizefighter' when it debuted on the menu
 
 // Historical info presented as a quote
 
-let gibsonNotes = "The name of the cocktail came from illustrator Charles Dana Gibson, the creator of the Gibson Girl drawings, or Walder D.K. Gibson. Both were members of the club. - Dave Wondrich, The Oxford Companion to Spirits and Cocktails"
+let gibsonNotes = "\"The name of the cocktail came from illustrator Charles Dana Gibson, the creator of the Gibson Girl drawings, or Walder D.K. Gibson. Both were members of the club.\"\n - Dave Wondrich, The Oxford Companion to Spirits and Cocktails"
+
+let peguClubSavoyNotes = "The favorite cocktail at the Pegu Club, Burma, the one that has travelled, and is asked for, around the world.\"\n -Harry Craddock"
 

@@ -15,7 +15,7 @@ var prizefighterNo1 = Cocktail(cocktailName: "Prizefighter",
                                              place: "Clover Club, New York" ,
                                              year: "2011"),
                                spec: prizefighterNo1Spec,
-                               buildOrder: wprizefighterNo1Build,
+                               buildOrder: prizefighterNo1Build,
                                tags: prizefighterNo1Tags)
 
 let prizefighterNo1Spec: [OldCocktailIngredient] = [OldCocktailIngredient(.seasoning(.salt), value: 1, unit: .pinch),
