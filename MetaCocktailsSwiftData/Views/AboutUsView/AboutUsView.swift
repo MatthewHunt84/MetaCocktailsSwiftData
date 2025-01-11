@@ -25,13 +25,12 @@ struct AboutUsView: View {
                     
                     VStack(alignment: .leading) {
                         
-                        
-                        Text("Cocktail Copilot is the result of the collaboration between two friends who have spent the past decade crafting drinks at some of the world's best cocktail bars. When venturing into mobile development, we knew we wanted to create something more than just another recipe collection.")
+                        Text("Cocktail Copilot is what happens when two bartending nerds abandon their social skills completely to become programming nerds. In pursuit of this dream, we've built the companion app that we always wanted behind the bar. This app is more than just another collection of drinks, it's packed with meticulously sourced recipes, advanced search features, as well as other useful tools for the modern bartender.")
                             .font(FontFactory.fontBody14)
                         
                         HStack {
                             
-                            Text("This app represents our transition from building drinks to building software. We've poured our combined expertise into publishing a comprehensive library of meticulously sourced recipes and features for the modern bartender.")
+                            Text("Transitioning from building drinks to building software has been an amazing journey. We're proud to share what we've learned over the past ten years, alongside the kinds of tools that we always wanted. Have ideas for new features? We'd love to hear them!")
                                 .font(FontFactory.fontBody14)
                                 .multilineTextAlignment(.leading)
                             
@@ -52,13 +51,11 @@ struct AboutUsView: View {
                                 
                                 Text("James Menkal")
                                     .font(.custom("AvenirNext-DemiBold", size: 18))
-//                                    .foregroundStyle(Color.brandPrimaryOrange.mix(with: ColorScheme.tintColor, by: 0.5))
                                 
                                 Text("A veteran of the industry with over a decade of craft cocktail expertise, James Menkal is the longest-serving bartender at Denver's award-winning Williams and Graham.")
                                     .font(FontFactory.fontBody14)
                             }
                         }
-//                        .foregroundStyle(Color.primary.mix(with: ColorScheme.tintColor, by: 0.33))
                         .padding(.bottom, 20)
                         
                         
@@ -68,17 +65,14 @@ struct AboutUsView: View {
                                 
                                 Text("Matt Hunt")
                                     .font(.custom("AvenirNext-DemiBold", size: 18))
-//                                    .foregroundStyle(Color.brandPrimaryOrange.mix(with: ColorScheme.tintColor, by: 0.5))
                                 
-                                Text("An international bartender who enjoyed reading about cocktails almost as much as drinking them, Matt now has has several recipes featured in the 'Welcome Home' cocktail book by Death & Co.")
+                                Text("A full-time iOS developer since 2021, Matt previously worked as a bartender at Death & Co Denver before joining James at Williams and Graham. Good times.")
                                     .font(FontFactory.fontBody14)
                             }
                             
                             MattPicture()
                         }
-//                        .foregroundStyle(Color.primary.mix(with: ColorScheme.tintColor, by: 0.33))
                     }
-//                    .foregroundStyle(Color.primary.mix(with: ColorScheme.tintColor, by: 0.33))
                     .aboutHeaderWithNavigation(title: "About Cocktail Copilot", dismiss: dismiss)
                     .navigationBarTitleDisplayMode(.inline)
                     .background(
@@ -157,7 +151,6 @@ struct AboutUsView2: View {
                                         
                                         Circle()
                                             .stroke(Color.primary, lineWidth: 9)
-//                                            .stroke(Color.primary.mix(with: ColorScheme.tintColor, by: 0.33), lineWidth: 9)
                                             .frame(width: 120, height: 120, alignment: .center)
                                     }
                                     .padding(.horizontal, 20)
@@ -180,7 +173,6 @@ struct AboutUsView2: View {
                                             
                                             Circle()
                                                 .stroke(Color.primary, lineWidth: 9)
-//                                                .stroke(Color.primary.mix(with: ColorScheme.tintColor, by: 0.33), lineWidth: 9)
                                                 .frame(width: 120, height: 120, alignment: .center)
                                             
                                             
@@ -231,7 +223,6 @@ struct JamesPicture: View {
                 .stroke(LinearGradient(colors: [Color.brandPrimaryOrange, ColorScheme.tintColor, Color.brandPrimaryOrange],
                                        startPoint: .topLeading,
                                        endPoint: .bottomTrailing), lineWidth: 7.5)
-//                .stroke(Color.primary.mix(with: ColorScheme.tintColor, by: 0.33), lineWidth: 9)
                 .frame(width: 120, height: 120, alignment: .center)
                 .rotationEffect(.degrees(rotationCircle))
                 .animation(Animation.linear(duration: 4).repeatForever(autoreverses: false), value: rotationCircle)
@@ -240,7 +231,6 @@ struct JamesPicture: View {
                         rotationCircle = -360
                     }
                 }
-//                .opacity(0.8)
         }
         
     }
@@ -271,7 +261,6 @@ struct MattPicture: View {
                 .stroke(LinearGradient(colors: [Color.brandPrimaryOrange, ColorScheme.tintColor, Color.brandPrimaryOrange],
                                        startPoint: .topLeading,
                                        endPoint: .bottomTrailing), lineWidth: 7.5)
-//                .stroke(Color.primary.mix(with: ColorScheme.tintColor, by: 0.33), lineWidth: 9)
                 .frame(width: 120, height: 120, alignment: .center)
                 .rotationEffect(.degrees(rotationCircle))
                 .animation(Animation.linear(duration: 4).repeatForever(autoreverses: false), value: rotationCircle)
@@ -280,7 +269,6 @@ struct MattPicture: View {
                         rotationCircle = 360
                     }
                 }
-//                .opacity(0.8)
         }
     }
 }
