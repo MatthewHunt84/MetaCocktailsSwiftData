@@ -19,7 +19,7 @@ import Combine
     var mainListCocktails: [Cocktail] = []
     var searchResultsCocktails: [Cocktail] = []
     
-    var cocktailListAlphabet = ["#","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    var cocktailListAlphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","#"]
     var searchText: String = ""
     private var debouncedSearchText: String = ""
     
