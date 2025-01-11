@@ -133,8 +133,8 @@ import Combine
     private func filterCocktails(searchText: String, filteringCocktails: [Cocktail]) -> [Cocktail] {
         let lowercasedSearchText = searchText.lowercased()
         return filteringCocktails.filter { cocktail in
-            cocktail.cocktailName.localizedCaseInsensitiveContains(lowercasedSearchText) ||
-            (cocktail.variationName?.localizedCaseInsensitiveContains(lowercasedSearchText) ?? false)
+            cocktail.cocktailName.localizedStandardContains(lowercasedSearchText) ||
+            (cocktail.variationName?.localizedStandardContains(lowercasedSearchText) ?? false)
         }
     }
     
