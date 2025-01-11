@@ -95,6 +95,11 @@ struct AddCocktailView: View {
                             if viewModel.isValid() {
                                 viewModel.addCocktailToModel(context: modelContext)
                                 cocktailListViewModel.shouldReloadCache = true
+                                
+                                Task {
+                                    await cocktailListViewModel.fetchCocktails(modelContext: modelContext)
+                                    cocktailListViewModel.updateAndCache()
+                                }
                                 selectedTab.wrappedValue = .favoritesView
                             } else {
                                 if !viewModel.isShowingUniqueNameAlert {

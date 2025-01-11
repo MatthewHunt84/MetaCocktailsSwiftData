@@ -18,7 +18,7 @@ import Combine
     private var allCocktails: [Cocktail] = []
     var filteredCocktails: [Cocktail] = []
     
-    var cocktailListAlphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    var cocktailListAlphabet = ["#","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     var searchText: String = ""
     private var debouncedSearchText: String = ""
     
@@ -36,7 +36,7 @@ import Combine
         }
     }
 
-    private func fetchCocktails(modelContext: ModelContext) async {
+    func fetchCocktails(modelContext: ModelContext) async {
         
         do {
             let fetchedCocktails = try {
@@ -84,11 +84,30 @@ import Combine
         return shouldPopulateCache
     }
     
+    private func shouldShowInSpecialSection(_ string: String) -> Bool {
+        guard let firstChar = string.first else { return false }
+        return !firstChar.isLetter || firstChar.isNumber
+    }
+    
     private func cacheOrganizedCocktails() {
         guard shouldPopulateCache() else { return }
         let allOrganizedCocktails = organizeCocktails(filteredCocktails)
+        
         for letter in cocktailListAlphabet {
-            organizedCocktailsCache[letter] = allOrganizedCocktails.filter { $0.key.hasPrefix(letter) }
+            organizedCocktailsCache[letter] = [:]
+        }
+        
+        for (key, cocktails) in allOrganizedCocktails {
+            if shouldShowInSpecialSection(key) {
+                organizedCocktailsCache["#"]?[key] = cocktails
+            } else {
+                if let firstChar = key.first {
+                    let firstLetter = String(firstChar.uppercased())
+                    if cocktailListAlphabet.contains(firstLetter) {
+                        organizedCocktailsCache[firstLetter]?[key] = cocktails
+                    }
+                }
+            }
         }
     }
     

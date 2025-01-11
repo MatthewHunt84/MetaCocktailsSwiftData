@@ -572,6 +572,7 @@ final class SearchViewModel: ObservableObject {
     func updateSearch(_ searchText: String) {
         searchSubject.send(searchText)
     }
+    
 
     private func performSearch(_ searchText: String) {
         guard !searchText.isEmpty else {
