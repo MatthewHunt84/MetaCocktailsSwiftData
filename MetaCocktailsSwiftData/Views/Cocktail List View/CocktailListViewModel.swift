@@ -16,7 +16,8 @@ import Combine
     var cocktailFetchCompleted = false
     
     private var allCocktails: [Cocktail] = []
-    var filteredCocktails: [Cocktail] = []
+    var mainListCocktails: [Cocktail] = []
+    var searchResultsCocktails: [Cocktail] = []
     
     var cocktailListAlphabet = ["#","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     var searchText: String = ""
@@ -45,7 +46,7 @@ import Combine
             }()
             
             self.allCocktails = fetchedCocktails
-            self.updateFilteredCocktails()
+            self.updateMainListCocktails()
             self.cacheOrganizedCocktails()
             await MainActor.run {
                 withAnimation(.easeOut(duration: 1.5)) {
@@ -76,7 +77,12 @@ import Combine
     
     private func performSearch(_ searchText: String) {
         self.debouncedSearchText = searchText
-        updateFilteredCocktails()
+        if searchText.isEmpty {
+            searchResultsCocktails = []
+        } else {
+            let filtered = filterCocktails(searchText: searchText, filteringCocktails: allCocktails)
+            searchResultsCocktails = sortCocktails(filtered, searchText: searchText)
+        }
     }
     
     private func shouldPopulateCache() -> Bool {
@@ -91,7 +97,7 @@ import Combine
     
     private func cacheOrganizedCocktails() {
         guard shouldPopulateCache() else { return }
-        let allOrganizedCocktails = organizeCocktails(filteredCocktails)
+        let allOrganizedCocktails = organizeCocktails(mainListCocktails)
         
         for letter in cocktailListAlphabet {
             organizedCocktailsCache[letter] = [:]
@@ -116,24 +122,25 @@ import Combine
     }
     
     func updateAndCache() {
-        updateFilteredCocktails()
+        updateMainListCocktails()
         cacheOrganizedCocktails()
     }
     
-    private func updateFilteredCocktails() {
-        let lowercasedSearchText = debouncedSearchText.lowercased()
-        
-        if debouncedSearchText.isEmpty {
-            filteredCocktails = allCocktails
-        } else {
-            filteredCocktails = allCocktails.filter { cocktail in
-                cocktail.cocktailName.localizedCaseInsensitiveContains(lowercasedSearchText) ||
-                (cocktail.variationName?.localizedCaseInsensitiveContains(lowercasedSearchText) ?? false)
-            }
+    private func updateMainListCocktails() {
+        mainListCocktails = allCocktails
+    }
+    
+    private func filterCocktails(searchText: String, filteringCocktails: [Cocktail]) -> [Cocktail] {
+        let lowercasedSearchText = searchText.lowercased()
+        return filteringCocktails.filter { cocktail in
+            cocktail.cocktailName.localizedCaseInsensitiveContains(lowercasedSearchText) ||
+            (cocktail.variationName?.localizedCaseInsensitiveContains(lowercasedSearchText) ?? false)
         }
-        
-        // Sort the filtered cocktails
-        filteredCocktails.sort { (lhs: Cocktail, rhs: Cocktail) in
+    }
+    
+    private func sortCocktails(_ cocktails: [Cocktail], searchText: String) -> [Cocktail] {
+        let lowercasedSearchText = searchText.lowercased()
+        return cocktails.sorted { (lhs: Cocktail, rhs: Cocktail) in
             let lhsLowercased = lhs.cocktailName.lowercased()
             let rhsLowercased = rhs.cocktailName.lowercased()
             
@@ -147,7 +154,8 @@ import Combine
             if lhsStartsWith {
                 return lhs.cocktailName.count < rhs.cocktailName.count
             }
-            return (lhsLowercased.range(of: lowercasedSearchText)?.lowerBound ?? lhsLowercased.endIndex) < (rhsLowercased.range(of: lowercasedSearchText)?.lowerBound ?? rhsLowercased.endIndex)
+            return (lhsLowercased.range(of: lowercasedSearchText)?.lowerBound ?? lhsLowercased.endIndex) <
+                (rhsLowercased.range(of: lowercasedSearchText)?.lowerBound ?? rhsLowercased.endIndex)
         }
     }
     

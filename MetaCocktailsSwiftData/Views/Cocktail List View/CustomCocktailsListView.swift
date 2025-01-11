@@ -93,7 +93,7 @@ fileprivate struct CustomCocktailHeader: View {
 fileprivate struct CustomSingleCocktailListView: View {
     let cocktail: Cocktail
     @Environment(\.modelContext) private var modelContext
-    
+    @EnvironmentObject var cocktailListViewModel: CocktailListViewModel
     var body: some View {
         NavigationLinkWithoutIndicator {
             HStack {
@@ -112,6 +112,11 @@ fileprivate struct CustomSingleCocktailListView: View {
                     try modelContext.save()
                 } catch {
                     print("Error deleting cocktail: \(error)")
+                }
+                cocktailListViewModel.shouldReloadCache = true
+                Task {
+                    await cocktailListViewModel.fetchCocktails(modelContext: modelContext)
+                    cocktailListViewModel.updateAndCache()
                 }
             } label: {
                 Label("Delete", systemImage: "trash")
@@ -151,6 +156,7 @@ fileprivate struct CustomMultipleCocktailsListView: View {
     let cocktail: Cocktail
     let cocktails: [Cocktail]
     @Environment(\.modelContext) private var modelContext
+    @EnvironmentObject var cocktailListViewModel: CocktailListViewModel
     
     var body: some View {
         NavigationLinkWithoutIndicator {
@@ -170,6 +176,11 @@ fileprivate struct CustomMultipleCocktailsListView: View {
                     try modelContext.save()
                 } catch {
                     print("Error deleting cocktail: \(error)")
+                }
+                cocktailListViewModel.shouldReloadCache = true
+                Task {
+                    await cocktailListViewModel.fetchCocktails(modelContext: modelContext)
+                    cocktailListViewModel.updateAndCache()
                 }
             } label: {
                 Label("Delete", systemImage: "trash")
