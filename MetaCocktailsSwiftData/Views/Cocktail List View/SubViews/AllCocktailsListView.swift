@@ -179,9 +179,10 @@ struct MultipleCocktailsListView: View {
 struct SearchBarAllCocktailsListView: View {
     @EnvironmentObject var viewModel: CocktailListViewModel
     
+    
     var body: some View {
         VStack(spacing: 0){
-            ForEach(viewModel.filteredCocktails, id: \.self) { cocktail in
+            ForEach(viewModel.searchResultsCocktails, id: \.self) { cocktail in
                 SingleCocktailListView(cocktail: cocktail)
             }
             .listRowBackground(Color.clear)
