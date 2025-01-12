@@ -25,12 +25,17 @@ struct AboutUsView: View {
                     
                     VStack(alignment: .leading) {
                         
-                        Text("Cocktail Copilot is what happens when two bartending nerds abandon their social skills completely to become programming nerds. In pursuit of this dream, we've built the companion app that we always wanted behind the bar. This app is more than just another collection of drinks, it's packed with meticulously sourced recipes, advanced search features, as well as other useful tools for the modern bartender.")
+                        Text("Cocktail Copilot is what happens when two bartending nerds become programming nerds. Cocktail Copilot the companion app that we always wanted behind the bar -  meticulously sourced recipes, advanced search features, and many other useful tools for the modern bartender.")
                             .font(FontFactory.fontBody14)
+                        
+                        Text("To give back to the industry we love, Cocktail Copilot is completely free, no strings (or ads) attached.")
+                            .font(FontFactory.fontBody14)
+                            .multilineTextAlignment(.leading)
+                            .padding(.top, 5)
                         
                         HStack {
                             
-                            Text("Transitioning from building drinks to building software has been an amazing journey. We're proud to share what we've learned over the past ten years, alongside the kinds of tools that we always wanted. Have ideas for new features? We'd love to hear them!")
+                            Text("Transitioning from building drinks to building software has been an amazing journey, and we're not finished yet. Have ideas for new features? We'd love to hear them!")
                                 .font(FontFactory.fontBody14)
                                 .multilineTextAlignment(.leading)
                             
@@ -42,7 +47,6 @@ struct AboutUsView: View {
                                                                              endPoint: .bottomTrailing),
                                                reverse: false)
                         }
-                        .padding(.bottom, 20)
                         
                         HStack(spacing: 20) {
                             JamesPicture()
@@ -81,6 +85,19 @@ struct AboutUsView: View {
                             .opacity(0.02)
                     )
                     .padding(20)
+                    
+                    HStack(spacing: 8) {
+                        Image(systemName: "envelope.fill")
+                        Text("Contact")
+                            .font(FontFactory.fontBody14)
+                    }
+                    .padding(.top, -10)
+                    .foregroundColor(ColorScheme.interactionTint)
+                    .onTapGesture {
+                        if let url = URL(string: "mailto:cocktailcopilot@gmail.com") {
+                            UIApplication.shared.open(url)
+                        }
+                    }
                 }
             }
         }
