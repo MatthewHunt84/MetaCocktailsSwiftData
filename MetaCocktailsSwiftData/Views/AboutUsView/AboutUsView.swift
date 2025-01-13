@@ -25,7 +25,7 @@ struct AboutUsView: View {
                     
                     VStack(alignment: .leading) {
                         
-                        Text("Cocktail Copilot is what happens when two bartending nerds become programming nerds. Cocktail Copilot the companion app that we always wanted behind the bar -  meticulously sourced recipes, advanced search features, and many other useful tools for the modern bartender.")
+                        Text("Cocktail Copilot is what happens when two bartending nerds become programming nerds. It's the companion app that we've always wanted behind the bar — meticulously sourced recipes, advanced search features, and many other useful tools for the modern bartender.")
                             .font(FontFactory.fontBody14)
                         
                         Text("To give back to the industry we love, Cocktail Copilot is completely free, no strings (or ads) attached.")
