@@ -135,15 +135,9 @@ struct SingleCocktailListView: View {
                     .font(FontFactory.regularFont(size: 18))
                     .padding(.leading, 20)
                     .foregroundStyle(.white)
-                Spacer()
-                if cocktail.isCustomCocktail == true {
-                    Text("Custom")
-                        .foregroundStyle(Color.brandPrimaryGold)
-                        .font(FontFactory.regularFont(size: 15))
-                        
-                }
             }
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
         .frame(height: 35)
         .padding(.vertical, 2)
     }
@@ -164,14 +158,9 @@ struct MultipleCocktailsListView: View {
                     .font(FontFactory.regularFont(size: 18))
                     .padding(.leading, 35)
                     .foregroundStyle(.white)
-                Spacer()
-                if cocktail.isCustomCocktail == true {
-                    Text("Custom")
-                        .foregroundStyle(Color.brandPrimaryGold)
-                        .font(FontFactory.regularFont(size: 15))
-                }
             }
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
         .frame(height: 35)
         .padding(.vertical, 2)
     }
