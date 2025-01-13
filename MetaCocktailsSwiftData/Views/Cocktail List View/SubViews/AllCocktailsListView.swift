@@ -55,6 +55,7 @@ struct SectionHeaderView: View {
                 Spacer()
             }
         }
+        .padding(.top, letter.contains("#") ? 40 : 0)
         .task(id: animatingLetter) {
             if letter == animatingLetter {
                 isAnimating = true
