@@ -23,6 +23,7 @@ let oldFashionedNote = "This modern version is commonly found at upscale cocktai
 let smokingMonkeyNote = "The original cocktail featured a rice paper cut-out of a smoking monkey, with bitters used to create the smoke design."
 
 // History Info
+let morningGloryFizzNote = "'To be drunk immediately, or the effect will be lost. It is a morning beverage, a tonic and a nerve quieter.' -O.H. Byron"
 
 let armyNavyNote = "Like many classics, the Army & Navy's creator remains unknown. David Embury's 1948 publication of the recipe remains excellent by modern standards."
 
@@ -31,6 +32,8 @@ let laLouisianeNote  = "The À la Louisiane (sometimes called De la Louisiane) w
 let cloverClubNote = "The Clover Club cocktail originated at its namesake, a gentleman's club in Philadelphia (1882-1920s). Julie Reiner's recipe exemplifies a modern sour that remains faithful to the original formula, incorporating dry vermouth."
 
 let harveyWalbangerNote = "Proof that a good marketing campaign can make any cocktail famous. While bartender Donato 'Duke' Antone likely created this drink in the 1950s at Hollywood's Black Watch bar (calling it the 'Duke Screwdriver'), it was George Bednar's brilliant marketing for McKesson Imports that made it a hit. Who knew that slapping some Galliano in a screwdriver and giving it a catchy name would end up in cocktail history books? Sadly enough, sometimes simplicity and advertising trump craft."
+
+let ginAndItNote =  "'It' is short for Italian vermouth, and the original recipe from the 1905 'Hoffman House Bartender's Guide: How to Open a Saloon and Make it Pay' calls for 2.5oz gin and .5oz sweet Italian vermouth. But, Sasha and I only ever drank it with a 2:1 gin-to-vermouth ratio. -Georgette Moger-Petraske"
 
 let saturnNote = "California bartender J. 'Popo' Galsini introduced the Saturn to the world in 1967 when he won the International Bartenders' Association World Championship. Originally, he titled his gin creation the X-15 after an American rocket plane. Shortly after doing so one of those planes crashed, killing its pilot. Galsini renamed the drink as the Saturn for the competition."
 

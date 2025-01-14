@@ -65,7 +65,7 @@ let asburyParkSwizzleBuild = Build(instructions: [Instruction(step: 1, method: "
                                                   Instruction(step: 4, method: "Add both bitters and lightly swizzle the drops into a red layer on top of the ice."),
                                                   Instruction(step: 5, method: "Top with more ice, shaping it into a cone, and garnish with a mint sprig.")])
 
-let bicycleThiefBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except for the soda, into a tin and shake with ice."),
+let bicycleThiefBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients except for the soda into a tin and shake with ice."),
                                              Instruction(step: 2, method: "Strain into a Collins glass over ice and top with soda."),
                                              Instruction(step: 3, method: "Give a gentle stir.")])
 
@@ -96,7 +96,7 @@ let dominicanaBuild = Build(instructions: [Instruction(step: 1, method: "Add the
                                           Instruction(step: 2, method: "Strain into a chilled coupe and top with a thin layer of the lightly whipped cream.")])
 
 let eskimosKissBuild = Build(instructions: [Instruction(step: 1, method: "Combine the mint leaves and sugar cubes in a cocktail shaker and soak the sugar in the lime juice and simple syrup."),
-                                            Instruction(step: 2, method: "Muddle gently—ideally crushing the sugar into a paste, without more than lightly bruising the mint."),
+                                            Instruction(step: 2, method: "Muddle gently— ideally crushing the sugar into a paste, without more than lightly bruising the mint."),
                                             Instruction(step: 3, method: "Add the rum and swirl the shaker to combine."),
                                             Instruction(step: 4, method: "Pour the drink into a large glass and fill to the top with chunky pebble ice."),
                                             Instruction(step: 5, method: "Garnish with a bouquet of mint sprigs, insert two straws, and drink with someone you want to touch noses with.")])
@@ -112,8 +112,6 @@ let gabriellaBuild = Build(instructions: [Instruction(step: 1, method: "Hull one
                                           Instruction(step: 2, method: "Add the simple syrup, pisco, and one large ice cube and shake vigorously until the drink is sufficiently chilled."),
                                           Instruction(step: 3, method: "Strain into a rocks glass and add pebble ice until a 'high and dry' mountain is formed."),
                                           Instruction(step: 4, method: "Garnish with the remaining strawberry half and the pinch of salt.")])
-
-let ginAndItBuild = Build(instructions: [Instruction(step: 1, method: "'It' is short for Italian vermouth, and the original recipe from the 1905 'Hoffman House Bartender's Guide: How to Open a Saloon and Make it Pay' calls for 2.5oz gin and .5oz sweet Italian vermouth. But, Sasha and I only ever drank it with a 2:1 gin-to-vermouth ratio. -Georgette Moger-Petraske")])
 
 let gordonsBreakfastBuild = Build(instructions: [Instruction(step: 1, method: "Combine all ingredients in a cocktail shaker."),
                                                  Instruction(step: 2, method: "Add 1 cup (240 ml) cracked ice and shake vigorously until the drink is sufficiently chilled."),
@@ -473,8 +471,7 @@ let mojitoBuild = Build(instructions: [Instruction(step: 1, method: "Add all of 
                                        Instruction(step: 4, method: "Double strain the shaken cocktail over the soda and ice."),
                                        Instruction(step: 5, method: "Garnish with a mint bouquet. Serve with a straw.")])
 
-let morningGloryFizzBuild = Build(instructions: [Instruction(step: 0, method: "'To be drunk immediately, or the effect will be lost. It is a morning beverage, a tonic and a nerve quieter.' -O.H. Byron"),
-                                                 Instruction(step: 1, method: "'Shake well in shaker and strain; fill balance of glass with seltzer or Vichy water.'")])
+let morningGloryFizzBuild = Build(instructions: [Instruction(step: 1, method: "'Shake well in shaker and strain; fill balance of glass with seltzer or Vichy water.'")])
 
 let newYorkSourBuild = Build(instructions: [Instruction(step: 1, method: "Mix all ingredients, except the red wine, together in a tin and shake with ice."),
                                             Instruction(step: 2, method: "Strain into a chilled cocktail glass."),
