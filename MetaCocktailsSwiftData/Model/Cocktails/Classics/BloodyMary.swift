@@ -13,7 +13,7 @@ var bloodyMary  = Cocktail(cocktailName: "Bloody Mary",
                            ice: .koldDraft,
                            spec: bloodyMarrySpec,
                            buildOrder: bloodyMarryBuild,
-                           notes: bloodyMaryNotes,
+                           notes: bloodyMaryNote,
                            tags: bloodyMarryTags,
                            variation: .bloodyMary,
                            titleCocktail: true)

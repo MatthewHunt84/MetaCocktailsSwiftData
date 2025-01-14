@@ -12,7 +12,7 @@ var cornNOil  = Cocktail(cocktailName: "Corn 'n' Oil",
                          garnish: [.noGarnish],
                          ice: .crackedIce,
                          spec: cornNOilSpec,
-                         notes: cornNOilNotes,
+                         notes: cornNOilNote,
                          tags: cornNOilTags,
                          collection: .originals)
 

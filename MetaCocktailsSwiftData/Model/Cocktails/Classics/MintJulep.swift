@@ -13,7 +13,7 @@ var mintJulep = Cocktail(cocktailName: "Mint Julep",
                          ice: .pebbleIce,
                          spec: mintJulepSpec,
                          buildOrder: mintJulepBuild,
-                         notes: mintJulepNotes,
+                         notes: mintJulepNote,
                          tags: mintJulepTags,
                          variation: .mintJulep,
                          titleCocktail: true)

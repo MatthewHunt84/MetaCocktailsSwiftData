@@ -15,7 +15,7 @@ var bizzyIzzyHighball = Cocktail(cocktailName: "Bizzy Izzy High Ball",
                                                 year: "1917"),
                                  spec: bizzyIzzyHighballSpec,
                                  buildOrder: bizzyIzzyHighballBuild,
-                                 notes: bizzyIzzyNotes,
+                                 notes: bizzyIzzyNote,
                                  tags: bizzyIzzyHighballTags,
                                  collection: .originals)
 

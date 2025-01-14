@@ -13,7 +13,7 @@ var caipirinha   = Cocktail(cocktailName: "Caipirinha",
                             author:Author(place: "Brazil"),
                             spec: caipirinhaSpec,
                             buildOrder: caipirnhaBuild,
-                            notes: caipirnhaNotes,
+                            notes: caipirnhaNote,
                             tags: caipirnhaTags)
 
 

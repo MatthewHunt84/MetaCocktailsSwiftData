@@ -13,7 +13,7 @@ var cloverClubWnG = Cocktail(cocktailName: "Clover Club" + wAndGTitleTag,
                              author: williamsAndGraham,
                              spec: cloverClubSpecWnG,
                              buildOrder: cloverClubBuildWnG,
-                             notes: cloverClubNotes,
+                             notes: cloverClubNote,
                              tags: cloverClubTags,
                              variation: .cloverClub,
                              collection: .williamsAndGraham)

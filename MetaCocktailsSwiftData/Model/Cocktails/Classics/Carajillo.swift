@@ -11,7 +11,7 @@ let carajillo = Cocktail(cocktailName: "Carajillo",
                          glasswareType: .singleOld,
                          ice: .crackedIce,
                          spec: carajilloSpec,
-                         notes: carajilloNotes,
+                         notes: carajilloNote,
                          tags: carajilloTags)
 
 var carajilloSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.otherNonAlc(.espressoShot), value: 1, unit: .none),

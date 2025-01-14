@@ -14,7 +14,7 @@ var paloma  = Cocktail(cocktailName: "Paloma",
                        ice: .koldDraft,
                        spec: palomaSpec,
                        buildOrder: palomaBuild,
-                       notes: palomaNotes,
+                       notes: palomaNote,
                        tags: palomaTags)
 
 var palomaSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.5),
