@@ -12,7 +12,7 @@ var peguClubSavoy = Cocktail(cocktailName: "Pegu Club Cocktail (Savoy)",
                              ice: nil,
                              author:Author(person: AuthorNames.harryCraddock.rawValue, place: AuthorPlaces.savoy.rawValue, year: "1930"),
                              spec: peguClubSavoySpec,
-                             notes: peguClubSavoyNotes,
+                             notes: peguClubSavoyNote,
                              tags: peguClubSavoyTags,
                              variation: .peguClub,
                              collection: .originals)

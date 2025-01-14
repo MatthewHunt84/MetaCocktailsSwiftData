@@ -15,7 +15,7 @@ var smokingMonkey = Cocktail(cocktailName: "Smoking Monkey",
                                            place: AuthorPlaces.williamsAndGraham.rawValue, year: "2018"),
                              spec: smokingMonkeySpec,
                              buildOrder: smokingMonkeyBuild,
-                             notes: smokingMonkeyNotes,
+                             notes: smokingMonkeyNote,
                              tags: smokingMonkeyTags,
                              collection: .williamsAndGraham)
 

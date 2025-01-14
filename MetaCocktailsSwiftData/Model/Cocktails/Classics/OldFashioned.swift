@@ -13,7 +13,7 @@ let oldFashioned = Cocktail(cocktailName: "Old Fashioned",
                             ice: .bigRock,
                             author: Author(place: "Too old to tell"),
                             spec: oldFashionedSpec,
-                            notes: oldFashionedBuild,
+                            notes: oldFashionedNote,
                             tags: oldFashionedTags,
                             variation: .oldFashioned,
                             titleCocktail: true)

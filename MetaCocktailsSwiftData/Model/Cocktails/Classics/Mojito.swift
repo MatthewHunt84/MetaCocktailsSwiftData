@@ -14,7 +14,7 @@ var mojito = Cocktail(cocktailName: "Mojito",
                       author: Author(person: "Cuba" ,year: "1800s"),
                       spec: mojitoSpec,
                       buildOrder: mojitoBuild,
-                      notes: mojitoNotes,
+                      notes: mojitoNote,
                       tags: mojitoTags,
                       variation: .mojito,
                       titleCocktail: true)

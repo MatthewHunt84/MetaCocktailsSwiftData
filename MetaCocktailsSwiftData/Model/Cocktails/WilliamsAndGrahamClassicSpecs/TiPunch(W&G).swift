@@ -13,7 +13,7 @@ var tiPunchWnG = Cocktail(cocktailName: "Ti' Punch" + wAndGTitleTag,
                           ice: .koldDraft,
                           author: Author(place: "Somewhere in Martinique"),
                           spec: tiPunchSpecWnG,
-                          notes: tiPunchNotesWnG,
+                          notes: tiPunchNoteWnG,
                           tags: tiPunchTagsWnG,
                           variation: .tiPunch,
                           collection: .williamsAndGraham)

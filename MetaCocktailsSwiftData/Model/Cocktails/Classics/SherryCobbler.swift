@@ -13,7 +13,7 @@ var sherryCobbler = Cocktail(cocktailName: "Sherry Cobbler",
                              ice: .pebbleIce,
                              spec: sherryCobblerSpec,
                              buildOrder: sherryCobblerBuild,
-                             notes: sherryCobblerNotes,
+                             notes: sherryCobblerNote,
                              tags: sherryCobblerTags,
                              variation: .sherryCobbler,
                              titleCocktail: true)

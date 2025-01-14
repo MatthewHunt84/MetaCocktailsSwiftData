@@ -13,7 +13,7 @@ var darkNStormy  = Cocktail(cocktailName: "Dark & Stormy",
                             ice: .koldDraft,
                             spec: darkNStormySpec,
                             buildOrder: darkNStormyBuild,
-                            notes: darkAndStormyNotes,
+                            notes: darkAndStormyNote,
                             tags: darkNStormyTags)
 
 var darkNStormySpec  = [OldCocktailIngredient(.soda(.gingerBeer), value: 4, prep: PrepBible.gingerBeer),

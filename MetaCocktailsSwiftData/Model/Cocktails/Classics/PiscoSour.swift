@@ -13,7 +13,7 @@ var piscoSour = Cocktail(cocktailName: "Pisco Sour",
                          author:Author(person: "Morris' Bar", place: "Morris' Bar: Lima, Peru", year: "1924"),
                          spec: piscoSourSpec,
                          buildOrder: piscoSourBuild,
-                         notes: piscoSourNotes,
+                         notes: piscoSourNote,
                          tags: piscoSourTags,
                          variation: .piscoSour,
                          titleCocktail: true)

@@ -30,7 +30,4 @@ var penicillinTags = Tags(flavors: [.lemon, .honey, .ginger, .peat],
                           profiles: [.citrusy, .smokey, .light, .complex],
                           styles: [.sour, .shaken])
 
-var penicillinBuild = Build(instructions: [Instruction(step: 1, method: "Mix all ingredients, except the Isla Scotch, together in a tin and shake with ice."), 
-                                           Instruction(step: 2, method: "Strain over ice."),
-                                           Instruction(step: 3, method: "Float the Islay whisky on top of the cocktail"),
-                                           Instruction(step: 4, method: "Garnish With a piece of candied ginger.")])
+

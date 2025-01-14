@@ -13,7 +13,7 @@ var pimmsCup = Cocktail(cocktailName: "Pimms Cup",
                         ice: .pebbleIce,
                         author: williamsAndGraham,
                         spec: pimsCupSpec,
-                        notes: pimsCupNotes,
+                        notes: pimmsCupNote,
                         tags: pimsCupTags,
                         variation: .pimsCup,
                         collection: .williamsAndGraham)

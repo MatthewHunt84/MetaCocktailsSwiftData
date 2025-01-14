@@ -13,7 +13,7 @@ var cloverClub = Cocktail(cocktailName: "Clover Club",
                           author: Author(person: "Julie Reiner", place: "Clover Club", year: "2014"),
                           spec: cloverClubSpec,
                           buildOrder: cloverClubBuild,
-                          notes: cloverClubNotes,
+                          notes: cloverClubNote,
                           tags: cloverClubTags,
                           variation: .cloverClub,
                           titleCocktail: true)

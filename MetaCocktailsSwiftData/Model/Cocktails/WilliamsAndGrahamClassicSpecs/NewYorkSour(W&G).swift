@@ -13,7 +13,7 @@ var NewYorkSourWnG = Cocktail(cocktailName: "New York Sour" + wAndGTitleTag,
                               ice: nil,
                               author: williamsAndGraham,
                               spec: NewYorkSourSpecWnG,
-                              buildOrder: NewYorkSourBuildWnG,
+                              buildOrder: newYorkSourBuildWnG,
                               tags: NewYorkSourTagsWnG,
                               variation: .newYorkSour,
                               collection: .williamsAndGraham)

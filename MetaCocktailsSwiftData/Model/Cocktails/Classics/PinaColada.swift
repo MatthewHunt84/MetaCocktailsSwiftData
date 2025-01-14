@@ -12,7 +12,7 @@ var pinaColada  = Cocktail(cocktailName: "Piña Colada",
                            garnish: [.maraschinoCherry],
                            ice: .pebbleIce,
                            spec: pinaColadaSpec,
-                           notes: pinaColadaNotes,
+                           notes: pinaColadaNote,
                            tags: pinaColadaTags,
                            variation: .pinaColada,
                            titleCocktail: true)

@@ -14,7 +14,7 @@ var tomCollins  = Cocktail(cocktailName: "Tom Collins",
                            author: Author(person: "Unknown"),
                            spec: tomCollinsSpec,
                            buildOrder: tomCollinsBuild,
-                           notes: tomCollinsNotes,
+                           notes: tomCollinsNote,
                            tags: tomCollinsTags,
                            variation: .tomCollins,
                            titleCocktail: true)

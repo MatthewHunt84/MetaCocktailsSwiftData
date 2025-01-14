@@ -14,7 +14,7 @@ var whiskeySourOG = Cocktail(cocktailName: "Whiskey Sour",
                              author: nil,
                              spec: whiskeySourSpecOG,
                              buildOrder: whiskeySourOGBuild,
-                             notes: whiskeySourNotes,
+                             notes: whiskeySourNote,
                              tags: whiskeySourOGTags,
                              variation: .whiskeySour,
                              titleCocktail: true)

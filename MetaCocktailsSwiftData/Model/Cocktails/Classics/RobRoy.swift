@@ -13,7 +13,7 @@ var robRoy = Cocktail(cocktailName: "Rob Roy",
                       garnish: [.maraschinoCherry, .orangeExpress],
                       author: nil,
                       spec: robRoySpec,
-                      notes: robRoyNotes,
+                      notes: robRoyNote,
                       tags: robRoyTags,
                       variation: .manhattan,
                       titleCocktail: false)

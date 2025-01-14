@@ -14,7 +14,7 @@ var aperolSpritz = Cocktail(cocktailName: "Aperol Spritz",
                             author: nil,
                             spec: aperolSpritzSpec,
                             buildOrder: aperolSpritzBuild,
-                            notes: aperolSpritzNotes,
+                            notes: aperolSpritzNote,
                             tags: aperolSpritzTags)
 
 var aperolSpritzSpec = [OldCocktailIngredient(.amari(.aperol), value: 2),

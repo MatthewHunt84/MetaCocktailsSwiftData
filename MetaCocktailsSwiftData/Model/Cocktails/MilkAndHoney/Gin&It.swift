@@ -13,7 +13,7 @@ var ginAndIt  = Cocktail(cocktailName: "Gin & It",
                          ice: nil,
                          author: Author(person: AuthorNames.sashaPetraske.rawValue , place: AuthorPlaces.milkAndHoney.rawValue, year: "Early 2000s"),
                          spec: ginAndItSpec,
-                         buildOrder: ginAndItBuild,
+                         notes: ginAndItNote,
                          tags: ginAndItTags,
                          collection: .milkAndHoney)
 
@@ -24,5 +24,6 @@ var ginAndItSpec  = [OldCocktailIngredient(.fortifiedWines(.sweetVermouthAny), v
 var ginAndItTags   = Tags(flavors: [.lemon],
                           profiles: [.spiritForward, .botanical],
                           styles: [.stirred, .martini])
+
 
 

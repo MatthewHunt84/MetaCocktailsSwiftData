@@ -14,7 +14,7 @@ var ramosGinFizz = Cocktail(cocktailName: "Ramos Gin Fizz",
                             author:Author(person: "Henry Charles Ramos", place: "Imperial Cabinet Saloon, New Orleans", year: "1880s"),
                             spec: ramosGinFizzSpec,
                             buildOrder: ramosGinFizzBuild,
-                            notes: ramosNotes,
+                            notes: ramosNote,
                             tags: ramosTags)
 
 let ramosGinFizzSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.gins(.ginAny), value: 2.0),
