@@ -13,7 +13,7 @@ var americanTrilogy = Cocktail(cocktailName: "American Trilogy",
                                ice: .bigRock,
                                author: Author(person: "Michael McIlroy, Richard Boccato", place: AuthorPlaces.milkAndHoney.rawValue, year: "Early 2000s"),
                                spec: americanTrilogySpec,
-                               buildOrder: americanTrilogyBuild,
+                               buildOrder: americanTrillogyBuild,
                                tags: americanTrilogyTags,
                                variation: nil,
                                collection: .milkAndHoney)
