@@ -127,7 +127,7 @@ let grapefruitCollinsBuild  = Build(instructions: [Instruction(step: 1, method: 
                                                    Instruction(step: 2, method: "Strain over column ice and top with soda."),
                                                    Instruction(step: 3, method: "Give a gentle stir and then garnish with a grapefruit peel after expression.")])
 
-let harvestOldFashionedBuild = Build(instructions: [Instruction(step: 1, method: "Put the sugar cube in an old oashioned glass and soak with both bitters. Add club soda and muddle until a paste forms."),
+let harvestOldFashionedBuild = Build(instructions: [Instruction(step: 1, method: "Put the sugar cube in an old fashioned glass and soak with both bitters. Add club soda and muddle until a paste forms."),
                                                     Instruction(step: 2, method: "Add the brandy and whiskey."),
                                                     Instruction(step: 3, method: "Add one large rock and stir the drink slowly 9 times or so to lightly chill."),
                                                     Instruction(step: 4, method: "Finish with the lemon and orange twists. -Regarding Cocktails, Sasha Petraske")])
@@ -354,7 +354,7 @@ let oldFashionedWGBuild = Build(instructions: [Instruction(step: 1, method: "Add
                                                Instruction(step: 2, method: "Add the whiskey, lemon expression, and lemon peel into the glass."),
                                                Instruction(step: 3, method: "With the back end of a bar spoon, guide a large rock into the glass so that it doesn't make a splash and stir until chilled.")])
 
-let penicillinBuildWnG = Build(instructions: [Instruction(step: 1, method: "Mix all ingredients, except the Isla Scotch, together in a tin and shake with ice."),
+let penicillinBuildWnG = Build(instructions: [Instruction(step: 1, method: "Mix all ingredients, except the Islay Scotch, together in a tin and shake with ice."),
                                               Instruction(step: 2, method: "Strain over ice."),
                                               Instruction(step: 3, method: "Float the peated Islay whisky on top of the cocktail."),
                                               Instruction(step: 4, method: "Garnish With a lemon wheel.")])
@@ -601,12 +601,12 @@ let easyStreetBuild =  Build(instructions: [Instruction(step: 1, method: "In a t
                                             Instruction(step: 4, method: "Float peychaud's and port."),
                                             Instruction(step: 5, method: "Garnish with mint sprig and berries.")])
 
-let featheredHatFlipBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except the bitters, into a tin a dry shake to emulsify"),
+let featheredHatFlipBuild = Build(instructions: [Instruction(step: 1, method: "Add all ingredients, except the bitters, into a tin a dry shake to emulsify."),
                                                  Instruction(step: 2, method: "Add a few Kold Draft cubes and shake until cold."),
                                                  Instruction(step: 3, method: "Immediately after shaking, pop the tin and double strain into a flip glass."),
                                                  Instruction(step: 4, method: "Make a design with Angostura on top.")])
 
-let featheredHatFlip2Build = Build(instructions: [Instruction(step: 1, method: "Add all ingredients into a tin a dry shake to emulsify"),
+let featheredHatFlip2Build = Build(instructions: [Instruction(step: 1, method: "Add all ingredients into a tin a dry shake to emulsify."),
                                                   Instruction(step: 2, method: "Add a few Kold Draft cubes and shake until cold."),
                                                   Instruction(step: 3, method: "Immediately after shaking, pop the tin and double strain into a flip glass.")])
 
