@@ -7,7 +7,7 @@
 
 // Ingredient substitution info
 
-let kinaLilletExplanation = "The original cocktail called for Kina Lillet which is a quinine bitter that stopped production in 1985. The closest thing we can find to it is Cocchi Americano, so that's why we're using it here. Lillet Blanc is nothing like Kina Lillet."
+let kinaLilletExplanation = "The original cocktail called for Kina Lillet, a quinine bitter that stopped production in 1985. The closest modern equivalent is Cocchi Americano. Note that Lillet Blanc is notably different from the original Kina Lillet."
 
 // General Info
 
@@ -16,39 +16,39 @@ let tiPunchNotesWnG = "Think of this like an Old Fashioned without the bitters."
 let caipirnhaNotes = "Caipirinha is the national drink of Brazil. Cachaça is a native Brazilian spirit distilled from juiced sugarcane."
 
 // Recipe Note Info
-let ramosNotes = "This is the recipe used at Williams and Graham. It's slightly modified from the original."
+let ramosNotes = "This is the recipe used at Williams and Graham, slightly modified from the original."
 
-let oldFashionedBuild = "This is a more modern version that you'll find at upscale cocktail bars. This is also our prefered version of the Old Fashioned. Making a rich dem adds texture to the cocktail and also has the added benefit of fully emulsifying. A sugar cube does not."
+let oldFashionedBuild = "This modern version is commonly found at upscale cocktail bars and is our preferred interpretation. Using rich demerara syrup adds texture and ensures full emulsification, which a sugar cube cannot achieve."
 
-let smokingMonkeyNotes = "The original cocktail had a rice paper cut-out of a smoking monkey where the bitters were the smoke design."
+let smokingMonkeyNotes = "The original cocktail featured a rice paper cut-out of a smoking monkey, with bitters used to create the smoke design."
 
 // History Info
 
-let armyNavyNotes = "Like many classics, the author of the Army & Navy is unknown. David Embury's early publication of the recipe in 1948 is excellent, even by modern standards."
+let armyNavyNotes = "Like many classics, the Army & Navy's creator remains unknown. David Embury's 1948 publication of the recipe remains excellent by modern standards."
 
-var laLouisianeNotes  = "The A La Louisiane (sometimes called De La Louisiane) is the former house drink of historic New Orleans’ restaurant La Louisiane, which was built in 1881."
+let laLouisianeNotes  = "The À la Louisiane (sometimes called De la Louisiane) was the house drink of La Louisiane, the historic New Orleans restaurant established in 1881."
 
-let cloverClubNotes = "The original Clover Club was a gentleman's club in Philadelphia from 1882-1920s, where the cocktail originated. Julie Reiner's recipe is a great example of a modern sour which stays true the the original formula, shaken with dry vermouth."
+let cloverClubNotes = "The Clover Club cocktail originated at its namesake, a gentleman's club in Philadelphia (1882-1920s). Julie Reiner's recipe exemplifies a modern sour that remains faithful to the original formula, incorporating dry vermouth."
 
-let harveyWalbangerNotes = "This is a built cocktail that gained popularity through a marketing campaign from George Bednar for McKesson Imports (Galliano's importer at the time). Though, the drink itself was likely the creation of bartender Donato 'Duke' Antone, who may have been serving it since the 1950s at the Hollywood bar Black Watch, calling it the 'Duke Screwdriver'. Bednar picked it up in the late 60s and built an advertising campaign around it for McKesson. It goes to show you that even if the cocktail is total trash, as long as its easy-to-make and there's tons of advertising behind it, it has a chance to make it into the history books and people like us, who dedicate their entire careers to perfecting their craft, end up writing about it."
+let harveyWalbangerNotes = "Proof that a good marketing campaign can make any cocktail famous. While bartender Donato 'Duke' Antone likely created this drink in the 1950s at Hollywood's Black Watch bar (calling it the 'Duke Screwdriver'), it was George Bednar's brilliant marketing for McKesson Imports that made it a hit. Who knew that slapping some Galliano in a screwdriver and giving it a catchy name would end up in cocktail history books? Sadly enough, sometimes simplicity and advertising trump craft."
 
-let saturnNotes = "California bartender  J. “Popo” Galsini introduced the Saturn to the world in 1967 when he won the International Bartender’s Association World Championship with it. Originally he titled his gin creation the X-15 after an American rocket plane, but shortly after doing so one of those planes crashed, killing its pilot. Reportedly, Galsini renamed the drink as the Saturn for the competition."
+let saturnNotes = "California bartender J. 'Popo' Galsini introduced the Saturn to the world in 1967 when he won the International Bartenders' Association World Championship. Originally, he titled his gin creation the X-15 after an American rocket plane. Shortly after doing so one of those planes crashed, killing its pilot. Galsini renamed the drink as the Saturn for the competition."
 
-let aperolSpritzNotes = "Aperol was introduced to the market in 1919, initially enjoyed primarily with soda water. Around the mid-20th century, this bitter liqueur found its way into the classic Italian spritz, enhancing the popular drink with the addition of sparkling wine. A significant turning point came in 2003 when the Campari company acquired Aperol. They launched a highly effective advertising campaign that dramatically increased the drink's global popularity. As a result of this marketing success, the Aperol Spritz has become a universally recognized cocktail."
+let aperolSpritzNotes = "Aperol debuted in 1919, first mixed simply with soda water. By the mid-20th century, it had evolved into the classic Italian spritz with the addition of sparkling wine. The drink's global fame exploded after Campari's acquisition of Aperol in 2003, thanks to an aggressive marketing campaign that turned this regional Italian aperitivo into a worldwide phenomenon."
 
-let carajilloNotes = "Licor 43, a sweet vanilla-based Spanish liqueur, was first produced by the Zamora family in 1946. Its natural affinity with espresso led to a popular cocktail combination. When shaken with ice, this mixture creates a foamy texture, with the coffee's bitterness balancing the liqueur's sweetness. The drink's origins are unclear, but it likely emerged from Spain. This cocktail is a great example of how technique is everything."
+let carajilloNotes = "The Zamora family began producing Licor 43, a sweet vanilla-based Spanish liqueur, in 1946. Its natural pairing with espresso created this popular cocktail, where proper shaking technique creates a signature foamy texture and balances the liqueur's sweetness with coffee's bitterness. While the drink's exact origins are unclear, it likely emerged from Spain."
 
-let cosmoNotes = "While this cocktail originated in the 1980s, its popularity surged in the early 2000s during the cocktail renaissance, thanks in large part to Dale DeGroff's influence at New York's Rainbow Room. The HBO series 'Sex and the City' also played a substantial role in boosting its fame. Regardless of its origins, it's undeniable that this drink has firmly established itself in the pantheon of modern cocktails."
+let cosmoNotes = "Born in the 1980s, the Cosmopolitan hit its stride in the early 2000s during the cocktail renaissance, with Dale DeGroff's Rainbow Room version leading the way. The HBO series 'Sex and the City' cemented its cultural status, transforming it from a craft cocktail into a modern classic."
 
-let cornNOilNotes = "The Corn 'n' Oil cocktail likely originated in Barbados during the 18th century. Its intriguing name is derived from a biblical passage in Deuteronomy, which refers to gathering \"corn, wine, and oil\" Like other cocktails with such a long history, it fails to produce a notable author."
+let cornNOilNotes = "The Corn 'n' Oil likely originated in 18th-century Barbados. Its name comes from Deuteronomy's reference to gathering 'corn, wine, and oil.' Like many cocktails of this era, its creator remains unknown."
 
-let elDiabloNotes = "The original 'Diablo' cocktail first appeared in the 1940 book 'The How and When' by Hayman Gale and Gerald F. Marco. Initially, it was a rum-based drink. Trader Vic later modified the recipe, substituting tequila for rum, and dubbed it 'Mexican El Diablo'. Eventually, he shortened the name to simply 'El Diablo'."
+let elDiabloNotes = "The original 'Diablo' cocktail first appeared in the 1940 book 'The How and When' by Hayman Gale and Gerald F. Marco. Initially, it was a rum-based drink. Trader Vic later swapped the rum for tequila, initially calling it 'Mexican El Diablo' before shortening it to 'El Diablo'."
 
-let hemingwayNote = "The original cocktail stemmed from the Daiquiri No. 3 at La Floridita, which actually was one of the first blended Daiquiris to ever exist as Constantino 'Constante' Ribalaigua was utilizing the latest technology that existed at the time, the blender. Hemingway loved the cocktail but asked for it with no sugar and double the rum making it an insanely tart and punchy cocktail. The cocktail is unbalanced but I think it's important to understand where this cocktail came from and why it exists."
+let hemingwayNote = "The Hemingway Daiquiri evolved from La Floridita's Daiquiri No. 3, one of the first blended daiquiris created by Constantino 'Constante' Ribalaigua using the then-novel blender. Hemingway requested his with no sugar and double rum, resulting in an intentionally tart and potent drink. While unconventional by modern balance standards, it represents a significant piece of cocktail history."
 
-let palomaNotes = "The pairing of grapefruit soda and tequila undoubtedly originated in Mexico. This drink existed with several different titles depending on the region. According to cocktail historian Dave Wondrich, the name 'Paloma' (Spanish for 'dove') wasn't associated with this drink until the 1990s in California. After this introduction to the cocktail lexicon, the drink quickly gained widespread popularity."
+let palomaNotes = "This combination of grapefruit soda and tequila originated in Mexico, known by various names across different regions. According to cocktail historian Dave Wondrich, it wasn't until the 1990s in California that it became known as the 'Paloma' (Spanish for 'dove'), after which the name stuck and spread worldwide."
 
-let pimsCupNotes = "The Pimm's Cup originated around 1912 as a bottled sling called \"Pimm's No. 1 Cup\". It was similar to today's ready-to-drink cocktails, but without carbonation or citrus. Pimm's itself is now known as a liqueur resembling an amaro. Today, the Pimm's Cup is the official drink of Wimbledon. Modern versions of this cocktail are restorative and refreshing, evolving significantly from the original formula. Contemporary recipes like this one offer a more refined drinking experience, compared to the original bottled version."
+let pimsCupNotes = "The Pimm's Cup originated around 1912 as a bottled sling called 'Pimm's No. 1 Cup'. It was similar to today's ready-to-drink cocktails, but without carbonation or citrus. Pimm's itself is now known as a liqueur resembling an amaro. Today, the Pimm's Cup is the official drink of Wimbledon. Modern versions of this cocktail are restorative and refreshing, evolving significantly from the original formula. Contemporary recipes like this one offer a more refined drinking experience, compared to the original bottled version."
 
 let piscoSourNotes = "Both Peru and Chile claim the Pisco Sour as their national cocktail. The cocktail's earliest mention at Morris' bar in Peru didn't include egg whites or bitters. Similarly, early Chilean variations also lacked these ingredients. The cocktail began to make appearances in the United States in the 1960s, however it wasn't until the cocktail renaissance of the early 2000s that it gained its reputation as a classic sour, shaken with egg whites."
 
@@ -58,11 +58,11 @@ let singSlingNotes = "There's a ton of controversy with the original recipe here
 
 let stingerBuild = "The combination of brandy and creme de menthe has been seen popping up in New York since the late 1880s. The 'Stinger' name wasn't attached to it until the early 1910s. Is it technically a cocktail? Maybe it isn't. But we think it's at least worth a mention."
 
-let tomCollinsNotes = "The Tom Collins started out as the John Collins in the early 1800s. The name change came in part from a common prank that local American bar flies would play on out-of-towners, saying that someone named \"Tom Collins\" was badmouthing them at the bar next door. The solid 1800s prank, combined with the fact that the drink was usually made with Old Tom Gin, lead to the name we know today."
+let tomCollinsNotes = "The Tom Collins started out as the John Collins in the early 1800s. The name change came in part from a common prank that local American bar flies would play on out-of-towners, saying that someone named 'Tom Collins' was badmouthing them at the bar next door. The solid 1800s prank, combined with the fact that the drink was usually made with Old Tom Gin, lead to the name we know today."
 
 let vesperNotes = "The cocktail was not Fleming's creation. It was devised by his friend Ivar Bryce as evidenced by the words Fleming inscribed in Bryce's copy of Casino Royale: 'For Ivar, who mixed the first Vesper and said the good word.' Naming a cocktail the Vesper was Fleming's idea though he drew inspiration from someone else's joke. He had encountered the term at evening drinks when a butler announced: 'Vespers are served.' Fleming adapted this pun on the name of the religious observance normally held about sunset, 'Vespers'. And Bond alludes to this by praising his cocktail's name as 'very appropriate to the violet hour when my cocktail will now be drunk all over the world.' Just as the character Vesper Lynd dies in Casino Royale, the cocktail named for her makes no appearance in any of Fleming's later Bond novels. Fleming, in a letter to The Guardian in 1958, said that when he tasted a Vesper for the first time several months after including it in his novel, he found it 'unpalatable'."
 
-let whiskeySmashNotes = "Rather than a single drink, the \"Smash\" was initially a category of cocktails documented by Jerry Thomas' influential 1862 book \"How to Mix Drinks, or The Bon Vivant's Companion\". In its original form, a Smash typically included sugar, spirit, mint, and ice. This modern version builds upon that classic foundation by incorporating whiskey and fresh lemon juice, a modification that gained popularity during the cocktail renaissance of the early 2000s. Renowned bartenders like Dale DeGroff, often credited as a key figure in reviving interest in classic cocktails, played a significant role in popularizing this updated take on the Smash."
+let whiskeySmashNotes = "Rather than a single drink, the 'Smash' was initially a category of cocktails documented by Jerry Thomas' influential 1862 book 'How to Mix Drinks, or The Bon Vivant's Companion'. In its original form, a Smash typically included sugar, spirit, mint, and ice. This modern version builds upon that classic foundation by incorporating whiskey and fresh lemon juice, a modification that gained popularity during the cocktail renaissance of the early 2000s. Renowned bartenders like Dale DeGroff, often credited as a key figure in reviving interest in classic cocktails, played a significant role in popularizing this updated take on the Smash."
 
 let sherryCobblerNotes = "This cocktail is one of those 'too old to tell' cocktails, so it's up to interpretation."
 
@@ -79,9 +79,9 @@ let mintJulepNotes = "This is one of the oldest cocktails to exist. This is a st
 
 let mojitoNotes = "This is a more modern version of the mojito that you'll find in cocktail bars all across America. Original recipes seem to all leave the mint in the glass and treat it more as a built cocktail. The cocktail definitely stems from Cuba in the 1800s, and was popularized at bars like La Floridita. Though, like many cocktails from this era, there isn't simply one name to attach to its creation."
 
-var daiquiriNotes = "This is the king of the Cuban cocktails. While the preferred balance of citrus and and sweet varies between bartenders, a high quality white rum is essential. We recommend Planteray 3 star or Banks 5 Island."
+let daiquiriNotes = "This is the king of the Cuban cocktails. While the preferred balance of citrus and and sweet varies between bartenders, a high quality white rum is essential. We recommend Planteray 3 star or Banks 5 Island."
 
-var darkAndStormyNotes = " \"The drink might have been invented by British sailors on shore leave in Bermuda after World War I. Though, in 1991, the Gosling family, which founded Gosling's in Bermuda in 1806, claimed a trademark for the recipe...\" -David Wondrich, The Oxford Companion to Spirits and Cocktails"
+let darkAndStormyNotes = "'The drink might have been invented by British sailors on shore leave in Bermuda after World War I. Though, in 1991, the Gosling family, which founded Gosling's in Bermuda in 1806, claimed a trademark for the recipe...' -David Wondrich, The Oxford Companion to Spirits and Cocktails"
 
 let pinaColadaNotes = "The widely recognized version of the Piña Colada today is a blended frozen cocktail that originated with the creation of Coco Lopez in Puerto Rico. It is regarded as their signature drink. The term 'Piña Colada' translates to 'strained pineapple.' According to Dave Wondrich, prior to Coco Lopez, the Piña Colada was a Cuban non-alcoholic refreshment. It's likely that Cubans also mixed rum into it, representing one of those seemingly inevitable combinations that obscure its true origin. To prepare this version, you'll need approximately 250ml of crushed ice to blend with the other ingredients."
 
@@ -93,13 +93,13 @@ let ward8Notes = "There's a lot of speculation as to where this cocktail comes f
 
 let whiskeySourNotes = "The term 'Whiskey Sour' first appeared in print as early as 1826. Like the Old Fashioned, this classic cocktail has been a longstanding fixture in the world of mixology. Its origins are disputed, with numerous individuals claiming to have invented it over the years. While egg whites have always been an optional ingredient in the Whiskey Sour, their inclusion is recommended."
 
-var martiniNotes = "The Martini - which predates the Manhattan - has evolved significantly over time. The original recipe featured more vermouth than gin, later shifting to equal parts, then progressively less vermouth. By the 1910s, vodka began replacing gin in some versions. By the 1950s, without the botanical profile of gin to accompany it, vermouth lost popularity with olive brine often taking its place. While this is an excellent recipe for a classic Martini, the most important recipe for a Martini is the one the drinker asks you for."
+let martiniNotes = "The Martini - which predates the Manhattan - has evolved significantly over time. The original recipe featured more vermouth than gin, later shifting to equal parts, then progressively less vermouth. By the 1910s, vodka began replacing gin in some versions. By the 1950s, without the botanical profile of gin to accompany it, vermouth lost popularity with olive brine often taking its place. While this is an excellent recipe for a classic Martini, the most important recipe for a Martini is the one the drinker asks you for."
 
 let prizeFighterNotes = "Simply named 'Prizefighter' when it debuted on the menu at Julie Reiner's Clover Club in Manhattan, the 'Prizefighter No. 1' designation was appended only after subsequent iterations of the drink found their way onto the menu."
 
 // Historical info presented as a quote
 
-let gibsonNotes = "\"The name of the cocktail came from illustrator Charles Dana Gibson, the creator of the Gibson Girl drawings, or Walder D.K. Gibson. Both were members of the club.\"\n - Dave Wondrich, The Oxford Companion to Spirits and Cocktails"
+let gibsonNotes = "'The name of the cocktail came from illustrator Charles Dana Gibson, the creator of the Gibson Girl drawings, or Walder D.K. Gibson. Both were members of the club.'\n - Dave Wondrich, The Oxford Companion to Spirits and Cocktails"
 
-let peguClubSavoyNotes = "The favorite cocktail at the Pegu Club, Burma. The one that has travelled, and is asked for, around the world.\" -Harry Craddock"
+let peguClubSavoyNotes = "'The favorite cocktail at the Pegu Club, Burma. The one that has travelled, and is asked for, around the world.' -Harry Craddock"
 
