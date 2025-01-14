@@ -58,30 +58,9 @@ struct CocktailListView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
             .jamesHeader("Cocktail List")
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    NavigationLink {
-                        AboutUsView()
-                            .navigationBarBackButtonHidden(true)
-                    } label: {
-                        VStack(spacing: 0) {
-                            Image(.limeSegments)
-                                .resizable()
-                                .frame(width: 30, height: 30)
-                                .foregroundStyle(ColorScheme.tintColor)
-                            FontFactory.mediumText("About Us", size: 12, color: ColorScheme.interactionTint)
-                        }
-                        .offset(x: 15)
-                        .foregroundStyle(ColorScheme.interactionTint)
-                    }
-                    .padding(.horizontal, 20)
-                    
-                }
-            }
         }
     }
 }
-
 
 struct AlphabetNavigationView: View {
     @Binding var selectedLetter: String?
@@ -128,30 +107,51 @@ struct SearchBarForCocktailListView: View {
     @Bindable var viewModel: CocktailListViewModel
     
     var body: some View {
-        TextField("Search cocktails", text: $viewModel.searchText)
-            .SearchBarTextField()
-            .focused($isFocused)
-            .sensoryFeedback(.impact(weight: .heavy), trigger: isFocused == true)
-            .animation(.easeInOut(duration: 0.2), value: isFocused)
-            .clearSearchButton(text: $viewModel.searchText) {
-                viewModel.searchText = ""
+        HStack {
+            
+            TextField("Search cocktails", text: $viewModel.searchText)
+                .SearchBarTextField()
+                .focused($isFocused)
+                .sensoryFeedback(.impact(weight: .heavy), trigger: isFocused == true)
+                .animation(.easeInOut(duration: 0.2), value: isFocused)
+                .clearSearchButton(text: $viewModel.searchText) {
+                    viewModel.searchText = ""
+                }
+                .onChange(of: viewModel.searchText) { _, newValue in
+                    viewModel.updateSearch(newValue)
+                }
+                .onSubmit {
+                    viewModel.searchText = ""
+                }
+                .onTapGesture {
+                    isFocused = true
+                }
+                .onDisappear{
+                    viewModel.searchText = ""
+                    isFocused = false
+                    viewModel.updateAndCache()
+                }
+                .submitLabel(.done)
+            
+            NavigationStack {
+                
+                NavigationLink {
+                    AboutUsView()
+                        .navigationBarBackButtonHidden(true)
+                } label: {
+                    
+                    FirstLoadAnimation(frame: 46,
+                                       duration: 12,
+                                       internalColor: ColorScheme.searchBarBackground,
+                                       externalColor: LinearGradient(colors: [Color.brandPrimaryOrange, ColorScheme.tintColor, Color.brandPrimaryOrange],
+                                                                     startPoint: .topLeading,
+                                                                     endPoint: .bottomTrailing),
+                                       reverse: false)
+                    
+                }
             }
-            .onChange(of: viewModel.searchText) { _, newValue in
-                viewModel.updateSearch(newValue)
-            }
-            .onSubmit {
-                viewModel.searchText = ""
-            }
-            .onTapGesture {
-                isFocused = true
-            }
-            .onDisappear{
-                viewModel.searchText = ""
-                isFocused = false
-                viewModel.updateAndCache()
-            }
-            .submitLabel(.done)
-            .padding()
+        }
+        .padding()
     }
 }
 
