@@ -16,7 +16,6 @@ var wardEight = Cocktail(cocktailName: "Ward Eight",
                                         place: "Boston Herald",
                                         year: "August 4, 1907"),
                          spec: wardEightSpec,
-                         buildOrder: wardEightBuild,
                          notes: ward8Note,
                          tags: wardEightTags,
                          collection: .originals)

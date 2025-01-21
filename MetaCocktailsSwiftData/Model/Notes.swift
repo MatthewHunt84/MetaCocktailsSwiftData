@@ -72,7 +72,7 @@ let sherryCobblerNote = "Another cocktail whose origins are lost to time, this d
 // History info mixed with and recipe info
 let amarettoSourNote = "Introduced in 1974 by Amaretto di Saronno's importer, the original recipe called for 1.5 oz Amaretto to 3 oz sour mix. Our version relies on the liqueur's natural sweetness balanced with fresh lemon juice. When using egg white, we recommend 1 oz lemon juice; without egg white, try 0.75 oz lemon with 0.25 oz simple syrup, adjusting to taste."
 
-let bizzyIzzyNote = "This is an interesting cocktail that seems to have a number of variations. The book with the original print calls for a pineapple syrup but the modern variation adds up to an ounce of pineapple juice."
+let bizzyIzzyNote = "This is an interesting cocktail that seems to have a number of variations. The book with the original print calls for a pineapple syrup but the modern variation adds up to an ounce of pineapple juice. Though the book doesn't include soda in the recipe, it still labels the cocktail as a highball. It also doesn't mention any garnish. However, if you do add the sparkling water, add it last after you've shaken and strained the cocktail."
 
 let bloodyMaryNote = "With multiple origin stories and no definitive creator, we present a classic version of this brunch staple. Consider it a template - adjust spicing and garnishes to your taste."
 
@@ -92,7 +92,7 @@ let robRoyNote = "Born from the Manhattan in the late 19th century, the Rob Roy 
 
 let sazeracNote = "Though originally Cognac-based, this modern interpretation with rye is our preferred version. Using rich demerara syrup adds texture and ensures full emulsification, unlike a sugar cube."
 
-let ward8Note = "Despite competing origin stories, this recipe represents the earliest documented version that aligns with modern interpretations."
+let ward8Note = "This recipe represents the earliest documented version that aligns with modern interpretations, despite competing origin stories. While orange juice or orange Curaçao is optional in several variations, it has become a common ingredient in contemporary versions. Given this modern throughline, we included it in our spec."
 
 let whiskeySourNote = "The term 'Whiskey Sour' first appeared in print as early as 1826. Like the Old Fashioned, this classic cocktail has been a longstanding fixture in the world of mixology. Its origins are disputed, with numerous individuals claiming to have invented it over the years. While egg whites have always been an optional ingredient in the Whiskey Sour, their inclusion is recommended."
 
