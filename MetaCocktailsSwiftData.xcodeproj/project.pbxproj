@@ -561,6 +561,8 @@
 		F4D7C0122CBC3D7100B8D9C0 /* IngredientPrepOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7C0112CBC3D6800B8D9C0 /* IngredientPrepOverlay.swift */; };
 		F4D7C0142CBDB55F00B8D9C0 /* PinaColada(DeathAndCo).swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7C0132CBDB55200B8D9C0 /* PinaColada(DeathAndCo).swift */; };
 		F4F3D4222C90996E00BB6767 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F3D4212C90996200BB6767 /* ColorScheme.swift */; };
+		F4F476522D2341D7001E29E6 /* StarfishAndCoffee.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F476512D2341D7001E29E6 /* StarfishAndCoffee.swift */; };
+		F4F476562D234435001E29E6 /* PreloadedCocktails.store in Resources */ = {isa = PBXBuildFile; fileRef = F4F476552D234435001E29E6 /* PreloadedCocktails.store */; };
 		F4FBF1232AAABBB900BBF7CF /* MetaCocktailsSwiftDataApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FBF1222AAABBB900BBF7CF /* MetaCocktailsSwiftDataApp.swift */; };
 		F4FBF12C2AAABBBB00BBF7CF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4FBF12B2AAABBBB00BBF7CF /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -1132,6 +1134,8 @@
 		F4D7C0112CBC3D6800B8D9C0 /* IngredientPrepOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientPrepOverlay.swift; sourceTree = "<group>"; };
 		F4D7C0132CBDB55200B8D9C0 /* PinaColada(DeathAndCo).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PinaColada(DeathAndCo).swift"; sourceTree = "<group>"; };
 		F4F3D4212C90996200BB6767 /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
+		F4F476512D2341D7001E29E6 /* StarfishAndCoffee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarfishAndCoffee.swift; sourceTree = "<group>"; };
+		F4F476552D234435001E29E6 /* PreloadedCocktails.store */ = {isa = PBXFileReference; lastKnownFileType = file; path = PreloadedCocktails.store; sourceTree = "<group>"; };
 		F4FBF11F2AAABBB900BBF7CF /* MetaCocktailsSwiftData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetaCocktailsSwiftData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FBF1222AAABBB900BBF7CF /* MetaCocktailsSwiftDataApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaCocktailsSwiftDataApp.swift; sourceTree = "<group>"; };
 		F4FBF12B2AAABBBB00BBF7CF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -1590,6 +1594,7 @@
 				4DBBA49F2B68B95600179B8F /* NakedAndFamous.swift */,
 				4DBBA4A52B68C67F00179B8F /* OaxacanOldFashioned.swift */,
 				4DCB17092BA40CDF0002D7D9 /* SilverMonk.swift */,
+				F4F476512D2341D7001E29E6 /* StarfishAndCoffee.swift */,
 			);
 			path = "Death and Co";
 			sourceTree = "<group>";
@@ -2036,7 +2041,11 @@
 		F4441CEE2C9F82A70025E988 /* Database */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				F47DD7452CFE98E400A9CBB2 /* PreloadedCocktails.store */,
+=======
+				F4F476552D234435001E29E6 /* PreloadedCocktails.store */,
+>>>>>>> main
 				F498A46B2CEA66370082D818 /* CocktailDatabaseGenerator.swift */,
 			);
 			path = Database;
@@ -2324,7 +2333,11 @@
 			files = (
 				F4FBF12C2AAABBBB00BBF7CF /* Preview Assets.xcassets in Resources */,
 				1AC386B02AAABED10064F52A /* Assets.xcassets in Resources */,
+<<<<<<< HEAD
 				F47DD7462CFE98E400A9CBB2 /* PreloadedCocktails.store in Resources */,
+=======
+				F4F476562D234435001E29E6 /* PreloadedCocktails.store in Resources */,
+>>>>>>> main
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2400,6 +2413,7 @@
 				F4A628E22B7E31BF0084FD80 /* Variation.swift in Sources */,
 				1AFDB7B62ADF26AD000A3812 /* PaperPlane.swift in Sources */,
 				4DBBA4CB2B6A346D00179B8F /* Penicillin(W&G).swift in Sources */,
+				F4F476522D2341D7001E29E6 /* StarfishAndCoffee.swift in Sources */,
 				4DBBA4CD2B6A376B00179B8F /* PinceEdward.swift in Sources */,
 				4D1E85E12B5DBDE200214BC6 /* SideCar.swift in Sources */,
 				4DA5679A2B6CD213003F6F04 /* SwitchbladeRomance.swift in Sources */,
