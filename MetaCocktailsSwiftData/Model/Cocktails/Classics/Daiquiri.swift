@@ -12,7 +12,7 @@ let daiquiri = Cocktail(cocktailName: "Daiquiri",
                         garnish: [.limeWheel],
                         author: Author(place: "Cuba", year: "1890s"),
                         spec: daiquiriSpec,
-                        notes: daiquiriNotes,
+                        notes: daiquiriNote,
                         tags: daiquiriTags,
                         variation: .daiquiri,
                         titleCocktail: true)

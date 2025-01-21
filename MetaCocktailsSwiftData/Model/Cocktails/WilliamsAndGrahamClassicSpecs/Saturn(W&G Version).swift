@@ -13,7 +13,7 @@ var saturnWnG = Cocktail(cocktailName: "Saturn" + wAndGTitleTag,
                          ice: .pebbleIce,
                          author: williamsAndGraham,
                          spec: saturnSpecWnG,
-                         notes: saturnNotes,
+                         notes: saturnNote,
                          tags: saturnTagsWnG,
                          variation: .saturn,
                          collection: .williamsAndGraham)

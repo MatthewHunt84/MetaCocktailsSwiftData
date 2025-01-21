@@ -12,7 +12,7 @@ var armyNavy  = Cocktail(cocktailName: "Army & Navy",
                          garnish: [.lemonPeel],
                          author: davidEmbury,
                          spec: armyNavySpec,
-                         notes: armyNavyNotes,
+                         notes: armyNavyNote,
                          tags: armyNavyTags,
                          collection: .originals)
 

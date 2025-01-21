@@ -15,7 +15,7 @@ var whiskeySmash = Cocktail(cocktailName: "Whiskey Smash",
                             ice: .pebbleIce,
                             spec: whiskeySmashSpec,
                             buildOrder: whiskeySmashBuild,
-                            notes: whiskeySmashNotes,
+                            notes: whiskeySmashNote,
                             tags: whiskeySmashTags)
 
 let whiskeySmashSpec: [OldCocktailIngredient] = [OldCocktailIngredient(.juices(.lemon), value: 0.75),
