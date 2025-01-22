@@ -14,7 +14,7 @@ let stinger = Cocktail(cocktailName: "Stinger",
                        ice: .pebbleIce,
                        author: Author(place: "Manhattan", year: "1880s"),
                        spec: stingerSpec,
-                       notes: stingerBuild,
+                       notes: stingerNote,
                        tags: stingerTags)
 
 let stingerSpec  =  [OldCocktailIngredient(.liqueurs(.cremeDeMenthe), value: 0.75),

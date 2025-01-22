@@ -13,7 +13,7 @@ var harveyWallbangerWnG = Cocktail(cocktailName: "Harvey Wallbanger" + wAndGTitl
                                    ice: .koldDraft,
                                    author: williamsAndGraham,
                                    spec: harveyWallbangerSpecWnG,
-                                   notes: harveyWalbangerNotes,
+                                   notes: harveyWalbangerNote,
                                    tags: harveyWallbangerTagsWnG,
                                    variation: .harveyWallbanger,
                                    collection: .williamsAndGraham)

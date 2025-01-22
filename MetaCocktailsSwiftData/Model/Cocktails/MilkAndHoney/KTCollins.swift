@@ -15,7 +15,7 @@ var kTCollins  = Cocktail(cocktailName: "KT Collins",
                                          place: AuthorPlaces.johnDoryOysterBar.rawValue,
                                          year: "Early 2000s"),
                           spec: kTCollinsSpec,
-                          buildOrder: kTCollinsBuild,
+                          buildOrder: ktCollinsBuild,
                           tags: kTCollinsTags,
                           variation: nil,
                           collection: .milkAndHoney)

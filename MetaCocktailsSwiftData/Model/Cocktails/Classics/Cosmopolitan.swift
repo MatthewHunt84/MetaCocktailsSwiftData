@@ -17,7 +17,7 @@ var cosmopolitan  = Cocktail(cocktailName: "Cosmopolitan",
                                            year: "1988"),
                              spec: cosmoSpec,
                              buildOrder: nil,
-                             notes: cosmoNotes,
+                             notes: cosmoNote,
                              tags: cosmoTags)
 
 var cosmoSpec  = [OldCocktailIngredient(.juices(.lime), value: 0.25),

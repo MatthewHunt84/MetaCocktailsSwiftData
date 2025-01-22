@@ -12,7 +12,7 @@ var margarita = Cocktail(cocktailName: "Margarita",
                          garnish: [.noGarnish],
                          ice: nil,
                          spec: margaritaSpec,
-                         notes: margNotes,
+                         notes: margNote,
                          tags: margaritaTags,
                          variation: .margarita,
                          titleCocktail: true)

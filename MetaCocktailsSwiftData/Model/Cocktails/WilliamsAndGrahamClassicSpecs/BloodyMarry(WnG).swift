@@ -12,7 +12,7 @@ var bloodyMaryWnG  = Cocktail(cocktailName: "Bloody Mary" + wAndGTitleTag,
                                garnish: [.olive, .cocktailOnion],
                                author: williamsAndGraham,
                                spec: bloodyMarryWnGSpec,
-                               buildOrder: bloodyMarryWnGBuild,
+                               buildOrder: bloodyMaryWnGBuild,
                                tags: bloodyMarryWnGTags,
                                variation: .bloodyMary,
                               collection: .williamsAndGraham)
