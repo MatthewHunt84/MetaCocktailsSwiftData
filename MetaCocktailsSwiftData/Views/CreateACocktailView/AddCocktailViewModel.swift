@@ -221,7 +221,7 @@ import Combine
                                 glasswareType: uniqueGlasswareName!,
                                 garnish: addedGarnish,
                                 ice: ice,
-                                author: Author(person: authorName, place: authorPlace, year: authorYear),
+                                author: author,
                                 spec: addedIngredients,
                                 buildOrder: buildOption,
                                 tags: ingredientTags,
@@ -470,6 +470,8 @@ import Combine
     func validateAuthor() {
         if authorName != "" && authorYear != "" && authorPlace != "" {
             author = Author(person: authorName, place: authorYear, year: authorPlace)
+        } else {
+            author = nil
         }
     }
     
