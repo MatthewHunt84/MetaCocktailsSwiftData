@@ -35,7 +35,7 @@ struct AboutUsView: View {
                         
                         HStack {
                             
-                            Text("Transitioning from building drinks to building software has been an amazing journey, and we're not finished yet. Have ideas for new features? We'd love to hear them!")
+                            Text("Transitioning from building drinks to building software has been an amazing journey, and we're not finished yet. Have ideas for new features? We'd love to hear them at cocktailCopilotInfo@gmail.com")
                                 .font(FontFactory.fontBody14)
                                 .multilineTextAlignment(.leading)
                             
