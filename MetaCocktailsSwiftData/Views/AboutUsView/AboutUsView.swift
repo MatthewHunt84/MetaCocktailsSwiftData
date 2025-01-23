@@ -56,7 +56,7 @@ struct AboutUsView: View {
                                 Text("James Menkal")
                                     .font(.custom("AvenirNext-DemiBold", size: 18))
                                 
-                                Text("A veteran of the industry with over a decade of craft cocktail expertise, James Menkal is the longest-serving bartender at Denver's award-winning Williams and Graham.")
+                                Text("A veteran of the industry with over a decade of craft cocktail expertise and a Bar 5-Day graduate, James Menkal is the longest-serving bartender at Denver's award-winning Williams and Graham.")
                                     .font(FontFactory.fontBody14)
                             }
                         }
@@ -70,7 +70,7 @@ struct AboutUsView: View {
                                 Text("Matt Hunt")
                                     .font(.custom("AvenirNext-DemiBold", size: 18))
                                 
-                                Text("A full-time iOS developer since 2021, Matt previously worked as a bartender at Death & Co Denver before joining James at Williams and Graham. Good times.")
+                                Text("A full-time iOS developer since 2021, Matt previously worked as a bartender at Death & Co Denver before joining James at Williams and Graham.")
                                     .font(FontFactory.fontBody14)
                             }
                             
