@@ -94,7 +94,7 @@ struct AboutUsView: View {
                     .padding(.top, -10)
                     .foregroundColor(ColorScheme.interactionTint)
                     .onTapGesture {
-                        if let url = URL(string: "mailto:cocktailcopilot@gmail.com") {
+                        if let url = URL(string: "mailto:cocktailCopilotInfo@gmail.com") {
                             UIApplication.shared.open(url)
                         }
                     }
