@@ -46,8 +46,10 @@ struct FirstLoadAnimation: View {
         }
         .foregroundStyle(externalColor)
         .frame(width: frame, height: frame)
-        .onAppear {
-                rotationCircle = reverse ? -360 : 360
+        .task {
+            await MainActor.run {
+                rotationCircle = 360
+            }
         }
     }
 }
