@@ -111,7 +111,10 @@ struct CocktailGroupView: View {
                 if isExpanded {
                     ForEach(cocktails, id: \.id) { cocktail in
                         MultipleCocktailsListView(cocktail: cocktail, cocktails: cocktails)
-                            .transition(.opacity)
+                            .transition(.asymmetric(
+                                insertion: AnyTransition.opacity.animation(.easeIn),
+                                removal: AnyTransition.opacity.animation(.easeOut.speed(2))
+                            ))
                     }
                 }
             }
