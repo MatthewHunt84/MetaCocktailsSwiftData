@@ -14,6 +14,7 @@ struct MetaCocktailsSwiftDataApp: App {
     
     init() {
         self.container = CocktailContainer.makeSwiftDataStore()
+//        self.container = CocktailContainer.testModelChanges()
     }
     
     var body: some Scene {
