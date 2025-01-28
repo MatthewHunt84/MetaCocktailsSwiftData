@@ -27,7 +27,7 @@ let morningGloryFizzNote = "'To be drunk immediately, or the effect will be lost
 
 let armyNavyNote = "Like many classics, the Army & Navy's creator remains unknown. David Embury's 1948 publication of the recipe remains excellent by modern standards."
 
-var bobbyBurnsNote = "This classic from Hugo Ensslin is essentially just a Rob Roy, with Benedictine replacing the bitters, which would be read by the modern palate to be leaning on the sweet side. Choose your vermouth wisely."
+var bobbyBurnsNote = "This classic from Hugo Ensslin is essentially just a 50/50 Rob Roy, with Benedictine replacing the bitters, which would be read by the modern palate to be leaning on the sweet side. Choose your vermouth wisely."
 
 let laLouisianeNote  = "The À la Louisiane (sometimes called De la Louisiane) was the house drink of La Louisiane, the historic New Orleans restaurant established in 1881."
 
