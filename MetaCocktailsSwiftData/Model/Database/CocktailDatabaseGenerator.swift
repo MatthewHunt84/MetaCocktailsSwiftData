@@ -93,7 +93,7 @@ struct CocktailDatabaseGenerator {
             }
         }
     
-    private static func insertCocktailsIntoModel(container: ModelContainer) throws {
+    static func insertCocktailsIntoModel(container: ModelContainer) throws {
         let context = container.mainContext
         
         // Track unique ingredient bases and garnishes

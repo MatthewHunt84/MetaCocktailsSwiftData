@@ -50,4 +50,21 @@ actor CocktailContainer {
             fatalError("💀 Error: \(error)")
         }
     }
+    
+    @MainActor
+    static func testModelChanges() -> ModelContainer {
+        let schema = Schema([Cocktail.self])
+        let config = ModelConfiguration()
+        let container = try! ModelContainer(for: schema, configurations: config)
+        do {
+            
+            try CocktailDatabaseGenerator.insertCocktailsIntoModel(container: container)
+            
+        } catch {
+            print("❌ Generate model for testing FAILED!")
+        }
+        print("✅  Generate model for testing MUCH SUCCESS!")
+        return container
+        
+    }
 }
