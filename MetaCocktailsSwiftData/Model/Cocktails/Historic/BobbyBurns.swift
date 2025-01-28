@@ -12,7 +12,9 @@ var bobbyBurns = Cocktail(cocktailName: "Bobby Burns" + historicTag,
                           garnish: [.lemonPeel],
                           author: Author(person: AuthorNames.hugoEnsslin.rawValue, place: AuthorPlaces.recipesForMixedDrinks.rawValue, year: "1916"),
                           spec: bobbyBurnsSpec,
+                          notes: bobbyBurnsNote,
                           tags: bobbyBurnsTags,
+                          variation: .bobbyBurns,
                           collection: .originals,
                           historicSpec: .bobbyBurns)
 
@@ -23,3 +25,5 @@ var bobbyBurnsSpec     =  [OldCocktailIngredient(.liqueurs(.benedictine), value:
 var bobbyBurnsTags     = Tags(flavors: [.lemon],
                               profiles: [.spiritForward,  .rich],
                               styles: [.manhattan, .stirred])
+
+

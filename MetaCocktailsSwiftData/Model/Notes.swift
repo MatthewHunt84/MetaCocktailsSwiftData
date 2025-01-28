@@ -27,6 +27,8 @@ let morningGloryFizzNote = "'To be drunk immediately, or the effect will be lost
 
 let armyNavyNote = "Like many classics, the Army & Navy's creator remains unknown. David Embury's 1948 publication of the recipe remains excellent by modern standards."
 
+var bobbyBurnsNote = "Featuring equal parts Scotch whisky and sweet vermouth, this classic Rob Roy variation from Hugo Ensslin calls for Bénédictine in place of aromatic bitters. The modification creates a sweeter profile, so we'd recommend a more bitter vermouth such as Punt e Mes or Carpano Antica over Dolin Rouge"
+
 let laLouisianeNote  = "The À la Louisiane (sometimes called De la Louisiane) was the house drink of La Louisiane, the historic New Orleans restaurant established in 1881."
 
 let cloverClubNote = "The Clover Club cocktail originated at its namesake, a gentleman's club in Philadelphia (1882-1920s). Julie Reiner's recipe exemplifies a modern sour that remains faithful to the original formula, incorporating dry vermouth."
