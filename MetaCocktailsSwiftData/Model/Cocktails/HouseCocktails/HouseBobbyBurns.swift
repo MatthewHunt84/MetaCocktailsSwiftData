@@ -7,7 +7,7 @@
 
 import Foundation
 
-var houseBobbyBurns = Cocktail(cocktailName: "Bobby Burns" + houseTag,
+var houseBobbyBurns = Cocktail(cocktailName: "Bobby Burns",
                                glasswareType: .nickAndNora,
                                garnish: [.lemonPeel],
                                spec: houseBobbyBurnsSpec,
@@ -22,3 +22,5 @@ var houseBobbyBurnsSpec     =  [OldCocktailIngredient(.liqueurs(.benedictine), v
 var houseBobbyBurnsTags     = Tags(flavors: [.lemon],
                                    profiles: [.spiritForward,  .rich],
                                    styles: [.manhattan, .stirred])
+
+
