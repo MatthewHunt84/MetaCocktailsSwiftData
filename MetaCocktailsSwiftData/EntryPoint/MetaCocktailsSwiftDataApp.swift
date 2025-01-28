@@ -14,6 +14,7 @@ struct MetaCocktailsSwiftDataApp: App {
     
     init() {
         self.container = CocktailContainer.makeSwiftDataStore()
+        // Make sure you're using this store ^^^ when generating new PreloadedCocktail.store files (not the testModelChanges container below)
 //        self.container = CocktailContainer.testModelChanges()
     }
     
