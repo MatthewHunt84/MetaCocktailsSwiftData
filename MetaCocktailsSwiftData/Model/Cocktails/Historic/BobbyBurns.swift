@@ -15,7 +15,6 @@ var bobbyBurns = Cocktail(cocktailName: "Bobby Burns" + historicTag,
                           notes: bobbyBurnsNote,
                           tags: bobbyBurnsTags,
                           variation: .bobbyBurns,
-                          variationName: Variation.bobbyBurns.rawValue,
                           collection: .originals,
                           historicSpec: .bobbyBurns)
 
