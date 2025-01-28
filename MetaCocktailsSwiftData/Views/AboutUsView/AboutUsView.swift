@@ -35,7 +35,8 @@ struct AboutUsView: View {
                         
                         HStack {
                             
-                            Text("Transitioning from building drinks to building software has been an amazing journey, and we're not finished yet. Have ideas for new features? We'd love to hear them at cocktailCopilot@gmail.com")
+                            Text("Transitioning from building drinks to building software has been an amazing journey, and we're not finished yet. Have ideas for new features? We'd love to hear them at cocktailcopilot@gmail.com")
+                                .tint(ColorScheme.interactionTint)
                                 .font(FontFactory.fontBody14)
                                 .multilineTextAlignment(.leading)
                             
@@ -85,19 +86,6 @@ struct AboutUsView: View {
                             .opacity(0.02)
                     )
                     .padding(20)
-                    
-                    HStack(spacing: 8) {
-                        Image(systemName: "envelope.fill")
-                        Text("Contact")
-                            .font(FontFactory.fontBody14)
-                    }
-                    .padding(.top, -10)
-                    .foregroundColor(ColorScheme.interactionTint)
-                    .onTapGesture {
-                        if let url = URL(string: "mailto:cocktailcopilot@gmail.com") {
-                            UIApplication.shared.open(url)
-                        }
-                    }
                 }
             }
         }
