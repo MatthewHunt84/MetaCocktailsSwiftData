@@ -128,7 +128,7 @@ enum Syrup: String, IngredientTagsProtocol {
         case .honeySyrup:
             Tags(flavors: [.honey], nA: [NAIngredients(.syrups(self))])
         case .orgeat:
-            Tags(flavors: [.almond],  profiles: [.nutty], nA: [NAIngredients(.syrups(self))])
+            Tags(flavors: [.almond],  profiles: [.nutty, .nuts], nA: [NAIngredients(.syrups(self))])
         case .passionfruitSyrup:
             Tags(flavors: [.passionfruit], profiles: [.tropical], nA: [NAIngredients(.syrups(self))])
         case .richDem:
@@ -365,7 +365,7 @@ enum OtherNA: String, IngredientTagsProtocol {
     var tags: Tags {
         switch self {
         case .cream:
-            Tags(profiles: [.creamy, .rich], nA: [NAIngredients(.otherNonAlc(self))])
+            Tags(profiles: [.creamy, .rich, .dairy], nA: [NAIngredients(.otherNonAlc(self))])
         case .eggWhites:
             Tags(flavors: [.egg], profiles: [.silky, .light], nA: [NAIngredients(.otherNonAlc(self))])
         case .eggWhole:
@@ -395,11 +395,11 @@ enum OtherNA: String, IngredientTagsProtocol {
         case .cocoaPowder:
             Tags(flavors: [.chocolate], nA: [NAIngredients(.otherNonAlc(self))])
         case .angosturaCream:
-            Tags(nA: [NAIngredients(.otherNonAlc(self))])
+            Tags(profiles: [.creamy, .dairy], nA: [NAIngredients(.otherNonAlc(self))])
         case .coffee:
             Tags(flavors: [.coffee], nA: [NAIngredients(.otherNonAlc(self))])
         case .stiffCream:
-            Tags(profiles: [.creamy, .rich], nA: [NAIngredients(.otherNonAlc(self))])
+            Tags(profiles: [.creamy, .rich, .dairy], nA: [NAIngredients(.otherNonAlc(self))])
         case .demeraraSugarCube:
             Tags(nA: [NAIngredients(.otherNonAlc(self))])
         case .coconutCream:
@@ -413,7 +413,7 @@ enum OtherNA: String, IngredientTagsProtocol {
         case .coconutWater:
             Tags(flavors: [.coconut], nA: [NAIngredients(.otherNonAlc(self))])
         case .butter:
-            Tags(nA: [NAIngredients(.otherNonAlc(self))])
+            Tags(profiles: [.dairy], nA: [NAIngredients(.otherNonAlc(self))])
         case .orangeConcentrate:
             Tags(flavors: [.orange], nA: [NAIngredients(.otherNonAlc(self))])
         case .springOnion:
