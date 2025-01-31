@@ -466,7 +466,7 @@ enum Vodka: String, IngredientTagsProtocol {
         case .zubrowka:
             Tags(booze: [Booze(.vodkas(self)), Booze(.vodkas(.vodkaAny))])
         case .peanutButterVodka:
-            Tags(flavors: [.peanut],profiles: [.nutty], booze: [Booze(.vodkas(self)), Booze(.vodkas(.vodkaAny))])
+            Tags(flavors: [.peanut],profiles: [.nutty, .nuts], booze: [Booze(.vodkas(self)), Booze(.vodkas(.vodkaAny))])
         case .stGeorgeGreenChileVodka:
             Tags(flavors: [.greenChile], booze: [Booze(.vodkas(self)), Booze(.vodkas(.vodkaAny))])
         case .roaringForkVodka:
@@ -726,7 +726,7 @@ enum Liqueur: String, IngredientTagsProtocol {
         case .orangeCuracao:
             Tags(flavors: [.orange], profiles: [.fruity], booze: [Booze(.liqueurs(self))])
         case .velvetFalernum:
-            Tags(flavors: [.clove, .almond], booze: [Booze(.liqueurs(self))])
+            Tags(flavors: [.clove, .almond], profiles: [.nuts], booze: [Booze(.liqueurs(self))])
         case .yellowChartreuse:
             Tags(flavors: [.angelica], profiles: [.herbal, .botanical], booze: [Booze(.liqueurs(self))])
         case .licor43:
@@ -752,7 +752,7 @@ enum Liqueur: String, IngredientTagsProtocol {
         case .cherryHeering:
             Tags(flavors: [.cherry], profiles: [.fruity], booze: [Booze(.liqueurs(self))])
         case .amaretto:
-            Tags(flavors: [.cherry, .almond], profiles: [.fruity, .nutty], booze: [Booze(.liqueurs(self))])
+            Tags(flavors: [.cherry, .almond], profiles: [.fruity, .nutty, .nuts], booze: [Booze(.liqueurs(self))])
         case .cremeDeViolette:
             Tags(profiles: [.floral], booze: [Booze(.liqueurs(self))])
         case .luxardoCherry:
@@ -764,7 +764,7 @@ enum Liqueur: String, IngredientTagsProtocol {
         case .borghetti:
             Tags(flavors: [.coffee, .espresso], booze: [Booze(.liqueurs(self))])
         case .falernum:
-            Tags(flavors: [.clove, .almond], booze: [Booze(.liqueurs(self))])
+            Tags(flavors: [.clove, .almond],  profiles: [.nuts], booze: [Booze(.liqueurs(self))])
         case .cremeDeMenthe:
             Tags(flavors: [.menthol, .mint], booze: [Booze(.liqueurs(self))])
         case .galliano:
@@ -788,7 +788,7 @@ enum Liqueur: String, IngredientTagsProtocol {
         case .anchoRayesAncho:
             Tags(flavors: [.poblanoChile], profiles: [.spicy], booze: [Booze(.liqueurs(self))])
         case .nuxAlpina:
-            Tags(flavors: [.walnut], booze: [Booze(.liqueurs(self))])
+            Tags(flavors: [.walnut], profiles: [.nuts], booze: [Booze(.liqueurs(self))])
         case .leopoldCherry:
             Tags(flavors: [.cherry], booze: [Booze(.liqueurs(self))])
         case .stGeorgeSpicesPear:
@@ -796,7 +796,7 @@ enum Liqueur: String, IngredientTagsProtocol {
         case .dolinGenepy:
             Tags(flavors: [.anise], booze: [Booze(.liqueurs(self))])
         case .traderVicsChestnut:
-            Tags(flavors: [.chestnut], profiles: [.nutty], booze: [Booze(.liqueurs(self))])
+            Tags(flavors: [.chestnut], profiles: [.nutty, .nuts], booze: [Booze(.liqueurs(self))])
         case .damiana:
             Tags(profiles: [.herbal], booze: [Booze(.liqueurs(self))])
         case .giffardPassion:
@@ -804,7 +804,7 @@ enum Liqueur: String, IngredientTagsProtocol {
         case .italicus:
             Tags(flavors: [.bergamot],  booze: [Booze(.liqueurs(self))])
         case .nocino:
-            Tags(flavors: [.walnut],  booze: [Booze(.liqueurs(self))])
+            Tags(flavors: [.walnut], profiles: [.nuts], booze: [Booze(.liqueurs(self))])
         case .aelredMelonApertif:
             Tags(flavors: [.melon],  booze: [Booze(.liqueurs(self))])
         case .pimentoDram:
@@ -992,7 +992,7 @@ enum Bitters: String, IngredientTagsProtocol {
     var tags: Tags {
         switch self {
         case .blackWalnut:
-            Tags(flavors: [.walnut], booze: [Booze(.bitters(self)),Booze(.bitters(.bitters))])
+            Tags(flavors: [.walnut], profiles: [.nuts], booze: [Booze(.bitters(self)),Booze(.bitters(.bitters))])
         case .orangeBitters:
             Tags(flavors: [.orange], booze: [Booze(.bitters(self)),Booze(.bitters(.bitters))])
         case .angosturaBitters:
