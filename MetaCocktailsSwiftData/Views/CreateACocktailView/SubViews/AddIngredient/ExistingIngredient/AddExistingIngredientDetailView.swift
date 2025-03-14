@@ -47,6 +47,7 @@ struct AddExistingIngredientDetailView: View {
                 } else {
                     keyboardFocused = true
                 }
+                
             }
         }
     }
