@@ -34,6 +34,8 @@ struct AddRecipeStepDetailView: View {
                         textEditor = ""
                     }
                     .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+                    .padding(.bottom, 15)
                     .disabled(textEditor == "" ? true : false)
                     .foregroundStyle(textEditor != "" ? Color.secondary : ColorScheme.interactionTint)
                 }
@@ -80,6 +82,6 @@ struct AddRecipeStepDetailView: View {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
     @FocusState var keyboardFocused: Bool
     
-    AddRecipeStepDetailView(viewModel: AddCocktailViewModel(), recipeKeyboardFocused: _keyboardFocused, isShowingBuildSheet: .constant(true), editingInstruction: .constant(true))
+    AddRecipeStepDetailView(viewModel: AddCocktailViewModel(), recipeKeyboardFocused: _keyboardFocused, isShowingBuildSheet: .constant(true), editingInstruction: .constant(false))
         .modelContainer(preview.container)
 }

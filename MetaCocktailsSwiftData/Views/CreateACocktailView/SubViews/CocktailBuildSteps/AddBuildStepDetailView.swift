@@ -32,13 +32,15 @@ struct AddBuildStepDetailView: View {
                         .background(Color.clear)
                 }
                 if !willEditBuildStep {
-                    UniversalButton(buttonText: "Add Recipe Step", rightImage: Image(systemName: "plus"), includeBorder: true) {
+                    UniversalButton(buttonText: "Add Build Step", rightImage: Image(systemName: "plus"), includeBorder: true) {
                         viewModel.build.instructions.append(Instruction(step: viewModel.build.instructions.count + 1, method: textEditor))
                         textEditor = ""
                         
                     }
                     .foregroundStyle(textEditor != "" ? Color.secondary : ColorScheme.interactionTint)
                     .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+                    .padding(.bottom, 15)
                     .disabled(textEditor == "" ? true : false)
                 }
                 UniversalButton(buttonText: "Save and Exit", includeBorder: true) {

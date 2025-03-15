@@ -139,6 +139,7 @@ import Combine
         didChooseExistingIngredient = false
         didChooseExistingGarnish = false
         isEdit = false
+        category = UmbrellaCategory.otherNonAlc
     }
 
     func populateFromCocktail(_ cocktail: Cocktail) {
@@ -346,6 +347,9 @@ import Combine
             prepIngredientRecipe[index].method = newMethod
         }
     }
+    
+   
+  
  
   
 
