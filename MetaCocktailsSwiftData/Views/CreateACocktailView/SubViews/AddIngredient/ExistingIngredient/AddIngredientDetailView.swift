@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct AddExistingIngredientDetailView: View {
+struct AddIngredientDetailView: View {
     @Bindable var viewModel: AddCocktailViewModel
     @FocusState private var keyboardFocused: Bool
     @FocusState private var amountKeyboardFocused: Bool
@@ -48,7 +48,7 @@ struct AddExistingIngredientDetailView: View {
                 }
                 .scrollContentBackground(.hidden)
                 .navigationBarTitleDisplayMode(.inline)
-                .jamesHeaderWithNavigation(title: "Add Ingredient", dismiss: dismiss)
+                .jamesHeaderWithNavigation(title: "Add Ingredient", dismiss: dismiss, action: viewModel.clearIngredientData)
             }
             .onAppear {
                 if viewModel.isEdit {
@@ -56,7 +56,6 @@ struct AddExistingIngredientDetailView: View {
                 } else {
                     keyboardFocused = true
                 }
-                
             }
         }
     }
@@ -65,7 +64,7 @@ struct AddExistingIngredientDetailView: View {
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
     
-    AddExistingIngredientDetailView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true))
+    AddIngredientDetailView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true))
         .modelContainer(preview.container)
     
 }
