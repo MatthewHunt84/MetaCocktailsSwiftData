@@ -12,11 +12,12 @@ struct AddRecipeStepDetailView: View {
     @State private var textEditor = ""
     @FocusState var recipeKeyboardFocused: Bool
     @Binding var isShowingBuildSheet: Bool
-    @Binding var editingInstruction: Bool 
+    @Binding var editingInstruction: Bool
     
     var body: some View {
         VStack {
             List {
+                
                 Section("Add a recipe step") {
                     Text(editingInstruction ? "\(viewModel.currentBuildStep)" : "Step \(viewModel.prepIngredientRecipe.count + 1)")
                         .font(FontFactory.formLabel18)
@@ -27,18 +28,37 @@ struct AddRecipeStepDetailView: View {
                         .scrollContentBackground(.hidden)
                         .background(Color.clear)
                 }
-                UniversalButton(buttonText: "Add Recipe Step", rightImage: Image(systemName:"plus"), includeBorder: true) {
-                    if editingInstruction {
-                        viewModel.updatePrepIngredientRecipe(id: viewModel.currentBuildInstructionUUID, newMethod: textEditor)
-                    } else {
+                if !editingInstruction {
+                    UniversalButton(buttonText: "Add Recipe Step", rightImage: Image(systemName:"plus"), includeBorder: true) {
                         viewModel.prepIngredientRecipe.append(Instruction(step: viewModel.prepIngredientRecipe.count + 1, method: textEditor))
+                        textEditor = ""
                     }
-                    isShowingBuildSheet = false
-                    editingInstruction = false
+                    .listRowBackground(Color.clear)
+                    .disabled(textEditor == "" ? true : false)
+                    .foregroundStyle(textEditor != "" ? Color.secondary : ColorScheme.interactionTint)
+                }
+                UniversalButton(buttonText: "Save and Exit", includeBorder: true) {
+                    
+                    if editingInstruction {
+                        if textEditor != "" {
+                            viewModel.updatePrepIngredientRecipe(id: viewModel.currentBuildInstructionUUID, newMethod: textEditor)
+                            isShowingBuildSheet = false
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                editingInstruction = false
+                            }
+                            
+                        }
+                    } else {
+                        if textEditor != "" {
+                            viewModel.prepIngredientRecipe.append(Instruction(step: viewModel.prepIngredientRecipe.count + 1, method: textEditor))
+                        }
+                        isShowingBuildSheet = false
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            editingInstruction = false
+                        }
+                    }
                 }
                 .listRowBackground(Color.clear)
-                .disabled(textEditor == "" ? true : false)
-                .foregroundStyle(textEditor != "" ? Color.secondary : ColorScheme.interactionTint)
             }
             .scrollContentBackground(.hidden)
             .background(BlackGlassBackgroundView())

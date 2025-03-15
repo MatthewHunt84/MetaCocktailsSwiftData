@@ -31,20 +31,37 @@ struct AddBuildStepDetailView: View {
                         .scrollContentBackground(.hidden)
                         .background(Color.clear)
                 }
-                
-                UniversalButton(buttonText: "Add Recipe Step", rightImage: Image(systemName: "plus"), includeBorder: true) {
-                    if willEditBuildStep {
-                        viewModel.updateBuildInstruction(id: viewModel.currentBuildInstructionUUID, newMethod: textEditor)
-                        isShowingBuildSheet = false
-                        
-                    } else {
+                if !willEditBuildStep {
+                    UniversalButton(buttonText: "Add Recipe Step", rightImage: Image(systemName: "plus"), includeBorder: true) {
                         viewModel.build.instructions.append(Instruction(step: viewModel.build.instructions.count + 1, method: textEditor))
+                        textEditor = ""
+                        
+                    }
+                    .foregroundStyle(textEditor != "" ? Color.secondary : ColorScheme.interactionTint)
+                    .listRowBackground(Color.clear)
+                    .disabled(textEditor == "" ? true : false)
+                }
+                UniversalButton(buttonText: "Save and Exit", includeBorder: true) {
+                    
+                    if willEditBuildStep {
+                        if textEditor != "" {
+                            viewModel.updateBuildInstruction(id: viewModel.currentBuildInstructionUUID, newMethod: textEditor)
+                            isShowingBuildSheet = false
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                willEditBuildStep = false
+                            }
+                        }
+                    } else {
+                        if textEditor != "" {
+                            viewModel.build.instructions.append(Instruction(step: viewModel.build.instructions.count + 1, method: textEditor))
+                        }
                         isShowingBuildSheet = false
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            willEditBuildStep = false
+                        }
                     }
                 }
-                .foregroundStyle(textEditor != "" ? Color.secondary : ColorScheme.interactionTint)
                 .listRowBackground(Color.clear)
-                .disabled(textEditor == "" ? true : false)
                 
             }
             .scrollContentBackground(.hidden)
