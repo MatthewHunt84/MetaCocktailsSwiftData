@@ -32,6 +32,7 @@ struct JamesTitleWithNavigation: ViewModifier {
     
     var dismiss: DismissAction
     let title: String
+    var action: (() -> Void)? = {}
     
     func body(content: Content) -> some View {
         content
@@ -39,6 +40,7 @@ struct JamesTitleWithNavigation: ViewModifier {
                 ToolbarItem(placement: .navigation) {
                     Button(action: {
                         dismiss()
+                        action?()
                     }) {
                         Image(systemName: "chevron.backward")
                             .font(.system(size: 16))
@@ -90,8 +92,8 @@ extension View {
 }
 
 extension View {
-    func jamesHeaderWithNavigation(title: String, dismiss: DismissAction) -> some View {
-        self.modifier(JamesTitleWithNavigation(dismiss: dismiss, title: title))
+    func jamesHeaderWithNavigation(title: String, dismiss: DismissAction, action: (() -> Void)?  = nil) -> some View {
+        self.modifier(JamesTitleWithNavigation(dismiss: dismiss, title: title, action: action))
     }
 }
 

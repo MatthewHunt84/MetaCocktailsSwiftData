@@ -48,7 +48,7 @@ struct AddIngredientDetailView: View {
                 }
                 .scrollContentBackground(.hidden)
                 .navigationBarTitleDisplayMode(.inline)
-                .jamesHeaderWithNavigation(title: "Add Ingredient", dismiss: dismiss)
+                .jamesHeaderWithNavigation(title: "Add Ingredient", dismiss: dismiss, action: viewModel.clearIngredientData)
             }
             .onAppear {
                 if viewModel.isEdit {
@@ -56,7 +56,6 @@ struct AddIngredientDetailView: View {
                 } else {
                     keyboardFocused = true
                 }
-                
             }
         }
     }
