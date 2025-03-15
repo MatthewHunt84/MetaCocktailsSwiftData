@@ -8,13 +8,17 @@
 import Foundation
 
 enum Ice: String, Codable, CaseIterable {
-    case bigRock           = "Large cube"
-    case columnIce         = "Column ice"
-    case koldDraft         = "Kold Draft ice"
-    case kildDraftCube     = "Kold Draft cube"
-    case pebbleIce         = "Pebble ice"
+    case crackedHoshizaki  = "Cracked Hoshizaki"
     case crackedIce        = "Cracked Kold Draft"
-    case oneLargeBlock     = "One large block of ice"
+    case columnIce         = "Column ice"
+    case hoshizakiCube     = "Hoshizaki cube"
+    case hoshizakiIce      = "Hoshizaki ice"
+    case kildDraftCube     = "Kold Draft cube"
+    case koldDraft         = "Kold Draft ice"
+    case bigRock           = "Large cube"
+    case oneLargeBlock     = "Large punch bowl sized block of ice"
+    case largeSphere       = "Large sphere of ice"
+    case pebbleIce         = "Pebble ice"
     case none              = "None"
 }
 
