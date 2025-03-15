@@ -229,7 +229,8 @@ import Combine
                 if let ingredientValue = ingredientAmount {
                     addedIngredients.append(Ingredient(ingredientBase: IngredientBase(name: ingredientName,
                                                                                       category: category,
-                                                                                      prep: prep, isCustom: true),
+                                                                                      prep: prep,
+                                                                                      isCustom: true),
                                                        value: ingredientValue,
                                                        unit: selectedMeasurementUnit))
                 }
@@ -363,7 +364,8 @@ import Combine
                 ingredientBase: IngredientBase(
                     name: ingredientName,
                     category: category,
-                    prep: prep, isCustom: isCustom
+                    prep: prep,
+                    isCustom: isCustom
                 ),
                 value: ingredientValue,
                 unit: selectedMeasurementUnit

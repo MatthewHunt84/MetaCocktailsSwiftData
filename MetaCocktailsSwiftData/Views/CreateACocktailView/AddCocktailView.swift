@@ -129,7 +129,7 @@ struct AddCocktailView: View {
                 }
                 .fullScreenCover(isPresented: $isShowingAddIngredients) {
                     NavigationStack{
-                        AddExistingIngredientDetailView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
+                        AddIngredientDetailView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
                             .navigationBarBackButtonHidden(true)
                     }
                 }

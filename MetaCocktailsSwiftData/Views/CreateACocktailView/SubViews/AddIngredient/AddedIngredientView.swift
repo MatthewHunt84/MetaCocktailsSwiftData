@@ -38,7 +38,7 @@ struct AddedIngredientView: View {
                             if ingredient.ingredientBase.isCustom {
                                 viewModel.currentIngredientUUID = ingredient.id 
                                 viewModel.populateCustomIngredient(ingredient: ingredient)
-                           
+                                isShowingAddIngredients.toggle()
                             } else {
                                 viewModel.currentIngredientUUID = ingredient.id
                                 viewModel.populateExistingIngredient(ingredient: ingredient)

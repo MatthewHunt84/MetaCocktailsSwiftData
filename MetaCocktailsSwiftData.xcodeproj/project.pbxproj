@@ -407,7 +407,7 @@
 		4DC8852A2D4D6E1D00AAC0F0 /* PreloadedCocktails.store in Resources */ = {isa = PBXBuildFile; fileRef = 4DC885292D4D6E1D00AAC0F0 /* PreloadedCocktails.store */; };
 		4DCAA7A52C35E77200FBC4FE /* CustomIngredientRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAA7A42C35E77200FBC4FE /* CustomIngredientRecipeView.swift */; };
 		4DCAA7A72C35E83F00FBC4FE /* AddRecipeStepDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAA7A62C35E83F00FBC4FE /* AddRecipeStepDetailView.swift */; };
-		4DCAA7A92C373D1700FBC4FE /* AddExistingIngredientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAA7A82C373D1700FBC4FE /* AddExistingIngredientDetailView.swift */; };
+		4DCAA7A92C373D1700FBC4FE /* AddIngredientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAA7A82C373D1700FBC4FE /* AddIngredientDetailView.swift */; };
 		4DCB16F62BA239D60002D7D9 /* StreetAndFlynnSpecial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB16F52BA239D60002D7D9 /* StreetAndFlynnSpecial.swift */; };
 		4DCB16F82BA249800002D7D9 /* SugarPlum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB16F72BA249800002D7D9 /* SugarPlum.swift */; };
 		4DCB16FA2BA24A620002D7D9 /* SuttersMill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB16F92BA24A620002D7D9 /* SuttersMill.swift */; };
@@ -975,7 +975,7 @@
 		4DC885292D4D6E1D00AAC0F0 /* PreloadedCocktails.store */ = {isa = PBXFileReference; lastKnownFileType = file; path = PreloadedCocktails.store; sourceTree = "<group>"; };
 		4DCAA7A42C35E77200FBC4FE /* CustomIngredientRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomIngredientRecipeView.swift; sourceTree = "<group>"; };
 		4DCAA7A62C35E83F00FBC4FE /* AddRecipeStepDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeStepDetailView.swift; sourceTree = "<group>"; };
-		4DCAA7A82C373D1700FBC4FE /* AddExistingIngredientDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExistingIngredientDetailView.swift; sourceTree = "<group>"; };
+		4DCAA7A82C373D1700FBC4FE /* AddIngredientDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIngredientDetailView.swift; sourceTree = "<group>"; };
 		4DCB16F52BA239D60002D7D9 /* StreetAndFlynnSpecial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetAndFlynnSpecial.swift; sourceTree = "<group>"; };
 		4DCB16F72BA249800002D7D9 /* SugarPlum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SugarPlum.swift; sourceTree = "<group>"; };
 		4DCB16F92BA24A620002D7D9 /* SuttersMill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuttersMill.swift; sourceTree = "<group>"; };
@@ -1649,7 +1649,7 @@
 		4D6761342C41C54300A5939C /* ExistingIngredient */ = {
 			isa = PBXGroup;
 			children = (
-				4DCAA7A82C373D1700FBC4FE /* AddExistingIngredientDetailView.swift */,
+				4DCAA7A82C373D1700FBC4FE /* AddIngredientDetailView.swift */,
 			);
 			path = ExistingIngredient;
 			sourceTree = "<group>";
@@ -2831,7 +2831,7 @@
 				4D1E85C32B5C924F00214BC6 /* ElChicicabra.swift in Sources */,
 				4DCB173C2BA51F4B0002D7D9 /* QueensParkLight.swift in Sources */,
 				4DA567682B6C7053003F6F04 /* WhiteLady(W&G).swift in Sources */,
-				4DCAA7A92C373D1700FBC4FE /* AddExistingIngredientDetailView.swift in Sources */,
+				4DCAA7A92C373D1700FBC4FE /* AddIngredientDetailView.swift in Sources */,
 				1AC386C22AAABED10064F52A /* TabBarView.swift in Sources */,
 				1AD87A272AE8B65800859028 /* CloverClub.swift in Sources */,
 				4DA567822B6CB182003F6F04 /* TheRoastery.swift in Sources */,
