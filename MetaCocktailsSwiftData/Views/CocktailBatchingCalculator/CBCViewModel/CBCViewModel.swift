@@ -151,7 +151,35 @@ final class CBCViewModel: ObservableObject {
         convertIngredientsToBatchCellData()
         doSplitBatchMath()
     }
+    func getIngredientMeasurement(for batchCellData: BottleBatchedCellData) -> (value: Double, unit: MeasurementUnit)? {
+        if let foundIngredient = chosenCocktail.spec.first(where: { $0.ingredientBase.name == batchCellData.ingredientName }) {
+            return (foundIngredient.value * numberOfCocktailsText, foundIngredient.unit)
+        }
+        return nil
+    }
+
+    func getActualFluidOunces(for batchCellData: BottleBatchedCellData) -> Double {
+        return Double(batchCellData.totalMls) / mlToOzConversionFactor
+    }
     
+    func formatMeasurement(for batchCellData: BottleBatchedCellData, showAsFluidOunces: Bool = false) -> String {
+        if showAsFluidOunces {
+            let fluidOunces = Double(batchCellData.totalMls) / mlToOzConversionFactor
+            return String(format: "%.2f oz", fluidOunces)
+        } else {
+            if let measurementInfo = getIngredientMeasurement(for: batchCellData) {
+                let value = measurementInfo.value
+                let unitLabel = measurementInfo.unit.rawValue
+                
+                if value.truncatingRemainder(dividingBy: 1) == 0 {
+                    return "\(Int(value)) \(unitLabel)"
+                } else {
+                    return String(format: "%.2f %@", value, unitLabel)
+                }
+            }
+            return "\(batchCellData.totalMls) ml"
+        }
+    }
     
     func convertIngredientsToBatchCellData() {
         var quantifiableIngredients = [BottleBatchedCellData]()
@@ -343,3 +371,5 @@ extension String {
         return self + " mls"
     }
 }
+
+let mlToOzConversionFactor = 29.5735
