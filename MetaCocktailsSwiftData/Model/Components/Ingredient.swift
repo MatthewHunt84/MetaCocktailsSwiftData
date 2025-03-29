@@ -282,7 +282,7 @@ class IngredientBase: Codable, Hashable {
     var name: String
     var info: String?
     var tags: Tags?
-    var prep: Prep?
+    var prep: Prep? = nil
     var isCustom: Bool = false
     var umbrellaCategory: String 
     var baseCategory: String

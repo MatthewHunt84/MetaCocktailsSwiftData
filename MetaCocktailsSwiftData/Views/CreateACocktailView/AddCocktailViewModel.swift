@@ -139,6 +139,7 @@ import Combine
         didChooseExistingIngredient = false
         didChooseExistingGarnish = false
         isEdit = false
+        category = UmbrellaCategory.otherNonAlc
     }
 
     func populateFromCocktail(_ cocktail: Cocktail) {
@@ -228,7 +229,8 @@ import Combine
                 if let ingredientValue = ingredientAmount {
                     addedIngredients.append(Ingredient(ingredientBase: IngredientBase(name: ingredientName,
                                                                                       category: category,
-                                                                                      prep: prep, isCustom: true),
+                                                                                      prep: prep,
+                                                                                      isCustom: true),
                                                        value: ingredientValue,
                                                        unit: selectedMeasurementUnit))
                 }
@@ -346,6 +348,9 @@ import Combine
             prepIngredientRecipe[index].method = newMethod
         }
     }
+    
+   
+  
  
   
 
@@ -359,7 +364,8 @@ import Combine
                 ingredientBase: IngredientBase(
                     name: ingredientName,
                     category: category,
-                    prep: prep, isCustom: isCustom
+                    prep: prep,
+                    isCustom: isCustom
                 ),
                 value: ingredientValue,
                 unit: selectedMeasurementUnit

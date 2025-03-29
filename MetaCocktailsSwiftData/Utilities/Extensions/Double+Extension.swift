@@ -10,11 +10,11 @@ import SwiftUI
 extension Double {
     
     var toMilliliters: Double {
-        return self * 29.537
+        return self * mlToOzConversionFactor
     }
     
     var toOunces: Double {
-        return self / 29.537
+        return self / mlToOzConversionFactor
     }
     
     func rounded(toPlaces places: Int) -> Double {
