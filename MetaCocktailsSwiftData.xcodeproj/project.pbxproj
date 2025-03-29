@@ -145,6 +145,7 @@
 		4D7439902B9E59EA0020C3B8 /* SpecifiedListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D74398F2B9E59EA0020C3B8 /* SpecifiedListView.swift */; };
 		4D7439922B9E5A2A0020C3B8 /* AllCocktailsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7439912B9E5A2A0020C3B8 /* AllCocktailsListView.swift */; };
 		4D84A5162D840CF8008C09E1 /* CategoryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D84A5152D840CF8008C09E1 /* CategoryPickerView.swift */; };
+		4D87E8992D97E5D100ADFCAF /* PreloadedCocktails.store in Resources */ = {isa = PBXBuildFile; fileRef = 4D87E8982D97E5D100ADFCAF /* PreloadedCocktails.store */; };
 		4D90259C2B6456C0005F44F6 /* French75(WnG).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D90259B2B6456C0005F44F6 /* French75(WnG).swift */; };
 		4D9025A02B645868005F44F6 /* Gibson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D90259F2B645868005F44F6 /* Gibson.swift */; };
 		4D9025A22B6459C0005F44F6 /* GinFizz(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9025A12B6459C0005F44F6 /* GinFizz(W&G).swift */; };
@@ -404,7 +405,6 @@
 		4DBFF8572B60AAFB0011B5B1 /* CableCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8562B60AAFB0011B5B1 /* CableCar.swift */; };
 		4DBFF8592B60AD800011B5B1 /* CableCar(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8582B60AD800011B5B1 /* CableCar(W&G).swift */; };
 		4DBFF85B2B60AFE60011B5B1 /* Carajillo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF85A2B60AFE60011B5B1 /* Carajillo.swift */; };
-		4DC8852A2D4D6E1D00AAC0F0 /* PreloadedCocktails.store in Resources */ = {isa = PBXBuildFile; fileRef = 4DC885292D4D6E1D00AAC0F0 /* PreloadedCocktails.store */; };
 		4DCAA7A52C35E77200FBC4FE /* CustomIngredientRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAA7A42C35E77200FBC4FE /* CustomIngredientRecipeView.swift */; };
 		4DCAA7A72C35E83F00FBC4FE /* AddRecipeStepDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAA7A62C35E83F00FBC4FE /* AddRecipeStepDetailView.swift */; };
 		4DCAA7A92C373D1700FBC4FE /* AddIngredientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAA7A82C373D1700FBC4FE /* AddIngredientDetailView.swift */; };
@@ -713,6 +713,7 @@
 		4D74398F2B9E59EA0020C3B8 /* SpecifiedListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecifiedListView.swift; sourceTree = "<group>"; };
 		4D7439912B9E5A2A0020C3B8 /* AllCocktailsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCocktailsListView.swift; sourceTree = "<group>"; };
 		4D84A5152D840CF8008C09E1 /* CategoryPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerView.swift; sourceTree = "<group>"; };
+		4D87E8982D97E5D100ADFCAF /* PreloadedCocktails.store */ = {isa = PBXFileReference; lastKnownFileType = file; path = PreloadedCocktails.store; sourceTree = "<group>"; };
 		4D90259B2B6456C0005F44F6 /* French75(WnG).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "French75(WnG).swift"; sourceTree = "<group>"; };
 		4D90259F2B645868005F44F6 /* Gibson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gibson.swift; sourceTree = "<group>"; };
 		4D9025A12B6459C0005F44F6 /* GinFizz(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GinFizz(W&G).swift"; sourceTree = "<group>"; };
@@ -972,7 +973,6 @@
 		4DBFF8562B60AAFB0011B5B1 /* CableCar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CableCar.swift; sourceTree = "<group>"; };
 		4DBFF8582B60AD800011B5B1 /* CableCar(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CableCar(W&G).swift"; sourceTree = "<group>"; };
 		4DBFF85A2B60AFE60011B5B1 /* Carajillo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carajillo.swift; sourceTree = "<group>"; };
-		4DC885292D4D6E1D00AAC0F0 /* PreloadedCocktails.store */ = {isa = PBXFileReference; lastKnownFileType = file; path = PreloadedCocktails.store; sourceTree = "<group>"; };
 		4DCAA7A42C35E77200FBC4FE /* CustomIngredientRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomIngredientRecipeView.swift; sourceTree = "<group>"; };
 		4DCAA7A62C35E83F00FBC4FE /* AddRecipeStepDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeStepDetailView.swift; sourceTree = "<group>"; };
 		4DCAA7A82C373D1700FBC4FE /* AddIngredientDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIngredientDetailView.swift; sourceTree = "<group>"; };
@@ -2033,7 +2033,7 @@
 		F4441CEE2C9F82A70025E988 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				4DC885292D4D6E1D00AAC0F0 /* PreloadedCocktails.store */,
+				4D87E8982D97E5D100ADFCAF /* PreloadedCocktails.store */,
 				F498A46B2CEA66370082D818 /* CocktailDatabaseGenerator.swift */,
 			);
 			path = Database;
@@ -2321,7 +2321,7 @@
 			files = (
 				F4FBF12C2AAABBBB00BBF7CF /* Preview Assets.xcassets in Resources */,
 				1AC386B02AAABED10064F52A /* Assets.xcassets in Resources */,
-				4DC8852A2D4D6E1D00AAC0F0 /* PreloadedCocktails.store in Resources */,
+				4D87E8992D97E5D100ADFCAF /* PreloadedCocktails.store in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
