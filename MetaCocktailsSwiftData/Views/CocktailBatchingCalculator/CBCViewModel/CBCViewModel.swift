@@ -30,7 +30,9 @@ final class CBCViewModel: ObservableObject {
         .dashes: 0.04,
         .sprays: 0.02,
         .drops: 0.0017,
-        .bottles: 25.36
+        .bottles: 25.36,
+        .ml: 0.033814,
+        .tablespoon: 0.5
     ]
     ///Main batch view variables
     @Published var totalDilutionVolume = 0.0
