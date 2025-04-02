@@ -32,7 +32,8 @@ final class CBCViewModel: ObservableObject {
         .drops: 0.0017,
         .bottles: 25.36,
         .ml: 0.033814,
-        .tablespoon: 0.5
+        .tablespoon: 0.5,
+        .fluidOunces: 1.0
     ]
     ///Main batch view variables
     @Published var totalDilutionVolume = 0.0
@@ -259,7 +260,11 @@ final class CBCViewModel: ObservableObject {
     func convertLoadedCocktail(for cocktail: Cocktail) {
         var newLoadedCocktailData = CBCLoadedCocktailData(cocktailName: cocktail.cocktailName, ingredients: [])
         for spec in cocktail.spec {
-            if UmbrellaCategory(rawValue: spec.ingredientBase.umbrellaCategory) != .herbs && UmbrellaCategory(rawValue: spec.ingredientBase.umbrellaCategory) != .fruit && spec.unit != .whole {
+            if UmbrellaCategory(rawValue: spec.ingredientBase.umbrellaCategory) != .herbs
+                && UmbrellaCategory(rawValue: spec.ingredientBase.umbrellaCategory) != .fruit
+                && spec.unit != .whole
+                && spec.unit != .grams
+                && spec.unit != .pinch {
                 newLoadedCocktailData.ingredients.append(CBCLoadedIngredient(ingredient: spec, isIncluded: true))
             }
         }
