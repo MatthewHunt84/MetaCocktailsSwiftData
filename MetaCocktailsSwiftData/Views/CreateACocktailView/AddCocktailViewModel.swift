@@ -509,7 +509,7 @@ import Combine
         case .otherNonAlc:
             return MeasurementUnit.allCases
         default:
-            return [.fluidOunces, .barSpoon, .dashes, .drops, .grams, .ml,  .sprays, .teaspoon, .tablespoon, .bottles, .none]
+            return [.fluidOunces, .barSpoon, .dashes, .drops, .ml,  .sprays, .teaspoon, .tablespoon, .bottles, .none]
         }
     }
     
