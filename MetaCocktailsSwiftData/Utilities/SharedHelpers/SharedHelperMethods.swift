@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-func pluralizedIngredientText(for ingredient: Ingredient) -> Text {
+
+
+func pluralizedIngredientUnitText(for ingredient: Ingredient) -> Text {
     if ingredient.unit.canBePluralized{
         Text("^[\(NSNumber(value: ingredient.value)) \(ingredient.unit.rawValue)](inflect: true) \(ingredient.ingredientBase.name)")
     } else {
@@ -15,10 +17,28 @@ func pluralizedIngredientText(for ingredient: Ingredient) -> Text {
     }
 }
 
-func pluralizedIngredientUnitText(for ingredient: Ingredient) -> Text {
-    if ingredient.unit.canBePluralized{
-        Text("^[\(NSNumber(value: ingredient.value)) \(ingredient.unit.rawValue)](inflect: true)")
+func pluralizedIngredientText(for ingredient: Ingredient, displayMls: Bool) -> Text {
+   
+    if displayMls {
+        if ingredient.unit == .fluidOunces {
+            return Text("\(NSNumber(value: Int(ingredient.value.toMilliliters.rounded()))) \(MeasurementUnit.ml.rawValue) \(ingredient.ingredientBase.name)")
+        } else if ingredient.unit == .ml {
+            return Text("\(NSNumber(value: ingredient.value)) \(ingredient.unit.rawValue) \(ingredient.ingredientBase.name)")
+        }
     } else {
-        Text("\(NSNumber(value: ingredient.value)) \(ingredient.unit.rawValue)")
+        if ingredient.unit == .ml {
+            let roundedOunces = (ingredient.value.toOunces * 100).rounded() / 100
+            return Text("\(NSNumber(value: roundedOunces)) \(MeasurementUnit.fluidOunces.rawValue) \(ingredient.ingredientBase.name)")
+        } else if ingredient.unit == .fluidOunces && ingredient.unit.canBePluralized {
+            return Text("^[\(NSNumber(value: ingredient.value)) \(ingredient.unit.rawValue)](inflect: true) \(ingredient.ingredientBase.name)")
+        } else if ingredient.unit == .fluidOunces {
+            return Text("\(NSNumber(value: ingredient.value)) \(ingredient.unit.rawValue) \(ingredient.ingredientBase.name)")
+        }
+    }
+    
+    if ingredient.unit.canBePluralized {
+        return Text("^[\(NSNumber(value: ingredient.value)) \(ingredient.unit.rawValue)](inflect: true) \(ingredient.ingredientBase.name)")
+    } else {
+        return Text("\(NSNumber(value: ingredient.value)) \(ingredient.unit.rawValue) \(ingredient.ingredientBase.name)")
     }
 }
