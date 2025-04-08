@@ -499,17 +499,19 @@ import Combine
     
     func dynamicallyChangeMeasurementOptionsBasedOnChosenCategory() -> [MeasurementUnit] {
         
+        let standardMeasurements: [MeasurementUnit] = [.fluidOunces, .barSpoon, .dashes, .drops, .ml,  .sprays, .teaspoon, .tablespoon, .bottles, .oneLiterBottle]
+        
         switch category {
         case .herbs:
             return [.gentlyMuddled, .muddled, .nitroMuddled, .grams, .none]
         case .fruit:
             return [.gentlyMuddled, .muddled, .grams, .sliceOf, .whole, .nitroMuddled, .none]
         case .seasoning:
-            return [.pinch, .drops, .grams, .dashes, .barSpoon, .teaspoon, .tablespoon, .none]
+            return [.pinch, .drops, .dashes, .barSpoon, .teaspoon, .tablespoon]
         case .otherNonAlc:
-            return MeasurementUnit.allCases
+            return standardMeasurements
         default:
-            return [.fluidOunces, .barSpoon, .dashes, .drops, .ml,  .sprays, .teaspoon, .tablespoon, .bottles, .none]
+            return standardMeasurements
         }
     }
     

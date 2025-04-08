@@ -31,6 +31,7 @@ final class CBCViewModel: ObservableObject {
         .sprays: 0.02,
         .drops: 0.0017,
         .bottles: 25.36,
+        .oneLiterBottle: 33.814,
         .ml: 0.033814,
         .tablespoon: 0.5,
         .fluidOunces: 1.0
