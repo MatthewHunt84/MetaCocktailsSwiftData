@@ -513,6 +513,7 @@ import Combine
         default:
             return standardMeasurements
         }
+        
     }
     
     func validateAuthor() {
