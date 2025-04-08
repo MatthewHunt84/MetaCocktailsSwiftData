@@ -405,6 +405,10 @@
 		4DBFF8572B60AAFB0011B5B1 /* CableCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8562B60AAFB0011B5B1 /* CableCar.swift */; };
 		4DBFF8592B60AD800011B5B1 /* CableCar(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8582B60AD800011B5B1 /* CableCar(W&G).swift */; };
 		4DBFF85B2B60AFE60011B5B1 /* Carajillo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF85A2B60AFE60011B5B1 /* Carajillo.swift */; };
+		4DC058E82DA5BEAF006AAE5B /* PrepBibleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC058E72DA5BEAF006AAE5B /* PrepBibleViewModel.swift */; };
+		4DC058EC2DA5C41F006AAE5B /* PrepBibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC058EB2DA5C41F006AAE5B /* PrepBibleView.swift */; };
+		4DC058EE2DA5C459006AAE5B /* ResourcesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC058ED2DA5C459006AAE5B /* ResourcesView.swift */; };
+		4DC058F62DA5D21E006AAE5B /* PrepBibleRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC058F52DA5D21E006AAE5B /* PrepBibleRecipeView.swift */; };
 		4DCAA7A52C35E77200FBC4FE /* CustomIngredientRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAA7A42C35E77200FBC4FE /* CustomIngredientRecipeView.swift */; };
 		4DCAA7A72C35E83F00FBC4FE /* AddRecipeStepDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAA7A62C35E83F00FBC4FE /* AddRecipeStepDetailView.swift */; };
 		4DCAA7A92C373D1700FBC4FE /* AddIngredientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAA7A82C373D1700FBC4FE /* AddIngredientDetailView.swift */; };
@@ -973,6 +977,10 @@
 		4DBFF8562B60AAFB0011B5B1 /* CableCar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CableCar.swift; sourceTree = "<group>"; };
 		4DBFF8582B60AD800011B5B1 /* CableCar(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CableCar(W&G).swift"; sourceTree = "<group>"; };
 		4DBFF85A2B60AFE60011B5B1 /* Carajillo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carajillo.swift; sourceTree = "<group>"; };
+		4DC058E72DA5BEAF006AAE5B /* PrepBibleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepBibleViewModel.swift; sourceTree = "<group>"; };
+		4DC058EB2DA5C41F006AAE5B /* PrepBibleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepBibleView.swift; sourceTree = "<group>"; };
+		4DC058ED2DA5C459006AAE5B /* ResourcesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesView.swift; sourceTree = "<group>"; };
+		4DC058F52DA5D21E006AAE5B /* PrepBibleRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepBibleRecipeView.swift; sourceTree = "<group>"; };
 		4DCAA7A42C35E77200FBC4FE /* CustomIngredientRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomIngredientRecipeView.swift; sourceTree = "<group>"; };
 		4DCAA7A62C35E83F00FBC4FE /* AddRecipeStepDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeStepDetailView.swift; sourceTree = "<group>"; };
 		4DCAA7A82C373D1700FBC4FE /* AddIngredientDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIngredientDetailView.swift; sourceTree = "<group>"; };
@@ -1392,6 +1400,7 @@
 		1AC386962AAABED00064F52A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4DC058E02DA5BC6E006AAE5B /* ResourcesView */,
 				4DABDD1C2CEBC47F0080A529 /* AboutUsView */,
 				F493F3B22C6D256F006A0ADB /* Design */,
 				4D5DA09C2B9ED43300C14F1F /* CustomAlertView */,
@@ -1441,6 +1450,9 @@
 		1AC3869E2AAABED00064F52A /* Prep Bible */ = {
 			isa = PBXGroup;
 			children = (
+				4DC058F52DA5D21E006AAE5B /* PrepBibleRecipeView.swift */,
+				4DC058EB2DA5C41F006AAE5B /* PrepBibleView.swift */,
+				4DC058E72DA5BEAF006AAE5B /* PrepBibleViewModel.swift */,
 				4DB1C08F2B2E484A00943C69 /* Prep Descriptions */,
 				1AC3869F2AAABED00064F52A /* PrepRecipeView.swift */,
 				1AC386A12AAABED00064F52A /* PrepBible.swift */,
@@ -1998,6 +2010,14 @@
 			path = "General Cocktail Instructions";
 			sourceTree = "<group>";
 		};
+		4DC058E02DA5BC6E006AAE5B /* ResourcesView */ = {
+			isa = PBXGroup;
+			children = (
+				4DC058ED2DA5C459006AAE5B /* ResourcesView.swift */,
+			);
+			path = ResourcesView;
+			sourceTree = "<group>";
+		};
 		4DE33DF52B8D931500312EC3 /* CreateACocktailView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2362,6 +2382,7 @@
 				4DCAA7A52C35E77200FBC4FE /* CustomIngredientRecipeView.swift in Sources */,
 				F4D185012C8F95370035B280 /* Brancolada.swift in Sources */,
 				4DBFF83F2B6082E40011B5B1 /* Boulevardier(W&G).swift in Sources */,
+				4DC058E82DA5BEAF006AAE5B /* PrepBibleViewModel.swift in Sources */,
 				4D5DA08E2B9E8E6A00C14F1F /* AddBuildStepDetailView.swift in Sources */,
 				4DF408D02B60EBDE00EF9A6E /* CloverClub(W&G).swift in Sources */,
 				4DBBA44E2B673E3D00179B8F /* HoneymoonCocktail1st.swift in Sources */,
@@ -2603,6 +2624,7 @@
 				1AC386C02AAABED10064F52A /* BlackberrySageSmash.swift in Sources */,
 				4DBFF84F2B609F1F0011B5B1 /* BrownDerby(OGRumVersion).swift in Sources */,
 				F40FB6B12B7E38DA0047D597 /* CocktailCollection.swift in Sources */,
+				4DC058F62DA5D21E006AAE5B /* PrepBibleRecipeView.swift in Sources */,
 				4DA567582B6C43CA003F6F04 /* UltimaPalabra(London).swift in Sources */,
 				4DBBA42A2B65A2FC00179B8F /* Grasshopper.swift in Sources */,
 				4DBBA4D32B6A425B00179B8F /* RememberTheMaine(OG).swift in Sources */,
@@ -2645,6 +2667,7 @@
 				4DBBA4702B67A35300179B8F /* KentuckyMaid(W&G).swift in Sources */,
 				4DBAE6F32C713D7400F3DBFD /* WhiteLinen.swift in Sources */,
 				1AFDB7D22AE3477A000A3812 /* Margarita.swift in Sources */,
+				4DC058EE2DA5C459006AAE5B /* ResourcesView.swift in Sources */,
 				4DA5674A2B6C32E4003F6F04 /* TiPunch(W&G).swift in Sources */,
 				4D5DA0B62BA127BD00C14F1F /* PiscoSour(W&G Version).swift in Sources */,
 				F4FBF1232AAABBB900BBF7CF /* MetaCocktailsSwiftDataApp.swift in Sources */,
@@ -2794,6 +2817,7 @@
 				4DAD6C922C83B86C00860555 /* RiffPickerView.swift in Sources */,
 				4D54F73E2B7B053800D046D9 /* LoadedCocktailIngredientCell.swift in Sources */,
 				4DA5677A2B6C90E9003F6F04 /* CleverGirl.swift in Sources */,
+				4DC058EC2DA5C41F006AAE5B /* PrepBibleView.swift in Sources */,
 				F4D7C0122CBC3D7100B8D9C0 /* IngredientPrepOverlay.swift in Sources */,
 				4DA567F22B6DE424003F6F04 /* BurisBovineBeverage.swift in Sources */,
 				4DA567C82B6DB8F5003F6F04 /* PrettyInParadox.swift in Sources */,
