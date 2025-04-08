@@ -48,6 +48,18 @@ import Observation
         }
     }
     
+    func findIntendedMeasurementUnit() -> Bool {
+        for ingredient in cocktail.spec {
+            if ingredient.unit == .fluidOunces {
+                return false
+            }
+            if ingredient.unit == .ml {
+                return true
+            }
+        }
+        return false 
+    }
+    
     func getMethodText(cocktail: Cocktail) -> String? {
         if let styles = cocktail.compiledTags.styles?.sorted() {
             if styles.contains([.blended, .shaken]) { return "Shake or blend" }

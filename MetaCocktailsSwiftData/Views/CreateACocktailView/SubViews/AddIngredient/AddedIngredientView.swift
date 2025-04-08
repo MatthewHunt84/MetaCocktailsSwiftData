@@ -21,7 +21,7 @@ struct AddedIngredientView: View {
             List {
                 ForEach(viewModel.addedIngredients, id: \.id) { ingredient in
 
-                    pluralizedIngredientText(for: ingredient)
+                    pluralizedIngredientUnitText(for: ingredient)
                         .font(FontFactory.fontBody16)
                         .swipeActions(edge: .trailing) {
                             Button(role: .none) {

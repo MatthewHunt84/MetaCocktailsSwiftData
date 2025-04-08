@@ -18,6 +18,7 @@ struct RecipeFlipCardView: View {
     @State var historicBorderColor = ColorScheme.inactiveBorder
     @State private var showingHistoricInfo = false
     var recommendedCocktailID: UUID? = nil
+    @State private var showSpecInMl: Bool = false
     
     var body: some View {
         
@@ -49,7 +50,7 @@ struct RecipeFlipCardView: View {
                                 
                                 GlasswareView(cocktail: viewModel.cocktail)
                                 
-                                SpecView(cocktail: viewModel.cocktail, viewModel: viewModel, isShowingCocktailNotes: $isShowingCocktailNotes)
+                                SpecView(cocktail: viewModel.cocktail, viewModel: viewModel, isShowingCocktailNotes: $isShowingCocktailNotes, specInMl: $showSpecInMl)
                                 
                                 GarnishView(cocktail: viewModel.cocktail)
                                 
@@ -74,6 +75,9 @@ struct RecipeFlipCardView: View {
                         .foregroundStyle(viewModel.cocktail.historicSpec == nil ? .primary : .secondary)
                         .allowsHitTesting(!viewModel.isFlipped)
                         .background(BlackGlassBackgroundView())
+                        .task {
+                            showSpecInMl = viewModel.findIntendedMeasurementUnit()
+                        }
                         
                         GeometryReader { innerGeo in
                             
