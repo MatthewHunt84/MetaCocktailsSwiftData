@@ -55,17 +55,15 @@ struct PrepBibleView: View {
                                     }
                                 }
                                 
-                                // Only show alphabet navigation if we have items
-                                if !viewModel.prepAlphabet.isEmpty {
-                                    AlphabetNavigationViewForPrep(
-                                        selectedLetter: $selectedNavigationLetter,
-                                        alphabet: viewModel.prepAlphabet
-                                    )
-                                    .frame(width: listGeo.size.width * 0.1)
-                                    .opacity(searchBarIsFocused ? 0 : 1)
-                                    .animation(.easeInOut(duration: 0.3), value: searchBarIsFocused)
-                                    .offset(y: -7)
-                                }
+                                AlphabetNavigationViewForPrep(
+                                    selectedLetter: $selectedNavigationLetter,
+                                    alphabet: viewModel.prepAlphabet
+                                )
+                                .frame(width: listGeo.size.width * 0.1)
+                                .opacity(searchBarIsFocused ? 0 : 1)
+                                .animation(.easeInOut(duration: 0.3), value: searchBarIsFocused)
+                                .offset(y: -7)
+                                
                             }
                         }
                     }
