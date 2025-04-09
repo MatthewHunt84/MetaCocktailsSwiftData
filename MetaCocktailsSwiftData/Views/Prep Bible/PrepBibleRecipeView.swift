@@ -47,6 +47,7 @@ struct PrepBibleRecipeView: View {
                                 Text("\(prep.prepIngredientName) recipe")
                                     .font(FontFactory.recipeCardHeader18B)
                                     .foregroundColor(.white)
+                                    .multilineTextAlignment(.center)
                                 
                                 Spacer()
                                 
