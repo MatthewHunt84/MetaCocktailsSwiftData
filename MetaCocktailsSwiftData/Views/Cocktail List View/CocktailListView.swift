@@ -110,7 +110,7 @@ struct SearchBarForCocktailListView: View {
         HStack {
             
             TextField("Search cocktails", text: $viewModel.searchText)
-                .SearchBarTextField()
+                .searchBarTextField()
                 .focused($isFocused)
                 .sensoryFeedback(.impact(weight: .heavy), trigger: isFocused == true)
                 .animation(.easeInOut(duration: 0.2), value: isFocused)

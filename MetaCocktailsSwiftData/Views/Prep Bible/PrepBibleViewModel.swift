@@ -21,9 +21,7 @@ import Observation
  
     func loadPrepRecipes(from ingredientBases: [IngredientBase]) {
         
-        if dataLoaded && !cachedPrepRecipes.isEmpty {
-            return
-        }
+        guard !dataLoaded && cachedPrepRecipes.isEmpty else { return }
         
         var uniquePreps: [Prep] = []
         var seenPrepNames = Set<String>()

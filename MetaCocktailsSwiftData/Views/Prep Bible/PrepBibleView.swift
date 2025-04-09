@@ -46,11 +46,10 @@ struct PrepBibleView: View {
                                         }
                                     }
                                     .frame(width: listGeo.size.width * 0.90)
-                                    .onChange(of: selectedNavigationLetter) { oldValue, newValue in
-                                        if let newValue = newValue {
-                                            withAnimation(.easeOut(duration: 0.2)) {
-                                                proxy.scrollTo(newValue, anchor: .top)
-                                            }
+                                    .onChange(of: selectedNavigationLetter) { _, newValue in
+                                        guard let newValue else { return }
+                                        withAnimation(.easeOut(duration: 0.2)) {
+                                            proxy.scrollTo(newValue, anchor: .top)
                                         }
                                     }
                                 }
@@ -88,7 +87,7 @@ struct SearchBarForPrepBibleView: View {
     var body: some View {
         HStack {
             TextField("Search prep recipes", text: $searchText)
-                .SearchBarTextField()
+                .searchBarTextField()
                 .focused($isFocused)
                 .sensoryFeedback(.impact(weight: .heavy), trigger: isFocused == true)
                 .animation(.easeInOut(duration: 0.2), value: isFocused)
