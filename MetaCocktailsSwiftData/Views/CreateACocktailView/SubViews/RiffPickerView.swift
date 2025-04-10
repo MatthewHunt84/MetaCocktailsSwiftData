@@ -67,7 +67,7 @@ struct SearchBarForCreateCocktailView: View {
     @Bindable var viewModel: AddCocktailViewModel
     var body: some View {
         TextField("Search cocktails", text: $viewModel.searchText)
-            .searchBarTextField()
+            .SearchBarTextField()
             .focused($isFocused)
             .animation(.easeInOut(duration: 0.2), value: isFocused)
             .clearSearchButton(text: $viewModel.searchText) {

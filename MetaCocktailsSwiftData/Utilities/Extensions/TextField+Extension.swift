@@ -19,7 +19,7 @@ extension TextField {
             .multilineTextAlignment(.center)
     }
 
-    func searchBarTextField() -> some View {
+    func SearchBarTextField() -> some View {
         self
             .font(FontFactory.regularFont(size: 16))
             .padding(12)

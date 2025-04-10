@@ -21,7 +21,7 @@ struct FilteredIngredientListView: View {
         
         VStack {
             
-            TextField("Search for cocktails which contain...", text: $viewModel.currentComponentSearchName).searchBarTextField()
+            TextField("Search for cocktails which contain...", text: $viewModel.currentComponentSearchName).SearchBarTextField()
                 .focused($keyboardFocused)
                 .onChange(of: viewModel.currentComponentSearchName) { _, newValue in
                     viewModel.updateSearch(newValue)
