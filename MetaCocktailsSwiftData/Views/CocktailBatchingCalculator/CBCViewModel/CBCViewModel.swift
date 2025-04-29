@@ -271,7 +271,9 @@ final class CBCViewModel: ObservableObject {
             convertIngredientsToBatchCellData()
         }
     }
-    
+    func findDilutionInFluidOunces() -> Double {
+        return totalDilutionVolume / mlToOzConversionFactor
+    }
     func doMathForModified1LBottleCount(initialAmount: Double, newQuantityAmount: Double) {
         
         numberOfCocktailsText = ((newQuantityAmount * 1000) / initialAmount)
