@@ -29,6 +29,7 @@ struct LoadedCocktailIngredientCell: View {
     }
 }
 
+
 #Preview {
     LoadedCocktailIngredientCell(ingredient: .constant(CBCLoadedIngredient(ingredient: Ingredient(ingredientBase: IngredientBase(name: "Lemon Juice", category: .juices, prep: nil), value: 0.75, unit: .fluidOunces), isIncluded: true)))
 }

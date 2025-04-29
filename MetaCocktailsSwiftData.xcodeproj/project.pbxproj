@@ -405,6 +405,7 @@
 		4DBFF8572B60AAFB0011B5B1 /* CableCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8562B60AAFB0011B5B1 /* CableCar.swift */; };
 		4DBFF8592B60AD800011B5B1 /* CableCar(W&G).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF8582B60AD800011B5B1 /* CableCar(W&G).swift */; };
 		4DBFF85B2B60AFE60011B5B1 /* Carajillo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFF85A2B60AFE60011B5B1 /* Carajillo.swift */; };
+		4DC059132DC09D13006AAE5B /* BatchCellDryIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC059122DC09D13006AAE5B /* BatchCellDryIngredientView.swift */; };
 		4DCAA7A52C35E77200FBC4FE /* CustomIngredientRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAA7A42C35E77200FBC4FE /* CustomIngredientRecipeView.swift */; };
 		4DCAA7A72C35E83F00FBC4FE /* AddRecipeStepDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAA7A62C35E83F00FBC4FE /* AddRecipeStepDetailView.swift */; };
 		4DCAA7A92C373D1700FBC4FE /* AddIngredientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAA7A82C373D1700FBC4FE /* AddIngredientDetailView.swift */; };
@@ -973,6 +974,7 @@
 		4DBFF8562B60AAFB0011B5B1 /* CableCar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CableCar.swift; sourceTree = "<group>"; };
 		4DBFF8582B60AD800011B5B1 /* CableCar(W&G).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CableCar(W&G).swift"; sourceTree = "<group>"; };
 		4DBFF85A2B60AFE60011B5B1 /* Carajillo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carajillo.swift; sourceTree = "<group>"; };
+		4DC059122DC09D13006AAE5B /* BatchCellDryIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchCellDryIngredientView.swift; sourceTree = "<group>"; };
 		4DCAA7A42C35E77200FBC4FE /* CustomIngredientRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomIngredientRecipeView.swift; sourceTree = "<group>"; };
 		4DCAA7A62C35E83F00FBC4FE /* AddRecipeStepDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeStepDetailView.swift; sourceTree = "<group>"; };
 		4DCAA7A82C373D1700FBC4FE /* AddIngredientDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIngredientDetailView.swift; sourceTree = "<group>"; };
@@ -1772,6 +1774,7 @@
 			isa = PBXGroup;
 			children = (
 				4DED944D2C098DBF002305C2 /* BatchCellView.swift */,
+				4DC059122DC09D13006AAE5B /* BatchCellDryIngredientView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -2788,6 +2791,7 @@
 				4D1E85D32B5CD8E700214BC6 /* RedWedding.swift in Sources */,
 				4D08602C2C60599E000AB17A /* IncludedIngredientSearchCell.swift in Sources */,
 				4DE33E212B91B82E00312EC3 /* Cosmonaut.swift in Sources */,
+				4DC059132DC09D13006AAE5B /* BatchCellDryIngredientView.swift in Sources */,
 				4DA567782B6C8AAC003F6F04 /* PeaksOfReykjavik.swift in Sources */,
 				4D5DA0B82BA12B3E00C14F1F /* RegalAmburana.swift in Sources */,
 				4DA567742B6C827C003F6F04 /* LavandulaRosa.swift in Sources */,

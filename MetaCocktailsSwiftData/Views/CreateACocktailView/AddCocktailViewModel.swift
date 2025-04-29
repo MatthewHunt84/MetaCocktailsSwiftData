@@ -509,7 +509,7 @@ import Combine
         case .seasoning:
             return [.pinch, .drops, .dashes, .barSpoon, .teaspoon, .tablespoon]
         case .otherNonAlc:
-            return standardMeasurements
+            return [.fluidOunces, .barSpoon, .dashes, .drops, .ml,  .sprays, .teaspoon, .tablespoon, .bottles, .oneLiterBottle, .whole]
         default:
             return standardMeasurements
         }

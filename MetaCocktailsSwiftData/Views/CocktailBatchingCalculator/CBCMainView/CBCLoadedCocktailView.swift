@@ -160,6 +160,13 @@ struct QuantifiedIngredientsListView: View {
                     }
                 }
             }
+            if viewModel.quantifiedBatchedDryIngredients.count != 0 {
+                Section(header: CBCDryIngredientSectionHeader()) {
+                    ForEach($viewModel.quantifiedBatchedDryIngredients, id: \.id) { $ingredient in
+                        BatchCellDryIngredientView(quantifiedDryBatchedIngredient: $ingredient)
+                    }
+                }
+            }
             
             Section {
                 Text("Total Volume: \(viewModel.totalBatchVolume, specifier: "%.0f") ml")
@@ -196,6 +203,13 @@ struct CBCIngredientSectionHeader: View {
     
     var body: some View {
         Text("Ingredient measurements")
+    }
+}
+
+struct CBCDryIngredientSectionHeader: View {
+    
+    var body: some View {
+        Text("Dry ingredient measurements")
     }
 }
 
