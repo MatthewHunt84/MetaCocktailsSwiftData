@@ -48,16 +48,8 @@ import Observation
         }
     }
     
-    func findIntendedMeasurementUnit() -> Bool {
-        for ingredient in cocktail.spec {
-            if ingredient.unit == .fluidOunces {
-                return false
-            }
-            if ingredient.unit == .ml {
-                return true
-            }
-        }
-        return false 
+    func shouldDisplayRecipeInMls() -> Bool {
+        cocktail.spec.contains(where: { $0.unit == .ml }) ? true : false
     }
     
     func getMethodText(cocktail: Cocktail) -> String? {

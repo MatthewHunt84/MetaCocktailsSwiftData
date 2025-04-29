@@ -76,7 +76,7 @@ struct RecipeFlipCardView: View {
                         .allowsHitTesting(!viewModel.isFlipped)
                         .background(BlackGlassBackgroundView())
                         .task {
-                            showSpecInMl = viewModel.findIntendedMeasurementUnit()
+                            showSpecInMl = viewModel.shouldDisplayRecipeInMls()
                         }
                         
                         GeometryReader { innerGeo in

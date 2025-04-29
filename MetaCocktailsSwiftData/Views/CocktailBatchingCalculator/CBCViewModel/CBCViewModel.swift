@@ -235,7 +235,7 @@ final class CBCViewModel: ObservableObject {
         for dryIngredient in loadedDryIngredients.ingredients {
             if dryIngredient.isIncluded {
                 quantifiableDryIngredients.append(DryBatchedCellData(dryIngredientName: dryIngredient.ingredient.ingredientBase.name,
-                                                                     dryIngredientAmount: dryIngredient.ingredient.value,
+                                                                     dryIngredientAmount: dryIngredient.ingredient.value * numberOfCocktailsText,
                                                                      unitName: dynamicallyChangeDryIngredientBatchUnit(for: dryIngredient.ingredient.unit.rawValue)))
             }
         }
