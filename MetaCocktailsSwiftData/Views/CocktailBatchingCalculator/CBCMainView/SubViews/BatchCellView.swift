@@ -5,6 +5,7 @@
 //  Created by James Menkal on 5/30/24.
 //
 
+
 import SwiftUI
 
 struct BatchCellView: View {
@@ -17,18 +18,14 @@ struct BatchCellView: View {
     @State private var isShowingBottleMathModal: Bool = false
     
     var body: some View {
-        
         VStack {
-            
             HStack {
-                
                 Text(quantifiedBatchedIngredient.ingredientName)
                     .font(FontFactory.formLabel18)
                     .foregroundStyle(.primary)
                 
                 Spacer()
                 editableMlView(quantifiedBatchedIngredient: $quantifiedBatchedIngredient, isFocused: _isFocused)
-                
             }
             
             if isShowingOunceMeasurements {
@@ -49,7 +46,6 @@ struct BatchCellView: View {
                             .font(FontFactory.fontBody16)
                             .foregroundStyle(.secondary)
                     }
-                        
                 }
                 .frame(maxWidth: .infinity, alignment: .trailing)
             }
@@ -68,16 +64,17 @@ struct BatchCellView: View {
                                 isShowingBottleMathModal: $isShowingBottleMathModal,
                                 keyboardFocused: _isFocused)
         }
+        .id("\(quantifiedBatchedIngredient.id)-\(quantifiedBatchedIngredient.totalMls)")
     }
 }
 
 struct editableMlView: View {
     @EnvironmentObject var viewModel: CBCViewModel
     @Binding var quantifiedBatchedIngredient: BottleBatchedCellData
-    @FocusState  var isFocused: Bool
+    @FocusState var isFocused: Bool
+    
     var body: some View {
         if viewModel.editingIngredient == quantifiedBatchedIngredient.ingredientName {
-            
             TextField("\(quantifiedBatchedIngredient.totalMls)", text: $quantifiedBatchedIngredient.editedTotalMls)
                 .font(FontFactory.formLabel18)
                 .tint(ColorScheme.interactionTint)
@@ -85,20 +82,22 @@ struct editableMlView: View {
                 .keyboardType(.numberPad)
                 .background(.clear)
                 .focused($isFocused)
+                .onAppear {
+                    if quantifiedBatchedIngredient.editedTotalMls.isEmpty {
+                        quantifiedBatchedIngredient.editedTotalMls = "\(quantifiedBatchedIngredient.totalMls)"
+                    }
+                    isFocused = true
+                }
         } else {
-            
-            
             Text("\(quantifiedBatchedIngredient.totalMls) ml")
                 .font(FontFactory.mediumFont(size: 18))
                 .foregroundStyle(ColorScheme.interactionTint)
                 .background(.clear)
                 .onTapGesture {
-                    quantifiedBatchedIngredient.editedTotalMls = String(quantifiedBatchedIngredient.totalMls)
+                    quantifiedBatchedIngredient.editedTotalMls = "\(quantifiedBatchedIngredient.totalMls)"
                     viewModel.updateEditingIngredient(name: quantifiedBatchedIngredient.ingredientName)
                     isFocused = true
-                    quantifiedBatchedIngredient.editedTotalMls = ""
                 }
         }
     }
 }
-

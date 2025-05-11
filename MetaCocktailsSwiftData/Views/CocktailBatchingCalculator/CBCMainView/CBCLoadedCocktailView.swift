@@ -34,10 +34,6 @@ struct CBCLoadedCocktailView: View {
             .padding(.top, -20)
         }
         .background(ColorScheme.background)
-        .onChange(of: viewModel.quantifiedBatchedIngredients) { _, _ in
-            // Force view update when quantifiedBatchedIngredients change
-            viewModel.objectWillChange.send()
-        }
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
         .jamesHeaderWithNavigation(title: "Batch Calculator", dismiss: dismiss)
@@ -49,6 +45,9 @@ struct CBCLoadedCocktailView: View {
                     
                 })
         })
+        .onAppear {
+            viewModel.convertIngredientsToBatchCellData()
+        }
     }
 }
 
