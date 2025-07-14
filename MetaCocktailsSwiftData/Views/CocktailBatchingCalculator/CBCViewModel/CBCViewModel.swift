@@ -61,12 +61,12 @@ final class CBCViewModel: ObservableObject {
         containerSizes = []
         var size = 4000
         while getContainerCount(for: size) > 1 {
-            var label = size == 19 ? "19 Liter (5 Gallon)" : "\(size / 1000) Liter"
+            let label = size == 19 ? "19 Liter (5 Gallon)" : "\(size / 1000) Liter"
             containerSizes.append((label: label, volume: size))
             size += 1000
         }
         
-        var lastLabel = size == 19 ? "19 Liter (5 Gallon) +" : "\(size / 1000) Liter +"
+        let lastLabel = size == 19 ? "19 Liter (5 Gallon) +" : "\(size / 1000) Liter +"
         containerSizes.append((label: lastLabel, volume: size))
     }
     
@@ -200,7 +200,6 @@ final class CBCViewModel: ObservableObject {
                 let bottleSize = existingIngredient?.bottleSize ?? 750
                 let wholeBottles = Int(ingredientVolume / Double(bottleSize)) 
                 let remainingMls = Int(ingredientVolume.truncatingRemainder(dividingBy: Double(bottleSize)))
-//                print("\(ingredient.ingredient.ingredientBase.name) needs \(wholeBottles) bottles and has \(remainingMls) remaining mls.")
                 quantifiableIngredients.append(BottleBatchedCellData(
                     id: existingIngredient?.id ?? UUID(),
                     ingredientName: ingredient.ingredient.ingredientBase.name,
