@@ -29,9 +29,8 @@ enum UmbrellaCategory: String, Codable, CaseIterable  {
     case wines             = "Wine"
     case bitters           = "Bitters"
     case amari             = "Amaro"
-    
-
 }
+
 enum SpiritsUmbrellaCategory: String, Codable, CaseIterable  {
     
     case agaves            = "Agave Spirits"

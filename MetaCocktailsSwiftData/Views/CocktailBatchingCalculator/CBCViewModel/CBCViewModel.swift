@@ -189,8 +189,14 @@ final class CBCViewModel: ObservableObject {
         var quantifiableIngredients = [BottleBatchedCellData]()
         var totalVolume = 0.0
         
-        
         for ingredient in loadedCocktailData.ingredients {
+            // Don't include non-liquid ingredients (since BottleBatchedCellData only applies to liquids)
+            if !determineIfLiquid(ingredientBase: ingredient.ingredient.ingredientBase) {
+                print("Removing \(ingredient.ingredient.ingredientBase.name): Not liquid")
+                continue
+            }
+            print("Keeping \(ingredient.ingredient.ingredientBase.name)")
+            
             if ingredient.isIncluded {
                 let conversionFactor = unitConversion[ingredient.ingredient.unit] ?? 1.0
                 let modifiedMeasurement = ingredient.ingredient.value * conversionFactor
@@ -226,6 +232,30 @@ final class CBCViewModel: ObservableObject {
             }
         }
         quantifiedBatchedIngredients = quantifiableIngredients
+    }
+    
+    func determineIfLiquid(ingredientBase: IngredientBase) -> Bool {
+        let umbrellaCategory = ingredientBase.umbrellaCategory
+        let ingredientName = ingredientBase.name
+        
+        // For most categories, ingredients are liquid
+        switch umbrellaCategory {
+        case UmbrellaCategory.seasoning.rawValue:
+            return Seasoning(rawValue: ingredientName)?.isLiquid ?? true
+            
+        case UmbrellaCategory.herbs.rawValue:
+            return Herbs(rawValue: ingredientName)?.isLiquid ?? true
+            
+        case UmbrellaCategory.fruit.rawValue:
+            return Fruit(rawValue: ingredientName)?.isLiquid ?? true
+            
+        case UmbrellaCategory.otherNonAlc.rawValue:
+            return OtherNA(rawValue: ingredientName)?.isLiquid ?? true
+            
+        default:
+            // All other umbrella categories are liquid by default
+            return true
+        }
     }
     
     
