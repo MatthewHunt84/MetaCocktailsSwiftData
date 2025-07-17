@@ -152,7 +152,8 @@ struct QuantifiedIngredientsListView: View {
                             .foregroundStyle(Color.secondary)
                     }
                     if isShowingOunceMeasurements {
-                        Text("\(viewModel.totalDilutionVolume.toOunces, specifier: "%.0f") oz")
+                        let fluidOunces = viewModel.totalDilutionVolume / mlToOzConversionFactor
+                        Text(String(format: "%.2f oz", fluidOunces))
                             .font(FontFactory.formLabel18)
                             .foregroundStyle(.secondary)
                             .frame(maxWidth: .infinity, alignment: .trailing)

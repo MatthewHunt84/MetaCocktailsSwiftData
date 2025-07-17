@@ -140,7 +140,7 @@ struct SpecView: View {
     @Bindable var viewModel: RecipeViewModel
     @EnvironmentObject var cBCViewModel: CBCViewModel
     @Binding var isShowingCocktailNotes: Bool
-    
+    @Binding var specInMl: Bool
     var body: some View {
         NavigationStack{
             ZStack{
@@ -148,9 +148,17 @@ struct SpecView: View {
                 VStack(alignment: .leading, spacing: 6) {
                     
                     HStack {
+                        
                         Text("Cocktail Spec")
                             .font(FontFactory.recipeCardHeader18B)
-
+                        Button {
+                            specInMl.toggle()
+                        } label: {
+                            Text("(\(specInMl ? "ml" : "oz"))")
+                                .font(FontFactory.recipeCardHeader18B)
+                                .tint(ColorScheme.interactionTint)
+                                .foregroundStyle(ColorScheme.interactionTint)
+                        }
                         Spacer()
                         
                         NavigationLink {
@@ -169,8 +177,9 @@ struct SpecView: View {
                     }
                     .padding(.bottom, 5)
                     
+                    
                     ForEach(orderSpec(), id: \.id) { ingredient in
-                        SpecIngredientView(ingredient: ingredient, viewModel: viewModel)
+                        SpecIngredientView(ingredient: ingredient, viewModel: viewModel, showMls: $specInMl)
                     }
                 }
             }
@@ -208,13 +217,14 @@ struct SpecIngredientView: View {
     var ingredient: Ingredient
     @State private var isShowingIngredientInfo : Bool = false
     @Bindable var viewModel: RecipeViewModel
+    @Binding var showMls: Bool
     
     var body: some View {
         VStack {
             
             HStack {
                 
-                pluralizedIngredientUnitText(for: ingredient)
+                pluralizedIngredientText(for: ingredient, displayMls: showMls)
                     .font(FontFactory.specMeasurement16B)
                 
                 if let ingredientPrep = ingredient.ingredientBase.prep {

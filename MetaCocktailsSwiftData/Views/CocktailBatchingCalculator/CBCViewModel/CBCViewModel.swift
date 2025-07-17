@@ -30,7 +30,11 @@ final class CBCViewModel: ObservableObject {
         .dashes: 0.04,
         .sprays: 0.02,
         .drops: 0.0017,
-        .bottles: 25.36
+        .bottles: 25.36,
+        .oneLiterBottle: 33.814,
+        .ml: 0.033814,
+        .tablespoon: 0.5,
+        .fluidOunces: 1.0
     ]
     ///Main batch view variables
     @Published var totalDilutionVolume = 0.0
@@ -57,12 +61,12 @@ final class CBCViewModel: ObservableObject {
         containerSizes = []
         var size = 4000
         while getContainerCount(for: size) > 1 {
-            var label = size == 19 ? "19 Liter (5 Gallon)" : "\(size / 1000) Liter"
+            let label = size == 19 ? "19 Liter (5 Gallon)" : "\(size / 1000) Liter"
             containerSizes.append((label: label, volume: size))
             size += 1000
         }
         
-        var lastLabel = size == 19 ? "19 Liter (5 Gallon) +" : "\(size / 1000) Liter +"
+        let lastLabel = size == 19 ? "19 Liter (5 Gallon) +" : "\(size / 1000) Liter +"
         containerSizes.append((label: lastLabel, volume: size))
     }
     
@@ -151,14 +155,46 @@ final class CBCViewModel: ObservableObject {
         convertIngredientsToBatchCellData()
         doSplitBatchMath()
     }
+    func getIngredientMeasurement(for batchCellData: BottleBatchedCellData) -> (value: Double, unit: MeasurementUnit)? {
+        if let foundIngredient = chosenCocktail.spec.first(where: { $0.ingredientBase.name == batchCellData.ingredientName }) {
+            return (foundIngredient.value * numberOfCocktailsText, foundIngredient.unit)
+        }
+        return nil
+    }
+
+    func getActualFluidOunces(for batchCellData: BottleBatchedCellData) -> Double {
+        return Double(batchCellData.totalMls) / mlToOzConversionFactor
+    }
     
+    func formatMeasurement(for batchCellData: BottleBatchedCellData, showAsFluidOunces: Bool = false) -> String {
+        if showAsFluidOunces {
+            let fluidOunces = Double(batchCellData.totalMls) / mlToOzConversionFactor
+            return String(format: "%.2f oz", fluidOunces)
+        } else {
+            if let measurementInfo = getIngredientMeasurement(for: batchCellData) {
+                let value = measurementInfo.value
+                let unitLabel = measurementInfo.unit.rawValue
+                
+                if value.truncatingRemainder(dividingBy: 1) == 0 {
+                    return "\(Int(value)) \(unitLabel)"
+                } else {
+                    return String(format: "%.2f %@", value, unitLabel)
+                }
+            }
+            return "\(batchCellData.totalMls) ml"
+        }
+    }
     
     func convertIngredientsToBatchCellData() {
         var quantifiableIngredients = [BottleBatchedCellData]()
         var totalVolume = 0.0
         
-        
         for ingredient in loadedCocktailData.ingredients {
+            // Don't include non-liquid ingredients (since BottleBatchedCellData only applies to liquids)
+            // TODO: Add dry ingredients to batch view
+            if !determineIfLiquid(ingredientBase: ingredient.ingredient.ingredientBase) {
+                continue
+            }
             if ingredient.isIncluded {
                 let conversionFactor = unitConversion[ingredient.ingredient.unit] ?? 1.0
                 let modifiedMeasurement = ingredient.ingredient.value * conversionFactor
@@ -168,7 +204,6 @@ final class CBCViewModel: ObservableObject {
                 let bottleSize = existingIngredient?.bottleSize ?? 750
                 let wholeBottles = Int(ingredientVolume / Double(bottleSize)) 
                 let remainingMls = Int(ingredientVolume.truncatingRemainder(dividingBy: Double(bottleSize)))
-//                print("\(ingredient.ingredient.ingredientBase.name) needs \(wholeBottles) bottles and has \(remainingMls) remaining mls.")
                 quantifiableIngredients.append(BottleBatchedCellData(
                     id: existingIngredient?.id ?? UUID(),
                     ingredientName: ingredient.ingredient.ingredientBase.name,
@@ -195,6 +230,30 @@ final class CBCViewModel: ObservableObject {
             }
         }
         quantifiedBatchedIngredients = quantifiableIngredients
+    }
+    
+    func determineIfLiquid(ingredientBase: IngredientBase) -> Bool {
+        let umbrellaCategory = ingredientBase.umbrellaCategory
+        let ingredientName = ingredientBase.name
+        
+        // For most categories, ingredients are liquid
+        switch umbrellaCategory {
+        case UmbrellaCategory.seasoning.rawValue:
+            return Seasoning(rawValue: ingredientName)?.isLiquid ?? true
+            
+        case UmbrellaCategory.herbs.rawValue:
+            return Herbs(rawValue: ingredientName)?.isLiquid ?? true
+            
+        case UmbrellaCategory.fruit.rawValue:
+            return Fruit(rawValue: ingredientName)?.isLiquid ?? true
+            
+        case UmbrellaCategory.otherNonAlc.rawValue:
+            return OtherNA(rawValue: ingredientName)?.isLiquid ?? true
+            
+        default:
+            // All other umbrella categories are liquid by default
+            return true
+        }
     }
     
     
@@ -229,7 +288,11 @@ final class CBCViewModel: ObservableObject {
     func convertLoadedCocktail(for cocktail: Cocktail) {
         var newLoadedCocktailData = CBCLoadedCocktailData(cocktailName: cocktail.cocktailName, ingredients: [])
         for spec in cocktail.spec {
-            if UmbrellaCategory(rawValue: spec.ingredientBase.umbrellaCategory) != .herbs && UmbrellaCategory(rawValue: spec.ingredientBase.umbrellaCategory) != .fruit && spec.unit != .whole {
+            if UmbrellaCategory(rawValue: spec.ingredientBase.umbrellaCategory) != .herbs
+                && UmbrellaCategory(rawValue: spec.ingredientBase.umbrellaCategory) != .fruit
+                && spec.unit != .whole
+                && spec.unit != .grams
+                && spec.unit != .pinch {
                 newLoadedCocktailData.ingredients.append(CBCLoadedIngredient(ingredient: spec, isIncluded: true))
             }
         }
@@ -343,3 +406,5 @@ extension String {
         return self + " mls"
     }
 }
+
+let mlToOzConversionFactor = 29.5735

@@ -7,7 +7,7 @@
 
 import Foundation
 
-var lordReyesTheVIII  =  Cocktail(cocktailName: "Lord Reyes the VIII ",
+var lordReyesTheVIII  =  Cocktail(cocktailName: "Lord Reyes the VIII",
                                   glasswareType: .doubleOld,
                                   garnish: [.orangePeel],
                                   ice: .bigRock,

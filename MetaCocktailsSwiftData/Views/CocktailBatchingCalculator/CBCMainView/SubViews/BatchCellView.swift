@@ -32,18 +32,11 @@ struct BatchCellView: View {
             }
             
             if isShowingOunceMeasurements {
-                
-                if viewModel.findIngredientOunceAmountFor(batchCellData: quantifiedBatchedIngredient).truncatingRemainder(dividingBy: 1) == 0 {
-                    Text("\(Int(viewModel.findIngredientOunceAmountFor(batchCellData: quantifiedBatchedIngredient))) oz")
-                        .font(FontFactory.formLabel18)
-                        .foregroundStyle(.secondary)
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                } else {
-                    Text("\(viewModel.findIngredientOunceAmountFor(batchCellData: quantifiedBatchedIngredient), specifier: "%.2f") oz")
-                        .font(FontFactory.formLabel18)
-                        .foregroundStyle(.secondary)
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                }
+                let fluidOunces = viewModel.getActualFluidOunces(for: quantifiedBatchedIngredient)
+                Text(String(format: "%.2f oz", fluidOunces))
+                    .font(FontFactory.formLabel18)
+                    .foregroundStyle(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
             }
             
             if isShowingBottleMathAmounts {
@@ -93,8 +86,6 @@ struct editableMlView: View {
                 .background(.clear)
                 .focused($isFocused)
         } else {
-            
-            
             Text("\(quantifiedBatchedIngredient.totalMls) ml")
                 .font(FontFactory.mediumFont(size: 18))
                 .foregroundStyle(ColorScheme.interactionTint)

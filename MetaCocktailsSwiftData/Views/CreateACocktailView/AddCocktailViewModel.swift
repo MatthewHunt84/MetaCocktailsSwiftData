@@ -18,7 +18,7 @@ import Combine
     var hasNoData: Bool = false 
     
     //AddIngredientView
-    var category: UmbrellaCategory = UmbrellaCategory.agaves
+    var category: UmbrellaCategory = UmbrellaCategory.otherNonAlc
     var ingredientAmount: Double? = nil
     var ingredientTags = Tags()
     var selectedMeasurementUnit = MeasurementUnit.fluidOunces
@@ -139,6 +139,7 @@ import Combine
         didChooseExistingIngredient = false
         didChooseExistingGarnish = false
         isEdit = false
+        category = UmbrellaCategory.otherNonAlc
     }
 
     func populateFromCocktail(_ cocktail: Cocktail) {
@@ -181,9 +182,16 @@ import Combine
         return cocktailName != "" && ((addedIngredients.count) > 1) && uniqueGlasswareName != nil
     }
     
-    func existingIngredientIsValid(allIngredients: [IngredientBase]) -> Bool {
-        return ingredientAmount != nil &&
-        allIngredients.contains(where: { $0.name == ingredientName }) 
+    
+    func ingredientIsValid(allIngredients: [IngredientBase]) -> Bool {
+        if didChooseExistingIngredient {
+            return ingredientAmount != nil &&
+            allIngredients.contains(where: { $0.name == ingredientName })
+        }
+        
+        return ingredientName != "" &&
+        ingredientAmount != nil &&
+        !allIngredients.contains(where: { $0.name == ingredientName } )
     }
     
     func existingGarnishIsValid(allGarnishes: [Garnish]) -> Bool {
@@ -191,6 +199,44 @@ import Combine
         return didChooseExistingGarnish == true &&
         allGarnishes.contains(where: { $0.name == currentGarnishName }) &&
         !addedGarnish.contains(where: { $0.name == currentGarnishName })
+    }
+    
+    func addIngredientToCocktailBuild(ingredients: [IngredientBase]) {
+        if ingredientIsValid(allIngredients: ingredients) {
+            
+            if isEdit && didChooseExistingIngredient {
+                updateEditedIngredient(isCustom: false)
+            }
+            if isEdit && !didChooseExistingIngredient {
+                updateEditedIngredient(isCustom: true)
+            }
+            
+            if !isEdit && didChooseExistingIngredient {
+                if let ingredientValue = ingredientAmount{
+                    let ingredient = Ingredient(ingredientBase: IngredientBase(name: ingredientName,
+                                                                               category: category,
+                                                                               prep: prep),
+                                                value: ingredientValue,
+                                                unit: selectedMeasurementUnit)
+                    
+                    addedIngredients.append(ingredient)
+                }
+            }
+            if !isEdit && !didChooseExistingIngredient {
+                if !prepIngredientRecipe.isEmpty {
+                    prep = Prep(prepIngredientName: ingredientName, prepRecipe: prepIngredientRecipe)
+                }
+                if let ingredientValue = ingredientAmount {
+                    addedIngredients.append(Ingredient(ingredientBase: IngredientBase(name: ingredientName,
+                                                                                      category: category,
+                                                                                      prep: prep,
+                                                                                      isCustom: true),
+                                                       value: ingredientValue,
+                                                       unit: selectedMeasurementUnit))
+                }
+            }
+            clearIngredientData()
+        }
     }
     
     @MainActor
@@ -302,12 +348,11 @@ import Combine
             prepIngredientRecipe[index].method = newMethod
         }
     }
+    
+   
+  
  
-    func customIngredientIsValid(allIngredients: [IngredientBase]) -> Bool {
-        return ingredientName != "" &&
-        ingredientAmount != nil &&
-        !allIngredients.contains(where: { $0.name == ingredientName } )
-    }
+  
 
     func updateEditedIngredient(isCustom: Bool) {
         if let editedIngredient = editedIngredient,
@@ -319,7 +364,8 @@ import Combine
                 ingredientBase: IngredientBase(
                     name: ingredientName,
                     category: category,
-                    prep: prep, isCustom: isCustom
+                    prep: prep,
+                    isCustom: isCustom
                 ),
                 value: ingredientValue,
                 unit: selectedMeasurementUnit
@@ -453,17 +499,19 @@ import Combine
     
     func dynamicallyChangeMeasurementOptionsBasedOnChosenCategory() -> [MeasurementUnit] {
         
+        let standardMeasurements: [MeasurementUnit] = [.fluidOunces, .barSpoon, .dashes, .drops, .ml,  .sprays, .teaspoon, .tablespoon, .bottles, .oneLiterBottle]
+        
         switch category {
         case .herbs:
             return [.gentlyMuddled, .muddled, .nitroMuddled, .grams, .none]
         case .fruit:
             return [.gentlyMuddled, .muddled, .grams, .sliceOf, .whole, .nitroMuddled, .none]
         case .seasoning:
-            return [.pinch, .drops, .grams, .dashes, .barSpoon, .teaspoon, .tablespoon, .none]
+            return [.pinch, .drops, .dashes, .barSpoon, .teaspoon, .tablespoon]
         case .otherNonAlc:
-            return MeasurementUnit.allCases
+            return standardMeasurements
         default:
-            return [.fluidOunces, .barSpoon, .dashes, .drops, .grams, .ml,  .sprays, .teaspoon, .tablespoon, .bottles, .none]
+            return standardMeasurements
         }
     }
     

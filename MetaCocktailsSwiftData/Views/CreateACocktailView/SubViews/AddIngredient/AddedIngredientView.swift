@@ -12,7 +12,6 @@ struct AddedIngredientView: View {
    
     @Bindable var viewModel: AddCocktailViewModel
     @Binding var isShowingAddIngredients: Bool
-    @Binding var isShowingCustomIngredientView: Bool 
     @Environment(\.modelContext) private var modelContext
 
     
@@ -22,7 +21,7 @@ struct AddedIngredientView: View {
             List {
                 ForEach(viewModel.addedIngredients, id: \.id) { ingredient in
 
-                    pluralizedIngredientText(for: ingredient)
+                    pluralizedIngredientUnitText(for: ingredient)
                         .font(FontFactory.fontBody16)
                         .swipeActions(edge: .trailing) {
                             Button(role: .none) {
@@ -39,7 +38,7 @@ struct AddedIngredientView: View {
                             if ingredient.ingredientBase.isCustom {
                                 viewModel.currentIngredientUUID = ingredient.id 
                                 viewModel.populateCustomIngredient(ingredient: ingredient)
-                                isShowingCustomIngredientView.toggle()
+                                isShowingAddIngredients.toggle()
                             } else {
                                 viewModel.currentIngredientUUID = ingredient.id
                                 viewModel.populateExistingIngredient(ingredient: ingredient)
@@ -80,7 +79,7 @@ struct AddedIngredientView: View {
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
     
-    AddedIngredientView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true), isShowingCustomIngredientView: .constant(true))
+    AddedIngredientView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true))
         .modelContainer(preview.container)
     
 }

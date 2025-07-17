@@ -27,6 +27,7 @@ struct NAIngredients: Codable, Hashable, Equatable {
     }
     
 }
+
 enum Juice: String, IngredientTagsProtocol {
     case appleCider           = "Apple cider"
     case carrotJuice          = "Fresh carrot juice"
@@ -64,6 +65,8 @@ enum Juice: String, IngredientTagsProtocol {
             Tags(flavors: [.apple, .bakingSpices], nA: [NAIngredients(.juices(self))])
         }
     }
+    
+    var isLiquid: Bool { true }
 }
 
 enum Syrup: String, IngredientTagsProtocol {
@@ -172,7 +175,7 @@ enum Syrup: String, IngredientTagsProtocol {
         }
     }
     
- 
+    var isLiquid: Bool { true }
 }
 
 enum Herbs: String, IngredientTagsProtocol {
@@ -199,6 +202,8 @@ enum Herbs: String, IngredientTagsProtocol {
             Tags(flavors: [.tarragon], profiles: [.herbal, .aromatic], nA: [NAIngredients(.herbs(self))])
         }
     }
+    
+    var isLiquid: Bool { false }
 }
 
 enum Fruit: String, IngredientTagsProtocol {
@@ -221,6 +226,7 @@ enum Fruit: String, IngredientTagsProtocol {
     var nAComponent: CocktailComponent {
         return CocktailComponent(for: NAIngredients(.fruit(self)))
     }
+    
     var tags: Tags {
         switch self {
         case .blackBerry:
@@ -253,6 +259,8 @@ enum Fruit: String, IngredientTagsProtocol {
             Tags(flavors: [.lemon], nA: [NAIngredients(.fruit(self))])
         }
     }
+    
+    var isLiquid: Bool { false }
 }
 
 enum Seasoning: String, IngredientTagsProtocol {
@@ -261,7 +269,6 @@ enum Seasoning: String, IngredientTagsProtocol {
     case saline               = "Saline (5:1)"
     case mineralSaline        = "Mineral saline"
     case pepper               = "Black pepper"
-   
     
     var nAComponent: CocktailComponent {
         return CocktailComponent(for: NAIngredients(.seasoning(self)))
@@ -278,6 +285,21 @@ enum Seasoning: String, IngredientTagsProtocol {
             Tags(nA: [NAIngredients(.seasoning(self))])
         case .pepper:
             Tags(flavors: [.blackPepper], nA: [NAIngredients(.seasoning(self))])
+        }
+    }
+    
+    var isLiquid: Bool {
+        switch self {
+        case .nutmeg:
+            false
+        case .salt:
+            false
+        case .saline:
+            true
+        case .mineralSaline:
+            true
+        case .pepper:
+            false
         }
     }
 }
@@ -315,6 +337,8 @@ enum Soda: String, IngredientTagsProtocol {
             Tags(flavors: [.ginger], profiles: [.effervescent], nA: [NAIngredients(.soda(self))])
         }
     }
+    
+    var isLiquid: Bool { true }
 }
 
 enum OtherNA: String, IngredientTagsProtocol {
@@ -442,6 +466,43 @@ enum OtherNA: String, IngredientTagsProtocol {
             Tags(flavors: [.vanilla], profiles: [.dry, .effervescent])
         case .crushedChocolate:
             Tags(flavors: [.chocolate], nA: [NAIngredients(.otherNonAlc(self))])
+        }
+    }
+    
+    var isLiquid: Bool {
+        switch self {
+        case .butter:
+            false
+        case .celeryStrip:
+            false
+        case .cocoaPowder:
+            false
+        case .crushedChocolate:
+            false
+        case .demeraraSugarCube:
+            false
+        case .dryVanilla:
+            false
+        case .eggWhole:
+            false
+        case .eggYolk:
+            false
+        case .granulatedSugar:
+            false
+        case .jalapenoSlice:
+            false
+        case .mapleSugar:
+            false
+        case .nutmegGrated:
+            false
+        case .powderedSugar:
+            false
+        case .springOnion:
+            false
+        case .sugarCube:
+            false
+        default:
+            true
         }
     }
 }

@@ -167,7 +167,8 @@ enum IngredientType: Codable{
 enum MeasurementUnit: String, Codable, CaseIterable {
     
     case barSpoon           = "bar-spoon"
-    case bottles            = "bottle"
+    case bottles            = "750ml bottle"
+    case oneLiterBottle     = "1 liter bottle"
     case dashes             = "dash"
     case drops              = "drop"
     case fluidOunces        = "oz"

@@ -6,7 +6,6 @@ struct AddCocktailView: View {
     @Bindable var viewModel = AddCocktailViewModel()
     @State private var isShowingAddIngredients: Bool = false
     @State private var isShowingAddGarnishView: Bool = false
-    @State private var isShowingCustomIngredientView: Bool = false
     @Environment(\.modelContext) private var modelContext
     @Environment(\.currentTab) private var selectedTab
     @EnvironmentObject var cocktailListViewModel: CocktailListViewModel
@@ -35,7 +34,7 @@ struct AddCocktailView: View {
                             .font(FontFactory.fontBody16)
                     }
                     
-                    AddedIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView)
+                    AddedIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
                     
                     Section(header: Text("Extras").font(FontFactory.sectionHeader12)) {
                         GlassPickerButton(viewModel: viewModel)
@@ -130,13 +129,9 @@ struct AddCocktailView: View {
                 }
                 .fullScreenCover(isPresented: $isShowingAddIngredients) {
                     NavigationStack{
-                        AddExistingIngredientDetailView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView)
+                        AddIngredientDetailView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
                             .navigationBarBackButtonHidden(true)
                     }
-                }
-                .fullScreenCover(isPresented: $isShowingCustomIngredientView) {
-                    AddCustomIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView)
-                        .navigationBarBackButtonHidden(true)
                 }
                 .overlay {
                     if viewModel.isAboutToClearForm {

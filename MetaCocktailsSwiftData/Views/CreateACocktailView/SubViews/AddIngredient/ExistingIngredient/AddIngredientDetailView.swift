@@ -8,14 +8,14 @@
 import SwiftUI
 import SwiftData
 
-struct AddExistingIngredientDetailView: View {
+struct AddIngredientDetailView: View {
     @Bindable var viewModel: AddCocktailViewModel
     @FocusState private var keyboardFocused: Bool
     @FocusState private var amountKeyboardFocused: Bool
     @Binding var isShowingAddIngredients: Bool
-    @Binding var isShowingCustomIngredientView: Bool
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
+    @FocusState private var recipeKeyboardFocused: Bool
     
     var body: some View {
         
@@ -25,21 +25,32 @@ struct AddExistingIngredientDetailView: View {
                 
                 BlackGlassBackgroundView().ignoresSafeArea()
 
-                List {
+                Form {
                     AddIngredientSearchView(viewModel: viewModel, keyboardFocused: _keyboardFocused, amountKeyboardFocused: _amountKeyboardFocused)
+                    if !viewModel.didChooseExistingIngredient {
+                        CategoryPickerView(viewModel: viewModel)
+                    }
                     AddMeasurementView(viewModel: viewModel, amountKeyboardFocused: _amountKeyboardFocused)
+                    
+                    if !viewModel.didChooseExistingIngredient {
+                        CustomIngredientRecipeView(viewModel: viewModel, recipeKeyboardFocused: _recipeKeyboardFocused)
+                    }
                     Section {
                         AddExistingIngredientToCocktailButton(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients)
                     }
                     .listRowBackground(Color.clear)
-                    Section {
-                        CreateNewIngredientButton(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView)
+                   
+                }
+                .toolbar {
+                    ToolbarItemGroup(placement: .keyboard) {
+                        KeyboardDoneButton(keyboardFocused: $keyboardFocused, amountKeyboardFocused: $amountKeyboardFocused)
                     }
-                    .listRowBackground(Color.clear)
                 }
                 .scrollContentBackground(.hidden)
                 .navigationBarTitleDisplayMode(.inline)
-                .jamesHeaderWithNavigation(title: "Add Ingredient", dismiss: dismiss)
+                .jamesHeaderWithNavigation(title: "Add Ingredient", dismiss: dismiss){
+                    viewModel.clearIngredientData()
+                }
             }
             .onAppear {
                 if viewModel.isEdit {
@@ -47,7 +58,6 @@ struct AddExistingIngredientDetailView: View {
                 } else {
                     keyboardFocused = true
                 }
-                
             }
         }
     }
@@ -56,7 +66,7 @@ struct AddExistingIngredientDetailView: View {
 #Preview {
     let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
     
-    AddExistingIngredientDetailView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true), isShowingCustomIngredientView: .constant(true))
+    AddIngredientDetailView(viewModel: AddCocktailViewModel(), isShowingAddIngredients: .constant(true))
         .modelContainer(preview.container)
     
 }
@@ -79,9 +89,11 @@ struct AddIngredientSearchView: View {
                         viewModel.ingredientName = new
                         viewModel.matchAllIngredients(ingredients: ingredients)
                         
-                        if viewModel.didChooseExistingIngredient {
+                        if !ingredients.contains(where: { $0.name == viewModel.ingredientName}) {
                             viewModel.didChooseExistingIngredient = false
                         }
+                        
+                        
                     }
                     .clearSearchButton(text: $viewModel.ingredientName, isEmbeddedInSection: true) {
                         viewModel.ingredientName = ""
@@ -130,7 +142,7 @@ struct AddIngredientSearchView: View {
         }
         if isShowingDetail {
             Section {
-                Text("Choose from an existing ingredient. If you would rather create your own, tap the 'Create Custom Ingredient' button below.")
+                Text("Choose from an existing ingredient or create your own. A custom ingredient will require additional information for search term categorization and optional recipe.")
                     .font(FontFactory.fontBody14)
                     .foregroundStyle(.brandPrimaryGold)
             }
@@ -185,65 +197,26 @@ struct AddExistingIngredientToCocktailButton: View {
     var body: some View {
         
         UniversalButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), includeBorder: true) {
-            if viewModel.existingIngredientIsValid(allIngredients: ingredients) {
-         
-                if viewModel.isEdit {
-                    viewModel.updateEditedIngredient(isCustom: false)
-                }
-                if !viewModel.isEdit {
-                    if let ingredientValue = viewModel.ingredientAmount{
-                        let ingredient = Ingredient(ingredientBase: IngredientBase(name: viewModel.ingredientName,
-                                                                                   category: viewModel.category,
-                                                                                   prep: viewModel.prep),
-                                                    value: ingredientValue,
-                                                    unit: viewModel.selectedMeasurementUnit)
-                        
-                        viewModel.addedIngredients.append(ingredient)
-                    }
-                }
-                
-                viewModel.clearIngredientData()
-                isShowingAddIngredients = false
-            }
+            viewModel.addIngredientToCocktailBuild(ingredients: ingredients)
+            isShowingAddIngredients = false
         }
-        .foregroundStyle(viewModel.existingIngredientIsValid(allIngredients: ingredients) ? ColorScheme.interactionTint : Color.secondary)
-        .disabled(viewModel.existingIngredientIsValid(allIngredients: ingredients) ? false : true)
+        .foregroundStyle(viewModel.ingredientIsValid(allIngredients: ingredients) ? ColorScheme.interactionTint : Color.secondary)
+        .disabled(viewModel.ingredientIsValid(allIngredients: ingredients) ? false : true)
+        
     }
 }
 
-struct CreateNewIngredientButton: View {
-    @Bindable var viewModel: AddCocktailViewModel
-    @Binding var isShowingAddIngredients: Bool
-    @Binding var isShowingCustomIngredientView: Bool
-    var body: some View {
-        NavigationLinkWithoutIndicator {
-            HStack {
-                Text("Create Custom Ingredient")
-                Image(systemName: "plus")
-                    .tint(ColorScheme.interactionTint)
-                
-            }
-            .font(FontFactory.mediumFont(size: 18))
-            .foregroundStyle(ColorScheme.interactionTint)
-            .padding(.vertical, 8)
-            .padding(.horizontal, 16)
-            
-        } destination: {
-            AddCustomIngredientView(viewModel: viewModel, isShowingAddIngredients: $isShowingAddIngredients, isShowingCustomIngredientView: $isShowingCustomIngredientView)
-                .navigationBarBackButtonHidden(true)
-        }
-    }
-}
 
 struct KeyboardDoneButton: View {
-    @FocusState var keyboardFocused: Bool
-    @FocusState var amountKeyboardFocused: Bool
+    @FocusState.Binding var keyboardFocused: Bool
+    @FocusState.Binding var amountKeyboardFocused: Bool
     var body: some View {
         HStack{
             Spacer()
             Button{
                 keyboardFocused = false
                 amountKeyboardFocused = false
+                
             } label: {
                 Text("Done")
                     .font(FontFactory.fontBody16)
