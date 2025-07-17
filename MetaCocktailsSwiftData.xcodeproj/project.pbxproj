@@ -541,6 +541,7 @@
 		F4AA6BB82C7E2B8E00610D80 /* Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA6BB72C7E2B8600610D80 /* Headers.swift */; };
 		F4AA6BBA2C7E2C4F00610D80 /* FontFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA6BB92C7E2C4D00610D80 /* FontFactory.swift */; };
 		F4AC617D2C8B688D0015BC9D /* SharedHelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AC617C2C8B68890015BC9D /* SharedHelperMethods.swift */; };
+		F4BFF29C2E29A4D4008DD86A /* iOS26_TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BFF29B2E29A4D4008DD86A /* iOS26_TabBarView.swift */; };
 		F4C5C3E12B3B3F2E005B2261 /* IngredientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C5C3E02B3B3F2E005B2261 /* IngredientType.swift */; };
 		F4C5C3E42B3B4086005B2261 /* NonAlchololicIngredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C5C3E32B3B4086005B2261 /* NonAlchololicIngredients.swift */; };
 		F4C5C3E62B3B41BA005B2261 /* Alcohol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C5C3E52B3B41BA005B2261 /* Alcohol.swift */; };
@@ -1111,6 +1112,7 @@
 		F4AA6BB72C7E2B8600610D80 /* Headers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headers.swift; sourceTree = "<group>"; };
 		F4AA6BB92C7E2C4D00610D80 /* FontFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontFactory.swift; sourceTree = "<group>"; };
 		F4AC617C2C8B68890015BC9D /* SharedHelperMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedHelperMethods.swift; sourceTree = "<group>"; };
+		F4BFF29B2E29A4D4008DD86A /* iOS26_TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS26_TabBarView.swift; sourceTree = "<group>"; };
 		F4C5C3E02B3B3F2E005B2261 /* IngredientType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientType.swift; sourceTree = "<group>"; };
 		F4C5C3E32B3B4086005B2261 /* NonAlchololicIngredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonAlchololicIngredients.swift; sourceTree = "<group>"; };
 		F4C5C3E52B3B41BA005B2261 /* Alcohol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alcohol.swift; sourceTree = "<group>"; };
@@ -1412,6 +1414,7 @@
 			children = (
 				1AC386982AAABED00064F52A /* TabBarView.swift */,
 				4DD0DE982B97E020008EF203 /* TabBarComponents.swift */,
+				F4BFF29B2E29A4D4008DD86A /* iOS26_TabBarView.swift */,
 			);
 			path = "Tab Bar";
 			sourceTree = "<group>";
@@ -2409,6 +2412,7 @@
 				4DBFF8312B5FC6750011B5B1 /* Bijou(W&G).swift in Sources */,
 				4DED94502C0E38BC002305C2 /* EditBatchModalView.swift in Sources */,
 				4DCB17102BA4CFCC0002D7D9 /* TurnPike.swift in Sources */,
+				F4BFF29C2E29A4D4008DD86A /* iOS26_TabBarView.swift in Sources */,
 				4D5DA0BE2BA145A600C14F1F /* TheSeaplane.swift in Sources */,
 				4DCB172E2BA4EB450002D7D9 /* TritterRickey.swift in Sources */,
 				4DA567622B6C6F06003F6F04 /* Vesper(W&G).swift in Sources */,

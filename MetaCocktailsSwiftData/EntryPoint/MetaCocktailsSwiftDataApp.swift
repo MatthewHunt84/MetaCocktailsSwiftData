@@ -35,8 +35,12 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            TabBarView()
-                .opacity(viewModel.cocktailFetchCompleted ? 1 : 0)
+            if #available(iOS 26.0, *) {
+                iOS26_TabBarView()
+            } else {
+                TabBarView()
+                    .opacity(viewModel.cocktailFetchCompleted ? 1 : 0)
+            }
             FirstLaunchLoadingView()
                 .opacity(viewModel.cocktailFetchCompleted ? 0 : 1)
                 .allowsHitTesting(false)
