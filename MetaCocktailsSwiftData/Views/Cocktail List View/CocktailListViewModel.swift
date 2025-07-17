@@ -78,7 +78,7 @@ import Combine
     private func performSearch(_ searchText: String) {
         self.debouncedSearchText = searchText
         if searchText.isEmpty {
-            searchResultsCocktails = []
+            searchResultsCocktails = allCocktails
         } else {
             let filtered = filterCocktails(searchText: searchText, filteringCocktails: allCocktails)
             searchResultsCocktails = sortCocktails(filtered, searchText: searchText)
