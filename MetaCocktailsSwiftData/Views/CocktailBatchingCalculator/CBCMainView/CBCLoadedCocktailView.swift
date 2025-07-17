@@ -34,10 +34,6 @@ struct CBCLoadedCocktailView: View {
             .padding(.top, -20)
         }
         .background(ColorScheme.background)
-        .onChange(of: viewModel.quantifiedBatchedIngredients) { _, _ in
-            // Force view update when quantifiedBatchedIngredients change
-            viewModel.objectWillChange.send()
-        }
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
         .jamesHeaderWithNavigation(title: "Batch Calculator", dismiss: dismiss)
@@ -49,6 +45,9 @@ struct CBCLoadedCocktailView: View {
                     
                 })
         })
+        .onAppear {
+            viewModel.convertIngredientsToBatchCellData()
+        }
     }
 }
 
@@ -152,11 +151,17 @@ struct QuantifiedIngredientsListView: View {
                             .foregroundStyle(Color.secondary)
                     }
                     if isShowingOunceMeasurements {
-                        let fluidOunces = viewModel.totalDilutionVolume / mlToOzConversionFactor
-                        Text(String(format: "%.2f oz", fluidOunces))
+                        Text(String(format: "%.2f oz", viewModel.findDilutionInFluidOunces()))
                             .font(FontFactory.formLabel18)
                             .foregroundStyle(.secondary)
                             .frame(maxWidth: .infinity, alignment: .trailing)
+                    }
+                }
+            }
+            if viewModel.quantifiedBatchedDryIngredients.count != 0 {
+                Section(header: CBCDryIngredientSectionHeader()) {
+                    ForEach($viewModel.quantifiedBatchedDryIngredients, id: \.id) { $ingredient in
+                        BatchCellDryIngredientView(quantifiedDryBatchedIngredient: $ingredient)
                     }
                 }
             }
@@ -196,6 +201,13 @@ struct CBCIngredientSectionHeader: View {
     
     var body: some View {
         Text("Ingredient measurements")
+    }
+}
+
+struct CBCDryIngredientSectionHeader: View {
+    
+    var body: some View {
+        Text("Dry ingredient measurements")
     }
 }
 

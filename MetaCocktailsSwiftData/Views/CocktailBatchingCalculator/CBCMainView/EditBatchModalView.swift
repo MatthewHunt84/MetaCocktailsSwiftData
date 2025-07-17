@@ -20,6 +20,9 @@ struct EditBatchModalView: View {
                     ForEach($viewModel.loadedCocktailData.ingredients, id: \.ingredient.ingredientBase.name) { ingredient in
                         LoadedCocktailIngredientCell(ingredient: ingredient)
                     }
+                    ForEach($viewModel.loadedDryIngredients.ingredients, id: \.ingredient.ingredientBase.name) { ingredient in
+                        LoadedCocktailIngredientCell(ingredient: ingredient)
+                    }
                 }
                 .padding(.horizontal)
                 Section(header: FontFactory.mediumText("Measurement Volume Options", size: 20)) {

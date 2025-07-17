@@ -8,22 +8,24 @@
 import SwiftUI
 import SwiftData
 import Combine
+import Observation
 
 
-final class CBCViewModel: ObservableObject {
+@Observable final class CBCViewModel: ObservableObject {
     
     ///CBCMainView variables
-    @Published var dilutionPercentage = 25.0
-    @Published var numberOfCocktailsText: Double = 100.0
-    @Published var isShowingBottleMathMode: Bool = false
+     var dilutionPercentage = 25.0
+     var numberOfCocktailsText: Double = 100.0
+     var isShowingBottleMathMode: Bool = false
 
-    @Published var editingIngredient: String?
-    @Published var numberOfBottlesText: String?
-    @Published var sizeOfTheBottle: String?
-    @Published var editingBottleMathIngredient: BottleBatchedCellData?
-    //@Published var totalCocktailABVPercentage = 0.0
-    @Published var loadedCocktailData: CBCLoadedCocktailData = CBCLoadedCocktailData(cocktailName: "Test", ingredients: [])
-    @Published var unitConversion: [MeasurementUnit: Double] = [
+     var editingIngredient: String?
+     var numberOfBottlesText: String?
+     var sizeOfTheBottle: String?
+     var editingBottleMathIngredient: BottleBatchedCellData?
+     var totalCocktailABVPercentage = 0.0
+     var loadedCocktailData: CBCLoadedCocktailData = CBCLoadedCocktailData(cocktailName: "Test", ingredients: [])
+     var loadedDryIngredients: CBCLoadedCocktailData = CBCLoadedCocktailData(cocktailName: "Test", ingredients: [])
+     var unitConversion: [MeasurementUnit: Double] = [
         .barSpoon: 0.17,
         .teaspoon: 0.17,
         .splash: 0.17,
@@ -37,18 +39,20 @@ final class CBCViewModel: ObservableObject {
         .fluidOunces: 1.0
     ]
     ///Main batch view variables
-    @Published var totalDilutionVolume = 0.0
-    @Published var totalBatchVolume = 0.0
-    @Published var quantifiedBatchedIngredients: [BottleBatchedCellData] = []
-    @Published var chosenCocktail: Cocktail = DummyCocktails.randomCocktail()
+    var totalDilutionVolume = 0.0
+    var totalBatchVolume = 0.0
+    var quantifiedBatchedIngredients: [BottleBatchedCellData] = []
+    var quantifiedBatchedDryIngredients: [DryBatchedCellData] = []
+    var chosenCocktail: Cocktail = DummyCocktails.randomCocktail()
     
     ///Split Batch View
-    @Published var containerSize =  4000
-    @Published var numberOfContainers = 2
-    @Published var splitBatchData: [SplitBatchCellData] = []
-    @Published var containerSizeLabel = "4 Liter"
-    @Published var groupedContainerSizes: [(label: String, volume: Int)] = []
-    @Published var containerSizes: [(label: String, volume: Int)] = []
+    var containerSize =  4000
+    var numberOfContainers = 2
+    var splitBatchData: [SplitBatchCellData] = []
+    var containerSizeLabel = "4 Liter"
+    var groupedContainerSizes: [(label: String, volume: Int)] = []
+    var containerSizes: [(label: String, volume: Int)] = []
+    
     
     var  formatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -68,6 +72,22 @@ final class CBCViewModel: ObservableObject {
         
         let lastLabel = size == 19 ? "19 Liter (5 Gallon) +" : "\(size / 1000) Liter +"
         containerSizes.append((label: lastLabel, volume: size))
+    }
+    
+    func dynamicallyChangeDryIngredientBatchUnit(for unit: String) -> String {
+        var nameToReturn = unit
+        
+        if unit == MeasurementUnit.grams.rawValue {
+            nameToReturn = "grams"
+        }
+        if unit == MeasurementUnit.sliceOf.rawValue {
+            nameToReturn = "slices"
+        }
+        if unit == MeasurementUnit.whole.rawValue {
+            nameToReturn = ""
+        }
+        
+        return nameToReturn
     }
     
     func groupContainerSizes() {
@@ -123,6 +143,7 @@ final class CBCViewModel: ObservableObject {
                         //Theoretically, this will never get returned.
                          return (label: "Error", volume: 0)
         }
+        objectWillChange.send()
     }
     
     func findIndexForBottleMath() -> Int {
@@ -153,7 +174,6 @@ final class CBCViewModel: ObservableObject {
             containerSizeLabel = label
         }
         convertIngredientsToBatchCellData()
-        doSplitBatchMath()
     }
     func getIngredientMeasurement(for batchCellData: BottleBatchedCellData) -> (value: Double, unit: MeasurementUnit)? {
         if let foundIngredient = chosenCocktail.spec.first(where: { $0.ingredientBase.name == batchCellData.ingredientName }) {
@@ -187,6 +207,7 @@ final class CBCViewModel: ObservableObject {
     
     func convertIngredientsToBatchCellData() {
         var quantifiableIngredients = [BottleBatchedCellData]()
+        var quantifiableDryIngredients = [DryBatchedCellData]()
         var totalVolume = 0.0
         
         for ingredient in loadedCocktailData.ingredients {
@@ -215,10 +236,22 @@ final class CBCViewModel: ObservableObject {
                 ))
             }
         }
+        for dryIngredient in loadedDryIngredients.ingredients {
+            if dryIngredient.isIncluded {
+                let existingDryIngredient = quantifiedBatchedDryIngredients.first {
+                    $0.dryIngredientName == dryIngredient.ingredient.ingredientBase.name
+                }
+                
+                quantifiableDryIngredients.append(DryBatchedCellData(id: existingDryIngredient?.id ?? UUID(),
+                                                                     dryIngredientName: dryIngredient.ingredient.ingredientBase.name,
+                                                                     dryIngredientAmount: dryIngredient.ingredient.value * numberOfCocktailsText,
+                                                                     unitName: dynamicallyChangeDryIngredientBatchUnit(for: dryIngredient.ingredient.unit.rawValue)))
+            }
+        }
         
         totalDilutionVolume = totalVolume * (dilutionPercentage / 100.0)
         totalBatchVolume = totalVolume + totalDilutionVolume
-        numberOfContainers = Int(ceil(totalBatchVolume / (Double(containerSize) * 0.9)))
+        numberOfContainers = getContainerCount(for: containerSize)
         
         // recalculate bottle sizes and remaining mls
         for (index, ingredient) in quantifiableIngredients.enumerated() {
@@ -229,7 +262,12 @@ final class CBCViewModel: ObservableObject {
                 quantifiableIngredients[index].remainingMls = totalMls % existingIngredient.bottleSize
             }
         }
+        
+        quantifiedBatchedDryIngredients = quantifiableDryIngredients
         quantifiedBatchedIngredients = quantifiableIngredients
+        
+        doSplitBatchMath()
+        objectWillChange.send()
     }
     
     func determineIfLiquid(ingredientBase: IngredientBase) -> Bool {
@@ -270,6 +308,41 @@ final class CBCViewModel: ObservableObject {
             convertIngredientsToBatchCellData()
         }
     }
+    func calculateDryIngredientAmount(for dryIngredientName: String) -> Double {
+     
+        if let originalIngredient = loadedDryIngredients.ingredients.first(where: {
+            $0.ingredient.ingredientBase.name == dryIngredientName
+        }) {
+            return originalIngredient.ingredient.value * numberOfCocktailsText
+        }
+        
+        if let calculatedIngredient = quantifiedBatchedDryIngredients.first(where: {
+            $0.dryIngredientName == dryIngredientName
+        }) {
+            return calculatedIngredient.dryIngredientAmount
+        }
+        return 0.0
+    }
+    
+    func formattedDryIngredientAmount(for dryIngredientName: String, withUnit: Bool = true) -> String {
+        let amount = calculateDryIngredientAmount(for: dryIngredientName)
+        let roundedAmount = Int(amount.rounded())
+        
+        if withUnit {
+            if let dryIngredient = quantifiedBatchedDryIngredients.first(where: {
+                $0.dryIngredientName == dryIngredientName
+            }) {
+                return "\(roundedAmount) \(dryIngredient.unitName)"
+            }
+            return "\(roundedAmount)"
+        } else {
+            return "\(roundedAmount)"
+        }
+    }
+    
+    func findDilutionInFluidOunces() -> Double {
+        return totalDilutionVolume / mlToOzConversionFactor
+    }
     
     func doMathForModified1LBottleCount(initialAmount: Double, newQuantityAmount: Double) {
         
@@ -287,6 +360,8 @@ final class CBCViewModel: ObservableObject {
     
     func convertLoadedCocktail(for cocktail: Cocktail) {
         var newLoadedCocktailData = CBCLoadedCocktailData(cocktailName: cocktail.cocktailName, ingredients: [])
+        var newDryIngredients = CBCLoadedCocktailData(cocktailName: cocktail.cocktailName, ingredients: [])
+        
         for spec in cocktail.spec {
             if UmbrellaCategory(rawValue: spec.ingredientBase.umbrellaCategory) != .herbs
                 && UmbrellaCategory(rawValue: spec.ingredientBase.umbrellaCategory) != .fruit
@@ -295,22 +370,32 @@ final class CBCViewModel: ObservableObject {
                 && spec.unit != .pinch {
                 newLoadedCocktailData.ingredients.append(CBCLoadedIngredient(ingredient: spec, isIncluded: true))
             }
+            if UmbrellaCategory(rawValue: spec.ingredientBase.umbrellaCategory) == .herbs
+                || UmbrellaCategory(rawValue: spec.ingredientBase.umbrellaCategory) == .fruit || UmbrellaCategory(rawValue: spec.ingredientBase.umbrellaCategory) == .otherNonAlc { if  spec.unit == .whole || spec.unit == .grams || spec.unit == .sliceOf {
+                    newDryIngredients.ingredients.append(CBCLoadedIngredient(ingredient: spec, isIncluded: true))
+                }
+            }
         }
-        
+        loadedDryIngredients = newDryIngredients
         loadedCocktailData = newLoadedCocktailData
+        convertIngredientsToBatchCellData()
     }
     
     func doSplitBatchMath() {
         var splitData: [SplitBatchCellData] = []
         for ingredient in quantifiedBatchedIngredients {
-            splitData.append(SplitBatchCellData(ingredientName: ingredient.ingredientName, splitIngredientAmount: Int(ingredient.totalMls / numberOfContainers)))
+            splitData.append(SplitBatchCellData(ingredientName: ingredient.ingredientName,
+                                                splitIngredientAmount: Int(ingredient.totalMls / numberOfContainers)))
         }
-        splitData.append(SplitBatchCellData(ingredientName: "Dilution", splitIngredientAmount: (Int(totalDilutionVolume) / numberOfContainers)))
-        splitBatchData = splitData
+        splitData.append(SplitBatchCellData(ingredientName: "Dilution",
+                                            splitIngredientAmount: (Int(totalDilutionVolume) / numberOfContainers)))
         
+        splitBatchData = splitData
+        objectWillChange.send()
     }
     func updateEditingIngredient(name: String) {
         editingIngredient = name
+        objectWillChange.send()
     }
     
     
@@ -325,6 +410,7 @@ final class CBCViewModel: ObservableObject {
             }
         }
         editingIngredient = nil
+        objectWillChange.send()
     }
 }
 
@@ -344,6 +430,31 @@ struct CBCLoadedCocktailData: Hashable, Equatable {
 struct CBCLoadedIngredient {
     var ingredient: Ingredient
     var isIncluded: Bool
+}
+
+struct DryBatchedCellData: Hashable, Equatable, Identifiable  {
+    
+    let id: UUID
+    var dryIngredientName: String
+    var dryIngredientAmount: Double
+    var unitName: String
+
+    
+    init(id: UUID = UUID(), dryIngredientName: String, dryIngredientAmount: Double, unitName: String) {
+        self.id = id
+        self.dryIngredientName = dryIngredientName
+        self.dryIngredientAmount = dryIngredientAmount
+        self.unitName = unitName
+     
+    }
+    
+    static func == (lhs: DryBatchedCellData, rhs: DryBatchedCellData) -> Bool {
+        return lhs.dryIngredientName == rhs.dryIngredientName
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(dryIngredientName)
+    }
 }
 
 struct BottleBatchedCellData: Hashable, Equatable, Identifiable {

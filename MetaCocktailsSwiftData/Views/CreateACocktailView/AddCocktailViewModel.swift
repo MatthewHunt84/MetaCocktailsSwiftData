@@ -202,41 +202,25 @@ import Combine
     }
     
     func addIngredientToCocktailBuild(ingredients: [IngredientBase]) {
-        if ingredientIsValid(allIngredients: ingredients) {
-            
-            if isEdit && didChooseExistingIngredient {
-                updateEditedIngredient(isCustom: false)
-            }
-            if isEdit && !didChooseExistingIngredient {
-                updateEditedIngredient(isCustom: true)
-            }
-            
-            if !isEdit && didChooseExistingIngredient {
-                if let ingredientValue = ingredientAmount{
-                    let ingredient = Ingredient(ingredientBase: IngredientBase(name: ingredientName,
-                                                                               category: category,
-                                                                               prep: prep),
-                                                value: ingredientValue,
-                                                unit: selectedMeasurementUnit)
-                    
-                    addedIngredients.append(ingredient)
-                }
-            }
-            if !isEdit && !didChooseExistingIngredient {
-                if !prepIngredientRecipe.isEmpty {
-                    prep = Prep(prepIngredientName: ingredientName, prepRecipe: prepIngredientRecipe)
-                }
-                if let ingredientValue = ingredientAmount {
-                    addedIngredients.append(Ingredient(ingredientBase: IngredientBase(name: ingredientName,
-                                                                                      category: category,
-                                                                                      prep: prep,
-                                                                                      isCustom: true),
-                                                       value: ingredientValue,
-                                                       unit: selectedMeasurementUnit))
-                }
-            }
-            clearIngredientData()
+        guard ingredientIsValid(allIngredients: ingredients) else { return }
+        
+        switch (isEdit, didChooseExistingIngredient) {
+        case (true, true):
+            updateEditedIngredient(isCustom: false)
+        case (true, false):
+            updateEditedIngredient(isCustom: true)
+        case (false, true):
+            guard let ingredientValue = ingredientAmount else { return }
+            let ingredientBase = IngredientBase(name: ingredientName, category: category, prep: prep)
+            addedIngredients.append(Ingredient(ingredientBase: ingredientBase, value: ingredientValue, unit: selectedMeasurementUnit))
+        case (false, false):
+            guard let ingredientValue = ingredientAmount else { return }
+            let prep = prepIngredientRecipe.isEmpty ? nil : Prep(prepIngredientName: ingredientName, prepRecipe: prepIngredientRecipe)
+            let ingredientBase = IngredientBase(name: ingredientName, category: category, prep: prep, isCustom: true)
+            addedIngredients.append(Ingredient(ingredientBase: ingredientBase, value: ingredientValue, unit: selectedMeasurementUnit))
         }
+        
+        clearIngredientData()
     }
     
     @MainActor
@@ -509,7 +493,7 @@ import Combine
         case .seasoning:
             return [.pinch, .drops, .dashes, .barSpoon, .teaspoon, .tablespoon]
         case .otherNonAlc:
-            return standardMeasurements
+            return [.fluidOunces, .barSpoon, .dashes, .drops, .ml,  .sprays, .teaspoon, .tablespoon, .bottles, .oneLiterBottle, .whole]
         default:
             return standardMeasurements
         }
