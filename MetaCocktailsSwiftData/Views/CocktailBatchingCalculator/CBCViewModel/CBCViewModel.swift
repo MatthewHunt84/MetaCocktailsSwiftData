@@ -191,12 +191,10 @@ final class CBCViewModel: ObservableObject {
         
         for ingredient in loadedCocktailData.ingredients {
             // Don't include non-liquid ingredients (since BottleBatchedCellData only applies to liquids)
+            // TODO: Add dry ingredients to batch view
             if !determineIfLiquid(ingredientBase: ingredient.ingredient.ingredientBase) {
-                print("Removing \(ingredient.ingredient.ingredientBase.name): Not liquid")
                 continue
             }
-            print("Keeping \(ingredient.ingredient.ingredientBase.name)")
-            
             if ingredient.isIncluded {
                 let conversionFactor = unitConversion[ingredient.ingredient.unit] ?? 1.0
                 let modifiedMeasurement = ingredient.ingredient.value * conversionFactor

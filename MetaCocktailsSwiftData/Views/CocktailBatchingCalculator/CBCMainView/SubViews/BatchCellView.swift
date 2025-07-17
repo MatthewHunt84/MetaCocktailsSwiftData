@@ -86,8 +86,6 @@ struct editableMlView: View {
                 .background(.clear)
                 .focused($isFocused)
         } else {
-            
-            
             Text("\(quantifiedBatchedIngredient.totalMls) ml")
                 .font(FontFactory.mediumFont(size: 18))
                 .foregroundStyle(ColorScheme.interactionTint)
