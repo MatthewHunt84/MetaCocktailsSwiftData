@@ -78,7 +78,7 @@ struct AboutUsView: View {
                             MattPicture()
                         }
                     }
-                    .aboutHeaderWithNavigation(title: "About Cocktail Copilot", dismiss: dismiss)
+                    .jamesHeaderWithNavigation(title: "About Cocktail Copilot", dismiss: dismiss)
                     .navigationBarTitleDisplayMode(.inline)
                     .background(
                         Image(.limeSegments)

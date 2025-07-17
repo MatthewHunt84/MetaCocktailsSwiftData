@@ -136,7 +136,7 @@ struct SearchBarForCocktailListView: View {
             NavigationStack {
                 
                 NavigationLink {
-                    AboutUsView()
+                    ResourcesView()
                         .navigationBarBackButtonHidden(true)
                 } label: {
                     
