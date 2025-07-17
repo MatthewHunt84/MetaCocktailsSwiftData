@@ -63,7 +63,7 @@ import Combine
     
     private func setupSearch() {
         searchSubject
-            .debounce(for: .milliseconds(400), scheduler: DispatchQueue.main)
+            .debounce(for: .milliseconds(100), scheduler: DispatchQueue.main)
             .removeDuplicates()
             .sink { [weak self] searchText in
                 self?.performSearch(searchText)
@@ -78,7 +78,7 @@ import Combine
     private func performSearch(_ searchText: String) {
         self.debouncedSearchText = searchText
         if searchText.isEmpty {
-            searchResultsCocktails = allCocktails
+            searchResultsCocktails = allCocktails.sorted()
         } else {
             let filtered = filterCocktails(searchText: searchText, filteringCocktails: allCocktails)
             searchResultsCocktails = sortCocktails(filtered, searchText: searchText)

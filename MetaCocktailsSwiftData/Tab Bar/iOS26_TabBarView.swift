@@ -54,7 +54,6 @@ struct iOS26_TabBarView: View {
         .environment(\.currentTab, $selectedTab)
         .tint(ColorScheme.tabBarTint)
         .tabBarMinimizeBehavior(.onScrollDown)
-        .searchToolbarBehavior(.)
     }
 }
 

@@ -532,7 +532,7 @@ import Combine
     
     private func setupSearch() {
         searchSubject
-            .debounce(for: .milliseconds(400), scheduler: DispatchQueue.main)
+            .debounce(for: .milliseconds(100), scheduler: DispatchQueue.main)
             .removeDuplicates()
             .sink { [weak self] searchText in
                 self?.performSearch(searchText)

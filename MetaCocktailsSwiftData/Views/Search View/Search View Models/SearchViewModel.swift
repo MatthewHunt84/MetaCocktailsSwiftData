@@ -561,7 +561,7 @@ final class SearchViewModel: ObservableObject {
     
     func setupSearch() {
         searchSubject
-            .debounce(for: .milliseconds(200), scheduler: DispatchQueue.main)
+            .debounce(for: .milliseconds(100), scheduler: DispatchQueue.main)
             .removeDuplicates()
             .sink { [weak self] searchText in
                 self?.performSearch(searchText)
