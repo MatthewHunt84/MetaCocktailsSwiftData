@@ -24,8 +24,16 @@ import Combine
             let filtered = filterCocktails(searchText: searchText, filteringCocktails: allCocktails)
             return sortCocktails(filtered, searchText: searchText)
         }
+    }
+    
+    var filteredResults: (top: Cocktail?, others: [Cocktail]) {
+        var results = searchResultsCocktails
+        guard !results.isEmpty else { return (top: nil, others: [Cocktail]()) }
+        guard !searchText.isEmpty else { return (top: nil, others: results) }
         
-        
+        let top = results.first
+        var others = Array(results[1...])
+        return (top: results.first, others: others)
     }
     
     var cocktailListAlphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","#"]

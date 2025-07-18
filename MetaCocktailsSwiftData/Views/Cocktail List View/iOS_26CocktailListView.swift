@@ -7,15 +7,39 @@
 
 import SwiftUI
 
+
+@Observable
+class iOS_26NavigationManager {
+    var path = NavigationPath()
+    
+    func navigateTo<T: Hashable>(_ destination: T) {
+        path.append(destination)
+    }
+    
+    func popToRoot() {
+        path.removeLast(path.count)
+    }
+    
+    func popLast() {
+        guard !path.isEmpty else { return }
+        path.removeLast()
+    }
+    
+    func pop(_ count: Int) {
+        guard count <= path.count else { return }
+        path.removeLast(count)
+    }
+}
+
 @available(iOS 26.0, *)
 struct iOS_26CocktailListView: View {
     @EnvironmentObject var viewModel: CocktailListViewModel
     @State private var selectedNavigationLetter: String?
-    @State private var navigationPath = NavigationPath()
+    @State private var navigationManager = iOS_26NavigationManager()
     
     var body: some View {
         
-        NavigationStack(path: $navigationPath) {
+        NavigationStack(path: $navigationManager.path) {
             
             GeometryReader { outerGeo in
                 
@@ -59,14 +83,20 @@ struct iOS_26CocktailListView: View {
                 }
                 .searchable(text: $viewModel.searchText, prompt: "Search for cocktails")
                 .searchSuggestions {
-                    ForEach(viewModel.searchResultsCocktails, id: \.self) { cocktail in
-                        iOS26_SingleCocktailListView(cocktail: cocktail)
-                            .navigationBarBackButtonHidden(true)
-                    }
+
+                            if let top = viewModel.filteredResults.top {
+                                iOS26_SingleCocktailListViewTop(cocktail: top)
+                                    .listRowSeparator(.hidden)
+                            }
+                            
+                            ForEach(viewModel.filteredResults.others) { cocktail in
+                                iOS26_SingleCocktailListView(cocktail: cocktail)
+                                    .listRowSeparator(.hidden)
+                            }
                 }
                 .onSubmit(of: .search) {
                     if let firstResult = viewModel.searchResultsCocktails.first {
-                        navigationPath.append(firstResult)
+                        navigationManager.path.append(firstResult)
                     }
                 }
             }
@@ -75,25 +105,57 @@ struct iOS_26CocktailListView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
             .jamesHeader("Cocktail List")
+            .environment(navigationManager)
         }
     }
 }
 
+
 struct iOS26_SingleCocktailListView: View {
     let cocktail: Cocktail
+    @Environment(iOS_26NavigationManager.self) var navigationManager
     
     var body: some View {
-        NavigationLink(value: cocktail) {
+        
+        Button {
+            navigationManager.path.append(cocktail)
+        } label: {
             HStack {
                 Text(cocktail.cocktailName)
                     .font(FontFactory.regularFont(size: 18))
                     .padding(.leading, 20)
                     .foregroundStyle(.white)
             }
-        }
         .frame(maxWidth: .infinity, alignment: .leading)
         .frame(height: 35)
         .padding(.vertical, 2)
+        }
     }
+}
+
+@available(iOS 26.0, *)
+struct iOS26_SingleCocktailListViewTop: View {
+    let cocktail: Cocktail
+    @Environment(iOS_26NavigationManager.self) var navigationManager
+    
+    var body: some View {
+        
+        Button {
+            navigationManager.path.append(cocktail)
+        } label: {
+            HStack {
+                Text(cocktail.cocktailName)
+                    .font(FontFactory.regularFont(size: 18))
+                    .padding(.leading, 20)
+                    .foregroundStyle(ColorScheme.tintColor)
+                    .bold()
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .frame(height: 35)
+            .padding(.vertical, 2)
+        }
+        .buttonStyle(.glass)
+    }
+    
 }
 
