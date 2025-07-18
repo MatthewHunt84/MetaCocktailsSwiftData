@@ -17,10 +17,10 @@ struct iOS26_TabBarView: View {
         
         TabView(selection: $selectedTab)  {
             
-            Tab(value: .cocktailListView) {
-                CocktailListView()
+            Tab(value: .cocktailListView, role: .search) {
+                iOS_26CocktailListView()
             } label: {
-                Label("Cocktails", systemImage: "book.fill")
+                Label("Cocktails", systemImage: "magnifyingglass.circle.fill")
             }
             
             Tab(value: .addCocktailView) {
@@ -41,47 +41,9 @@ struct iOS26_TabBarView: View {
             } label: {
                 Label("Ingredients", systemImage: "text.page.badge.magnifyingglass")
             }
-            
-            Tab(value: .searchView, role: .search) {
-                iOS26_SearchBarAllCocktailsListView()
-                    .searchable(text: $viewModel.searchText, prompt: "Search for cocktails")
-            } label: {
-                Label("Search", systemImage: "magnifyingglass.circle.fill")
-                
-            }
-            
         }
         .environment(\.currentTab, $selectedTab)
         .tint(ColorScheme.tabBarTint)
         .tabBarMinimizeBehavior(.onScrollDown)
-    }
-}
-
-@available(iOS 26.0, *)
-struct iOS26_SearchBarAllCocktailsListView: View {
-    @EnvironmentObject var viewModel: CocktailListViewModel
-    
-    var body: some View {
-        
-        NavigationStack {
-            
-            VStack {
-                
-                Spacer()
-                
-                ScrollView { // disabling this makes the view behave like I want - but I can no longer scroll
-                    LazyVStack {
-                        ForEach(viewModel.searchResultsCocktails, id: \.self) { cocktail in
-                            SingleCocktailListView(cocktail: cocktail)
-                        }
-                    }
-                    .listStyle(.plain)
-                }
-            }
-            
-            .onChange(of: viewModel.searchText) { _, newValue in
-                viewModel.updateSearch(newValue)
-            }
-        }
     }
 }

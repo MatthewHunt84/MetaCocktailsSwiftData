@@ -17,7 +17,16 @@ import Combine
     
     private var allCocktails: [Cocktail] = []
     var mainListCocktails: [Cocktail] = []
-    var searchResultsCocktails: [Cocktail] = []
+    var searchResultsCocktails: [Cocktail] {
+        if searchText.isEmpty {
+            return allCocktails.sorted { $0.cocktailName < $1.cocktailName }
+        } else {
+            let filtered = filterCocktails(searchText: searchText, filteringCocktails: allCocktails)
+            return sortCocktails(filtered, searchText: searchText)
+        }
+        
+        
+    }
     
     var cocktailListAlphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","#"]
     var searchText: String = ""
@@ -75,13 +84,13 @@ import Combine
         searchSubject.send(searchText)
     }
     
-    private func performSearch(_ searchText: String) {
+    private func performSearch(_ searchText: String) -> [Cocktail] {
         self.debouncedSearchText = searchText
         if searchText.isEmpty {
-            searchResultsCocktails = allCocktails.sorted()
+            return allCocktails.sorted { $0.cocktailName < $1.cocktailName }
         } else {
             let filtered = filterCocktails(searchText: searchText, filteringCocktails: allCocktails)
-            searchResultsCocktails = sortCocktails(filtered, searchText: searchText)
+            return sortCocktails(filtered, searchText: searchText)
         }
     }
     

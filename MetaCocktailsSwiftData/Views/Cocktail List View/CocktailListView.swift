@@ -20,7 +20,7 @@ struct CocktailListView: View {
                     ColorScheme.background.ignoresSafeArea()
                     
                     VStack(spacing: 0) {
-                        SearchBarForCocktailListView(isFocused: $searchBarIsFocused, viewModel: viewModel)
+//                        SearchBarForCocktailListView(isFocused: $searchBarIsFocused, viewModel: viewModel)
                         GeometryReader { listGeo in
                             HStack(spacing: 0) {
                                 ScrollViewReader { proxy in
@@ -50,6 +50,12 @@ struct CocktailListView: View {
                         }
                     }
                     .frame(height: outerGeo.size.height)
+                }
+                .searchable(text: $viewModel.searchText, prompt: "Search for cocktails")
+                .searchSuggestions {
+                    ForEach(viewModel.searchResultsCocktails, id: \.self) { cocktail in
+                        SingleCocktailListView(cocktail: cocktail)
+                    }
                 }
             }
             .onAppear {

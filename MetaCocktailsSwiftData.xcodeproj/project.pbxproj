@@ -515,6 +515,7 @@
 		F440160D2CA6F40B00839E6A /* RecipeSubViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = F440160C2CA6F40500839E6A /* RecipeSubViews.swift */; };
 		F4538E032C91F99E004B686A /* FindCocktailUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4538E022C91F997004B686A /* FindCocktailUserInfoView.swift */; };
 		F45C3A8F2CAC60C600AFBBA6 /* Overlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45C3A8E2CAC60BF00AFBBA6 /* Overlays.swift */; };
+		F47733782E2A9F84008B1214 /* iOS_26CocktailListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47733772E2A9F84008B1214 /* iOS_26CocktailListView.swift */; };
 		F47AE7B02CA5FE060070E7A8 /* AnimationModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47AE7AF2CA5FDFE0070E7A8 /* AnimationModifiers.swift */; };
 		F47FBF652C6BF5EB00CD599E /* CustomLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47FBF642C6BF5EB00CD599E /* CustomLoadingIndicator.swift */; };
 		F4872FEE2C4353E10092F8FF /* DummyCocktails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4872FED2C4353E10092F8FF /* DummyCocktails.swift */; };
@@ -1086,6 +1087,7 @@
 		F4538E022C91F997004B686A /* FindCocktailUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindCocktailUserInfoView.swift; sourceTree = "<group>"; };
 		F45C3A8E2CAC60BF00AFBBA6 /* Overlays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overlays.swift; sourceTree = "<group>"; };
 		F473FFD22C2716C4008689D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F47733772E2A9F84008B1214 /* iOS_26CocktailListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_26CocktailListView.swift; sourceTree = "<group>"; };
 		F47AE7AF2CA5FDFE0070E7A8 /* AnimationModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationModifiers.swift; sourceTree = "<group>"; };
 		F47FBF642C6BF5EB00CD599E /* CustomLoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoadingIndicator.swift; sourceTree = "<group>"; };
 		F4872FED2C4353E10092F8FF /* DummyCocktails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyCocktails.swift; sourceTree = "<group>"; };
@@ -1454,6 +1456,7 @@
 		1AC386A22AAABED00064F52A /* Cocktail List View */ = {
 			isa = PBXGroup;
 			children = (
+				F47733772E2A9F84008B1214 /* iOS_26CocktailListView.swift */,
 				1AC386A42AAABED00064F52A /* CocktailListViewModel.swift */,
 				1AC386A32AAABED00064F52A /* CocktailListView.swift */,
 				4DAD6C862C802CB900860555 /* CustomCocktailsListView.swift */,
@@ -2356,6 +2359,7 @@
 				1AFDB7AE2ADF24A9000A3812 /* GinFizz.swift in Sources */,
 				4D54F7362B79F1E500D046D9 /* ContainerMenuView.swift in Sources */,
 				F41045072AD4FD42000CA913 /* CocktailImageView.swift in Sources */,
+				F47733782E2A9F84008B1214 /* iOS_26CocktailListView.swift in Sources */,
 				4DD0DE992B97E020008EF203 /* TabBarComponents.swift in Sources */,
 				4DBBA4CF2B6A3B7100179B8F /* QueensParkSwizzle(W&G).swift in Sources */,
 				4DA889062CBDED4D00113ED7 /* HouseBobbyBurns.swift in Sources */,

@@ -175,7 +175,7 @@ struct RecipeView: View {
                 .ignoresSafeArea()
             
             RecipeFlipCardView(viewModel: viewModel, borderColor: $borderColor, scrollID: .constant(UUID()))
-                .navigationBarTitleDisplayMode(.inline)
+//                .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

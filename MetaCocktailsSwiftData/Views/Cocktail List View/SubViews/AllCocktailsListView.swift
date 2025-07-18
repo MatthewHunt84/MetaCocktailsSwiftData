@@ -174,7 +174,7 @@ struct SearchBarAllCocktailsListView: View {
     
     
     var body: some View {
-        VStack(spacing: 0){
+        VStack(spacing: 0) {
             ForEach(viewModel.searchResultsCocktails, id: \.self) { cocktail in
                 SingleCocktailListView(cocktail: cocktail)
             }
