@@ -33,6 +33,7 @@ struct ContentView: View {
     @StateObject var viewModel: CocktailListViewModel
     @State private var startTime = CFAbsoluteTimeGetCurrent()
     
+    
     var body: some View {
         ZStack {
             if #available(iOS 26.0, *) {
@@ -48,3 +49,4 @@ struct ContentView: View {
         .environmentObject(viewModel)
     }
 }
+

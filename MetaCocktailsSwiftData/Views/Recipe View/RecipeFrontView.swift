@@ -19,6 +19,9 @@ struct RecipeFlipCardView: View {
     @State private var showingHistoricInfo = false
     var recommendedCocktailID: UUID? = nil
     @State private var showSpecInMl: Bool = false
+    @State private var refreshLayout = false
+    @State private var backgroundColor = Color.green
+//    @Environment(iOS_26NavigationManager.self) var navigationManager
     
     var body: some View {
         
@@ -26,6 +29,10 @@ struct RecipeFlipCardView: View {
             
             ZStack {
                 
+//        backgroundColor
+//            .navigationBarHidden(true)
+
+
                 RecipeViewBack(viewModel: viewModel, parentGeo: outerGeo)
                 
                 ZStack {
@@ -100,6 +107,8 @@ struct RecipeFlipCardView: View {
                 .opacity(viewModel.backDegree == -90 ? 1 : 0)
                 .rotation3DEffect(Angle(degrees: viewModel.frontDegree), axis: (x: 0, y: 1, z: 0))
             }
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden()
         }
     }
 }
@@ -175,8 +184,10 @@ struct RecipeView: View {
                 .ignoresSafeArea()
             
             RecipeFlipCardView(viewModel: viewModel, borderColor: $borderColor, scrollID: .constant(UUID()))
-//                .navigationBarTitleDisplayMode(.inline)
+            
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
     }
 }
 

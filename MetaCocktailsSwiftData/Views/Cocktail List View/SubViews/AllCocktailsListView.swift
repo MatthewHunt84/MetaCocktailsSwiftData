@@ -127,11 +127,13 @@ struct CocktailGroupView: View {
 
 struct SingleCocktailListView: View {
     let cocktail: Cocktail
+    @EnvironmentObject var viewModel: CocktailListViewModel
     
     var body: some View {
         NavigationLink {
             RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
                 .navigationBarBackButtonHidden(true)
+                .navigationBarHidden(true)
         } label: {
             HStack {
                 Text(cocktail.cocktailName)
@@ -182,3 +184,4 @@ struct SearchBarAllCocktailsListView: View {
         }
     }
 }
+

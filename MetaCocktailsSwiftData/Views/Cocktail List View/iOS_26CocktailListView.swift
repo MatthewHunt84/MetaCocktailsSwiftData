@@ -7,40 +7,14 @@
 
 import SwiftUI
 
-
-@Observable
-class iOS_26NavigationManager {
-    var path = NavigationPath()
-    
-    func navigateTo<T: Hashable>(_ destination: T) {
-        path.append(destination)
-    }
-    
-    func popToRoot() {
-        path.removeLast(path.count)
-    }
-    
-    func popLast() {
-        guard !path.isEmpty else { return }
-        path.removeLast()
-    }
-    
-    func pop(_ count: Int) {
-        guard count <= path.count else { return }
-        path.removeLast(count)
-    }
-}
-
 @available(iOS 26.0, *)
 struct iOS_26CocktailListView: View {
     @EnvironmentObject var viewModel: CocktailListViewModel
     @State private var selectedNavigationLetter: String?
-    @State private var navigationManager = iOS_26NavigationManager()
+    
     
     var body: some View {
         
-        NavigationStack(path: $navigationManager.path) {
-            
             GeometryReader { outerGeo in
                 
                 ZStack {
@@ -77,35 +51,8 @@ struct iOS_26CocktailListView: View {
                     }
                     .frame(height: outerGeo.size.height)
                 }
-                .navigationDestination(for: Cocktail.self) { cocktail in
-                    RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                        .navigationBarBackButtonHidden(true)
-                }
-                .searchable(text: $viewModel.searchText, prompt: "Search for cocktails")
-                .searchSuggestions {
-
-                            if let top = viewModel.filteredResults.top {
-                                iOS26_SingleCocktailListViewTop(cocktail: top)
-                                    .listRowSeparator(.hidden)
-                            }
-                            
-                            ForEach(viewModel.filteredResults.others) { cocktail in
-                                iOS26_SingleCocktailListView(cocktail: cocktail)
-                                    .listRowSeparator(.hidden)
-                            }
-                }
-                .onSubmit(of: .search) {
-                    if let firstResult = viewModel.searchResultsCocktails.first {
-                        navigationManager.path.append(firstResult)
-                    }
-                }
-            }
-            .task {
-                viewModel.searchText = ""
-            }
             .navigationBarTitleDisplayMode(.inline)
             .jamesHeader("Cocktail List")
-            .environment(navigationManager)
         }
     }
 }
@@ -113,11 +60,13 @@ struct iOS_26CocktailListView: View {
 
 struct iOS26_SingleCocktailListView: View {
     let cocktail: Cocktail
-    @Environment(iOS_26NavigationManager.self) var navigationManager
+    @Environment(iOS_26_SearchViewNavigationManager.self) var navigationManager
+    @EnvironmentObject var viewModel: CocktailListViewModel
     
     var body: some View {
         
         Button {
+            viewModel.didTapCocktail = true
             navigationManager.path.append(cocktail)
         } label: {
             HStack {
@@ -127,8 +76,6 @@ struct iOS26_SingleCocktailListView: View {
                     .foregroundStyle(.white)
             }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .frame(height: 35)
-        .padding(.vertical, 2)
         }
     }
 }
@@ -136,11 +83,13 @@ struct iOS26_SingleCocktailListView: View {
 @available(iOS 26.0, *)
 struct iOS26_SingleCocktailListViewTop: View {
     let cocktail: Cocktail
-    @Environment(iOS_26NavigationManager.self) var navigationManager
+    @Environment(iOS_26_SearchViewNavigationManager.self) var navigationManager
+    @EnvironmentObject var viewModel: CocktailListViewModel
     
     var body: some View {
         
         Button {
+            viewModel.didTapCocktail = true
             navigationManager.path.append(cocktail)
         } label: {
             HStack {
@@ -156,6 +105,5 @@ struct iOS26_SingleCocktailListViewTop: View {
         }
         .buttonStyle(.glass)
     }
-    
 }
 

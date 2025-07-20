@@ -51,12 +51,6 @@ struct CocktailListView: View {
                     }
                     .frame(height: outerGeo.size.height)
                 }
-                .searchable(text: $viewModel.searchText, prompt: "Search for cocktails")
-                .searchSuggestions {
-                    ForEach(viewModel.searchResultsCocktails, id: \.self) { cocktail in
-                        SingleCocktailListView(cocktail: cocktail)
-                    }
-                }
             }
             .onAppear {
                 viewModel.searchText = ""

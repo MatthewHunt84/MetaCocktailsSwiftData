@@ -35,6 +35,8 @@ import Combine
         var others = Array(results[1...])
         return (top: results.first, others: others)
     }
+    // We need to show a list of cocktail on the search page - but they aren't actually used, so we display the first 20 and wait for the search field to present the real filtered list
+    var searchViewDisplayCocktails: [Cocktail] { Array(allCocktails[...20]) }
     
     var cocktailListAlphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","#"]
     var searchText: String = ""
@@ -46,6 +48,7 @@ import Combine
     private var organizedCocktailsCache: [String: [String: [Cocktail]]] = [:]
     
     var shouldReloadCache = false
+    var didTapCocktail = false
     
     init(modelContext: ModelContext) {
         self.setupSearch()

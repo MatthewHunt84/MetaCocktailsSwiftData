@@ -1141,6 +1141,7 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		F41B60772CDFEB82002058B1 /* MetaCocktailsSwiftDataTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = MetaCocktailsSwiftDataTests; sourceTree = "<group>"; };
+		F4B071C42E2D60BE00BD905D /* NavigationManager */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = NavigationManager; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2212,6 +2213,7 @@
 			children = (
 				F473FFD22C2716C4008689D3 /* Info.plist */,
 				1AC3867C2AAABED00064F52A /* Assets.xcassets */,
+				F4B071C42E2D60BE00BD905D /* NavigationManager */,
 				1AC386852AAABED00064F52A /* EntryPoint */,
 				1AC386972AAABED00064F52A /* Tab Bar */,
 				F47AE7AE2CA5FDE90070E7A8 /* Animations */,
@@ -2269,6 +2271,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				F4B071C42E2D60BE00BD905D /* NavigationManager */,
 			);
 			name = MetaCocktailsSwiftData;
 			productName = MetaCocktailsSwiftData;
