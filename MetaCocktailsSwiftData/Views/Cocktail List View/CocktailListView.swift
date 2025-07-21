@@ -76,7 +76,7 @@ struct AlphabetNavigationView: View {
                         withAnimation(.none) {
                             animatingLetter = letter
                         }
-                        withAnimation(.easeOut(duration: 0.5).delay(0.1)) {
+                        withAnimation(.easeOut(duration: 0.5)) {
                             animatingLetter = nil
                         }
                     }) {

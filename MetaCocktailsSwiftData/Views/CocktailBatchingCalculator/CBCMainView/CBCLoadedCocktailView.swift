@@ -38,7 +38,7 @@ struct CBCLoadedCocktailView: View {
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
         .jamesHeaderWithNavigation(title: "Batch Calculator", dismiss: dismiss)
-        .modalPrentation(Image(systemName:"gearshape"), labelText: "Settings", isPresented: $isShowingPreferencesModal)
+        .modalPresentation(Image(systemName:"gearshape"), isPresented: $isShowingPreferencesModal)
         .sheet(isPresented: $isShowingPreferencesModal, content: {
             EditBatchModalView(isShowingOunceMeasurements: $isShowingOunceMeasurements, isShowingBottleMathAmounts: $isShowingBottleMathAmounts)
                 .onDisappear(perform: {

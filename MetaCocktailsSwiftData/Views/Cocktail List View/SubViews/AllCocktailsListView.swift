@@ -21,12 +21,10 @@ struct AllCocktailsListView: View {
                     ForEach(organizedCocktails.keys.sorted(), id: \.self) { key in
                         if let cocktails = organizedCocktails[key], !cocktails.isEmpty {
                             CocktailGroupView(key: key, cocktails: cocktails)
-                                
                         }
                     }
                 } header: {
                     SectionHeaderView(letter: letter, animatingLetter: $animatingLetter)
-                        
                 }
                 .id(letter)
             }

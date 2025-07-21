@@ -56,6 +56,34 @@ struct JamesTitleWithNavigation: ViewModifier {
             }
     }
 }
+@available(iOS 26.0, *)
+struct iOS26_JamesTitleWithNavigation: ViewModifier {
+    
+    var dismiss: DismissAction
+    let title: String
+    var action: (() -> Void)? = {}
+    
+    func body(content: Content) -> some View {
+        content
+            .toolbar {
+                ToolbarItem(placement: .navigation) {
+                    Button(action: {
+                        dismiss()
+                        action?()
+                    }) {
+                        Image(systemName: "chevron.backward")
+                            .font(.system(size: 16))
+                            .bold()
+                            .tint(ColorScheme.interactionTint)
+                    }
+                }
+                
+                ToolbarItem(placement: .principal) {
+                    FontFactory.titleHeader22(title: title)
+                }
+            }
+    }
+}
 
 struct AboutTitleWithNavigation: ViewModifier {
     
@@ -93,7 +121,11 @@ extension View {
 
 extension View {
     func jamesHeaderWithNavigation(title: String, dismiss: DismissAction, action: (() -> Void)?  = nil) -> some View {
-        self.modifier(JamesTitleWithNavigation(dismiss: dismiss, title: title, action: action))
+        if #available(iOS 26.0, *) {
+            return self.modifier(iOS26_JamesTitleWithNavigation(dismiss: dismiss, title: title, action: action))
+        } else {
+            return self.modifier(JamesTitleWithNavigation(dismiss: dismiss, title: title, action: action))
+        }
     }
 }
 
@@ -186,14 +218,14 @@ struct ModalHeader: View {
 
 extension View {
     
-    func modalPrentation(_ icon: Image, labelText: String, isPresented: Binding<Bool>) -> some View {
-        self.modifier(ModalPrentation(icon: icon, labelText: labelText, isPresented: isPresented))
+    func modalPresentation(_ icon: Image, labelText: String? = nil, isPresented: Binding<Bool>) -> some View {
+        self.modifier(ModalPresentation(icon: icon, labelText: labelText, isPresented: isPresented))
     }
 }
 
-struct ModalPrentation: ViewModifier {
+struct ModalPresentation: ViewModifier {
     let icon: Image
-    let labelText: String
+    let labelText: String?
     @Binding var isPresented: Bool
     
     func body(content: Content) -> some View {
@@ -206,7 +238,9 @@ struct ModalPrentation: ViewModifier {
                         VStack {
                             icon
                                 .tint(ColorScheme.interactionTint)
-                            FontFactory.mediumText(labelText, size: 12, color: ColorScheme.interactionTint)
+                            if let label = labelText {
+                                FontFactory.mediumText(label, size: 12, color: ColorScheme.interactionTint)
+                            }
                         }
                     }
                 }
