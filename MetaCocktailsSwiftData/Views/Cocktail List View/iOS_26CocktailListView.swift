@@ -98,6 +98,7 @@ struct iOS26_SingleCocktailListViewTop: View {
                     .foregroundStyle(ColorScheme.tintColor)
                     .bold()
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
             .frame(height: 50)
             .glassEffect(.clear)
         }
