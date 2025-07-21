@@ -40,30 +40,65 @@ struct SectionHeaderView: View {
     @State private var isAnimating: Bool = false
     
     var body: some View {
-        ZStack {
-            
-            BlackGlassBackgroundView()
-                .clipShape(RoundedRectangle(cornerRadius: 4))
-            
-            headerSelectionGradient
-            
-            HStack {
-                Text(letter)
-                    .font(FontFactory.listLetter(size: 28))
-                    .foregroundColor(isAnimating ? ColorScheme.tintColor : .secondary)
-                    .padding(.horizontal)
-                Spacer()
-            }
-        }
-        .padding(.top, letter.contains("#") ? 40 : 0)
-        .task(id: animatingLetter) {
-            if letter == animatingLetter {
-                isAnimating = true
-                try? await Task.sleep(for: .milliseconds(100))
-                withAnimation(.easeOut(duration: 1.5)) {
-                    isAnimating = false
+        
+        if #available(iOS 26.0, *) {
+
+                
+                HStack {
+                    Text(letter)
+                        .font(FontFactory.listLetter(size: 28))
+                        .foregroundColor(isAnimating ? ColorScheme.tintColor : .secondary)
+                        .padding(.horizontal)
+                    Spacer()
                 }
-                animatingLetter = nil
+                .glassEffect(.clear)
+                
+            
+            .padding(.top, letter.contains("#") ? 40 : 0)
+            .task(id: animatingLetter) {
+                if letter == animatingLetter {
+                    isAnimating = true
+                    try? await Task.sleep(for: .milliseconds(100))
+                    withAnimation(.easeOut(duration: 1.5)) {
+                        isAnimating = false
+                    }
+                    animatingLetter = nil
+                }
+            }
+            
+        } else {
+            
+            ZStack {
+                
+                BlackGlassBackgroundView()
+                    .clipShape(RoundedRectangle(cornerRadius: 4))
+                
+                headerSelectionGradient
+                HStack {
+                    Text(letter)
+                        .font(FontFactory.listLetter(size: 28))
+                        .foregroundColor(isAnimating ? ColorScheme.tintColor : .secondary)
+                        .padding(.horizontal)
+                    Spacer()
+                }
+                HStack {
+                    Text(letter)
+                        .font(FontFactory.listLetter(size: 28))
+                        .foregroundColor(isAnimating ? ColorScheme.tintColor : .secondary)
+                        .padding(.horizontal)
+                    Spacer()
+                }
+            }
+            .padding(.top, letter.contains("#") ? 40 : 0)
+            .task(id: animatingLetter) {
+                if letter == animatingLetter {
+                    isAnimating = true
+                    try? await Task.sleep(for: .milliseconds(100))
+                    withAnimation(.easeOut(duration: 1.5)) {
+                        isAnimating = false
+                    }
+                    animatingLetter = nil
+                }
             }
         }
     }
@@ -79,6 +114,7 @@ struct SectionHeaderView: View {
         )
     }
 }
+
 struct CocktailGroupView: View {
     let key: String
     let cocktails: [Cocktail]

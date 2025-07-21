@@ -75,7 +75,6 @@ struct iOS26_SingleCocktailListView: View {
                     .padding(.leading, 20)
                     .foregroundStyle(.white)
             }
-        .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
 }
@@ -99,11 +98,9 @@ struct iOS26_SingleCocktailListViewTop: View {
                     .foregroundStyle(ColorScheme.tintColor)
                     .bold()
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .frame(height: 35)
-            .padding(.vertical, 2)
+            .frame(height: 50)
+            .glassEffect(.clear)
         }
-        .buttonStyle(.glass)
     }
 }
 
