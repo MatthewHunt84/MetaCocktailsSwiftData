@@ -15,6 +15,8 @@ struct iOS_26CocktailListView: View {
     
     var body: some View {
         
+        NavigationStack {
+            
             GeometryReader { outerGeo in
                 
                 ZStack {
@@ -51,8 +53,9 @@ struct iOS_26CocktailListView: View {
                     }
                     .frame(height: outerGeo.size.height)
                 }
-            .navigationBarTitleDisplayMode(.inline)
-            .jamesHeader("Cocktail List")
+                .navigationBarTitleDisplayMode(.inline)
+                .jamesHeader("Cocktail List")
+            }
         }
     }
 }
