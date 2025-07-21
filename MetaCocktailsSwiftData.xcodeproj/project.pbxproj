@@ -542,6 +542,7 @@
 		F4AA6BB82C7E2B8E00610D80 /* Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA6BB72C7E2B8600610D80 /* Headers.swift */; };
 		F4AA6BBA2C7E2C4F00610D80 /* FontFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA6BB92C7E2C4D00610D80 /* FontFactory.swift */; };
 		F4AC617D2C8B688D0015BC9D /* SharedHelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AC617C2C8B68890015BC9D /* SharedHelperMethods.swift */; };
+		F4B1E4072E2EDFC000207BC6 /* iOS26_SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B1E4062E2EDFC000207BC6 /* iOS26_SearchView.swift */; };
 		F4BFF29C2E29A4D4008DD86A /* iOS26_TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BFF29B2E29A4D4008DD86A /* iOS26_TabBarView.swift */; };
 		F4C5C3E12B3B3F2E005B2261 /* IngredientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C5C3E02B3B3F2E005B2261 /* IngredientType.swift */; };
 		F4C5C3E42B3B4086005B2261 /* NonAlchololicIngredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C5C3E32B3B4086005B2261 /* NonAlchololicIngredients.swift */; };
@@ -1114,6 +1115,7 @@
 		F4AA6BB72C7E2B8600610D80 /* Headers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headers.swift; sourceTree = "<group>"; };
 		F4AA6BB92C7E2C4D00610D80 /* FontFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontFactory.swift; sourceTree = "<group>"; };
 		F4AC617C2C8B68890015BC9D /* SharedHelperMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedHelperMethods.swift; sourceTree = "<group>"; };
+		F4B1E4062E2EDFC000207BC6 /* iOS26_SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS26_SearchView.swift; sourceTree = "<group>"; };
 		F4BFF29B2E29A4D4008DD86A /* iOS26_TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS26_TabBarView.swift; sourceTree = "<group>"; };
 		F4C5C3E02B3B3F2E005B2261 /* IngredientType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientType.swift; sourceTree = "<group>"; };
 		F4C5C3E32B3B4086005B2261 /* NonAlchololicIngredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonAlchololicIngredients.swift; sourceTree = "<group>"; };
@@ -1397,6 +1399,7 @@
 		1AC386962AAABED00064F52A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F4B1E4052E2EDF9F00207BC6 /* SearchView */,
 				4DABDD1C2CEBC47F0080A529 /* AboutUsView */,
 				F493F3B22C6D256F006A0ADB /* Design */,
 				4D5DA09C2B9ED43300C14F1F /* CustomAlertView */,
@@ -2124,6 +2127,14 @@
 			path = SharedHelpers;
 			sourceTree = "<group>";
 		};
+		F4B1E4052E2EDF9F00207BC6 /* SearchView */ = {
+			isa = PBXGroup;
+			children = (
+				F4B1E4062E2EDFC000207BC6 /* iOS26_SearchView.swift */,
+			);
+			path = SearchView;
+			sourceTree = "<group>";
+		};
 		F4C5C3E22B3B4061005B2261 /* Ingredients */ = {
 			isa = PBXGroup;
 			children = (
@@ -2793,6 +2804,7 @@
 				4D5DA0A62BA0FFA500C14F1F /* GordonsBreakfast.swift in Sources */,
 				4DBFF8432B6089C20011B5B1 /* Bramble(W&G).swift in Sources */,
 				1AFDB7BC2AE2FF69000A3812 /* LastWord.swift in Sources */,
+				F4B1E4072E2EDFC000207BC6 /* iOS26_SearchView.swift in Sources */,
 				4DA889042CBDE94F00113ED7 /* HouseBTS.swift in Sources */,
 				4D1E85C12B5C8F4500214BC6 /* AFlightSouthOfTheBorder.swift in Sources */,
 				4DAD6CAE2C94C80C00860555 /* Matched Cocktails Views.swift in Sources */,

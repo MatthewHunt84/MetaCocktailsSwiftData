@@ -43,15 +43,17 @@ struct SectionHeaderView: View {
         
         if #available(iOS 26.0, *) {
 
-                
                 HStack {
                     Text(letter)
                         .font(FontFactory.listLetter(size: 28))
                         .foregroundColor(isAnimating ? ColorScheme.tintColor : .secondary)
-                        .padding(.horizontal)
+                        .padding(.leading, 12)
                     Spacer()
                 }
-                .glassEffect(.clear)
+                .padding(.vertical, 4)
+                // could make this a slightly rounded rect, but right now that doesn't play nice with interactive
+                .glassEffect(.clear.interactive())
+                .padding(.horizontal, 10)
                 
             
             .padding(.top, letter.contains("#") ? 40 : 0)
@@ -59,7 +61,7 @@ struct SectionHeaderView: View {
                 if letter == animatingLetter {
                     isAnimating = true
                     try? await Task.sleep(for: .milliseconds(100))
-                    withAnimation(.easeOut(duration: 1.5)) {
+                    withAnimation(.easeOut(duration: 0.5)) {
                         isAnimating = false
                     }
                     animatingLetter = nil

@@ -19,7 +19,8 @@ import Combine
     var mainListCocktails: [Cocktail] = []
     var searchResultsCocktails: [Cocktail] {
         if searchText.isEmpty {
-            return allCocktails.sorted { $0.cocktailName < $1.cocktailName }
+//            return allCocktails.sorted { $0.cocktailName < $1.cocktailName }
+            return [Cocktail]()
         } else {
             let filtered = filterCocktails(searchText: searchText, filteringCocktails: allCocktails)
             return sortCocktails(filtered, searchText: searchText)
@@ -27,12 +28,11 @@ import Combine
     }
     
     var filteredResults: (top: Cocktail?, others: [Cocktail]) {
-        var results = searchResultsCocktails
+        let results = searchResultsCocktails
         guard !results.isEmpty else { return (top: nil, others: [Cocktail]()) }
         guard !searchText.isEmpty else { return (top: nil, others: results) }
         
-        let top = results.first
-        var others = Array(results[1...])
+        let others = Array(results[1...])
         return (top: results.first, others: others)
     }
     // We need to show a list of cocktail on the search page - but they aren't actually used, so we display the first 20 and wait for the search field to present the real filtered list
