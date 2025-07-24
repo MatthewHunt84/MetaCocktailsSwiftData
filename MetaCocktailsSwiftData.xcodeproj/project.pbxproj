@@ -529,6 +529,9 @@
 		F493F3AE2C6CFBCD006A0ADB /* SelectionTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3AD2C6CFBCD006A0ADB /* SelectionTagView.swift */; };
 		F493F3B12C6CFC72006A0ADB /* SelectionTagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3B02C6CFC72006A0ADB /* SelectionTagViewModel.swift */; };
 		F498A46C2CEA66420082D818 /* CocktailDatabaseGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F498A46B2CEA66370082D818 /* CocktailDatabaseGenerator.swift */; };
+		F49E898E2E3266E100DC745F /* iOS26_RecipeFrontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E898D2E3266CC00DC745F /* iOS26_RecipeFrontView.swift */; };
+		F49E89902E32682600DC745F /* iOS26_RecipeSubViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E898F2E32681C00DC745F /* iOS26_RecipeSubViews.swift */; };
+		F49E89922E32691A00DC745F /* iOS26_ReusableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E89912E32690900DC745F /* iOS26_ReusableViews.swift */; };
 		F4A233BF2C63B5300061027C /* SearchPredicateFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A233BE2C63B5300061027C /* SearchPredicateFactory.swift */; };
 		F4A628E22B7E31BF0084FD80 /* Variation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A628E12B7E31BF0084FD80 /* Variation.swift */; };
 		F4AA50482B93A54E00A05F54 /* AddCocktailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA50472B93A54E00A05F54 /* AddCocktailView.swift */; };
@@ -1101,6 +1104,9 @@
 		F493F3AD2C6CFBCD006A0ADB /* SelectionTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTagView.swift; sourceTree = "<group>"; };
 		F493F3B02C6CFC72006A0ADB /* SelectionTagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTagViewModel.swift; sourceTree = "<group>"; };
 		F498A46B2CEA66370082D818 /* CocktailDatabaseGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailDatabaseGenerator.swift; sourceTree = "<group>"; };
+		F49E898D2E3266CC00DC745F /* iOS26_RecipeFrontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS26_RecipeFrontView.swift; sourceTree = "<group>"; };
+		F49E898F2E32681C00DC745F /* iOS26_RecipeSubViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS26_RecipeSubViews.swift; sourceTree = "<group>"; };
+		F49E89912E32690900DC745F /* iOS26_ReusableViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS26_ReusableViews.swift; sourceTree = "<group>"; };
 		F4A233BE2C63B5300061027C /* SearchPredicateFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPredicateFactory.swift; sourceTree = "<group>"; };
 		F4A628E12B7E31BF0084FD80 /* Variation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variation.swift; sourceTree = "<group>"; };
 		F4AA50472B93A54E00A05F54 /* AddCocktailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCocktailView.swift; sourceTree = "<group>"; };
@@ -1434,6 +1440,8 @@
 		1AC3869B2AAABED00064F52A /* Recipe View */ = {
 			isa = PBXGroup;
 			children = (
+				F49E898F2E32681C00DC745F /* iOS26_RecipeSubViews.swift */,
+				F49E898D2E3266CC00DC745F /* iOS26_RecipeFrontView.swift */,
 				F4D7C0112CBC3D6800B8D9C0 /* IngredientPrepOverlay.swift */,
 				1AC3869D2AAABED00064F52A /* RecipeFrontView.swift */,
 				F44016082CA6F37300839E6A /* RecipeBackView.swift */,
@@ -2107,6 +2115,7 @@
 		F493F3B22C6D256F006A0ADB /* Design */ = {
 			isa = PBXGroup;
 			children = (
+				F49E89912E32690900DC745F /* iOS26_ReusableViews.swift */,
 				F45C3A8E2CAC60BF00AFBBA6 /* Overlays.swift */,
 				F4F3D4212C90996200BB6767 /* ColorScheme.swift */,
 				F4AA6BB92C7E2C4D00610D80 /* FontFactory.swift */,
@@ -2613,6 +2622,7 @@
 				4DF408DE2B6108AB00EF9A6E /* ElPresidente(W&G).swift in Sources */,
 				1AFDB7AC2ADF22AD000A3812 /* French75Cognac.swift in Sources */,
 				4DBBA4B22B68D22E00179B8F /* OldFashioned(W&G).swift in Sources */,
+				F49E89902E32682600DC745F /* iOS26_RecipeSubViews.swift in Sources */,
 				4D1442D12C9B72AA006C882F /* BottleMathModalView.swift in Sources */,
 				4DBBA47C2B6877CC00179B8F /* LaLouisiane(W&G).swift in Sources */,
 				4DCB172C2BA4EA6D0002D7D9 /* TritterCollins.swift in Sources */,
@@ -2669,6 +2679,7 @@
 				4DA5674A2B6C32E4003F6F04 /* TiPunch(W&G).swift in Sources */,
 				4D5DA0B62BA127BD00C14F1F /* PiscoSour(W&G Version).swift in Sources */,
 				F4FBF1232AAABBB900BBF7CF /* MetaCocktailsSwiftDataApp.swift in Sources */,
+				F49E89922E32691A00DC745F /* iOS26_ReusableViews.swift in Sources */,
 				4DCB17402BA525FC0002D7D9 /* CafeConLecheFlip.swift in Sources */,
 				1AC386B82AAABED10064F52A /* Daiquiri.swift in Sources */,
 				4DBAE6E92C6FED7600F3DBFD /* AWholeNewWorld.swift in Sources */,
@@ -2717,6 +2728,7 @@
 				4D1442C92C976529006C882F /* RustyNail.swift in Sources */,
 				4DCB174E2BA543940002D7D9 /* TemperanceIrishCoffee.swift in Sources */,
 				4D1E85B52B5C7B6500214BC6 /* NetfilixAndChill.swift in Sources */,
+				F49E898E2E3266E100DC745F /* iOS26_RecipeFrontView.swift in Sources */,
 				1AFDB7B82ADF26E5000A3812 /* Penicillin.swift in Sources */,
 				4DA567A02B6CD994003F6F04 /* AcquitYourQuest.swift in Sources */,
 				4DCB16FE2BA3AA5C0002D7D9 /* SouthSideFizz.swift in Sources */,

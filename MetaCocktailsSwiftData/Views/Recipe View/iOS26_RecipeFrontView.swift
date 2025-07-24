@@ -1,4 +1,11 @@
 //
+//  iOS26_RecipeFrontView.swift
+//  MetaCocktailsSwiftData
+//
+//  Created by Matt Hunt on 7/24/25.
+//
+
+//
 //  RecipeIngredientsView.swift
 //  MetaCocktails
 //
@@ -8,7 +15,8 @@
 import SwiftUI
 import SwiftData
 
-struct RecipeFlipCardView: View {
+@available(iOS 26.0, *)
+struct iOS26_RecipeFlipCardView: View {
     
     @State private var isShowingCocktailNotes = false
     @EnvironmentObject var cBCViewModel: CBCViewModel
@@ -39,7 +47,10 @@ struct RecipeFlipCardView: View {
                             
                             VStack(alignment: .leading, spacing: 20) {
                                 
-                                FlipCardNavigationHeader(viewModel: viewModel)
+                                FontFactory.recipeHeader(title: viewModel.cocktail.cocktailName, isHistoric: viewModel.cocktail.collection == .originals)
+                                    .lineLimit(0)
+                                    .minimumScaleFactor(0.5)
+                                    .padding(.horizontal, 50)
                                 
                                 if recommendedCocktailID != nil {
                                     HistoricalRecipeView(showingHistoricInfo: $showingHistoricInfo, scrollID: $scrollID, recommendedCocktailID: recommendedCocktailID)
@@ -67,7 +78,6 @@ struct RecipeFlipCardView: View {
                                 if viewModel.cocktail.author != nil {
                                     AuthorView(cocktail: viewModel.cocktail)
                                         .frame(maxWidth: .infinity, alignment: .center)
-                                    
                                 }
                             }
                             .padding(.horizontal)
@@ -80,6 +90,11 @@ struct RecipeFlipCardView: View {
                             showSpecInMl = viewModel.findIntendedMeasurementUnit()
                         }
                         
+                        iOS26_FlipCardNavigationHeader(viewModel: viewModel)
+                            .frame(maxHeight: .infinity, alignment: .top)
+                            .padding(.top, 20)
+                            .padding(.horizontal)
+                       
                         GeometryReader { innerGeo in
                             
                             VStack {
@@ -109,102 +124,81 @@ struct RecipeFlipCardView: View {
 
 
 
-struct SwipeRecipeView: View {
-    @State var variations: [Cocktail]
-    @Environment(\.dismiss) private var dismiss
-    @State var borderColor = ColorScheme.presentedFrontBorder
-    @State var initialSelection: Cocktail
-    @State var scrollID: Cocktail.ID?
-    
-    var body: some View {
-        
-        NavigationStack {
-            
-            ZStack {
-                
-                ColorScheme.background.ignoresSafeArea()
-                
-                ScrollView(.horizontal) {
-                    
-                    HStack(alignment: .top) {
-                        
-                        ForEach(variations) { cocktail in
-                            
-                            RecipeFlipCardView(viewModel: RecipeViewModel(cocktail: cocktail), borderColor: $borderColor, scrollID: $scrollID, recommendedCocktailID: getRecommendation(for: cocktail))
-                                .containerRelativeFrame(.horizontal)
-                                .discardTransition()
-                        }
-                    }
-                    
-                }
-                .scrollTargetLayout()
-                .scrollTargetBehavior(.viewAligned)
-                .scrollPosition(id: $scrollID)
-                .contentMargins(.bottom, 84, for: .scrollIndicators) // This will probably break on other devices but will leave it in for testing
-                .scrollIndicators(.visible)
-                .onScrollPhaseChange { oldPhase, newPhase in
-                    withAnimation {
-                        borderColor = newPhase != .interacting ? ColorScheme.presentedFrontBorder : ColorScheme.inactiveBorder
-                    }
-                }
-                .onAppear {
-                    scrollID = initialSelection.id
-                    variations.forEach { cocktail in
-                        print("\(cocktail.cocktailName) has id: \(cocktail.id)")
-                    }
-                }
-            }
-        }
-    }
-    
-    func getRecommendation(for cocktail: Cocktail) -> UUID? {
-        guard let historicCocktail = cocktail.historicSpec else {
-            return nil }
-        let recommendedSpec = variations.first { $0.cocktailName == historicCocktail.recommendedSpec }
-        return recommendedSpec?.id
-    }
-}
-
-struct RecipeView: View {
-    
-    @Bindable var viewModel: RecipeViewModel
-    @State var borderColor = ColorScheme.presentedFrontBorder
-    @Environment(\.dismiss) private var dismiss
-    
-    var body: some View {
-        ZStack {
-            
-            ColorScheme.background
-                .ignoresSafeArea()
-            
-            if #available(iOS 26.0, *) {
-                iOS26_RecipeFlipCardView(viewModel: viewModel, borderColor: $borderColor, scrollID: .constant(UUID()))
-            } else {
-                RecipeFlipCardView(viewModel: viewModel, borderColor: $borderColor, scrollID: .constant(UUID()))
-            }
-            
-        }
-        .navigationBarBackButtonHidden(true)
-        .navigationBarHidden(true)
-    }
-}
-
-//#Preview(traits: .sampleData) {
-//    @Previewable @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
-//    
-//    SwipeRecipeView(variations: cocktails ?? DummyCocktails.cocktails, initialSelection: zombie)
-//        .environmentObject(CBCViewModel())
-//}
-
-/// Uncomment below to test single recipe view (instead of swipe view above)
-
-//#Preview(traits: .sampleData) {
-//    @Previewable @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
+//struct SwipeRecipeView: View {
+//    @State var variations: [Cocktail]
+//    @Environment(\.dismiss) private var dismiss
+//    @State var borderColor = ColorScheme.presentedFrontBorder
+//    @State var initialSelection: Cocktail
+//    @State var scrollID: Cocktail.ID?
 //
-//    RecipeView(viewModel: RecipeViewModel(cocktail: ramosGinFizz))
-//        .environmentObject(CBCViewModel())
+//    var body: some View {
+//
+//        NavigationStack {
+//
+//            ZStack {
+//
+//                ColorScheme.background.ignoresSafeArea()
+//
+//                ScrollView(.horizontal) {
+//
+//                    HStack(alignment: .top) {
+//
+//                        ForEach(variations) { cocktail in
+//
+//                            RecipeFlipCardView(viewModel: RecipeViewModel(cocktail: cocktail), borderColor: $borderColor, scrollID: $scrollID, recommendedCocktailID: getRecommendation(for: cocktail))
+//                                .containerRelativeFrame(.horizontal)
+//                                .discardTransition()
+//                        }
+//                    }
+//
+//                }
+//                .scrollTargetLayout()
+//                .scrollTargetBehavior(.viewAligned)
+//                .scrollPosition(id: $scrollID)
+//                .contentMargins(.bottom, 84, for: .scrollIndicators) // This will probably break on other devices but will leave it in for testing
+//                .scrollIndicators(.visible)
+//                .onScrollPhaseChange { oldPhase, newPhase in
+//                    withAnimation {
+//                        borderColor = newPhase != .interacting ? ColorScheme.presentedFrontBorder : ColorScheme.inactiveBorder
+//                    }
+//                }
+//                .onAppear {
+//                    scrollID = initialSelection.id
+//                    variations.forEach { cocktail in
+//                        print("\(cocktail.cocktailName) has id: \(cocktail.id)")
+//                    }
+//                }
+//            }
+//        }
+//    }
+//
+//    func getRecommendation(for cocktail: Cocktail) -> UUID? {
+//        guard let historicCocktail = cocktail.historicSpec else {
+//            return nil }
+//        let recommendedSpec = variations.first { $0.cocktailName == historicCocktail.recommendedSpec }
+//        return recommendedSpec?.id
+//    }
 //}
 
+//struct RecipeView: View {
+//
+//    @Bindable var viewModel: RecipeViewModel
+//    @State var borderColor = ColorScheme.presentedFrontBorder
+//    @Environment(\.dismiss) private var dismiss
+//
+//    var body: some View {
+//        ZStack {
+//
+//            ColorScheme.background
+//                .ignoresSafeArea()
+//
+//            RecipeFlipCardView(viewModel: viewModel, borderColor: $borderColor, scrollID: .constant(UUID()))
+//
+//        }
+//        .navigationBarBackButtonHidden(true)
+//        .navigationBarHidden(true)
+//    }
+//}
 
 
 
