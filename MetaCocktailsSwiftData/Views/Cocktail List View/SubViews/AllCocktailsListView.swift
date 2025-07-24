@@ -18,10 +18,13 @@ struct AllCocktailsListView: View {
             ForEach(viewModel.cocktailListAlphabet, id: \.self) { letter in
                 Section {
                     let organizedCocktails = viewModel.getOrganizedCocktails(for: letter)
-                    ForEach(organizedCocktails.keys.sorted(), id: \.self) { key in
-                        if let cocktails = organizedCocktails[key], !cocktails.isEmpty {
-                            CocktailGroupView(key: key, cocktails: cocktails)
+                    VStack {
+                        ForEach(organizedCocktails.keys.sorted(), id: \.self) { key in
+                            if let cocktails = organizedCocktails[key], !cocktails.isEmpty {
+                                CocktailGroupView(key: key, cocktails: cocktails)
+                            }
                         }
+                        
                     }
                 } header: {
                     SectionHeaderView(letter: letter, animatingLetter: $animatingLetter)
@@ -50,16 +53,15 @@ struct SectionHeaderView: View {
                 }
                 .padding(.vertical, 4)
                 // could make this a slightly rounded rect, but right now that doesn't play nice with interactive
-                .glassEffect(.clear.interactive())
-                .padding(.horizontal, 10)
-                
+//                .glassEffect(.regular.interactive())
+                .glassEffect(.clear, in: RoundedRectangle(cornerRadius: 8))
             
             .padding(.top, letter.contains("#") ? 40 : 0)
             .task(id: animatingLetter) {
                 if letter == animatingLetter {
                     isAnimating = true
                     try? await Task.sleep(for: .milliseconds(100))
-                    withAnimation(.easeOut(duration: 0.5)) {
+                    withAnimation(.easeOut(duration: 1)) {
                         isAnimating = false
                     }
                     animatingLetter = nil
