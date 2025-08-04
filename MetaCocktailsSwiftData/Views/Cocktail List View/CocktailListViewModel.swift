@@ -19,7 +19,6 @@ import Combine
     var mainListCocktails: [Cocktail] = []
     var searchResultsCocktails: [Cocktail] {
         if searchText.isEmpty {
-//            return allCocktails.sorted { $0.cocktailName < $1.cocktailName }
             return [Cocktail]()
         } else {
             let filtered = filterCocktails(searchText: searchText, filteringCocktails: allCocktails)
@@ -65,7 +64,7 @@ import Combine
                 return try modelContext.fetch(descriptor)
             }()
             
-            self.allCocktails = fetchedCocktails
+            self.allCocktails = fetchedCocktails.sorted { $0.cocktailName < $1.cocktailName }
             self.updateMainListCocktails()
             self.cacheOrganizedCocktails()
             await MainActor.run {
@@ -98,7 +97,7 @@ import Combine
     private func performSearch(_ searchText: String) -> [Cocktail] {
         self.debouncedSearchText = searchText
         if searchText.isEmpty {
-            return allCocktails.sorted { $0.cocktailName < $1.cocktailName }
+            return allCocktails
         } else {
             let filtered = filterCocktails(searchText: searchText, filteringCocktails: allCocktails)
             return sortCocktails(filtered, searchText: searchText)
