@@ -41,7 +41,6 @@ struct iOS_26CocktailListView: View {
                                             withAnimation(.easeOut(duration: 0.2)) {
                                                 proxy.scrollTo(newValue, anchor: .top)
                                             }
-                                            
                                         }
                                     }
                                 }
@@ -66,18 +65,25 @@ struct iOS_26CocktailListView: View {
                         .padding(.top, 50)
                         .ignoresSafeArea(.all, edges: .top)
                 }
+                .listStyle(.grouped)
                 .searchable(text: $viewModel.searchText, prompt: "Search cocktails")
                 .searchSuggestions {
-                    if let top = viewModel.filteredResults.top {
-                        iOS26_SingleCocktailListViewTop(cocktail: top)
-                            .listRowSeparator(.hidden)
+                    // SearchSuggestions formatting is a pain, but everything here that looks wrong is necessary as of the iOS26 beta
+                    List {
+                        if let top = viewModel.filteredResults.top {
+                            iOS26_SingleCocktailListViewTop(cocktail: top)
+                                .listRowSeparator(.hidden)
+                        }
+                        
+                        ForEach(viewModel.filteredResults.others) { cocktail in
+                            iOS26_SingleCocktailListView(cocktail: cocktail)
+                                .listRowSeparator(.hidden)
+                        }
                     }
-                    
-                    ForEach(viewModel.filteredResults.others) { cocktail in
-                        iOS26_SingleCocktailListView(cocktail: cocktail)
-                            .listRowSeparator(.hidden)
-                    }
-                    .listRowSpacing(1)
+                    .frame(height: 500)
+                    .listRowSeparator(.hidden)
+                    .environment(\.defaultMinListRowHeight, 0)
+
                 }
                 .environment(navigationManager)
                 .onSubmit(of: .search) {
@@ -116,6 +122,8 @@ struct iOS26_SingleCocktailListView: View {
                     .padding(.leading, 20)
                     .foregroundStyle(.white)
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .frame(height: 8)
         }
     }
 }
