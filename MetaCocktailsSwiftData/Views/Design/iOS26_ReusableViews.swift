@@ -19,20 +19,17 @@ struct iOS26_FavoriteButton: View {
 
     var body: some View {
         Button(action: {
-//            withAnimation(.snappy) {
+            withAnimation(.snappy) {
                 cocktail.favorite.toggle()
-//                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-//            }
+                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+            }
         }) {
             Image(systemName:  cocktail.favorite ? "heart.fill" : "heart")
-                .font(.system(size: 24))
-//                .foregroundStyle(cocktail.favorite ? ColorScheme.heartGradient : ColorScheme.nullSecondaryGradient)
-//                .contentTransition(
-//                    .symbolEffect(.automatic)
-//                )
-
+                .font(.system(size: 22))
+                .foregroundStyle(cocktail.favorite ? ColorScheme.heartGradient : ColorScheme.nullSecondaryGradient)
         }
-//        .buttonStyle(.glass)
-//        .sensoryFeedback(.success, trigger: cocktail.favorite)
+        .padding(10)
+        .glassEffect(.clear, in: Circle())
+        .sensoryFeedback(.success, trigger: cocktail.favorite)
     }
 }

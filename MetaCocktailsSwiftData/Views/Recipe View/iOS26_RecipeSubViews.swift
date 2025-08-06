@@ -23,17 +23,13 @@ struct iOS26_FlipCardNavigationHeader: View {
                     Image(systemName: "chevron.backward")
                         .font(.system(size: 24))
                         .foregroundStyle(ColorScheme.interactionTint)
+                        .padding(10)
                 }
-                .buttonStyle(.glass)
-                
+                .glassEffect(.clear, in: Circle())
+
                 Spacer()
                 
                 iOS26_FavoriteButton(for: viewModel.cocktail)
-                    .buttonStyle(.glass)
-            }
-            
-            if let _ = viewModel.cocktail.variation, let recipeSubheading = viewModel.cocktail.collection?.recipeSubheading {
-                FontFactory.historicText(recipeSubheading, size: 18, color: .secondary)
             }
         }
     }
