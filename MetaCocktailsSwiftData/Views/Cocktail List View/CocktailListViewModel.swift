@@ -94,6 +94,7 @@ import Combine
         searchSubject.send(searchText)
     }
     
+    @discardableResult
     private func performSearch(_ searchText: String) -> [Cocktail] {
         self.debouncedSearchText = searchText
         if searchText.isEmpty {
