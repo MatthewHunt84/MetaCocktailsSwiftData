@@ -47,10 +47,19 @@ struct iOS26_RecipeFlipCardView: View {
                             
                             VStack(alignment: .leading, spacing: 20) {
                                 
-                                FontFactory.recipeHeader(title: viewModel.cocktail.cocktailName, isHistoric: viewModel.cocktail.collection == .originals)
-                                    .lineLimit(0)
-                                    .minimumScaleFactor(0.5)
-                                    .padding(.horizontal, 50)
+                                FlipCardNavigationHeader(viewModel: viewModel)
+//                                VStack {
+//                                    FontFactory.recipeHeader(title: viewModel.cocktail.cocktailName, isHistoric: viewModel.cocktail.collection == .originals)
+//                                        .lineLimit(0)
+//                                        .minimumScaleFactor(0.75)
+//                                        .padding(.horizontal, 50)
+//                                    
+//                                    if let _ = viewModel.cocktail.variation, let recipeSubheading = viewModel.cocktail.collection?.recipeSubheading {
+//                                        FontFactory.historicText(recipeSubheading, size: 18, color: .secondary)
+//                                            
+//                                    }
+//                                }
+//                                .frame(maxWidth: .infinity, alignment: .center)
                                 
                                 if recommendedCocktailID != nil {
                                     HistoricalRecipeView(showingHistoricInfo: $showingHistoricInfo, scrollID: $scrollID, recommendedCocktailID: recommendedCocktailID)
@@ -90,11 +99,11 @@ struct iOS26_RecipeFlipCardView: View {
                             showSpecInMl = viewModel.findIntendedMeasurementUnit()
                         }
                         
-                        iOS26_FlipCardNavigationHeader(viewModel: viewModel)
-                            .frame(maxHeight: .infinity, alignment: .top)
-                            .padding(.top, 20)
-                            .padding(.horizontal)
-                       
+//                        iOS26_FlipCardNavigationHeader(viewModel: viewModel)
+//                            .frame(maxHeight: .infinity, alignment: .top)
+//                            .padding(.top, 20)
+//                            .padding(.horizontal)
+//                       
                         GeometryReader { innerGeo in
                             
                             VStack {
