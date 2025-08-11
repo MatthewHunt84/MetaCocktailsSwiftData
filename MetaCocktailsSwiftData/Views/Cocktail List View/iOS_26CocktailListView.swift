@@ -120,7 +120,8 @@ struct iOS26_SingleCocktailListView: View {
             HStack {
                 Text(cocktail.cocktailName)
                     .font(FontFactory.regularFont(size: 20))
-                    .padding(5)
+                    .padding(.vertical, 5)
+                    .padding(.leading, 10)
                     .foregroundStyle(.white)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -147,7 +148,7 @@ struct iOS26_SingleCocktailListViewTop: View {
                 .foregroundStyle(ColorScheme.tintColor)
                 .bold()
                 .padding(.vertical, 10)
-                .padding(.leading, 30)
+                .padding(.leading, 20)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .glassEffect(.clear)
         }
