@@ -69,10 +69,11 @@ struct iOS_26CocktailListView: View {
                 .searchable(text: $viewModel.searchText, prompt: "Search cocktails")
                 .searchSuggestions {
                     // SearchSuggestions formatting is a pain, but everything here that looks wrong is necessary as of the iOS26 beta
-                    List {
+                    LazyVStack {
                         if let top = viewModel.filteredResults.top {
                             iOS26_SingleCocktailListViewTop(cocktail: top)
                                 .listRowSeparator(.hidden)
+                                .padding(.leading, -10)
                         }
                         
                         ForEach(viewModel.filteredResults.others) { cocktail in
@@ -80,9 +81,9 @@ struct iOS_26CocktailListView: View {
                                 .listRowSeparator(.hidden)
                         }
                     }
-                    .frame(height: 500)
+//                    .frame(height: 500)
                     .listRowSeparator(.hidden)
-                    .environment(\.defaultMinListRowHeight, 0)
+//                    .environment(\.defaultMinListRowHeight, 0)
 
                 }
                 .environment(navigationManager)
@@ -118,12 +119,12 @@ struct iOS26_SingleCocktailListView: View {
         } label: {
             HStack {
                 Text(cocktail.cocktailName)
-                    .font(FontFactory.regularFont(size: 18))
-                    .padding(.leading, 20)
+                    .font(FontFactory.regularFont(size: 20))
+                    .padding(5)
                     .foregroundStyle(.white)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .frame(height: 8)
+//            .frame(height: 12)
         }
     }
 }
@@ -140,16 +141,15 @@ struct iOS26_SingleCocktailListViewTop: View {
             viewModel.didTapCocktail = true
             navigationManager.path.append(cocktail)
         } label: {
-            HStack {
-                Text(cocktail.cocktailName)
-                    .font(FontFactory.regularFont(size: 18))
-                    .padding(.leading, 20)
-                    .foregroundStyle(ColorScheme.tintColor)
-                    .bold()
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .frame(height: 50)
-            .glassEffect(.clear)
+            Text(cocktail.cocktailName)
+                .ignoresSafeArea(.all)
+                .font(FontFactory.regularFont(size: 20))
+                .foregroundStyle(ColorScheme.tintColor)
+                .bold()
+                .padding(.vertical, 10)
+                .padding(.leading, 30)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .glassEffect(.clear)
         }
     }
 }
