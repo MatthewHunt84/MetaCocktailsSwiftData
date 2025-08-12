@@ -145,7 +145,7 @@ struct iOS26_SingleCocktailListViewTop: View {
             Text(cocktail.cocktailName)
                 .ignoresSafeArea(.all)
                 .font(FontFactory.regularFont(size: 20))
-                .foregroundStyle(ColorScheme.tintColor)
+                .foregroundStyle(ColorScheme.recipeBorder)
                 .bold()
                 .padding(.vertical, 10)
                 .padding(.leading, 20)

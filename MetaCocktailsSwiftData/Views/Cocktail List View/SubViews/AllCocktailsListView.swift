@@ -52,9 +52,7 @@ struct SectionHeaderView: View {
                     Spacer()
                 }
                 .padding(.vertical, 4)
-                // could make this a slightly rounded rect, but right now that doesn't play nice with interactive
-//                .glassEffect(.regular.interactive())
-                .glassEffect(.clear, in: RoundedRectangle(cornerRadius: 8))
+                .glassEffect(.regular)
             
             .padding(.top, letter.contains("#") ? 40 : 0)
             .task(id: animatingLetter) {
