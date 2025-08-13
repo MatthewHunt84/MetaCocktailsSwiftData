@@ -557,6 +557,7 @@
 		F4C6A8F72AB0145800BB0AD0 /* Profiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6A8F62AB0145800BB0AD0 /* Profiles.swift */; };
 		F4C74C812AD8CC3300EA3334 /* AperolSpritz.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C74C802AD8CC3300EA3334 /* AperolSpritz.swift */; };
 		F4C74C832AD8CC9600EA3334 /* Ice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C74C822AD8CC9600EA3334 /* Ice.swift */; };
+		F4CD1A032E4CD2D700001A4F /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = F4CD1A022E4CD2D700001A4F /* AppIcon.icon */; };
 		F4D184FF2C8F92170035B280 /* Migration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D184FE2C8F92110035B280 /* Migration.swift */; };
 		F4D185012C8F95370035B280 /* Brancolada.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D185002C8F95310035B280 /* Brancolada.swift */; };
 		F4D185032C8F988E0035B280 /* SkyRocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D185022C8F987D0035B280 /* SkyRocket.swift */; };
@@ -1132,6 +1133,7 @@
 		F4C6A8F62AB0145800BB0AD0 /* Profiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profiles.swift; sourceTree = "<group>"; };
 		F4C74C802AD8CC3300EA3334 /* AperolSpritz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AperolSpritz.swift; sourceTree = "<group>"; };
 		F4C74C822AD8CC9600EA3334 /* Ice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ice.swift; sourceTree = "<group>"; };
+		F4CD1A022E4CD2D700001A4F /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		F4D184FE2C8F92110035B280 /* Migration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migration.swift; sourceTree = "<group>"; };
 		F4D185002C8F95310035B280 /* Brancolada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brancolada.swift; sourceTree = "<group>"; };
 		F4D185022C8F987D0035B280 /* SkyRocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyRocket.swift; sourceTree = "<group>"; };
@@ -2228,6 +2230,7 @@
 		F4FBF1212AAABBB900BBF7CF /* MetaCocktailsSwiftData */ = {
 			isa = PBXGroup;
 			children = (
+				F4CD1A022E4CD2D700001A4F /* AppIcon.icon */,
 				F473FFD22C2716C4008689D3 /* Info.plist */,
 				1AC3867C2AAABED00064F52A /* Assets.xcassets */,
 				F4B071C42E2D60BE00BD905D /* NavigationManager */,
@@ -2348,6 +2351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4FBF12C2AAABBBB00BBF7CF /* Preview Assets.xcassets in Resources */,
+				F4CD1A032E4CD2D700001A4F /* AppIcon.icon in Resources */,
 				1AC386B02AAABED10064F52A /* Assets.xcassets in Resources */,
 				4D87E8992D97E5D100ADFCAF /* PreloadedCocktails.store in Resources */,
 			);
