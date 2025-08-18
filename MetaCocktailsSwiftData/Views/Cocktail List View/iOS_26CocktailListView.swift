@@ -69,7 +69,9 @@ struct iOS_26CocktailListView: View {
                 .searchable(text: $viewModel.searchText, prompt: "Search cocktails")
                 .searchSuggestions {
                     // SearchSuggestions formatting is a pain, but everything here that looks wrong is necessary as of the iOS26 beta
-                    LazyVStack {
+                    // For each new beta, try changing this list to a LazyVStack and removing the .frame(height:500) below
+                    // For now you're stuck with list though, since tapping an item in a lazyVStack inside .searchSuggestions will trigger a tap on every cell in the stack ...
+                    List {
                         if let top = viewModel.filteredResults.top {
                             iOS26_SingleCocktailListViewTop(cocktail: top)
                                 .listRowSeparator(.hidden)
@@ -81,9 +83,9 @@ struct iOS_26CocktailListView: View {
                                 .listRowSeparator(.hidden)
                         }
                     }
-//                    .frame(height: 500)
+                    .frame(height: 500)
                     .listRowSeparator(.hidden)
-//                    .environment(\.defaultMinListRowHeight, 0)
+                    .environment(\.defaultMinListRowHeight, 0)
 
                 }
                 .environment(navigationManager)
