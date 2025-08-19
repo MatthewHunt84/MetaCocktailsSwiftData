@@ -74,7 +74,7 @@ struct AddCocktailView: View {
                 .background(Color.clear)
                 .navigationBarTitleDisplayMode(.inline)
                 .jamesHeader("Add New Cocktail")
-                .modalPresentation(Image("useExistingRecipe"), labelText: "Use existing", isPresented: $isSelectingFromTemplate)
+                .modalPresentation(Image("useExistingRecipe"), labelText: "Use Existing", isPresented: $isSelectingFromTemplate)
                 .sheet(isPresented: $isSelectingFromTemplate) {
                     RiffPickerView(viewModel: viewModel)
                         .navigationBarBackButtonHidden(true)

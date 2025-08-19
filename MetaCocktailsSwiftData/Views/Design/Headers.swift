@@ -219,7 +219,11 @@ struct ModalHeader: View {
 extension View {
     
     func modalPresentation(_ icon: Image, labelText: String? = nil, isPresented: Binding<Bool>) -> some View {
-        self.modifier(ModalPresentation(icon: icon, labelText: labelText, isPresented: isPresented))
+        if #available(iOS 26.0, *) {
+            return self.modifier(iOS26_ModalPresentation(icon: icon, labelText: labelText, isPresented: isPresented))
+        } else {
+            return self.modifier(ModalPresentation(icon: icon, labelText: labelText, isPresented: isPresented))
+        }
     }
 }
 
@@ -247,6 +251,28 @@ struct ModalPresentation: ViewModifier {
             }
     }
 }
+
+@available(iOS 26.0, *)
+struct iOS26_ModalPresentation: ViewModifier {
+    let icon: Image
+    let labelText: String?
+    @Binding var isPresented: Bool
+    
+    func body(content: Content) -> some View {
+        content
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(action:  {
+                        isPresented.toggle()
+                    }) {
+                        icon
+                            .font(.system(size: 18))
+                    }
+                }
+            }
+    }
+}
+
 
 struct InfoHeader: View {
     
