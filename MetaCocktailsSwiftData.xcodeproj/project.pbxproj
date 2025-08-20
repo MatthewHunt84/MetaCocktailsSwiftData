@@ -1405,7 +1405,6 @@
 		1AC386962AAABED00064F52A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F4B1E4052E2EDF9F00207BC6 /* SearchView */,
 				4DABDD1C2CEBC47F0080A529 /* AboutUsView */,
 				F493F3B22C6D256F006A0ADB /* Design */,
 				4D5DA09C2B9ED43300C14F1F /* CustomAlertView */,
@@ -2134,13 +2133,6 @@
 				F4AC617C2C8B68890015BC9D /* SharedHelperMethods.swift */,
 			);
 			path = SharedHelpers;
-			sourceTree = "<group>";
-		};
-		F4B1E4052E2EDF9F00207BC6 /* SearchView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SearchView;
 			sourceTree = "<group>";
 		};
 		F4C5C3E22B3B4061005B2261 /* Ingredients */ = {
