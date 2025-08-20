@@ -262,11 +262,13 @@ struct iOS26_ModalPresentation: ViewModifier {
         content
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button(action:  {
+                    Button {
                         isPresented.toggle()
-                    }) {
+                    } label: {
                         icon
-                            .font(.system(size: 18))
+                            .font(.system(size: 14))
+                            .padding(4)
+                            .foregroundStyle(ColorScheme.interactionTint)
                     }
                 }
             }
