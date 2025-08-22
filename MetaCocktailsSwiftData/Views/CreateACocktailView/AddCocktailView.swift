@@ -287,8 +287,8 @@ private struct IcePicker: View {
             .labelsHidden()
             
         }
+        .frame(height: 20)
         .tint(ice == Ice.none ? Color.secondary : .primary)
-        .font(FontFactory.formLabel18)
     }
 }
 
