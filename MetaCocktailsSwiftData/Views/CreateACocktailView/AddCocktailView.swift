@@ -64,24 +64,14 @@ struct AddCocktailView: View {
                         AddBuildStepView(viewModel: viewModel, cocktailBuildStepKeyboardFocused: _cocktailBuildStepKeyboardFocused)
                     }
                     
-                    UniversalButton(buttonText: "Start Over", rightImage: nil, leftImage: Image(systemName: "trash"), includeBorder: true, color: ColorScheme.nullAlertGradient, disabled: viewModel.hasNoData) {
-                        viewModel.isAboutToClearForm = true
-                    }
-                    .listRowBackground(Color.clear)
-                }
-                .blur(radius: (viewModel.isShowingUniqueNameAlert || viewModel.isShowingAlert || viewModel.isAboutToClearForm) ? 3 : 0)
-                .scrollContentBackground(.hidden)
-                .background(Color.clear)
-                .navigationBarTitleDisplayMode(.inline)
-                .jamesHeader("Add New Cocktail")
-                .modalPresentation(Image("useExistingRecipe"), labelText: "Use Existing", isPresented: $isSelectingFromTemplate)
-                .sheet(isPresented: $isSelectingFromTemplate) {
-                    RiffPickerView(viewModel: viewModel)
-                        .navigationBarBackButtonHidden(true)
-                }
-                .toolbar {
-                    ToolbarItem(placement: .bottomBar) {
-                        UniversalButton(buttonText: "Add to cocktails", rightImage: Image(systemName: "plus"), includeBorder: false) {
+                    HStack {
+                        
+                        UniversalButton(buttonText: "Start Over", rightImage: nil, leftImage: Image(systemName: "trash"), includeBorder: true, color: ColorScheme.nullAlertGradient, disabled: viewModel.hasNoData) {
+                            viewModel.isAboutToClearForm = true
+                        }
+                        
+                        
+                        Button(role: .confirm) {
                             guard nameIsUnique() else {
                                 viewModel.isShowingUniqueNameAlert.toggle()
                                 return
@@ -106,8 +96,23 @@ struct AddCocktailView: View {
                                 }
                             }
                         }
+                        .padding(15)
+                        .glassEffect(.regular)
                         .foregroundStyle(viewModel.isValid() ? ColorScheme.interactionTint : Color.secondary)
                     }
+                    .listRowBackground(Color.clear)
+                }
+                .blur(radius: (viewModel.isShowingUniqueNameAlert || viewModel.isShowingAlert || viewModel.isAboutToClearForm) ? 3 : 0)
+                .scrollContentBackground(.hidden)
+                .background(Color.clear)
+                .navigationBarTitleDisplayMode(.inline)
+                .jamesHeader("Add New Cocktail")
+                .modalPresentation(Image("useExistingRecipe"), labelText: "Use Existing", isPresented: $isSelectingFromTemplate)
+                .sheet(isPresented: $isSelectingFromTemplate) {
+                    RiffPickerView(viewModel: viewModel)
+                        .navigationBarBackButtonHidden(true)
+                }
+                .toolbar {
                     
                     ToolbarItemGroup(placement: .keyboard) {
                         Spacer()
