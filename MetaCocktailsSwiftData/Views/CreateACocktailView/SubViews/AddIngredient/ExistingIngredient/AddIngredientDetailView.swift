@@ -196,7 +196,7 @@ struct AddExistingIngredientToCocktailButton: View {
     
     var body: some View {
         
-        UniversalButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), includeBorder: true) {
+        UniversalButton(buttonText: "Add to spec", rightImage: nil, includeBorder: true) {
             viewModel.addIngredientToCocktailBuild(ingredients: ingredients)
             isShowingAddIngredients = false
         }

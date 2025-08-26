@@ -47,7 +47,7 @@ struct AddExistingGarnishToCocktailButton: View {
         Section {
             
             if viewModel.customGarnishNameEntered == nil {
-                UniversalButton(buttonText: "Add to spec", rightImage: Image(systemName: "plus"), includeBorder: true) {
+                UniversalButton(buttonText: "Add to spec", rightImage: nil, includeBorder: true) {
                     viewModel.addExistingGarnishToCocktail(context: modelContext)
                     dismiss()
                 }
