@@ -70,8 +70,7 @@ struct AddCocktailView: View {
                             viewModel.isAboutToClearForm = true
                         }
                         
-                        
-                        Button(role: .confirm) {
+                        UniversalButton(buttonText: "Add Cocktail", rightImage: nil, leftImage: nil, includeBorder: true, color: viewModel.isValid() ? ColorScheme.recipeBorderFlipped : ColorScheme.nullSecondaryGradient, disabled: false) {
                             guard nameIsUnique() else {
                                 viewModel.isShowingUniqueNameAlert.toggle()
                                 return
@@ -96,9 +95,6 @@ struct AddCocktailView: View {
                                 }
                             }
                         }
-                        .padding(15)
-                        .glassEffect(.regular)
-                        .foregroundStyle(viewModel.isValid() ? ColorScheme.interactionTint : Color.secondary)
                     }
                     .listRowBackground(Color.clear)
                 }

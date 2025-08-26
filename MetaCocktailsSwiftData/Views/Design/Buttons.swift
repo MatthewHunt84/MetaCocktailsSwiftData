@@ -51,6 +51,8 @@ struct UniversalButton: View {
         }
         .disabled(disabled)
         .frame(maxWidth: .infinity, alignment: .center)
+        .buttonStyle(BorderlessButtonStyle())
+        
         
     }
     
