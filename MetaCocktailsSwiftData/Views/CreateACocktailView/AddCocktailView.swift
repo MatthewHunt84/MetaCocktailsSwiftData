@@ -41,6 +41,7 @@ struct AddCocktailView: View {
                         IcePicker(ice: $viewModel.ice)
                         VariationPicker(viewModel: viewModel, isShowingInfo: $isShowingInfo)
                     }
+                    .navigationLinkIndicatorVisibility(.hidden)
                     
                     VariationInfoView(isShowingInfo: $isShowingInfo)
                     
@@ -285,6 +286,7 @@ private struct IcePicker: View {
                 }
             }
             .pickerStyle(.menu)
+            .menuIndicator(.hidden)
             .labelsHidden()
             
         }
