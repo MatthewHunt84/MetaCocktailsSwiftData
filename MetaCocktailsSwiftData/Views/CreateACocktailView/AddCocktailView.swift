@@ -278,20 +278,19 @@ private struct IcePicker: View {
             Text("Ice")
                 .font(FontFactory.formLabel18)
             Spacer()
-            Picker(selection: $ice, label: EmptyView()) {
-                ForEach(Ice.allCases, id: \.rawValue) { ice in
-                    Text(ice.rawValue)
-                        .font(FontFactory.formLabel18)
-                        .tag(Optional(ice))
-                }
-            }
-            .pickerStyle(.menu)
-            .menuIndicator(.hidden)
-            .labelsHidden()
             
+            Menu {
+                ForEach(Ice.allCases, id: \.rawValue) { iceOption in
+                    Button(iceOption.rawValue) {
+                        ice = iceOption
+                    }
+                }
+            } label: {
+                Text(ice?.rawValue ?? "None")
+                    .font(FontFactory.formLabel18)
+                    .foregroundColor(ice == Ice.none ? Color.secondary : .primary)
+            }
         }
-        .frame(height: 20)
-        .tint(ice == Ice.none ? Color.secondary : .primary)
     }
 }
 
