@@ -48,7 +48,7 @@ struct SectionHeaderView: View {
                     Text(letter)
                         .font(FontFactory.listLetter(size: 28))
                         .foregroundColor(isAnimating ? ColorScheme.tintColor : .secondary)
-                        .padding(.leading, 12)
+                        .padding(.leading, 18)
                     Spacer()
                 }
                 .padding(.vertical, 4)
