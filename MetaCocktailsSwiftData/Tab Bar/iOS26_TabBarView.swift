@@ -17,10 +17,11 @@ struct iOS26_TabBarView: View {
         
         TabView(selection: $selectedTab)  {
             
-            Tab(value: .cocktailListView, role: .search) {
-                iOS_26CocktailListView()
+            Tab(value: .ingredientSearchView) {
+                IngredientSearchView()
+                    .environmentObject(SearchViewModel())
             } label: {
-                Label("Cocktails", systemImage: "magnifyingglass.circle.fill")
+                Label("Ingredients", systemImage: "text.page.badge.magnifyingglass")
             }
             
             Tab(value: .addCocktailView) {
@@ -35,12 +36,13 @@ struct iOS26_TabBarView: View {
                 Label("Favorites", systemImage: "heart.fill")
             }
             
-            Tab(value: .searchView) {
-                IngredientSearchView()
-                    .environmentObject(SearchViewModel())
+            Tab(value: .cocktailListView, role: .search) {
+                iOS_26CocktailListView()
             } label: {
-                Label("Ingredients", systemImage: "text.page.badge.magnifyingglass")
+                Label("Cocktails", systemImage: "magnifyingglass.circle.fill")
             }
+            
+
         }
         .environment(\.currentTab, $selectedTab)
         .tint(ColorScheme.tabBarTint)
