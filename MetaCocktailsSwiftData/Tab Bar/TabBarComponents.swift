@@ -23,7 +23,7 @@ enum TabBarComponents: Hashable, Identifiable, CaseIterable {
         case .cocktailListView:
             Label("Cocktails", systemImage: "book.fill")
         case .ingredientSearchView:
-            Label("Search", systemImage: "magnifyingglass.circle.fill")
+            Label("Search", systemImage: "text.page.badge.magnifyingglass")
         case .favoritesView:
             Label("Favorites", systemImage: "heart.fill")
         case .addCocktailView:

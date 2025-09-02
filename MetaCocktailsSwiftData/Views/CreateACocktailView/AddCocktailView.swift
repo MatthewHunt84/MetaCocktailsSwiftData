@@ -41,6 +41,9 @@ struct AddCocktailView: View {
                         IcePicker(ice: $viewModel.ice)
                         VariationPicker(viewModel: viewModel, isShowingInfo: $isShowingInfo)
                     }
+                    // Even though the nav link visibility modifier was introduced in iOS17
+                    // It crashes iOS18.0 / 18.6 simulators for some reason - so comment out the line below when testing on those simulators
+                    // Should work fine on device, just need to test it
                     .navigationLinkIndicatorVisibility(.hidden)
                     
                     VariationInfoView(isShowingInfo: $isShowingInfo)
