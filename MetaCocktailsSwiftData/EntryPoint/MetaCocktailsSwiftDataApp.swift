@@ -33,10 +33,15 @@ struct ContentView: View {
     @StateObject var viewModel: CocktailListViewModel
     @State private var startTime = CFAbsoluteTimeGetCurrent()
     
+    
     var body: some View {
         ZStack {
-            TabBarView()
-                .opacity(viewModel.cocktailFetchCompleted ? 1 : 0)
+            if #available(iOS 26.0, *) {
+                iOS26_TabBarView()
+            } else {
+                TabBarView()
+                    .opacity(viewModel.cocktailFetchCompleted ? 1 : 0)
+            }
             FirstLaunchLoadingView()
                 .opacity(viewModel.cocktailFetchCompleted ? 0 : 1)
                 .allowsHitTesting(false)
@@ -44,3 +49,4 @@ struct ContentView: View {
         .environmentObject(viewModel)
     }
 }
+

@@ -18,15 +18,16 @@ struct AllCocktailsListView: View {
             ForEach(viewModel.cocktailListAlphabet, id: \.self) { letter in
                 Section {
                     let organizedCocktails = viewModel.getOrganizedCocktails(for: letter)
-                    ForEach(organizedCocktails.keys.sorted(), id: \.self) { key in
-                        if let cocktails = organizedCocktails[key], !cocktails.isEmpty {
-                            CocktailGroupView(key: key, cocktails: cocktails)
-                                
+                    VStack {
+                        ForEach(organizedCocktails.keys.sorted(), id: \.self) { key in
+                            if let cocktails = organizedCocktails[key], !cocktails.isEmpty {
+                                CocktailGroupView(key: key, cocktails: cocktails)
+                            }
                         }
+                        
                     }
                 } header: {
                     SectionHeaderView(letter: letter, animatingLetter: $animatingLetter)
-                        
                 }
                 .id(letter)
             }
@@ -40,30 +41,64 @@ struct SectionHeaderView: View {
     @State private var isAnimating: Bool = false
     
     var body: some View {
-        ZStack {
-            
-            BlackGlassBackgroundView()
-                .clipShape(RoundedRectangle(cornerRadius: 4))
-            
-            headerSelectionGradient
-            
-            HStack {
-                Text(letter)
-                    .font(FontFactory.listLetter(size: 28))
-                    .foregroundColor(isAnimating ? ColorScheme.tintColor : .secondary)
-                    .padding(.horizontal)
-                Spacer()
-            }
-        }
-        .padding(.top, letter.contains("#") ? 40 : 0)
-        .task(id: animatingLetter) {
-            if letter == animatingLetter {
-                isAnimating = true
-                try? await Task.sleep(for: .milliseconds(100))
-                withAnimation(.easeOut(duration: 1.5)) {
-                    isAnimating = false
+        
+        if #available(iOS 26.0, *) {
+
+                HStack {
+                    Text(letter)
+                        .font(FontFactory.listLetter(size: 28))
+                        .foregroundColor(isAnimating ? ColorScheme.tintColor : .secondary)
+                        .padding(.leading, 18)
+                    Spacer()
                 }
-                animatingLetter = nil
+                .padding(.vertical, 4)
+                .glassEffect(.regular)
+            
+            .padding(.top, letter.contains("#") ? 40 : 0)
+            .task(id: animatingLetter) {
+                if letter == animatingLetter {
+                    isAnimating = true
+                    try? await Task.sleep(for: .milliseconds(100))
+                    withAnimation(.easeOut(duration: 1)) {
+                        isAnimating = false
+                    }
+                    animatingLetter = nil
+                }
+            }
+            
+        } else {
+            
+            ZStack {
+                
+                BlackGlassBackgroundView()
+                    .clipShape(RoundedRectangle(cornerRadius: 4))
+                
+                headerSelectionGradient
+                HStack {
+                    Text(letter)
+                        .font(FontFactory.listLetter(size: 28))
+                        .foregroundColor(isAnimating ? ColorScheme.tintColor : .secondary)
+                        .padding(.horizontal)
+                    Spacer()
+                }
+                HStack {
+                    Text(letter)
+                        .font(FontFactory.listLetter(size: 28))
+                        .foregroundColor(isAnimating ? ColorScheme.tintColor : .secondary)
+                        .padding(.horizontal)
+                    Spacer()
+                }
+            }
+            .padding(.top, letter.contains("#") ? 40 : 0)
+            .task(id: animatingLetter) {
+                if letter == animatingLetter {
+                    isAnimating = true
+                    try? await Task.sleep(for: .milliseconds(100))
+                    withAnimation(.easeOut(duration: 1.5)) {
+                        isAnimating = false
+                    }
+                    animatingLetter = nil
+                }
             }
         }
     }
@@ -79,6 +114,7 @@ struct SectionHeaderView: View {
         )
     }
 }
+
 struct CocktailGroupView: View {
     let key: String
     let cocktails: [Cocktail]
@@ -127,11 +163,13 @@ struct CocktailGroupView: View {
 
 struct SingleCocktailListView: View {
     let cocktail: Cocktail
+    @EnvironmentObject var viewModel: CocktailListViewModel
     
     var body: some View {
         NavigationLink {
             RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
                 .navigationBarBackButtonHidden(true)
+                .navigationBarHidden(true)
         } label: {
             HStack {
                 Text(cocktail.cocktailName)
@@ -174,7 +212,7 @@ struct SearchBarAllCocktailsListView: View {
     
     
     var body: some View {
-        VStack(spacing: 0){
+        VStack(spacing: 0) {
             ForEach(viewModel.searchResultsCocktails, id: \.self) { cocktail in
                 SingleCocktailListView(cocktail: cocktail)
             }
@@ -182,3 +220,4 @@ struct SearchBarAllCocktailsListView: View {
         }
     }
 }
+

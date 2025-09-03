@@ -51,6 +51,8 @@ struct UniversalButton: View {
         }
         .disabled(disabled)
         .frame(maxWidth: .infinity, alignment: .center)
+        .buttonStyle(BorderlessButtonStyle())
+        
         
     }
     
@@ -76,7 +78,7 @@ struct FavoriteButton: View {
 
     var body: some View {
         Button {
-            withAnimation(.snappy) {
+            withAnimation(.bouncy) {
                 cocktail.favorite.toggle()
                 UIImpactFeedbackGenerator(style: .medium).impactOccurred()
             }
@@ -84,11 +86,8 @@ struct FavoriteButton: View {
             Image(systemName:  cocktail.favorite ? "heart.fill" : "heart")
                 .font(.system(size: 24))
                 .foregroundStyle(cocktail.favorite ? ColorScheme.heartGradient : ColorScheme.nullSecondaryGradient)
-                .contentTransition(
-                    .symbolEffect(.replace)
-                )
-
         }
+        .symbolEffect(.bounce.down, value: cocktail.favorite)
         .sensoryFeedback(.success, trigger: cocktail.favorite)
     }
 }

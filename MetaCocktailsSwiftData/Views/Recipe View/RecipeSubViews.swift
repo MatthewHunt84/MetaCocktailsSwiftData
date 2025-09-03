@@ -137,50 +137,48 @@ struct GlasswareView: View {
 
 struct SpecView: View {
     var cocktail: Cocktail
-    @Bindable var viewModel: RecipeViewModel
+    var viewModel: RecipeViewModel
     @EnvironmentObject var cBCViewModel: CBCViewModel
     @Binding var isShowingCocktailNotes: Bool
     @Binding var specInMl: Bool
     var body: some View {
-        NavigationStack{
-            ZStack{
+        
+        ZStack {
+            
+            VStack(alignment: .leading, spacing: 6) {
                 
-                VStack(alignment: .leading, spacing: 6) {
+                HStack {
                     
-                    HStack {
-                        
-                        Text("Cocktail Spec")
-                            .font(FontFactory.recipeCardHeader18B)
-                        Button {
-                            specInMl.toggle()
-                        } label: {
-                            Text("(\(specInMl ? "ml" : "oz"))")
-                                .font(FontFactory.recipeCardHeader18B)
-                                .tint(ColorScheme.interactionTint)
-                                .foregroundStyle(ColorScheme.interactionTint)
-                        }
-                        Spacer()
-                        
-                        NavigationLink {
-                            CBCLoadedCocktailView()
-                        } label: {
-                            Text("Batch")
-                            Image(systemName: "chevron.forward")
-                        }
-                        .foregroundStyle(ColorScheme.interactionTint)
+                    Text("Cocktail Spec")
                         .font(FontFactory.recipeCardHeader18B)
-                        .simultaneousGesture(TapGesture().onEnded {
-                            cBCViewModel.chosenCocktail = cocktail
-                            cBCViewModel.convertLoadedCocktail(for: cocktail)
-                            cBCViewModel.convertIngredientsToBatchCellData()
-                        })
+                    Button {
+                        specInMl.toggle()
+                    } label: {
+                        Text("(\(specInMl ? "ml" : "oz"))")
+                            .font(FontFactory.recipeCardHeader18B)
+                            .tint(ColorScheme.interactionTint)
+                            .foregroundStyle(ColorScheme.interactionTint)
                     }
-                    .padding(.bottom, 5)
+                    Spacer()
                     
-                    
-                    ForEach(orderSpec(), id: \.id) { ingredient in
-                        SpecIngredientView(ingredient: ingredient, viewModel: viewModel, showMls: $specInMl)
+                    NavigationLink {
+                        CBCLoadedCocktailView()
+                    } label: {
+                        Text("Batch")
+                        Image(systemName: "chevron.forward")
                     }
+                    .foregroundStyle(ColorScheme.interactionTint)
+                    .font(FontFactory.recipeCardHeader18B)
+                    .simultaneousGesture(TapGesture().onEnded {
+                        cBCViewModel.chosenCocktail = cocktail
+                        cBCViewModel.convertLoadedCocktail(for: cocktail)
+                        cBCViewModel.convertIngredientsToBatchCellData()
+                    })
+                }
+                .padding(.bottom, 5)
+                
+                ForEach(orderSpec(), id: \.id) { ingredient in
+                    SpecIngredientView(ingredient: ingredient, viewModel: viewModel, showMls: $specInMl)
                 }
             }
         }

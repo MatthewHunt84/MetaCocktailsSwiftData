@@ -41,6 +41,10 @@ struct AddCocktailView: View {
                         IcePicker(ice: $viewModel.ice)
                         VariationPicker(viewModel: viewModel, isShowingInfo: $isShowingInfo)
                     }
+                    // Even though the nav link visibility modifier was introduced in iOS17
+                    // It crashes iOS18.0 / 18.6 simulators for some reason - so comment out the line below when testing on those simulators
+                    // Should work fine on device, just need to test it
+                    .navigationLinkIndicatorVisibility(.hidden)
                     
                     VariationInfoView(isShowingInfo: $isShowingInfo)
                     
@@ -64,24 +68,13 @@ struct AddCocktailView: View {
                         AddBuildStepView(viewModel: viewModel, cocktailBuildStepKeyboardFocused: _cocktailBuildStepKeyboardFocused)
                     }
                     
-                    UniversalButton(buttonText: "Start Over", rightImage: nil, leftImage: Image(systemName: "trash"), includeBorder: true, color: ColorScheme.nullAlertGradient, disabled: viewModel.hasNoData) {
-                        viewModel.isAboutToClearForm = true
-                    }
-                    .listRowBackground(Color.clear)
-                }
-                .blur(radius: (viewModel.isShowingUniqueNameAlert || viewModel.isShowingAlert || viewModel.isAboutToClearForm) ? 3 : 0)
-                .scrollContentBackground(.hidden)
-                .background(Color.clear)
-                .navigationBarTitleDisplayMode(.inline)
-                .jamesHeader("Add New Cocktail")
-                .modalPrentation(Image("useExistingRecipe"), labelText: "Use existing", isPresented: $isSelectingFromTemplate)
-                .sheet(isPresented: $isSelectingFromTemplate) {
-                    RiffPickerView(viewModel: viewModel)
-                        .navigationBarBackButtonHidden(true)
-                }
-                .toolbar {
-                    ToolbarItem(placement: .bottomBar) {
-                        UniversalButton(buttonText: "Add to cocktails", rightImage: Image(systemName: "plus"), includeBorder: false) {
+                    HStack {
+                        
+                        UniversalButton(buttonText: "Start Over", rightImage: nil, leftImage: Image(systemName: "trash"), includeBorder: true, color: ColorScheme.nullAlertGradient, disabled: viewModel.hasNoData) {
+                            viewModel.isAboutToClearForm = true
+                        }
+                        
+                        UniversalButton(buttonText: "Add Cocktail", rightImage: nil, leftImage: nil, includeBorder: true, color: viewModel.isValid() ? ColorScheme.recipeBorderFlipped : ColorScheme.nullSecondaryGradient, disabled: false) {
                             guard nameIsUnique() else {
                                 viewModel.isShowingUniqueNameAlert.toggle()
                                 return
@@ -106,8 +99,20 @@ struct AddCocktailView: View {
                                 }
                             }
                         }
-                        .foregroundStyle(viewModel.isValid() ? ColorScheme.interactionTint : Color.secondary)
                     }
+                    .listRowBackground(Color.clear)
+                }
+                .blur(radius: (viewModel.isShowingUniqueNameAlert || viewModel.isShowingAlert || viewModel.isAboutToClearForm) ? 3 : 0)
+                .scrollContentBackground(.hidden)
+                .background(Color.clear)
+                .navigationBarTitleDisplayMode(.inline)
+                .jamesHeader("Add New Cocktail")
+                .modalPresentation(Image("useExistingRecipe"), labelText: "Use Existing", isPresented: $isSelectingFromTemplate)
+                .sheet(isPresented: $isSelectingFromTemplate) {
+                    RiffPickerView(viewModel: viewModel)
+                        .navigationBarBackButtonHidden(true)
+                }
+                .toolbar {
                     
                     ToolbarItemGroup(placement: .keyboard) {
                         Spacer()
@@ -276,19 +281,19 @@ private struct IcePicker: View {
             Text("Ice")
                 .font(FontFactory.formLabel18)
             Spacer()
-            Picker(selection: $ice, label: EmptyView()) {
-                ForEach(Ice.allCases, id: \.rawValue) { ice in
-                    Text(ice.rawValue)
-                        .font(FontFactory.formLabel18)
-                        .tag(Optional(ice))
-                }
-            }
-            .pickerStyle(.menu)
-            .labelsHidden()
             
+            Menu {
+                ForEach(Ice.allCases, id: \.rawValue) { iceOption in
+                    Button(iceOption.rawValue) {
+                        ice = iceOption
+                    }
+                }
+            } label: {
+                Text(ice?.rawValue ?? "None")
+                    .font(FontFactory.formLabel18)
+                    .foregroundColor(ice == Ice.none ? Color.secondary : .primary)
+            }
         }
-        .tint(ice == Ice.none ? Color.secondary : .primary)
-        .font(FontFactory.formLabel18)
     }
 }
 

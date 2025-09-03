@@ -19,20 +19,17 @@ struct CBCLoadedCocktailView: View {
     
     var body: some View {
         
-        NavigationStack {
+        VStack(spacing: 10) {
             
-            VStack(spacing: 10) {
-                
-                CBCCocktailHeaderView(cocktailName: viewModel.chosenCocktail.cocktailName)
-                
-                QuantifiedIngredientsListView(isInputActive: $isInputActive,
-                                              isShowingOunceMeasurements: $isShowingOunceMeasurements,
-                                              isShowingBottleMathAmounts: $isShowingBottleMathAmounts)
-            }
-            .padding()
+            CBCCocktailHeaderView(cocktailName: viewModel.chosenCocktail.cocktailName)
             
-            .padding(.top, -20)
+            QuantifiedIngredientsListView(isInputActive: $isInputActive,
+                                          isShowingOunceMeasurements: $isShowingOunceMeasurements,
+                                          isShowingBottleMathAmounts: $isShowingBottleMathAmounts)
         }
+        .padding()
+        
+        .padding(.top, -20)
         .background(ColorScheme.background)
         .onChange(of: viewModel.quantifiedBatchedIngredients) { _, _ in
             // Force view update when quantifiedBatchedIngredients change
@@ -41,7 +38,7 @@ struct CBCLoadedCocktailView: View {
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
         .jamesHeaderWithNavigation(title: "Batch Calculator", dismiss: dismiss)
-        .modalPrentation(Image(systemName:"gearshape"), labelText: "Settings", isPresented: $isShowingPreferencesModal)
+        .modalPresentation(Image(systemName:"gearshape"), isPresented: $isShowingPreferencesModal)
         .sheet(isPresented: $isShowingPreferencesModal, content: {
             EditBatchModalView(isShowingOunceMeasurements: $isShowingOunceMeasurements, isShowingBottleMathAmounts: $isShowingBottleMathAmounts)
                 .onDisappear(perform: {

@@ -12,7 +12,7 @@ enum TabBarComponents: Hashable, Identifiable, CaseIterable {
     
     case addCocktailView
     case favoritesView
-    case searchView
+    case ingredientSearchView
     case cocktailListView
 
     var id: TabBarComponents { self }
@@ -22,8 +22,8 @@ enum TabBarComponents: Hashable, Identifiable, CaseIterable {
         switch self {
         case .cocktailListView:
             Label("Cocktails", systemImage: "book.fill")
-        case .searchView:
-            Label("Search", systemImage: "magnifyingglass.circle.fill")
+        case .ingredientSearchView:
+            Label("Search", systemImage: "text.page.badge.magnifyingglass")
         case .favoritesView:
             Label("Favorites", systemImage: "heart.fill")
         case .addCocktailView:
@@ -36,7 +36,7 @@ enum TabBarComponents: Hashable, Identifiable, CaseIterable {
         switch self {
         case .cocktailListView:
             CocktailListView()
-        case .searchView:
+        case .ingredientSearchView:
             IngredientSearchView()
                 .environmentObject(SearchViewModel())
         case .favoritesView:

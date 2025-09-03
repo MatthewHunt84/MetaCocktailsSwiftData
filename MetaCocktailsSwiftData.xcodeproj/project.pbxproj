@@ -515,6 +515,7 @@
 		F440160D2CA6F40B00839E6A /* RecipeSubViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = F440160C2CA6F40500839E6A /* RecipeSubViews.swift */; };
 		F4538E032C91F99E004B686A /* FindCocktailUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4538E022C91F997004B686A /* FindCocktailUserInfoView.swift */; };
 		F45C3A8F2CAC60C600AFBBA6 /* Overlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45C3A8E2CAC60BF00AFBBA6 /* Overlays.swift */; };
+		F47733782E2A9F84008B1214 /* iOS_26CocktailListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47733772E2A9F84008B1214 /* iOS_26CocktailListView.swift */; };
 		F47AE7B02CA5FE060070E7A8 /* AnimationModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47AE7AF2CA5FDFE0070E7A8 /* AnimationModifiers.swift */; };
 		F47FBF652C6BF5EB00CD599E /* CustomLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47FBF642C6BF5EB00CD599E /* CustomLoadingIndicator.swift */; };
 		F4872FEE2C4353E10092F8FF /* DummyCocktails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4872FED2C4353E10092F8FF /* DummyCocktails.swift */; };
@@ -528,6 +529,7 @@
 		F493F3AE2C6CFBCD006A0ADB /* SelectionTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3AD2C6CFBCD006A0ADB /* SelectionTagView.swift */; };
 		F493F3B12C6CFC72006A0ADB /* SelectionTagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493F3B02C6CFC72006A0ADB /* SelectionTagViewModel.swift */; };
 		F498A46C2CEA66420082D818 /* CocktailDatabaseGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F498A46B2CEA66370082D818 /* CocktailDatabaseGenerator.swift */; };
+		F49E89922E32691A00DC745F /* iOS26_ReusableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E89912E32690900DC745F /* iOS26_ReusableViews.swift */; };
 		F4A233BF2C63B5300061027C /* SearchPredicateFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A233BE2C63B5300061027C /* SearchPredicateFactory.swift */; };
 		F4A628E22B7E31BF0084FD80 /* Variation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A628E12B7E31BF0084FD80 /* Variation.swift */; };
 		F4AA50482B93A54E00A05F54 /* AddCocktailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA50472B93A54E00A05F54 /* AddCocktailView.swift */; };
@@ -541,6 +543,7 @@
 		F4AA6BB82C7E2B8E00610D80 /* Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA6BB72C7E2B8600610D80 /* Headers.swift */; };
 		F4AA6BBA2C7E2C4F00610D80 /* FontFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA6BB92C7E2C4D00610D80 /* FontFactory.swift */; };
 		F4AC617D2C8B688D0015BC9D /* SharedHelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AC617C2C8B68890015BC9D /* SharedHelperMethods.swift */; };
+		F4BFF29C2E29A4D4008DD86A /* iOS26_TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BFF29B2E29A4D4008DD86A /* iOS26_TabBarView.swift */; };
 		F4C5C3E12B3B3F2E005B2261 /* IngredientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C5C3E02B3B3F2E005B2261 /* IngredientType.swift */; };
 		F4C5C3E42B3B4086005B2261 /* NonAlchololicIngredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C5C3E32B3B4086005B2261 /* NonAlchololicIngredients.swift */; };
 		F4C5C3E62B3B41BA005B2261 /* Alcohol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C5C3E52B3B41BA005B2261 /* Alcohol.swift */; };
@@ -552,6 +555,7 @@
 		F4C6A8F72AB0145800BB0AD0 /* Profiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6A8F62AB0145800BB0AD0 /* Profiles.swift */; };
 		F4C74C812AD8CC3300EA3334 /* AperolSpritz.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C74C802AD8CC3300EA3334 /* AperolSpritz.swift */; };
 		F4C74C832AD8CC9600EA3334 /* Ice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C74C822AD8CC9600EA3334 /* Ice.swift */; };
+		F4CD1A032E4CD2D700001A4F /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = F4CD1A022E4CD2D700001A4F /* AppIcon.icon */; };
 		F4D184FF2C8F92170035B280 /* Migration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D184FE2C8F92110035B280 /* Migration.swift */; };
 		F4D185012C8F95370035B280 /* Brancolada.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D185002C8F95310035B280 /* Brancolada.swift */; };
 		F4D185032C8F988E0035B280 /* SkyRocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D185022C8F987D0035B280 /* SkyRocket.swift */; };
@@ -1085,6 +1089,7 @@
 		F4538E022C91F997004B686A /* FindCocktailUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindCocktailUserInfoView.swift; sourceTree = "<group>"; };
 		F45C3A8E2CAC60BF00AFBBA6 /* Overlays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overlays.swift; sourceTree = "<group>"; };
 		F473FFD22C2716C4008689D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F47733772E2A9F84008B1214 /* iOS_26CocktailListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_26CocktailListView.swift; sourceTree = "<group>"; };
 		F47AE7AF2CA5FDFE0070E7A8 /* AnimationModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationModifiers.swift; sourceTree = "<group>"; };
 		F47FBF642C6BF5EB00CD599E /* CustomLoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoadingIndicator.swift; sourceTree = "<group>"; };
 		F4872FED2C4353E10092F8FF /* DummyCocktails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyCocktails.swift; sourceTree = "<group>"; };
@@ -1098,6 +1103,7 @@
 		F493F3AD2C6CFBCD006A0ADB /* SelectionTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTagView.swift; sourceTree = "<group>"; };
 		F493F3B02C6CFC72006A0ADB /* SelectionTagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTagViewModel.swift; sourceTree = "<group>"; };
 		F498A46B2CEA66370082D818 /* CocktailDatabaseGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailDatabaseGenerator.swift; sourceTree = "<group>"; };
+		F49E89912E32690900DC745F /* iOS26_ReusableViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS26_ReusableViews.swift; sourceTree = "<group>"; };
 		F4A233BE2C63B5300061027C /* SearchPredicateFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPredicateFactory.swift; sourceTree = "<group>"; };
 		F4A628E12B7E31BF0084FD80 /* Variation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variation.swift; sourceTree = "<group>"; };
 		F4AA50472B93A54E00A05F54 /* AddCocktailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCocktailView.swift; sourceTree = "<group>"; };
@@ -1111,6 +1117,7 @@
 		F4AA6BB72C7E2B8600610D80 /* Headers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headers.swift; sourceTree = "<group>"; };
 		F4AA6BB92C7E2C4D00610D80 /* FontFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontFactory.swift; sourceTree = "<group>"; };
 		F4AC617C2C8B68890015BC9D /* SharedHelperMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedHelperMethods.swift; sourceTree = "<group>"; };
+		F4BFF29B2E29A4D4008DD86A /* iOS26_TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS26_TabBarView.swift; sourceTree = "<group>"; };
 		F4C5C3E02B3B3F2E005B2261 /* IngredientType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientType.swift; sourceTree = "<group>"; };
 		F4C5C3E32B3B4086005B2261 /* NonAlchololicIngredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonAlchololicIngredients.swift; sourceTree = "<group>"; };
 		F4C5C3E52B3B41BA005B2261 /* Alcohol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alcohol.swift; sourceTree = "<group>"; };
@@ -1122,6 +1129,7 @@
 		F4C6A8F62AB0145800BB0AD0 /* Profiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profiles.swift; sourceTree = "<group>"; };
 		F4C74C802AD8CC3300EA3334 /* AperolSpritz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AperolSpritz.swift; sourceTree = "<group>"; };
 		F4C74C822AD8CC9600EA3334 /* Ice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ice.swift; sourceTree = "<group>"; };
+		F4CD1A022E4CD2D700001A4F /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		F4D184FE2C8F92110035B280 /* Migration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migration.swift; sourceTree = "<group>"; };
 		F4D185002C8F95310035B280 /* Brancolada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brancolada.swift; sourceTree = "<group>"; };
 		F4D185022C8F987D0035B280 /* SkyRocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyRocket.swift; sourceTree = "<group>"; };
@@ -1137,6 +1145,7 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		F41B60772CDFEB82002058B1 /* MetaCocktailsSwiftDataTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = MetaCocktailsSwiftDataTests; sourceTree = "<group>"; };
+		F4B071C42E2D60BE00BD905D /* NavigationManager */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = NavigationManager; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1412,6 +1421,7 @@
 			children = (
 				1AC386982AAABED00064F52A /* TabBarView.swift */,
 				4DD0DE982B97E020008EF203 /* TabBarComponents.swift */,
+				F4BFF29B2E29A4D4008DD86A /* iOS26_TabBarView.swift */,
 			);
 			path = "Tab Bar";
 			sourceTree = "<group>";
@@ -1451,6 +1461,7 @@
 		1AC386A22AAABED00064F52A /* Cocktail List View */ = {
 			isa = PBXGroup;
 			children = (
+				F47733772E2A9F84008B1214 /* iOS_26CocktailListView.swift */,
 				1AC386A42AAABED00064F52A /* CocktailListViewModel.swift */,
 				1AC386A32AAABED00064F52A /* CocktailListView.swift */,
 				4DAD6C862C802CB900860555 /* CustomCocktailsListView.swift */,
@@ -2099,6 +2110,7 @@
 		F493F3B22C6D256F006A0ADB /* Design */ = {
 			isa = PBXGroup;
 			children = (
+				F49E89912E32690900DC745F /* iOS26_ReusableViews.swift */,
 				F45C3A8E2CAC60BF00AFBBA6 /* Overlays.swift */,
 				F4F3D4212C90996200BB6767 /* ColorScheme.swift */,
 				F4AA6BB92C7E2C4D00610D80 /* FontFactory.swift */,
@@ -2204,8 +2216,10 @@
 		F4FBF1212AAABBB900BBF7CF /* MetaCocktailsSwiftData */ = {
 			isa = PBXGroup;
 			children = (
+				F4CD1A022E4CD2D700001A4F /* AppIcon.icon */,
 				F473FFD22C2716C4008689D3 /* Info.plist */,
 				1AC3867C2AAABED00064F52A /* Assets.xcassets */,
+				F4B071C42E2D60BE00BD905D /* NavigationManager */,
 				1AC386852AAABED00064F52A /* EntryPoint */,
 				1AC386972AAABED00064F52A /* Tab Bar */,
 				F47AE7AE2CA5FDE90070E7A8 /* Animations */,
@@ -2264,6 +2278,9 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				F4B071C42E2D60BE00BD905D /* NavigationManager */,
+			);
 			name = MetaCocktailsSwiftData;
 			productName = MetaCocktailsSwiftData;
 			productReference = F4FBF11F2AAABBB900BBF7CF /* MetaCocktailsSwiftData.app */;
@@ -2320,6 +2337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4FBF12C2AAABBBB00BBF7CF /* Preview Assets.xcassets in Resources */,
+				F4CD1A032E4CD2D700001A4F /* AppIcon.icon in Resources */,
 				1AC386B02AAABED10064F52A /* Assets.xcassets in Resources */,
 				4D87E8992D97E5D100ADFCAF /* PreloadedCocktails.store in Resources */,
 			);
@@ -2353,6 +2371,7 @@
 				1AFDB7AE2ADF24A9000A3812 /* GinFizz.swift in Sources */,
 				4D54F7362B79F1E500D046D9 /* ContainerMenuView.swift in Sources */,
 				F41045072AD4FD42000CA913 /* CocktailImageView.swift in Sources */,
+				F47733782E2A9F84008B1214 /* iOS_26CocktailListView.swift in Sources */,
 				4DD0DE992B97E020008EF203 /* TabBarComponents.swift in Sources */,
 				4DBBA4CF2B6A3B7100179B8F /* QueensParkSwizzle(W&G).swift in Sources */,
 				4DA889062CBDED4D00113ED7 /* HouseBobbyBurns.swift in Sources */,
@@ -2409,6 +2428,7 @@
 				4DBFF8312B5FC6750011B5B1 /* Bijou(W&G).swift in Sources */,
 				4DED94502C0E38BC002305C2 /* EditBatchModalView.swift in Sources */,
 				4DCB17102BA4CFCC0002D7D9 /* TurnPike.swift in Sources */,
+				F4BFF29C2E29A4D4008DD86A /* iOS26_TabBarView.swift in Sources */,
 				4D5DA0BE2BA145A600C14F1F /* TheSeaplane.swift in Sources */,
 				4DCB172E2BA4EB450002D7D9 /* TritterRickey.swift in Sources */,
 				4DA567622B6C6F06003F6F04 /* Vesper(W&G).swift in Sources */,
@@ -2648,6 +2668,7 @@
 				4DA5674A2B6C32E4003F6F04 /* TiPunch(W&G).swift in Sources */,
 				4D5DA0B62BA127BD00C14F1F /* PiscoSour(W&G Version).swift in Sources */,
 				F4FBF1232AAABBB900BBF7CF /* MetaCocktailsSwiftDataApp.swift in Sources */,
+				F49E89922E32691A00DC745F /* iOS26_ReusableViews.swift in Sources */,
 				4DCB17402BA525FC0002D7D9 /* CafeConLecheFlip.swift in Sources */,
 				1AC386B82AAABED10064F52A /* Daiquiri.swift in Sources */,
 				4DBAE6E92C6FED7600F3DBFD /* AWholeNewWorld.swift in Sources */,
@@ -3117,7 +3138,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0.1.0;
 				DEVELOPMENT_ASSET_PATHS = "\"MetaCocktailsSwiftData/Preview Content\"";
-				DEVELOPMENT_TEAM = WK23NQPJ9R;
+				DEVELOPMENT_TEAM = 5P5V4X77XJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MetaCocktailsSwiftData/Info.plist;

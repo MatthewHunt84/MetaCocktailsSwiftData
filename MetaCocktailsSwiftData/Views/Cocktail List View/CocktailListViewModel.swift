@@ -17,7 +17,25 @@ import Combine
     
     private var allCocktails: [Cocktail] = []
     var mainListCocktails: [Cocktail] = []
-    var searchResultsCocktails: [Cocktail] = []
+    var searchResultsCocktails: [Cocktail] {
+        if searchText.isEmpty {
+            return [Cocktail]()
+        } else {
+            let filtered = filterCocktails(searchText: searchText, filteringCocktails: allCocktails)
+            return sortCocktails(filtered, searchText: searchText)
+        }
+    }
+    
+    var filteredResults: (top: Cocktail?, others: [Cocktail]) {
+        let results = searchResultsCocktails
+        guard !results.isEmpty else { return (top: nil, others: [Cocktail]()) }
+        guard !searchText.isEmpty else { return (top: nil, others: results) }
+        
+        let others = Array(results[1...])
+        return (top: results.first, others: others)
+    }
+    // We need to show a list of cocktail on the search page - but they aren't actually used, so we display the first 20 and wait for the search field to present the real filtered list
+    var searchViewDisplayCocktails: [Cocktail] { Array(allCocktails[...20]) }
     
     var cocktailListAlphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","#"]
     var searchText: String = ""
@@ -29,6 +47,7 @@ import Combine
     private var organizedCocktailsCache: [String: [String: [Cocktail]]] = [:]
     
     var shouldReloadCache = false
+    var didTapCocktail = false
     
     init(modelContext: ModelContext) {
         self.setupSearch()
@@ -45,7 +64,7 @@ import Combine
                 return try modelContext.fetch(descriptor)
             }()
             
-            self.allCocktails = fetchedCocktails
+            self.allCocktails = fetchedCocktails.sorted { $0.cocktailName < $1.cocktailName }
             self.updateMainListCocktails()
             self.cacheOrganizedCocktails()
             await MainActor.run {
@@ -63,7 +82,7 @@ import Combine
     
     private func setupSearch() {
         searchSubject
-            .debounce(for: .milliseconds(400), scheduler: DispatchQueue.main)
+            .debounce(for: .milliseconds(100), scheduler: DispatchQueue.main)
             .removeDuplicates()
             .sink { [weak self] searchText in
                 self?.performSearch(searchText)
@@ -75,13 +94,14 @@ import Combine
         searchSubject.send(searchText)
     }
     
-    private func performSearch(_ searchText: String) {
+    @discardableResult
+    private func performSearch(_ searchText: String) -> [Cocktail] {
         self.debouncedSearchText = searchText
         if searchText.isEmpty {
-            searchResultsCocktails = []
+            return allCocktails
         } else {
             let filtered = filterCocktails(searchText: searchText, filteringCocktails: allCocktails)
-            searchResultsCocktails = sortCocktails(filtered, searchText: searchText)
+            return sortCocktails(filtered, searchText: searchText)
         }
     }
     
@@ -131,11 +151,14 @@ import Combine
     }
     
     private func filterCocktails(searchText: String, filteringCocktails: [Cocktail]) -> [Cocktail] {
+        print("FILTER COCKTAILS START")
         let lowercasedSearchText = searchText.lowercased()
-        return filteringCocktails.filter { cocktail in
+        let filtered = filteringCocktails.filter { cocktail in
             cocktail.cocktailName.localizedStandardContains(lowercasedSearchText) ||
             (cocktail.variationName?.localizedStandardContains(lowercasedSearchText) ?? false)
         }
+        print("FILTER COCKTAILS END")
+        return filtered
     }
     
     private func sortCocktails(_ cocktails: [Cocktail], searchText: String) -> [Cocktail] {

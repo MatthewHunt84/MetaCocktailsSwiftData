@@ -14,38 +14,41 @@ struct EditBatchModalView: View {
     @Binding var isShowingBottleMathAmounts: Bool
     
     var body: some View {
-            VStack {
-                ModalHeader(title: "Batching Preferences")
-                Section(header: FontFactory.mediumText("Included Ingredients", size: 20)) {
-                    ForEach($viewModel.loadedCocktailData.ingredients, id: \.ingredient.ingredientBase.name) { ingredient in
-                        LoadedCocktailIngredientCell(ingredient: ingredient)
-                    }
+        VStack(spacing: 12) {
+            ModalHeader(title: "Batching Preferences")
+            Section(header: FontFactory.mediumText("Included Ingredients", size: 20)) {
+                ForEach($viewModel.loadedCocktailData.ingredients, id: \.ingredient.ingredientBase.name) { ingredient in
+                    LoadedCocktailIngredientCell(ingredient: ingredient)
                 }
-                .padding(.horizontal)
-                Section(header: FontFactory.mediumText("Measurement Volume Options", size: 20)) {
-                    HStack {
-                        Text("Show ounce amounts")
-                            .font(FontFactory.formLabel18)
-                        Spacer()
-                        Toggle(isOn: $isShowingOunceMeasurements) { }
-                            .tint(ColorScheme.interactionTint)
-                            .frame(maxWidth: 60)
-                    }
-                    HStack {
-                        Text("Show bottle math amounts")
-                            .font(FontFactory.formLabel18)
-                        Spacer()
-                        Toggle(isOn: $isShowingBottleMathAmounts) { }
-                            .tint(ColorScheme.interactionTint)
-                            .frame(maxWidth: 60)
-                    }
-                }
-                .padding(.horizontal)
-                .padding(.top, 16)
-                Spacer()
             }
-            .padding()
-            .background(BlackGlassBackgroundView())
+            
+            Color.clear
+                .frame(height: 20)
+            
+            Section(header: FontFactory.mediumText("Measurement Volume Options", size: 20)) {
+                HStack {
+                    Text("Show ounce amounts")
+                        .font(FontFactory.formLabel18)
+                    Spacer()
+                    Toggle(isOn: $isShowingOunceMeasurements) { }
+                        .tint(ColorScheme.interactionTint)
+                        .frame(maxWidth: 60)
+                }
+                HStack {
+                    Text("Show bottle math amounts")
+                        .font(FontFactory.formLabel18)
+                    Spacer()
+                    Toggle(isOn: $isShowingBottleMathAmounts) { }
+                        .tint(ColorScheme.interactionTint)
+                        .frame(maxWidth: 60)
+                }
+            }
+            Spacer()
+        }
+        .padding()
+//        .glassEffect(.clear, in: RoundedRectangle(cornerRadius: 40))
+        
+//        .background(BlackGlassBackgroundView())
     }
 }
 
@@ -55,5 +58,5 @@ struct EditBatchModalView: View {
 //    return EditBatchModalView(isShowingOunceMeasurements: Binding<variable>)
 //        .environmentObject(CBCViewModel())
 //        .modelContainer(preview.container)
-//    
+//
 //}

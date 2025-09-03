@@ -45,7 +45,7 @@ struct ColorScheme {
                                            startPoint: .leading,
                                            endPoint: .trailing)
     
-    static let aboutUsBorderGradient = LinearGradient(gradient: Gradient(colors: [Color.white, Color.white, Color.white]),
+    static let aboutUsBorderGradient = LinearGradient(gradient: Gradient(colors: [Color.white]),
                                            startPoint: .leading,
                                            endPoint: .trailing)
     

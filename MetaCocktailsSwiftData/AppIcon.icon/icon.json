@@ -2,6 +2,7 @@
   "fill" : "system-dark",
   "groups" : [
     {
+      "blend-mode" : "normal",
       "blur-material-specializations" : [
         {
           "value" : null
@@ -11,6 +12,7 @@
           "value" : null
         }
       ],
+      "hidden" : false,
       "layers" : [
         {
           "blend-mode-specializations" : [
@@ -84,8 +86,8 @@
           "position" : {
             "scale" : 1,
             "translation-in-points" : [
-              1.0859375,
-              -1.71875
+              1.37109375,
+              -1.65625
             ]
           }
         }
@@ -136,7 +138,7 @@
         {
           "value" : {
             "enabled" : true,
-            "value" : 0.5
+            "value" : 0.25
           }
         },
         {
