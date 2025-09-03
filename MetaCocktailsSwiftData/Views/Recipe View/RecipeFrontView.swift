@@ -177,11 +177,7 @@ struct RecipeView: View {
             ColorScheme.background
                 .ignoresSafeArea()
             
-            if #available(iOS 26.0, *) {
-                iOS26_RecipeFlipCardView(viewModel: viewModel, borderColor: $borderColor, scrollID: .constant(UUID()))
-            } else {
-                RecipeFlipCardView(viewModel: viewModel, borderColor: $borderColor, scrollID: .constant(UUID()))
-            }
+            RecipeFlipCardView(viewModel: viewModel, borderColor: $borderColor, scrollID: .constant(UUID()))
             
         }
         .navigationBarBackButtonHidden(true)
