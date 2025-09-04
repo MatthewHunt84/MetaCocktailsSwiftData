@@ -151,13 +151,14 @@ import Combine
     }
     
     private func filterCocktails(searchText: String, filteringCocktails: [Cocktail]) -> [Cocktail] {
-        print("FILTER COCKTAILS START")
+        let startTime = CFAbsoluteTimeGetCurrent()
         let lowercasedSearchText = searchText.lowercased()
         let filtered = filteringCocktails.filter { cocktail in
             cocktail.cocktailName.localizedStandardContains(lowercasedSearchText) ||
             (cocktail.variationName?.localizedStandardContains(lowercasedSearchText) ?? false)
         }
-        print("FILTER COCKTAILS END")
+        let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
+        print("FILTER COCKTAILS END - Found \(filtered.count) matches in \(String(format: "%.4f", timeElapsed))s")
         return filtered
     }
     
