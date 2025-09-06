@@ -87,7 +87,7 @@ struct FavoriteButton: View {
                 .font(.system(size: 24))
                 .foregroundStyle(cocktail.favorite ? ColorScheme.heartGradient : ColorScheme.nullSecondaryGradient)
         }
-        .symbolEffect(.bounce.down, value: cocktail.favorite)
+        .contentTransition(.symbolEffect(.replace.downUp))
         .sensoryFeedback(.success, trigger: cocktail.favorite)
     }
 }
