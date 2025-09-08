@@ -14,7 +14,7 @@ struct FirstLaunchLoadingView: View {
         
         ZStack {
             ColorScheme.background.ignoresSafeArea()
-            FirstLoadAnimation(frame: 200,
+            SpinningLogo(frame: 200,
                                duration: 2,
                                internalColor: Color.primary.mix(with: ColorScheme.tintColor, by: 0.33),
                                externalColor: LinearGradient(colors: [Color.brandPrimaryOrange, ColorScheme.tintColor, Color.brandPrimaryOrange],

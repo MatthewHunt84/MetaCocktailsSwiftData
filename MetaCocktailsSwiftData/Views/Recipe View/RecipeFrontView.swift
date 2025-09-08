@@ -69,6 +69,25 @@ struct RecipeFlipCardView: View {
                                         .frame(maxWidth: .infinity, alignment: .center)
                                     
                                 }
+                                
+                                NavigationStack {
+                                    
+                                    NavigationLink {
+                                        AboutUsView()
+                                            .navigationBarBackButtonHidden(true)
+                                    } label: {
+                                        
+                                        SpinningLogo(frame: 46,
+                                                     duration: 12,
+                                                     internalColor: ColorScheme.searchBarBackground,
+                                                     externalColor: LinearGradient(colors: [Color.brandPrimaryOrange, ColorScheme.tintColor, Color.brandPrimaryOrange],
+                                                                                   startPoint: .topLeading,
+                                                                                   endPoint: .bottomTrailing),
+                                                     reverse: false)
+                                        .frame(maxWidth: .infinity, alignment: .trailing)
+                                        
+                                    }
+                                }
                             }
                             .padding(.horizontal)
                             .padding(.vertical, outerGeo.size.height * 0.04)
