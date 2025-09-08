@@ -40,7 +40,7 @@ struct AboutUsView: View {
                                 .font(FontFactory.fontBody14)
                                 .multilineTextAlignment(.leading)
                             
-                            FirstLoadAnimation(frame: 140,
+                            SpinningLogo(frame: 140,
                                                duration: 12,
                                                internalColor: Color.primary.mix(with: ColorScheme.tintColor, by: 0.33),
                                                externalColor: LinearGradient(colors: [Color.brandPrimaryOrange, ColorScheme.tintColor, Color.brandPrimaryOrange],
@@ -126,7 +126,7 @@ struct AboutUsView2: View {
                                 Text(aboutUsTextFirstParagraph)
                                 Text(aboutUsTextSecondParagraph)
                                 
-                                FirstLoadAnimation(frame: 150,
+                                SpinningLogo(frame: 150,
                                                    duration: 8,
                                                    internalColor: Color.primary.mix(with: ColorScheme.tintColor, by: 0.33),
                                                    externalColor: LinearGradient(colors: [Color.brandPrimaryOrange, ColorScheme.tintColor, Color.brandPrimaryOrange],
@@ -134,7 +134,7 @@ struct AboutUsView2: View {
                                                                                  endPoint: .bottomTrailing),
                                                    reverse: false)
                                 
-                                FirstLoadAnimation(frame: 150,
+                                SpinningLogo(frame: 150,
                                                    duration: 8,
                                                    internalColor: Color.primary.mix(with: Color.brandPrimaryGreen, by: 0.33),
                                                    externalColor: LinearGradient(colors: [Color.brandSecondaryGreen, Color.brandPrimaryGreen, Color.brandSecondaryGreen],

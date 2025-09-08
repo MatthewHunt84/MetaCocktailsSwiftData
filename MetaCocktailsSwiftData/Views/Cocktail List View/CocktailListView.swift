@@ -140,7 +140,7 @@ struct SearchBarForCocktailListView: View {
                         .navigationBarBackButtonHidden(true)
                 } label: {
                     
-                    FirstLoadAnimation(frame: 46,
+                    SpinningLogo(frame: 46,
                                        duration: 12,
                                        internalColor: ColorScheme.searchBarBackground,
                                        externalColor: LinearGradient(colors: [Color.brandPrimaryOrange, ColorScheme.tintColor, Color.brandPrimaryOrange],

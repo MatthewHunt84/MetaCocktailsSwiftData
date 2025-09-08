@@ -24,7 +24,7 @@ struct CustomLoadingOverlayModifier: ViewModifier {
     }
 }
 
-struct FirstLoadAnimation: View {
+struct SpinningLogo: View {
     @State private var rotationCircle = 0.0
     let frame: CGFloat
     let duration: TimeInterval
