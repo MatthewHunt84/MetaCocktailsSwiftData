@@ -9,11 +9,26 @@ import SwiftUI
 
 struct BackButton: View {
     @Environment(\.dismiss) private var dismiss
+    var action: (() -> Void)? = {}
     
     var body: some View {
-        VStack(alignment: .leading) {
+        if #available(iOS 26.0, *) {
             Button{
                 dismiss()
+                action?()
+            } label: {
+                Image(systemName: "chevron.backward")
+                    .font(.system(size: 16))
+                    .bold()
+                
+            }
+            .frame(width: 24, height: 24)
+            .glassEffect(.regular, in: .circle)
+            .tint(ColorScheme.interactionTint)
+        } else {
+            Button{
+                dismiss()
+                action?()
             } label: {
                 HStack {
                     Image(systemName: "chevron.backward")

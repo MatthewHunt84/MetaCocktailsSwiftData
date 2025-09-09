@@ -267,7 +267,7 @@ private struct GlassPickerDetailView: View {
                 .listRowBackground(Color.clear)
             }
             .navigationBarTitleDisplayMode(.inline)
-            .jamesHeaderWithNavigation(title: "Glassware Choice", dismiss: dismiss)
+            .jamesHeaderWithNavigation(title: "Glassware Choice")
             .scrollContentBackground(.hidden)
         }
     }

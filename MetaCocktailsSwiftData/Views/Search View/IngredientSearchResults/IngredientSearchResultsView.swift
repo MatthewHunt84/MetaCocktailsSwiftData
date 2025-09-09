@@ -25,7 +25,7 @@ struct IngredientSearchResultsView: View {
             }
             .navigationBarBackButtonHidden(true)
             .navigationBarTitleDisplayMode(.inline)
-            .jamesHeaderWithNavigation(title: "Search Results", dismiss: dismiss)
+            .jamesHeaderWithNavigation(title: "Search Results")
             .systemLoadingIndicator(isLoading: viewModel.isRunningComplexSearch)
         }
     }

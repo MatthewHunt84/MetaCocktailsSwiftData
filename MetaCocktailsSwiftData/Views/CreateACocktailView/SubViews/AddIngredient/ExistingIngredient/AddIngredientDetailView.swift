@@ -48,7 +48,7 @@ struct AddIngredientDetailView: View {
                 }
                 .scrollContentBackground(.hidden)
                 .navigationBarTitleDisplayMode(.inline)
-                .jamesHeaderWithNavigation(title: "Add Ingredient", dismiss: dismiss){
+                .jamesHeaderWithNavigation(title: "Add Ingredient"){
                     viewModel.clearIngredientData()
                 }
             }

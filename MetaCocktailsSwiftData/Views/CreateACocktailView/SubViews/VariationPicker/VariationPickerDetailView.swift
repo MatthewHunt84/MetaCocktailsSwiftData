@@ -49,7 +49,7 @@ struct VariationPickerDetailView: View {
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-            .jamesHeaderWithNavigation(title: "Add Variation Name", dismiss: dismiss)
+            .jamesHeaderWithNavigation(title: "Add Variation Name")
         }
         .onAppear {
             viewModel.setAllCocktails(allCocktails)
