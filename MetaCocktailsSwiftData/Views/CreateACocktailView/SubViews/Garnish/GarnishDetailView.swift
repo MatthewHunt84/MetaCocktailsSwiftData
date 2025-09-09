@@ -30,7 +30,7 @@ struct GarnishDetailView: View {
                     
                 }
                 .navigationBarTitleDisplayMode(.inline)
-                .jamesHeaderWithNavigation(title: "Add Garnish", dismiss: dismiss)
+                .jamesHeaderWithNavigation(title: "Add Garnish")
                 .scrollContentBackground(.hidden)
             }
         }

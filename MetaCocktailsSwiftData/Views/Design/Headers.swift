@@ -30,7 +30,6 @@ struct JamesTitle: ViewModifier {
 
 struct JamesTitleWithNavigation: ViewModifier {
     
-    var dismiss: DismissAction
     let title: String
     var action: (() -> Void)? = {}
     
@@ -38,44 +37,7 @@ struct JamesTitleWithNavigation: ViewModifier {
         content
             .toolbar {
                 ToolbarItem(placement: .navigation) {
-                    Button(action: {
-                        dismiss()
-                        action?()
-                    }) {
-                        Image(systemName: "chevron.backward")
-                            .font(.system(size: 16))
-                            .bold()
-                            .tint(ColorScheme.interactionTint)
-                            .frame(width: 50, height: 40)
-                    }
-                }
-                
-                ToolbarItem(placement: .principal) {
-                    FontFactory.titleHeader22(title: title)
-                }
-            }
-    }
-}
-@available(iOS 26.0, *)
-struct iOS26_JamesTitleWithNavigation: ViewModifier {
-    
-    var dismiss: DismissAction
-    let title: String
-    var action: (() -> Void)? = {}
-    
-    func body(content: Content) -> some View {
-        content
-            .toolbar {
-                ToolbarItem(placement: .navigation) {
-                    Button(action: {
-                        dismiss()
-                        action?()
-                    }) {
-                        Image(systemName: "chevron.backward")
-                            .font(.system(size: 16))
-                            .bold()
-                            .tint(ColorScheme.interactionTint)
-                    }
+                    BackButton(action: action)
                 }
                 
                 ToolbarItem(placement: .principal) {
@@ -94,15 +56,7 @@ struct AboutTitleWithNavigation: ViewModifier {
         content
             .toolbar {
                 ToolbarItem(placement: .navigation) {
-                    Button(action: {
-                        dismiss()
-                    }) {
-                        Image(systemName: "chevron.backward")
-                            .font(.system(size: 16))
-                            .bold()
-                            .tint(ColorScheme.interactionTint)
-                            .frame(width: 30, height: 30)
-                    }
+                    BackButton()
                 }
                 
                 ToolbarItem(placement: .principal) {
@@ -120,12 +74,8 @@ extension View {
 }
 
 extension View {
-    func jamesHeaderWithNavigation(title: String, dismiss: DismissAction, action: (() -> Void)?  = nil) -> some View {
-        if #available(iOS 26.0, *) {
-            return self.modifier(iOS26_JamesTitleWithNavigation(dismiss: dismiss, title: title, action: action))
-        } else {
-            return self.modifier(JamesTitleWithNavigation(dismiss: dismiss, title: title, action: action))
-        }
+    func jamesHeaderWithNavigation(title: String, action: (() -> Void)?  = nil) -> some View {
+        return self.modifier(JamesTitleWithNavigation(title: title, action: action))
     }
 }
 

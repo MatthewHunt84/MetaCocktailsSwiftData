@@ -73,7 +73,7 @@ struct SplitBatchView: View {
             .padding()
             .navigationBarBackButtonHidden()
             .navigationBarTitleDisplayMode(.inline)
-            .jamesHeaderWithNavigation(title: "Split Batch", dismiss: dismiss)
+            .jamesHeaderWithNavigation(title: "Split Batch")
             .task {
                 viewModel.doSplitBatchMath()
             }
