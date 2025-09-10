@@ -125,16 +125,19 @@ struct CocktailGroupView: View {
         if cocktails.count > 1 {
             VStack(spacing: 0) {
                 Button(action: {
-                    withAnimation {
-                        isExpanded.toggle()
-                    }
+                    // Tried to dial this in so it's bouncy but doesn't overshoot / oscillate an annoying amount
+                     withAnimation(.interpolatingSpring(stiffness: 240, damping: 23)) {
+                         isExpanded.toggle()
+                     }
                 }) {
                     HStack {
-                        Image(systemName: isExpanded ? "chevron.down" : "chevron.right")
+                        Image(systemName: "chevron.right")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 12, height: 12)
                             .foregroundColor(ColorScheme.interactionTint)
+                            .rotationEffect(.degrees(isExpanded ? 90 : 0))
+                        
                         Text(key)
                             .font(FontFactory.regularFont(size: 18))
                             .foregroundStyle(.white)
@@ -148,8 +151,9 @@ struct CocktailGroupView: View {
                     ForEach(cocktails, id: \.id) { cocktail in
                         MultipleCocktailsListView(cocktail: cocktail, cocktails: cocktails)
                             .transition(.asymmetric(
-                                insertion: AnyTransition.opacity.animation(.easeIn),
-                                removal: AnyTransition.opacity.animation(.easeOut.speed(2))
+                                // The content will insert and remove from the top with the appropriate fade depending on direction
+                                insertion: .move(edge: .top).combined(with: .opacity.animation(.easeIn)),
+                                removal: .move(edge: .top).combined(with: .opacity.animation(.easeOut.speed(2)))
                             ))
                     }
                 }
