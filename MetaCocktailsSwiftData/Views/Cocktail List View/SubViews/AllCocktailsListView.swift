@@ -164,54 +164,45 @@ struct CocktailGroupView: View {
     }
 }
 
-
 struct SingleCocktailListView: View {
     let cocktail: Cocktail
     @EnvironmentObject var viewModel: CocktailListViewModel
+    @Environment(iOS_26_SearchViewNavigationManager.self) var navigationManager
     
     var body: some View {
-        NavigationLink {
-            RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                .navigationBarBackButtonHidden(true)
-                .navigationBarHidden(true)
-           // Let's try adding what we have for the searchable views since those seem to be the right height...
-//                .padding(.top, 50)
-//                .ignoresSafeArea(.all, edges: .top)
-        } label: {
-            HStack {
+            Button {
+                viewModel.didTapCocktail = true
+                navigationManager.path.append(cocktail)
+            } label: {
                 Text(cocktail.cocktailName)
                     .font(FontFactory.regularFont(size: 18))
                     .padding(.leading, 20)
                     .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .frame(height: 35)
+                    .padding(.vertical, 2)
             }
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .frame(height: 35)
-        .padding(.vertical, 2)
     }
 }
 
 struct MultipleCocktailsListView: View {
     let cocktail: Cocktail
     let cocktails: [Cocktail]
+    @Environment(iOS_26_SearchViewNavigationManager.self) var navigationManager
     
     var body: some View {
-       
-        NavigationLink {
-            SwipeRecipeView(variations: cocktails, initialSelection: cocktail)
-                .navigationBarBackButtonHidden(true)
-                .navigationBarHidden(true)
+        
+        Button {
+            navigationManager.path.append(cocktail)
         } label: {
-            HStack {
-                Text(cocktail.cocktailName)
-                    .font(FontFactory.regularFont(size: 18))
-                    .padding(.leading, 35)
-                    .foregroundStyle(.white)
-            }
+            Text(cocktail.cocktailName)
+                .font(FontFactory.regularFont(size: 18))
+                .padding(.leading, 35)
+                .foregroundStyle(.white)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(height: 35)
+                .padding(.vertical, 2)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .frame(height: 35)
-        .padding(.vertical, 2)
     }
 }
 

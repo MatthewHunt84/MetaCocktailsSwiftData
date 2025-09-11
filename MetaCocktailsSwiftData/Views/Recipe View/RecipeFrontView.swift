@@ -120,14 +120,14 @@ struct RecipeFlipCardView: View {
                 .opacity(viewModel.backDegree == -90 ? 1 : 0)
                 .rotation3DEffect(Angle(degrees: viewModel.frontDegree), axis: (x: 0, y: 1, z: 0))
             }
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarBackButtonHidden()
+//            .navigationBarTitleDisplayMode(.inline)
+//            .navigationBarBackButtonHidden()
             .navigationBarBackButtonHidden(true)
             .navigationBarHidden(true)
-            // Hack due to nav link / nav bar space bug (iOS 17/18/26)
-            // https://www.hackingwithswift.com/forums/swiftui/searchable-navigationlinks-seem-to-present-views-which-ignore-navigationbar-modifiers/29864
-            .padding(.top, 50)
-            .ignoresSafeArea(.all, edges: .top)
+////            // Hack due to nav link / nav bar space bug (iOS 17/18/26)
+////            // https://www.hackingwithswift.com/forums/swiftui/searchable-navigationlinks-seem-to-present-views-which-ignore-navigationbar-modifiers/29864
+//            .padding(.top, 50)
+//            .ignoresSafeArea(.all, edges: .top)
 
         }
     }
@@ -144,7 +144,7 @@ struct SwipeRecipeView: View {
     
     var body: some View {
         
-        NavigationStack {
+//        NavigationStack {
             
             ZStack {
                 
@@ -185,7 +185,7 @@ struct SwipeRecipeView: View {
                         print("\(cocktail.cocktailName) has id: \(cocktail.id)")
                     }
                 }
-            }
+//            }
         }
     }
     

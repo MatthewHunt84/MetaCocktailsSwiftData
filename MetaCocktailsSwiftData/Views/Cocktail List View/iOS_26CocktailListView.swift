@@ -60,10 +60,10 @@ struct iOS_26CocktailListView: View {
                         .navigationBarBackButtonHidden(true)
                         .navigationBarHidden(true)
                     
-//                    // Hack due to .searchable nav link / nav bar space bug (iOS 17/18/26)
-//                    // https://www.hackingwithswift.com/forums/swiftui/searchable-navigationlinks-seem-to-present-views-which-ignore-navigationbar-modifiers/29864
-//                        .padding(.top, 50)
-//                        .ignoresSafeArea(.all, edges: .top)
+                    // Hack due to .searchable nav link / nav bar space bug (iOS 17/18/26)
+                    // https://www.hackingwithswift.com/forums/swiftui/searchable-navigationlinks-seem-to-present-views-which-ignore-navigationbar-modifiers/29864
+                        .padding(.top, 50)
+                        .ignoresSafeArea(.all, edges: .top)
                 }
                 .listStyle(.grouped)
                 .searchable(text: $viewModel.searchText, prompt: "Search cocktails")
