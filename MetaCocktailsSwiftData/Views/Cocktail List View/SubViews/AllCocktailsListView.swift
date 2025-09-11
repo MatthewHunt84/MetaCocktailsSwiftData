@@ -174,6 +174,9 @@ struct SingleCocktailListView: View {
             RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
                 .navigationBarBackButtonHidden(true)
                 .navigationBarHidden(true)
+           // Let's try adding what we have for the searchable views since those seem to be the right height...
+//                .padding(.top, 50)
+//                .ignoresSafeArea(.all, edges: .top)
         } label: {
             HStack {
                 Text(cocktail.cocktailName)
@@ -197,6 +200,7 @@ struct MultipleCocktailsListView: View {
         NavigationLink {
             SwipeRecipeView(variations: cocktails, initialSelection: cocktail)
                 .navigationBarBackButtonHidden(true)
+                .navigationBarHidden(true)
         } label: {
             HStack {
                 Text(cocktail.cocktailName)
