@@ -18,13 +18,11 @@ struct BackButton: View {
                 action?()
             } label: {
                 Image(systemName: "chevron.backward")
-                    .font(.system(size: 16))
-                    .bold()
-                
+                    .font(.system(size: 18))
             }
             .frame(width: 24, height: 24)
             .glassEffect(.regular, in: .circle)
-            .tint(ColorScheme.interactionTint)
+            .tint(.primary)
         } else {
             Button{
                 dismiss()

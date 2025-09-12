@@ -20,6 +20,7 @@ struct RecipeFlipCardView: View {
     var recommendedCocktailID: UUID? = nil
     @State private var showSpecInMl: Bool = false
     @State private var refreshLayout = false
+    @Environment(iOS_26_SearchViewNavigationManager.self) var navigationManager
     
     var body: some View {
         
@@ -69,29 +70,26 @@ struct RecipeFlipCardView: View {
                                         .frame(maxWidth: .infinity, alignment: .center)
                                     
                                 }
-                                // TODO: Pass down navigation manager and replace this breaking change
-//                                NavigationStack {
-//                                    
-//                                    NavigationLink {
-//                                        AboutUsView()
-//                                            .navigationBarBackButtonHidden(true)
-//                                    } label: {
-//                                        
-//                                        SpinningLogo(frame: 46,
-//                                                     duration: 12,
-//                                                     internalColor: ColorScheme.searchBarBackground,
-//                                                     externalColor: LinearGradient(colors: [Color.brandPrimaryOrange, ColorScheme.tintColor, Color.brandPrimaryOrange],
-//                                                                                   startPoint: .topLeading,
-//                                                                                   endPoint: .bottomTrailing),
-//                                                     reverse: false)
-//                                        .frame(maxWidth: .infinity, alignment: .trailing)
-//                                        
-//                                    }
-//                                }
+                                
+                                Button {
+                                    navigationManager.path.append("about us")
+                                } label: {
+                                    SpinningLogo(frame: 46,
+                                                 duration: 12,
+                                                 internalColor: ColorScheme.searchBarBackground,
+                                                 externalColor: LinearGradient(colors: [Color.brandPrimaryOrange, ColorScheme.tintColor, Color.brandPrimaryOrange],
+                                                                               startPoint: .topLeading,
+                                                                               endPoint: .bottomTrailing),
+                                                 reverse: false)
+                                    .frame(maxWidth: .infinity, alignment: .trailing)
+                                }
                             }
                             .padding(.horizontal)
                             .padding(.vertical, outerGeo.size.height * 0.04)
                         }
+                        .navigationDestination(for: String.self, destination: { _ in
+                            AboutUsView()
+                        })
                         .foregroundStyle(viewModel.cocktail.historicSpec == nil ? .primary : .secondary)
                         .allowsHitTesting(!viewModel.isFlipped)
                         .background(BlackGlassBackgroundView())
@@ -120,15 +118,6 @@ struct RecipeFlipCardView: View {
                 .opacity(viewModel.backDegree == -90 ? 1 : 0)
                 .rotation3DEffect(Angle(degrees: viewModel.frontDegree), axis: (x: 0, y: 1, z: 0))
             }
-//            .navigationBarTitleDisplayMode(.inline)
-//            .navigationBarBackButtonHidden()
-            .navigationBarBackButtonHidden(true)
-            .navigationBarHidden(true)
-////            // Hack due to nav link / nav bar space bug (iOS 17/18/26)
-////            // https://www.hackingwithswift.com/forums/swiftui/searchable-navigationlinks-seem-to-present-views-which-ignore-navigationbar-modifiers/29864
-//            .padding(.top, 50)
-//            .ignoresSafeArea(.all, edges: .top)
-
         }
     }
 }
@@ -144,48 +133,39 @@ struct SwipeRecipeView: View {
     
     var body: some View {
         
-//        NavigationStack {
+        ZStack {
             
-            ZStack {
+            ColorScheme.background.ignoresSafeArea()
+            
+            ScrollView(.horizontal) {
                 
-                ColorScheme.background.ignoresSafeArea()
-                
-                ScrollView(.horizontal) {
+                HStack(alignment: .top) {
                     
-                    HStack(alignment: .top) {
+                    ForEach(variations) { cocktail in
                         
-                        ForEach(variations) { cocktail in
-                            
-                            RecipeFlipCardView(viewModel: RecipeViewModel(cocktail: cocktail), borderColor: $borderColor, scrollID: $scrollID, recommendedCocktailID: getRecommendation(for: cocktail))
-                                .containerRelativeFrame(.horizontal)
-                                .discardTransition()
-//                                .navigationBarBackButtonHidden(true)
-//                                .navigationBarHidden(true)
-//                                // Hack due to nav link / nav bar space bug (iOS 17/18/26)
-//                                // https://www.hackingwithswift.com/forums/swiftui/searchable-navigationlinks-seem-to-present-views-which-ignore-navigationbar-modifiers/29864
-//                                .padding(.top, 50)
-//                                .ignoresSafeArea(.all, edges: .top)
-                        }
-                    }
-                    
-                }
-                .scrollTargetLayout()
-                .scrollTargetBehavior(.viewAligned)
-                .scrollPosition(id: $scrollID)
-                .contentMargins(.bottom, 84, for: .scrollIndicators) // This will probably break on other devices but will leave it in for testing
-                .scrollIndicators(.visible)
-                .onScrollPhaseChange { oldPhase, newPhase in
-                    withAnimation {
-                        borderColor = newPhase != .interacting ? ColorScheme.presentedFrontBorder : ColorScheme.inactiveBorder
+                        RecipeFlipCardView(viewModel: RecipeViewModel(cocktail: cocktail), borderColor: $borderColor, scrollID: $scrollID, recommendedCocktailID: getRecommendation(for: cocktail))
+                            .containerRelativeFrame(.horizontal)
+                            .discardTransition()
                     }
                 }
-                .onAppear {
-                    scrollID = initialSelection.id
-                    variations.forEach { cocktail in
-                        print("\(cocktail.cocktailName) has id: \(cocktail.id)")
-                    }
+                
+            }
+            .scrollTargetLayout()
+            .scrollTargetBehavior(.viewAligned)
+            .scrollPosition(id: $scrollID)
+            .contentMargins(.bottom, 84, for: .scrollIndicators) // This will probably break on other devices but will leave it in for testing
+            .scrollIndicators(.visible)
+            .onScrollPhaseChange { oldPhase, newPhase in
+                withAnimation {
+                    borderColor = newPhase != .interacting ? ColorScheme.presentedFrontBorder : ColorScheme.inactiveBorder
                 }
-//            }
+            }
+            .onAppear {
+                scrollID = initialSelection.id
+                variations.forEach { cocktail in
+                    print("\(cocktail.cocktailName) has id: \(cocktail.id)")
+                }
+            }
         }
     }
     
@@ -210,20 +190,19 @@ struct RecipeView: View {
                 .ignoresSafeArea()
             
             RecipeFlipCardView(viewModel: viewModel, borderColor: $borderColor, scrollID: .constant(UUID()))
+            // Hack due to .searchable nav link / nav bar space bug (iOS 17/18/26)
+                .navigationBarBackButtonHidden(true)
+                .navigationBarHidden(true)
+                .padding(.top, 50)
+                .ignoresSafeArea(.all, edges: .top)
             
         }
-//        .navigationBarBackButtonHidden(true)
-//        .navigationBarHidden(true)
-//        // Hack due to nav link / nav bar space bug (iOS 17/18/26)
-//        // https://www.hackingwithswift.com/forums/swiftui/searchable-navigationlinks-seem-to-present-views-which-ignore-navigationbar-modifiers/29864
-//        .padding(.top, 50)
-//        .ignoresSafeArea(.all, edges: .top)
     }
 }
 
 //#Preview(traits: .sampleData) {
 //    @Previewable @Query(sort: \Cocktail.cocktailName) var cocktails: [Cocktail]
-//    
+//
 //    SwipeRecipeView(variations: cocktails ?? DummyCocktails.cocktails, initialSelection: zombie)
 //        .environmentObject(CBCViewModel())
 //}

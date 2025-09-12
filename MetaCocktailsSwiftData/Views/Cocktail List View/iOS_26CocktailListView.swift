@@ -57,13 +57,7 @@ struct iOS_26CocktailListView: View {
                 .jamesHeader("Cocktail List")
                 .navigationDestination(for: Cocktail.self) { cocktail in
                     RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                        .navigationBarBackButtonHidden(true)
-                        .navigationBarHidden(true)
-                    
-                    // Hack due to .searchable nav link / nav bar space bug (iOS 17/18/26)
-                    // https://www.hackingwithswift.com/forums/swiftui/searchable-navigationlinks-seem-to-present-views-which-ignore-navigationbar-modifiers/29864
-                        .padding(.top, 50)
-                        .ignoresSafeArea(.all, edges: .top)
+                        .environment(navigationManager)
                 }
                 .listStyle(.grouped)
                 .searchable(text: $viewModel.searchText, prompt: "Search cocktails")

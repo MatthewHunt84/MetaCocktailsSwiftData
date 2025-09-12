@@ -26,8 +26,6 @@ struct JamesTitle: ViewModifier {
     }
 }
 
-// Page Titles with back button
-
 struct JamesTitleWithNavigation: ViewModifier {
     
     let title: String
@@ -36,6 +34,8 @@ struct JamesTitleWithNavigation: ViewModifier {
     func body(content: Content) -> some View {
         content
             .toolbar {
+                // We can't rely on the default back button
+                // Because we also use this in modal presentations which don't get one by default
                 ToolbarItem(placement: .navigation) {
                     BackButton(action: action)
                 }
@@ -53,16 +53,27 @@ struct AboutTitleWithNavigation: ViewModifier {
     let title: String
     
     func body(content: Content) -> some View {
-        content
-            .toolbar {
-                ToolbarItem(placement: .navigation) {
-                    BackButton()
+        if #available(iOS 26.0, *) {
+            content
+                .toolbar {
+                    // On iOS26 the automatic back button looks just like ours so we might as well use it
+                    
+                    ToolbarItem(placement: .principal) {
+                        FontFactory.aboutHeader(title: title)
+                    }
                 }
-                
-                ToolbarItem(placement: .principal) {
-                    FontFactory.aboutHeader(title: title)
+        } else {
+            content
+                .toolbar {
+                    ToolbarItem(placement: .navigation) {
+                        BackButton()
+                    }
+                    
+                    ToolbarItem(placement: .principal) {
+                        FontFactory.aboutHeader(title: title)
+                    }
                 }
-            }
+        }
     }
 }
 

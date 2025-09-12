@@ -15,78 +15,75 @@ struct AboutUsView: View {
     
     var body: some View {
         
-        NavigationStack {
+        ZStack {
             
-            ZStack {
+            ColorScheme.background.ignoresSafeArea()
+            
+            ScrollView(showsIndicators: false) {
                 
-                ColorScheme.background.ignoresSafeArea()
-                
-                ScrollView(showsIndicators: false) {
+                VStack(alignment: .leading) {
                     
-                    VStack(alignment: .leading) {
+                    Text("Cocktail Copilot is what happens when two bartending nerds become programming nerds. It's the companion app that we've always wanted behind the bar — meticulously sourced recipes, advanced search features, and many other useful tools for the modern bartender.")
+                        .font(FontFactory.fontBody14)
+                    
+                    Text("To give back to the industry we love, Cocktail Copilot is completely free, no strings (or ads) attached.")
+                        .font(FontFactory.fontBody14)
+                        .multilineTextAlignment(.leading)
+                        .padding(.top, 5)
+                    
+                    HStack {
                         
-                        Text("Cocktail Copilot is what happens when two bartending nerds become programming nerds. It's the companion app that we've always wanted behind the bar — meticulously sourced recipes, advanced search features, and many other useful tools for the modern bartender.")
-                            .font(FontFactory.fontBody14)
-                        
-                        Text("To give back to the industry we love, Cocktail Copilot is completely free, no strings (or ads) attached.")
+                        Text("Transitioning from building drinks to building software has been an amazing journey, and we're not finished yet. Have ideas for new features? We'd love to hear them at cocktailcopilot@gmail.com")
+                            .tint(ColorScheme.interactionTint)
                             .font(FontFactory.fontBody14)
                             .multilineTextAlignment(.leading)
-                            .padding(.top, 5)
                         
-                        HStack {
+                        SpinningLogo(frame: 140,
+                                     duration: 12,
+                                     internalColor: Color.primary.mix(with: ColorScheme.tintColor, by: 0.33),
+                                     externalColor: LinearGradient(colors: [Color.brandPrimaryOrange, ColorScheme.tintColor, Color.brandPrimaryOrange],
+                                                                   startPoint: .topLeading,
+                                                                   endPoint: .bottomTrailing),
+                                     reverse: false)
+                    }
+                    
+                    HStack(spacing: 20) {
+                        JamesPicture()
+                        
+                        VStack(alignment: .leading, spacing: 10) {
                             
-                            Text("Transitioning from building drinks to building software has been an amazing journey, and we're not finished yet. Have ideas for new features? We'd love to hear them at cocktailcopilot@gmail.com")
-                                .tint(ColorScheme.interactionTint)
+                            Text("James Menkal")
+                                .font(.custom("AvenirNext-DemiBold", size: 18))
+                            
+                            Text("A veteran of the industry with over a decade of craft cocktail expertise and a Bar 5-Day graduate, James Menkal is the longest-serving bartender at Denver's award-winning Williams and Graham.")
                                 .font(FontFactory.fontBody14)
-                                .multilineTextAlignment(.leading)
-                            
-                            SpinningLogo(frame: 140,
-                                               duration: 12,
-                                               internalColor: Color.primary.mix(with: ColorScheme.tintColor, by: 0.33),
-                                               externalColor: LinearGradient(colors: [Color.brandPrimaryOrange, ColorScheme.tintColor, Color.brandPrimaryOrange],
-                                                                             startPoint: .topLeading,
-                                                                             endPoint: .bottomTrailing),
-                                               reverse: false)
-                        }
-                        
-                        HStack(spacing: 20) {
-                            JamesPicture()
-                            
-                            VStack(alignment: .leading, spacing: 10) {
-                                
-                                Text("James Menkal")
-                                    .font(.custom("AvenirNext-DemiBold", size: 18))
-                                
-                                Text("A veteran of the industry with over a decade of craft cocktail expertise and a Bar 5-Day graduate, James Menkal is the longest-serving bartender at Denver's award-winning Williams and Graham.")
-                                    .font(FontFactory.fontBody14)
-                            }
-                        }
-                        .padding(.bottom, 20)
-                        
-                        
-                        HStack(spacing: 20) {
-                            
-                            VStack(alignment: .leading, spacing: 10) {
-                                
-                                Text("Matt Hunt")
-                                    .font(.custom("AvenirNext-DemiBold", size: 18))
-                                
-                                Text("A full-time iOS developer since 2021, Matt previously worked as a bartender at Death & Co Denver before joining James at Williams and Graham.")
-                                    .font(FontFactory.fontBody14)
-                            }
-                            
-                            MattPicture()
                         }
                     }
-                    .aboutHeaderWithNavigation(title: "About Cocktail Copilot", dismiss: dismiss)
-                    .navigationBarTitleDisplayMode(.inline)
-                    .background(
-                        Image(.limeSegments)
-                            .offset(x: 120, y: 240)
-                            .opacity(0.02)
-                    )
-                    .padding(20)
+                    .padding(.bottom, 20)
+                    
+                    
+                    HStack(spacing: 20) {
+                        
+                        VStack(alignment: .leading, spacing: 10) {
+                            
+                            Text("Matt Hunt")
+                                .font(.custom("AvenirNext-DemiBold", size: 18))
+                            
+                            Text("A full-time iOS developer since 2021, Matt previously worked as a bartender at Death & Co Denver before joining James at Williams and Graham.")
+                                .font(FontFactory.fontBody14)
+                        }
+                        
+                        MattPicture()
+                    }
                 }
+                .aboutHeaderWithNavigation(title: "About Cocktail Copilot", dismiss: dismiss)
+                .navigationBarTitleDisplayMode(.inline)
+                .background(
+                    Image(.limeSegments)
+                        .offset(x: 120, y: 240)
+                        .opacity(0.02)
+                )
+                .padding(20)
             }
         }
     }
