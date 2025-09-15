@@ -172,7 +172,7 @@ struct SingleCocktailListView: View {
     var body: some View {
             Button {
                 viewModel.didTapCocktail = true
-                navigationManager.path.append(cocktail)
+                navigationManager.listPath.append(cocktail)
             } label: {
                 Text(cocktail.cocktailName)
                     .font(FontFactory.regularFont(size: 18))
@@ -193,7 +193,7 @@ struct MultipleCocktailsListView: View {
     var body: some View {
         
         Button {
-            navigationManager.path.append(cocktail)
+            navigationManager.listPath.append(cocktail)
         } label: {
             Text(cocktail.cocktailName)
                 .font(FontFactory.regularFont(size: 18))

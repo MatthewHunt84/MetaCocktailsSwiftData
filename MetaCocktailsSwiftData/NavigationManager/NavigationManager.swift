@@ -9,5 +9,6 @@ import SwiftUI
 
 @Observable
 class iOS_26_SearchViewNavigationManager {
-    var path = NavigationPath()
+    var listPath = NavigationPath()
+    var favoritesPath = NavigationPath()
 }

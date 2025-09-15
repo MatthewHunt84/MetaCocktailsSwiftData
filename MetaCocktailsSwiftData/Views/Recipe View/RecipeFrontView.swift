@@ -72,7 +72,7 @@ struct RecipeFlipCardView: View {
                                 }
                                 
                                 Button {
-                                    navigationManager.path.append("about us")
+                                    navigationManager.listPath.append("about us")
                                 } label: {
                                     SpinningLogo(frame: 46,
                                                  duration: 12,
@@ -195,7 +195,6 @@ struct RecipeView: View {
                 .navigationBarHidden(true)
                 .padding(.top, 50)
                 .ignoresSafeArea(.all, edges: .top)
-            
         }
     }
 }
