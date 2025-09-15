@@ -11,11 +11,24 @@ import SwiftUI
 struct iOS26_TabBarView: View {
     @State private var selectedTab: TabBarComponents = .cocktailListView
     @State private var searchText: String = ""
+    @State private var navigationManager = iOS_26_SearchViewNavigationManager()
     @EnvironmentObject var viewModel: CocktailListViewModel
     
     var body: some View {
         
         TabView(selection: $selectedTab)  {
+            
+            Tab(value: .favoritesView) {
+                NavigationStack(path: $navigationManager.path ) {
+                    CustomCocktailsListView()
+                        .navigationDestination(for: Cocktail.self) { cocktail in
+                            RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                                .environment(navigationManager)
+                        }
+                }
+            } label: {
+                Label("Favorites", systemImage: "heart.fill")
+            }
             
             Tab(value: .ingredientSearchView) {
                 IngredientSearchView()
@@ -30,23 +43,24 @@ struct iOS26_TabBarView: View {
                 Label("Add Cocktail", image: "custom.book.fill.badge.plus")
             }
             
-            Tab(value: .favoritesView) {
-                CustomCocktailsListView()
-            } label: {
-                Label("Favorites", systemImage: "heart.fill")
-            }
-            
             Tab(value: .cocktailListView, role: .search) {
-                iOS_26CocktailListView()
+                NavigationStack(path: $navigationManager.path ) {
+                    iOS_26CocktailListView()
+                        .navigationDestination(for: Cocktail.self) { cocktail in
+                            RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                                .environment(navigationManager)
+                        }
+                }
             } label: {
                 Label("Cocktails", systemImage: "magnifyingglass.circle.fill")
             }
             
-
+            
         }
         .environment(\.currentTab, $selectedTab)
         .tint(ColorScheme.tabBarTint)
         .tabBarMinimizeBehavior(.onScrollDown)
+        .environment(navigationManager)
     }
 }
 

@@ -151,13 +151,11 @@ import Combine
     }
     
     private func filterCocktails(searchText: String, filteringCocktails: [Cocktail]) -> [Cocktail] {
-        print("FILTER COCKTAILS START")
         let lowercasedSearchText = searchText.lowercased()
         let filtered = filteringCocktails.filter { cocktail in
             cocktail.cocktailName.localizedStandardContains(lowercasedSearchText) ||
             (cocktail.variationName?.localizedStandardContains(lowercasedSearchText) ?? false)
         }
-        print("FILTER COCKTAILS END")
         return filtered
     }
     

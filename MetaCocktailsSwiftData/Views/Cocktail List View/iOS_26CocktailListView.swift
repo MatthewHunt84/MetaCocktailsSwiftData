@@ -11,12 +11,10 @@ import SwiftUI
 struct iOS_26CocktailListView: View {
     @EnvironmentObject var viewModel: CocktailListViewModel
     @State private var selectedNavigationLetter: String?
-    @State private var navigationManager = iOS_26_SearchViewNavigationManager()
+    @Environment(iOS_26_SearchViewNavigationManager.self) var navigationManager
     
     var body: some View {
         
-        NavigationStack(path: $navigationManager.path ) {
-            
             GeometryReader { outerGeo in
                 
                 ZStack {
@@ -55,10 +53,6 @@ struct iOS_26CocktailListView: View {
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .jamesHeader("Cocktail List")
-                .navigationDestination(for: Cocktail.self) { cocktail in
-                    RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
-                        .environment(navigationManager)
-                }
                 .listStyle(.grouped)
                 .searchable(text: $viewModel.searchText, prompt: "Search cocktails")
                 .searchSuggestions {
@@ -82,7 +76,6 @@ struct iOS_26CocktailListView: View {
                     .environment(\.defaultMinListRowHeight, 0)
 
                 }
-                .environment(navigationManager)
                 .onSubmit(of: .search) {
                     // This will still fire when the user taps a cocktail, so we check a flag here
                     // Otherwise when  we tap a cocktail that gets pushed AND the top cocktail still gets pushed
@@ -95,10 +88,8 @@ struct iOS_26CocktailListView: View {
                     viewModel.didTapCocktail = false
                     viewModel.searchText = ""
                 }
-                .environment(navigationManager)
             }
         }
-    }
 }
 
 
