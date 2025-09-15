@@ -19,7 +19,7 @@ struct iOS26_TabBarView: View {
         TabView(selection: $selectedTab)  {
             
             Tab(value: .favoritesView) {
-                NavigationStack(path: $navigationManager.path ) {
+                NavigationStack(path: $navigationManager.favoritesPath ) {
                     CustomCocktailsListView()
                         .navigationDestination(for: Cocktail.self) { cocktail in
                             RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
@@ -44,7 +44,7 @@ struct iOS26_TabBarView: View {
             }
             
             Tab(value: .cocktailListView, role: .search) {
-                NavigationStack(path: $navigationManager.path ) {
+                NavigationStack(path: $navigationManager.listPath ) {
                     iOS_26CocktailListView()
                         .navigationDestination(for: Cocktail.self) { cocktail in
                             RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
@@ -54,8 +54,6 @@ struct iOS26_TabBarView: View {
             } label: {
                 Label("Cocktails", systemImage: "magnifyingglass.circle.fill")
             }
-            
-            
         }
         .environment(\.currentTab, $selectedTab)
         .tint(ColorScheme.tabBarTint)

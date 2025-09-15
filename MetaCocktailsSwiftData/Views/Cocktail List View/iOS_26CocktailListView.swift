@@ -81,7 +81,7 @@ struct iOS_26CocktailListView: View {
                     // Otherwise when  we tap a cocktail that gets pushed AND the top cocktail still gets pushed
                     guard !viewModel.didTapCocktail else { return }
                     if let firstResult = viewModel.searchResultsCocktails.first {
-                        navigationManager.path.append(firstResult)
+                        navigationManager.listPath.append(firstResult)
                     }
                 }
                 .task {
@@ -102,7 +102,7 @@ struct iOS26_SingleCocktailListView: View {
         
         Button {
             viewModel.didTapCocktail = true
-            navigationManager.path.append(cocktail)
+            navigationManager.listPath.append(cocktail)
         } label: {
             HStack {
                 Text(cocktail.cocktailName)
@@ -127,7 +127,7 @@ struct iOS26_SingleCocktailListViewTop: View {
         
         Button {
             viewModel.didTapCocktail = true
-            navigationManager.path.append(cocktail)
+            navigationManager.listPath.append(cocktail)
         } label: {
             Text(cocktail.cocktailName)
                 .ignoresSafeArea(.all)

@@ -28,7 +28,6 @@ struct CBCLoadedCocktailView: View {
                                           isShowingBottleMathAmounts: $isShowingBottleMathAmounts)
         }
         .padding()
-        
         .padding(.top, -20)
         .background(ColorScheme.background)
         .onChange(of: viewModel.quantifiedBatchedIngredients) { _, _ in
