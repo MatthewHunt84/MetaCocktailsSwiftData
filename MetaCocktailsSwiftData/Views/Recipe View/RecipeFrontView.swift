@@ -87,9 +87,6 @@ struct RecipeFlipCardView: View {
                             .padding(.horizontal)
                             .padding(.vertical, outerGeo.size.height * 0.04)
                         }
-                        .navigationDestination(for: String.self, destination: { _ in
-                            AboutUsView()
-                        })
                         .foregroundStyle(viewModel.cocktail.historicSpec == nil ? .primary : .secondary)
                         .allowsHitTesting(!viewModel.isFlipped)
                         .background(BlackGlassBackgroundView())
@@ -166,6 +163,7 @@ struct SwipeRecipeView: View {
                     print("\(cocktail.cocktailName) has id: \(cocktail.id)")
                 }
             }
+            .navigationBarBackButtonHidden(true)
         }
     }
     

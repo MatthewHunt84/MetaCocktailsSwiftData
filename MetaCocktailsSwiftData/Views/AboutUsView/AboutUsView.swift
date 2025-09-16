@@ -83,6 +83,7 @@ struct AboutUsView: View {
                         .offset(x: 120, y: 240)
                         .opacity(0.02)
                 )
+                .toolbar(.hidden, for: .tabBar)
                 .padding(20)
             }
         }
