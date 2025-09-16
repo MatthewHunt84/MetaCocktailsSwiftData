@@ -50,6 +50,14 @@ struct iOS26_TabBarView: View {
                             RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
                                 .environment(navigationManager)
                         }
+                        .navigationDestination(for: CocktailGroup.self) { cocktailGroup in
+                            SwipeRecipeView(variations: cocktailGroup.cocktails, initialSelection: cocktailGroup.cocktail)
+                                .environment(navigationManager)
+                        }
+                        .navigationDestination(for: String.self, destination: { _ in
+                            AboutUsView()
+                        })
+                    
                 }
             } label: {
                 Label("Cocktails", systemImage: "magnifyingglass.circle.fill")

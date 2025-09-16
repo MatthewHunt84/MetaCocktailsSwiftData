@@ -149,7 +149,7 @@ struct CocktailGroupView: View {
                 }
                 if isExpanded {
                     ForEach(cocktails, id: \.id) { cocktail in
-                        MultipleCocktailsListView(cocktail: cocktail, cocktails: cocktails)
+                        MultipleCocktailsListView(cocktailGroup: CocktailGroup(cocktail: cocktail, cocktails: cocktails))
                             .transition(.asymmetric(
                                 // The content will insert and remove from the top with the appropriate fade depending on direction
                                 insertion: .move(edge: .top).combined(with: .opacity.animation(.easeIn)),
@@ -162,6 +162,11 @@ struct CocktailGroupView: View {
             SingleCocktailListView(cocktail: cocktails[0])
         }
     }
+}
+
+struct CocktailGroup: Hashable {
+    var cocktail: Cocktail
+    var cocktails: [Cocktail]
 }
 
 struct SingleCocktailListView: View {
@@ -186,16 +191,15 @@ struct SingleCocktailListView: View {
 }
 
 struct MultipleCocktailsListView: View {
-    let cocktail: Cocktail
-    let cocktails: [Cocktail]
+    let cocktailGroup: CocktailGroup
     @Environment(iOS_26_SearchViewNavigationManager.self) var navigationManager
     
     var body: some View {
         
         Button {
-            navigationManager.listPath.append(cocktail)
+            navigationManager.listPath.append(cocktailGroup)
         } label: {
-            Text(cocktail.cocktailName)
+            Text(cocktailGroup.cocktail.cocktailName)
                 .font(FontFactory.regularFont(size: 18))
                 .padding(.leading, 35)
                 .foregroundStyle(.white)
