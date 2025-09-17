@@ -31,11 +31,11 @@ struct CustomCocktailsListView: View {
                         ContentUnavailableView("No Favorites", systemImage: "magnifyingglass", description: Text("You may add or remove favorited cocktails from their recipe view"))
                     }
                     
-                    Section(header: CustomCocktailHeader()) {
+                    if customCocktails.count > 0 {
                         
-                        let organizedCocktails = viewModel.organizeCocktails(customCocktails)
-                        
-                        if customCocktails.count > 0 {
+                        Section(header: CustomCocktailHeader()) {
+                            
+                            let organizedCocktails = viewModel.organizeCocktails(customCocktails)
                             
                             ForEach(organizedCocktails.keys.sorted(), id: \.self) { key in
                                 if let cocktails = organizedCocktails[key], !cocktails.isEmpty {
@@ -51,17 +51,13 @@ struct CustomCocktailsListView: View {
                                         }
                                         .disclosureGroupStyle(InlineDisclosureGroupStyle())
                                     } else {
-                                        
                                         CustomSingleCocktailListView(cocktail: cocktails[0])
                                     }
                                 }
                             }
                         }
-                        else {
-                            ContentUnavailableView("No Custom Cocktails", systemImage: "magnifyingglass", description: Text("Any cocktails you create or add to the app will appear here."))
-                        }
+                        .padding(.top, 10)
                     }
-                    .padding(.top, 10)
                 }
                 .listStyle(.insetGrouped)
                 .scrollContentBackground(.hidden)
@@ -82,7 +78,7 @@ fileprivate struct CustomCocktailHeader: View {
     var body: some View {
         HStack {
             Spacer()
-            FontFactory.titleHeader24(title: "Custom Cocktails")
+            FontFactory.titleHeader22(title: "Custom Cocktails")
             Spacer()
         }
         .textCase(nil)
