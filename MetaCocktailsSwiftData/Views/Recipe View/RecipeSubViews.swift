@@ -94,7 +94,11 @@ struct HistoricalRecipeView: View {
                         }
                     }
                 }
-                .transition(.move(edge: .top).combined(with: .blurReplace))
+                .transition(.asymmetric(
+                    // The content will insert and remove from the top with the appropriate fade depending on direction
+                    insertion: .move(edge: .top).combined(with: .opacity.animation(.easeIn)),
+                    removal: .move(edge: .top).combined(with: .opacity.animation(.snappy.speed(3)))
+                ))
             }
         }
     }

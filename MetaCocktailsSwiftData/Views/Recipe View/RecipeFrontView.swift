@@ -143,9 +143,12 @@ struct SwipeRecipeView: View {
                         RecipeFlipCardView(viewModel: RecipeViewModel(cocktail: cocktail), borderColor: $borderColor, scrollID: $scrollID, recommendedCocktailID: getRecommendation(for: cocktail))
                             .containerRelativeFrame(.horizontal)
                             .discardTransition()
+                            .navigationBarBackButtonHidden(true)
+                            .navigationBarHidden(true)
+                            .padding(.top, 50)
+                            .ignoresSafeArea(.all, edges: .top)
                     }
                 }
-                
             }
             .scrollTargetLayout()
             .scrollTargetBehavior(.viewAligned)
