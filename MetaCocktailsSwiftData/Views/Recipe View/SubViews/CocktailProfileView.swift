@@ -70,10 +70,6 @@ struct CocktailProfileView: View {
     init(cocktail: Cocktail) {
         self.cocktail = cocktail
         
-        //let ingredients = cocktail.spec
-        
-        
-        
         if let profiles = cocktail.compiledTags.profiles {
             for profile in profiles {
                 if profile == profiles[0] {

@@ -18,7 +18,6 @@ struct PreferencesCheckListCell: View {
                 GeometryReader{ geo in
                     if self.isShowingPreferences == true {
                         
-                        //Spacer()
                         Toggle(isOn: $ingredient.isPreferred) {}
                             .padding(.horizontal, 20)
                             .tint(ColorScheme.selectedColor)
