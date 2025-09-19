@@ -21,7 +21,6 @@ final class CBCViewModel: ObservableObject {
     @Published var numberOfBottlesText: String?
     @Published var sizeOfTheBottle: String?
     @Published var editingBottleMathIngredient: BottleBatchedCellData?
-    //@Published var totalCocktailABVPercentage = 0.0
     @Published var loadedCocktailData: CBCLoadedCocktailData = CBCLoadedCocktailData(cocktailName: "Test", ingredients: [])
     @Published var unitConversion: [MeasurementUnit: Double] = [
         .barSpoon: 0.17,

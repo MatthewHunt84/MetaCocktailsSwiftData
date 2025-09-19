@@ -46,9 +46,6 @@ struct EditBatchModalView: View {
             Spacer()
         }
         .padding()
-//        .glassEffect(.clear, in: RoundedRectangle(cornerRadius: 40))
-        
-//        .background(BlackGlassBackgroundView())
     }
 }
 
