@@ -43,8 +43,8 @@ struct AddCocktailView: View {
                     }
                     // Even though the nav link visibility modifier was introduced in iOS17
                     // It crashes iOS18.0 / 18.6 simulators for some reason - so comment out the line below when testing on those simulators
-                    // Should work fine on device, just need to test it
-                    .navigationLinkIndicatorVisibility(.hidden)
+                    // Turning off just in case - can test when iOS18 bug is fixed 
+//                    .navigationLinkIndicatorVisibility(.hidden)
                     
                     VariationInfoView(isShowingInfo: $isShowingInfo)
                     

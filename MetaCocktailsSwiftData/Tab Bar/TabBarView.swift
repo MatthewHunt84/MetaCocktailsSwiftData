@@ -8,27 +8,63 @@
 import SwiftUI
 
 struct TabBarView: View {
-    
     @State private var selectedTab: TabBarComponents = .cocktailListView
+    @State private var searchText: String = ""
+    @State private var navigationManager = iOS_26_SearchViewNavigationManager()
+    @EnvironmentObject var viewModel: CocktailListViewModel
     
     var body: some View {
         
         TabView(selection: $selectedTab)  {
-            ForEach(TabBarComponents.allCases) { screen in
-                screen.destination
-                    .tag(screen as TabBarComponents?)
-                    .tabItem { screen.label }
+            
+            Tab(value: .favoritesView) {
+                NavigationStack(path: $navigationManager.favoritesPath ) {
+                    CustomCocktailsListView()
+                        .navigationDestination(for: Cocktail.self) { cocktail in
+                            RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                                .environment(navigationManager)
+                        }
+                }
+            } label: {
+                Label("Favorites", systemImage: "heart.fill")
+            }
+            
+            Tab(value: .ingredientSearchView) {
+                IngredientSearchView()
+                    .environmentObject(SearchViewModel())
+            } label: {
+                Label("Ingredients", systemImage: "text.page.badge.magnifyingglass")
+            }
+            
+            Tab(value: .addCocktailView) {
+                AddCocktailView()
+            } label: {
+                Label("Add Cocktail", image: "custom.book.fill.badge.plus")
+            }
+            
+            Tab(value: .cocktailListView) {
+                NavigationStack(path: $navigationManager.listPath ) {
+                    CocktailListView()
+                        .navigationDestination(for: Cocktail.self) { cocktail in
+                            RecipeView(viewModel: RecipeViewModel(cocktail: cocktail))
+                                .environment(navigationManager)
+                        }
+                        .navigationDestination(for: CocktailGroup.self) { cocktailGroup in
+                            SwipeRecipeView(variations: cocktailGroup.cocktails, initialSelection: cocktailGroup.cocktail)
+                                .environment(navigationManager)
+                        }
+                        .navigationDestination(for: String.self, destination: { _ in
+                            AboutUsView()
+                        })
+                    
+                }
+            } label: {
+                Label("Cocktails", systemImage: "magnifyingglass.circle.fill")
             }
         }
         .environment(\.currentTab, $selectedTab)
         .tint(ColorScheme.tabBarTint)
+        .environment(navigationManager)
     }
-}
-
-#Preview {
-    let preview = PreviewContainer([Cocktail.self], isStoredInMemoryOnly: true)
-    return TabBarView()
-        .modelContainer(preview.container)
-    
 }
 
