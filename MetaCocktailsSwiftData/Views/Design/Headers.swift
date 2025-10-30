@@ -65,9 +65,6 @@ struct AboutTitleWithNavigation: ViewModifier {
         } else {
             content
                 .toolbar {
-                    ToolbarItem(placement: .navigation) {
-                        BackButton()
-                    }
                     
                     ToolbarItem(placement: .principal) {
                         FontFactory.aboutHeader(title: title)
